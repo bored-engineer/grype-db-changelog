@@ -1,0 +1,53 @@
+name: Backfill
+# Copied onto the "changelog" branch as .github/workflows/backfill.yml by
+# cmd/changelog (see applyOverlay), so GitHub still finds and schedules a
+# workflow there once "changelog" is this repository's default branch -
+# only the default branch's schedule fires. Lives outside .github/workflows/
+# here so it isn't also a second, duplicate workflow on this branch.
+#
+# It only forwards to the real backfill.yml on "generator" via a ref-pinned
+# reusable workflow call, so this file tracks just the triggers below,
+# never the job logic. Keep them in sync with backfill.yml's (a test in
+# cmd/changelog checks).
+#
+# The backfill job can't update this copy: GitHub rejects workflow changes
+# pushed with an Actions token. It holds the real schedule, so it changes
+# only with the schedule or inputs; when it does, push it onto the
+# changelog branch by hand (cmd/changelog -update-workflow). Until then,
+# backfill runs still chain the data but fail, with the exact command.
+#
+# No concurrency group here: backfill.yml's own ("backfill") applies to the
+# called workflow, and repeating it on the caller would deadlock the two.
+on:
+  workflow_dispatch:
+    inputs:
+      max_items:
+        description: 'Max provider/version pairs to chain this run'
+        required: false
+        type: number
+        default: 1000
+      shards:
+        description: 'Export jobs to spread them across (~ the concurrent job limit)'
+        required: false
+        type: number
+        default: 20
+      parallelism:
+        description: 'Exports each shard runs at once'
+        required: false
+        type: number
+        default: 3
+  schedule:
+    - cron: '7 1,9,17 * * *'
+    - cron: '7 4,12,20 * * *'
+
+jobs:
+  backfill:
+    permissions:
+      contents: write
+      packages: read
+    uses: bored-engineer/grype-db-changelog/.github/workflows/backfill.yml@generator
+    with:
+      max_items: ${{ format('{0}', inputs.max_items || 1000) }}
+      shards: ${{ format('{0}', inputs.shards || 20) }}
+      parallelism: ${{ format('{0}', inputs.parallelism || 3) }}
+    secrets: inherit
