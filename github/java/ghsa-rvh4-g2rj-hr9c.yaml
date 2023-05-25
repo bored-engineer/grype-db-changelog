@@ -1,13 +1,38 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.0.json
+# schema: vulnerability/github-security-advisory/schema-1.0.1.json
 Advisory:
     CVE:
         - CVE-2022-23107
+    CVSS:
+        base_metrics:
+            base_score: 8.1
+            base_severity: High
+            exploitability_score: 2.8
+            impact_score: 5.2
+        status: N/A
+        vector_string: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N
+        version: "3.1"
+    Classification: GENERAL
     FixedIn:
+        - ecosystem: java
+          identifier: 9.0.2
+          name: io.jenkins.plugins:warnings-ng
+          namespace: github:java
+          range: < 9.0.2
         - ecosystem: java
           identifier: 9.10.3
           name: io.jenkins.plugins:warnings-ng
           namespace: github:java
-          range: < 9.10.3
+          range: '>= 9.8.0 < 9.10.3'
+        - ecosystem: java
+          identifier: 9.5.2
+          name: io.jenkins.plugins:warnings-ng
+          namespace: github:java
+          range: '>= 9.1.0 < 9.5.2'
+        - ecosystem: java
+          identifier: 9.7.1
+          name: io.jenkins.plugins:warnings-ng
+          namespace: github:java
+          range: '>= 9.6.0 < 9.7.1'
     Metadata:
         CVE:
             - CVE-2022-23107
@@ -15,6 +40,8 @@ Advisory:
     Summary: Path Traversal in Jenkins Warnings Next Generation Plugin
     ghsaId: GHSA-rvh4-g2rj-hr9c
     namespace: github:java
+    published: "2022-01-21T23:38:05Z"
+    updated: "2023-05-24T18:12:33Z"
     url: https://github.com/advisories/GHSA-rvh4-g2rj-hr9c
     withdrawn: null
 Vulnerability: {}

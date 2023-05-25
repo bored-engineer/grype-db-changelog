@@ -1,20 +1,37 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.0.json
+# schema: vulnerability/github-security-advisory/schema-1.0.1.json
 Advisory:
     CVE:
         - CVE-2020-2301
+    CVSS:
+        base_metrics:
+            base_score: 8.8
+            base_severity: High
+            exploitability_score: 2.8
+            impact_score: 5.9
+        status: N/A
+        vector_string: CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+        version: "3.0"
+    Classification: GENERAL
     FixedIn:
+        - ecosystem: java
+          identifier: 2.16.1
+          name: org.jenkins-ci.plugins:active-directory
+          namespace: github:java
+          range: < 2.16.1
         - ecosystem: java
           identifier: "2.20"
           name: org.jenkins-ci.plugins:active-directory
           namespace: github:java
-          range: < 2.20
+          range: '>= 2.17 < 2.20'
     Metadata:
         CVE:
             - CVE-2020-2301
-    Severity: Critical
+    Severity: High
     Summary: Authentication cache in Active Directory Jenkins Plugin allows logging in with any password
     ghsaId: GHSA-954f-xw44-56r2
     namespace: github:java
+    published: "2022-05-24T17:33:07Z"
+    updated: "2023-05-24T13:34:37Z"
     url: https://github.com/advisories/GHSA-954f-xw44-56r2
     withdrawn: null
 Vulnerability: {}

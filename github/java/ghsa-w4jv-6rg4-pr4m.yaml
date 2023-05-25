@@ -1,13 +1,38 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.0.json
+# schema: vulnerability/github-security-advisory/schema-1.0.1.json
 Advisory:
     CVE:
         - CVE-2022-20619
+    CVSS:
+        base_metrics:
+            base_score: 7.1
+            base_severity: High
+            exploitability_score: 2.8
+            impact_score: 4.2
+        status: N/A
+        vector_string: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:L/A:N
+        version: "3.1"
+    Classification: GENERAL
     FixedIn:
+        - ecosystem: java
+          identifier: 2.9.11.2
+          name: org.jenkins-ci.plugins:cloudbees-bitbucket-branch-source
+          namespace: github:java
+          range: '>= 2.9.8 < 2.9.11.2'
+        - ecosystem: java
+          identifier: 2.9.7.2
+          name: org.jenkins-ci.plugins:cloudbees-bitbucket-branch-source
+          namespace: github:java
+          range: < 2.9.7.2
+        - ecosystem: java
+          identifier: 725.vd9f8be0fa250
+          name: org.jenkins-ci.plugins:cloudbees-bitbucket-branch-source
+          namespace: github:java
+          range: '>= 720.vbe985dd73d66 < 725.vd9f8be0fa250'
         - ecosystem: java
           identifier: 746.v350d2781c184
           name: org.jenkins-ci.plugins:cloudbees-bitbucket-branch-source
           namespace: github:java
-          range: <= 737.vdf9dc06105be
+          range: '>= 726.v7e6f53de133c < 746.v350d2781c184'
     Metadata:
         CVE:
             - CVE-2022-20619
@@ -15,6 +40,8 @@ Advisory:
     Summary: Cross-Site Request Forgery in Jenkins Bitbucket Branch Source Plugin
     ghsaId: GHSA-w4jv-6rg4-pr4m
     namespace: github:java
+    published: "2022-01-13T00:01:00Z"
+    updated: "2023-05-24T17:27:23Z"
     url: https://github.com/advisories/GHSA-w4jv-6rg4-pr4m
     withdrawn: null
 Vulnerability: {}

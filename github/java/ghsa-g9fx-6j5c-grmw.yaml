@@ -1,13 +1,33 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.0.json
+# schema: vulnerability/github-security-advisory/schema-1.0.1.json
 Advisory:
     CVE:
         - CVE-2022-25174
+    CVSS:
+        base_metrics:
+            base_score: 8.8
+            base_severity: High
+            exploitability_score: 2.8
+            impact_score: 5.9
+        status: N/A
+        vector_string: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+        version: "3.1"
+    Classification: GENERAL
     FixedIn:
         - ecosystem: java
-          identifier: 561.va_ce0de3c2d69
+          identifier: 2.18.1
           name: org.jenkins-ci.plugins.workflow:workflow-cps-global-lib
           namespace: github:java
-          range: <= 552.vd9cc05b8a2e1
+          range: < 2.18.1
+        - ecosystem: java
+          identifier: 2.21.1
+          name: org.jenkins-ci.plugins.workflow:workflow-cps-global-lib
+          namespace: github:java
+          range: '>= 2.19 < 2.21.1'
+        - ecosystem: java
+          identifier: 561.va
+          name: org.jenkins-ci.plugins.workflow:workflow-cps-global-lib
+          namespace: github:java
+          range: '>= 544.vff04fa68714d < 561.va'
     Metadata:
         CVE:
             - CVE-2022-25174
@@ -15,6 +35,8 @@ Advisory:
     Summary: 'Improper Neutralization of Special Elements used in an OS Command in Jenkins Pipeline: Shared Groovy Libraries Plugin'
     ghsaId: GHSA-g9fx-6j5c-grmw
     namespace: github:java
+    published: "2022-02-16T00:01:36Z"
+    updated: "2023-05-25T13:24:04Z"
     url: https://github.com/advisories/GHSA-g9fx-6j5c-grmw
     withdrawn: null
 Vulnerability: {}
