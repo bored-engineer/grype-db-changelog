@@ -1,5 +1,5 @@
 Vulnerability:
-    Description: ""
+    Description: An incorrect authorization vulnerability was found in Flatpak. Flatpak does not properly validate that the permissions displayed to the user for an app at install time match the actual permissions granted to the app at runtime in the case that there's a null byte in the metadata file of an app. This issue allows apps to grant themselves permissions without the user's consent. (CVE-2021-43860)A path traversal vulnerability was found in Flatpak. This happens when flatpak-builder applies `finish-args` last in the build. At this point the build directory will have the full access that is specified in the manifest, so running `flatpak build` against it will gain those permissions. (CVE-2022-21682)
     FixedIn:
         - Name: flatpak
           NamespaceName: amzn:2022

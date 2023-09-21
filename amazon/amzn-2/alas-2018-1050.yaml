@@ -1,5 +1,5 @@
 Vulnerability:
-    Description: ""
+    Description: Linux kernel versions 4.9+ can be forced to make very expensive calls to tcp_collapse_ofo_queue() and tcp_prune_ofo_queue() for every incoming packet which can lead to a denial of service. An attacker can induce a denial of service condition by sending specially modified packets within ongoing TCP sessions. Maintaining the denial of service condition requires continuous two-way TCP sessions to a reachable open port. Thus, the attacks cannot be performed using spoofed IP addresses. ( <a href="https://www.kb.cert.org/vuls/id/962459">  https://www.kb.cert.org/vuls/id/962459 </a> )
     FixedIn:
         - Name: kernel
           NamespaceName: amzn:2

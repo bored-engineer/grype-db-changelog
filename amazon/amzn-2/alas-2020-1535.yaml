@@ -1,5 +1,5 @@
 Vulnerability:
-    Description: ""
+    Description: libxslt through 1.1.33 allows bypass of a protection mechanism because callers of xsltCheckRead and xsltCheckWrite permit access even upon receiving a -1 error code. xsltCheckRead can return -1 for a crafted URL that is not actually invalid and is subsequently loaded. (CVE-2019-11068)In xsltCopyText in transform.c in libxslt 1.1.33, a pointer variable isn't reset under certain circumstances. If the relevant memory area happened to be freed and reused in a certain way, a bounds check could fail and memory outside a buffer could be written to, or uninitialized data could be disclosed. (CVE-2019-18197)
     FixedIn:
         - Name: libxslt
           NamespaceName: amzn:2

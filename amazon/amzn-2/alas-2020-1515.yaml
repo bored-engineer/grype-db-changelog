@@ -1,5 +1,5 @@
 Vulnerability:
-    Description: ""
+    Description: It was discovered freeradius does not correctly configure logrotate, allowing a local attacker who already has control of the radiusd user to escalate his privileges to root, by tricking logrotate into writing a radiusd-writable file to a directory normally inaccessible by the radiusd user. (CVE-2019-10143)An information leak was discovered in the implementation of EAP-pwd in freeradius. An attacker could initiate several EAP-pwd handshakes to leak information, which can then be used to recover the user's WiFi password by performing dictionary and brute-force attacks. (CVE-2019-13456)In FreeRADIUS 3.0.x before 3.0.20, the EAP-pwd module used a global OpenSSL BN_CTX instance to handle all handshakes. This mean multiple threads use the same BN_CTX instance concurrently, resulting in crashes when concurrent EAP-pwd handshakes are initiated. This can be abused by an adversary as a Denial-of-Service (DoS) attack. (CVE-2019-17185)
     FixedIn:
         - Name: freeradius
           NamespaceName: amzn:2

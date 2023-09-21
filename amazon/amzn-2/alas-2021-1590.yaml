@@ -1,5 +1,5 @@
 Vulnerability:
-    Description: ""
+    Description: When sudo runs a command in shell mode, either via the -s or -i command line option, it escapes special characters in the command's arguments with a backslash. The sudoers policy plugin will then remove the escape characters from the arguments before evaluating the sudoers policy (which doesn't expect the escape characters) if the command is being run in shell mode. (CVE-2021-3156)
     FixedIn:
         - Name: sudo
           NamespaceName: amzn:2

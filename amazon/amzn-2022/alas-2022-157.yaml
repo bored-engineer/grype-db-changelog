@@ -1,5 +1,5 @@
 Vulnerability:
-    Description: ""
+    Description: Two issues were found in OpenSSL 3.0. The first being a stack based buffer overflow, which is possible by sending an X.509 certificate with a specially crafted email address field. In the binaries provided in Amazon Linux 2022, this is restricted to overwriting bytes that are not referenced later in code execution (CVE-2022-3602). The second being a buffer overrun which can be triggered in X.509 certificate verification, and is restricted to CA signed certificates or applications continuing to proceed after failed validation (CVE-2022-3786). The potential impact from CVE-2022-3786 as present in Amazon Linux 2022 is to availability.
     FixedIn:
         - Name: openssl
           NamespaceName: amzn:2022
