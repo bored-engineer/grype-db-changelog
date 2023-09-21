@@ -1,6 +1,6 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
-    Description: ""
+    Description: 'When doing NTLM authentication, the client sends replies tocryptographic challenges back to the server. These replieshave variable length. Winbind did not properly bounds-checkthe lan manager response length, which despite the lanmanager version no longer being used is still part of theprotocol.If the system is running Samba''s ntlm_auth as authentication backendfor services like Squid (or a very unusual configuration withFreeRADIUS), the vulnarebility is remotely exploitableIf not so configured, or to exploit this vulnerability locally, theuser must have access to the privileged winbindd UNIX domainsocket (a subdirectory with name ''winbindd_privileged'' under "statedirectory", as set in the smb.conf).This access is normally only given so special system services likeSquid or FreeRADIUS, that use this feature. (CVE-2022-2127)SMB2 packet signing not enforcedNOTE: https://www.samba.org/samba/security/CVE-2023-3347.html (CVE-2023-3347)Samba Spotlight mdssvc RPC Request Infinite Loop Denial-of-Service VulnerabilityNOTE: https://www.samba.org/samba/security/CVE-2023-34966.html (CVE-2023-34966)Samba Spotlight mdssvc RPC Request Type Confusion Denial-of-Service VulnerabilityNOTE: https://www.samba.org/samba/security/CVE-2023-34967.html (CVE-2023-34967)Spotlight server-side Share Path DisclosureNOTE: https://www.samba.org/samba/security/CVE-2023-34968.html (CVE-2023-34968)'
     FixedIn:
         - Name: libnetapi
           NamespaceName: amzn:2023

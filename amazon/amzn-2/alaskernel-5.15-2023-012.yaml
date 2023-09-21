@@ -1,6 +1,6 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
-    Description: ""
+    Description: Guests can trigger NIC interface reset/abort/crash via netback It is possible for a guest to trigger a NIC interface reset/abort/crash in a Linux based network backend by sending certain kinds of packets. It appears to be an (unwritten?) assumption in the rest of the Linux network stack that packet protocol headers are all contained within the linear section of the SKB and some NICs behave badly if this is not the case. This has been reported to occur with Cisco (enic) and Broadcom NetXtrem II BCM5780 (bnx2x) though it may be an issue with other NICs/drivers as well. In case the frontend is sending requests with split headers, netback will forward those violating above mentioned assumption to the networking core, resulting in said misbehavior. (CVE-2022-3643)A missing check on user input in the _do_proc_dointvec function can result in a stack-based buffer overflow in the Linux kernel, which can cause a crash or potentially escalate privileges. (CVE-2022-4378)A race condition in the x86 KVM subsystem in the Linux kernel through 6.1-rc6 allows guest OS users to cause a denial of service (host OS crash or host OS memory corruption) when nested virtualisation and the TDP MMU are enabled. (CVE-2022-45869)
     FixedIn:
         - Name: bpftool
           NamespaceName: amzn:2
