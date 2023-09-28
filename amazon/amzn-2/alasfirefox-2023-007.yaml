@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: firefox-esr , thunderbird and nss only are affected by this package. (CVE-2023-0767)The Mozilla Foundation Security Advisory describes this flaw as:The `Content-Security-Policy-Report-Only` header could allow an attacker to leak a child iframe's unredacted URI when interaction with that iframe triggers a redirect. (CVE-2023-25728)The Mozilla Foundation Security Advisory describes this flaw as:Permission prompts for opening external schemes were only shown for `ContentPrincipals` resulting in extensions being able to open them without user interaction via `ExpandedPrincipals`. This could lead to further malicious actions such as downloading files or interacting with software already installed on the system. (CVE-2023-25729)The Mozilla Foundation Security Advisory describes this flaw as:A background script invoking `requestFullscreen` and then blocking the main thread could force the browser into fullscreen mode indefinitely, resulting in potential user confusion or spoofing attacks. (CVE-2023-25730)Due to URL previews in the network panel of developer tools improperly storing URLs, query parameters could potentially be used to overwrite global objects in privileged code. (CVE-2023-25731)When encoding data from an inputStream in xpcom the size of the input being encoded was not correctly calculated potentially leading to an out of bounds memory write. (CVE-2023-25732)The Mozilla Foundation Security Advisory describes this flaw as:After downloading a Windows `.url` shortcut from the local filesystem, an attacker could supply a remote path that would lead to unexpected network requests from the operating system.  This also had the potential to leak NTLM credentials to the resource.*This bug only affects Firefox on Windows. Other operating systems are unaffected.* (CVE-2023-25734)The Mozilla Foundation Security Advisory describes this flaw as:Cross-compartment wrappers wrapping a scripted proxy could have caused objects from other compartments to be stored in the main compartment resulting in a use-after-free after unwrapping the proxy. (CVE-2023-25735)The Mozilla Foundation Security Advisory describes this flaw as:An invalid downcast from `nsTextNode` to `SVGElement` could have lead to undefined behavior. (CVE-2023-25737)The Mozilla Foundation Security Advisory describes this flaw as:Module load requests that failed were not being checked as to whether or not they were cancelled causing a use-after-free in `ScriptLoadContext`. (CVE-2023-25739)The Mozilla Foundation Security Advisory describes this flaw as:When importing a SPKI RSA public key as ECDSA P-256, the key would be handled incorrectly causing the tab to crash. (CVE-2023-25742)The Mozilla Foundation Security Advisory describes this flaw as:A lack of in app notification for entering fullscreen mode could have lead to a malicious website spoofing browser chrome.*This bug only affects Firefox Focus. Other versions of Firefox are unaffected.* (CVE-2023-25743)The Mozilla Foundation Security Advisory describes this flaw as:Mozilla developers Kershaw Chang and the Mozilla Fuzzing Team reported memory safety bugs present in Firefox 109 and Firefox ESR 102.7. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. (CVE-2023-25744)Mozilla Foundation Security Advisory:Mozilla developers Philipp and Gabriele Svelto reported memory safety bugs present in Firefox ESR 102.7. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. (CVE-2023-25746)
+    FixedIn:
+        - Name: firefox
+          NamespaceName: amzn:2
+          Version: 102.8.0-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: firefox-debuginfo
+          NamespaceName: amzn:2
+          Version: 102.8.0-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASFIREFOX-2023-007.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-0767
+            - Name: CVE-2023-25728
+            - Name: CVE-2023-25729
+            - Name: CVE-2023-25730
+            - Name: CVE-2023-25731
+            - Name: CVE-2023-25732
+            - Name: CVE-2023-25734
+            - Name: CVE-2023-25735
+            - Name: CVE-2023-25737
+            - Name: CVE-2023-25739
+            - Name: CVE-2023-25742
+            - Name: CVE-2023-25743
+            - Name: CVE-2023-25744
+            - Name: CVE-2023-25746
+    Name: ALASFIREFOX-2023-007
+    NamespaceName: amzn:2
+    Severity: High
