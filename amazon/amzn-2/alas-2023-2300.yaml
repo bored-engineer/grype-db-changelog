@@ -1,0 +1,32 @@
+Vulnerability:
+    Description: There exists one heap buffer overflow in _TIFFmemcpy in tif_unix.c in libtiff 4.0.10, which allows an attacker to cause a denial-of-service through a crafted tiff file. (CVE-2020-18768)A heap buffer overflow in ExtractImageSection function in tiffcrop.c in libtiff library Version 4.3.0 allows attacker to trigger unsafe or out of bounds memory access via crafted TIFF image file which could result into application crash, potential information disclosure or any other context-dependent impact (CVE-2022-0891)A heap-buffer-overflow vulnerability was found in LibTIFF, in extractImageSection() at tools/tiffcrop.c:7916 and tools/tiffcrop.c:7801. This flaw allows attackers to cause a denial of service via a crafted tiff file. (CVE-2023-3164)
+    FixedIn:
+        - Name: libtiff
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.19
+          VersionFormat: rpm
+        - Name: libtiff-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.19
+          VersionFormat: rpm
+        - Name: libtiff-devel
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.19
+          VersionFormat: rpm
+        - Name: libtiff-static
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.19
+          VersionFormat: rpm
+        - Name: libtiff-tools
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.19
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2023-2300.html
+    Metadata:
+        CVE:
+            - Name: CVE-2020-18768
+            - Name: CVE-2022-0891
+            - Name: CVE-2023-3164
+    Name: ALAS-2023-2300
+    NamespaceName: amzn:2
+    Severity: Medium
