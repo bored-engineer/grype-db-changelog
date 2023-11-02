@@ -1,0 +1,21 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'Templates did not properly consider backticks (`) as Javascript string delimiters, and as such didnot escape them as expected. Backticks are used, since ES6, for JS template literals. If a templatecontained a Go template action within a Javascript template literal, the contents of the action couldbe used to terminate the literal, injecting arbitrary Javascript code into the Go template. (CVE-2023-24538)html/template: improper handling of JavaScript whitespace.Not all valid JavaScript whitespace characters were considered to be whitespace. Templates containing whitespace characters outside of the character set "\t\n\f\r\u0020\u2028\u2029" in JavaScript contexts that also contain actions may not be properly sanitized during execution. (CVE-2023-24540)The HTTP/2 protocol allows a denial of service (server resource consumption) because request cancellation can reset many streams quickly, as exploited in the wild in August through October 2023. (CVE-2023-39325)'
+    FixedIn:
+        - Name: docker
+          NamespaceName: amzn:2
+          Version: 20.10.25-1.amzn2.0.3
+          VersionFormat: rpm
+        - Name: docker-debuginfo
+          NamespaceName: amzn:2
+          Version: 20.10.25-1.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASECS-2023-019.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-24538
+            - Name: CVE-2023-24540
+            - Name: CVE-2023-39325
+    Name: ALASECS-2023-019
+    NamespaceName: amzn:2
+    Severity: High
