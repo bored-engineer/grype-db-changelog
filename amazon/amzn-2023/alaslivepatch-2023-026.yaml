@@ -1,0 +1,21 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'An integer overflow in kmalloc_reserve() in the Linux kernel may allow a local user to crash the system, or in some cases obtain code execution in kernel space. (CVE-2023-42752)An issue was discovered in drivers/net/ethernet/intel/igb/igb_main.c in the IGB driver in the Linux kernel before 6.5.3. A buffer size may not be adequate for frames larger than the MTU. (CVE-2023-45871)A use-after-free vulnerability in the Linux kernel''s net/sched: sch_hfsc (HFSC qdisc traffic control) component can be exploited to achieve local privilege escalation.If a class with a link-sharing curve (i.e. with the HFSC_FSC flag set) has a parent without a link-sharing curve, then init_vf() will call vttree_insert() on the parent, but vttree_remove() will be skipped in update_vf(). This leaves a dangling pointer that can cause a use-after-free.We recommend upgrading past commit b3d26c5702c7d6c45456326e56d2ccf3f103e60f. (CVE-2023-4623)A use-after-free vulnerability in the Linux kernel''s net/sched: sch_qfq component can be exploited to achieve local privilege escalation.When the plug qdisc is used as a class of the qfq qdisc, sending network packets triggers use-after-free in qfq_dequeue() due to the incorrect .peek handler of sch_plug and lack of error checking in agg_dequeue().We recommend upgrading past commit 8fc134fee27f2263988ae38920bc03da416b03d8. (CVE-2023-4921)x86: KVM: SVM: always update the x2avic msr interception (CVE-2023-5090)A use-after-free vulnerability in the Linux kernel''s netfilter: nf_tables component can be exploited to achieve local privilege escalation.Addition and removal of rules from chain bindings within the same transaction causes leads to use-after-free.We recommend upgrading past commit f15f29fd4779be8a418b66e9d52979bb6d6c2325. (CVE-2023-5197)A heap out-of-bounds write vulnerability in the Linux kernel''s Linux Kernel Performance Events (perf) component can be exploited to achieve local privilege escalation.If perf_read_group() is called while an event''s sibling_list is smaller than its child''s sibling_list, it can increment or write to memory locations outside of the allocated buffer.We recommend upgrading past commit 32671e3799ca2e4590773fd0e63aaa4229e50c06. (CVE-2023-5717)'
+    FixedIn:
+        - Name: kernel-livepatch-6.1.49-70.116
+          NamespaceName: amzn:2023
+          Version: 1.0-2.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALASLIVEPATCH-2023-026.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-42752
+            - Name: CVE-2023-45871
+            - Name: CVE-2023-4623
+            - Name: CVE-2023-4921
+            - Name: CVE-2023-5090
+            - Name: CVE-2023-5197
+            - Name: CVE-2023-5717
+    Name: ALASLIVEPATCH-2023-026
+    NamespaceName: amzn:2023
+    Severity: High
