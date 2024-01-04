@@ -1,6 +1,68 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [9.25-2]
+        - obsoleted old ghostscript-devel to allow clean upgrade to libgs-devel
+
+        [9.25-1]
+        - Rebase to latest upstream version (bug #1636115)
+        - Resolves: #1673399 - CVE-2019-3839 ghostscript: missing attack vector
+          protections for CVE-2019-6116
+        - Resolves: #1678172 - CVE-2019-3835 ghostscript: superexec operator
+          is available (700585)
+        - Resolves: #1680026 - CVE-2019-3838 ghostscript: forceput in DefineResource
+          is still accessible (700576)
+        - Resolves: #1670443 - ghostscript: Regression: double comment chars
+          '%' in gs_init.ps leading to missing metadata
+        - fix for pdf2dsc regression added to allow fix for CVE-2019-3839
+
+        [9.07-32]
+        - Remove as many non-standard operators as possible to make the codebase
+          closer to upstream for later CVEs
+        - Resolves: #1621385 - CVE-2018-16511 ghostscript: missing type check in type
+          checker (699659)
+        - Resolves: #1649722 - CVE-2018-16539 ghostscript: incorrect access checking
+          in temp file handling to disclose contents of files (699658)
+        - Resolves: #1621162 - CVE-2018-15908 ghostscript: .tempfile file permission
+          issues (699657)
+        - Resolves: #1621384 - CVE-2018-15909 ghostscript: shading_param incomplete
+          type checking (699660)
+        - Resolves: #1652902 - CVE-2018-16863 ghostscript: incomplete fix for
+          CVE-2018-16509
+        - Resolves: #1654045 ghostscript update breaks xdvi (gs: Error: /undefined in flushpage)
+        - Resolves: #1651150 - CVE-2018-15911 ghostscript: uninitialized memory
+          access in the aesdecode operator (699665)
+        - Resolves: #1650061 - CVE-2018-16802 ghostscript: Incorrect 'restoration of
+          privilege' checking when running out of stack during exception handling
+        - Resolves: #1652936 - CVE-2018-19409 ghostscript: Improperly implemented
+          security check in zsetdevice function in psi/zdevice.c
+        - Resolves: #1654622 - CVE-2018-16541 ghostscript: incorrect free logic in
+          pagedevice replacement (699664)
+        - Resolves: #1650211 - CVE-2018-17183 ghostscript: User-writable error
+          exception table
+        - Resolves: #1645517 - CVE-2018-18073 ghostscript: saved execution stacks
+          can leak operator arrays
+        - Resolves: #1648892 - CVE-2018-17961 ghostscript: saved execution stacks
+          can leak operator arrays (incomplete fix for CVE-2018-17183)
+        - Resolves: #1643117 - CVE-2018-18284 ghostscript: 1Policy operator
+          allows a sandbox protection bypass
+        - Resolves: #1655939 - CVE-2018-19134 ghostscript: Type confusion in
+          setpattern (700141)
+        - Resolves: #1657694 - ghostscript: Regression: Warning: Dropping incorrect
+          smooth shading object (Error: /rangecheck in --run--)
+        - Resolves: #1661210 pdf2ps reports an error when reading from stdin
+        - Resolves: #1657334 - CVE-2018-16540 ghostscript: use-after-free in
+          copydevice handling (699661)
+        - Resolves: #1660570 - CVE-2018-19475 ghostscript: access bypass in
+          psi/zdevice2.c (700153)
+        - Resolves: #1660829 - CVE-2018-19476 ghostscript: access bypass in
+          psi/zicc.c
+        - Resolves: #1661279 - CVE-2018-19477 ghostscript: access bypass in
+          psi/zfjbig2.c (700168)
+        - Resolves: #1667443 - CVE-2019-6116 ghostscript: subroutines within
+          pseudo-operators must themselves be pseudo-operators
+        - Resolves: #1670443 - ghostscript: Regression: double comment chars
+          '%' in gs_init.ps leading to missing metadata
     FixedIn:
         - Module: null
           Name: ghostscript

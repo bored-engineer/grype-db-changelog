@@ -1,6 +1,54 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.45.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.45.1]
+        - CI: handle RT branches in a single config (Veronika Kabatova)
+        - CI: Drop private CI config (Veronika Kabatova)
+        - CI: extend template use (Veronika Kabatova)
+        - mm: page_counter: mitigate consequences of a page_counter underflow (Scott Wood) [2000973]
+        - KVM: nSVM: always intercept VMLOAD/VMSAVE when nested(CVE-2021-3656) (Jon Maloy) [1985425] {CVE-2021-3656}
+        - KVM: x86: Update vCPU's hv_clock before back to guest when tsc_offset is adjusted (Marcelo Tosatti) [1991856]
+        - KVM: nSVM: avoid picking up unsupported bits from L2 in int_ctl (CVE-2021-3653) (Jon Maloy) [1985408] {CVE-2021-3653}
+        - scsi: qedf: Initiate cleanup for ELS commands as well (Nilesh Javali) [1982702]
+
+        [3.10.0-1160.44.1]
+        - fs: dlm: change handling of reconnects (Bob Peterson) [1834878]
+        - DLM: fix NULL pointer dereference in send_to_sock() (Bob Peterson) [1834878]
+        - DLM: fix to reschedule rwork (Bob Peterson) [1834878]
+        - DLM: fix to use sk_callback_lock correctly (Bob Peterson) [1834878]
+        - DLM: fix overflow dlm_cb_seq (Bob Peterson) [1834878]
+        - DLM: fix conversion deadlock when DLM_LKF_NODLCKWT flag is set (Bob Peterson) [1834878]
+        - DLM: use CF_CLOSE flag to stop dlm_send correctly (Bob Peterson) [1834878]
+        - DLM: Reanimate CF_WRITE_PENDING flag (Bob Peterson) [1834878]
+        - DLM: fix race condition between dlm_recoverd_stop and dlm_recoverd (Bob Peterson) [1834878]
+        - DLM: close othercon at send/receive error (Bob Peterson) [1834878]
+        - DLM: retry rcom when dlm_wait_function is timed out. (Bob Peterson) [1834878]
+        - DLM: fix to use sock_mutex correctly in xxx_accept_from_sock (Bob Peterson) [1834878]
+        - DLM: fix race condition between dlm_send and dlm_recv (Bob Peterson) [1834878]
+        - DLM: fix double list_del() (Bob Peterson) [1834878]
+        - DLM: Eliminate CF_WRITE_PENDING flag (Bob Peterson) [1834878]
+        - KVM: do not allow mapping valid but non-reference-counted pages (Jon Maloy) [1975511]
+        - vxlan: check return value of gro_cells_init() (Aristeu Rozanski) [1970618]
+        - KVM: PPC: Book3S: Fix H_RTAS rets buffer overflow (Jon Maloy) [1988218] {CVE-2021-37576}
+
+        [3.10.0-1160.43.1]
+        - PCI: hv: Add support for protocol 1.3 and support PCI_BUS_RELATIONS2 (Mohammed Gamal) [1984128]
+        - PCI: hv: Decouple the func definition in hv_dr_state from VSP message (Mohammed Gamal) [1984128]
+        - PCI: hv: Only queue new work items in hv_pci_devices_present() if necessary (Mohammed Gamal) [1984128]
+        - i40e: improve locking of mac_filter_hash (Stefan Assmann) [1993850]
+        - i40e: always propagate error value in i40e_set_vsi_promisc() (Stefan Assmann) [1993850]
+        - i40e: fix return of uninitialized aq_ret in i40e_set_vsi_promisc (Stefan Assmann) [1993850]
+        - i40e: Remove scheduling while atomic possibility (Stefan Assmann) [1993850]
+        - scsi: lpfc: Fix pt2pt discovery on SLI3 HBAs (Dick Kennedy) [1922479]
+        - qed: Disable 'MFW indication via attention' SPAM every 5 minutes (Manish Chopra) [1854544]
+        - NFS: Fix a performance regression caused by buffered IO locking (Benjamin Coddington) [1995649]
     FixedIn:
         - Module: null
           Name: bpftool

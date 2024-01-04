@@ -1,6 +1,29 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.7.2p1-13]
+        - patch: parse ldap.conf more closely to nss_ldap
+          Resolves: rhbz#750318
+
+        [1.7.2p1-12]
+        - added patch for CVE-2011-0010
+          Resolves: rhbz#757157
+
+        [1.7.2p1-11]
+        - backported selinux support from 1.7.4p5 (#477185, #673157)
+        - fixed bug in Runas_Spec group matching (#627543)
+        - disable 'sudo -l' output word wrapping if the output
+          is piped (#697111)
+        - fixed overwriting of errno after execve failure (#673157)
+        - fixed segmentation fault (#673072)
+        - add a sudoers entry to the nsswitch.conf file
+          on install (and delete it on uninstall) (#617061)
+          Resolves: rhbz#697111
+          Resolves: rhbz#673157
+          Resolves: rhbz#673072
+          Resolves: rhbz#627543
+          Resolves: rhbz#617061
+          Resolves: rhbz#477185
     FixedIn:
         - Module: null
           Name: sudo

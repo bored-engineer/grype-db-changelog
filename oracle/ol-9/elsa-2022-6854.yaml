@@ -1,6 +1,67 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        gnutls
+        [3.7.6-12]
+        - fips: mark PBKDF2 with short key and output sizes non-approved
+        - fips: only mark HMAC as approved in PBKDF2
+        - fips: mark gnutls_key_generate with short key sizes non-approved
+        - fips: fix checking on hash algorithm used in ECDSA
+        - fips: preserve operation context around FIPS selftests API
+
+        [3.7.6-11]
+        - Supply --with{,out}-{zlib,brotli,zstd} explicitly
+
+        [3.7.6-10]
+        - Revert nettle version pinning as it doesn't work well in side-tag
+
+        [3.7.6-9]
+        - Pin nettle version in Requires when compiled with FIPS
+
+        [3.7.6-8]
+        - Bundle GMP to privatize memory functions
+        - Disable certificate compression support by default
+
+        [3.7.6-7]
+        - Update gnutls-3.7.6-cpuid-fixes.patch
+
+        [3.7.6-6]
+        - Mark RSA SigVer operation approved for known modulus sizes (#2119770)
+        - accelerated: clear AVX bits if it cannot be queried through XSAVE
+
+        [3.7.6-5]
+        - Block DES-CBC usage in decrypting PKCS#12 bag under FIPS (#2115314)
+        - sysrng: reseed source DRBG for prediction resistance
+
+        [3.7.6-4]
+        - Make gnutls-cli work with KTLS for testing
+        - Fix double-free in gnutls_pkcs7_verify (#2109789)
+
+        [3.7.6-3]
+        - Limit input size for AES-GCM according to SP800-38D (#2108635)
+        - Do not treat GPG verification errors as fatal
+        - Remove gnutls-3.7.6-libgnutlsxx-const.patch
+
+        [3.7.6-2]
+        - Allow enabling KTLS with config file (#2108532)
+
+        [3.7.6-1]
+        - Update to gnutls 3.7.6 (#2102591)
+
+        [3.7.3-10]
+        - Use only the first component of VERSION from /etc/os-release (#2076626)
+        - Don't run power-on self-tests on DSA (#2076627)
+
+        nettle
+        [3.8-3]
+        - Rebuild in new side-tag
+
+        [3.8-2]
+        - Bundle GMP to privatize memory functions
+        - Zeroize stack allocated intermediate data
+
+        [3.8-1]
+        - Update to nettle 3.8 (#2100350)
     FixedIn:
         - Module: null
           Name: gnutls

@@ -1,6 +1,118 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nspr
+        [4.21.0-1]
+        - Rebase to NSPR 4.21
+
+        nss
+        [3.44.0-4]
+        - Fix certutil man page
+        - Fix extracting a public key from a private key for dh, ec, and dsa
+
+        [3.44.0-3]
+        - Disable TLS 1.3 under FIPS mode
+        - Disable RSASSA-PKCS1-v1_5 in TLS 1.3
+        - Fix post-handshake auth transcript calculation if
+          SSL_ENABLE_SESSION_TICKETS is set
+
+        [3.44.0-2]
+        - Skip sysinit gtests properly
+        - Fix shell syntax error in tests/ssl/ssl.sh
+        - Regenerate manual pages
+
+        [3.44.0-1]
+        - Rebase to NSS 3.44
+        - Restore fix-min-library-version-in-SSLVersionRange.patch to keep
+          SSL3 supported in the code level while it is disabled by policy
+        - Skip TLS 1.3 tests under FIPS mode
+
+        [3.43.0-9]
+        - Ignore system policy when running %check
+
+        [3.43.0-8]
+        - Fix policy string
+
+        [3.43.0-7]
+        - Dont override date in man-pages
+        - Revert the change to use XDG basedirs (mozilla#818686)
+        - Enable SSL2 compatible ClientHello by default
+        - Disable SSL3 and RC4 by default
+
+        [3.43.0-6]
+        - Make '-V ssl3:' option work with tools
+
+        [3.43.0-5]
+        - Fix regression in MD5 disablement
+
+        [3.43.0-4]
+        - add certutil documentation
+
+        [3.43.0-3]
+        - Restore complete removal of SSLv2
+        - Disable SSLv3
+        - Move signtool to unsupported directory
+
+        [3.43.0-2]
+        - Expand IPSEC usage to include ssl and email certs. Remove special
+          processing of the usage based on the critical flag
+
+        [3.43.0-1]
+        - Rebase to NSS 3.43
+
+        [3.36.0-8.1]
+        - move key on unwrap failure and retry.
+
+        [3.36.0-8]
+        - Update the cert verify code to allow a new ipsec usage and follow RFC 4945
+
+        nss-softokn
+        [3.44.0-5.0.1]
+        - Add fips140-2 DSA Known Answer Test fix [Orabug: 26679337]
+        - Add fips140-2 ECDSA/RSA/DSA Pairwise Consistency Test fix [Orabug: 26617814],
+          [Orabug: 26617879], [Orabug: 26617849]
+
+        [3.44.0-5]
+        - Add pub from priv mechanism
+
+        [3.44.0-4]
+        - Add ike mechanisms
+        - FIPS update
+
+        [3.44.0-3]
+        - Remove stray 'exit' in %prep
+
+        [3.44.0-2]
+        - Fix nss-softokn-fs-probe.patch to detect threshold correctly
+
+        [3.44.0-1]
+        - Rebase to NSS 3.44
+
+        [3.43.0-5]
+        - Restore nss-softokn-fs-probe.patch
+
+        [3.43.0-4]
+        - Enable iquote.patch
+
+        [3.43.0-2]
+        - Rebuild
+
+        nss-util
+        [3.44.0-3]
+        - Add pub from priv mechanism
+        - ike mechanisms should not overlap with JPAKE
+
+        [3.44.0-2]
+        - Add ike mechanisms
+
+        [3.44.0-1]
+        - Rebase to NSS 3.44
+
+        [3.43.0-1]
+        - Rebase to NSS 3.43
+
+        [3.36.0-2]
+        - Update the cert verify code to allow a new ipsec usage and follow RFC 4945
     FixedIn:
         - Module: null
           Name: nspr

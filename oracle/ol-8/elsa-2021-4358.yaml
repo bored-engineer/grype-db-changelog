@@ -1,6 +1,67 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.28-164.0.1]
+        - Merge of RH patches for ol8-u5 beta release
+        Review-exception: Routine merge
+        - Provide glibc.pthread.mutex_spin_count tunable for pthread adaptive
+        - spin mutex
+        Orabug: 27982358.
+        Reviewed-by: Qing Zhao <qing.zhao@oracle.com>
+        - add Ampere emag  to tunable cpu list (Patrick McGehearty)
+        - add optimized memset for emag
+        - add an ASIMD variant of strlen for falkor
+        - Orabug: 2700101.
+        - Modify glibc-ora28849085.patch so it works with RHCK kernels.
+        - Orabug: 28849085.
+        - Make _IO_funlockfile match __funlockfile and _IO_flockfile match __flockfile
+        - Both should test
+        -   if (stream->_flags & _IO_USER_LOCK) == 0)
+        -     _IO_lock_lock (*stream->_lock);
+        - OraBug: 28481550.
+        Reviewed-by: Qing Zhao <qing.zhao@oracle.com>
+
+        [2.28-164]
+        - librt: fix NULL pointer dereference (#1966472).
+
+        [2.28-163]
+        - CVE-2021-33574: Deep copy pthread attribute in mq_notify (#1966472)
+
+        [2.28-162]
+        - CVE-2021-35942: wordexp: handle overflow in positional parameter number
+          (#1979127)
+
+        [2.28-161]
+        - Improve POWER10 performance with POWER9 fallbacks (#1956357)
+
+        [2.28-160]
+        - Backport POWER10 optimized rawmemchr for ppc64le (#1956357)
+
+        [2.28-159]
+        - Backport additional ifunc optimizations for ppc64le (#1956357)
+
+        [2.28-158]
+        - Rebuild with new binutils (#1946518)
+
+        [2.28-157]
+        - Consistently SXID_ERASE tunables in sxid binaries (#1934155)
+
+        [2.28-156]
+        - Backport ifunc optimizations for glibc for ppc64le (#1918719)
+
+        [2.28-155]
+        - CVE-2021-27645: nscd: Fix double free in netgroupcache (#1927877)
+
+        [2.28-154]
+        - Add IPPROTO_ETHERNET, IPPROTO_MPTCP, and INADDR_ALLSNOOPERS_GROUP defines
+          (#1930302)
+
+        [2.28-153]
+        - Support SEM_STAT_ANY via semctl. Return EINVAL for unknown commands to semctl,
+          msgctl, and shmctl. (#1912670)
+
+        [2.28-152]
+        - Update syscall-names.list to 5.7, 5.8, 5.9, 5.10 and 5.11. (#1871386)
     FixedIn:
         - Module: null
           Name: compat-libpthread-nonshared

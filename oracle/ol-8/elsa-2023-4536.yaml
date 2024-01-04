@@ -1,6 +1,170 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nodejs
+        [1:18.16.1-1]
+        - Rebase to 18.16.1
+          Resolves: rhbz#2188290 rhbz#2166926
+          Resolves: CVE-2023-30581 CVE-2023-30588 CVE-2023-30589 CVE-2023-30590
+        - Replace /usr/etc/npmrc symlink with builtin configuration
+          Resolves: rhbz#2222287
+
+        nodejs-nodemon
+        nodejs-packaging
+        [2021.06-4]
+        - NPM bundler: also find namespaced bundled dependencies
+
+        [2021.06-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+        [2021.06-2]
+        - Fix hard-coded output directory in the bundler
+
+        [2021.06-1]
+        - Update to 2021.06-1
+        - bundler: Handle archaic license metadata
+        - bundler: Warn about bundled dependencies with no license metadata
+
+        [2021.01-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+        [2021.01-2]
+        - nodejs-packaging-bundler improvements to handle uncommon characters
+
+        [2021.01]
+        - Add nodejs-packaging-bundler and update README.md
+
+        [2020.09-1]
+        - Move to dist-git as the upstream
+
+        [25-1]
+        - Fix incorrect bundled library detection for Requires
+
+        [24-1]
+        - Check node_modules_prod for bundled dependencies
+
+        [23-4]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+        [23-3]
+        - Drop Requires: nodejs(engine)
+
+        [23-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
+        [23-1]
+        - Ensure nodejs(engine) is required for packages with no dependencies
+
+        [22-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+        [22-1]
+        - Refactor nodejs.req in more idiomatic Python
+        - Treat only external dependency links as un-bundled
+
+        [21-1]
+        - Refactor nodejs.prov in more idiomatic Python
+
+        [20-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+        [20-1]
+        - Fix handling of ^ dependencies for multiversion modules
+
+        [18-1]
+        - Handle =, >= and <= dependencies for multiversion modules
+
+        [17-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+        [17-1]
+        - Fix version comparators with a space after the operator
+
+        [16-1]
+        - Rewrite nodejs.req to better match npm versioning rules
+        - Add tests for nodejs.req and nodejs.prov
+
+        [15-1]
+        - Fix caret dependency ranges
+
+        [14-1]
+        - Only match top level modules for requires and provides generation
+
+        [13-1]
+        - Add %nodejs_setversion macro
+
+        [12-1]
+        - Port to python 3
+
+        [11-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+        [11-1]
+        - nodesjs.req: use boolean with for range dependencies
+
+        [10-1]
+        - Release v10
+        - Automatically generate Provides for bundled npm dependencies
+
+        [9-4]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+        [9-3]
+        - switch source URL to pagure
+
+        [9-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+        [9-1]
+        - nodejs-fixdep: stop --move erroring on missing dependency types
+
+        [8-1]
+        - nodejs-fixdep: add --move option
+        - nodejs-symlink-deps: add --optional option
+        - req: generate suggests for optional dependencies
+
+        [7-5]
+        - nodejs-symlink-deps: handle caret in versions
+
+        [7-4]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+        [7-3]
+        - Install macros in %{_rpmconfidir}/macros.d where available (#1074279)
+
+        [7-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+        [7-1]
+        - nodejs-symlink-deps: fix regression preventing multiply versioned modules from
+          being symlinked correctly
+
+        [6-1]
+        - nodejs-fixdep: use real option parsing
+        - nodejs-fixdep: support modifying optionalDependencies and devDependencies
+        - req: support the caret operator
+        - nodejs-symlink-deps: add --force option
+        - nodejs-symlink-deps: add --build alias for --check
+        - nodejs-fixdep: support converting to caret dependencies
+        - nodejs-fixdep: support non-dictionary dependency properties
+        - multiver_modules: add nan
+
+        [4-1]
+        - handle cases where the symlink target exists gracefully
+
+        [3-1]
+        - dependencies and engines can be lists or strings too
+        - handle unversioned dependencies on multiply versioned modules correctly
+          (RHBZ#982798)
+        - restrict to compatible arches
+
+        [2-1]
+        - move multiple version list to /usr/share/node
+        - bump nodejs Requires to 0.10.12
+        - add Requires: redhat-rpm-config
+
+        [1-1]
+        - initial package
     FixedIn:
         - Module: nodejs:18
           Name: nodejs

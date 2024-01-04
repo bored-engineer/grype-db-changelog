@@ -1,6 +1,105 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.0.0-20gitd1c6db8]
+        - Combined fixes for CVE-2020-5312 and CVE-2019-16865
+        Resolves: rhbz#1789533
+        Resolves: rhbz#1774066
+
+        [2.0.0-19gitd1c6db8]
+        - Reenabled webp support on little endian archs.
+
+        [2.0.0-18gitd1c6db8]
+        - Disabled webp support on ppc64le due to #962091 and #1127230.
+        - Updated URL.
+
+        [2.0.0-17gitd1c6db8]
+        - Wiped out some memory leaks.
+
+        [2.0.0-15.gitd1c6db8]
+        - Mass rebuild 2014-01-24
+
+        [2.0.0-14gitd1c6db8]
+        - Fixed memory corruption.
+        - Resolves: rhbz#1001122
+
+        [2.0.0-13.gitd1c6db8]
+        - Mass rebuild 2013-12-27
+
+        [2.0.0-12]
+        - Mark doc subpackage arch dependent. Docs are built depending on supported
+          features, which are different across archs.
+          Resolves: rhbz#987839
+
+        [2.0.0-11]
+        - Drop lcms support
+          Resolves: rhbz#987839
+
+        [2.0.0-10]
+        - Build without webp support on s390* archs
+          Resolves: rhbz#962059
+
+        [2.0.0-9.gitd1c6db8]
+        - Conditionaly disable build of python3 parts on RHEL system
+
+        [2.0.0-8.gitd1c6db8]
+        - Add patch to fix test failure on big-endian
+
+        [2.0.0-7.gitd1c6db8]
+        - Remove Obsoletes in the python-pillow-qt subpackage. Obsoletes isn't
+          appropriate since qt support didn't exist in the previous python-pillow
+          package so there's no reason to drag in python-pillow-qt when updating
+          python-pillow.
+
+        [2.0.0-6.gitd1c6db8]
+        - Update to latest git
+        - python-pillow_quantization.patch now upstream
+        - python-pillow_endianness.patch now upstream
+        - Add subpackage for ImageQt module, with correct dependencies
+        - Add PyQt4 and numpy BR (for generating docs / running tests)
+
+        [2.0.0-5.git93a488e]
+        - Reenable tests on bigendian, add patches for #928927
+
+        [2.0.0-4.git93a488e]
+        - Update to latest git
+        - disable tests on bigendian (PPC*, S390*) until rhbz#928927 is fixed
+
+        [2.0.0-3.gitde210a2]
+        - python-pillow_tempfile.patch now upstream
+        - Add python3-imaging provides (bug #924867)
+
+        [2.0.0-2.git2e88848]
+        - Update to latest git
+        - Remove python-pillow-disable-test.patch, gcc is now fixed
+        - Add python-pillow_tempfile.patch to prevent a temporary file from getting packaged
+
+        [2.0.0-1.git2f4207c]
+        - Update to 2.0.0 git snapshot
+        - Enable python3 packages
+        - Add libwebp-devel BR for Pillow 2.0.0
+
+        [1.7.8-6.20130305git]
+        - Add ARM support
+
+        [1.7.8-5.20130305git]
+        - add s390* and ppc* to arch detection
+
+        [1.7.8-4.20130305git7866759]
+        - Update to latest git snapshot
+        - 0001-Cast-hash-table-values-to-unsigned-long.patch now upstream
+        - Pillow-1.7.8-selftest.patch now upstream
+
+        [1.7.8-3.20130210gite09ff61]
+        - Really remove -fno-strict-aliasing
+        - Place comment on how to retreive source just above the Source0 line
+
+        [1.7.8-2.20130210gite09ff61]
+        - Rebuild without -fno-strict-aliasing
+        - Add patch for upstream issue #52
+
+        [1.7.8-1.20130210gite09ff61]
+        - Initial RPM package
     FixedIn:
         - Module: null
           Name: python-pillow

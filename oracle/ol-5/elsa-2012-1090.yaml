@@ -1,6 +1,39 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nspr
+        [4.9.1-4]
+        - Resolves: rhbz#834219 - Fix postinstall scriptlet failures
+        - Fix %post and %postun lines per packaging guidelines
+        - Updated License: to MPLv2.0 per upstream
+
+        [4.9.1-3]
+        - Resolves: rhbz#834219 - Ensure nspr-config.in changes get applied
+
+        [4.9.1-2]
+        - Resolves: rhbz#834219 - restore top section of nspr-config-pc.patch
+        - Needed to prevent multilib regressions
+
+        nss
+        [3.13.5-4.0.1.el5_8  ]
+        - Update clean.gif in the tarball
+
+        [3.13.5-4]
+        - Related: rhbz#834219 - Fix ia64 / i386 multilib nss install failure
+        - Remove no longer needed %pre and %preun scriplets meant for nss updates from RHEL-5.0
+
+        [3.13.5-3]
+        - Resolves: rhbz#834219 - Fix the changes to the %post line
+        - Having multiple commands requires that /sbin/lconfig be the beginning of the scriptlet
+
+        [3.13.5-2]
+        - Resolves: rhbz#834219 - Fix multilib and scriptlet problems
+        - Fix %post and %postun lines per packaging guildelines
+        - Add %{?_isa} to tools Requires: per packaging guidelines
+        - Fix explicit-lib-dependency zlib error reported by rpmlint
+
+        [3.13.5-1]
+        - Resolves: rhbz#834219 - Update RHEL 5.x to NSS 3.13.5 and NSPR 4.9.1 for Mozilla 10.0.6
     FixedIn:
         - Module: null
           Name: nspr

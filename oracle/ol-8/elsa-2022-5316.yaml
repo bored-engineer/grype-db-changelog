@@ -1,6 +1,93 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.18.0-372.13.1.0.1_6.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-11.0.5
+        - debug: lockdown kgdb [Orabug: 34270802] {CVE-2022-21499}
+
+        [4.18.0-372.13.1_6]
+        - openvswitch: always update flow key after nat (Aaron Conole) [2068476 2066885]
+        - KVM: PPC: Fix TCE handling for VFIO (Daniel Henrique Barboza) [2085572 2062687]
+        - rfkill: make new event layout opt-in (Jose Ignacio Tornos Martinez) [2087641 2023175]
+        - ASoC: Intel: soc-acpi: add entries in ADL match table (Jaroslav Kysela) [2090423 2052011]
+        - isert: support for unsolicited NOPIN with no response (Maurizio Lombardi) [2079433 2035915]
+        - iscsit: increment max_cmd_sn for isert on command release (Maurizio Lombardi) [2079433 2035915]
+        - net: tcp better handling of reordering then loss cases (Marcelo Ricardo Leitner) [2080972 2074566]
+        - tcp: tcp_mark_head_lost is only valid for sack-tcp (Marcelo Ricardo Leitner) [2080972 2074566]
+
+        [4.18.0-372.12.1_6]
+        - sctp: use the correct skb for security_sctp_assoc_request (Xin Long) [2070959]
+        - net/mlx5e: Fix wrong source vport matching on tunnel rule (Amir Tzin) [2088610]
+        - net/mlx5: DR, Fix missing flow_source when creating multi-destination FW table (Amir Tzin) [2088611]
+        - net/mlx5: DR, Fix slab-out-of-bounds in mlx5_cmd_dr_create_fte (Amir Tzin) [2088611]
+        - net/mlx5: DR, Cache STE shadow memory (Amir Tzin) [2075553]
+        - net/mlx5: DR, Fix the threshold that defines when pool sync is initiated (Amir Tzin) [2075553]
+        - drm/i915/display: Remove check for low voltage sku for max dp source rate (Jocelyn Falempe) [2066644]
+        - net/mlx5: DR, Ignore modify TTL on RX if device doesn't support it (Amir Tzin) [2088638]
+        - net/mlx5: Bridge, Fix devlink deadlock on net namespace deletion (Amir Tzin) [2081011]
+        - net/mlx5e: TC, Skip redundant ct clear actions (Amir Tzin) [2079918]
+        - net/mlx5e: TC, fix decap fallback to uplink when int port not supported (Amir Tzin) [2088639]
+        - CI: Use zstream builder image (Veronika Kabatova)
+        - ice: Allow to pass VLAN tagged packets to VF when port VLAN is configured (Petr Oros) [2081794]
+        - ice: clear stale Tx queue settings before configuring (Petr Oros) [2081794]
+        - ice: fix crash when writing timestamp on RX rings (Petr Oros) [2081794]
+        - ice: Fix race during aux device (un)plugging (Petr Oros) [2081794]
+        - ice: fix PTP stale Tx timestamps cleanup (Petr Oros) [2081794]
+        - ice: ice_sched: fix an incorrect NULL check on list iterator (Petr Oros) [2081794]
+        - ice: fix use-after-free when deinitializing mailbox snapshot (Petr Oros) [2081794]
+        - ice: wait 5 s for EMP reset after firmware flash (Petr Oros) [2081794]
+        - ice: Protect vf_state check by cfg_lock in ice_vc_process_vf_msg() (Petr Oros) [2081794]
+        - ice: Fix incorrect locking in ice_vc_process_vf_msg() (Petr Oros) [2081794]
+        - ice: Fix memory leak in ice_get_orom_civd_data() (Petr Oros) [2081794]
+        - ice: fix crash in switchdev mode (Petr Oros) [2081794]
+        - Revert 'iavf: Fix deadlock occurrence during resetting VF interface' (Petr Oros) [2081794]
+        - ice: arfs: fix use-after-free when freeing @rx_cpu_rmap (Petr Oros) [2081794]
+        - ice: clear cmd_type_offset_bsz for TX rings (Petr Oros) [2081794]
+        - ice: xsk: fix VSI state check in ice_xsk_wakeup() (Petr Oros) [2081794]
+        - ice: synchronize_rcu() when terminating rings (Petr Oros) [2081794]
+        - ice: Do not skip not enabled queues in ice_vc_dis_qs_msg (Petr Oros) [2081794]
+        - ice: Set txq_teid to ICE_INVAL_TEID on ring creation (Petr Oros) [2081794]
+        - ice: Fix broken IFF_ALLMULTI handling (Petr Oros) [2081794]
+        - ice: Fix MAC address setting (Petr Oros) [2081794]
+        - openvswitch: Fix setting ipv6 fields causing hw csum failure (Eelco Chaudron) [2086549]
+        - sched/cputime, proc/stat: Fix incorrect guest nice cpustat value (Waiman Long) [2084138]
+        - procfs: Use all-in-one vtime aware kcpustat accessor (Waiman Long) [2084138]
+        - procfs: Use vtime aware kcpustat accessor to fetch CPUTIME_SYSTEM (Waiman Long) [2084138]
+        - proc: read kernel cpu stat pointer once (Waiman Long) [2084138]
+        - proc: use 'unsigned int' in /proc/stat hook (Waiman Long) [2084138]
+        - sched/cputime: Support other fields on kcpustat_field() (Waiman Long) [2084138]
+        - sched/cputime: Add vtime guest task state (Waiman Long) [2084138]
+        - sched/cputime: Add vtime idle task state (Waiman Long) [2084138]
+        - sched/cputime: Spare a seqcount lock/unlock cycle on context switch (Waiman Long) [2084138]
+        - sched/vtime: Move task_struct_rh->vtime_cpu back to vtime structure (Waiman Long) [2084138]
+        - net: openvswitch: fix leak of nested actions (Eelco Chaudron) [2086590]
+        - net/sched: fix initialization order when updating chain 0 head (Marcelo Ricardo Leitner) [2074221]
+        - PCI: hv: Propagate coherence from VMbus device to PCI device (Vitaly Kuznetsov) [2074829]
+        - Drivers: hv: vmbus: Propagate VMbus coherence to each VMbus device (Vitaly Kuznetsov) [2074829]
+
+        [4.18.0-372.11.1_6]
+        - Revert 'xfs: actually bump warning counts when we send warnings' (Carlos Maiolino) [2071713]
+        - SUNRPC: use different lock keys for INET6 and LOCAL (Guillaume Nault) [2079856]
+        - Revert 'netfilter: conntrack: tag conntracks picked up in local out hook' (Florian Westphal) [2065266]
+        - Revert 'netfilter: nat: force port remap to prevent shadowing well-known ports' (Florian Westphal) [2065266]
+        - KVM: PPC: Book3S HV: Add infrastructure to support 2nd DAWR (Laurent Vivier) [2079069]
+        - KVM: PPC: Book3S HV: Rename current DAWR macros and variables (Laurent Vivier) [2079069]
+        - esp: limit skb_page_frag_refill use to a single page (Sabrina Dubroca) [2062114] {CVE-2022-27666}
+        - esp: Fix possible buffer overflow in ESP transformation (Sabrina Dubroca) [2062114] {CVE-2022-27666}
+        - NFS: Don't loop forever in nfs_do_recoalesce() (Scott Mayhew) [2080998]
+
+        [4.18.0-372.10.1_6]
+        - Fonts: Replace discarded const qualifier (Nico Pache) [2064762]
+        - Fonts: Support FONT_EXTRA_WORDS macros for built-in fonts (Nico Pache) [2064762]
+        - fbdev, newport_con: Move FONT_EXTRA_WORDS macros into linux/font.h (Nico Pache) [2064762]
+        - CI: Drop baseline runs (Veronika Kabatova)
+        - redhat: drop the -sha512 suffix from default rhpkg invocation (Jarod Wilson)
+        - redhat: switch release to zstream (Augusto Caringi)
+        - ceph: fix possible NULL pointer dereference for req->r_session (Xiubo Li) [2080071]
     FixedIn:
         - Module: null
           Name: bpftool

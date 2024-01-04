@@ -1,6 +1,40 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.1.11-2]
+        - Require specific minimal version of the 'mariadb' package, if it is installed
+
+        [3.1.11-1]
+        - Rebase to 3.1.11
+
+        [3.1.9-1]
+        - Rebase to 3.1.9
+        - Overlinking issues fixed by upstream in 3.1.3 release
+        - Add explicit confict between mariadb-connector-c-devel and mysql-devel packages
+
+        [3.1.2-1]
+        - Rebase to 3.1.2
+        - Introducing ED25519 plugin
+        - Plugindir issues (from 3.0.9 release) fixed by upstream
+          Resolves: #1691176
+
+        [3.0.10-1]
+        - Rebase to 3.0.10
+        - Use macro for tarball name
+        - Use macro to set build flags
+        - Use macros for make commands
+        - Remove the scriptlets non relevant for RHEL-8
+        - Add info for the testsuite execution
+        - Remove glob from library version
+        - Remove info about the upstream issues
+
+        [3.0.8-2]
+        - Add 'zlib-devel' requirement in '-devel' subpackage. MariaDB requires
+          linking with '-lz', which will fail without the zlib library
+        - Resolves: #1710471
+
+        [3.0.8-1]
+        - Rebase to 3.0.8
     FixedIn:
         - Module: null
           Name: mariadb-connector-c

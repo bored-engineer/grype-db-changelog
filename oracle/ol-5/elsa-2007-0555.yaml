@@ -1,6 +1,45 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.99.6.2-3.26]
+        - removed realtime default limits (#240123) from the package as
+          it caused regression on machines with nonexistent realtime group
+
+        [0.99.6.2-3.25]
+        - added and improved translations (#219124)
+        - adjusted the default limits for realtime users (#240123)
+
+        [0.99.6.2-3.23]
+        - pam_unix: truncated MD5 passwords in shadow shouldn't match (#219258)
+        - pam_limits: add limits.d support (#232700)
+        - pam_limits, pam_time, pam_access: add auditing of failed logins (#232993)
+        - pam_namespace: expand /home/ksharma even when appended with text (#237163)
+          original patch by Ted X. Toth
+        - add some default limits for users in realtime group (#240123)
+        - CVE-2007-3102 - prevent audit log injection through user name (#243204)
+
+        [0.99.6.2-3.22]
+        - make unix_update helper executable only by root as it isn't
+          useful for regular user anyway
+
+        [0.99.6.2-3.21]
+        - pam_namespace: better document behavior on failure (#237249)
+        - pam_unix: split out passwd change to a new helper binary (#236316)
+
+        [0.99.6.2-3.19]
+        - pam_selinux: improve context change auditing (#234781)
+
+        [0.99.6.2-3.18]
+        - pam_console: always decrement use count (#233581)
+        - pam_namespace: fix parsing config file with unknown users (#234513)
+
+        [0.99.6.2-3.17]
+        - pam_namespace: unmount poly dir for override users (#229689)
+        - pam_namespace: use raw context for poly dir name (#227345)
+        - pam_namespace: truncate long poly dir name (append hash) (#230120)
+
+        [0.99.6.2-3.15]
+        - correctly relabel tty in the default case (#229542)
     FixedIn:
         - Module: null
           Name: pam

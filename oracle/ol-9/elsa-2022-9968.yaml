@@ -1,6 +1,363 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.0.1-41.0.3]
+        - Add units tests for CVE-2022-3786, CVE-2022-3602 patches
+
+        [3.0.1-41.0.2]
+        - Fix CVE-2022-3786, CVE-2022-3602
+
+        [3.0.1-41.0.1]
+        - Replace upstream references [Orabug: 34340177]
+
+        [1:3.0.1-41]
+        - Zeroize public keys as required by FIPS 140-3
+          Resolves: rhbz#2115861
+        - Add FIPS indicator for HKDF
+          Resolves: rhbz#2118388
+
+        [1:3.0.1-40]
+        - Deal with DH keys in FIPS mode according FIPS-140-3 requirements
+          Related: rhbz#2115856
+        - Deal with ECDH keys in FIPS mode according FIPS-140-3 requirements
+          Related: rhbz#2115857
+        - Use signature for RSA pairwise test according FIPS-140-3 requirements
+          Related: rhbz#2115858
+        - Reseed all the parent DRBGs in chain on reseeding a DRBG
+          Related: rhbz#2115859
+        - Zeroization according to FIPS-140-3 requirements
+          Related: rhbz#2115861
+
+        [1:3.0.1-39]
+        - Use RSA-OAEP in FIPS RSA encryption/decryption FIPS self-test
+        - Use Use digest_sign & digest_verify in FIPS signature self test
+        - Use FFDHE2048 in Diffie-Hellman FIPS self-test
+          Resolves: rhbz#2112978
+
+        [1:3.0.1-38]
+        - Fix segfault in EVP_PKEY_Q_keygen() when OpenSSL was not previously
+          initialized.
+          Resolves: rhbz#2107530
+        - Improve AES-GCM performance on Power9 and Power10 ppc64le
+          Resolves: rhbz#2103044
+        - Improve ChaCha20 performance on Power10 ppc64le
+          Resolves: rhbz#2103044
+
+        [1:3.0.1-37]
+        - CVE-2022-2097: AES OCB fails to encrypt some bytes on 32-bit x86
+          Resolves: CVE-2022-2097
+
+        [1:3.0.1-36]
+        - Ciphersuites with RSAPSK KX should be filterd in FIPS mode
+        - Related: rhbz#2091994
+        - FIPS provider should block RSA encryption for key transport.
+        - Other RSA encryption options should still be available if key length is enough
+        - Related: rhbz#2091977
+        - Improve diagnostics when passing unsupported groups in TLS
+        - Related: rhbz#2086554
+        - Fix PPC64 Montgomery multiplication bug
+        - Related: rhbz#2101346
+        - Strict certificates validation shouldn't allow explicit EC parameters
+        - Related: rhbz#2085521
+        - CVE-2022-2068: the c_rehash script allows command injection
+        - Related: rhbz#2098276
+
+        [1:3.0.1-35]
+        - Add explicit indicators for signatures in FIPS mode and mark signature
+          primitives as unapproved.
+          Resolves: rhbz#2087234
+
+        [1:3.0.1-34]
+        - Some OpenSSL test certificates are expired, updating
+        - Resolves: rhbz#2095696
+
+        [1:3.0.1-33]
+        - CVE-2022-1473 openssl: OPENSSL_LH_flush() breaks reuse of memory
+        - Resolves: rhbz#2089443
+        - CVE-2022-1343 openssl: Signer certificate verification returned
+          inaccurate response when using OCSP_NOCHECKS
+        - Resolves: rhbz#2089439
+        - CVE-2022-1292 openssl: c_rehash script allows command injection
+        - Resolves: rhbz#2090361
+        - Revert 'Disable EVP_PKEY_sign/EVP_PKEY_verify in FIPS mode'
+          Related: rhbz#2087234
+        - Use KAT for ECDSA signature tests, s390 arch
+        - Resolves: rhbz#2086866
+
+        [1:3.0.1-32]
+        - openssl ecparam -list_curves lists only FIPS-approved curves in FIPS mode
+        - Resolves: rhbz#2091929
+        - Ciphersuites with RSA KX should be filterd in FIPS mode
+        - Related: rhbz#2091994
+        - In FIPS mode, signature verification works with keys of arbitrary size
+          above 2048 bit, and only with 1024, 1280, 1536, 1792 bits for keys
+          below 2048 bits
+        - Resolves: rhbz#2091938
+
+        [1:3.0.1-31]
+        - Disable SHA-1 signature verification in FIPS mode
+        - Disable EVP_PKEY_sign/EVP_PKEY_verify in FIPS mode
+          Resolves: rhbz#2087234
+
+        [1:3.0.1-30]
+        - Use KAT for ECDSA signature tests
+        - Resolves: rhbz#2086866
+
+        [1:3.0.1-29]
+        - -config argument of openssl app should work properly in FIPS mode
+        - Resolves: rhbz#2085500
+        - openssl req defaults on PKCS#8 encryption changed to AES-256-CBC
+        - Resolves: rhbz#2085499
+
+        [1:3.0.1-28]
+        - OpenSSL should not accept custom elliptic curve parameters
+        - Resolves rhbz#2085508
+        - OpenSSL should not accept explicit curve parameters in FIPS mode
+        - Resolves rhbz#2085521
+
+        [1:3.0.1-27]
+        - Change FIPS module version to include hash of specfile, patches and sources
+          Resolves: rhbz#2082585
+
+        [1:3.0.1-26]
+        - OpenSSL FIPS module should not build in non-approved algorithms
+          Resolves: rhbz#2082584
+
+        [1:3.0.1-25]
+        - FIPS provider should block RSA encryption for key transport.
+        - Other RSA encryption options should still be available
+        - Resolves: rhbz#2053289
+
+        [1:3.0.1-24]
+        - Fix occasional internal error in TLS when DHE is used
+          Resolves: rhbz#2080323
+
+        [1:3.0.1-23]
+        - Update missing initialization patch with feedback from upstream
+          Resolves: rhbz#2076654
+
+        [1:3.0.1-22]
+        - Invocation of the missing initialization
+        - Resolves: rhbz#2076654
+
+        [1:3.0.1-21]
+        - Fix openssl curl error with LANG=tr_TR.utf8
+        - Resolves: rhbz#2076654
+
+        [1:3.0.1-20]
+        - Fix acceptance of SHA-1 certificates with rh-allow-sha1-signatures = yes when
+          no OpenSSL library context is set
+        - Resolves: rhbz#2063306
+
+        [1:3.0.1-19]
+        - Fix TLS connections with SHA1 signatures if rh-allow-sha1-signatures = yes
+        - Resolves: rhbz#2063306
+
+        [1:3.0.1-18]
+        - CVE-2022-0778 fix
+        - Resolves: rhbz#2062314
+
+        [1:3.0.1-15.1]
+        - Fix invocation of EVP_PKEY_CTX_set_rsa_padding(RSA_PKCS1_PSS_PADDING) before
+          setting an allowed digest with EVP_PKEY_CTX_set_signature_md()
+        - Resolves: rhbz#2061607
+
+        [1:3.0.1-14.1]
+        - Allow SHA1 in SECLEVEL 2 if rh-allow-sha1-signatures = yes
+        - Resolves: rhbz#2031742
+
+        [1:3.0.1-14]
+        - Prevent use of SHA1 with ECDSA
+        - Resolves: rhbz#2031742
+
+        [1:3.0.1-13]
+        - OpenSSL will generate keys with prime192v1 curve if it is provided using explicit parameters
+        - Resolves: rhbz#1977867
+
+        [1:3.0.1-12]
+        - Support KBKDF (NIST SP800-108) with an R value of 8bits
+        - Resolves: rhbz#2027261
+
+        [1:3.0.1-11]
+        - Allow SHA1 usage in MGF1 for RSASSA-PSS signatures
+        - Resolves: rhbz#2031742
+
+        [1:3.0.1-10]
+        - rebuilt
+
+        [1:3.0.1-9]
+        - Allow SHA1 usage in HMAC in TLS
+        - Resolves: rhbz#2031742
+
+        [1:3.0.1-8]
+        - OpenSSL will generate keys with prime192v1 curve if it is provided using explicit parameters
+        - Resolves: rhbz#1977867
+        - pkcs12 export broken in FIPS mode
+        - Resolves: rhbz#2049265
+
+        [1:3.0.1-8]
+        - Disable SHA1 signature creation and verification by default
+        - Set rh-allow-sha1-signatures = yes to re-enable
+        - Resolves: rhbz#2031742
+
+        [1:3.0.1-7]
+        - s_server: correctly handle 2^14 byte long records
+        - Resolves: rhbz#2042011
+
+        [1:3.0.1-6]
+        - Adjust FIPS provider version
+        - Related: rhbz#2026445
+
+        [1:3.0.1-5]
+        - On the s390x, zeroize all the copies of TLS premaster secret
+        - Related: rhbz#2040448
+
+        [1:3.0.1-4]
+        - rebuilt
+
+        [1:3.0.1-3]
+        - KATS tests should be executed before HMAC verification
+        - Restoring fips=yes for SHA1
+        - Related: rhbz#2026445, rhbz#2041994
+
+        [1:3.0.1-2]
+        - Add enable-buildtest-c++ to the configure options.
+        - Related: rhbz#1990814
+
+        [1:3.0.1-1]
+        - Rebase to upstream version 3.0.1
+        - Fixes CVE-2021-4044 Invalid handling of X509_verify_cert() internal errors in libssl
+        - Resolves: rhbz#2038910, rhbz#2035148
+
+        [1:3.0.0-7]
+        - Remove algorithms we don't plan to certify from fips module
+        - Remove native fipsmodule.cnf
+        - Related: rhbz#2026445
+
+        [1:3.0.0-6]
+        - openssl speed should run in FIPS mode
+        - Related: rhbz#1977318
+
+        [1:3.0.0-5]
+        - rebuilt for spec cleanup
+        - Related: rhbz#1985362
+
+        [1:3.0.0-4]
+        - Embed FIPS HMAC in fips.so
+        - Enforce loading FIPS provider when FIPS kernel flag is on
+        - Related: rhbz#1985362
+
+        [1:3.0.0-3]
+        - Fix memory leak in s_client
+        - Related: rhbz#1996092
+
+        [1:3.0.0-2]
+        - Avoid double-free on error seeding the RNG.
+        - KTLS and FIPS may interfere, so tests need to be tuned
+        - Resolves: rhbz#1952844, rhbz#1961643
+
+        [1:3.0.0-1]
+        - Rebase to upstream version 3.0.0
+        - Related: rhbz#1990814
+
+        [1:3.0.0-0.beta2.7]
+        - Removes the dual-abi build as it not required anymore. The mass rebuild
+          was completed and all packages are rebuilt against Beta version.
+        - Resolves: rhbz#1984097
+
+        [1:3.0.0-0.beta2.6]
+        - Correctly process CMS reading from /dev/stdin
+        - Resolves: rhbz#1986315
+
+        [3.0.0-0.beta2.5]
+        - Add instruction for loading legacy provider in openssl.cnf
+        - Resolves: rhbz#1975836
+
+        [3.0.0-0.beta2.4]
+        - Adds support for IDEA encryption.
+        - Resolves: rhbz#1990602
+
+        [3.0.0-0.beta2.3]
+        - Fixes core dump in openssl req -modulus
+        - Fixes 'openssl req' to not ask for password when non-encrypted private key
+          is used
+        - cms: Do not try to check binary format on stdin and -rctform fix
+        - Resolves: rhbz#1988137, rhbz#1988468, rhbz#1988137
+
+        [1:3.0.0-0.beta2.2.1]
+        - Rebuilt for IMA sigs, glibc 2.34, aarch64 flags
+          Related: rhbz#1991688
+
+        [3.0.0-0.beta2.2]
+        - When signature_algorithm extension is omitted, use more relevant alerts
+        - Resolves: rhbz#1965017
+
+        [3.0.0-0.beta2.1]
+        - Rebase to upstream version beta2
+        - Related: rhbz#1903209
+
+        [3.0.0-0.beta1.5]
+        - Prevents creation of duplicate cert entries in PKCS #12 files
+        - Resolves: rhbz#1978670
+
+        [3.0.0-0.beta1.4]
+        - NVR bump to update to OpenSSL 3.0 Beta1
+
+        [3.0.0-0.beta1.3]
+        - Update patch dual-abi.patch to add the #define macros in implementation
+          files instead of public header files
+
+        [3.0.0-0.beta1.2]
+        - Removes unused patch dual-abi.patch
+
+        [3.0.0-0.beta1.1]
+        - Update to Beta1 version
+        - Includes a patch to support dual-ABI, as Beta1 brekas ABI with alpha16
+
+        [3.0.0-0.alpha16.7]
+        - Fixes override of openssl_conf in openssl.cnf
+        - Use AI_ADDRCONFIG only when explicit host name is given
+        - Temporarily remove fipsmodule.cnf for arch i686
+        - Fixes segmentation fault in BN_lebin2bn
+        - Resolves: rhbz#1975847, rhbz#1976845, rhbz#1973477, rhbz#1975855
+
+        [3.0.0-0.alpha16.6]
+        - Adds FIPS mode compatibility patch (sahana@redhat.com)
+        - Related: rhbz#1977318
+
+        [3.0.0-0.alpha16.5]
+        - Fixes system hang issue when booted in FIPS mode (sahana@redhat.com)
+        - Temporarily disable downstream FIPS patches
+        - Related: rhbz#1977318
+
+        [3.0.0-0.alpha16.4]
+        - Speeding up building openssl (dbelyavs@redhat.com)
+          Resolves: rhbz#1903209
+
+        [3.0.0-0.alpha16.3]
+        - Fix reading SPKAC data from stdin
+        - Fix incorrect OSSL_PKEY_PARAM_MAX_SIZE for ed25519 and ed448
+        - Return 0 after cleanup in OPENSSL_init_crypto()
+        - Cleanup the peer point formats on regotiation
+        - Fix default digest to SHA256
+
+        [3.0.0-0.alpha16.2]
+        - Enable FIPS via config options
+
+        [3.0.0-0.alpha16.1]
+        - Update to alpha 16 version
+          Resolves: rhbz#1952901 openssl sends alert after orderly connection close
+
+        [3.0.0-0.alpha15.1]
+        - Update to alpha 15 version
+          Resolves: rhbz#1903209, rhbz#1952598,
+
+        [1:3.0.0-0.alpha13.1.1]
+        - Rebuilt for RHEL 9 BETA on Apr 15th 2021. Related: rhbz#1947937
+
+        [3.0.0-0.alpha13.1]
+        - Update to new major release OpenSSL 3.0.0 alpha 13
+          Resolves: rhbz#1903209
     FixedIn: []
     Link: https://linux.oracle.com/errata/ELSA-2022-9968.html
     Metadata:

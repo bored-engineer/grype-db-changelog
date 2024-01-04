@@ -1,6 +1,71 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.18.0-305.19.1_4.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-11.0.5
+
+        [4.18.0-305.19.1_4]
+        - libceph: allow addrvecs with a single NONE/blank address (Jeff Layton) [1996682 1972278]
+        - ice: Only lock to update netdev dev_addr (Michal Schmidt) [2000129 1995868]
+        - ice: don't remove netdev->dev_addr from uc sync list (Ken Cox) [2000130 1961018]
+
+        [4.18.0-305.18.1_4]
+        - mfd: intel-lpss: Use devm_ioremap_uc for MMIO (Steve Best) [1989560 1986715]
+        - lib: devres: add a helper function for ioremap_uc (Steve Best) [1989560 1986715]
+        - ceph: fix test for whether we can skip read when writing beyond EOF (Jeff Layton) [1996680 1971101]
+        - arm64: memory: Add missing brackets to untagged_addr() macro (Chris von Recklinghausen) [1997998 1955809]
+        - arm64: tags: Preserve tags for addresses translated via TTBR1 (Chris von Recklinghausen) [1997998 1955809]
+        - arm64: entry: Move ct_user_exit before any other exception (Chris von Recklinghausen) [1997998 1955809]
+        - arm64: memory: Implement __tag_set() as common function (Chris von Recklinghausen) [1997998 1955809]
+        - arm64: mm: Really fix sparse warning in untagged_addr() (Chris von Recklinghausen) [1997998 1955809]
+        - arm64: untag user pointers in access_ok and __uaccess_mask_ptr (Chris von Recklinghausen) [1997998 1955809]
+        - arm64/mm: fix variable 'tag' set but not used (Chris von Recklinghausen) [1997998 1955809]
+        - arm64: entry: SP Alignment Fault doesn't write to FAR_EL1 (Chris von Recklinghausen) [1997998 1955809]
+        - arm64: compat: Add separate CP15 trapping hook (Chris von Recklinghausen) [1997998 1955809]
+        - arm64: don't restore GPRs when context tracking (Chris von Recklinghausen) [1997998 1955809]
+        - KVM: nSVM: always intercept VMLOAD/VMSAVE when nested (CVE-2021-3656) (Jon Maloy) [1985429 1985430] {CVE-2021-3656}
+        - KVM: SVM: add module param to control the #SMI interception (Jon Maloy) [1985429 1985430] {CVE-2021-3656}
+        - tty: Don't hold ldisc lock in tty_reopen() if ldisc present (Waiman Long) [1997999 1968271]
+        - tty/ldsem: Add lockdep asserts for ldisc_sem (Waiman Long) [1997999 1968271]
+        - tty: Simplify tty->count math in tty_reopen() (Waiman Long) [1997999 1968271]
+        - tty: Don't block on IO when ldisc change is pending (Waiman Long) [1997999 1968271]
+        - tty: Hold tty_ldisc_lock() during tty_reopen() (Waiman Long) [1997999 1968271]
+        - tty: Drop tty->count on tty_reopen() failure (Waiman Long) [1997999 1968271]
+        - [s390] s390/vtime: fix increased steal time accounting (Claudio Imbrenda) [1988386 1963075]
+        - XArray: Fix splitting to non-zero orders (Chris von Recklinghausen) [1997997 1946304]
+        - XArray: Fix split documentation (Chris von Recklinghausen) [1997997 1946304]
+        - ima: extend boot_aggregate with kernel measurements (Bruno Meneguele) [1997766 1977422]
+        - ceph: reduce contention in ceph_check_delayed_caps() (Jeff Layton) [1995862 1953430]
+        - ice: Stop processing VF messages during teardown (Ken Cox) [1997538 1986451]
+        - iavf: Set RSS LUT and key in reset handle path (Ken Cox) [1997536 1910853]
+        - KVM: nSVM: avoid picking up unsupported bits from L2 in int_ctl (CVE-2021-3653) (Jon Maloy) [1985412 1985413] {CVE-2021-3653}
+        - scsi: ibmvfc: Fix potential race in ibmvfc_wait_for_ops() (Steve Best) [1969792 1941180]
+        - [s390] s390/dasd: add missing discipline function (Claudio Imbrenda) [1995206 1981804]
+        - serial_core: switch to ->[sg]et_serial() (Artem Savkov) [1993872 1952415]
+        - net/mlx5e: Fix mapping of ct_label zero (Jan Stancek) [1983681 1915308]
+        - drm/qxl: add lock asserts to qxl_bo_vmap_locked + qxl_bo_vunmap_locked (Lyude Paul) [1992839 1907341]
+        - drm/qxl: rework cursor plane (Lyude Paul) [1992839 1907341]
+        - drm/qxl: move shadow handling to new qxl_prepare_shadow() (Lyude Paul) [1992839 1907341]
+        - drm/qxl: fix monitors object vmap (Lyude Paul) [1992839 1907341]
+        - drm/qxl: fix prime vmap (Lyude Paul) [1992839 1907341]
+        - drm/qxl: rename qxl_bo_kmap -> qxl_bo_vmap_locked (Lyude Paul) [1992839 1907341]
+        - drm/qxl: fix lockdep issue in qxl_alloc_release_reserved (Lyude Paul) [1992839 1907341]
+        - drm/qxl: use ttm bo priorities (Lyude Paul) [1992839 1907341]
+        - drm/qxl: more fence wait rework (Lyude Paul) [1992839 1907341]
+        - drm/qxl: properly handle device init failures (Lyude Paul) [1992839 1907341]
+        - drm/qxl: allocate dumb buffers in ram (Lyude Paul) [1992839 1907341]
+        - drm/qxl: simplify qxl_fence_wait (Lyude Paul) [1992839 1907341]
+        - drm/qxl: properly free qxl releases (Lyude Paul) [1992839 1907341]
+        - drm/qxl: handle shadow in primary destroy (Lyude Paul) [1992839 1907341]
+        - drm/qxl: properly pin/unpin shadow (Lyude Paul) [1992839 1907341]
+        - drm/qxl: release shadow on shutdown (Lyude Paul) [1992839 1907341]
+        - drm/qxl: unpin release objects (Lyude Paul) [1992839 1907341]
+        - drm/qxl: use drmm_mode_config_init (Lyude Paul) [1992839 1907341]
+        - qxl/ttm: drop the unusued no wait flag to reserve function (Lyude Paul) [1992839 1907341]
     FixedIn:
         - Module: null
           Name: bpftool

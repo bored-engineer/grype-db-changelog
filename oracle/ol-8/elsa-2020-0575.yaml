@@ -1,6 +1,66 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [239-18.0.2.el8_1.4]
+        - fix to generate systemd-pstore.service file [Orabug: 30230056]
+        - fix _netdev is missing for iscsi entry in /etc/fstab (tony.l.lam@oracle.com) [Orabug: 25897792]
+        - set 'RemoveIPC=no' in logind.conf as default for OL7.2 [Orabug: 22224874]
+        - allow dm remove ioctl to co-operate with UEK3 (Vaughan Cao) [Orabug: 18467469]
+        - add hv dynamic memory support (Jerry Snitselaar) [Orabug: 18621475]
+        - Backport upstream patches for the new systemd-pstore tool (Eric DeVolder) [OraBug: 30230056]
+
+        [239-18.4]
+        - sd-bus: use 'queue' message references for managing r/w message queues in connection objects (CVE-2020-1712)
+
+        [239-18.3]
+        - core, job: fix breakage of ordering dependencies by systemctl reload command (#1781712)
+        - syslog: fix segfault in syslog_parse_priority() (#1781712)
+        - journald: fixed assertion failure when system journal rotation fails (#9893) (#1781712)
+        - test: use PBKDF2 instead of Argon2 in cryptsetup... (#1781712)
+        - test: mask several unnecessary services (#1781712)
+        - test: bump the second partition's size to 50M (#1781712)
+        - sd-bus: make rqueue/wqueue sizes of type size_t (#20201712)
+        - sd-bus: reorder bus ref and bus message ref handling (#20201712)
+        - sd-bus: make sure dispatch_rqueue() initializes return parameter on all types of success (#20201712)
+        - sd-bus: drop two inappropriate empty lines (#20201712)
+        - sd-bus: initialize mutex after we allocated the wqueue (#20201712)
+        - sd-bus: always go through sd_bus_unref() to free messages (#20201712)
+        - bus-message: introduce two kinds of references to bus messages (#20201712)
+        - sd-bus: introduce API for re-enqueuing incoming messages (#20201712)
+        - sd-event: add sd_event_source_disable_unref() helper (#20201712)
+        - polkit: when authorizing via PK let's re-resolve callback/userdata instead of caching it (#20201712)
+
+        [239-18.2]
+        - ask-password: prevent buffer overrow when reading from keyring (#1777037)
+
+        [239-18.1]
+        - journal: rely on _cleanup_free_ to free a temporary string used in client_context_read_cgroup (#1767716)
+
+        [239-18]
+        - shared/but-util: drop trusted annotation from bus_open_system_watch_bind_with_description() (#1746857)
+        - sd-bus: adjust indentation of comments (#1746857)
+        - resolved: do not run loop twice (#1746857)
+        - resolved: allow access to Set*Link and Revert methods through polkit (#1746857)
+        - resolved: query polkit only after parsing the data (#1746857)
+
+        [239-17]
+        - mount: simplify /proc/self/mountinfo handler (#1696178)
+        - mount: rescan /proc/self/mountinfo before processing waitid() results (#1696178)
+        - swap: scan /proc/swaps before processing waitid() results (#1696178)
+        - analyze-security: fix potential division by zero (#1734400)
+
+        [239-16]
+        - sd-bus: deal with cookie overruns (#1694999)
+        - journal-remote: do not request Content-Length if Transfer-Encoding is chunked (#1708849)
+        - journal: do not remove multiple spaces after identifier in syslog message (#1691817)
+        - cryptsetup: Do not fallback to PLAIN mapping if LUKS data device set fails. (#1719153)
+        - cryptsetup: call crypt_load() for LUKS only once (#1719153)
+        - cryptsetup: Add LUKS2 token support. (#1719153)
+        - udev/scsi_id: fix incorrect page length when get device identification VPD page (#1713227)
+        - Change job mode of manager triggered restarts to JOB_REPLACE (#11456
+        - bash-completion: analyze: support 'security' (#1733395)
+        - man: note that journal does not validate syslog fields (#1707175)
+        - rules: skip memory hotplug on ppc64 (#1713159)
     FixedIn:
         - Module: null
           Name: systemd

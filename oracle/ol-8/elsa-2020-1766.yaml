@@ -1,6 +1,404 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        accountsservice
+        [0.6.50-8]
+        - Dont set HasNoUsers=true if realmd has providers
+          Related: #1750516
+
+        appstream-data
+        [8-20191129]
+        - Regenerate the RHEL metadata to include the latest evince changes
+        - Resolves: #1768461
+
+        clutter
+        [1.26.2-8]
+        - rebuild to get the new in 8.2.0
+        - plus address #1785233
+
+        evince
+        [3.28.4-4]
+        - Remove metainfo for plugins since they are not real addons
+        - Resolves: #1760363
+
+        gdm
+        [3.28.3-29]
+        - Make GNOME work slightly better in the multiple logins case.
+          Related: #1710882
+
+        [3.28.3-28]
+        - Correct wayland session detection logic when deciding
+          whether or not to run Xsession script
+          Resolves: #1728330
+
+        [3.28.3-27]
+        - Dont run initial-setup for machines enrolled in IPA setup.
+          Resolves: #1750516
+
+        [3.28.3-26]
+        - Forward port RHEL 7 patch to allow multiple logins for the
+          same user with XDMCP connections.
+          Resolves: #1710882
+
+        [3.28.3-25]
+        - Reenable wayland on hybrid setups (except virt pass through)
+          Resolves: #1749960
+        - Reenable wayland on qxl
+          Resolves: #1744452
+
+        [3.28.3-24]
+        - Reenable wayland on cirrus
+          Resolves: #1744527
+
+        [3.28.3-23]
+        - Correct timedlogin based screenlock bypass
+          Resolves: #1672829
+
+        gjs
+        [1.56.2-4]
+        - Rebuild for mozjs60 s390x fixes
+        - Related: #1803824
+
+        gnome-boxes
+        [3.28.5-8]
+        - Present undetected OSes
+        - Related: #1793413
+
+        gnome-control-center
+        [3.28.2-19]
+        - Backport tool serial/ID detection fixes
+        - Resolves: #1782517
+
+        [3.28.2-18]
+        - Pick 'Generic Pen' correctly on unknown tool IDs
+        - Resolves: #1782517
+
+        [3.28.2-17]
+        - Restore remote desktop password on wayland
+        - Resolves: #1763207
+
+        [3.28.2-16]
+        - Add patch to support more than 5 enroll steps
+        - Resolves: #1789474
+
+        [3.28.2-15]
+        - Fix another crash changing panel with Ethernet dialog opened
+        - Resolves: #1692299
+
+        [3.28.2-14]
+        - Restore placeholder label after removing last VPN connection
+        - Resolves: #1782425
+
+        [3.28.2-13]
+        - Make IPv4/v6 configuration pages scroll to focus
+        - Resolves: #1671709
+
+        [3.28.2-12]
+        - Fix spacing in 'new VPN' dialog
+        - Resolves: #1656988
+
+        [3.28.2-11]
+        - Fix crash when changing panel with Ethernet dialog opened
+        - Resolves: #1692299
+
+        [3.28.2-10]
+        - Fix Wacom tablet removal on wayland session
+        - Resolves: #1658001
+
+        [3.28.2-9]
+        - Fix possible crash when closing the wifi panel
+        - Resolves: #1778668
+
+        [3.28.2-8]
+        - Need rebuild in correct build target
+        - Resolves: #1749372
+
+        [3.28.2-7]
+        - Fix warning when disabling sharing
+        - Resolves: #1749372
+
+        [3.28.2-6]
+        - Add subscription manager integration
+        - Resolves: #1720251
+
+        gnome-menus
+        [3.13.3-11]
+        - swallow up redhat-menus
+          Resolves: #1715890
+
+        gnome-online-accounts
+        [3.28.2-1]
+        - Update to 3.28.2
+        Resolves: #1674535
+
+        gnome-remote-desktop
+        [0.1.6-8]
+        - Update patch to handle older libvncserver at build time
+          Resolves: #1684729
+
+        [0.1.6-7]
+        - Handle auth settings changes
+          Resolves: #1684729
+
+        [0.1.6-6]
+        - Fix initial black content issue
+          Resolves: #1765448
+
+        gnome-session
+        [3.28.1-8]
+        - rebuild and version bump to avoid future conflict with z-stream version
+          Resolves: #1745147
+
+        gnome-shell
+        [3.32.2-14]
+        - Do not set Wacom LEDs through gnome-settings-daemon, rely on kernel driver
+          Resolves: #1687979
+
+        [3.32.2-13]
+        - Update pad OSD on mode switching
+          Resolves: #1716774
+
+        [3.32.2-12]
+        - Fix window dragging with tablets in the overview
+          Resolves: #1716767
+        - Fix high-contrast/symbolic race
+          Resolves: #1730612
+        - Make perf-tool usable on wayland
+          Resolves: #1652178
+
+        [3.32.2-11]
+        - Warn when logging in as root
+          Resolves: #1746327
+
+        [3.32.2-10]
+        - Fix leaks in app picker
+          Related: #1719819
+
+        gnome-software
+        [3.30.6-3]
+        - Fix issues with installing Cockpit
+        - Resolves: #1759913
+
+        gnome-terminal
+        [3.28.3-1]
+        - Update to 3.28.3
+        - Resolves: #1642427
+
+        gnome-tweaks
+        [3.28.1-7]
+        - extensions: Incorrectly shows enabled extensions as disabled after enable-all
+        - Resolves: #1804123
+
+        gsettings-desktop-schemas
+        [3.32-0-4]
+        - Backport setting for overlay scrolling
+          Resolves: #1723464
+
+        gtk3
+        [3.22.30-5]
+        - Add setting for turning off overlay scrollbars (rhbz#1736742)
+
+        LibRaw
+        [0.19.5-1]
+        - 0.19.5
+        Resolves: #1671744
+
+        libvncserver
+        [0.9.11-14]
+        - Fix CVE-2019-15690 (an integer overflow in HandleCursorShape() in a client)
+          (bug #1814343)
+
+        [0.9.11-13]
+        - Manually apply new patch
+          Resolves: #1684729
+
+        [0.9.11-12]
+        - Add API needed by gnome-remote-desktop to handle settings changes
+          Resolves: #1684729
+
+        [0.9.11-11]
+        - Enable gating through gnome-remote-desktop for now
+          Resolves: #1765448
+
+        [0.9.11-10]
+        - Update TLS security type enablement patches
+          Resolves: #1765448
+
+        libxslt
+        [1.1.32-4.0.1]
+        - Added libxslt-oracle-enterprise.patch and replaced doc/redhat.gif in tarball
+
+        [1.1.32-4]
+        - Fix multilib issues with devel subpackage (#1765632)
+
+        mozjs52
+        [52.9.0-2.0.1.el8]
+        - Use bugzilla.oracle.com as bug reporting URL.
+
+        [52.9.0-2]
+        - Rebuild for CET notes
+        - Resolves: #1657318
+
+        mozjs60
+        [.9.0-4.0.1.el8]
+        - Remove upstream reference [Orabug: 30212498]
+
+        [60.9.0-4]
+        - Update enddianness.patch with more s390x fixes
+        - Enable tests on s390x again
+        - Resolves: #1803824
+
+        [60.9.0-3]
+        - Fix multilib conflicts in js-config.h
+
+        [60.9.0-2]
+        - Backport patches for s390x support
+        - Resolves: #1746889
+
+        [60.9.0-1]
+        - Update to 60.9.0
+
+        [60.7.0-2]
+        - Enable gating
+
+        [60.7.0-1]
+        - Update to 60.7.0
+
+        [60.6.1-2]
+        - Backport two Firefox 61 patches and allow compiler optimizations on aarch64
+
+        [60.6.1-1]
+        - Update to 60.6.1
+
+        [60.4.0-5]
+        - Re-enable null pointer gcc optimization
+
+        [60.4.0-4]
+        - Rebuild for readline 8.0
+
+        [60.4.0-3]
+        - Build aarch64 with -O0 because of rhbz#1676292
+
+        [60.4.0-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+        [60.4.0-1]
+        - Update to 60.4.0
+
+        mutter
+        [3.32.2-34]
+        - gnome-shell core dump after connection to docking station
+          Resolves: #1809079
+
+        [3.32.2-33]
+        - Respect xrandr --panning
+          Resolves: #1690170
+
+        [3.32.2-32]
+        - Revert stored-config behavior for VMs
+          Resolves: #1365717
+
+        [3.32.2-31]
+        - Fixup detection of multiple mode switch buttons
+          Resolves: #1687979
+
+        [3.32.2-30]
+        - Avoid toggling wacom touchpads on tap-to-click/drag setting updates
+          Resolves: #1716754
+
+        [3.32.2-29]
+        - Fixup Wacom pad OSD so it appears on the right monitor
+          Resolves: #1777556
+
+        [3.32.2-28]
+        - Fixup automatic enabling of wacom touchpad tapping
+          Resolves: #1716754
+
+        [3.32.2-27]
+        - Fixup handling of multiple mode switch buttons in pads
+          Resolves: #1687979
+
+        [3.32.2-26]
+        - Let pad OSD update on mode switching
+          Resolves: #1716774
+
+        [3.32.2-25]
+        - Fix Wacom OSDs so they appear on the right monitor
+          Resolves: #1777556
+
+        [3.32.2-24]
+        - Handle multiple mode switch buttons in Cintiq 27QHD
+          Resolves: #1687979
+
+        [3.32.2-23]
+        - Enable tapping features by default on standalone Wacom tablets
+          Resolves: #1716754
+
+        [3.32.2-22]
+        - Fix detection of Wacom tablet features on X11
+          Resolves: #1759619
+
+        [3.32.2-21]
+        - Fix mode switch pad buttons without LEDs
+          Resolves: #1666070
+
+        [3.32.2-20]
+        - Need rebuild in correct build target
+          Resolves: #1730891
+
+        [3.32.2-19]
+        - Fix pop ups with stylus input
+          Resolves: #1730891
+
+        [3.32.2-18]
+        - Revert memory leak fix
+          Resolves: #1777911
+
+        [3.32.2-17]
+        - Fix some memory leaks
+          Resolves: #1719819
+
+        [3.32.2-16]
+        - Fix build due to egl.pc provider change
+          Related: #1776530
+
+        [3.32.2-15]
+        - Handle lack of RANDR
+          Resolves: #1776530
+
+        [3.32.2-14]
+        - Backports shadow FB improvements on llvmpipe
+          Resolves: #1737553
+
+        [3.32.2-13]
+        - Fix invalid read in idle monitor
+          Resolves: #1766695
+
+        nautilus
+        [3.28.1-12]
+        - Do not lose filename results due to stop words (rhbz#1646352)
+
+        [3.28.1-11]
+        - Fix criticals when moving file to trash (rhbz#1721133)
+        - Fix criticals when closing properties window (rhbz#1721124)
+
+        vala
+        [0.40.19-1]
+        - Update to 0.40.19
+        - Resolves: #1753520
+
+        [0.40.18-1]
+        - Update to 0.40.18
+        - Resolves: #1753520
+
+        [0.40.17-1]
+        - Update to 0.40.17
+        - Resolves: #1753520
+
+        vinagre
+        [3.22.0-21]
+        - Allow the launch of multiple application instances
+        - Related: #1788531
     FixedIn:
         - Module: null
           Name: LibRaw

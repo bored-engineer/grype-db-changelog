@@ -1,6 +1,46 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.48.4-2.0.1]
+        - Add btrfs-progs to the packages installed in the appliance [Orabug: 34137448]
+        - Replace upstream references from a description tag
+        - Fix build on Oracle Linux [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        [1:1.48.4-2]
+        - Rebase to new stable branch version 1.48.4
+          resolves: rhbz#2059285
+        - Disable 5-level page tables when using -cpu max
+          resolves: rhbz#2084568
+        - SELinux relabelling should not stop on ext4 immutable bits
+          resolves: rhbz#1794518
+        - Ignore iface in add-drive variants
+          resolves: rhbz#1844341
+        - Lift protocol limit on guestfs_readdir()
+          resolves: rhbz#1674392
+        - Check return values from librpm calls (2089623)
+        - Document limitations of encrypted RBD disks
+          resolves: rhbz#2033247
+        - Fix lvm-set-filter failed in guestfish with the latest lvm2 package
+          resolves: rhbz#1965941
+        - Enable PHP bindings
+          resolves: rhbz#2097718
+        - Add support for Clevis & Tang
+          resolves: rhbz#1809453
+        - Fix CVE-2022-2211 Denial of Service in --key parameter
+          resolves: rhbz#2101281
+        - Add clevis-luks to BRs, required for Clevis & Tang
+          related: rhbz#1809453
+        - Add zstd support to guestfs_file_architecture
+          resolves: rhbz#2117004
+
+        [1:1.48.0-2]
+        - Disable signature checking in librpm
+          resolves: rhbz#2065172
+
+        [1:1.48.0-1]
+        - Rebase to new stable branch version 1.48.0
+          resolves: rhbz#2059285
     FixedIn:
         - Module: null
           Name: libguestfs

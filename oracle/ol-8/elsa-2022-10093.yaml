@@ -1,6 +1,36 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        hivex
+        libguestfs
+        [1.40.2-28.0.4]
+        - v2v: Cope with libvirt vpx/esx driver which does not set [Orabug: 34026544]
+
+        [1.40.2-28.0.3]
+        - virt-v2v: Specify backing file format to qemu-img command [Orabug: 33906330]
+        - Require 'kernel-uek' RPM for installation instead of 'kernel' [Orabug: 33986812]
+
+        [1.40.2-28.0.2]
+        - Specify backing file format to qemu-img command [Orabug: 33841090]
+        - Add btrfs-progs package to appliance image [Orabug: 33835508]
+
+        [1.40.2-28.0.1]
+        - Replace upstream references from description tag
+        - Config supermin to use host yum.conf in ol8 [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        [1:1.40.2-28]
+        - daemon: lvm: Use lvcreate --yes to avoid interactive prompts
+          resolves: rhbz#1933640
+
+        [1:1.40.2-27]
+        - selinux-relabel does not work if SELINUXTYPE != targeted
+        - tar-in command does not allow restoring file capabilities
+          resolves: rhbz#1384241 rhbz#1828952
+
+        [1:1.40.2-26]
+        - insufficient default memsize to open anaconda default RHEL 8.2 luks device
+          resolves: rhbz#1837765
     FixedIn:
         - Module: null
           Name: hivex

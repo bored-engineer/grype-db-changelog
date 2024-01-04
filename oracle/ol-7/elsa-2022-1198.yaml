@@ -1,6 +1,49 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.62.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.62.1]
+        - cifs: fix handling of DFS links where we can not access all components (Ronnie Sahlberg) [1937304]
+        - redhat: kernel.spec: install new kernel boot entry in posttrans, not post (Denys Vlasenko) [1893756]
+        - [s390] s390/cpumf: Support for CPU Measurement Facility CSVN 7 (Mete Durlu) [2048920]
+        - dm table: fix iterate_devices based device capability checks (Mike Snitzer) [2054743]
+        - buffer: eliminate the need to call free_more_memory() in __getblk_slow() (Carlos Maiolino) [2030609]
+        - buffer: grow_dev_page() should use __GFP_NOFAIL for all cases (Carlos Maiolino) [2030609]
+        - buffer: have alloc_page_buffers() use __GFP_NOFAIL (Carlos Maiolino) [2030609]
+        - mm: memcg: do not fail __GFP_NOFAIL charges (Rafael Aquini) [2054345]
+        - mm: filemap: do not drop action modifier flags from the gfp_mask passed to __add_to_page_cache_locked() (Rafael Aquini) [2054345]
+        - Added ZSTREAM=yes to makefile (Lucas Zampieri)
+
+        [3.10.0-1160.61.1]
+        - x86/efi: reset the correct tlb_state when returning from efi_switch_mm() (Rafael Aquini) [2055587]
+
+        [3.10.0-1160.60.1]
+        - svcrdma: Fix leak of svc_rdma_recv_ctxt objects (Benjamin Coddington) [2028740]
+        - sunrpc: Remove unneeded pointer dereference (Benjamin Coddington) [2028740]
+        - x86/platform/uv: Add more to secondary CPU kdump info (Frank Ramsay) [2042462]
+        - [s390] s390/AP: support new dynamic AP bus size limit (Claudio Imbrenda) [1997156]
+        - CI: Enable baseline realtime checks (Veronika Kabatova)
+        - CI: Rename pipelines to include release names (Veronika Kabatova)
+        - RDMA/cma: Do not change route.addr.src_addr.ss_family (Kamal Heib) [2032075] {CVE-2021-4028}
+        - fget: clarify and improve __fget_files() implementation (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - fget: check that the fd still exists after getting a ref to it (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - net: Set fput_needed iff FDPUT_FPUT is set (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - vfs, fdtable: Add fget_task helper (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - fs: add fget_many() and fput_many() (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - fs/file.c: __fget() and dup2() atomicity rules (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - vfs: Don't let __fdget_pos() get FMODE_PATH files (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - get rid of fget_light() (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - sockfd_lookup_light(): switch to fdget^W^Waway from fget_light (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - fs: __fget_light() can use __fget() in slow path (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - fs: factor out common code in fget_light() and fget_raw_light() (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - fs: factor out common code in fget() and fget_raw() (Miklos Szeredi) [2032478] {CVE-2021-4083}
+        - introduce __fcheck_files() to fix rcu_dereference_check_fdtable(), kill rcu_my_thread_group_empty() (Miklos Szeredi) [2032478] {CVE-2021-4083}
     FixedIn:
         - Module: null
           Name: bpftool

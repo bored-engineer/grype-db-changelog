@@ -1,6 +1,40 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        galera
+        [26.4.9-4]
+        - Use downstream garbd-wrapper and garbd.service to ensure compatibility
+        - Add upstream versions of garbd-wrapper (called garbd-systemd) and garbd.service
+          in case user want's to use them
+
+        [26.4.9-3]
+        - Explicitly require the 'procps-ng' package
+        - Otherwise it will not require it in the lightweight systems (e.g. containers)
+        - and Galera won't work properly
+
+        [26.4.9-2]
+        - Switch from SCONS build tooling to CMAKE build tooling
+
+        [26.4.9-1]
+        - Rebase to 26.4.9
+
+        mariadb
+        [3:10.5.13-1]
+        - Rebase to 10.5.13
+        - Add wsrep_sst_rsync_tunnel script
+
+        [3:10.5.12-1]
+        - Rebase to 10.5.12
+
+        [3:10.5.11-1]
+        - Rebase to 10.5.11
+
+        [3:10.5.10-2]
+        - Set user_map.conf file to be noreplace config file
+        - Resolves: rhbz#1989621
+
+        [3:10.5.10-1]
+        - Rebase to 10.5.10
     FixedIn:
         - Module: mariadb:10.5
           Name: Judy

@@ -1,6 +1,36 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.11.6-3]
+        - Refreshing any page in pcs-web-ui no longer causes it to display a blank page
+        - Resolves: rhbz#2222788
+
+        [0.11.6-2]
+        - Added BuildRequires: debugedit - for generating MiniDebugInfo - triggered by removing find-debuginfo.sh from rpm
+        - Make use of filters when extracting tarballs to enhance security if provided by Python (pcs config restore command)
+        - Exporting constraints with rules in form of pcs commands now escapes # and fixes spaces in dates to make the commands valid
+        - Constraints containing options unsupported by pcs are not exported and a warning is printed instead
+        - Using spaces in dates in location constraint rules is deprecated
+        - Resolves: rhbz#2163953 rhbz#2216434 rhbz#2217850 rhbz#2219407
+
+        [0.11.6-1]
+        - Rebased to the latest upstream sources (see CHANGELOG.md)
+        - Updated bundled rubygems: puma, tilt
+        - Resolves: rhbz#1465829 rhbz#2163440 rhbz#2168155
+
+        [0.11.5-2]
+        - Fixed a regression causing crash in pcs resource move command (broken since pcs-0.11.5)
+        - Resolves: rhbz#2210855
+
+        [0.11.5-1]
+        - Rebased to the latest upstream sources (see CHANGELOG.md)
+        - Updated pcs-web-ui
+        - Updated bundled dependencies: tornado, dacite
+        - Added bundled rubygems: nio4r, puma
+        - Removed bundled rubygems: daemons, eventmachine, thin, webrick
+        - Updated bundled rubygems: backports, rack, rack-protection, rack-test, sinatra, tilt
+        - Added dependency nss-tools - for working with qdevice certificates
+        - Resolves: rhbz#1423473 rhbz#1860626 rhbz#2160664 rhbz#2163440 rhbz#2163914 rhbz#2163953 rhbz#2168155 rhbz#2168617 rhbz#2174735 rhbz#2174829 rhbz#2175881 rhbz#2177996 rhbz#2178701 rhbz#2178714 rhbz#2179902 rhbz#2180379 rhbz#2182810
     FixedIn:
         - Module: null
           Name: pcs

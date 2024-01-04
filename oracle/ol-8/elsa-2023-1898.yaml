@@ -1,6 +1,23 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:17.0.7.0.7-1]
+        - Update to jdk-17.0.7.0+7
+        - Update release notes to 17.0.7.0+7
+        - Require tzdata 2023c due to local inclusion of JDK-8274864 & JDK-8305113
+        - Update generate_tarball.sh to add support for passing a boot JDK to the configure run
+        - Add POSIX-friendly error codes to generate_tarball.sh and fix whitespace
+        - Remove .jcheck and GitHub support when generating tarballs, as done in upstream release tarballs
+        - Update FIPS support against 17.0.7+6 and bring in latest changes:
+        - * RH2134669: Add missing attributes when registering services in FIPS mode.
+        - * test/jdk/sun/security/pkcs11/fips/VerifyMissingAttributes.java: fixed jtreg main class
+        - * RH1940064: Enable XML Signature provider in FIPS mode
+        - * RH2173781: Avoid calling C_GetInfo() too early, before cryptoki is initialized
+        - ** This tarball is embargoed until 2023-04-18 @ 1pm PT. **
+        - Resolves: rhbz#2185182
+        - Resolves: rhbz#2186835
+        - Resolves: rhbz#2186827
+        - Resolves: rhbz#2186831
     FixedIn:
         - Module: null
           Name: java-17-openjdk

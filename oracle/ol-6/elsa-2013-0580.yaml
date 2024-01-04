@@ -1,6 +1,30 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.4.2-50:.4]
+        - Added BrowseLDAPCACertFile and PrintcapGUI to restricted options
+          list.
+
+        [1:1.4.2-50:.3]
+        - Fix for CVE-2012-5519 patch: handle blacklisted lines that have no
+          value part gracefully.
+
+        [1:1.4.2-50:.2]
+        - Added documentation for new CVE-2012-5519 option.
+
+        [1:1.4.2-50:.1]
+        - Applied patch to fix CVE-2012-5519 (privilege escalation for users
+          in SystemGroup or with equivalent polkit permission).  This prevents
+          HTTP PUT requests with paths under /admin/conf/ other than that for
+          cupsd.conf, and also prevents such requests altering certain
+          configuration directives such as PageLog and FileDevice (bug #875898).
+
+        [1:1.4.2-50]
+        - Fixed LDAP browsing issues (bug #870386).
+
+        [1:1.4.2-49]
+        - Avoid 'forbidden' error when moving job between queues via web UI
+          (bug #834445).
     FixedIn:
         - Module: null
           Name: cups

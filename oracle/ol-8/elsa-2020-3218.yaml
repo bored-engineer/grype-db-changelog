@@ -1,6 +1,37 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.18.0-193.14.3_2.OL8]
+        - Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.3.el7
+
+        [4.18.0-193.14.3_2]
+        - Reverse keys order for dual-signing (Frantisek Hrbata) [1837433 1837434] {CVE-2020-10713}
+
+        [4.18.0-193.14.2_2]
+        - [kernel] Move to dual-signing to split signing keys up better (pjones) [1837433 1837434] {CVE-2020-10713}
+        - [crypto] pefile: Tolerate other pefile signatures after first (Lenny Szubowicz) [1837433 1837434] {CVE-2020-10713}
+        - [acpi] ACPI: configfs: Disallow loading ACPI tables when locked down (Lenny Szubowicz) [1852968 1852969] {CVE-2020-15780}
+        - [firmware] efi: Restrict efivar_ssdt_load when the kernel is locked down (Lenny Szubowicz) [1852948 1852949] {CVE-2019-20908}
+
+        [4.18.0-193.14.1_2]
+        - [md] dm mpath: add DM device name to Failing/Reinstating path log messages (Mike Snitzer) [1852050 1822975]
+        - [md] dm mpath: enhance queue_if_no_path debugging (Mike Snitzer) [1852050 1822975]
+        - [md] dm mpath: restrict queue_if_no_path state machine (Mike Snitzer) [1852050 1822975]
+        - [md] dm mpath: simplify __must_push_back (Mike Snitzer) [1852050 1822975]
+        - [md] dm: use DMDEBUG macros now that they use pr_debug variants (Mike Snitzer) [1852050 1822975]
+        - [include] dm: use dynamic debug instead of compile-time config option (Mike Snitzer) [1852050 1822975]
+        - [md] dm mpath: switch paths in dm_blk_ioctl() code path (Mike Snitzer) [1852050 1822975]
+        - [md] dm multipath: use updated MPATHF_QUEUE_IO on mapping for bio-based mpath (Mike Snitzer) [1852050 1822975]
+        - [md] dm: bump version of core and various targets (Mike Snitzer) [1852050 1822975]
+        - [md] dm mpath: Add timeout mechanism for queue_if_no_path (Mike Snitzer) [1852050 1822975]
+        - [md] dm mpath: use true_false for bool variable (Mike Snitzer) [1852050 1822975]
+        - [md] dm mpath: remove harmful bio-based optimization (Mike Snitzer) [1852050 1822975]
+        - [scsi] scsi: libiscsi: fall back to sendmsg for slab pages (Maurizio Lombardi) [1852048 1825775]
+        - [s390] s390/mm: fix panic in gup_fast on large pud (Philipp Rudo) [1853336 1816980]
     FixedIn:
         - Module: null
           Name: bpftool

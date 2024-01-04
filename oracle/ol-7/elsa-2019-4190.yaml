@@ -1,6 +1,36 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nss
+        [3.44.0-7]
+        - Increase timeout on ssl_gtest so that slow platforms can complete when
+           running on a busy system.
+
+        [3.44.0-6]
+        - back out out-of-bounds patch (patch for nss-softokn).
+        - Fix segfault on empty or malformed ecdh keys (#1777712)
+
+        [3.44.0-5]
+        - Fix out-of-bounds write in NSC_EncryptUpdate (#1775910)
+
+        nss-softokn
+        [3.44.0-8.0.1]
+        - Add fips140-2 DSA Known Answer Test fix [Orabug: 26679337]
+        - Add fips140-2 ECDSA/RSA/DSA Pairwise Consistency Test fix [Orabug: 26617814],
+          [Orabug: 26617879], [Orabug: 26617849]
+
+        [3.44.0-8]
+        - Fix segfault on empty or malformed ecdh keys (#1777712)
+
+        [3.44.0-7]
+        - Fix out-of-bounds write in NSC_EncryptUpdate (#1775911,#1775910)
+
+        [3.44.0-6]
+        - Fix fipstest to use the standard mechanism for TLS 1.2 PRF
+
+        nss-util
+        [3.44.0-4]
+        - Fix segfault on empty or malformed ecdh keys (#1777712)
     FixedIn:
         - Module: null
           Name: nss

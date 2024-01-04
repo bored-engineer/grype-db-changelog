@@ -1,6 +1,23 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3:1.17-33.31.0.3]
+        - update 06-55-04 to 0x2006d05
+        - update 06-55-07 to 0x5003302
+        - update 06-6a-04 to 0xb000280
+        - update 06-6a-06 to 0xd000375
+
+        [3:1.17-33.31.0.2]
+        - update Intel microcode bundle to 20210608
+
+        [3:1.17-33.31.0.1]
+        - recognize the 'force-intel' file path available on EL7+ [orabug 31655792]
+        - disable live load during %post due to UEK4 rendezvous timeouts [orabug 31655792]
+        - merge Oracle changes for early load via dracut
+        - remove no longer appropriate caveats for 06-2d-07 and 06-55-04
+        - remove other caveat support to be compatible with early load logic
+        - enable late load on install for UEK4 kernels marked safe (except BDW-79)
+        - set early_microcode='no' in virtualized guests to avoid early load bugs [Orabug: 30618737]
     FixedIn:
         - Module: null
           Name: microcode_ctl

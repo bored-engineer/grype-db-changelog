@@ -1,6 +1,79 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [20230524-3]
+        - edk2-OvmfPkg-AmdSev-fix-BdsPlatform.c-assertion-failure-d.patch [bz#2190244]
+        - edk2-OvmfPkg-IoMmuDxe-add-locking-to-IoMmuAllocateBounceB.patch [bz#2211060]
+        - edk2-OvmfPkg-AmdSevDxe-Shim-Reboot-workaround-RHEL-only.patch [bz#2218196]
+        - Resolves: bz#2190244
+          ([EDK2] [AMDSERVER 9.3 Bug] OVMF AP Creation Fixes)
+        - Resolves: bz#2211060
+          (SEV-es guest randomly stuck at boot to hard drive screen from powerdown and boot again)
+        - Resolves: bz#2218196
+          (Add vtpm devices with OVMF.amdsev.fd causes VM reset)
+
+        [20230524-2]
+        - edk2-ArmVirt-add-VirtioSerialDxe-to-ArmVirtQemu-builds.patch [RHEL-643]
+        - edk2-ArmVirt-PlatformBootManagerLib-factor-out-IsVirtio.patch [RHEL-643]
+        - edk2-ArmVirt-PlatformBootManagerLib-factor-out-IsVirtioPc.patch [RHEL-643]
+        - edk2-ArmVirt-PlatformBootManagerLib-set-up-virtio-serial-.patch [RHEL-643]
+        - edk2-OvmfPkg-VirtioSerialDxe-use-TPL_NOTIFY.patch [RHEL-643]
+        - edk2-OvmfPkg-VirtioSerialDxe-Remove-noisy-debug-print-on-.patch [RHEL-643]
+        - edk2-OvmfPkg-PlatformInitLib-limit-phys-bits-to-46.patch [bz#2174749]
+        - edk2-Revert-OvmfPkg-disable-dynamic-mmio-window-rhel-only.patch [bz#2174749]
+        - edk2-UefiCpuPkg-MpInitLib-fix-apic-mode-for-cpu-hotplug.patch [bz#2124143]
+        - edk2-OvmfPkg-PlatformInitLib-check-PcdUse1GPageTable.patch [RHEL-644]
+        - edk2-OvmfPkg-OvmfPkgIa32X64-enable-1G-pages.patch [RHEL-644]
+        - edk2-OvmfPkg-MicrovmX64-enable-1G-pages.patch [RHEL-644]
+        - Resolves: RHEL-643
+          (add virtio serial support to armvirt)
+        - Resolves: bz#2174749
+          ([edk2] re-enable dynamic mmio window)
+        - Resolves: bz#2124143
+          (ovmf must consider max cpu count not boot cpu count for apic mode [rhel-9])
+        - Resolves: RHEL-644
+          (enable gigabyte pages)
+
+        [20230524-1]
+        - Rebase to edk2-stable202305 tag [RHEL-585]
+          Resolves: RHEL-585
+          ([rhel-9.3] rebase EDK2 to edk2-stable202305)
+
+        [20230301gitf80f052277c8-5]
+        - edk2-dbx-update-2023-05-09-black-lotus-edition.patch [RHEL-470]
+        - edk2-json-descriptors-explicitly-set-mode-split.patch [RHEL-469]
+        - Resolves: RHEL-470
+          (edk2: update variable store with latest dbx updates (may 9, black lotus edition))
+        - Resolves: RHEL-469
+          (explicitly set mode = split in firmware json description files)
+
+        [20230301gitf80f052277c8-4]
+        - edk2-OvmfPkg-Clarify-invariants-for-NestedInterruptTplLib.patch [bz#2189136]
+        - edk2-OvmfPkg-Relax-assertion-that-interrupts-do-not-occur.patch [bz#2189136]
+        - Resolves: bz#2189136
+          (windows 11 installation broken with edk2-20230301gitf80f052277c8-1.el9)
+
+        [20230301gitf80f052277c8-3]
+        - edk2-add-aarch64-qcow2-images.patch [bz#2186754]
+        - edk2-update-json-files.patch [bz#2186754]
+        - edk2-add-libvirt-version-conflict.patch [bz#2186754]
+        - edk2-add-dbx-update-blob-rh-only.patch [RHEL-377]
+        - edk2-spec-apply-dbx-update-rh-only.patch [RHEL-377]
+        - Resolves: bz#2186754
+          (edk2: Add firmware images in qcow2 format)
+        - Resolves: RHEL-377
+          (edk2: ship secure build variable store with latest dbx updates)
+
+        [20230301gitf80f052277c8-2]
+        - edk2-build-script-update.patch [bz#2183230]
+        - edk2-PcdDxeNxMemoryProtectionPolicy-update.patch [bz#2183230]
+        - Resolves: bz#2183230
+          ([edk2] Instruction abort exception when booting a VM)
+
+        [20230301gitf80f052277c8-1]
+        - Rebase to edk2-stable202302 [RHEL-266]
+        - Resolves: RHEL-266
+          (rebase edk2 to 2023-02 stable tag)
     FixedIn:
         - Module: null
           Name: edk2-aarch64

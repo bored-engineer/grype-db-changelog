@@ -1,6 +1,30 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:11.0.20.0.8-2.0.1]
+        - Add Oracle vendor bug URL [Orabug: 34340155]
+        - Fix tzdata requirement copy-and-paste error that led to two BuildRequires and no Requires
+
+        [1:11.0.20.0.8-2]
+        - Bump release number so we are newer than 9.0
+        - Related: rhbz#2221106
+
+        [1:11.0.20.0.8-1]
+        - Update to jdk-11.0.20.0+8 (GA)
+        - Update release notes to 11.0.20.0+8
+        - Drop local inclusion of JDK-8274864 & JDK-8305113 as they are included in 11.0.20+1
+        - Bump tzdata requirement to 2023c now it is available in the buildroot
+        - Bump bundled LCMS version to 2.15 as in jdk-11.0.20+1.
+        - Bump bundled HarfBuzz version to 7.0.1 as in jdk-11.0.20+7
+        - Use tapsets from the misc tarball
+        - Introduce 'prelease' for the portable release versioning, to handle EA builds
+        - Make sure root installation directory is created first
+        - Use in-place substitution for all but the first of the tapset changes
+        - Sync the copy of the portable specfile with the latest update
+        - Add note at top of spec file about rebuilding
+        - ** This tarball is embargoed until 2023-07-18 @ 1pm PT. **
+        - Resolves: rhbz#2217715
+        - Resolves: rhbz#2221106
     FixedIn:
         - Module: null
           Name: java-11-openjdk

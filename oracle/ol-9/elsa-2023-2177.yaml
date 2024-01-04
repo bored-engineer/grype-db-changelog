@@ -1,6 +1,19 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [5.1.1-1]
+        - update to 5.1.1 tagged upstream community sources, see CHANGELOG
+        - resolve CVE-2022-27664 golang: net/http: handle server errors after sending GOAWAY
+
+        [5.0.0-4]
+        - update to 5.0.0 tagged upstream community sources, see CHANGELOG
+        - install plugin in /usr/share and create symlink from /var using
+          systemd-tmpfiles to work on rpm-ostree based distributions
+        - revert the breaking change (change of internal plugin IDs) of upstream v5.0.0,
+          i.e. there are no breaking changes when performing this upgrade
+        - enable Go modules in build process
+        - make vendor and webpack tarballs reproducible
+        - drop makefile in favor of create_bundles.sh script
     FixedIn:
         - Module: null
           Name: grafana-pcp

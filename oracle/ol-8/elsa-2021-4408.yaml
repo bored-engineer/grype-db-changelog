@@ -1,6 +1,28 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.7.19-1]
+        - Update to 0.7.19
+        - repo_add_conda: add flag to skip v2 packages
+        - fix rare segfault in resolve_jobrules() that could happen if new rules are learnt
+        - fix error handling in solv_xfopen_fd()
+        - fix memory leaks
+
+        [0.7.17-2]
+        - Fix rpm dependency
+
+        [0.7.17-1]
+        - Update to 0.7.17
+        - selected bug fixes:
+          * repo_write: fix handling of nested flexarray
+          * improve choicerule generation a bit more to cover more cases
+          * harden testcase parser against repos being added too late
+          * support python-3.10
+          * check /var/lib/rpm macro in rpmdb code
+        - new features:
+          * handle default/visible/langonly attributes in comps parser
+          * support multiple collections in updateinfo parser
+          * add '-D' option in rpmdb2solv to set the dbpath
     FixedIn:
         - Module: null
           Name: libsolv

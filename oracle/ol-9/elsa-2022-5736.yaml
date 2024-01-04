@@ -1,6 +1,57 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:17.0.4.0.8-0.2.ea]
+        - Revert the following changes until copy-java-configs has adapted to relative symlinks:
+        - * Move cacerts replacement to install section and retain original of this and tzdb.dat
+        - * Run tests on the installed image, rather than the build image
+        - * Introduce variables to refer to the static library installation directories
+        - * Use relative symlinks so they work within the image
+        - * Run debug symbols check during build stage, before the install strips them
+        - The move of turning on system security properties is retained so we don't ship with them off
+        - Related: rhbz#2084779
+
+        [1:17.0.4.0.8-1]
+        - Update to jdk-17.0.4.0+8
+        - Update release notes to 17.0.4.0+8
+        - Need to include the '.S' suffix in debuginfo checks after JDK-8284661
+        - Print release file during build, which should now include a correct SOURCE value from .src-rev
+        - Update tarball script with IcedTea GitHub URL and .src-rev generation
+        - Include script to generate bug list for release notes
+        - Update tzdata requirement to 2022a to match JDK-8283350
+        - Move EA designator check to prep so failures can be caught earlier
+        - Make EA designator check non-fatal while upstream is not maintaining it
+        - Explicitly require crypto-policies during build and runtime for system security properties
+        - Make use of the vendor version string to store our version & release rather than an upstream release date
+        - Include a test in the RPM to check the build has the correct vendor information.
+        - Rebase FIPS patches from fips-17u branch and simplify by using a single patch from that repository
+        - * RH2094027: SunEC runtime permission for FIPS
+        - * RH2036462: sun.security.pkcs11.wrapper.PKCS11.getInstance breakage
+        - * RH2090378: Revert to disabling system security properties and FIPS mode support together
+        - Rebase RH1648249 nss.cfg patch so it applies after the FIPS patch
+        - Enable system security properties in the RPM (now disabled by default in the FIPS repo)
+        - Improve security properties test to check both enabled and disabled behaviour
+        - Run security properties test with property debugging on
+        - Turn on system security properties as part of the build's install section
+        - Move cacerts replacement to install section and retain original of this and tzdb.dat
+        - Run tests on the installed image, rather than the build image
+        - Introduce variables to refer to the static library installation directories
+        - Use relative symlinks so they work within the image
+        - Run debug symbols check during build stage, before the install strips them
+        - Resolves: rhbz#2084779
+        - Resolves: rhbz#2099919
+        - Resolves: rhbz#2107943
+        - Resolves: rhbz#2107941
+        - Resolves: rhbz#2106523
+
+        [1:17.0.4.0.1-0.2.ea]
+        - Fix issue where CheckVendor.java test erroneously passes when it should fail.
+        - Add proper quoting so '&' is not treated as a special character by the shell.
+        - Related: rhbz#2084779
+
+        [1:17.0.3.0.7-2]
+        - RH2007331: SecretKey generate/import operations don't add the CKA_SIGN attribute in FIPS mode
+        - Resolves: rhbz#2105395
     FixedIn:
         - Module: null
           Name: java-17-openjdk

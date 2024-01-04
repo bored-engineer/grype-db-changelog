@@ -1,6 +1,67 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.02-0.29.0.1]
+        - Fix comparison in patch for 18504756
+        - Remove symlink to grub environment file during uninstall on EFI platforms
+          [bug 19231481]
+        - update Oracle Linux certificates (Alexey Petrenko)
+        - Put 'with' in menuentry instead of 'using' [bug 18504756]
+        - Use different titles for UEK and RHCK kernels [bug 18504756]
+
+        [2.02-0.29]
+        - Fix DHCP6 timeouts due to failed network stack once more.
+          Resolves: rhbz#1267139
+
+        [2.02-0.28]
+        - Once again, rebuild for the right build target.
+          Resolves: CVE-2015-5281
+
+        [2.02-0.27]
+        - Remove multiboot and multiboot2 modules from the .efi builds; they
+          should never have been there.
+          Resolves: CVE-2015-5281
+
+        [2.02-0.26]
+        - Be more aggressive about trying to make sure we use the configured SNP
+          device in UEFI.
+          Resolves: rhbz#1257475
+
+        [2.02-0.25]
+        - Force file sync to disk on ppc64le machines.
+          Resolves: rhbz#1212114
+
+        [2.02-0.24]
+        - Undo 0.23 and fix it a different way.
+          Resolves: rhbz#1124074
+
+        [2.02-0.23]
+        - Reverse kernel sort order so they're displayed correctly.
+          Resolves: rhbz#1124074
+
+        [2.02-0.22]
+        - Make upgrades work reasonably well with grub2-setpassword .
+          Related: rhbz#985962
+
+        [2.02-0.21]
+        - Add a simpler grub2 password config tool
+          Related: rhbz#985962
+        - Some more coverity nits.
+
+        [2.02-0.20]
+        - Deal with some coverity nits.
+          Related: rhbz#1215839
+          Related: rhbz#1124074
+
+        [2.02-0.19]
+        - Rebuild for Aarch64
+        - Deal with some coverity nits.
+          Related: rhbz#1215839
+          Related: rhbz#1124074
+
+        [2.02-0.18]
+        - Update for an rpmdiff problem with one of the man pages.
+          Related: rhbz#1124074
     FixedIn:
         - Module: null
           Name: grub2

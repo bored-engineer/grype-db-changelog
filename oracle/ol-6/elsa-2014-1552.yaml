@@ -1,6 +1,49 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [5.3p1-104]
+        - ignore SIGXFSZ in postauth monitor child (#1133906)
+
+        [5.3p1-103]
+        - don't try to generate DSA keys in the init script in FIPS mode (#1118735)
+
+        [5.3p1-102]
+        - ignore SIGPIPE in ssh-keyscan (#1108836)
+
+        [5.3p1-101]
+        - ssh-add: fix fatal exit when removing card (#1042519)
+
+        [5.3p1-100]
+        - fix race in backported ControlPersist patch (#953088)
+
+        [5.3p1-99.2]
+        - skip requesting smartcard PIN when removing keys from agent (#1042519)
+
+        [5.3p1-98]
+        - add possibility to autocreate only RSA key into initscript (#1111568)
+        - fix several issues reported by coverity
+
+        [5.3p1-97]
+        - x11 forwarding - be less restrictive when can't bind to one of available addresses
+          (#1027197)
+        - better fork error detection in audit patch (#1028643)
+        - fix openssh-5.3p1-x11.patch for non-linux platforms (#1100913)
+
+        [5.3p1-96]
+        - prevent a server from skipping SSHFP lookup (#1081338) CVE-2014-2653
+        - ignore environment variables with embedded '=' or '\0' characters CVE-2014-2532
+        - backport ControlPersist option (#953088)
+        - log when a client requests an interactive session and only sftp is allowed (#997377)
+        - don't try to load RSA1 host key in FIPS mode (#1009959)
+        - restore Linux oom_adj setting when handling SIGHUP to maintain behaviour over restart
+          (#1010429)
+        - ssh-keygen -V - relative-specified certificate expiry time should be relative to current time
+          (#1022459)
+
+        [5.3p1-95]
+        - adjust the key echange DH groups and ssh-keygen according to SP800-131A (#993580)
+        - log failed integrity test if /etc/system-fips exists (#1020803)
+        - backport ECDSA and ECDH support (#1028335)
     FixedIn:
         - Module: null
           Name: openssh

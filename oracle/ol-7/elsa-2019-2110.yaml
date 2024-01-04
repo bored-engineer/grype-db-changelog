@@ -1,6 +1,42 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [8.24.0-38.0.2]
+        - Newer gcc complains about implicit declaration of prctl. Added header file to quiesce the compiler
+
+        [8.24.0-38]
+        RHEL 7.7 ERRATUM
+        - added patch increasing max path size preventing buffer overflow
+          with too long paths
+          resolves: rhbz#1656860
+
+        [8.24.0-37]
+        RHEL 7.7 ERRATUM
+        - edited patch fixing mmkubernetes halt after pod deletition
+          (covscan found an issue in previous version)
+          resolves: rhbz#1622767
+        - added patch stopping flooding logs with journald errors
+          resolves: rhbz#1632211
+        - added patch stopping flooding logs with symlink false-positives
+          resolves: rhbz#1685901
+        - added patch stopping memory leak when processing internal msgs
+          resolves: rhbz#1666365
+        - added documentation patch with info about CRI-O to mmkubernetes
+          resolves: rhbz#1625935
+
+        [8.24.0-36]
+        RHEL 7.7 ERRATUM
+        - added patch fixing mmkubernetes halt after pod deletition
+          resolves: rhbz#1622767
+
+        [8.24.0-35]
+        RHEL 7.7 ERRATUM
+        - added patch fixing memory corruption in omfwd module
+          resolves: rhbz#1632659
+        - added patch fixing imfile sopping monitor after rotation
+          resolves: rhbz#1649250
+        - added patch addressing imptcp CVE-2018-16881
+          resolves: rhbz#1658288
     FixedIn:
         - Module: null
           Name: rsyslog

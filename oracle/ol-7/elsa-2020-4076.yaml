@@ -1,6 +1,63 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nspr
+        [4.25.0-2]
+        - Rebuild to fix wrong dist tag
+
+        [4.25.0-1]
+        - Rebase to NSPR 4.25
+
+        nss
+        [3.53.1-3]
+        - Disable dh timing test because it's unreliable on s390 (from Bob Relyea)
+        - Explicitly enable upgradedb/sharedb test cycles
+
+        [3.53.1-2]
+        - Disable TLS 1.3 by default
+
+        [3.53.1-1]
+        - Rebase to NSS 3.53.1
+
+        [3.44.0-8]
+        - Increase timeout on ssl_gtest so that slow platforms can complete when
+           running on a busy system.
+
+        nss-softokn
+        [3.53.1-6.0.1]
+        - Add fips140-2 DSA Known Answer Test fix [Orabug: 26679337]
+        - Add fips140-2 ECDSA/RSA/DSA Pairwise Consistency Test fix [Orabug: 26617814],
+          [Orabug: 26617879], [Orabug: 26617849]
+
+        [3.53.1-6]
+        - turn of ALTIVEC instruction for powerpc because they require
+          power8 and we need to support power7 on RHEL7 still.
+        - Fix typo in measure.
+        - Make sure only 2048 and greater primes are used in FIPS mode
+          for dh.
+
+        [3.53.1-5]
+        - Fix the patch application in the previous change
+
+        [3.53.1-4]
+        - Fix glibc regression in the rebase; run RNG self-tests only if NSPR is linked
+
+        [3.53.1-3]
+        - include patches for CVE-2020-6829, CVE-2020-12400,
+          and CVE-2020-12401 from upstream (ECC constant time issues).
+        - include patches for CVE-2020-12403 from upstream
+          (CHACHA issues).
+        - include self-tests for kdfs and cmac.
+
+        [3.53.1-2]
+        - Install cmac.h required by blapi.h (#1764513)
+
+        [3.53.1-1]
+        - Rebase to NSS 3.53.1
+
+        nss-util
+        [3.53.1-1]
+        - Rebase to NSS 3.53.1
     FixedIn:
         - Module: null
           Name: nspr

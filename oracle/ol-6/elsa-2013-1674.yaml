@@ -1,6 +1,75 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [004-336.0.1]
+        - do not strip modules with signatures. [orabug 17458249] (Jerry Snitselaar)
+        - scsi_wait module removed in 3.8. Mute errors. [orabug 16977193] (Maxim Uvarov)
+          find firmware in /lib/modules/firmware/2.6.32-400.1.1.el5uek first
+          and /lib/modules/firmware second (<maxim.uvarov@oracle.com)
+          Resolves: Orabug: 13351090
+        - Fix btrfs discovery [orabug 13388545]
+
+        [004-336]
+        - install /etc/system-fips in the initramfs
+        Resolves: rhbz#1012626
+
+        [004-335]
+        - fixed interface renaming
+        Resolves: rhbz#1019104
+
+        [004-334]
+        - fcoe: add --link-retry=100 to fipvlan call
+        Resolves: rhbz#1012316
+        - ldd: redirect error to /dev/null
+        - do not turn off biosdevname, if not given on kernel cmdline
+        Resolves: rhbz#1011508
+        - network: fixed ibft parsing
+        Resolves: rhbz#1011508
+
+        [004-330]
+        - changed /etc/redhat-fips to /etc/system-fips
+        Resolves: rhbz#1012626
+
+        [004-329]
+        - add /etc/redhat-fips
+        Resolves: rhbz#1012626
+
+        [004-328]
+        - fixed crypt: add support for keyfiles in the initramfs
+        Resolves: rhbz#886194
+
+        [004-327]
+        - fixed crypt: add support for keyfiles in the initramfs
+        Resolves: rhbz#886194
+        - fixed booting with iSCSI and without network config
+        Resolves: rhbz#910605
+
+        [004-322]
+        - fixed crypt: add support for keyfiles in the initramfs
+        Resolves: rhbz#886194
+        - fixed FIPS module checking
+        Resolves: rhbz#947729
+
+        [004-316]
+        - create the initramfs non-world readable
+        - unset LD_LIBRARY_PATH and GREP_OPTIONS
+        Resolves: rhbz#912299
+        - add mkinitrd man page
+        Resolves: rhbz#610462
+        - add bonding
+        Resolves: rhbz#851666
+        - lvm: add '--yes' to lvchange
+        Resolves: rhbz#720684
+        - crypt: add support for keyfiles in the initramfs
+        Resolves: rhbz#886194
+        - start iscsi regardless of network, if requested
+        Resolves: rhbz#813687
+        - install multipath module only, when root is multipath in generic mode
+        Resolves: rhbz#916144
+        - fips: handle checksum checks for RHEV kernels
+        Resolves: rhbz#947729
+        - add xhci-hcd driver
+        Resolves: rhbz#960729
     FixedIn:
         - Module: null
           Name: dracut

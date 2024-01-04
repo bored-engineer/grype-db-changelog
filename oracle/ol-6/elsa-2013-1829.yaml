@@ -1,6 +1,30 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nspr
+        [4.10.0-2]
+        - Rebase to nspr-4.10.2
+        - Resolves: rhbz#1032485 - CVE-2013-5607 (MFSA 2013-103) Avoid unsigned integer wrapping in PL_ArenaAllocate (MFSA 2013-103)
+
+        nss
+        [3.15.3-2.0.1]
+        - Added nss-vendor.patch to change vendor
+
+        [3.15.3-2]
+        - Enable patch with fix for deadlock in trust domain lock and object lock
+        - Resolves: Bug 1036477 - deadlock in trust domain lock and object lock
+        - Disable hw gcm on rhel-5 based build environments where OS lacks support
+        - Rollback changes to build nss without softokn until Bug 689919 is approved
+        - Cipher suite was run as part of the nss-softokn build
+
+        [3.15.3-1]
+        - Update to NSS_3_15_3_RTM
+        - Resolves: Bug 1032470 - CVE-2013-5605 CVE-2013-5606 CVE-2013-1741
+
+        nss-util
+        [3.15.3-1]
+        - Update to NSS_3_15_3_RTM
+        - Resolves: rhbz#1032470 - CVE-2013-5605 CVE-2013-5606 CVE-2013-1741
     FixedIn:
         - Module: null
           Name: nspr

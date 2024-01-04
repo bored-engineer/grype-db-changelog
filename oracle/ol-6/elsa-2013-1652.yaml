@@ -1,6 +1,70 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [8.4-31.0.1]
+        - clean up empty file if cp is failed [Orabug 15973168]
+
+        [8.4-31]
+        - adjust the fix for the du bindmounts failure(#836557)
+
+        * Mon Oct 07 2013 Ondrej Oprala <ooprala@redhat.com - 8.4-30
+        - Fix su retvals (once again)
+
+        [8.4-29]
+        - CVE-2013-0221 CVE-2013-0223 CVE-2013-0222 - fix various
+          segmentation faults in sort, uniq and join(#1015019)
+
+        [8.4-28]
+        - su now returns correct retvals for all cases
+
+        [8.4-27]
+        - tail -F now disables inotify when encountering a symlink.
+          Polling is used instead.
+
+        * Mon Sep 16 2013 Ondrej Oprala <ooprala@redhat.com - 8.4-26
+        - df now properly dereferences long FS names(again)
+
+        [8.4-25]
+        - pr -n no longer crashes when passed values >= 32.
+          Also line numbers are consistently padded with spaces,
+          rather than with zeros for certain widths. (#997537)
+
+        [8.4-24]
+        - fix su return codes when NOT killed by a signal (#996190)
+
+        [8.4-23]
+        - fix several newly introduced defects found by Coverity
+          check
+
+        [8.4-22]
+        - wait for su child to prevent errorneous execution of some
+          commands (#749679)
+        - correct return values after signal termination (#889531)
+          and propagation of child core dump info (#747592)
+        - dd now accepts 'status=none' to suppress all
+          informational output(#965654)
+        - cut --output-delimiter option was ignored for multibyte
+          locales (#867984)
+        - remove redundant setpwent() and setgrent () syscalls
+          from stat -U/-G to improve NIS performance (#911206)
+        - date: deal correctly with invalid input with special
+          characters (#960160)
+        - dd: provide support for the conv=sparse (#908980)
+        - su/runuser: clarify which envvars are preserved/initialized
+          in -p/-m and -l help/man documentation (#967623)
+        - du: properly detect bindmounts (#836557)
+        - df: fix alignment of columns (#842040)
+        - id,groups: fix correct group printing (#816708)
+        - mv : replace empty directories in cross file
+          system move (#980061)
+
+        [8.4-21]
+        - fix parsing of field regression in sort command
+          (introduced between RHEL5 and RHEL6 upstream) (#956143)
+
+        [8.4-20]
+        - revert to polling for unknown filesystems, update
+          known fs for tail and stat based on coreutils-8.21 (#827199)
     FixedIn:
         - Module: null
           Name: coreutils

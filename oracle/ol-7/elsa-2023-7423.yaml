@@ -1,6 +1,39 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.105.1.0.1.OL7]
+        - debug: lock down kgdb [Orabug: 34270798] {CVE-2022-21499}
+
+        [3.10.0-1160.105.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.105.1]
+        - net/sched: cls_u32: No longer copy tcf_result on update to avoid use-after-free (Davide Caratti) [2228703] {CVE-2023-4128}
+        - net/sched: cls_fw: No longer copy tcf_result on update to avoid use-after-free (Davide Caratti) [2228703] {CVE-2023-4128}
+        - net/sched: cls_route: No longer copy tcf_result on update to avoid use-after-free (Davide Caratti) [2228703] {CVE-2023-4128}
+
+        [3.10.0-1160.104.1]
+        - CI: Remove unused kpet_tree_family (Nikolai Kondrashov)
+        - xen/x86: don't lose event interrupts (Vitaly Kuznetsov) [RHEL-1534]
+        - Documentation/x86: Fix backwards on/off logic about YMM support (Waiman Long) [2229893] {CVE-2022-40982}
+        - KVM: Add GDS_NO support to KVM (Waiman Long) [2229893] {CVE-2022-40982}
+        - x86/speculation: Add Kconfig option for GDS (Waiman Long) [2229893] {CVE-2022-40982}
+        - x86/speculation: Add force option to GDS mitigation (Waiman Long) [2229893] {CVE-2022-40982}
+        - x86/speculation: Add Gather Data Sampling mitigation (Waiman Long) [2229893] {CVE-2022-40982}
+        - Documentation/ABI: Mention retbleed vulnerability info file for sysfs (Waiman Long) [2229893]
+        - docs/kernel-parameters: Update descriptions for 'mitigations=' param with retbleed (Waiman Long) [2229893]
+        - x86/speculation: Add missing srbds=off to the mitigations= help text (Waiman Long) [2229893]
+        - x86: Sync Intel family names & cpu_vuln_blacklist[] with upstream (Waiman Long) [2229893]
+
+        [3.10.0-1160.103.1]
+        - net/sched: sch_qfq: account for stab overhead in qfq_enqueue (Davide Caratti) [2225555] {CVE-2023-3611}
+        - net: sched: sch_qfq: prevent slab-out-of-bounds in qfq_activate_agg (Davide Caratti) [2225555]
+        - net/sched: cls_fw: Fix improper refcount update leads to use-after-free (Davide Caratti) [2225639] {CVE-2023-3776}
+        - redhat: fix to be able to build with rpm 4.19.0 (Denys Vlasenko)
     FixedIn:
         - Module: null
           Name: bpftool

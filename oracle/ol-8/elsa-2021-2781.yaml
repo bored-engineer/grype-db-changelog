@@ -1,6 +1,30 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:11.0.12.0.7-0]
+        - Update to jdk-11.0.12.0+7
+        - Update release notes to 11.0.12.0+7
+        - Switch to GA mode for final release.
+        - This tarball is embargoed until 2021-07-20 @ 1pm PT.
+        - Resolves: rhbz#1972395
+
+        [1:11.0.12.0.6-0.0.ea]
+        - Update to jdk-11.0.12.0+6
+        - Update release notes to 11.0.12.0+6
+        - Switch to EA mode for 11.0.12 pre-release builds.
+        - Update ECC patch following JDK-8226374 (bug ID yet to be confirmed)
+        - Re-order source files to sync with Fedora.
+        - Remove explicit compiler flags which should be handled by the upstream build
+          (-std=gnu++98, -fno-delete-null-pointer-checks, -fno-lifetime-dse)
+        - Use the 'reverse' build loop (debug first) as the main and only build loop to get more diagnostics.
+        - Remove restriction on disabling product build, as debug packages no longer have javadoc packages.
+        - Correct bug ID JDK-8264846 to intended ID of JDK-8264848
+        - Skip 11.0.12.0+5 as 11.0.12.0+6 only adds a test change
+        - Resolves: rhbz#1972395
+
+        [1:11.0.12.0.6-0.0.ea]
+        - Add a test verifying system crypto policies can be disabled
+        - Resolves: rhbz#1972395
     FixedIn:
         - Module: null
           Name: java-11-openjdk

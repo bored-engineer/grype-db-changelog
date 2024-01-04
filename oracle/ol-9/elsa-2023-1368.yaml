@@ -1,6 +1,17 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.79.0-17]
+        - fix consistency return errors. We shouldn't lock the FIPS
+          token if the application asked for invalid DH parameters on
+          on keygen.
+
+        [3.79.0-16]
+        - Add check for RSA PSS Salt required by FIPS
+        - Update fips_algorithms.sh according to the review.
+
+        [3.79.0-15]
+        - Fix CVE-2023-0767
     FixedIn:
         - Module: null
           Name: nspr

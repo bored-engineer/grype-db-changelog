@@ -1,6 +1,33 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.392.b08-2]
+        - Revert jcmd move as jcmd will not operate without tools.jar
+        - Related: RHEL-13577
+
+        [1:1.8.0.392.b08-1]
+        - Update to shenandoah-jdk8u392-b08 (GA)
+        - Update release notes for shenandoah-8u392-b08.
+        - Update generate_tarball.sh to be closer to upstream vanilla script inc. no more ECC removal
+        - Update bug URL for RHEL to point to the Red Hat customer portal
+        - Change top_level_dir_name to use the VCS tag, matching new upstream release style tarball
+        - Regenerate PR2462 patch following JDK-8315135
+        - Add backport of JDK-8312489 heading upstream for 8u402 (see OPENJDK-2095)
+        - Add missing JFR alternative ghost
+        - Move jcmd to the headless package
+        - ** This tarball is embargoed until 2023-10-17 @ 1pm PT. **
+        - Resolves: RHEL-12212
+        - Resolves: RHEL-13574
+        - Resolves: RHEL-13575
+        - Resolves: RHEL-13576
+        - Resolves: RHEL-11319
+        - Resolves: RHEL-13577
+
+        [1:1.8.0.392.b08-1]
+        - For non debug subpackages, ghosted all alternatives (rhbz1649776)
+        - For non system JDKs, if-outed versionless provides.
+        - Aligned versions to be %{epoch}:%{version}-%{release} instead of chaotic
+        - Related: RHEL-11319
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

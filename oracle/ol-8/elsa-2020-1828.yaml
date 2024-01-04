@@ -1,6 +1,109 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.28-101.0.1]
+        - add Ampere emag  to tunable cpu list (Patrick McGehearty)
+        - add optimized memset for emag
+        - add an ASIMD variant of strlen for falkor
+        - Orabug: 2700101.
+        - Modify glibc-ora28849085.patch so it works with RHCK kernels.
+        - Orabug: 28849085.
+        - Make _IO_funlockfile match __funlockfile and _IO_flockfile match __flockfile
+        - Both should test
+        -   if (stream->_flags & _IO_USER_LOCK) == 0)
+        -     _IO_lock_lock (*stream->_lock);
+        - OraBug: 28481550.
+        Reviewed-by: Qing Zhao <qing.zhao@oracle.com>
+
+        [2.28-101]
+        - ld.so: Reset GL (dl_initfirst) pointer on dlopen failure (#1410154)
+
+        [2.28-100]
+        - Roll back dynamic linker state on dlopen failure (#1410154)
+
+        [2.28-99]
+        - s390x: Fix z15 strstr for patterns crossing pages (#1777241)
+
+        [2.28-98]
+        - Rebuild with new rpm (#1654901)
+
+        [2.28-97]
+        - Avoid invalid __has_include in <sys/stat.h> (#1775294)
+
+        [2.28-96]
+        - x86-64: Ignore LD_PREFER_MAP_32BIT_EXEC in SUID binaries (#1774021)
+
+        [2.28-95]
+        - Fix alignment of TLS variables for tls variant TLS_TCB_AT_TP (#1764214)
+
+        [2.28-94]
+        - Refuse to dlopen PIE objects (#1764223)
+
+        [2.28-93]
+        - Fix C.UTF-8 locale source ellipsis expressions (#1361965)
+
+        [2.28-92]
+        - Fix hangs during malloc tracing (#1764235)
+
+        [2.28-91]
+        - Support moving versioned symbols between sonames (#1764231)
+
+        [2.28-90]
+        - Avoid creating stale utmp entries for repeated pututxline (#1749439)
+
+        [2.28-89]
+        - Backport more precise tokenizer for installed headers test (#1769304)
+
+        [2.28-88]
+        - math: Enable some math builtins for clang in LLVM Toolset (#1764242)
+
+        [2.28-87]
+        - Support Fortran vectorized math functions with GCC Toolset 9 (#1764238)
+
+        [2.28-86]
+        - aarch64: Support STO_AARCH64_VARIANT_PCS, DT_AARCH64_VARIANT_PCS (#1726638)
+
+        [2.28-85]
+        - Add more test-in-container support (#1747502)
+
+        [2.28-84]
+        - Fix calling getpwent after endpwent (#1747502)
+
+        [2.28-83]
+        - nptl: Avoid fork handler lock for async-signal-safe fork (#1746928)
+
+        [2.28-82]
+        - Call _dl_open_check after relocation (#1682954)
+
+        [2.28-81]
+        - Add malloc fastbin tunable (#1764218)
+
+        [2.28-80]
+        - Fix race condition in tst-clone3 and add a new ldconfig test,
+          tst-ldconfig-bad-aux-cache (#1764226)
+
+        [2.28-79]
+        - Remove unwanted whitespace from size lines and account for top chunk in
+          malloc_info output (#1735747)
+
+        [2.28-78]
+        - Enhance malloc tcache (#1746933)
+
+        [2.28-77]
+        - Dont define initgroups in nsswitch.conf (#1747505)
+
+        [2.28-76]
+        - libio: Remove codecvt vtable. (#1764241)
+
+        [2.28-75]
+        - Implement --preload option for the dynamic linker.(#1747453)
+
+        [2.28-74]
+        - Make nsswitch.conf more distribution friendly.
+          Improve nscd.conf comments.  (#1747505)
+
+        [2.28-73]
+        - Update system call names list to Linux 5.3 (#1764234)
     FixedIn:
         - Module: null
           Name: compat-libpthread-nonshared

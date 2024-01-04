@@ -1,6 +1,42 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.18.0-348.7.1_5.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-11.0.5
+
+        [4.18.0-348.7.1_5]
+        - sched: Fix CPU hotplug / tighten is_per_cpu_kthread() (Waiman Long) [2026450 2024869]
+        - sched: Prepare to use balance_push in ttwu() (Waiman Long) [2026450 2024869]
+        - sched: Don't run cpu-online with balance_push() enabled (Waiman Long) [2026450 2024869]
+        - workqueue: Tag bound workers with KTHREAD_IS_PER_CPU (Waiman Long) [2026450 2024869]
+        - workqueue: Use cpu_possible_mask instead of cpu_active_mask to break affinity (Waiman Long) [2026450 2024869]
+        - sched: Fix hotplug vs CPU bandwidth control (Waiman Long) [2026450 2024869]
+        - workqueue: Manually break affinity on hotplug (Waiman Long) [2026450 2024869]
+        - sched/hotplug: Consolidate task migration on CPU unplug (Waiman Long) [2026450 2024869]
+        - sched/core: Wait for tasks being pushed away on hotplug (Waiman Long) [2026450 2024869]
+
+        [4.18.0-348.6.1_5]
+        - x86/Kconfig: Do not enable AMD_MEM_ENCRYPT_ACTIVE_BY_DEFAULT automatically (Prarit Bhargava) [2024678 2021219]
+
+        [4.18.0-348.5.1_5]
+        - blk-mq: still set q->make_request_fn for blk-mq (Ming Lei) [2016384 1999728]
+
+        [4.18.0-348.4.1_5]
+        - [RHEL8.6 BZ 1849234] cifs: report error instead of invalid when revalidating a dentry fails (Ronnie Sahlberg) [2017177 1849234]
+        - kthread: Fix PF_KTHREAD vs to_kthread() race (Waiman Long) [2010333 2001497]
+        - sched/fair: Ignore percpu threads for imbalance pulls (Waiman Long) [2010333 2001497]
+        - kthread: Extract KTHREAD_IS_PER_CPU (Waiman Long) [2010333 2001497]
+        - sched: Optimize finish_lock_switch() (Waiman Long) [2010333 2001497]
+        - sched/hotplug: Ensure only per-cpu kthreads run during hotplug (Waiman Long) [2010333 2001497]
+        - sched: Fix balance_callback() (Waiman Long) [2010333 2001497]
+
+        [4.18.0-348.3.1_5]
+        - net-sysfs: try not to restart the syscall if it will fail eventually (Antoine Tenart) [2021165 2016005]
+        - ovl: fix missing negative dentry check in ovl_rename() (Miklos Szeredi) [2016378 2010887 2013318] {CVE-2021-20321}
     FixedIn:
         - Module: null
           Name: bpftool

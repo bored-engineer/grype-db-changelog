@@ -1,6 +1,66 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [5.0.7-54.0.1]
+        - add autofs-5.0.5-lookup-mounts.patch [Orabug:12658280] (Bert Barbe)
+
+        [1:5.0.7-54]
+        - bz1263508 - Heavy program map usage can lead to a hang
+          - fix out of order call in program map lookup.
+        - Resolves: rhbz#1263508
+
+        [1:5.0.7-53]
+        - bz1238573 - RFE: autofs MAP_HASH_TABLE_SIZE description
+          - update map_hash_table_size description.
+        - Resolves: rhbz#1238573
+
+        [1:5.0.7-52]
+        - bz1233069 - Direct map does not expire if map is initially empty
+          - update patch to fix expiry problem.
+        - Related: rhbz#1233069
+
+        [1:5.0.7-51]
+        - bz1233065 - 'service autofs reload' does not reloads new mounts only
+          when 'sss' or 'ldap' is used in '/etc/nsswitch.conf' file
+          - init qdn before use in get_query_dn().
+          - fix left mount count return from umount_multi_triggers().
+          - fix return handling in sss lookup module.
+          - move query dn calculation from do_bind() to do_connect().
+          - make do_connect() return a status.
+          - make connect_to_server() return a status.
+          - make find_dc_server() return a status.
+          - make find_server() return a status.
+          - fix return handling of do_reconnect() in ldap module.
+        - bz1233067 - autofs is performing excessive direct mount map re-reads
+          - fix direct mount stale instance flag reset.
+        - bz1233069 - Direct map does not expire if map is initially empty
+          - fix direct map expire not set for initial empty map.
+        - Resolves: rhbz#1233065 rhbz#1233067 rhbz#1233069
+
+        [1:5.0.7-50]
+        - bz1218045 - Similar but unrelated NFS exports block proper mounting of
+          'parent' mount point
+          - remove unused offset handling code.
+          - fix mount as you go offset selection.
+        - Resolves: rhbz#1218045
+
+        [1:5.0.7-49]
+        - bz1166457 - Autofs unable to mount indirect after attempt to mount wildcard
+          - make negative cache update consistent for all lookup modules.
+          - ensure negative cache isn't updated on remount.
+          - dont add wildcard to negative cache.
+        - bz1162041 - priv escalation via interpreter load path for program based
+          automount maps
+          - add a prefix to program map stdvars.
+          - add config option to force use of program map stdvars.
+        - bz1161474 - automount segment fault in parse_sun.so for negative parser tests
+          - fix incorrect check in parse_mount().
+        - bz1205600 - Autofs stopped mounting /net/hostname/mounts after seeing duplicate
+          exports in the NFS server
+          - handle duplicates in multi mounts.
+        - bz1201582 - autofs: MAPFMT_DEFAULT is not macro in lookup_program.c
+          - fix macro usage in lookup_program.c.
+        - Resolves: rhbz#1166457 rhbz#1162041 rhbz#1161474 rhbz#1205600 rhbz#1201582
     FixedIn:
         - Module: null
           Name: autofs

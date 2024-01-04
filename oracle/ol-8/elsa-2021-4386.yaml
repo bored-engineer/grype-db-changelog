@@ -1,6 +1,147 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [8.5.0-3.0.2]
+        - Fix Orabug 33451471 and backport CTF/BTF enhancements
+            ctfc: Free CTF container elements in ctfc_delete_container ()
+            ctf: Do not warn for CTF not supported for GNU GIMPLE
+            ICE in btf_finalize when compiling with -gbtf (PR debug/102507, Orabug
+            33451471)
+          Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+
+        [8.5.0-3.0.1]
+        - Merge the following oracle patches to OL8.5 beta:
+
+        - Fix an aarch64 compilation error triggered by the oracle patch
+          gcc9-multiple-changes-align.patch on OL8U5 source base.
+          gcc-fix-aarch64-tune-params.patch
+        - Fix Orabug 33281392 Update CTF and BTF support in OL8 GCC
+          This commit brings the support for CTF/BTF debug formats at par with
+          upstream.  GCC now generates the CTF/BTF debug information by using the
+          internal DWARF representation.
+          For backward compatibility reasons, OL8 GCC continues to support -gt
+          command line option.
+          (Indu Bhagat <indu.bhagat@oracle.com> 8.4.1-1.0.3)
+        - Add complex divide improvement
+          backport of upstream commit 54f0224d55a1b56dde092460ddf76913670e6efc
+          (Patrick.McGehearty <patrick.mcgehearty@oracle.com> 8.4.1-1.0.2)
+        - Fix Orabug 32301371 - bug using gcov with preserve paths option
+          This is the same bug as GCC bug PR gcov-profile/88994
+          gcc9-pr88994.patch
+          (Qing Zhao <qing.zhao@oracle.com> 8.3.1-5.1.0.2)
+        - Fix generation of CTF type records for completed structs referred
+          thru pointers.
+          Orabug 31095790.
+          (Jose E. Marchesi <jose.marchesi@oracle.com> 8.3.1-5.0.4)
+        - Fix Orabug 29838827 - provide an option to adjust the maximum depth
+          of nested #include
+          This is the same bug as gcc upstream PR90581 from Gcc9:
+          gcc9-pr90581.patch
+        - Fix Orabug 29541051 -  confusing error message when there is a problem
+          with ASAN_OPTIONS 'ERROR: expected '=''
+          This is the same bug as gcc upstream PR89832 from Gcc9:
+          gcc9-pr89832.patch
+          (Qing Zhao <qing.zhao@oracle.com> 8.3.1-5.0.3)
+        - Update support for CTF
+          Fix Orabug 30833294 GCC generates incorrect CTF for single element arrays
+          Fix Orabug 30808764 CTF generation fails when __attribute__ ((mode (XX))) is
+          used
+          (Indu Bhagat <indu.bhagat@oracle.com> 8.3.1-5.0.2)
+        - Apply ares/neoverse support patches only ifarch aarch64.
+          (Qing Zhao <qing.zhao@oracle.com> 8.3.1-4.5.0.6)
+        - Add 4 patches from gcc9 to support Arm Ares and Neoverse-N1 for Aarch64
+          gcc9-add-vec-reverse.patch
+          gcc9-multiple-changes-align.patch
+          gcc9-initial-mcpu-ares-tuning.patch
+          gcc9-add-support-for-neoverse-n1.patch
+          (Indu Bhagat <indu.bhagat@oracle.com> 8.3.1-4.5.0.5)
+        - Update support for CTF
+          Fix Orabug 30778534 gcc should generate CTF for functions at file-scope only
+          Fix Orabug 30779193 CTF generation fails for some flavors of vla
+          Fix Orabug 30784275 Fix issues wtih CTF generation for typedef constructs
+          ctf-3-generation-and-emission-for-a-single-compilation.patch
+          ctf-4-update-ctf-testsuite.patch
+          (Indu Bhagat <indu.bhagat@oracle.com> 8.3.1-4.5.0.4)
+        - Add support for CTF in GCC
+          Fix Orabug 30102948 gcc: Add CTF generation to compiler
+          Fix Orabug 30102949 gcc: Add CTF generation to compiler (aarch64)
+          ctf-1-new-function-lang_GNU_GIMPLE.patch
+          ctf-2-command-line-options-gtLEVEL.patch
+          ctf-3-generation-and-emission-for-a-single-compilation.patch
+          ctf-4-update-ctf-testsuite.patch
+          ctf-5-handle-ctf-sections-when-lto-enabled.patch
+          (Qing Zhao <qing.zhao@oracle.com> 8.3.1-4.5.0.3)
+        - CVE-2018-12207 / Intel SKX102
+          OL8 gcc: Intel Mitigation for CVE: CVE-2018-12207
+        - Allow -flto -Wa,-mbranches-within-32B-boundaries to pass -mbranches-within-32B-boundaries
+          to GNU assembler. Without -lfto, -Wa,-mbranches-within-32B-boundaries to pass
+          -mbranches-within-32B-boundaries to GNU assembler using existing GCC binaries.
+        - Mitigation patch:
+          gcc8-Fix-Wa-with-flto.patch
+          (Qing Zhao  <qing.zhao@oracle.com> 8.3.1-4.5.0.2)
+        - Fix Orabug 29968294 -  Heap corruption with fprofile-dir=%p prevents
+          profiling parallel processes, needed for RDBMS:
+          Add patch to fix PR86057 from Gcc9:
+          gcc9-pr86057.patch
+        - Fix Orabug 30044244 - Profile directory concatenated with object file path
+          This is the same bug as gcc upstream PR91971:
+          gcc9-pr85759.patch
+          gcc10-pr91971.patch
+          (Indu Bhagat <indu.bhagat@oracle.com> 8.3.1-4.5.0.1)
+        - Fix Orabug 29599147 - Need -fprofile-dir=%q{VAR} backported to gcc8
+          This is the similar GCC PR47618, add the fix from GCC9:
+          gcc9-pr47618.patch
+        - Fix Orabug 29272977 - DB SUPPORT: Need way to dump inlining report from GCC
+          Add -fopt-info-inline support from GCC9:
+          gcc9-opt-info-inline.patch
+        - Fix Orabug 29273006 - DB SUPPORT: need way to turn off inlining of global functions
+          Add -flive-patching support from GCC9:
+          gcc9-fipa-reference-addressable.patch
+          gcc9-fipa-stack-alignment.patch
+          gcc9-add-fomit-frame-pointer-to-test.patch
+          gcc9-extend-live-patching-option-handling.patch
+          gcc9-ipa-stack-alignment-386-test.patch
+        - Introduce 'oracle_release' into .spec file. Echo it to gcc/DEV-PHASE.
+        - Backport 17 ampere patches from
+          https://git.theobroma-systems.com/ampere-computing/gcc.git/log/?h=gcc-8_2_0-amp3-branch
+          e18301133ea622f6d6796ded1d15466e70475cf8: Retpoline (Spectre-V2 mitigation) for
+                                                  aarch64.
+          d735f3ae4712f66362326d179b4d7e9332c79677: Revert 2017-10-24  Richard Biener
+          271e2811e59c0c77fc022fa86a7030f20b4cac8e: Correct the maximum shift amount for
+                                                  shifted
+          0512749950d927de3dd695f2f2aacdfd30cf32fd: Add CPU support for Ampere Computings
+                                                  eMAG.
+          c8b87078f9e0714cb9cab602e12a18ceb12df05a: eMAG/Xgene: Procedural cost-model for
+                                                  X-Gene
+          74610471b3577c5d465c3fd095a65b796b1e074c: Updating cost table for xgene1.
+          ddba1553ac412be5596e6e2962c148032c4cf231: [AArch64] Add Xgene1 prefetch tunings.
+          b7ebb0a10a8900324074070188a0936ed81b28a4: [AArch64] Fix in xgene1_addrcost_table
+          393dc5c50d55d069f91627bf0be5bab812978850: X-Gene: Adapt tuning struct for GCC 8.
+          b9136d58824af2118c4969c3edb42cad3318b08f: tree-ssa-list-find-pipeline:
+                                                  Add pipelining loads for list finds.
+          095496dd8a9491a17a9caec173281ad02e559df5: uncse: Added pass to undo common
+                                                  subexpression elimination.
+          a7c8dc238e3656e9d2f9256ee76f933c8d7956fb: loop-prefetcher: Adapt defaults for
+                                                  X-Gene cores.
+          256307f293f1750851576e14c8a42b696eced2da: tree-ssa-cpp: Dont crash on SSA names
+                                                  without definition stmts.
+          6e32f53be4f6733f6bfe267ad2337aecaf4047f6: Introduce new option -funroll-more.
+          1ac2485a2fced091a5cce6343fe6a6337f850e73: New option to bypass aliasing-checks.
+          66d7d833bece61e58998ad53a609cd32e3ee4fad: cfgloopmanip: Allow forced creation
+                                                  of loop preheaders.
+          c4f89d50e200538b1ac8889801705300e0b27ef2: Add new pass to optimise loops.
+
+        [8.5.0-3]
+        - fix mangling of lambdas in default args (PR c++/91241, #1981822)
+        - add a few Provides: bundled
+
+        [8.5.0-2]
+        - revert upstream PR85873 gcc-8 fix, apply the fix from gcc-9 (#1960701)
+        - fix 'this' adjustment for devirtualized call (PR c++/100797, #1965951)
+
+        [8.5.0-1]
+        - update from GCC 8.5 release (#1946758)
+        - this includes a fix for PR target/87839 (#1958295)
     FixedIn:
         - Module: null
           Name: cpp

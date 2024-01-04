@@ -1,6 +1,142 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.201.b09-0]
+        - Update to aarch64-shenandoah-jdk8u201-b09.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.192.b12-0]
+        - Add port of 8189170 to AArch64 which is missing from upstream 8u version.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.192.b12-0]
+        - Add 8160748 for AArch64 which is missing from upstream 8u version.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.192.b12-0]
+        - Update to aarch64-shenandoah-jdk8u192-b12.
+        - Remove patches included upstream
+          - JDK-8031668/PR2842
+          - JDK-8148351/PR2842
+          - JDK-6260348/PR3066
+          - JDK-8061305/PR3335/RH1423421
+          - JDK-8188030/PR3459/RH1484079
+          - JDK-8205104/PR3539/RH1548475
+          - JDK-8185723/PR3553
+          - JDK-8186461/PR3557
+          - JDK-8201509/PR3579
+          - JDK-8075942/PR3602
+          - JDK-8203182/PR3603
+          - JDK-8206406/PR3610/RH1597825
+          - JDK-8206425
+          - JDK-8036003
+          - JDK-8201495/PR2415
+          - JDK-8150954/PR2866/RH1176206
+        - Re-generate patches (mostly due to upstream build changes)
+          - JDK-8073139/PR1758/RH1191652
+          - JDK-8143245/PR3548 (due to JDK-8202600)
+          - JDK-8197429/PR3546/RH1536622 (due to JDK-8189170)
+          - JDK-8199936/PR3533
+          - JDK-8199936/PR3591
+          - JDK-8207057/PR3613
+          - JDK-8210761/RH1632174 (due to JDK-8207402)
+          - PR3559 (due to JDK-8185723/JDK-8186461/JDK-8201509)
+          - PR3593 (due to JDK-8081202)
+          - RH1566890/CVE-2018-3639 (due to JDK-8189170)
+          - RH1649664 (due to JDK-8196516)
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.191.b14-1]
+        - Add 8131048 & 8164920 (PR3574/RH1498936) to provide a CRC32 intrinsic for PPC64.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.191.b14-0]
+        - Update to aarch64-shenandoah-jdk8u191-b14.
+        - Adjust JDK-8073139/PR1758/RH1191652 to apply following 8155627 backport.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.191.b13-0]
+        - Update to aarch64-shenandoah-jdk8u191-b13.
+        - Update tarball generation script in preparation for PR3667/RH1656676 SunEC changes.
+        - Use remove-intree-libraries.sh to remove the remaining SunEC code for now.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.191.b13-0]
+        - Fix jdk8073139-pr1758-rh1191652-ppc64_le_says_its_arch_is_ppc64_not_ppc64le_jdk.patch paths to pass git apply
+        - Resolves: rhbz#1633817
+
+        [1:1.8.0.191.b13-0]
+        - Revise Shenandoah PR3634 patch following upstream discussion.
+        - Resolves: rhbz#1633817
+
+        [1:1.8.0.191.b13-0]
+        - Headful Requires of cups, replaced by Requires of cups-libs in headless
+        - Resolves: rhbz#1633817
+
+        [1:1.8.0.191.b13-0]
+        - Note why PR1834/RH1022017 is not suitable to go upstream in its current form.
+        - Resolves: rhbz#1633817
+
+        [1:1.8.0.191.b13-0]
+        - Document patch sections.
+        - Resolves: rhbz#1633817
+
+        [1:1.8.0.191.b13-0]
+        - Fix patch organisation in the spec file:
+           * Move ECC patches back to upstreamable section
+           * Move system cacerts patches to upstreamable section
+           * Merge 'Local fixes' and 'RPM fixes' which amount to the same thing
+           * Move system libpng & lcms patches back to 8u upstreamable section
+           * Make it clearer that 'Non-OpenJDK fixes' is currently empty
+        - Resolves: rhbz#1633817
+
+        [1:1.8.0.191.b12-8]
+        - added Patch583 jdk8172850-rh1640127-01-register_allocator_crash.patch
+        - added Patch584 jdk8209639-rh1640127-02-coalesce_attempted_spill_non_spillable.patch
+
+        [1:1.8.0.191.b12-7]
+        - Add patch jdk8210425-rh1632174-03-compile_with_o2_and_ffp_contract_off_as_for_fdlibm_zero.patch:
+          - Annother fix for optimization gaps (annocheck issues)
+          - Zero 8u version fix was missing. Hence, only shows up on Zero arches.
+
+        [1:1.8.0.191.b12-6]
+        - Add fixes for optimization gaps (annocheck issues):
+          - 8210761: libjsig is being compiled without optimization
+          - 8210647: libsaproc is being compiled without optimization
+          - 8210416: [linux] Poor StrictMath performance due to non-optimized compilation
+          - 8210425: [x86] sharedRuntimeTrig/sharedRuntimeTrans compiled without optimization
+                     8u upstream and aarch64/jdk8u upstream versions.
+
+        [1:1.8.0.191.b12-5]
+        - Removed patch, rh1214835.patch, since it's invalid:
+          See https://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2304#c3
+
+        [1:1.8.0.191.b12-4]
+        - Update(s) from upstreamed patches:
+          - jdk8036003-add_with_native_debug_symbols_configure_flag.patch
+          - jdk8150954-pr2866-rh1176206-screenshot_xcomposite_jdk.patch =>
+            jdk8150954-pr2866-rh1176206-screenshot_xcomposite_jdk.patch
+            Deleted rh1176206-root.patch as thats no longer needed with
+            upstream 8150954.
+          - 8207057-pr3613-hotspot-assembler-debuginfo.patch =>
+            jdk8207057-pr3613-no_debug_info_for_assembler_files_hotspot.patch and
+            jdk8207057-pr3613-no_debug_info_for_assembler_files_root.patch. From JDK 8u
+            backport.
+        - Use --with-native-debug-symbols=internal which JDK-8036003 adds.
+        - Remove comment for make invocation since it's no longer valid.
+          --with-native-debug-symbols=internal will do everything we need.
+
+        [1:1.8.0.191.b12-3]
+        - cups moved to headful package
+        - enabled gtk2 in headful package (RH1598152)
+        - Resolves: rhbz#1633817
+
+        [1:1.8.0.191.b12-2]
+        - made rhpkg and srpm or rebuild working on fedora again
+        - cosmetic changes - using macros where possible
+        - fixed issues in desktop files (missing vendor, unexpandedmacros, missing information)
+        - README.src renamed to README.md
+        - Resolves: rhbz#1633817
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

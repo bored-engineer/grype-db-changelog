@@ -1,6 +1,31 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [219-78.0.9.el7_9.7]
+        - Core: explicitly trigger changing udev systemd_wants property [Orabug: 31858125]
+        - Disable unprivileged BPF by default [Orabug: 32871008]
+        - Resolve missing installation files for systemd-pstore [Orabug 32497787]
+        - Change to have file tmpfiles.d/systemd-pstore.conf installed on upon
+        	initial installation, not on rpm update. [Orabug 31414539]
+        - Backport upstream patches related to private-tmp (Sushmita Bhattacharya) [Orabug: 31561883]
+        - backport upstream pstore tmpfiles patch (Eric DeVolder) [Orabug: 31414539]
+        - udev rules: fix memory hot add and remove [Orabug: 31309730]
+        - enable and start the pstore service [Orabug: 30950903]
+        - fix to generate the systemd-pstore.service file [Orabug: 30235241]
+        - Backport upstream patches for the new systemd-pstore tool [Orabug: 30235241]
+        - do not create utmp update symlinks for reboot and poweroff [Orabug: 27854896]
+        - OL7 udev rule for virtio net standby interface [Orabug: 28826743]
+        - fix _netdev is missing for iscsi entry in /etc/fstab [Orabug: 25897792] (tony.l.lam@oracle.com)
+        - set 'RemoveIPC=no' in logind.conf as default for OL7.2 [22224874]
+        - allow dm remove ioctl to co-operate with UEK3 (Vaughan Cao) [Orabug: 18467469]
+        - add hv dynamic memory support (Jerry Snitselaar) [Orabug: 18621475]
+        - daemon reload race fix [Orabug: 34205619]
+
+        [219-78.7]
+        - resolve: introduce reference counting on DnsStream (#2110544)
+
+        [219-78.6]
+        - resolved: pin stream while calling callbacks for it (#2110544)
     FixedIn:
         - Module: null
           Name: libgudev1

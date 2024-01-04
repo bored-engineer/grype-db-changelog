@@ -1,6 +1,34 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.12.1.2-2.491.el6_8.6]
+        - kvm-cirrus_vga-fix-division-by-0-for-color-expansion-rop.patch [bz#1418230 bz#1419416]
+        - kvm-cirrus_vga-fix-off-by-one-in-blit_region_is_unsafe.patch [bz#1418230 bz#1419416]
+        - kvm-display-cirrus-check-vga-bits-per-pixel-bpp-value.patch [bz#1418230 bz#1419416]
+        - kvm-display-cirrus-ignore-source-pitch-value-as-needed-i.patch [bz#1418230 bz#1419416]
+        - kvm-cirrus-handle-negative-pitch-in-cirrus_invalidate_re.patch [bz#1418230 bz#1419416]
+        - kvm-cirrus-allow-zero-source-pitch-in-pattern-fill-rops.patch [bz#1418230 bz#1419416]
+        - kvm-cirrus-fix-blit-address-mask-handling.patch [bz#1418230 bz#1419416]
+        - kvm-cirrus-fix-oob-access-issue-CVE-2017-2615.patch [bz#1418230 bz#1419416]
+        - Resolves: bz#1418230
+          (CVE-2017-2615 qemu-kvm: Qemu: display: cirrus: oob access while doing bitblt copy backward mode [rhel-6.8.z])
+        - Resolves: bz#1419416
+          (CVE-2017-2615 qemu-kvm-rhev: Qemu: display: cirrus: oob access while doing bitblt copy backward mode [rhel-6.8.z])
+
+        [0.12.1.2-2.491.el6_8.5]
+        - kvm-net-check-packet-payload-length.patch [bz#1398213]
+        - Resolves: bz#1398213
+          (CVE-2016-2857 qemu-kvm: Qemu: net: out of bounds read in net_checksum_calculate() [rhel-6.8.z])
+
+        [0.12.1.2-2.491.el6.4]
+        - kvm-virtio-introduce-virtqueue_unmap_sg.patch [bz#1408389]
+        - kvm-virtio-introduce-virtqueue_discard.patch [bz#1408389]
+        - kvm-virtio-decrement-vq-inuse-in-virtqueue_discard.patch [bz#1408389]
+        - kvm-balloon-fix-segfault-and-harden-the-stats-queue.patch [bz#1408389]
+        - kvm-virtio-balloon-discard-virtqueue-element-on-reset.patch [bz#1408389]
+        - kvm-virtio-zero-vq-inuse-in-virtio_reset.patch [bz#1408389]
+        - Resolves: bz#1408389
+          ([RHEL6.8.z] KVM guest shuts itself down after 128th reboot)
     FixedIn:
         - Module: null
           Name: qemu-guest-agent

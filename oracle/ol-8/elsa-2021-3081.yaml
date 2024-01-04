@@ -1,6 +1,32 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [20.3-10.0.1]
+        - Added missing services in rhel/systemd/cloud-init.service [Orabug: 32183938]
+        - Added missing services in cloud-init.service.tmpl for sshd [Orabug: 32183938]
+        - Forward port applicable cloud-init 18.4-2.0.3 changes to cloud-init-18-5 [Orabug: 30435672]
+        - limit permissions [Orabug: 31352433]
+        - Changes to ignore all enslaved interfaces [Orabug: 30092148]
+        - Fix swap file size allocation logic to allocate maxsize [Orabug: 29952349]
+        - Make Oracle datasource detect dracut based config files [Orabug: 29956753]
+        - add modified version of enable-ec2_utils-to-stop-retrying-to-get-ec2-metadata.patch:
+          1. Enable ec2_utils.py having a way to stop retrying to get ec2 metadata
+          2. Apply stop retrying to get ec2 metadata to helper/openstack.py MetadataReader
+          Resolves: Oracle-Bug:41660 (Bugzilla)
+        - added OL to list of known distros
+
+        [20.3-10.el8_4.5]
+        - ci-write-passwords-only-to-serial-console-lock-down-clo.patch [bz#1979252]
+        - Resolves: bz#1979252
+          (CVE-2021-3429 cloud-init: randomly generated passwords logged in clear-text to world-readable file [rhel-8] [rhel-8.4.0.z])
+
+        [20.3-10.el8_4.4]
+        - ci-rhel-cloud.cfg-remove-ssh_genkeytypes-in-settings.py.patch [bz#1963981]
+        - ci-cloud-init.spec.template-update-systemd_postun-param.patch [bz#1967600]
+        - Resolves: bz#1963981
+          ([cloud-init] From RHEL 82+ cloud-init no longer displays sshd keys fingerprints from instance launched from a backup image [rhel-8.4.0.z])
+        - Resolves: bz#1967600
+          (cloud-init brew build fails on Fedora 33 [rhel-8.4.0.z])
     FixedIn:
         - Module: null
           Name: cloud-init

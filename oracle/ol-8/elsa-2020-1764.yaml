@@ -1,6 +1,44 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.6.8-23.0.1.el8]
+        - Add Oracle Linux distribution in platform.py [Orabug: 20812544]
+
+        [3.6.8-23]
+        - Modify the test suite to better handle disabled SSL/TLS versions and FIPS mode
+        - Use OpenSSLs DRBG and disable os.getrandom() function in FIPS mode
+        Resolves: rhbz#1754028, rhbz#1754027, rhbz#1754026, rhbz#1774471
+
+        [3.6.8-22]
+        - Changed Requires into Recommends for python3-pip to allow a lower RHEL8
+          footprint for containers and other minimal environments
+        Resolves: rhbz#1756217
+
+        [3.6.8-21]
+        - Patch 329 (FIPS) modified: Added workaround for mod_ssl:
+          Skip error checking in _Py_hashlib_fips_error
+        Resolves: rhbz#1760106
+
+        [3.6.8-20]
+        - Security fix for CVE-2019-16056
+        Resolves: rhbz#1750776
+
+        [3.6.8-19]
+        - Skip windows specific test_get_exe_bytes test case and enable test_distutils
+        Resolves: rhbz#1754040
+
+        [3.6.8-18]
+        - Reduce the number of tests running during the profile guided optimizations build
+        - Enable profile guided optimizations for all the supported architectures
+        Resolves: rhbz#1749576
+
+        [3.6.8-17]
+        - Security fix for CVE-2018-20852
+        Resolves: rhbz#1741553
+
+        [3.6.8-16]
+        - Properly pass the -Og optimization flag to the debug build
+        Resolves: rhbz#1712977 and rhbz#1714733
     FixedIn:
         - Module: null
           Name: platform-python

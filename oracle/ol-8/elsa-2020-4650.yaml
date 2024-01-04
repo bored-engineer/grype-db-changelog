@@ -1,6 +1,92 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [19.4-11.0.1]
+        - Forward port applicable cloud-init 18.4-2.0.3 changes to cloud-init-18-5 [Orabug: 30435672]
+        - Update OCI Datasource to support IMDSv2
+        - limit permissions [Orabug: 31352433]
+        - Changes to ignore all enslaved interfaces [Orabug: 30092148]
+        - Fix swap file size allocation logic to allocate maxsize [Orabug: 29952349]
+        - Make Oracle datasource detect dracut based config files [Orabug: 29956753]
+        - add modified version of enable-ec2_utils-to-stop-retrying-to-get-ec2-metadata.patch:
+          1. Enable ec2_utils.py having a way to stop retrying to get ec2 metadata
+          2. Apply stop retrying to get ec2 metadata to helper/openstack.py MetadataReader
+          Resolves: Oracle-Bug:41660 (Bugzilla)
+        - added OL to list of known distros
+
+        [19.4-11.el8]
+        - ci-cc_mounts-fix-incorrect-format-specifiers-316.patch [bz#1794664]
+        - Resolves: bz#1794664
+          ([RHEL8] swapon fails with 'swapfile has holes' when created on a xfs filesystem by cloud-init)
+
+        [19.4-10.el8]
+        - ci-Changing-notation-of-subp-call.patch [bz#1839662]
+        - Resolves: bz#1839662
+          ([ESXi][RHEL8.3][cloud-init]ERROR log in cloud-init.log after clone VM on ESXi platform)
+
+        [19.4-9.el8]
+        - ci-Do-not-use-fallocate-in-swap-file-creation-on-xfs.-7.patch [bz#1794664]
+        - ci-swap-file-size-being-used-before-checked-if-str-315.patch [bz#1794664]
+        - ci-Detect-kernel-version-before-swap-file-creation-428.patch [bz#1794664]
+        - Resolves: bz#1794664
+          ([RHEL8] swapon fails with 'swapfile has holes' when created on a xfs filesystem by cloud-init)
+
+        [19.4-8.el8]
+        - ci-When-tools.conf-does-not-exist-running-cmd-vmware-to.patch [bz#1839662]
+        - ci-ssh-exit-with-non-zero-status-on-disabled-user-472.patch [bz#1833874]
+        - Resolves: bz#1833874
+          ([rhel-8.3]using root user error should cause a non-zero exit code)
+        - Resolves: bz#1839662
+          ([ESXi][RHEL8.3][cloud-init]ERROR log in cloud-init.log after clone VM on ESXi platform)
+
+        [19.4-7.el8]
+        - Fixing cloud-init-generator permissions [bz#1834173]
+        - Resolves: bz#1834173
+          ([rhel-8.3]Incorrect ds-identify check in cloud-init-generator)
+
+        [19.4-6.el8]
+        - ci-ec2-only-redact-token-request-headers-in-logs-avoid-.patch [bz#1822343]
+        - Resolves: bz#1822343
+          ([RHEL8.3] Do not log IMDSv2 token values into cloud-init.log)
+
+        [19.4-5.el8]
+        - ci-ec2-Do-not-log-IMDSv2-token-values-instead-use-REDAC.patch [bz#1822343]
+        - ci-Render-the-generator-from-template-instead-of-cp.patch [bz#1834173]
+        - ci-Change-from-redhat-to-rhel-in-systemd-generator-tmpl.patch [bz#1834173]
+        - ci-cloud-init.service.tmpl-use-rhel-instead-of-redhat-4.patch [bz#1834173]
+        - Resolves: bz#1822343
+          ([RHEL8.3] Do not log IMDSv2 token values into cloud-init.log)
+        - Resolves: bz#1834173
+          ([rhel-8.3]Incorrect ds-identify check in cloud-init-generator)
+
+        [19.4-4.el8]
+        - ci-changing-ds-identify-patch-from-usr-lib-to-usr-libex.patch [bz#1834173]
+        - Resolves: bz#1834173
+          ([rhel-8.3]Incorrect ds-identify check in cloud-init-generator)
+
+        [19.4-3.el8]
+        - ci-Make-cloud-init.service-execute-after-network-is-up.patch [bz#1803928]
+        - Resolves: bz#1803928
+          ([RHEL8.3] Race condition of starting cloud-init and NetworkManager)
+
+        [19.4-2.el8]
+        - ci-cc_set_password-increase-random-pwlength-from-9-to-2.patch [bz#1812171]
+        - ci-utils-use-SystemRandom-when-generating-random-passwo.patch [bz#1812174]
+        - ci-Enable-ssh_deletekeys-by-default.patch [bz#1814152]
+        - ci-Remove-race-condition-between-cloud-init-and-Network.patch [bz#1840648]
+        - Resolves: bz#1812171
+          (CVE-2020-8632 cloud-init: Too short random password length in cc_set_password in config/cc_set_passwords.py [rhel-8])
+        - Resolves: bz#1812174
+          (CVE-2020-8631 cloud-init: Use of random.choice when generating random password [rhel-8])
+        - Resolves: bz#1814152
+          (CVE-2018-10896 cloud-init: default configuration disabled deletion of SSH host keys [rhel-8])
+        - Resolves: bz#1840648
+          ([cloud-init][RHEL-8.2.0] /etc/resolv.conf lose config after reboot (initial instance is ok))
+
+        [19.4-1.el8]
+        - Rebase to cloud-init 19.4 [bz#1803095]
+        - Resolves: bz#1803095
+          ([RHEL-8.3.0] cloud-init rebase to 19.4)
     FixedIn:
         - Module: null
           Name: cloud-init

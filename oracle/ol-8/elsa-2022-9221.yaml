@@ -1,6 +1,34 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.6.16-4.0.1_fips]
+        - Allow RSA keygen with modulus sizes bigger than 3072 bits and validate the seed length
+          as defined in FIPS 186-4 section B.3.2 [Orabug: 33200526]
+        - Allow bigger known RSA modulus sizes when calling
+          rsa_generate_fips186_4_keypair directly [Orabug: 33200526]
+        - Change Epoch from 1 to 10
+
+        [3.6.16-4]
+        - p11tool: Document ID reuse behavior when importing certs (#1776250)
+
+        [3.6.16-3]
+        - Treat SHA-1 signed CA in the trusted set differently (#1965445)
+
+        [3.6.16-2]
+        - Filter certificate_types in TLS 1.2 CR based on signature algorithms (#1942216)
+
+        [3.6.16-1]
+        - Update to upstream 3.6.16 release (#1956783)
+        - Fix potential use-after-free in key_share handling (#1927597)
+        - Fix potential use-after-free in pre_shared_key handling (#1927593)
+        - Stop gnutls-serv relying on AI_ADDRCONFIG to decide listening address (#1908334)
+        - Fix cert expiration issue in tests (#1908110)
+
+        [3.6.14-10]
+        - Port fixes for potential miscalculation in ecdsa_verify (#1942931)
+
+        [3.6.14-9]
+        - Revert the previous change
     FixedIn:
         - Module: null
           Name: gnutls

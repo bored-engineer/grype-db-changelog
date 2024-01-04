@@ -1,6 +1,18 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0:5.5.23-0jpp.40]
+        - Related: CVE-2013-1976 It was found during additional testing
+        - that the tomcat5 init may fail to start because the user
+        - shell is set to sbin/nologin. Fixed in init scrip. SU now
+        - uses -s /bin/sh during startup
+
+        [0:5.5.23-0jpp.39]
+        - Resolves: CVE-2013-1976 Improper TOMCAT_LOG management in
+        - initscript. Change location of TOMCAT_LOG to /var/log so
+        - only root can write to it. Touching TOMCAT_LOG is no longer
+        - required during initscript startup. Permissions and ownership
+        - changed to 0755 tomcat:root for logdir
     FixedIn:
         - Module: null
           Name: tomcat5

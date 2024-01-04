@@ -1,6 +1,15 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.1.1k-4.0.1]
+        - Backport upstream PRs 18446 and 18481 which update
+          certificates used for the self-tests [Orabug: 34326055]
+
+        [1:1.1.1k-4]
+        - Fixes CVE-2022-0778 openssl: Infinite loop in BN_mod_sqrt() reachable when parsing certificates
+          Resolves: rhbz#2063147
+        - Disable FIPS mode; it does not work and will not be certified
+          Resolves: rhbz#2091968
     FixedIn:
         - Module: null
           Name: compat-openssl11

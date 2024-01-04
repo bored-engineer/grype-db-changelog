@@ -1,6 +1,21 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        buildah
+        [1.11.6-9.0.1]
+        - Reduce unnecessary writable mounts in NaiveDiffDriver [Orabug: 31025483]
+        - Fixes troubles with oracle registry login [Orabug: 29937283]
+
+        [1.11.6-9]
+        - update to the latest content of https://github.com/containers/buildah/tree/release-1.11-rhel
+          (https://github.com/containers/buildah/commit/6a746dc)
+        - fixes CVE-2021-3602
+        - Related: #1977942
+
+        runc
+        [1.0.0-66.rc10]
+        - set GO111MODULE=off to fix build
+        - Related: #1955651
     FixedIn:
         - Module: container-tools:2.0
           Name: buildah

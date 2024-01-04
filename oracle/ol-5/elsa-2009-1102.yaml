@@ -1,6 +1,23 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [15.5-15.1.el5_3.1]
+        - Release bump to create newer nvr despite dist tag change (fc6 -> el5)
+
+        [15.5-15.el5_3.4]
+        - Merge incdir-overflow and snprintf patches for better readability,
+          snprintf is used now with PATHLEN limit without other adjustments,
+          related strlen / %.*s / *_len are no longer needed and were dropped
+        - Update tempsec patch, drop extraneous s(n)printf argument
+          to suppress compiler warnings
+        - Update fscanf-overflows patch to perform reffile argument length
+          check earlier, now also includes strlen-adjust-fix patch
+
+        [15.5-15.el5_3.3]
+        - Correcting buffer overflow fix (bz 499200)
+
+        [15.5-15.el5_3.2]
+        - Fix some buffer overflows (bz 499200)
     FixedIn:
         - Module: null
           Name: cscope

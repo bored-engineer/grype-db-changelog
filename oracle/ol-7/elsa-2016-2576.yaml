@@ -1,6 +1,120 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        libguestfs
+        [1:1.32.7-3]
+        - Rebase to libguestfs 1.32 in RHEL 7.3
+          resolves: rhbz#1218766
+        - The full tests are now run after the package has been built.
+        - New tool and subpackage: virt-dib (safe diskimage-builder replacement).
+        - New subpackage libguestfs-inspect-icons to reduce dependencies of main pkg
+          (see https://bugzilla.redhat.com/1194158).
+        - New tool: virt-get-kernel.
+        - Depend on java-headless instead of full java.
+        - New tool: virt-v2v-copy-to-local.
+        - Disable virt-v2v subpackage on ppc64 etc
+          resolves: rhbz#1287826
+        - v2v: Remove VirtualBox Additions correctly
+          resolves: rhbz#1296606
+        - Add clearer warnings sections to all man pages
+          resolves: rhbz#1293527
+        - v2v: Disable the --in-place option.
+        - v2v: Support conversion of Windows > 7
+          resolves: rhbz#1190669
+        - Add code to verify tarball signatures.
+        - General performance improvements.
+        - v2v: Prevent duplicate -b, -n, -oa options
+          resolves: rhbz#1326266
+          resolves: rhbz#1325825
+        - v2v: Unquote UUID and LABEL in fstab (util-linux 1335671)
+        - v2v: Fix alignment issues in treeviews in conversion dialog
+          resolves: rhbz#1340407
+        - p2v: spinner should be hidden when it stops spinning
+          resolves: rhbz#1341564
+        - p2v: ethtool command is not supported on p2v client
+          resolves: rhbz#1341608
+        - p2v: Add ifconfig command to ISO
+          resolves: rhbz#1342447
+        - p2v: Warn if virt-p2v-make-disk used on a partition
+          resolves: rhbz#1342337
+        - Build using OCaml with fix for CVE-2015-8869.
+          resolves: rhbz#1343101
+        - customize: Add --uninstall option (upstream 1343375)
+        - p2v: Document permissions on id_rsa file
+          resolves: rhbz#1343414
+        - p2v: Print full curl error message
+          resolves: rhbz#1343423
+        - get-kernel: Fix --format auto
+          resolves: rhbz#1341984
+        - v2v: Provide better <Origin/> information to RHEV-M
+          resolves: rhbz#1342398
+        - customize: Give an error if --truncate-recursive path does not exist
+          resolves: rhbz#1345809
+        - sysprep: Add --network option so that --install option can be used
+          resolves: rhbz#1345813
+        - p2v: Print proper error if incorrect password is given
+          resolves: rhbz#1227599
+        - p2v: Print ssh error if incorrect hostname is given
+          resolves: rhbz#1167916
+        - p2v: Display progress of operation in non-GUI mode
+          resolves: rhbz#1229386
+        - p2v: Add a dialog confirming the user really means to cancel
+          resolves: rhbz#1340464
+        - p2v: log window should process colour escapes and backspaces
+          resolves: rhbz#1314244
+        - v2v: Fix installation of virtio drivers with *.dll files
+          resolves: rhbz#1311373
+        - p2v: Improve error message when ssh login to conversion server fails
+          resolves: rhbz#1348900
+        - v2v: Remove --dcpath parameter from manual
+          resolves: rhbz#1315237
+        - v2v: Fix conversion of guests with floppy drives
+          resolves: rhbz#1309706
+        - p2v: Better error when sudo requires a password
+          resolves: rhbz#1340809
+        - v2v: Refuse to convert if there is < 1GB free in temporary directory
+          resolves: rhbz#1316479
+        - inspection: Get Windows drive letters for GPT disks
+          resolves: rhbz#1349237
+        - p2v: Add disk utils and display serial number of disks
+          resolves: rhbz#855058
+        - p2v: Fix timeout error when connecting to unresponsive ssh server
+          resolves: rhbz#1350363
+        - Remove external dependency generator.  Use supermin RPM deps instead.
+          related: rhbz#1309796
+        - p2v: Flush messages to the journal immediately
+          resolves: rhbz#1229386
+        - customize: Fix --install on ppc64le
+          resolves: rhbz#1264835
+        - lib: Fix finding icons in Windows 7 64 bit guests
+          resolevs: rhbz#1352761
+        - v2v: Add virsh --quiet flag when running virt-v2v --quiet
+          resolves: rhbz#1358142
+        - lib: Fix inspection of ISOs with latest libosinfo
+          resolves: rhbz#1359652
+        - dib: Fix run_command exit handlers on failure
+          resolves: rhbz#1362357
+        - dib: Rework run of extra-data.d hooks
+          resolves: rhbz#1362354
+        - Miscellaneous fixes to man pages and --help output
+          resolves: rhbz#1362668
+        - lib: Specify backing format for read-only files
+          resolves: rhbz#1354335
+        - Fix --selinux-relabel option
+          resolves: rhbz#1362669
+        - sparsify: Fix --in-place option with UEFI guest
+          resolves: rhbz#1364347
+        - p2v: Use latest linux-firmware in ISO
+          resolves: rhbz#1364419
+        - v2v: Fix guest name when using -i disk
+          resolves: rhbz#1365005
+        - p2v: Fix GUI message.
+        - v2v: Make fstrim message clearer
+          resolves: rhbz#1366456
+        - v2v: Fix conversion of UEFI guests when Secure Boot OVMF installed
+          resolves: rhbz#1367615
+        - lib: Fix assert-fail if port is missing in libvirt XML
+          resolves: rhbz#1370424
     FixedIn:
         - Module: null
           Name: libguestfs

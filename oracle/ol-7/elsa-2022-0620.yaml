@@ -1,6 +1,51 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.59.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.59.1]
+        - Revert 'Merge: Fix tasks stuck in IO waiting for buffer_head lock' (Rado Vrbovsky) [2030609]
+
+        [3.10.0-1160.58.1]
+        - Bluetooth: fix use-after-free error in lock_sock_nested() (Gopal Tiwari) [2005687]
+        - drm/vmwgfx: Fix stale file descriptors on failed usercopy (Dave Airlie) [2047597] {CVE-2022-22942}
+
+        [3.10.0-1160.57.1]
+        - fix regression in 'epoll: Keep a reference on files added to the check list' (Carlos Maiolino) [2042760] {CVE-2020-0466}
+        - epoll: Keep a reference on files added to the check list (Carlos Maiolino) [2042760] {CVE-2020-0466}
+        - drm/i915: Flush TLBs before releasing backing store (Dave Airlie) [2044319] {CVE-2022-0330}
+
+        [3.10.0-1160.56.1]
+        - RDMA/mlx5: Fix access to wrong pointer while performing flush due to error (Kamal Heib) [1984070]
+        - af_unix: fix garbage collect vs MSG_PEEK (William Zhao) [2031970] {CVE-2021-0920}
+        - selinux: fix race condition when computing ocontext SIDs (Ondrej Mosnacek) [2040196]
+        - Bluetooth: fix the erroneous flush_work() order (Chris von Recklinghausen) [1964556] {CVE-2021-3564}
+
+        [3.10.0-1160.55.1]
+        - SUNRPC: Fix null rpc_clnt dereference in rpc_task_queued tracepoint (Benjamin Coddington) [2039508]
+        - buffer: eliminate the need to call free_more_memory() in __getblk_slow() (Carlos Maiolino) [2030609]
+        - buffer: grow_dev_page() should use __GFP_NOFAIL for all cases (Carlos Maiolino) [2030609]
+        - buffer: have alloc_page_buffers() use __GFP_NOFAIL (Carlos Maiolino) [2030609]
+        - net: add READ_ONCE() annotation in __skb_wait_for_more_packets() (Sabrina Dubroca) [2033561]
+        - efi: Decode IA32/X64 Context Info structure (Aristeu Rozanski) [1950302]
+        - efi: Decode IA32/X64 MS Check structure (Aristeu Rozanski) [1950302]
+        - efi: Decode additional IA32/X64 Bus Check fields (Aristeu Rozanski) [1950302]
+        - efi: Decode IA32/X64 Cache, TLB, and Bus Check structures (Aristeu Rozanski) [1950302]
+        - efi: Decode UEFI-defined IA32/X64 Error Structure GUIDs (Aristeu Rozanski) [1950302]
+        - efi: Decode IA32/X64 Processor Error Info Structure (Aristeu Rozanski) [1950302]
+        - efi: Decode IA32/X64 Processor Error Section (Aristeu Rozanski) [1950302]
+        - efi: Fix IA32/X64 Processor Error Record definition (Aristeu Rozanski) [1950302]
+        - HID: core: Sanitize event code and type when mapping input (Aristeu Rozanski) [1920848] {CVE-2020-0465}
+
+        [3.10.0-1160.54.1]
+        - block: queue lock must be acquired when iterating over rls (Ming Lei) [2029574]
+        - Bluetooth: use correct lock to prevent UAF of hdev object (Chris von Recklinghausen) [1968211] {CVE-2021-3573}
+        - xfs: map unwritten blocks in XFS_IOC_{ALLOC,FREE}SP just like fallocate (Carlos Maiolino) [2034857] {CVE-2021-4155}
     FixedIn:
         - Module: null
           Name: bpftool

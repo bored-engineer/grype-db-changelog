@@ -1,6 +1,33 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        abrt
+        [2.0.8-26.0.1.el6_6.1]
+        - Add abrt-oracle-enterprise.patch to be product neutral
+        - Remove abrt-plugin-rhtsupport dependency for cli and desktop
+        - Make abrt Obsoletes/Provides abrt-plugin-rhtsupprot
+
+        [2.0.8-26.el6_6.1]
+        - remove old dump directories in upgrade
+        - remove outdated rmp scriptlets
+        - daemon: allow only root to submit CCpp, Koops, VMCore and Xorg problems
+        - abrt-action-install-debuginfo-to-abrt-cache: sanitize arguments and umask
+        - make the problem directories owned by abrt and the group root
+        - validate uploaded problem directories in abrt-handle-upload
+        - don't override nor remove files with user core dump files
+        - fix symbolic link and race condition flaws
+        - Resolves: #1211966
+
+        libreport
+        [2.0.9-21.0.1.el6_6.1]
+        - Add oracle-enterprise.patch and oracle-enterprise-po.patch
+        - Remove libreport-plugin-rhtsupport pkg
+
+        [2.0.9-21.el6_6.1]
+        - switch dump directory owner from 'abrt:user' to 'user:abrt' (rhbz#1212093)
+        - harden against directory traversal, crafted symbolic links (rhbz#1212093)
+        - avoid race-conditions in dump dir opening (rhbz#1212093)
+        - Resolves: #1211966
     FixedIn:
         - Module: null
           Name: abrt

@@ -1,6 +1,37 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        libguestfs
+        [1:1.38.4-10.0.1]
+        - Config supermin to use host yum.conf in ol8 [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        [1:1.38.4-10.1]
+        - Fix inspection of partition-less devices
+          resolves: rhbz#1714747
+
+        libssh2
+        [1.8.0-7.el8_0.1]
+        - fix integer overflow in keyboard interactive handling that allows out-of-bounds writes (CVE-2019-3863)
+        - fix integer overflow in SSH packet processing channel resulting in out of bounds write (CVE-2019-3857)
+        - fix integer overflow in keyboard interactive handling resulting in out of bounds write (CVE-2019-3856)
+        - fix integer overflow in transport read resulting in out of bounds write (CVE-2019-3855)
+
+        libvirt
+        [4.5.0-23.1.0.1.el8]
+        - added librbd1 as dependency (Keshav Sharma)
+
+        [4.5.0-23.1.el8]
+        - cpu_x86: Do not cache microcode version (CVE-2018-12130, CVE-2018-12126, CVE-2018-11091, CVE-2018-12127)
+        - qemu: Don't cache microcode version (CVE-2018-12130, CVE-2018-12126, CVE-2018-11091, CVE-2018-12127)
+        - cputest: Add data for Intel(R) Xeon(R) CPU E3-1225 v5 (CVE-2018-12130, CVE-2018-12126, CVE-2018-11091, CVE-2018-12127)
+        - cpu_map: Define md-clear CPUID bit (CVE-2018-12130, CVE-2018-12126, CVE-2018-11091, CVE-2018-12127)
+
+        qemu-kvm
+        [2.12.0-64.el8.0.0.2]
+        - Bump release version to fix the versioning problem (zstream release lower than ystream).
+        - Resolves: bz#1704545
+          (CVE-2018-12126 virt:rhel/qemu-kvm: hardware: Microarchitectural Store Buffer Data Sampling [rhel-8.0.0.z])
     FixedIn:
         - Module: virt:ol
           Name: hivex

@@ -1,6 +1,31 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.2.6p5-22]
+        - check origin timestamp before accepting KoD RATE packet (CVE-2015-7704)
+        - allow only one step larger than panic threshold with -g (CVE-2015-5300)
+
+        [4.2.6p5-20]
+        - validate lengths of values in extension fields (CVE-2014-9297)
+        - drop packets with spoofed source address ::1 (CVE-2014-9298)
+        - reject packets without MAC when authentication is enabled (CVE-2015-1798)
+        - protect symmetric associations with symmetric key against DoS attack (CVE-2015-1799)
+        - fix generation of MD5 keys with ntp-keygen on big-endian systems (CVE-2015-3405)
+        - add option to set Differentiated Services Code Point (DSCP) (#1202828)
+        - add nanosecond support to SHM refclock (#1117702)
+        - allow creating all SHM segments with owner-only access (#1122012)
+        - allow different thresholds for forward and backward step (#1193154)
+        - allow symmetric keys up to 32 bytes again (#1191111)
+        - don't step clock for leap second with -x option (#1191122)
+        - don't drop packets with source port below 123 (#1171640)
+        - retry joining multicast groups (#1207014)
+        - increase memlock limit again (#1053569)
+        - warn when monitor can't be disabled due to limited restrict (#1191108)
+        - use larger RSA exponent in ntp-keygen (#1191116)
+        - fix crash in ntpq mreadvar command (#1180721)
+        - move sntp kod database to allow SELinux labeling (#1082934)
+        - fix typos in ntpd man page (#1195211)
+        - improve documentation of restrict command (#1213953)
     FixedIn:
         - Module: null
           Name: ntp

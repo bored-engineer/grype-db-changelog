@@ -1,6 +1,60 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.31.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.31.1]
+        - mm/userfaultfd: do not access vma->vm_mm after calling handle_userfault() (Philipp Rudo) [1917840]
+        - scsi: qla2xxx: Fix the call trace for flush workqueue (Nilesh Javali) [1937945]
+        - futex: Handle faults correctly for PI futexes (Donghai Qiao) [1935108] {CVE-2021-3347}
+        - futex: Provide and use pi_state_update_owner() (Donghai Qiao) [1935108] {CVE-2021-3347}
+        - futex: Replace pointless printk in fixup_owner() (Donghai Qiao) [1935108] {CVE-2021-3347}
+        - futex: Ensure the correct return value from futex_lock_pi() (Donghai Qiao) [1935108] {CVE-2021-3347}
+        - scsi: qla2xxx: Remove WARN_ON_ONCE in qla2x00_status_cont_entry() (Nilesh Javali) [1933784]
+        - scsi: zfcp: add handling for FCP_RESID_OVER to the fcp ingress path (Philipp Rudo) [1917839]
+        - net: netfilter: Avoid deadlock when loading logger backend (Phil Sutter) [1858329]
+        - net: netfilter: Link nfnetlink into bzImage (Phil Sutter) [1858329]
+
+        [3.10.0-1160.30.1]
+        - pf: Prohibit alu ops for pointer types not defining ptr_limit (Jiri Olsa) [1942689] {CVE-2020-27170}
+        - bpf: Add sanity check for upper ptr_limit (Jiri Olsa) [1942689] {CVE-2020-27170}
+        - bpf: Simplify alu_limit masking for pointer arithmetic (Jiri Olsa) [1942689] {CVE-2020-27170}
+        - bpf: Fix off-by-one for area size in creating mask to left (Jiri Olsa) [1942689] {CVE-2020-27170}
+        - netxen_nic: fix MSI/MSI-x interrupts (Tony Camuso) [1894274]
+        - block: fix use-after-free on cached last_lookup partition (Ming Lei) [1898596]
+        - mm: reduce struct page_cgroup overhead when page_owner is not enabled (Rafael Aquini) [1948451]
+        - vt: selection, close sel_buffer race (Chris von Recklinghausen) [1831034] {CVE-2020-8648}
+
+        [3.10.0-1160.29.1]
+        - drm/i915: warn on guc enable about CVE (Dave Airlie) [1935277] {CVE-2020-12362}
+        - sched: prevent divide by zero error in scale_rt_power() (Phil Auld) [1910763]
+        - x86/efi: reset the correct tlb_state in efi_switch_mm() (Rafael Aquini) [1837531]
+        - x86/mm, sched/core: Turn off IRQs in switch_mm() (Rafael Aquini) [1837531]
+        - x86/mm, sched/core: Uninline switch_mm() (Rafael Aquini) [1837531]
+        - x86/mm: Build arch/x86/mm/tlb.c even on !SMP (Rafael Aquini) [1837531]
+        - hpsa: fix regression issue for old controllers (Joseph Szczypek) [1830268]
+        - scsi: hpsa: Correct dev cmds outstanding for retried cmds (Joseph Szczypek) [1830268]
+
+        [3.10.0-1160.28.1]
+        - i40e: acquire VSI pointer only after VF is initialized (Stefan Assmann) [1886003]
+        - ACPICA: Store GPE register enable masks upfront (Al Stone) [1883174]
+        - netfilter: nf_tables: validate NFTA_SET_TABLE parameter (Phil Sutter) [1873171]
+        - sctp: change to hold/put transport for proto_unreach_timer (Xin Long) [1707184]
+
+        [3.10.0-1160.27.1]
+        - video: hyperv: hyperv_fb: Obtain screen resolution from Hyper-V host (Mohammed Gamal) [1941841]
+        - Drivers: hv: vmbus: enable VMBus protocol version 5.0 (Mohammed Gamal) [1941841]
+        - redhat: Add git suffix to realtime_check merge_tree (Juri Lelli)
+
+        [3.10.0-1160.26.1]
+        - selinux: fix deadlock in security_set_bools() (Ondrej Mosnacek) [1939091]
+        - md: fix md io stats accounting broken (Ming Lei) [1927106]
+        - redhat: Fix realtime_check for -private (Juri Lelli)
     FixedIn:
         - Module: null
           Name: bpftool

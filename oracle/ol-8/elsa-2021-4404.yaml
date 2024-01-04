@@ -1,6 +1,68 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.0.20-57.0.3]
+        - Merge 8.4 extra patches for SB boot environment [Orabug: 33512440]
+
+        [2.0.20-57.0.2]
+        - Merge SRPM/ol8-u4 orabug patches into SRPM/ol8-u5 [Orabug: 33471981]
+
+        [2.0.20-57.0.1]
+        - makedumpfile: Add support for newer kernels up to v5.12 [Orabug: 33250117]
+
+        [2.0.20-57]
+        - kdumpctl: enable secure boot on ppc64le LPARs
+
+        [2.0.20-56]
+        - kdumpctl: fix a typo
+
+        [2.0.20-55]
+        - kdump/ppc64: migration action registration clean up
+
+        [2.0.20-54]
+        - kdump/ppc64: rebuild initramfs image after migration
+        - Check the existence of /sys/bus/ccwgroup/devices/*/online beforehand
+        - kdump.sysconfig.s390: Remove 'prot_virt' from kdump kernel cmdline
+
+        [2.0.20-53]
+        - check for invalid physical address of /proc/kcore when making ELF dumpfile
+        - check for invalid physical address of /proc/kcore when finding max_paddr
+        - fix format issue in find_online_znet_device
+        - check the existence of /sys/bus/ccwgroup/devices before trying to find online network device
+        - kdump-lib.sh: fix a warning in prepare_kdump_bootinfo()
+
+        [2.0.20-52]
+        - Write to /var/lib/kdump if  not writable
+        - Iterate /sys/bus/ccwgroup/devices to tell if we should set up rd.znet
+        - mkdumprd: display the absolute path of dump location in the check_user_configured_target()
+
+        [2.0.20-51]
+        - Stop reloading kdump service on CPU hotplug event for FADump
+        - fadump: improve fadump-howto.txt about remote dump target setup
+
+        [2.0.20-50]
+        - rd.route should use the name from kdump_setup_ifname
+        - get kdump ifname once in kdump_install_netdev
+
+        [2.0.20-49]
+        - kdump-lib.sh: fix the case if no enough total RAM for kdump  in get_recommend_size()
+
+        [2.0.20-48]
+        - kdumpctl: Add kdumpctl estimate
+        - mkdumprd: make use of the new get_luks_crypt_dev helper
+        - kdump-lib.sh: introduce a helper to get all crypt dev used by kdump
+        - kdump-lib.sh: introduce a helper to get underlying crypt device
+        - RHEL-only: keep total memory size coherent to RHEL-only kernel patch
+        - Show write byte size in report messages
+        - Add shorthand --show-stats option to show report stats
+        - Add --dry-run option to prevent writing the dumpfile
+        - kdump-lib.sh: introduce functions to return recommened mem size
+
+        [2.0.20-47]
+        - Implement IP netmask calculation to replace 'ipcalc -m'
+        - kdumpctl: fix check_config error when kdump.conf is empty
+        - Fix incorrect vmcore permissions when dumped through ssh
+        - Fix incorrect permissions on kdump dmesg file
     FixedIn:
         - Module: null
           Name: kexec-tools

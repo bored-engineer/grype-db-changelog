@@ -1,6 +1,42 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [7.29.0-35]
+        - fix incorrect use of a previously loaded certificate from file
+          (related to CVE-2016-5420)
+
+        [7.29.0-34]
+        - acknowledge the --no-sessionid/CURLOPT_SSL_SESSIONID_CACHE option
+          (required by the fix for CVE-2016-5419)
+
+        [7.29.0-33]
+        - fix re-using connections with wrong client cert (CVE-2016-5420)
+        - fix TLS session resumption client cert bypass (CVE-2016-5419)
+
+        [7.29.0-32]
+        - configure: improve detection of GCC's -fvisibility= flag
+
+        [7.29.0-31]
+        - prevent curl_multi_wait() from missing an event (#1347904)
+
+        [7.29.0-30]
+        - curl.1: --disable-{eprt,epsv} are ignored for IPv6 hosts (#1305974)
+
+        [7.29.0-29]
+        - SSH: make CURLOPT_SSH_PUBLIC_KEYFILE treat '' as NULL (#1275769)
+
+        [7.29.0-28]
+        - prevent NSS from incorrectly re-using a session (#1269855)
+        - call PR_Cleanup() in the upstream test-suite if NSPR is used (#1243324)
+        - disable unreliable upstream test-case 2032 (#1241168)
+
+        [7.29.0-27]
+        - SSH: do not require public key file for user authentication (#1275769)
+
+        [7.29.0-26]
+        - implement 'curl --unix-socket' and CURLOPT_UNIX_SOCKET_PATH (#1263318)
+        - improve parsing of URL-encoded user name and password (#1260178)
+        - prevent test46 from failing due to expired cookie (#1258834)
     FixedIn:
         - Module: null
           Name: curl

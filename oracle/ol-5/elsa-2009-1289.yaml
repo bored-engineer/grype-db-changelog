@@ -1,6 +1,26 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [5.0.77-3]
+        - Add fix for CVE-2009-2446 (format string vulnerability in COM_CREATE_DB and
+          COM_DROP_DB processing)
+        Resolves: #512200
+
+        [5.0.77-2]
+        - Back-port upstream fix for CVE-2008-4456 (mysql command line client XSS flaw)
+        Resolves: #502169
+
+        [5.0.77-1]
+        - Update to MySQL 5.0.77, for numerous fixes described at
+          http://dev.mysql.com/doc/refman/5.0/en/releasenotes-cs-5-0-77.html
+          including low-priority security issues CVE-2008-2079, CVE-2008-3963
+        Resolves: #448487, #448534, #452824, #453156, #455619, #456875
+        Resolves: #457218, #462534, #470036, #476896, #479615
+        - Improve mysql.init to pass configured datadir to mysql_install_db,
+          and to force user=mysql for both mysql_install_db and mysqld_safe.
+        Resolves: #450178
+        - Fix mysql.init to wait correctly when socket is not in default place
+        Resolves: #435494
     FixedIn:
         - Module: null
           Name: mysql

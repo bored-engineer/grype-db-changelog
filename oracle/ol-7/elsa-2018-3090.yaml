@@ -1,6 +1,26 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [20180508-3.gitee3198e672e2.el7]
+        - ovmf-redhat-provide-virtual-bundled-OpenSSL-in-OVMF.patch [bz#1607792]
+        - Resolves: bz#1607792
+          (add 'Provides: bundled(openssl) = 1.1.0h' to the spec file)
+
+        [20180508-2.gitee3198e672e2]
+        - OvmfPkg/PlatformBootManagerLib: connect consoles unconditionally [bz#1577546]
+        - build OVMF varstore template with SB enabled / certs enrolled [bz#1561128]
+        - connect Virtio RNG devices again [bz#1579518]
+        - Resolves: bz#1577546
+          (no input consoles connected under certain circumstances)
+        - Resolves: bz#1561128
+          (OVMF Secure boot enablement (enrollment of default keys))
+        - Resolves: bz#1579518
+          (EFI_RNG_PROTOCOL no longer produced for virtio-rng)
+
+        [20180508-1.gitee3198e672e2]
+        - Rebase to [bz#1559542]
+        - Resolves: bz#1559542
+          (Rebase OVMF for RHEL-7.6)
     FixedIn:
         - Module: null
           Name: OVMF

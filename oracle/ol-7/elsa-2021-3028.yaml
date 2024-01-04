@@ -1,6 +1,24 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2:2.1-73.11.0.1]
+        - for Intel, do not trigger load if on-disk microcode is not an update [Orabug: 30634727]
+        - set early_microcode='no' in virtualized guests to avoid early load bugs [Orabug: 30618736]
+        - ensure late loading fixes are present on 4.1.12-* and 4.14.35-*
+        - enable early and late load for 5.4.17-*
+        - enable early loading for 06-4f-01 caveat
+        - remove no longer appropriate caveats for 06-2d-07 and 06-55-04
+
+        [2:2.1-73.11]
+        - Update Intel CPU microcode to microcode-20210608 release:
+          - Fixes in releasenote.md file.
+
+        [2:2.1-73.10]
+        - Make intel-06-2d-07, intel-06-4e-03, intel-06-4f-01, intel-06-55-04,
+          intel-06-5e-03, intel-06-8c-01, intel-06-8e-9e-0x-0xca,
+          and intel-06-8e-9e-0x-dell caveats dependent on intel caveat.
+        - Enable 06-8c-01 microcode update by default.
+        - Enable 06-5e-03 microcode update by default (#1897684).
     FixedIn:
         - Module: null
           Name: microcode_ctl

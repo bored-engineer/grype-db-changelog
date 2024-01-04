@@ -1,6 +1,17 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.4.3-44]
+        - add patch adapted from upstream (patch 208) to add support for building
+        against system expat; add --with-system-expat to configure invocation; remove
+        embedded copy of expat-1.95.8 from the source tree during prep
+        - ensure pyexpat.so gets built by explicitly listing all C modules in the
+        payload in %files, rather than using dynfiles
+        Resolves: CVE-2009-3720
+        - backport three security fixes to 2.4 (patches 209, 210, 211):
+        Resolves: CVE-2011-1521
+        Resolves: CVE-2011-1015
+        Resolves: CVE-2010-3493
     FixedIn:
         - Module: null
           Name: python

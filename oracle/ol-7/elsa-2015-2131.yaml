@@ -1,6 +1,45 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.4.40-8]
+        - NSS does not support string ordering (#1231522)
+        - implement and correct order of parsing attributes (#1231522)
+        - add multi_mask and multi_strength to correctly handle sets of attributes (#1231522)
+        - add new cipher suites and correct AES-GCM attributes (#1245279)
+        - correct DEFAULT ciphers handling to exclude eNULL cipher suites (#1245279)
+
+        [2.4.40-7]
+        - Merge two MozNSS cipher suite definition patches into one. (#1245279)
+        - Use what NSS considers default for DEFAULT cipher string. (#1245279)
+        - Remove unnecesary defaults from ciphers' definitions (#1245279)
+
+        [2.4.40-6]
+        - fix: OpenLDAP shared library destructor triggers memory leaks in NSPR (#1249977)
+
+        [2.4.40-5]
+        - enhancement: support TLS 1.1 and later (#1231522,#1160467)
+        - fix: openldap ciphersuite parsing code handles masks incorrectly (#1231522)
+        - fix the patch in commit da1b5c (fix: OpenLDAP crash in NSS shutdown handling) (#1231228)
+
+        [2.4.40-4]
+        - fix: rpm -V complains (#1230263) -- make the previous fix do what was intended
+
+        [2.4.40-3]
+        - fix: rpm -V complains (#1230263)
+
+        [2.4.40-2]
+        - fix: missing frontend database indexing (#1226600)
+
+        [2.4.40-1]
+        - new upstream release (#1147982)
+        - fix: PIE and RELRO check (#1092562)
+        - fix: slaptest doesn't convert perlModuleConfig lines (#1184585)
+        - fix: OpenLDAP crash in NSS shutdown handling (#1158005)
+        - fix: slapd.service may fail to start if binding to NIC ip (#1198781)
+        - fix: deadlock during SSL_ForceHandshake when getting connection to replica (#1125152)
+        - improve check_password (#1174723, #1196243)
+        - provide an unversioned symlink to check_password.so.1.1 (#1174634)
+        - add findutils to requires (#1209229)
     FixedIn:
         - Module: null
           Name: openldap

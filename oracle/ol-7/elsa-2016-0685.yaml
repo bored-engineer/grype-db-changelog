@@ -1,6 +1,55 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nspr
+        [4.11.0-1]
+        - Rebase to NSPR 4.11
+
+        nss
+        [3.21.0-9.0.1]
+        - Added nss-vendor.patch to change vendor
+
+        [3.21.0-9]
+        - Rebuild to require the latest nss-util build and nss-softokn build.
+
+        [3.21.0-8]
+        - Update the minimum nss-softokn build required at runtime.
+
+        [3.21.0-7]
+        - Delete duplicates from one table
+
+        [3.21.0-6]
+        - Fix missing support for sha384/dsa in certificate_request
+
+        [3.21.0-5]
+        - Fix the SigAlgs sent in certificate_request
+
+        [3.21.0-4]
+        - Ensure all ssl.sh tests are executed
+        - Update sslauth test patch to run additional tests
+
+        [3.21.0-2]
+        - Fix sha384 support and testing patches
+
+        [3.21.0-1]
+        - Rebase to NSS-3.21
+        - Resolves: Bug 1310581
+
+        nss-softokn
+        [3.16.2.3-14.2]
+        - Adjust for a renamed variable in newer nss-util, require a compatible nss-util version.
+
+        [3.16.2.3-14.1]
+        - Pick up a bugfix related to fork(), to avoid a regression with NSS 3.21
+
+        [3.16.2.3-14]
+        - Pick up upstream freebl patch for CVE-2015-2730
+        - Check for P == Q or P ==-Q before adding P and Q
+
+        nss-util
+        [3.21.0-2.2]
+        - Rebase to nss-util from nss 3.21
+        - Add aliases for naming compatibility with prior release
     FixedIn:
         - Module: null
           Name: nspr

@@ -1,6 +1,100 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.28-151.0.1.el8_4]
+        - merge RH patches for ol8-u4 release
+        Review-exception: Patch merge
+        - Provide glibc.pthread.mutex_spin_count tunable for pthread adaptive
+        - spin mutex
+        Orabug: 27982358.
+        Reviewed-by: Qing Zhao <qing.zhao@oracle.com>
+        - add Ampere emag  to tunable cpu list (Patrick McGehearty)
+        - add optimized memset for emag
+        - add an ASIMD variant of strlen for falkor
+        - Orabug: 2700101.
+        - Modify glibc-ora28849085.patch so it works with RHCK kernels.
+        - Orabug: 28849085.
+        - Make _IO_funlockfile match __funlockfile and _IO_flockfile match __flockfile
+        - Both should test
+        -   if (stream->_flags & _IO_USER_LOCK) == 0)
+        -     _IO_lock_lock (*stream->_lock);
+        - OraBug: 28481550.
+        Reviewed-by: Qing Zhao <qing.zhao@oracle.com>
+
+        [2.28-153]
+        - Support SEM_STAT_ANY via semctl. Return EINVAL for unknown commands to semctl,
+          msgctl, and shmctl. (#1912670)
+
+        [2.28-151]
+        - CVE-2019-9169: Fix buffer overread in regexec.c (#1685400).
+
+        [2.28-150]
+        - Rebuild glibc to update security markup metadata (#1931305)
+
+        [2.28-149]
+        - Fix NSS files and compat service upgrade defect (#1927040).
+
+        [2.28-148]
+        - CVE-2021-3326: iconv assertion failure in ISO-2022-JP-3 decoding (#1924919)
+
+        [2.28-147]
+        - x86-64: Fix FMA4 math routine selection after bug 1817513 (#1918115)
+
+        [2.28-146]
+        - CVE-2019-25013:Fix buffer overrun in EUC-KR conversion module (#1912544)
+
+        [2.28-145]
+        - Update glibc-hwcaps fix from upstream (#1817513)
+
+        [2.28-144]
+        - Support running libc.so.6 as a main program in more cases (#1882466)
+
+        [2.28-142]
+        - Add glibc-hwcaps support (#1817513)
+        - Implement DT_AUDIT support (#1871385)
+
+        [2.28-141]
+        - Update Intel CET support (#1855790)
+
+        [2.28-140]
+        - Fix calling lazily-bound SVE-using functions on AArch64 (#1893662)
+
+        [2.28-139]
+        - CVE-2016-10228, CVE-2020-27618: Fix infinite loops in iconv (#1704868,
+
+        [2.28-138]
+        - Avoid comments after %endif in the RPM spec file (#1894340)
+
+        [2.28-137]
+        - x86: Further memcpy optimizations for AMD Zen (#1880670)
+
+        [2.28-136]
+        - Allow __getauxval in testsuite check (#1856398)
+
+        [2.28-135]
+        - Use -moutline-atomics for aarch64 (#1856398)
+
+        [2.28-134]
+        - resolv: Handle DNS transaction ID collisions (#1868106)
+
+        [2.28-133]
+        - x86: Update auto-tuning of memcpy non-temporal threshold (#1880670)
+
+        [2.28-132]
+        - Fix fgetsgent_r data corruption bug (#1871397)
+
+        [2.28-131]
+        - Improve IBM zSeries (s390x) Performance (#1871395)
+
+        [2.28-130]
+        - Fix avx2 strncmp offset compare condition check (#1871394)
+        - Add strncmp and strcmp testcases for page boundary
+
+        [2.28-129]
+        - Improve IBM POWER9 architecture performance (#1871387)
+
+        [2.28-128]
+        - Enable glibc for POWER10 (#1845098)
     FixedIn: []
     Link: https://linux.oracle.com/errata/ELSA-2021-9280.html
     Metadata:

@@ -1,6 +1,25 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.4.0-14.0.1.el7_3.6]
+        - Blank out header-logo.png product-name.png
+          Replace login-screen-logo.png [20362818]
+
+        [4.4.0-14.6]
+        - Resolves: #1416488 replication race condition prevents IPA to install
+          - wait_for_entry: use only DN as parameter
+          - Wait until HTTPS principal entry is replicated to replica
+          - Use proper logging for error messages
+
+        [4.4.0-14.5]
+        - Resolves: #1410760 ipa-ca-install fails on replica when IPA Master is
+          installed without CA
+          - Set up DS TLS on replica in CA-less topology
+        - Resolves: #1413137 CVE-2017-2590 ipa: Insufficient permission check for
+          ca-del, ca-disable and ca-enable commands
+          - ca: correctly authorise ca-del, ca-enable and ca-disable
+        - Resolves: #1416481 IPA replica install fails with dirsrv errors.
+          - Do not configure PKI ajp redirection to use '::1'
     FixedIn:
         - Module: null
           Name: ipa-admintools

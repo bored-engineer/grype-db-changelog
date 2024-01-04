@@ -1,6 +1,31 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.02-0.33.0.1]
+        - Fix comparison in patch for 18504756
+        - Remove symlink to grub environment file during uninstall on EFI platforms
+          [bug 19231481]
+        - update Oracle Linux certificates (Alexey Petrenko)
+        - Put 'with' in menuentry instead of 'using' [bug 18504756]
+        - Use different titles for UEK and RHCK kernels [bug 18504756]
+
+        [2.02-0.33]
+        - Don't remove 01_users, it's the wrong thing to do.
+          Related:rhbz1290089
+
+        [2.02-0.32]
+        - Rebuild for .z so the release number is different.
+          Related: rhbz#1290089
+
+        [2.02-0.31]
+        - More work on handling of GRUB2_PASSWORD
+          Resolves: rhbz#1290089
+
+        [2.02-0.30]
+        - Fix security issue when reading username and password
+          Resolves: CVE-2015-8370
+        - Do a better job of handling GRUB_PASSWORD
+          Resolves: rhbz#1290089
     FixedIn:
         - Module: null
           Name: grub2

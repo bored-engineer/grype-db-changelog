@@ -1,6 +1,26 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:11.0.16.0.8-1.0.1]
+        - link atomic for ix86 build
+
+        [1:11.0.16.0.8-1]
+        - Update to jdk-11.0.16+8
+        - Update release notes to 11.0.16+8
+        - Use same tarball naming style as java-17-openjdk and java-latest-openjdk
+        - Drop JDK-8284920 patch now upstreamed
+        - Print release file during build, which should now include a correct SOURCE value from .src-rev
+        - Update tarball script with IcedTea GitHub URL and .src-rev generation
+        - Use 'git apply' with patches in the tarball script to allow binary diffs
+        - Include script to generate bug list for release notes
+        - Update tzdata requirement to 2022a to match JDK-8283350
+        - Make use of the vendor version string to store our version & release rather than an upstream release date
+        - Explicitly require crypto-policies during build and runtime for system security properties
+        - Resolves: rhbz#2106510
+
+        [1:11.0.16.0.8-1]
+        - Add additional patch during tarball generation to align tests with ECC changes
+        - Related: rhbz#2106510
     FixedIn:
         - Module: null
           Name: java-11-openjdk

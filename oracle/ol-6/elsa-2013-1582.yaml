@@ -1,6 +1,69 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.6.6-51]
+        - Fixed memory leak in _ssl._get_peer_alt_names
+        Resolves: rhbz#1002983
+
+        [2.6.6-50]
+        - Added fix for CVE-2013-4238
+        Resolves: rhbz#998784
+
+        [2.6.6-49]
+        - Fix shebangs in several files in python-tools subpackage
+        Resolves: rhbz#521898
+
+        [2.6.6-48]
+        - Fix sqlite3.Cursor.lastrowid under a Turkish locale.
+        Resolves: rhbz#841937
+
+        [2.6.6-47]
+        - Urlparse now parses query and fragment of urls for any scheme.
+        Resolves: rhbz#978129
+
+        [2.6.6-46]
+        - Add wrapper for select.select to restart a system call
+        Resolves: rhbz#948025
+
+        [2.6.6-45]
+        - Add try-except to catch OSError in WatchedFileHandler
+        Resolves: rhbz#919163
+
+        [2.6.6-44]
+        - Fix urandom to throw proper exception
+        Resolves: rhbz#893034
+
+        [2.6.6-43]
+        - Backport of collections.OrderedDict from Python 2.7
+        Resolves: rhbz#929258
+
+        [2.6.6-42]
+        - Add an explicit RPATH to _elementtree.so pointing at the directory
+        containing system expat
+        Resolves: rhbz#962779
+
+        [2.6.6-41]
+        - Don't let failed incoming SSL connection stay open forever
+        Resolves: rhbz#960168
+
+        [2.6.6-40]
+        - Fix Python not reading Alternative Subject Names from some SSL
+        certificates
+        Resolves: rhbz#928390
+
+        [2.6.6-39]
+        - Remove BOM insertion code from SysLogHandler that causes messages to be
+        treated as EMERG level
+        Resolves: rhbz#845802
+
+        [2.6.6-38]
+        - move most of the payload of the core package to the libs subpackage, given
+        that the libs aren't meaningfully usable without the standard libraries
+        - preserve timestamps when fixing shebangs (patch 158) and when installing,
+        to minimize .pyc/.pyo differences across architectures (due to the embedded
+        mtime in .pyc/.pyo headers)
+        - fix multilib issue in /usr/bin/modulator and /usr/bin/pynche
+        Related: rhbz#958256
     FixedIn:
         - Module: null
           Name: python

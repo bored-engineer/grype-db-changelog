@@ -1,6 +1,46 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:11.0.1.13-3.0.1]
+        - link atomic for ix86 build
+
+        [1:11.0.1.13-3]
+        - Bump release for rebuild.
+
+        [1:11.0.1.13-2]
+        - Use LTS designator in version output for RHEL.
+
+        [1:11.0.1.13-1]
+        - Update to October 2018 CPU release, 11.0.1+13.
+
+        [1:11.0.0.28-2]
+        - Use --with-vendor-version-string=18.9 so as to show original
+          GA date for the JDK.
+
+        [1:11.0.0.28-1]
+        - Identify as GA version and no longer as early access (EA).
+        - JDK 11 has been released for GA on 2018-09-25.
+
+        [1:11.0.ea.28-9]
+        - Rework changes from 1:11.0.ea.22-6. RHBZ#1632174 supercedes
+          RHBZ-1624122.
+        - Add patch, JDK-8210416-RHBZ-1632174-fdlibm-opt-fix.patch, so as to
+          optimize compilation of fdlibm library.
+        - Add patch, JDK-8210425-RHBZ-1632174-sharedRuntimeTrig-opt-fix.patch, so
+          as to optimize compilation of sharedRuntime{Trig,Trans}.cpp
+        - Add patch, JDK-8210647-RHBZ-1632174-libsaproc-opt-fix.patch, so as to
+          optimize compilation of libsaproc (extra c flags won't override
+          optimization).
+        - Add patch, JDK-8210761-RHBZ-1632174-libjsig-opt-fix.patch, so as to
+          optimize compilation of libjsig.
+        - Add patch, JDK-8210703-RHBZ-1632174-vmStructs-opt-fix.patch, so as to
+          optimize compilation of vmStructs.cpp (part of libjvm.so).
+        - Reinstate filtering of opt flags coming from redhat-rpm-config.
+
+        [1:11.0.ea.28-8]
+        - removed version less provides
+        - javadocdir moved to arched dir as it is no longer noarch
+        - Resolves: rhbz#1570856
     FixedIn:
         - Module: null
           Name: java-11-openjdk

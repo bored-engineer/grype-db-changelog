@@ -1,6 +1,31 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.302.b08-0]
+        - Update to aarch64-shenandoah-jdk8u302-b08 (EA)
+        - Update release notes for 8u302-b08.
+        - Switch to GA mode for final release.
+        - This tarball is embargoed until 2021-07-20 @ 1pm PT.
+        - Resolves: rhbz#1972395
+
+        [1:1.8.0.302.b07-0.0.ea]
+        - Update to aarch64-shenandoah-jdk8u302-b07 (EA)
+        - Update release notes for 8u302-b07.
+        - Switch to EA mode.
+        - Cleanup architecture handling
+        - Fixed not-including fastdebug build in case of --without fastdebug
+        - Re-order source files to sync with Fedora.
+        - Introduced nm based check to verify alt-java on x86_64 is patched, and no other alt-java or java is patched
+        - Patch600, rh1750419-redhat_alt_java.patch, amended to die, if it is used wrongly
+        - Introduced ssbd_arches with currently only valid arch of x86_64 to separate real alt-java architectures
+        - Use the 'reverse' build loop (debug first) as the main and only build loop to get more diagnostics.
+        - Remove restriction on disabling product build, as debug packages no longer have javadoc packages.
+        - Fix name of javadoc debug packages in Obsoletes declarations and add version where it was removed.
+        - Resolves: rhbz#1972395
+
+        [1:1.8.0.302.b07-0.0.ea]
+        - Add a test verifying system crypto policies can be disabled
+        - Resolves: rhbz#1972395
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

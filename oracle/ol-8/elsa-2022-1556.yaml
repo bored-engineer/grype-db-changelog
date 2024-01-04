@@ -1,6 +1,45 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        galera
+        [25.3.34-4]
+        - Explicitly require the 'procps-ng' package
+        - Otherwise it will not require it in the lightweight systems (e.g. containers)
+        - and Galera won't work properly
+
+        [25.3.34-3]
+        - Use downstream garbd-wrapper and garbd.service to ensure compatibility
+        - Add upstream versions of garbd-wrapper (called garbd-systemd) and garbd.service
+          in case user want's to use them
+
+        [ 25.3.34-2]
+        - Switch from SCONS build tooling to CMAKE build tooling
+
+        [25.3.34-1]
+        - Rebase to 25.3.34
+          Resolves: #2042298
+
+        mariadb
+        [3:10.3.32-2.0.1]
+        - Fix changelog
+
+        [3:10.3.32-2]
+        - Add delaycompress option to the logrotate script
+
+        [3:10.3.32-1]
+        - Rebase to 10.3.32
+
+        [3:10.3.31-1]
+        - Rebase to 10.3.31
+
+        [3:10.3.30-1]
+        - Rebase to 10.3.30
+
+        [3:10.3.29-2]
+        - Set user_map.conf file to be noreplace config file
+
+        [3:10.3.29-1]
+        - Rebase to 10.3.29
     FixedIn:
         - Module: mariadb:10.3
           Name: Judy

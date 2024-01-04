@@ -1,6 +1,241 @@
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.5.3-126.el7]
+        - kvm-virtio-recalculate-vq-inuse-after-migration.patch [bz#1376542]
+        - Resolves: bz#1376542
+          (RHSA-2016-1756 breaks migration of instances)
+
+        [1.5.3-125.el7]
+        - kvm-nbd-server-Set-O_NONBLOCK-on-client-fd.patch [bz#1285453]
+        - Resolves: bz#1285453
+          (An NBD client can cause QEMU main loop to block when connecting to built-in NBD server)
+
+        [1.5.3-124.el7]
+        - kvm-target-i386-Add-support-for-FEAT_7_0_ECX.patch [bz#1372459]
+        - kvm-target-i386-Add-more-Intel-AVX-512-instructions-supp.patch [bz#1372459]
+        - Resolves: bz#1372459
+          ([Intel 7.3 Bug] SKL-SP Guest cpu doesnt support avx512 instruction sets(avx512bw, avx512dq and avx512vl) (qemu-kvm))
+
+        [1.5.3-123.el7]
+        - kvm-Fix-backport-of-target-i386-add-feature-flags-for-CP.patch [bz#1371619]
+        - kvm-Add-skip_dump-flag-to-ignore-memory-region-during-du.patch [bz#1373088]
+        - Resolves: bz#1371619
+          (Flags xsaveopt xsavec xgetbv1 are missing on qemu-kvm)
+        - Resolves: bz#1373088
+          ([FJ7.3 Bug]: virsh dump with both --memory-only and --format option fails)
+
+        [1.5.3-122.el7]
+        - kvm-virtio-validate-the-existence-of-handle_output-befor.patch [bz#1367040]
+        - Resolves: bz#1367040
+          (QEMU crash when guest notifies non-existent virtqueue)
+
+        [1.5.3-121.el7]
+        - kvm-json-parser-drop-superfluous-assignment-for-token-va.patch [bz#1276036]
+        - kvm-qjson-Apply-nesting-limit-more-sanely.patch [bz#1276036]
+        - kvm-qjson-Don-t-crash-when-input-exceeds-nesting-limit.patch [bz#1276036]
+        - kvm-check-qjson-Add-test-for-JSON-nesting-depth-limit.patch [bz#1276036]
+        - kvm-qjson-Spell-out-some-silent-assumptions.patch [bz#1276036]
+        - kvm-qjson-Give-each-of-the-six-structural-chars-its-own-.patch [bz#1276036]
+        - kvm-qjson-Inline-token_is_keyword-and-simplify.patch [bz#1276036]
+        - kvm-qjson-Inline-token_is_escape-and-simplify.patch [bz#1276036]
+        - kvm-qjson-replace-QString-in-JSONLexer-with-GString.patch [bz#1276036]
+        - kvm-qjson-Convert-to-parser-to-recursive-descent.patch [bz#1276036]
+        - kvm-qjson-store-tokens-in-a-GQueue.patch [bz#1276036]
+        - kvm-qjson-surprise-allocating-6-QObjects-per-token-is-ex.patch [bz#1276036]
+        - kvm-qjson-Limit-number-of-tokens-in-addition-to-total-si.patch [bz#1276036]
+        - kvm-json-streamer-Don-t-leak-tokens-on-incomplete-parse.patch [bz#1276036]
+        - kvm-json-streamer-fix-double-free-on-exiting-during-a-pa.patch [bz#1276036]
+        - kvm-trace-remove-malloc-tracing.patch [bz#1360137]
+        - Resolves: bz#1276036
+          (Crash on QMP input exceeding limits)
+        - Resolves: bz#1360137
+          (GLib-WARNING **: gmem.c:482: custom memory allocation vtable not supported)
+
+        [1.5.3-120.el7]
+        - kvm-Add-install-dependency-to-newer-libusbx-version.patch [bz#1351106]
+        - kvm-virtio-error-out-if-guest-exceeds-virtqueue-size.patch [bz#1359729]
+        - Resolves: bz#1351106
+          (symbol lookup error: /usr/libexec/qemu-kvm: undefined symbol: libusb_get_port_numbers)
+        - Resolves: bz#1359729
+          (CVE-2016-5403 qemu-kvm: Qemu: virtio: unbounded memory allocation on host via guest leading to DoS [rhel-7.3])
+
+        [1.5.3-119.el7]
+        - kvm-qxl-factor-out-qxl_get_check_slot_offset.patch [bz#1355730]
+        - kvm-qxl-store-memory-region-and-offset-instead-of-pointe.patch [bz#1355730]
+        - kvm-qxl-fix-surface-migration.patch [bz#1355730]
+        - kvm-qxl-fix-qxl_set_dirty-call-in-qxl_dirty_one_surface.patch [bz#1355730]
+        - Resolves: bz#1355730
+          (spice-gtk shows outdated screen state after migration [qemu-kvm])
+
+        [1.5.3-118.el7]
+        - kvm-util-introduce-MIN_NON_ZERO.patch [bz#1318199]
+        - kvm-BlockLimits-introduce-max_transfer_length.patch [bz#1318199]
+        - kvm-block-backend-expose-bs-bl.max_transfer_length.patch [bz#1318199]
+        - kvm-scsi-generic-Merge-block-max-xfer-len-in-INQUIRY-res.patch [bz#1318199]
+        - kvm-raw-posix-Fetch-max-sectors-for-host-block-device.patch [bz#1318199]
+        - kvm-scsi-Advertise-limits-by-blocksize-not-512.patch [bz#1318199]
+        - kvm-util-Fix-MIN_NON_ZERO.patch [bz#1318199]
+        - Resolves: bz#1318199
+          (expose host BLKSECTGET limit in scsi-block (qemu-kvm))
+
+        [1.5.3-117.el7]
+        - kvm-target-i386-add-feature-flags-for-CPUID-EAX-0xd-ECX-.patch [bz#1327599]
+        - kvm-target-i386-add-Skylake-Client-cpu-model.patch [bz#1327599]
+        - Resolves: bz#1327599
+          (Add Skylake CPU model)
+
+        [1.5.3-116.el7]
+        - kvm-block-iscsi-avoid-potential-overflow-of-acb-task-cdb.patch [bz#1340929]
+        - Resolves: bz#1340929
+          (CVE-2016-5126 qemu-kvm: Qemu: block: iscsi: buffer overflow in iscsi_aio_ioctl [rhel-7.3])
+
+        [1.5.3-115.el7]
+        - kvm-spice-do-not-require-TCP-ports.patch [bz#1336491]
+        - kvm-vga-add-sr_vbe-register-set.patch [bz#1346982]
+        - Resolves: bz#1336491
+          (Ship FD connection patches qemu-kvm part)
+        - Resolves: bz#1346982
+          (Regression from CVE-2016-3712: windows installer fails to start)
+
+        [1.5.3-114.el7]
+        - kvm-hw-input-hid.c-Fix-capslock-hid-code.patch [bz#1256741]
+        - kvm-target-i386-fix-pcmpxstrx-equal-ordered-strstr-mode.patch [bz#1340971]
+        - kvm-spec-Update-rules-before-triggering-for-kvm-device.patch [bz#1333159]
+        - Resolves: bz#1256741
+          ('CapsLock' will work as '\' when boot a guest with usb-kbd)
+        - Resolves: bz#1333159
+          (qemu-kvm doesnt reload udev rules before triggering for kvm device)
+        - Resolves: bz#1340971
+          (qemu: accel=tcg does not implement SSE 4 properly)
+
+        [1.5.3-113.el7]
+        - kvm-qxl-allow-to-specify-head-limit-to-qxl-driver.patch [bz#1283198]
+        - kvm-qxl-Fix-new-function-name-for-spice-server-library.patch [bz#1283198]
+        - kvm-block-raw-posix-Open-file-descriptor-O_RDWR-to-work-.patch [bz#1268345]
+        - Resolves: bz#1268345
+          (posix_fallocate emulation on NFS fails with Bad file descriptor if fd is opened O_WRONLY)
+        - Resolves: bz#1283198
+          (RFE: backport max monitor limitation from Qemu upstream)
+
+        [1.5.3-112.el7]
+        - kvm-virtio-scsi-Prevent-assertion-on-missed-events.patch [bz#1312289]
+        - kvm-seccomp-adding-sysinfo-system-call-to-whitelist.patch [bz#1177318]
+        - kvm-acpi-strip-compiler-info-in-built-in-DSDT.patch [bz#1330969]
+        - kvm-acpi-fix-endian-ness-for-table-ids.patch [bz#1330969]
+        - kvm-acpi-support-specified-oem-table-id-for-build_header.patch [bz#1330969]
+        - kvm-acpi-take-oem_id-in-build_header-optionally.patch [bz#1330969]
+        - kvm-acpi-expose-oem_id-and-oem_table_id-in-build_rsdt.patch [bz#1330969]
+        - kvm-acpi-add-function-to-extract-oem_id-and-oem_table_id.patch [bz#1330969]
+        - kvm-pc-set-the-OEM-fields-in-the-RSDT-and-the-FADT-from-.patch [bz#1330969]
+        - kvm-block-jobs-qemu-kvm-rhel-differentiation.patch [bz#1156635]
+        - Resolves: bz#1156635
+          (Libvirt is confused that qemu-kvm exposes 'block-job-cancel' but not 'block-stream')
+        - Resolves: bz#1177318
+          (Guest using rbd based image as disk failed to start when sandbox was enabled)
+        - Resolves: bz#1312289
+          ('qemu-kvm: /builddir/build/BUILD/qemu-1.5.3/hw/scsi/virtio-scsi.c:533: virtio_scsi_push_event: Assertion 'event == 0' failed' after hotplug 20 virtio-scsi disks then hotunplug them)
+        - Resolves: bz#1330969
+          (match the OEM ID and OEM Table ID fields of the FADT and the RSDT to those of the SLIC)
+
+        [1.5.3-111.el7]
+        - kvm-vmdk-Leave-bdi-intact-if-ENOTSUP-in-vmdk_get_info.patch [bz#1299250]
+        - kvm-vmdk-Use-g_random_int-to-generate-CID.patch [bz#1299250]
+        - kvm-vmdk-Fix-comment-to-match-code-of-extent-lines.patch [bz#1299250]
+        - kvm-vmdk-Clean-up-descriptor-file-reading.patch [bz#1299250]
+        - kvm-vmdk-Check-descriptor-file-length-when-reading-it.patch [bz#1299250]
+        - kvm-vmdk-Remove-unnecessary-initialization.patch [bz#1299250]
+        - kvm-vmdk-Set-errp-on-failures-in-vmdk_open_vmdk4.patch [bz#1299250]
+        - kvm-block-vmdk-make-ret-variable-usage-clear.patch [bz#1299250]
+        - kvm-block-vmdk-move-string-allocations-from-stack-to-the.patch [bz#1299250]
+        - kvm-block-vmdk-fixed-sizeof-error.patch [bz#1299250]
+        - kvm-vmdk-Widen-before-shifting-32-bit-header-field.patch [bz#1299250]
+        - kvm-vmdk-Fix-next_cluster_sector-for-compressed-write.patch [bz#1299250]
+        - kvm-vmdk-Fix-index_in_cluster-calculation-in-vmdk_co_get.patch [bz#1299250]
+        - kvm-vmdk-Use-vmdk_find_index_in_cluster-everywhere.patch [bz#1299250]
+        - kvm-vmdk-Fix-next_cluster_sector-for-compressed-write2.patch [bz#1299250]
+        - kvm-vmdk-Create-streamOptimized-as-version-3.patch [bz#1299116]
+        - kvm-vmdk-Fix-converting-to-streamOptimized.patch [bz#1299116]
+        - kvm-vmdk-Fix-calculation-of-block-status-s-offset.patch [bz#1299116]
+        - Resolves: bz#1299116
+          (qemu-img created VMDK images lead to 'Not a supported disk format (sparse VMDK version too old)')
+        - Resolves: bz#1299250
+          (qemu-img created VMDK images are unbootable)
+
+        [1.5.3-110.el7]
+        - kvm-qemu-io-Remove-unused-args_command.patch [bz#1272523]
+        - kvm-cutils-Support-P-and-E-suffixes-in-strtosz.patch [bz#1272523]
+        - kvm-qemu-io-Make-cvtnum-a-wrapper-around-strtosz_suffix.patch [bz#1272523]
+        - kvm-qemu-io-Handle-cvtnum-errors-in-alloc.patch [bz#1272523]
+        - kvm-qemu-io-Don-t-use-global-bs-in-command-implementatio.patch [bz#1272523]
+        - kvm-qemu-io-Split-off-commands-to-qemu-io-cmds.c.patch [bz#1272523]
+        - kvm-qemu-io-Factor-out-qemuio_command.patch [bz#1272523]
+        - kvm-qemu-io-Move-help-function.patch [bz#1272523]
+        - kvm-qemu-io-Move-quit-function.patch [bz#1272523]
+        - kvm-qemu-io-Move-qemu_strsep-to-cutils.c.patch [bz#1272523]
+        - kvm-qemu-io-Move-functions-for-registering-and-running-c.patch [bz#1272523]
+        - kvm-qemu-io-Move-command_loop-and-friends.patch [bz#1272523]
+        - kvm-qemu-io-Move-remaining-helpers-from-cmd.c.patch [bz#1272523]
+        - kvm-qemu-io-Interface-cleanup.patch [bz#1272523]
+        - kvm-qemu-io-Use-the-qemu-version-for-V.patch [bz#1272523]
+        - kvm-Make-qemu-io-commands-available-in-HMP.patch [bz#1272523]
+        - kvm-blkdebug-Add-BLKDBG_FLUSH_TO_OS-DISK-events.patch [bz#1272523]
+        - kvm-qemu-io-fix-cvtnum-lval-types.patch [bz#1272523]
+        - kvm-qemu-io-Check-for-trailing-chars.patch [bz#1272523]
+        - kvm-qemu-io-Correct-error-messages.patch [bz#1272523]
+        - kvm-ide-test-fix-failure-for-test_flush.patch [bz#1272523]
+        - kvm-vga-Remove-some-should-be-done-in-BIOS-comments.patch [bz#1331413]
+        - kvm-vga-fix-banked-access-bounds-checking-CVE-2016-xxxx.patch [bz#1331413]
+        - kvm-vga-add-vbe_enabled-helper.patch [bz#1331413]
+        - kvm-vga-factor-out-vga-register-setup.patch [bz#1331413]
+        - kvm-vga-update-vga-register-setup-on-vbe-changes.patch [bz#1331413]
+        - kvm-vga-make-sure-vga-register-setup-for-vbe-stays-intac.patch [bz#1331413]
+        - Resolves: bz#1272523
+          (qemu-kvm build failure race condition in tests/ide-test)
+        - Resolves: bz#1331413
+          (EMBARGOED CVE-2016-3710 qemu-kvm: qemu: incorrect banked access bounds checking in vga module [rhel-7.3])
+
+        [1.5.3-109.el7]
+        - kvm-e1000-eliminate-infinite-loops-on-out-of-bounds-tran.patch [bz#1296044]
+        - kvm-nbd-Always-call-close_fn-in-nbd_client_new.patch [bz#1285453]
+        - kvm-nbd-server-Coroutine-based-negotiation.patch [bz#1285453]
+        - kvm-nbd-client_close-on-error-in-nbd_co_client_start.patch [bz#1285453]
+        - kvm-Remove-libcacard-build.patch [bz#1314153]
+        - Resolves: bz#1285453
+          (An NBD client can cause QEMU main loop to block when connecting to built-in NBD server)
+        - Resolves: bz#1296044
+          (qemu-kvm: insufficient loop termination conditions in start_xmit() and e1000_receive() [rhel-7.3])
+        - Resolves: bz#1314153
+          (Disable building of libcacard)
+
+        [1.5.3-108.el7]
+        - kvm-net-Make-qmp_query_rx_filter-with-name-argument-more.patch [bz#1269738]
+        - kvm-fw_cfg-add-check-to-validate-current-entry-value-CVE.patch [bz#1298048]
+        - Resolves: bz#1269738
+          (Vlan table display repeat four times in qmp when queues=4)
+        - Resolves: bz#1298048
+          (CVE-2016-1714 qemu-kvm: Qemu: nvram: OOB r/w access in processing firmware configurations [rhel-7.3])
+
+        [1.5.3-107.el7]
+        - kvm-raw-posix-Fix-.bdrv_co_get_block_status-for-unaligne.patch [bz#1283116]
+        - Resolves: bz#1283116
+          ([abrt] qemu-img: get_block_status(): qemu-img killed by SIGABRT)
+
+        [1.5.3-106.el7]
+        - kvm-ehci-clear-suspend-bit-on-detach.patch [bz#1268879]
+        - kvm-rbd-make-qemu-s-cache-setting-override-any-ceph-sett.patch [bz#1277248]
+        - kvm-rbd-fix-ceph-settings-precedence.patch [bz#1277248]
+        - kvm-target-i386-get-put-MSR_TSC_AUX-across-reset-and-mig.patch [bz#1265427]
+        - kvm-rtl8139-Fix-receive-buffer-overflow-check.patch [bz#1252757]
+        - kvm-rtl8139-Do-not-consume-the-packet-during-overflow-in.patch [bz#1252757]
+        - Resolves: bz#1252757
+          ([RHEL-7.2-qmu-kvm] Package is 100% lost when ping from host to Win2012r2 guest with 64000 size)
+        - Resolves: bz#1265427
+          (contents of MSR_TSC_AUX are not migrated)
+        - Resolves: bz#1268879
+          (Camera stops work after remote-viewer re-connection [qemu-kvm])
+        - Resolves: bz#1277248
+          (ceph.conf properties override qemus command-line properties)
     FixedIn:
         - Module: null
           Name: qemu-img
