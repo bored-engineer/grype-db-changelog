@@ -1,7 +1,31 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [250-12.0.2.3]
+        - Backport upstream pstore dmesg fix [Orabug: 34868110]
+        - Remove upstream references  [Orabug: 33995357]
+        - Disable unprivileged BPF by default [Orabug: 32870980]
+        - udev rules: fix memory hot add and remove [Orabug: 31310273]
+        - set 'RemoveIPC=no' in logind.conf as default for OL7.2 [Orabug: 22224874]
+        - allow dm remove ioctl to co-operate with UEK3 (Vaughan Cao) [Orabug: 18467469]
+        - fix _netdev is missing for iscsi entry in /etc/fstab (tony.l.lam@oracle.com) [Orabug: 25897792]
+        - shutdown: get only active md arrays. [Orabug: 34467234]
+
+        [250-12.3]
+        - shared/json: allow json_variant_dump() to return an error (#2149074)
+        - shared/json: use different return code for empty input (#2149074)
+        - coredump: avoid deadlock when passing processed backtrace data (#2149074)
+        - test: disable flaky subtests that require udevadm wait/lock (#2149074)
+
+        [250-12.2]
+        - coredump: adjust whitespace (#2155516)
+        - basic: add STRERROR() wrapper for strerror_r() (#2155516)
+        - coredump: do not allow user to access coredumps with changed uid/gid/capabilities (#2155516)
+        - Packit: build SRPMs in Copr (#2155516)
+        - test: support non-summer time (#2155516)
+        - test: bump the base VM memory to 768M (#2155516)
+        - test: don't overwrite existing  (#2155516)
     FixedIn:
         - Module: null
           Name: systemd

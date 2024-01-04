@@ -1,7 +1,20 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.7.0.95-2.6.4.0.0.1]
+        - Update DISTRO_NAME in specfile
+
+        [1:1.7.0.95-2.6.4.0]
+        - Remove reference to jre/lib/audio.
+        - Resolves: rhbz#1295765
+
+        [1:1.7.0.95-2.6.4.0]
+        - Bump to 2.6.4 and u95b00.
+        - Backport tarball creation script from OpenJDK 8 RPMs and update fsg.sh to work with it.
+        - Drop 8072932or8074489 patch as applied upstream in u91b01.
+        - Drop installation of soundfont symlink following inclusion of 8140620/PR2710 in 2.6.3
+        - Resolves: rhbz#1295765
     FixedIn:
         - Module: null
           Name: java-1.7.0-openjdk

@@ -1,7 +1,48 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.1-6.0.1]
+        - Increase db_max_size to 100M
+
+        [1.1-6]
+        - CVE-2022-1117 fapolicyd: fapolicyd wrongly prepares ld.so path
+        Resolves: rhbz#2069120
+
+        [1.1-4]
+        RHEL 8.6.0 ERRATUM
+        - fapolicyd denies access to /usr/lib64/ld-2.28.so
+        Resolves: rhbz#2066300
+
+        [1.1-1]
+        RHEL 8.6.0 ERRATUM
+        - rebase to 1.1
+        Resolves: rhbz#1939379
+        - introduce rules.d feature
+        Resolves: rhbz#2054741
+        - remove pretrans scriptlet
+        Resolves: rhbz#2051485
+
+        [1.0.4-2]
+        RHEL 8.6.0 ERRATUM
+        - rebase to 1.0.4
+        - added rpm_sha256_only option
+        - added trust.d directory
+        - allow file names with whitespace in trust files
+        - use full paths in trust files
+        Resolves: rhbz#1939379
+        - fix libc.so getting identified as application/x-executable
+        Resolves: rhbz#1989272
+        - fix fapolicyd-dnf-plugin reporting as '<invalid>'
+        Resolves: rhbz#1997414
+        - fix selinux DSP module definition in spec file
+        Resolves: rhbz#2014445
+
+        [1.0.2-7]
+        - fapolicyd abnormally exits by executing sosreport
+        - fixed multiple problems with unlink()
+        - fapolicyd breaks system upgrade, leaving system in dead state - complete fix
+        Resolves: rhbz#1943251
     FixedIn:
         - Module: null
           Name: fapolicyd

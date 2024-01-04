@@ -1,7 +1,22 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.9.8e-39.0.1]
+        - To disable SSLv2 client connections create the file
+          /etc/sysconfig/openssl-ssl-client-kill-sslv2 (John Haxby) [orabug 21673934]
+        - Backport openssl 08-Jan-2015 security fixes (John Haxby) [orabug 20409893]
+        - fix CVE-2014-3570 - Bignum squaring may produce incorrect results
+        - fix CVE-2014-3571 - DTLS segmentation fault in dtls1_get_record
+        - fix CVE-2014-3572 - ECDHE silently downgrades to ECDH [Client]
+
+        [0.9.8e-39]
+        - fix CVE-2016-0797 - heap corruption in BN_hex2bn and BN_dec2bn
+
+        [0.9.8e-38]
+        - fix CVE-2015-3197 - SSLv2 ciphersuite enforcement
+        - disable SSLv2 in the generic TLS method (can be reenabled
+          by setting environment variable OPENSSL_ENABLE_SSL2)
     FixedIn:
         - Module: null
           Name: openssl

@@ -1,7 +1,26 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.7.0.55-2.4.7.2.0.1.el7_0]
+        - Update DISTRO_NAME in specfile
+
+        [1.7.0.55-2.4.7.2]
+        - Remove NSS patches. Issues with PKCS11 provider mean it shouldn't be enabled.
+        - Always setup nss.cfg and depend on nss-devel at build-time to do so.
+        - This allows users who wish to use PKCS11+NSS to just add it to java.security.
+        - Patches to PKCS11 provider will be included upstream in 2.4.8 (ETA July 2014)
+        - Resolves: rhbz#1099565
+
+        [1.7.0.55-2.4.7.0.el7]
+        - bumped to future icedtea-forest 2.4.7
+        - updatever set to 55, buildver se to 13, release reset to 0
+        - removed upstreamed patch402 gstackbounds.patch
+        - removed Requires: rhino, BuildRequires is enough
+        - ppc64 repalced by power64 macro
+        - patch111 applied as dry-run (6.6 forward port)
+        - nss enabled, but notused as default (6.6 forward port)
+        - Resolves: rhbz#1099565
     FixedIn:
         - Module: null
           Name: java-1.7.0-openjdk

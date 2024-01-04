@@ -1,7 +1,23 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.6.6-29.el6_2.2]
+        - if hash randomization is enabled, also enable it within pyexpat
+        Resolves: CVE-2012-0876
+
+        [2.6.6-29.el6_2.1]
+        - distutils.config: create ~/.pypirc securely
+        Resolves: CVE-2011-4944
+        - fix endless loop in SimpleXMLRPCServer upon malformed POST request
+        Resolves: CVE-2012-0845
+        - send encoding in SimpleHTTPServer.list_directory to protect IE7 against
+        potential XSS attacks
+        Resolves: CVE-2011-4940
+        - oCERT-2011-003: add -R command-line option and PYTHONHASHSEED environment
+        variable, to provide an opt-in way to protect against denial of service
+        attacks due to hash collisions within the dict and set types
+        Resolves: CVE-2012-1150
     FixedIn:
         - Module: null
           Name: python

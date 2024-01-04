@@ -1,7 +1,30 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.141-2.b16]
+        - Update to aarch64-jdk8u141-b16.
+        - Revert change to remove-intree-libraries.sh following backout of 8173207
+        - Resolves: rhbz#1466509
+
+        [1:1.8.0.141-2.b15]
+        - Revert previous commit so we can revise the security update.
+        - Resolves: rhbz#1468473
+
+        [1:1.8.0.141-1.b15]
+        - Backport '8180048: Interned string and symbol table leak memory during parallel unlinking'
+        - Resolves: rhbz#1468473
+
+        [1:1.8.0.141-0.b15]
+        - Update to aarch64-jdk8u141-b15.
+        - Update location of OpenJDK system library source code in remove-intree-libraries.sh
+        - Drop upstreamed patches for 6515172, 8144566, 8155049, 8165231, 8174164, 8174729 and 8175097.
+        - Update PR1983, PR2899 and PR2934 (SunEC + system NSS) to accomodate 8175110.
+        - Resolves: rhbz#1466509
+
+        [1:1.8.0.131-1.b12]
+        - Add backports from 8u152 (8179084/RH1455694, 8175887) ahead of July CPU.
+        - Resolves: rhbz#1466509
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

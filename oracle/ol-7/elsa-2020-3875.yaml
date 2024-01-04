@@ -1,7 +1,29 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.8.0-21]
+        - Add upstream patch needed because of previous security fixes
+          Resolves: bz#1826822
+
+        [1.8.0-20]
+        - Fix stack buffer overflow in CMsgReader::readSetCursor
+          Resolves: bz#1791773
+
+        - Fix heap buffer overflow in DecodeManager::decodeRect
+          Resolves: bz#1791768
+
+        - Fix heap buffer overflow in TightDecoder::FilterGradient
+          Resolves: bz#1791763
+
+        - Fix heap-based buffer overflow triggered from CopyRectDecoder
+          Resolves: bz#1791747
+
+        - Fix stack use-after-return due to incorrect usage of stack memory in ZRLEDecoder
+          Resolves: bz#1791759
+
+        - Add option to fallback to empty port when the specified one is taken
+          Resolves: bz#1791996
     FixedIn:
         - Module: null
           Name: tigervnc

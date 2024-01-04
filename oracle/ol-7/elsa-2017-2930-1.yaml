@@ -1,7 +1,65 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        - [3.10.0-693.5.2.0.1.el7.OL7]
+        - [ipc] ipc/sem.c: bugfix for semctl(,,GETZCNT) (Manfred Spraul) [orabug 22552377]
+        - Oracle Linux certificates (Alexey Petrenko)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [bug 24817676]
+
+        [3.10.0-693.5.2.el7]
+        - [mm] page_cgroup: Fix Kernel bug during boot with memory cgroups enabled (Larry Woodman) [1491970 1483747]
+        - Revert: [mm] Fix Kernel bug during boot with memory cgroups enabled (Larry Woodman) [1491970 1483747]
+
+        [3.10.0-693.5.1.el7]
+        - [netdrv] i40e: point wb_desc at the nvm_wb_desc during i40e_read_nvm_aq (Stefan Assmann) [1491972 1484232]
+        - [netdrv] i40e: avoid NVM acquire deadlock during NVM update (Stefan Assmann) [1491972 1484232]
+        - [mm] Fix Kernel bug during boot with memory cgroups enabled (Larry Woodman) [1491970 1483747]
+        - [fs] nfsv4: Ensure we don't re-test revoked and freed stateids (Dave Wysochanski) [1491969 1459733]
+        - [netdrv] bonding: commit link status change after propose (Jarod Wilson) [1491121 1469790]
+        - [mm] page_alloc: ratelimit PFNs busy info message (Jonathan Toppins) [1491120 1383179]
+        - [netdrv] cxgb4: avoid crash on PCI error recovery path (Gustavo Duarte) [1489872 1456990]
+        - [scsi] Add STARGET_CREATED_REMOVE state to scsi_target_state (Ewan Milne) [1489814 1468727]
+        - [net] tcp: initialize rcv_mss to TCP_MIN_MSS instead of 0 (Davide Caratti) [1488341 1487061] {CVE-2017-14106}
+        - [net] tcp: fix 0 divide in __tcp_select_window() (Davide Caratti) [1488341 1487061] {CVE-2017-14106}
+        - [net] sctp: Avoid out-of-bounds reads from address storage (Stefano Brivio) [1484356 1484355] {CVE-2017-7558}
+        - [net] udp: consistently apply ufo or fragmentation (Davide Caratti) [1481530 1481535] {CVE-2017-1000112}
+        - [net] udp: account for current skb length when deciding about UFO (Davide Caratti) [1481530 1481535] {CVE-2017-1000112}
+        - [net] ipv4: Should use consistent conditional judgement for ip fragment in __ip_append_data and ip_finish_output (Davide Caratti) [1481530 1481535] {CVE-2017-1000112}
+        - [net] udp: avoid ufo handling on IP payload compression packets (Stefano Brivio) [1490263 1464161]
+        - [pci] hv: Use vPCI protocol version 1.2 (Vitaly Kuznetsov) [1478256 1459202]
+        - [pci] hv: Add vPCI version protocol negotiation (Vitaly Kuznetsov) [1478256 1459202]
+        - [pci] hv: Use page allocation for hbus structure (Vitaly Kuznetsov) [1478256 1459202]
+        - [pci] hv: Fix comment formatting and use proper integer fields (Vitaly Kuznetsov) [1478256 1459202]
+        - [net] ipv6: accept 64k - 1 packet length in ip6_find_1stfragopt() (Stefano Brivio) [1477007 1477010] {CVE-2017-7542}
+        - [net] ipv6: avoid overflow of offset in ip6_find_1stfragopt (Sabrina Dubroca) [1477007 1477010] {CVE-2017-7542}
+        - [net] xfrm_user: validate XFRM_MSG_NEWAE incoming ESN size harder (Hannes Frederic Sowa) [1435672 1435670] {CVE-2017-7184}
+        - [net] xfrm_user: validate XFRM_MSG_NEWAE XFRMA_REPLAY_ESN_VAL replay_window (Hannes Frederic Sowa) [1435672 1435670] {CVE-2017-7184}
+        - [net] l2cap: prevent stack overflow on incoming bluetooth packet (Neil Horman) [1489788 1489789] {CVE-2017-1000251}
+
+        [3.10.0-693.4.1.el7]
+        - [fs] nfsv4: Add missing nfs_put_lock_context() (Benjamin Coddington) [1487271 1476826]
+        - [fs] nfs: discard nfs_lockowner structure (Benjamin Coddington) [1487271 1476826]
+        - [fs] nfsv4: enhance nfs4_copy_lock_stateid to use a flock stateid if there is one (Benjamin Coddington) [1487271 1476826]
+        - [fs] nfsv4: change nfs4_select_rw_stateid to take a lock_context inplace of lock_owner (Benjamin Coddington) [1487271 1476826]
+        - [fs] nfsv4: change nfs4_do_setattr to take an open_context instead of a nfs4_state (Benjamin Coddington) [1487271 1476826]
+        - [fs] nfsv4: add flock_owner to open context (Benjamin Coddington) [1487271 1476826]
+        - [fs] nfs: remove l_pid field from nfs_lockowner (Benjamin Coddington) [1487271 1476826]
+        - [x86] platform/uv/bau: Disable BAU on single hub configurations (Frank Ramsay) [1487159 1487160 1472455 1473353]
+        - [x86] platform/uv/bau: Fix congested_response_us not taking effect (Frank Ramsay) [1487159 1472455]
+        - [fs] cifs: Disable encryption capability for RHEL 7.4 kernel (Sachin Prabhu) [1485445 1485445]
+        - [fs] sunrpc: Handle EADDRNOTAVAIL on connection failures (Dave Wysochanski) [1484269 1479043]
+        - [fs] include/linux/printk.h: include pr_fmt in pr_debug_ratelimited (Sachin Prabhu) [1484267 1472823]
+        - [fs] printk: pr_debug_ratelimited: check state first to reduce 'callbacks suppressed' messages (Sachin Prabhu) [1484267 1472823]
+        - [net] packet: fix tp_reserve race in packet_set_ring (Stefano Brivio) [1481938 1481940] {CVE-2017-1000111}
+        - [fs] proc: revert /proc/<pid>/maps [stack:TID] annotation (Waiman Long) [1481724 1448534]
+        - [net] ping: check minimum size on ICMP header length (Matteo Croce) [1481578 1481573] {CVE-2016-8399}
+        - [ipc] mqueue: fix a use-after-free in sys_mq_notify() (Davide Caratti) [1476128 1476126] {CVE-2017-11176}
+        - [netdrv] brcmfmac: fix possible buffer overflow in brcmf_cfg80211_mgmt_tx() (Stanislaw Gruszka) [1474778 1474784] {CVE-2017-7541}
+
+        [3.10.0-693.3.1.el7]
+        - [block] blk-mq-tag: fix wakeup hang after tag resize (Ming Lei) [1487281 1472434]
     FixedIn:
         - Module: null
           Name: kernel

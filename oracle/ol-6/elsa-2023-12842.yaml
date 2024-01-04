@@ -1,7 +1,21 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.1.12-124.79.2]
+        - net/sched: cls_route: No longer copy tcf_result on update to avoid use-after-free (valis)  [Orabug: 35814273]  {CVE-2023-4206}
+        - net/sched: sch_qfq: account for stab overhead in qfq_enqueue (Pedro Tammela)  [Orabug: 35636291]  {CVE-2023-3611}
+        - rds: Fix lack of reentrancy for connection reset with dst addr zero (Hakon Bugge)  [Orabug: 35741584] [Orabug: 35818110]  {CVE-2023-22024}
+
+        [4.1.12-124.79.1]
+        - xfrm: add NULL check in xfrm_update_ae_params (Lin Ma)  [Orabug: 35754509]  {CVE-2023-3772}
+        - net: vmxnet3: fix possible NULL pointer dereference in vmxnet3_rq_cleanup() (Zixuan Fu)  [Orabug: 35732892]  {CVE-2023-4459}
+        - net: vmxnet3: fix possible use-after-free bugs in vmxnet3_rq_alloc_rx_buf() (Zixuan Fu)  [Orabug: 35732764]  {CVE-2023-4387}
+        - net/sched: cls_fw: Fix improper refcount update leads to use-after-free (M A Ramdhan)  [Orabug: 35636313]  {CVE-2023-3776}
+        - netfilter: nf_tables: prevent OOB access in nft_byteorder_eval (Thadeu Lima de Souza Cascardo)  [Orabug: 35609787]  {CVE-2023-35001}
+        - ext4: fix use-after-free in ext4_xattr_set_entry (Baokun Li)  [Orabug: 35382025]  {CVE-2023-2513}
+        - ext4: add EXT4_INODE_HAS_XATTR_SPACE macro in xattr.h (Baokun Li)  [Orabug: 35382025]  {CVE-2023-2513}
+        - netfilter: nf_tables: stricter validation of element data (Pablo Neira Ayuso)  [Orabug: 34362008]  {CVE-2022-34918}
     FixedIn:
         - Module: null
           Name: kernel-uek

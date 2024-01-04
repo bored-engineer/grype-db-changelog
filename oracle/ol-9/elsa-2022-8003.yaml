@@ -1,7 +1,60 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [8.5.0-7.0.1]
+        - Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+
+        [8.5.0-7]
+        - security_selinux: Dont ignore NVMe disks when setting image label (rhbz#2121441)
+
+        [8.5.0-6]
+        - qemu_process: Destroy domains namespace after killing QEMU (rhbz#2121141)
+
+        [8.5.0-5]
+        - rpc: Pass OPENSSL_CONF through to ssh invocations (rhbz#2112348)
+
+        [8.5.0-4]
+        - qemu: Pass migration flags to qemuMigrationParamsApply (rhbz#2111070)
+        - qemu_migration_params: Replace qemuMigrationParamTypes array (rhbz#2111070)
+        - qemu_migration: Pass migParams to qemuMigrationSrcResume (rhbz#2111070)
+        - qemu_migration: Apply max-postcopy-bandwidth on post-copy resume (rhbz#2111070)
+        - qemu: Always assume support for QEMU_CAPS_MIGRATION_PARAM_XBZRLE_CACHE_SIZE (rhbz#2107892)
+        - qemu_migration: Store original migration params in status XML (rhbz#2107892)
+        - qemu_migration_params: Refactor qemuMigrationParamsApply (rhbz#2107892)
+        - qemu_migration_params: Refactor qemuMigrationParamsReset (rhbz#2107892)
+        - qemu_migration_params: Avoid deadlock in qemuMigrationParamsReset (rhbz#2107892)
+        - qemu: Restore original memory locking limit on reconnect (rhbz#2107424)
+        - qemu: Properly release job in qemuDomainSaveInternal (rhbz#1497907)
+        - qemu: dont call qemuMigrationSrcIsAllowedHostdev() from qemuMigrationDstPrepareFresh() (rhbz#1497907)
+
+        [8.5.0-3]
+        - qemu: introduce capability QEMU_CAPS_MIGRATION_BLOCKED_REASONS (rhbz#2092833)
+        - qemu: new function to retrieve migration blocker reasons from QEMU (rhbz#2092833)
+        - qemu: query QEMU for migration blockers before our own harcoded checks (rhbz#2092833)
+        - qemu: remove hardcoded migration fail for vDPA devices if we can ask QEMU (rhbz#2092833)
+        - qemu_migration: Use EnterMonitorAsync in qemuDomainGetMigrationBlockers (rhbz#2092833)
+        - qemu: dont try to query QEMU about migration blockers during offline migration (rhbz#2092833)
+        - qemu_migration: Acquire correct job in qemuMigrationSrcIsAllowed (rhbz#2092833)
+        - virsh: Require --xpath for *dumpxml (rhbz#2103524)
+        - qemu: skip hardcoded hostdev migration check if QEMU can do it for us (rhbz#1497907)
+
+        [8.5.0-2]
+        - domain_conf: Format <defaultiothread/> more often (rhbz#2059511)
+        - domain_conf: Format iothread IDs more often (rhbz#2059511)
+        - qemu: Make IOThread changing more robust (rhbz#2059511)
+        - qemuDomainSetIOThreadParams: Accept VIR_DOMAIN_AFFECT_CONFIG flag (rhbz#2059511)
+        - virsh: Implement --config for iothreadset (rhbz#2059511)
+        - docs: Document TPM portion of domcaps (rhbz#2103119)
+        - virtpm: Introduce TPM-1.2 and TPM-2.0 capabilieis (rhbz#2103119)
+        - domcaps: Introduce TPM backendVersion (rhbz#2103119)
+        - qemu: Report supported TPM version in domcaps (rhbz#2103119)
+        - vircpi: Add PCIe 5.0 and 6.0 link speeds (rhbz#2105231)
+
+        [8.5.0-1]
+        - Rebased to libvirt-8.5.0 (rhbz#2060313)
+        - The rebase also fixes the following bugs:
+            rhbz#1475431, rhbz#2026765, rhbz#2059511, rhbz#2089431, rhbz#2102009
     FixedIn:
         - Module: null
           Name: libvirt

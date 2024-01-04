@@ -1,7 +1,52 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.6.0.40-1.13.12.4.0.1]
+        - Add oracle-enterprise.patch
+
+        [1:1.6.0.40-1.13.12.4]
+        - Bump source tarballs to try and really fix TCK failures this time.
+        - Resolves: rhbz#1350043
+
+        [1:1.6.0.40-1.13.12.3]
+        - Bump source tarballs to missing -DNDEBUG on JDK native code.
+        - Resolves: rhbz#1350043
+
+        [1:1.6.0.40-1.13.12.2]
+        - Escape macros in bootstrap comments
+        - Resolves: rhbz#1350043
+
+        [1:1.6.0.40-1.13.12.2]
+        - Bump source tarballs to fix TCK failures.
+        - Resolves: rhbz#1350043
+
+        [1:1.6.0.40-1.13.12.1]
+        - Introduce bootstrapping variable to test whether we are bootstrapping or not.
+        - Add build requirement of xsltproc when bootstrapping.
+        - Resolves: rhbz#1350043
+
+        [1:1.6.0.40-1.13.12.1]
+        - Separate bootstrap option as it should not be tied to the JDK used.
+        - Enable bootstrapping on JIT architectures going forward.
+        - Temporarily enable bootstrapping on all architectures to work around RH1334465/PR2956.
+        - Resolves: rhbz#1350043
+
+        [1:1.6.0.40-1.13.12.0]
+        - Need to also remove DISTRIBUTION_PATCHES reference to wrapv patch.
+        - Resolves: rhbz#1350043
+
+        [1:1.6.0.40-1.13.12.0]
+        - Update to IcedTea 1.13.12 & OpenJDK 6 b40.
+        - Depend on mailcap for /etc/mime.types (PR2800)
+        - Use configure macro and disable long-running JTreg & SystemTap tests from make check
+        - Remove redundant patch-ecj target invocation for bootstrap build.
+        - Add check section to run the new tests introduced in 1.13.12.
+        - Add RHEL version of b40 tarball.
+        - Require mailcap at build time as well, so configure finds /etc/mime.types
+        - No need to require openssl at run time.
+        - Drop old_gcc patch as this is now supported upstream (S8161262)
+        - Resolves: rhbz#1350043
     FixedIn:
         - Module: null
           Name: java-1.6.0-openjdk

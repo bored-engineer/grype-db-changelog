@@ -1,7 +1,21 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [11.0.5-3.0.1]
+        - fix spaces in vmware udev rule for scsi devices
+          [Orabug: 24461968]
+        - Fix vmware udev rule in 99-vmware-scsi-timeout.rules file.
+          [Orabug: 22815019]
+        - Increase timeout for scsi devices on VMWare guests by adding a udev rule.
+        - Created a new file 99-vmware-scsi-timeout.rules
+        - Modified spec file to install this new file.
+          [Orabug: 21819156]
+
+        [11.0.5-3.el7_9.4]
+        - ovt-Properly-check-authorization-on-incoming-guestOps-re.patch [bz#2119310]
+        - Resolves: bz#2119310
+          (CVE-2022-31676 open-vm-tools: local root privilege escalation in the virtual machine [rhel-7.9.z])
     FixedIn:
         - Module: null
           Name: open-vm-tools

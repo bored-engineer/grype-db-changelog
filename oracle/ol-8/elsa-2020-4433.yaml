@@ -1,7 +1,45 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.6.8-31.0.1]
+        - Add Oracle Linux distribution in platform.py [Orabug: 20812544]
+
+        [3.6.8-31]
+        - Avoid infinite loop when reading specially crafted TAR files (CVE-2019-20907)
+        Resolves: rhbz#1856481
+        - Resolve hash collisions for Pv4Interface and IPv6Interface (CVE-2020-14422)
+        Resolves: rhbz#1854926
+
+        [3.6.8-30]
+        - Remove downstream 00178-dont-duplicate-flags-in-sysconfig.patch which
+          introduced a bug on distutils.sysconfig.get_config_var('LIBPL')
+          (rhbz#1851090).
+
+        [3.6.8-29]
+        - Fix python3-config --configdir (rhbz#1772992).
+
+        [3.6.8-28]
+        - Security fix for CVE-2020-8492
+        Resolves: rhbz#1810618
+
+        [3.6.8-27]
+        - Add a sentinel value on the Hmac_members table of the fips compliant hmac module
+        Resolves: rhbz#1800512
+
+        [3.6.8-26]
+        - Skip test_startup_imports from test_site if we have a .pth file in sys.path
+        Resolves: rhbz#1814392
+
+        [3.6.8-25]
+        - Security fix for CVE-2019-16935
+        Resolves: rhbz#1798001
+
+        [3.6.8-24]
+        - Build Python with -fno-semantic-interposition for better performance
+        - https://fedoraproject.org/wiki/Changes/PythonNoSemanticInterpositionSpeedup
+        - Also fix test_gdb failures with Link Time Optimizations
+        Resolves: rhbz#1724996
     FixedIn:
         - Module: null
           Name: platform-python

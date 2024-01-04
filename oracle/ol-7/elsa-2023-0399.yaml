@@ -1,7 +1,31 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.83.1.0.1.OL7]
+        - debug: lock down kgdb [Orabug: 34270798] {CVE-2022-21499}
+
+        [3.10.0-1160.83.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.83.1]
+        - x86/sme: avoid using __x86_return_thunk (Rafael Aquini) [2122158]
+        - scsi: core: Simplify control flow in scmd_eh_abort_handler() (Ewan D. Milne) [2128337]
+        - scsi: core: Avoid leaving shost->last_reset with stale value if EH does not run (Ewan D. Milne) [2128337]
+        - [netdrv] i40e: Fix freeing of uninitialized misc IRQ vector (Jamie Bainbridge) [2129248]
+        - x86/speculation: Use generic retpoline by default on AMD (Rafael Aquini) [2062165] {CVE-2021-26401}
+
+        [3.10.0-1160.82.1]
+        - net: usb: ax88179_178a: Fix packet receiving (Jose Ignacio Tornos Martinez) [2120504] {CVE-2022-2964}
+        - net: usb: ax88179_178a: Fix out-of-bounds accesses in RX fixup (Jose Ignacio Tornos Martinez) [2120504] {CVE-2022-2964}
+        - net: usb: Merge cpu_to_le32s + memcpy to put_unaligned_le32 (Jose Ignacio Tornos Martinez) [2120504] {CVE-2022-2964}
+        - ax88179_178a: Merge memcpy + le32_to_cpus to get_unaligned_le32 (Jose Ignacio Tornos Martinez) [2120504] {CVE-2022-2964}
+        - net: usb: ax88179_178a: fix packet alignment padding (Jose Ignacio Tornos Martinez) [2120504] {CVE-2022-2964}
+        - mm: swap: disable swap_vma_readahead for PPC64 (Rafael Aquini) [2142455]
     FixedIn:
         - Module: null
           Name: bpftool

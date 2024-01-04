@@ -1,7 +1,38 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.242.b07-1]
+        - Add backports of JDK-8031111 & JDK-8132111 to fix TCK issue.
+        - Resolves: rhbz#1785753
+
+        [1:1.8.0.242.b07-0]
+        - Update to aarch64-shenandoah-jdk8u242-b07.
+        - Switch to GA mode for final release.
+        - Remove Shenandoah S390 patch which is now included upstream as JDK-8236829.
+        - Resolves: rhbz#1785753
+
+        [1:1.8.0.242.b05-0.1.ea]
+        - Update to aarch64-shenandoah-jdk8u242-b05.
+        - Attempt to fix Shenandoah formatting failures on S390, introduced by JDK-8232102.
+        - Revise b05 snapshot to include JDK-8236178.
+        - Add additional Shenandoah formatting fixes revealed by successful -Wno-error=format run
+        - Resolves: rhbz#1785753
+
+        [1:1.8.0.242.b01-0.0.ea]
+        - Update to aarch64-shenandoah-jdk8u242-b01.
+        - Switch to EA mode.
+        - Resolves: rhbz#1785753
+
+        [1:1.8.0.232.b09-3]
+        - Revert SSBD removal for now, until appropriate messaging has been decided.
+        - Resolves: rhbz#1785753
+
+        [1:1.8.0.232.b09-2]
+        - Remove CVE-2018-3639 mitigation due to performance regression and
+            OpenJDK position on speculative execution vulnerabilities.
+            https://mail.openjdk.java.net/pipermail/vuln-announce/2019-July/000002.html
+        - Resolves: rhbz#1785753
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

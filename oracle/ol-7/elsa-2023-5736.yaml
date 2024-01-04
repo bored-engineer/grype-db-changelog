@@ -1,7 +1,47 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:11.0.21.0.9-1.0.1]
+        - link atomic for ix86 build
+
+        [1:11.0.21.0.9-1]
+        - Update to jdk-11.0.21+9 (GA)
+        - Update release notes to 11.0.21+9
+        - Remove system crypto policy patch which doesn't belong on RHEL 7 with no system policies
+        - Update generate_tarball.sh to be closer to upstream vanilla script inc. no more ECC removal
+        - Update bug URL for RHEL to point to the Red Hat customer portal
+        - Change top_level_dir_name to use the VCS tag, matching new upstream release style tarball
+        - Apply all patches using -p1
+        - Drop local backport of JDK-8243210 which is upstream from 11.0.21+2
+        - Add missing JFR alternative ghost
+        - Move jcmd to the headless package
+        - Replace -mstackrealign with -mincoming-stack-boundary=2 -mpreferred-stack-boundary=4 on x86_32 for stack alignment
+        - Disable the serviceability agent on Zero architectures even when the architecture itself is supported
+        - ** This tarball is embargoed until 2023-10-17 @ 1pm PT. **
+        - Resolves: RHEL-12217
+        - Resolves: RHEL-12910
+        - Resolves: RHEL-12913
+        - Resolves: RHEL-11320
+        - Resolves: RHEL-13227
+        - Resolves: RHEL-13217
+
+        [1:11.0.21.0.9-1]
+        - For non debug subpackages, ghosted all alternatives (rhbz1649776)
+        - For non system JDKs, if-outed versionless provides.
+        - Aligned versions to be %{epoch}:%{version}-%{release} instead of chaotic
+        - Related: RHEL-11320
+
+        [1:11.0.20.1.1-1]
+        - Update to jdk-11.0.20.1+1 (GA)
+        - Update release notes to 11.0.20.1+1
+        - Add backport of JDK-8312489 already upstream in 11.0.22 (see OPENJDK-2095)
+        - Add backport of JDK-8243210 already upstream in 11.0.21 (see RH2229269)
+        - Update openjdk_news script to specify subdirectory last
+        - Add missing discover_trees script required by openjdk_news
+        - Synchronise runtime and buildtime tzdata requirements
+        - Update README.md to match the version in later RHEL releases
+        - Resolves: rhbz#2236229
     FixedIn:
         - Module: null
           Name: java-11-openjdk

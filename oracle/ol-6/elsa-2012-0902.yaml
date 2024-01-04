@@ -1,7 +1,24 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.8.1-10]
+        - mount.cifs: don't allow unprivileged users to mount onto dirs they can't chdir into (bz 812782)
+
+        [4.8.1-9]
+        - cifs.upcall: use krb5_sname_to_principal to construct principal name (bz 805490)
+
+        [4.8.1-8]
+        - mount.cifs: add backupuid=/backupgid= mount options (bz 806337)
+
+        [4.8.1-7]
+        - RFE: Improve selection of SPNs with cifs.upcall (bz 748757)
+        - mount.cifs does not use KRB5_CONFIG (bz 748756)
+        [creates additional entries in /etc/mtab (bz 770004)]
+        - mount.cifs does not honor the uid/gid=username option, only the uid/gid=# option (bz 796463)
+
+        [4.8.1-6]
+        - undocumented mount.cifs options (bz 769923)
     FixedIn:
         - Module: null
           Name: cifs-utils

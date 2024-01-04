@@ -1,7 +1,23 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4:20210216-1.20210608.0.1]
+        - add support for UEK6 kernels
+        - enable early update for 06-4f-01
+        - remove no longer appropriate caveats for 06-2d-07 and 06-55-04
+        - enable early and late load on RHCK
+
+        [4:20210216-1.20210608.1]
+        - Update Intel CPU microcode to microcode-20210608 release:
+          - Fixes in releasenote.md file.
+
+        [4:20210216-1.20210525.2]
+        - Make intel-06-2d-07, intel-06-4e-03, intel-06-4f-01, intel-06-55-04,
+          intel-06-5e-03, intel-06-8c-01, intel-06-8e-9e-0x-0xca,
+          and intel-06-8e-9e-0x-dell caveats dependent on intel caveat.
+        - Enable 06-8c-01 microcode update by default (#1972328).
+        - Enable 06-5e-03 microcode update by default (#1972325).
     FixedIn:
         - Module: null
           Name: microcode_ctl

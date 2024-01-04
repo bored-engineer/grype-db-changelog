@@ -1,7 +1,33 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        abrt
+        [2.0.8-6.0.1.el6_3.2]
+        - Add abrt-oracle-enterprise.patch to be product neutral
+        - Remove abrt-plugin-rhtsupport dependency for cli and desktop
+        - Make abrt Obsoletes/Provides abrt-plugin-rhtsupprot
+
+        [2.0.8-6.2]
+        - rebuild against new libreport (brew bug)
+        - Related: #895442
+
+        [2.0.8-6.1]
+        - don't follow symlinks
+        - Related: #895442
+
+        libreport
+        [2.0.9-5.0.1.el6_3.2]
+        - Add oracle-enterprise.patch
+        - Remove libreport-plugin-rhtsupport pkg
+
+        [2.0.9-5.2]
+        - in same cases we have to follow symlinks
+        - Related: #895442
+
+        [2.0.9-5.1]
+        - don't follow symlinks
+        - Resolves: #895442
     FixedIn:
         - Module: null
           Name: abrt

@@ -1,7 +1,179 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        buildah
+        [1:1.24.2-4]
+        - update to the latest content of https://github.com/containers/buildah/tree/release-1.24
+          (https://github.com/containers/buildah/commit/7b559a3)
+        - Related: #2059296
+
+        [1:1.24.2-3]
+        - switch to RHEL maintenance branch which fixes CVE-2022-27651
+        - Resolves: #2067559
+
+        [1:1.24.2-2]
+        - Add patch to fix bash symtax for gating tests
+        - Upstream PR: https://github.com/containers/buildah/pull/3792
+        - Related: #2001445
+
+        [1:1.24.2-1]
+        - update to https://github.com/containers/buildah/releases/tag/v1.24.2
+        - Related: #2001445
+
+        [1:1.24.1-1]
+        - update to https://github.com/containers/buildah/releases/tag/v1.24.1
+        - Related: #2001445
+
+        [1:1.24.0-1]
+        - update to https://github.com/containers/buildah/releases/tag/v1.24.0
+        - Related: #2001445
+
+        cockpit-podman
+        [43-1]
+        - update to https://github.com/cockpit-project/cockpit-podman/releases/tag/43
+        - Related: #2017266
+
+        conmon
+        [2:2.1.0-1]
+        - update to https://github.com/containers/conmon/releases/tag/v2.1.0
+        - Related: #2001445
+
+        containernetworking-plugins
+        [1:1.0.1-2]
+        - revert back to https://github.com/containernetworking/plugins/releases/tag/v1.0.1
+        - Related: #2001445
+
+        containers-common
+        [1-27.0.1]
+        - Updated removed references [Orabug: 33473101] (Alex Burmashev)
+        - Adjust registries.conf (Nikita Gerasimov)
+        - remove references to RedHat registry (Nikita Gerasimov)
+
+        [2:1-27]
+        - update vendored tarballs to avoid unwanted licenses
+          (thanks to Brent Baude)
+        - Related: #2065707
+
+        container-selinux
+        [2:2.179.1-1]
+        - update to https://github.com/containers/container-selinux/releases/tag/v2.179.1
+        - Related: #2001445
+
+        criu
+        [3.15-3]
+        - add Requires: criu-libs = %{version}-%{release} in criu-devel
+        - add gating tests
+        - Related: #1934415
+
+        [3.15-2]
+        - add -devel and -libs subpackages
+        - Resolves: #1971718
+
+        crun
+        [1.4.4-1]
+        - update to https://github.com/containers/crun/releases/tag/1.4.4
+        - Resolves: #2067577
+
+        fuse-overlayfs
+        [1.8.2-1]
+        - update to https://github.com/containers/fuse-overlayfs/releases/tag/v1.8.2
+        - Related: #2001445
+
+        libslirp
+        [4.4.0-1]
+        - Fix CVE-2021-3592 CVE-2021-3593 CVE-2021-3594 CVE-2021-3595 out-of-bounds access
+        - Related: #1934415
+
+        oci-seccomp-bpf-hook
+        [1.2.3-3]
+        - change runc dependency to conflict
+        - Related: #1934415
+
+        podman
+        [2:4.0.2-6]
+        - update to the latest content of https://github.com/containers/podman/tree/v4.0-rhel
+          (https://github.com/containers/podman/commit/3d24a66)
+        - Related: #2059296
+
+        [2:4.0.2-5]
+        - update to the latest content of https://github.com/containers/podman/tree/v4.0-rhel
+          (https://github.com/containers/podman/commit/bb1e6e6)
+        - Related: #2059296
+
+        [2:4.0.2-4]
+        - update to the latest content of https://github.com/containers/podman/tree/v4.0-rhel
+          (https://github.com/containers/podman/commit/5a54f81)
+        - Resolves: #2066493
+
+        [2:4.0.2-3]
+        - depend on libseccomp >= 2.5
+        - Resolves: #2065292
+
+        [2:4.0.2-2]
+        - update to the latest content of https://github.com/containers/podman/tree/v4.0-rhel
+          (https://github.com/containers/podman/commit/9237d75)
+        - Related: #2059296
+
+        [2:4.0.2-1]
+        - update to https://github.com/containers/podman/releases/tag/v4.0.2
+        - Related: #2059754
+
+        [2:4.0.1-1]
+        - update to https://github.com/containers/podman/releases/tag/v4.0.1
+        - Related: #2001445
+
+        python-podman
+        [4.0.0-1]
+        - bump to v4.0.0
+        - Related: #2001445
+
+        runc
+        [1.0.3-2]
+        - rollback to 1.0.3 due to gating test issues
+        - Related: #2001445
+
+        [1.1.0-1]
+        - update to https://github.com/opencontainers/runc/releases/tag/v1.1.0
+        - Related: #2001445
+
+        skopeo
+        [2:1.6.1-2]
+        - fix CVE-2022-21698
+        - Related: #2059296
+
+        [2:1.6.1-1]
+        - update to https://github.com/containers/skopeo/releases/tag/v1.6.1
+        - Related: #2001445
+
+        slirp4netns
+        [1.1.8-2]
+        - fix gating - don't use insecure functions - thanks to Marc-Andre Lureau
+        - Related: #2001445
+
+        udica
+        [0.2.6-3]
+        - Require container-selinux shipping policy templates (#2005866)
+
+        [0.2.6-1]
+        - update to https://github.com/containers/udica/releases/tag/v0.2.6
+        - Related: #2001445
+
+        [0.2.5-2]
+        - New rebase https://github.com/containers/udica/releases/tag/v0.2.5 (#1995041)
+        - Replace capability dictionary with str.lower()
+        - Enable udica to generate policies with fifo class
+        - Sort container inspect data before processing
+        - Update templates to work properly with new cil parser
+        - Related: #1934415
+
+        [0.2.5-1]
+        - update to https://github.com/containers/udica/releases/tag/v0.2.5
+        - Related: #1934415
+
+        [0.2.4-2]
+        - remove %check again and all related BRs
+        - Related: #1934415
     FixedIn:
         - Module: container-tools:ol8
           Name: aardvark-dns

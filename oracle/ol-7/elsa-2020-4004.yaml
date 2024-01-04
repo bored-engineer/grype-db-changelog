@@ -1,7 +1,16 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0:7.0.76-15]
+        - Resolves: CVE-2020-13935 tomcat: multiple requests with invalid payload length in a WebSocket frame could lead to DoS
+
+        [0:7.0.76-14]
+        - Revert rhbz#1814315 because it caused other issues with ipa-server, see rhbz#1831127
+        - Resolves: CVE-2020-9484 tomcat: Apache Tomcat Remote Code Execution via session persistence
+
+        [0:7.0.76-13]
+        - Revert rhbz#1367492 because it caused issues with ipa-server, see rhbz#1831127
     FixedIn:
         - Module: null
           Name: tomcat

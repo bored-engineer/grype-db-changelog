@@ -1,7 +1,39 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.71.1.0.1]
+        - debug: lock down kgdb [Orabug: 34270798] {CVE-2022-21499}
+
+        [3.10.0-1160.71.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.71.1]
+        - netfilter: nf_tables: disallow non-stateful expression in sets earlier (Phil Sutter) [2093000] {CVE-2022-1966}
+        - netfilter: nf_tables: fix memory leak if expr init fails (Phil Sutter) [2093000]
+
+        [3.10.0-1160.70.1]
+        - perf: Fix sys_perf_event_open() race against self (Michael Petlan) [2087954]
+
+        [3.10.0-1160.69.1]
+        - mm: memcg: charge memsw as well in __GFP_NOFAIL case (Rafael Aquini) [2082564]
+
+        [3.10.0-1160.68.1]
+        - libceph: fix potential use-after-free on linger ping and resends (Ilya Dryomov) [2088025]
+        - xfs: use length to balance duplicate bno buffers in perag rb_tree (Brian Foster) [2050464]
+        - sock: sock_dequeue_err_skb() needs hard irq safety (Kenneth Yin) [2070408]
+
+        [3.10.0-1160.67.1]
+        - mm/rmap.c: explicitly reset vma->anon_vma in unlink_anon_vmas() (Rafael Aquini) [1824109 2069962]
+        - mm/rmap.c: don't reuse anon_vma if we just want a copy (Rafael Aquini) [1824109 2069962]
+        - mm/mmap.c: rb_parent is not necessary in __vma_link_list() (Rafael Aquini) [1824109 2069962]
+        - mm/mmap.c: extract __vma_unlink_list() as counterpart for __vma_link_list() (Rafael Aquini) [1824109 2069962]
+        - mm/mmap.c: __vma_unlink_prev() is not necessary now (Rafael Aquini) [1824109 2069962]
+        - mm/mmap.c: prev could be retrieved from vma->vm_prev (Rafael Aquini) [1824109 2069962]
     FixedIn:
         - Module: null
           Name: bpftool

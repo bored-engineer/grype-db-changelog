@@ -1,7 +1,21 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.7.8-2.0.1]
+        - Modify %prep to correctly apply downstream patches
+        - Align sections to 512 bytes [Orabug: 35265981]
+        - Use objcopy to build arm/aarch64 binaries if binutils 2.30-113.0.3 or newer [Orabug: 35265981]
+        - Enabled signing for aarch64 [Orabug: 35265981]
+        - Modify meson.build for fwupd-efi [Orabug: 35265981]
+        - Update SBAT data to include Oracle [Oracle: 33072886]
+        - Build with the updated Oracle certificate
+        - Use oraclesecureboot301 as certdir [Orabug: 29881368]
+        - Use new signing certificate (Alex Burmashev)
+
+        [1.7.8-2]
+        - Backport the Redfish security fixes which affect IDRAC.
+        - Resolves: rhbz#2170950
     FixedIn:
         - Module: null
           Name: fwupd

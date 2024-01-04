@@ -1,7 +1,17 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.4.0-4]
+        - Add missing Requires for perl(XSLoader) and perl(ExtUtils::MakeMaker),
+        - which are no longer auto-generated due to a (expected) change in rpm-build
+        - Related: rhbz#1632998
+
+        [3.4.0-3]
+        - Fix CVE-2018-11781 - Local user code injection in the meta rule syntax
+        - Fix CVE-2017-15705 - Certain unclosed tags in crafted emails allow for
+        - scan timeouts and resulting denial of service
+        - Resolves: rhbz#1632998
     FixedIn:
         - Module: null
           Name: spamassassin

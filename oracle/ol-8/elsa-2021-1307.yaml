@@ -1,7 +1,28 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:11.0.11.0.9-0]
+        - Update to jdk-11.0.11.0+9
+        - Update release notes to 11.0.11.0+9
+        - Require tzdata 2020f to match upstream change JDK-8259048
+        - Require tzdata 2021a to match upstream change JDK-8260356
+        - Remove RH1868754 patch as this is now resolved upstream by JDK-8258833
+        - Remove RH1868740 & RH1883849 patches as these are now resolved by JDK-8259319
+        - This tarball is embargoed until 2021-04-20 @ 1pm PT.
+        - Resolves: rhbz#1938201
+
+        [1:11.0.11.0.9-0]
+        - Fix issue where CheckVendor.java test erroneously passes when it should fail.
+        - Add proper quoting so '&' is not treated as a special character by the shell.
+        - Fixed not-including fastdebug build in case of --without fastdebug
+        - Resolves: rhbz#1938201
+
+        [1:11.0.10.0.9-5]
+        - Perform static library build on a separate source tree with bundled image libraries
+        - Make static library build optional
+        - Based on initial work by Severin Gehwolf
+        - Resolves: rhbz#1930513
     FixedIn:
         - Module: null
           Name: java-11-openjdk

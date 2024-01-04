@@ -1,7 +1,214 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.0.7-6.0.1]
+        - Replaced bugzilla.oracle.com references [Orabug: 34202300]
+        - replaced upstream references [Orabug:34089586]
+
+        [1:2.0.7-6]
+        - Install qemu-ga package during conversion
+          resolves: rhbz#2028764
+
+        [1:2.0.7-5]
+        - Remove LVM2 devices file during conversion
+          resolves: rhbz#2112801
+        - Add support for Zstandard compressed kernel modules
+          resolves: rhbz#2116811
+
+        [1:2.0.7-4]
+        - Remove legacy crypto advice and replace with targeted mechanism
+          resolves: rhbz#2062360
+
+        [1:2.0.7-3]
+        - relax qemu64 VCPU feature checking in the libvirt output
+          resolves rhbz#2107503
+
+        [1:2.0.7-2]
+        - Rebase to stable branch version 2.0.7
+          resolves: rhbz#2059287, rhbz#1658126, rhbz#1788823, rhbz#1854275
+        - Fix openssh-clients dependency
+          resolves: rhbz#2064178
+        - Fix security issue when running virt-v2v as root
+          resolves: rhbz#2066773
+        - Remove -o json mode
+          resolves: rhbz#2074026
+        - Allow conversion of guests with NVMe drives from VMX files
+          resolves: rhbz#2070530
+        - Cleanly reject guests with snapshots when using -it ssh
+          resolves: rhbz#1774386
+        - Document that vmx+ssh -ip auth doesnt cover ssh / scp shell commands
+          resolves: rhbz#1854275
+        - Fix conversion if swap partition isnt encrypted with root directory
+          resolves: rhbz#1658128
+        - Document permissions when importing OVA using RHV UI
+          resolves: rhbz#2039597
+        - Multiple fixes for -o qemu mode
+          resolves: rhbz#2074805
+        - Work around blocking bug in OpenStack
+          resolves: rhbz#2074801
+        - If multiple open-vm-tools packages are installed, remove all (2076436)
+        - For -o rhv-upload wait for VM creation task
+          resolves: rhbz#1985830
+        - For -i vmx add full support for SATA hard disks
+          resolves: rhbz#1883802
+        - Fix booting of RHEL 9.1 guests after conversion
+          resolves: rhbz#2076013
+        - Fix -o qemu warning
+          resolves: rhbz#2082603
+        - If listing RPM applications fails, rebuild DB and retry (2089623)
+        - Document -i vmx -it ssh percent encoding in ssh URIs
+          resolves: rhbz#1938954
+        - Document extra permissions needed for VMware 7 (1817050)
+        - Remove osprober devices left around by grub2
+          resolves: rhbz#2003503
+        - Add Requires python3 / platform-python
+          resolves: rhbz#2094779
+        - Fix CVE-2022-2211 Denial of Service in --key parameter
+          resolves: rhbz#2102719
+        - Add -oo compressed support
+          resolves: rhbz#2047660
+        - Limit the maximum of disks per guest
+          resolves: rhbz#2051564
+        - Add support for LUKS encrypted guests using Clevis & Tang
+          resolves: rhbz#1809453
+        - Fix remapping of nvme devices in /boot/grub2/device.map
+          resolves: rhbz#2101665
+        - Improve documentation of vmx+ssh and -ip option
+          resolves: rhbz#1854275
+        - Fix race condition when unmounting in -o rhv mode (1953286#c26)
+
+        [1:1.45.99-1]
+        - Rebase to upstream 1.45.99.
+        - Add check for sufficient free space in the host
+          resolves: rhbz#2051394
+        - Update documentation of -ip for conversions from VMware over HTTPS
+          related: rhbz#1960087
+        - -o rhv-upload: Keep connections alive
+          resolves: rhbz#2032324
+        - -o rhv-upload: Improve conversion performance
+          resolves: rhbz#2039255
+        - -o rhv-upload: Replace -oo rhv-direct with -oo rhv-proxy
+          resolves: rhbz#2033096
+        - Fix log line wrapping making log parsing difficult (1820221)
+
+        [1:1.45.97-4]
+        - v2v import from vCenter fails when using interactive password because
+          cookie-script tries to be interactive
+          (pick commit 8abc07a8589a)
+          resolves: rhbz#1960087
+        - model=virtio-transitional is wrongly added when converting windows
+          guest to local by rhel9 v2v
+          (pick commit range commit range 8abc07a8589a..cacedec64072)
+          resolves: rhbz#2043333
+
+        [1:1.45.97-3]
+        - Rebase to upstream 1.45.97.
+          resolves: rhbz#2011713
+        - Add virtio-transitional for older guests when converting to q35
+          resolves: rhbz#1942325
+        - Fix -o rhv mode
+          resolves: rhbz#2027598
+        - input: xen: Fix assertion error when importing from remote block device
+          resolves: rhbz#2041852
+        - output: -o json: Allow -oo (output options) to work
+          resolves: rhbz#2041850
+        - Fix virt-v2v hang when given incorrect vpx:// URL
+          resolves: rhbz#2041886
+        - Fix hang when converting with virt-p2v
+          resolves: rhbz#2044911
+        - Send nbdinfo debugging information to stderr
+          resolves: rhbz#2044922
+        - Explicitly require platform-python
+          resolves: rhbz#2046178
+
+        [1:1.45.95-3]
+        - output_rhv: restrict block status collection to the old RHV output
+        - Rebase from upstream commit 702a511b7f33 to direct child commit 07b12fe99fb9
+          resolves: rhbz#2034240
+
+        [1:1.45.95-2]
+        - Rebase to upstream 1.45.95.
+        - Change video type to VGA (instead of QXL).
+        - Remove --in-place support properly.
+        - Remove -o glance support properly.
+        - Fix quoting with openssh >= 8.7 (RHEL) / 8.8
+        - Fix q35 error IDE controllers are unsupported
+        - Add virt-v2v and libvirt version in debug output
+        - Fix -o rhv output mode showing no guests listed
+          resolves: rhbz#2011713, rhbz#1961107, rhbz#2027673,
+          rhbz#1637857, rhbz#2032112, rhbz#2027598
+
+        [1:1.45.3-3]
+        - Fix conversion of Windows BitLocker guests
+          resolves: rhbz#1994984
+
+        [1:1.45.3-2]
+        - Rebuilt for IMA sigs, glibc 2.34, aarch64 flags
+          Related: rhbz#1991688
+
+        [1:1.45.3-1]
+        - New upstream development version 1.45.3.
+        - Rebase RHEL patches.
+          resolves: rhbz#1950634
+
+        [1:1.45.2-1]
+        - New upstream development version 1.45.2.
+        - Remove --debug-overlays and --print-estimate options.
+        - Remove -o glance option on RHEL 9 (RHBZ#1977539).
+        - Remove support for RHEV-APT (RHBZ#1945549).
+
+        [1:1.45.1-1.el9.1]
+        - New upstream development version 1.45.1.
+        - Require virtio-win on RHEL (RHBZ#1972644).
+        - v2v-test-harness, virt-v2v-copy-to-local have been removed upstream.
+
+        [1:1.44.0-2]
+        - nbdkit-vddk-plugin dep only exists on x86-64.
+
+        [1:1.44.0-1.el9.1]
+        - Rebuild in RHEL 9 against libguestfs 1.45.5
+          resolves: rhbz#1959042
+
+        [1:1.44.0-1]
+        - New upstream stable branch version 1.44.0.
+
+        [1:1.43.5-1]
+        - New upstream version 1.43.5.
+
+        [1:1.43.4-5]
+        - Add upstream patch to depend on xorriso.
+        - Change libguestfs-tools-c -> guestfs-tools.
+
+        [1:1.43.4-3]
+        - Add downstream (RHEL-only) patches (RHBZ#1931724).
+
+        [1:1.43.4-2]
+        - Bump and rebuild for ocaml-gettext update.
+
+        [1:1.43.4-1]
+        - New upstream version 1.43.4.
+
+        [1:1.43.3-4]
+        - OCaml 4.12.0 build
+
+        [1:1.43.3-3]
+        - Add fix for OCaml 4.12.
+
+        [1:1.43.3-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+        [1:1.43.3-1]
+        - New upstream version 1.43.3.
+
+        [1:1.43.2-3]
+        - Drop obsolete virt-v2v-copy-to-local tool for Fedora 34 and RHEL 9.
+
+        [1:1.43.2-2]
+        - Unify Fedora and RHEL spec files.
+
+        [1:1.43.2-1]
+        - New upstream version 1.43.2.
     FixedIn:
         - Module: null
           Name: virt-v2v

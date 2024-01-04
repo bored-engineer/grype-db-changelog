@@ -1,7 +1,20 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        kernel
+        [2.6.18-371.12.1]
+        - [audit] auditsc: audit_krule mask accesses need bounds checking (Denys Vlasenko) [1102702 1102703] {CVE-2014-3917}
+        - [mm] writeback: Fix hang when low on memory due to NFS traffic (Larry Woodman) [1125246 1080194]
+        - [net] tg3: Fix Read DMA workaround for 5719 A0 (Ivan Vecera) [1121017 924590]
+        - [fs] jbd: don't wake kjournald unnecessarily (Denys Vlasenko) [1116027 1081785]
+        - [fs] jbd: don't wait (forever) for stale tid caused by wraparound (Denys Vlasenko) [1116027 1081785]
+        - [fs] ext4: fix waiting and sending of barrier in ext4_sync_file() (Denys Vlasenko) [1116027 1081785]
+        - [fs] jbd2: Add function jbd2_trans_will_send_data_barrier() (Denys Vlasenko) [1116027 1081785]
+        - [fs] jbd2: fix sending of data flush on journal commit (Denys Vlasenko) [1116027 1081785]
+        - [fs] ext4, jbd2: Add barriers for file systems with ext journals (Denys Vlasenko) [1116027 1081785]
+        - [fs] jbd: fix fsync() tid wraparound bug (Denys Vlasenko) [1116027 1081785]
+        - [fs] ext4: fix fdatasync() for files with only i_size changes (Eric Sandeen) [1117665 1102768]
     FixedIn:
         - Module: null
           Name: kernel

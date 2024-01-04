@@ -1,7 +1,43 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.0.14-7]
+        - Add the permission patch to the repository (#1312583)
+
+        [1.0.14-6]
+        - Check the NSS certificate database directory for read permissions
+          by the Apache user. (#1312583)
+
+        [1.0.14-5]
+        - Update clean semaphore patch to not free the pinList twice.
+          (#1364560)
+
+        [1.0.14-4]
+        - Update clean semaphore patch to not close pipe twice and to
+          shutdown NSS database (#1364560)
+
+        [1.0.14-3]
+        - Clean up semaphore in nss_pcache on shutdown (#1364560)
+
+        [1.0.14-2]
+        - mod_nss sets r->user in fixup even if it was long ago changed
+          by other module (#1347298)
+
+        [1.0.14-1]
+        - Rebase to 1.0.14 (#1299063)
+        - Add support for Server Name Indication (SNI) (#1053327)
+        - Use upstream method to not execute live tests as root (#1256887)
+        - Always call SSL_ShutdownServerSessionIDCache() in ModuleKill
+          (#1263301, #1296685)
+        - Don't require NSSProxyNickname (#1280287)
+        - Make link to libnssckbi.so an absolute link (#1288471)
+        - Fail for colons in credentials with FakeBasicAuth (#1295970)
+        - Don't ignore NSSProtocol when NSSFIPS is enabled (#1312491)
+        - Check filesystem permissions on NSS database at startup (#1312583)
+        - OpenSSL ciphers stopped parsing at +, CVE-2016-3099 (#1323913)
+        - Patch to match available ciphers so tests pass (#1299063)
+        - Patch to fix tests in brew (#1299063)
     FixedIn:
         - Module: null
           Name: mod_nss

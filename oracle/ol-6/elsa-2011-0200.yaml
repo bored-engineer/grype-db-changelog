@@ -1,7 +1,27 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.8.2-3.4]
+        - add upstream patches to fix standalone kpropd exiting if the per-client
+          child process exits with an error, and hang or crash in the KDC when using
+          the LDAP kdb backend (CVE-2010-4022, CVE-2011-0281, CVE-2011-0282, #671101)
+
+        [1.8.2-3.3]
+        - pull up crypto changes made between 1.8.2 and 1.8.3 to fix upstream #6751,
+          assumed to already be there for the next fix
+        - incorporate candidate patch to fix various issues from MITKRB5-SA-2010-007
+          (CVE-2010-1323, CVE-2010-1324, CVE-2010-4020, #651962)
+
+        [1.8.2-3.2]
+        - fix reading of keyUsage extensions when attempting to select pkinit client
+          certs (part of #644825, RT#6775)
+        - fix selection of pkinit client certs when one or more don't include a
+          subjectAltName extension (part of #644825, RT#6774)
+
+        [1.8.2-3.1]
+        - incorporate candidate patch to fix uninitialized pointer crash in the KDC
+          (CVE-2010-1322, #636336)
     FixedIn:
         - Module: null
           Name: krb5-devel

@@ -1,7 +1,17 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        httpd
+        [2.4.37-43.0.2.2]
+        - Set vstring per ORACLE_SUPPORT_PRODUCT [Orabug: 29892262]
+        - Replace index.html with Oracle's index page oracle_index.html
+
+        [2.4.37-43.2]
+        - Resolves: #2059256 - CVE-2021-34798 httpd:2.4/httpd: NULL pointer dereference
+          via malformed requests
+        - Resolves: #2059257 - CVE-2021-39275 httpd:2.4/httpd: out-of-bounds write in
+          ap_escape_quotes() via malicious input
     FixedIn:
         - Module: httpd:2.4
           Name: httpd

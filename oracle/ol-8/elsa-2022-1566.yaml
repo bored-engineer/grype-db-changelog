@@ -1,7 +1,32 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        buildah
+        [1.11.6-10.0.1]
+        - Handling redirect from the docker registry [Orabug: 29874238] (Nikita Gerasimov)
+        - Reduce unnecessary writable mounts in NaiveDiffDriver [Orabug: 31025483]
+
+        [1.11.6-10]
+        - update to the latest content of https://github.com/containers/buildah/tree/release-1.11-rhel
+          (https://github.com/containers/buildah/commit/9a4764a)
+        - fixes CVE-2022-27649
+
+        podman
+        [1.6.4-28.0.1]
+        - Reduce unnecessary writable mounts in NaiveDiffDriver [Orabug: 31025483]
+        - delivering fix for [Orabug: 29874238] by Nikita Gerasimov <nikita.gerasimov@oracle.com>
+
+        [1.6.4-28]
+        - update to the latest content of https://github.com/containers/podman/tree/v1.6.4-rhel
+          (https://github.com/containers/podman/commit/9407ffd)
+        - fixes CVE-2022-27651
+        - Resolves: #2067545
+
+        [1.6.4-27]
+        - update to the latest content of https://github.com/containers/podman/tree/v1.6.4-rhel
+          (https://github.com/containers/podman/commit/c19e460)
+        - Resolves: #2062401
     FixedIn:
         - Module: null
           Name: buildah

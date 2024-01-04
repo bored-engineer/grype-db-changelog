@@ -1,7 +1,28 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [11.0.5-3.0.1]
+        - fix spaces in vmware udev rule for scsi devices
+          [Orabug: 24461968]
+        - Fix vmware udev rule in 99-vmware-scsi-timeout.rules file.
+          [Orabug: 22815019]
+        - Increase timeout for scsi devices on VMWare guests by adding a udev rule.
+        - Created a new file 99-vmware-scsi-timeout.rules
+        - Modified spec file to install this new file.
+          [Orabug: 21819156]
+
+        [11.0.5-3.el7_9.6]
+        - ovt-Remove-some-dead-code.patch [bz#2215562]
+        - Resolves: bz#2215562
+          ([CISA Major Incident] CVE-2023-20867 open-vm-tools: authentication bypass vulnerability in the vgauth module [rhel-7])
+
+        [11.0.5-3.el7_9.5]
+        - ovt-Track-Linux-filesystem-id-FSID-for-quiesced-frozen-f.patch [bz#1880404 bz#1994590]
+        - Resolves: bz#1880404
+          ([ESXi] [RHEL7] vmtoolsd task is blocked in the uninterruptible state while attempting to delete (unlink) the file 'quiesce_manifest.xml')
+        - Resolves: bz#1994590
+          ([ESXi][RHEL7.9][open-vm-tools] Snapshot of the RHEL7 guest on the VMWare ESXi hypervisor failed vm hangs)
     FixedIn:
         - Module: null
           Name: open-vm-tools

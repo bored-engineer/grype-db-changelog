@@ -1,7 +1,55 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nspr
+        [4.25.0-2]
+        - Rebuild
+
+        [4.25.0-1]
+        - Update to NSPR 4.25
+
+        nss
+        [3.53.1-11]
+        - Fix issue with upgradedb where upgradedb expects standard to
+          generate dbm databases, not sql databases (default in RHEL8)
+
+        [3.53.1-10]
+        - Disable dh timing test because it's unreliable on s390
+
+        [3.53.1-9]
+        - Explicitly enable upgradedb/sharedb test cycles
+
+        [3.53.1-8]
+        - Disable Delegated Credentials for TLS
+
+        [3.53.1-7]
+        - Fix attribute decryption issue where the private key components
+          integrity check on private attributes where not being checked.
+
+        [3.53.1-6]
+        - Update nss-rsa-pkcs1-sigalgs.patch to the upstream version
+
+        [3.53.1-5]
+        - Include required checks for dh and ecdh key generation in FIPS mode.
+
+        [3.53.1-4]
+        - Add better checks for dh derive operations in FIPS mode.
+
+        [3.53.1-3]
+        - Disable NSS_HASH_ALG_SUPPORT as well for MD5 (#1849938)
+        - Adjust for update-crypto-policies packaging change (#1848649)
+        - Fix compilation with -Werror=strict-prototypes (#1843417)
+
+        [3.53.1-2]
+        - Fix regression in MD5 disablement (#1849938)
+        - Include rsa_pkcs1_* in signature_algorithms extension (#1847945)
+
+        [3.53.1-1]
+        - Update to NSS 3.53.1
+
+        [3.53.0-1]
+        - Update to NSS 3.53
     FixedIn:
         - Module: null
           Name: nspr

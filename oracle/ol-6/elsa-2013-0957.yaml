@@ -1,7 +1,32 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.7.0.25-2.3.10.3.0.1.el6_4]
+        - Update DISTRO_NAME in specfile
+
+        [1.7.0.25-2.3.10.3.el6]
+        - removed upstreamed patch1000 MBeanFix.patch
+        - updated to newer IcedTea7-forest 2.3.10 with 8010118 fix
+        - Resolves: rhbz#973119
+
+        [1.7.0.25-2.3.10.2.el6]
+        - added patch1000 MBeanFix.patch to fix regressions caused by security patches
+        - Resolves: rhbz#973119
+
+        [1.7.0.25-2.3.10.1.el6]
+        - build bumped to 25
+        - Resolves: rhbz#973119
+
+        [1.7.0.19-2.3.10.0.el6]
+        - Updated to latest IcedTea7-forest 2.3.10
+        - patch 107 renamed to 500 for cosmetic purposes
+        - improved handling of patch111 - nss-config-2.patch
+        - removed patch 117, java-1.7.0-openjdk-nss-multiplePKCS11libraryInitialisationNnonCritical.patch
+          duplicated with patch 108 (java-1.7.0-openjdk-nss-icedtea-e9c857dcb964)
+        - Added client/server directories so they can be owned
+        - Added fix for RH857717, owned /etc/.java/ and /etc/.java/.systemPrefs
+        - Resolves: rhbz#973119
     FixedIn:
         - Module: null
           Name: java-1.7.0-openjdk

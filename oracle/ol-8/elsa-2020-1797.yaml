@@ -1,7 +1,91 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.30-73.0.1]
+        - Forward-port of Oracle patches from 2.30-68.0.2.
+        - Reviewed-by: Elena Zannoni <elena.zannoni@oracle.com>
+
+        [2.30-68.0.2]
+        - Backport the non-cycle-detecting-capable deduplicating CTF linker
+        - Backport a fix for an upstream hashtab crash (no upstream bug number),
+          triggered by the above.
+        - Fix deduplication of ambiguously-named types in CTF.
+        - CTF types without names are not ambiguously-named.
+        - Stop the CTF_LINK_EMPTY_CU_MAPPINGS flag crashing.
+        - Only emit ambiguous types as hidden if they are named and there is already
+          a type with that name.
+        - Make sure completely empty dicts get their header written out properly
+        - Do not fail if adding anonymous struct/union members to structs/unions that
+          already contain other anonymous members at a different offset
+        - Correctly look up pointers to non-root-visible structures
+        - Emit error messages in dumping into the dump stream
+        - Do not abort early on dump-time errors
+        - Elide likely duplicates (same name, same kind) within a single TU (cross-
+          TU duplicate/ambiguous-type detection works as before).
+        - Fix linking of the CTF variable section
+        - Fix spurious conflicts of variables (also affects the nondeduplicating linker)
+        - Defend against CUs without names
+        - When linking only a single input file, set the output CTF CU name to the
+          name of the input
+        - Support cv-qualified bitfields
+        - Fix off-by-one error in SHA-1 sizing
+
+        [2.30-73]
+        - Remove bogus assertion.  (#1801879)
+
+        [2.30-72]
+        - Allow the BFD library to handle the copying of files containing secondary reloc sections.  (#1801879)
+
+        [2.30-68.0.1]
+        - Ensure 8-byte alignment for AArch64 stubs.
+        - Add CTF support to OL8: CTF machinery, including libctf.so and
+          libctf-nonbfd.so.  The linker does not yet deduplicate the CTF type section.
+        - Backport of fix for upstream bug 23919, required by above
+        - [Orabug: 30102938] [Orabug: 30102941]
+
+        [2.30-71]
+        - Fix a potential seg-fault in the BFD library when parsing pathalogical debug_info sections.  (#1779245)
+        - Fix a potential memory exhaustion in the BFD library when parsing corrupt DWARF debug information.
+
+        [2.30-70]
+        - Re-enable strip merging build notes.  (#1777760)
+
+        [2.30-69]
+        - Fix linker testsuite failures triggered by annobin update.
+
+        [2.30-68]
+        - Backport H.J.Lus patch to add a workaround for the JCC Errata to the assembler.  (#1777002)
+
+        [2.30-67]
+        - Fix a buffer overrun in the note merging code.  (#1774507)
+
+        [2.30-66]
+        - Fix a seg-fault in gold when linking corrupt input files.  (#1739254)
+
+        [2.30-65]
+        - NVR bump to allow rebuild with reverted version of glibc in the buildroot.
+
+        [2.30-64]
+        - Stop note merging with no effect from creating null filled note sections.
+
+        [2.30-63]
+        - Stop objcopy from generating a exit failure status when merging corrupt notes.
+
+        [2.30-62]
+        - Fix binutils testsuite failure introduced by -60 patch.  (#1767711)
+
+        [2.30-61]
+        - Enable threading in the GOLD linker.  (#1729225)
+        - Add check to readelf in order to prevent an integer overflow.
+
+        [2.30-60]
+        - Add support for SVE Vector PCS on AArch64.  (#1726637)
+        - Add fixes for coverity test failures.
+        - Improve objcopys ability to merge GNU build attribute notes.
+
+        [2.30-59]
+        - Stop the linker from merging groups with different settings of the SHF_EXCLUDE flag.  (#1730906)
     FixedIn:
         - Module: null
           Name: binutils

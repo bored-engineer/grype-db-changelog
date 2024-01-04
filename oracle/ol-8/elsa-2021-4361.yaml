@@ -1,7 +1,86 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.32.10-4.0.1]
+        - add connectivity check via Oracle servers [Orabug: 32051972]
+        - Disable the build of NetworkManager-config-connectivity-* subpackage for 8.3
+
+        [1:1.32.10-4]
+        - revert unapproved patches part of 'cloud-setup' change (rh #1977984)
+
+        [1:1.32.10-3]
+        - preserve the IPv6 multicast route added by kernel (rh #2004212)
+        - cloud-setup: better handle other route configuration (rh #1977984)
+
+        [1:1.32.10-2]
+        - platform: fix capturing IPv4 addresses from platform for assuming after restart (rh #1988751)
+
+        [1:1.32.10-1]
+        - update to 1.32.10 release
+        - nm-initrd-generator: add kernel command line options ethtool autoneg and speed (rh #1940934)
+        - IP: fix the order of IP addresses during service restart (rh #1988751)
+
+        [1:1.32.8-1]
+        - Upgrade to 1.32.8 release
+        - firewalld: configure zones on 'Reloaded' signal (rh #1982403)
+        - ethtool: support configuring newer gigabit ethernet speeds (rh #1897004)
+        - core: fix wrong MTU for bridge interfaces (rh #1973536)
+        - cloud-setup: fix gateway address for Aliyun cloud (rh #1823315)
+
+        [1:1.32.6-1]
+        - Upgrade to 1.32.6 release
+        - core: fix adding stale local routes when address changes (rh #1979192)
+        - dhcp: handle filename/bootfile_name DHCP option and write it to device state
+          file for initrd/kickstart (rh #1979387)
+        - initrd: add 'ib.pkey=' command line option (rh #1805708)
+        - core: introduce 'keep-configuration' device option to forcefully activate a
+          profile on start (rh #1934122)
+
+        [1:1.32.4-1]
+        - Upgrade to 1.32.4 with fixes of:
+        - nmcli: show DNS SEARCH field in device information. (rh #1852317)
+        - device: avoid crash setting VPN config during unrealize. (rh #1912423)
+        - core: send ARP announcements when there is carrier. (rh #1956793)
+        - core: add ipv[46].required-timeout option to wait for IP configuration while activating. (rh #1961666)
+        - core: start DHCPv6 when a prefix delegation is needed for shared mode. (rh #1973199)
+        - ifcfg: log warning about invalid keys in ifcfg files. (rh #1959656)
+        - cloud-setup: add support for Aliyun cloud. (rh #1823315)
+
+        [1:1.32.2-1]
+        - update to 1.32.2 release
+        - device: prefer IPv6 not-deprecated addresses for hostname lookup (rh #1820770)
+        - docs: describe qdiscs and tfilters in nm-settings manpage (rh #1847894)
+        - cloud-setup: preserve IPv4 addresses/routes/rules from profile (rh #1971527)
+        - daemon: performance improvements (rh #1847125)
+        - dhcp/systemd: ignore FORCERENEW requests for DHCPV4 (rh #1961251, CVE-2020-13529)
+        - Add bridge_role in 802-3-ethernet.s390-options using nmcli (rh #1935842)
+
+        [1:1.32.0-1]
+        - update to 1.32.0 release
+        - veth: fix null error when deleting the device (rh #1915278)
+        - veth: fix crash when deleting the device profile (rh #1915276)
+        - firewall: add new 'nftables' firewall-backend (rh #1548825)
+        - DNS: fix lookup of hostname via DNS (rh #1970335)
+
+        [1:1.32.0-0.5]
+        - update to 1.32-rc1 (1.31.90) (release candidate)
+        - core: allow to preserved external TFilter and QDisc settings (rh #1928078)
+        - bond: support 'tlb_dynamic_lb' in 'balance-alb' mode (rh #1959934)
+
+        [1:1.32.0-0.4]
+        - Update to 1.31.5 (development)
+        - core: configure MTU early before DHCP completes (rh #1890234)
+        - core: fix activation handling for ports (rh #1955101, rh #1959961)
+        - core: add support for ethtool pause parameters (rh #1899372)
+        - dhcp: support option 249 (Microsoft Classless Static Route) (rh #1959461)
+
+        [1:1.32.0-0.3]
+        - Update to 1.31.4 (development)
+        - core: fix assertion failure in activation handling (rh #1933719)
+
+        [1:1.32.0-0.2]
+        - Update to 1.31.3 (development)
     FixedIn:
         - Module: null
           Name: NetworkManager

@@ -1,7 +1,45 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        delve
+        [1.7.2-1.0.1]
+        - Disable DWARF compression which has issues (Alex Burmashev)
+
+        [1.7.2-1]
+        - Rebase to 1.7.2
+        - Related: rhbz#2014088
+
+        golang
+        [1.17.7-1]
+        - Rebase to Go 1.17.7
+        - Remove fips memory leak patch (fixed in tree)
+        - Resolves: rhbz#2015930
+
+        go-toolset
+        [1.17.7-1]
+        - Rebase to Go 1.17.7
+        - Remove fips memory leak patch (fixed in tree)
+        - Resolves: rhbz#2015930
+
+        [1.17.5-1]
+        - Rebase to Go 1.17.5
+        - Resolves: rhbz#2031112
+
+        [1.17.4-1]
+        - Rebase Go to 1.17.4
+        - Add vdso_s390x_gettime patch
+        - Add remove_waitgroup_misuse_tests patch
+        - Related: rhbz#2014088
+        - Resolves: rhbz#2028570
+        - Resolves: rhbz#2022828
+        - Resolves: rhbz#2024686
+        - Resolves: rhbz#2028662
+
+        [1.17.2-1]
+        - Rebase to Go 1.17.2
+        - Rebase to Delve 1.7.2
+        - Resolves: rhbz#2014088
     FixedIn:
         - Module: go-toolset:ol8
           Name: delve

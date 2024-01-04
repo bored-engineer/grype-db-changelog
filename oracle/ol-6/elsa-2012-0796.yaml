@@ -1,7 +1,42 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [5.8.10-2]
+        - add patch to update information on debugging in the man page
+          Resolves: #820311
+        - add patch to prevent debug output to stdout after forking
+          Resolves: #820996
+        - add patch to support ssl certificates with domain names longer than 128 chars
+          Resolves: #822118
+
+        [5.8.10-1]
+        - rebase to rsyslog 5.8.10
+          Resolves: #803550
+          Resolves: #805424
+          Resolves: #813079
+          Resolves: #813084
+        - consider lock file in 'status' action
+          Resolves: #807608
+        - add impstats and imptcp modules
+        - include new license text files
+        - specify which versions of sysklogd are obsoleted
+
+        [5.8.7-1]
+        - rebase to rsyslog-5.8.7
+          - change license from 'GPLv3+' to '(GPLv3+ and ASL 2.0)'
+            http://blog.gerhards.net/2012/01/rsyslog-licensing-update.html
+          - remove patches obsoleted by rebase
+          - add patches for better sysklogd compatibility (taken from upstream)
+          - update included files for the new major version
+          Resolves: #672182
+          Resolves: #727380
+          Resolves: #756664
+          Resolves: #767527
+          Resolves: #769025
+        - add several directories for storing auxiliary data
+          Resolves: #740420
+        - fix source package URL
     FixedIn:
         - Module: null
           Name: rsyslog

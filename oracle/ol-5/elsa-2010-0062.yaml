@@ -1,7 +1,14 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [30:9.3.6-4.P1.2]
+        - NSEC validation code could cause wrong NXDOMAIN responses (#554851,
+          CVE-2010-0097)
+        - improve fix for CVE-2009-4022 (#538744)
+          - {C,D}NAMEs could be returned to clients without proper DNSSEC validation
+          - don't validate + cache out-of-bailiwick data returned with a secure answer.
+            Refetch it instead.
     FixedIn:
         - Module: null
           Name: bind

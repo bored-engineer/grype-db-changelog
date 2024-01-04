@@ -1,7 +1,27 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [kvm-83-262.0.1.el5_9.3]
+        - Added kvm-add-oracle-workaround-for-libvirt-bug.patch
+        - Added kvm-Introduce-oel-machine-type.patch
+
+        [kvm-83-262.el5_3]
+        - kvm-kernel-kvm-accept-unaligned-MSR_KVM_SYSTEM_TIME-writes.patch [bz#947363]
+        - Resolves: bz#947363
+          (RHEL.5.8.32 guest hang when installing)
+
+        [kvm-83-262.el5_2]
+        - kvm-kernel-KVM-Fix-for-buffer-overflow-in-handling-of-MSR_KVM_S.patch [bz#917018]
+        - kvm-kernel-KVM-Convert-MSR_KVM_SYSTEM_TIME-to-use-kvm_write_gue.patch [bz#917022]
+        - kvm-kernel-KVM-Fix-bounds-checking-in-ioapic-indirect-register-.patch [bz#917028]
+        - kvm-kernel-do-not-GP-on-unaligned-MSR_KVM_SYSTEM_TIME-write.patch [bz#bz917019]
+        - Resolves: bz#917018
+          (CVE-2013-1796 kernel: kvm: buffer overflow in handling of MSR_KVM_SYSTEM_TIME [rhel-5.9.z])
+        - Resolves: bz#917022
+          (CVE-2013-1797 kernel: kvm: after free issue with the handling of MSR_KVM_SYSTEM_TIME [rhel-5.9.z])
+        - Resolves: bz#917028
+          (CVE-2013-1798 kernel: kvm: out-of-bounds access in ioapic indirect register reads [rhel-5.9.z])
     FixedIn:
         - Module: null
           Name: kmod-kvm

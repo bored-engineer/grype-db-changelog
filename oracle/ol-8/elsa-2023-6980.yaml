@@ -1,7 +1,952 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        hivex
+        libguestfs
+        [1.44.0-9.0.2]
+        - libguestfs.spec: Add btrfs-progs RPM to appliance [Orabug: 35634755]
+
+        [1.44.0-9.0.1]
+        - Replace upstream references from description tag
+        - Config supermin to use host yum.conf in ol8 [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        [1:1.44.0-9]
+        - Fix CVE-2022-2211 Denial of Service in --key parameter
+          resolves: rhbz#2101280
+
+        [1:1.44.0-8]
+        - Obsolete old libguestfs-benchmarking subpackage
+          resolves: rhbz#2091597
+
+        [1:1.44.0-7]
+        - Disable 5-level page tables when using -cpu max
+          resolves: rhbz#2084566
+          related: rhbz#2075424
+
+        [1:1.44.0-6]
+        - Backport support for -cpu max to allow RHEL 9 guests to be modified
+          resolves: rhbz#2075424
+
+        [1:1.44.0-5]
+        - Fix libguestfs failure with qemu 6.2, libvirt 7.10
+          resolves: rhbz#2035177
+
+        libguestfs-winsupport
+        [8.9-1]
+        - Rebase to ntfs-3g 2022.10.3
+        - Fixes: CVE-2022-40284
+        - resolves: rhbz#2236372
+
+        [8.8-1]
+        - Rebase to ntfs-3g 2022.5.17
+        - Fixes: CVE-2021-46790, CVE-2022-30783, CVE-2022-30784, CVE-2022-30785,
+          CVE-2022-30786, CVE-2022-30787, CVE-2022-30788, CVE-2022-30789
+          resolves: rhbz#2127240 rhbz#2127248
+          (also: 2127233 2127234 2127241 2127249 2127255 2127256 2127262 2127263)
+
+        [8.6-1]
+        - Rebase to ntfs-3g 2021.8.22
+        - Fixes: CVE-2021-33285, CVE-2021-33286, CVE-2021-33287, CVE-2021-33289,
+          CVE-2021-35266, CVE-2021-35267, CVE-2021-35268, CVE-2021-35269,
+          CVE-2021-39251, CVE-2021-39252, CVE-2021-39253, CVE-2021-39254
+          resolves: rhbz#2004490
+
+        [8.2-1.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [8.2]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [8.0-4]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [8.0-3]
+        - Fix for CVE-2019-9755
+          (heap-based buffer overflow leads to local root privilege escalation)
+          resolves: rhbz#1698503
+
+        [8.0-2]
+        - Fix for ntfsclone crash (RHBZ#1601146).
+
+        [8.0-1]
+        - Rebase to 2017.3.23.
+        - Remove patches which are now upstream.
+        - Resynch with Fedora package.
+        - Enable all architectures for RHEL 8.
+
+        [7.2-2]
+        - Fix for handling guest filenames with invalid or incomplete
+          multibyte or wide characters
+          resolves: rhbz#1301593
+
+        [7.2-1]
+        - Rebase and rebuild for RHEL 7.2
+          resolves: rhbz#1240278
+
+        [7.1-6]
+        - Bump version and rebuild.
+          related: rhbz#1221583
+
+        [7.1-5]
+        - Enable aarch64 architecture.
+          resolves: rhbz#1221583
+
+        [7.1-4]
+        - Enable debuginfo support and stripping.
+          resolves: rhbz#1100319
+
+        [7.1-3]
+        - Add patches from Fedora package which add fstrim support.
+          resolves: rhbz#1100319
+
+        [7.1-2]
+        - New package for RHEL 7.1
+        - Rebase to ntfs-3g 2014.2.15
+          resolves: rhbz#1100319
+        - Change the package so it works with supermin5.
+        - Remove dependency on external FUSE.
+
+        [7.0-2]
+        - Resync against Rawhide package (ntfs-3g 2013.1.13).
+        - Drop HAL file since HAL is dead.
+          resolves: rhbz#819939
+
+        [7.0-1]
+        - New package for RHEL 7
+          resolves: rhbz#819939
+        - Resync against Rawhide package.
+
+        [1.0-7]
+        - Disable debuginfo package.
+          resolves: RHBZ#691555.
+
+        [1.0-6]
+        - Require libguestfs 1.7.17 (newer version in RHEL 6.1).
+        - Require febootstrap-supermin-helper instead of febootstrap
+          resolves: RHBZ#670299.
+
+        [1.0-5]
+        - Make sure intermediate lib* directories are created in hostfiles (RHBZ#603429)
+
+        [1.0-4]
+        - Requires fuse-libs (RHBZ#599300).
+
+        [1.0-3]
+        - ExclusiveArch x86_64.
+
+        [1.0-2]
+        - Package Windows support for libguestfs.
+
+        libiscsi
+        libnbd
+        [1.6.0-5.el8]
+        - Fix CVE-2022-0485: Fail nbdcopy if NBD read or write fails
+          resolves: rhbz#2045718
+
+        [1.6.0-4.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.2.2]
+        - Resolves: bz#1844296
+        (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [1.2.2-1]
+        - New stable release 1.2.2.
+
+        [1.2.1-1]
+        - New stable release 1.2.1.
+
+        [1.2.0-1]
+        - New stable release 1.2.0.
+
+        [1.0.3-1]
+        - New upstream version 1.0.3.
+        - Contains fix for remote code execution vulnerability.
+        - Add new libnbd-security(3) man page.
+
+        [1.0.2-1]
+        - New upstream version 1.0.2.
+        - Remove patches which are upstream.
+        - Contains fix for NBD Protocol Downgrade Attack (CVE-2019-14842).
+        - Fix previous commit message.
+
+        [1.0.1-2]
+        - Add upstream patch to fix nbdsh (for nbdkit tests).
+        - Fix interop tests on slow machines.
+
+        [1.0.1-1]
+        - New stable version 1.0.1.
+
+        [1.0.0-1]
+        - New upstream version 1.0.0.
+
+        [0.9.9-2]
+        - Rebuilt for Python 3.8
+
+        [0.9.9-1]
+        - New upstream version 0.9.9.
+
+        [0.9.8-4]
+        - Fix nbdkit dependencies so we're actually running the tests.
+        - Add glib2-devel BR so we build the glib main loop example.
+        - Add upstream patch to fix test error:
+          nbd_connect_unix: getlogin: No such device or address
+        - Fix test failure on 32 bit.
+
+        [0.9.8-3]
+        - Bump and rebuild to fix releng brokenness.
+          https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/message/2LIDI33G3IEIPYSCCIP6WWKNHY7XZJGQ/
+
+        [0.9.8-2]
+        - Rebuilt for Python 3.8
+
+        [0.9.8-1]
+        - New upstream version 0.9.8.
+        - Package the new nbd_*(3) man pages.
+
+        [0.9.7-1]
+        - New upstream version 0.9.7.
+        - Add libnbd-ocaml(3) man page.
+
+        [0.9.6-2]
+        - Add all upstream patches since 0.9.6 was released.
+        - Package the ocaml bindings into a subpackage.
+
+        [0.9.6-1]
+        - New upstream verison 0.9.6.
+
+        [0.1.9-1]
+        - New upstream version 0.1.9.
+
+        [0.1.8-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+        [0.1.8-1]
+        - New upstream version 0.1.8.
+
+        [0.1.7-1]
+        - New upstream version 0.1.7.
+
+        [0.1.6-1]
+        - New upstream version 0.1.6.
+
+        [0.1.5-1]
+        - New upstream version 0.1.5.
+
+        [0.1.4-1]
+        - New upstream version 0.1.4.
+
+        [0.1.2-2]
+        - Enable libxml2 for NBD URI support.
+
+        [0.1.2-1]
+        - New upstream version 0.1.2.
+
+        [0.1.1-1]
+        - Fix license in man pages and examples.
+        - Add nbdsh(1) man page.
+        - Include the signature and keyring even if validation is disabled.
+        - Update devel subpackage license.
+        - Fix old FSF address in Python tests.
+        - Filter Python provides.
+        - Remove executable permission on the tar.gz.sig file.
+        - Initial release.
+
+        libtpms
+        libvirt-dbus
+        [1.3.0-2.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.3.0]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [1.2.0-3]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [1.2.0-2]
+        - util: fix virtDBusUtilDecodeUUID (rhbz#1647823)
+
+        [1.2.0-1]
+        - Rebased to libvirt-dbus-1.2.0 (rhbz#1630196)
+
+        [1.0.0-1]
+        - Rebase from Fedora
+
+        libvirt
+        [8.0.0-22.0.1]
+        - Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+        - Add runtime deps for pkg librbd1 >= 1:10.2.5 (Keshav Sharma)
+
+        [8.0.0-22]
+        - lib: Set up cpuset controller for restrictive numatune (rhbz#2223464)
+
+        [8.0.0-21]
+        - nodedev: update transient mdevs (rhbz#2143160)
+
+        [8.0.0-20]
+        - qemu: monitor: Drop old monitor fields from 'struct _qemuMonitorMessage' (rhbz#2170472)
+        - qemu: Make 'struct _qemuMonitorMessage' private (rhbz#2170472)
+        - qemu: monitor: Move declaration of struct _qemuMonitor to qemu_monitor_priv.h (rhbz#2170472)
+        - qemu: qemuBlockGetNamedNodeData: Remove pointless error path (rhbz#2170472)
+        - qemu: monitor: Store whether 'query-named-block-nodes' supports 'flat' parameter (rhbz#2170472)
+        - qemuMonitorJSONBlockStatsUpdateCapacityBlockdev: Use 'flat' mode of query-named-block-nodes (rhbz#2170472)
+        - qemu: relax shared memory check for vhostuser daemons (rhbz#2177701)
+        - virpci: Resolve leak in virPCIVirtualFunctionList cleanup (CVE-2023-2700)
+        - node_device_conf: Avoid memleak in virNodeDeviceGetPCIVPDDynamicCap() (CVE-2023-2700)
+
+        libvirt-python
+        nbdkit
+        netcf
+        perl-Sys-Virt
+        qemu-kvm
+        [6.2.0-40.el8_9.1]
+        - kvm-io-remove-io-watch-if-TLS-channel-is-closed-during-h.patch [RHEL-7339]
+        - Resolves: RHEL-7339
+          (CVE-2023-3354 virt:rhel/qemu-kvm: QEMU: VNC: improper I/O watch removal in TLS handshake can lead to remote unauthenticated denial of service [rhel-8.9.0])
+
+        [6.2.0-40.el8_9]
+        - kvm-acpi-fix-acpi_index-migration.patch [RHEL-2186]
+        - kvm-RHEL-Enable-x-not-migrate-acpi-index-for-all-pre-RHE.patch [RHEL-2186]
+        - Resolves: RHEL-2186
+          ([RHEL8][pc machine type] Migration failed with pc machine type between rhe8.8 and rhel 8.9)
+
+        [6.2.0-39]
+        - kvm-vhost-vdpa-do-not-cleanup-the-vdpa-vhost-net-structu.patch [bz#2215786]
+        - Resolves: bz#2215786
+          (CVE-2023-3301 virt:rhel/qemu-kvm: QEMU: net: triggerable assertion due to race condition in hot-unplug [rhel-8])
+
+        [6.2.0-38]
+        - kvm-qapi-i386-sev-Change-the-reduced-phys-bits-value-fro.patch [bz#2214840]
+        - kvm-qemu-options.hx-Update-the-reduced-phys-bits-documen.patch [bz#2214840]
+        - kvm-i386-sev-Update-checks-and-information-related-to-re.patch [bz#2214840]
+        - kvm-i386-cpu-Update-how-the-EBX-register-of-CPUID-0x8000.patch [bz#2214840]
+        - kvm-target-i386-kvm-Fix-disabling-MPX-on-cpu-host-with-M.patch [bz#2223947]
+        - Resolves: bz#2214840
+          ([AMDSERVER 8.9 Bug] Qemu SEV reduced-phys-bits fixes)
+        - Resolves: bz#2223947
+          ([RHEL8.9] qemu core dump with '-cpu host,mpx=off' on Cascadelake host)
+
+        [6.2.0-37]
+        - kvm-util-iov-Make-qiov_slice-public.patch [bz#2141964]
+        - kvm-block-Collapse-padded-I-O-vecs-exceeding-IOV_MAX.patch [bz#2141964]
+        - kvm-util-iov-Remove-qemu_iovec_init_extended.patch [bz#2141964]
+        - kvm-iotests-iov-padding-New-test.patch [bz#2141964]
+        - kvm-block-Fix-pad_request-s-request-restriction.patch [bz#2141964]
+        - Resolves: bz#2141964
+          (Guest hit EXT4-fs error on host 4K disk  when repeatedly hot-plug/unplug running IO disk)
+
+        [6.2.0-36]
+        - kvm-memory-prevent-dma-reentracy-issues.patch [bz#1999236]
+        - kvm-async-Add-an-optional-reentrancy-guard-to-the-BH-API.patch [bz#1999236]
+        - kvm-checkpatch-add-qemu_bh_new-aio_bh_new-checks.patch [bz#1999236]
+        - kvm-hw-replace-most-qemu_bh_new-calls-with-qemu_bh_new_g.patch [bz#1999236]
+        - kvm-lsi53c895a-disable-reentrancy-detection-for-script-R.patch [bz#1999236]
+        - kvm-bcm2835_property-disable-reentrancy-detection-for-io.patch [bz#1999236]
+        - kvm-raven-disable-reentrancy-detection-for-iomem.patch [bz#1999236]
+        - kvm-apic-disable-reentrancy-detection-for-apic-msi.patch [bz#1999236]
+        - kvm-async-avoid-use-after-free-on-re-entrancy-guard.patch [bz#1999236]
+        - kvm-memory-stricter-checks-prior-to-unsetting-engaged_in.patch [bz#1999236]
+        - kvm-lsi53c895a-disable-reentrancy-detection-for-MMIO-reg.patch [bz#1999236]
+        - kvm-hw-scsi-lsi53c895a-Fix-reentrancy-issues-in-the-LSI-.patch [bz#1999236]
+        - kvm-target-i386-add-support-for-FLUSH_L1D-feature.patch [bz#2216203]
+        - kvm-target-i386-add-support-for-FB_CLEAR-feature.patch [bz#2216203]
+        - kvm-migration-Disable-postcopy-multifd-migration.patch [bz#2169733]
+        - Resolves: bz#1999236
+          (CVE-2021-3750 virt:rhel/qemu-kvm: QEMU: hcd-ehci: DMA reentrancy issue leads to use-after-free [rhel-8])
+        - Resolves: bz#2216203
+          ([qemu-kvm]VM reports vulnerabilty to mmio_stale_data on patched host with microcode)
+        - Resolves: bz#2169733
+          (Qemu on destination host crashed if migrate with postcopy and multifd enabled)
+
+        [6.2.0-35]
+        - kvm-virtiofsd-Add-basic-support-for-FUSE_SYNCFS-request.patch [bz#2196880]
+        - kvm-s390-kvm-adjust-diag318-resets-to-retain-data.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-SLDA-sign-bit-index.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-SRDA-CC-calculation.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-cc_calc_sla_64-missing-overflows.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-shifting-32-bit-values-for-more-tha.patch [bz#2169308 bz#2209605]
+        - kvm-s390x-sigp-Reorder-the-SIGP-STOP-code.patch [bz#2169308 bz#2209605]
+        - kvm-s390x-tcg-Fix-BRASL-with-a-large-negative-offset.patch [bz#2169308 bz#2209605]
+        - kvm-s390x-tcg-Fix-BRCL-with-a-large-negative-offset.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-determination-of-overflow-condition.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-determination-of-overflow-cond.patch [bz#2169308 bz#2209605]
+        - kvm-s390x-follow-qdev-tree-to-detect-SCSI-device-on-a-CC.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-the-accumulation-of-ccm-in-op_icm.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-writeback-to-v1-in-helper_vstl.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-fix-handling-of-zeroes-in-vfmin-vfmax.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-CLFIT-and-CLGIT-immediate-size.patch [bz#2169308 bz#2209605]
+        - kvm-s390x-tcg-Fix-opcode-for-lzrf.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-Fix-emulation-of-the-VISTR-instruction.patch [bz#2169308 bz#2209605]
+        - kvm-s390x-css-revert-SCSW-ctrl-flag-bits-on-error.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-tcg-Fix-and-improve-the-SACF-instructio.patch [bz#2169308 bz#2209605]
+        - kvm-target-s390x-tcg-mem_helper-Test-the-right-bits-in-p.patch [bz#2169308 bz#2209605]
+        - kvm-pc-bios-Add-support-for-List-Directed-IPL-from-ECKD-.patch [bz#2169308 bz#2209605]
+        - Resolves: bz#2196880
+          ([virtiofs] Backport FUSE_SYNCFS support)
+        - Resolves: bz#2169308
+          (Backport latest s390x-related fixes from upstream QEMU for qemu-kvm in RHEL 8.9)
+        - Resolves: bz#2209605
+          ([IBM 8.9 FEAT] KVM: ECKD List Directed IPL - virtio (qemu))
+
+        [6.2.0-34]
+        - kvm-migration-Handle-block-device-inactivation-failures-.patch [bz#2177957]
+        - kvm-migration-Minor-control-flow-simplification.patch [bz#2177957]
+        - kvm-migration-Attempt-disk-reactivation-in-more-failure-.patch [bz#2177957]
+        - kvm-nbd-server-push-pending-frames-after-sending-reply.patch [bz#2035712]
+        - kvm-nbd-server-Request-TCP_NODELAY.patch [bz#2035712]
+        - Resolves: bz#2177957
+          (Qemu core dump if cut off nfs storage during migration)
+        - Resolves: bz#2035712
+          ([qemu] Booting from Guest Image over NBD with TLS Is Slow)
+
+        seabios
+        sgabios
+        supermin
+        [5.2.1-2.0.1.el8]
+        - Rebuild [Orabug: 35720304]
+
+        [5.2.1-2.el8]
+        - Supermin should ignore +debug kernels
+          resolves: rhbz#2051332
+        - Add copy-patches script.
+
+        [5.2.1-1.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [5.1.19]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [5.1.19-9]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [5.1.19-8]
+        - Pass CFLAGS & LDFLAGS to final supermin link
+          resolves: rhbz#1624175
+
+        [5.1.19-7]
+        - Rebuild for OCaml 4.07.0.
+
+        [5.1.19-6]
+        - Drop dietlibc in RHEL 8
+          resolves: rhbz#1588067
+
+        [5.1.19-5]
+        - Bump release and rebuild.
+
+        [5.1.19-4]
+        - Reenable hardened build
+
+        [5.1.19-3]
+        - Fix bytes/string problems.
+
+        [5.1.19-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+        [5.1.19-1]
+        - New upstream version 5.1.19.
+        - Remove all patches, now upstream.
+
+        [5.1.18-5]
+        - Rebuilt for RPM soname bump
+
+        [5.1.18-4]
+        - Fix supermin crash with truncated vmlinuz file (RHBZ#1477758).
+        - Include all upstream patches since 5.1.18.
+
+        [5.1.18-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
+        [5.1.18-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+        [5.1.18-1]
+        - New upstream release 5.1.18.
+        - Fixes problem with creating incorrect symlinks (RHBZ#1470157).
+
+        [5.1.17-5]
+        - Enable dietlibc on aarch64 and POWER.
+
+        [5.1.17-4]
+        - Drop dependency on hawkey and versioned dependencies on dnf.
+
+        [5.1.17-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+        [5.1.17-2]
+        - Rebuild for OCaml 4.04.0.
+
+        [5.1.17-1]
+        - New upstream release 5.1.17.
+        - Check signature on the tarball before unpacking it.
+        - Remove patches, all upstream.
+
+        [5.1.16-6]
+        - Switch to dietlibc on s390x
+
+        [5.1.16-5]
+        - Do not break the binary on interpreted builds (#1375213)
+
+        [5.1.16-4]
+        - Add all upstream patches since 5.1.16 was released.
+
+        [5.1.16-3]
+        - Add upstream patch for DAX / vNVDIMM support.
+
+        [5.1.16-2]
+        - New upstream version 5.1.16.
+        - Drop all patches since they are upstream.
+        - Depend on systemd-udev to work around RHBZ#1331012.
+
+        [5.1.15-2]
+        - Add all upstream patches since 5.1.15 was released.
+        - These should improve boot performance and initrd size.
+
+        [5.1.15-1]
+        - New upstream version 5.1.15.
+        - Remove all patches, since they are now included in this version.
+        - Enable dietlibc, remove glibc-static, xz-static, zlib-static.
+
+        [5.1.14-4]
+        - Add more patches since 5.1.14.
+
+        [5.1.14-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+        [5.1.14-2]
+        - Add all patches since 5.1.14.
+
+        [5.1.14-1]
+        - New upstream version 5.1.14.
+        - Remove all patches - now upstream.
+
+        [5.1.13-4]
+        - Pull in all upstream patches since 5.1.13.
+        - Choose providers better (RHBZ#1266918).
+        - Use autopatch.
+        - Explicitly depend on pod2html.
+
+        [5.1.13-3]
+        - Bump version to rebuild against new RPM in Rawhide.
+
+        [5.1.13-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+        [5.1.13-1]
+        - New upstream version 5.1.13.
+        - Remove patch, now upstream.
+
+        [5.1.12-11]
+        - Prefer 'dnf download' over 'yumdownloader' (again).
+        - BR grubby for the tests to work.
+
+        [5.1.12-9]
+        - Revert back to yumdownloader (RHBZ#1186948).
+
+        [5.1.12-8]
+        - Prefer 'dnf download' over 'yumdownloader'.
+
+        [5.1.12-7]
+        - Disable hardened build again.  See RHBZ#1202091 RHBZ#1204162.
+
+        [5.1.12-6]
+        - Enable hardening flags by building the static 'init' specially
+          before the main build.
+        - Use _smp_mflags.
+
+        [5.1.12-4]
+        - Add a -devel subpackage containing automated RPM dependency generator
+          for supermin appliances.
+
+        [5.1.12-2]
+        - Disable hardened build as it breaks building the static 'init' binary.
+
+        [5.1.12-1]
+        - New upstream version 5.1.12.
+        - Includes ARM fix: lpae kernels can now be booted (RHBZ#1199733).
+
+        [5.1.11-2]
+        - Rebuild for xz-5.2.0 in Rawhide (RHBZ#1179252).
+
+        [5.1.11-1]
+        - New upstream version 5.1.11.
+
+        [5.1.10-2]
+        - Update to upstream commit d78c898c7e2bc5f12cbebef98b95a7908d9120f1.
+        - BR rpm-devel, since it is now used instead of invoking rpm.
+        - BR automake and autoconf, and run autoreconf (configure.ac is modified by
+          the patches).
+
+        [5.1.10-1]
+        - New upstream version 5.1.10.
+        - Remove patch which is now included upstream.
+
+        [5.1.9-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
+        [5.1.9-2]
+        - Add upstream patch to avoid endless loop in Rawhide.
+
+        [5.1.9-1]
+        - New upstream version 5.1.9.
+        - Remove patches which are now upstream.
+
+        [5.1.8-9]
+        - Add Requires findutils (RHBZ#1113029).
+
+        [5.1.8-8]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+        [5.1.8-7]
+        - Add patch to fix RPM handler when filenames may contain spaces.
+
+        [5.1.8-4]
+        - Skip execstack test on Fedora 20 (ARM only).
+
+        [5.1.8-3]
+        - BR xz-static & xz-devel packages, to support xz-compressed kernel modules.
+
+        [5.1.8-1]
+        - New upstream version 5.1.8.
+        - Remove patches which are now upstream.
+
+        [5.1.7-3]
+        - Add upstream patch which removes need to run execstack (RHBZ#1093261).
+
+        [5.1.7-2]
+        - Add patch to fix quoting around mke2fs parameter (RHBZ#1084960).
+
+        [5.1.7-1]
+        - New upstream version 5.1.7.
+        - Remove ppc64p7 patch which is now upstream.
+
+        [5.1.6-5]
+        - Requires tar, which is not installed in an @Core installation.
+
+        [5.1.6-4]
+        - Add upstream patch to fix supermin on ppc64p7.
+
+        [5.1.6-3]
+        - New upstream version 5.1.6.
+        - Fix tests.
+
+        [5.1.5-2]
+        - Disable execstack on aarch64.
+          It comes from prelink which does not exist on aarch64.
+
+        [5.1.5-1]
+        - New upstream version 5.1.5.
+
+        [5.1.3-1]
+        - New upstream version 5.1.3.
+
+        [5.1.2-1]
+        - New upstream version 5.1.2.
+        - Fixes a serious bug in --build mode.
+
+        [5.1.1-1]
+        - New upstream version 5.1.1.
+        - Remove patch which is now upstream.
+
+        [5.1.0-3]
+        - Add BR yum-utils (for yumdownloader).
+        - Add upstream patch which stops duplicate packages appearing.
+
+        [5.1.0-2]
+        - New upstream version 5.1.0.
+        - Note this is effectively a rewrite, and is not completely compatible.
+        - There is no separate 'supermin-helper' subpackage any more.
+        - Requires rpm instead of yum.
+
+        [4.1.6-2]
+        - New upstream version 4.1.6.
+        - Should fix all autotools brokenness.
+        - Man pages are now all in section 1.
+        - Remove patch which is now upstream.
+        - +BR /usr/bin/execstack (from prelink).
+
+        [4.1.5-5]
+        - Rerun autoreconf to fix autotools brokenness.
+
+        [4.1.5-4]
+        - Why was prelink required?  Remove it.
+
+        [4.1.5-3]
+        - correct Obsoletes version for febootstrap and febootstrap-supermin-helper
+
+        [4.1.5-2]
+        - (For ARM) Don't crash if SUPERMIN_DTB is set and --dtb not specified.
+
+        [4.1.5-1]
+        - New upstream version 4.1.5.
+        - Has (optionally) a new command line syntax.
+        - Supports device trees for ARM.
+
+        [4.1.4-1]
+        - New upstream version 4.1.4.
+        - Supports compressed cpio image files, experimentally.
+
+        [4.1.3-1]
+        - New upstream version 4.1.3.
+        - Remove patch which is now upstream.
+        - Add examples directory to documentation.
+
+        [4.1.2-2]
+        - Include upstream patch to get correct directory setgid/sticky bits in
+          the appliance.
+
+        [4.1.2-1]
+        - New upstream version 4.1.2.
+        - Remove patch which is now upstream.
+
+        [4.1.1-2]
+        - Add upstream patch to ignore ghost non-regular files.
+        - This fixes builds on Fedora 20 because the filesystem package has
+          been changed so /var/lock and /var/run are marked as ghost.
+
+        [4.1.1-1]
+        - New upstream version 4.1.1.
+        - The program has been renamed 'supermin' from 'febootstrap'.
+        - Obsolete, but don't Provide because supermin is not a compatible replacement.
+        - Use '_isa' to specify architecture of supermin-helper subpackage.
+
+        [1:3.21-2]
+        - Add upstream patch to drop supplemental groups (RHBZ#902476).
+        - Remove 'Group:' RPM headers which are no longer necessary.
+        - Remove some commented-out requirements.
+
+        [1:3.21-1]
+        - New upstream version 3.21.
+
+        [1:3.20-1]
+        - New upstream version 3.20.
+
+        [1:3.19-2]
+        - Work around brokenness in yum (RHBZ#850913).
+        - Remove defattr, no longer required.
+
+        [1:3.19-1]
+        - New upstream version 3.19.
+
+        [3.18-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+        [3.18-1]
+        - New upstream version 3.18.
+        - This adds support for EPEL 5.
+
+        [3.17-1]
+        - New upstream version 3.17.
+
+        [3.16-1]
+        - New upstream version 3.16.
+
+        [3.15-1]
+        - New upstream version 3.15.
+        - This version includes root=<device> support, needed for libguestfs
+          with virtio-scsi.
+        - Remove upstream patch.
+
+        [3.14-6]
+        - For RHEL 7 only, add ExclusiveArch x86-64.
+
+        [3.14-5]
+        - Bundled gnulib (RHBZ#821752).
+
+        [3.14-4]
+        - Add back explicit dependencies for external programs.
+
+        [3.14-3]
+        - Drop ExclusiveArch as it's supported on all primary & secondary arches
+        - Cleanup spec and deps
+
+        [3.14-2]
+        - New upstream version 3.14.
+        - Add upstream patch to fix RHBZ#808421.
+
+        [3.13-4]
+        - e2fsprogs moved /sbin/mke2fs to /usr/sbin (thanks Eric Sandeen).
+
+        [3.13-2]
+        - Missing BR zlib-static.
+
+        [3.13-1]
+        - New upstream version 3.13.
+        - Remove upstream patch which is included in this version.
+
+        [3.12-5]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+        [3.12-4]
+        - Depend on latest e2fsprogs (RHBZ#771310).
+
+        [3.12-2]
+        - Include upstream patch to work around Python stupidity.
+
+        [3.12-1]
+        - New upstream version 3.12.
+        - Remove upstream patch which is included in this version.
+
+        [3.11-2]
+        - Add upstream patch to fix febootstrap on non-Debian.
+
+        [3.11-1]
+        - New upstream version 3.11.
+
+        [3.10-1]
+        - New upstream version 3.10.
+
+        [3.9-1]
+        - New upstream version 3.9.
+
+        [3.8-1]
+        - New upstream version 3.8.
+
+        [3.7-1]
+        - New upstream version 3.7.
+
+        [3.6-1]
+        - New upstream version 3.6.
+        - This version no longer needs external insmod.static.
+
+        [3.5-1]
+        - New upstream version 3.5.
+        - Remove patch which is now upstream.
+
+        [3.4-2]
+        - Don't fail if objects are created in a symlinked dir (RHBZ#698089).
+
+        [3.4-1]
+        - New upstream version 3.4.
+        - febootstrap-supermin-helper Obsoletes older versions of febootstrap.
+
+        [3.3-5]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+        [3.3-4]
+        - Split package into febootstrap (for building) and febootstrap-supermin-helper
+          (for running).  Note that febootstrap depends on febootstrap-supermin-helper,
+          but you can install febootstrap-supermin-helper on its own.
+
+        [3.3-3]
+        - Clear executable stack flag on febootstrap-supermin-helper.
+
+        [3.3-2]
+        - add the ocaml's ExclusiveArch
+
+        [3.3-1]
+        - New upstream version 3.3.
+
+        [3.2-1]
+        - New upstream version 3.2.
+        - Remove upstream patches.
+
+        [3.1-5]
+        - Previous fix for RHBZ#654638 didn't work, fix it correctly.
+
+        [3.1-4]
+        - Properly ignore .*.hmac files (accidental reopening of RHBZ#654638).
+
+        [3.1-3]
+        - Uses yumdownloader at runtime, so require yum-utils.
+
+        [3.1-2]
+        - New upstream version 3.1.
+        - BR insmod.static.
+
+        [3.0-2]
+        - New upstream version 3.0 (note this is incompatible with 2.x).
+        - Fix upstream URLs.
+        - fakeroot, fakechroot no longer required.
+        - insmod.static is required at runtime (missing dependency from earlier).
+        - The only programs are 'febootstrap' and 'febootstrap-supermin-helper'.
+        - BR ocaml, ocaml-findlib-devel.
+        - No examples are provided with this version of febootstrap.
+
+        [2.11-1]
+        - New upstream version 2.11.
+        - Fixes 'ext2fs_mkdir .. No free space in directory' bug which affects
+          libguestfs on rawhide.
+
+        [2.10-1]
+        - New upstream version 2.10.
+        - Adds -u and -g options to febootstrap-supermin-helper which are
+          required by virt-v2v.
+
+        [2.9-1]
+        - New upstream version 2.9.
+        - Fixes directory ordering problem in febootstrap-supermin-helper.
+
+        [2.8-1]
+        - New upstream version 2.8.
+
+        [2.8-0.2]
+        - New pre-release version of 2.8.
+          + Note this is based on 2.7 + mailing list patches.
+        - New BRs on mke2fs, libext2fs, glibc-static.
+
+        [2.7-2]
+        - New upstream version 2.7.
+        - febootstrap-supermin-helper shell script rewritten in C for speed.
+        - This package contains C code so it is no longer 'noarch'.
+        - MAKEDEV isn't required.
+
+        [2.6-1]
+        - New upstream release 2.6.
+        - Recheck package in rpmlint.
+
+        [2.5-2]
+        - New upstream release 2.5.
+        - Remove BR upx (not needed by upstream).
+        - Two more scripts / manpages.
+
+        [2.4-1]
+        - New upstream release 2.4.
+
+        [2.3-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+        [2.3-1]
+        - New upstream release 2.3.
+
+        [2.2-1]
+        - New upstream release 2.2.
+
+        [2.0-1]
+        - New upstream release 2.0.
+
+        [1.9-1]
+        - New upstream release 1.9.
+
+        [1.8-1]
+        - New upstream release 1.8.
+
+        [1.7-1]
+        - New upstream release 1.7.
+
+        [1.5-3]
+        - Configure script has (unnecessary) BuildRequires on fakeroot,
+          fakechroot, yum.
+
+        [1.5-2]
+        - Initial build for Fedora.
+
+        swtpm
+        virt-v2v
     FixedIn:
         - Module: virt-devel:ol
           Name: hivex

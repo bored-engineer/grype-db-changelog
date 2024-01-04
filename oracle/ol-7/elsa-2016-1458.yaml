@@ -1,7 +1,49 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.101-3.b13]
+        - Replace bad 8159244 patch from upstream 8u with fresh backport from OpenJDK 9.
+        - Resolves: rhbz#1350034
+
+        [1:1.8.0.101-2.b13]
+        - Add missing hunk from 8147771, missed due to inclusion of unneeded 8138811
+        - Resolves: rhbz#1350034
+
+        [1:1.8.0.101-1.b13]
+        - Add workaround for a typo in the CORBA security fix, 8079718
+        - Resolves: rhbz#1350034
+
+        [1:1.8.0.101-0.b13]
+        - Update to u101b13.
+        - Backport REPOS option in generate_source_tarball.sh
+        - Drop a leading zero from the priority as the update version is now three digits
+        - Resolves: rhbz#1350034
+
+        [1:1.8.0.92-0.b14]
+        - Add additional fixes (S6260348, S8159244) for u92 update.
+        - Resolves: rhbz#1350034
+
+        [1:1.8.0.92-0.b14]
+        - Update ppc64le fix with upstream version, S8158260.
+        - Resolves: rhbz#1350034
+
+        [1:1.8.0.92-0.b14]
+        - Add fix for ppc64le crash due to illegal instruction.
+        - Resolves: rhbz#1350034
+
+        [1:1.8.0.92-0.b14]
+        - Add backport for S8148752.
+        - Resolves: rhbz#1350034
+
+        [1:1.8.0.92-0.b14]
+        - Update to u92b14.
+        - Remove upstreamed patches for Zero build failures 8087120 & 8143855.
+        - Add 8132051 Zero fix upstreamed as 8154210 in 8u112.
+        - Add upstreamed patch 6961123 from u102 to fix application name in GNOME Shell.
+        - Add upstreamed patches 8044762 & 8049226 from u112 to fix JDI issues.
+        - Regenerate java-1.8.0-openjdk-rh1191652-root.patch against u92
+        - Resolves: rhbz#1350034
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

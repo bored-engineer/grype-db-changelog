@@ -1,7 +1,127 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.4.3.2-8]
+        - Exclude firewallctl (RHBZ#1374799)
+
+        [0.4.3.2-7]
+        - Tolerate ipv6_rpfilter fail (RHBZ#1285769)
+        - Fix set_rules to copy the rule before extracting the table (RHBZ#1373260)
+        - Translation update (RHBZ#1273296)
+        - Conflict with NetworkManager < 1:1.4.0-3.el7 (RHBZ#1366288)
+
+        [0.4.3.2-6]
+        - Do not use exit code 254 for {ALREADY,NOT}_ENABLED sequences (RHBZ#1366654)
+        - Fail with NOT_AUTHORIZED if authorization fails (RHBZ#1368549)
+        - firewall-cmd: Fix get and set description for permanent zones (RHBZ#1368949)
+        - Fix loading of service helpers in active zones (RHBZ#1371116)
+
+        [0.4.3.2-5]
+        - Print errors and warnings to stderr additional patch (RHBZ#1360894)
+        - Fixed trace back in firewallctl (RHBZ#1367155)
+        - Fix client crash if systembus can not be aquired (RHBZ#1367038)
+        - Make ALREADY_ENABLED a warning (RHBZ#1366654)
+        - Added conflict to old squid package providing the squid.service file
+          (RHBZ#1366308)
+        - Fixed firewall-cmd help typo (RHBZ#1367171)
+
+        [0.4.3.2-4]
+        - Fixed firewall-config gettext usage (RHBZ#1361612)
+        - Fixed ifcfg file reader and writer (RHBZ#1362171)
+        - Fixed loading ipset entries from file in commands (RHBZ#1365198)
+        - Added conflicts to old main package to sub packages (RHBZ#1361669)
+        - Do not show settings of zones etc. without authentication (RHBZ#1357098)
+        - Fixed CVE-2016-5410 (RHBZ#1359296)
+
+        [0.4.3.2-3]
+        - Fix test suite for command change (RHBZ#1360871)
+        - Fix test suite with stderr usage (RHBZ#1360894)
+        - Rebuild for wrong docdir without version (RHBZ#1057327#c7)
+
+        [0.4.3.2-2]
+        - Updated conflict for selinux-policy (RHBZ#1304723)
+        - Fixed exit codes in command line clients (RHBZ#1357050)
+        - Fixed traceback in firewall-cmd without args (RHBZ#1357063)
+        - Fixed source docs in man pages and help output (RHBZ#1357888)
+        - Fixed rebuild of changed man pages (RHBZ#1360362)
+        - Use stderr for errors and warnings in command line tools (RHBZ#1360894)
+        - Fixed lockdown not denying invalid commands (RHBZ#1360871)
+
+        [0.4.3.2-1]
+        - Rebase to 0.4.3.2
+        - Fix regression with unavailable optional commands
+        - All missing backend messages should be warnings
+        - Individual calls for missing restore commands
+        - Only one authenticate call for add and remove options and also sequences
+        - RH-Satellite-6 service now upstream
+        - Conflict for selinux-policy needed to be updated to newer release
+          (RHBZ#1304723)
+
+        [0.4.3.1-1]
+        - Rebase to 0.4.3.1
+        - firewall.command: Fix python3 DBusException message not interable error
+        - src/Makefile.am: Fix path in firewall-[offline-]cmd_test.sh while installing
+        - firewallctl: Do not trace back on list command without further arguments
+        - firewallctl (man1): Added remaining sections zone, service, ..
+        - firewallctl: Added runtime-to-permanent, interface and source parser,
+          IndividualCalls setting
+        - firewall.server.config: Allow to set IndividualCalls property in config
+          interface
+        - Fix missing icmp rules for some zones
+        - runProg: Fix issue with running programs
+        - firewall-offline-cmd: Fix issues with missing system-config-firewall
+        - firewall.core.ipXtables: Split up source and dest addresses for transaction
+        - firewall.server.config: Log error in case of loading malformed files in
+          watcher
+        - Install and package the firewallctl man page
+
+        [0.4.3-3]
+        - Readding RH-Satellite-6 service
+
+        [0.4.3-2]
+        - Fixed typo in Requires(post)
+
+        [0.4.3-1]
+        - Rebase to 0.4.3
+        - Rebase to the new upstream and new release (RHBZ#1302802)
+        - New firewallctl command line utility (RHBZ#1147959)
+        - Adds radius TCP ports (RHBZ#1219717)
+        - XSD enhancements for conflicting tag specification (RHBZ#1296573)
+        - Adds port for corosync-qnetd to high-availability service (RHBZ#1347530)
+
+        [0.4.2-1]
+        - Rebase to 0.4.2
+        - Allows unspecifying zone binding for interfaces in firewall-config
+          (RHBZ#1066037)
+        - Adds improved management of zone binding for interfaces, connections and
+          sources (RHBZ#1083626)
+        - Adds commands to showing details of zones, services, .. (RHBZ#1147500)
+        - Adds a default logging option (RHBZ#1147951)
+        - Adds quiet option for firewall-offline-cmd (RHBZ#1220467)
+        - Adds support for zone chain usage in direct rules (RHBZ#1136801,
+          RHBZ#1336881)
+        - Adds source port support in zones, services and rich rules (RHBZ#1214770)
+        - Adds services imap and smtps (RHBZ#1220196)
+        - Fixes runtime to permanent migration(RHBZ#1237242)
+        - Fixes removal of destination addresses for services in permanent view in
+          firewall-config (RHBZ#1278281)
+        - Fixes firewall-config usage over ssh (RHBZ#1281416)
+        - Fixes reload disconnects with existing connections (RHBZ#1287449)
+        - Fixes ICMP packet drops while reloading (RHBZ#1288177)
+        - Adds option to add a new zone, service, .. from existing file (RHBZ#1292926)
+        - Adds improved checks for file readers, fixes error reporting of strings
+          containing illegal characters (RHBZ#1303026)
+        - Transforms direct.passthrough errors into warnings (RHBZ#1301573)
+        - Reduced getprotobyname and getservbyname calls for NIS use (RHBZ#1305434)
+        - Fixes (repeated) firewalld reload by sending SIGHUP signal (RHBZ#1313023)
+        - Adds After=dbus.service to service file to fix shutdown (RHBZ#1313845)
+        - Adds ICMP block inversion support (RHBZ#1325335)
+        - Fixes local traffic issue with masquerading in default zone (RHBZ#1326130)
+        - Adds destination rich rules without an element (RHBZ#1326462)
+        - Fixes reload after default zone change to newly introduced zone (RHBZ#1273888)
+        - Fixes start without ipv6_rpfilter module (RHBZ#1285769)
+        - Adds log of denied packets option (RHBZ#1322505)
     FixedIn:
         - Module: null
           Name: firewall-applet

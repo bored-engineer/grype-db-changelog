@@ -1,7 +1,50 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [5.0.5-113.0.1]
+        - add autofs-5.0.5-lookup-mounts.patch [Orabug:12658280] (Bert Barbe)
+          use tcp instead of udp
+
+        [5.0.5-113]
+        - bz1201195 - autofs: MAPFMT_DEFAULT is not macro in lookup_program.c
+          - fix macro usage in lookup_program.c.
+        - Resolves: rhbz#1201195
+
+        [5.0.5-112]
+        - bz1124083 - Autofs stopped mounting /net/hostname/mounts after seeing duplicate
+          exports in the NFS server
+          - fix use after free in patch to handle duplicate in multi mounts.
+          - change log messages to try and make them more sensible.
+        - fix log entry for rev 5.0.5-111 below.
+        - Related: rhbz#1124083
+
+        [5.0.5-111]
+        - bz1153130 - autofs-5.0.5-109 with upgrade to RHEL 6.6 no longer recognizes
+          +yp: in auto.master
+          - fix fix master map type check.
+        - bz1156387 - autofs /net maps do not refresh list of shares exported on the
+          NFS server
+          - fix typo in update_hosts_mounts().
+          - fix hosts map update on reload.
+        - bz1160446 - priv escalation via interpreter load path for program based
+          automount maps
+          - add a prefix to program map stdvars.
+          - add config option to force use of program map stdvars.
+        - bz1175671 - automount segment fault in parse_sun.so for negative parser tests
+          - fix incorrect check in parse_mount().
+        - bz1124083 - Autofs stopped mounting /net/hostname/mounts after seeing duplicate
+          exports in the NFS server
+          - fix fix map entry duplicate offset detection (dependednt patch).
+          - handle duplicates in multi mounts.
+        - Resolves: rhbz#1153130 rhbz#1156387 rhbz#1160446 rhbz#1175671 rhbz#1124083
+
+        [5.0.5-110]
+        - bz1163957 - Autofs unable to mount indirect after attempt to mount wildcard
+          - make negative cache update consistent for all lookup modules.
+          - ensure negative cache isn't updated on remount.
+          - dont add wildcard to negative cache.
+        - Resolves: rhbz#1163957
     FixedIn:
         - Module: null
           Name: autofs

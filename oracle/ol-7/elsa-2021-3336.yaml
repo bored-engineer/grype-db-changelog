@@ -1,7 +1,20 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.16.5-10.0.1]
+        - Revert Redhat's change of disallowing duplicated incomplete gid
+          when 'id_provider=ldap' is used, which caused regression in AD
+          environment. [Orabug: 29286774] [Doc ID 2605732.1]
+
+        [1.16.5-10.10]
+        - Resolves: rhbz#1973796 - SSSD is NOT able to contact the Global Catalog when local site is down
+
+        [1.16.5-10.9]
+        - Resolves: rhbz#1988463 - Missing search index for  [rhel-7.9.z]
+        - Resolves: rhbz#1968330 - id lookup is failing intermittently
+        - Resolves: rhbz#1964415 - Memory leak in the simple access provider
+        - Resolves: rhbz#1985457 - EMBARGOED CVE-2021-3621 sssd: shell command injection in sssctl [rhel-7.9.z]
     FixedIn:
         - Module: null
           Name: libipa_hbac

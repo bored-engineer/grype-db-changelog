@@ -1,7 +1,31 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [15:4.2.1-26.el7]
+        - migration: check magic value for deciding the mapping of channels (manish.mishra)  [Orabug: 34735462]
+        - io: Add support for MSG_PEEK for socket channel (manish.mishra)  [Orabug: 34735462]
+        - migration: Move channel setup out of postcopy_try_recover() (Peter Xu)  [Orabug: 34735462]
+        - vdpa: commit all host notifier MRs in a single MR transaction (Longpeng (Mike))  [Orabug: 35252234]
+        - vhost: configure all host notifiers in a single MR transaction (Longpeng (Mike))  [Orabug: 35252234]
+        - vhost: simplify vhost_dev_enable_notifiers (Longpeng (Mike))  [Orabug: 35252234]
+        - pcie: Do not update hotplugged device power in RUN_STATE_INMIGRATE state (Annie Li)  [Orabug: 35055290]
+        - qga/win32: Use rundll for VSS installation (Konstantin Kostiuk)  [Orabug: 35206108]  {CVE-2023-0664}
+        - qga/win32: Remove change action from MSI installer (Konstantin Kostiuk)  [Orabug: 35206108]  {CVE-2023-0664}
+        - hw/display/qxl: Assert memory slot fits in preallocated MemoryRegion (Philippe Mathieu-Daude)  [Orabug: 34846087]  {CVE-2022-4144}
+        - hw/display/qxl: Avoid buffer overrun in qxl_phys2virt (CVE-2022-4144) (Philippe Mathieu-Daude)  [Orabug: 34846087]  {CVE-2022-4144}
+        - hw/display/qxl: Pass requested buffer size to qxl_phys2virt() (Philippe Mathieu-Daude)  [Orabug: 34846087]  {CVE-2022-4144}
+        - hw/display/qxl: Document qxl_phys2virt() (Philippe Mathieu-Daude)  [Orabug: 34846087]  {CVE-2022-4144}
+        - hw/display/qxl: Have qxl_log_command Return early if no log_cmd handler (Philippe Mathieu-Daude)  [Orabug: 34846087]  {CVE-2022-4144}
+        - virtio-blk: On restart, process queued requests in the proper context (Sergio Lopez)  [Orabug: 35060530]
+        - virtio-blk: Refactor the code that processes queued requests (Sergio Lopez)  [Orabug: 35060530]
+        - hw/intc/ioapic: Update KVM routes before redelivering IRQ, on RTE update (David Woodhouse)  [Orabug: 35219223]
+        - modules: load modules from /var/run/qemu/ directory firstly (Siddhi Katage)  [Orabug: 34867783]
+        - qemu.spec: Add post-install script for block storage modules (Siddhi Katage)  [Orabug: 34867783]
+        - qemu.spec: Enable '-module-upgrades' for OL7 (Siddhi Katage)  [Orabug: 34867783]
+        - module: increase dirs array size by one (Bruce Rogers)  [Orabug: 34867783]
+        - modules: load modules from versioned /var/run dir (Christian Ehrhardt)  [Orabug: 34867783]
+        - blockjob: Fix crash with IOthread when block commit after snapshot (Michael Qiu)  [Orabug: 35118668]
     FixedIn:
         - Module: null
           Name: ivshmem-tools

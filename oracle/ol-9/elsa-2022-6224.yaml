@@ -1,7 +1,131 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.0.1-41.0.1]
+        - Replace upstream references [Orabug: 34340177]
+
+        [1:3.0.1-41]
+        - Zeroize public keys as required by FIPS 140-3
+          Resolves: rhbz#2115861
+        - Add FIPS indicator for HKDF
+          Resolves: rhbz#2118388
+
+        [1:3.0.1-40]
+        - Deal with DH keys in FIPS mode according FIPS-140-3 requirements
+          Related: rhbz#2115856
+        - Deal with ECDH keys in FIPS mode according FIPS-140-3 requirements
+          Related: rhbz#2115857
+        - Use signature for RSA pairwise test according FIPS-140-3 requirements
+          Related: rhbz#2115858
+        - Reseed all the parent DRBGs in chain on reseeding a DRBG
+          Related: rhbz#2115859
+        - Zeroization according to FIPS-140-3 requirements
+          Related: rhbz#2115861
+
+        [1:3.0.1-39]
+        - Use RSA-OAEP in FIPS RSA encryption/decryption FIPS self-test
+        - Use Use digest_sign & digest_verify in FIPS signature self test
+        - Use FFDHE2048 in Diffie-Hellman FIPS self-test
+          Resolves: rhbz#2112978
+
+        [1:3.0.1-38]
+        - Fix segfault in EVP_PKEY_Q_keygen() when OpenSSL was not previously
+          initialized.
+          Resolves: rhbz#2107530
+        - Improve AES-GCM performance on Power9 and Power10 ppc64le
+          Resolves: rhbz#2103044
+        - Improve ChaCha20 performance on Power10 ppc64le
+          Resolves: rhbz#2103044
+
+        [1:3.0.1-37]
+        - CVE-2022-2097: AES OCB fails to encrypt some bytes on 32-bit x86
+          Resolves: CVE-2022-2097
+
+        [1:3.0.1-36]
+        - Ciphersuites with RSAPSK KX should be filterd in FIPS mode
+        - Related: rhbz#2091994
+        - FIPS provider should block RSA encryption for key transport.
+        - Other RSA encryption options should still be available if key length is enough
+        - Related: rhbz#2091977
+        - Improve diagnostics when passing unsupported groups in TLS
+        - Related: rhbz#2086554
+        - Fix PPC64 Montgomery multiplication bug
+        - Related: rhbz#2101346
+        - Strict certificates validation shouldn't allow explicit EC parameters
+        - Related: rhbz#2085521
+        - CVE-2022-2068: the c_rehash script allows command injection
+        - Related: rhbz#2098276
+
+        [1:3.0.1-35]
+        - Add explicit indicators for signatures in FIPS mode and mark signature
+          primitives as unapproved.
+          Resolves: rhbz#2087234
+
+        [1:3.0.1-34]
+        - Some OpenSSL test certificates are expired, updating
+        - Resolves: rhbz#2095696
+
+        [1:3.0.1-33]
+        - CVE-2022-1473 openssl: OPENSSL_LH_flush() breaks reuse of memory
+        - Resolves: rhbz#2089443
+        - CVE-2022-1343 openssl: Signer certificate verification returned
+          inaccurate response when using OCSP_NOCHECKS
+        - Resolves: rhbz#2089439
+        - CVE-2022-1292 openssl: c_rehash script allows command injection
+        - Resolves: rhbz#2090361
+        - Revert 'Disable EVP_PKEY_sign/EVP_PKEY_verify in FIPS mode'
+          Related: rhbz#2087234
+        - Use KAT for ECDSA signature tests, s390 arch
+        - Resolves: rhbz#2086866
+
+        [1:3.0.1-32]
+        - openssl ecparam -list_curves lists only FIPS-approved curves in FIPS mode
+        - Resolves: rhbz#2091929
+        - Ciphersuites with RSA KX should be filterd in FIPS mode
+        - Related: rhbz#2091994
+        - In FIPS mode, signature verification works with keys of arbitrary size
+          above 2048 bit, and only with 1024, 1280, 1536, 1792 bits for keys
+          below 2048 bits
+        - Resolves: rhbz#2091938
+
+        [1:3.0.1-31]
+        - Disable SHA-1 signature verification in FIPS mode
+        - Disable EVP_PKEY_sign/EVP_PKEY_verify in FIPS mode
+          Resolves: rhbz#2087234
+
+        [1:3.0.1-30]
+        - Use KAT for ECDSA signature tests
+        - Resolves: rhbz#2086866
+
+        [1:3.0.1-29]
+        - -config argument of openssl app should work properly in FIPS mode
+        - Resolves: rhbz#2085500
+        - openssl req defaults on PKCS#8 encryption changed to AES-256-CBC
+        - Resolves: rhbz#2085499
+
+        [1:3.0.1-28]
+        - OpenSSL should not accept custom elliptic curve parameters
+        - Resolves rhbz#2085508
+        - OpenSSL should not accept explicit curve parameters in FIPS mode
+        - Resolves rhbz#2085521
+
+        [1:3.0.1-27]
+        - Change FIPS module version to include hash of specfile, patches and sources
+          Resolves: rhbz#2082585
+
+        [1:3.0.1-26]
+        - OpenSSL FIPS module should not build in non-approved algorithms
+          Resolves: rhbz#2082584
+
+        [1:3.0.1-25]
+        - FIPS provider should block RSA encryption for key transport.
+        - Other RSA encryption options should still be available
+        - Resolves: rhbz#2053289
+
+        [1:3.0.1-24]
+        - Fix occasional internal error in TLS when DHE is used
+          Resolves: rhbz#2080323
     FixedIn:
         - Module: null
           Name: openssl

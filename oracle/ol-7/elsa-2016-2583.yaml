@@ -1,7 +1,36 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.2.6p5-25.0.1]
+        - add disable monitor to default ntp.conf [CVE-2013-5211]
+
+        [4.2.6p5-25]
+        - don't allow spoofed packet to enable symmetric interleaved mode
+          (CVE-2016-1548)
+        - check mode of new source in config command (CVE-2016-2518)
+        - make MAC check resilient against timing attack (CVE-2016-1550)
+
+        [4.2.6p5-24]
+        - fix crash with invalid logconfig command (CVE-2015-5194)
+        - fix crash when referencing disabled statistic type (CVE-2015-5195)
+        - don't hang in sntp with crafted reply (CVE-2015-5219)
+        - don't crash with crafted autokey packet (CVE-2015-7691, CVE-2015-7692,
+          CVE-2015-7702)
+        - fix memory leak with autokey (CVE-2015-7701)
+        - don't allow setting driftfile and pidfile remotely (CVE-2015-7703)
+        - don't crash in ntpq with crafted packet (CVE-2015-7852)
+        - check key ID in packets authenticated with symmetric key (CVE-2015-7974)
+        - fix crash with reslist command (CVE-2015-7977, CVE-2015-7978)
+        - don't allow spoofed packets to demobilize associations (CVE-2015-7979,
+          CVE-2016-1547)
+        - don't accept server/peer packets with zero origin timestamp (CVE-2015-8138)
+        - fix infinite loop in ntpq/ntpdc (CVE-2015-8158)
+        - fix resetting of leap status (#1242553)
+        - extend rawstats log (#1242877)
+        - report clock state changes related to leap seconds (#1242935)
+        - allow -4/-6 on restrict lines with mask (#1304492)
+        - explain synchronised state in ntpstat man page (#1309594)
     FixedIn:
         - Module: null
           Name: ntp

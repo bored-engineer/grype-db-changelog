@@ -1,7 +1,45 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        python27
+        [1.1-17]
+        - Require python-pip and python-wheel (note: in rh-python34
+          this is not necessary, because 'python' depends on these).
+
+        python27-python
+        [2.7.8-3]
+        - Add httplib fix for CVE-2013-1752
+        Resolves: rhbz#1187779
+
+        [2.7.8-2]
+        - Fix %check
+        unset DISPLAY
+         setion not failing properly on failed test
+        - Fixed CVE-2013-1752, CVE-2013-1753
+        Resolves: rhbz#1187779
+
+        [2.7.8-1]
+        - Update to 2.7.8.
+        Resolves: rhbz#1167912
+        - Make python-devel depend on scl-utils-build.
+        Resolves: rhbz#1170993
+
+        python27-python-pip
+         - New Package added
+
+        python27-python-setuptools
+        [0.9.8-3]
+        - Enhance patch restoring proxy support in SSL connections
+        Resolves: rhbz#1222507
+
+        python27-python-simplejson
+        [3.2.0-2]
+        - Fix CVE-2014-461, add boundary checks
+        Resolves: rhbz#1222534
+
+        python27-python-wheel
+         - New Package added
     FixedIn:
         - Module: null
           Name: python27

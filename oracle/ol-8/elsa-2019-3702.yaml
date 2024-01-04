@@ -1,7 +1,29 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [8.0p1-3 + 0.10.3-7]
+        - Fix typos in manual pages (#1668325)
+        - Use the upstream support for PKCS#8 PEM files alongside with the legacy PEM files (#1712436)
+        - Unbreak ssh-keygen -A in FIPS mode (#1732424)
+        - Add missing RSA certificate types to offered hostkey types in FIPS mode (#1732449)
+
+        [8.0p1-2 + 0.10.3-7]
+        - Allow specifying a pin-value in PKCS #11 URI in ssh-add (#1639698)
+        - Whitelist another syscall variant for s390x cryptographic module (ibmca engine) (#1714915)
+
+        [8.0p1-1 + 0.10.3-7]
+        - New upstream release (#1691045)
+        - Remove support for unused VendorPatchLevel configuration option
+        - Fix kerberos cleanup procedures (#1683295)
+        - Do not negotiate arbitrary primes with DH GEX in FIPS (#1685096)
+        - Several GSSAPI key exchange improvements and sync with Debian
+        - Allow to use labels in PKCS#11 URIs even if they do not match on private key (#1671262)
+        - Do not fall back to sshd_net_t SELinux context (#1678695)
+        - Use FIPS compliant high-level signature OpenSSL API and KDF
+        - Mention crypto-policies in manual pages
+        - Do not fail if non-FIPS approved algorithm is enabled in FIPS
+        - Generate the PEM files in new PKCS#8 format without the need of MD5 (#1712436)
     FixedIn:
         - Module: null
           Name: openssh

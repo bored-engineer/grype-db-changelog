@@ -1,7 +1,53 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.1.62-1]
+        - Fix man page references to fsck.gfs2.
+        - Resolves: rhbz#477072
+
+        [0.1.61-1]
+        - fsck.gfs2 no longer segfaults when fixing 'EA leaf block type' problems.
+        - Resolves: rhbz#510758
+
+        [0.1.60-1]
+        - When '/' is a gfs2 file system it is now properly mounted without an error.
+        - Resolves: rhbz#507893
+
+        [0.1.59-1]
+        - gfs_convert -vy now works properly on a ppc system.
+        - Resolves: rhbz#506629
+
+        [0.1.58-1]
+        - Fixed an issue with the gfs2_edit savemeta function not saving blocks of type
+          2.
+        - Resolves: rhbz#502056
+
+        [0.1.57-1]
+        - A gfs filesystems metadata is now properly copied with 'gfs2_edit savemeta'
+        - Resolves: rhbz#501732
+
+        [0.1.56-1]
+        - gfs2_fsck now properly fixes journal sequence numbers
+        - The debugfs mount point has been randomized to prevent symlink attacks
+        - Resolves: rhbz#498646 rhbz#498950
+
+        [0.1.55-1]
+        - gfs2_convert now properly frees blocks when removing a file with a height
+          greater than 1
+        - Updated man pages
+        - Added options to gfs2_tool df to provide more human readable output
+        - GFS2 utilities now use and provide filesystem UUID
+        - gfs2_fsck now uses the proper return codes
+        - gfs2_edit has been updated
+        - gfs2_tool df no longer segfaults on a non-4k block size
+        - gfs2_grow no longer references the '-r' option
+        - gfs2_convert no longer causes filesystem corruption
+        - gfs2_edit has been improved to help differentiate between zero-data and
+          non-zero data from pointers
+        - gfs2_edit now properly saves the per-node quota files
+        - A segfault in gfs2_fsck as been fixed
+        - Resolves: rhbz#474707 rhbz#477072 rhbz#480833 rhbz#242701 rhbz#474705 rhbz#483799 rhbz#485761 rhbz#486034 rhbz#490136 rhbz#483799 rhbz#496330
     FixedIn:
         - Module: null
           Name: gfs2-utils

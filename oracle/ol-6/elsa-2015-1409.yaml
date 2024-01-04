@@ -1,7 +1,42 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.8.6p3-19]
+        - RHEL-6.7 erratum
+          - modified the authlogicfix patch to fix #1144448
+          - fixed a bug in the ldapusermatchfix patch
+          Resolves: rhbz#1144448
+          Resolves: rhbz#1142122
+
+        [1.8.6p3-18]
+        - RHEL-6.7 erratum
+          - fixed the mantypos-ldap.patch
+          Resolves: rhbz#1138267
+
+        [1.8.6p3-17]
+        - RHEL-6.7 erratum
+          - added patch for CVE-2014-9680
+          - added BuildRequires for tzdata
+          Resolves: rhbz#1200253
+
+        [1.8.6p3-16]
+        - RHEL-6.7 erratum
+          - added zlib-devel build required to enable zlib compression support
+          - fixed two typos in the sudoers.ldap man page
+          - fixed a hang when duplicate nss entries are specified in nsswitch.conf
+          - SSSD: implemented sorting of the result entries according to the
+                  sudoOrder attribute
+          - LDAP: fixed logic handling the computation of the 'user matched' flag
+          - fixed restoring of the SIGPIPE signal in the tgetpass function
+          - fixed listpw, verifypw + authenticate option logic in LDAP/SSSD
+          Resolves: rhbz#1106433
+          Resolves: rhbz#1138267
+          Resolves: rhbz#1147498
+          Resolves: rhbz#1138581
+          Resolves: rhbz#1142122
+          Resolves: rhbz#1094548
+          Resolves: rhbz#1144448
     FixedIn:
         - Module: null
           Name: sudo

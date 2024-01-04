@@ -1,7 +1,22 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.6.1-31.el5_3.3]
+        - update to revised patch for CVE-2009-0844/CVE-2009-0845
+
+        [1.6.1-31.el5_3.2]
+        - add fix for potential buffer read overrun in the SPNEGO GSSAPI mechanism
+          (#490635, CVE-2009-0844)
+        - add fix for NULL pointer dereference when handling certain error cases
+          in the SPNEGO GSSAPI mechanism (#490635, CVE-2009-0845)
+        - add fix for attempt to free uninitialized pointer in the ASN.1 decoder
+          (#490635, CVE-2009-0846)
+        - add fix for bug in length validation in the ASN.1 decoder (CVE-2009-0847)
+
+        [1.6.1-31.el5_3.1]
+        - add backport of svn patch to fix a bug in how the gssapi library
+          handles certain error cases in gss_accept_sec_context (CVE-2009-0845,
     FixedIn:
         - Module: null
           Name: krb5-devel

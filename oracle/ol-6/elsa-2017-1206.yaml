@@ -1,7 +1,39 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.12.1.2-2.503.el6_9.3]
+        - kvm-cirrus-avoid-write-only-variables.patch [bz#1444377 bz#1444379]
+        - kvm-cirrus-stop-passing-around-dst-pointers-in-the-blitt.patch [bz#1444377 bz#1444379]
+        - kvm-cirrus-stop-passing-around-src-pointers-in-the-blitt.patch [bz#1444377 bz#1444379]
+        - kvm-cirrus-fix-off-by-one-in-cirrus_bitblt_rop_bkwd_tran.patch [bz#1444377 bz#1444379]
+        - kvm-cirrus-fix-PUTPIXEL-macro.patch [bz#1444377 bz#1444379]
+        - Resolves: bz#1444377
+          (CVE-2017-7980 qemu-kvm: Qemu: display: cirrus: OOB r/w access issues in bitblt routines [rhel-6.9.z])
+        - Resolves: bz#1444379
+          (CVE-2017-7980 qemu-kvm-rhev: Qemu: display: cirrus: OOB r/w access issues in bitblt routines [rhel-6.9.z])
+
+        [0.12.1.2-2.503.el6_9.2]
+        - kvm-fix-cirrus_vga-fix-OOB-read-case-qemu-Segmentation-f.patch [bz#1443447 bz#1443449]
+        - kvm-cirrus-vnc-zap-bitblit-support-from-console-code.patch [bz#1443447 bz#1443449]
+        - Resolves: bz#1443447
+          (CVE-2017-7718 qemu-kvm: Qemu: display: cirrus: OOB read access issue [rhel-6.9.z])
+        - Resolves: bz#1443449
+          (CVE-2017-7718 qemu-kvm-rhev: Qemu: display: cirrus: OOB read access issue [rhel-6.9.z])
+        - Resolves: bz#1447544
+          (CVE-2016-9603 qemu-kvm-rhev: Qemu: cirrus: heap buffer overflow via vnc connection [rhel-6.9.z] )
+        - Resolves: bz#1447540
+          (CVE-2016-9603 qemu-kvm: Qemu: cirrus: heap buffer overflow via vnc connection [rhel-6.9.z])
+
+        [0.12.1.2-2.503.el6_9.1]
+        - kvm-vns-tls-don-t-use-depricated-gnutls-functions.patch [bz#1428750]
+        - kvm-vnc-apply-display-size-limits.patch [bz#1400438 bz#1425943]
+        - Resolves: bz#1400438
+          (qemu-kvm coredump in vnc_refresh_server_surface [rhel-6.9.z])
+        - Resolves: bz#1425943
+          (CVE-2017-2633 qemu-kvm-rhev: Qemu: VNC: memory corruption due to unchecked resolution limit [rhel-6.9.z])
+        - Resolves: bz#1428750
+          (Fails to build in brew)
     FixedIn:
         - Module: null
           Name: qemu-guest-agent

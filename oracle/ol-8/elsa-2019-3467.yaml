@@ -1,7 +1,25 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:2.2.36-10]
+        - fix CVE-2019-11500: IMAP protocol parser does not properly handle NUL byte
+          when scanning data in quoted strings, leading to out of bounds heap
+          memory writes (#1741788)
+
+        [1:2.2.36-9]
+        - reset errno before iterating through users (#1630410)
+
+        [1:2.2.36-8]
+        - fix CVE-2019-3814: improper certificate validation (#1674370)
+
+        [1:2.2.36-7]
+        - do not print error message when restorecon is not present
+          during install (#1626395)
+        - change default config to use minimal UID = 1000 (#1630410)
+
+        [1:2.2.36-6]
+        - use OpenSSl implementation of HMAC, disable CRAM-MD5 when FIPS is enabled (#1618749)
     FixedIn:
         - Module: null
           Name: dovecot

@@ -1,7 +1,49 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        abrt
+        [2.1.11-22.0.1]
+        - Drop libreport-rhel and libreport-plugin-rhtsupport requires
+
+        [2.1.11-22]
+        - do not open the build_ids file as the user abrt
+        - do not unlink failed and big user core files
+        - Related: #1212819, #1216973
+
+        [2.1.11-21]
+        - validate all D-Bus method arguments
+        - Related: #1214610
+
+        [2.1.11-20]
+        - remove the old dump directories during upgrade
+        - abrt-action-install-debuginfo-to-abrt-cache: sanitize arguments and umask
+        - fix race conditions and directory traversal issues in abrt-dbus
+        - use /var/spool/abrt instead of /var/tmp/abrt
+        - make the problem directories owned by root and the group abrt
+        - validate uploaded problem directories in abrt-handle-upload
+        - don't override files with user core dump files
+        - fix symbolic link and race condition flaws
+        - Resolves: #1211969, #1212819, #1212863, #1212869
+        - Resolves: #1214453, #1214610, #1216973, #1218583
+
+        libreport
+        [2.1.11-23.0.1]
+        - Update workflow xml for Oracle [18945470]
+        - Add oracle-enterprise.patch and oracle-enterprise-po.patch
+        - Remove libreport-plugin-rhtsupport and libreport-rhel
+        - Added orabug20390725.patch to remove redhat reference [bug 20390725]
+        - Added Bug20357383.patch to remove redhat reference [bug 20357383]
+
+        [2.1.11-23]
+        - do not open files outside a dump directory
+        - Related: #1217484
+
+        [2.1.11-22]
+        - switch the default dump dir mode to 0750
+        - harden against directory traversal, crafted symbolic links
+        - avoid race-conditions in dump dir opening
+        - Resolves: #1212096, #1217499, #1218610, #1217484
     FixedIn:
         - Module: null
           Name: abrt

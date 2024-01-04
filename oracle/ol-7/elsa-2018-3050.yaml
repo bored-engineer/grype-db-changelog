@@ -1,7 +1,29 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.3.29-8.0.1]
+        - Include ECDSA KAT into selftests for FIPS140-2 compliance [Orabug 27484156]
+
+        [3.3.29-8]
+        - Backported --sni-hostname option which allows overriding the hostname
+          advertised to the peer (#1444792)
+        - Improved counter-measures in TLS CBC record padding for lucky13 attack
+          (CVE-2018-10844, #1589704, CVE-2018-10845, #1589707)
+        - Added counter-measures for 'Just in Time' PRIME + PROBE cache-based attack
+          (CVE-2018-10846, #1589708)
+        - Address p11tool issue in object deletion in batch mode (#1375307)
+        - Backport PKCS#11 tests from master branch. Some tests were disabled due to
+          unsupported features in 3.3.x (--load-pubkey and --test-sign options, ECC key
+          generation without login, and certificates do not inherit ID from the private
+          key)
+        - p11tool explicitly marks certificates and public keys as NOT private objects
+          and private keys as private objects
+        - Enlarge buffer size to support resumption with large keys (#1542461)
+        - Legacy HMAC-SHA384 cipher suites were disabled by default
+        - Added DSA key generation to p11tool (#1464896)
+        - Address session renegotiation issue using client certificate (#1434091)
+        - Address issue when importing private keys into Atos HSM (#1460125)
     FixedIn:
         - Module: null
           Name: gnutls

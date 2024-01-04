@@ -1,7 +1,44 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.1.1c-15]
+        - add selftest of the RAND_DRBG implementation
+
+        [1.1.1c-14]
+        - fix incorrect error return value from FIPS_selftest_dsa
+        - S390x: properly restore SIGILL signal handler
+
+        [1.1.1c-12]
+        - additional fix for the edk2 build
+
+        [1.1.1c-9]
+        - disallow use of SHA-1 signatures in TLS in FIPS mode
+
+        [1.1.1c-8]
+        - fix CVE-2019-1547 - side-channel weak encryption vulnerability
+        - fix CVE-2019-1563 - padding oracle in CMS API
+        - fix CVE-2019-1549 - ensure fork safety of the DRBG
+        - fix handling of non-FIPS allowed EC curves in FIPS mode
+        - fix TLS compliance issues
+
+        [1.1.1c-7]
+        - backported ARM performance fixes from master
+
+        [1.1.1c-6]
+        - backport of S390x ECC CPACF enhancements from master
+        - FIPS mode: properly disable 1024 bit DSA key generation
+        - FIPS mode: skip ED25519 and ED448 algorithms in openssl speed
+        - FIPS mode: allow AES-CCM ciphersuites
+
+        [1.1.1c-5]
+        - make the code suitable for edk2 build
+
+        [1.1.1c-4]
+        - backport of SSKDF from master
+
+        [1.1.1c-3]
+        - backport of KBKDF and KRB5KDF from master
     FixedIn:
         - Module: null
           Name: openssl

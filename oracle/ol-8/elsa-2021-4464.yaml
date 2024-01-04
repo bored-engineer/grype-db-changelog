@@ -1,7 +1,51 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        dnf
+        [4.7.0-4.0.1]
+        -Fixed python stack trace with updateinfo list cves command [Orabug: 32749660]
+        - Replaced upstream bugzilla reporting reference. [Orabug: 32829849]
+
+        [4.7.0-4]
+        - Update translations (RhBug:1961632)
+
+        [4.7.0-3]
+        - Improve signature checking using rpmkeys (RhBug:1967454)
+
+        [4.7.0-2]
+        - Fix covscan issue: dnf/rpm/miscutils.py: fix usage of _()
+
+        [4.7.0-1]
+        - Update to 4.7.0
+        - New optional parameter for filter_modules enables following modular obsoletes based on a config option module_obsoletes
+        - Fix module remove --all when no match spec (RhBug:1904490)
+        - Make an error message more informative (RhBug:1814831)
+        - Expand history to full term size when output is redirected (RhBug:1852577) (RhBug:1852577,1906970)
+        - Print additional information when verifying GPG key using DNS
+        - Enhanced detection of plugins removed in transaction (RhBug:1929163)
+        - Improve repo config path ordering to fix a comps merging issue (RhBug:1928181)
+        - Keep reason when package is removed (RhBug:1921063)
+        - Improve mechanism for application of security filters (RhBug:1918475)
+        - [API] Add new method for reset of security filters
+        - Remove hardcoded logfile permissions (RhBug:1910084)
+        - Preserve file mode during log rotation (RhBug:1910084)
+        - Increase loglevel in case of invalid config options
+        - Prevent traceback (catch ValueError) if pkg is from cmdline
+        - Check for specific key string when verifing signatures (RhBug:1915990)
+        - Use rpmkeys binary to verify package signature (RhBug:1915990)
+        - [doc] Improve description of modular filtering
+        - [doc] deprecated alias for dnf repoquery --deplist <deplist_option-label>
+        - [doc] Describe install with just a name and obsoletes (RhBug:1902279)
+        - [doc] Fix: 'sslcacert' contains path to the file
+        - [doc] Added proxy ssl configuration options, increase libdnf require
+        - [doc] Update documentation for module_obsoletes and module_stream_switch
+        - [doc] Improve documentation for Hotfix repositories
+        - [doc] fix: 'makecache' command downloads only enabled repositories
+        - [doc] Add info that maximum parallel downloads is 20
+        - [doc] installonly_limit documentation follows behavior
+        - [doc] Add documentation for config option sslverifystatus (RhBug:1814383)
+        - The noroot plugin no longer exists, remove mention
     FixedIn:
         - Module: null
           Name: dnf

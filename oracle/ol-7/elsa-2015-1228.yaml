@@ -1,7 +1,19 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.51-1.b16]
+        - Add md5sum for January 2015 java.security update so it gets updated this time.
+        - Resolves: rhbz#1235162
+
+        [1:1.8.0.51-0.b16]
+        - July 2015 security update to u51b16.
+        - Add script for generating OpenJDK tarballs from a local Mercurial tree.
+        - Add %{name} prefix to patches to avoid conflicts with OpenJDK 7 versions.
+        - Add patches for RH issues fixed in IcedTea 2.x and/or the upcoming u60.
+        - Use 'openjdk' as directory prefix to allow patch interchange with IcedTea.
+        - Re-generate EC disablement patch following CPU DH changes.
+        - Resolves: rhbz#1235162
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

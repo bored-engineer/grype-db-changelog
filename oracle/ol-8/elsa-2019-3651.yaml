@@ -1,7 +1,94 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.2.0-19]
+        - Resolves: rhbz#1712875 - Old kerberos credentials active instead of valid
+                                   new ones (kcm)
+
+        [2.2.0-18]
+        - Resolves: rhbz#1744134 - New defect found in sssd-2.2.0-16.el8
+        - Also sync. kcm multihost tests with master
+
+        [2.2.0-17]
+        - Resolves: rhbz#1676385 - pam_sss with smartcard auth does not create gnome
+                                   keyring
+        - Also apply a patch to fix gating tests issue
+
+        [2.2.0-16]
+        - Resolves: rhbz#1736861 - dyndns_update = True is no longer enough to get
+                                   the IP address of the machine updated in IPA upon
+                                   sssd.service startup
+
+        [2.2.0-15]
+        - Resolves: rhbz#1736265 - Smart Card auth of local user: endless
+                                   loop if wrong PIN was provided
+
+        [2.2.0-14]
+        - Resolves: rhbz#1736796 - sssd config option 'default_domain_suffix'
+                                   should not cause files domain entries to be
+                                   qualified, this can break sudo access
+
+        [2.2.0-13]
+        - Resolves: rhbz#1669407 - MAN: Document that PAM stack contains the
+                    systemd-user service in the account phase in RHEL-8
+
+        [2.2.0-12]
+        - Resolves: rhbz#1448094 - sssd-kcm cannot handle big tickets
+
+        [2.2.0-11]
+        - Resolves: rhbz#1733372 - permission denied on logs when running sssd as
+                                   non-root user
+
+        [2.2.0-10]
+        - Resolves: rhbz#1736483 - Sudo prompt for smart card authentication is missing
+                                   the trailing colon
+
+        [2.2.0-9]
+        - Resolves: rhbz#1382750 - Conflicting default timeout values
+
+        [2.2.0-8]
+        - Resolves: rhbz#1699480 - Include libsss_nss_idmap-devel in the Builder
+                                   repository
+                                 - This just required a raise in release number
+                                   and changelog for the record.
+
+        [2.2.0-7]
+        - Resolves: rhbz#1711318 - p11_child::sign_data() function implementation is
+                                   not FIPS140 compliant
+
+        [2.2.0-6]
+        - Resolves: rhbz#1726945 - negative cache does not use values from
+                                   'filter_users' config option for known domains
+
+        [2.2.0-5]
+        - Resolves: rhbz#1729055 - sssd does not pass correct rules to sudo
+
+        [2.2.0-4]
+        - Resolves: rhbz#1283798 - sssd failover does not work on connecting to
+                                   non-responsive ldaps:// server
+
+        [2.2.0-3]
+        - Resolves: rhbz#1725168 - sssd-proxy crashes resolving groups with
+                                   no members
+
+        [2.2.0-2]
+        - Resolves: rhbz#1673443 - sssd man pages: The default value of
+                                   'ldap_user_home_directory' is not mentioned
+                                   with AD server configuration
+
+        [2.2.0-1]
+        - Resolves: rhbz#1687281
+          Rebase sssd in RHEL-8.1 to the latest upstream release
+
+        [2.1.0-1]
+        - Resolves: rhbz#1687281
+          Rebase sssd in RHEL-8.1 to the latest upstream release
+
+        [2.0.0-45]
+        - Replace ARRAY_SIZE with N_ELEMENTS to reflect samba changes. This is
+          done here in order to unblock gating changes before rebase.
+        - Related: rhbz#1682305
     FixedIn:
         - Module: null
           Name: libipa_hbac

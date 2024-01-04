@@ -1,7 +1,43 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.7.0.85-2.6.1.2.0.1.el7_1]
+        - Update DISTRO_NAME in specfile
+
+        [1:1.7.0.85-2.6.1.2]
+        - Bump upstream tarball to u25b01 to fix issue with 8075374 backport.
+        - Resolves: rhbz#1235158
+
+        [1:1.7.0.85-2.6.1.1]
+        - Update OpenJDK tarball so correct version is used.
+        - Resolves: rhbz#1235158
+
+        [1:1.7.0.85-2.6.1.0]
+        - Add additional java.security md5sum from January CPU
+        - Resolves: rhbz#1235158
+
+        [1:1.7.0.85-2.6.1.0]
+        - Bump to 2.6.1 and u85b00.
+        - Resolves: rhbz#1235158
+
+        [1:1.7.0.80-2.6.0.1]
+        - Pass SYSTEM_GSETTINGS='true' to the OpenJDK build to explicitly enable the GSettings API.
+        - Resolves: rhbz#1235158
+
+        [1:1.7.0.80-2.6.0.0]
+        - Add GConf2-devel dependency for native proxy fallback support.
+        - Remove libxslt dependency pulled in from IcedTea builds.
+        - Reduce redhat-lsb dependency to redhat-lsb-core (lsb_release)
+        - Resolves: rhbz#1235158
+
+        [1:1.7.0.80-2.6.0.0]
+        - Bump to 2.6.0 and u80b32.
+        - Drop upstreamed patches and separate AArch64 HotSpot.
+        - Add dependencies on pcsc-lite-devel (PR2496) and lksctp-tools-devel (PR2446)
+        - Only run -Xshare:dump on JIT archs other than power64 as port lacks support
+        - Update remove-intree-libraries script to cover LCMS and PCSC headers and SunEC.
+        - Resolves: rhbz#1235158
     FixedIn:
         - Module: null
           Name: java-1.7.0-openjdk

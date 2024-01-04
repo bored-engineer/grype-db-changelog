@@ -1,7 +1,60 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.10.0-43]
+        - fence_vmware_soap: set login_timeout lower than default
+          pcmk_monitor_timeout (20s) to remove tmp dirs
+          Resolves: rhbz#2122944
+
+        [4.10.0-42]
+        - fencing/fence_wti: add --plug-separator to be able to avoid
+          characters that are in node name(s)
+          Resolves: rhbz#2152107
+
+        [4.10.0-41]
+        - fence_scsi: skip key generation during validate-all action
+          Resolves: rhbz#2160480
+
+        [4.10.0-40]
+        - fence_virtd: add info about multiple uuid/ip entries to manpage
+
+          Resolves: rhbz#2149655
+
+        [4.10.0-39]
+        - fence_virtd: warn if config or key file(s) are not mode 600
+
+          Resolves: rhbz#2144531
+
+        [4.10.0-37]
+        - Upgrade bundled python-oauthlib
+          Resolves: rhbz#2128564
+
+        [4.10.0-36]
+        - fence_virtd: add link to uri examples and uri w/socket path
+          example for when VMS are run as non-root user to manpage
+          Resolves: rhbz#2138823
+
+        [4.10.0-35]
+        - fence_ibm_powervs: improve defaults
+          Resolves: rhbz#2136191
+
+        [4.10.0-34]
+        - fence_lpar: only output additional output info on DEBUG level
+          Resolves: rhbz#2134015
+
+        [4.10.0-33]
+        - fence_virt: add note that reboot-action doesnt power on nodes that
+          are powered off
+          Resolves: rhbz#2132008
+
+        [4.10.0-32]
+        - add azure-identity and dependencies
+          Resolves: rhbz#2121546
+
+        [4.10.0-31]
+        - fence_ibm_vpc: add token cache support
+          Resolves: rhbz#2111998
     FixedIn:
         - Module: null
           Name: fence-agents-common

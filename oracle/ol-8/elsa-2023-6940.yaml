@@ -1,7 +1,27 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        cjose
+        [0.6.1-4]
+        - CVE-2023-37464 cjose: AES GCM decryption uses the Tag length from the actual
+          Authentication Tag provided in the JWE
+          Resolves: rhbz#2223308
+
+        mod_auth_openidc
+        [2.4.9.4-5]
+        Related: rhbz#2141850 - fix cjose version dependency
+
+        [2.4.9.4-4]
+        Resolves: rhbz#2141850 - auth_openidc.conf mode 0640 by default
+
+        [2.4.9.4-3]
+        - Resolves: rhbz#2184144 - CVE-2023-28625 NULL pointer dereference
+              when OIDCStripCookies is set and a crafted Cookie header is supplied
+
+        [2.4.9.4-2]
+        - Resolves: rhbz#2153659 - CVE-2022-23527 - Open Redirect in
+              oidc_validate_redirect_url() using tab character
     FixedIn:
         - Module: mod_auth_openidc:2.3
           Name: cjose

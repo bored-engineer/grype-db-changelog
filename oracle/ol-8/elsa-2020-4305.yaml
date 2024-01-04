@@ -1,7 +1,55 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:11.0.9.11-0]
+        - Update to jdk-11.0.9+11
+        - Update release notes for 11.0.9 release.
+        - Add backport of JDK-8254177 to update to tzdata 2020b
+        - Require tzdata 2020b due to resource changes in JDK-8254177
+        - Delay tzdata 2020b dependency until tzdata update has shipped.
+        - This tarball is embargoed until 2020-10-20 @ 1pm PT.
+        - Resolves: rhbz#1876665
+
+        [1:11.0.9.10-0.0.ea]
+        - Update to jdk-11.0.9+10 (EA)
+        - With Shenandoah now upstream in OpenJDK 11, we can use jdk-updates/jdk11 directly
+        - Following JDK-8005165, class data sharing can be enabled on all JIT architectures
+        - Update tarball generation script to use PR3802, handling JDK-8233228 & JDK-8177334
+        - Remove JDK-8252258/RH1868406 now applied upstream.
+        - Improve quoting of vendor name
+        - Resolves: rhbz#1876665
+
+        [1:11.0.9.10-0.0.ea]
+        - Set vendor property and vendor URLs
+        - Made URLs to be preconfigured by OS
+        - Moved vendor_version_string to a better place
+        - Resolves: rhbz#1876665
+
+        [1:11.0.9.10-0.0.ea]
+        - Update static-libs packaging to new layout
+        - Resolves: rhbz#1876665
+
+        [1:11.0.9.1-0.1.ea]
+        - Cleanup architecture and JVM feature handling in preparation for using upstreamed Shenandoah.
+        - Resolves: rhbz#1876665
+
+        [1:11.0.9.1-0.0.ea]
+        - Update to shenandoah-jdk-11.0.9+1 (EA)
+        - Switch to EA mode for 11.0.9 pre-release builds.
+        - JDK-8245832 increases the set of static libraries, so try and include them all with a wildcard.
+        - Resolves: rhbz#1876665
+
+        [1:11.0.8.10-2]
+        - Add JDK-8252258 to return default vendor to the original value of 'Oracle Corporation'
+        - Include a test in the RPM to check the build has the correct vendor information.
+        - Use 'oj_' prefix on new vendor globals to avoid a conflict with RPM's vendor value.
+        - Resolves: rhbz#1873390
+
+        [1:11.0.8.10-1]
+        - Added scriplet to handle dir->symlink change when updating el7->el8
+        - Symlink hunk moved behind the main copy logic, to be more user-friendly with multiple installs
+        - Resolves: rhbz#1871709
     FixedIn:
         - Module: null
           Name: java-11-openjdk

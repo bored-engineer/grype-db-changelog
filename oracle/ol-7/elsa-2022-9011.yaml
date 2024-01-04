@@ -1,7 +1,32 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.14.35-2047.510.5.2]
+        - xfs: map unwritten blocks in XFS_IOC_{ALLOC,FREE}SP just like fallocate (Darrick J. Wong)  [Orabug: 33722441]  {CVE-2021-4155}
+
+        [4.14.35-2047.510.5.1]
+        - fget: check that the fd still exists after getting a ref to it (Linus Torvalds)  [Orabug: 33679805]  {CVE-2021-0920}
+        - fs: add fget_many() and fput_many() (Jens Axboe)  [Orabug: 33679805]
+
+        [4.14.35-2047.510.5]
+        - net/rds: RDS connection shutdown stuck after CQ access violation error (aru kolappan)  [Orabug: 33585476]
+        - ocfs2: fix race between searching chunks and release journal_head from buffer_head (Gautham Ananthakrishna)  [Orabug: 33501677]
+        - rds: ib: Ack seq not always received in monotonic increasing order (Hakon Bugge)  [Orabug: 33620419]
+        - net/rds: Refactor rds_ib_recv_refill_one (Freddy Carrillo)  [Orabug: 33265955]
+        - arm64: pcie: Intercept Pensando specific SError (Henry Willard)  [Orabug: 33590080]
+        - arm64: pcie: Change bad_mode hook to cap_pciep_access_in_progress() (Henry Willard)  [Orabug: 33590080]
+        - arm64: pcie: Remove Pensando SError trapping patch (Henry Willard)  [Orabug: 33590080]
+        - take care multiple extents in CoW extent converting (Wengang Wang)  [Orabug: 33473949]
+        - net/mlx5e: ethtool, Add support for EEPROM high pages query (Erez Alfasi)  [Orabug: 33525560]
+        - ethtool: Add SFF-8436 and SFF-8636 max EEPROM length definitions (Erez Alfasi)  [Orabug: 33525560]
+        - net/mlx5: Remove unnecessary prints from mlx5_enter_error_state. (Anand Khoje)  [Orabug: 33651549]
+        - uek-rpm: Add _raw_spin_trylock to KABI (John Donnelly)  [Orabug: 33651431]
+        - x86/clear_page: add alternative for clear_page_clzero() (Ankur Arora)  [Orabug: 33651433]
+        - x86/asm: add clzero based page clearing (Ankur Arora)  [Orabug: 33580825]
+        - x86/cpu/amd: enable X86_FEATURE_NT_GOOD on all AMD Zen models (Ankur Arora)  [Orabug: 33580825]
+        - x86/cpu/amd: Call init_amd_zn() om Family 19h processors too (Kim Phillips)  [Orabug: 33580825]
+        - cpufreq: intel_pstate: Add Icelake servers support in no-HWP mode (Giovanni Gherdovich)  [Orabug: 33651434]
     FixedIn:
         - Module: null
           Name: kernel-uek-container

@@ -1,7 +1,95 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.02-123.0.1]
+        - backport arm64: Fix EFI loader kernel image allocation [Orabug: 33702462]
+        - backport Arm: check for the PE magic for the compiled arch [Orabug: 33702462]
+        - Backport some better script logic for BTRFS support [Orabug: 32448171]
+        - Do not add shim and grub certificate deps for aarch64 packages [Orabug: 32670033]
+        - Update Oracle SBAT data [Orabug: 32670033]
+        - Use new signing certificate [Orabug: 32670033]
+        - Fix various coverity issues [Orabug: 32530657]
+        - Set proper blsdir if /boot is on btrfs rootfs [Orabug: 32063327]
+        - Add CVE-2020-15706, CVE-2020-15707 to the list [Orabug: 31225072]
+        - honor /etc/sysconfig/kernel DEFAULTKERNEL setting for BLS [Orabug: 30643497]
+        - set EFIDIR as redhat for additional grub2 tools [Orabug: 29875597]
+        - Update upstream references [Orabug: 26388226]
+        - Insert Unbreakable Enterprise Kernel text into BLS config file [Orabug: 29417955]
+        - fix symlink removal scriptlet, to be executed only on removal [Orabug: 19231481]
+        - Fix comparison in patch for 18504756
+        - Remove symlink to grub environment file during uninstall on EFI platforms [Orabug: 19231481]
+        - Put 'with' in menuentry instead of 'using' [Orabug: 18504756]
+        - Use different titles for UEK and RHCK kernels [Orabug: 18504756]
+
+        [2.06-123]
+        - Bump for signing
+        - Resolves: #2061252
+
+        [2.06-122]
+        - Fix initialization on efidisk patch
+        - Resolves: #2061252
+
+        [2.06-121]
+        - Backport support for loading initrd above 4GB
+        - Resolves: #2048433
+
+        [2.06-120]
+        - Bump signing
+        - Resolves: #2032294
+
+        [2.06-119]
+        - Enable connectefi module
+        - Resolves: #2032294
+
+        [2.02-118]
+        - Fix check on blscfg conditional (mlewando)
+        - Resolves: #1899903
+
+        [2.02-117]
+        - Once more, for signing
+        - Resolves: #2048904
+
+        [2.02-116]
+        - Add efidisk/connectefi patches
+        - Resolves: #2048904
+        - Resolves: #2032294
+
+        [2.02-115]
+        - Re-arm GRUB_ENABLE_BLSCFG=false
+        - Resolves: #1899903
+
+        [2.02-114]
+        - Fix behavior of GRUB_TERMINAL_INPUT=at_keyboard
+        - Resolves: #2020927
+
+        [2.02-113]
+        - Bump to fix target
+        - Resolves: #1809246
+
+        [2.02-112]
+        - Fix DHCP proxy efi booting
+        - Resolves: #1809246
+
+        [2.02-111]
+        - Bump to fix target
+        - Resolves: #1914575
+
+        [2.02-110]
+        - Dont run grub-boot-success.timer in a nspawn container
+        - Resolves: #1914575
+
+        [2.02-109]
+        - Drop prelink snippet
+        - Resolves: #2016269
+
+        [2.02-108]
+        - Bump version to fix build target
+        - Resolves: #2030359
+
+        [2.02-107]
+        - CVE-2021-3981 (Incorrect read permission in grub.cfg)
+        - Resolves: #2030359
     FixedIn:
         - Module: null
           Name: grub2-common

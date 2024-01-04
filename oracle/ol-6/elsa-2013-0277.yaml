@@ -1,7 +1,31 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.48-13]
+        - Fix the DHCP RELEASE problem when two or more dnsmasq instances are running (rhbz#887156)
+
+        [2.48-12]
+        - Fixing initscript restart stop functions (rhbz#850944)
+
+        [2.48-11]
+        - Revert previous changes because of many problems with --bind-dynamic option backport.
+        - Dropping dnsmasq-2.48-add-bind-dynamic-option.patch
+        - Set SO_BINDTODEVICE socket option when using --bind-interfaces (rhbz#884957)
+
+        [2.48-10]
+        - Fixed dnsmasq-2.48-add-bind-dynamic-option.patch
+         - the option --bind-dynamic was not set correctly when used
+
+        [2.48-9]
+        - Added cc flag -fno-strict-aliasing to solve Testsuite regressions
+
+        [2.48-8]
+        - Fix CVE-2012-3411 (rhbz#882251)
+
+        [2.48-7]
+        - Fix lease-change script (rhbz#815819)
+        - Check tftp-root exists and is accessible at startup (rhbz#824214)
     FixedIn:
         - Module: null
           Name: dnsmasq

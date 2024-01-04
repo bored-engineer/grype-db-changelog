@@ -1,7 +1,20 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [82-6.3]
+        - do not forget to set the group id in mount.ecryptfs_private
+
+        [82-6.2]
+        - fix regression in ecryptfs-setup-private
+
+        [82-6.1]
+        - security fixes:
+        - privilege escalation via mountpoint race conditions (CVE-2011-1831, CVE-2011-1832)
+        - race condition when checking source during mount (CVE-2011-1833)
+        - mtab corruption via improper handling (CVE-2011-1834)
+        - key poisoning via insecure temp directory handling (CVE-2011-1835)
+        - arbitrary file overwrite via lock counter race (CVE-2011-1837)
     FixedIn:
         - Module: null
           Name: ecryptfs-utils

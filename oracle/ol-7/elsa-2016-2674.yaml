@@ -1,7 +1,14 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.5.3-13.1]
+        - fix CVE-2016-6313 - predictable PRNG output (#1366105)
+
+        [1.5.3-13]
+        - touch only urandom in the selftest and when /dev/random is
+          unavailable for example by SELinux confinement
+        - fix the RSA selftest key (p q swap)
     FixedIn:
         - Module: null
           Name: libgcrypt

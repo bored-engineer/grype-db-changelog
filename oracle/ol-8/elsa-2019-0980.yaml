@@ -1,7 +1,21 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        httpd
+        [2.4.37-11.0.1]
+        - Set vstring per ORACLE_SUPPORT_PRODUCT [Orabug: 29892262]
+        - Replace index.html with Oracle's index page oracle_index.html
+
+        [2.4.37-11]
+        - Resolves: #1695431 - CVE-2019-0211 httpd: privilege escalation
+          from modules scripts
+        - Resolves: #1696090 - CVE-2019-0215 httpd:2.4/httpd: mod_ssl: access control
+          bypass when using per-location client certification authentication
+
+        mod_http2
+        [1.11.3-2]
+        - update release (#1695587)
     FixedIn:
         - Module: httpd:2.4
           Name: httpd

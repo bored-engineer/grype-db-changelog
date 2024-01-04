@@ -1,7 +1,35 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        libvirt
+        [8.0.0-5.2.0.1]
+        - Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+        - Add runtime deps for pkg librbd1 >= 1:10.2.5 (Keshav Sharma)
+
+        [8.0.0-5.2.el8]
+        - cpu_map: Disable cpu64-rhel* for host-model and baseline (rhbz#2084030)
+        - cputest: Drop some old artificial baseline tests (rhbz#2084030)
+        - cputest: Give better names to baseline tests (rhbz#2084030)
+        - cputest: Add some real world baseline tests (rhbz#2084030)
+        - cpu_x86: Consolidate signature match in x86DecodeUseCandidate (rhbz#2084030)
+        - cpu_x86: Refactor feature list comparison in x86DecodeUseCandidate (rhbz#2084030)
+        - cpu_x86: Penalize disabled features when computing CPU model (rhbz#2084030)
+        - cpu_x86: Ignore enabled features for input models in x86DecodeUseCandidate (rhbz#2084030)
+
+        [8.0.0-5.1.el8]
+        - conf: Introduce memory allocation threads (rhbz#2075569)
+        - qemu_capabilities: Detect memory-backend-*.prealloc-threads property (rhbz#2075569)
+        - qemu_validate: Validate prealloc threads against qemuCpas (rhbz#2075569)
+        - qemu_command: Generate prealloc-threads property (rhbz#2075569)
+
+        virt-v2v
+        [1:1.42.0-19.0.1]
+        - replaced upstream references [Orabug:34095529]
+
+        [1:1.42.0-19]
+        - If listing RPM applications fails, rebuild DB and retry
+          resolves: rhbz#2093415
     FixedIn:
         - Module: virt-devel:ol
           Name: hivex

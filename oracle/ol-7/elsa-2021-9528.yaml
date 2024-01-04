@@ -1,7 +1,19 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.0.2k-22_fips]
+        - Change Epoch from 1 to 10
+        - Fix DH self-test to add shared secret comparison [Orabug: 32467026]
+        - Add DH support changes for SP 800-56A rev3 requirements [Orabug: 32467059]
+        - Add TLS KDF self-test [Orabug: 32467193]
+        - Add EC keys pairwise consistency test [Orabug: 32467059]
+
+        [1.0.2k-22]
+        - fix CVE-2021-23841 openssl: NULL pointer dereference
+          in X509_issuer_and_serial_hash()
+        - fix CVE-2021-23840 openssl: integer overflow in CipherUpdate
+        - Resolves: rhbz#1932132, rhbz#1932126
     FixedIn:
         - Module: null
           Name: openssl

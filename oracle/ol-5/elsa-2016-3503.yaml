@@ -1,7 +1,21 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        kernel-uek
+        [2.6.32-400.37.15uek]
+        - ipc/sem.c: fully initialize sem_array before making it visible (Manfred Spraul)  [Orabug: 22250043]  {CVE-2015-7613}
+        - Initialize msg/shm IPC objects before doing ipc_addid() (Linus Torvalds)  [Orabug: 22250043]  {CVE-2015-7613}
+        - crypto: add missing crypto module aliases (Mathias Krause)  [Orabug: 22249655]  {CVE-2013-7421} {CVE-2014-9644}
+        - crypto: include crypto- module prefix in template (Kees Cook)  [Orabug: 22249655]  {CVE-2013-7421} {CVE-2014-9644}
+        - crypto: prefix module autoloading with 'crypto-' (Kees Cook)  [Orabug: 22249655]  {CVE-2013-7421} {CVE-2014-9644}
+
+        [2.6.32-400.37.14uek]
+        - KVM: add arg to ac_interception() missing from 'KVM: x86: work around infinite loop in microcode when #AC is delivered' (Chuck Anderson)  [Orabug: 22336493]  {CVE-2015-5307}
+
+        [2.6.32-400.37.13uek]
+        - KVM: svm: unconditionally intercept #DB (Paolo Bonzini)  [Orabug: 22336518]  {CVE-2015-8104} {CVE-2015-8104}
+        - KVM: x86: work around infinite loop in microcode when #AC is delivered (Eric Northup)  [Orabug: 22336493]  {CVE-2015-5307} {CVE-2015-5307}
     FixedIn:
         - Module: null
           Name: kernel-uek

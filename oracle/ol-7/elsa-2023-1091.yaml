@@ -1,7 +1,54 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.88.1.0.1.OL7]
+        - debug: lock down kgdb [Orabug: 34270798] {CVE-2022-21499}
+
+        [3.10.0-1160.88.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.88.1]
+        - KVM: x86: add bit to indicate correct tsc_shift (Marcelo Tosatti) [2152838]
+        - KVM: x86: rewrite handling of scaled TSC for kvmclock (Marcelo Tosatti) [2152838]
+        - KVM: x86: rename argument to kvm_set_tsc_khz (Marcelo Tosatti) [2152838]
+
+        [3.10.0-1160.87.1]
+        - Revert 'openvswitch: fix flow actions reallocation' (Rado Vrbovsky) [2141780] {CVE-2022-2639}
+        - Revert 'openvswitch: fix OOB access in reserve_sfa_size()' (Rado Vrbovsky) [2141780] {CVE-2022-2639}
+        - kvm/emulate: Fix SETcc emulation function offsets with SLS (Vitaly Kuznetsov) [2143438]
+        - mm/rmap: Fix anon_vma->degree ambiguity leading to double-reuse (Rafael Aquini) [2138620] {CVE-2022-42703}
+        - mm, rmap: handle anon_vma_prepare() common case inline (Rafael Aquini) [2138620] {CVE-2022-42703}
+        - proc: proc_skip_spaces() shouldn't think it is working on C strings (Wander Lairson Costa) [2152565] {CVE-2022-4378}
+        - proc: avoid integer type confusion in get_proc_long (Wander Lairson Costa) [2152565] {CVE-2022-4378}
+        - scsi: qla2xxx: Fix crash due to stale SRB access around I/O timeouts (Nilesh Javali) [2092105]
+        - fs: move S_ISGID stripping into the vfs_*() helpers (Andrey Albershteyn) [2159946] {CVE-2018-13405 CVE-2021-4037}
+        - fs: Add missing umask strip in vfs_tmpfile (Andrey Albershteyn) [2159946] {CVE-2018-13405 CVE-2021-4037}
+        - fs: add mode_strip_sgid() helper (Andrey Albershteyn) [2159946] {CVE-2018-13405 CVE-2021-4037}
+
+        [3.10.0-1160.86.1]
+        - openvswitch: fix OOB access in reserve_sfa_size() (Rado Vrbovsky) [2141780] {CVE-2022-2639}
+        - openvswitch: fix flow actions reallocation (Rado Vrbovsky) [2141780] {CVE-2022-2639}
+        - gitlab-ci: use CI templates from production branch (Michael Hofmann)
+        - mm: prevent page_frag_alloc() from corrupting the memory (Rafael Aquini) [2141062]
+        - mm: Use fixed constant in page_frag_alloc instead of size + 1 (Rafael Aquini) [2141062]
+        - mm: page_alloc: fix ref bias in page_frag_alloc() for 1-byte allocs (Rafael Aquini) [2141062]
+        - x86/pat: Pass valid address to sanitize_phys() (Jeff Moyer) [1974485]
+
+        [3.10.0-1160.85.1]
+        - sctp: do asoc update earlier in sctp_sf_do_dupcook_b (Xin Long) [2054037]
+        - sctp: do asoc update earlier in sctp_sf_do_dupcook_a (Xin Long) [2054037]
+        - sctp: handle errors when updating asoc (Xin Long) [2054037]
+        - sctp: no need to check assoc id before calling sctp_assoc_set_id (Xin Long) [2054037]
+        - s390/topology: fix warning when disabling cpus (Tobias Huschle) [2071980]
+
+        [3.10.0-1160.84.1]
+        - blk-mq: fix flush-rq race (Ming Lei) [2088029]
+        - scsi: target: iscsi: Fix a race condition between login_work and the login thread (Maurizio Lombardi) [2154243]
     FixedIn:
         - Module: null
           Name: bpftool

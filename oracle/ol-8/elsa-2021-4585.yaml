@@ -1,7 +1,29 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [10.3.1-1.2.0.1]
+        - Fix Orabug 32423691- gcc10 SEGV for every test in sregress: ORA-7445_ksmplru_add_batchksm
+          same bug as PR tree-optimization/100053:
+          gcc11-pr100053.patch
+        - Fix Orabug 31197798 (Profile data size way too big)
+          same bug as PR gcov-profile/95348:
+          gcc11-pr95348.patch
+        - Introduce 'oracle_release' into .spec file. Echo it to gcc/DEV-PHASE.
+        Reviewed by: TBD
+
+        [10.3.1-1.2]
+        - add -Wbidirectional patch (#2016244)
+
+        [10.3.1-1.1]
+        - bump NVR for rebuild (#1995192)
+
+        [10.3.1-1]
+        - update from Fedora gcc 10.3.1-1 (#1929382)
+        - drop gcc10-pr97060.patch
+        - use --enable-cet
+        - ship gcc-accel-nvptx-none-lto-dump
+        - backport PR96939 fixes
     FixedIn:
         - Module: null
           Name: gcc-toolset-10-gcc

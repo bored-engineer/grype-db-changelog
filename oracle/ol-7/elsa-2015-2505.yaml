@@ -1,7 +1,31 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        abrt
+        [2.1.11-35.0.1]
+        - Drop libreport-rhel and libreport-plugin-rhtsupport requires
+
+        [2.1.11-35]
+        - make /var/spool/abrt owned by root
+        - remove 'r' from /var/spool/abrt for other users
+        - abrt-action-install-debug-info: use secure temporary directory
+        - stop saving abrt's core files to /var/spool/abrt if DebugLevel < 1
+        - Fixes for: CVE-2015-5273 and CVE-2015-5287
+        - Resolves: #1266853
+
+        libreport
+        [2.1.11-31.0.1]
+        - Update workflow xml for Oracle [18945470]
+        - Add oracle-enterprise.patch and oracle-enterprise-po.patch
+        - Remove libreport-plugin-rhtsupport and libreport-rhel
+        - Added orabug20390725.patch to remove redhat reference [bug 20390725]
+        - Added Bug20357383.patch to remove redhat reference [bug 20357383]
+
+        [2.1.11-31]
+        - save all files changed by the reporter in the reporting GUI
+        - Fixes CVE-2015-5302
+        - Related: #1266853
     FixedIn:
         - Module: null
           Name: abrt

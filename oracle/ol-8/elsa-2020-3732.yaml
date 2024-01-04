@@ -1,7 +1,27 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        mysql
+        [8.0.21-1]
+        - Rebase to 8.0.21
+        - Use bundled libzstd and libevent for RHSCL and RHEL-8.0.0
+        - Check that we have correct versions in bundled(*) Provides
+        - Remove re2 bundled dependency
+
+        [8.0.20-1]
+        - Rebase to 8.0.20
+
+        [8.0.19-2]
+        - Specify all perl dependencies
+
+        [8.0.19-1]
+        - Rebase to 8.0.19
+
+        [8.0.18-1]
+        - Rebase to 8.0.18
+        - Add libzstd-devel dependencies
+        - Include patch to build against protobuf 3.11
     FixedIn:
         - Module: mysql:8.0
           Name: mecab

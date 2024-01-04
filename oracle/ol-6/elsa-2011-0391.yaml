@@ -1,7 +1,40 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.8.1-27.0.1.el6_0.5]
+        - Replace docs/et.png in tarball with blank image
+
+        [0.8.1-27.el6_0.5]
+        - Properly report error in virConnectDomainXMLToNative (CVE-2011-1146)
+
+        [0.8.1-27.el6_0.4]
+        - Add missing checks for read-only connections (CVE-2011-1146)
+
+        [0.8.1-27.el6_0.3]
+        - Remove patches not suitable for proper Z-stream:
+            - Export host information through SMBIOS to guests (rhbz#652678)
+            - Support forcing a CDROM eject (rhbz#658147)
+        - Plug several memory leaks (rhbz#672549)
+        - Avoid memory overhead of matchpathcon (rhbz#672554)
+        - Do not start libvirt-guests if that service is off (rhbz#668694)
+
+        [0.8.1-27.el6_0.2]
+        - spec file cleanups (rhbz#662045)
+        - Fix deadlock on concurrent multiple bidirectional migration (rhbz#662043)
+        - Fix off-by-one error in clock-variable (rhbz#662046)
+        - Export host information through SMBIOS to guests (rhbz#652678)
+        - Ensure device is deleted from guest after unplug (rhbz#662041)
+        - Distinguish between QEMU domain shutdown and crash (rhbz#662042)
+
+        [0.8.1-27.el6_0.1]
+        - Fix JSON migrate_set_downtime command (rhbz#658143)
+        - Make SASL work over UNIX domain sockets (rhbz#658144)
+        - Let qemu group look below /var/lib/libvirt/qemu/ (rhbz#656972)
+        - Fix save/restore on root_squashed NFS (rhbz#656355)
+        - Fix race on multiple migration (rhbz#658141)
+        - Export host information through SMBIOS to guests (rhbz#652678)
+        - Support forcing a CDROM eject (rhbz#658147)
     FixedIn:
         - Module: null
           Name: libvirt

@@ -1,7 +1,48 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        policycoreutils:
+
+        [2.0.83-19.8]
+        - Fix seunshare to work with /tmp content when SELinux context is not provided
+        Resolves: #679689
+
+        [2.0.83-19.7]
+        - put back correct chcon
+        - Latest fixes for seunshare
+
+        [2.0.83-19.6]
+        - Fix rsync command to work if the directory is old.
+        - Fix all tests
+        Resolves: #679689
+
+        [2.0.83-19.5]
+        - Add requires rsync and  fix man page for seunshare
+
+        [2.0.83-19.4]
+        - fix to sandbox
+          - Fix seunshare to use more secure handling of /tmp
+            - Rewrite seunshare to make sure /tmp is mounted stickybit owned by root
+           - Change to allow sandbox to run on nfs homedirs, add start python script
+           - change default location of HOMEDIR in sandbox to /tmp/.sandbox_home_*
+           - Move seunshare to sandbox package
+           - Fix sandbox to show correct types in  usage statement
+
+        selinux-policy:
+
+        [3.7.19-54.0.1.el6_0.5]
+        - Allow ocfs2 to be mounted with file_t type.
+
+        [3.7.19-54.el6_0.5]
+        - seunshare needs to be able to mounton nfs/cifs/fusefs homedirs
+        Resolves: #684918
+
+        [3.7.19-54.el6_0.4]
+        - Fix to sandbox
+                * selinux-policy fixes for policycoreutils sandbox changes
+                        - Fix seunshare to use more secure handling of /tmp
+                        - Change to allow sandbox to run on nfs homedirs, add start python script
     FixedIn:
         - Module: null
           Name: policycoreutils

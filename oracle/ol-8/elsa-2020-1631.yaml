@@ -1,7 +1,77 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        gstreamer1
+        [1.16.1-2]
+        - Update to 1.16.2 for correctly pick up for side gating
+        - Resolves: rhbz#1756299
+
+        [1.16.1-1]
+        - Update to 1.16.1
+        - Enable libcap for the ptp helper permissions
+        - Resolves: rhbz#1756299
+
+        gstreamer1-plugins-bad-free
+        [1.16.1-1]
+        - Update to 1.16.1
+        - Remove upstreamed patches
+        - Remove dependency on removed package
+        - Add sctp and closedcaption plugins
+        - The vcdsrc plugin was removed
+        - Resolves: rhbz#1756299
+
+        gstreamer1-plugins-base
+        [1.16.1-1]
+        - Update to 1.16.1
+        - Resolves: rhbz#1756299
+
+        gstreamer1-plugins-good
+        [1.16.1-1]
+        - Update to 1.16.1
+        - enable cairo plugins
+        - Resolves: rhbz#1756299
+
+        gstreamer1-plugins-ugly-free
+        [1.16.1-1]
+        - Update to 1.16.1
+        - Only enable mpeg2dec on Fedora
+        - Resolves: rhbz#1756299
+
+        [1.16.0-3]
+        - Conflicts: gstreamer1-plugins-ugly < 1.16.0-2
+
+        [1.16.0-2]
+        - Enable mpeg2dec plugin (#1709470)
+
+        libmad
+        [0.15.1b-25]
+        - Add patches to avoid various buffer overruns
+        - Fixes CVE-2018-7263
+        - Resolves: rhbz#1547507
+
+        orc
+        [0.4.28-3]
+        - x86: add endbr32 and endbr64 instructions
+        - Resolves: rhbz#1693292
+
+        SDL
+        [1.2.15-37]
+        - Rebuild
+        - Resolves: rhbz#1756279
+
+        SDL2
+        [2.0.10-2]
+        - Fix CVE-2019-13616 SDL: heap-based buffer overflow in SDL blit
+          functions in video/SDL_blit*.c
+        - Resolves: rhbz#1756279
+
+        [2.0.10-1]
+        - Update to 2.0.10
+        - Resolves: rhbz#1751780
+
+        [2.0.9-3]
+        - use khrplatform defines, not ptrdiff_t
     FixedIn:
         - Module: null
           Name: SDL

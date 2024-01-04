@@ -1,7 +1,66 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.18.0-372.19.1.0.1_6.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-11.0.5
+        - debug: lockdown kgdb [Orabug: 34270802] {CVE-2022-21499}
+
+        [4.18.0-372.19.1_6]
+        - net/mlx5: CT: Fix header-rewrite re-use for tupels (Amir Tzin) [2104013 2101162]
+        - net/mlx5e: TC, Fix ct_clear overwriting ct action metadata (Amir Tzin) [2104012 2100474]
+        - netfilter: flowtable: fix TCP flow teardown (Florian Westphal) [2104002 2088234]
+        - netfilter: conntrack: annotate data-races around ct->timeout (Florian Westphal) [2104002 2088234]
+        - netfilter: conntrack: initialize ct->timeout (Florian Westphal) [2104002 2088234]
+        - net/sched: act_police: more accurate MTU policing (Davide Caratti) [2102333 2100893]
+        - bpf: Fix request_sock leak in sk lookup helpers (Antoine Tenart) [2104670 2085313]
+
+        [4.18.0-372.18.1_6]
+        - redhat: flesh out rpminspect config file (Jarod Wilson)
+        - powerpc/pseries/ddw: Revert 'Extend upper limit for huge DMA window for persistent memory' (Steve Best) [2100150 2056080]
+        - vdpa: mlx5: synchronize driver status with CVQ (Jason Wang) [2093416 2048009]
+        - vdpa: mlx5: prevent cvq work from hogging CPU (Jason Wang) [2093416 2048009]
+        - vdpa/mlx5: Avoid processing works if workqueue was destroyed (Cindy Lu) [2093416 2048009]
+        - cifs: fix potential double free during failed mount (Ronnie Sahlberg) [2102251 2088799]
+
+        [4.18.0-372.17.1_6]
+        - tcp: drop the hash_32() part from the index calculation (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - tcp: increase source port perturb table to 2^16 (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - tcp: dynamically allocate the perturb table used by source ports (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - tcp: add small random increments to the source port (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - tcp: resalt the secret every 10 seconds (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - tcp: use different parts of the port_offset for index and offset (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - secure_seq: use the 64 bits of the siphash for port offset calculation (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - tcp: add some entropy in __inet_hash_connect() (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - tcp: change source port randomizarion at connect() time (Guillaume Nault) [2087130 2064876] {CVE-2022-1012}
+        - hrtimer: Unbreak hrtimer_force_reprogram() (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Use raw_cpu_ptr() in clock_was_set() (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Avoid more SMP function calls in clock_was_set() (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Avoid unnecessary SMP function calls in clock_was_set() (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Add bases argument to clock_was_set() (Fernando Pacheco) [2090484 2071776]
+        - time/timekeeping: Avoid invoking clock_was_set() twice (Fernando Pacheco) [2090484 2071776]
+        - timekeeping: Distangle resume and clock-was-set events (Fernando Pacheco) [2090484 2071776]
+        - timerfd: Provide timerfd_resume() (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Force clock_was_set() handling for the HIGHRES=n, NOHZ=y case (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Ensure timerfd notification for HIGHRES=n (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Consolidate reprogramming code (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Avoid double reprogramming in __hrtimer_start_range_ns() (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Update softirq_expires_next correctly after __hrtimer_get_next_event() (Fernando Pacheco) [2090484 2071776]
+        - hrtimer: Annotate lockless access to timer->state (Fernando Pacheco) [2090484 2071776]
+        - mm, compaction: fast_find_migrateblock() should return pfn in the target zone (Rafael Aquini) [2100529 2067130]
+        - lib/sbitmap: fix sb->map leak (Ming Lei) [2100254 2093549]
+        - scsi: core: Fix sbitmap depth in scsi_realloc_sdev_budget_map() (Ewan D. Milne) [2100254 2071831]
+        - lib/sbitmap: allocate sb->map via kvzalloc_node (Ewan D. Milne) [2100254 2071831]
+        - mm: move kvmalloc-related functions to slab.h (Ewan D. Milne) [2100254 2071831]
+        - scsi: core: Reallocate device's budget map on queue depth change (Ewan D. Milne) [2100254 2071831]
+        - scsi: core: Fix scsi_device_max_queue_depth() (Ewan D. Milne) [2100254 2071831]
+        - netfilter: nf_tables: disallow non-stateful expression in sets earlier (Phil Sutter) [2092986 2092987] {CVE-2022-32250}
+        - audit: improve audit queue handling when 'audit=1' on cmdline (Richard Guy Briggs) [2095434 2035123]
+        - audit: improve robustness of the audit queue handling (Richard Guy Briggs) [2095434 2035123]
     FixedIn:
         - Module: null
           Name: bpftool

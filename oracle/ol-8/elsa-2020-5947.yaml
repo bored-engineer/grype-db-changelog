@@ -1,7 +1,435 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.1.1-68]
+        - azure-lb: fix redirect issue
+
+          Resolves: rhbz#1850778
+
+        [4.1.1-67]
+        - gcp-vpc-move-vip: add support for multiple alias IPs
+
+          Resolves: rhbz#1846733
+
+        [4.1.1-65]
+        - azure-events: handle exceptions in urlopen
+
+          Resolves: rhbz#1845574
+
+        [4.1.1-64]
+        - nfsserver: fix NFSv4-only support
+        - azure-events: new resource agent for Azure
+
+          Resolves: rhbz#1818997
+          Resolves: rhbz#1819965
+
+        [4.1.1-60]
+        - Upgrade bundled python-httplib2 to fix CVE-2020-11078
+
+          Resolves: rhbz#1850990
+
+        [4.1.1-59]
+        - pgsql: support Pacemaker v2.03+ output
+
+          Resolves: rhbz#1836186
+
+        [4.1.1-56]
+        - Filesystem: set 'fast_stop' default to 'no' for GFS2 filesystems
+
+          Resolves: rhbz#1814896
+
+        [4.1.1-55]
+        - nfsserver: dont log error message when /etc/sysconfig/nfs does not exist
+        - exportfs: describe clientspec format in metadata
+
+          Resolves: rhbz#1845581
+          Resolves: rhbz#1845583
+
+        [4.1.1-54]
+        - exportfs: add symlink support
+        - aliyun-vpc-move-ip: log output when failing
+
+          Resolves: rhbz#1820523
+          Resolves: rhbz#1843999
+
+        [4.1.1-53]
+        - podman: force remove container if remove fails
+
+          Resolves: rhbz#1839721
+
+        [4.1.1-52]
+        - gcp-pd-move: new resource agent for Google Cloud
+
+          Resolves: rhbz#1633251
+
+        [4.1.1-51]
+        - NovaEvacuate: suppress expected initial error message
+        - db2 (HADR): promote standby node when master node disappears
+
+          Resolves: rhbz#1830716
+          Resolves: rhbz#1836945
+
+        [4.1.1-50]
+        - rabbitmq-cluster: increase rabbitmqctl wait timeout during start
+
+          Resolves: rhbz#1832321
+
+        [4.1.1-49]
+        - aws-vpc-route53: new resource agent for AWS
+        - pgsql: improve checks to prevent incorrect status, and set initial
+          score for primary and hot standby
+
+          Resolves: rhbz#1759115
+          Resolves: rhbz#1744190
+
+        [4.1.1-47]
+        - aws-vpc-move-ip: delete remaining route entries
+
+          Resolves: rhbz#1819021
+
+        [4.1.1-46]
+        - use safe temp file location
+        - ocf-shellfuncs: ocf_is_clone(): fix to return true when clone-max
+          is set to 0
+
+          Resolves: rhbz#1817432
+          Resolves: rhbz#1817598
+
+        [4.1.1-45]
+        - azure-lb: support using socat instead of nc
+        - aws-vpc-move-ip: add 'routing_table_role' parameter
+        - redis: fix validate-all action and run it during start
+
+          Resolves: rhbz#1804658
+          Resolves: rhbz#1810466
+          Resolves: rhbz#1792237
+
+        [4.1.1-44]
+        - lvmlockd: automatically remove locking_type from lvm.conf for LVM
+          v2.03+
+
+          Resolves: rhbz#1808468
+
+        [4.1.1-43]
+        - rabbitmq-cluster: delete nodename when stop fails
+
+          Resolves: rhbz#1792196
+
+        [4.1.1-42]
+        - IPsrcaddr: add destination and table parameters
+
+          Resolves: rhbz#1744224
+
+        [4.1.1-40]
+        - podman: improve image exist check
+        - IPaddr2: add CLUSTERIP not supported info to metadata/manpage
+        - Filesystem: refresh UUID if block device doesnt exist
+
+          Resolves: rhbz#1788889
+          Resolves: rhbz#1767916
+          Resolves: rhbz#1777381
+
+        [4.1.1-38]
+        - IPaddr2: add noprefixroute parameter
+
+          Resolves: rhbz#1741042
+
+        [4.1.1-36]
+        - exportfs: allow multiple exports with same fsid
+        - mysql/galera: fix incorrect rc
+
+          Resolves: rhbz#1764888
+          Resolves: rhbz#1765128
+
+        [4.1.1-35]
+        - Route: dont fence when parameters not set
+        - LVM-activate: add partial-activation support
+
+          Resolves: rhbz#1750261
+          Resolves: rhbz#1741843
+
+        [4.1.1-34]
+        - LVM/clvm: remove manpages for excluded agents
+        - LVM-activate: return NOT_RUNNING when node rejoins cluster
+        - LVM-activate: detect systemid volume without reboot
+        - Filesystem: add symlink support
+        - Filesystem: avoid corrupt mount-list and dont kill incorrect processes
+          for bind-mounts
+        - IPsrcaddr: make proto optional to fix regression when used without
+          NetworkManager
+        - docker: fix stop issues
+        - rabbitmq-cluster: also restore users in single node mode
+        - IPaddr2: sanitize compressed IPv6 IPs
+        - nfsserver: systemd performance improvements
+        - NovaEvacuate: add 'evacuate_delay' parameter
+
+          Resolves: rhbz#1694392
+          Resolves: rhbz#1695039
+          Resolves: rhbz#1738428
+          Resolves: rhbz#1744103
+          Resolves: rhbz#1744140
+          Resolves: rhbz#1757837
+          Resolves: rhbz#1748768
+          Resolves: rhbz#1750352
+          Resolves: rhbz#1751700
+          Resolves: rhbz#1751962
+          Resolves: rhbz#1755760
+
+        [4.1.1-33]
+        - rabbitmq-cluster: fail monitor when node is in minority partition,
+          fix stop regression, retry start when cluster join fails, ensure
+          node attributes are removed
+
+          Resolves: rhbz#1745713
+
+        [4.1.1-32]
+        - mysql/galera: use runuser/su to avoid using DAC_OVERRIDE
+
+          Resolves: rhbz#1692960
+
+        [4.1.1-31]
+        - podman: add drop-in dependency support
+
+          Resolves: rhbz#1736746
+
+        [4.1.1-30]
+        - iSCSITarget/iSCSILogicalUnit: only create iqn/acls when it doesnt
+          exist
+
+          Resolves: rhbz#1692413
+
+        [4.1.1-29]
+        - CTDB: add support for v4.9+
+
+          Resolves: rhbz#1732867
+
+        [4.1.1-28]
+        - podman: fixes to avoid bundle resources restarting when probing
+          takes too long
+        - LVM-activate: fix monitor to avoid hang caused by validate-all call
+
+          Resolves: rhbz#1718219
+          Resolves: rhbz#1730455
+
+        [4.1.1-27]
+        - ocf_log: do not log debug messages when HA_debug unset
+        - Filesystem: remove notify-action from metadata
+        - dhcpd keep SELinux context in chroot
+
+          Resolves: rhbz#1707969
+          Resolves: rhbz#1717759
+          Resolves: rhbz#1719684
+
+        [4.1.1-26]
+        - sap/sap-hana: split subpackages into separate packages
+
+          Resolves: rhbz#1705767
+
+        [4.1.1-24]
+        - Squid: fix PID file issue
+
+          Resolves: rhbz#1689184
+
+        [4.1.1-23]
+        - Route: make family parameter optional
+        - redis: mute password warning
+
+          Resolves: rhbz#1669140
+          Resolves: rhbz#1683548
+
+        [4.1.1-22]
+        - aws-vpc-move-ip: add multi route-table support and fix issue
+          w/multiple NICs
+
+          Resolves: rhbz#1697559
+
+        [4.1.1-21]
+        - gcp-vpc-move-route/gcp-vpc-move-vip: fix Python 3 encoding issue
+
+          Resolves: rhbz#1695656
+
+        [4.1.1-20]
+        - aws-vpc-move-ip: use '--query' to avoid a possible race condition
+        - gcloud-ra: fix Python 3 issue and remove Python 2 detection
+
+          Resolves: rhbz#1693662
+          Resolves: rhbz#1691456
+
+        [4.1.1-19]
+        - Add CI gating tests
+        - LVM-activate: support LVs from same VG
+        - tomcat: use systemd when catalina.sh is unavailable
+        - Fixed python-devel/perl build dependencies
+
+          Resolves: rhbz#1682136
+          Resolves: rhbz#1667414
+          Resolves: rhbz#1666691
+          Resolves: rhbz#1595854
+
+        [4.1.1-18]
+        - aliyun-vpc-move-ip: exclude from main package
+        - aliyuncli-ra: upgrade bundled python-aliyun-sdk-core and fix Python 3 issues
+        - ocf.py: byte compile
+
+          Resolves: rhbz#1677204
+          Resolves: rhbz#1677981
+          Resolves: rhbz#1678874
+
+        [4.1.1-17]
+        - LVM-activate: dont require locking_type
+
+          Resolves: rhbz#1658664
+
+        [4.1.1-16]
+        - vdo-vol: fix monitor-action
+        - LVM-activate: dont fail initial probe
+
+          Resolves: rhbz#1662466
+          Resolves: rhbz#1643307
+
+        [4.1.1-15]
+        - nfsserver: fix start-issues when nfs_shared_infodir parameter is
+          changed
+
+          Resolves: rhbz#1642027
+
+        [4.1.1-14]
+        - redis: use basename in pidof to avoid issues in containers
+
+          Resolves: rhbz#1635785
+
+        [4.1.1-11]
+        - Remove grpc from bundle
+
+          Resolves: rhbz#1630627
+
+        [4.1.1-10]
+        - systemd-tmpfiles: change path to /run/resource-agents
+
+          Resolves: rhbz#1631291
+
+        [4.1.1-9]
+        - podman: new resource agent
+
+          Resolves: rhbz#1607607
+
+        [4.1.1-8]
+        - LVM: fix missing dash in activate_options
+        - LVM-activate: warn about incorrect vg_access_mode
+        - lvmlockd: add cmirrord support
+
+        [4.1.1-7]
+        - findif: only match lines containing netmasks
+
+        [4.1.1-6]
+        - Rebuild with fixed binutils
+
+        [4.1.1-5]
+        - vdo-vol: new resource agent
+
+          Resolves: rhbz#1552330
+
+        [4.1.1-4]
+        - VirtualDomain: add stateless support
+        - Exclude unsupported agents
+
+        [4.1.1-3]
+        - Added SAPHana and OpenStack agents
+
+        [4.1.1-2]
+        - Remove unsupported clvm and LVM agents
+
+        [4.1.1-1]
+        - Rebase to resource-agents 4.1.1 upstream release.
+
+        [4.1.0-2]
+        - Add gcc to BuildRequires
+
+        [4.1.0-1.1]
+        - Escape macros in %changelog
+
+        [4.1.0-1]
+        - Rebase to resource-agents 4.1.0 upstream release.
+
+        [4.0.1-1.3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
+        [4.0.1-1.2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+        [4.0.1-1.1]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+        [4.0.1-1]
+        - Rebase to resource-agents 4.0.1 upstream release.
+
+        [4.0.0-2]
+        - galera: remove 'long SST monitoring' support due to corner-case issues
+
+        [4.0.0-1]
+        - Rebase to resource-agents 4.0.0 upstream release.
+
+        [3.9.7-6]
+        - Add netstat dependency
+
+        [3.9.7-4]
+        - Rebase to resource-agents 3.9.7 upstream release.
+
+        [3.9.6-2.2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+        [3.9.6-2.1]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+        [3.9.6-2]
+        - Rebase to latest upstream code in order to pull in rabbitmq-cluster agent
+
+        [3.9.6-1]
+        - Rebase to resource-agents 3.9.6 upstream release.
+
+        [3.9.5-12.2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
+        [3.9.5-12.1]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+        [3.9.5-12]
+        - Sync with latest upstream.
+
+        [3.9.5-11]
+        - Sync with latest upstream.
+
+        [3.9.5-10]
+        - Fix build system for rawhide.
+
+        [3.9.5-9]
+        - Remove rgmanager agents from build.
+
+        [3.9.5-8]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
+        [3.9.5-7]
+        - Perl 5.18 rebuild
+
+        [3.9.5-6]
+        - Restores rsctmp directory to upstream default.
+
+        [3.9.5-5]
+        - Merges redhat provider into heartbeat provider. Remove
+          rgmanager's redhat provider.
+
+          Resolves: rhbz#917681
+          Resolves: rhbz#928890
+          Resolves: rhbz#952716
+          Resolves: rhbz#960555
+
+        [3.9.5-3]
+        - Fixes build system error with conditional logic involving
+          IPv6addr and updates spec file to build against rhel 7 as
+          well as fedora 19.
+
+        [3.9.5-2]
     FixedIn:
         - Module: null
           Name: resource-agents

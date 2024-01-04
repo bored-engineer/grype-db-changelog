@@ -1,7 +1,16 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        ruby
+        [2.5.9-110]
+        - Fix FTBFS due to an incompatible load directive.
+        - Fix a fiddle import test on an optimized glibc on Power 9.
+        - Fix by adding length limit option for methods that parses date strings.
+          Resolves: CVE-2021-41817
+        - CGI::Cookie.parse no longer decodes cookie names to prevent spoofing security
+          prefixes in cookie names.
+          Resolves: CVE-2021-41819
     FixedIn:
         - Module: ruby:2.5
           Name: ruby

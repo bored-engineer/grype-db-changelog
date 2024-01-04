@@ -1,7 +1,23 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.6.5-11.0.1]
+        - Blank out header-logo.png product-name.png
+        - Replace login-screen-logo.png [Orabug: 20362818]
+
+        [4.6.5-11.el7_7.4]
+        - Resolves: #1781153 - After upgrade AD Trust Agents were removed from LDAP
+          - trust upgrade: ensure that host is member of adtrust agents
+        - Resolves: #1777303 - CVE-2019-10195 ipa: batch API logging user passwords to /var/log/httpd/error_log
+          - CVE-2019-10195: Don't log passwords embedded in commands in calls using batch
+        - Resolves: #1773953 - User incorrectly added to negative cache when backend is reconnecting to IPA service / timed out: error code 32 'No such object'
+          - extdom: unify error code handling especially LDAP_NO_SUCH_OBJECT
+          - ipa-extdom-extop: test timed out getgrgid_r
+        - Resolves: #1770728 - Issue with adding multiple RHEL 7 IPA replica to RHEL 6 IPA master
+          - DL0 replica install: fix nsDS5ReplicaBindDN config
+        - Resolves: #1767300 - CVE-2019-14867 ipa: Denial of service in IPA server due to wrong use of ber_scanf()
+          - Make sure to have storage space for tag
     FixedIn:
         - Module: null
           Name: ipa-client

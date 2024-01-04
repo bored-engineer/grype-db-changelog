@@ -1,7 +1,19 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.6.0.0-1.56.1.11.8]
+        - Rebuild with updated sources
+        - Resolves: rhbz#911524
+
+        [1:1.6.0.0-1.55.1.11.8]
+        - Updated to icedtea6 1.11.8
+        - Removed patch9   7201064.patch
+        - Removed patch10   8005615.patch
+        - Removed  not-applied patch 6664509.patch
+        - Removed mauve as deadly outdated and run on QA
+          -  jtreg kept, useless, but working
+        - Resolves: rhbz#911524
     FixedIn:
         - Module: null
           Name: java-1.6.0-openjdk

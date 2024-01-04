@@ -1,7 +1,19 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:2.6-12]
+        - Ignore unauthenticated encrypted EAPOL-Key data (CVE-2018-14526)
+
+        [1:2.6-11]
+        - Better handling of /run/wpa_supplicant (rh #1507919)
+
+        [1:2.6-10]
+        - Fix memory leak when macsec MKA/PSK is used (rh #1500442)
+        - Fix authentication failure when the MAC is updated externally (rh #1490885)
+        - Let the kernel discard EAPOL if packet type is PACKET_OTHERHOST (rh #1434434)
+        - Dont restart wpa_supplicant.service on package upgrade (rh #1505404)
+        - Dont own a directory in /run/ (rh #1507919)
     FixedIn:
         - Module: null
           Name: wpa_supplicant

@@ -1,7 +1,14 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.36.0-7]
+        - Backport upstream fix for CVE-2018-12384
+        - Remove nss-lockcert-api-change.patch, which turned out to be a
+          mistake (the symbol was not exported from libnss)
+
+        [3.36.0-6]
+        - Exercise SSL tests which only run under non-FIPS setting
     FixedIn:
         - Module: null
           Name: nss

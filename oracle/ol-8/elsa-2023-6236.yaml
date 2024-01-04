@@ -1,7 +1,15 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.30-119.0.2.2]
+        - Fix for CVE-2022-4285.
+        - Fix illegal memory address when parsing an ELF file contaiing corrupt
+          symbol version information.
+          Upstream commit 5c831a3c7f3ca98d6aba1200353311e1a1f84c70.
+        - Partial backport of _bfd_mul_overflow support from upstream commit
+          1f4361a77b18c5ab32baf2f30fefe5e301e017be
+        - Reviewed-by: David Faust <david.faust@oracle.com>
     FixedIn:
         - Module: null
           Name: binutils

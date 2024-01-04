@@ -1,7 +1,26 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nspr
+        [4.10.8-2]
+        - Resolves: Bug 1269360 - CVE-2015-7183
+        - nspr: heap-buffer overflow in PL_ARENA_ALLOCATE can lead to crash (under ASAN), potential memory corruption
+
+        nss
+        [3.19.1-5.0.1]
+        - Added nss-vendor.patch to change vendor
+
+        [3.19.1-5]
+        - Rebuild against updated NSPR
+
+        [3.19.1-4]
+        - Sync up with the rhel-6.6 branch
+        - Resolves: Bug 1224450
+
+        nss-util
+        [3.19.1-2]
+        - Resolves: Bug 1269355 - CVE-2015-7182 CVE-2015-7181
     FixedIn:
         - Module: null
           Name: nspr

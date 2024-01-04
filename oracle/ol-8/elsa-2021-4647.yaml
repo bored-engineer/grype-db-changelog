@@ -1,7 +1,26 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.18.0-348.2.1_5.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-11.0.5
+
+        [4.18.0-348.2.1_5]
+        - tipc: fix size validations for the MSG_CRYPTO type (Bruno Meneguele) [2020506 2020507] {CVE-2021-43267}
+        - net: Fix skb->csum update in inet_proto_csum_replace16(). (Balazs Nemeth) [2005981 1975193]
+
+        [4.18.0-348.1.1_5]
+        - lib/timerqueue: Rely on rbtree semantics for next timer (Phil Auld) [2014677 2007099] {CVE-2021-20317}
+        - mm/hmm: make HMM_MIRROR an implicit option (Rafael Aquini) [2017519 1998534]
+        - mm/hmm: allow HMM_MIRROR on all architectures with MMU (Rafael Aquini) [2017519 1998534]
+        - mm: don't select MIGRATE_VMA_HELPER from HMM_MIRROR (Rafael Aquini) [2017519 1998534]
+        - mm: sort out the DEVICE_PRIVATE Kconfig mess (Rafael Aquini) [2017519 1998534]
+        - ceph: skip existing superblocks that are blocklisted or shut down when mounting (Jeffrey Layton) [2017071 2011462]
+        - redhat: switch release to zstream (Bruno Meneguele)
     FixedIn:
         - Module: null
           Name: bpftool

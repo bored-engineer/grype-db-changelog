@@ -1,7 +1,153 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        bind-dyndb-ldap
+        [11.3-1]
+        - New upstream release
+        - Resolves: rhbz#1845211
+
+        ipa
+        [4.8.7-12.0.1]
+        - Set IPAPLATFORM=rhel when build on Oracle Linux [Orabug: 29516674]
+
+        [4.8.7-12]
+        - Require selinux sub package in the proper version
+          Related: RHBZ#1868432
+        - SELinux: do not double-define node_t and pki_tomcat_cert_t
+          Related: RHBZ#1868432
+        - SELinux: add dedicated policy for ipa-pki-retrieve-key + ipatests
+          Related: RHBZ#1868432
+        - dogtaginstance.py: add --debug to pkispawn
+          Resolves: RHBZ#1879604
+
+        [4.8.7-11]
+        - SELinux Policy: let custodia replicate keys
+          Resolves: RHBZ#1868432
+
+        [4.8.7-10]
+        - Set mode of /etc/ipa/ca.crt to 0644 in CA-less installations
+          Resolves: RHBZ#1870202
+
+        [4.8.7-9]
+        - CAless installation: set the perms on KDC cert file
+          Resolves: RHBZ#1863616
+        - EPN: handle empty attributes
+          Resolves: RHBZ#1866938
+        - IPA-EPN: enhance input validation
+          Resolves: RHBZ#1866291
+        - EPN: enhance input validation
+          Resolves: RHBZ#1863079
+        - Require new samba build 4.12.3-52
+          Related: RHBZ#1868558
+        - Require new selinux-policy build 3.14.3-52
+          Related: RHBZ#1869311
+
+        [4.8.7-8]
+        - [WebUI] IPA Error 3007: RequirmentError while adding members in
+          User ID overrides tab (updated)
+          Resolves: RHBZ#1757045
+        - ipa-client-install: use the authselect backup during uninstall
+          Resolves: RHBZ#1810179
+        - Replace SSLCertVerificationError with CertificateError for py36
+          Resolves: RHBZ#1858318
+        - Fix AVC denial during ipa-adtrust-install --add-agents
+          Resolves: RHBZ#1859213
+
+        [4.8.7-7]
+        - replica install failing with avc denial for custodia component
+          Resolves: RHBZ#1857157
+
+        [4.8.7-6]
+        - selinux dont audit rules deny fetching trust topology
+          Resolves: RHBZ#1845596
+        - fix iPAddress cert issuance for >1 host/service
+          Resolves: RHBZ#1846352
+        - Specify cert_paths when calling PKIConnection
+          Resolves: RHBZ#1849155
+        - Update crypto policy to allow AD-SUPPORT when installing IPA
+          Resolves: RHBZ#1851139
+        - Add version to ipa-idoverride-memberof obsoletes
+          Related: RHBZ#1846434
+
+        [4.8.7-5]
+        - Add missing ipa-selinux package
+          Resolves: RHBZ#1853263
+
+        [4.8.7-4]
+        - Remove client-epn left over files for ONLY_CLIENT
+          Related: RHBZ#1847999
+
+        [4.8.7-3]
+        - [WebUI] IPA Error 3007: RequirmentError while adding members in
+          User ID overrides tab
+          Resolves: RHBZ#1757045
+        - EPN does not ship its default configuration ( /etc/ipa/epn.conf ) in
+          freeipa-client-epn
+          Resolves: RHBZ#1847999
+        - FreeIPA - Utilize 256-bit AJP connector passwords
+          Resolves: RHBZ#1849914
+        - ipa: typo issue in ipanthomedirectoryrive deffinition
+          Resolves: RHBZ#1851411
+
+        [4.8.7-2]
+        - Remove ipa-idoverride-memberof as superceded by ipa-server 4.8.7
+          Resolves: RHBZ#1846434
+
+        [4.8.7-1]
+        - Upstream release FreeIPA 4.8.7
+        - Require new samba build 4.12.3-0
+          Related: RHBZ#1818765
+        - New client-epn sub package
+          Resolves: RHBZ#913799
+
+        ipa-healthcheck
+        [0.4-6]
+        - The core subpackage can be installed standalone, drop the Requires
+          on the base package. (#1852244)
+        - Add Conflicts < 0.4 to to core to allow downgrading with
+          --allowerasing (#1852244)
+
+        [0.4-5]
+        - Remove the Obsoletes < 0.4 and add same-version Requires to each
+          subpackage so that upgrades from 0.3 will work (#1852244)
+
+        opendnssec
+        [2.1.6-2]
+        - Resolves: rhbz#1831732 AVC avc: denied { dac_override } for comm=ods-enforcerd
+
+        [2.1.6-1]
+        - Resolves: rhbz#1759888 Rebase OpenDNSSEC to 2.1
+
+        slapi-nis
+        [0.56.5-4]
+        - Ignore unmatched searches
+        - Resolves: rhbz#1874015
+
+        [0.56.5-3]
+        - Fix memory leaks in ID views processing
+        - Resolves: rhbz#1875348
+
+        [0.56.5-2]
+        - Initialize map lock in NIS plugin
+        - Resolves: rhbz#1832331
+
+        [0.56.5-1]
+        - Upstream release 0.56.5
+        - Resolves: rhbz#1751295: (2) When sync-repl is enabled, slapi-nis can deadlock during retrochanglog trimming
+        - Resolves: rhbz#1768156: ERR - schemacompat - map rdlock: old way MAP_MONITOR_DISABLED
+
+        softhsm
+        [2.6.0-3]
+        - Fixes: rhbz#1834909 - softhsm use-after-free on process exit
+        - Synchronize the final fix with Fedora
+
+        [2.6.0-2]
+        - Fixes: rhbz#1834909 - softhsm use-after-free on process exit
+
+        [2.6.0-1]
+        - Fixes: rhbz#1818877 - rebase to softhsm 2.6.0+
+        - Fixes: rhbz#1701233 - support setting supported signature methods on the token
     FixedIn:
         - Module: idm:DL1
           Name: bind-dyndb-ldap

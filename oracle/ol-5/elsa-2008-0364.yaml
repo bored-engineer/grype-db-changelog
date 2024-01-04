@@ -1,7 +1,28 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [5.0.45-7]
+        - Adjust thread stack requests to allow for platform-specific guard page size;
+          necessary to prevent stack overrun on PPC with RHEL5's 64K page size.
+        Resolves: #435391
+        - Remove calendar-dependent queries from 'view' test; necessary to get
+          regression tests to pass after 2007.
+
+        [5.0.45-6]
+        - Back-port upstream fixes for CVE-2007-5925, CVE-2007-5969, CVE-2007-6303.
+        Resolves: #422211
+
+        [5.0.45-1]
+        - Update to MySQL 5.0.45
+        Resolves: #256501, #240813, #246309, #254012
+        Resolves: #280811, #316451, #349121, #367131
+        - Synchronize with current Fedora package, which is pretty well tested by now;
+          see past bzs 245770, 241912, 233771, 221085, 223713, 203910, 193559, 199368
+
+        [5.0.22-3]
+        - Fix CVE-2007-3780: remote DOS via bad password length byte
+        Resolves: #257681
     FixedIn:
         - Module: null
           Name: mysql

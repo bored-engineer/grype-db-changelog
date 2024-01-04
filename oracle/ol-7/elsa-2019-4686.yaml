@@ -1,7 +1,14 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        kernel-uek
+        [3.8.13-118.35.2]
+        - tcp: enforce tcp_min_snd_mss in tcp_mtu_probing() (Eric Dumazet)  [Orabug: 29886600]  {CVE-2019-11477}
+        - tcp: add tcp_min_snd_mss sysctl (Eric Dumazet)  [Orabug: 29884307]  {CVE-2019-11479}
+        - tcp: tcp_fragment() should apply sane memory limits (Eric Dumazet)  [Orabug: 29884307]  {CVE-2019-11478}
+        - tcp: fix fack_count accounting on tcp_shift_skb_data() (Joao Martins)  [Orabug: 29890831]  {CVE-2019-11477}
+        - tcp: limit payload size of sacked skbs (Eric Dumazet)  [Orabug: 29884307]  {CVE-2019-11477}
     FixedIn:
         - Module: null
           Name: dtrace-modules-3.8.13-118.35.2.el7uek

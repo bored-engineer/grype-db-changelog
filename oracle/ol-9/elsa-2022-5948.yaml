@@ -1,7 +1,31 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        galera
+        [26.4.11-1.0.1]
+        - Requirement to delete garbd-wrapper script and lp1184034 test case
+          without using patches. Patches from previous release have been deleted
+        - Drop nmap-ncat requirement. [Orabug: 34116228]
+        - Added galera-skip-lp1184034-testcase.patch
+        - Added backport-removes-nmap-probing-in-garbd-wrapper.patch
+
+        [26.4.11-1]
+        - Rebase to 26.4.11
+
+        mariadb
+        [3:10.5.16-2]
+        - Release bump for rebuild
+
+        [3:10.5.16-1]
+        - Rebase to 10.5.16
+
+        [3:10.5.15-1]
+        - Rebase to 10.5.15
+
+        mysql-selinux
+        [1.0.5-1]
+        - Rebase to 1.0.5
     FixedIn:
         - Module: null
           Name: galera

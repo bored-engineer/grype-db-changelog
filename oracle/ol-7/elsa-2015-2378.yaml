@@ -1,7 +1,59 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [7:3.3.8-26]
+        - Related: #1186768 - removing patch, because of missing tests and
+          incorrent patch
+
+        [7:3.3.8-25]
+        - Related: #1102842 - squid rpm package misses /var/run/squid needed for
+          smp mode. Squid needs write access to /var/run/squid.
+
+        [7:3.3.8-24]
+        - Related: #1102842 - squid rpm package misses /var/run/squid needed for
+          smp mode. Creation of /var/run/squid was also needed to be in SPEC file.
+
+        [7:3.3.8-23]
+        - Related: #1102842 - squid rpm package misses /var/run/squid needed for
+          smp mode. Creation of this directory was moved to tmpfiles.d conf file.
+
+        [7:3.3.8-22]
+        - Related: #1102842 - squid rpm package misses /var/run/squid needed for
+          smp mode. Creation of this directory was moved to service file.
+
+        [7:3.3.8-21]
+        - Resolves: #1263338 - squid with digest auth on big endian systems
+          start looping
+
+        [7:3.3.8-20]
+        - Resolves: #1186768 - security issue: Nonce replay vulnerability
+          in Digest authentication
+
+        [7:3.3.8-19]
+        - Resolves: #1225640 - squid crashes by segfault when it reboots
+
+        [7:3.3.8-18]
+        - Resolves: #1102842 - squid rpm package misses /var/run/squid needed for
+          smp mode
+
+        [7:3.3.8-17]
+        - Resolves: #1233265 - CVE-2015-3455 squid: incorrect X509 server
+          certificate validation
+
+        [7:3.3.8-16]
+        - Resolves: #1080042 - Supply a firewalld service file with squid
+
+        [7:3.3.8-15]
+        - Resolves: #1161600 - Squid does not serve cached responses
+          with Vary headers
+
+        [7:3.3.8-14]
+        - Resolves: #1198778 - Filedescriptor leaks on snmp
+
+        [7:3.3.8-13]
+        - Resolves: #1204375 - squid sends incorrect ssl chain breaking newer gnutls
+          using applications
     FixedIn:
         - Module: null
           Name: squid

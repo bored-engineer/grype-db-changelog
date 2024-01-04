@@ -1,7 +1,53 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.201.b09-0]
+        - Update to aarch64-shenandoah-jdk8u201-b09.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.192.b12-1]
+        - Add 8160748 for AArch64 which is missing from upstream 8u version.
+        - Add port of 8189170 to AArch64 which is missing from upstream 8u version.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.192.b12-0]
+        - Update to aarch64-shenandoah-jdk8u192-b12.
+        - Remove patches included upstream
+          - PR3548/RH1540242
+          - JDK-6260348/PR3066
+          - JDK-8185723/PR3553
+          - JDK-8186461/PR3557
+          - JDK-8201509/PR3579
+          - JDK-8205104/PR3539/RH1548475
+          - JDK-8206406/PR3610/RH1597825
+          - JDK-8201495/PR2415
+        - Re-generate patches (mostly due to upstream build changes)
+          - JDK-8073139/PR1758/RH1191652
+          - JDK-8197429/PR3546/RH1536622 (due to JDK-8189170)
+          - JDK-8199936/PR3533
+          - JDK-8199936/PR3591
+          - PR3559 (due to JDK-8185723/JDK-8186461/JDK-8201509)
+          - PR3593 (due to JDK-8081202)
+          - RH1566890/CVE-2018-3639 (due to JDK-8189170)
+          - RH1649664 (due to JDK-8196516)
+          - RH1649731
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.191.b14-1]
+        - Add 8131048 & 8164920 (PR3574/RH1498936) to provide a CRC32 intrinsic for PPC64.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.191.b14-0]
+        - Update to aarch64-shenandoah-jdk8u191-b14.
+        - Adjust JDK-8073139/PR1758/RH1191652 to apply following 8155627 backport.
+        - Resolves: rhbz#1661577
+
+        [1:1.8.0.191.b13-0]
+        - Update to aarch64-shenandoah-jdk8u191-b13.
+        - Update tarball generation script in preparation for PR3667/RH1656676 SunEC changes.
+        - Use remove-intree-libraries.sh to remove the remaining SunEC code for now.
+        - Resolves: rhbz#1661577
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

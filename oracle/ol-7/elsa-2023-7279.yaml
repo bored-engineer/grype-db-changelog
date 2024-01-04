@@ -1,7 +1,29 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [11.0.5-3.0.1]
+        - fix spaces in vmware udev rule for scsi devices
+          [Orabug: 24461968]
+        - Fix vmware udev rule in 99-vmware-scsi-timeout.rules file.
+          [Orabug: 22815019]
+        - Increase timeout for scsi devices on VMWare guests by adding a udev rule.
+        - Created a new file 99-vmware-scsi-timeout.rules
+        - Modified spec file to install this new file.
+          [Orabug: 21819156]
+
+        [11.0.5-3.el7_9.9]
+        - ovt-Don-t-accept-tokens-with-unrelated-certs.patch [RHEL-14642]
+        - ovt-File-descriptor-vulnerability-in-the-open-vm-tools-v.patch [RHEL-14676]
+        - Resolves: RHEL-14642
+          (CVE-2023-34058 open-vm-tools: SAML token signature bypass [rhel-7.9.z])
+        - Resolves: RHEL-14676
+          (CVE-2023-34059 open-vm-tools: file descriptor hijack vulnerability in the vmware-user-suid-wrapper [rhel-7.9.z])
+
+        [11.0.5-3.el7_9.8]
+        - ovt-Provide-alternate-method-to-allow-expected-pre-froze.patch [bz#2226921]
+        - Resolves: bz#2226921
+          ([RHEL7.9][ESXi]Latest version of open-vm-tools breaks VM backups)
     FixedIn:
         - Module: null
           Name: open-vm-tools

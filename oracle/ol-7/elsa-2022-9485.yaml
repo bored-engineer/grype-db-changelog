@@ -1,7 +1,23 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2:2.1-73.13.0.3]
+        - update 06-55-04 to 0x2006d05
+        - update 06-55-07 to 0x5003302
+        - update 06-6a-04 to 0xb000280
+        - update 06-6a-06 to 0xd000375
+
+        [2:2.1-73.13.0.2]
+        - roll back 06-6a-06 to 0xd0002a0 due to PCIe issues on reset [Orabug: 34076312]
+
+        [2:2.1-73.13.0.1]
+        - for Intel, do not trigger load if on-disk microcode is not an update [Orabug: 30634727]
+        - set early_microcode='no' in virtualized guests to avoid early load bugs [Orabug: 30618736]
+        - ensure late loading fixes are present on 4.1.12-* and 4.14.35-*
+        - enable early and late load for 5.4.17-*
+        - enable early loading for 06-4f-01 caveat
+        - remove no longer appropriate caveats for 06-2d-07 and 06-55-04
     FixedIn:
         - Module: null
           Name: microcode_ctl

@@ -1,7 +1,27 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.9.8e-12]
+        - abort if selftests failed and random number generator is polled
+        - mention EVP_aes and EVP_sha2xx routines in the manpages
+        - add README.FIPS
+
+        [0.9.8e-10]
+        - fix CVE-2009-1386 CVE-2009-1387 (DTLS DoS problems)
+          (#503685, #503688)
+
+        [0.9.8e-9]
+        - fix CVE-2009-1377 CVE-2009-1378 CVE-2009-1379
+          (DTLS DoS problems) (#501253, #501254, #501572)
+
+        [0.9.8e-8]
+        - support multiple CRLs with same subject in a store (#457134)
+        - fix CVE-2009-0590 - reject incorrectly encoded ASN.1 strings (#492304)
+        - seed FIPS rng directly from kernel random device
+        - do not require fipscheck to build the package (#475798)
+        - call pairwise key tests in FIPS mode only (#479817)
+        - do not crash when parsing bad mime data (#472440)
     FixedIn:
         - Module: null
           Name: openssl

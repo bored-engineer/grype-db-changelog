@@ -1,7 +1,56 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        libvirt
+        [5.7.0-38.el8]
+        - qemu: Don't report spurious errors from vCPU tid validation on hotunplug timeout (Shaleen Bathla) [Orabug: 34826758]
+        - security: fix SELinux label generation logic (Daniel P. Berrange) [Orabug: 34773029] {CVE-2021-3631}
+        - qemu: Set default qdisc before setting bandwidth (Michal Privoznik) [Orabug: 34724925]
+        - qemu: Taint cpu host-passthrough only after migration (Cole Robinson) [Orabug: 34724925]
+
+        libvirt-python
+        [5.7.0-38.el8]
+        - Bump version number to 5.7.0-38 to match libvirt (Karl Heubaum)
+
+        qemu-kvm
+        [4.2.1-24.el8]
+        - hw/display/ati_2d: Fix buffer overflow in ati_2d_blt (CVE-2021-3638) (Philippe Mathieu-Daude) [Orabug: 33930374] {CVE-2021-3638}
+        - tests/acpi: virt: update ACPI MADT and FADT binaries (Miguel Luis)
+        - acpi: arm/virt: madt: bump to revision 4 accordingly to ACPI 6.0 Errata A (Miguel Luis)
+        - acpi: arm/virt: madt: use build_append_int_noprefix() API to compose MADT table (Igor Mammedov)
+        - acpi: madt: arm/x86: use acpi_table_begin()/acpi_table_end() instead of build_header() (Igor Mammedov)
+        - hw/arm/virt-acpi-build:Remove dead assignment in build_madt() (Chen Qun)
+        - acpi: build_fadt: adapt FADT table names (Miguel Luis)
+        - acpi: fadt: support revision 6.0 of the ACPI specification (Miguel Luis)
+        - tests/acpi: virt: allow acpi MADT and FADT changes (Miguel Luis)
+        - Document CVE-2022-3165 as not applicable (Mark Kanda) [Orabug: 34713999] {CVE-2022-3165}
+        - Document CVE-2022-1050 as not applicable (Mark Kanda) [Orabug: 34132133] {CVE-2022-1050}
+        - hw/acpi/erst.c: Fix memory handling issues (Christian A. Ehrhardt) [Orabug: 34779472] {CVE-2022-4172}
+        - vhost-vdpa: fix assert !virtio_net_get_subqueue(nc)->async_tx.elem in virtio_net_reset (Si-Wei Liu)
+        - net/vhost-vdpa.c: Fix clang compilation failure (Peter Maydell)
+        - vhost-vdpa: allow passing opened vhostfd to vhost-vdpa (Si-Wei Liu)
+        - hw/acpi/aml-build: Improve scalability of PPTT generation (Yanan Wang)
+        - tests/data/acpi/virt: update empty file for PPTT (Miguel Luis)
+        - hw/arm/virt-acpi-build: Generate PPTT table (Yanan Wang)
+        - tests/data/acpi/virt: Add an empty expected file for PPTT (Yanan Wang)
+        - hw/acpi/aml-build: Add PPTT table (Andrew Jones)
+        - hw/acpi/aml-build: Add Processor hierarchy node structure (Yanan Wang)
+        - machine: Add SMP Sockets in CpuTopology (Babu Moger)
+        - bios-tables-test: generate table for virt/DBG2 (Miguel Luis)
+        - hw/arm/virt_acpi_build: Generate DBG2 table (Eric Auger)
+        - tests/acpi: Add void table for virt/DBG2 bios-tables-test (Eric Auger)
+        - tests/acpi: virt: update ACPI GTDT binaries (Miguel Luis) [Orabug: 34711916]
+        - acpi: arm/virt: build_gtdt: fix invalid 64-bit physical addresses (Miguel Luis) [Orabug: 34711916]
+        - tests/acpi: virt: allow acpi GTDT changes (Miguel Luis) [Orabug: 34711916]
+        - acpi: fix OEM ID/OEM Table ID padding (Igor Mammedov) [Orabug: 34711916]
+        - acpi: arm/virt: build_gtdt: use acpi_table_begin()/acpi_table_end() instead of build_header() (Igor Mammedov) [Orabug: 34711916]
+        - acpi: add helper routines to initialize ACPI tables (Igor Mammedov) [Orabug: 34711916]
+        - acpi: declare the default assignable value for the ACPI table header (Miguel Luis) [Orabug: 34711916]
+
+        [4.2.1-22.el8]
+        - Revert 'block: Set the name of BlockBackend if possible' (Joe Jin) [Orabug: 34841102]
+        - Revert 'iotests: Adjust 186.out to account for 'null' node-name' (Joe Jin) [Orabug: 34841102]
     FixedIn:
         - Module: null
           Name: hivex

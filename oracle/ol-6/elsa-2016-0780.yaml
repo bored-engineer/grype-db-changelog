@@ -1,7 +1,31 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.2.6p5-10]
+        - don't accept server/peer packets with zero origin timestamp (CVE-2015-8138)
+        - fix crash with reslist command (CVE-2015-7977, CVE-2015-7978)
+
+        [4.2.6p5-9]
+        - fix crash with invalid logconfig command (CVE-2015-5194)
+        - fix crash when referencing disabled statistic type (CVE-2015-5195)
+        - don't hang in sntp with crafted reply (CVE-2015-5219)
+        - don't crash with crafted autokey packet (CVE-2015-7691, CVE-2015-7692,
+          CVE-2015-7702)
+        - fix memory leak with autokey (CVE-2015-7701)
+        - don't allow setting driftfile and pidfile remotely (CVE-2015-7703)
+        - don't crash in ntpq with crafted packet (CVE-2015-7852)
+        - add option to set Differentiated Services Code Point (DSCP) (#1228314)
+        - extend rawstats log (#1242895)
+        - fix resetting of leap status (#1243034)
+        - report clock state changes related to leap seconds (#1242937)
+        - allow -4/-6 on restrict lines with mask (#1232146)
+        - retry joining multicast groups (#1288534)
+        - explain synchronised state in ntpstat man page (#1286969)
+
+        [4.2.6p5-7]
+        - check origin timestamp before accepting KoD RATE packet (CVE-2015-7704)
+        - allow only one step larger than panic threshold with -g (CVE-2015-5300)
     FixedIn:
         - Module: null
           Name: ntp

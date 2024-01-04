@@ -1,7 +1,25 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.77-0.b03]
+        - Remove what remains of the SunEC sources in the remove-intree-libraries script.
+        - Resolves: rhbz#1320664
+
+        [1:1.8.0.77-0.b03]
+        - Update to u77b03.
+        - Drop 8146566 which is applied upstream.
+        - Replace s390 Java options patch with general version from IcedTea.
+        - Apply s390 patches unconditionally to avoid arch-specific patch failures.
+        - Remove fragment of s390 size_t patch that unnecessarily removes a cast, breaking ppc64le.
+        - Remove aarch64-specific suffix as update/build version are now the same as for other archs.
+        - Only use z format specifier on s390, not s390x.
+        - Adjust tarball generation script to allow ecc_impl.h to be included.
+        - Correct spelling mistakes in tarball generation script.
+        - Synchronise minor changes from Fedora.
+        - Use a simple backport for PR2462/8074839.
+        - Don't backport the crc check for pack.gz. It's not tested well upstream.
+        - Resolves: rhbz#1320664
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

@@ -1,7 +1,24 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        go-toolset
+        [1.17.10-1]
+        - Set version to correspond to the matching build golang version
+        - delve can be now added to aarch64 as well, remove ifarch.
+
+        golang
+        [1.17.10-1.0.1]
+        - Add patches between Go 1.17.7 and Go 1.17.10
+        - Rename base_versn to base_version
+        - Remove unneeded patches from previous version
+        - Remove Patch2028662 because that patch is also upstream now
+        - Reviewed-by: XXX XXX <xxx.xxx@oracle.com>
+
+        [1.17.7-1]
+        - Rebase to Go 1.17.7
+        - Remove fips memory leak patch (fixed in tree)
+        - Resolves: rhbz#2015930
     FixedIn:
         - Module: null
           Name: delve

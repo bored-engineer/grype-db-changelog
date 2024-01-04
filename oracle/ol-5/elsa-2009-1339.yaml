@@ -1,7 +1,56 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.0.52-1.0.1]
+        - Update summary and description to be vendor neutral
+
+        [2.0.52-1]
+        - When vm.sh does a status check and gets 'no state' it is now treated as a
+          running state.
+        - Resolves: rhb#514044
+
+        [2.0.51-1]
+        - In some cases virtual machines will be restarted after a successful migration
+          when the cluster configuration is updated.
+        - Resolves: rhbz#505340
+
+        [2.0.50-1]
+        - Extra checks from the oracle agents have been removed.
+        - Several fixes to prevent DOS attacks through insecure use of /tmp/ files have
+          been implemented.
+        - vm.sh now uses libvirt
+        - Users can now define an explicit service processing order when
+          central_processing is enabled
+        - Resolves: rhbz#470917 rhbz#412911 rhbz#468691 rhbz#492828
+
+        [2.0.49-1]
+        - Rgmanger now checks to see if it has been killed by the OOM killer and if
+          so, reboots the node.
+        - Resolves: rhbz#488072
+
+        [2.0.48-1]
+        - clulog now accepts '-' as the first character in messages.
+        - If expire_time is 0 max_restarts is no longer ignored.
+        - SAP scripts have been updated.
+        - Empty PID files no longer cause resource start failures.
+        - Recovery policy of type restart now works properly when using a resource
+          based on ra-skelet.sh
+        - startup_wait option has been added to the mysql resource agent.
+        - samba.sh now kills the pid listed in the proper pid file.
+        - Handling of '-F' has been improved to fix issues with rgmanager crashing if
+          no members of a restricted failover domain are online and rgmanager failing
+          to correctly restart service is they fail on the first node.
+        - Enabled ability to prioritize services.
+        - It is now possible to cap the number of simultaneious status checks to
+          prevent load spikes.
+        - Enabling a frozen service no longer fails and leaves the service in a failed
+          state.
+        - Forking and cloning during status checks has been optimized to reduce load
+          spikes.
+        - rg_test no longers hangs when running against a cluster due to the removal
+          of an 8MB memory cap.
+        - Resolves: rhbz#471431 rhbz#475826 rhbz#474444 rhbz#449394 rhbz#481058 rhbz#483093 rhbz#486711 rhbz#486717 rhbz#482858 rhbz#487598 rhbz#488714 rhbz#250718 rhbz#490455
     FixedIn:
         - Module: null
           Name: rgmanager

@@ -1,7 +1,33 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [14:4.9.0-5]
+        - Resolves: #1441597; use bigger capture buffer than in upstream
+
+        [14:4.9.0-4]
+        - Drop downstream patch (drop root privileges)
+        - Add libcap-ng as a new build dependency
+        - Related: #1262283
+
+        [14:4.9.0-3]
+        - Fix tests according to our patches and libpcap version
+
+        [14:4.9.0-2]
+        - Use getnameinfo instead of gethostbyaddr
+
+        [14:4.9.0-1]
+        - New upstream version 4.9.0. Resolves: #1422473
+        - Add legacy -P switch with warning. Related to #1422473 and #1292056
+
+        [14:4.5.1-6]
+        - Drop root before creating any dump file. Resolves: #1262283
+
+        [14:4.5.1-5]
+        - Use -Q instead of -P to set capture direction. Resolves: #1292056
+
+        [14:4.5.1-4]
+        - Fix segfault with --help option. Resolves: #1297812
     FixedIn:
         - Module: null
           Name: tcpdump

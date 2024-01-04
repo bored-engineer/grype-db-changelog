@@ -1,7 +1,60 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        - [5.14.0-162.22.2_1.OL9]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5
+        - Remove nmap references from kernel (Mridula Shastry) [Orabug: 34313944]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+
+        [5.14.0-162.22.2_1]
+        - tun: avoid double free in tun_free_netdev (Jon Maloy) [2156373] {CVE-2022-4744}
+
+        [5.14.0-162.22.1_1]
+        - ALSA: pcm: Move rwsem lock inside snd_ctl_elem_read to prevent UAF (Jaroslav Kysela) [2163390 2125540] {CVE-2023-0266}
+
+        [5.14.0-162.21.1_1]
+        - s390/boot: add secure boot trailer (Tobias Huschle) [2151528 2141966]
+        - s390/kexec: fix ipl report address for kdump (Tobias Huschle) [2166903 2161327]
+        - s390/qeth: cache link_info for ethtool (Tobias Huschle) [2166304 2110436]
+        - scsi: zfcp: Fix missing auto port scan and thus missing target ports (Tobias Huschle) [2127880 2121088]
+
+        [5.14.0-162.20.1_1]
+        - cgroup/cpuset: remove unreachable code (Waiman Long) [2161105 1946801]
+        - kselftest/cgroup: Add cpuset v2 partition root state test (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Update description of cpuset.cpus.partition in cgroup-v2.rst (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Make partition invalid if cpumask change violates exclusivity rule (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Relocate a code block in validate_change() (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Show invalid partition reason string (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Add a new isolated cpus.partition type (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Relax constraints to partition & cpus changes (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Allow no-task partition to have empty cpuset.cpus.effective (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Miscellaneous cleanups & add helper functions (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Enable update_tasks_cpumask() on top_cpuset (Waiman Long) [2161105 1946801]
+        - cpuset: convert 'allowed' in __cpuset_node_allowed() to be boolean (Waiman Long) [2161105 1946801]
+        - cgroup/cpuset: Remove cpus_allowed/mems_allowed setup in cpuset_init_smp() (Waiman Long) [2161105 1946801]
+        - cgroup: cleanup comments (Waiman Long) [2161105 1946801]
+        - act_mirred: use the backlog for nested calls to mirred ingress (Davide Caratti) [2164655 2150278] {CVE-2022-4269}
+        - net/sched: act_mirred: better wording on protection against excessive stack growth (Davide Caratti) [2164655 2150278] {CVE-2022-4269}
+        - scsi: storvsc: Fix swiotlb bounce buffer leak in confidential VM (Emanuele Giuseppe Esposito) [2170227 2150660]
+
+        [5.14.0-162.19.1_1]
+        - sched/core: Use kfree_rcu() in do_set_cpus_allowed() (Waiman Long) [2160614 2143847]
+        - sched/core: Fix use-after-free bug in dup_user_cpus_ptr() (Waiman Long) [2160614 2143847]
+        - sched: Always clear user_cpus_ptr in do_set_cpus_allowed() (Waiman Long) [2143766 2107354]
+        - sched: Enforce user requested affinity (Waiman Long) [2143766 2107354]
+        - sched: Always preserve the user requested cpumask (Waiman Long) [2143766 2107354]
+        - sched: Introduce affinity_context (Waiman Long) [2143766 2107354]
+        - sched: Add __releases annotations to affine_move_task() (Waiman Long) [2143766 2107354]
+        - x86/fpu: Fix copy_xstate_to_uabi() to copy init states correctly (Dean Nelson) [2168382 2122851]
+        - x86/fpu: Exclude dynamic states from init_fpstate (Dean Nelson) [2168382 2122851]
+        - x86/fpu: Fix the init_fpstate size check with the actual size (Dean Nelson) [2168382 2122851]
+        - x86/fpu: Configure init_fpstate attributes orderly (Dean Nelson) [2168382 2122851]
+        - x86/fpu/xstate: Fix the ARCH_REQ_XCOMP_PERM implementation (Dean Nelson) [2168382 2122851]
     FixedIn:
         - Module: null
           Name: bpftool

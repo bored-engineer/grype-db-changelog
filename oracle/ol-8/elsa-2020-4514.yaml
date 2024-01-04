@@ -1,7 +1,30 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.1.1g-11]
+        - Further changes for SP 800-56A rev3 requirements
+
+        [1.1.1g-9]
+        - Rewire FIPS_drbg API to use the RAND_DRBG
+        - Use the well known DH groups in TLS even for 2048 and 1024 bit parameters
+
+        [1.1.1g-7]
+        - Disallow dropping Extended Master Secret extension
+          on renegotiation
+        - Return alert from s_server if ALPN protocol does not match
+        - SHA1 is allowed in @SECLEVEL=2 only if allowed by
+          TLS SigAlgs configuration
+
+        [1.1.1g-6]
+        - Add FIPS selftest for PBKDF2 and KBKDF
+
+        [1.1.1g-5]
+        - Allow only well known DH groups in the FIPS mode
+
+        [1.1.1g-1]
+        - update to the 1.1.1g release
+        - FIPS module installed state definition is modified
     FixedIn:
         - Module: null
           Name: openssl

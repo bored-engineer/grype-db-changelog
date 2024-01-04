@@ -1,7 +1,27 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.5.3-175.el7]
+        - kvm-vnc-fix-memory-leak-when-vnc-disconnect.patch [bz#1810408]
+        - Resolves: bz#1810408
+          (CVE-2019-20382 qemu-kvm: QEMU: vnc: memory leakage upon disconnect [rhel-7])
+
+        [1.5.3-174.el7]
+        - kvm-util-add-slirp_fmt-helpers2.patch [bz#1800515]
+        - kvm-tcp_emu-fix-unsafe-snprintf-usages2.patch [bz#1800515]
+        - kvm-slirp-disable-tcp_emu.patch [bz#1791679]
+        - kvm-gluster-Handle-changed-glfs_ftruncate-signature.patch [bz#1802215]
+        - kvm-gluster-the-glfs_io_cbk-callback-function-pointer-ad.patch [bz#1802215]
+        - kvm-seccomp-set-the-seccomp-filter-to-all-threads.patch [bz#1618503]
+        - Resolves: bz#1618503
+          (qemu-kvm: Qemu: seccomp: blacklist is not applied to all threads [rhel-7])
+        - Resolves: bz#1791679
+          (QEMU: Slirp: disable emulation of tcp programs like ftp IRC etc. [rhel-7])
+        - Resolves: bz#1800515
+          (CVE-2020-8608 qemu-kvm: QEMU: Slirp: potential OOB access due to unsafe snprintf() usages [rhel-7.9])
+        - Resolves: bz#1802215
+          (Add support for newer glusterfs)
     FixedIn:
         - Module: null
           Name: qemu-img

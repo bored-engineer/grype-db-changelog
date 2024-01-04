@@ -1,7 +1,27 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.7.0.211-2.6.17.1.0.1]
+        - Update DISTRO_NAME in specfile
+
+        [1:1.7.0.211-2.6.17.1]
+        - Produce debug symbols for libpulse-java.so
+        - Set IT_CFLAGS=-g so that debug symbols for the pulse audio
+        - native library are being produced. This is needed to fix
+        - rpmdiff errors of missing .debug_info in pulse-java.so.debug.
+        - Resolves: rhbz#1661577
+
+        [1:1.7.0.211-2.6.17.0]
+        - Bump to 2.6.17.
+        - Adjust jdk8076221-pr2809-disable_rc4_cipher_suites.patch to apply after 8211883
+        - Regenerate pr3393-rh1273760-support_rsaandmgf1_with_sha_in_pkcs11.patch against current sources
+        - Resolves: rhbz#1661577
+
+        [1:1.7.0.201-2.6.17pre01.0]
+        - Bump to 2.6.17pre01.
+        - Add support for icedtea_snapshot so we can build pre-releases.
+        - Resolves: rhbz#1661577
     FixedIn:
         - Module: null
           Name: java-1.7.0-openjdk

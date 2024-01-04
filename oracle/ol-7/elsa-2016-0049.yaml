@@ -1,7 +1,32 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:1.8.0.71-2.b15]
+        - Add md5sum for previous java.security file so it gets updated.
+        - Resolves: rhbz#1295753
+
+        [1:1.8.0.71-1.b15]
+        - Restore upstream version of system LCMS patch removed by 'sync with Fedora'
+        - Add patch to turn off strict overflow on IndicRearrangementProcessor{,2}.cpp
+        - Resolves: rhbz#1295753
+
+        [1:1.8.0.71-0.b15]
+        - January 2016 security update to u71b15.
+        - Improve verbosity and helpfulness of tarball generation script.
+        - Remove RH1290936 workaround as RHEL does not have the hardened flags nor ARM32.
+        - Update patch documentation using version originally written for Fedora.
+        - Drop prelink requirement as we no longer use execstack.
+        - Drop ifdefbugfix patch as this is fixed upstream.
+        - Provide optional boostrap build and turn it off by default.
+        - Turn off additional CFLAGS/LDFLAGS on AArch64 as bootstrapping failed.
+        - Add patch for size_t formatting on s390 as size_t != intptr_t there.
+        - Resolves: rhbz#1295753
+
+        [1:1.8.0.65-4.b17]
+        - moved to integration forest
+        - sync with fedora (all but extracted luas and family)
+        - Resolves: rhbz#1295753
     FixedIn:
         - Module: null
           Name: java-1.8.0-openjdk

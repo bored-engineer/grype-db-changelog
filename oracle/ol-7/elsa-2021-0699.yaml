@@ -1,7 +1,38 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.02-0.87.0.8.e7.2]
+        - Enable common subpackage for aarch64
+        - Disable RHEL patch 0183-efinet-retransmit-if-our-device-is-busy.patch to comply with UEFI spec
+        - add SBAT metadata for Oracle Linux grub2
+        - Use similar format for menu entry in grub environment block
+        - config file. [Orabug: 32172943]
+        - Fix degradation in multiboot2 code [Orabug: 32069510]
+        - Update signing certificate for efi binaries
+        - Update upstream references [Orabug: 30138841]
+        - Restore symlink to grub environment file, that was removed during grub2-efi update
+          if grub2 package is also installed on UEFI machines [Orabug: 27345750]
+        - fix symlink removal scriptlet, to be executed only on removal [Orabug: 19231481]
+        - Fix comparison in patch for [Orabug: 18504756]
+        - Remove symlink to grub environment file during uninstall on EFI platforms [Orabug: 19231481]
+        - replace dynamic EFI boot folder path generation with predefined 'redhat' (Alex Burmashev)
+        - Put 'with' in menuentry instead of 'using' [Orabug: 18504756]
+        - Use different titles for UEK and RHCK kernels [Orabug: 18504756]
+
+        [2.02-0.87.e7.2]
+        - Fix another batch of CVEs
+          Resolves: CVE-2020-14372
+          Resolves: CVE-2020-25632
+          Resolves: CVE-2020-25647
+          Resolves: CVE-2020-27749
+          Resolves: CVE-2020-27779
+          Resolves: CVE-2021-20225
+          Resolves: CVE-2021-20233
+
+        [2.02-0.87.e7.1]
+        - Fix keyboards that report IBM PC AT scan codes
+          Resolves: rhbz#1892240
     FixedIn:
         - Module: null
           Name: grub2

@@ -1,7 +1,237 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        libguestfs
+        [1.44.0-9.0.1]
+        - Replace upstream references from description tag
+        - Config supermin to use host yum.conf in ol8 [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        [1:1.44.0-9]
+        - Fix CVE-2022-2211 Denial of Service in --key parameter
+          resolves: rhbz#2101280
+
+        [1:1.44.0-8]
+        - Obsolete old libguestfs-benchmarking subpackage
+          resolves: rhbz#2091597
+
+        [1:1.44.0-7]
+        - Disable 5-level page tables when using -cpu max
+          resolves: rhbz#2084566
+          related: rhbz#2075424
+
+        [1:1.44.0-6]
+        - Backport support for -cpu max to allow RHEL 9 guests to be modified
+          resolves: rhbz#2075424
+
+        libnbd
+        [1.6.0-5.el8]
+        - Fix CVE-2022-0485: Fail nbdcopy if NBD read or write fails
+          resolves: rhbz#2045718
+
+        [1.6.0-4.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        libtpms
+        [0.9.1-1.20211126git1ff6fe1f43]
+        - Backport s_ContextSlotMask initialization fix
+          Resolves: rhbz#2111433
+
+        libvirt
+        [8.0.0-10.0.1]
+        - Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+        - Add runtime deps for pkg librbd1 >= 1:10.2.5 (Keshav Sharma)
+
+        [8.0.0-10]
+        - security_selinux.c: Relabel existing mode=bind UNIX sockets (rhbz#2101575)
+        - RHEL: qemu_migration: Fix restoring memlock limit on destination (rhbz#2107954)
+
+        [8.0.0-9]
+        - conf: virtiofs: add thread_pool element (rhbz#2079582)
+        - qemu: virtiofs: format --thread-pool-size (rhbz#2079582)
+        - conf: Move virDomainObj::originalMemlock into qemuDomainObjPrivate (rhbz#2089433)
+        - qemu_domain: Format qemuDomainObjPrivate::originalMemlock (rhbz#2089433)
+        - qemu: Add qemuDomainSetMaxMemLock helper (rhbz#2089433)
+        - qemu_migration: Use qemuDomainSetMaxMemLock (rhbz#2089433)
+        - qemu_migration: Restore original memory locking limit (rhbz#2089433)
+        - Add VIR_MIGRATE_ZEROCOPY flag (rhbz#2089433)
+        - virsh: Add support for VIR_MIGRATE_ZEROCOPY flag (rhbz#2089433)
+        - qemu_migration: Implement VIR_MIGRATE_ZEROCOPY flag (rhbz#2089433)
+
+        [8.0.0-8]
+        - nwfilter: fix crash when counting number of network filters (CVE-2022-0897, rhbz#2063902)
+        - virDomainDiskDefValidate: Improve error messages for startupPolicy checks (rhbz#2095758)
+        - domain_validate: Split out validation of disk startup policy (rhbz#2095758)
+        - virDomainDiskDefValidateStartupPolicy: Validate disk type better (rhbz#2095758)
+        - virDomainDiskTranslateSourcePool: Fix check of startupPolicy definition (rhbz#2095758)
+
+        [8.0.0-7]
+        - cpu_map: Disable cpu64-rhel* for host-model and baseline (rhbz#1851227)
+        - cputest: Drop some old artificial baseline tests (rhbz#1851227)
+        - cputest: Give better names to baseline tests (rhbz#1851227)
+        - cputest: Add some real world baseline tests (rhbz#1851227)
+        - cpu_x86: Consolidate signature match in x86DecodeUseCandidate (rhbz#1851227)
+        - cpu_x86: Refactor feature list comparison in x86DecodeUseCandidate (rhbz#1851227)
+        - cpu_x86: Penalize disabled features when computing CPU model (rhbz#1851227)
+        - cpu_x86: Ignore enabled features for input models in x86DecodeUseCandidate (rhbz#1851227)
+
+        [8.0.0-6]
+        - conf: Introduce memory allocation threads (rhbz#2067126)
+        - qemu_capabilities: Detect memory-backend-*.prealloc-threads property (rhbz#2067126)
+        - qemu_validate: Validate prealloc threads against qemuCpas (rhbz#2067126)
+        - qemu_command: Generate prealloc-threads property (rhbz#2067126)
+
+        libvirt-dbus
+        [1.3.0-2.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.3.0]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        libvirt-python
+        [8.0.0-2]
+        - [RFE] RFE backport allow enabling ZEROCOPY live migration to libvirt-python on RHEL8 to be consumed by VDSM (rhbz#2092756)
+
+        qemu-kvm
+        [6.2.0-20.el8.1]
+        - kvm-i386-reset-KVM-nested-state-upon-CPU-reset.patch [bz#2116743]
+        - kvm-i386-do-kvm_put_msr_feature_control-first-thing-when.patch [bz#2116743]
+        - Resolves: bz#2116743
+          ([RHEL8.7] Guests in VMX root operation fail to reboot with QEMUs system_reset command)
+
+        [6.2.0-20]
+        - kvm-scsi-generic-Fix-emulated-block-limits-VPD-page.patch [bz#2120279]
+        - Resolves: bz#2120279
+          (Wrong max_sectors_kb and Maximum transfer length on the pass-through device [rhel-8.7])
+
+        [6.2.0-19]
+        - kvm-migration-Introduce-ram_transferred_add.patch [bz#2110203]
+        - kvm-migration-Tally-pre-copy-downtime-and-post-copy-byte.patch [bz#2110203]
+        - kvm-QIOChannelSocket-Fix-zero-copy-flush-returning-code-.patch [bz#2110203]
+        - kvm-Add-dirty-sync-missed-zero-copy-migration-stat.patch [bz#2110203]
+        - kvm-migration-multifd-Report-to-user-when-zerocopy-not-w.patch [bz#2110203]
+        - kvm-migration-Avoid-false-positive-on-non-supported-scen.patch [bz#2110203]
+        - kvm-migration-add-remaining-params-has_-true-in-migratio.patch [bz#2110203]
+        - kvm-QIOChannelSocket-Add-support-for-MSG_ZEROCOPY-IPV6.patch [bz#2110203]
+        - kvm-pc-bios-s390-ccw-Fix-booting-with-logical-block-size.patch [bz#2112296]
+        - Resolves: bz#2110203
+          (zerocopy capability can be enabled when set migrate capabilities with multifd and compress/xbzrle together)
+        - Resolves: bz#2112296
+          (virtio-blk: Cant boot fresh installation from used 512 cluster_size image under certain conditions)
+
+        [6.2.0-18]
+        - kvm-linux-aio-fix-unbalanced-plugged-counter-in-laio_io_.patch [bz#2105410]
+        - kvm-linux-aio-explain-why-max-batch-is-checked-in-laio_i.patch [bz#2105410]
+        - Resolves: bz#2105410
+          (Stalled IO Operations in VM)
+
+        [6.2.0-17]
+        - kvm-migration-Never-call-twice-qemu_target_page_size.patch [bz#2072049]
+        - kvm-multifd-Rename-used-field-to-num.patch [bz#2072049]
+        - kvm-multifd-Add-missing-documentation.patch [bz#2072049]
+        - kvm-multifd-The-variable-is-only-used-inside-the-loop.patch [bz#2072049]
+        - kvm-multifd-remove-used-parameter-from-send_prepare-meth.patch [bz#2072049]
+        - kvm-multifd-remove-used-parameter-from-send_recv_pages-m.patch [bz#2072049]
+        - kvm-multifd-Fill-offset-and-block-for-reception.patch [bz#2072049]
+        - kvm-multifd-Make-zstd-compression-method-not-use-iovs.patch [bz#2072049]
+        - kvm-multifd-Make-zlib-compression-method-not-use-iovs.patch [bz#2072049]
+        - kvm-migration-All-this-fields-are-unsigned.patch [bz#2072049]
+        - kvm-multifd-Move-iov-from-pages-to-params.patch [bz#2072049]
+        - kvm-multifd-Make-zlib-use-iov-s.patch [bz#2072049]
+        - kvm-multifd-Make-zstd-use-iov-s.patch [bz#2072049]
+        - kvm-multifd-Remove-send_write-method.patch [bz#2072049]
+        - kvm-multifd-Use-a-single-writev-on-the-send-side.patch [bz#2072049]
+        - kvm-multifd-Use-normal-pages-array-on-the-send-side.patch [bz#2072049]
+        - kvm-QIOChannel-Add-flags-on-io_writev-and-introduce-io_f.patch [bz#2072049]
+        - kvm-QIOChannelSocket-Implement-io_writev-zero-copy-flag-.patch [bz#2072049]
+        - kvm-migration-Add-zero-copy-send-parameter-for-QMP-HMP-f.patch [bz#2072049]
+        - kvm-migration-Add-migrate_use_tls-helper.patch [bz#2072049]
+        - kvm-multifd-multifd_send_sync_main-now-returns-negative-.patch [bz#2072049]
+        - kvm-multifd-Send-header-packet-without-flags-if-zero-cop.patch [bz#2072049]
+        - kvm-multifd-Implement-zero-copy-write-in-multifd-migrati.patch [bz#2072049]
+        - kvm-QIOChannelSocket-Introduce-assert-and-reduce-ifdefs-.patch [bz#2072049]
+        - kvm-QIOChannelSocket-Fix-zero-copy-send-so-socket-flush-.patch [bz#2072049]
+        - kvm-migration-Change-zero_copy_send-from-migration-param.patch [bz#2072049]
+        - kvm-migration-Add-migration_incoming_transport_cleanup.patch [bz#2097652]
+        - kvm-migration-Allow-migrate-recover-to-run-multiple-time.patch [bz#2097652]
+        - kvm-pc-bios-s390-ccw-virtio-Introduce-a-macro-for-the-DA.patch [bz#2098076]
+        - kvm-pc-bios-s390-ccw-bootmap-Improve-the-guessing-logic-.patch [bz#2098076]
+        - kvm-pc-bios-s390-ccw-virtio-blkdev-Simplify-fix-virtio_i.patch [bz#2098076]
+        - kvm-pc-bios-s390-ccw-virtio-blkdev-Remove-virtio_assume_.patch [bz#2098076]
+        - kvm-pc-bios-s390-ccw-virtio-Set-missing-status-bits-whil.patch [bz#2098076]
+        - kvm-pc-bios-s390-ccw-virtio-Read-device-config-after-fea.patch [bz#2098076]
+        - kvm-pc-bios-s390-ccw-virtio-Beautify-the-code-for-readin.patch [bz#2098076]
+        - kvm-pc-bios-s390-ccw-Split-virtio-scsi-code-from-virtio_.patch [bz#2098076]
+        - kvm-pc-bios-s390-ccw-virtio-blkdev-Request-the-right-fea.patch [bz#2098076]
+        - Resolves: bz#2072049
+          (Pull  MSG_ZEROCOPY on QEMU Live Migration Patches into RHEL 8)
+        - Resolves: bz#2097652
+          (The migration port is not released if use it again for recovering postcopy migration)
+        - Resolves: bz#2098076
+          (virtio-blk: Cant boot fresh installation from used virtio-blk dasd disk under certain conditions)
+
+        seabios
+        [1.16.0-3]
+        - seabios-virtio-blk-use-larger-default-request-size.patch [bz#2101787]
+        - Resolves: bz#2101787
+          ([rhel.8.7] Loading a kernel/initrd is sometimes very slow)
+
+        [1.16.0-2]
+        - seabios-shortcut-skip-unbootable-disks-optimitation.patch [bz#2073012]
+        - seabios-pci-refactor-the-pci_config_-functions.patch [bz#2083884]
+        - seabios-reset-force-standard-PCI-configuration-access.patch [bz#2083884]
+        - Resolves: bz#2073012
+          (Guest whose os is installed multiple disks but boot partition is installed on single disk cant boot into OS on RHEL 8 [rhel-8.7.0])
+        - Resolves: bz#2083884
+          (qemu reboot problem with seabios 1.16.0)
+
+        [1.16.0-1]
+        - Rebase to upstream 1.16 tag [bz#2066828]
+        - Resolves: bz#2066828
+          (rebase seabios to 1.16 release)
+
+        supermin
+        [5.2.1-2.el8]
+        - Supermin should ignore +debug kernels
+          resolves: rhbz#2051332
+        - Add copy-patches script.
+
+        [5.2.1-1.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        swtpm
+        [0.7.0-4.20211109gitb79fd91]
+        - swtpm_localca: Test for available issuercert before creating CA
+          Resolves: rhbz#2100508
+
+        virt-v2v
+        [1:1.42.0-21]
+        - Fix assertion failure when parsing OVA dir with trailing slash
+          resolves: rhbz#2028823
+        - For -o rhv-upload wait for VM creation task
+          resolves: rhbz#1985827
+        - If listing RPM applications fails, rebuild DB and retry (2089623)
+        - Fix CVE-2022-2211 Denial of Service in --key parameter
+          resolves: rhbz#2102720
+
+        [1:1.42.0-18]
+        - Additional fix for backing file specified without backing format
+          related: rhbz#2025769
+
+        [1:1.42.0-17]
+        - Correct regexps used to fix schtasks command
+        - Fix backing file specified without backing format
+          resolves: rhbz#2023279, rhbz#2025769
+
+        [1:1.42.0-16]
+        - Implement cookie scripts for more reliable vCenter/HTTPS transfers
+          resolves: rhbz#2018173
+        .
     FixedIn:
         - Module: virt-devel:ol
           Name: hivex

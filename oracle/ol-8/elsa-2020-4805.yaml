@@ -1,7 +1,23 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [20200602gitca407c7246bf-3.el8]
+        - edk2-UefiCpuPkg-PiSmmCpuDxeSmm-pause-in-WaitForSemaphore-.patch [bz#1861718]
+        - Resolves: bz#1861718
+          (Very slow boot when overcommitting CPU)
+
+        [20200602gitca407c7246bf-2.el8]
+        - edk2-OvmfPkg-QemuKernelLoaderFsDxe-suppress-error-on-no-k.patch [bz#1844682]
+        - edk2-OvmfPkg-GenericQemuLoadImageLib-log-Not-Found-at-INF.patch [bz#1844682]
+        - edk2-SecurityPkg-Tcg2Dxe-suppress-error-on-no-swtpm-in-si.patch [bz#1844682]
+        - Resolves: bz#1844682
+          (silent build of edk2-aarch64 logs DEBUG_ERROR messages that dont actually report serious errors)
+
+        [20200602gitca407c7246bf-1.el8]
+        - Rebase to edk2-stable202005 [bz#1817035]
+        - Resolves: bz#1817035
+          ((edk2-rebase-rhel-8.3) - rebase edk2 to upstream tag edk2-stable202005 for RHEL-8.3)
     FixedIn:
         - Module: null
           Name: edk2-ovmf

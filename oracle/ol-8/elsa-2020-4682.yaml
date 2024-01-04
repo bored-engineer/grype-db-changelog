@@ -1,7 +1,34 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [6.7.4-3]
+        - apply patch for CVE-2020-13430 also to sources, not only to compiled webpack
+
+        [6.7.4-2]
+        - security fix for CVE-2020-13430
+
+        [6.7.4-1]
+        - update to 6.7.4 tagged upstream community sources, see CHANGELOG
+        - security fix for CVE-2020-13379
+
+        [6.7.3-1]
+        - update to 6.7.3 tagged upstream community sources, see CHANGELOG
+        - add scripts to list Go dependencies and bundled npmjs dependencies
+        - set Grafana version in Grafana UI and grafana-cli --version
+        - declare README.md as documentation of datasource plugins
+        - create grafana.db on first installation (fixes RH BZ #1805472)
+        - change permissions of /var/lib/grafana to 750 (CVE-2020-12458)
+        - change permissions of /var/lib/grafana/grafana.db to 640 and
+          user/group grafana:grafana (CVE-2020-12458)
+        - change permissions of grafana.ini and ldap.toml to 640 (CVE-2020-12459)
+
+        [6.6.2-1]
+        - added patch0 to set the version string correctly
+        - removed patch 004-xerrors.patch, its now upstream
+        - added several patches for golang vendored vrs build dep differences
+        - added patch to move grafana-cli binary to libexec dir
+        - update to 6.6.2 tagged upstream community sources, see CHANGELOG
     FixedIn:
         - Module: null
           Name: grafana

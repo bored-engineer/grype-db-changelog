@@ -1,7 +1,29 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.6.8-5.0.1]
+        - Blank out header-logo.png product-name.png
+        - Replace login-screen-logo.png [Orabug: 20362818]
+
+        [4.6.8-5.el7_9.4]
+        - Resolves: #1897253 IPA WebUI inaccessible after upgrading to RHEL 8.3.- idoverride-memberof.js missing
+          - wgi/plugins.py: ignore empty plugin directories
+        - Resolves: #1895197 improve IPA PKI susbsystem detection by other means than a directory presence, use pki-server subsystem-find
+          - Improve PKI subsystem detection
+          - ipatests: add test for PKI subsystem detection
+          - ipatest: fix test_upgrade.py::TestUpgrade::()::test_kra_detection
+        - Resolves: #1892793 Authentication and login times are over several seconds due to unindexed ipaExternalMember
+          - Add more indices
+        - Resolves: #1884819 IdM Web UI shows users as disabled
+          - fix cert-find errors in CA-less deployment
+        - Resolves: #1863619 CA-less install does not set required permissions on KDC certificate
+          - CAless installation: set the perms on KDC cert file
+          - ipatests: check KDC cert permissions in CA less install
+        - Resolves: #1859248 CVE-2020-11023 ipa: jquery: Passing HTML containing <option> elements to manipulation methods could result in untrusted code execution
+          - WebUI: Fix jQuery DOM manipulation issues
+        - Resolves: #1846349 cannot issue certs with multiple IP addresses corresponding to different hosts
+          - fix iPAddress cert issuance for >1 host/service
     FixedIn:
         - Module: null
           Name: ipa-client

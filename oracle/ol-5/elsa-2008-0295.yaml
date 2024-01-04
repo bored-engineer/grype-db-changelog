@@ -1,7 +1,24 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.0.5-12]
+        - fix CVE-2007-5962: vsftpd memory leak when deny_file option is set
+        - Resolves: #423001
+
+        [2.0.5-11]
+        - add new option to log login failures based on user list
+        - Resolves: #345791
+        - fix user_config_dir option
+        - Resolves: #400921
+        - allow usernames starting with '_' or '.'
+        - Resolves: #386561
+        - fix the write/race condition when uploading files simultaneously
+        - Resolves: #240553
+        - fix the bug that causes every new file stored with STOU to have a prefix '.1'
+        - Resolves: #392231
+        - make vsftpd wildcard matching more greedy
+        - Resolves: #392181
     FixedIn:
         - Module: null
           Name: vsftpd

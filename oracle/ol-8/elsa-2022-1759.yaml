@@ -1,7 +1,200 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        hivex
+        [1.3.18-23]
+        - Limit recursion in ri-records (CVE-2021-3622)
+          resolves: rhbz#1976194
+
+        [1.3.18-22.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        libguestfs
+        [1.44.0-5.0.1]
+        - Replace upstream references from description tag
+        - Config supermin to use host yum.conf in ol8 [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        [1:1.44.0-5]
+        - Fix libguestfs failure with qemu 6.2, libvirt 7.10
+          resolves: rhbz#2035177
+
+        [1:1.44.0-4]
+        - Autodetect backing format for qemu-img create -b
+        - Move appliance to separate subpackage
+        - Read rpm database through librpm
+          resolves: rhbz#2013916, rhbz#1989520, rhbz#1836094
+
+        [1.44.0-3.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        libguestfs-winsupport
+        [8.6-1]
+        - Rebase to ntfs-3g 2021.8.22
+        - Fixes: CVE-2021-33285, CVE-2021-33286, CVE-2021-33287, CVE-2021-33289,
+          CVE-2021-35266, CVE-2021-35267, CVE-2021-35268, CVE-2021-35269,
+          CVE-2021-39251, CVE-2021-39252, CVE-2021-39253, CVE-2021-39254
+          resolves: rhbz#2004490
+
+        libnbd
+        [1.6.0-5.el8]
+        - Fix CVE-2022-0485: Fail nbdcopy if NBD read or write fails
+          resolves: rhbz#2045718
+
+        [1.6.0-4.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.2.2]
+        - Resolves: bz#1844296
+        (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        libvirt
+        [8.0.0-5.0.1]
+        - Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+        - Add runtime deps for pkg librbd1 >= 1:10.2.5 (Keshav Sharma)
+
+        [8.0.0-5]
+        - node_device: Rework udevKludgeStorageType() (rhbz#2056673)
+        - node_device: Treat NVMe disks as regular disks (rhbz#2056673)
+
+        [8.0.0-4]
+        - qemu_command: Generate memory only after controllers (rhbz#2050697)
+        - qemu: Validate domain definition even on migration (rhbz#2050702)
+
+        [8.0.0-3]
+        - qemuDomainSetupDisk: Initialize 'targetPaths' (rhbz#2046172)
+        - RHEL: Remove <glib-2.64.0 workaround for GSource race (rhbz#2045879)
+
+        [8.0.0-2]
+        - Revert 'report error when virProcessGetStatInfo() is unable to parse data' (rhbz#2041610)
+        - qemu: fix inactive snapshot revert (rhbz#2043584)
+
+        [8.0.0-1]
+        - Rebased to libvirt-8.0.0 (rhbz#2012802)
+
+        libvirt-python
+        [8.0.0-1]
+        - Rebased to libvirt-python-8.0.0 (rhbz#2012806)
+
+        perl-Sys-Virt
+        [8.0.0-1]
+        - Rebase to 8.0.0 release
+        - Resolves: rhbz#2012813
+
+        qemu-kvm
+        [6.2.0-11]
+        - kvm-target-i386-properly-reset-TSC-on-reset.patch [bz#1975840]
+        - Resolves: bz#1975840
+          (Windows guest hangs after updating and restarting from the guest OS)
+
+        [6.2.0-10]
+        - kvm-vmxcap-Add-5-level-EPT-bit.patch [bz#2056986]
+        - kvm-i386-Add-Icelake-Server-v6-CPU-model-with-5-level-EP.patch [bz#2056986]
+        - kvm-acpi-fix-QEMU-crash-when-started-with-SLIC-table.patch [bz#2059311]
+        - kvm-tests-acpi-whitelist-expected-blobs-before-changing-.patch [bz#2059311]
+        - kvm-tests-acpi-add-SLIC-table-test.patch [bz#2059311]
+        - kvm-tests-acpi-SLIC-update-expected-blobs.patch [bz#2059311]
+        - kvm-tests-acpi-manually-pad-OEM_ID-OEM_TABLE_ID-for-test.patch [bz#2059311]
+        - kvm-tests-acpi-whitelist-nvdimm-s-SSDT-and-FACP.slic-exp.patch [bz#2059311]
+        - kvm-acpi-fix-OEM-ID-OEM-Table-ID-padding.patch [bz#2059311]
+        - kvm-tests-acpi-update-expected-blobs.patch [bz#2059311]
+        - kvm-tests-acpi-test-short-OEM_ID-OEM_TABLE_ID-values-in-.patch [bz#2059311]
+        - kvm-rhel-workaround-for-lack-of-binary-patches-in-SRPM.patch [bz#2059311]
+        - Resolves: bz#2056986
+          (Win11 (q35+edk2) guest broke after install wsl2 through 'wsl --install -d Ubuntu-20.04')
+        - Resolves: bz#2059311
+          (Guest can not start with SLIC acpi table)
+
+        [6.2.0-9]
+        - kvm-Revert-redhat-Add-hw_compat_4_2_extra-and-apply-to-u.patch [bz#2061856]
+        - kvm-Revert-redhat-Enable-FDC-device-for-upstream-machine.patch [bz#2061856]
+        - kvm-Revert-redhat-Expose-upstream-machines-pc-4.2-and-pc.patch [bz#2061856]
+        - kvm-hw-virtio-vdpa-Fix-leak-of-host-notifier-memory-regi.patch [bz#2027208]
+        - kvm-pci-expose-TYPE_XIO3130_DOWNSTREAM-name.patch [bz#2054597]
+        - kvm-acpi-pcihp-pcie-set-power-on-cap-on-parent-slot.patch [bz#2054597]
+        - Resolves: bz#2061856
+          (Revert IBM-specific Ubuntu-compatibility machine type for 8.6-AV GA)
+        - Resolves: bz#2027208
+          ([virtual network][vDPA] qemu crash after hot unplug vdpa device)
+        - Resolves: bz#2054597
+          (Do operation to disk will hang in the guest of target host after hotplugging and migrating)
+
+        [6.2.0-8]
+        - kvm-block-nbd-Delete-reconnect-delay-timer-when-done.patch [bz#2035185]
+        - kvm-block-nbd-Assert-there-are-no-timers-when-closed.patch [bz#2035185]
+        - kvm-iotests.py-Add-QemuStorageDaemon-class.patch [bz#2035185]
+        - kvm-iotests-281-Test-lingering-timers.patch [bz#2035185]
+        - kvm-block-nbd-Move-s-ioc-on-AioContext-change.patch [bz#2035185]
+        - kvm-iotests-281-Let-NBD-connection-yield-in-iothread.patch [bz#2035185]
+        - Resolves: bz#2035185
+          (Qemu core dump when start guest with nbd node or do block jobs to nbd node)
+
+        [6.2.0-7]
+        - kvm-numa-Enable-numa-for-SGX-EPC-sections.patch [bz#1518984]
+        - kvm-numa-Support-SGX-numa-in-the-monitor-and-Libvirt-int.patch [bz#1518984]
+        - kvm-doc-Add-the-SGX-numa-description.patch [bz#1518984]
+        - kvm-Enable-SGX-RH-Only.patch [bz#1518984]
+        - kvm-qapi-Cleanup-SGX-related-comments-and-restore-sectio.patch [bz#1518984]
+        - kvm-block-io-Update-BSC-only-if-want_zero-is-true.patch [bz#2041480]
+        - kvm-iotests-block-status-cache-New-test.patch [bz#2041480]
+        - Resolves: bz#1518984
+          ([Intel 8.6 Feat] qemu-kvm: SGX 1.5 (SGX1 + Flexible Launch Control) support)
+        - Resolves: bz#2041480
+          ([incremental_backup] Inconsistent block status reply in qemu-nbd)
+
+        [6.2.0-6]
+        - kvm-virtiofsd-Drop-membership-of-all-supplementary-group.patch [bz#2046198]
+        - kvm-softmmu-fix-device-deletion-events-with-device-JSON-.patch [bz#2033279]
+        - kvm-block-backend-prevent-dangling-BDS-pointers-across-a.patch [bz#2021778 bz#2036178]
+        - kvm-iotests-stream-error-on-reset-New-test.patch [bz#2021778 bz#2036178]
+        - kvm-block-rbd-fix-handling-of-holes-in-.bdrv_co_block_st.patch [bz#2037135]
+        - kvm-block-rbd-workaround-for-ceph-issue-53784.patch [bz#2037135]
+        - Resolves: bz#2046198
+          (CVE-2022-0358 virt:av/qemu-kvm: QEMU: virtiofsd: potential privilege escalation via CVE-2018-13405 [rhel-8.6])
+        - Resolves: bz#2033279
+          ([wrb][qemu-kvm 6.2] The hot-unplugged device can not be hot-plugged back)
+        - Resolves: bz#2021778
+          (Qemu core dump when do full backup during system reset)
+        - Resolves: bz#2036178
+          (Qemu core dumped when do block-stream to a snapshot node on non-enough space storage)
+        - Resolves: bz#2037135
+          (Booting from Local Snapshot Core Dumped Whose Backing File Is Based on RBD)
+
+        [6.2.0-5]
+        - kvm-acpi-validate-hotplug-selector-on-access.patch [bz#2036580]
+        - kvm-x86-Add-q35-RHEL-8.6.0-machine-type.patch [bz#2031035]
+        - Resolves: bz#2036580
+          (CVE-2021-4158 virt:rhel/qemu-kvm: QEMU: NULL pointer dereference in pci_write() in hw/acpi/pcihp.c [rhel-8])
+        - Resolves: bz#2031035
+          (Add rhel-8.6.0 machine types for RHEL 8.6 [x86])
+
+        [6.2.0-4]
+        - kvm-hw-arm-virt-Register-iommu-as-a-class-property.patch [bz#2031039]
+        - kvm-hw-arm-virt-Register-its-as-a-class-property.patch [bz#2031039]
+        - kvm-hw-arm-virt-Rename-default_bus_bypass_iommu.patch [bz#2031039]
+        - kvm-hw-arm-virt-Add-8.6-machine-type.patch [bz#2031039]
+        - kvm-hw-arm-virt-Check-no_tcg_its-and-minor-style-changes.patch [bz#2031039]
+        - kvm-rhel-machine-types-x86-set-prefer_sockets.patch [bz#2029582]
+        - Resolves: bz#2031039
+          (Add rhel-8.6.0 machine types for RHEL 8.6 [aarch64])
+        - Resolves: bz#2029582
+          ([8.6] machine types: 6.2: Fix prefer_sockets)
+
+        [6.2.0-2]
+        - kvm-redhat-Add-rhel8.6.0-machine-type-for-s390x.patch [bz#2005325]
+        - kvm-redhat-Define-pseries-rhel8.6.0-machine-type.patch [bz#2031041]
+        - Resolves: bz#2005325
+          (Fix CPU Model for new IBM Z Hardware - qemu part)
+        - Resolves: bz#2031041
+          (Add rhel-8.6.0 machine types for RHEL 8.6 [ppc64le])
+
+        [6.2.0-1.el8]
+        - Rebase to qemu-kvm 6.2.0
+        - Resolves bz#2027716
     FixedIn:
         - Module: virt-devel:ol
           Name: hivex

@@ -1,7 +1,25 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.23.22-1]
+        - Rebase to 0.23.22 to fix memory safety issues (CVE-2020-29361, CVE-2020-29362, and CVE-2020-29363)
+        - Preserve DT_NEEDED information from the previous version, flagged by rpmdiff
+        - Add xsltproc to BR
+
+        [0.23.21-4]
+        - Fix realloc usage on proxy cleanup (#1894979)
+        - Make 'trust anchor --store' preserve all attributes from .p11-kit files
+
+        [0.23.21-3]
+        - Restore clobbered changelog entry
+
+        [0.23.21-2]
+        - Update p11-kit-invalid-config.patch to be more thorough (thanks to
+          Alexander Sosedkin)
+
+        [0.23.21-1]
+        - Update to upstream 0.23.21 release
     FixedIn:
         - Module: null
           Name: p11-kit

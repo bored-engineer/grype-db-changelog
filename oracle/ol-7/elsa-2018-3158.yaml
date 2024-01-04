@@ -1,7 +1,92 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.16.2-13]
+        - Resolves: rhbz#1593756 - sssd needs to require a newer version of
+                                   libtalloc and libtevent to avoid an issue
+                                   in GPO processing
+
+        [1.16.2-12]
+        - Resolves: rhbz#1610667 - sssd_ssh leaks file descriptors when more than one certificate is converted into an SSH key
+        - Resolves: rhbz#1583360 - The IPA selinux provider can return an error if SELinux is completely disabled
+
+        [1.16.2-11]
+        - Resolves: rhbz#1602781 - Local users failed to login with same password
+
+        [1.16.2-10]
+        - Resolves: rhbz#1586127 - Spurious check in the sssd nss memcache can cause the memory cache to be skipped
+
+        [1.16.2-9]
+        - Resolves: rhbz#1522928 - sssd doesnt allow user with expired password
+
+        [1.16.2-8]
+        - Resolves: rhbz#1607313 - When sssd is running as non-root user, the sudo pipe is created as sssd:sssd but then the private pipe ownership fails
+
+        [1.16.2-7]
+        - Resolves: rhbz#1600822 - SSSD bails out saving desktop profiles in case an invalid profile is found
+
+        [1.16.2-6]
+        - Resolves: rhbz#1582975 - The search filter for detecting POSIX attributes in global catalog is too broad and can cause a high load on the servers
+
+        [1.16.2-5]
+        - Resolves: rhbz#1583725 - SSSD AD uses LDAP filter to detect POSIX attributes stored in AD GC also for regular AD DC queries
+        - Resolves: rhbz#1416528 - sssd in cross realm trust configuration should be able to use AD KDCs from a client site defined in sssd.conf or a snippet
+        - Resolves: rhbz#1592964 - Groups go missing with PAC enabled in sssd
+
+        [1.16.2-4]
+        - Resolves: rhbz#1590603 - EMBARGOED CVE-2018-10852 sssd: information leak from the sssd-sudo responder [rhel-7]
+        - Resolves: rhbz#1450778 - Full information regarding priority of lookup of principal in keytab not in man page
+
+        [1.16.2-3]
+        - Resolves: rhbz#1494690 - kdcinfo files are not created for subdomains of a directly joined AD client
+        - Resolves: rhbz#1583343 - Login with sshkeys stored in ipa not working after update to RHEL-7.5
+        - Resolves: rhbz#1527662 - Handle conflicting e-mail addresses more gracefully
+        - Resolves: rhbz#1509691 - Document how to change the regular expression for SSSD so that group names with an @-sign can be parsed
+
+        [1.16.2-2]
+        - Related: rhbz#1558498 - Rebase sssd to the latests upstream release of the 1.16 branch
+
+        [1.16.2-1]
+        - Resolves: rhbz#1558498 - Rebase sssd to the latests upstream release of the 1.16 branch
+        - Resolves: rhbz#1523019 - Reset password with two factor authentication fails
+        - Resolves: rhbz#1534749 - Requesting an AD users private group and then the user itself returns an emty homedir
+        - Resolves: rhbz#1537272 - SSH public key authentication keeps working after keys are removed from ID view
+        - Resolves: rhbz#1537279 - Certificate is not removed from cache when its removed from the override
+        - Resolves: rhbz#1562025 - externalUser sudo attribute must be fully-qualified
+        - Resolves: rhbz#1577335 - /usr/libexec/sssd/sssd_autofs SIGABRT crash daily
+        - Resolves: rhbz#1508530 - How should sudo behave without sudoHost attribute?
+        - Resolves: rhbz#1546754 - The man page of sss_ssh_authorizedkeys can be enhanced to better explain how the keys are retrieved and how X.509 certificates can be used
+        - Resolves: rhbz#1572790 - getgrgid/getpwuid fails in setups with multiple domains if the first domain uses mid_id/max_id
+        - Resolves: rhbz#1561562 - sssd not honoring dyndns_server if the DNS update process is terminated with a signal
+        - Resolves: rhbz#1583251 - home dir disappear in sssd cache on the IPA master for AD users
+        - Resolves: rhbz#1514061 - ID override GID from Default Trust View is not properly resolved in case domain resolution order is set
+        - Resolves: rhbz#1571466 - Utilizing domain_resolution_order in sssd.conf breaks SELinux user map
+        - Resolves: rhbz#1571526 - SSSD with ID provider 'ad' should give a warning in case the ldap schema is manually changed to something different than 'ad'.
+
+        [1.16.0-25]
+        - Resolves: rhbz#1547782 - The SSSD IPA provider allocates information about external groups on a long lived memory context, causing memory growth of the sssd_be process
+
+        [1.16.0-24]
+        - Related: rhbz#1578291 - Samba can not register sss idmap module because its using an outdated SMB_IDMAP_INTERFACE_VERSION
+
+        [1.16.0-23]
+        - Resolves: rhbz#1578291 - Samba can not register sss idmap module because its using an outdated SMB_IDMAP_INTERFACE_VERSION
+
+        [1.16.0-22]
+        - Resolves: rhbz#1516266 - Give a more detailed debug and system-log message if krb5_init_context() failed
+        - Resolves: rhbz#1503802 - Smartcard authentication fails if SSSD is offline and 'krb5_store_password_if_offline = True'
+        - Resolves: rhbz#1385665 - Incorrect error code returned from krb5_child (updated)
+        - Resolves: rhbz#1547234 - SSSDs GPO code ignores ad_site option
+        - Resolves: rhbz#1459348 - extend sss-certmap man page regarding priority processing
+        - Resolves: rhbz#1220767 - Group renaming issue when 'id_provider = ldap' is set
+        - Resolves: rhbz#1538555 - crash in nss_protocol_fill_netgrent. sssd_nss[19234]: segfault at 80 ip 000055612688c2a0 sp 00007ffddf9b9cd0 error 4 in sssd_nss[55612687e000+39000]
+
+        [1.16.0-21]
+        - Resolves: rhbz#1565774 - After updating to RHEL 7.5 failing to clear the sssd cache
+
+        [1.16.0-20]
+        - Resolves: rhbz#1566782 - memory management issue in the sssd_nss_ex interface can cause the ns-slapd process on IPA server to crash
     FixedIn:
         - Module: null
           Name: libipa_hbac

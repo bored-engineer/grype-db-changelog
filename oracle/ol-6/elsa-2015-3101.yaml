@@ -1,7 +1,16 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        kernel-uek
+        [3.8.13-118.2.1]
+        - ipc/sem.c: fully initialize sem_array before making it visible (Manfred Spraul)  [Orabug: 22277382]  {CVE-2015-7613}
+        - ipc: fix msg newqueue add (Guru Anbalagane)  [Orabug: 22277382]  {CVE-2015-7613}
+
+        [3.8.13-118.1.1]
+        - sctp: fix race on protocol/netns initialization (Marcelo Ricardo Leitner)  [Orabug: 22249981]  {CVE-2015-5283}
+        - Initialize msg/shm IPC objects before doing ipc_addid() (Linus Torvalds)  [Orabug: 22250045]  {CVE-2015-7613}
+        - ixgbe: reset copper phy power mode (Ethan Zhao)  [Orabug: 22271769]
     FixedIn:
         - Module: null
           Name: dtrace-modules-3.8.13-118.2.1.el6uek

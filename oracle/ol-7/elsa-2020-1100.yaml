@@ -1,7 +1,16 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1:5.5.65-1]
+        - Rebase to 5.5.65
+          Also fixes:
+          CVE-2019-2737 CVE-2019-2739 CVE-2019-2740 CVE-2019-2805
+          Resolves: #1741357
+        - Revert upstream changes that make the mysql_install_db relocatable
+          because it broke mysql_install_db when run without --rpm arg
+          Resolves: #1731062
+        - Add openssl BR that was missing for the tests
     FixedIn:
         - Module: null
           Name: mariadb

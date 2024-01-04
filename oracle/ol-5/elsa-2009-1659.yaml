@@ -1,7 +1,42 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [kvm-83-105.0.1.el5_4.13]
+        - Add kvm-add-oracle-workaround-for-libvirt-bug.patch
+
+        [kvm-83-105.el5_4.13]
+        - kvm-kernel-KVM-x86-emulator-limit-instructions-to-15-bytes.patch [bz#541164]
+        - Resolves: bz#541164
+          (CVE-2009-4031 kernel: KVM: x86 emulator: limit instructions to 15 bytes [rhel-5.4.z])
+
+        [kvm-83-105.el5_4.12]
+        - kvm-virtio-blk-Stop-VM-on-read-errors.patch [bz#537334]
+        - kvm-ide-Stop-VM-on-read-errors-respin.patch [bz#537334 bz#540406]
+        - Resolves: bz#537334
+          (O/S Filesystem Corruption with RHEL-5.4 on a RHEV Guest)
+        - Resolves: bz#540406
+          (RHEL5.4 VM image corruption with an IDE v-disk)
+
+        [kvm-83-105.el5_4.11]
+        - kvm-qcow2-Refactor-update_refcount-take-2.patch [bz#520693]
+        - kvm-qcow2-Update-multiple-refcounts-at-once-take-2.patch [bz#520693]
+        - kvm-Combined-patch-of-two-upstream-commits-the-second-fi-take-2.patch.patch [bz#520693]
+        - kvm-alloc_cluster_link_l2-Write-complete-sectors-take-2.patch.patch [bz#520693]
+        - kvm-update_refcount-Write-complete-sectors-take-2.patch [bz#520693]
+        - Resolves: bz#520693
+          (Bad qcow2 performance with cache=off)
+
+        [kvm-83-105.el5_4.10]
+        - Update kversion to 2.6.18-164.6.1.el5 to match build root
+        - kvm-kernel-get_tss_base_addr-should-return-gpa_t-type.patch [bz#532043]
+        - kvm-kernel-KVM-VMX-Adjust-rflags-if-in-real-mode-emulation.patch [bz#532031]
+        - kvm-kernel-KVM-When-switching-to-a-vm8086-task-load-segments-as.patch [bz#532031]
+        - kvm-kernel-KVM-Fix-task-switch-back-link-handling-v2-including-.patch [bz#532031]
+        - Resolves: bz#532031
+          (KVM does not implement proper support for hardware task linking when using vm8086 mode)
+        - Resolves: bz#532043
+          (qemu aborted when restart 32bitwin23k with more than 4G mem in intel host.)
     FixedIn:
         - Module: null
           Name: kmod-kvm

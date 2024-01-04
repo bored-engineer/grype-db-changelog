@@ -1,7 +1,22 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [7.3.6-2]
+        - change working dir to  in grafana-cli wrapper (fixes Red Hat BZ #1916083)
+        - add pcp-redis-datasource to allow_loading_unsigned_plugins config option
+
+        [7.3.6-1]
+        - update to 7.3.6 tagged upstream community sources, see CHANGELOG
+        - remove dependency on SAML (not supported in the open source version of Grafana)
+
+        [7.3.4-1]
+        - update to 7.3.4 tagged upstream community sources, see CHANGELOG
+        - bundle golang dependencies
+        - optionally bundle node.js dependencies and build and test frontend as part of the specfile
+        - merge all datasources into main grafana package
+        - change default provisioning path to /etc/grafana/provisioning
+        - resolve https://bugzilla.redhat.com/show_bug.cgi?id=1843170
     FixedIn:
         - Module: null
           Name: grafana

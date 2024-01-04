@@ -1,7 +1,25 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [4.4.0-14.0.1.el7_3.1.1]
+        - Blank out header-logo.png product-name.png
+          Replace login-screen-logo.png [20362818]
+
+        [4.4.0-14.1.1]
+        - Resolves: #1370493 CVE-2016-7030 ipa: DoS attack against kerberized services
+          by abusing password policy
+          - ipa-kdb: search for password policies globally
+        - Renamed patches 1011 and 1012 to 0146 and 0145, as they were merged upstream
+
+        [4.4.0-14.1]
+        - Resolves: #1370493 CVE-2016-7030 ipa: DoS attack against kerberized services
+          by abusing password policy
+          - password policy: Add explicit default password policy for hosts and
+            services
+        - Resolves: #1395311 CVE-2016-9575 ipa: Insufficient permission check in
+          certprofile-mod
+          - certprofile-mod: correctly authorise config update
     FixedIn:
         - Module: null
           Name: ipa-admintools

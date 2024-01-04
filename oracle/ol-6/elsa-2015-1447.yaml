@@ -1,7 +1,30 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [2.20-3]
+        - Updated pcre buildrequires to require pcre-devel >= 7.8-7
+          Related: rhbz#1193030
+
+        [2.20-2]
+        - Fixed invalid UTF-8 byte sequence error in PCRE mode
+          (by pcre-backported-fixes patch)
+          Resolves: rhbz#1193030
+        - Fixed buffer overrun for grep -F
+          Resolves: CVE-2015-1345
+        - Fixed bogus date in the changelog
+
+        [2.20-1]
+        - New version
+          Resolves: rhbz#1064668
+          Resolves: rhbz#982215
+          Resolves: rhbz#1126757
+          Resolves: rhbz#1167766
+          Resolves: rhbz#1171806
+        - Fixed \w and \W behaviour in multibyte locales
+          Resolves: rhbz#799863
+        - Documented --fixed-regexp option
+          Resolves: rhbz#1103270
     FixedIn:
         - Module: null
           Name: grep

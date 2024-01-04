@@ -1,7 +1,210 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        kubernetes
+        [1.9.11-2.2.1]
+        - CVE-2019-6486
+
+        [1.9.11-2.1.1]
+        - Fix kubeadm-registry.sh
+        - Use golang 1.9.3
+        - [CVE-2018-1002105] Handle error responses from backends
+        - Bump to v1.9.11
+
+        [1.9.1-2.1.7]
+        - [Orabug 27803001]
+
+        [1.9.1-2.1.5]
+        - Production built 1.9.1-2.1.5
+        - Fix the upgrade version check
+        - Remove w/a from [Orabug 27125915]
+
+        [1.9.1-2.1.4.dev]
+        - Make sure worker node upgrade properly
+        - [Orabug 27649898]
+
+        [1.9.1-2.1.3.dev]
+        - Ensure that the runtime mounts RO volumes read-only [CVE-2017-1002102]
+        - Update Dashboard version to v1.8.3 [CVE-2017-1002102]
+        - Fix nested volume mounts for read-only API data volumes [CVE-2017-1002102]
+        - Fixed kubeadm-setup.sh and kubeadm-registry.sh
+        - Add feature gate for subpath [CVE-2017-1002101]
+        - Add subpath e2e tests [CVE-2017-1002101]
+        - Lock subPath volumes [CVE-2017-1002101]
+
+        [1.9.1-2.0.2]
+        - Add Major and Minor version
+        - Production built 1.9.1-2.0.2
+
+        [1.9.1-2.0.1]
+        - Production built 1.9.1-2.0.1
+
+        [1.9.1-1.0.8.dev]
+        - Properly take care of KUBE_REPO_PREFIX for worker upgrade
+        - In restart case, take care of no image case
+
+        [1.9.1-1.0.7.dev]
+        - Fix apiserver-cert-extra-sans
+        - [Orabug 27531451]
+
+        [1.9.1-1.0.6.dev]
+        - Also need to fix the repo location
+
+        [1.9.1-1.0.5.dev]
+        - [Orabug 27481302]
+
+        [1.9.1-1.0.4.dev]
+        - In the restart check image could be empty
+
+        [1.9.1-1.0.3.dev]
+        - [Orabug 27486461]
+
+        [1.9.1-1.0.2.dev]
+        - Occasionally pod-infra-container-image doesn't get propagate
+
+        [1.9.1-1.0.1.dev]
+        - Fix kubeadm-setup.sh for v1.9.1
+        - Fix kubeadm-registry.sh for v1.9.1
+        - Upstream modifications for Oracle
+        - Update to v1.9.1
+
+        [1.8.4-2.0.1]
+        - If KUBE_REPO_PREFIX is not set then initialized to default registry
+        - Built production 1.8.4-2.0.1
+
+        [1.8.4-1.2.3.dev]
+        - [Orabug 27256199]
+
+        [1.8.4-1.2.2.dev]
+        - Remove -beta.0 string from the pkg
+        - Check and create /var/run/kubeadm early and once
+
+        [1.8.4-1.2.1.dev]
+        - Fix kubeadm-registry.sh default to 1.8.4
+        - [Orabug 27248937]
+
+        [1.8.4-1.2.0.dev]
+        - Update to v1.8.4
+        - Upstream code changes
+        - Support upgrade from a lower version of 1.8 to a higher one
+        - KUBE_GIT_TREE_STATE='git archive' breaks build
+        - Modify KUBE_GIT_VERSION in kubernetes.spec
+        - Take care of kubeadm-setup.sh to allow swap for now
+
+        [1.8.1-2.0.1]
+        - Built production 1.8.1-2.0.1
+
+        [1.8.1-1.1.9]
+        - Change kubeadm to requires kubelet and kubectl
+        - Fix kubeadm command line failure
+
+        [1.8.1-1.1.8.rc2]
+        - Remove --skip flag on upgrade path
+        - [Orabug 27125915]
+        - Enabling kubectl-proxy.service for dashboard
+        - Include service-cluster-ip-range in the NO_PROXY for upgrade
+
+        [1.8.1-1.1.7.rc1]
+        - Improve on OCR registry mirror optimization
+        - Fix upgrade to allow 1.7 or 1.8 kubelet/kubectl
+
+        [1.8.1-1.1.6.dev]
+        - Fix upgrade check of apiserver image version
+        - OCI REGISTRY optimization
+        - Modify flannel ip on the /tmp file instead of the original
+        - Include api advertise-address in NO_PROXY during upgrade
+        - Make the token to expiry in 24 hr in the upgrade case
+        - Add kubeadm-registry.sh
+
+        [1.8.1-1.1.5.dev]
+        - Start kubectl-proxy.service automatically for dashboard
+        - Fix unbound variable for  check
+        - Upgrade restore and flannel upgrade capability
+        - Include version info in backup and restore
+        - Take care of kubeadm init and join parameters checking
+
+        [1.8.1-1.1.4.dev]
+        - Optimize dashboard creation
+        - Fixup upgrade
+        - Fixup upgrade 2.0
+        - Cleanup /var/lib/cni as stale ip files could create network issues
+        - Only display WARNING for [kubeadm]
+
+        [1.8.1-1.0.4.dev]
+        - Re-enable kubernetes-dashboard
+        - Upgrade modifications
+        - Make dashboard into a function
+        - Optimize dashboard creation
+        - Fixup upgrade
+        - Fixup upgrade 2.0
+
+        [1.8.1-1.0.3.dev]
+        - Add discovery-token-ca-cert-has to kubeadm::join
+        - Additional things to cleanup in kubeadm::down
+        - Fix kubelet failure for 1.8
+        - Don't reload firewall rule in --skip case for consistency
+
+        [1.8.1-1.0.2.dev]
+        - Implement upgrade capability
+        - Bringing back KUBE_REPO_PREFIX
+        - WORKAROUND FOR LACK OF OCR
+
+        [1.8.1-1.0.1.dev]
+        - Update to v1.8.1
+        - kubeadm doesn't require kubelet and kubectl anymore
+        - optimize firewalld checking
+        - move repo check to its own function + OCI repo check
+        - --fail-swap-on=false on kubelet for backwards compatibility
+
+        [1.7.4-2.0.7.dev]
+        - [Orabug 26926112]
+        - Put 100% completed message
+
+        [1.7.4-2.0.6.dev]
+        - --skip-preflight-checks doesn't check kubelet status
+        - TRAP cleanup background processes
+
+        [1.7.4-2.0.5.dev]
+        - [Orabug 26866772]
+        - Include rough % completed for kubeadm-setup.sh up
+        - Extend the usage of kubeadm-setup up
+
+        [1.7.4-2.0.4.dev]
+        - Check is /sbin in the PATH
+        - Implement init command as such more 'kubeadm init' options can be used
+        - Implement a spinning progress bar in case downloading takes a while
+
+        [1.7.4-2.0.1]
+        - Update to v1.7.4
+        - [Orabug 26677088] kube-dns failure with iptables services
+
+        [1.6.4-2.0.1]
+        - Update to v1.6.4
+        - Include kubeadm-setup.sh for ease of provisioning via kubeadm with Oracle Linux
+
+        kubernetes-cni
+        [0.6.0-2.1.1]
+        - CVE-2019-6486
+
+        [0.6.0-2.0.1]
+        - Production built 0.6.0-2.0.1
+
+        [0.6.0-1.0.1]
+        - Update to v0.6.0
+
+        [0.5.2-2.0.1]
+        - Update to v0.5.2
+
+        kubernetes-cni-plugins
+        [0.6.0-2.1.1]
+        - CVE-2019-6486
+
+        [0.6.0-2.0.1]
+        - Production built 0.6.0-2.0.1
+
+        [0.6.0-1.0.1.dev]
+        - Update to v0.6.0
     FixedIn:
         - Module: null
           Name: kubeadm

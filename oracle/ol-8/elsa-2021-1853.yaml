@@ -1,7 +1,18 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.7.3-15]
+        - Fix SPEC file to not check md5 mtime and size of /var/lib/unbound/root.key
+        - Resolves: rhbz#1714175
+        - Use system-wide crypto policy setting (PROFILE=SYSTEM) instead of custom setting
+        - Resolves: rhbz#1842837
+        - Enable additional logging in unbound
+        - Resolves: rhbz#1850460
+        - security hardening from x41 report
+        - Resolves: rhbz#1859933
+        - symbolic link traversal when writing PID file
+        - Resolves: rhbz#1899058
     FixedIn:
         - Module: null
           Name: python3-unbound

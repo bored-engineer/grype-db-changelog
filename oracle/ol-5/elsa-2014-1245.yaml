@@ -1,7 +1,33 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.6.1-78.el5]
+        - gssapi: pull in upstream fix for a possible NULL dereference in spnego
+          (CVE-2014-4344, #1121509)
+
+        [1.6.1-77.el5]
+        - fix what appears to be a cosmetic error in the patch for self-tests
+          for CVE-2014-4341
+
+        [1.6.1-76.el5]
+        - run the backported self-tests, such as they are, for CVE-2014-4341
+
+        [1.6.1-75.el5]
+        - pull in backported fix for denial of service by injection of malformed
+          GSSAPI tokens (CVE-2014-4341, #1121509)
+
+        [1.6.1-74.el5]
+        - add patch based on one from Filip Krska to not call poll() with a negative
+          timeout when the caller's intent is for us to just stop calling it (#1089732)
+
+        [1.6.1-73.el5]
+        - incorporate backported upstream patch for remote crash of KDCs which serve
+          multiple realms simultaneously (RT#7756, CVE-2013-1418/CVE-2013-6800,
+
+        [1.6.1-72.el5]
+        - add part-backported fix to avoid possible use-after-free when encrypting
+          delegated creds (Jatin Nansi, #1004632)
     FixedIn:
         - Module: null
           Name: krb5-devel

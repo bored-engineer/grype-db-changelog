@@ -1,7 +1,24 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.7.11-1]
+        - Update to 0.7.11
+        - selected bug fixes:
+          * support arch<->noarch package changes when creating patch
+            conflicts from the updateinfo data
+          * also support other rpm database types
+          * fixed solv_zchunk decoding error if large chunks are used
+          * treat retracted pathes as irrelevant
+          * made add_update_target work with multiversion installs
+        - new features
+          * support for SOLVER_BLACKLIST jobs that block the installation of matched
+            packages unless they are directly selected by an SOLVER_INSTALL job
+          * libsolv now also parses the patch status in the updateinfo parser
+          * new solvable_matchessolvable() function
+          * support conda constrains dependencies
+          * new rpm_stat_database() function
+          * new rpm_hash_database_state() function
     FixedIn:
         - Module: null
           Name: libsolv

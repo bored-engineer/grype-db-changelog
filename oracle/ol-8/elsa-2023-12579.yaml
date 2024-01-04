@@ -1,7 +1,14 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        runc
+        [1:1.1.4-1.0.1]
+        - rootless: fix /sys/fs/cgroup mounts to prevent CVE-2023-25809
+        - rootfs: prohibit symlinks that conflicts with readonlyPaths
+                  and/or maskedPaths to prevent CVE-2023-27561
+        - Prohibit /proc and /sys to be symlinks to prevent CVE-2023-28642
+        - JIRA: OLDIS-25589
     FixedIn:
         - Module: container-tools:ol8
           Name: aardvark-dns

@@ -1,7 +1,34 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [1.6.1-70.el5]
+        - add upstream patch for telnetd buffer overflow (CVE-2011-4862, #770351)
+
+        [1.6.1-69.el5]
+        - ftp: fix a static analysis should-never-happen NULL dereference (#750823)
+
+        [1.6.1-68.el5]
+        - backport fixes to teach libkrb5 to use descriptors higher than FD_SETSIZE
+          to talk to a KDC by using poll() if it's detected at compile-time, revised
+          (#701444, RT#6905)
+
+        [1.6.1-67.el5]
+        - add backported patch by way of jbarbuc to free subkeys created by the
+          KDC while processing TGS requests (#708516)
+
+        [1.6.1-66.el5]
+        - add backported patch by way of several people to better avoid false
+          detection of replay attacks when talking to systems with coarse time
+          resolution (#713500)
+
+        [1.6.1-65.el5]
+        - ftpd: add backported patch to check for errors when calling setegid
+          (MITKRB5-SA-2011-005, CVE-2011-1526, #719098)
+
+        [1.6.1-64.el5]
+        - klist: don't trip over referral entries when invoked with -s (#729067,
+          RT#6915)
     FixedIn:
         - Module: null
           Name: krb5-devel

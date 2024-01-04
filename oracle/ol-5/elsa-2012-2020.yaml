@@ -1,7 +1,38 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        kernel-uek:
+
+        [2.6.32-300.27.1.el6uek]
+        - net: sock: validate data_len before allocating skb (Jason Wang) [Bugdb: 13966]{CVE-2012-2136}
+        - fcaps: clear the same personality flags as suid when fcaps are used (Eric Paris) [Bugdb: 13966] {CVE-2012-2123}
+        - Revert 'nfs: when attempting to open a directory, fall back on normal lookup (Todd Vierling) [Orabug 14141154]
+
+        [2.6.32-300.26.1.el6uek]
+        - mptsas: do not call __mptsas_probe in kthread (Maxim Uvarov) [Orabug:
+          14175509]
+        - mm: check if any page in a pageblock is reserved before marking it
+          MIGRATE_RESERVE (Maxim Uvarov) [Orabug: 14073214]
+        - mm: reduce the amount of work done when updating min_free_kbytes (Mel Gorman)
+          [Orabug: 14073214]
+        - vmxnet3: Updated to el6-u2 (Guangyu Sun) [Orabug: 14027961]
+        - xen: expose host uuid via sysfs. (Zhigang Wang)
+        - sched: Fix cgroup movement of waking process (Daisuke Nishimura) [Orabug:
+          13946210]
+        - sched: Fix cgroup movement of newly created process (Daisuke Nishimura)
+          [Orabug: 13946210]
+        - sched: Fix cgroup movement of forking process (Daisuke Nishimura) [Orabug:
+          13946210]
+        - x86, boot: Wait for boot cpu to show up if nr_cpus limit is about to hit
+          (Zhenzhong Duan) [Orabug: 13629087]
+        - smp: Use nr_cpus= to set nr_cpu_ids early (Zhenzhong Duan) [Orabug: 13629087]
+        - net: ipv4: relax AF_INET check in bind() (Maxim Uvarov) [Orabug: 14054411]
+
+        ofa-2.6.32-300.27.1.el6uek:
+
+        [1.5.1-4.0.58]
+        - Add Patch 158-169
     FixedIn:
         - Module: null
           Name: kernel-uek

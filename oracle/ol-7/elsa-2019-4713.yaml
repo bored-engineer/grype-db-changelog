@@ -1,7 +1,32 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [15:3.1.0-5.el7]
+        - Only enable the halt poll control MSR if it is supported by the host (Mark
+          Kanda)  [Orabug: 29946722]
+
+        [15:3.1.0-4.el7]
+        - kvm: i386: halt poll control MSR support (Marcelo Tosatti)  [Orabug: 29933278]
+        - Document CVEs as fixed: CVE-2017-9524, CVE-2017-6058, CVE-2017-5931 (Mark Kanda)  [Orabug: 29886908]  {CVE-2017-5931} {CVE-2017-6058} {CVE-2017-9524}
+        - pvrdma: release device resources in case of an error (Prasad J Pandit)  [Orabug: 29056678]  {CVE-2018-20123}
+        - qxl: check release info object (Prasad J Pandit)  [Orabug: 29886906]  {CVE-2019-12155}
+        - target/i386: add MDS-NO feature (Paolo Bonzini)  [Orabug: 29820428]  {CVE-2018-12126} {CVE-2018-12127} {CVE-2018-12130} {CVE-2019-11091}
+        - docs: recommend use of md-clear feature on all Intel CPUs (Daniel P. Berrange)  [Orabug: 29820428]  {CVE-2018-12126} {CVE-2018-12127} {CVE-2018-12130} {CVE-2019-11091}
+        - target/i386: define md-clear bit (Paolo Bonzini)  [Orabug: 29820428]  {CVE-2018-12126} {CVE-2018-12127} {CVE-2018-12130} {CVE-2019-11091}
+        - pvh: block migration if booting using PVH (Liam Merwick)  [Orabug: 29796676]
+        - hw/i386/pc: run the multiboot loader before the PVH loader (Stefano Garzarella)  [Orabug: 29796676]
+        - optionrom/pvh: load initrd from fw_cfg (Stefano Garzarella)  [Orabug: 29796676]
+        - hw/i386/pc: use PVH option rom (Stefano Garzarella)  [Orabug: 29796676]
+        - qemu.spec: add pvh.bin to %files (Liam Merwick)  [Orabug: 29796676]
+        - optionrom: add new PVH option rom (Stefano Garzarella)  [Orabug: 29796676]
+        - linuxboot_dma: move common functions in a new header (Stefano Garzarella)  [Orabug: 29796676]
+        - linuxboot_dma: remove duplicate definitions of FW_CFG (Stefano Garzarella)  [Orabug: 29796676]
+        - pvh: load initrd and expose it through fw_cfg (Stefano Garzarella)  [Orabug: 29796676]
+        - pvh: Boot uncompressed kernel using direct boot ABI (Liam Merwick)  [Orabug: 29796676]
+        - pvh: Add x86/HVM direct boot ABI header file (Liam Merwick)  [Orabug: 29796676]
+        - elf-ops.h: Add get_elf_note_type() (Liam Merwick)  [Orabug: 29796676]
+        - elf: Add optional function ptr to load_elf() to parse ELF notes (Liam Merwick)  [Orabug: 29796676]
     FixedIn:
         - Module: null
           Name: ivshmem-tools

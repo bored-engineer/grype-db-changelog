@@ -1,7 +1,1939 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        hivex
+        libguestfs
+        [1.44.0-9.0.1]
+        - Replace upstream references from description tag
+        - Config supermin to use host yum.conf in ol8 [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        [1:1.44.0-9]
+        - Fix CVE-2022-2211 Denial of Service in --key parameter
+          resolves: rhbz#2101280
+
+        [1:1.44.0-8]
+        - Obsolete old libguestfs-benchmarking subpackage
+          resolves: rhbz#2091597
+
+        [1:1.44.0-7]
+        - Disable 5-level page tables when using -cpu max
+          resolves: rhbz#2084566
+          related: rhbz#2075424
+
+        [1:1.44.0-6]
+        - Backport support for -cpu max to allow RHEL 9 guests to be modified
+          resolves: rhbz#2075424
+
+        [1:1.44.0-5]
+        - Fix libguestfs failure with qemu 6.2, libvirt 7.10
+          resolves: rhbz#2035177
+
+        [1:1.44.0-4]
+        - Autodetect backing format for qemu-img create -b
+        - Move appliance to separate subpackage
+        - Read rpm database through librpm
+          resolves: rhbz#2013916, rhbz#1989520, rhbz#1836094
+
+        [1.44.0-3.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1:1.40.2-28]
+        - daemon: lvm: Use lvcreate --yes to avoid interactive prompts
+          resolves: rhbz#1933640
+
+        libguestfs-winsupport
+        [8.8-1]
+        - Rebase to ntfs-3g 2022.5.17
+        - Fixes: CVE-2021-46790, CVE-2022-30783, CVE-2022-30784, CVE-2022-30785,
+          CVE-2022-30786, CVE-2022-30787, CVE-2022-30788, CVE-2022-30789
+          resolves: rhbz#2127240 rhbz#2127248
+          (also: 2127233 2127234 2127241 2127249 2127255 2127256 2127262 2127263)
+
+        libiscsi
+        libnbd
+        [1.6.0-5.el8]
+        - Fix CVE-2022-0485: Fail nbdcopy if NBD read or write fails
+          resolves: rhbz#2045718
+
+        [1.6.0-4.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.2.2]
+        - Resolves: bz#1844296
+        (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [1.2.2-1]
+        - New stable release 1.2.2.
+
+        [1.2.1-1]
+        - New stable release 1.2.1.
+
+        [1.2.0-1]
+        - New stable release 1.2.0.
+
+        [1.0.3-1]
+        - New upstream version 1.0.3.
+        - Contains fix for remote code execution vulnerability.
+        - Add new libnbd-security(3) man page.
+
+        [1.0.2-1]
+        - New upstream version 1.0.2.
+        - Remove patches which are upstream.
+        - Contains fix for NBD Protocol Downgrade Attack (CVE-2019-14842).
+        - Fix previous commit message.
+
+        [1.0.1-2]
+        - Add upstream patch to fix nbdsh (for nbdkit tests).
+        - Fix interop tests on slow machines.
+
+        [1.0.1-1]
+        - New stable version 1.0.1.
+
+        [1.0.0-1]
+        - New upstream version 1.0.0.
+
+        [0.9.9-2]
+        - Rebuilt for Python 3.8
+
+        [0.9.9-1]
+        - New upstream version 0.9.9.
+
+        [0.9.8-4]
+        - Fix nbdkit dependencies so we're actually running the tests.
+        - Add glib2-devel BR so we build the glib main loop example.
+        - Add upstream patch to fix test error:
+          nbd_connect_unix: getlogin: No such device or address
+        - Fix test failure on 32 bit.
+
+        [0.9.8-3]
+        - Bump and rebuild to fix releng brokenness.
+          https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/message/2LIDI33G3IEIPYSCCIP6WWKNHY7XZJGQ/
+
+        [0.9.8-2]
+        - Rebuilt for Python 3.8
+
+        [0.9.8-1]
+        - New upstream version 0.9.8.
+        - Package the new nbd_*(3) man pages.
+
+        [0.9.7-1]
+        - New upstream version 0.9.7.
+        - Add libnbd-ocaml(3) man page.
+
+        [0.9.6-2]
+        - Add all upstream patches since 0.9.6 was released.
+        - Package the ocaml bindings into a subpackage.
+
+        [0.9.6-1]
+        - New upstream verison 0.9.6.
+
+        [0.1.9-1]
+        - New upstream version 0.1.9.
+
+        [0.1.8-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+        [0.1.8-1]
+        - New upstream version 0.1.8.
+
+        [0.1.7-1]
+        - New upstream version 0.1.7.
+
+        [0.1.6-1]
+        - New upstream version 0.1.6.
+
+        [0.1.5-1]
+        - New upstream version 0.1.5.
+
+        [0.1.4-1]
+        - New upstream version 0.1.4.
+
+        [0.1.2-2]
+        - Enable libxml2 for NBD URI support.
+
+        [0.1.2-1]
+        - New upstream version 0.1.2.
+
+        [0.1.1-1]
+        - Fix license in man pages and examples.
+        - Add nbdsh(1) man page.
+        - Include the signature and keyring even if validation is disabled.
+        - Update devel subpackage license.
+        - Fix old FSF address in Python tests.
+        - Filter Python provides.
+        - Remove executable permission on the tar.gz.sig file.
+        - Initial release.
+
+        libtpms
+        [0.9.1-2.20211126git1ff6fe1f43]
+        - Backport 'tpm2: Check size of buffer before accessing it' (CVE-2023-1017 & CVE-2023-1018)
+          Resolves: rhbz#2173964
+          Resolves: rhbz#2173970
+
+        libvirt
+        [8.0.0-19.0.2]
+        - qemu: monitor: Drop old monitor fields from 'struct _qemuMonitorMessage'
+        - qemu: Make 'struct _qemuMonitorMessage' private
+        - qemu: monitor: Move declaration of struct _qemuMonitor to qemu_monitor_priv.h
+        - qemu: qemuBlockGetNamedNodeData: Remove pointless error path
+        - qemu: monitor: Store whether 'query-named-block-nodes' supports 'flat' parameter
+        - qemuMonitorJSONBlockStatsUpdateCapacityBlockdev: Use 'flat' mode of query-named-block-nodes
+        - virpci: Resolve leak in virPCIVirtualFunctionList cleanup [CVE-2023-2700]
+        - node_device_conf: Avoid memleak in virNodeDeviceGetPCIVPDDynamicCap() [CVE-2023-2700]
+
+        -[8.0.0-19.0.1
+        -- Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+        -- Add runtime deps for pkg librbd1 >= 1:10.2.5 (Keshav Sharma)
+
+        [8.0.0-19]
+        - qemu: domain: Fix logic when tainting domain (rhbz#2174447)
+        - qemu: agent: Make fetching of 'can-offline' member from 'guest-query-vcpus' optional (rhbz#2174447)
+
+        [8.0.0-18]
+        - conf: Make VIR_DOMAIN_NET_TYPE_ETHERNET not share 'host view' (rhbz#2172578)
+
+        [8.0.0-17]
+        - vircpi: Add PCIe 5.0 and 6.0 link speeds (rhbz#2168116)
+
+        [8.0.0-16]
+        - qemu_namespace: Don't leak memory in qemuDomainGetPreservedMounts() (rhbz#2166573)
+
+        [8.0.0-15]
+        - nodedev: fix reported error msg in css cap XML parsing (rhbz#2165011)
+        - util: refactor virDomainDeviceCCWAddress into virccw.h (rhbz#2165011)
+        - util: refactor virDomainCCWAddressAsString into virccw (rhbz#2165011)
+        - util: make reuse of ccw device address format constant (rhbz#2165011)
+        - util: refactor ccw address constants into virccw (rhbz#2165011)
+        - util: refactor virDomainCCWAddressIncrement into virccw (rhbz#2165011)
+        - util: refactor virDomainDeviceCCWAddressIsValid into virccw (rhbz#2165011)
+        - util: refactor virDomainDeviceCCWAddressEqual into virccw (rhbz#2165011)
+        - conf: adjust method name virDomainDeviceCCWAddressParseXML (rhbz#2165011)
+        - util: add ccw device address parsing into virccw (rhbz#2165011)
+        - util: add virCCWDeviceAddressFromString to virccw (rhbz#2165011)
+        - nodedev: refactor css format from ccw format method (rhbz#2165011)
+        - nodedev: refactor ccw device address parsing from XML (rhbz#2165011)
+        - nodedev: refactor css XML parsing from ccw XML parsing (rhbz#2165011)
+        - schemas: refactor out nodedev ccw address schema (rhbz#2165011)
+        - nodedev: add optional device address of channel device to css device (rhbz#2165011)
+        - nodedev: add tests for optional device address to css device (rhbz#2165011)
+        - nodedev: prevent internal error on dev_busid parse (rhbz#2165011)
+        - rpc: Fix memory leak of fds (rhbz#2165428)
+
+        [8.0.0-14]
+        - qemu: Ignore missing vm.unprivileged_userfaultfd sysctl (rhbz#2148578)
+
+        [8.0.0-13]
+        - build: Only install libvirt-guests when building libvirtd (rhbz#2153688)
+        - tools: Fix install_mode for some scripts (rhbz#2153688)
+
+        [8.0.0-12]
+        - util: json: Split out array->strinlist conversion from virJSONValueObjectGetStringArray (rhbz#2149752)
+        - qemuAgentGetDisks: Don't use virJSONValueObjectGetStringArray for optional data (rhbz#2149752)
+        - virpidfile: Add virPidFileReadPathIfLocked func (rhbz#2152188)
+        - qemu: tpm: Get swtpm pid without binary validation (rhbz#2152188)
+        - qemu_tpm: Do async IO when starting swtpm emulator (rhbz#2152188)
+        - qemu: gpu: Get pid without binary validation (rhbz#2152188)
+        - spec: libvirt-daemon: Add optional dependency on *-client (rhbz#2136591)
+
+        [8.0.0-11]
+        - qemu_process: Don't require a hugetlbfs mount for memfd (rhbz#2123196)
+        - qemu_namespace: Tolerate missing ACLs when creating a path in namespace (rhbz#2123196)
+        - qemu_namespace: Fix a corner case in qemuDomainGetPreservedMounts() (rhbz#2123196)
+        - qemu_namespace: Introduce qemuDomainNamespaceSetupPath() (rhbz#2123196)
+        - qemu_process.c: Propagate hugetlbfs mounts on reconnect (rhbz#2123196)
+        - qemuProcessReconnect: Don't build memory paths (rhbz#2123196)
+
+        [8.0.0-10]
+        - security_selinux.c: Relabel existing mode='bind' UNIX sockets (rhbz#2101575)
+        - RHEL: qemu_migration: Fix restoring memlock limit on destination (rhbz#2107954)
+
+        [8.0.0-9]
+        - conf: virtiofs: add thread_pool element (rhbz#2079582)
+        - qemu: virtiofs: format --thread-pool-size (rhbz#2079582)
+        - conf: Move virDomainObj::originalMemlock into qemuDomainObjPrivate (rhbz#2089433)
+        - qemu_domain: Format qemuDomainObjPrivate::originalMemlock (rhbz#2089433)
+        - qemu: Add qemuDomainSetMaxMemLock helper (rhbz#2089433)
+        - qemu_migration: Use qemuDomainSetMaxMemLock (rhbz#2089433)
+        - qemu_migration: Restore original memory locking limit (rhbz#2089433)
+        - Add VIR_MIGRATE_ZEROCOPY flag (rhbz#2089433)
+        - virsh: Add support for VIR_MIGRATE_ZEROCOPY flag (rhbz#2089433)
+        - qemu_migration: Implement VIR_MIGRATE_ZEROCOPY flag (rhbz#2089433)
+
+        [8.0.0-8]
+        - nwfilter: fix crash when counting number of network filters (CVE-2022-0897, rhbz#2063902)
+        - virDomainDiskDefValidate: Improve error messages for 'startupPolicy' checks (rhbz#2095758)
+        - domain_validate: Split out validation of disk startup policy (rhbz#2095758)
+        - virDomainDiskDefValidateStartupPolicy: Validate disk type better (rhbz#2095758)
+        - virDomainDiskTranslateSourcePool: Fix check of 'startupPolicy' definition (rhbz#2095758)
+
+        [8.0.0-7]
+        - cpu_map: Disable cpu64-rhel* for host-model and baseline (rhbz#1851227)
+        - cputest: Drop some old artificial baseline tests (rhbz#1851227)
+        - cputest: Give better names to baseline tests (rhbz#1851227)
+        - cputest: Add some real world baseline tests (rhbz#1851227)
+        - cpu_x86: Consolidate signature match in x86DecodeUseCandidate (rhbz#1851227)
+        - cpu_x86: Refactor feature list comparison in x86DecodeUseCandidate (rhbz#1851227)
+        - cpu_x86: Penalize disabled features when computing CPU model (rhbz#1851227)
+        - cpu_x86: Ignore enabled features for input models in x86DecodeUseCandidate (rhbz#1851227)
+
+        [8.0.0-6]
+        - conf: Introduce memory allocation threads (rhbz#2067126)
+        - qemu_capabilities: Detect memory-backend-*.prealloc-threads property (rhbz#2067126)
+        - qemu_validate: Validate prealloc threads against qemuCpas (rhbz#2067126)
+        - qemu_command: Generate prealloc-threads property (rhbz#2067126)
+
+        [8.0.0-5]
+        - node_device: Rework udevKludgeStorageType() (rhbz#2056673)
+        - node_device: Treat NVMe disks as regular disks (rhbz#2056673)
+
+        [8.0.0-4]
+        - qemu_command: Generate memory only after controllers (rhbz#2050697)
+        - qemu: Validate domain definition even on migration (rhbz#2050702)
+
+        [8.0.0-3]
+        - qemuDomainSetupDisk: Initialize 'targetPaths' (rhbz#2046172)
+        - RHEL: Remove <glib-2.64.0 workaround for GSource race (rhbz#2045879)
+
+        [8.0.0-2]
+        - Revert 'report error when virProcessGetStatInfo() is unable to parse data' (rhbz#2041610)
+        - qemu: fix inactive snapshot revert (rhbz#2043584)
+
+        [8.0.0-1]
+        - Rebased to libvirt-8.0.0 (rhbz#2012802)
+
+        [8.0.0-0rc1.1]
+        - Rebased to libvirt-8.0.0-rc1 (rhbz#2012802)
+        - The rebase also fixes the following bugs:
+            rhbz#1689202, rhbz#2014369, rhbz#2030119, rhbz#2029380, rhbz#2035237
+            rhbz#2035714, rhbz#2034180
+
+        [7.10.0-1]
+        - Rebased to libvirt-7.10.0 (rhbz#2012802)
+        - The rebase also fixes the following bugs:
+            rhbz#1845468, rhbz#2017928, rhbz#2024419, rhbz#1953389, rhbz#1510237
+
+        [7.9.0-1]
+        - Rebased to libvirt-7.9.0 (rhbz#2012802)
+        - The rebase also fixes the following bugs:
+            rhbz#2011731, rhbz#2012385, rhbz#2013539
+
+        [7.8.0-1]
+        - Rebased to libvirt-7.8.0 (rhbz#2012802)
+        - The rebase also fixes the following bugs:
+            rhbz#1839070, rhbz#1942275, rhbz#1995865, rhbz#1806857, rhbz#1924616
+            rhbz#1978574, rhbz#1989457, rhbz#1965589, rhbz#1677608, rhbz#1926508
+            rhbz#1810863, rhbz#1845468, rhbz#1738392, rhbz#1965140
+
+        [7.6.0-2.fc34]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [6.0.0-37]
+        - security: fix SELinux label generation logic (CVE-2021-3631)
+        - storage_driver: Unlock object on ACL fail in storagePoolLookupByTargetPath (CVE-2021-3667)
+
+        [6.0.0-36]
+        - network: make it safe to call networkSetupPrivateChains() multiple times (rhbz#1942805)
+        - network: force re-creation of iptables private chains on firewalld restart (rhbz#1942805)
+        - hostdev: Update mdev pointer reference after checking device type (rhbz#1940449)
+        - hostdev: mdev: Lookup mdevs by sysfs path rather than mdev struct (rhbz#1940449)
+        - qemu_firmware: don't error out for unknown firmware features (rhbz#1961562)
+        - docs: improve description of secure attribute for loader element (rhbz#1929357)
+        - conf: introduce virDomainDefParseBootInitOptions (rhbz#1929357)
+        - conf: introduce virDomainDefParseBootKernelOptions (rhbz#1929357)
+        - conf: introduce virDomainDefParseBootFirmwareOptions (rhbz#1929357)
+        - conf: introduce virDomainDefParseBootLoaderOptions (rhbz#1929357)
+        - conf: introduce virDomainDefParseBootAcpiOptions (rhbz#1929357)
+        - conf: use switch in virDomainDefParseBootOptions (rhbz#1929357)
+        - conf: introduce support for firmware auto-selection feature filtering (rhbz#1929357)
+        - qemu: implement support for firmware auto-selection feature filtering (rhbz#1929357)
+        - domain_conf: Don't leak def->os.firmwareFeatures (rhbz#1929357)
+        - conf: remove duplicated firmware type attribute (rhbz#1929357)
+
+        [6.0.0-35]
+        - vircgroupv2: properly detect placement of running VM (rhbz#1798463)
+        - virsystemd: export virSystemdHasMachined (rhbz#1798463)
+        - virsystemd: introduce virSystemdGetMachineByPID (rhbz#1798463)
+        - virsystemd: introduce virSystemdGetMachineUnitByPID (rhbz#1798463)
+        - vircgroup: use DBus call to systemd for some APIs (rhbz#1798463)
+        - vircgroupv1: refactor virCgroupV1DetectPlacement (rhbz#1798463)
+        - vircgroupv2: move task into cgroup before enabling controllers (rhbz#1798463)
+        - vircgroup: introduce virCgroupV1Exists and virCgroupV2Exists (rhbz#1798463)
+        - vircgroup: introduce nested cgroup to properly work with systemd (rhbz#1798463)
+        - tests: add cgroup nested tests (rhbz#1798463)
+        - vircgroup: correctly free nested virCgroupPtr (rhbz#1798463)
+        - qemu: Add virtio related options to vsock (rhbz#1931548)
+        - domain_validate: use defines for cpu period and quota limits (rhbz#1798463)
+        - docs: use proper cpu quota value in our documentation (rhbz#1798463)
+        - vircgroup: enforce range limit for cpu.shares (rhbz#1798463)
+        - cgroup: use virCgroupSetCpuShares instead of virCgroupSetupCpuShares (rhbz#1798463)
+        - cpumap: Add support for ibrs CPU feature (rhbz#1926864)
+        - cpumap: Add support for svme-addr-check CPU feature (rhbz#1926864)
+        - cpu_map: Add EPYC-Milan x86 CPU model (rhbz#1926864)
+        - cpu_map: Install x86_EPYC-Milan.xml (rhbz#1926864)
+        - cpu_map: Fix spelling of svme-addr-chk feature (rhbz#1926864)
+
+        [6.0.0-34]
+        - qemu: move cgroup cpu period and quota defines to vircgroup.h (rhbz#1915733)
+        - vircgroupv1: use defines for cpu period and quota limits (rhbz#1915733)
+        - vircgroupv2: use defines for cpu period and quota limits (rhbz#1915733)
+        - vircgroup: fix cpu quota maximum limit (rhbz#1915733)
+        - util: add virNetDevGetPhysPortName (rhbz#1918708)
+        - util: avoid manual VIR_FREE of a g_autofree pointer in virPCIGetName() (rhbz#1918708)
+        - util: Add phys_port_name support on virPCIGetNetName (rhbz#1918708)
+
+        [6.0.0-33]
+        - cpu_map: Fix Icelake Server model number (rhbz#1537734)
+        - cputestdata: Add test data for Snowridge (rhbz#1537734)
+        - cpu_map: Add support for fsrm CPU feature (rhbz#1537734)
+        - cpu_map: Add support for core-capability CPU feature (rhbz#1537734)
+        - cpu_map: Add support for split-lock-detect CPU feature (rhbz#1537734)
+        - cpu_map: Define and enable Snowridge model (rhbz#1537734)
+        - util: fix typo in VIR_MOCK_WRAP_RET_ARGS() (rhbz#1607929)
+        - util/tests: enable locking on iptables/ebtables commandlines in unit tests (rhbz#1607929)
+        - util/tests: enable locking on iptables/ebtables commandlines by default (rhbz#1607929)
+        - tests: fix iptables test case commandline options in virfirewalltest.c (rhbz#1607929)
+        - network: be more verbose about the reason for a firewall reload (rhbz#1607929)
+        - util: always check for ebtables/iptables binaries, even when using firewalld (rhbz#1607929)
+        - util: synchronize with firewalld before we start calling iptables directly (rhbz#1607929)
+        - util: call iptables directly rather than via firewalld (rhbz#1607929)
+        - util: virhostcpu: Fail when fetching CPU Stats for invalid cpu (rhbz#1915183)
+
+        [6.0.0-32]
+        - util: replace macvtap name reservation bitmap with a simple counter (rhbz#1874304)
+        - util: assign tap device names using a monotonically increasing integer (rhbz#1874304)
+        - util: virNetDevTapCreate: initialize fd to -1 (rhbz#1874304)
+
+        [6.0.0-31]
+        - conf: properly clear out autogenerated macvtap names when formatting/parsing (rhbz#1872610)
+        - qemu: format 'ramfb' attribute for mediated devices (rhbz#1876297)
+
+        [6.0.0-30]
+        - cpu_map: Add missing x86 features in 0x7 CPUID leaf (rhbz#1861506)
+        - cpu_map: Add missing x86 features in 0x80000008 CPUID leaf (rhbz#1861506)
+        - cpu_map: Add missing AMD SVM features (rhbz#1861506)
+        - Add testdata for AMD EPYC 7502 (rhbz#1861506)
+        - cpu_map: Defined and enable EPYC-Rome model (rhbz#1861506)
+        - cpu_map: Remove monitor feature from EPYC-Rome (rhbz#1861506)
+        - tests: qemuxml2argv: Use existing machine type for 'numatune-distances' case (rhbz#1749518)
+        - qemuxml2xmltest: Add 'numatune-distance' test case (rhbz#1749518)
+        - conf: Move and rename virDomainParseScaledValue() (rhbz#1749518)
+        - numa_conf: Drop CPU from name of two functions (rhbz#1749518)
+        - qemu_command: Rename qemuBuildNumaArgStr() (rhbz#1749518)
+        - qemuBuildMachineCommandLine: Drop needless check (rhbz#1749518)
+        - numa_conf: Make virDomainNumaSetNodeCpumask() return void (rhbz#1749518)
+        - Allow NUMA nodes without vCPUs (rhbz#1749518)
+        - conf: Parse and format HMAT (rhbz#1749518)
+        - conf: Validate NUMA HMAT configuration (rhbz#1749518)
+        - numa: expose HMAT APIs (rhbz#1749518)
+        - qemu: Introduce QEMU_CAPS_NUMA_HMAT capability (rhbz#1749518)
+        - qemu: Build HMAT command line (rhbz#1749518)
+        - qemuBuildNumaCommandLine: Fix @masterInitiator check (rhbz#1749518)
+        - numa_conf: Properly check for caches in virDomainNumaDefValidate() (rhbz#1749518)
+        - RNG: Allow interleaving of /domain/cpu/numa/cell children (rhbz#1749518)
+
+        [6.0.0-29]
+        - qemu: substitute missing model name for host-passthrough (rhbz#1850680)
+        - rpc: gendispatch: handle empty flags (CVE-2020-25637)
+        - rpc: add support for filtering @acls by uint params (CVE-2020-25637)
+        - rpc: require write acl for guest agent in virDomainInterfaceAddresses (CVE-2020-25637)
+        - qemu: agent: set ifname to NULL after freeing (CVE-2020-25637)
+        - qemu: Fix domfsinfo for non-PCI device information from guest agent (rhbz#1858771)
+        - virDomainNetFindIdx: add support for CCW addresses (rhbz#1837495)
+        - check for NULL before calling g_regex_unref (rhbz#1861176)
+        - virhostcpu.c: fix 'die_id' parsing for Power hosts (rhbz#1876742)
+        - qemuFirmwareFillDomain: Fill NVRAM template on migration too (rhbz#1880418)
+        - node_device: refactor udevProcessCCW (rhbz#1853289, rhbz#1865932)
+        - node_device: detect CSS devices (rhbz#1853289, rhbz#1865932)
+        - virsh: nodedev: ability to filter CSS capabilities (rhbz#1853289, rhbz#1865932)
+        - node_device: detect DASD devices (rhbz#1853289, rhbz#1865932)
+        - udevProcessCSS: Check if def->driver is non-NULL (rhbz#1853289, rhbz#1865932)
+
+        [6.0.0-28]
+        - virdevmapper: Don't cache device-mapper major (rhbz#1860421)
+        - virdevmapper: Handle kernel without device-mapper support (rhbz#1860421)
+        - virdevmapper: Ignore all errors when opening /dev/mapper/control (rhbz#1860421)
+
+        [6.0.0-27]
+        - src: assume sys/sysmacros.h always exists on Linux (rhbz#1860421)
+        - virdevmapper.c: Join two WITH_DEVMAPPER sections together (rhbz#1860421)
+        - virDevMapperGetTargetsImpl: Use VIR_AUTOSTRINGLIST (rhbz#1860421)
+        - virdevmapper: Don't use libdevmapper to obtain dependencies (CVE-2020-14339, rhbz#1860421)
+        - virDevMapperGetTargets: Don't ignore EBADF (rhbz#1860421)
+
+        [6.0.0-26]
+        - qemu: blockjob: Don't base bitmap handling of active-layer block commit on QEMU_CAPS_BLOCKDEV_REOPEN (rhbz#1857779)
+        - qemu: blockjob: Actually delete temporary bitmap on failed active commit (rhbz#1857779)
+        - qemu: block: Remove 'active-write' bitmap even if there are no bitmaps to merge (rhbz#1857779)
+        - qemuDomainBlockPivot: Rename 'actions' to 'bitmapactions' (rhbz#1857779)
+        - qemuDomainBlockPivot: Ignore failures of creating active layer bitmap (rhbz#1857779)
+
+        [6.0.0-25]
+        - Upgrade components in virt:rhel module:stream for RHEL-8.3 release (rhbz#1828317)
+        - conf: Don't format http cookies unless VIR_DOMAIN_DEF_FORMAT_SECURE is used (CVE-2020-14301)
+        - util: Introduce a parser for kernel cmdline arguments (rhbz#1848997)
+        - qemu: Check if s390 secure guest support is enabled (rhbz#1848997)
+        - qemu: Check if AMD secure guest support is enabled (rhbz#1848997)
+        - tools: Secure guest check on s390 in virt-host-validate (rhbz#1848997)
+        - tools: Secure guest check for AMD in virt-host-validate (rhbz#1848997)
+        - docs: Update AMD launch secure description (rhbz#1848997)
+        - docs: Describe protected virtualization guest setup (rhbz#1848997)
+
+        [6.0.0]
+        - Resolves: bz#1828317
+        (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [6.0.0]
+        - Resolves: bz#1810193
+        (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [6.0.0]
+        - Resolves: bz#1810193
+        (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [6.0.0]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [4.5.0-42]
+        - RHEL: virscsi: Check device type before getting it's /dev node name (rhbz#1808388)
+        - RHEL: virscsi: Support TAPEs in virSCSIDeviceGetDevName() (rhbz#1808388)
+        - RHEL: virscsi: Introduce and use virSCSIDeviceGetUnprivSGIOSysfsPath() (rhbz#1808388)
+        - RHEL: virutil: Accept non-block devices in virGetDeviceID() (rhbz#1808388)
+        - RHEL: qemuSetUnprivSGIO: Actually use calculated @sysfs_path to set unpriv_sgio (rhbz#1808388)
+        - RHEL: qemuCheckUnprivSGIO: use @sysfs_path to get unpriv_sgio (rhbz#1808399)
+
+        [4.5.0-41]
+        - qemu: Translate features in virQEMUCapsGetCPUFeatures (rhbz#1804224)
+
+        [4.5.0-40]
+        - process: wait longer on kill per assigned Hostdev (rhbz#1785338)
+        - process: wait longer 5->30s on hard shutdown (rhbz#1785338)
+
+        [4.5.0-39]
+        - selinux: Do not report an error when not returning -1 (rhbz#1788096)
+        - qemu: Fix hyperv features with QEMU 4.1 (rhbz#1794868)
+        - qemu: Prefer dashes for hyperv features (rhbz#1794868)
+        - cpu: Drop KVM_ from hyperv feature macros (rhbz#1794868)
+        - cpu: Drop unused KVM features (rhbz#1794868)
+        - qemu: Fix KVM features with QEMU 4.1 (rhbz#1794868)
+        - cpu: Drop CPUID definition for hv-spinlocks (rhbz#1794868)
+
+        [4.5.0-38]
+        - cpu_map/x86: Add support for BFLOAT16 data type (rhbz#1749516)
+
+        [4.5.0-37]
+        - cpu_map: Add TAA_NO bit for IA32_ARCH_CAPABILITIES MSR (CVE-2019-11135)
+        - cpu_map: Add TSX_CTRL bit for IA32_ARCH_CAPABILITIES MSR (CVE-2019-11135)
+
+        [4.5.0-36]
+        - cpu_conf: Pass policy to CPU feature filtering callbacks (rhbz#1749672, rhbz#1756156, rhbz#1721608)
+        - qemuxml2*test: Add tests for Icelake-Server, -pconfig (rhbz#1749672, rhbz#1756156, rhbz#1721608)
+        - qemu: Drop disabled CPU features unknown to QEMU (rhbz#1749672, rhbz#1756156, rhbz#1721608)
+        - cputest: Add data for Ice Lake Server CPU (rhbz#1749672, rhbz#1756156, rhbz#1721608)
+        - cpu_map: Drop pconfig from Icelake-Server CPU model (rhbz#1749672, rhbz#1756156, rhbz#1721608)
+        - qemu: Fix NULL ptr dereference caused by qemuDomainDefFormatBufInternal (rhbz#1749672, rhbz#1756156, rhbz#1721608)
+
+        [4.5.0-35]
+        - vircgroupv2: fix setting cpu.max period (rhbz#1749227)
+
+        [4.5.0-34]
+        - vircgroupv2: fix abort in VIR_AUTOFREE (rhbz#1747440)
+
+        [4.5.0-33]
+        - vircgroupv2: fix parsing multiple values in single file (rhbz#1741825)
+        - vircgroupv2: fix virCgroupV2GetCpuCfsQuota for 'max' value (rhbz#1741837)
+
+        [4.5.0-32]
+        - virDomainObjListAddLocked: Produce better error message than 'Duplicate key' (rhbz#1737790)
+        - virdbus: Grab a ref as long as the while loop is executed (rhbz#1741900)
+
+        [4.5.0-31]
+        - virDomainObjListAddLocked: fix double free (rhbz#1728530)
+        - docs: schemas: Decouple the virtio options from each other (rhbz#1729675)
+        - util: command: use VIR_AUTOFREE instead of VIR_FREE for scalar types (rhbz#1721434)
+        - util: command: define cleanup function using VIR_DEFINE_AUTOPTR_FUNC (rhbz#1721434)
+        - util: netdevopenvswitch: use VIR_AUTOFREE instead of VIR_FREE for scalar types (rhbz#1721434)
+        - util: virnetdevopenvswitch: Drop an unused variable @ovs_timeout (rhbz#1721434)
+        - util: netdevopenvswitch: use VIR_AUTOPTR for aggregate types (rhbz#1721434)
+        - util: suppress unimportant ovs-vsctl errors when getting interface stats (rhbz#1721434)
+        - virNetDevOpenvswitchInterfaceStats: Optimize for speed (rhbz#1721434)
+        - test: Introduce virnetdevopenvswitchtest (rhbz#1721434)
+        - vircommand: Separate mass FD closing into a function (rhbz#1721434)
+        - virCommand: use procfs to learn opened FDs (rhbz#1721434)
+        - util: command: Ignore bitmap errors when enumerating file descriptors to close (rhbz#1721434)
+        - util: Avoid possible error in virCommandMassClose (rhbz#1721434)
+        - vircgroup: fix cgroups v2 controllers detection (rhbz#1689297)
+        - vircgroupv2: store enabled controllers (rhbz#1689297)
+
+        [4.5.0-30]
+        - virWaitForDevices: Drop confusing part of comment (rhbz#1710575)
+        - lib: Drop UDEVSETTLE (rhbz#1710575)
+        - m4: Provide default value fore UDEVADM (rhbz#1710575)
+        - m4: Drop needless string checks (rhbz#1710575)
+        - util: vircgroup: introduce virCgroup(Get|Set)ValueRaw (rhbz#1658890)
+        - util: vircgroup: move virCgroupGetValueStr out of virCgroupGetValueForBlkDev (rhbz#1658890)
+        - util: vircgroupv1: add support for BFQ blkio files (rhbz#1658890)
+        - util: vircgroupv2: add support for BFQ files (rhbz#1658890)
+        - Handle copying bitmaps to larger data buffers (rhbz#1703160)
+
+        [4.5.0-29]
+        - cpu: allow include files for CPU definition (rhbz#1686895)
+        - cpu: fix cleanup when signature parsing fails (rhbz#1686895)
+        - cpu: push more parsing logic into common code (rhbz#1686895)
+        - cpu: simplify failure cleanup paths (rhbz#1686895)
+        - cpu_map: Add support for arch-capabilities feature (rhbz#1693433)
+        - cputest: Add data for Intel(R) Xeon(R) CPU E5-2630 v4 (rhbz#1686895)
+        - cputest: Add data for Intel(R) Core(TM) i7-7600U (rhbz#1686895)
+        - cputest: Add data for Intel(R) Xeon(R) CPU E7540 (rhbz#1686895)
+        - cputest: Add data for Intel(R) Xeon(R) CPU E5-2650 (rhbz#1686895)
+        - cputest: Add data for Intel(R) Core(TM) i7-8700 (rhbz#1686895)
+        - cpu_x86: Separate ancestor model parsing from x86ModelParse (rhbz#1686895)
+        - cpu_x86: Separate signature parsing from x86ModelParse (rhbz#1686895)
+        - cpu_x86: Separate vendor parsing from x86ModelParse (rhbz#1686895)
+        - cpu_x86: Separate feature list parsing from x86ModelParse (rhbz#1686895)
+        - cpu_x86: Make sure CPU model names are unique in cpu_map (rhbz#1686895)
+        - cpu_x86: Add x86ModelCopySignatures helper (rhbz#1686895)
+        - cpu_x86: Store CPU signature in an array (rhbz#1686895)
+        - cpu_x86: Allow multiple signatures for a CPU model (rhbz#1686895)
+        - cpu_x86: Log decoded CPU model and signatures (rhbz#1686895)
+        - qemu_capabilities: Inroduce virQEMUCapsGetCPUModelX86Data (rhbz#1686895)
+        - qemu_capabilities: Introduce virQEMUCapsGetCPUModelInfo (rhbz#1686895)
+        - qemu_capabilities: Use virQEMUCapsGetCPUModelInfo (rhbz#1686895)
+        - cpu_x86: Add virCPUx86DataGetSignature for tests (rhbz#1686895)
+        - cpu_map: Add hex representation of signatures (rhbz#1686895)
+        - cputest: Test CPU signatures (rhbz#1686895)
+        - cpu_map: Add more signatures for Conroe CPU model (rhbz#1686895)
+        - cpu_map: Add more signatures for Penryn CPU model (rhbz#1686895)
+        - cpu_map: Add more signatures for Nehalem CPU models (rhbz#1686895)
+        - cpu_map: Add more signatures for Westmere CPU model (rhbz#1686895)
+        - cpu_map: Add more signatures for SandyBridge CPU models (rhbz#1686895)
+        - cpu_map: Add more signatures for IvyBridge CPU models (rhbz#1686895)
+        - cpu_map: Add more signatures for Haswell CPU models (rhbz#1686895)
+        - cpu_map: Add more signatures for Broadwell CPU models (rhbz#1686895)
+        - cpu_map: Add more signatures for Skylake-Client CPU models (rhbz#1686895)
+        - cpu: Don't access invalid memory in virCPUx86Translate (rhbz#1686895)
+        - cpu_x86: Require <cpuid> within <feature> in CPU map (rhbz#1697627)
+        - cputest: Add data for Intel(R) Xeon(R) Platinum 8268 CPU (rhbz#1693433)
+        - cpu_map: Add Cascadelake-Server CPU model (rhbz#1693433)
+        - cpu_x86: Introduce virCPUx86DataItem container struct (rhbz#1697627)
+        - cpu_x86: Rename virCPUx86Vendor.cpuid (rhbz#1697627)
+        - cpu_x86: Rename virCPUx86DataItem variables (rhbz#1697627)
+        - cpu_x86: Rename x86DataCpuidNext function (rhbz#1697627)
+        - cpu_x86: Rename x86DataCpuid (rhbz#1697627)
+        - cpu_x86: Rename virCPUx86CPUIDSorter (rhbz#1697627)
+        - cpu_x86: Rename virCPUx86DataAddCPUIDInt (rhbz#1697627)
+        - cpu_x86: Rename virCPUx86DataAddCPUID (rhbz#1697627)
+        - cpu_x86: Rename virCPUx86VendorToCPUID (rhbz#1697627)
+        - cpu_x86: Simplify x86DataAdd (rhbz#1697627)
+        - cpu_x86: Introduce virCPUx86DataCmp (rhbz#1697627)
+        - cpu_x86: Make x86cpuidSetBits more general (rhbz#1697627)
+        - cpu_x86: Make x86cpuidClearBits more general (rhbz#1697627)
+        - cpu_x86: Make x86cpuidAndBits more general (rhbz#1697627)
+        - cpu_x86: Make x86cpuidMatchMasked more general (rhbz#1697627)
+        - cpu_x86: Make x86cpuidMatch more general (rhbz#1697627)
+        - cpu_x86: Store virCPUx86DataItem content in union (rhbz#1697627)
+        - cpu_x86: Add support for storing MSR features in CPU map (rhbz#1697627)
+        - cpu_x86: Move *CheckFeature functions (rhbz#1697627)
+        - cputest: Add support for MSR features to cpu-parse.sh (rhbz#1697627)
+        - util: file: introduce VIR_AUTOCLOSE macro to close fd of the file automatically (rhbz#1697627)
+        - vircpuhost: Add support for reading MSRs (rhbz#1697627)
+        - virhostcpu: Make virHostCPUGetMSR() work only on x86 (rhbz#1697627)
+        - cpu_x86: Fix placement of *CheckFeature functions (rhbz#1697627)
+        - cpu_conf: Introduce virCPUDefFilterFeatures (rhbz#1697627)
+        - qemu_command: Use consistent syntax for CPU features (rhbz#1697627)
+        - tests: Add QEMU caps data for future 4.1.0 (rhbz#1697627)
+        - tests: Add domain capabilities case for QEMU 4.1.0 (rhbz#1697627)
+        - qemuxml2argvtest: Add test for CPU features translation (rhbz#1697627)
+        - qemu: Add APIs for translating CPU features (rhbz#1697627)
+        - qemu: Probe for max-x86_64-cpu type (rhbz#1697627)
+        - qemu: Probe for 'unavailable-features' CPU property (rhbz#1697627)
+        - qemu: Probe host CPU after capabilities (rhbz#1697627)
+        - qemu_command: Use canonical names of CPU features (rhbz#1697627)
+        - qemu: Translate feature names from query-cpu-model-expansion (rhbz#1697627)
+        - qemu: Don't use full CPU model expansion (rhbz#1697627)
+        - qemu: Make qemuMonitorGetGuestCPU usable on x86 only (rhbz#1697627)
+        - cpu: Introduce virCPUDataAddFeature (rhbz#1697627)
+        - qemu: Add type filter to qemuMonitorJSONParsePropsList (rhbz#1697627)
+        - util: string: Introduce macro for automatic string lists (rhbz#1697627)
+        - util: json: define cleanup function using VIR_DEFINE_AUTOPTR_FUNC (rhbz#1697627)
+        - qemu: Introduce generic qemuMonitorGetGuestCPU (rhbz#1697627)
+        - qemu_process: Prefer generic qemuMonitorGetGuestCPU (rhbz#1697627)
+        - util: Rework virStringListAdd (rhbz#1697627)
+        - conf: Introduce virCPUDefCheckFeatures (rhbz#1697627)
+        - cpu_x86: Turn virCPUx86DataIteratorInit into a function (rhbz#1697627)
+        - cpu_x86: Introduce virCPUx86FeatureFilter*MSR (rhbz#1697627)
+        - cpu_x86: Read CPU features from IA32_ARCH_CAPABILITIES MSR (rhbz#1697627)
+        - cpu_map: Introduce IA32_ARCH_CAPABILITIES MSR features (rhbz#1697627)
+        - qemu: Forbid MSR features with old QEMU (rhbz#1697627)
+        - qemu: Drop MSR features from host-model with old QEMU (rhbz#1697627)
+        - cpu_x86: Fix memory leak - virCPUx86GetHost (rhbz#1697627)
+        - qemu: Use @tmpChr in qemuDomainDetachChrDevice to build device string (rhbz#1624204)
+        - qemu: Drop 'user-' prefix for guestfwd netdev (rhbz#1624204)
+        - qemu_hotplug: Attach guestfwd using netdev_add (rhbz#1624204)
+        - qemu_hotplug: Detach guestfwd using netdev_del (rhbz#1624204)
+        - qemuhotplugtest: Test guestfwd attach and detach (rhbz#1624204)
+        - daemon: Register secret driver before storage driver (rhbz#1685151)
+        - bhyve: Move autostarting of domains into bhyveStateInitialize (rhbz#1685151)
+        - Revert 'virStateDriver - Separate AutoStart from Initialize' (rhbz#1685151)
+        - Revert 'Separate out StateAutoStart from StateInitialize' (rhbz#1685151)
+        - util: moving 'type' argument to avoid issues with mount() syscall. (rhbz#1689297)
+        - util: cgroup: use VIR_AUTOFREE instead of VIR_FREE for scalar types (rhbz#1689297)
+        - vircgroup: Rename structs to start with underscore (rhbz#1689297)
+        - vircgroup: Introduce standard set of typedefs and use them (rhbz#1689297)
+        - vircgroup: Extract file link resolving into separate function (rhbz#1689297)
+        - vircgroup: Remove unused function virCgroupKill() (rhbz#1689297)
+        - vircgroup: Unexport unused function virCgroupAddTaskController() (rhbz#1689297)
+        - vircgroup: Unexport unused function virCgroupRemoveRecursively (rhbz#1689297)
+        - vircgroup: Move function used in tests into vircgrouppriv.h (rhbz#1689297)
+        - vircgroup: Remove pointless bool parameter (rhbz#1689297)
+        - vircgroup: Extract mount options matching into function (rhbz#1689297)
+        - vircgroup: Use virCgroupMountOptsMatchController in virCgroupDetectPlacement (rhbz#1689297)
+        - vircgroup: Introduce virCgroupEnableMissingControllers (rhbz#1689297)
+        - vircgroup: machinename will never be NULL (rhbz#1689297)
+        - vircgroup: Remove virCgroupAddTaskController (rhbz#1689297)
+        - vircgroup: Introduce virCgroupGetMemoryStat (rhbz#1689297)
+        - lxc: Use virCgroupGetMemoryStat (rhbz#1689297)
+        - vircgroup: fix MinGW build (rhbz#1689297)
+        - vircgroup: Duplicate string before modifying (rhbz#1689297)
+        - vircgroup: Extract controller detection into function (rhbz#1689297)
+        - vircgroup: Extract placement validation into function (rhbz#1689297)
+        - vircgroup: Split virCgroupPathOfController into two functions (rhbz#1689297)
+        - vircgroup: Call virCgroupRemove inside virCgroupMakeGroup (rhbz#1689297)
+        - vircgroup: Simplify if conditions in virCgroupMakeGroup (rhbz#1689297)
+        - vircgroup: Remove obsolete sa_assert (rhbz#1689297)
+        - tests: Resolve possible overrun (rhbz#1689297)
+        - vircgroup: cleanup controllers not managed by systemd on error (rhbz#1689297)
+        - vircgroup: fix bug in virCgroupEnableMissingControllers (rhbz#1689297)
+        - vircgroup: rename virCgroupAdd.*Task to virCgroupAdd.*Process (rhbz#1689297)
+        - vircgroup: introduce virCgroupTaskFlags (rhbz#1689297)
+        - vircgroup: introduce virCgroupAddThread (rhbz#1689297)
+        - vircgroupmock: cleanup unused cgroup files (rhbz#1689297)
+        - vircgroupmock: rewrite cgroup fopen mocking (rhbz#1689297)
+        - vircgrouptest: call virCgroupDetectMounts directly (rhbz#1689297)
+        - vircgrouptest: call virCgroupNewSelf instead virCgroupDetectMounts (rhbz#1689297)
+        - util: introduce vircgroupbackend files (rhbz#1689297)
+        - vircgroup: introduce cgroup v1 backend files (rhbz#1689297)
+        - vircgroup: extract virCgroupV1Available (rhbz#1689297)
+        - vircgroup: detect available backend for cgroup (rhbz#1689297)
+        - vircgroup: extract virCgroupV1ValidateMachineGroup (rhbz#1689297)
+        - vircgroup: extract virCgroupV1CopyMounts (rhbz#1689297)
+        - vircgroup: extract v1 detect functions (rhbz#1689297)
+        - vircgroup: extract virCgroupV1CopyPlacement (rhbz#1689297)
+        - vircgroup: extract virCgroupV1ValidatePlacement (rhbz#1689297)
+        - vircgroup: extract virCgroupV1StealPlacement (rhbz#1689297)
+        - vircgroup: extract virCgroupV1DetectControllers (rhbz#1689297)
+        - vircgroup: extract virCgroupV1HasController (rhbz#1689297)
+        - vircgroup: extract virCgroupV1GetAnyController (rhbz#1689297)
+        - vircgroup: extract virCgroupV1PathOfController (rhbz#1689297)
+        - vircgroup: extract virCgroupV1MakeGroup (rhbz#1689297)
+        - vircgroup: extract virCgroupV1Remove (rhbz#1689297)
+        - vircgroup: extract virCgroupV1AddTask (rhbz#1689297)
+        - vircgroup: extract virCgroupV1HasEmptyTasks (rhbz#1689297)
+        - vircgroup: extract virCgroupV1BindMount (rhbz#1689297)
+        - vircgroup: extract virCgroupV1SetOwner (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)BlkioWeight (rhbz#1689297)
+        - vircgroup: extract virCgroupV1GetBlkioIoServiced (rhbz#1689297)
+        - vircgroup: extract virCgroupV1GetBlkioIoDeviceServiced (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)BlkioDeviceWeight (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)BlkioDeviceReadIops (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)BlkioDeviceWriteIops (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)BlkioDeviceReadBps (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)BlkioDeviceWriteBps (rhbz#1689297)
+        - vircgroup: extract virCgroupV1SetMemory (rhbz#1689297)
+        - vircgroup: extract virCgroupV1GetMemoryStat (rhbz#1689297)
+        - vircgroup: extract virCgroupV1GetMemoryUsage (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)Memory*Limit (rhbz#1689297)
+        - vircgroup: extract virCgroupV1GetMemSwapUsage (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Allow|Deny)Device (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Allow|Deny)AllDevices (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)CpuShares (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)CpuCfsPeriod (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)CpuCfsQuota (rhbz#1689297)
+        - vircgroup: extract virCgroupV1SupportsCpuBW (rhbz#1689297)
+        - vircgroup: extract virCgroupV1GetCpuacct*Usage (rhbz#1689297)
+        - vircgroup: extract virCgroupV1GetCpuacctStat (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)FreezerState (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)CpusetMems (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)CpusetMemoryMigrate (rhbz#1689297)
+        - vircgroup: extract virCgroupV1(Set|Get)CpusetCpus (rhbz#1689297)
+        - vircgroup: rename virCgroupController into virCgroupV1Controller (rhbz#1689297)
+        - vircgroup: rename controllers to legacy (rhbz#1689297)
+        - vircgroup: remove VIR_CGROUP_SUPPORTED (rhbz#1689297)
+        - vircgroup: include system headers only on linux (rhbz#1689297)
+        - vircgroupv1: fix build on non-linux OSes (rhbz#1689297)
+        - Revert 'vircgroup: cleanup controllers not managed by systemd on error' (rhbz#1689297)
+        - util: introduce cgroup v2 files (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2Available (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2ValidateMachineGroup (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2CopyMounts (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2CopyPlacement (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2DetectMounts (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2DetectPlacement (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2ValidatePlacement (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2StealPlacement (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2DetectControllers (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2HasController (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2GetAnyController (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2PathOfController (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2MakeGroup (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2Remove (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2AddTask (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2HasEmptyTasks (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2BindMount (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2SetOwner (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)BlkioWeight (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2GetBlkioIoServiced (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2GetBlkioIoDeviceServiced (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)BlkioDeviceWeight (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)BlkioDeviceReadIops (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)BlkioDeviceWriteIops (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)BlkioDeviceReadBps (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)BlkioDeviceWriteBps (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2SetMemory (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2GetMemoryStat (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2GetMemoryUsage (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)MemoryHardLimit (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)MemorySoftLimit (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)MemSwapHardLimit (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2GetMemSwapUsage (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)CpuShares (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)CpuCfsPeriod (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2(Set|Get)CpuCfsQuota (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2SupportsCpuBW (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2GetCpuacctUsage (rhbz#1689297)
+        - vircgroup: introduce virCgroupV2GetCpuacctStat (rhbz#1689297)
+        - vircgroup: register cgroup v2 backend (rhbz#1689297)
+        - vircgroup: add support for hybrid configuration (rhbz#1689297)
+        - vircgroupmock: change cgroup prefix (rhbz#1689297)
+        - vircgroupmock: add support to test cgroup v2 (rhbz#1689297)
+        - vircgrouptest: introduce initFakeFS and cleanupFakeFS helpers (rhbz#1689297)
+        - vircgrouptest: prepare testCgroupDetectMounts for cgroup v2 (rhbz#1689297)
+        - vircgrouptest: add detect mounts test for cgroup v2 (rhbz#1689297)
+        - vircgrouptest: add detect mounts test for hybrid cgroups (rhbz#1689297)
+        - vircgrouptest: prepare validateCgroup for cgroupv2 (rhbz#1689297)
+        - vircgrouptest: add cgroup v2 tests (rhbz#1689297)
+        - vircgrouptest: add hybrid tests (rhbz#1689297)
+        - virt-host-validate: rewrite cgroup detection to use util/vircgroup (rhbz#1689297)
+        - virt-host-validate: require freezer for LXC (rhbz#1689297)
+        - virt-host-validate: Fix build on non-Linux (rhbz#1689297)
+        - tests: Use correct function name in error path (rhbz#1689297)
+        - util: Fix virCgroupGetMemoryStat (rhbz#1689297)
+        - tests: Augment vcgrouptest to add virCgroupGetMemoryStat (rhbz#1689297)
+        - vircgroup: introduce virCgroupKillRecursiveCB (rhbz#1689297)
+        - vircgroupv2: fix virCgroupV2ValidateMachineGroup (rhbz#1689297)
+        - util: implement virCgroupV2(Set|Get)CpusetMems (rhbz#1689297)
+        - util: implement virCgroupV2(Set|Get)CpusetMemoryMigrate (rhbz#1689297)
+        - util: implement virCgroupV2(Set|Get)CpusetCpus (rhbz#1689297)
+        - util: enable cgroups v2 cpuset controller for threads (rhbz#1689297)
+        - util: vircgroup: pass parent cgroup into virCgroupDetectControllersCB (rhbz#1689297)
+        - internal: introduce a family of NULLSTR macros (rhbz#1689297)
+        - util: vircgroup: improve controller detection (rhbz#1689297)
+        - util: vircgroupv2: use any controller to create thread directory (rhbz#1689297)
+        - util: vircgroupv2: enable CPU controller only if it's available (rhbz#1689297)
+        - util: vircgroupv2: separate return values of virCgroupV2EnableController (rhbz#1689297)
+        - util: vircgroupv2: don't error out if enabling controller fails (rhbz#1689297)
+        - util: vircgroupv2: mark only requested controllers as available (rhbz#1689297)
+        - Revert 'util: vircgroup: pass parent cgroup into virCgroupDetectControllersCB' (rhbz#1689297)
+        - util: vircgroupv2: stop enabling missing controllers with systemd (rhbz#1689297)
+
+        [4.5.0-28]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [4.5.0-27]
+        - RHEL: spec: Disable gluster on i686 (rhbz#1722668)
+        - rpc: virnetlibsshsession: update deprecated functions (rhbz#1722735)
+
+        [4.5.0-26]
+        - api: disallow virDomainSaveImageGetXMLDesc on read-only connections (CVE-2019-10161)
+        - api: disallow virDomainManagedSaveDefineXML on read-only connections (CVE-2019-10166)
+        - api: disallow virConnectGetDomainCapabilities on read-only connections (CVE-2019-10167)
+        - api: disallow virConnect*HypervisorCPU on read-only connections (CVE-2019-10168)
+
+        [4.5.0-25]
+        - admin: reject clients unless their UID matches the current UID (CVE-2019-10132)
+        - locking: restrict sockets to mode 0600 (CVE-2019-10132)
+        - logging: restrict sockets to mode 0600 (CVE-2019-10132)
+        - util: skip RDMA detection for non-PCI network devices (rhbz#1693299)
+        - virfile: Detect ceph as shared FS (rhbz#1698133)
+        - virfile: added GPFS as shared fs (rhbz#1698133)
+        - util: bitmap: define cleanup function using VIR_DEFINE_AUTOPTR_FUNC (rhbz#1716943)
+        - qemu: Rework setting process affinity (rhbz#1716943)
+        - qemu: Set up EMULATOR thread and cpuset.mems before exec()-ing qemu (rhbz#1716943)
+        - conf: Add definitions for 'uid' and 'fid' PCI address attributes (rhbz#1508149)
+        - qemu: Introduce zPCI capability (rhbz#1508149)
+        - qemu: Enable PCI multi bus for S390 guests (rhbz#1508149)
+        - conf: Introduce extension flag and zPCI member for PCI address (rhbz#1508149)
+        - conf: Introduce address caching for PCI extensions (rhbz#1508149)
+        - qemu: Auto add pci-root for s390/s390x guests (rhbz#1508149)
+        - conf: use virXMLFormatElement() in virDomainDeviceInfoFormat() (rhbz#1508149)
+        - conf: Introduce parser, formatter for uid and fid (rhbz#1508149)
+        - qemu: Add zPCI address definition check (rhbz#1508149)
+        - conf: Allocate/release 'uid' and 'fid' in PCI address (rhbz#1508149)
+        - qemu: Generate and use zPCI device in QEMU command line (rhbz#1508149)
+        - qemu: Add hotpluging support for PCI devices on S390 guests (rhbz#1508149)
+        - qemuDomainRemoveRNGDevice: Remove associated chardev too (rhbz#1508149)
+        - qemu_hotplug: remove erroneous call to qemuDomainDetachExtensionDevice() (rhbz#1508149)
+        - qemu_hotplug: remove another erroneous qemuDomainDetachExtensionDevice() call (rhbz#1508149)
+        - util: Propagate numad failures correctly (rhbz#1716907)
+        - util: Introduce virBitmapUnion() (rhbz#1716908)
+        - util: Introduce virNumaNodesetToCPUset() (rhbz#1716908)
+        - qemu: Fix qemuProcessInitCpuAffinity() (rhbz#1716908)
+        - qemu: Fix leak in qemuProcessInitCpuAffinity() (rhbz#1716908)
+        - qemu: Drop cleanup label from qemuProcessInitCpuAffinity() (rhbz#1716908)
+        - qemu: Fix NULL pointer access in qemuProcessInitCpuAffinity() (rhbz#1716908)
+        - qemuBuildMemoryBackendProps: Pass @priv instead of its individual members (rhbz#1624223)
+        - qemu: Don't use -mem-prealloc among with .prealloc=yes (rhbz#1624223)
+        - nwfilter: fix adding std MAC and IP values to filter binding (rhbz#1691356)
+        - qemuProcessBuildDestroyMemoryPathsImpl: Don't overwrite error (rhbz#1658112)
+        - qemu_security: Fully implement qemuSecurityDomainSetPathLabel (rhbz#1658112)
+        - qemu: process: SEV: Assume libDir to be the directory to create files in (rhbz#1658112)
+        - qemu: process: SEV: Relabel guest owner's SEV files created before start (rhbz#1658112)
+
+        [4.5.0-24]
+        - tests: qemuxml2argv: add CAPS_ARCH_LATEST macro (rhbz#1698855)
+        - qemu: Add ccw support for vhost-vsock (rhbz#1698855)
+        - qemu: Allow creating ppc64 guests with graphics and no USB mouse (rhbz#1683681)
+        - conf: Expose virDomainSCSIDriveAddressIsUsed (rhbz#1692354)
+        - qemuhotplugtest: Don't plug a SCSI disk at unit 7 (rhbz#1692354)
+        - qemu_hotplug: Check for duplicate drive addresses (rhbz#1692354)
+        - cpu_map: Add support for cldemote CPU feature (rhbz#1537731)
+        - util: alloc: add macros for implementing automatic cleanup functionality (rhbz#1505998)
+        - qemu: domain: Simplify non-VFIO memLockLimit calculation for PPC64 (rhbz#1505998)
+        - qemu_domain: add a PPC64 memLockLimit helper (rhbz#1505998)
+        - qemu_domain: NVLink2 bridge detection function for PPC64 (rhbz#1505998)
+        - PPC64 support for NVIDIA V100 GPU with NVLink2 passthrough (rhbz#1505998)
+        - cpu_x86: Do not cache microcode version (CVE-2018-12127, CVE-2019-11091, CVE-2018-12126, CVE-2018-12130)
+        - qemu: Don't cache microcode version (CVE-2018-12127, CVE-2019-11091, CVE-2018-12126, CVE-2018-12130)
+        - cputest: Add data for Intel(R) Xeon(R) CPU E3-1225 v5 (CVE-2018-12127, CVE-2019-11091, CVE-2018-12126, CVE-2018-12130)
+        - cpu_map: Define md-clear CPUID bit (CVE-2018-12127, CVE-2019-11091, CVE-2018-12126, CVE-2018-12130)
+
+        [4.5.0-23]
+        - network: explicitly allow icmp/icmpv6 in libvirt zonefile (rhbz#1650320)
+
+        [4.5.0-22]
+        - util: fix memory leak in virFirewallDInterfaceSetZone() (rhbz#1650320)
+
+        [4.5.0-21]
+        - docs: Drop /dev/net/tun from the list of shared devices (rhbz#1665400)
+        - qemu: conf: Remove /dev/sev from the default cgroup device acl list (rhbz#1665400)
+        - qemu: cgroup: Expose /dev/sev/ only to domains that require SEV (rhbz#1665400)
+        - qemu: domain: Add /dev/sev into the domain mount namespace selectively (rhbz#1665400)
+        - security: dac: Relabel /dev/sev in the namespace (rhbz#1665400)
+        - qemu: caps: Use CAP_DAC_OVERRIDE for probing to avoid permission issues (rhbz#1665400)
+        - qemu: caps: Don't try to ask for CAP_DAC_OVERRIDE if non-root (rhbz#1665400)
+        - Revert 'RHEL: Require firewalld-filesystem for firewalld rpm macros' (rhbz#1650320)
+        - Revert 'RHEL: network: regain guest network connectivity after firewalld switch to nftables' (rhbz#1650320)
+        - configure: change HAVE_FIREWALLD to WITH_FIREWALLD (rhbz#1650320)
+        - util: move all firewalld-specific stuff into its own files (rhbz#1650320)
+        - util: new virFirewallD APIs + docs (rhbz#1650320)
+        - configure: selectively install a firewalld 'libvirt' zone (rhbz#1650320)
+        - network: set firewalld zone of bridges to 'libvirt' zone when appropriate (rhbz#1650320)
+        - network: allow configuring firewalld zone for virtual network bridge device (rhbz#1650320)
+        - util: remove test code accidentally committed to virFirewallDZoneExists (rhbz#1650320)
+        - qemu: command: Don't skip 'readonly' and throttling info for empty drive (rhbz#1670337)
+
+        [4.5.0-20]
+        - RHEL: qemu: Fix crash trying to use iSCSI hostdev (rhbz#1669424)
+
+        [4.5.0-19]
+        - qemu: Fix logic error in qemuSetUnprivSGIO (rhbz#1666605)
+        - tests: qemuxml2argv: Add test case for empty CDROM with cache mode (rhbz#1553255)
+        - qemu: command: Don't format image properties for empty -drive (rhbz#1553255)
+
+        [4.5.0-18]
+        - conf: correct false boot order error during domain parse (rhbz#1630393)
+        - qemu: Remove duplicated qemuAgentCheckError (rhbz#1665000)
+        - qemu: require reply from guest agent in qemuAgentGetInterfaces (rhbz#1665000)
+        - qemu: Filter non SCSI hostdevs in qemuHostdevPrepareSCSIDevices (rhbz#1665244)
+        - util: remove const specifier from nlmsghdr arg to virNetlinkDumpCallback() (rhbz#1583131)
+        - util: add a function to insert new interfaces to IPv6CheckForwarding list (rhbz#1583131)
+        - util: use nlmsg_find_attr() instead of an open-coded loop (rhbz#1583131)
+        - util: check accept_ra for all nexthop interfaces of multipath routes (rhbz#1583131)
+        - util: make forgotten changes suggested during review of commit d40b820c (rhbz#1583131)
+
+        [4.5.0-17]
+        - virsh: Strip XML declaration when extracting CPU XMLs (rhbz#1659048)
+        - RHEL: qemu: Add ability to set sgio values for hostdev (rhbz#1582424)
+        - RHEL: qemu: Add check for unpriv sgio for SCSI generic host device (rhbz#1582424)
+        - qemu: Alter @val usage in qemuSetUnprivSGIO (rhbz#1656362)
+        - qemu: Alter qemuSetUnprivSGIO hostdev shareable logic (rhbz#1656362)
+
+        [4.5.0-16]
+        - util: Don't overflow in virRandomBits (rhbz#1655586)
+        - virrandom: Avoid undefined behaviour in virRandomBits (rhbz#1655586)
+        - spec: remove libcgroup and cgconfig (rhbz#1602407)
+        - qemu: Drop duplicated code from qemuDomainDefValidateFeatures() (rhbz#1647822)
+        - tests: Add capabilities data for QEMU 3.1.0 on ppc64 (rhbz#1647822)
+        - qemu: Introduce QEMU_CAPS_MACHINE_PSERIES_CAP_NESTED_HV (rhbz#1647822)
+        - conf: Parse and format nested-hv feature (rhbz#1647822)
+        - qemu: Format nested-hv feature on the command line (rhbz#1647822)
+        - qemu: Add check for whether KVM nesting is enabled (rhbz#1645139)
+        - secret: Add check/validation for correct usage when LookupByUUID (rhbz#1656255)
+        - cpu: Add support for 'stibp' x86_64 feature (rhbz#1655032)
+
+        [4.5.0-15]
+        - virfile: Take symlink into account in virFileIsSharedFixFUSE (rhbz#1634782)
+        - qemu: Ignore nwfilter binding instantiation issues during reconnect (rhbz#1648544)
+        - qemu: Set identity for the reconnect all thread (rhbz#1648546)
+        - Revert 'access: Modify the VIR_ERR_ACCESS_DENIED to include driverName' (rhbz#1631608)
+        - access: Modify the VIR_ERR_ACCESS_DENIED to include driverName (rhbz#1631608)
+        - qemu: add vfio-ap capability (rhbz#1508146)
+        - qemu: vfio-ap device support (rhbz#1508146)
+        - qemu: Extract MDEV VFIO PCI validation code into a separate helper (rhbz#1508146)
+        - conf: Move VFIO AP validation from post parse to QEMU validation code (rhbz#1508146)
+        - qemu: Fix post-copy migration on the source (rhbz#1649169)
+
+        [4.5.0-14]
+        - storage: Remove secretPath from _virStorageBackendQemuImgInfo (rhbz#1645459)
+        - storage: Allow for inputvol to have any format for encryption (rhbz#1645459)
+        - storage: Allow inputvol to be encrypted (rhbz#1645459)
+        - access: Modify the VIR_ERR_ACCESS_DENIED to include driverName (rhbz#1631608)
+        - docs: Enhance polkit documentation to describe secondary connection (rhbz#1631608)
+        - qemu: Don't ignore resume events (rhbz#1634758, rhbz#1643338)
+
+        [4.5.0-13]
+        - Revert 'spec: Temporarily drop gluster support' (rhbz#1599339)
+
+        [4.5.0-12]
+        - RHEL: Require firewalld-filesystem for firewalld rpm macros (rhbz#1639932)
+
+        [4.5.0-11]
+        - virfile: fix cast-align error (rhbz#1634782)
+        - virfiletest: Fix test name prefix for virFileInData test (rhbz#1634782)
+        - virfiletst: Test virFileIsSharedFS (rhbz#1634782)
+        - virFileIsSharedFSType: Detect direct mount points (rhbz#1634782)
+        - virfile: Rework virFileIsSharedFixFUSE (rhbz#1634782)
+        - RHEL: network: regain guest network connectivity after firewalld switch to nftables (rhbz#1638864)
+
+        [4.5.0-10]
+        - conf: Fix check for chardev source path (rhbz#1609723)
+        - tests: Reuse qemucapabilities data for qemucaps2xml (rhbz#1629862)
+        - tests: Add more tests to qemucaps2xml (rhbz#1629862)
+        - qemu: Drop QEMU_CAPS_ENABLE_KVM (rhbz#1629862)
+        - qemu: Avoid probing non-native binaries all the time (rhbz#1629862)
+        - qemu: Clarify QEMU_CAPS_KVM (rhbz#1629862)
+        - qemu: Don't check for /dev/kvm presence (rhbz#1629862)
+        - tests: Follow up on qemucaps2xmldata rename (rhbz#1629862)
+        - security: dac: also label listen UNIX sockets (rhbz#1634775)
+        - spec: Set correct TLS priority (rhbz#1632269)
+        - spec: Build ceph and gluster support everywhere (rhbz#1599546)
+        - virsh: Require explicit --domain for domxml-to-native (rhbz#1634769)
+        - virFileIsSharedFSType: Check for fuse.glusterfs too (rhbz#1634782)
+        - qemu: fix up permissions for pre-created UNIX sockets (rhbz#1634775)
+        - cpu_map: Add features for Icelake CPUs (rhbz#1527657, rhbz#1526625)
+        - cpu_map: Add Icelake CPU models (rhbz#1526625)
+        - qemu: Properly report VIR_DOMAIN_EVENT_RESUMED_FROM_SNAPSHOT (rhbz#1634758)
+        - qemu: Report more appropriate running reasons (rhbz#1634758)
+        - qemu: Pass running reason to RESUME event handler (rhbz#1634758)
+        - qemu: Map running reason to resume event detail (rhbz#1634758)
+        - qemu: Avoid duplicate resume events and state changes (rhbz#1634758)
+        - conf: qemu: add support for Hyper-V frequency MSRs (rhbz#1589702)
+        - conf: qemu: add support for Hyper-V reenlightenment notifications (rhbz#1589702)
+        - conf: qemu: add support for Hyper-V PV TLB flush (rhbz#1589702)
+
+        [4.5.0-9]
+        - RHEL: Fix virConnectGetMaxVcpus output (rhbz#1582222)
+        - storage: Add --shrink to qemu-img command when shrinking vol (rhbz#1622534)
+        - access: Fix nwfilter-binding ACL access API name generation (rhbz#1622540)
+        - conf: Add validation of input devices (rhbz#1591240)
+        - tests: qemu: Remove disk from graphics-vnc-tls (rhbz#1598167)
+        - tests: qemu: test more versions for graphics-vnc-tls (rhbz#1598167)
+        - qemu: vnc: switch to tls-creds-x509 (rhbz#1598167)
+        - qemu: mdev: Use vfio-pci 'display' property only with vfio-pci mdevs (rhbz#1624740)
+        - virDomainDefCompatibleDevice: Relax alias change check (rhbz#1603133)
+        - virDomainDetachDeviceFlags: Clarify update semantics (rhbz#1603133)
+        - virDomainNetDefCheckABIStability: Check for MTU change too (rhbz#1623158)
+        - RHEL: spec: Require python3-devel on RHEL-8 (rhbz#1518446)
+        - qemu: monitor: Remove qemuMonitorJSONExtractCPUArchInfo wrapper (rhbz#1598829)
+        - qemu: monitor: Use 'target' instead of 'arch' in reply of 'query-cpus-fast' (rhbz#1598829)
+
+        [4.5.0-8]
+        - tests: Add missing thread_siblings_list files (rhbz#1608479)
+        - util: Rewrite virHostCPUCountThreadSiblings() (rhbz#1608479)
+        - utils: Remove arbitrary limit on socket_id/core_id (rhbz#1608479)
+        - tests: Add linux-high-ids test (rhbz#1608479)
+        - qemu: hotplug: Fix asynchronous unplug of 'shmem' (rhbz#1618680)
+        - tests: rename hugepages to hugepages-default (rhbz#1615461)
+        - tests: extract hugepages-numa-default-dimm out of hugepages-numa (rhbz#1615461)
+        - tests: rename hugepages-numa into hugepages-numa-default (rhbz#1615461)
+        - tests: remove unnecessary XML elements from hugepages-numa-default (rhbz#1615461)
+        - tests: extract pages-discard out of hugepages-pages (rhbz#1615461)
+        - tests: rename hugepages-pages into hugepages-numa-nodeset (rhbz#1615461)
+        - tests: rename hugepages-pages2 into hugepages-numa-default-2M (rhbz#1615461)
+        - tests: extract pages-discard-hugepages out of hugepages-pages3 (rhbz#1615461)
+        - tests: rename hugepages-pages3 into hugepages-numa-nodeset-part (rhbz#1615461)
+        - tests: rename hugepages-pages4 into hugepages-numa-nodeset-nonexist (rhbz#1615461)
+        - tests: rename hugepages-pages5 into hugepages-default-2M (rhbz#1615461)
+        - tests: rename hugepages-pages6 into hugepages-default-system-size (rhbz#1615461)
+        - tests: rename hugepages-pages7 into pages-dimm-discard (rhbz#1615461)
+        - tests: rename hugepages-pages8 into hugepages-nodeset-nonexist (rhbz#1615461)
+        - tests: introduce hugepages-default-1G-nodeset-2M (rhbz#1615461)
+        - tests: introduce hugepages-nodeset (rhbz#1615461)
+        - conf: Move hugepage XML validation check out of qemu_command (rhbz#1615461)
+        - conf: Move hugepages validation out of XML parser (rhbz#1615461)
+        - conf: Introduce virDomainDefPostParseMemtune (rhbz#1615461)
+        - tests: sev: Test launch-security with specific QEMU version (rhbz#1619150)
+        - qemu: Fix probing of AMD SEV support (rhbz#1619150)
+        - qemu: caps: Format SEV platform data into qemuCaps cache (rhbz#1619150)
+        - conf: Parse guestfwd channel device info again (rhbz#1610072)
+
+        [4.5.0-7]
+        - qemu_migration: Avoid writing to freed memory (rhbz#1615854)
+
+        [4.5.0-6]
+        - qemu: Exempt video model 'none' from getting a PCI address on Q35
+        - conf: Fix a error msg typo in virDomainVideoDefValidate
+
+        [4.5.0-5]
+        - esx storage: Fix typo lsilogic -> lsiLogic
+        - networkGetDHCPLeases: Don't always report error if unable to read leases file
+        - nwfilter: Resolve SEGV for NWFilter Snoop processing
+        - qemu: Remove unused bypassSecurityDriver from qemuOpenFileAs
+        - qemuDomainSaveMemory: Don't enforce dynamicOwnership
+        - domain_nwfilter: Return early if net has no name in virDomainConfNWFilterTeardownImpl
+        - examples: Add clean-traffic-gateway into nwfilters
+
+        [4.5.0-4]
+        - qemu: hotplug: don't overwrite error message in qemuDomainAttachNetDevice
+        - qemu: hotplug: report error when changing rom enabled attr for net iface
+        - qemu: Fix setting global_period cputune element
+        - tests: qemucaps: Add test data for upcoming qemu 3.0.0
+        - qemu: capabilities: Add capability for werror/rerror for 'usb-device' frontend
+        - qemu: command: Move graphics iteration to its own function
+        - qemu: address: Handle all the video devices within a single loop
+        - conf: Introduce virDomainVideoDefClear helper
+        - conf: Introduce virDomainDefPostParseVideo helper
+        - qemu: validate: Enforce compile time switch type checking for videos
+        - tests: Add capabilities data for QEMU 2.11 x86_64
+        - tests: Update capabilities data for QEMU 3.0.0 x86_64
+        - qemu: qemuBuildHostdevCommandLine: Use a helper variable mdevsrc
+        - qemu: caps: Introduce a capability for egl-headless
+        - qemu: Introduce a new graphics display type 'headless'
+        - qemu: caps: Add vfio-pci.display capability
+        - conf: Introduce virDomainGraphicsDefHasOpenGL helper
+        - conf: Replace 'error' with 'cleanup' in virDomainHostdevDefParseXMLSubsys
+        - conf: Introduce new <hostdev> attribute 'display'
+        - qemu: command: Enable formatting vfio-pci.display option onto cmdline
+        - docs: Rephrase the mediated devices hostdev section a bit
+        - conf: Introduce new video type 'none'
+        - virt-xml-validate: Add schema for nwfilterbinding
+        - tools: Fix typo generating adapter_wwpn field
+        - src: Fix memory leak in virNWFilterBindingDispose
+
+        [4.5.0-3]
+        - qemu: hotplug: Do not try to add secret object for TLS if it does not exist
+        - qemu: monitor: Make qemuMonitorAddObject more robust against programming errors
+        - spec: Explicitly require matching libvirt-libs
+        - virDomainConfNWFilterInstantiate: initialize @xml to avoid random crash
+        - qemuProcessStartPRDaemonHook: Try to set NS iff domain was started with one
+        - qemuDomainValidateStorageSource: Relax PR validation
+        - virStoragePRDefFormat: Suppress path formatting for migratable XML
+        - qemu: Wire up PR_MANAGER_STATUS_CHANGED event
+        - qemu_monitor: Introduce qemuMonitorJSONGetPRManagerInfo
+        - qemu: Fetch pr-helper process info on reconnect
+        - qemu: Fix ATTRIBUTE_NONNULL for qemuMonitorAddObject
+        - virsh.pod: Fix a command name typo in nwfilter-binding-undefine
+        - docs: schema: Add missing <alias> to vsock device
+        - virnetdevtap: Don't crash on !ifname in virNetDevTapInterfaceStats
+        - tests: fix TLS handshake failure with TLS 1.3
+
+        [4.5.0-2]
+        - qemu: Add capability for the HTM pSeries feature
+        - conf: Parse and format the HTM pSeries feature
+        - qemu: Format the HTM pSeries feature
+        - qemu: hotplug: Don't access srcPriv when it's not allocated
+        - qemuDomainNestedJobAllowed: Allow QEMU_JOB_NONE
+        - src: Mention DEVICE_REMOVAL_FAILED event in virDomainDetachDeviceAlias docs
+        - virsh.pod: Drop --persistent for detach-device-alias
+        - qemu: don't use chardev FD passing with standalone args
+        - qemu: remove chardevStdioLogd param from vhostuser code path
+        - qemu: consolidate parameters of qemuBuildChrChardevStr into flags
+        - qemu: don't use chardev FD passing for vhostuser backend
+        - qemu: fix UNIX socket chardevs operating in client mode
+        - qemuDomainDeviceDefValidateNetwork: Check for range only if IP prefix set
+        - spec: Temporarily drop gluster support
+
+        [4.5.0-1]
+        - Rebased to libvirt-4.5.0
+
+        [4.3.0-1]
+        - Rebased to libvirt-4.3.0
+
+        [4.1.0-2]
+        - Fix systemd macro argument with line continuations (rhbz#1558648)
+
+        [4.1.0-1]
+        - Rebase to version 4.1.0
+
+        [4.0.0-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+        [4.0.0-1]
+        - Rebase to version 4.0.0
+
+        [3.10.0-2]
+        - Rebuild for xen 4.10
+
+        [3.10.0-1]
+        - Rebase to version 3.10.0
+
+        [3.9.0-1]
+        - Rebase to version 3.9.0
+
+        [3.8.0-1]
+        - Rebase to version 3.8.0
+
+        [3.7.0-1]
+        - Rebase to version 3.7.0
+
+        [3.6.0-1]
+        - Rebase to version 3.6.0
+
+        [3.5.0-4]
+        - Rebuild with binutils fix for ppc64le (#1475636)
+
+        [3.5.0-3]
+        - Disabled RBD on i386, arm, ppc64 (rhbz #1474743)
+
+        [3.5.0-2]
+        - Rebuild for xen 4.9
+
+        [3.5.0-1]
+        - Rebase to version 3.5.0
+
+        [3.4.0-1]
+        - Rebase to version 3.4.0
+
+        [3.3.0-1]
+        - Rebase to version 3.3.0
+
+        [3.2.0-1]
+        - Rebase to version 3.2.0
+
+        [3.1.0-1]
+        - Rebase to version 3.1.0
+
+        [3.0.0-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+        [3.0.0-1]
+        - Rebase to version 3.0.0
+
+        libvirt-dbus
+        [1.3.0-2.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.3.0]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [1.2.0-3]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [1.2.0-2]
+        - util: fix virtDBusUtilDecodeUUID (rhbz#1647823)
+
+        [1.2.0-1]
+        - Rebased to libvirt-dbus-1.2.0 (rhbz#1630196)
+
+        [1.0.0-1]
+        - Rebase from Fedora
+
+        libvirt-python
+        nbdkit
+        [1.24.0-5]
+        - vddk: Add support for VDDK 8.0.0
+          resolves: rhbz#2143907
+
+        netcf
+        perl-Sys-Virt
+        qemu-kvm
+        [6.2.0-32.el8_8]
+        - kvm-aio_wait_kick-add-missing-memory-barrier.patch [bz#2168472]
+        - kvm-qatomic-add-smp_mb__before-after_rmw.patch [bz#2168472]
+        - kvm-qemu-thread-posix-cleanup-fix-document-QemuEvent.patch [bz#2168472]
+        - kvm-qemu-thread-win32-cleanup-fix-document-QemuEvent.patch [bz#2168472]
+        - kvm-edu-add-smp_mb__after_rmw.patch [bz#2168472]
+        - kvm-aio-wait-switch-to-smp_mb__after_rmw.patch [bz#2168472]
+        - kvm-qemu-coroutine-lock-add-smp_mb__after_rmw.patch [bz#2168472]
+        - kvm-physmem-add-missing-memory-barrier.patch [bz#2168472]
+        - kvm-async-update-documentation-of-the-memory-barriers.patch [bz#2168472]
+        - kvm-async-clarify-usage-of-barriers-in-the-polling-case.patch [bz#2168472]
+        - kvm-scsi-protect-req-aiocb-with-AioContext-lock.patch [bz#2090990]
+        - kvm-dma-helpers-prevent-dma_blk_cb-vs-dma_aio_cancel-rac.patch [bz#2090990]
+        - kvm-virtio-scsi-reset-SCSI-devices-from-main-loop-thread.patch [bz#2090990]
+        - Resolves: bz#2168472
+          (Guest hangs when starting or rebooting)
+        - Resolves: bz#2090990
+          (qemu crash with error scsi_req_unref(SCSIRequest *): Assertion req->refcount > 0' failed or scsi_dma_complete(void *, int): Assertion r->req.aiocb != NULL' failed [8.7.0])
+
+        [6.2.0-31]
+        - kvm-io-Add-support-for-MSG_PEEK-for-socket-channel.patch [bz#2137740]
+        - kvm-migration-check-magic-value-for-deciding-the-mapping.patch [bz#2137740]
+        - kvm-target-s390x-arch_dump-Fix-memory-corruption-in-s390.patch [bz#2168187]
+        - Resolves: bz#2137740
+          (Multifd migration fails under a weak network/socket ordering race)
+        - Resolves: bz#2168187
+          ([s390x] qemu-kvm coredumps when SE crashes)
+
+        [6.2.0-30]
+        - kvm-qcow2-Fix-theoretical-corruption-in-store_bitmap-err.patch [bz#2147617]
+        - kvm-qemu-img-commit-Report-errors-while-closing-the-imag.patch [bz#2147617]
+        - kvm-qemu-img-bitmap-Report-errors-while-closing-the-imag.patch [bz#2147617]
+        - kvm-qemu-iotests-Test-qemu-img-bitmap-commit-exit-code-o.patch [bz#2147617]
+        - Resolves: bz#2147617
+          (qemu-img finishes successfully while having errors in commit or bitmaps operations)
+
+        [6.2.0-29]
+        - kvm-block-mirror-Do-not-wait-for-active-writes.patch [bz#2125119]
+        - kvm-block-mirror-Drop-mirror_wait_for_any_operation.patch [bz#2125119]
+        - kvm-block-mirror-Fix-NULL-s-job-in-active-writes.patch [bz#2125119]
+        - kvm-accel-introduce-accelerator-blocker-API.patch [bz#2161188]
+        - kvm-KVM-keep-track-of-running-ioctls.patch [bz#2161188]
+        - kvm-kvm-Atomic-memslot-updates.patch [bz#2161188]
+        - kvm-migration-Read-state-once.patch [bz#2074205]
+        - kvm-s390x-pci-RPCIT-second-pass-when-mappings-exhausted.patch [bz#2163713]
+        - kvm-s390x-pci-coalesce-unmap-operations.patch [bz#2163713]
+        - kvm-s390x-pci-shrink-DMA-aperture-to-be-bound-by-vfio-DM.patch [bz#2163713]
+        - kvm-s390x-pci-reset-ISM-passthrough-devices-on-shutdown-.patch [bz#2163713]
+        - Resolves: bz#2125119
+          (Mirror job with 'copy-mode':'write-blocking' that used for storage migration can't converge under heavy I/O)
+        - Resolves: bz#2161188
+          (SVM: non atomic memslot updates cause boot failure with seabios and cpu-pm=on)
+        - Resolves: bz#2074205
+          (while live-migrating many instances concurrently, libvirt sometimes return internal error: migration was active, but no RAM info was set)
+        - Resolves: bz#2163713
+          ([s390x] VM fails to start with ISM passed through)
+
+        [6.2.0-28]
+        - kvm-s390x-tod-kvm-don-t-save-restore-the-TOD-in-PV-guest.patch [bz#2155448]
+        - Resolves: bz#2155448
+          (RHEL8.8 - KVM: s390: pv: don't allow userspace to set the clock under PV - QEMU part)
+
+        [6.2.0-27]
+        - kvm-hw-display-qxl-Have-qxl_log_command-Return-early-if-.patch [bz#2148545]
+        - kvm-hw-display-qxl-Document-qxl_phys2virt.patch [bz#2148545]
+        - kvm-hw-display-qxl-Pass-requested-buffer-size-to-qxl_phy.patch [bz#2148545]
+        - kvm-hw-display-qxl-Avoid-buffer-overrun-in-qxl_phys2virt.patch [bz#2148545]
+        - kvm-hw-display-qxl-Assert-memory-slot-fits-in-preallocat.patch [bz#2148545]
+        - Resolves: bz#2148545
+          (CVE-2022-4144 virt:rhel/qemu-kvm: QEMU: QXL: qxl_phys2virt unsafe address translation can lead to out-of-bounds read [rhel-8])
+
+        [6.2.0-26]
+        - kvm-docs-system-s390x-Document-the-loadparm-machine-prop.patch [bz#2128225]
+        - kvm-s390x-Register-TYPE_S390_CCW_MACHINE-properties-as-c.patch [bz#2128225]
+        - kvm-ui-vnc.c-Fixed-a-deadlock-bug.patch [bz#2141896]
+        - Resolves: bz#2128225
+          ([s390x] [RHEL8][s390x-ccw bios] lacking document about parameter loadparm in qemu)
+        - Resolves: bz#2141896
+          (VMs hung on vnc_clipboard_send)
+
+        [6.2.0-25]
+        - kvm-hw-acpi-Add-ospm_status-hook-implementation-for-acpi.patch [bz#2132609]
+        - kvm-target-arm-kvm-Retry-KVM_CREATE_VM-call-if-it-fails-.patch [bz#2132609]
+        - Resolves: bz#2132609
+          (qemu-kvm: backport some aarch64 fixes)
+
+        [6.2.0-24]
+        - kvm-s390x-pci-use-a-reserved-ID-for-the-default-PCI-grou.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-don-t-use-hard-coded-dma-range-in-reg_ioat.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-use-the-passthrough-measurement-update-int.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-add-supported-DT-information-to-clp-respon.patch [bz#1664378 bz#2043909]
+        - kvm-Update-linux-headers-to-v6.0-rc4.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-add-routine-to-get-host-function-handle-fr.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-enable-for-load-store-interpretation.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-don-t-fence-interpreted-devices-without-MS.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-enable-adapter-event-notification-for-inte.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-let-intercept-devices-have-separate-PCI-gr.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pci-reflect-proper-maxstbl-for-groups-of-inter.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-s390-virtio-ccw-Switch-off-zPCI-enhancements-o.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Use-ERRP_GUARD.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Remove-the-sh_info-variable.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Introduce-shdr_num-to-decrease-complexity.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Remove-the-section-if-when-calculating-the-memo.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Add-more-offset-variables.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Introduce-dump_is_64bit-helper-function.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Consolidate-phdr-note-writes.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Cleanup-dump_begin-write-functions.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Consolidate-elf-note-function.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Replace-opaque-DumpState-pointer-with-a-typed-o.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Rename-write_elf_loads-to-write_elf_phdr_loads.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Refactor-dump_iterate-and-introduce-dump_filter.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Rework-get_start_block.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Rework-filter-area-variables.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Rework-dump_calculate_size-function.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Split-elf-header-functions-into-prepare-and-wri.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Rename-write_elf-_phdr_note-to-prepare_elf-_phd.patch [bz#1664378 bz#2043909]
+        - kvm-dump-simplify-a-bit-kdump-get_next_page.patch [bz#1664378 bz#2043909]
+        - kvm-dump-fix-kdump-to-work-over-non-aligned-blocks.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Use-a-buffer-for-ELF-section-data-and-headers.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Write-ELF-section-headers-right-after-ELF-heade.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Reorder-struct-DumpState.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Reintroduce-memory_offset-and-section_offset.patch [bz#1664378 bz#2043909]
+        - kvm-dump-Add-architecture-section-and-section-string-tab.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-Add-protected-dump-cap.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-Introduce-PV-query-interface.patch [bz#1664378 bz#2043909]
+        - kvm-include-elf.h-add-s390x-note-types.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-Add-KVM-PV-dump-interface.patch [bz#1664378 bz#2043909]
+        - kvm-s390x-pv-Add-dump-support.patch [bz#1664378 bz#2043909]
+        - kvm-ui-vnc-clipboard-fix-integer-underflow-in-vnc_client.patch [bz#2129760]
+        - Resolves: bz#1664378
+          ([IBM 8.8 FEAT] Enhanced Interpretation for PCI Functions (kvm) - qemu part)
+        - Resolves: bz#2043909
+          ([IBM 8.8 FEAT] KVM: Secure Execution guest dump encryption with customer keys - qemu part)
+        - Resolves: bz#2129760
+          (CVE-2022-3165 virt:rhel/qemu-kvm: QEMU: VNC: integer underflow in vnc_client_cut_text_ext leads to CPU exhaustion [rhel-8])
+
+        [6.2.0-23]
+        - kvm-virtio-fix-the-condition-for-iommu_platform-not-supp.patch [bz#2116302]
+        - kvm-virtio-fix-feature-negotiation-for-ACCESS_PLATFORM.patch [bz#2116302]
+        - Resolves: bz#2116302
+          (RHEL8.6 - virtiofs will not mount fs on secure execution guest)
+
+        seabios
+        sgabios
+        supermin
+        [5.2.1-2.el8]
+        - Supermin should ignore +debug kernels
+          resolves: rhbz#2051332
+        - Add copy-patches script.
+
+        [5.2.1-1.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [5.1.19]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [5.1.19-9]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [5.1.19-8]
+        - Pass CFLAGS & LDFLAGS to final supermin link
+          resolves: rhbz#1624175
+
+        [5.1.19-7]
+        - Rebuild for OCaml 4.07.0.
+
+        [5.1.19-6]
+        - Drop dietlibc in RHEL 8
+          resolves: rhbz#1588067
+
+        [5.1.19-5]
+        - Bump release and rebuild.
+
+        [5.1.19-4]
+        - Reenable hardened build
+
+        [5.1.19-3]
+        - Fix bytes/string problems.
+
+        [5.1.19-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+        [5.1.19-1]
+        - New upstream version 5.1.19.
+        - Remove all patches, now upstream.
+
+        [5.1.18-5]
+        - Rebuilt for RPM soname bump
+
+        [5.1.18-4]
+        - Fix supermin crash with truncated vmlinuz file (RHBZ#1477758).
+        - Include all upstream patches since 5.1.18.
+
+        [5.1.18-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
+        [5.1.18-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+        [5.1.18-1]
+        - New upstream release 5.1.18.
+        - Fixes problem with creating incorrect symlinks (RHBZ#1470157).
+
+        [5.1.17-5]
+        - Enable dietlibc on aarch64 and POWER.
+
+        [5.1.17-4]
+        - Drop dependency on hawkey and versioned dependencies on dnf.
+
+        [5.1.17-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+        [5.1.17-2]
+        - Rebuild for OCaml 4.04.0.
+
+        [5.1.17-1]
+        - New upstream release 5.1.17.
+        - Check signature on the tarball before unpacking it.
+        - Remove patches, all upstream.
+
+        [5.1.16-6]
+        - Switch to dietlibc on s390x
+
+        [5.1.16-5]
+        - Do not break the binary on interpreted builds (#1375213)
+
+        [5.1.16-4]
+        - Add all upstream patches since 5.1.16 was released.
+
+        [5.1.16-3]
+        - Add upstream patch for DAX / vNVDIMM support.
+
+        [5.1.16-2]
+        - New upstream version 5.1.16.
+        - Drop all patches since they are upstream.
+        - Depend on systemd-udev to work around RHBZ#1331012.
+
+        [5.1.15-2]
+        - Add all upstream patches since 5.1.15 was released.
+        - These should improve boot performance and initrd size.
+
+        [5.1.15-1]
+        - New upstream version 5.1.15.
+        - Remove all patches, since they are now included in this version.
+        - Enable dietlibc, remove glibc-static, xz-static, zlib-static.
+
+        [5.1.14-4]
+        - Add more patches since 5.1.14.
+
+        [5.1.14-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+        [5.1.14-2]
+        - Add all patches since 5.1.14.
+
+        [5.1.14-1]
+        - New upstream version 5.1.14.
+        - Remove all patches - now upstream.
+
+        [5.1.13-4]
+        - Pull in all upstream patches since 5.1.13.
+        - Choose providers better (RHBZ#1266918).
+        - Use autopatch.
+        - Explicitly depend on pod2html.
+
+        [5.1.13-3]
+        - Bump version to rebuild against new RPM in Rawhide.
+
+        [5.1.13-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+        [5.1.13-1]
+        - New upstream version 5.1.13.
+        - Remove patch, now upstream.
+
+        [5.1.12-11]
+        - Prefer 'dnf download' over 'yumdownloader' (again).
+        - BR grubby for the tests to work.
+
+        [5.1.12-9]
+        - Revert back to yumdownloader (RHBZ#1186948).
+
+        [5.1.12-8]
+        - Prefer 'dnf download' over 'yumdownloader'.
+
+        [5.1.12-7]
+        - Disable hardened build again.  See RHBZ#1202091 RHBZ#1204162.
+
+        [5.1.12-6]
+        - Enable hardening flags by building the static 'init' specially
+          before the main build.
+        - Use _smp_mflags.
+
+        [5.1.12-4]
+        - Add a -devel subpackage containing automated RPM dependency generator
+          for supermin appliances.
+
+        [5.1.12-2]
+        - Disable hardened build as it breaks building the static 'init' binary.
+
+        [5.1.12-1]
+        - New upstream version 5.1.12.
+        - Includes ARM fix: lpae kernels can now be booted (RHBZ#1199733).
+
+        [5.1.11-2]
+        - Rebuild for xz-5.2.0 in Rawhide (RHBZ#1179252).
+
+        [5.1.11-1]
+        - New upstream version 5.1.11.
+
+        [5.1.10-2]
+        - Update to upstream commit d78c898c7e2bc5f12cbebef98b95a7908d9120f1.
+        - BR rpm-devel, since it is now used instead of invoking rpm.
+        - BR automake and autoconf, and run autoreconf (configure.ac is modified by
+          the patches).
+
+        [5.1.10-1]
+        - New upstream version 5.1.10.
+        - Remove patch which is now included upstream.
+
+        [5.1.9-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
+        [5.1.9-2]
+        - Add upstream patch to avoid endless loop in Rawhide.
+
+        [5.1.9-1]
+        - New upstream version 5.1.9.
+        - Remove patches which are now upstream.
+
+        [5.1.8-9]
+        - Add Requires findutils (RHBZ#1113029).
+
+        [5.1.8-8]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+        [5.1.8-7]
+        - Add patch to fix RPM handler when filenames may contain spaces.
+
+        [5.1.8-4]
+        - Skip execstack test on Fedora 20 (ARM only).
+
+        [5.1.8-3]
+        - BR xz-static & xz-devel packages, to support xz-compressed kernel modules.
+
+        [5.1.8-1]
+        - New upstream version 5.1.8.
+        - Remove patches which are now upstream.
+
+        [5.1.7-3]
+        - Add upstream patch which removes need to run execstack (RHBZ#1093261).
+
+        [5.1.7-2]
+        - Add patch to fix quoting around mke2fs parameter (RHBZ#1084960).
+
+        [5.1.7-1]
+        - New upstream version 5.1.7.
+        - Remove ppc64p7 patch which is now upstream.
+
+        [5.1.6-5]
+        - Requires tar, which is not installed in an @Core installation.
+
+        [5.1.6-4]
+        - Add upstream patch to fix supermin on ppc64p7.
+
+        [5.1.6-3]
+        - New upstream version 5.1.6.
+        - Fix tests.
+
+        [5.1.5-2]
+        - Disable execstack on aarch64.
+          It comes from prelink which does not exist on aarch64.
+
+        [5.1.5-1]
+        - New upstream version 5.1.5.
+
+        [5.1.3-1]
+        - New upstream version 5.1.3.
+
+        [5.1.2-1]
+        - New upstream version 5.1.2.
+        - Fixes a serious bug in --build mode.
+
+        [5.1.1-1]
+        - New upstream version 5.1.1.
+        - Remove patch which is now upstream.
+
+        [5.1.0-3]
+        - Add BR yum-utils (for yumdownloader).
+        - Add upstream patch which stops duplicate packages appearing.
+
+        [5.1.0-2]
+        - New upstream version 5.1.0.
+        - Note this is effectively a rewrite, and is not completely compatible.
+        - There is no separate 'supermin-helper' subpackage any more.
+        - Requires rpm instead of yum.
+
+        [4.1.6-2]
+        - New upstream version 4.1.6.
+        - Should fix all autotools brokenness.
+        - Man pages are now all in section 1.
+        - Remove patch which is now upstream.
+        - +BR /usr/bin/execstack (from prelink).
+
+        [4.1.5-5]
+        - Rerun autoreconf to fix autotools brokenness.
+
+        [4.1.5-4]
+        - Why was prelink required?  Remove it.
+
+        [4.1.5-3]
+        - correct Obsoletes version for febootstrap and febootstrap-supermin-helper
+
+        [4.1.5-2]
+        - (For ARM) Don't crash if SUPERMIN_DTB is set and --dtb not specified.
+
+        [4.1.5-1]
+        - New upstream version 4.1.5.
+        - Has (optionally) a new command line syntax.
+        - Supports device trees for ARM.
+
+        [4.1.4-1]
+        - New upstream version 4.1.4.
+        - Supports compressed cpio image files, experimentally.
+
+        [4.1.3-1]
+        - New upstream version 4.1.3.
+        - Remove patch which is now upstream.
+        - Add examples directory to documentation.
+
+        [4.1.2-2]
+        - Include upstream patch to get correct directory setgid/sticky bits in
+          the appliance.
+
+        [4.1.2-1]
+        - New upstream version 4.1.2.
+        - Remove patch which is now upstream.
+
+        [4.1.1-2]
+        - Add upstream patch to ignore ghost non-regular files.
+        - This fixes builds on Fedora 20 because the filesystem package has
+          been changed so /var/lock and /var/run are marked as ghost.
+
+        [4.1.1-1]
+        - New upstream version 4.1.1.
+        - The program has been renamed 'supermin' from 'febootstrap'.
+        - Obsolete, but don't Provide because supermin is not a compatible replacement.
+        - Use '_isa' to specify architecture of supermin-helper subpackage.
+
+        [1:3.21-2]
+        - Add upstream patch to drop supplemental groups (RHBZ#902476).
+        - Remove 'Group:' RPM headers which are no longer necessary.
+        - Remove some commented-out requirements.
+
+        [1:3.21-1]
+        - New upstream version 3.21.
+
+        [1:3.20-1]
+        - New upstream version 3.20.
+
+        [1:3.19-2]
+        - Work around brokenness in yum (RHBZ#850913).
+        - Remove defattr, no longer required.
+
+        [1:3.19-1]
+        - New upstream version 3.19.
+
+        [3.18-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+        [3.18-1]
+        - New upstream version 3.18.
+        - This adds support for EPEL 5.
+
+        [3.17-1]
+        - New upstream version 3.17.
+
+        [3.16-1]
+        - New upstream version 3.16.
+
+        [3.15-1]
+        - New upstream version 3.15.
+        - This version includes root=<device> support, needed for libguestfs
+          with virtio-scsi.
+        - Remove upstream patch.
+
+        [3.14-6]
+        - For RHEL 7 only, add ExclusiveArch x86-64.
+
+        [3.14-5]
+        - Bundled gnulib (RHBZ#821752).
+
+        [3.14-4]
+        - Add back explicit dependencies for external programs.
+
+        [3.14-3]
+        - Drop ExclusiveArch as it's supported on all primary & secondary arches
+        - Cleanup spec and deps
+
+        [3.14-2]
+        - New upstream version 3.14.
+        - Add upstream patch to fix RHBZ#808421.
+
+        [3.13-4]
+        - e2fsprogs moved /sbin/mke2fs to /usr/sbin (thanks Eric Sandeen).
+
+        [3.13-2]
+        - Missing BR zlib-static.
+
+        [3.13-1]
+        - New upstream version 3.13.
+        - Remove upstream patch which is included in this version.
+
+        [3.12-5]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+        [3.12-4]
+        - Depend on latest e2fsprogs (RHBZ#771310).
+
+        [3.12-2]
+        - Include upstream patch to work around Python stupidity.
+
+        [3.12-1]
+        - New upstream version 3.12.
+        - Remove upstream patch which is included in this version.
+
+        [3.11-2]
+        - Add upstream patch to fix febootstrap on non-Debian.
+
+        [3.11-1]
+        - New upstream version 3.11.
+
+        [3.10-1]
+        - New upstream version 3.10.
+
+        [3.9-1]
+        - New upstream version 3.9.
+
+        [3.8-1]
+        - New upstream version 3.8.
+
+        [3.7-1]
+        - New upstream version 3.7.
+
+        [3.6-1]
+        - New upstream version 3.6.
+        - This version no longer needs external insmod.static.
+
+        [3.5-1]
+        - New upstream version 3.5.
+        - Remove patch which is now upstream.
+
+        [3.4-2]
+        - Don't fail if objects are created in a symlinked dir (RHBZ#698089).
+
+        [3.4-1]
+        - New upstream version 3.4.
+        - febootstrap-supermin-helper Obsoletes older versions of febootstrap.
+
+        [3.3-5]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+        [3.3-4]
+        - Split package into febootstrap (for building) and febootstrap-supermin-helper
+          (for running).  Note that febootstrap depends on febootstrap-supermin-helper,
+          but you can install febootstrap-supermin-helper on its own.
+
+        [3.3-3]
+        - Clear executable stack flag on febootstrap-supermin-helper.
+
+        [3.3-2]
+        - add the ocaml's ExclusiveArch
+
+        [3.3-1]
+        - New upstream version 3.3.
+
+        [3.2-1]
+        - New upstream version 3.2.
+        - Remove upstream patches.
+
+        [3.1-5]
+        - Previous fix for RHBZ#654638 didn't work, fix it correctly.
+
+        [3.1-4]
+        - Properly ignore .*.hmac files (accidental reopening of RHBZ#654638).
+
+        [3.1-3]
+        - Uses yumdownloader at runtime, so require yum-utils.
+
+        [3.1-2]
+        - New upstream version 3.1.
+        - BR insmod.static.
+
+        [3.0-2]
+        - New upstream version 3.0 (note this is incompatible with 2.x).
+        - Fix upstream URLs.
+        - fakeroot, fakechroot no longer required.
+        - insmod.static is required at runtime (missing dependency from earlier).
+        - The only programs are 'febootstrap' and 'febootstrap-supermin-helper'.
+        - BR ocaml, ocaml-findlib-devel.
+        - No examples are provided with this version of febootstrap.
+
+        [2.11-1]
+        - New upstream version 2.11.
+        - Fixes 'ext2fs_mkdir .. No free space in directory' bug which affects
+          libguestfs on rawhide.
+
+        [2.10-1]
+        - New upstream version 2.10.
+        - Adds -u and -g options to febootstrap-supermin-helper which are
+          required by virt-v2v.
+
+        [2.9-1]
+        - New upstream version 2.9.
+        - Fixes directory ordering problem in febootstrap-supermin-helper.
+
+        [2.8-1]
+        - New upstream version 2.8.
+
+        [2.8-0.2]
+        - New pre-release version of 2.8.
+          + Note this is based on 2.7 + mailing list patches.
+        - New BRs on mke2fs, libext2fs, glibc-static.
+
+        [2.7-2]
+        - New upstream version 2.7.
+        - febootstrap-supermin-helper shell script rewritten in C for speed.
+        - This package contains C code so it is no longer 'noarch'.
+        - MAKEDEV isn't required.
+
+        [2.6-1]
+        - New upstream release 2.6.
+        - Recheck package in rpmlint.
+
+        [2.5-2]
+        - New upstream release 2.5.
+        - Remove BR upx (not needed by upstream).
+        - Two more scripts / manpages.
+
+        [2.4-1]
+        - New upstream release 2.4.
+
+        [2.3-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+        [2.3-1]
+        - New upstream release 2.3.
+
+        [2.2-1]
+        - New upstream release 2.2.
+
+        [2.0-1]
+        - New upstream release 2.0.
+
+        [1.9-1]
+        - New upstream release 1.9.
+
+        [1.8-1]
+        - New upstream release 1.8.
+
+        [1.7-1]
+        - New upstream release 1.7.
+
+        [1.5-3]
+        - Configure script has (unnecessary) BuildRequires on fakeroot,
+          fakechroot, yum.
+
+        [1.5-2]
+        - Initial build for Fedora.
+
+        swtpm
+        virt-v2v
     FixedIn:
         - Module: virt-devel:ol
           Name: hivex

@@ -1,7 +1,42 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [10.23-2.0.1]
+        - Fixed postgresql port binding issue during bootup [Orabug: 35103668]
+
+        [10.23-2]
+        - Backport fixes for CVE-2023-2454 and CVE-2023-2455
+        - Update postgresql-setup to 8.7 (https://github.com/devexp-db/postgresql-setup/pull/35)
+        - Resolves: #2207931
+
+        [10.23-1]
+        - Resolves: CVE-2022-2625
+        - Rebase to 10.23
+
+        [10.21-1]
+        - Resolves: CVE-2022-1552
+        - Update to 10.21
+        - Release notes: https://www.postgresql.org/docs/release/10.21/
+
+        [10.19-2]
+        - Add missing files into file section of server package
+          postgresql-setup v8.6 newly provides postgresql-upgrade
+
+        [10.19-1]
+        - Update to 10.19
+        - Resolves: CVE-2021-23214
+
+        [10.17-4]
+        - Update postgresql-setup to 8.6 (#2024568)
+
+        [10.17-3]
+        - Fix tmp files deprecated path
+        - Resolves: #1992263
+
+        [10.17-2]
+        - Enable ssl for upgrade server
+          Resolves: #1982701
     FixedIn:
         - Module: null
           Name: postgresql

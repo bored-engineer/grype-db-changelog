@@ -1,7 +1,20 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [83-276.0.1.el5_11]
+        - Added kvm-add-oracle-workaround-for-libvirt-bug.patch
+        - Added kvm-Introduce-oel-machine-type.patch
+
+        [83-275.el5_11]
+        - kvm-virtio-error-out-if-guest-exceeds-virtqueue-size.patch [bz#1359723]
+        - Resolves: bz#1359723
+          CVE-2016-5403 kvm: Qemu: virtio: unbounded memory allocation on host via guest leading to DoS [rhel-5.11.z]
+
+        [kvm-83.275.el5]
+        - kvm-vga-fix-banked-access-bounds-checking-CVE-2016-3710.patch [bz#1334173]
+        - Resolves: bz#1334173
+          CVE-2016-3710 kvm: qemu: incorrect banked access bounds checking in vga module [rhel-5.11.z]
     FixedIn:
         - Module: null
           Name: kmod-kvm

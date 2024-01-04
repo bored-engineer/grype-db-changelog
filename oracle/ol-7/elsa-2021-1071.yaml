@@ -1,7 +1,33 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.10.0-1160.24.1.OL7]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.24.1]
+        - scsi: iscsi: Verify lengths on passthrough PDUs (Chris Leech) [1930826] {CVE-2021-27365}
+        - scsi: iscsi: Ensure sysfs attributes are limited to PAGE_SIZE (Chris Leech) [1930849] {CVE-2021-27363}
+        - scsi: iscsi: Restrict sessions and handles to admin capabilities (Chris Leech) [1930807] {CVE-2021-27364}
+        - redhat: add CI file for kernel-private (Bruno Meneguele)
+
+        [3.10.0-1160.23.1]
+        - tcm_loop: add WQ_MEM_RECLAIM and flush_work (Maurizio Lombardi) [1925652]
+        - net/mlx4_en: Handle TX error CQE (Alaa Hleihel) [1925691]
+        - net/mlx4_en: Avoid scheduling restart task if it is already running (Alaa Hleihel) [1925691]
+
+        [3.10.0-1160.22.1]
+        - mm: do not stall register_shrinker() (Rafael Aquini) [1926043]
+        - sched/rt: Fix PI handling vs. sched_setscheduler() (Phil Auld) [1928082]
+        - sched/rt: Simplify pull_rt_task() logic and remove .leaf_rt_rq_list (Phil Auld) [1928082]
+        - sched: Queue RT tasks to head when prio drops (Phil Auld) [1928082]
+        - sched/core: Use READ_ONCE()/WRITE_ONCE() in move_queued_task()/task_rq_lock() (Phil Auld) [1928082]
+        - mmc: block: handle complete_work on separate workqueue (Ming Lei) [1918916]
+        - tcp: fix to update snd_wl1 in bulk receiver fast path (Vladis Dronov) [1929804]
     FixedIn:
         - Module: null
           Name: bpftool

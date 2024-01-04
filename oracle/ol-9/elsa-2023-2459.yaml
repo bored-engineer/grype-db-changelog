@@ -1,7 +1,60 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [0.8.7-20]
+        - Add 0083-multipath.rules-fix-smart-bug-with-failed-valid-path.patch
+        - Add 0084-libmultipath-limit-paths-that-can-get-wwid-from-envi.patch
+        - Change how the installation dir for kpartx_id is specified
+        - Resolves: bz #1926147
+
+        [0.8.7-19]
+        - Fix bugzilla linked to the changes (was previously linked to
+          the wrong bug, 2162536)
+        - Resolves: bz #2166467
+
+        [0.8.7-18]
+        - Add 0079-libmultipath-use-select_reload_action-in-select_acti.patch
+        - Add 0080-libmultipath-select-resize-action-even-if-reload-is-.patch
+        - Add 0081-libmultipath-cleanup-ACT_CREATE-code-in-select_actio.patch
+        - Add 0082-libmultipath-keep-renames-from-stopping-other-multip.patch
+        - Resolves: bz #2166467
+
+        [0.8.7-17]
+        - Add 0077-libmultipath-don-t-leak-memory-on-invalid-strings.patch
+        - Add 0078-libmutipath-validate-the-argument-count-of-config-st.patch
+        - Resolves: bz #2145225
+
+        [0.8.7-16]
+        - Add 0076-multipath.conf-5-remove-io-affinity-information.patch
+        - Resolves: bz #2143125
+
+        [0.8.7-15]
+        - Add 0067-kpartx-hold-device-open-until-partitions-have-been-c.patch
+          * Fixes bz #2141860
+        - Add 0068-libmultipath-cleanup-remove_feature.patch
+        - Add 0069-libmultipath-cleanup-add_feature.patch
+        - Add 0070-multipath-tests-tests-for-adding-and-removing-featur.patch
+        - Add 0071-libmultipath-fix-queue_mode-feature-handling.patch
+        - Add 0072-multipath-tests-tests-for-reconcile_features_with_qu.patch
+        - Add 0073-libmultipath-prepare-proto_id-for-use-by-non-scsi-de.patch
+        - Add 0074-libmultipath-get-nvme-path-transport-protocol.patch
+        - Add 0075-libmultipath-enforce-queue_mode-bio-for-nmve-tcp-pat.patch
+          * Fixes bz #2033080
+        - Resolves: bz #2033080, #2141860
+
+        [0.8.7-14]
+        - Add 0065-multipathd-ignore-duplicated-multipathd-command-keys.patch
+          * Fixes bz #2133999
+        - Add 0066-multipath-tools-use-run-instead-of-dev-shm.patch
+          * Fixes bz #2133989
+        - Resolves: bz #2133989, #2133999
+
+        [0.8.7-13]
+        - Add 0062-multipathd-factor-out-the-code-to-flush-a-map-with-n.patch
+        - Add 0063-libmultipath-return-success-if-we-raced-to-remove-a-.patch
+        - Add 0064-multipathd-Handle-losing-all-path-in-update_map.patch
+        - Resolves: bz #2125357
     FixedIn:
         - Module: null
           Name: device-mapper-multipath

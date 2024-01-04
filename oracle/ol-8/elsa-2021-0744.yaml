@@ -1,7 +1,330 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        nodejs
+        [1:14.16.0-2]
+        - Resolves: RHBZ#1932427
+        - remove --debug-nghttp2 option
+
+        [1:14.16.0-1]
+        - Resolves: RHBZ#1932317, RHBZ#1932425
+        - Rebase, remove ini patch
+
+        [1:14.15.4-2]
+        - Add patch for yarn crash
+        - Resolves: RHBZ#1916465
+
+        [1:14.15.4-1]
+        - Security rebase to 14.15.4
+        - https://nodejs.org/en/blog/vulnerability/january-2021-security-releases/
+        - Resolves: RHBZ#1916463, RHBZ#1914788
+        - Resolves: RHBZ#1914785, RHBZ#1916387, RHBZ#1916389, RHBZ#1916390, RHBZ#1916690
+
+        [1:14.15.0-1]
+        - Update to LTS release
+        - Rebase: RHBZ#1891809
+
+        [1:14.11.0-1]
+        - Security update to 14.11.0
+
+        [1:14.4.0-1]
+        - Security update to 14.4.0
+        - Resolves: RHBZ#1815402
+
+        [1:14.3.0-1]
+        - Update to 14.3.0
+        - Fix optflags to save memory
+        - Resolves: RHBZ#1815402
+
+        [1:14.2.0-1]
+        - Update to 14.2.0
+        - build with python3 only
+        - some clean up
+
+        [1:12.16.1-2]
+        - Fix CVE-2020-10531
+
+        [1:12.16.1-1]
+        - Rebase to 12.16.1
+
+        [1:12.14.1-1]
+        - Rebase to 12.14.1
+
+        [1:12.13.1-1]
+        - Resolves: RHBZ# 1773503, update to 12.13.1
+        - minor clean up and sync with Fedora spec
+        - turn off debug builds
+
+        [1:12.4.0-2]
+        - Add condition to libs
+
+        [1:12.4.0-1]
+        - Update to v12.x
+        - Add v8-devel and libs subpackages from fedora
+
+        [1:10.14.1-2]
+        - move nodejs-packaging BR out of conditional
+
+        [1:10.14.1-1]
+        - Resolves RHBZ#1644207
+        - fixes node-gyp permissions
+        - rebase
+
+        [1:10.11.0-2]
+        - BuildRequire nodejs-packaging for proper npm dependency generation
+        - Resolves: rhbz#1615947
+
+        [1:10.11.0-1]
+        - Rebase to 10.11.0
+        - Import changes from fedora
+        - Resolves: rhbz#1621766
+
+        [1:10.7.0-5]
+        - Import sources from fedora
+        - Allow using python2 at %build and %install
+        - turn off debug for aarch64
+
+        [1:10.7.0-4]
+        - Fix npm upgrade scriptlet
+        - Fix unexpected trailing .1 in npm release field
+
+        [1:10.7.0-3]
+        - Restore annotations to binaries
+        - Fix unexpected trailing .1 in release field
+
+        [1:10.7.0-2]
+        - Update to 10.7.0
+        - https://nodejs.org/en/blog/release/v10.7.0/
+        - https://nodejs.org/en/blog/release/v10.6.0/
+
+        [1:10.5.0-1.1]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+        [1:10.5.0-1]
+        - Update to 10.5.0
+        - https://nodejs.org/en/blog/release/v10.5.0/
+
+        [1:10.4.1-1]
+        - Update to 10.4.1 to address security issues
+        - https://nodejs.org/en/blog/release/v10.4.1/
+        - Resolves: rhbz#1590801
+        - Resolves: rhbz#1591014
+        - Resolves: rhbz#1591019
+
+        [1:10.4.0-1]
+        - Update to 10.4.0
+        - https://nodejs.org/en/blog/release/v10.4.0/
+
+        [1:10.3.0-1]
+        - Update to 10.3.0
+        - Update npm to 6.1.0
+        - https://nodejs.org/en/blog/release/v10.3.0/
+
+        [1:10.2.1-2]
+        - Fix up bare 'python' to be python2
+        - Drop redundant entry in docs section
+
+        [1:10.2.1-1]
+        - Update to 10.2.1
+        - https://nodejs.org/en/blog/release/v10.2.1/
+
+        [1:10.2.0-1]
+        - Update to 10.2.0
+        - https://nodejs.org/en/blog/release/v10.2.0/
+
+        [1:10.1.0-3]
+        - Fix incorrect rpm macro
+
+        [1:10.1.0-2]
+        - Include upstream v8 fix for ppc64[le]
+        - Disable debug build on ppc64[le] and s390x
+
+        [1:10.1.0-1]
+        - Update to 10.1.0
+        - https://nodejs.org/en/blog/release/v10.1.0/
+        - Reenable node_g binary
+
+        [1:10.0.0-1]
+        - Update to 10.0.0
+        - https://nodejs.org/en/blog/release/v10.0.0/
+        - Drop workaround patch
+        - Temporarily drop node_g binary due to
+          https://gcc.gnu.org/bugzilla/show_bug.cgi?id=85587
+
+        [1:9.11.1-2]
+        - Use standard Fedora linker flags (bug #1543859)
+
+        [1:9.11.1-1]
+        - Update to 9.11.1
+        - https://nodejs.org/en/blog/release/v9.11.0/
+        - https://nodejs.org/en/blog/release/v9.11.1/
+
+        [1:9.10.0-1]
+        - Update to 9.10.0
+        - https://nodejs.org/en/blog/release/v9.10.0/
+
+        [1:9.9.0-1]
+        - Update to 9.9.0
+        - https://nodejs.org/en/blog/release/v9.9.0/
+
+        [1:9.8.0-1]
+        - Update to 9.8.0
+        - https://nodejs.org/en/blog/release/v9.8.0/
+
+        [1:9.7.0-1]
+        - Update to 9.7.0
+        - https://nodejs.org/en/blog/release/v9.7.0/
+        - Work around F28 build issue
+
+        [1:9.6.1-1]
+        - Update to 9.6.1
+        - https://nodejs.org/en/blog/release/v9.6.1/
+        - https://nodejs.org/en/blog/release/v9.6.0/
+
+        [1:9.5.0-1]
+        - Package Node.js 9.5.0
+
+        [1:8.9.4-2]
+        - Fix incorrect Requires:
+
+        [1:8.9.4-1]
+        - Update to 8.9.4
+        - https://nodejs.org/en/blog/release/v8.9.4/
+        - Switch to system copy of nghttp2
+
+        [1:8.9.3-2]
+        - Update to 8.9.3
+        - https://nodejs.org/en/blog/release/v8.9.3/
+        - https://nodejs.org/en/blog/release/v8.9.2/
+
+        [1:8.9.1-2]
+        - Rebuild for ICU 60.1
+
+        [1:8.9.1-1]
+        - Update to 8.9.1
+
+        [1:8.9.0-1]
+        - Update to 8.9.0
+        - Drop upstreamed patch
+
+        [1:8.8.1-1]
+        - Update to 8.8.1 to fix a regression
+
+        [1:8.8.0-1]
+        - Security update to 8.8.0
+        - https://nodejs.org/en/blog/release/v8.8.0/
+
+        [1:8.7.0-1]
+        - Update to 8.7.0
+        - https://nodejs.org/en/blog/release/v8.7.0/
+
+        [1:8.6.0-2]
+        - Use bcond macro instead of bootstrap conditional
+
+        [1:8.6.0-1]
+        - Fix nghttp2 version
+        - Update to 8.6.0
+        - https://nodejs.org/en/blog/release/v8.6.0/
+
+        [1:8.5.0-3]
+        - Build with bootstrap + bundle libuv for modularity
+        - backport patch for aarch64 debug build
+
+        [1:8.5.0-2]
+        - Disable debug builds on aarch64 due to https://github.com/nodejs/node/issues/15395
+
+        [1:8.5.0-1]
+        - Update to v8.5.0
+        - https://nodejs.org/en/blog/release/v8.5.0/
+
+        [1:8.4.0-2]
+        - Refactor openssl BR
+
+        [1:8.4.0-1]
+        - Update to v8.4.0
+        - https://nodejs.org/en/blog/release/v8.4.0/
+        - http2 is now supported, add bundled nghttp2
+        - remove openssl 1.0.1 patches, we won't be using them in fedora
+
+        [1:8.3.0-1]
+        - Update to v8.3.0
+        - https://nodejs.org/en/blog/release/v8.3.0/
+        - update V8 to 6.0
+        - update minimal gcc and g++ requirements to 4.9.4
+
+        [1:8.2.1-2]
+        - Bump release to fix broken dependencies
+
+        [1:8.2.1-1.2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
+        [1:8.2.1-1.1]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+        [1:8.2.1-1]
+        - Update to v8.2.1
+        - https://nodejs.org/en/blog/release/v8.2.1/
+
+        [1:8.2.0-1]
+        - Update to v8.2.0
+        - https://nodejs.org/en/blog/release/v8.2.0/
+        - Update npm to 5.3.0
+        - Adds npx command
+
+        [1:8.1.4-3]
+        - s/BuildRequires/Requires/ for http-parser-devel%{?_isa}
+
+        [1:8.1.4-2]
+        - Rename python-devel to python2-devel
+        - own %{_pkgdocdir}/npm
+
+        [1:8.1.4-1]
+        - Update to v8.1.4
+        - https://nodejs.org/en/blog/release/v8.1.4/
+        - Drop upstreamed c-ares patch
+
+        [1:8.1.3-1]
+        - Update to v8.1.3
+        - https://nodejs.org/en/blog/release/v8.1.3/
+
+        [1:8.1.2-1]
+        - Update to v8.1.2
+        - remove GCC 7 patch, as it is now fixed in node >= 6.12
+
+        nodejs-nodemon
+        [2.0.3-1]
+        - Updated
+
+        nodejs-packaging
+        [23-3]
+        - Updated
+        - Removed pathfix.py
+
+        [23-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
+        [23-1]
+        - Ensure nodejs(engine) is required for packages with no dependencies
+
+        [22-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+        [22-1]
+        - Refactor nodejs.req in more idiomatic Python
+        - Treat only external dependency links as un-bundled
+
+        [21-1]
+        - Refactor nodejs.prov in more idiomatic Python
+
+        [20-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+        [20-1]
+        - Fix handling of ^ dependencies for multiversion modules
+
+        [18-1]
+        - Handle =, >= and <= dependencies for multiversion modules
     FixedIn:
         - Module: nodejs:14
           Name: nodejs

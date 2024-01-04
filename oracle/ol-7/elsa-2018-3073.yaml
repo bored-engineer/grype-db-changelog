@@ -1,7 +1,22 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [5.0.2-31]
+        - fix defects detected by Coverity related to CVE-2017-18206 and CVE-2018-1083
+
+        [5.0.2-30]
+        - fix stack-based buffer overflow in utils.c:checkmailpath() (CVE-2018-1100)
+        - fix stack-based buffer overflow in gen_matches_files() (CVE-2018-1083)
+        - fix stack-based buffer overflow in exec.c:hashcmd() (CVE-2018-1071)
+        - avoid crash when copying empty hash table (CVE-2018-7549)
+        - fix buffer overrun in xsymlinks (CVE-2017-18206)
+        - fix NULL dereference in cd (CVE-2017-18205)
+        - fix buffer overflow when scanning very long path for symlinks (CVE-2014-10072)
+        - fix buffer overflow for very long fds in >& fd syntax (CVE-2014-10071)
+
+        [5.0.2-29]
+        - fix crash while inputting long multi-line strings (#1492595)
     FixedIn:
         - Module: null
           Name: zsh

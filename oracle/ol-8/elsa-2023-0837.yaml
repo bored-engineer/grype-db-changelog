@@ -1,7 +1,29 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [239-68.0.2]
+        - Backport upstream pstore dmesg fix [Orabug: 34850699]
+        - Standardize ioctl (BTRFS_IOC_QGROUP_CREATE) check and return -ENOTCONN, if quota is not enabled [Orabug: 34694253]
+        - Disable unprivileged BPF by default [Orabug: 32870980]
+        - backport upstream pstore tmpfiles patch [Orabug: 31420486]
+        - udev rules: fix memory hot add and remove [Orabug: 31310273]
+        - fix to enable systemd-pstore.service [Orabug: 30951066]
+        - journal: change support URL shown in the catalog entries [Orabug: 30853009]
+        - fix to generate systemd-pstore.service file [Orabug: 30230056]
+        - fix _netdev is missing for iscsi entry in /etc/fstab (tony.l.lam@oracle.com) [Orabug: 25897792]
+        - set 'RemoveIPC=no' in logind.conf as default for OL7.2 [Orabug: 22224874]
+        - allow dm remove ioctl to co-operate with UEK3 (Vaughan Cao) [Orabug: 18467469]
+        - add hv dynamic memory support (Jerry Snitselaar) [Orabug: 18621475]
+        - Backport upstream patches for the new systemd-pstore tool (Eric DeVolder) [OraBug: 30230056]
+
+        [239-68.4]
+        - basic: add STRERROR() wrapper for strerror_r() (#2155519)
+        - coredump: put context array into a struct (#2155519)
+        - coredump: do not allow user to access coredumps with changed uid/gid/capabilities (#2155519)
+
+        [239-68.3]
+        - core: bring manager_startup() and manager_reload() more inline (#2164049)
     FixedIn:
         - Module: null
           Name: systemd

@@ -1,7 +1,39 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [6.6.1p1-31 + 0.9.3-9]
+        - Do not depend on selinux-policy (#1373297)
+
+        [6.6.1p1-30 + 0.9.3-9]
+        - Drop dependency on libcap-ng for ssh-keycat (#1357859)
+
+        [6.6.1p1-29 + 0.9.3-9]
+        - Rework SELinux context handling with chroot using libcap-ng (#1357859)
+
+        [6.6.1p1-28 + 0.9.3-9]
+        - SFTP force permission collision with umask (#1344614)
+        - Make closefrom() ignore FD's to /dev/ devices on s390 (#1318760)
+        - Create a default value for AuthenticationMethods any (#1237129)
+        - Fix ssh-copy-id with LogLevel=quiet (#1349556)
+        - Expose more information to PAM (#1312304)
+        - Move MAX_DISPLAYS to a configuration option (#1341302)
+        - Add a wildcard option to PermitOpen directive (host) (#1344106)
+
+        [6.6.1p1-27 + 0.9.3-9]
+        - Coverity and RPMDiff build issues (#1334326)
+        - CVE-2015-8325: privilege escalation via user's PAM environment and UseLogin=yes (#1329191)
+        - Check for real location of .k5login file (#1328243)
+        - close ControlPersist background process stderr (#1335540)
+
+        [6.6.1p1-26 + 0.9.3-9]
+        - Drop glob patch for sftp client preventing listing many files (#1310303)
+        - Fix race condition between audit messages from different processes (#1310684)
+        - Make systemd service forking to properly report state (#1291172)
+        - Get rid of rpm triggers for openssh-5.x (#1312013)
+        - Generate the host keys when the key files are empty (#1266043)
+        - pam_ssh_agent_auth: authorized_keys_command option (#1317858)
+        - Don't use MD5 digest from pam_ssh_agent_auth in FIPS mode (#1317952)
     FixedIn:
         - Module: null
           Name: openssh

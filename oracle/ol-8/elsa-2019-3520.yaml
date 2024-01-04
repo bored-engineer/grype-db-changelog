@@ -1,7 +1,61 @@
 # schema: vulnerability/os/schema-1.0.0.json
 Vulnerability:
     CVSS: []
-    Description: ""
+    Description: |-
+        [3.6.8-15.1.0.1]
+        - Add Oracle Linux distribution in platform.py [Orabug: 20812544]
+
+        [3.6.8-15.1]
+        - Patch 329 (FIPS) modified: Added workaround for mod_ssl:
+          Skip error checking in _Py_hashlib_fips_error
+        Resolves: rhbz#1760106
+
+        [3.6.8-15]
+        - Patch 329 that adds support for OpenSSL FIPS mode has been improved and
+          bugfixed
+        Resolves: rhbz#1744670 rhbz#1745499 rhbz#1745685
+
+        [3.6.8-14]
+        - Adding a new patch 329 that adds support for OpenSSL FIPS mode
+        - Explicitly listing man pages in files section to fix an RPM warning
+        Resolves: rhbz#1731424
+
+        [3.6.8-13]
+        - Do not set PHA verify flag on client side (rhbz#1725721)
+        - Enable TLS 1.3 post-handshake authentication in http.client (rhbz#1671353)
+
+        [3.6.8-12]
+        - Use RPM built wheels of pip and setuptools in ensurepip instead of our rewheel patch
+        - Require platform-python-setuptools from platform-python-devel to prevent packaging errors
+        Resolves: rhbz#1701286
+
+        [3.6.8-11]
+        - Fix for CVE-2019-10160
+        Resolves: rhbz#1689318
+
+        [3.6.8-10]
+        - Security fix for CVE-2019-9948
+        Resolves: rhbz#1714643
+
+        [3.6.8-9]
+        - Reduced default build flags used to build extension modules
+          https://fedoraproject.org/wiki/Changes/Python_Extension_Flags
+        Resolves: rhbz#1634784
+
+        [3.6.8-8]
+        - gzip the unversioned-python man page
+        Resolves: rhbz#1665514
+
+        [3.6.8-7]
+        - Disallow control chars in http URLs
+        - Fixes CVE-2019-9740 and CVE-2019-9947
+        Resolves: rhbz#1704365 and rhbz#1703531
+
+        [3.6.8-6]
+        - Updated fix for CVE-2019-9636 (rhbz#1689318)
+
+        [3.6.8-5]
+        - Security fix for CVE-2019-9636 (rhbz#1689318)
     FixedIn:
         - Module: null
           Name: platform-python
