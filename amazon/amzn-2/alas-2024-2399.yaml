@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: A flaw was found in c-ares library, where a missing input validation check of host names returned by DNS (Domain Name Servers) can lead to output of wrong hostnames which might potentially lead to Domain Hijacking. The highest threat from this vulnerability is to confidentiality and integrity as well as system availability. (CVE-2021-3672)A flaw was found in the c-ares package. The ares_set_sortlist is missing checks about the validity of the input string, which allows a possible arbitrary length stack overflow. This issue may cause a denial of service or a limited impact on confidentiality and integrity. (CVE-2022-4904)ares_inet_net_pton() is vulnerable to a buffer underflow for certain ipv6 addresses, in particular "0::00:00:00/2" was found to cause an issue. C-ares only uses this function internally for configuration purposes which would require an administrator to configure such an address via ares_set_sortlist().However, users may externally use ares_inet_net_pton() for other purposes and thus be vulnerable to more severe issues. (CVE-2023-31130)
+    FixedIn:
+        - Name: c-ares
+          NamespaceName: amzn:2
+          Version: 1.10.0-3.amzn2.0.4
+          VersionFormat: rpm
+        - Name: c-ares-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.10.0-3.amzn2.0.4
+          VersionFormat: rpm
+        - Name: c-ares-devel
+          NamespaceName: amzn:2
+          Version: 1.10.0-3.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2399.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-3672
+            - Name: CVE-2022-4904
+            - Name: CVE-2023-31130
+    Name: ALAS-2024-2399
+    NamespaceName: amzn:2
+    Severity: Medium
