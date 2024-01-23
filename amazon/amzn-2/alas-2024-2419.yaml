@@ -1,0 +1,30 @@
+Vulnerability:
+    Description: 'It was discovered that the numerical library used in NSS for RSA cryptography leaks information whether high order bits of the RSA decryption result are zero. This information can be used to mount a Bleichenbacher or Manger like attack against all RSA decryption operations. As the leak happens before any padding operations, it affects all padding modes: PKCS#1 v1.5, OAEP, and RSASVP. Both API level calls and TLS server operation are affected. (CVE-2023-5388)'
+    FixedIn:
+        - Name: nss-softokn
+          NamespaceName: amzn:2
+          Version: 3.90.0-6.amzn2.0.1
+          VersionFormat: rpm
+        - Name: nss-softokn-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.90.0-6.amzn2.0.1
+          VersionFormat: rpm
+        - Name: nss-softokn-devel
+          NamespaceName: amzn:2
+          Version: 3.90.0-6.amzn2.0.1
+          VersionFormat: rpm
+        - Name: nss-softokn-freebl
+          NamespaceName: amzn:2
+          Version: 3.90.0-6.amzn2.0.1
+          VersionFormat: rpm
+        - Name: nss-softokn-freebl-devel
+          NamespaceName: amzn:2
+          Version: 3.90.0-6.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2419.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-5388
+    Name: ALAS-2024-2419
+    NamespaceName: amzn:2
+    Severity: Medium
