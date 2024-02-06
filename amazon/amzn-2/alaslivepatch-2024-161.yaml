@@ -1,0 +1,21 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'An out-of-bounds access vulnerability involving netfilter was reported and fixed as: f1082dd31fe4 (netfilter: nf_tables: Reject tables of unsupported family); While creating a new netfilter table, lack of a safeguard against invalid nf_tables family (pf) values within `nf_tables_newtable` function enables an attacker to achieve out-of-bounds access. (CVE-2023-6040)An out-of-bounds read vulnerability was found in smbCalcSize in fs/smb/client/netmisc.c in the Linux Kernel. This issue could allow a local attacker to crash the system or leak internal kernel information. (CVE-2023-6606)A use-after-free vulnerability in the Linux kernel''s ipv4: igmp component can be exploited to achieve local privilege escalation.A race condition can be exploited to cause a timer be mistakenly registered on a RCU read locked object which is freed by another thread.We recommend upgrading past commit e2b706c691905fe78468c361aaabc719d0a496f1. (CVE-2023-6932)'
+    FixedIn:
+        - Name: kernel-livepatch-4.14.330-250.540
+          NamespaceName: amzn:2
+          Version: 1.0-1.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.330-250.540-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASLIVEPATCH-2024-161.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-6040
+            - Name: CVE-2023-6606
+            - Name: CVE-2023-6932
+    Name: ALASLIVEPATCH-2024-161
+    NamespaceName: amzn:2
+    Severity: High
