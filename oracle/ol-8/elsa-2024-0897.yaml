@@ -1,0 +1,198 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.18.0-513.18.1.el8_9.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.3
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34750652]
+        - Drop not needed patch
+
+        [4.18.0-513.18.1.el8_9]
+        - net: tls, update curr on splice as well (Sabrina Dubroca) [RHEL-22091 RHEL-19065] {CVE-2024-0646}
+        - smb: client: fix potential OOB in smb2_dump_detail() (Scott Mayhew) [RHEL-21672 RHEL-19144] {CVE-2023-6610}
+        - smb: client: fix potential OOB in cifs_dump_detail() (Scott Mayhew) [RHEL-21672 RHEL-19144] {CVE-2023-6610}
+        - nvmet-tcp: Fix the H2C expected PDU len calculation (Maurizio Lombardi) [RHEL-22299 RHEL-22637 RHEL-22641 RHEL-19155 RHEL-19161 RHEL-19167] {CVE-2023-6535 CVE-2023-6356 CVE-2023-6536}
+        - nvmet-tcp: remove boilerplate code (Maurizio Lombardi) [RHEL-22299 RHEL-22637 RHEL-22641 RHEL-19155 RHEL-19161 RHEL-19167] {CVE-2023-6535 CVE-2023-6356 CVE-2023-6536}
+        - nvmet-tcp: fix a crash in nvmet_req_complete() (Maurizio Lombardi) [RHEL-22299 RHEL-22637 RHEL-22641 RHEL-19155 RHEL-19161 RHEL-19167] {CVE-2023-6535 CVE-2023-6356 CVE-2023-6536}
+        - nvmet-tcp: Fix a kernel panic when host sends an invalid H2C PDU length (Maurizio Lombardi) [RHEL-22299 RHEL-22637 RHEL-22641 RHEL-19155 RHEL-19161 RHEL-19167] {CVE-2023-6535 CVE-2023-6356 CVE-2023-6536}
+        - net-sysfs: add check for netdevice being present to speed_show (Michal Schmidt) [RHEL-20924 RHEL-16007]
+        - netfilter: nft_set_pipapo: skip inactive elements during set walk (Florian Westphal) [RHEL-20698 RHEL-19721] {CVE-2023-6817}
+
+        [4.18.0-513.17.1.el8_9]
+        - redhat: rewrite genlog and support Y- tags (Jan Stancek)
+        - smb: client: fix OOB in smbCalcSize() (Scott Mayhew) [RHEL-21662 RHEL-18990] {CVE-2023-6606}
+        - s390/qeth: Don't call dev_close/dev_open (DOWN/UP) (Tobias Huschle) [RHEL-17884 RHEL-2410]
+        - blk-mq: use quiesced elevator switch when reinitializing queues (Ming Lei) [RHEL-21785 RHEL-19944]
+        - lib/group_cpus.c: avoid acquiring cpu hotplug lock in group_cpus_evenly (Ming Lei) [RHEL-20232 RHEL-8128]
+
+        [4.18.0-513.16.1.el8_9]
+        - tracing/timerlat: Add user-space interface (Chris White) [RHEL-20362 RHEL-15142]
+        - tracing/osnoise: Skip running osnoise if all instances are off (Chris White) [RHEL-20362 RHEL-15142]
+        - tracing/osnoise: Switch from PF_NO_SETAFFINITY to migrate_disable (Chris White) [RHEL-20362 RHEL-15142]
+        - tracing/timerlat: Always wakeup the timerlat thread (Chris White) [RHEL-20362 RHEL-15142]
+        - tracing/osnoise: Fix notify new tracing_max_latency (Chris White) [RHEL-20362 RHEL-15142]
+        - tracing/timerlat: Notify new max thread latency (Chris White) [RHEL-20362 RHEL-15142]
+        - trace/osnoise: make use of the helper function kthread_run_on_cpu() (Chris White) [RHEL-20362 RHEL-15142]
+        - kthread: add the helper function kthread_run_on_cpu() (Chris White) [RHEL-20362 RHEL-15142]
+        - x86/apic: Mark _all_ legacy interrupts when IO/APIC is missing (Prarit Bhargava) [RHEL-7238 RHEL-4244]
+        - HID: check empty report_list in hid_validate_values() (Desnes Nunes) [RHEL-19274 RHEL-19237] {CVE-2023-1073}
+        - s390/dasd: print copy pair message only for the correct error (Tobias Huschle) [RHEL-9444 RHEL-2831]
+        - blk-mq: don't count completed flush data request as inflight in case of quiesce (Ming Lei) [RHEL-19111 RHEL-18055]
+
+        [4.18.0-513.15.1.el8_9]
+        - IB/ipoib: Fix mcast list locking (Daniel Vacek) [RHEL-19699 RHEL-19244]
+        - RDMA/IPoIB: Fix error code return in ipoib_mcast_join (Daniel Vacek) [RHEL-19699 RHEL-19244]
+        - x86/sev: Check for user-space IOIO pointing to kernel space (Wander Lairson Costa) [RHEL-18014 RHEL-14978] {CVE-2023-46813}
+        - x86/sev: Check IOBM for IOIO exceptions from user-space (Wander Lairson Costa) [RHEL-18014 RHEL-14978] {CVE-2023-46813}
+        - x86/sev: Disable MMIO emulation from user mode (Wander Lairson Costa) [RHEL-18014 RHEL-14978] {CVE-2023-46813}
+        - x86/sev-es: Fix SEV-ES OUT/IN immediate opcode vc handling (Wander Lairson Costa) [RHEL-18014 RHEL-14978] {CVE-2023-46813}
+    FixedIn:
+        - Module: null
+          Name: bpftool
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-513.18.1.el8_9
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-0897.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2022-3545.html
+              Name: CVE-2022-3545
+            - Link: https://linux.oracle.com/cve/CVE-2022-41858.html
+              Name: CVE-2022-41858
+            - Link: https://linux.oracle.com/cve/CVE-2023-1073.html
+              Name: CVE-2023-1073
+            - Link: https://linux.oracle.com/cve/CVE-2023-1838.html
+              Name: CVE-2023-1838
+            - Link: https://linux.oracle.com/cve/CVE-2023-2166.html
+              Name: CVE-2023-2166
+            - Link: https://linux.oracle.com/cve/CVE-2023-2176.html
+              Name: CVE-2023-2176
+            - Link: https://linux.oracle.com/cve/CVE-2023-40283.html
+              Name: CVE-2023-40283
+            - Link: https://linux.oracle.com/cve/CVE-2023-45871.html
+              Name: CVE-2023-45871
+            - Link: https://linux.oracle.com/cve/CVE-2023-4623.html
+              Name: CVE-2023-4623
+            - Link: https://linux.oracle.com/cve/CVE-2023-46813.html
+              Name: CVE-2023-46813
+            - Link: https://linux.oracle.com/cve/CVE-2023-4921.html
+              Name: CVE-2023-4921
+            - Link: https://linux.oracle.com/cve/CVE-2023-5717.html
+              Name: CVE-2023-5717
+            - Link: https://linux.oracle.com/cve/CVE-2023-6356.html
+              Name: CVE-2023-6356
+            - Link: https://linux.oracle.com/cve/CVE-2023-6535.html
+              Name: CVE-2023-6535
+            - Link: https://linux.oracle.com/cve/CVE-2023-6536.html
+              Name: CVE-2023-6536
+            - Link: https://linux.oracle.com/cve/CVE-2023-6606.html
+              Name: CVE-2023-6606
+            - Link: https://linux.oracle.com/cve/CVE-2023-6610.html
+              Name: CVE-2023-6610
+            - Link: https://linux.oracle.com/cve/CVE-2023-6817.html
+              Name: CVE-2023-6817
+            - Link: https://linux.oracle.com/cve/CVE-2024-0646.html
+              Name: CVE-2024-0646
+        Issued: "2024-03-06"
+        RefId: ELSA-2024-0897
+    Name: ELSA-2024-0897
+    NamespaceName: ol:8
+    Severity: High
