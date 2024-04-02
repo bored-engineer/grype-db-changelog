@@ -1,0 +1,73 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'A flaw was found in the smb client in the Linux kernel. A potential out-of-bounds error was seen in the smb2_parse_contexts() function. Validate offsets and lengths before dereferencing create contexts in smb2_parse_contexts(). (CVE-2023-52434)A vulnerability was discovered in the Linux kernel''s IPv4 networking stack. Under certain conditions, MPTCP and NetLabel can be configured in a way that triggers a double free memory error in net/ipv4/af_inet.c:inet_sock_destruct(). This may lead to a system crash, denial of service, or potential arbitrary code execution. (CVE-2024-1627)In the Linux kernel, the following vulnerability has been resolved:ext4: regenerate buddy after block freeing failed if under fc replayThis mostly reverts commit 6bd97bf273bd ("ext4: remove redundantmb_regenerate_buddy()") and reintroduces mb_regenerate_buddy(). Based oncode in mb_free_blocks(), fast commit replay can end up marking as freeblocks that are already marked as such. This causes corruption of thebuddy bitmap so we need to regenerate it in that case. (CVE-2024-26601)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.15.152-100.162
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.152-100.162.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASKERNEL-5.15-2024-040.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-52434
+            - Name: CVE-2024-1627
+            - Name: CVE-2024-26601
+    Name: ALASKERNEL-5.15-2024-040
+    NamespaceName: amzn:2
+    Severity: Medium

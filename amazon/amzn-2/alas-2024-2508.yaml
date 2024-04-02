@@ -1,0 +1,35 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: An issue was discovered in Pillow before 10.0.0. It is a Denial of Service that uncontrollably allocates memory to process a given task, potentially causing a service to crash by having it run out of memory. This occurs for truetype in ImageFont when textlength in an ImageDraw instance operates on a long text argument. (CVE-2023-44271)Affected versions of this package are vulnerable to Denial of Service (DoS) when using arbitrary strings as text input and the number of characters passed into PIL.ImageFont.ImageFont.getmask() is over a certain limit. This can lead to a system crash.Affected versions of this package are vulnerable to Denial of Service (DoS) if the size of individual glyphs extends beyond the bitmap image, when using PIL.ImageFont.ImageFont function. Exploiting this vulnerability could lead to a system crash.Affected versions of this package are vulnerable to Command Injection in filenames that contain single quotes via load_djpeg.
+    FixedIn:
+        - Name: python-pillow
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-pillow-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-pillow-devel
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-pillow-doc
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-pillow-sane
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-pillow-tk
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.12
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2508.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-44271
+    Name: ALAS-2024-2508
+    NamespaceName: amzn:2
+    Severity: Medium
