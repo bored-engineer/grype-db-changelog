@@ -1,0 +1,38 @@
+Vulnerability:
+    Description: In a multiply-corrupted DWARF object libdwarf may try to dealloc(free) an allocation twice.Results are unpredictable and various. This has been a possibility since we added code to prevent leaks when generating 'unattached' Dwarf_Error records (where there is no Dwarf_Debug available at the point of error).The problem was introduced in libdwarf-0.1.0 in 2021. (CVE-2024-2002)
+    FixedIn:
+        - Name: libdwarf
+          NamespaceName: amzn:2023
+          Version: 0.5.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: libdwarf-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.5.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: libdwarf-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.5.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: libdwarf-devel
+          NamespaceName: amzn:2023
+          Version: 0.5.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: libdwarf-static
+          NamespaceName: amzn:2023
+          Version: 0.5.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: libdwarf-tools
+          NamespaceName: amzn:2023
+          Version: 0.5.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: libdwarf-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.5.0-1.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-579.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-2002
+    Name: ALAS-2024-579
+    NamespaceName: amzn:2023
+    Severity: Medium
