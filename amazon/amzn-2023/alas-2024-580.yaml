@@ -1,0 +1,24 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: A vulnerability was found in OpenSC where PKCS#1 encryption padding removal is not implemented as side-channel resistant. This issue may result in the potential leak of private data. (CVE-2023-5992)The use-after-free vulnerability was found in the AuthentIC driver in OpenSC packages, occuring in the card enrolment process using pkcs15-init when a user or administrator enrols or modifies cards. An attacker must have physical access to the computer system and requires a crafted USB device or smart card to present the system with specially crafted responses to the APDUs, which are considered high complexity and low severity. This manipulation can allow for compromised card management operations during enrolment. (CVE-2024-1454)
+    FixedIn:
+        - Name: opensc
+          NamespaceName: amzn:2023
+          Version: 0.24.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: opensc-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.24.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: opensc-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.24.0-1.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-580.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-5992
+            - Name: CVE-2024-1454
+    Name: ALAS-2024-580
+    NamespaceName: amzn:2023
+    Severity: Medium
