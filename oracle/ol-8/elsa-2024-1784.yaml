@@ -1,0 +1,79 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [3.6.16-8.3_fips]
+        - Allow RSA keygen with modulus sizes bigger than 3072 bits and validate the seed length
+          as defined in FIPS 186-4 section B.3.2 [Orabug: 33200526]
+        - Allow bigger known RSA modulus sizes when calling
+          rsa_generate_fips186_4_keypair directly [Orabug: 33200526]
+        - Change Epoch from 1 to 10_fips
+
+        [3.6.16-8.3]
+        - Fix memleak with older GMP (RHEL-28957)
+
+        [3.6.16-8.2]
+        - Fix timing side-channel in deterministic ECDSA (RHEL-28957)
+
+        [3.6.16-8.1]
+        - auth/rsa-psk: minimize branching after decryption (RHEL-21586)
+    FixedIn:
+        - Module: null
+          Name: gnutls
+          NamespaceName: ol:8
+          Version: 0:3.6.16-8.el8_9.3
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls
+          NamespaceName: ol:8
+          Version: 10:3.6.16-8.el8_9.3_fips
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls-c++
+          NamespaceName: ol:8
+          Version: 0:3.6.16-8.el8_9.3
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls-c++
+          NamespaceName: ol:8
+          Version: 10:3.6.16-8.el8_9.3_fips
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls-dane
+          NamespaceName: ol:8
+          Version: 0:3.6.16-8.el8_9.3
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls-dane
+          NamespaceName: ol:8
+          Version: 10:3.6.16-8.el8_9.3_fips
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls-devel
+          NamespaceName: ol:8
+          Version: 0:3.6.16-8.el8_9.3
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls-devel
+          NamespaceName: ol:8
+          Version: 10:3.6.16-8.el8_9.3_fips
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls-utils
+          NamespaceName: ol:8
+          Version: 0:3.6.16-8.el8_9.3
+          VersionFormat: rpm
+        - Module: null
+          Name: gnutls-utils
+          NamespaceName: ol:8
+          Version: 10:3.6.16-8.el8_9.3_fips
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-1784.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-28834.html
+              Name: CVE-2024-28834
+        Issued: "2024-04-15"
+        RefId: ELSA-2024-1784
+    Name: ELSA-2024-1784
+    NamespaceName: ol:8
+    Severity: Medium
