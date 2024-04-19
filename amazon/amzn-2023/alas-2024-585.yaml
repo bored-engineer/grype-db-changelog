@@ -1,0 +1,93 @@
+Vulnerability:
+    Description: 'Integer Overflow or Wraparound vulnerability in Linux kernel on x86 and ARM (md, raid, raid5 modules) allows Forced Integer Overflow. (CVE-2024-23307)A malicious hypervisor can potentially break confidentiality and integrity of Linux SEV-SNP guests by injecting interrupts. (CVE-2024-25742)In the Linux kernel, the following vulnerability has been resolved:net: tls: handle backlogging of crypto requestsSince we''re setting the CRYPTO_TFM_REQ_MAY_BACKLOG flag on ourrequests to the crypto API, crypto_aead_{encrypt,decrypt} can return-EBUSY instead of -EINPROGRESS in valid situations. For example, whenthe cryptd queue for AESNI is full (easy to trigger with anartificially low cryptd.cryptd_max_cpu_qlen), requests will be enqueuedto the backlog but still processed. In that case, the async callbackwill also be called twice: first with err == -EINPROGRESS, which itseems we can just ignore, then with err == 0.Compared to Sabrina''s original patch this version uses the newtls_*crypt_async_wait() helpers and converts the EBUSY toEINPROGRESS to avoid having to modify all the error handlingpaths. The handling is identical. (CVE-2024-26584)In the Linux kernel, the following vulnerability has been resolved:tls: fix race between tx work scheduling and socket closeSimilarly to previous commit, the submitting thread (recvmsg/sendmsg)may exit as soon as the async crypto handler calls complete().Reorder scheduling the work before calling complete().This seems more logical in the first place, as it''sthe inverse order of what the submitting thread will do. (CVE-2024-26585)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-libbpf
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-libbpf-devel
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-libbpf-static
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-livepatch-6.1.84-99.169
+          NamespaceName: amzn:2023
+          Version: 1.0-0.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-modules-extra
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-modules-extra-common
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: python3-perf
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+        - Name: python3-perf-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.84-99.169.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-585.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-23307
+            - Name: CVE-2024-25742
+            - Name: CVE-2024-26584
+            - Name: CVE-2024-26585
+    Name: ALAS-2024-585
+    NamespaceName: amzn:2023
+    Severity: Medium

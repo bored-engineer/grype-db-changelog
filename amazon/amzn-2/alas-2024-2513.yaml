@@ -1,0 +1,140 @@
+Vulnerability:
+    Description: An off-by-one error flaw was found in the udevListInterfacesByStatus() function in libvirt when the number of interfaces exceeds the size of the `names` array. This issue can be reproduced by sending specially crafted data to the libvirt daemon, allowing an unprivileged client to perform a denial of service attack by causing the libvirt daemon to crash. (CVE-2024-1441)A flaw was found in the RPC library APIs of libvirt. The RPC server deserialization code allocates memory for arrays before the non-negative length check is performed by the C API entry points. Passing a negative length to the g_new0 function results in a crash due to the negative length being treated as a huge positive number. This flaw allows a local, unprivileged user to perform a denial of service attack by causing the libvirt daemon to crash. (CVE-2024-2494)NULL pointer dereference in udevConnectListAllInterfaces() (CVE-2024-2496)
+    FixedIn:
+        - Name: libvirt
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-admin
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-bash-completion
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-client
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-config-network
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-config-nwfilter
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-interface
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-lxc
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-network
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-nodedev
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-nwfilter
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-qemu
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-secret
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage-core
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage-disk
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage-gluster
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage-iscsi
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage-logical
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage-mpath
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage-rbd
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-driver-storage-scsi
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-kvm
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-daemon-lxc
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-devel
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-docs
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-libs
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-lock-sanlock
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-login-shell
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+        - Name: libvirt-nss
+          NamespaceName: amzn:2
+          Version: 4.5.0-36.amzn2.3.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2513.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-1441
+            - Name: CVE-2024-2494
+            - Name: CVE-2024-2496
+    Name: ALAS-2024-2513
+    NamespaceName: amzn:2
+    Severity: Medium
