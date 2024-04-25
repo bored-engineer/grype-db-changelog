@@ -1,0 +1,125 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [3.10.0-1160.118.1.0.1]
+        - debug: lock down kgdb [Orabug: 34270798] {CVE-2022-21499}
+
+        [3.10.0-1160.118.1]
+        - Update Oracle Linux certificates (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was compiled into kernel (olkmod_signing_key.x509)(alexey.petrenko@oracle.com)
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15-2.0.9
+        - Update oracle(kernel-sig-key) value to match new certificate (Ilya Okomin)
+
+        [3.10.0-1160.118.1]
+        - iommu/amd: Fix NULL dereference bug in match_hid_uid (Jerry Snitselaar) [RHEL-8721]
+
+        [3.10.0-1160.117.1]
+        - tracing/perf: Fix double put of trace event when init fails (Michael Petlan) [RHEL-18052]
+        - tracing: Fix race in perf_trace_buf initialization (Michael Petlan) [RHEL-18052]
+        - net/sched: sch_hfsc: upgrade 'rt' to 'sc' when it becomes a inner curve (Davide Caratti) [RHEL-16458] {CVE-2023-4623}
+        - net/sched: sch_hfsc: Ensure inner classes have fsc curve (Davide Caratti) [RHEL-16458] {CVE-2023-4623}
+        - gfs2: Fix invalid metadata access in punch_hole (Andrew Price) [RHEL-28785]
+        - vt: vt_ioctl: fix race in VT_RESIZEX (Jay Shin) [RHEL-28639] {CVE-2020-36558}
+        - selinux: cleanup and consolidate the XFRM alloc/clone/delete/free code (Ondrej Mosnacek) [RHEL-27751]
+        - bluetooth: Add cmd validity checks at the start of hci_sock_ioctl() (David Marlin) [RHEL-3682] {CVE-2023-2002}
+        - bluetooth: Perform careful capability checks in hci_sock_ioctl() (David Marlin) [RHEL-3682] {CVE-2023-2002}
+        - cifs: fix panic in smb2_reconnect (Jay Shin) [RHEL-26301]
+        - af_unix: Fix null-ptr-deref in unix_stream_sendpage(). (Guillaume Nault) [RHEL-16144] {CVE-2023-4622}
+        - NFS: Set the stable writes BDI capability (Benjamin Coddington) [RHEL-22193]
+        - RDMA/i40iw: Prevent zero-length STAG registration (Kamal Heib) [RHEL-6299] {CVE-2023-25775}
+        - sched/membarrier: reduce the ability to hammer on sys_membarrier (Wander Lairson Costa) [RHEL-26402] {CVE-2024-26602}
+
+        [3.10.0-1160.116.1]
+        - bluetooth: Add cmd validity checks at the start of hci_sock_ioctl() (David Marlin) [RHEL-3682] {CVE-2023-2002}
+        - bluetooth: Perform careful capability checks in hci_sock_ioctl() (David Marlin) [RHEL-3682] {CVE-2023-2002}
+        - cifs: fix panic in smb2_reconnect (Jay Shin) [RHEL-26301]
+
+        [3.10.0-1160.115.1]
+        - af_unix: Fix null-ptr-deref in unix_stream_sendpage(). (Guillaume Nault) [RHEL-16144] {CVE-2023-4622}
+        - NFS: Set the stable writes BDI capability (Benjamin Coddington) [RHEL-22193]
+    FixedIn:
+        - Module: null
+          Name: bpftool
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-whitelists
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: python-perf
+          NamespaceName: ol:7
+          Version: 0:3.10.0-1160.118.1.0.1.el7
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-2004.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2020-36558.html
+              Name: CVE-2020-36558
+            - Link: https://linux.oracle.com/cve/CVE-2023-2002.html
+              Name: CVE-2023-2002
+            - Link: https://linux.oracle.com/cve/CVE-2023-25775.html
+              Name: CVE-2023-25775
+            - Link: https://linux.oracle.com/cve/CVE-2023-4622.html
+              Name: CVE-2023-4622
+            - Link: https://linux.oracle.com/cve/CVE-2023-4623.html
+              Name: CVE-2023-4623
+        Issued: "2024-04-23"
+        RefId: ELSA-2024-2004
+    Name: ELSA-2024-2004
+    NamespaceName: ol:7
+    Severity: High
