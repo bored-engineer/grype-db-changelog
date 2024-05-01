@@ -1,0 +1,27 @@
+Vulnerability:
+    Description: When a protocol selection parameter option disables all protocols without adding any then the default set of protocols would remain in the allowed set due to an error in the logic for removing protocols. The below command would perform a request to curl.se with a plaintext protocol which has been explicitly disabled.      curl --proto -all,-http http://curl.se  The flaw is only present if the set of selected protocols disables the entire set of available protocols, in itself a command with no practical use and therefore unlikely to be encountered in real situations. The curl security team has thus assessed this to be low severity bug. (CVE-2024-2004)When an application tells libcurl it wants to allow HTTP/2 server push, and the amount of received headers for the push surpasses the maximum allowed limit (1000), libcurl aborts the server push. When aborting, libcurl inadvertently does not free all the previously allocated headers and instead leaks the memory.  Further, this error condition fails silently and is therefore not easily detected by an application. (CVE-2024-2398)
+    FixedIn:
+        - Name: curl
+          NamespaceName: amzn:2
+          Version: 8.3.0-1.amzn2.0.7
+          VersionFormat: rpm
+        - Name: curl-debuginfo
+          NamespaceName: amzn:2
+          Version: 8.3.0-1.amzn2.0.7
+          VersionFormat: rpm
+        - Name: libcurl
+          NamespaceName: amzn:2
+          Version: 8.3.0-1.amzn2.0.7
+          VersionFormat: rpm
+        - Name: libcurl-devel
+          NamespaceName: amzn:2
+          Version: 8.3.0-1.amzn2.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2526.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-2004
+            - Name: CVE-2024-2398
+    Name: ALAS-2024-2526
+    NamespaceName: amzn:2
+    Severity: Medium

@@ -1,0 +1,63 @@
+Vulnerability:
+    Description: 'A Speculative Race Condition (SRC) vulnerability that impacts modern CPU architectures supporting speculative execution (related to Spectre V1) has been disclosed. An unauthenticated attacker can exploit this vulnerability to disclose arbitrary data from the CPU using race conditions to access the speculative executable code paths. (CVE-2024-2193)In the Linux kernel, the following vulnerability has been resolved:sched/membarrier: reduce the ability to hammer on sys_membarrierOn some systems, sys_membarrier can be very expensive, causing overallslowdowns for everything.  So put a lock on the path in order toserialize the accesses to prevent the ability for this to be called attoo high of a frequency and saturate the machine. (CVE-2024-26602)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.336-257.568
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.336-257.568.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2525.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-2193
+            - Name: CVE-2024-26602
+    Name: ALAS-2024-2525
+    NamespaceName: amzn:2
+    Severity: Medium
