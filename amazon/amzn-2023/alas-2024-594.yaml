@@ -1,0 +1,53 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: An attacker can make the Node.js HTTP/2 server completely unavailable by sending a small amount of HTTP/2 frames packets with a few HTTP/2 frames inside. It is possible to leave some data in nghttp2 memory after reset when headers with HTTP/2 CONTINUATION frame are sent to the server and then a TCP connection is abruptly closed by the client triggering the Http2Session destructor while header frames are still being processed (and stored in memory) causing a race condition. (CVE-2024-27983)nghttp2 is an implementation of the Hypertext Transfer Protocol version 2 in C. The nghttp2 library prior to version 1.61.0 keeps reading the unbounded number of HTTP/2 CONTINUATION frames even after a stream is reset to keep HPACK context in sync.  This causes excessive CPU usage to decode HPACK stream. nghttp2 v1.61.0 mitigates this vulnerability by limiting the number of CONTINUATION frames it accepts per stream. There is no workaround for this vulnerability. (CVE-2024-28182)Undici is an HTTP/1.1 client, written from scratch for Node.js. An attacker can alter the `integrity` option passed to `fetch()`, allowing `fetch()` to accept requests as valid even if they have been tampered. This vulnerability was patched in version(s) 5.28.4 and 6.11.1. (CVE-2024-30261)
+    FixedIn:
+        - Name: nodejs20
+          NamespaceName: amzn:2023
+          Version: 20.12.2-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: nodejs20-debuginfo
+          NamespaceName: amzn:2023
+          Version: 20.12.2-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: nodejs20-debugsource
+          NamespaceName: amzn:2023
+          Version: 20.12.2-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: nodejs20-devel
+          NamespaceName: amzn:2023
+          Version: 20.12.2-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: nodejs20-docs
+          NamespaceName: amzn:2023
+          Version: 20.12.2-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: nodejs20-full-i18n
+          NamespaceName: amzn:2023
+          Version: 20.12.2-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: nodejs20-libs
+          NamespaceName: amzn:2023
+          Version: 20.12.2-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: nodejs20-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 20.12.2-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: nodejs20-npm
+          NamespaceName: amzn:2023
+          Version: 10.5.0-1.20.12.2.1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: v8-11.3-devel
+          NamespaceName: amzn:2023
+          Version: 11.3.244.8-1.20.12.2.1.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-594.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-27983
+            - Name: CVE-2024-28182
+            - Name: CVE-2024-30261
+    Name: ALAS-2024-594
+    NamespaceName: amzn:2023
+    Severity: High

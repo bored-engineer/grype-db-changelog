@@ -1,0 +1,15 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: Plexis Archiver is a collection of Plexus components to create archives or extract archives to a directory with a unified `Archiver`/`UnArchiver` API. Prior to version 4.8.0, using AbstractUnArchiver for extracting an archive might lead to an arbitrary file creation and possibly remote code execution. When extracting an archive with an entry that already exists in the destination directory as a symbolic link whose target does not exist - the `resolveFile()` function will return the symlink's source instead of its target, which will pass the verification that ensures the file will not be extracted outside of the destination directory. Later `Files.newOutputStream()`, that follows symlinks by default,  will actually write the entry's content to the symlink's target. Whoever uses plexus archiver to extract an untrusted archive is vulnerable to an arbitrary file creation and possibly remote code execution. Version 4.8.0 contains a patch for this issue. (CVE-2023-37460)
+    FixedIn:
+        - Name: javapackages-bootstrap
+          NamespaceName: amzn:2023
+          Version: 1.5.0^20220105.git9f283b7-3.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-608.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-37460
+    Name: ALAS-2024-608
+    NamespaceName: amzn:2023
+    Severity: High

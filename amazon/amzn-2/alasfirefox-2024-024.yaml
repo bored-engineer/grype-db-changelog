@@ -1,0 +1,25 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: An attacker was able to inject an event handler into a privileged object that would allow arbitrary JavaScript execution in the parent process. This vulnerability affects Firefox < 124.0.1 and Firefox ESR < 115.9.1. (CVE-2024-29944)There was no limit to the number of HTTP/2 CONTINUATION frames that would be processed. A server could abuse this to create an Out of Memory condition in the browser. This vulnerability affects Firefox < 125 and Firefox ESR < 115.10. (CVE-2024-3302)GetBoundName could return the wrong version of an object when JIT optimizations were applied. This vulnerability affects Firefox < 125 and Firefox ESR < 115.10. (CVE-2024-3852)In some code patterns the JIT incorrectly optimized switch statements and generated code with out-of-bounds-reads. This vulnerability affects Firefox < 125 and Firefox ESR < 115.10. (CVE-2024-3854)The JIT created incorrect code for arguments in certain cases. This led to potential use-after-free crashes during garbage collection. This vulnerability affects Firefox < 125 and Firefox ESR < 115.10. (CVE-2024-3857)If an AlignedBuffer were assigned to itself, the subsequent self-move could result in an incorrect reference count and later use-after-free. This vulnerability affects Firefox < 125 and Firefox ESR < 115.10. (CVE-2024-3861)Memory safety bug present in Firefox 124, Firefox ESR 115.9, and Thunderbird 115.9. This bug showed evidence of memory corruption and we presume that with enough effort this could have been exploited to run arbitrary code. This vulnerability affects Firefox < 125 and Firefox ESR < 115.10. (CVE-2024-3864)
+    FixedIn:
+        - Name: firefox
+          NamespaceName: amzn:2
+          Version: 115.10.0-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: firefox-debuginfo
+          NamespaceName: amzn:2
+          Version: 115.10.0-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASFIREFOX-2024-024.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-29944
+            - Name: CVE-2024-3302
+            - Name: CVE-2024-3852
+            - Name: CVE-2024-3854
+            - Name: CVE-2024-3857
+            - Name: CVE-2024-3861
+            - Name: CVE-2024-3864
+    Name: ALASFIREFOX-2024-024
+    NamespaceName: amzn:2
+    Severity: High
