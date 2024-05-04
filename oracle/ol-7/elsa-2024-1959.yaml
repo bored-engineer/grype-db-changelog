@@ -1,0 +1,69 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        shim
+        [- 15.8-2.0.3.el7]
+        - Set shim.ol sbat generation to 3 [Orabug: 36271343]
+
+        [- 15.8-2.0.1.el7]
+        - Set SBAT_AUTOMATIC_DATE to 2021030218 [Orabug: 36271343]
+        - Rebuild with Oracle certificates [Orabug: 36271343]
+        - Full list of fixed CVEs: CVE-2023-40546, CVE-2023-40547,
+          CVE-2023-40548, CVE-2023-40549, CVE-2023-40550, CVE-2023-40551 [Orabug: 36271343]
+
+        [15.8-2.el7]
+        - Rebuild to fix the commit ident and MAKEFLAGS
+          Resolves: RHEL-11254
+
+        [15.8-1.el7]
+        - Update to shim-15.8 for CVE-2023-40547
+          Resolves: RHEL-11254
+
+        shim-signed
+        [15.8-1.0.3]
+        - Update shimx64.efi signed by Microsoft [Orabug: 36271343]
+
+        [15.8-1.0.1]
+        - Set shim.ol sbat generation to 3 [Orabug: 36271343]
+        - Set SBAT_AUTOMATIC_DATE to 2021030218 [Orabug: 36271343]
+        - Rebuild with Oracle certificates [Orabug: 36271343]
+        - Full list of fixed CVEs: CVE-2023-40546, CVE-2023-40547,
+          CVE-2023-40548, CVE-2023-40549, CVE-2023-40550, CVE-2023-40551 [Orabug: 36271343]
+        - Disable ia32 build [Orabug: 36271343]
+    FixedIn:
+        - Module: null
+          Name: mokutil
+          NamespaceName: ol:7
+          Version: 0:15.8-1.0.3.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: shim-unsigned-x64
+          NamespaceName: ol:7
+          Version: 0:15.8-2.0.3.el7
+          VersionFormat: rpm
+        - Module: null
+          Name: shim-x64
+          NamespaceName: ol:7
+          Version: 0:15.8-1.0.3.el7
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-1959.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2023-40546.html
+              Name: CVE-2023-40546
+            - Link: https://linux.oracle.com/cve/CVE-2023-40547.html
+              Name: CVE-2023-40547
+            - Link: https://linux.oracle.com/cve/CVE-2023-40548.html
+              Name: CVE-2023-40548
+            - Link: https://linux.oracle.com/cve/CVE-2023-40549.html
+              Name: CVE-2023-40549
+            - Link: https://linux.oracle.com/cve/CVE-2023-40550.html
+              Name: CVE-2023-40550
+            - Link: https://linux.oracle.com/cve/CVE-2023-40551.html
+              Name: CVE-2023-40551
+        Issued: "2024-05-01"
+        RefId: ELSA-2024-1959
+    Name: ELSA-2024-1959
+    NamespaceName: ol:7
+    Severity: High
