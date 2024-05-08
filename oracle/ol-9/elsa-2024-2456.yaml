@@ -1,0 +1,142 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2.06-77.0.1]
+        - Support setting custom kernels as default kernels [Orabug: 36043978]
+        - Bump SBAT metadata for grub to 3 [Orabug: 34872719]
+        - Fix CVE-2022-3775 [Orabug: 34871953]
+        - Enable signing for aarch64 EFI
+        - Fix signing certificate names
+        - Enable back btrfs grub module for EFI pre-built image [Orabug: 34360986]
+        - Replaced bugzilla.oracle.com references [Orabug: 34202300]
+        - Update provided certificate version to 202204 [JIRA: OLDIS-16371]
+        - Various coverity fixes [JIRA: OLDIS-16371]
+        - bump SBAT generation
+        - Update bug url [Orabug: 34202300]
+        - Revert provided certificate version back to 202102 [JIRA: OLDIS-16371]
+        - Update signing certificate [JIRA: OLDIS-16371]
+        - fix SBAT data [JIRA: OLDIS-16371]
+        - Update requires [JIRA: OLDIS-16371]
+        - Rebuild for SecureBoot signatures [Orabug: 33801813]
+        - Do not add shim and grub certificate deps for aarch64 packages [Orabug: 32670033]
+        - Update Oracle SBAT data [Orabug: 32670033]
+        - Use new signing certificate [Orabug: 32670033]
+        - honor /etc/sysconfig/kernel DEFAULTKERNEL setting for BLS [Orabug: 30643497]
+        - set EFIDIR as redhat for additional grub2 tools [Orabug: 29875597]
+        - Update upstream references [Orabug: 26388226]
+        - Insert Unbreakable Enterprise Kernel text into BLS config file [Orabug: 29417955]
+        - Put 'with' in menuentry instead of 'using' [Orabug: 18504756]
+        - Use different titles for UEK and RHCK kernels [Orabug: 18504756]
+
+        [2.06-77]
+        - kern/dl: grub_dl_set_mem_attrs()/grub_dl_load_segments() fixes
+        - Resolves: #RHEL-26322
+
+        [2.06-76]
+        - fs/ntfs: OOB write fix
+        - (CVE-2023-4692)
+        - Resolves: #RHEL-11567
+
+        [2.06-75]
+        - grub-set-bootflag: Fix for CVE-2024-1048
+        - (CVE-2024-1048)
+        - Resolves: #RHEL-20747
+
+        [2.06-74]
+        - Don't run 20-grub.install for UKIs
+        - Resolves: #RHEL-21368
+
+        [2.06-73]
+        - search command: add flag to only search root dev
+        - Resolves: #RHEL-20526
+        - Resolves: #CVE-2023-4001
+
+        [2.06-72]
+        - normal: Remove grub_env_set prefix in grub_try_normal_prefix
+        - Resolves: #RHEL-1601
+
+        [2.06-71]
+        - kern/ieee1275/init: ppc64: Restrict high memory in presence
+          of fadump
+        - Resolves: #RHEL-14282
+    FixedIn:
+        - Module: null
+          Name: grub2-common
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-aa64
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-aa64-cdboot
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-aa64-modules
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-x64
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-x64-cdboot
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-x64-modules
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-pc
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-pc-modules
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-tools
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-tools-efi
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-tools-extra
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-tools-minimal
+          NamespaceName: ol:9
+          Version: 1:2.06-77.0.1.el9
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-2456.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2023-4692.html
+              Name: CVE-2023-4692
+            - Link: https://linux.oracle.com/cve/CVE-2023-4693.html
+              Name: CVE-2023-4693
+            - Link: https://linux.oracle.com/cve/CVE-2024-1048.html
+              Name: CVE-2024-1048
+        Issued: "2024-05-03"
+        RefId: ELSA-2024-2456
+    Name: ELSA-2024-2456
+    NamespaceName: ol:9
+    Severity: Medium

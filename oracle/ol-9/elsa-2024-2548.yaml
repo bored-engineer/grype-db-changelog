@@ -1,0 +1,80 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.9.4-3.0.1]
+        - Add devices on container startup, not on creation
+        - Backport fast gzip for compression [Orabug: 36420418]
+        - overlay: Put should ignore ENINVAL for Unmount [Orabug: 36234694]
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117404]
+
+        [4:4.9.4-3]
+        - rebuild
+        - Related: RHEL-28234
+
+        [4:4.9.4-2]
+        - bump Epoch to 4 to preserve upgrade path from rhel 8.10
+        - bump release tag or else it refuses to build
+        - Resolves: RHEL-28234
+
+        [4:4.9.4-1]
+        - bump Epoch to 4 to preserve upgrade path from rhel 8.10
+        - Resolves: RHEL-28234
+
+        [3:4.9.4-1]
+        - update to the latest content of https://github.com/containers/podman/tree/v4.9-rhel
+          (https://github.com/containers/podman/commit/7752c56)
+        - Resolves: RHEL-28234
+
+        [3:4.9.3-3]
+        - update to the latest content of https://github.com/containers/podman/tree/v4.9-rhel
+          (https://github.com/containers/podman/commit/5f872ae)
+        - Resolves: RHEL-28234
+
+        [3:4.9.3-2]
+        - update to the latest content of https://github.com/containers/podman/tree/v4.9-rhel
+          (https://github.com/containers/podman/commit/06e4598)
+        - Resolves: RHEL-28636
+
+        [2:4.9.3-1]
+        - update to the latest content of https://github.com/containers/podman/tree/v4.9-rhel
+          (https://github.com/containers/podman/commit/c82fdc8)
+        - Resolves: RHEL-28633 RHEL-28629
+    FixedIn:
+        - Module: null
+          Name: podman
+          NamespaceName: ol:9
+          Version: 4:4.9.4-3.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-docker
+          NamespaceName: ol:9
+          Version: 4:4.9.4-3.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-plugins
+          NamespaceName: ol:9
+          Version: 4:4.9.4-3.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-remote
+          NamespaceName: ol:9
+          Version: 4:4.9.4-3.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-tests
+          NamespaceName: ol:9
+          Version: 4:4.9.4-3.0.1.el9_4
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-2548.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-1753.html
+              Name: CVE-2024-1753
+            - Link: https://linux.oracle.com/cve/CVE-2024-24786.html
+              Name: CVE-2024-24786
+        Issued: "2024-05-07"
+        RefId: ELSA-2024-2548
+    Name: ELSA-2024-2548
+    NamespaceName: ol:9
+    Severity: Medium
