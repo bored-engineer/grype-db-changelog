@@ -1,0 +1,520 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [10.0.0-6.0.1]
+        - Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+
+        [10.0.0-6]
+        - qemu: virtiofs: do not crash if cgroups are missing (RHEL-7386)
+        - qemu: virtiofs: set correct label when creating the socket (RHEL-7386)
+        - qemu: virtiofs: error out if getting the group or user name fails (RHEL-7386)
+
+        [10.0.0-5]
+        - cpu: x86: Add support for adding features to existing CPU models (RHEL-25995)
+        - qemu: domain: Check arch in qemuDomainMakeCPUMigratable (RHEL-25995)
+        - conf: cpu: Introduce virCPUDefListFeatures (RHEL-25995)
+        - qemu: domain: Drop added features from migratable CPU (RHEL-25995)
+        - Add vmx-* features to Broadwell* (RHEL-25995)
+        - Add vmx-* features to Cascadelake* (RHEL-25995)
+        - Add vmx-* features to Conroe (RHEL-25995)
+        - Add vmx-* features to Cooperlake (RHEL-25995)
+        - Add vmx-* features to core{,2}duo (RHEL-25995)
+        - Add vmx-* features to Haswell* (RHEL-25995)
+        - Add vmx-* features to Icelake* (RHEL-25995)
+        - Add vmx-* features to IvyBridge* (RHEL-25995)
+        - Add vmx-* features to kvm* (RHEL-25995)
+        - Add vmx-* features to Nehalem* (RHEL-25995)
+        - Add vmx-* features to Penryn (RHEL-25995)
+        - Add vmx-* features to SandyBridge* (RHEL-25995)
+        - Add vmx-* features to SapphireRapids (RHEL-25995)
+        - Add vmx-* features to Skylake* (RHEL-25995)
+        - Add vmx-* features to Snowridge (RHEL-25995)
+        - Add vmx-* features to Westmere* (RHEL-25995)
+
+        [10.0.0-4]
+        - Set stubDriverName from hostdev driver model attribute during pci device setup (RHEL-25858)
+        - qemuMigrationDstPrepareStorage: Use 'switch' statement to include all storage types (RHEL-24825)
+        - qemuMigrationDstPrepareStorage: Properly consider path for 'vdpa' devices (RHEL-24825)
+        - domain_validate: Account for NVDIMM label size properly when checking for memory conflicts (RHEL-4452)
+
+        [10.0.0-3]
+        - remote_driver: Restore special behavior of remoteDomainGetBlockIoTune() (RHEL-22800)
+        - conf: Introduce dynamicMemslots attribute for virtio-mem (RHEL-15316)
+        - qemu_capabilities: Add QEMU_CAPS_DEVICE_VIRTIO_MEM_PCI_DYNAMIC_MEMSLOTS capability (RHEL-15316)
+        - qemu_validate: Check capability for virtio-mem dynamicMemslots (RHEL-15316)
+        - qemu_command: Generate cmd line for virtio-mem dynamicMemslots (RHEL-15316)
+        - qemu_snapshot: fix detection if non-leaf snapshot isn't in active chain (RHEL-23212)
+        - qemu_snapshot: create: refactor external snapshot detection (RHEL-22797)
+        - qemu_snapshot: create: don't require disk-only flag for offline external snapshot (RHEL-22797)
+        - remoteDispatchAuthPolkit: Fix lock ordering deadlock if client closes connection during auth (RHEL-20337)
+        - util: virtportallocator: Add VIR_DEBUG statements for port allocations and release (RHEL-21543)
+        - qemu: migration: Properly handle reservation of manually specified NBD port (RHEL-21543)
+        - qemuMigrationDstStartNBDServer: Refactor cleanup (RHEL-21543)
+        - virPCIVPDResourceIsValidTextValue: Adjust comment to reflect actual code (RHEL-22314)
+        - util: pcivpd: Refactor virPCIVPDResourceIsValidTextValue (RHEL-22314)
+        - virNodeDeviceCapVPDFormatCustom*: Escape unsanitized strings (RHEL-22314)
+        - virNodeDeviceCapVPDFormat: Properly escape system-originated strings (RHEL-22314)
+        - schema: nodedev: Adjust allowed characters in 'vpdFieldValueFormat' (RHEL-22314)
+        - tests: Test the previously mishandled PCI VPD characters (RHEL-22314)
+        - Don't overwrite error message from 'virXPathNodeSet' (RHEL-22314)
+        - tests: virpcivpdtest: Remove 'testVirPCIVPDReadVPDBytes' case (RHEL-22314)
+        - util: virpcivpd: Unexport 'virPCIVPDReadVPDBytes' (RHEL-22314)
+        - util: pcivpd: Unexport virPCIVPDParseVPDLargeResourceFields (RHEL-22314)
+        - tests: virpcivpd: Remove 'testVirPCIVPDParseVPDStringResource' case (RHEL-22314)
+        - util: virpcivpd: Unexport 'virPCIVPDParseVPDLargeResourceString' (RHEL-22314)
+        - virPCIVPDResourceGetKeywordPrefix: Fix logging (RHEL-22314)
+        - util: virpcivpd: Remove return value from virPCIVPDResourceCustomUpsertValue (RHEL-22314)
+        - conf: virNodeDeviceCapVPDParse*: Remove pointless NULL checks (RHEL-22314)
+        - virpcivpdtest: testPCIVPDResourceBasic: Remove tests for uninitialized 'ro'/'rw' section (RHEL-22314)
+        - util: virPCIVPDResourceUpdateKeyword: Remove impossible checks (RHEL-22314)
+        - conf: node_device: Refactor 'virNodeDeviceCapVPDParseCustomFields' to fix error reporting (RHEL-22314)
+        - virNodeDeviceCapVPDParseXML: Fix error reporting (RHEL-22314)
+        - util: virpcivpd: Remove return value from virPCIVPDResourceUpdateKeyword (RHEL-22314)
+        - virPCIDeviceHasVPD: Refactor 'debug' messages (RHEL-22314)
+        - virPCIDeviceGetVPD: Fix multiple error handling bugs (RHEL-22314)
+        - virPCIDeviceGetVPD: Handle errors in callers (RHEL-22314)
+        - virPCIVPDReadVPDBytes: Refactor error handling (RHEL-22314)
+        - virPCIVPDParseVPDLargeResourceString: Properly report errors (RHEL-22314)
+        - virPCIVPDParseVPDLargeResourceFields: Merge logic conditions (RHEL-22314)
+        - virPCIVPDParseVPDLargeResourceFields: Remove impossible 'default' switch case (RHEL-22314)
+        - virPCIVPDParseVPDLargeResourceFields: Refactor processing of read data (RHEL-22314)
+        - virPCIVPDParseVPDLargeResourceFields: Refactor return logic (RHEL-22314)
+        - virPCIVPDParseVPDLargeResourceFields: Report proper errors (RHEL-22314)
+        - virPCIVPDParse: Do reasonable error reporting (RHEL-22314)
+        - virt-admin: Add warning when connection to default daemon fails (RHEL-23170)
+
+        [10.0.0-2]
+        - tests: Add hostcpudata for machine with CPU clusters (RHEL-7043)
+        - conf: Report CPU clusters in capabilities XML (RHEL-7043)
+        - conf: Allow specifying CPU clusters (RHEL-7043)
+        - qemu: Introduce QEMU_CAPS_SMP_CLUSTERS (RHEL-7043)
+        - qemu: Use CPU clusters for guests (RHEL-7043)
+        - tests: Add test case for CPU clusters (RHEL-7043)
+        - qemu: Make monitor aware of CPU clusters (RHEL-7043)
+        - tests: Verify handling of CPU clusters in QMP data (RHEL-7043)
+        - build: Make daemons depend on generated *_protocol.[ch] (RHEL-15267)
+        - domain_validate: Check for domain address conflicts fully (RHEL-4452)
+        - qemu_hotplug: Don't lose 'created' flag in qemuDomainChangeNet() (RHEL-22714)
+
+        [10.0.0-1]
+        - Rebased to libvirt-10.0.0 (RHEL-15267)
+        - The rebase also fixes the following bugs:
+            RHEL-18782, RHEL-735, RHEL-18165, RHEL-4607, RHEL-700
+            RHEL-7100, RHEL-15480, RHEL-7416, RHEL-20609, RHEL-7570
+            RHEL-20444, RHEL-17596, RHEL-7569
+
+        [9.10.0-1]
+        - Rebased to libvirt-9.10.0 (rhbz#RHEL-15267)
+        - The rebase also fixes the following bugs:
+            rhbz#RHEL-16878, rhbz#RHEL-14611, rhbz#RHEL-7384, rhbz#RHEL-16870, rhbz#RHEL-18439
+            rhbz#RHEL-16751, rhbz#RHEL-4452, rhbz#RHEL-17841, rhbz#RHEL-15288, rhbz#RHEL-7040
+
+        [9.9.0-1]
+        - Rebased to libvirt-9.9.0 (rhbz#RHEL-15267)
+        - The rebase also fixes the following bugs:
+            rhbz#RHEL-7525, rhbz#RHEL-7570, rhbz#RHEL-7542, rhbz#RHEL-7568, rhbz#RHEL-7545
+            rhbz#RHEL-3231, rhbz#RHEL-7382, rhbz#RHEL-7345, rhbz#RHEL-1717, rhbz#RHEL-7528
+            rhbz#RHEL-1833, rhbz#RHEL-7569, rhbz#RHEL-4432, rhbz#RHEL-974, rhbz#RHEL-4994
+            rhbz#RHEL-7419
+
+        [9.5.0-6]
+        - tests: Use DO_TEST_CAPS_*_ABI_UPDATE() for ppc64 (rhbz#2196178)
+        - tests: Switch to firmware autoselection for hvf (rhbz#2196178)
+        - tests: Use virt-4.0 machine type for aarch64 (rhbz#2196178)
+        - tests: Consistently use /path/to/guest_VARS.fd (rhbz#2196178)
+        - tests: Turn abi-update.xml into a symlink (rhbz#2196178)
+        - tests: Rename firmware-auto-efi-nvram-path (rhbz#2196178)
+        - qemu: Fix return value for qemuFirmwareFillDomainLegacy() (rhbz#2196178)
+        - qemu: Fix lookup against stateless/combined pflash (rhbz#2196178)
+        - tests: Add some more DO_TEST*ABI_UPDATE* macros (rhbz#2196178)
+        - tests: Add more tests for firmware selection (rhbz#2196178)
+        - tests: Update firmware descriptor files (rhbz#2196178)
+        - tests: Drop tags from BIOS firmware descriptor (rhbz#2196178)
+        - tests: Include microvm in firmwaretest (rhbz#2196178)
+        - qemu: Don't overwrite NVRAM template for legacy firmware (rhbz#2196178)
+        - qemu: Generate NVRAM path in more cases (rhbz#2196178)
+        - qemu: Filter firmware based on loader.readonly (rhbz#2196178)
+        - qemu: Match NVRAM template extension for new domains (rhbz#2196178)
+        - conf: Don't default to raw format for loader/NVRAM (rhbz#2196178)
+        - tests: Rename firmware-auto-efi-format-loader-qcow2-nvram-path (rhbz#2196178)
+        - tests: Reintroduce firmware-auto-efi-format-mismatch (rhbz#2196178)
+        - rpm: Reorder scriptlets (rhbz#2210058)
+        - rpm: Reduce use of with_modular_daemons (rhbz#2210058)
+        - rpm: Remove custom libvirtd restart logic (rhbz#2210058)
+        - rpm: Introduce new macros for handling of systemd units (rhbz#2210058)
+        - rpm: Switch to new macros for handling of systemd units (rhbz#2210058)
+        - rpm: Delete unused macros (rhbz#2210058)
+
+        [9.5.0-5]
+        - Revert 'qemu_passt: Actually use @logfd' (rhbz#2209191)
+        - Revert 'qemu_passt: Precreate passt logfile' (rhbz#2209191)
+
+        [9.5.0-4]
+        - storage: Fix returning of locked objects from 'virStoragePoolObjListSearch' (CVE-2023-3750, rhbz#2221851)
+
+        [9.5.0-3]
+        - tests: remove acpi support from s390x ccw hotplug tests (rhbz#2168499)
+        - tests: add capabilities for QEMU 8.1.0 on s390x (rhbz#2168499)
+        - qemu: add run-with async-teardown capability (rhbz#2168499)
+        - qemu: allow use of async teardown in domain (rhbz#2168499)
+        - conf: domcaps: Add 'async-teardown' domain capability (rhbz#2168499)
+        - qemu: S390 does not provide physical address size (rhbz#2224016)
+        - nodedev: report mdev persistence properly (rhbz#2143158)
+        - node_device: Don't leak error message buffer from virMdevctlListDefined|Active (rhbz#2143158)
+
+        [9.5.0-2]
+        - nodedev: transient mdev update on nodeDeviceCreateXML (rhbz#2143158)
+        - nodedev: refactor mdevctl thread functions (rhbz#2143158)
+        - nodedev: update mdevs from the mdevctl thread (rhbz#2143158)
+
+        [9.5.0-1]
+        - Rebased to libvirt-9.5.0 (rhbz#2175785)
+
+        [9.5.0-0rc1.1]
+        - Rebased to libvirt-9.5.0-rc1 (rhbz#2175785)
+        - The rebase also fixes the following bugs:
+            rhbz#2160356, rhbz#2209191, rhbz#2210287, rhbz#2209853, rhbz#2171860
+            rhbz#2138150, rhbz#2171384
+
+        [9.4.0-1]
+        - Rebased to libvirt-9.4.0 (rhbz#2175785)
+        - The rebase also fixes the following bugs:
+            rhbz#2119007, rhbz#2193315, rhbz#2209658, rhbz#2143158, rhbz#2208946
+            rhbz#2138150, rhbz#2203657, rhbz#2180679, rhbz#2203709
+
+        [9.3.0-2]
+        - qemu_domin: Account for NVMe disks when calculating memlock limit on hotplug (rhbz#2014030)
+
+        [9.3.0-1]
+        - Rebased to libvirt-9.3.0 (rhbz#2175785)
+        - The rebase also fixes the following bugs:
+            rhbz#2181235, rhbz#2176215, rhbz#2187133, rhbz#2178885, rhbz#2174700
+            rhbz#2160435, rhbz#2184966, rhbz#2187278, rhbz#2014030, rhbz#2185184
+            rhbz#2156300
+
+        [9.2.0-1]
+        - Rebased to libvirt-9.2.0 (rhbz#2175785)
+        - The rebase also fixes the following bugs:
+            rhbz#2178885, rhbz#2000410, rhbz#2175582, rhbz#2154750, rhbz#2175449
+            rhbz#2181234, rhbz#2078693, rhbz#2176924, rhbz#2156300, rhbz#2173142
+            rhbz#2171973, rhbz#2178866, rhbz#2182961, rhbz#2174397, rhbz#2179030
+            rhbz#2161965, rhbz#2035985
+
+        [9.1.0-1]
+        - Rebased to libvirt-9.1.0 (rhbz#2175785)
+        - The rebase also fixes the following bugs:
+            rhbz#2004850, rhbz#2137346, rhbz#2166235, rhbz#1961326
+
+        [9.0.0-7]
+        - qemu_snapshot: remove memory snapshot when deleting external snapshot (rhbz#2170826)
+        - qemu_snapshot: refactor qemuSnapshotDeleteExternalPrepare (rhbz#2170826)
+
+        [9.0.0-6]
+        - rpc: client: Don't check return value of virNetMessageNew (rhbz#2145188)
+        - rpc: Don't warn about 'max_client_requests' in single-threaded daemons (rhbz#2145188)
+
+        [9.0.0-5]
+        - qemu_extdevice: Do cleanup host only for VIR_DOMAIN_TPM_TYPE_EMULATOR (rhbz#2168762)
+        - qemu: blockjob: Handle 'pending' blockjob state only when we need it (rhbz#2168769)
+
+        [9.0.0-4]
+        - qemuProcessStop: Fix detection of outgoing migration for external devices (rhbz#2161557)
+        - qemuExtTPMStop: Restore TPM state label more often (rhbz#2161557)
+        - qemuProcessLaunch: Tighten rules for external devices wrt incoming migration (rhbz#2161557)
+        - qemu_process: Produce better debug message wrt domain namespaces (rhbz#2167302)
+        - qemu_namespace: Deal with nested mounts when umount()-ing /dev (rhbz#2167302)
+        - qemuProcessRefreshDisks: Don't skip filling of disk information if tray state didn't change (rhbz#2166411)
+
+        [9.0.0-3]
+        - src: Don't use virReportSystemError() on virProcessGetStatInfo() failure (rhbz#2148266)
+        - qemu: Provide virDomainGetCPUStats() implementation for session connection (rhbz#2148266)
+        - virsh: Make domif-setlink work more than once (rhbz#2165466)
+        - qemu_fd: Remove declaration for 'qemuFDPassNewDirect' (rhbz#2040272)
+        - qemuStorageSourcePrivateDataFormat: Rename 'tmp' to 'objectsChildBuf' (rhbz#2040272)
+        - qemu: command: Handle FD passing commandline via qemuBuildBlockStorageSourceAttachDataCommandline (rhbz#2040272)
+        - qemuFDPassTransferCommand: Mark that FD was passed (rhbz#2040272)
+        - qemu: fd: Add helpers allowing storing FD set data in status XML (rhbz#2040272)
+        - qemu: domain: Store fdset ID for disks passed to qemu via FD (rhbz#2040272)
+        - qemu: block: Properly handle FD-passed disk hot-(un-)plug (rhbz#2040272)
+
+        [9.0.0-2]
+        - vircgroupv2: fix cpu.weight limits check (rhbz#2037998)
+        - domain_validate: drop cpu.shares cgroup check (rhbz#2037998)
+        - docs: document correct cpu shares limits with both cgroups v1 and v2 (rhbz#2037998)
+        - qemu_interface: Fix managed='no' case when creating an ethernet interface (rhbz#2144738)
+        - conf: clarify some external TPM error messages (rhbz#2063723)
+        - qemu: hotplug: Remove legacy quirk for 'dimm' address generation (rhbz#2158701)
+        - qemu: alias: Remove 'oldAlias' argument of qemuAssignDeviceMemoryAlias (rhbz#2158701)
+        - qemu: Remove 'memAliasOrderMismatch' field from VM private data (rhbz#2158701)
+        - rpc: Fix error message in virNetServerSetClientLimits (rhbz#2033879)
+
+        [9.0.0-1]
+        - Rebased to libvirt-9.0.0 (rhbz#2124466)
+        - The rebase also fixes the following bugs:
+            rhbz#2151064, rhbz#1874163, rhbz#2130192, rhbz#2111948, rhbz#1824722
+            rhbz#2150455, rhbz#2063723, rhbz#1717611, rhbz#2160448, rhbz#2151869
+            rhbz#2040272, rhbz#2144738, rhbz#2159851, rhbz#2156289, rhbz#2033879
+            rhbz#1820437, rhbz#2151202
+
+        [8.10.0-2]
+        - qemu_process: Document qemuProcessPrepare{Domain,Host}() order (rhbz#2150760)
+        - qemu_extdevice: Init paths in qemuExtDevicesPrepareDomain() (rhbz#2150760)
+        - qemu_extdevice: Expose qemuExtDevicesInitPaths() (rhbz#2150760)
+        - qemu: Init ext devices paths on reconnect (rhbz#2150760)
+
+        [8.10.0-1]
+        - Rebased to libvirt-8.10.0 (rhbz#2124466)
+        - The rebase also fixes the following bugs:
+            rhbz#2128993, rhbz#2143235, rhbz#2143840, rhbz#1874163, rhbz#2000075
+            rhbz#2143838, rhbz#2104919, rhbz#2072204, rhbz#2137298
+
+        [8.9.0-2]
+        - RHEL: rpminspect: Disable abidiff inspection (rhbz#2124466)
+        - spec: Fix python3-libvirt requirement in client-qemu package (rhbz#2124466)
+
+        [8.9.0-1]
+        - Rebased to libvirt-8.9.0 (rhbz#2124466)
+        - The rebase also fixes the following bugs:
+            rhbz#2074559, rhbz#2134009, rhbz#1777212, rhbz#2013523, rhbz#2114866
+            rhbz#1964855
+
+        [8.8.0-1]
+        - Rebased to libvirt-8.8.0 (rhbz#2124466)
+        - The rebase also fixes the following bugs:
+            rhbz#2122534, rhbz#2121262, rhbz#2130089, rhbz#2121276, rhbz#2121627
+            rhbz#2125111, rhbz#2129239, rhbz#1964855, rhbz#2114866
+
+        [8.7.0-1]
+        - Rebased to libvirt-8.7.0 (rhbz#2124466)
+        - The rebase also fixes the following bugs:
+            rhbz#2084046, rhbz#2108483, rhbz#2123371, rhbz#2101633, rhbz#1988211
+            rhbz#2086677, rhbz#2103132, rhbz#2078805, rhbz#2111301, rhbz#2094641
+
+        [8.5.0-5]
+        - rpc: Pass OPENSSL_CONF through to ssh invocations (rhbz#2112348)
+
+        [8.5.0-4]
+        - qemu: Pass migration flags to qemuMigrationParamsApply (rhbz#2111070)
+        - qemu_migration_params: Replace qemuMigrationParamTypes array (rhbz#2111070)
+        - qemu_migration: Pass migParams to qemuMigrationSrcResume (rhbz#2111070)
+        - qemu_migration: Apply max-postcopy-bandwidth on post-copy resume (rhbz#2111070)
+        - qemu: Always assume support for QEMU_CAPS_MIGRATION_PARAM_XBZRLE_CACHE_SIZE (rhbz#2107892)
+        - qemu_migration: Store original migration params in status XML (rhbz#2107892)
+        - qemu_migration_params: Refactor qemuMigrationParamsApply (rhbz#2107892)
+        - qemu_migration_params: Refactor qemuMigrationParamsReset (rhbz#2107892)
+        - qemu_migration_params: Avoid deadlock in qemuMigrationParamsReset (rhbz#2107892)
+        - qemu: Restore original memory locking limit on reconnect (rhbz#2107424)
+        - qemu: Properly release job in qemuDomainSaveInternal (rhbz#1497907)
+        - qemu: don't call qemuMigrationSrcIsAllowedHostdev() from qemuMigrationDstPrepareFresh() (rhbz#1497907)
+
+        [8.5.0-3]
+        - qemu: introduce capability QEMU_CAPS_MIGRATION_BLOCKED_REASONS (rhbz#2092833)
+        - qemu: new function to retrieve migration blocker reasons from QEMU (rhbz#2092833)
+        - qemu: query QEMU for migration blockers before our own harcoded checks (rhbz#2092833)
+        - qemu: remove hardcoded migration fail for vDPA devices if we can ask QEMU (rhbz#2092833)
+        - qemu_migration: Use EnterMonitorAsync in qemuDomainGetMigrationBlockers (rhbz#2092833)
+        - qemu: don't try to query QEMU about migration blockers during offline migration (rhbz#2092833)
+        - qemu_migration: Acquire correct job in qemuMigrationSrcIsAllowed (rhbz#2092833)
+        - virsh: Require --xpath for *dumpxml (rhbz#2103524)
+        - qemu: skip hardcoded hostdev migration check if QEMU can do it for us (rhbz#1497907)
+
+        [8.5.0-2]
+        - domain_conf: Format <defaultiothread/> more often (rhbz#2059511)
+        - domain_conf: Format iothread IDs more often (rhbz#2059511)
+        - qemu: Make IOThread changing more robust (rhbz#2059511)
+        - qemuDomainSetIOThreadParams: Accept VIR_DOMAIN_AFFECT_CONFIG flag (rhbz#2059511)
+        - virsh: Implement --config for iothreadset (rhbz#2059511)
+        - docs: Document TPM portion of domcaps (rhbz#2103119)
+        - virtpm: Introduce TPM-1.2 and TPM-2.0 capabilieis (rhbz#2103119)
+        - domcaps: Introduce TPM backendVersion (rhbz#2103119)
+        - qemu: Report supported TPM version in domcaps (rhbz#2103119)
+        - vircpi: Add PCIe 5.0 and 6.0 link speeds (rhbz#2105231)
+
+        [8.5.0-1]
+        - Rebased to libvirt-8.5.0 (rhbz#2060313)
+        - The rebase also fixes the following bugs:
+            rhbz#1475431, rhbz#2026765, rhbz#2059511, rhbz#2089431, rhbz#2102009
+
+        [8.4.0-3]
+        - qemu: fd: Fix monitor usage of qemuFDPassDirectGetPath (rhbz#2092856)
+
+        [8.4.0-2]
+        - Revert 'RHEL: Fix virConnectGetMaxVcpus output' (rhbz#2095260)
+
+        [8.4.0-1]
+        - Rebased to libvirt-8.4.0 (rhbz#2060313)
+        - The rebase also fixes the following bugs:
+            rhbz#2057768, rhbz#2081981, rhbz#2035163, rhbz#2075837, rhbz#2082540
+            rhbz#2075383
+
+        [8.3.0-1]
+        - Rebased to libvirt-8.3.0 (rhbz#2060313)
+        - The rebase also fixes the following bugs:
+            rhbz#1653327, rhbz#2075765, rhbz#2075464, rhbz#2078274, rhbz#2070380
+            rhbz#2073887, rhbz#2073867
+    FixedIn:
+        - Module: null
+          Name: libvirt
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-client
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-client-qemu
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-common
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-config-network
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-config-nwfilter
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-interface
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-network
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-nodedev
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-nwfilter
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-qemu
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-secret
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-storage
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-storage-core
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-storage-disk
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-storage-iscsi
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-storage-logical
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-storage-mpath
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-storage-rbd
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-driver-storage-scsi
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-kvm
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-lock
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-log
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-plugin-lockd
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-plugin-sanlock
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-daemon-proxy
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-devel
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-docs
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-libs
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libvirt-nss
+          NamespaceName: ol:9
+          Version: 0:10.0.0-6.0.1.el9_4
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-2236.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-2496.html
+              Name: CVE-2024-2496
+        Issued: "2024-05-03"
+        RefId: ELSA-2024-2236
+    Name: ELSA-2024-2236
+    NamespaceName: ol:9
+    Severity: Medium
