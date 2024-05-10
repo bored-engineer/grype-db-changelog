@@ -1,0 +1,200 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.14.0-427.16.1_4.OL9]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+
+        [5.14.0-427.16.1_4]
+        - memory: tegra: Skip SID programming if SID registers aren't set (Robert Foss) [RHEL-32675 RHEL-23656]
+        - memory: tegra: Add SID override programming for MC clients (Robert Foss) [RHEL-32675 RHEL-23656]
+        - iommu: Don't reserve 0-length IOVA region (Robert Foss) [RHEL-32675 RHEL-23656]
+
+        [5.14.0-427.15.1_4]
+        - ice: fold ice_ptp_read_time into ice_ptp_gettimex64 (Michal Schmidt) [RHEL-30110 RHEL-19000]
+        - ice: avoid the PTP hardware semaphore in gettimex64 path (Michal Schmidt) [RHEL-30110 RHEL-19000]
+        - ice: add ice_adapter for shared data across PFs on the same NIC (Michal Schmidt) [RHEL-30110 RHEL-19000]
+        - crypto: iaa - mark tech preview (Vladis Dronov) [RHEL-32242 RHEL-29685]
+        - crypto: iaa - Fix nr_cpus < nr_iaa case (Vladis Dronov) [RHEL-32242 RHEL-29685]
+        - crypto: iaa - fix the missing CRYPTO_ALG_ASYNC in cra_flags (Vladis Dronov) [RHEL-32242 RHEL-29685]
+        - crypto: iaa - Fix comp/decomp delay statistics (Vladis Dronov) [RHEL-32242 RHEL-29685]
+        - crypto: iaa - Fix async_disable descriptor leak (Vladis Dronov) [RHEL-32242 RHEL-29685]
+        - crypto: iaa - Remove unnecessary debugfs_create_dir() error check in iaa_crypto_debugfs_init() (Vladis Dronov) [RHEL-32242 RHEL-29685]
+        - crypto: iaa - Remove header table code (Vladis Dronov) [RHEL-32242 RHEL-29685]
+        - cgroup: cgroup-v1: do not exclude cgrp_dfl_root (Laurent Vivier) [RHEL-32716 RHEL-31381]
+        - x86/sev: Harden #VC instruction emulation somewhat (Vitaly Kuznetsov) [RHEL-30030 RHEL-30031] {CVE-2024-25743 CVE-2024-25742}
+
+        [5.14.0-427.14.1_4]
+        - crypto: dh - implement FIPS PCT (Vladis Dronov) [RHEL-27009 RHEL-25845]
+        - crypto: tcrypt - add ffdhe2048(dh) test (Vladis Dronov) [RHEL-27009 RHEL-25845]
+        - crypto: dh - Make public key test FIPS-only (Vladis Dronov) [RHEL-27009 RHEL-25845]
+        - printk: allow disabling printk per-console device kthreads at boot (Luis Claudio R. Goncalves) [RHEL-30678 RHEL-17709]
+        - mm, vmscan: remove ISOLATE_UNMAPPED (Nico Pache) [RHEL-29235 RHEL-28667]
+        - trace-vmscan-postprocess: sync with tracepoints updates (Nico Pache) [RHEL-29235 RHEL-28667]
+        - tracing: incorrect isolate_mote_t cast in mm_vmscan_lru_isolate (Nico Pache) [RHEL-29235 RHEL-28667]
+        - mm/mglru: skip special VMAs in lru_gen_look_around() (Nico Pache) [RHEL-29235 RHEL-28667]
+        - mm/mglru: reclaim offlined memcgs harder (Nico Pache) [RHEL-29235 RHEL-28667]
+        - mm/mglru: try to stop at high watermarks (Nico Pache) [RHEL-29235 RHEL-28667]
+        - mm/mglru: fix underprotected page cache (Nico Pache) [RHEL-29235 RHEL-28667]
+        - mm: multi-gen LRU: reuse some legacy trace events (Nico Pache) [RHEL-29235 RHEL-28667]
+        - mm: multi-gen LRU: improve design doc (Nico Pache) [RHEL-29235 RHEL-28667]
+        - mm: multi-gen LRU: clean up sysfs code (Nico Pache) [RHEL-29235 RHEL-28667]
+        - cpu/hotplug: Do not bail-out in DYING/STARTING sections (David Arcari) [RHEL-29673 RHEL-19514]
+        - crypto: akcipher - Disable signing and decryption (Herbert Xu) [RHEL-29079 RHEL-17113] {CVE-2023-6240}
+    FixedIn:
+        - Module: null
+          Name: bpftool
+          NamespaceName: ol:9
+          Version: 0:7.3.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: libperf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: rtla
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: rv
+          NamespaceName: ol:9
+          Version: 0:5.14.0-427.16.1.el9_4
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-2758.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2023-6240.html
+              Name: CVE-2023-6240
+            - Link: https://linux.oracle.com/cve/CVE-2024-25742.html
+              Name: CVE-2024-25742
+            - Link: https://linux.oracle.com/cve/CVE-2024-25743.html
+              Name: CVE-2024-25743
+        Issued: "2024-05-08"
+        RefId: ELSA-2024-2758
+    Name: ELSA-2024-2758
+    NamespaceName: ol:9
+    Severity: Medium
