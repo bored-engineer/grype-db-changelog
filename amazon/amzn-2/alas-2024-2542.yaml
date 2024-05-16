@@ -1,0 +1,62 @@
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:netfilter: nftables: exthdr: fix 4-byte stack OOB writeIf priv->len is a multiple of 4, then dst[len / 4] can write pastthe destination array which leads to stack corruption.This construct is necessary to clean the remainder of the registerin case ->len is NOT a multiple of the register size, so make itconditional just like nft_payload.c does.The bug was added in 4.1 cycle and then copied/inherited whentcp/sctp and ip option support was added.Bug reported by Zero Day Initiative project (ZDI-CAN-21950,ZDI-CAN-21951, ZDI-CAN-21961). (CVE-2023-52628)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.343-261.564
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.343-261.564.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2542.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-52628
+    Name: ALAS-2024-2542
+    NamespaceName: amzn:2
+    Severity: High
