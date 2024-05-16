@@ -1,0 +1,42 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'FreeRDP is a set of free and open source remote desktop protocol library and clients. In affected versions an integer overflow in `freerdp_bitmap_planar_context_reset` leads to heap-buffer overflow. This affects FreeRDP based clients. FreeRDP based server implementations and proxy are not affected. A malicious server could prepare a `RDPGFX_RESET_GRAPHICS_PDU` to allocate too small buffers, possibly triggering later out of bound read/write. Data extraction over network is not possible, the buffers are used to display an image. This issue has been addressed in version 2.11.5 and 3.2.0. Users are advised to upgrade. there are no know workarounds for this vulnerability. (CVE-2024-22211)Integer overflow & OutOfBound Write in clear_decompress_residual_dataNOTE: https://www.freerdp.com/2024/04/17/2_11_6-release (CVE-2024-32039)FreeRDP is a free implementation of the Remote Desktop Protocol. FreeRDP based clients that use a version of FreeRDP prior to 3.5.0 or 2.11.6 and have connections to servers using the `NSC` codec are vulnerable to integer underflow. Versions 3.5.0 and 2.11.6 patch the issue. As a workaround, do not use the NSC codec (e.g. use `-nsc`). (CVE-2024-32040)OutOfBound Read in zgfx_decompress_segmentNOTE: https://www.freerdp.com/2024/04/17/2_11_6-release (CVE-2024-32041)FreeRDP is a free implementation of the Remote Desktop Protocol. FreeRDP based clients that use a version of FreeRDP prior to 3.5.0 or 2.11.6 are vulnerable to out-of-bounds read. Versions 3.5.0 and 2.11.6 patch the issue. As a workaround, use `/gfx` or `/rfx` modes (on by default, require server side support). (CVE-2024-32458)FreeRDP is a free implementation of the Remote Desktop Protocol. FreeRDP based clients and servers that use a version of FreeRDP prior to 3.5.0 or 2.11.6 are vulnerable to out-of-bounds read. Versions 3.5.0 and 2.11.6 patch the issue. No known workarounds are available. (CVE-2024-32459)OutOfBound Read in interleaved_decompressNOTE: https://www.freerdp.com/2024/04/17/2_11_6-release (CVE-2024-32460)FreeRDP is a free implementation of the Remote Desktop Protocol. FreeRDP based clients prior to version 3.5.1 are vulnerable to out-of-bounds read if `((nWidth == 0) and (nHeight == 0))`. Version 3.5.1 contains a patch for the issue. No known workarounds are available. (CVE-2024-32659)'
+    FixedIn:
+        - Name: freerdp
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: freerdp-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: freerdp-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: freerdp-libs
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: libwinpr
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: libwinpr-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2537.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-22211
+            - Name: CVE-2024-32039
+            - Name: CVE-2024-32040
+            - Name: CVE-2024-32041
+            - Name: CVE-2024-32458
+            - Name: CVE-2024-32459
+            - Name: CVE-2024-32460
+            - Name: CVE-2024-32659
+    Name: ALAS-2024-2537
+    NamespaceName: amzn:2
+    Severity: Medium
