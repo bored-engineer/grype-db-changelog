@@ -1,0 +1,71 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: release mutex after nft_gc_seq_end from abort pathThe commit mutex should not be released during the critical sectionbetween nft_gc_seq_begin() and nft_gc_seq_end(), otherwise, async GCworker could collect expired objects and get the released commit lockwithin the same GC sequence.nf_tables_module_autoload() temporarily releases the mutex to loadmodule dependencies, then it goes back to replay the transaction again.Move it at the end of the abort phase after nft_gc_seq_end() is called. (CVE-2024-26925)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.15.156-102.160
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.156-102.160.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASKERNEL-5.15-2024-042.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-26925
+    Name: ALASKERNEL-5.15-2024-042
+    NamespaceName: amzn:2
+    Severity: Medium
