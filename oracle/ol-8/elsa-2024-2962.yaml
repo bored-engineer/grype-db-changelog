@@ -1,0 +1,1573 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        hivex
+        libguestfs
+        [1.44.0-9.0.2]
+        - libguestfs.spec: Add btrfs-progs RPM to appliance [Orabug: 35634755]
+
+        [1.44.0-9.0.1]
+        - Replace upstream references from description tag
+        - Config supermin to use host yum.conf in ol8 [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        [1:1.44.0-9]
+        - Fix CVE-2022-2211 Denial of Service in --key parameter
+          resolves: rhbz#2101280
+
+        [1:1.44.0-8]
+        - Obsolete old libguestfs-benchmarking subpackage
+          resolves: rhbz#2091597
+
+        [1:1.44.0-7]
+        - Disable 5-level page tables when using -cpu max
+          resolves: rhbz#2084566
+          related: rhbz#2075424
+
+        [1:1.44.0-6]
+        - Backport support for -cpu max to allow RHEL 9 guests to be modified
+          resolves: rhbz#2075424
+
+        [1:1.44.0-5]
+        - Fix libguestfs failure with qemu 6.2, libvirt 7.10
+          resolves: rhbz#2035177
+
+        libguestfs-winsupport
+        [8.10-1]
+        - Rebase to ntfs-3g 2022.10.3
+        - Fixes: CVE-2022-40284
+        - resolves: rhbz#2236373
+
+        [8.8-1]
+        - Rebase to ntfs-3g 2022.5.17
+        - Fixes: CVE-2021-46790, CVE-2022-30783, CVE-2022-30784, CVE-2022-30785,
+          CVE-2022-30786, CVE-2022-30787, CVE-2022-30788, CVE-2022-30789
+          resolves: rhbz#2127240 rhbz#2127248
+          (also: 2127233 2127234 2127241 2127249 2127255 2127256 2127262 2127263)
+
+        [8.6-1]
+        - Rebase to ntfs-3g 2021.8.22
+        - Fixes: CVE-2021-33285, CVE-2021-33286, CVE-2021-33287, CVE-2021-33289,
+          CVE-2021-35266, CVE-2021-35267, CVE-2021-35268, CVE-2021-35269,
+          CVE-2021-39251, CVE-2021-39252, CVE-2021-39253, CVE-2021-39254
+          resolves: rhbz#2004490
+
+        [8.2-1.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [8.2]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [8.0-4]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [8.0-3]
+        - Fix for CVE-2019-9755
+          (heap-based buffer overflow leads to local root privilege escalation)
+          resolves: rhbz#1698503
+
+        [8.0-2]
+        - Fix for ntfsclone crash (RHBZ#1601146).
+
+        [8.0-1]
+        - Rebase to 2017.3.23.
+        - Remove patches which are now upstream.
+        - Resynch with Fedora package.
+        - Enable all architectures for RHEL 8.
+
+        [7.2-2]
+        - Fix for handling guest filenames with invalid or incomplete
+          multibyte or wide characters
+          resolves: rhbz#1301593
+
+        [7.2-1]
+        - Rebase and rebuild for RHEL 7.2
+          resolves: rhbz#1240278
+
+        [7.1-6]
+        - Bump version and rebuild.
+          related: rhbz#1221583
+
+        [7.1-5]
+        - Enable aarch64 architecture.
+          resolves: rhbz#1221583
+
+        [7.1-4]
+        - Enable debuginfo support and stripping.
+          resolves: rhbz#1100319
+
+        [7.1-3]
+        - Add patches from Fedora package which add fstrim support.
+          resolves: rhbz#1100319
+
+        [7.1-2]
+        - New package for RHEL 7.1
+        - Rebase to ntfs-3g 2014.2.15
+          resolves: rhbz#1100319
+        - Change the package so it works with supermin5.
+        - Remove dependency on external FUSE.
+
+        [7.0-2]
+        - Resync against Rawhide package (ntfs-3g 2013.1.13).
+        - Drop HAL file since HAL is dead.
+          resolves: rhbz#819939
+
+        [7.0-1]
+        - New package for RHEL 7
+          resolves: rhbz#819939
+        - Resync against Rawhide package.
+
+        [1.0-7]
+        - Disable debuginfo package.
+          resolves: RHBZ#691555.
+
+        [1.0-6]
+        - Require libguestfs 1.7.17 (newer version in RHEL 6.1).
+        - Require febootstrap-supermin-helper instead of febootstrap
+          resolves: RHBZ#670299.
+
+        [1.0-5]
+        - Make sure intermediate lib* directories are created in hostfiles (RHBZ#603429)
+
+        [1.0-4]
+        - Requires fuse-libs (RHBZ#599300).
+
+        [1.0-3]
+        - ExclusiveArch x86_64.
+
+        [1.0-2]
+        - Package Windows support for libguestfs.
+
+        libiscsi
+        libnbd
+        [1.6.0-5.el8]
+        - Fix CVE-2022-0485: Fail nbdcopy if NBD read or write fails
+          resolves: rhbz#2045718
+
+        [1.6.0-4.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.2.2]
+        - Resolves: bz#1844296
+        (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [1.2.2-1]
+        - New stable release 1.2.2.
+
+        [1.2.1-1]
+        - New stable release 1.2.1.
+
+        [1.2.0-1]
+        - New stable release 1.2.0.
+
+        [1.0.3-1]
+        - New upstream version 1.0.3.
+        - Contains fix for remote code execution vulnerability.
+        - Add new libnbd-security(3) man page.
+
+        [1.0.2-1]
+        - New upstream version 1.0.2.
+        - Remove patches which are upstream.
+        - Contains fix for NBD Protocol Downgrade Attack (CVE-2019-14842).
+        - Fix previous commit message.
+
+        [1.0.1-2]
+        - Add upstream patch to fix nbdsh (for nbdkit tests).
+        - Fix interop tests on slow machines.
+
+        [1.0.1-1]
+        - New stable version 1.0.1.
+
+        [1.0.0-1]
+        - New upstream version 1.0.0.
+
+        [0.9.9-2]
+        - Rebuilt for Python 3.8
+
+        [0.9.9-1]
+        - New upstream version 0.9.9.
+
+        [0.9.8-4]
+        - Fix nbdkit dependencies so we're actually running the tests.
+        - Add glib2-devel BR so we build the glib main loop example.
+        - Add upstream patch to fix test error:
+          nbd_connect_unix: getlogin: No such device or address
+        - Fix test failure on 32 bit.
+
+        [0.9.8-3]
+        - Bump and rebuild to fix releng brokenness.
+          https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/message/2LIDI33G3IEIPYSCCIP6WWKNHY7XZJGQ/
+
+        [0.9.8-2]
+        - Rebuilt for Python 3.8
+
+        [0.9.8-1]
+        - New upstream version 0.9.8.
+        - Package the new nbd_*(3) man pages.
+
+        [0.9.7-1]
+        - New upstream version 0.9.7.
+        - Add libnbd-ocaml(3) man page.
+
+        [0.9.6-2]
+        - Add all upstream patches since 0.9.6 was released.
+        - Package the ocaml bindings into a subpackage.
+
+        [0.9.6-1]
+        - New upstream verison 0.9.6.
+
+        [0.1.9-1]
+        - New upstream version 0.1.9.
+
+        [0.1.8-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+        [0.1.8-1]
+        - New upstream version 0.1.8.
+
+        [0.1.7-1]
+        - New upstream version 0.1.7.
+
+        [0.1.6-1]
+        - New upstream version 0.1.6.
+
+        [0.1.5-1]
+        - New upstream version 0.1.5.
+
+        [0.1.4-1]
+        - New upstream version 0.1.4.
+
+        [0.1.2-2]
+        - Enable libxml2 for NBD URI support.
+
+        [0.1.2-1]
+        - New upstream version 0.1.2.
+
+        [0.1.1-1]
+        - Fix license in man pages and examples.
+        - Add nbdsh(1) man page.
+        - Include the signature and keyring even if validation is disabled.
+        - Update devel subpackage license.
+        - Fix old FSF address in Python tests.
+        - Filter Python provides.
+        - Remove executable permission on the tar.gz.sig file.
+        - Initial release.
+
+        libtpms
+        libvirt-dbus
+        [1.3.0-2.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.3.0]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [1.2.0-3]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [1.2.0-2]
+        - util: fix virtDBusUtilDecodeUUID (rhbz#1647823)
+
+        [1.2.0-1]
+        - Rebased to libvirt-dbus-1.2.0 (rhbz#1630196)
+
+        [1.0.0-1]
+        - Rebase from Fedora
+
+        libvirt
+        [8.0.0-23.0.1]
+        - Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+        - Add runtime deps for pkg librbd1 >= 1:10.2.5 (Keshav Sharma)
+
+        [8.0.0-23]
+        - virnuma: Avoid integer overflow in virNumaGetPages() (rhbz#RHEL-16749)
+
+        libvirt-python
+        nbdkit
+        netcf
+        perl-Sys-Virt
+        qemu-kvm
+        [6.2.0-49]
+        - kvm-glib-compat-Introduce-g_memdup2-wrapper.patch [RHEL-19628]
+        - kvm-ui-clipboard-mark-type-as-not-available-when-there-i.patch [RHEL-19628]
+        - kvm-virtio-net-correctly-copy-vnet-header-when-flushing-.patch [RHEL-19496]
+        - Resolves: RHEL-19628
+          (CVE-2023-6683 virt:rhel/qemu-kvm: QEMU: VNC: NULL pointer dereference in qemu_clipboard_request() [rhel-8])
+        - Resolves: RHEL-19496
+          (CVE-2023-6693 virt:rhel/qemu-kvm: QEMU: virtio-net: stack buffer overflow in virtio_net_flush_tx() [rhel-8])
+
+        [6.2.0-48]
+        - kvm-iotests-add-filter_qmp_generated_node_ids.patch [RHEL-7353]
+        - kvm-iotests-port-141-to-Python-for-reliable-QMP-testing.patch [RHEL-7353]
+        - kvm-monitor-only-run-coroutine-commands-in-qemu_aio_cont.patch [RHEL-7353]
+        - kvm-iotests-Make-144-deterministic-again.patch [RHEL-7353]
+        - Resolves: RHEL-7353
+          ([qemu-kvm] no response with QMP command device_add when repeatedly hotplug/unplug virtio disks [RHEL-8])
+
+        [6.2.0-47]
+        - kvm-s390x-pci-avoid-double-enable-disable-of-aif.patch [RHEL-22411]
+        - kvm-s390x-pci-refresh-fh-before-disabling-aif.patch [RHEL-22411]
+        - kvm-s390x-pci-drive-ISM-reset-from-subsystem-reset.patch [RHEL-22411]
+        - Resolves: RHEL-22411
+          ([s390x] VM fails to start with ISM passed through)
+
+        [6.2.0-46]
+        - kvm-MAINTAINERS-split-out-s390x-sections.patch [RHEL-18214]
+        - kvm-s390x-pv-remove-semicolon-from-macro-definition.patch [RHEL-18214]
+        - kvm-hw-s390x-pv-Restrict-Protected-Virtualization-to-sys.patch [RHEL-18214]
+        - kvm-hw-s390x-Move-KVM-specific-PV-from-hw-to-target-s390.patch [RHEL-18214]
+        - kvm-target-s390x-kvm-pv-Provide-some-more-useful-informa.patch [RHEL-18214]
+        - Resolves: RHEL-18214
+          ([RHEL8][Secure-execution][s390x]  The error message is not clear when boot up a SE guest with wrong encryption)
+
+        [6.2.0-45]
+        - kvm-acpi-fix-acpi_index-migration.patch [RHEL-20189]
+        - kvm-RHEL-Enable-x-not-migrate-acpi-index-for-all-pre-RHE.patch [RHEL-20189]
+        - kvm-hw-arm-virt-Do-not-load-efi-virtio.rom-for-all-virti.patch [RHEL-14870]
+        - Resolves: RHEL-20189
+          ([RHEL.8.10.0]Failed to migrate guest with pc (i440x)  between RHELAV 8.4.0 and RHEL 8.10.0)
+        - Resolves: RHEL-14870
+          ([rhel8]ipxe-roms-qemu does not provide efi-virtio.rom)
+
+        [6.2.0-44]
+        - kvm-hw-ide-reset-cancel-async-DMA-operation-before-reset.patch [RHEL-15437]
+        - kvm-tests-qtest-ahci-test-add-test-exposing-reset-issue-.patch [RHEL-15437]
+        - Resolves: RHEL-15437
+          (CVE-2023-5088 virt:rhel/qemu-kvm: QEMU: improper IDE controller reset can lead to MBR overwrite [rhel-8])
+
+        [6.2.0-43]
+        - kvm-net-Provide-MemReentrancyGuard-to-qemu_new_nic.patch [RHEL-7309]
+        - kvm-net-Update-MemReentrancyGuard-for-NIC.patch [RHEL-7309]
+        - kvm-vhost-release-memory_listener-object-in-error-path.patch [RHEL-7567]
+        - kvm-ui-fix-crash-when-there-are-no-active_console.patch [RHEL-2600]
+        - Resolves: RHEL-7309
+          (CVE-2023-3019 virt:rhel/qemu-kvm: QEMU: e1000e: heap use-after-free in e1000e_write_packet_to_guest() [rhel-8])
+        - Resolves: RHEL-7567
+          ([RHEL8][clone]VM crash when guest running testpmd and delete created vhostuserclient port on host)
+        - Resolves: RHEL-2600
+          (qemu core dump occurs when client connects to VNC server because qemu cmd only adds vnc but without graphics device)
+
+        [6.2.0-42]
+        - kvm-target-s390x-dump-Remove-unneeded-dump-info-function.patch [RHEL-16696]
+        - kvm-dump-Add-arch-cleanup-function.patch [RHEL-16696]
+        - kvm-target-s390x-arch_dump-Add-arch-cleanup-function-for.patch [RHEL-16696]
+        - Resolves: RHEL-16696
+          (RHEL8 - KVM : Secure execution guest remains in 'paused' state, post 'virsh dump' failure (qemu-kvm))
+
+        [6.2.0-41]
+        - kvm-s390x-ap-fix-missing-subsystem-reset-registration.patch [bz#2111390]
+        - kvm-s390x-do-a-subsystem-reset-before-the-unprotect-on-r.patch [bz#2111390]
+        - kvm-redhat-Update-linux-headers-for-kvm_s390_vm_cpu_uv_f.patch [bz#2111390]
+        - kvm-target-s390x-kvm-Refactor-AP-functionalities.patch [bz#2111390]
+        - kvm-target-s390x-AP-passthrough-for-PV-guests.patch [bz#2111390]
+        - Resolves: bz#2111390
+          ([IBM 8.10 FEAT] KVM: Enable Secure Execution Crypto Passthrough - qemu part)
+
+        seabios
+        sgabios
+        supermin
+        [5.2.1-2.0.1.el8]
+        - Rebuild [Orabug: 35720304]
+
+        [5.2.1-2.el8]
+        - Supermin should ignore +debug kernels
+          resolves: rhbz#2051332
+        - Add copy-patches script.
+
+        [5.2.1-1.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [5.1.19]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [5.1.19-9]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [5.1.19-8]
+        - Pass CFLAGS & LDFLAGS to final supermin link
+          resolves: rhbz#1624175
+
+        [5.1.19-7]
+        - Rebuild for OCaml 4.07.0.
+
+        [5.1.19-6]
+        - Drop dietlibc in RHEL 8
+          resolves: rhbz#1588067
+
+        [5.1.19-5]
+        - Bump release and rebuild.
+
+        [5.1.19-4]
+        - Reenable hardened build
+
+        [5.1.19-3]
+        - Fix bytes/string problems.
+
+        [5.1.19-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+        [5.1.19-1]
+        - New upstream version 5.1.19.
+        - Remove all patches, now upstream.
+
+        [5.1.18-5]
+        - Rebuilt for RPM soname bump
+
+        [5.1.18-4]
+        - Fix supermin crash with truncated vmlinuz file (RHBZ#1477758).
+        - Include all upstream patches since 5.1.18.
+
+        [5.1.18-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
+        [5.1.18-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+        [5.1.18-1]
+        - New upstream release 5.1.18.
+        - Fixes problem with creating incorrect symlinks (RHBZ#1470157).
+
+        [5.1.17-5]
+        - Enable dietlibc on aarch64 and POWER.
+
+        [5.1.17-4]
+        - Drop dependency on hawkey and versioned dependencies on dnf.
+
+        [5.1.17-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+        [5.1.17-2]
+        - Rebuild for OCaml 4.04.0.
+
+        [5.1.17-1]
+        - New upstream release 5.1.17.
+        - Check signature on the tarball before unpacking it.
+        - Remove patches, all upstream.
+
+        [5.1.16-6]
+        - Switch to dietlibc on s390x
+
+        [5.1.16-5]
+        - Do not break the binary on interpreted builds (#1375213)
+
+        [5.1.16-4]
+        - Add all upstream patches since 5.1.16 was released.
+
+        [5.1.16-3]
+        - Add upstream patch for DAX / vNVDIMM support.
+
+        [5.1.16-2]
+        - New upstream version 5.1.16.
+        - Drop all patches since they are upstream.
+        - Depend on systemd-udev to work around RHBZ#1331012.
+
+        [5.1.15-2]
+        - Add all upstream patches since 5.1.15 was released.
+        - These should improve boot performance and initrd size.
+
+        [5.1.15-1]
+        - New upstream version 5.1.15.
+        - Remove all patches, since they are now included in this version.
+        - Enable dietlibc, remove glibc-static, xz-static, zlib-static.
+
+        [5.1.14-4]
+        - Add more patches since 5.1.14.
+
+        [5.1.14-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+        [5.1.14-2]
+        - Add all patches since 5.1.14.
+
+        [5.1.14-1]
+        - New upstream version 5.1.14.
+        - Remove all patches - now upstream.
+
+        [5.1.13-4]
+        - Pull in all upstream patches since 5.1.13.
+        - Choose providers better (RHBZ#1266918).
+        - Use autopatch.
+        - Explicitly depend on pod2html.
+
+        [5.1.13-3]
+        - Bump version to rebuild against new RPM in Rawhide.
+
+        [5.1.13-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+        [5.1.13-1]
+        - New upstream version 5.1.13.
+        - Remove patch, now upstream.
+
+        [5.1.12-11]
+        - Prefer 'dnf download' over 'yumdownloader' (again).
+        - BR grubby for the tests to work.
+
+        [5.1.12-9]
+        - Revert back to yumdownloader (RHBZ#1186948).
+
+        [5.1.12-8]
+        - Prefer 'dnf download' over 'yumdownloader'.
+
+        [5.1.12-7]
+        - Disable hardened build again.  See RHBZ#1202091 RHBZ#1204162.
+
+        [5.1.12-6]
+        - Enable hardening flags by building the static 'init' specially
+          before the main build.
+        - Use _smp_mflags.
+
+        [5.1.12-4]
+        - Add a -devel subpackage containing automated RPM dependency generator
+          for supermin appliances.
+
+        [5.1.12-2]
+        - Disable hardened build as it breaks building the static 'init' binary.
+
+        [5.1.12-1]
+        - New upstream version 5.1.12.
+        - Includes ARM fix: lpae kernels can now be booted (RHBZ#1199733).
+
+        [5.1.11-2]
+        - Rebuild for xz-5.2.0 in Rawhide (RHBZ#1179252).
+
+        [5.1.11-1]
+        - New upstream version 5.1.11.
+
+        [5.1.10-2]
+        - Update to upstream commit d78c898c7e2bc5f12cbebef98b95a7908d9120f1.
+        - BR rpm-devel, since it is now used instead of invoking rpm.
+        - BR automake and autoconf, and run autoreconf (configure.ac is modified by
+          the patches).
+
+        [5.1.10-1]
+        - New upstream version 5.1.10.
+        - Remove patch which is now included upstream.
+
+        [5.1.9-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
+        [5.1.9-2]
+        - Add upstream patch to avoid endless loop in Rawhide.
+
+        [5.1.9-1]
+        - New upstream version 5.1.9.
+        - Remove patches which are now upstream.
+
+        [5.1.8-9]
+        - Add Requires findutils (RHBZ#1113029).
+
+        [5.1.8-8]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+        [5.1.8-7]
+        - Add patch to fix RPM handler when filenames may contain spaces.
+
+        [5.1.8-4]
+        - Skip execstack test on Fedora 20 (ARM only).
+
+        [5.1.8-3]
+        - BR xz-static & xz-devel packages, to support xz-compressed kernel modules.
+
+        [5.1.8-1]
+        - New upstream version 5.1.8.
+        - Remove patches which are now upstream.
+
+        [5.1.7-3]
+        - Add upstream patch which removes need to run execstack (RHBZ#1093261).
+
+        [5.1.7-2]
+        - Add patch to fix quoting around mke2fs parameter (RHBZ#1084960).
+
+        [5.1.7-1]
+        - New upstream version 5.1.7.
+        - Remove ppc64p7 patch which is now upstream.
+
+        [5.1.6-5]
+        - Requires tar, which is not installed in an @Core installation.
+
+        [5.1.6-4]
+        - Add upstream patch to fix supermin on ppc64p7.
+
+        [5.1.6-3]
+        - New upstream version 5.1.6.
+        - Fix tests.
+
+        [5.1.5-2]
+        - Disable execstack on aarch64.
+          It comes from prelink which does not exist on aarch64.
+
+        [5.1.5-1]
+        - New upstream version 5.1.5.
+
+        [5.1.3-1]
+        - New upstream version 5.1.3.
+
+        [5.1.2-1]
+        - New upstream version 5.1.2.
+        - Fixes a serious bug in --build mode.
+
+        [5.1.1-1]
+        - New upstream version 5.1.1.
+        - Remove patch which is now upstream.
+
+        [5.1.0-3]
+        - Add BR yum-utils (for yumdownloader).
+        - Add upstream patch which stops duplicate packages appearing.
+
+        [5.1.0-2]
+        - New upstream version 5.1.0.
+        - Note this is effectively a rewrite, and is not completely compatible.
+        - There is no separate 'supermin-helper' subpackage any more.
+        - Requires rpm instead of yum.
+
+        [4.1.6-2]
+        - New upstream version 4.1.6.
+        - Should fix all autotools brokenness.
+        - Man pages are now all in section 1.
+        - Remove patch which is now upstream.
+        - +BR /usr/bin/execstack (from prelink).
+
+        [4.1.5-5]
+        - Rerun autoreconf to fix autotools brokenness.
+
+        [4.1.5-4]
+        - Why was prelink required?  Remove it.
+
+        [4.1.5-3]
+        - correct Obsoletes version for febootstrap and febootstrap-supermin-helper
+
+        [4.1.5-2]
+        - (For ARM) Don't crash if SUPERMIN_DTB is set and --dtb not specified.
+
+        [4.1.5-1]
+        - New upstream version 4.1.5.
+        - Has (optionally) a new command line syntax.
+        - Supports device trees for ARM.
+
+        [4.1.4-1]
+        - New upstream version 4.1.4.
+        - Supports compressed cpio image files, experimentally.
+
+        [4.1.3-1]
+        - New upstream version 4.1.3.
+        - Remove patch which is now upstream.
+        - Add examples directory to documentation.
+
+        [4.1.2-2]
+        - Include upstream patch to get correct directory setgid/sticky bits in
+          the appliance.
+
+        [4.1.2-1]
+        - New upstream version 4.1.2.
+        - Remove patch which is now upstream.
+
+        [4.1.1-2]
+        - Add upstream patch to ignore ghost non-regular files.
+        - This fixes builds on Fedora 20 because the filesystem package has
+          been changed so /var/lock and /var/run are marked as ghost.
+
+        [4.1.1-1]
+        - New upstream version 4.1.1.
+        - The program has been renamed 'supermin' from 'febootstrap'.
+        - Obsolete, but don't Provide because supermin is not a compatible replacement.
+        - Use '_isa' to specify architecture of supermin-helper subpackage.
+
+        [1:3.21-2]
+        - Add upstream patch to drop supplemental groups (RHBZ#902476).
+        - Remove 'Group:' RPM headers which are no longer necessary.
+        - Remove some commented-out requirements.
+
+        [1:3.21-1]
+        - New upstream version 3.21.
+
+        [1:3.20-1]
+        - New upstream version 3.20.
+
+        [1:3.19-2]
+        - Work around brokenness in yum (RHBZ#850913).
+        - Remove defattr, no longer required.
+
+        [1:3.19-1]
+        - New upstream version 3.19.
+
+        [3.18-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+        [3.18-1]
+        - New upstream version 3.18.
+        - This adds support for EPEL 5.
+
+        [3.17-1]
+        - New upstream version 3.17.
+
+        [3.16-1]
+        - New upstream version 3.16.
+
+        [3.15-1]
+        - New upstream version 3.15.
+        - This version includes root=<device> support, needed for libguestfs
+          with virtio-scsi.
+        - Remove upstream patch.
+
+        [3.14-6]
+        - For RHEL 7 only, add ExclusiveArch x86-64.
+
+        [3.14-5]
+        - Bundled gnulib (RHBZ#821752).
+
+        [3.14-4]
+        - Add back explicit dependencies for external programs.
+
+        [3.14-3]
+        - Drop ExclusiveArch as it's supported on all primary & secondary arches
+        - Cleanup spec and deps
+
+        [3.14-2]
+        - New upstream version 3.14.
+        - Add upstream patch to fix RHBZ#808421.
+
+        [3.13-4]
+        - e2fsprogs moved /sbin/mke2fs to /usr/sbin (thanks Eric Sandeen).
+
+        [3.13-2]
+        - Missing BR zlib-static.
+
+        [3.13-1]
+        - New upstream version 3.13.
+        - Remove upstream patch which is included in this version.
+
+        [3.12-5]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+        [3.12-4]
+        - Depend on latest e2fsprogs (RHBZ#771310).
+
+        [3.12-2]
+        - Include upstream patch to work around Python stupidity.
+
+        [3.12-1]
+        - New upstream version 3.12.
+        - Remove upstream patch which is included in this version.
+
+        [3.11-2]
+        - Add upstream patch to fix febootstrap on non-Debian.
+
+        [3.11-1]
+        - New upstream version 3.11.
+
+        [3.10-1]
+        - New upstream version 3.10.
+
+        [3.9-1]
+        - New upstream version 3.9.
+
+        [3.8-1]
+        - New upstream version 3.8.
+
+        [3.7-1]
+        - New upstream version 3.7.
+
+        [3.6-1]
+        - New upstream version 3.6.
+        - This version no longer needs external insmod.static.
+
+        [3.5-1]
+        - New upstream version 3.5.
+        - Remove patch which is now upstream.
+
+        [3.4-2]
+        - Don't fail if objects are created in a symlinked dir (RHBZ#698089).
+
+        [3.4-1]
+        - New upstream version 3.4.
+        - febootstrap-supermin-helper Obsoletes older versions of febootstrap.
+
+        [3.3-5]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+        [3.3-4]
+        - Split package into febootstrap (for building) and febootstrap-supermin-helper
+          (for running).  Note that febootstrap depends on febootstrap-supermin-helper,
+          but you can install febootstrap-supermin-helper on its own.
+
+        [3.3-3]
+        - Clear executable stack flag on febootstrap-supermin-helper.
+
+        [3.3-2]
+        - add the ocaml's ExclusiveArch
+
+        [3.3-1]
+        - New upstream version 3.3.
+
+        [3.2-1]
+        - New upstream version 3.2.
+        - Remove upstream patches.
+
+        [3.1-5]
+        - Previous fix for RHBZ#654638 didn't work, fix it correctly.
+
+        [3.1-4]
+        - Properly ignore .*.hmac files (accidental reopening of RHBZ#654638).
+
+        [3.1-3]
+        - Uses yumdownloader at runtime, so require yum-utils.
+
+        [3.1-2]
+        - New upstream version 3.1.
+        - BR insmod.static.
+
+        [3.0-2]
+        - New upstream version 3.0 (note this is incompatible with 2.x).
+        - Fix upstream URLs.
+        - fakeroot, fakechroot no longer required.
+        - insmod.static is required at runtime (missing dependency from earlier).
+        - The only programs are 'febootstrap' and 'febootstrap-supermin-helper'.
+        - BR ocaml, ocaml-findlib-devel.
+        - No examples are provided with this version of febootstrap.
+
+        [2.11-1]
+        - New upstream version 2.11.
+        - Fixes 'ext2fs_mkdir .. No free space in directory' bug which affects
+          libguestfs on rawhide.
+
+        [2.10-1]
+        - New upstream version 2.10.
+        - Adds -u and -g options to febootstrap-supermin-helper which are
+          required by virt-v2v.
+
+        [2.9-1]
+        - New upstream version 2.9.
+        - Fixes directory ordering problem in febootstrap-supermin-helper.
+
+        [2.8-1]
+        - New upstream version 2.8.
+
+        [2.8-0.2]
+        - New pre-release version of 2.8.
+          + Note this is based on 2.7 + mailing list patches.
+        - New BRs on mke2fs, libext2fs, glibc-static.
+
+        [2.7-2]
+        - New upstream version 2.7.
+        - febootstrap-supermin-helper shell script rewritten in C for speed.
+        - This package contains C code so it is no longer 'noarch'.
+        - MAKEDEV isn't required.
+
+        [2.6-1]
+        - New upstream release 2.6.
+        - Recheck package in rpmlint.
+
+        [2.5-2]
+        - New upstream release 2.5.
+        - Remove BR upx (not needed by upstream).
+        - Two more scripts / manpages.
+
+        [2.4-1]
+        - New upstream release 2.4.
+
+        [2.3-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+        [2.3-1]
+        - New upstream release 2.3.
+
+        [2.2-1]
+        - New upstream release 2.2.
+
+        [2.0-1]
+        - New upstream release 2.0.
+
+        [1.9-1]
+        - New upstream release 1.9.
+
+        [1.8-1]
+        - New upstream release 1.8.
+
+        [1.7-1]
+        - New upstream release 1.7.
+
+        [1.5-3]
+        - Configure script has (unnecessary) BuildRequires on fakeroot,
+          fakechroot, yum.
+
+        [1.5-2]
+        - Initial build for Fedora.
+
+        swtpm
+        virt-v2v
+    FixedIn:
+        - Module: virt-devel:ol
+          Name: hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.9.0+90075+85334608
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: hivex-devel
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.9.0+90075+85334608
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-appliance
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-bash-completion
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-gfs2
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-gobject
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-gobject-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-inspect-icons
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-java
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-java-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-javadoc
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-man-pages-ja
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-man-pages-uk
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-rescue
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-rsync
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-tools
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-tools-c
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-winsupport
+          NamespaceName: ol:8
+          Version: 0:8.10-1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libguestfs-xfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libiscsi
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libiscsi-devel
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libiscsi-utils
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libnbd
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libnbd-bash-completion
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libnbd-devel
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libtpms
+          NamespaceName: ol:8
+          Version: 0:0.9.1-2.20211126git1ff6fe1f43.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libtpms-devel
+          NamespaceName: ol:8
+          Version: 0:0.9.1-2.20211126git1ff6fe1f43.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-client
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-config-network
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-config-nwfilter
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-interface
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-network
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-nodedev
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-nwfilter
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-qemu
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-secret
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-core
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-disk
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-gluster
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-iscsi
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-iscsi-direct
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-logical
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-mpath
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-rbd
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-driver-storage-scsi
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-daemon-kvm
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-dbus
+          NamespaceName: ol:8
+          Version: 0:1.3.0-2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-devel
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-docs
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-libs
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-lock-sanlock
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-nss
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: libvirt-wireshark
+          NamespaceName: ol:8
+          Version: 0:8.0.0-23.0.1.module+el8.10.0+90308+7c659588
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: lua-guestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdfuse
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-bash-completion
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-basic-filters
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-basic-plugins
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-curl-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-devel
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-example-plugins
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-gzip-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-gzip-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-linuxdisk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-nbd-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-python-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-server
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-ssh-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-tar-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-tar-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-tmpdisk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-vddk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: nbdkit-xz-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: netcf
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: netcf-devel
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: netcf-libs
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: ocaml-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.9.0+90075+85334608
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: ocaml-hivex-devel
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.9.0+90075+85334608
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: ocaml-libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: ocaml-libguestfs-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: ocaml-libnbd
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: ocaml-libnbd-devel
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: perl-Sys-Guestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: perl-Sys-Virt
+          NamespaceName: ol:8
+          Version: 0:8.0.0-1.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: perl-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.9.0+90075+85334608
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: python3-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.9.0+90075+85334608
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: python3-libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: python3-libnbd
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: python3-libvirt
+          NamespaceName: ol:8
+          Version: 0:8.0.0-2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-guest-agent
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-img
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-block-curl
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-block-gluster
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-block-iscsi
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-block-rbd
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-block-ssh
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-common
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-core
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-docs
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-hw-usbredir
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-tests
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-ui-opengl
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: qemu-kvm-ui-spice
+          NamespaceName: ol:8
+          Version: 15:6.2.0-49.module+el8.10.0+90330+d0258130
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: ruby-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.9.0+90075+85334608
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: ruby-libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: seabios
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: seabios-bin
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: seavgabios-bin
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: sgabios
+          NamespaceName: ol:8
+          Version: 1:0.20170427git-3.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: sgabios-bin
+          NamespaceName: ol:8
+          Version: 1:0.20170427git-3.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: supermin
+          NamespaceName: ol:8
+          Version: 0:5.2.1-2.0.1.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: supermin-devel
+          NamespaceName: ol:8
+          Version: 0:5.2.1-2.0.1.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: swtpm
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: swtpm-devel
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: swtpm-libs
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: swtpm-tools
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: swtpm-tools-pkcs11
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: virt-dib
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: virt-v2v
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: virt-v2v-bash-completion
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: virt-v2v-man-pages-ja
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+        - Module: virt-devel:ol
+          Name: virt-v2v-man-pages-uk
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.9.0+90052+d3bf71d8
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-2962.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2023-3255.html
+              Name: CVE-2023-3255
+            - Link: https://linux.oracle.com/cve/CVE-2023-5088.html
+              Name: CVE-2023-5088
+            - Link: https://linux.oracle.com/cve/CVE-2023-6683.html
+              Name: CVE-2023-6683
+            - Link: https://linux.oracle.com/cve/CVE-2023-6693.html
+              Name: CVE-2023-6693
+        Issued: "2024-05-24"
+        RefId: ELSA-2024-2962
+    Name: ELSA-2024-2962
+    NamespaceName: ol:8
+    Severity: Medium

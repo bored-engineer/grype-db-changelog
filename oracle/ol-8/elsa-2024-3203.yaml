@@ -1,0 +1,130 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [239-82.0.1]
+        - Fixed deletion issue for symlink when device is opened [Orabug: 36228608]
+        - Fix local-fs and remote-fs targets during system boot (replaces old Orabug: 25897792) [Orabug: 35871376]
+        - 1A) Add 'systemd-fstab-generator-reload-targets.service' file [Orabug: 35871376]
+        - 1B) Add required rpms for correct kickstart/systemd functionality within systemd.spec [Orabug: 35871376]
+        - 1C) Important: Review 1902-systemd-fstab-generator-reload-targets.patch for important build details/steps [Orabug: 35871376]
+        - Prevent duplicate uuid device to replace existing one in udev [Orabug: 35987487]
+        - Backport upstream pstore dmesg fix [Orabug: 34850699]
+        - mount: flush out cycle state on DEAD->MOUNTED only, not the other way round [Orabug: 35454661]
+        - core/mount: adjust deserialized state based on /proc/self/mountinfo [Orabug: 35454661]
+        - Prevent duplicate label to replace exsisting one in udev [Orabug: 34898273]
+        - Oracle-Redhat Errata ELSA-2023:3837 CVE-2023-26604 OLERRATA-43629
+        - Detect podman as separate container type [Orabug: 31922204]
+        - improve container detection logic [Orabug: 31922204]
+        - mount: flush out cycle state on DEAD->MOUNTED only, not the other way round [Orabug: 35454661]
+        - core/mount: adjust deserialized state based on /proc/self/mountinfo [Orabug: 35454661]
+        - Prevent duplicate label to replace existing one in udev [Orabug: 34898273]
+        - Standardize ioctl (BTRFS_IOC_QGROUP_CREATE) check and return -ENOTCONN, if quota is not enabled [Orabug: 34694253]
+        - Disable unprivileged BPF by default [Orabug: 32870980]
+        - udev rules: fix memory hot add and remove [Orabug: 31310273]
+        - fix to enable systemd-pstore.service [Orabug: 30951066]
+        - journal: change support URL shown in the catalog entries [Orabug: 30853009]
+        - set 'RemoveIPC=no' in logind.conf as default for OL7.2 [Orabug: 22224874]
+        - allow dm remove ioctl to co-operate with UEK3 (Vaughan Cao) [Orabug: 18467469]
+        - Backport upstream patches for the new systemd-pstore tool (Eric DeVolder) [OraBug: 30230056]
+        - Removed unneeded patches (Already provided upstream or not required)
+        - 1902-Fix-missing-netdev-for-iscsi-entry-in-fstab.patch [Orabug: 25897792]
+        - 1800-pager-set-LESSSECURE-whenver-we-invoke-a-pager.patch (#2175624)
+        - 1801-pager-make-pager-secure-when-under-euid-is-changed-o.patch (#2175624)
+        - 1802-pstore-fix-crash-and-forward-dummy-arguments-instead.patch (#2190151)
+        - 2002-orabug31420486-pstore-introduce-tmpfiles.d-systemd-pstore.conf.patch [Orabug: 31420486]
+        - 2009-login-add-a-missing-error-check-for-session_set_lead.patch (#2158167)
+        - 2010-logind-reset-session-leader-if-we-know-for-a-fact-th.patch (#2158167)
+        - 2011-sulogin-fix-control-lost-of-the-current-terminal-whe.patch (#2227769)
+        - systemd.spec: prevent 'myhostname' from being appended on upgrade (#2187761) (#2227769)
+        - Updated mod_nss() and readlink /etc/nsswitch.conf sections (#2187761)
+        - systemd.spec: mod_nss() and readlink /etc/nsswitch.conf sections (#2187761)
+
+        [239-82]
+        - ci: add configuration for regression sniffer GA (RHEL-1087)
+        - coredump: actually store parsed unit in the context (RHEL-18302)
+        - resolved: limit the number of signature validations in a transaction (RHEL-26644)
+        - resolved: reduce the maximum nsec3 iterations to 100 (RHEL-26644)
+
+        [239-81]
+        - man: update link to RHEL documentation (RHEL-26355)
+
+        [239-80]
+        - fd-util: rework how we determine highest possible fd (RHEL-18302)
+        - basic/fd-util: refuse 'infinite' loop in close_all_fds() (RHEL-18302)
+        - fd-util: split out inner fallback loop of close_all_fds() as close_all_fds_without_malloc() (RHEL-18302)
+        - exec-util: use close_all_fds_without_malloc() from freeze() (RHEL-18302)
+        - ci: use source-git-automation composite Action (RHEL-1087)
+        - ci: increase the cron interval to 45 minutes (RHEL-1087)
+        - ci: add all Z-Stream versions to array of allowed versions (RHEL-1087)
+        - tree-wide: always declare bitflag enums the same way (RHEL-2857)
+        - login: Add KEY_RESTART handling (RHEL-2857)
+        - analyze security: fix recursive call of syscall_names_in_filter() (RHEL-5991)
+        - analyze-security: do not assign badness to filtered-out syscalls (RHEL-5991)
+        - analyze-security: include an actual syscall name in the message (RHEL-5991)
+        - udev/net_id: introduce naming scheme for RHEL-8.10 (RHEL-22426)
+        - doc: add missing <listitem> to systemd.net-naming-scheme.xml (RHEL-22426)
+        - service: schedule cleanup of PID hashmaps when we now longer have main_pid and we are in container (RHEL-5863)
+
+        [239-79]
+        - ci: Extend source-git-automation (RHEL-1087)
+        - ci: add missing configuration for commit linter (RHEL-1087)
+        - ci: add Red Hat Enterprise Linux 8 to the list of supported products (RHEL-1087)
+        - ci: enable source-git automation to validate reviews and ci results (RHEL-1087)
+        - ci: remove Mergify config - replaced by Pull Request Validator (RHEL-1087)
+        - ci: enable auto-merge GH Action (RHEL-1087)
+        - fstab-generator: allow overriding /etc/fstab with  (RHEL-1087)
+        - fstab-generator: allow overriding path to /sysroot/etc/fstab too (RHEL-1087)
+        - test: backport TEST-81-GENERATORS (fstab-generator only) (RHEL-1087)
+        - resolved: actually check authenticated flag of SOA transaction (RHEL-6213)
+    FixedIn:
+        - Module: null
+          Name: systemd
+          NamespaceName: ol:8
+          Version: 0:239-82.0.1.el8
+          VersionFormat: rpm
+        - Module: null
+          Name: systemd-container
+          NamespaceName: ol:8
+          Version: 0:239-82.0.1.el8
+          VersionFormat: rpm
+        - Module: null
+          Name: systemd-devel
+          NamespaceName: ol:8
+          Version: 0:239-82.0.1.el8
+          VersionFormat: rpm
+        - Module: null
+          Name: systemd-journal-remote
+          NamespaceName: ol:8
+          Version: 0:239-82.0.1.el8
+          VersionFormat: rpm
+        - Module: null
+          Name: systemd-libs
+          NamespaceName: ol:8
+          Version: 0:239-82.0.1.el8
+          VersionFormat: rpm
+        - Module: null
+          Name: systemd-pam
+          NamespaceName: ol:8
+          Version: 0:239-82.0.1.el8
+          VersionFormat: rpm
+        - Module: null
+          Name: systemd-tests
+          NamespaceName: ol:8
+          Version: 0:239-82.0.1.el8
+          VersionFormat: rpm
+        - Module: null
+          Name: systemd-udev
+          NamespaceName: ol:8
+          Version: 0:239-82.0.1.el8
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-3203.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2023-7008.html
+              Name: CVE-2023-7008
+        Issued: "2024-05-23"
+        RefId: ELSA-2024-3203
+    Name: ELSA-2024-3203
+    NamespaceName: ol:8
+    Severity: Medium
