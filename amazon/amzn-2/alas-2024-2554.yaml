@@ -1,0 +1,44 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: An attacker may cause an HTTP/2 endpoint to read arbitrary amounts of header data by sending an excessive number of CONTINUATION frames. Maintaining HPACK state requires parsing and processing all HEADERS and CONTINUATION frames on a connection. When a request's headers exceed MaxHeaderBytes, no memory is allocated to store the excess headers, but they are still parsed. This permits an attacker to cause an HTTP/2 endpoint to read arbitrary amounts of header data, all associated with a request which is going to be rejected. These headers can include Huffman-encoded data which is significantly more expensive for the receiver to decode than for an attacker to send. The fix sets a limit on the amount of excess header frames we will process before closing a connection. (CVE-2023-45288)When following an HTTP redirect to a domain which is not a subdomain match or exact match of the initial domain, an http.Client does not forward sensitive headers such as "Authorization" or "Cookie". For example, a redirect from foo.com to www.foo.com will forward the Authorization header, but a redirect to bar.com will not. A maliciously crafted HTTP redirect could cause sensitive headers to be unexpectedly forwarded. (CVE-2023-45289)When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines. (CVE-2023-45290)Verifying a certificate chain which contains a certificate with an unknown public key algorithm will cause Certificate.Verify to panic. This affects all crypto/tls clients, and servers that set Config.ClientAuth to VerifyClientCertIfGiven or RequireAndVerifyClientCert. The default behavior is for TLS servers to not verify client certificates. (CVE-2024-24783)The ParseAddressList function incorrectly handles comments (text within parentheses) within display names. Since this is a misalignment with conforming address parsers, it can result in different trust decisions being made by programs using different parsers. (CVE-2024-24784)If errors returned from MarshalJSON methods contain user controlled data, they may be used to break the contextual auto-escaping behavior of the html/template package, allowing for subsequent actions to inject unexpected content into templates. (CVE-2024-24785)
+    FixedIn:
+        - Name: golang
+          NamespaceName: amzn:2
+          Version: 1.22.3-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-bin
+          NamespaceName: amzn:2
+          Version: 1.22.3-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-docs
+          NamespaceName: amzn:2
+          Version: 1.22.3-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-misc
+          NamespaceName: amzn:2
+          Version: 1.22.3-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-shared
+          NamespaceName: amzn:2
+          Version: 1.22.3-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-src
+          NamespaceName: amzn:2
+          Version: 1.22.3-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-tests
+          NamespaceName: amzn:2
+          Version: 1.22.3-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2554.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-45288
+            - Name: CVE-2023-45289
+            - Name: CVE-2023-45290
+            - Name: CVE-2024-24783
+            - Name: CVE-2024-24784
+            - Name: CVE-2024-24785
+    Name: ALAS-2024-2554
+    NamespaceName: amzn:2
+    Severity: Medium

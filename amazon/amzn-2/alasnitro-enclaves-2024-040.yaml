@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: An attacker may cause an HTTP/2 endpoint to read arbitrary amounts of header data by sending an excessive number of CONTINUATION frames. Maintaining HPACK state requires parsing and processing all HEADERS and CONTINUATION frames on a connection. When a request's headers exceed MaxHeaderBytes, no memory is allocated to store the excess headers, but they are still parsed. This permits an attacker to cause an HTTP/2 endpoint to read arbitrary amounts of header data, all associated with a request which is going to be rejected. These headers can include Huffman-encoded data which is significantly more expensive for the receiver to decode than for an attacker to send. The fix sets a limit on the amount of excess header frames we will process before closing a connection. (CVE-2023-45288)
+    FixedIn:
+        - Name: amazon-ecr-credential-helper
+          NamespaceName: amzn:2
+          Version: 0.7.1-4.amzn2
+          VersionFormat: rpm
+        - Name: amazon-ecr-credential-helper-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.7.1-4.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASNITRO-ENCLAVES-2024-040.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-45288
+    Name: ALASNITRO-ENCLAVES-2024-040
+    NamespaceName: amzn:2
+    Severity: Medium
