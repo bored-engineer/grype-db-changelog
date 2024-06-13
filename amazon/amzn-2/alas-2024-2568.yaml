@@ -1,0 +1,19 @@
+Vulnerability:
+    Description: An attacker may cause an HTTP/2 endpoint to read arbitrary amounts of header data by sending an excessive number of CONTINUATION frames. Maintaining HPACK state requires parsing and processing all HEADERS and CONTINUATION frames on a connection. When a request's headers exceed MaxHeaderBytes, no memory is allocated to store the excess headers, but they are still parsed. This permits an attacker to cause an HTTP/2 endpoint to read arbitrary amounts of header data, all associated with a request which is going to be rejected. These headers can include Huffman-encoded data which is significantly more expensive for the receiver to decode than for an attacker to send. The fix sets a limit on the amount of excess header frames we will process before closing a connection. (CVE-2023-45288)The protojson.Unmarshal function can enter an infinite loop when unmarshaling certain forms of invalid JSON. This condition can occur when unmarshaling into a message which contains a google.protobuf.Any value, or when the UnmarshalOptions.DiscardUnknown option is set. (CVE-2024-24786)
+    FixedIn:
+        - Name: cri-tools
+          NamespaceName: amzn:2
+          Version: 1.29.0-1.amzn2.0.2
+          VersionFormat: rpm
+        - Name: cri-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.29.0-1.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2568.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-45288
+            - Name: CVE-2024-24786
+    Name: ALAS-2024-2568
+    NamespaceName: amzn:2
+    Severity: Medium
