@@ -1,0 +1,106 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2.17-326.0.9.3]
+        - Forward-port Oracle patches to 2.17-326.3
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Oracle history:
+          June-22-2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.17-326.0.9
+          - OraBug 35517820 Reworked previous patch for OraBug 35318841 and removed
+            free() of stack allocations.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          June-20-2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.17-326.0.7
+          - OraBug 35517820 Do not allocate heap memory in __nptl_tunables_init.
+          - This issue was introduced and fixed in patch related to OraBug 35318841.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          April-21-2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.17-326.0.5
+          - OraBug 35318841 Glibc tunable to disable huge pages on pthread_create stacks
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          December-19-2022 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.17-326.0.3
+          - OraBug 34909902 vDSO timer functions support on i686
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          May-18-2022 Patrick McGehearty <patrick.mcgehearty@oracle.com> - 2.17-326.0.1
+          - Forward-port Oracle patches to 2.17-326.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          April-26-2022 Patrick McGehearty <patrick.mcgehearty@oracle.com> - 2.17-325.0.3
+          - OraBug 33968985 Security Patches
+            This release fixes CVE-2022-23219, CVE-2022-23218, and CVE-2021-3999
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          October-12-2021 Patrick McGehearty <patrick.mcgehearty@oracle.com> - 2.17-325.0.1
+          - Merge el7 u9 errata4 patch with Oracle patches
+            Review-exception: Simple merge
+          - Merge el7 u9 errata patches with Oracle patches
+            Review-exception: Simple merge
+          - Adding three arm specific patches to allow glibc x86 tree to be used for
+          - ILOM and other arm builds
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          - Merge el7 u8 patches with Oracle patches
+            Review-exception: Simple merge
+          - Adding Mike Fabian's C.utf-8 patch (C.utf-8 is a unicode-aware version
+            of the C locale)
+            Orabug 29784239.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          - Remove glibc-ora28641867.patch as duplicate of glibc-rh1705899-4.patch
+          - Make _IO_funlockfile match __funlockfile and _IO_flockfile match __flockfile
+            Both should test
+              if ((stream->_flags & _IO_USER_LOCK) == 0)
+                _IO_lock_lock (*stream->_lock);
+            OraBug 28481550.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          - Modify glibc-ora28849085.patch so it works with RHCK kernels.
+            Orabug 28849085.
+          - Reviewed-by: Egeyar Bagcioglu <egeyar.bagcioglu@oracle.com>
+          - Use NLM_F_SKIP_STATS in uek2 and RTEXT_FILTER_SKIP_STATS in uek4 in getifaddrs.
+          - Orabug 28849085
+          - Reviewed-by: Patrick McGehearty <patrick.mcgehearty@oracle.com>
+          - Mention CVE numbers in the .spec file for CVE-2015-8983 and CVE-2015-8984.
+          - Orabug 25558067.
+          - Reviewed-by: Egeyar Bagcioglu <egeyar.bagcioglu@oracle.com>
+          - Regenerate plural.c
+          - OraBug 28806294.
+          - Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          - intl: Port to Bison 3.0
+          - Backport of upstream gettext commit 19f23e290a5e4a82b9edf9f5a4f8ab6192871be9
+          - OraBug 28806294.
+          - Reviewed-by: Patrick McGehearty <patrick.mcgehearty@oracle.com>
+          - Fix dbl-64/wordsize-64 remquo (bug 17569).
+          - Backport of upstream d9afe48d55a412e76b0dcb28335fd4b390fe07ae
+          - OraBug 19570749.
+          - Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          - libio: Disable vtable validation in case of interposition.
+          - Backport of upstream c402355dfa7807b8e0adb27c009135a7e2b9f1b0.
+          - OraBug 28641867.
+          - Reviewed-by: Egeyar Bagcioglu <egeyar.bagcioglu@oracle.com>
+          - Include-linux-falloc.h-in-bits-fcntl-linux.h
+          - Defines FALLOC_FL_PUNSH_HOLE, FALLOC_FL_KEEP_SIZE,
+            FALLOC_FL_COLLAPSE_RANGE, and FALLOC_FL_ZERO_RANGE
+          - OraBug 28483336
+          - Add MAP_SHARED_VALIDATE and MAP_SYNC flags to
+          - sysdeps/unix/sysv/linux/x86/bits/mman.h
+          - OraBug 28389572
+          - Update bits/siginfo.h with Linux hwpoison SIGBUS changes.
+          - Adds new SIGBUS error codes for hardware poison signals, syncing with
+            the current kernel headers (v3.9).
+          - It also adds si_trapno field for alpha.
+          - New values: BUS_MCEERR_AR, BUS_MCEERR_AO
+          - OraBug 28124569
+    FixedIn: []
+    Link: https://linux.oracle.com/errata/ELSA-2024-12444.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-2961.html
+              Name: CVE-2024-2961
+            - Link: https://linux.oracle.com/cve/CVE-2024-33599.html
+              Name: CVE-2024-33599
+            - Link: https://linux.oracle.com/cve/CVE-2024-33600.html
+              Name: CVE-2024-33600
+            - Link: https://linux.oracle.com/cve/CVE-2024-33601.html
+              Name: CVE-2024-33601
+            - Link: https://linux.oracle.com/cve/CVE-2024-33602.html
+              Name: CVE-2024-33602
+        Issued: "2024-06-19"
+        RefId: ELSA-2024-12444
+    Name: ELSA-2024-12444
+    NamespaceName: ol:7
+    Severity: High
