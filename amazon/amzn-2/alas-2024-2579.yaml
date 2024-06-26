@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: It is possible for a malicious or malfunctioning client to send lessthan the expected amount of data to the server. If this happens, theserver will hang indefinitely waiting for the remainder (or until theconnection gets closed). Because iperf3 is deliberately designed toservice only one client connection at a time, this will prevent otherconnections to the iperf3 server.Avoid running iperf3 with root privileges to minimize impact.Update iperf3 to a version containing the fix (i.e. iperf-3.15 orlater). (CVE-2023-7250)
+    FixedIn:
+        - Name: iperf3
+          NamespaceName: amzn:2
+          Version: 3.1.7-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: iperf3-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.1.7-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: iperf3-devel
+          NamespaceName: amzn:2
+          Version: 3.1.7-2.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2579.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-7250
+    Name: ALAS-2024-2579
+    NamespaceName: amzn:2
+    Severity: Medium

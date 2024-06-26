@@ -1,0 +1,15 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: Jinja is an extensible templating engine. The `xmlattr` filter in affected versions of Jinja accepts keys containing non-attribute characters. XML/HTML attributes cannot contain spaces, `/`, `>`, or `=`, as each would then be interpreted as starting a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. The fix for CVE-2024-22195 only addressed spaces but not other characters. Accepting keys as user input is now explicitly considered an unintended use case of the `xmlattr` filter, and code that does so without otherwise validating the input should be flagged as insecure, regardless of Jinja version. Accepting _values_ as user input continues to be safe. This vulnerability is fixed in 3.1.4. (CVE-2024-34064)
+    FixedIn:
+        - Name: python-jinja2
+          NamespaceName: amzn:2
+          Version: 2.7.2-3.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2574.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-34064
+    Name: ALAS-2024-2574
+    NamespaceName: amzn:2
+    Severity: Medium

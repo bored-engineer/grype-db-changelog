@@ -1,0 +1,122 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'The openssl_private_decrypt function in PHP, when using PKCS1 padding (OPENSSL_PKCS1_PADDING, which is the default), is vulnerable to the Marvin Attack unless it is used with an OpenSSL version that includes the changes from this pull request:  https://github.com/openssl/openssl/pull/13817  (rsa_pkcs1_implicit_rejection). These changes are part of OpenSSL 3.2 and have also been backported to stable versions of various Linux distributions, as well as to the PHP builds provided for Windows since the previous release. All distributors and builders should ensure that this version is used to prevent PHP from being vulnerable.PHP Windows builds for the versions 8.1.29, 8.2.20 and 8.3.8 and above include OpenSSL patches that fix the vulnerability. (CVE-2024-2408)The vulnerability allows a remote attacker to bypass implemented security restrictions.The vulnerability exists due to the way PHP handles HTTP variable names. A remote attacker can set a standard insecure cookie in the victim''s browser which is treated as a `__Host-` or `__Secure-` cookie by PHP applications.Note, the vulnerability exists due to incomplete fix for #VU67756 (CVE-2022-31629). (CVE-2024-2756)The vulnerability allows a remote attacker to bypass authentication process.The vulnerability exists due to an error in within the password_verify() function, which can erroneously return true. A remote attacker can bypass implemented authentication based on the vulnerable function and gain unauthorized access to the web application. (CVE-2024-3096)In PHP versions 8.1.* before 8.1.29, 8.2.* before 8.2.20, 8.3.* before 8.3.8, due to a code logic error, filtering functions such as filter_var when validating URLs (FILTER_VALIDATE_URL) for certain types of URLs the function will result in invalid user information (username + password part of URLs) being treated as valid user information. This may lead to the downstream code accepting invalid URLs as valid and parsing them incorrectly. (CVE-2024-5458)'
+    FixedIn:
+        - Name: php
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-bcmath
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-cli
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-common
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-dba
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-dbg
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-debuginfo
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-devel
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-embedded
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-enchant
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-fpm
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-gd
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-gmp
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-intl
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-ldap
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-mbstring
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-mysqlnd
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-odbc
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-opcache
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-pdo
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-pgsql
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-process
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-pspell
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-snmp
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-soap
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-sodium
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+        - Name: php-xml
+          NamespaceName: amzn:2
+          Version: 8.1.29-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASPHP8.1-2024-005.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-2408
+            - Name: CVE-2024-2756
+            - Name: CVE-2024-3096
+            - Name: CVE-2024-5458
+    Name: ALASPHP8.1-2024-005
+    NamespaceName: amzn:2
+    Severity: High

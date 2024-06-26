@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: A vulnerability was found in libndp. A buffer overflow in NetworkManager that can be triggered by sending a malformed IPv6 router advertisement packet via malicious user locally. This happens as libndp was not validating correctly the route length information and hence leading to a flaw. This affects versions of libndp >= 1.0. (CVE-2024-5564)
+    FixedIn:
+        - Name: libndp
+          NamespaceName: amzn:2
+          Version: 1.2-7.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libndp-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.2-7.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libndp-devel
+          NamespaceName: amzn:2
+          Version: 1.2-7.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2571.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-5564
+    Name: ALAS-2024-2571
+    NamespaceName: amzn:2
+    Severity: High
