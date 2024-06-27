@@ -1,0 +1,42 @@
+Vulnerability:
+    Description: A vulnerability was found in Unbound due to incorrect default permissions, allowing any process outside the unbound group to modify the unbound runtime configuration. If a process can connect over localhost to port 8953, it can alter the configuration of unbound.service. This flaw allows an unprivileged attacker to manipulate a running instance, potentially altering forwarders, allowing them to track all queries forwarded by the local resolver, and, in some cases, disrupting resolving altogether. (CVE-2024-1488)
+    FixedIn:
+        - Name: python2-unbound
+          NamespaceName: amzn:2
+          Version: 1.17.0-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: python3-unbound
+          NamespaceName: amzn:2
+          Version: 1.17.0-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: unbound
+          NamespaceName: amzn:2
+          Version: 1.17.0-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: unbound-anchor
+          NamespaceName: amzn:2
+          Version: 1.17.0-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: unbound-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.17.0-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: unbound-devel
+          NamespaceName: amzn:2
+          Version: 1.17.0-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: unbound-libs
+          NamespaceName: amzn:2
+          Version: 1.17.0-2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: unbound-utils
+          NamespaceName: amzn:2
+          Version: 1.17.0-2.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASUNBOUND-1.17-2024-002.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-1488
+    Name: ALASUNBOUND-1.17-2024-002
+    NamespaceName: amzn:2
+    Severity: High
