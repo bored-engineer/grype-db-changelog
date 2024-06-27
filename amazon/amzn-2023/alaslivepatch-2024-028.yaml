@@ -1,0 +1,16 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'A use-after-free vulnerability in the Linux kernel''s netfilter: nf_tables component can be exploited to achieve local privilege escalation.The nft_verdict_init() function allows positive values as drop error within the hook verdict, and hence the nf_hook_slow() function can cause a double free vulnerability when NF_DROP is issued with a drop error which resembles NF_ACCEPT.We recommend upgrading past commit f342de4e2f33e0e39165d8639387aa6c19dff660. (CVE-2024-1086)In rds_recv_track_latency in net/rds/af_rds.c in the Linux kernel through 6.7.1, there is an off-by-one error for an RDS_MSG_RX_DGRAM_TRACE_MAX comparison, resulting in out-of-bounds access. (CVE-2024-23849)'
+    FixedIn:
+        - Name: kernel-livepatch-6.1.75-99.163
+          NamespaceName: amzn:2023
+          Version: 1.0-1.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALASLIVEPATCH-2024-028.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-1086
+            - Name: CVE-2024-23849
+    Name: ALASLIVEPATCH-2024-028
+    NamespaceName: amzn:2023
+    Severity: High
