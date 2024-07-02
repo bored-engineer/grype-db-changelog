@@ -1,0 +1,55 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: A signal handler race condition was found in OpenSSH's server (sshd), where a client does not authenticate within LoginGraceTime seconds (120 by default, 600 in old OpenSSH versions), then sshd's SIGALRM handler is called asynchronously. However, this signal handler calls various functions that are not async-signal-safe, for example, syslog().
+    FixedIn:
+        - Name: openssh
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: openssh-clients
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: openssh-clients-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: openssh-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: openssh-debugsource
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: openssh-keycat
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: openssh-keycat-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: openssh-server
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: openssh-server-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: pam_ssh_agent_auth
+          NamespaceName: amzn:2023
+          Version: 0.10.4-4.8.amzn2023.0.11
+          VersionFormat: rpm
+        - Name: pam_ssh_agent_auth-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.10.4-4.8.amzn2023.0.11
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-649.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-6387
+    Name: ALAS-2024-649
+    NamespaceName: amzn:2023
+    Severity: High
