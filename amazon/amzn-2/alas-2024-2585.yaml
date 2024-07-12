@@ -1,0 +1,62 @@
+Vulnerability:
+    Description: A vulnerability was found in FreeIPA in a way when a Kerberos TGS-REQ is encrypted using the client's session key. This key is different for each new session, which protects it from brute force attacks. However, the ticket it contains is encrypted using the target principal key directly. For user principals, this key is a hash of a public per-principal randomly-generated salt and the user's password.If a principal is compromised it means the attacker would be able to retrieve tickets encrypted to any principal, all of them being encrypted by their own key directly. By taking these tickets and salts offline, the attacker could run brute force attacks to find character strings able to decrypt tickets when combined to a principal salt (i.e. find the principal's password). (CVE-2024-3183)
+    FixedIn:
+        - Name: ipa
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-client
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-client-common
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-common
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-python-compat
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-server
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-server-common
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-server-dns
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: ipa-server-trust-ad
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: python2-ipaclient
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: python2-ipalib
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+        - Name: python2-ipaserver
+          NamespaceName: amzn:2
+          Version: 4.6.8-5.amzn2.17.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2585.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-3183
+    Name: ALAS-2024-2585
+    NamespaceName: amzn:2
+    Severity: High
