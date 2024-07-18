@@ -1,0 +1,617 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: "hivex\nlibguestfs\nlibguestfs-winsupport\nlibiscsi\nlibnbd\nlibtpms\nlibvirt\n[9.0.0-5.el8]\n- Fix off-by-one error in udevListInterfacesByStatus (Martin Kletzander) [Orabug: 36364464] {CVE-2024-1441} \n\nlibvirt-dbus\nlibvirt-python\nnbdkit\nnetcf\nperl-Sys-Virt\nqemu-kvm\n[7.2.0-13]\n- vfio/migration: Enhance VFIO migration state tracing (Avihai Horon)\n- vfio/migration: Don't emit STOP_COPY VFIO migration QAPI event twice (Avihai Horon)\n- vfio/migration: Emit VFIO migration QAPI event (Avihai Horon)\n- qapi/vfio: Add VFIO migration QAPI event (Avihai Horon)\n- migration/multifd: solve zero page causing multiple page faults (Yuan Liu) [Orabug: 36727051]\n- multifd: Add the ramblock to MultiFDRecvParams (Lukas Straub) [Orabug: 36727051]\n- migration: Fix qmp_query_migrate mbps value (Fabiano Rosas) [Orabug: 36727104]\n- migration: Allow user to specify available switchover bandwidth (Peter Xu) [Orabug: 35636284]\n- migration/dirtyrate: Fix precision losses and g_usleep overshoot (Andrei Gudkov) [Orabug: 36727091]\n- Use new created qemu_target_pages_to_MiB() (Juan Quintela) [Orabug: 36727091]\n- softmmu: Create qemu_target_pages_to_MiB() (Juan Quintela) [Orabug: 36727091]\n- migration/calc-dirty-rate: replaced CRC32 with xxHash (Andrei Gudkov) [Orabug: 36727063]\n- migration/multifd: Enable multifd zero page checking by default. (Hao Xiang) [Orabug: 34131170]\n- migration/multifd: Implement ram_save_target_page_multifd to handle multifd version of MigrationOps::ram_save_target_page. (Hao Xiang) [Orabug: 34131170]\n- migration/multifd: Implement zero page transmission on the multifd thread. (Hao Xiang) [Orabug: 34131170]\n- migration/multifd: Add new migration option zero-page-detection. (Hao Xiang) [Orabug: 34131170]\n- migration: Make ram_save_target_page() a pointer (Juan Quintela) [Orabug: 34131170]\n- migration: Yield bitmap_mutex properly when sending/sleeping (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Add a synchronization point for channel creation (Fabiano Rosas) [Orabug: 34131170]\n- migration/multifd: Unify multifd and TLS connection paths (Fabiano Rosas) [Orabug: 34131170]\n- migration/multifd: Move multifd_send_setup into migration thread (Fabiano Rosas) [Orabug: 34131170]\n- migration/multifd: Move multifd_send_setup error handling in to the function (Fabiano Rosas) [Orabug: 34131170]\n- migration/multifd: Remove p->running (Fabiano Rosas) [Orabug: 34131170]\n- migration/multifd: Optimize sender side to be lockless (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Join the TLS thread (Fabiano Rosas) [Orabug: 34131170]\n- migration/multifd: Fix MultiFDSendParams.packet_num race (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Stick with send/recv on function names (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Cleanup multifd_load_cleanup() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Cleanup multifd_save_cleanup() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Rewrite multifd_queue_page() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Change retval of multifd_send_pages() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Change retval of multifd_queue_page() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Split multifd_send_terminate_threads() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Forbid spurious wakeups (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Move header prepare/fill into send_prepare() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: multifd_send_prepare_header() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Move trace_multifd_send|recv() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Move total_normal_pages accounting (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Rename p->num_packets and clean it up (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Drop pages->num check in sender thread (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Simplify locking in sender thread (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Separate SYNC request with normal jobs (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Drop MultiFDSendParams.normal[] array (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Postpone reset of MultiFDPages_t (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Remove MultiFDPages_t::packet_num (Fabiano Rosas) [Orabug: 34131170]\n- migration/multifd: Drop MultiFDSendParams.quit, cleanup error paths (Peter Xu) [Orabug: 34131170]\n- migration/multifd: multifd_send_kick_main() (Peter Xu) [Orabug: 34131170]\n- migration/multifd: Fix leaking of Error in TLS error flow (Avihai Horon) [Orabug: 34131170]\n- migration/ram: Merge save_zero_page functions (Fabiano Rosas) [Orabug: 34131170]\n- migration/ram: Move xbzrle zero page handling into save_zero_page (Fabiano Rosas) [Orabug: 34131170]\n- migration/multifd: Stop setting p->ioc before connecting (Fabiano Rosas) [Orabug: 34131170]\n- migration: Centralize BH creation and dispatch (Fabiano Rosas) [Orabug: 34131170]\n- migration: Add a wrapper to qemu_bh_schedule (Fabiano Rosas) [Orabug: 34131170]\n- migration: Remove transferred atomic counter (Juan Quintela) [Orabug: 35636284]\n- migration: Use migration_transferred_bytes() (Juan Quintela) [Orabug: 35636284]\n- migration: migration_rate_limit_reset() don't need the QEMUFile (Juan Quintela) [Orabug: 35636284]\n- migration: migration_transferred_bytes() don't need the QEMUFile (Juan Quintela) [Orabug: 35636284]\n- multifd: reset next_packet_len after sending pages (Elena Ufimtseva) [Orabug: 35636284]\n- multifd: fix counters in multifd_send_thread (Elena Ufimtseva) [Orabug: 35636284]\n- migration/multifd: Compute transferred bytes correctly (Juan Quintela) [Orabug: 35636284]\n- migration: check for rate_limit_max for RATE_LIMIT_DISABLED (Elena Ufimtseva) [Orabug: 35636284]\n- migration: Use the number of transferred bytes directly (Juan Quintela) [Orabug: 35636284]\n- qemu_file: Use a stat64 for qemu_file_transferred (Juan Quintela) [Orabug: 35636284]\n- migration: set file error on subsection loading (Marc-Andre Lureau) [Orabug: 35636284]\n- migration: Receiving a zero page non zero is an error (Juan Quintela) [Orabug: 35636284]\n- migration/multifd: Stop checking p->quit in multifd_send_thread (Fabiano Rosas) [Orabug: 35636284]\n- migration/multifd: Clarify Error usage in multifd_channel_connect (Fabiano Rosas) [Orabug: 35636284]\n- multifd: cleanup the function multifd_channel_connect (Li Zhang) [Orabug: 35636284]\n- migration/multifd: Unify multifd_send_thread error paths (Fabiano Rosas) [Orabug: 35636284]\n- migration: Non multifd migration don't care about multifd flushes (Juan Quintela) [Orabug: 35636284]\n- migration: fix RAMBlock add NULL check (Dmitry Frolov) [Orabug: 35829153]\n- migration: We don't need the field rate_limit_used anymore (Juan Quintela) [Orabug: 35636284]\n- migration: Use migration_transferred_bytes() to calculate rate_limit (Juan Quintela) [Orabug: 35636284]\n- migration: Add a trace for migration_transferred_bytes (Juan Quintela) [Orabug: 35636284]\n- migration: Move migration_total_bytes() to migration-stats.c (Juan Quintela) [Orabug: 35636284]\n- qemu-file: Remove total from qemu_file_total_transferred_*() (Juan Quintela) [Orabug: 35636284]\n- migration: Move rate_limit_max and rate_limit_used to migration_stats (Juan Quintela) [Orabug: 35636284]\n- qemu-file: Account for rate_limit usage on qemu_fflush() (Juan Quintela) [Orabug: 35636284]\n- migration: Don't use INT64_MAX for unlimited rate (Juan Quintela) [Orabug: 35636284]\n- qemu-file: Make rate_limit_used an uint64_t (Juan Quintela) [Orabug: 35636284]\n- qemu-file: make qemu_file_[sg]et_rate_limit() use an uint64_t (Juan Quintela) [Orabug: 35636284]\n- migration: We set the rate_limit by a second (Juan Quintela) [Orabug: 35829153]\n- migration: A rate limit value of 0 is valid (Juan Quintela) [Orabug: 35636284]\n- qemu-file: Make ram_control_save_page() use accessors for rate_limit (Juan Quintela) [Orabug: 35636284]\n- qemu-file: Make total_transferred an uint64_t (Juan Quintela) [Orabug: 35636284]\n- qemu-file: No need to check for shutdown in qemu_file_rate_limit (Juan Quintela) [Orabug: 35636284]\n- migration: Document all migration_stats (Juan Quintela) [Orabug: 35636284]\n- multifd: We already account for this packet on the multifd thread (Juan Quintela) [Orabug: 35636284]\n- migration: Make dirty_bytes_last_sync atomic (Juan Quintela) [Orabug: 35636284]\n- migration: Make dirty_pages_rate atomic (Juan Quintela) [Orabug: 35636284]\n- stat64: Add stat64_set() operation (Paolo Bonzini) [Orabug: 35636284]\n- multifd: Only flush once each full round of memory (Juan Quintela) [Orabug: 35636284]\n- migration: Make find_dirty_block() return a single parameter (Juan Quintela) [Orabug: 35636284]\n- migration: Simplify ram_find_and_save_block() (Juan Quintela) [Orabug: 35636284]\n- multifd: Protect multifd_send_sync_main() calls (Juan Quintela) [Orabug: 35636284]\n- multifd: Create property multifd-flush-after-each-section (Juan Quintela) [Orabug: 35636284]\n- multifd: Fix the number of channels ready (Juan Quintela) [Orabug: 35636284]\n- migration: Rename normal to normal_pages (Juan Quintela) [Orabug: 35636284]\n- migration: Rename duplicate to zero_pages (Juan Quintela) [Orabug: 35636284]\n- migration: Make dirty_sync_count atomic (Juan Quintela) [Orabug: 35636284]\n- migration: Make downtime_bytes atomic (Juan Quintela) [Orabug: 35636284]\n- migration: Make precopy_bytes atomic (Juan Quintela) [Orabug: 35636284]\n- migration: Make dirty_sync_missed_zero_copy atomic (Juan Quintela) [Orabug: 35636284]\n- migration: Make multifd_bytes atomic (Juan Quintela) [Orabug: 35636284]\n- migration: Update atomic stats out of the mutex (Juan Quintela) [Orabug: 35636284]\n- migration: Merge ram_counters and ram_atomic_counters (Juan Quintela) [Orabug: 35636284]\n- migration/multifd: correct multifd_send_thread to trace the flags (Wei Wang) [Orabug: 35636284]\n- ram: Document migration ram flags (Juan Quintela) [Orabug: 35636284]\n- migration: Calculate ram size once (Juan Quintela) [Orabug: 35636284]\n- multifd: Fix a race on reading MultiFDPages_t.block (Zhenzhong Duan) [Orabug: 35636284]\n- migration: Use atomic ops properly for page accountings (Peter Xu) [Orabug: 35636284]\n- migration: Export ram_release_page() (Juan Quintela) [Orabug: 35636284]\n- migration: Export ram_transferred_ram() (Juan Quintela) [Orabug: 35636284]\n- multifd: Create page_count fields into both MultiFD{Recv,Send}Params (Juan Quintela) [Orabug: 35636284]\n- multifd: Create page_size fields into both MultiFD{Recv,Send}Params (Juan Quintela) [Orabug: 35636284]\n- migration: Fix migration_channel_read_peek() error path () (Avihai Horon) [Orabug: 36726827]\n- migration/multifd: Remove error_setg() in migration_ioc_process_incoming() (Avihai Horon) [Orabug: 36726827]\n- migration: Refactor migration_incoming_setup() (Avihai Horon) [Orabug: 36726827]\n- migration: check magic value for deciding the mapping of channels (manish.mishra) [Orabug: 36726827]\n- io: Add support for MSG_PEEK for socket channel (manish.mishra) [Orabug: 36726827]\n- hw/sd/sdhci: Do not update TRNMOD when Command Inhibit (DAT) is set (hilippe Mathieu-Daude) [Orabug: 36575206] {CVE-2024-3447}\n- block: lock AioContext in bdrv_replace_child_noperm() when in non-coroutine context (Mark Kanda) [Orabug: 36514180]\n- hw/scsi/scsi-generic: Fix io_timeout property not applying (Lorenz Brun) [Orabug: 36637684]\n- target/i386/monitor: synchronize cpu state for lapic info (Dongli Zhang) [Orabug: 36607747]\n- qemu_init: increase NOFILE soft limit on POSIX (Fiona Ebner) [Orabug: 36416389]\n\nseabios\nsgabios\nsupermin\nswtpm\nvirt-v2v"
+    FixedIn:
+        - Module: virt:kvm_utils3
+          Name: hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: hivex-devel
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-appliance
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-bash-completion
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-gfs2
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-gobject
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-gobject-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-inspect-icons
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-java
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-java-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-javadoc
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-man-pages-ja
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-man-pages-uk
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-rescue
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-rsync
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-tools
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-tools-c
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-winsupport
+          NamespaceName: ol:8
+          Version: 0:8.10-1.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-xfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libiscsi
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libiscsi-devel
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libiscsi-utils
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libnbd
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libnbd-bash-completion
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libnbd-devel
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libtpms
+          NamespaceName: ol:8
+          Version: 0:0.9.1-2.20211126git1ff6fe1f43.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libtpms-devel
+          NamespaceName: ol:8
+          Version: 0:0.9.1-2.20211126git1ff6fe1f43.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-client
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-client-qemu
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-config-network
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-config-nwfilter
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-interface
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-network
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-nodedev
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-nwfilter
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-qemu
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-secret
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-core
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-disk
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-gluster
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-iscsi
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-iscsi-direct
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-logical
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-mpath
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-rbd
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-scsi
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-kvm
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-dbus
+          NamespaceName: ol:8
+          Version: 0:1.3.0-2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-devel
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-docs
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-libs
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-lock-sanlock
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-nss
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-wireshark
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: lua-guestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdfuse
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-bash-completion
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-basic-filters
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-basic-plugins
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-curl-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-devel
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-example-plugins
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-gzip-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-gzip-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-linuxdisk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-nbd-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-python-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-server
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-ssh-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-tar-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-tar-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-tmpdisk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-vddk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-xz-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: netcf
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: netcf-devel
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: netcf-libs
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: perl-Sys-Guestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: perl-Sys-Virt
+          NamespaceName: ol:8
+          Version: 0:8.0.0-1.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: perl-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: python3-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: python3-libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: python3-libnbd
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: python3-libvirt
+          NamespaceName: ol:8
+          Version: 0:9.0.0-5.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-guest-agent
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-img
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-curl
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-gluster
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-iscsi
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-rbd
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-ssh
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-common
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-core
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-virtiofsd
+          NamespaceName: ol:8
+          Version: 15:7.2.0-13.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: ruby-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: ruby-libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: seabios
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: seabios-bin
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: seavgabios-bin
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: sgabios
+          NamespaceName: ol:8
+          Version: 1:0.20170427git-3.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: sgabios-bin
+          NamespaceName: ol:8
+          Version: 1:0.20170427git-3.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: supermin
+          NamespaceName: ol:8
+          Version: 0:5.2.1-2.0.1.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: supermin-devel
+          NamespaceName: ol:8
+          Version: 0:5.2.1-2.0.1.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm-devel
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm-libs
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm-tools
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm-tools-pkcs11
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-dib
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-v2v
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-v2v-bash-completion
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-v2v-man-pages-ja
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-v2v-man-pages-uk
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.10.0+90353+09180a4e
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-12536.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-1441.html
+              Name: CVE-2024-1441
+            - Link: https://linux.oracle.com/cve/CVE-2024-3447.html
+              Name: CVE-2024-3447
+        Issued: "2024-07-15"
+        RefId: ELSA-2024-12536
+    Name: ELSA-2024-12536
+    NamespaceName: ol:8
+    Severity: Medium
