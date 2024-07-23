@@ -1,0 +1,96 @@
+Vulnerability:
+    Description: Encoding problem in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows request URLs with incorrect encoding to be sent to backend services, potentially bypassing authentication via crafted requests.Users are recommended to upgrade to version 2.4.60, which fixes this issue. (CVE-2024-38473)Substitution encoding issue in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows attacker to execute scripts indirectories permitted by the configuration but not directly reachable by any URL or source disclosure of scripts meant to only to be executed as CGI.Users are recommended to upgrade to version 2.4.60, which fixes this issue.Some RewriteRules that capture and substitute unsafely will now fail unless rewrite flag "UnsafeAllow3F" is specified. (CVE-2024-38474)Improper escaping of output in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows an attacker to map URLs to filesystem locations that are permitted to be served by the server but are not intentionally/directly reachable by any URL, resulting in code execution or source code disclosure.Substitutions in server context that use a backreferences or variables as the first segment of the substitution are affected.  Some unsafe RewiteRules will be broken by this change and the rewrite flag "UnsafePrefixStat" can be used to opt back in once ensuring the substitution is appropriately constrained. (CVE-2024-38475)Vulnerability in core of Apache HTTP Server 2.4.59 and earlier are vulnerably to information disclosure, SSRF or local script execution via backend applications whose response headers are malicious or exploitable.Users are recommended to upgrade to version 2.4.60, which fixes this issue. (CVE-2024-38476)null pointer dereference in mod_proxy in Apache HTTP Server 2.4.59 and earlier allows an attacker to crash the server via a malicious request.Users are recommended to upgrade to version 2.4.60, which fixes this issue. (CVE-2024-38477)Potential SSRF in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows an attacker to cause unsafe RewriteRules to unexpectedly setup URL's to be handled by mod_proxy.Users are recommended to upgrade to version 2.4.60, which fixes this issue. (CVE-2024-39573)A regression in the core of Apache HTTP Server 2.4.60 ignores some use of the legacy content-type based configuration of handlers.   "AddType" and similar configuration, under some circumstances where files are requested indirectly, result in source code disclosure of local content. For example, PHP scripts may be served instead of interpreted.Users are recommended to upgrade to version 2.4.61, which fixes this issue. (CVE-2024-39884)
+    FixedIn:
+        - Name: httpd
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-core
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-core-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-debugsource
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-devel
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-filesystem
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-manual
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-tools
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: httpd-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_ldap
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_ldap-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_lua
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_lua-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_proxy_html
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_proxy_html-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_session
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_session-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_ssl
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+        - Name: mod_ssl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.4.61-1.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-656.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-38473
+            - Name: CVE-2024-38474
+            - Name: CVE-2024-38475
+            - Name: CVE-2024-38476
+            - Name: CVE-2024-38477
+            - Name: CVE-2024-39573
+            - Name: CVE-2024-39884
+    Name: ALAS-2024-656
+    NamespaceName: amzn:2023
+    Severity: High
