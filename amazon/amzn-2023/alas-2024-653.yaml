@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: A Denial of Service (DoS) vulnerability exists in the jaraco/zipp library, affecting all versions prior to 3.19.1. The vulnerability is triggered when processing a specially crafted zip file that leads to an infinite loop. This issue also impacts the zipfile module of CPython, as features from the third-party zipp library are later merged into CPython, and the affected code is identical in both projects. The infinite loop can be initiated through the use of functions affecting the `Path` module in both zipp and zipfile, such as `joinpath`, the overloaded division operator, and `iterdir`. Although the infinite loop is not resource exhaustive, it prevents the application from responding. The vulnerability was addressed in version 3.19.1 of jaraco/zipp. (CVE-2024-5569)
+    FixedIn:
+        - Name: python3.11-setuptools
+          NamespaceName: amzn:2023
+          Version: 65.5.1-2.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: python3.11-setuptools-wheel
+          NamespaceName: amzn:2023
+          Version: 65.5.1-2.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-653.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-5569
+    Name: ALAS-2024-653
+    NamespaceName: amzn:2023
+    Severity: Medium

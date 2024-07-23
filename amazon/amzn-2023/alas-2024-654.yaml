@@ -1,0 +1,236 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'The openssl_private_decrypt function in PHP, when using PKCS1 padding (OPENSSL_PKCS1_PADDING, which is the default), is vulnerable to the Marvin Attack unless it is used with an OpenSSL version that includes the changes from this pull request:  https://github.com/openssl/openssl/pull/13817  (rsa_pkcs1_implicit_rejection). These changes are part of OpenSSL 3.2 and have also been backported to stable versions of various Linux distributions, as well as to the PHP builds provided for Windows since the previous release. All distributors and builders should ensure that this version is used to prevent PHP from being vulnerable.PHP Windows builds for the versions 8.1.29, 8.2.20 and 8.3.8 and above include OpenSSL patches that fix the vulnerability. (CVE-2024-2408)In PHP versions 8.1.* before 8.1.29, 8.2.* before 8.2.20, 8.3.* before 8.3.8, due to a code logic error, filtering functions such as filter_var when validating URLs (FILTER_VALIDATE_URL) for certain types of URLs the function will result in invalid user information (username + password part of URLs) being treated as valid user information. This may lead to the downstream code accepting invalid URLs as valid and parsing them incorrectly. (CVE-2024-5458)'
+    FixedIn:
+        - Name: php8.1
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-bcmath
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-bcmath-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-cli
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-cli-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-common
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-common-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-dba
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-dba-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-dbg
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-dbg-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-debugsource
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-devel
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-embedded
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-embedded-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-enchant
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-enchant-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-ffi
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-ffi-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-fpm
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-fpm-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-gd
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-gd-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-gmp
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-gmp-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-intl
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-intl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-ldap
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-ldap-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-mbstring
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-mbstring-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-mysqlnd
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-mysqlnd-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-odbc
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-odbc-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-opcache
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-opcache-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-pdo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-pdo-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-pgsql
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-pgsql-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-process
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-process-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-pspell
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-pspell-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-snmp
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-snmp-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-soap
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-soap-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-tidy
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-tidy-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-xml
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-xml-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-zip
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: php8.1-zip-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.1.29-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-654.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-2408
+            - Name: CVE-2024-5458
+    Name: ALAS-2024-654
+    NamespaceName: amzn:2023
+    Severity: Medium

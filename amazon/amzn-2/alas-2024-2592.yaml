@@ -1,0 +1,27 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: GStreamer EXIF Metadata Parsing Integer Overflow Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of GStreamer. Interaction with this library is required to exploit this vulnerability but attack vectors may vary depending on the implementation.The specific flaw exists within the parsing of EXIF metadata. The issue results from the lack of proper validation of user-supplied data, which can result in an integer overflow before allocating a buffer. An attacker can leverage this vulnerability to execute code in the context of the current process.. Was ZDI-CAN-23896. (CVE-2024-4453)
+    FixedIn:
+        - Name: gstreamer1-plugins-base
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.4
+          VersionFormat: rpm
+        - Name: gstreamer1-plugins-base-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.4
+          VersionFormat: rpm
+        - Name: gstreamer1-plugins-base-devel
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.4
+          VersionFormat: rpm
+        - Name: gstreamer1-plugins-base-tools
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2592.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-4453
+    Name: ALAS-2024-2592
+    NamespaceName: amzn:2
+    Severity: High
