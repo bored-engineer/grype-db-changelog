@@ -1,0 +1,61 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [20231122-6.0.1.el9_4.2]
+        - Replace upstream references [Orabug:36569119]
+
+        [20231122-6.el9_4.2]
+        - edk2-NetworkPkg-SECURITY-PATCH-CVE-2023-45237.patch [RHEL-40270 RHEL-40272]
+        - edk2-NetworkPkg-TcpDxe-SECURITY-PATCH-CVE-2023-45236.patch [RHEL-40270 RHEL-40272]
+        - edk2-NetworkPkg-TcpDxe-Fixed-system-stuck-on-PXE-boot-flo.patch [RHEL-40270 RHEL-40272]
+        - edk2-MdePkg-BaseRngLib-Add-a-smoketest-for-RDRAND-and-che.patch [RHEL-40270 RHEL-40272]
+        - edk2-SecurityPkg-RngDxe-add-rng-test.patch [RHEL-40270 RHEL-40272]
+        - edk2-OvmfPkg-wire-up-RngDxe.patch [RHEL-40270 RHEL-40272]
+        - edk2-CryptoPkg-Test-call-ProcessLibraryConstructorList.patch [RHEL-40270 RHEL-40272]
+        - edk2-MdePkg-X86UnitTestHost-set-rdrand-cpuid-bit.patch [RHEL-40270 RHEL-40272]
+        - Resolves: RHEL-40270
+          (CVE-2023-45237 edk2: Use of a Weak PseudoRandom Number Generator [rhel-9.4.z])
+        - Resolves: RHEL-40272
+          (CVE-2023-45236 edk2: Predictable TCP Initial Sequence Numbers [rhel-9.4.z])
+
+        [20231122-6.el9_4.1]
+        - edk2-EmbeddedPkg-Hob-Integer-Overflow-in-CreateHob.patch [RHEL-30156]
+        - edk2-StandaloneMmPkg-Hob-Integer-Overflow-in-CreateHob.patch [RHEL-30156]
+        - Resolves: RHEL-30156
+          (CVE-2022-36765 edk2: integer overflow in CreateHob() could lead to HOB OOB R/W [rhel-9.4.z])
+    FixedIn:
+        - Module: null
+          Name: edk2-aarch64
+          NamespaceName: ol:9
+          Version: 0:20231122-6.0.1.el9_4.2
+          VersionFormat: rpm
+        - Module: null
+          Name: edk2-ovmf
+          NamespaceName: ol:9
+          Version: 0:20231122-6.0.1.el9_4.2
+          VersionFormat: rpm
+        - Module: null
+          Name: edk2-tools
+          NamespaceName: ol:9
+          Version: 0:20231122-6.0.1.el9_4.2
+          VersionFormat: rpm
+        - Module: null
+          Name: edk2-tools-doc
+          NamespaceName: ol:9
+          Version: 0:20231122-6.0.1.el9_4.2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-4749.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2022-36765.html
+              Name: CVE-2022-36765
+            - Link: https://linux.oracle.com/cve/CVE-2023-45236.html
+              Name: CVE-2023-45236
+            - Link: https://linux.oracle.com/cve/CVE-2023-45237.html
+              Name: CVE-2023-45237
+        Issued: "2024-07-24"
+        RefId: ELSA-2024-4749
+    Name: ELSA-2024-4749
+    NamespaceName: ol:9
+    Severity: Medium
