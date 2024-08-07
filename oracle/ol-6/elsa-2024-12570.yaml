@@ -1,0 +1,91 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.1.12-124.88.3]
+        - crypto: pcrypt - Fix hungtask for PADATA_RESET (Lu Jialin)  [Orabug: 36806710]  {CVE-2023-52813}
+        - usbnet: sanity check for maxpacket (Oliver Neukum)  [Orabug: 36806658]  {CVE-2021-47495}
+        - phonet: fix rtm_phonet_notify() skb allocation (Eric Dumazet)  [Orabug: 36683487]  {CVE-2024-36946}
+        - wifi: nl80211: don't free NULL coalescing rule (Johannes Berg)  [Orabug: 36683466]  {CVE-2024-36941}
+        - bna: ensure the copied buf is NUL terminated (Bui Quang Minh)  [Orabug: 36683433]  {CVE-2024-36934}
+        - bna: use memdup_user to copy userspace buffers (Ivan Vecera)  [Orabug: 36683433]  {CVE-2024-36934}
+        - new helper: memdup_user_nul() (Al Viro)  [Orabug: 36683433]  {CVE-2024-36934}
+        - netfilter: nf_tables: Fix potential data-race in __nft_expr_type_get() (Ziyang Xuan)  [Orabug: 36598047]  {CVE-2024-27020}
+        - netfilter: nf_tables: __nft_expr_type_get() selects specific family type (Pablo Neira Ayuso)  [Orabug: 36598047]  {CVE-2024-27020}
+        - net/mlx5e: drop shorter ethernet frames (Manjunath Patil)  [Orabug: 36879159]  {CVE-2024-41090} {CVE-2024-41091}
+
+        [4.1.12-124.88.2]
+        - net: usb: smsc75xx: Fix uninit-value access in __smsc75xx_read_reg (Shigeru Yoshida)  [Orabug: 36802310]  {CVE-2023-52528}
+        - usbnet/smsc75xx: silence uninitialized variable warning (Dan Carpenter)   {CVE-2023-52528}
+        - tty: n_gsm: require CAP_NET_ADMIN to attach N_GSM0710 ldisc (Thadeu Lima de Souza Cascardo)  [Orabug: 36685663]  {CVE-2023-52880}
+        - netfilter: nf_tables: disallow anonymous set with timeout flag (Pablo Neira Ayuso)  [Orabug: 36530112]  {CVE-2024-26642}
+        - ubi: Check for too small LEB size in VTBL code (Richard Weinberger)  [Orabug: 36356637]  {CVE-2024-25739}
+
+        [4.1.12-124.88.1]
+        - NFS: LOOKUP_DIRECTORY is also ok with symlinks (Trond Myklebust)  [Orabug: 33958156]  {CVE-2022-24448}
+        - NFSv4: Handle case where the lookup of a directory fails (Trond Myklebust)  [Orabug: 33958156]  {CVE-2022-24448}
+    FixedIn:
+        - Module: null
+          Name: kernel-uek
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.88.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-debug
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.88.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-debug-devel
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.88.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-devel
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.88.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-doc
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.88.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-firmware
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.88.3.el6uek
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-12570.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2021-47495.html
+              Name: CVE-2021-47495
+            - Link: https://linux.oracle.com/cve/CVE-2022-24448.html
+              Name: CVE-2022-24448
+            - Link: https://linux.oracle.com/cve/CVE-2023-52528.html
+              Name: CVE-2023-52528
+            - Link: https://linux.oracle.com/cve/CVE-2023-52813.html
+              Name: CVE-2023-52813
+            - Link: https://linux.oracle.com/cve/CVE-2023-52880.html
+              Name: CVE-2023-52880
+            - Link: https://linux.oracle.com/cve/CVE-2024-25739.html
+              Name: CVE-2024-25739
+            - Link: https://linux.oracle.com/cve/CVE-2024-26642.html
+              Name: CVE-2024-26642
+            - Link: https://linux.oracle.com/cve/CVE-2024-27020.html
+              Name: CVE-2024-27020
+            - Link: https://linux.oracle.com/cve/CVE-2024-36934.html
+              Name: CVE-2024-36934
+            - Link: https://linux.oracle.com/cve/CVE-2024-36941.html
+              Name: CVE-2024-36941
+            - Link: https://linux.oracle.com/cve/CVE-2024-36946.html
+              Name: CVE-2024-36946
+            - Link: https://linux.oracle.com/cve/CVE-2024-41090.html
+              Name: CVE-2024-41090
+            - Link: https://linux.oracle.com/cve/CVE-2024-41091.html
+              Name: CVE-2024-41091
+        Issued: "2024-08-05"
+        RefId: ELSA-2024-12570
+    Name: ELSA-2024-12570
+    NamespaceName: ol:6
+    Severity: High
