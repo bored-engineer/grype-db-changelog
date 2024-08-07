@@ -1,0 +1,71 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: Artifex Ghostscript before 10.03.0 has a stack-based buffer overflow in the pdfi_apply_filter() function via a long PDF filter name. (CVE-2024-29506)Artifex Ghostscript before 10.03.0 sometimes has a stack-based buffer overflow via the CIDFSubstPath and CIDFSubstFont parameters. (CVE-2024-29507)Artifex Ghostscript before 10.03.0 has a heap-based pointer disclosure (observable in a constructed BaseFont name) in the function pdf_base_font_alloc. (CVE-2024-29508)Artifex Ghostscript before 10.03.0 has a heap-based overflow when PDFPassword (e.g., for runpdf) has a \000 byte in the middle. (CVE-2024-29509)Artifex Ghostscript before 10.03.1, when Tesseract is used for OCR, has a directory traversal issue that allows arbitrary file reading (and writing of error messages to arbitrary files) via OCRLanguage. For example, exploitation can use debug_file /tmp/out and user_patterns_file /etc/passwd. (CVE-2024-29511)
+    FixedIn:
+        - Name: ghostscript
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-debugsource
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-doc
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-gtk
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-gtk-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-tools-dvipdf
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-tools-fonts
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-tools-printing
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-x11
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: ghostscript-x11-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: libgs
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: libgs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+        - Name: libgs-devel
+          NamespaceName: amzn:2023
+          Version: 9.56.1-7.amzn2023.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-692.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-29506
+            - Name: CVE-2024-29507
+            - Name: CVE-2024-29508
+            - Name: CVE-2024-29509
+            - Name: CVE-2024-29511
+    Name: ALAS-2024-692
+    NamespaceName: amzn:2023
+    Severity: Medium

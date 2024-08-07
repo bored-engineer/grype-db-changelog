@@ -1,0 +1,15 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi starting in 2021.05.30 and prior to 2024.07.4 recognized root certificates from `GLOBALTRUST`. Certifi 2024.07.04 removes root certificates from `GLOBALTRUST` from the root store. These are in the process of being removed from Mozilla's trust store. `GLOBALTRUST`'s root certificates are being removed pursuant to an investigation which identified "long-running and unresolved compliance issues." (CVE-2024-39689)
+    FixedIn:
+        - Name: ca-certificates
+          NamespaceName: amzn:2023
+          Version: 2023.2.68-1.0.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-682.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-39689
+    Name: ALAS-2024-682
+    NamespaceName: amzn:2023
+    Severity: Low

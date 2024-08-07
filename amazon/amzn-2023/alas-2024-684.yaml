@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: Tencent RapidJSON is vulnerable to privilege escalation due to an integer underflow in the `GenericReader::ParseNumber()` function of `include/rapidjson/reader.h` when parsing JSON text from a stream. An attacker needs to send the victim a crafted file which needs to be opened; this triggers the integer underflow vulnerability (when the file is parsed), leading to elevation of privilege. (CVE-2024-38517)
+    FixedIn:
+        - Name: rapidjson
+          NamespaceName: amzn:2023
+          Version: 1.1.0-16.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: rapidjson-devel
+          NamespaceName: amzn:2023
+          Version: 1.1.0-16.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: rapidjson-doc
+          NamespaceName: amzn:2023
+          Version: 1.1.0-16.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-684.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-38517
+    Name: ALAS-2024-684
+    NamespaceName: amzn:2023
+    Severity: Medium
