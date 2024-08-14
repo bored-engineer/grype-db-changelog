@@ -1,0 +1,80 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: Resolver caches and authoritative zone databases that hold significant numbers of RRs for the same hostname (of any RTYPE) can suffer from degraded performance as content is being added or updated, and also when handling client queries for this name.This issue affects BIND 9 versions 9.11.0 through 9.11.37, 9.16.0 through 9.16.50, 9.18.0 through 9.18.27, 9.19.0 through 9.19.24, 9.11.4-S1 through 9.11.37-S1, 9.16.8-S1 through 9.16.50-S1, and 9.18.11-S1 through 9.18.27-S1. (CVE-2024-1737)If a server hosts a zone containing a "KEY" Resource Record, or a resolver DNSSEC-validates a "KEY" Resource Record from a DNSSEC-signed domain in cache, a client can exhaust resolver CPU resources by sending a stream of SIG(0) signed requests.This issue affects BIND 9 versions 9.0.0 through 9.11.37, 9.16.0 through 9.16.50, 9.18.0 through 9.18.27, 9.19.0 through 9.19.24, 9.9.3-S1 through 9.11.37-S1, 9.16.8-S1 through 9.16.49-S1, and 9.18.11-S1 through 9.18.27-S1. (CVE-2024-1975)
+    FixedIn:
+        - Name: bind
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-chroot
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-debuginfo
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-devel
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-export-devel
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-export-libs
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-libs
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-libs-lite
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-license
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-lite-devel
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-pkcs11
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-pkcs11-devel
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-pkcs11-libs
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-pkcs11-utils
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-sdb
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-sdb-chroot
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+        - Name: bind-utils
+          NamespaceName: amzn:2
+          Version: 9.11.4-26.P2.amzn2.13.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2616.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-1737
+            - Name: CVE-2024-1975
+    Name: ALAS-2024-2616
+    NamespaceName: amzn:2
+    Severity: High
