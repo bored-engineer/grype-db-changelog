@@ -1,0 +1,151 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        bind
+        [9.16.23-18.0.1.6]
+        - Fix warning when changing device file permissions [Orabug: 36518580]
+
+        [32:9.16.23-18.6]
+        - Minor fix of reclimit test backport (CVE-2024-1737)
+
+        [32:9.16.23-18.5]
+        - Backport addition of max-records-per-type and max-records-per-type options
+
+        [32:9.16.23-18.2]
+        - Resolve CVE-2024-1975
+        - Resolve CVE-2024-1737
+        - Resolve CVE-2024-4076
+        - Add ability to change runtime limits for max types and records per name
+
+        [32:9.16.23-18.1]
+        - Rebuild with correct z-stream tag again
+
+        [32:9.16.23-18]
+        - Prevent crashing at masterformat system test (CVE-2023-6516)
+
+        [32:9.16.23-17]
+        - Import tests for large DNS messages fix
+        - Add downstream change complementing CVE-2023-50387
+
+        [32:9.16.23-16]
+        - Prevent increased CPU load on large DNS messages (CVE-2023-4408)
+        - Prevent assertion failure when nxdomain-redirect is used with
+         RFC 1918 reverse zones (CVE-2023-5517)
+        - Prevent assertion failure if DNS64 and serve-stale is used (CVE-2023-5679)
+        - Specific recursive query patterns may lead to an out-of-memory
+          condition (CVE-2023-6516)
+        - Prevent increased CPU consumption in DNSSEC validator (CVE-2023-50387
+          CVE-2023-50868)
+
+        [32:9.16.23-15]
+        - Update addresses of b.root-servers.net (RHEL-18188)
+
+        [32:9.16.23-14]
+        - Limit the amount of recursion possible in control channel (CVE-2023-3341)
+
+        [32:9.16.23-13]
+        - Prevent possible endless loop when refreshing stale data (CVE-2023-2911)
+
+        [32:9.16.23-12]
+        - Strengten cache cleaning to prevent overflowing configured limit
+          (CVE-2023-2828)
+
+        [32:9.16.23-11]
+        - Correct backport issue in statistics rendering fix (#2126912)
+
+        [32:9.16.23-10]
+        - Handle subtle difference between upstream and rhel (CVE-2022-3094)
+
+        [32:9.16.23-9]
+        - Prevent flooding with UPDATE requests (CVE-2022-3094)
+        - Handle RRSIG queries when server-stale is active (CVE-2022-3736)
+        - Fix crash when soft-quota is reached and serve-stale is active (CVE-2022-3924)
+
+        [32:9.16.23-8]
+        - Correct regression preventing bind-dyndb-ldap build (#2162795)
+
+        [32:9.16.23-7]
+        - Prevent freeing zone during statistics rendering (#2101712)
+
+        [32:9.16.23-6]
+        - Bound the amount of work performed for delegations (CVE-2022-2795)
+        - Add /usr/lib64/named to bind-chroot (#2129466)
+
+        [32:9.16.23-5]
+        - Fix possible serve-stale related crash (CVE-2022-3080)
+        - Fix memory leak in ECDSA verify processing (CVE-2022-38177)
+        - Fix memory leak in EdDSA verify processing (CVE-2022-38178)
+
+        bind-dyndb-ldap
+        [11.9-10]
+        - Rebuilt for BIND CVE-2024-1737 fixes (CVE-2024-1737)
+    FixedIn:
+        - Module: null
+          Name: bind
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-chroot
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-devel
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-dnssec-doc
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-dnssec-utils
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-doc
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-dyndb-ldap
+          NamespaceName: ol:9
+          Version: 0:11.9-10.el9_4
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-libs
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-license
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: bind-utils
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-bind
+          NamespaceName: ol:9
+          Version: 32:9.16.23-18.0.1.el9_4.6
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-5231.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-1737.html
+              Name: CVE-2024-1737
+            - Link: https://linux.oracle.com/cve/CVE-2024-1975.html
+              Name: CVE-2024-1975
+            - Link: https://linux.oracle.com/cve/CVE-2024-4076.html
+              Name: CVE-2024-4076
+        Issued: "2024-08-13"
+        RefId: ELSA-2024-5231
+    Name: ELSA-2024-5231
+    NamespaceName: ol:9
+    Severity: High
