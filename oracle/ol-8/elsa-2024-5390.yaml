@@ -1,0 +1,94 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [32:9.16.23-0.22]
+        - Minor fix of reclimit test backport (CVE-2024-1737)
+
+        [32:9.16.23-0.21]
+        - Backport addition of max-records-per-type and max-records-per-type options
+          (CVE-2024-1737)
+
+        [32:9.16.23-0.20]
+        - Resolve CVE-2024-1975
+        - Resolve CVE-2024-1737
+        - Resolve CVE-2024-4076
+        - Add ability to change runtime limits for max types and records per name
+
+        [32:9.16.23-0.19]
+        - Add few more explicit conflicts with bind subpackages (RHEL-2208)
+
+        [32:9.16.23-0.18]
+        - Prevent crashing at masterformat system test (CVE-2023-6516)
+
+        [32:9.16.23-0.17]
+        - Prevent increased CPU load on large DNS messages (CVE-2023-4408)
+        - Prevent assertion failure when nxdomain-redirect is used with
+         RFC 1918 reverse zones (CVE-2023-5517)
+        - Prevent assertion failure if DNS64 and serve-stale is used (CVE-2023-5679)
+        - Specific recursive query patterns may lead to an out-of-memory
+          condition (CVE-2023-6516)
+        - Prevent increased CPU consumption in DNSSEC validator (CVE-2023-50387
+          CVE-2023-50868)
+        - Import tests for large DNS messages fix
+        - Add downstream change complementing CVE-2023-50387
+    FixedIn:
+        - Module: null
+          Name: bind9.16
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: bind9.16-chroot
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: bind9.16-devel
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: bind9.16-dnssec-utils
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: bind9.16-doc
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: bind9.16-libs
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: bind9.16-license
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: bind9.16-utils
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-bind9.16
+          NamespaceName: ol:8
+          Version: 32:9.16.23-0.22.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-5390.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-1737.html
+              Name: CVE-2024-1737
+            - Link: https://linux.oracle.com/cve/CVE-2024-1975.html
+              Name: CVE-2024-1975
+            - Link: https://linux.oracle.com/cve/CVE-2024-4076.html
+              Name: CVE-2024-4076
+        Issued: "2024-08-14"
+        RefId: ELSA-2024-5390
+    Name: ELSA-2024-5390
+    NamespaceName: ol:8
+    Severity: High
