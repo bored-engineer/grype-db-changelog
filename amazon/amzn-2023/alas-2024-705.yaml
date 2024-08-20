@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'The NtfsHandler.cpp NTFS handler in 7-Zip before 24.01 (for 7zz) contains a heap-based buffer overflow that allows an attacker to overwrite two bytes at multiple offsets beyond the allocated buffer size: buffer+512*i-2, for i=9, i=10, i=11, etc. (CVE-2023-52168)The NtfsHandler.cpp NTFS handler in 7-Zip before 24.01 (for 7zz) contains an out-of-bounds read that allows an attacker to read beyond the intended buffer. The bytes read beyond the intended buffer are presented as a part of a filename listed in the file system image. This has security relevance in some known web-service use cases where untrusted users can upload files and have them extracted by a server-side 7-Zip process. (CVE-2023-52169)'
+    FixedIn:
+        - Name: p7zip
+          NamespaceName: amzn:2023
+          Version: 16.02-20.amzn2023.0.6
+          VersionFormat: rpm
+        - Name: p7zip-debugsource
+          NamespaceName: amzn:2023
+          Version: 16.02-20.amzn2023.0.6
+          VersionFormat: rpm
+        - Name: p7zip-doc
+          NamespaceName: amzn:2023
+          Version: 16.02-20.amzn2023.0.6
+          VersionFormat: rpm
+        - Name: p7zip-plugins
+          NamespaceName: amzn:2023
+          Version: 16.02-20.amzn2023.0.6
+          VersionFormat: rpm
+        - Name: p7zip-plugins-debuginfo
+          NamespaceName: amzn:2023
+          Version: 16.02-20.amzn2023.0.6
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-705.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-52168
+            - Name: CVE-2023-52169
+    Name: ALAS-2024-705
+    NamespaceName: amzn:2023
+    Severity: Medium
