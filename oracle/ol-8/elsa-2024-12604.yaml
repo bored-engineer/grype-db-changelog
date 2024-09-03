@@ -1,0 +1,2491 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        hivex
+        libguestfs
+        [1.44.0-9.0.2]
+        - libguestfs.spec: Add btrfs-progs RPM to appliance [Orabug: 35634755]
+
+        [1.44.0-9.0.1]
+        - Replace upstream references from description tag
+        - Config supermin to use host yum.conf in ol8 [Orabug: 29319324]
+        - Set DISTRO_ORACLE_LINUX correspeonding to ol
+
+        libguestfs-winsupport
+        libiscsi
+        libnbd
+        [1.6.0-5.el8]
+        - Fix CVE-2022-0485: Fail nbdcopy if NBD read or write fails
+          resolves: rhbz#2045718
+
+        [1.6.0-4.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.2.2]
+        - Resolves: bz#1844296
+        (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [1.2.2-1]
+        - New stable release 1.2.2.
+
+        [1.2.1-1]
+        - New stable release 1.2.1.
+
+        [1.2.0-1]
+        - New stable release 1.2.0.
+
+        [1.0.3-1]
+        - New upstream version 1.0.3.
+        - Contains fix for remote code execution vulnerability.
+        - Add new libnbd-security(3) man page.
+
+        [1.0.2-1]
+        - New upstream version 1.0.2.
+        - Remove patches which are upstream.
+        - Contains fix for NBD Protocol Downgrade Attack (CVE-2019-14842).
+        - Fix previous commit message.
+
+        [1.0.1-2]
+        - Add upstream patch to fix nbdsh (for nbdkit tests).
+        - Fix interop tests on slow machines.
+
+        [1.0.1-1]
+        - New stable version 1.0.1.
+
+        [1.0.0-1]
+        - New upstream version 1.0.0.
+
+        [0.9.9-2]
+        - Rebuilt for Python 3.8
+
+        [0.9.9-1]
+        - New upstream version 0.9.9.
+
+        [0.9.8-4]
+        - Fix nbdkit dependencies so we're actually running the tests.
+        - Add glib2-devel BR so we build the glib main loop example.
+        - Add upstream patch to fix test error:
+          nbd_connect_unix: getlogin: No such device or address
+        - Fix test failure on 32 bit.
+
+        [0.9.8-3]
+        - Bump and rebuild to fix releng brokenness.
+          https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/message/2LIDI33G3IEIPYSCCIP6WWKNHY7XZJGQ/
+
+        [0.9.8-2]
+        - Rebuilt for Python 3.8
+
+        [0.9.8-1]
+        - New upstream version 0.9.8.
+        - Package the new nbd_*(3) man pages.
+
+        [0.9.7-1]
+        - New upstream version 0.9.7.
+        - Add libnbd-ocaml(3) man page.
+
+        [0.9.6-2]
+        - Add all upstream patches since 0.9.6 was released.
+        - Package the ocaml bindings into a subpackage.
+
+        [0.9.6-1]
+        - New upstream verison 0.9.6.
+
+        [0.1.9-1]
+        - New upstream version 0.1.9.
+
+        [0.1.8-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+        [0.1.8-1]
+        - New upstream version 0.1.8.
+
+        [0.1.7-1]
+        - New upstream version 0.1.7.
+
+        [0.1.6-1]
+        - New upstream version 0.1.6.
+
+        [0.1.5-1]
+        - New upstream version 0.1.5.
+
+        [0.1.4-1]
+        - New upstream version 0.1.4.
+
+        [0.1.2-2]
+        - Enable libxml2 for NBD URI support.
+
+        [0.1.2-1]
+        - New upstream version 0.1.2.
+
+        [0.1.1-1]
+        - Fix license in man pages and examples.
+        - Add nbdsh(1) man page.
+        - Include the signature and keyring even if validation is disabled.
+        - Update devel subpackage license.
+        - Fix old FSF address in Python tests.
+        - Filter Python provides.
+        - Remove executable permission on the tar.gz.sig file.
+        - Initial release.
+
+        libtpms
+        libvirt
+        [9.0.0-6.el8]
+        - rpc: ensure temporary GSource is removed from client event loop (Daniel P. Berrange) [Orabug: 36821472] {CVE-2024-4418}
+        - rpc: Don't warn about 'max_client_requests' in single-threaded daemons (Peter Krempa) [Orabug: 36422853]
+
+        [9.0.0-5.el8]
+        - Fix off-by-one error in udevListInterfacesByStatus (Martin Kletzander) [Orabug: 36364464] {CVE-2024-1441}
+
+        [9.0.0-4.el8]
+        - qemuProcessRefreshDisks: Extract update of a single disk (Peter Krempa) [Orabug: 35885348]
+        - qemuProcessRefreshDisks: Properly compare tray status (Peter Krempa) [Orabug: 35885348]
+
+        [9.0.0-3.el8]
+        - storage: Fix returning of locked objects from 'virStoragePoolObjListSearch' (Peter Krempa) [Orabug: 35644221] {CVE-2023-3750}
+        - virpci: Resolve leak in virPCIVirtualFunctionList cleanup (Tim Shearer) [Orabug: 35395469] {CVE-2023-2700}
+        - qemuProcessRefreshDisks: Don't skip filling of disk information if tray state didn't change (Peter Krempa) [Orabug: 35636469]
+
+        [9.0.0-2.el8]
+        - qemu_migration: don't block migration for network hostdev (Joao Martins)
+        - util: basic support for VFIO variant drivers (Laine Stump)
+
+        [9.0.0-1.el8]
+        - Update to libvirt 9.0.0 (Karl Heubaum)
+
+        [7.10.0-2.el8]
+        - remote: do not stop libvirtd after period of inactivity (Menno Lageman) [Orabug: 34069688]
+
+        [7.10.0-1.el8]
+        - Update to libvirt 7.10.0 (Wim ten Have)
+
+        [7.9.0-1.el8]
+        - Update to libvirt 7.9.0 (Wim ten Have)
+
+        [5.7.0-31.el8]
+        - qemu: Do not latch guestCPUs when guests hotplug with active domain groups (Wim ten Have) [Orabug: 33440015]
+
+        [5.7.0-30.el8]
+        - qemuDomainSnapshotDiskPrepareOne: Fix logic of relative backing store update (Peter Krempa) [Orabug: 33086913]
+        - qemu: Don't set NVRAM label when creating it (Michal Privoznik) [Orabug: 33319048]
+        - qemu: protect guestCPUs from drift under vcpu guest timeouts (Wim ten Have) [Orabug: 33368490]
+
+        [5.7.0-29.el8]
+        - qemu: vCORE distribution under vNUMA host partitioning should balance guests vCPU:pCPU pinning (Wim ten Have) [Orabug: 32355455]
+        - qemuDomainSnapshotDiskPrepareOne: Don't load the relative path with blockdev (Peter Krempa) [Orabug: 33151464]
+        - qemu: block: Support VIR_DOMAIN_BLOCK_COMMIT/PULL/REBASE_RELATIVE with blockdev (Peter Krempa) [Orabug: 33151464]
+        - qemu: Tell secdrivers which images are top parent (Michal Privoznik) [Orabug: 33086913]
+        - security: Introduce VIR_SECURITY_DOMAIN_IMAGE_PARENT_CHAIN_TOP flag (Michal Privoznik) [Orabug: 33086913]
+
+        [5.7.0-28.el8]
+        - qemu_capabilities: Rework domain caps cache (Michal Privoznik) [Orabug: 32664432]
+        - tests: fix virArchFromHost() redefine error (Joe Jin) [Orabug: 32664432]
+        - qemu: cache host arch separately from virCapsPtr (Daniel P. Berrange) [Orabug: 32664432]
+        - cpu.c: Check properly for virCapabilitiesGetNodeInfo() retval (Michal Privoznik) [Orabug: 32664432]
+        - virStorageSourceParseBackingJSONRaw: Parse 'offset' and 'size' attributes (Peter Krempa) [Orabug: 32164351]
+        - tests: qemu: Add test data for the new <slice> element (Peter Krempa) [Orabug: 32164351]
+        - qemu: Add support for slices of type 'storage' (Peter Krempa) [Orabug: 32164351]
+        - tests: qemublock: Add cases for creating image overlays on top of disks with <slice> (Peter Krempa) [Orabug: 32164351]
+        - qemu: block: Properly format storage slice into backing store strings (Peter Krempa) [Orabug: 32164351]
+        - qemu: domain: Store nodenames of slice in status XML (Peter Krempa) [Orabug: 32164351]
+        - conf: Implement support for <slices> of disk source (Peter Krempa) [Orabug: 32164351]
+        - docs: Document the new <slices> sub-element of disk's <source> (Peter Krempa) [Orabug: 32164351]
+        - qemu: block: forbid creation of storage sources with <slice> (Peter Krempa) [Orabug: 32164351]
+        - qemuDomainValidateStorageSource: Reject unsupported slices (Peter Krempa) [Orabug: 32164351]
+        - qemuBlockStorageSourceGetFormatRawProps: format 'offset' and 'size' for slice (Peter Krempa) [Orabug: 32164351]
+        - util: virstoragefile: Add data structure for storing storage source slices (Peter Krempa) [Orabug: 32164351]
+        - tests: virstorage: Add test data for json specified raw image with offset/size (Peter Krempa) [Orabug: 32164351]
+        - docs: formatdomain: Close <source> on one of disk examples (Peter Krempa) [Orabug: 32164351]
+        - qemu: domain: Refactor formatting of node names into status XML (Peter Krempa) [Orabug: 32164351]
+        - tests: virstorage: Add test cases for 'json:' pseudo-URI without 'file' wrapper (Peter Krempa) [Orabug: 32164351]
+        - virStorageSourceParseBackingJSON: Prevent arbitrary nesting with format drivers (Peter Krempa) [Orabug: 32164351]
+        - virStorageSourceParseBackingJSON: Allow 'json:' pseudo URIs without 'file' wrapper (Peter Krempa) [Orabug: 32164351]
+        - virStorageSourceJSONDriverParser: annotate 'format' drivers (Peter Krempa) [Orabug: 32164351]
+        - virStorageSourceParseBackingJSON: Move deflattening of json: URIs out of recursion (Peter Krempa) [Orabug: 32164351]
+        - virStorageSourceParseBackingJSON: Pass around original backing file string (Peter Krempa) [Orabug: 32164351]
+        - qemu: enable blockdev support (Peter Krempa) [Orabug: 32164351]
+        - qemu: Instantiate pflash via -machine when using blockdev (Peter Krempa) [Orabug: 32164351]
+        - qemu: command: Build the 'pflash' drives via -machine (Peter Krempa) [Orabug: 32164351]
+        - qemu: command: Build -blockdev-s for backing of pflash (Peter Krempa) [Orabug: 32164351]
+        - qemu: domain: Introduce helper to convert <loader> into virStorageSource (Peter Krempa) [Orabug: 32164351]
+        - qemu: domain: Store virStorageSources representing pflash backing (Peter Krempa) [Orabug: 32164351]
+        - qemu: command: Extract formatting of -drive for pflash (Peter Krempa) [Orabug: 32164351]
+        - qemu: capabilities: Add detection of the 'savevm' fix for -blockdev (Peter Krempa) [Orabug: 32164351]
+        - qemu: qapi: Add support for command features (Peter Krempa) [Orabug: 32164351]
+        - qemu: caps: Add capability for dynamic 'auto-read-only' support for files (Peter Krempa) [Orabug: 32164351]
+        - tests: qemucapabilities: Refresh data for unreleased qemu-4.2 on x86_64 (Peter Krempa) [Orabug: 32164351]
+        - qemu: caps: Base support of 'backingStoreInput' domain feature on QEMU_CAPS_BLOCKDEV (Peter Krempa) [Orabug: 32164351]
+        - docs: Document support for obeying <backingStore> of <disk> on input (Peter Krempa) [Orabug: 32164351]
+        - conf: domcaps: Add 'backingStoreInput' domain capability (Peter Krempa) [Orabug: 32164351]
+        - qemu: domcaps: Simplify adding new domaincaps based on qemu caps (Peter Krempa) [Orabug: 32164351]
+        - domaincaps: Store domain capability features in an array (Peter Krempa) [Orabug: 32164351]
+        - qemu: domcaps: Initialize all features (Peter Krempa) [Orabug: 32164351]
+        - domcaps: Add function for initializing domain caps as unsupported (Peter Krempa) [Orabug: 32164351]
+        - conf: domaincaps: Use virXMLFormatElement in virDomainCapsFormatFeatures (Peter Krempa) [Orabug: 32164351]
+        - conf: domaincaps: Extract formatting of the <features> subelement (Peter Krempa) [Orabug: 32164351]
+        - conf: domaincaps: Replace FORMAT_SINGLE macro by a function (Peter Krempa) [Orabug: 32164351]
+        - conf: capabilities: Modernize virCapabilitiesFormatMemoryBandwidth (Peter Krempa) [Orabug: 32164351]
+        - conf: caps: Modernize virCapabilitiesFormatCaches (Peter Krempa) [Orabug: 32164351]
+        - conf: turn virDomainMemtuneFormat void (Peter Krempa) [Orabug: 32164351]
+        - conf: domain: Split up formatting of <memtune> and <memoryBacking> (Peter Krempa) [Orabug: 32164351]
+        - conf: Rename virDomainCapsFeature to virDomainProcessCapsFeature (Peter Krempa) [Orabug: 32164351]
+        - conf: storagecaps: Fix broken attempt at being const-correct (Peter Krempa) [Orabug: 32164351]
+        - conf: domaincaps: Fix broken attempt at being const-correct (Peter Krempa) [Orabug: 32164351]
+        - qemu: caps: Make capability filler functions void (Peter Krempa) [Orabug: 32164351]
+        - util: buffer: Add init macro for automatically setting child XML indent (Peter Krempa) [Orabug: 32164351]
+        - qemu: snapshot: Fix inactive external snapshots when backing chain is present (Peter Krempa) [Orabug: 32164351]
+        - qemu: blockjob: Transfer 'readonly' state of images after active layer block commit (Peter Krempa) [Orabug: 32164351]
+        - qemu: command: Use XML based disk bus convertor in error message (Peter Krempa) [Orabug: 32164351]
+        - storagefile: Fill in meta->externalDataStore (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Add externalDataStore member (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Split out virStorageSourceNewFromChild (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Don't access backingStoreRaw directly in FromBackingRelative (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Fill in meta->externalDataStoreRaw (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Add externalDataStoreRaw member (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Fix backing format \0 check (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Rename qcow2GetExtensions 'format' argument (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Rename qcow2GetBackingStoreFormat (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Push extension_end calc to qcow2GetBackingStoreFormat (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Push 'start' into qcow2GetBackingStoreFormat (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Use qcowXGetBackingStore directly (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Drop now unused isQCow2 argument (Cole Robinson) [Orabug: 32164351]
+        - storagefile: Check version to determine if qcow2 or not (Cole Robinson) [Orabug: 32164351]
+        - storagefile: qcow1: Let qcowXGetBackingStore fill in format (Cole Robinson) [Orabug: 32164351]
+        - storagefile: qcow1: Fix check for empty backing file (Cole Robinson) [Orabug: 32164351]
+        - storagefile: qcow1: Check for BACKING_STORE_OK (Cole Robinson) [Orabug: 32164351]
+        - qemu: snapshot: Don't update current snapshot until we're done (Peter Krempa) [Orabug: 32164351]
+        - qemu: block: Replace snapshot transaction action generator (Peter Krempa) [Orabug: 32164351]
+        - tests: qemumonitor: Add testing for the 'transaction' command and generators (Peter Krempa) [Orabug: 32164351]
+        - qemu: monitor: Add transaction generators for snapshot APIs (Peter Krempa) [Orabug: 32164351]
+        - qemu: monitor: Add transaction generators for dirty bitmap APIs (Peter Krempa) [Orabug: 32164351]
+        - tests: qemucapabilities: fix 4.2.0 qemucapabilities (Joe Jin) [Orabug: 32164351]
+        - qemu: checkpoint: Do ACL check prior to snapshot interlocking (Peter Krempa) [Orabug: 32164351]
+        - qemu: driver: Remove misplaced qemuDomainObjEndJob in qemuDomainCheckpointGetXMLDesc (Peter Krempa) [Orabug: 32164351]
+        - conf: Drop pointless 'domain' argument from virDomainSnapshotRedefinePrep (Peter Krempa) [Orabug: 32164351]
+        - conf: Drop pointless 'domain' argument from virDomainCheckpointRedefinePrep (Peter Krempa) [Orabug: 32164351]
+        - tests: qemucapabilities: Update caps of qemu-4.1 to released version (Peter Krempa) [Orabug: 32164351]
+        - tests: add qemu capabilities data for qemu 4.2 (Peter Krempa) [Orabug: 32164351]
+        - lxc: fix compile error (Joe Jin) [Orabug: 32164351]
+        - qemu: driver: Remove QEMU_ADD_BLOCK_PARAM_LL macro (Peter Krempa) [Orabug: 32164351]
+        - qemu: driver: Don't return anything from qemuDomainBlockStatsGatherTotals (Peter Krempa) [Orabug: 32164351]
+        - qemu: driver: Remove pointless macro QEMU_BLOCK_STAT_TOTAL (Peter Krempa) [Orabug: 32164351]
+        - qemu: monitor: Change fields in qemuBlockStats to 'unsigned' (Peter Krempa) [Orabug: 32164351]
+        - qemu: monitor: Refactor cleanup in qemuMonitorJSONGetAllBlockStatsInfo (Peter Krempa) [Orabug: 32164351]
+        - qemu: monitor: Refactor cleanup in qemuMonitorJSONGetOneBlockStatsInfo (Peter Krempa) [Orabug: 32164351]
+        - qemu: monitor: Refactor cleanup in qemuMonitorJSONBlockStatsCollectData (Peter Krempa) [Orabug: 32164351]
+        - qemu: Remove stale comment for qemuDomainBlockStats (Peter Krempa) [Orabug: 32164351]
+        - qemu_blockjob: Remove secdriver metadata for whole backing chain on job completion (Michal Privoznik) [Orabug: 32164351]
+        - qemu: hotplug: Use VIR_AUTOFREE() instead VIR_FREE for strings (Daniel Henrique Barboza) [Orabug: 32164351]
+        - qemu: snapshot: Do ACL check prior to checkpoint interlocking (Peter Krempa) [Orabug: 32164351]
+        - qemuCheckDiskConfigAgainstDomain: Validate disk's SCSI address iff disk is SCSI (Xu Yandong) [Orabug: 32164351]
+        - qemuSharedDeviceEntryRemove: Free domain name before VIR_DELETE_ELEMENT (Xu Yandong) [Orabug: 32164351]
+        - qemu_capabilities: Temporarily disable dbus-vmstate capability (Michal Privoznik) [Orabug: 32164351]
+        - Revert 'qemu: add socket datagram capability' (Michal Privoznik) [Orabug: 32164351]
+        - tests: qemustatusxml2xml: Fix disk target mess (Peter Krempa) [Orabug: 32164351]
+        - snapshot: Store both config and live XML in the snapshot domain (Maxiwell S. Garcia) [Orabug: 32164351]
+        - qemu: formatting XML from domain def choosing the root name (Maxiwell S. Garcia) [Orabug: 32164351]
+        - qemu: Don't leak domain def when RevertToSnapshot fails (Jiri Denemark) [Orabug: 32164351]
+        - qemu: Fix regression in snapshot-revert (Eric Blake) [Orabug: 32164351]
+        - lib: Define and use autofree for virConfPtr (Michal Privoznik) [Orabug: 32164351]
+        - qemu_conf: Use more of VIR_AUTOUNREF() (Michal Privoznik) [Orabug: 32164351]
+        - qemu_conf: Use more of VIR_AUTOFREE() (Michal Privoznik) [Orabug: 32164351]
+        - qemu_conf: Drop a pair of needless 'cleanup' labels (Michal Privoznik) [Orabug: 32164351]
+        - virhostdev: Don't unref @pcidevs twice (Michal Privoznik) [Orabug: 32164351]
+        - qemu_conf.c: introduce qemuAddRemoveSharedDeviceInternal (Daniel Henrique Barboza) [Orabug: 32164351]
+        - qemu_conf.c: introduce qemuAddRemoveSharedDiskInternal (Daniel Henrique Barboza) [Orabug: 32164351]
+        - qemu_conf.c: introduce qemuAddRemoveSharedHostdevInternal (Daniel Henrique Barboza) [Orabug: 32164351]
+        - remote: fix UNIX socket path being incorrectly built for libvirtd (eater) [Orabug: 32164351]
+        - lib: Grab write lock when modifying list of domains (Michal Privoznik) [Orabug: 32164351]
+        - qemu: reset VM id after external devices stop (Marc-Andre Lureau) [Orabug: 32164351]
+        - qemu: add dbus-vmstate capability (Marc-Andre Lureau) [Orabug: 32164351]
+        - qemu: add socket datagram capability (Marc-Andre Lureau) [Orabug: 32164351]
+        - tests: fix xml2xml tpm-emulator.xml test (Marc-Andre Lureau) [Orabug: 32164351]
+        - qemu: migration: Switch to blockdev mode for non-shared storage migration (Peter Krempa) [Orabug: 32164351]
+        - qemu: migration: Refactor cleanup in qemuMigrationSrcNBDStorageCopy (Peter Krempa) [Orabug: 32164351]
+        - qemu: migration: Refactor cleanup in qemuMigrationSrcNBDStorageCopyBlockdev (Peter Krempa) [Orabug: 32164351]
+        - qemu: Defer support checks for external active snapshots to blockdev code or qemu (Peter Krempa) [Orabug: 32164351]
+        - qemu: Add -blockdev support for external snapshots (Peter Krempa) [Orabug: 32164351]
+        - qemu: snapshot: Skip overlay file creation/interogation if unsupported (Peter Krempa) [Orabug: 32164351]
+        - qemu: Merge use of 'reuse' flag in qemuDomainSnapshotDiskPrepareOne (Peter Krempa) [Orabug: 32164351]
+        - qemu: Disband qemuDomainSnapshotCreateSingleDiskActive (Peter Krempa) [Orabug: 32164351]
+        - qemu: snapshot: Rename external disk snapshot handling functions (Peter Krempa) [Orabug: 32164351]
+        - qemu: snapshot: Move error preservation to qemuDomainSnapshotDiskDataCleanup (Peter Krempa) [Orabug: 32164351]
+        - qemu: snapshot: Save status and config XMLs only on success (Peter Krempa) [Orabug: 32164351]
+        - qemu: snapshot: Fix image lock handling when taking a snapshot (Peter Krempa) [Orabug: 32164351]
+        - qemu: driver: Fix shallow non-reuse block copy (Peter Krempa) [Orabug: 32164351]
+        - qemu: Explicitly pass backing store to qemuBuildStorageSourceChainAttachPrepareBlockdevTop (Peter Krempa) [Orabug: 32164351]
+        - qemu: block: explicitly pass backing store to qemuBlockStorageSourceAttachPrepareBlockdev (Peter Krempa) [Orabug: 32164351]
+        - qemu: command: Refactor qemuBuildStorageSourceChainAttachPrepareBlockdevInternal (Peter Krempa) [Orabug: 32164351]
+        - qemu: block: Explicitly specify backingStore when creating format layer props (Peter Krempa) [Orabug: 32164351]
+        - qemu: block: Unify conditions to format backing store of format node definition (Peter Krempa) [Orabug: 32164351]
+        - qemu: Prevent storage causing too much nested XML (Peter Krempa) [Orabug: 32164351]
+        - qemu: domain: Refactor cleanup in qemuDomainDetermineDiskChain (Peter Krempa) [Orabug: 32164351]
+        - qemu: hotplug: Setup disk throttling with blockdev (Peter Krempa) [Orabug: 32164351]
+        - qemu: hotplug: Use VIR_AUTOFREE in qemuDomainAttachDiskGeneric (Peter Krempa) [Orabug: 32164351]
+        - qemu: hotplug: Simplify cleanup in qemuDomainChangeMediaLegacy (Peter Krempa) [Orabug: 32164351]
+        - qemu: Fix qemuDomainObjTaint with virtlogd (Jiri Denemark) [Orabug: 32164351]
+        - qemu: monitor: Fix formatting of 'offset' in qemuMonitorJSONSaveMemory (Peter Krempa) [Orabug: 32164351]
+        - tests: qemublock: Use bigger numbers as dummy capacity/physical (Peter Krempa) [Orabug: 32164351]
+        - qemu: block: Use correct type when creating image size JSON entries (Peter Krempa) [Orabug: 32164351]
+        - Exadata: protect vNUMA/SMT from artificially injected faults (Wim ten Have) [Orabug: 32708041]
+        - virnetserver: fix some memory leaks in virNetTLSContextReloadForServer (Jin Yan)
+        - virt-admin: Introduce command srv-update-tls (Zhang Bo) [Orabug: 32768102]
+        - admin: Introduce virAdmServerUpdateTlsFiles (Zhang Bo) [Orabug: 32768102]
+        - tls: Add a mutex lock on 'tlsCtxt' (Zhang Bo) [Orabug: 32768102]
+        - virnetserver: Introduce virNetServerUpdateTlsFiles (Zhang Bo) [Orabug: 32768102]
+
+        [5.7.0-27.el8]
+        - Exadata: protect libvirt hugepage acquisition from QEMU async init (Wim ten Have) [Orabug: 32561685]
+
+        [5.7.0-26.el8]
+        - exadata: Fix autonomous hugepage acquisition barrier hang (Wim ten Have) [Orabug: 32537538]
+        - exadata: Fix CPU Packing when out of pCPUs (Wim ten Have) [Orabug: 32527311]
+
+        [5.7.0-25.el8]
+        - exadata: force a host CPUs reserved pCPU threshold (Wim ten Have) [Orabug: 32516090]
+
+        [5.7.0-24.el8]
+        - exadata: Add configurable libvirtd mlockall support (Wim ten Have) [Orabug: 32479237]
+        - exadata: hint a configurable number of memory init threads to qemu (Wim ten Have) [Orabug: 32460334]
+        - Exadata: domain group should allow for asymmetric creation (Wim ten Have) [Orabug: 32060622]
+
+        [5.7.0-23.el8]
+        - util: remove unneeded cleanup labels (Wim ten Have) [Orabug: 32399255]
+        - virnuma: Don't work around numa_node_to_cpus() for non-existent nodes (Wim ten Have) [Orabug: 32379098]
+
+        [5.7.0-22.el8]
+        - build: add dependency to help patch tooling (Menno Lageman) [Orabug: 32284540]
+        - Exadata: fix active guest dgroup-delete requests (Wim ten Have) [Orabug: 32095306]
+        - Exadata: fix a rogue Domain Groups dgroup-undefine flaw (Wim ten Have) [Orabug: 31945084]
+
+        [2.7.0-21.el8]
+        - exadata: Fix the validation when defining domain groups (Wim ten Have)  [Orabug: 32085856]
+        - qemu: improve error message when guest vcpu count exceeds domain group limit  (Menno Lageman)  [Orabug: 31985111]
+        - qemu: Autonomous hugepage acquisition for 2-MiB and 1-GiB guest memoryBacking  (Wim ten Have)
+        - qemu: Fix a qemuMemReleaseHostHugepages state error  (Wim ten Have)  [Orabug: 32069203]
+        - qemu: avoid guest CPU process handling if exadataConfig is disabled  (Wim ten Have)  [Orabug: 32053696]
+        - domain_conf: Relax SCSI addr used check (Michal Privoznik)  [Orabug: 31386162]
+        - domain_conf: Make virDomainDeviceFindSCSIController accept virDomainDeviceDriveAddress struct  (Michal Privoznik)  [Orabug: 31386162]
+        - qemu: remove use of qemuDomainObjBeginJobWithAgent() (Jonathon Jongsma)  [Orabug: 31990187]  {CVE-2019-20485}
+        - qemu: agent: set ifname to NULL after freeing (Jan Tomko)  [Orabug: 31964426]  {CVE-2020-25637}
+        - rpc: require write acl for guest agent in virDomainInterfaceAddresses  (Jan Tomko)  [Orabug: 31964426]  {CVE-2020-25637}
+        - rpc: add support for filtering @acls by uint params  (Jan Tomko)  [Orabug: 31964426]  {CVE-2020-25637}
+        - rpc: gendispatch: handle empty flags (Jan Tomko)  [Orabug: 31964426]  {CVE-2020-25637}
+
+        [5.7.0-19.el8]
+        - qemu: Verify use of hugepages when releasing its acquired status (Wim ten Have) [Orabug: 31839035]
+        - qemu: Autonomous hugepages acquisition and release (Wim ten Have) [Orabug: 31367986]
+
+        [5.7.0-17.el8]
+        - qemu: Fix cpu boundary checks when starting or configuring guest domains. (Wim ten Have)  [Orabug: 31469231]
+        - libvirt: Allocate max possible CPUs for QEMU to prepare guest memory (Wim ten Have)  [Orabug: 31064560]
+
+        [5.7.0-16.el8]
+        - qemu: format 'x-aw-bits' on intel-iommu command line (Menno Lageman)
+        - qemu: format address wdith on intel-iommu command line (Menno Lageman)
+        - conf: add address width attribute to iommu (Menno Lageman)
+        - tests: add tests for host-phys-bits KVM feature (Menno Lageman)  [Orabug: 31354547]
+        - qemu: support host-phys-bits KVM feature (Menno Lageman)  [Orabug: 31374547]
+        - storage: Fix daemon crash on lookup storagepool by targetpath (Yi Li)  [Orabug: 31439483]  {CVE-2020-10703}
+
+        [5.7.0-15.el8]
+        - qemu: Escape the qemu driver systemd DOT hoax (Wim ten Have)  [Orabug:
+          31380815]
+
+        [5.7.0-14.el8]
+        - vmx: make 'fileName' optional for CD-ROMs (Pino Toscano)  [Orabug: 31350200]
+        - vmx: shortcut earlier few 'ignore' cases in virVMXParseDisk() (Pino Toscano)  [Orabug: 31350200]
+        - domain group: Fix a potential SEGV while restoring guest domains (Wim ten Have)  [Orabug: 31285615]
+        - cpu_map: Distinguish Cascadelake-Server from Skylake-Server (Jiri Denemark)  [Orabug: 31214897]
+        - cpu_map: Add more -noTSX x86 CPU models (Christian Ehrhardt)  [Orabug: 31214897]
+        - qemuDomainGetStatsIOThread: Don't leak array with 0 iothreads (Peter Krempa)  [Orabug: 31251756]  {CVE-2020-12430}
+
+        [5.7.0-13.el8]
+        - domain groups: Fix multiple Domain Group vCPU administration flaws (Wim ten Have)  [Orabug: 31145304]
+        - qemu: fix missing #if defined(ENABLE_EXADATA) (Menno Lageman)
+        - build: Fix qemu-submodule-init syntax-check issue (Wim ten Have)
+        - libvirt: Fix various introduced Fedora/RHEL build violations (Wim ten Have)  [Orabug: 31143337]
+        - qemu: don't hold both jobs for suspend (Jonathon Jongsma)  [Orabug: 31073098]  {CVE-2019-20485}
+        - domain groups: qemu driver error refers to pCPUs instead of vCPUs (Wim ten Have)  [Orabug: 31075757]
+        - node_device_conf: Don't leak @physical_function in virNodeDeviceGetPCISRIOVCaps (Jiang Kun)  [Orabug: 31070337]
+
+        [5.7.0-12.el8]
+        - libvirt: vNUMA automatic host paritioning allows erroneous vcpu settings (Wim ten Have)  [Orabug: 31050313]
+        - remote: do not stop libvirtd after period of inactivity (Menno Lageman)  [Orabug: 31003707]
+        - remote: do not use socket activation by default (Menno Lageman)  [Orabug: 31003707]
+        - qemu driver: handle targetNode under memory hot-plug operations (Wim ten Have)  [Orabug: 31009716]
+        - domain groups: refresh dgbase host capabilities prior to defining a new group (Wim ten Have)  [Orabug: 31026069]
+        - domain groups: Always cleanup system.slice controlled hugepage reservations (Wim ten Have)  [Orabug: 31025853]
+        - domain groups: Enable DGs upon fresh groups arrival (Wim ten Have)  [Orabug: 31021247]
+        - domain groups: Skip undefined domain groups when validating lists (Wim ten Have)  [Orabug: 31030117]
+
+        [5.7.0-11.el8]
+        - domain groups: Add functionality to control NUMA node alignment (Wim ten Have)  [Orabug: 30988105]
+        - domain groups: A rename should always update active and config domain definitions (Wim ten Have)  [Orabug: 30999730]
+
+        [5.7.0-10.el8]
+        - domain groups: refresh dgbase depending host capabilities before rendering the cpuguestmask (Wim ten Have)  [Orabug: 30987361]
+        - conf: domain group validation errors should print correct group info (Menno Lageman)  [Orabug: 30988428]
+        - qemu: reserve hugepages when memoryBacking when live attaching memory (Wim ten Have)  [Orabug: 30985510]
+        - domain groups: avoid virDomainGroupInit if exadataConfig is disabled (Wim ten Have)  [Orabug: 30985907]
+
+        [5.7.0-9.el8]
+        - vNUMA: distinguish standard and vNUMA memory 'setmaxmem' operations (Wim ten
+          Have)  [Orabug: 30894536]
+
+        [5.7.0-8.el8]
+        - domain groups: End Of BETA (Wim ten Have)
+        - domaingroups: ExaData Domain Groups POC (Wim ten Have)
+        - domaingroup: preliminary virsh support for domain groups - drop #4 (Menno Lageman)
+        - tests: add various tests to exercise vNUMA host partitioning (Wim ten Have)  [Orabug: 29720293]
+        - qemu: driver changes for new vNUMA Host and Nodeset partitioning (Wim ten Have)  [Orabug: 29720293]
+        - XML definitions for guest vNUMA and parsing routines (Wim ten Have)  [Orabug: 29720293]
+        - Revert 'exadata: can not configure shared memory hosted disk devices for vhostmd.service' (Menno Lageman)
+        - qemu: Forcibly mknod() even if it exists (Michal Privoznik)
+
+        [5.7.0-5.el8]
+        - exadata: can not configure shared memory hosted disk devices for
+          vhostmd.service (Menno Lageman)  [Orabug: 30598065]
+
+        [5.7.0-4.el8]
+        - build: skip copyright check for gnulib (Menno Lageman)
+        - Revert 'network: pull global chain init into separate method' (Menno Lageman)  [Orabug: 30611188]
+        - Revert 'network: add more debugging of firewall chain creation' (Menno Lageman)  [Orabug: 30611188]
+        - Revert 'network: delay global firewall setup if no networks are running' (Menno Lageman)  [Orabug: 30611188]
+        - qemu-submodule-init: Add Git submodule init script (Karl Heubaum)  [Orabug: 30796221]
+
+        [5.7.0-3.el8]
+        - Add VMware esx support (Menno Lageman)  [Orabug: 30449929]
+
+        [5.7.0-2.el8]
+        - enable VMware hypervisor driver
+
+        libvirt-dbus
+        [1.3.0-2.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [1.3.0]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [1.2.0-3]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [1.2.0-2]
+        - util: fix virtDBusUtilDecodeUUID (rhbz#1647823)
+
+        [1.2.0-1]
+        - Rebased to libvirt-dbus-1.2.0 (rhbz#1630196)
+
+        [1.0.0-1]
+        - Rebase from Fedora
+
+        libvirt-python
+        [9.0.0-6.el8]
+        - Update to libvirt 9.0.0-6 (Karl Heubaum)
+
+        [9.0.0-5.el8]
+        - Update to libvirt 9.0.0-5 (Karl Heubaum)
+
+        [9.0.0-4.el8]
+        - Update to libvirt 9.0.0-4 (Karl Heubaum)
+
+        [9.0.0-3.el8]
+        - Update to libvirt 9.0.0-3 (Karl Heubaum)
+
+        [9.0.0-2.el8]
+        - Update to libvirt 9.0.0-2 (Karl Heubaum)
+
+        [9.0.0-1.el8]
+        - Update to 9.0.0 release (Karl Heubaum)
+
+        [7.10.0-2.el8]
+        - Update version number to match libvirt 7.10.0-2 (Karl Heubaum)
+
+        [7.10.0-1.el8]
+        - Update to  7.10.0 release (Karl Heubaum)
+
+        [7.9.0]
+        - Update to 7.9.0 release (Karl Heubaum)
+
+        nbdkit
+        netcf
+        perl-Sys-Virt
+        qemu-kvm
+        [7.2.0-15.el8]
+        - migration: abort on destination if switchover limit exceeded (Elena Ufimtseva)
+        - migration: introduce strict switchover SLA (Elena Ufimtseva)
+        - migration: add error to MigrationIncomingState (Elena Ufimtseva)
+        - migration: Set migration status early in incoming side (Fabiano Rosas)
+        - tests/qtest: migration: Use migrate_incoming_qmp where appropriate (Fabiano Rosas)
+        - tests/qtest: migration: Add migrate_incoming_qmp helper (Fabiano Rosas)
+        - tests/qtest: migration: Expose migrate_set_capability (Fabiano Rosas)
+        - vfio/migration: Multifd device state transfer support - send side (Maciej S. Szmigiero)
+        - vfio/migration: Add x-orcl-migration-multifd-transfer VFIO property (Maciej S. Szmigiero)
+        - vfio/migration: Multifd device state transfer support - receive side (Maciej S. Szmigiero)
+        - migration/multifd: Add migration_has_device_state_support() (Maciej S. Szmigiero)
+        - migration/multifd: Device state transfer support - send side (Maciej S. Szmigiero)
+        - migration/multifd: Convert multifd_send_pages::next_channel to atomic (Maciej S. Szmigiero)
+        - migration/multifd: Device state transfer support - receive side (Maciej S. Szmigiero)
+        - migration: Add load_finish handler and associated functions (Maciej S. Szmigiero)
+        - migration: Add qemu_loadvm_load_state_buffer() and its handler (Maciej S. Szmigiero)
+        - migration: Add save_live_complete_precopy_{begin,end} handlers (Maciej S. Szmigiero)
+        - migration/multifd: Zero p->flags before starting filling a packet (Maciej S. Szmigiero)
+        - migration/ram: Add load start trace event (Maciej S. Szmigiero)
+        - vfio/migration: Add save_{iterate,complete_precopy}_started trace events (Maciej S. Szmigiero)
+        - hw/virtio/virtio-crypto: Protect from DMA re-entrancy bugs (Philippe Mathieu-Daude) [Orabug: 36869694] {CVE-2024-3446}
+        - hw/char/virtio-serial-bus: Protect from DMA re-entrancy bugs (Philippe Mathieu-Daude) [Orabug: 36869694] {CVE-2024-3446}
+        - hw/display/virtio-gpu: Protect from DMA re-entrancy bugs (Philippe Mathieu-Daude) [Orabug: 36869694] {CVE-2024-3446}
+        - hw/virtio: Introduce virtio_bh_new_guarded() helper (Philippe Mathieu-Daude) [Orabug: 36869694] {CVE-2024-3446}
+        - pcie_sriov: Validate NumVFs (Akihiko Odaki) [Orabug: 36314082] {CVE-2024-26327}
+        - hw/nvme: Use pcie_sriov_num_vfs() (Akihiko Odaki) [Orabug: 36314111] {CVE-2024-26328}
+        - pcie: Introduce pcie_sriov_num_vfs (Akihiko Odaki) [Orabug: 36314111] {CVE-2024-26328}
+        - qcow2: Don't open data_file with BDRV_O_NO_IO (Kevin Wolf) [Orabug: 36801853] {CVE-2024-4467}
+        - target/i386: drop AMD machine check bits from Intel CPUID (Paolo Bonzini) [Orabug: 36785079]
+        - target/i386: pass X86CPU to x86_cpu_get_supported_feature_word (Paolo Bonzini) [Orabug: 36785079]
+        - migration: prevent migration when VM has poisoned memory (William Roche) [Orabug: 35533097]
+        - i386: Add support for overflow recovery (John Allen) [Orabug: 34691766]
+        - i386: Add support for SUCCOR feature (John Allen) [Orabug: 34691766]
+        - i386: Fix MCE support for AMD hosts (John Allen) [Orabug: 34691766]
+
+        [7.2.0-13.el8]
+        - vfio/migration: Enhance VFIO migration state tracing (Avihai Horon)
+        - vfio/migration: Don't emit STOP_COPY VFIO migration QAPI event twice (Avihai Horon)
+        - vfio/migration: Emit VFIO migration QAPI event (Avihai Horon)
+        - qapi/vfio: Add VFIO migration QAPI event (Avihai Horon)
+        - migration/multifd: solve zero page causing multiple page faults (Yuan Liu) [Orabug: 36727051]
+        - multifd: Add the ramblock to MultiFDRecvParams (Lukas Straub) [Orabug: 36727051]
+        - migration: Fix qmp_query_migrate mbps value (Fabiano Rosas) [Orabug: 36727104]
+        - migration: Allow user to specify available switchover bandwidth (Peter Xu) [Orabug: 35636284]
+        - migration/dirtyrate: Fix precision losses and g_usleep overshoot (Andrei Gudkov) [Orabug: 36727091]
+        - Use new created qemu_target_pages_to_MiB() (Juan Quintela) [Orabug: 36727091]
+        - softmmu: Create qemu_target_pages_to_MiB() (Juan Quintela) [Orabug: 36727091]
+        - migration/calc-dirty-rate: replaced CRC32 with xxHash (Andrei Gudkov) [Orabug: 36727063]
+        - migration/multifd: Enable multifd zero page checking by default. (Hao Xiang) [Orabug: 34131170]
+        - migration/multifd: Implement ram_save_target_page_multifd to handle multifd version of MigrationOps::ram_save_target_page. (Hao Xiang) [Orabug: 34131170]
+        - migration/multifd: Implement zero page transmission on the multifd thread. (Hao Xiang) [Orabug: 34131170]
+        - migration/multifd: Add new migration option zero-page-detection. (Hao Xiang) [Orabug: 34131170]
+        - migration: Make ram_save_target_page() a pointer (Juan Quintela) [Orabug: 34131170]
+        - migration: Yield bitmap_mutex properly when sending/sleeping (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Add a synchronization point for channel creation (Fabiano Rosas) [Orabug: 34131170]
+        - migration/multifd: Unify multifd and TLS connection paths (Fabiano Rosas) [Orabug: 34131170]
+        - migration/multifd: Move multifd_send_setup into migration thread (Fabiano Rosas) [Orabug: 34131170]
+        - migration/multifd: Move multifd_send_setup error handling in to the function (Fabiano Rosas) [Orabug: 34131170]
+        - migration/multifd: Remove p->running (Fabiano Rosas) [Orabug: 34131170]
+        - migration/multifd: Optimize sender side to be lockless (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Join the TLS thread (Fabiano Rosas) [Orabug: 34131170]
+        - migration/multifd: Fix MultiFDSendParams.packet_num race (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Stick with send/recv on function names (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Cleanup multifd_load_cleanup() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Cleanup multifd_save_cleanup() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Rewrite multifd_queue_page() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Change retval of multifd_send_pages() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Change retval of multifd_queue_page() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Split multifd_send_terminate_threads() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Forbid spurious wakeups (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Move header prepare/fill into send_prepare() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: multifd_send_prepare_header() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Move trace_multifd_send|recv() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Move total_normal_pages accounting (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Rename p->num_packets and clean it up (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Drop pages->num check in sender thread (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Simplify locking in sender thread (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Separate SYNC request with normal jobs (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Drop MultiFDSendParams.normal[] array (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Postpone reset of MultiFDPages_t (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Remove MultiFDPages_t::packet_num (Fabiano Rosas) [Orabug: 34131170]
+        - migration/multifd: Drop MultiFDSendParams.quit, cleanup error paths (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: multifd_send_kick_main() (Peter Xu) [Orabug: 34131170]
+        - migration/multifd: Fix leaking of Error in TLS error flow (Avihai Horon) [Orabug: 34131170]
+        - migration/ram: Merge save_zero_page functions (Fabiano Rosas) [Orabug: 34131170]
+        - migration/ram: Move xbzrle zero page handling into save_zero_page (Fabiano Rosas) [Orabug: 34131170]
+        - migration/multifd: Stop setting p->ioc before connecting (Fabiano Rosas) [Orabug: 34131170]
+        - migration: Centralize BH creation and dispatch (Fabiano Rosas) [Orabug: 34131170]
+        - migration: Add a wrapper to qemu_bh_schedule (Fabiano Rosas) [Orabug: 34131170]
+        - migration: Remove transferred atomic counter (Juan Quintela) [Orabug: 35636284]
+        - migration: Use migration_transferred_bytes() (Juan Quintela) [Orabug: 35636284]
+        - migration: migration_rate_limit_reset() don't need the QEMUFile (Juan Quintela) [Orabug: 35636284]
+        - migration: migration_transferred_bytes() don't need the QEMUFile (Juan Quintela) [Orabug: 35636284]
+        - multifd: reset next_packet_len after sending pages (Elena Ufimtseva) [Orabug: 35636284]
+        - multifd: fix counters in multifd_send_thread (Elena Ufimtseva) [Orabug: 35636284]
+        - migration/multifd: Compute transferred bytes correctly (Juan Quintela) [Orabug: 35636284]
+        - migration: check for rate_limit_max for RATE_LIMIT_DISABLED (Elena Ufimtseva) [Orabug: 35636284]
+        - migration: Use the number of transferred bytes directly (Juan Quintela) [Orabug: 35636284]
+        - qemu_file: Use a stat64 for qemu_file_transferred (Juan Quintela) [Orabug: 35636284]
+        - migration: set file error on subsection loading (Marc-Andre Lureau) [Orabug: 35636284]
+        - migration: Receiving a zero page non zero is an error (Juan Quintela) [Orabug: 35636284]
+        - migration/multifd: Stop checking p->quit in multifd_send_thread (Fabiano Rosas) [Orabug: 35636284]
+        - migration/multifd: Clarify Error usage in multifd_channel_connect (Fabiano Rosas) [Orabug: 35636284]
+        - multifd: cleanup the function multifd_channel_connect (Li Zhang) [Orabug: 35636284]
+        - migration/multifd: Unify multifd_send_thread error paths (Fabiano Rosas) [Orabug: 35636284]
+        - migration: Non multifd migration don't care about multifd flushes (Juan Quintela) [Orabug: 35636284]
+        - migration: fix RAMBlock add NULL check (Dmitry Frolov) [Orabug: 35829153]
+        - migration: We don't need the field rate_limit_used anymore (Juan Quintela) [Orabug: 35636284]
+        - migration: Use migration_transferred_bytes() to calculate rate_limit (Juan Quintela) [Orabug: 35636284]
+        - migration: Add a trace for migration_transferred_bytes (Juan Quintela) [Orabug: 35636284]
+        - migration: Move migration_total_bytes() to migration-stats.c (Juan Quintela) [Orabug: 35636284]
+        - qemu-file: Remove total from qemu_file_total_transferred_*() (Juan Quintela) [Orabug: 35636284]
+        - migration: Move rate_limit_max and rate_limit_used to migration_stats (Juan Quintela) [Orabug: 35636284]
+        - qemu-file: Account for rate_limit usage on qemu_fflush() (Juan Quintela) [Orabug: 35636284]
+        - migration: Don't use INT64_MAX for unlimited rate (Juan Quintela) [Orabug: 35636284]
+        - qemu-file: Make rate_limit_used an uint64_t (Juan Quintela) [Orabug: 35636284]
+        - qemu-file: make qemu_file_[sg]et_rate_limit() use an uint64_t (Juan Quintela) [Orabug: 35636284]
+        - migration: We set the rate_limit by a second (Juan Quintela) [Orabug: 35829153]
+        - migration: A rate limit value of 0 is valid (Juan Quintela) [Orabug: 35636284]
+        - qemu-file: Make ram_control_save_page() use accessors for rate_limit (Juan Quintela) [Orabug: 35636284]
+        - qemu-file: Make total_transferred an uint64_t (Juan Quintela) [Orabug: 35636284]
+        - qemu-file: No need to check for shutdown in qemu_file_rate_limit (Juan Quintela) [Orabug: 35636284]
+        - migration: Document all migration_stats (Juan Quintela) [Orabug: 35636284]
+        - multifd: We already account for this packet on the multifd thread (Juan Quintela) [Orabug: 35636284]
+        - migration: Make dirty_bytes_last_sync atomic (Juan Quintela) [Orabug: 35636284]
+        - migration: Make dirty_pages_rate atomic (Juan Quintela) [Orabug: 35636284]
+        - stat64: Add stat64_set() operation (Paolo Bonzini) [Orabug: 35636284]
+        - multifd: Only flush once each full round of memory (Juan Quintela) [Orabug: 35636284]
+        - migration: Make find_dirty_block() return a single parameter (Juan Quintela) [Orabug: 35636284]
+        - migration: Simplify ram_find_and_save_block() (Juan Quintela) [Orabug: 35636284]
+        - multifd: Protect multifd_send_sync_main() calls (Juan Quintela) [Orabug: 35636284]
+        - multifd: Create property multifd-flush-after-each-section (Juan Quintela) [Orabug: 35636284]
+        - multifd: Fix the number of channels ready (Juan Quintela) [Orabug: 35636284]
+        - migration: Rename normal to normal_pages (Juan Quintela) [Orabug: 35636284]
+        - migration: Rename duplicate to zero_pages (Juan Quintela) [Orabug: 35636284]
+        - migration: Make dirty_sync_count atomic (Juan Quintela) [Orabug: 35636284]
+        - migration: Make downtime_bytes atomic (Juan Quintela) [Orabug: 35636284]
+        - migration: Make precopy_bytes atomic (Juan Quintela) [Orabug: 35636284]
+        - migration: Make dirty_sync_missed_zero_copy atomic (Juan Quintela) [Orabug: 35636284]
+        - migration: Make multifd_bytes atomic (Juan Quintela) [Orabug: 35636284]
+        - migration: Update atomic stats out of the mutex (Juan Quintela) [Orabug: 35636284]
+        - migration: Merge ram_counters and ram_atomic_counters (Juan Quintela) [Orabug: 35636284]
+        - migration/multifd: correct multifd_send_thread to trace the flags (Wei Wang) [Orabug: 35636284]
+        - ram: Document migration ram flags (Juan Quintela) [Orabug: 35636284]
+        - migration: Calculate ram size once (Juan Quintela) [Orabug: 35636284]
+        - multifd: Fix a race on reading MultiFDPages_t.block (Zhenzhong Duan) [Orabug: 35636284]
+        - migration: Use atomic ops properly for page accountings (Peter Xu) [Orabug: 35636284]
+        - migration: Export ram_release_page() (Juan Quintela) [Orabug: 35636284]
+        - migration: Export ram_transferred_ram() (Juan Quintela) [Orabug: 35636284]
+        - multifd: Create page_count fields into both MultiFD{Recv,Send}Params (Juan Quintela) [Orabug: 35636284]
+        - multifd: Create page_size fields into both MultiFD{Recv,Send}Params (Juan Quintela) [Orabug: 35636284]
+        - migration: Fix migration_channel_read_peek() error path () (Avihai Horon) [Orabug: 36726827]
+        - migration/multifd: Remove error_setg() in migration_ioc_process_incoming() (Avihai Horon) [Orabug: 36726827]
+        - migration: Refactor migration_incoming_setup() (Avihai Horon) [Orabug: 36726827]
+        - migration: check magic value for deciding the mapping of channels (manish.mishra) [Orabug: 36726827]
+        - io: Add support for MSG_PEEK for socket channel (manish.mishra) [Orabug: 36726827]
+        - hw/sd/sdhci: Do not update TRNMOD when Command Inhibit (DAT) is set (hilippe Mathieu-Daude) [Orabug: 36575206] {CVE-2024-3447}
+        - block: lock AioContext in bdrv_replace_child_noperm() when in non-coroutine context (Mark Kanda) [Orabug: 36514180]
+        - hw/scsi/scsi-generic: Fix io_timeout property not applying (Lorenz Brun) [Orabug: 36637684]
+        - target/i386/monitor: synchronize cpu state for lapic info (Dongli Zhang) [Orabug: 36607747]
+        - qemu_init: increase NOFILE soft limit on POSIX (Fiona Ebner) [Orabug: 36416389]
+
+        [7.2.0-11.el8]
+        - vfio/migration: Add a note about migration rate limiting (Avihai Horon) [Orabug: 36329758]
+        - vfio/migration: Refactor vfio_save_state() return value (Avihai Horon) [Orabug: 36329758]
+        - migration: Don't serialize devices in qemu_savevm_state_iterate() (Avihai Horon) [Orabug: 36329758]
+        - ui/clipboard: add asserts for update and request (Fiona Ebner) [Orabug: 36323175] {CVE-2023-6683}
+        - ui/clipboard: mark type as not available when there is no data (Fiona Ebner) [Orabug: 36323175] {CVE-2023-6683}
+        - virtio-net: correctly copy vnet header when flushing TX (Jason Wang) [Orabug: 36154459] {CVE-2023-6693}
+        - esp: restrict non-DMA transfer length to that of available data (Mark Cave-Ayland) [Orabug: 36322141] {CVE-2024-24474}
+        - vhost: Perform memory section dirty scans once per iteration (Si-Wei Liu)
+        - vhost: dirty log should be per backend type (Si-Wei Liu)
+        - net: Update MemReentrancyGuard for NIC (Akihiko Odaki) [Orabug: 35644197] {CVE-2023-3019}
+        - net: Provide MemReentrancyGuard * to qemu_new_nic() (Akihiko Odaki) [Orabug: 35644197] {CVE-2023-3019}
+        - lsi53c895a: disable reentrancy detection for MMIO region, too (Thomas Huth) [Orabug: 33774027] {CVE-2021-3750}
+        - memory: stricter checks prior to unsetting engaged_in_io (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - async: avoid use-after-free on re-entrancy guard (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - apic: disable reentrancy detection for apic-msi (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - raven: disable reentrancy detection for iomem (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - bcm2835_property: disable reentrancy detection for iomem (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - lsi53c895a: disable reentrancy detection for script RAM (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - hw: replace most qemu_bh_new calls with qemu_bh_new_guarded (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - checkpatch: add qemu_bh_new/aio_bh_new checks (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - async: Add an optional reentrancy guard to the BH API (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - memory: prevent dma-reentracy issues (Alexander Bulekov) [Orabug: 33774027] {CVE-2021-3750}
+        - hw/acpi: propagate vcpu hotplug after switch to modern interface (Aaron Young)
+        - migration: Fix use-after-free of migration state object (Fabiano Rosas) [Orabug: 36242218]
+        - kvm: Fix crash due to access uninitialized kvm_state (Gavin Shan) [Orabug: 36269244]
+        - migration: Avoid usage of static variable inside tracepoint (Joao Martins)
+        - migration: Add tracepoints for downtime checkpoints (Peter Xu)
+        - migration: migration_stop_vm() helper (Peter Xu)
+        - migration: Add per vmstate downtime tracepoints (Peter Xu)
+        - migration: Add migration_downtime_start|end() helpers (Peter Xu)
+        - migration: Set downtime_start even for postcopy (Peter Xu)
+        - hv-balloon: implement pre-Glib 2.68 compatibility (Maciej S. Szmigiero)
+        - hw/i386/pc: Support hv-balloon (Maciej S. Szmigiero)
+        - qapi: Add HV_BALLOON_STATUS_REPORT event and its QMP query command (Maciej S. Szmigiero)
+        - qapi: Add query-memory-devices support to hv-balloon (Maciej S. Szmigiero)
+        - Add Hyper-V Dynamic Memory Protocol driver (hv-balloon) hot-add support (Maciej S. Szmigiero)
+        - Add Hyper-V Dynamic Memory Protocol driver (hv-balloon) base (Maciej S. Szmigiero)
+        - Add Hyper-V Dynamic Memory Protocol definitions (Maciej S. Szmigiero)
+        - memory-device: Drop size alignment check (David Hildenbrand)
+        - memory-device: Support empty memory devices (David Hildenbrand)
+        - memory,vhost: Allow for marking memory device memory regions unmergeable (David Hildenbrand)
+        - memory: Clarify mapping requirements for RamDiscardManager (David Hildenbrand)
+        - memory-device,vhost: Support automatic decision on the number of memslots (David Hildenbrand)
+        - vhost: Add vhost_get_max_memslots() (David Hildenbrand)
+        - kvm: Add stub for kvm_get_max_memslots() (David Hildenbrand)
+        - memory-device,vhost: Support memory devices that dynamically consume memslots (David Hildenbrand)
+        - memory-device: Track required and actually used memslots in DeviceMemoryState (David Hildenbrand)
+        - stubs: Rename qmp_memory_device.c to memory_device.c (David Hildenbrand)
+        - memory-device: Support memory devices with multiple memslots (David Hildenbrand)
+        - vhost: Return number of free memslots (David Hildenbrand)
+        - kvm: Return number of free memslots (David Hildenbrand)
+        - vhost: Remove vhost_backend_can_merge() callback (David Hildenbrand)
+        - vhost: Rework memslot filtering and fix 'used_memslot' tracking (David Hildenbrand)
+        - virtio-md-pci: New parent type for virtio-mem-pci and virtio-pmem-pci (David Hildenbrand)
+        - migration/ram: Expose ramblock_is_ignored() as migrate_ram_is_ignored() (David Hildenbrand)
+        - virtio-mem: Skip most of virtio_mem_unplug_all() without plugged memory (David Hildenbrand)
+        - softmmu/physmem: Warn with ram_block_discard_range() on MAP_PRIVATE file mapping (David Hildenbrand)
+        - memory-device: Track used region size in DeviceMemoryState (David Hildenbrand)
+        - memory-device: Refactor memory_device_pre_plug() (David Hildenbrand)
+        - hw/i386/pc: Remove PC_MACHINE_DEVMEM_REGION_SIZE (David Hildenbrand)
+        - hw/i386/acpi-build: Rely on machine->device_memory when building SRAT (David Hildenbrand)
+        - hw/i386/pc: Use machine_memory_devices_init() (David Hildenbrand)
+        - hw/loongarch/virt: Use machine_memory_devices_init() (David Hildenbrand)
+        - hw/ppc/spapr: Use machine_memory_devices_init() (David Hildenbrand)
+        - hw/arm/virt: Use machine_memory_devices_init() (David Hildenbrand)
+        - memory-device: Introduce machine_memory_devices_init() (David Hildenbrand)
+        - memory-device: Unify enabled vs. supported error messages (David Hildenbrand)
+        - hw/scsi/scsi-disk: Disallow block sizes smaller than 512 [CVE-2023-42467] (Thomas Huth) [Orabug: 35808564] {CVE-2023-42467}
+        - tests/qtest: ahci-test: add test exposing reset issue with pending callback (Fiona Ebner) [Orabug: 35977245] {CVE-2023-5088}
+        - hw/ide: reset: cancel async DMA operation before resetting state (Fiona Ebner) [Orabug: 35977245] {CVE-2023-5088}
+
+        [7.2.0-7.el8]
+        - vfio/common: Probe type1 iommu dirty tracking support (Joao Martins) [Orabug: 36024839]
+        - vfio/common: Allow disabling device dirty page tracking (Joao Martins) [Orabug: 36024839]
+
+        [7.2.0-6.el8]
+        - hw/smbios: Fix core count in type4 (Zhao Liu) [Orabug: 35869694]
+        - hw/smbios: Fix thread count in type4 (Zhao Liu) [Orabug: 35869694]
+        - hw/smbios: Fix smbios_smp_sockets caculation (Zhao Liu) [Orabug: 35869694]
+        - machine: Add helpers to get cores/threads per socket (Zhao Liu) [Orabug: 35869694]
+        - migration/multifd: Move load_cleanup inside incoming_state_destroy (Leonardo Bras) [Orabug: 35829153]
+        - migration/multifd: Join all multifd threads in order to avoid leaks (Leonardo Bras) [Orabug: 35829153]
+        - migration/multifd: Remove unnecessary assignment on multifd_load_cleanup() (Leonardo Bras) [Orabug: 35829153]
+        - migration/multifd: Change multifd_load_cleanup() signature and usage (Leonardo Bras) [Orabug: 35829153]
+        - vfio/migration: Block VFIO migration with background snapshot (Avihai Horon)
+        - vfio/migration: Block VFIO migration with postcopy migration (Avihai Horon)
+        - migration: Add .save_prepare() handler to struct SaveVMHandlers (Avihai Horon)
+        - migration: Move more initializations to migrate_init() (Avihai Horon)
+        - vfio/migration: Fail adding device with enable-migration=on and existing blocker (Avihai Horon)
+        - migration: Add migration prefix to functions in target.c (Avihai Horon)
+        - vfio/migration: Allow migration of multiple P2P supporting devices (Avihai Horon)
+        - vfio/migration: Add P2P support for VFIO migration (Avihai Horon)
+        - vfio/migration: Refactor PRE_COPY and RUNNING state checks (Joao Martins)
+        - qdev: Add qdev_add_vm_change_state_handler_full() (Avihai Horon)
+        - sysemu: Add prepare callback to struct VMChangeStateEntry (Avihai Horon)
+        - vfio/migration: Move from STOP_COPY to STOP in vfio_save_cleanup() (Avihai Horon)
+        - hw/vfio: Add number of dirty pages to vfio_get_dirty_bitmap tracepoint (Joao Martins)
+        - exec/ram_addr: Return number of dirty pages in cpu_physical_memory_set_dirty_lebitmap() (Joao Martins)
+        - migration: fix populate_vfio_info (Steve Sistare)
+        - vfio/migration: Revert out of tree P2P support (Joao Martins)
+        - async: clarify usage of barriers in the polling case (Paolo Bonzini) [Orabug: 35871058]
+        - async: update documentation of the memory barriers (Paolo Bonzini) [Orabug: 35871058]
+        - physmem: add missing memory barrier (Paolo Bonzini) [Orabug: 35871058]
+        - qemu-coroutine-lock: add smp_mb__after_rmw() (Paolo Bonzini) [Orabug: 35871058]
+        - aio-wait: switch to smp_mb__after_rmw() (Paolo Bonzini) [Orabug: 35871058]
+        - edu: add smp_mb__after_rmw() (Paolo Bonzini) [Orabug: 35871058]
+        - qemu-thread-win32: cleanup, fix, document QemuEvent (Paolo Bonzini) [Orabug: 35871058]
+        - qemu-thread-posix: cleanup, fix, document QemuEvent (Paolo Bonzini) [Orabug: 35871058]
+        - qatomic: add smp_mb__before/after_rmw() (Paolo Bonzini) [Orabug: 35871058]
+        - dump: kdump-zlib data pages not dumped with pvtime/aarch64 (Dongli Zhang) [Orabug: 35777876]
+        - hw/smbios: fix field corruption in type 4 table (Julia Suvorova) [Orabug: 35756216]
+        - kvm: Atomic memslot updates (David Hildenbrand) [Orabug: 35728782]
+        - KVM: keep track of running ioctls (Emanuele Giuseppe Esposito) [Orabug: 35728782]
+        - accel: introduce accelerator blocker API (Emanuele Giuseppe Esposito) [Orabug: 35728782]
+
+        [7.2.0-5.el8]
+        - virtio-crypto: verify src&dst buffer length for sym request (zhenwei pi) [Orabug: 35683774] {CVE-2023-3180}
+        - io: remove io watch if TLS channel is closed during handshake (Daniel P. Berrange) [Orabug: 35683826] {CVE-2023-3354}
+        - ui/vnc-clipboard: fix infinite loop in inflate_buffer (CVE-2023-3255) (Mauro Matteo Cascella) [Orabug: 35683770] {CVE-2023-3255}
+        - hw/scsi/lsi53c895a: Fix reentrancy issues in the LSI controller (CVE-2023-0330) (Thomas Huth) [Orabug: 35683817] {CVE-2023-0330}
+        - vhost-vdpa: do not cleanup the vdpa/vhost-net structures if peer nic is present (Ani Sinha) [Orabug: 35649138] {CVE-2023-3301}
+        - qmp-regdump: use QMP command 'query-cpus-fast' (Mark Kanda)
+
+        [7.2.0-4.el8]
+        - vfio/migration: Allow migration of multiple P2P supporting devices (Avihai Horon)
+        - vfio/migration: Add P2P support for VFIO migration (Avihai Horon)
+        - sysemu: Add pre VM state change callback (Avihai Horon)
+        - vfio/migration: Refactor PRE_COPY and RUNNING state checks (Joao Martins)
+        - vfio/common: Add an option to relax vIOMMU usage (Joao Martins)
+        - virtio-rng-pci: fix transitional migration compat for vectors (David Alan Gilbert) [Orabug: 35595177]
+        - virtio-rng-pci: fix migration compat for vectors (David Alan Gilbert) [Orabug: 35595177]
+        - vfio: Fix null pointer dereference bug in vfio_bars_finalize() (Avihai Horon)
+        - vfio/migration: Return bool type for vfio_migration_realize() (Zhenzhong Duan)
+        - vfio/migration: Remove print of 'Migration disabled' (Zhenzhong Duan)
+        - vfio/migration: Free resources when vfio_migration_realize fails (Zhenzhong Duan)
+        - vfio/migration: Change vIOMMU blocker from global to per device (Zhenzhong Duan)
+        - vfio/pci: Disable INTx in vfio_realize error path (Zhenzhong Duan)
+        - vfio/pci: Free leaked timer in vfio_realize error path (Zhenzhong Duan)
+        - vfio/pci: Fix a segfault in vfio_realize (Zhenzhong Duan)
+        - vfio/migration: Make VFIO migration non-experimental (Avihai Horon)
+        - vfio/migration: Reset bytes_transferred properly (Avihai Horon)
+        - vfio/pci: Call vfio_prepare_kvm_msi_virq_batch() in MSI retry path (Shameer Kolothum)
+        - vfio/migration: Add support for switchover ack capability (Avihai Horon)
+        - vfio/migration: Add VFIO migration pre-copy support (Avihai Horon)
+        - vfio/migration: Store VFIO migration flags in VFIOMigration (Avihai Horon)
+        - vfio/migration: Refactor vfio_save_block() to return saved data size (Avihai Horon)
+        - tests: Add migration switchover ack capability test (Avihai Horon)
+        - migration: Enable switchover ack capability (Avihai Horon)
+        - migration: Implement switchover ack logic (Avihai Horon)
+        - migration: Add switchover ack capability (Avihai Horon)
+        - target/i386: Add EPYC-Genoa model to support Zen 4 processor series (Babu Moger) [Orabug: 35555649]
+        - target/i386: Add VNMI and automatic IBRS feature bits (Babu Moger) [Orabug: 35555649]
+        - target/i386: Add missing feature bits in EPYC-Milan model (Babu Moger) [Orabug: 35555649]
+        - target/i386: Add feature bits for CPUID_Fn80000021_EAX (Babu Moger) [Orabug: 35555649]
+        - target/i386: Add a couple of feature bits in 8000_0008_EBX (Babu Moger) [Orabug: 35555649]
+        - target/i386: Add new EPYC CPU versions with updated cache_info (Michael Roth) [Orabug: 35555649]
+        - target/i386: allow versioned CPUs to specify new cache_info (Michael Roth) [Orabug: 35555649]
+        - target/i386/kvm: get and put AMD pmu registers (Dongli Zhang) [Orabug: 35562155]
+        - Makefile: qemu-bundle is a directory (Juan Quintela)
+        - 9pfs: prevent opening special files (CVE-2023-2861) (Christian Schoenebeck) [Orabug: 35570017] {CVE-2023-2861}
+        - pcie: Do not update hotplugged device power in RUN_STATE_INMIGRATE state (Annie Li) [Orabug: 33642532]
+        - pcie: Do not set power state for some hot-plugged devices (Annie Li) [Orabug: 33642532]
+        - pc: q35: Bump max_cpus to 1024 (Suravee Suthikulpanit) [Orabug: 35425619]
+
+        [7.2.0-3.el8]
+        - vfio/migration: Skip log_sync during migration SETUP state (Avihai Horon)
+        - migration: fix ram_state_pending_exact() (Juan Quintela)
+        - spec: allow have_tools 0 (Steve Sistare)
+        - spec: allow no block device modules (Steve Sistare)
+        - qemu-kvm.spec: fix Linux io_uring support (Mark Kanda)
+        - hw/intc/ioapic: Update KVM routes before redelivering IRQ, on RTE update (David Woodhouse)
+        - oslib-posix: fix uninitialized var in wait_mem_prealloc() (Mark Kanda)
+        - vfio/migration: Rename entry points (Alex Williamson)
+        - docs/devel: Document VFIO device dirty page tracking (Avihai Horon)
+        - vfio/migration: Query device dirty page tracking support (Joao Martins)
+        - vfio/migration: Block migration with vIOMMU (Joao Martins)
+        - vfio/common: Add device dirty page bitmap sync (Joao Martins)
+        - vfio/common: Extract code from vfio_get_dirty_bitmap() to new function (Avihai Horon)
+        - vfio/common: Add device dirty page tracking start/stop (Joao Martins)
+        - vfio/common: Record DMA mapped IOVA ranges (Joao Martins)
+        - vfio/common: Add helper to consolidate iova/end calculation (Joao Martins)
+        - vfio/common: Consolidate skip/invalid section into helper (Joao Martins)
+        - vfio/common: Use a single tracepoint for skipped sections (Joao Martins)
+        - vfio/common: Add helper to validate iova/end against hostwin (Joao Martins)
+        - vfio/common: Add VFIOBitmap and alloc function (Avihai Horon)
+        - vfio/common: Abort migration if dirty log start/stop/sync fails (Avihai Horon)
+        - vfio/common: Fix wrong %m usages (Avihai Horon)
+        - vfio/common: Fix error reporting in vfio_get_dirty_bitmap() (Avihai Horon)
+        - docs/devel: Align VFIO migration docs to v2 protocol (Avihai Horon)
+        - vfio: Alphabetize migration section of VFIO trace-events file (Avihai Horon)
+        - vfio/migration: Remove VFIO migration protocol v1 (Avihai Horon)
+        - vfio/migration: Implement VFIO migration protocol v2 (Avihai Horon)
+        - vfio/migration: Rename functions/structs related to v1 protocol (Avihai Horon)
+        - vfio/migration: Move migration v1 logic to vfio_migration_init() (Avihai Horon)
+        - vfio/migration: Block multiple devices migration (Avihai Horon)
+        - vfio/common: Change vfio_devices_all_running_and_saving() logic to equivalent one (Avihai Horon)
+        - vfio/migration: Allow migration without VFIO IOMMU dirty tracking support (Avihai Horon)
+        - vfio/migration: Fix NULL pointer dereference bug  (Avihai Horon)
+        - linux-headers: Update to v6.2-rc8 (Avihai Horon)
+        - migration/qemu-file: Add qemu_file_get_to_fd() (Avihai Horon)
+        - migration: Rename res_{postcopy,precopy}_only (Juan Quintela)
+        - migration: Remove unused res_compatible (Juan Quintela)
+        - migration: In case of postcopy, the memory ends in res_postcopy_only (Juan Quintela)
+        - migration: I messed state_pending_exact/estimate (Juan Quintela)
+        - linux-headers: Update to v6.1 (Peter Xu)
+        - migration: simplify migration_iteration_run() (Juan Quintela)
+        - migration: Remove unused threshold_size parameter (Juan Quintela)
+        - migration: Split save_live_pending() into state_pending_* (Juan Quintela)
+        - migration: No save_live_pending() method uses the QEMUFile parameter (Juan Quintela)
+        - Revert 'virtio-scsi: Send 'REPORTED LUNS CHANGED' sense data upon disk hotplug events' (Karl Heubaum) [Orabug: 35161059]
+        - oslib-posix: initialize backend memory objects in parallel (Mark Kanda) [Orabug: 32555402]
+        - oslib-posix: refactor memory prealloc threads (Mark Kanda) [Orabug: 32555402]
+        - qemu-kvm.spec: vhost-user is conditional (Steve Sistare)
+        - qemu-kvm.spec: libseccomp is conditional (Steve Sistare)
+
+        [7.2.0-1.el8]
+        - vl: Add an -action option to override MCE handling (Mark Kanda)
+        - hw/arm/virt: build SMBIOS 19 table (Mihai Carabas)
+        - virtio-net-pci: Don't use 'efi-virtio.rom' on AArch64 (Mark Kanda)
+        - migration: increase listening socket backlog (Elena Ufimtseva)
+        - virtio: Set PCI subsystem vendor ID to Oracle (Karl Heubaum)
+        - Update to QEMU 7.2.0 (Karl Heubaum)
+
+        [6.1.1-4.el8]
+        - display/qxl-render: fix race condition in qxl_cursor (CVE-2021-4207) (Mauro Matteo Cascella) [Orabug: 34591445] {CVE-2021-4207}
+        - ui/cursor: fix integer overflow in cursor_alloc (CVE-2021-4206) (Mauro Matteo Cascella) [Orabug: 34591281] {CVE-2021-4206}
+        - scsi/lsi53c895a: really fix use-after-free in lsi_do_msgout (CVE-2022-0216) (Mauro Matteo Cascella) [Orabug: 34590706] {CVE-2022-0216}
+        - scsi/lsi53c895a: fix use-after-free in lsi_do_msgout (CVE-2022-0216) (Mauro Matteo Cascella) [Orabug: 34590706] {CVE-2022-0216}
+        - tests/qtest: Add fuzz-lsi53c895a-test (Philippe Mathieu-Daude) [Orabug: 34590706] {CVE-2022-0216}
+        - hw/scsi/lsi53c895a: Do not abort when DMA requested and no data queued (Philippe Mathieu-Daude) [Orabug: 34590706] {CVE-2022-0216}
+        - virtio-net: fix map leaking on error during receive (Jason Wang) [Orabug: 34538375] {CVE-2022-26353}
+        - vfio: defer to commit kvm irq routing when enable msi/msix (Mike Longpeng) [Orabug: 34528963]
+        - Revert 'vfio: Avoid disabling and enabling vectors repeatedly in VFIO migration' (Mike Longpeng) [Orabug: 34528963]
+        - vfio: simplify the failure path in vfio_msi_enable (Mike Longpeng) [Orabug: 34528963]
+        - vfio: move re-enabling INTX out of the common helper (Mike Longpeng) [Orabug: 34528963]
+        - vfio: simplify the conditional statements in vfio_msi_enable (Mike Longpeng) [Orabug: 34528963]
+        - kvm/msi: do explicit commit when adding msi routes (Mike Longpeng) [Orabug: 34528963]
+        - kvm-irqchip: introduce new API to support route change (Mike Longpeng) [Orabug: 34528963]
+        - event_notifier: handle initialization failure better (Maxim Levitsky) [Orabug: 34528963]
+        - virtio-net: don't handle mq request in userspace handler for vhost-vdpa (Si-Wei Liu)
+        - vhost-vdpa: change name and polarity for vhost_vdpa_one_time_request() (Si-Wei Liu)
+        - vhost-vdpa: backend feature should set only once (Si-Wei Liu)
+        - vhost-net: fix improper cleanup in vhost_net_start (Si-Wei Liu)
+        - vhost-vdpa: fix improper cleanup in net_init_vhost_vdpa (Si-Wei Liu)
+        - virtio-net: align ctrl_vq index for non-mq guest for vhost_vdpa (Si-Wei Liu)
+        - virtio-net: setup vhost_dev and notifiers for cvq only when feature is negotiated (Si-Wei Liu)
+        - virtio: fix the condition for iommu_platform not supported (Halil Pasic)
+        - vdpa: Make ncs autofree (Eugenio Perez)
+        - vhost-vdpa: make notifiers _init()/_uninit() symmetric (Laurent Vivier)
+        - hw/virtio: vdpa: Fix leak of host-notifier memory-region (Laurent Vivier)
+        - vhost-vdpa: stick to -errno error return convention (Roman Kagan)
+        - vdpa: Add dummy receive callback (Eugenio Perez)
+        - vdpa: Check for existence of opts.vhostdev (Eugenio Perez)
+        - vdpa: Replace qemu_open_old by qemu_open at (Eugenio Perez)
+        - vhost: Fix last vq queue index of devices with no cvq (Eugenio Perez)
+        - vhost: Rename last_index to vq_index_end (Eugenio Perez)
+        - net/vhost-vdpa: fix memory leak in vhost_vdpa_get_max_queue_pairs() (Stefano Garzarella)
+        - vhost-vdpa: Set discarding of RAM broken when initializing the backend (David Hildenbrand)
+        - vhost-vdpa: multiqueue support (Jason Wang)
+        - virtio-net: vhost control virtqueue support (Jason Wang)
+        - vhost: record the last virtqueue index for the virtio device (Jason Wang)
+        - virtio-net: use 'queue_pairs' instead of 'queues' when possible (Jason Wang)
+        - vhost-net: control virtqueue support (Jason Wang)
+        - net: introduce control client (Jason Wang)
+        - vhost-vdpa: let net_vhost_vdpa_init() returns NetClientState * (Jason Wang)
+        - vhost-vdpa: prepare for the multiqueue support (Jason Wang)
+        - vhost-vdpa: classify one time request (Jason Wang)
+        - vhost-vdpa: open device fd in net_init_vhost_vdpa() (Jason Wang)
+        - vdpa: Check for iova range at mappings changes (Eugenio Perez)
+        - vdpa: Add vhost_vdpa_section_end (Eugenio Perez)
+        - net/vhost-vdpa: Fix device compatibility check (Kevin Wolf)
+        - net/vhost-user: Fix device compatibility check (Kevin Wolf)
+        - net: Introduce NetClientInfo.check_peer_type() (Kevin Wolf)
+        - memory: Name all the memory listeners (Peter Xu)
+        - vhost-vdpa: remove the unncessary queue_index assignment (Jason Wang)
+        - vhost-vdpa: fix the wrong assertion in vhost_vdpa_init() (Jason Wang)
+        - vhost-vdpa: tweak the error label in vhost_vdpa_add() (Jason Wang)
+        - vhost-vdpa: fix leaking of vhost_net in vhost_vdpa_add() (Jason Wang)
+        - vhost-vdpa: don't cleanup twice in vhost_vdpa_add() (Jason Wang)
+        - vhost-vdpa: remove the unnecessary check in vhost_vdpa_add() (Jason Wang)
+        - vhost_net: do not assume nvqs is always 2 (Jason Wang)
+        - vhost: use unsigned int for nvqs (Jason Wang)
+        - vhost_net: remove the meaningless assignment in vhost_net_start_one() (Jason Wang)
+        - vhost-vdpa: correctly return err in vhost_vdpa_set_backend_cap() (Jason Wang)
+        - vhost-vdpa: remove unused variable 'acked_features' (Jason Wang)
+        - vhost: correctly detect the enabling IOMMU (Jason Wang)
+        - virtio-pci: implement iommu_enabled() (Jason Wang)
+        - virtio-bus: introduce iommu_enabled() (Jason Wang)
+        - hw/virtio: Fix leak of host-notifier memory-region (Yajun Wu)
+        - vhost-vdpa: Do not send empty IOTLB update batches (Eugenio Perez)
+        - target/i386/kvm: Fix disabling MPX on '-cpu host' with MPX-capable host (Maciej S. Szmigiero) [Orabug: 33528615]
+
+        [6.1.1-3.el8]
+        - acpi: pcihp: pcie: set power on cap on parent slot (Igor Mammedov) [Orabug: 33984018] [Orabug: 33995665]
+        - pcie: expire pending delete (Gerd Hoffmann) [Orabug: 33984018] [Orabug: 33995665]
+        - pcie: fast unplug when slot power is off (Gerd Hoffmann) [Orabug: 33984018] [Orabug: 33995665]
+        - pcie: factor out pcie_cap_slot_unplug() (Gerd Hoffmann) [Orabug: 33984018] [Orabug: 33995665]
+        - pcie: add power indicator blink check (Gerd Hoffmann) [Orabug: 33984018] [Orabug: 33995665]
+        - pcie: implement slot power control for pcie root ports (Gerd Hoffmann) [Orabug: 33984018] [Orabug: 33995665]
+        - pci: implement power state (Gerd Hoffmann) [Orabug: 33984018] [Orabug: 33995665]
+        - tests: bios-tables-test update expected blobs (Igor Mammedov) [Orabug: 33984018] [Orabug: 33995665]
+        - hw/i386/acpi-build: Deny control on PCIe Native Hot-plug in _OSC (Julia Suvorova) [Orabug: 33984018] [Orabug: 33995665]
+        - bios-tables-test: Allow changes in DSDT ACPI tables (Julia Suvorova) [Orabug: 33984018] [Orabug: 33995665]
+        - hw/acpi/ich9: Add compat prop to keep HPC bit set for 6.1 machine type (Julia Suvorova) [Orabug: 33984018] [Orabug: 33995665]
+
+        [6.1.1-2.el8]
+        - vhost-vsock: detach the virqueue element in case of error (Stefano Garzarella) [Orabug: 33941752] {CVE-2022-26354}
+        - qemu_regdump.py/qmp-regdump: Switch to Python 3 (Karl Heubaum)
+        - block/mirror: fix NULL pointer dereference in mirror_wait_on_conflicts() (Stefano Garzarella) [Orabug: 33916572] {CVE-2021-4145}
+
+        [6.1.1-1.el8]
+        - virtio-net-pci: Don't use 'efi-virtio.rom' on AArch64 (Mark Kanda)
+        - migration: increase listening socket backlog (Elena Ufimtseva)
+        - virtio: Set PCI subsystem vendor ID to Oracle (Karl Heubaum)
+        - virtiofsd: Drop membership of all supplementary groups (CVE-2022-0358) (Vivek Goyal) [Orabug: 33816690] {CVE-2022-0358}
+        - acpi: validate hotplug selector on access (Michael S. Tsirkin) [Orabug: 33816625] {CVE-2021-4158}
+        - Update to QEMU 6.1.1 (Karl Heubaum)
+
+        [4.2.1.15.el8]
+        - qemu-kvm.spec: Add support for reading vmdk, vhdx, vpc, https, and ssh disk image formats from qemu-kvm (Karl Heubaum) [Orabug: 33741340]
+        - Document CVE-2021-4158 and CVE-2021-3947 as fixed (Mark Kanda) [Orabug: 33719302] [Orabug: 33754145] {CVE-2021-4158} {CVE-2021-3947}
+        - hw/block/fdc: Kludge missing floppy drive to fix CVE-2021-20196 (Philippe Mathieu-Daude) [Orabug: 32439466] {CVE-2021-20196}
+        - hw/block/fdc: Extract blk_create_empty_drive() (Philippe Mathieu-Daude) [Orabug: 32439466] {CVE-2021-20196}
+        - net: vmxnet3: validate configuration values during activate (CVE-2021-20203) (Prasad J Pandit) [Orabug: 32559476] {CVE-2021-20203}
+        - lan9118: switch to use qemu_receive_packet() for loopback (Alexander Bulekov) [Orabug: 32560540] {CVE-2021-3416}
+        - pcnet: switch to use qemu_receive_packet() for loopback (Alexander Bulekov) [Orabug: 32560540] {CVE-2021-3416}
+        - rtl8139: switch to use qemu_receive_packet() for loopback (Alexander Bulekov) [Orabug: 32560540] {CVE-2021-3416}
+        - tx_pkt: switch to use qemu_receive_packet_iov() for loopback (Jason Wang) [Orabug: 32560540] {CVE-2021-3416}
+        - sungem: switch to use qemu_receive_packet() for loopback (Jason Wang) [Orabug: 32560540] {CVE-2021-3416}
+        - dp8393x: switch to use qemu_receive_packet() for loopback packet (Jason Wang) [Orabug: 32560540] {CVE-2021-3416}
+        - e1000: switch to use qemu_receive_packet() for loopback (Jason Wang) [Orabug: 32560540] {CVE-2021-3416}
+        - net: introduce qemu_receive_packet() (Jason Wang) [Orabug: 32560540] {CVE-2021-3416}
+        - target/i386: Populate x86_ext_save_areas offsets using cpuid where possible (Paolo Bonzini)
+        - target/i386: Observe XSAVE state area offsets (Paolo Bonzini)
+        - target/i386: Make x86_ext_save_areas visible outside cpu.c (Paolo Bonzini)
+        - target/i386: Pass buffer and length to XSAVE helper (Paolo Bonzini)
+        - target/i386: Clarify the padding requirements of X86XSaveArea (Paolo Bonzini)
+        - target/i386: Consolidate the X86XSaveArea offset checks (Paolo Bonzini)
+        - target/i386: Declare constants for XSAVE offsets (Paolo Bonzini)
+
+        [4.2.1-14.el8]
+        - scsi: fix sense code for EREMOTEIO (Paolo Bonzini) [Orabug: 33537443]
+        - scsi: move host_status handling into SCSI drivers (Hannes Reinecke) [Orabug: 33537443]
+        - scsi: inline sg_io_sense_from_errno() into the callers (Hannes Reinecke) [Orabug: 33537443]
+        - scsi-generic: do not snoop the output of failed commands (Paolo Bonzini) [Orabug: 33537443]
+        - scsi: Add mapping for generic SCSI_HOST status to sense codes (Hannes Reinecke) [Orabug: 33537443]
+        - scsi: Rename linux-specific SG_ERR codes to generic SCSI_HOST error codes (Hannes Reinecke) [Orabug: 33537443]
+        - scsi: drop 'result' argument from command_complete callback (Hannes Reinecke) [Orabug: 33537443]
+        - scsi-disk: pass guest recoverable errors through even for rerror=stop (Paolo Bonzini) [Orabug: 33537443]
+        - scsi-disk: pass SCSI status to scsi_handle_rw_error (Paolo Bonzini) [Orabug: 33537443]
+        - scsi: introduce scsi_sense_from_errno() (Paolo Bonzini) [Orabug: 33537443]
+        - scsi-disk: do not complete requests early for rerror/werror=ignore (Paolo Bonzini) [Orabug: 33537443]
+        - scsi-disk: move scsi_handle_rw_error earlier (Paolo Bonzini) [Orabug: 33537443]
+        - scsi-disk: convert more errno values back to SCSI statuses (Paolo Bonzini) [Orabug: 33537443]
+
+        [4.2.1-13.el8]
+        - pcie: Do not set power state for some hot-plugged devices (Annie Li) [Orabug: 33642532]
+
+        [4.2.1-12.1.el8]
+        - Update slirp to address various CVEs (Mark Kanda) [Orabug: 32208456] [Orabug: 33014409] [Orabug: 33014414] [Orabug: 33014417] [Orabug: 33014420] {CVE-2020-29129} {CVE-2020-29130} {CVE-2021-3592} {CVE-2021-3593} {CVE-2021-3594} {CVE-2021-3595}
+        - hw/pflash_cfi01: Allow backing devices to be smaller than memory region (David Edmondson)
+        - pcie: expire pending delete (Gerd Hoffmann) [Orabug: 33450706]
+        - pcie: fast unplug when slot power is off (Gerd Hoffmann) [Orabug: 33450706]
+        - pcie: factor out pcie_cap_slot_unplug() (Gerd Hoffmann) [Orabug: 33450706]
+        - pcie: add power indicator blink check (Gerd Hoffmann) [Orabug: 33450706]
+        - pcie: implement slot power control for pcie root ports (Gerd Hoffmann) [Orabug: 33450706]
+        - pci: implement power state (Gerd Hoffmann) [Orabug: 33450706]
+        - hw/pci/pcie: Move hot plug capability check to pre_plug callback (Julia Suvorova) [Orabug: 33450706]
+        - hw/pci/pcie: Replace PCI_DEVICE() casts with existing variable (Julia Suvorova) [Orabug: 33450706]
+        - hw/pci/pcie: Forbid hot-plug if it's disabled on the slot (Julia Suvorova) [Orabug: 33450706]
+        - pcie_root_port: Add hotplug disabling option (Julia Suvorova) [Orabug: 33450706]
+        - qdev-monitor: Forbid repeated device_del (Julia Suvorova) [Orabug: 33450706]
+        - i386:acpi: Remove _HID from the SMBus ACPI entry (Corey Minyard)
+        - uas: add stream number sanity checks (Gerd Hoffmann) [Orabug: 33280793] {CVE-2021-3713}
+        - usbredir: fix free call (Gerd Hoffmann) [Orabug: 33198441] {CVE-2021-3682}
+        - hw/scsi/scsi-disk: MODE_PAGE_ALLS not allowed in MODE SELECT commands (Mauro Matteo Cascella) [Orabug: 33548490] {CVE-2021-3930}
+        - e1000: fix tx re-entrancy problem (Jon Maloy) [Orabug: 32560552] {CVE-2021-20257}
+        - virtio-net-pci: Don't use 'efi-virtio.rom' on AArch64 (Mark Kanda) [Orabug: 33537594]
+        - MAINTAINERS: Add ACPI/HEST/GHES entries (Dongjiu Geng)
+        - target-arm: kvm64: handle SIGBUS signal from kernel or KVM (Dongjiu Geng)
+        - ACPI: Record Generic Error Status Block(GESB) table (Dongjiu Geng)
+        - KVM: Move hwpoison page related functions into kvm-all.c (Dongjiu Geng)
+        - ACPI: Record the Generic Error Status Block address (Dongjiu Geng)
+        - ACPI: Build Hardware Error Source Table (Dongjiu Geng)
+        - ACPI: Build related register address fields via hardware error fw_cfg blob (Dongjiu Geng)
+        - docs: APEI GHES generation and CPER record description (Dongjiu Geng)
+        - hw/arm/virt: Introduce a RAS machine option (Dongjiu Geng)
+        - acpi: nvdimm: change NVDIMM_UUID_LE to a common macro (Dongjiu Geng)
+        - block/curl: HTTP header field names are case insensitive (David Edmondson) [Orabug: 33287589]
+        - block/curl: HTTP header fields allow whitespace around values (David Edmondson) [Orabug: 33287589]
+
+        [4.2.1-11.el8]
+        - trace: use STAP_SDT_V2 to work around symbol visibility (Stefan Hajnoczi) [Orabug: 33272428]
+
+        [4.2.1-11.el8]
+        - pvrdma: Fix the ring init error flow (Marcel Apfelbaum) [Orabug: 33120142] {CVE-2021-3608}
+        - pvrdma: Ensure correct input on ring init (Marcel Apfelbaum) [Orabug: 33120146] {CVE-2021-3607}
+        - hw/rdma: Fix possible mremap overflow in the pvrdma device (Marcel Apfelbaum) [Orabug: 33120084] {CVE-2021-3582}
+        - vhost-user-gpu: reorder free calls (Gerd Hoffmann) [Orabug: 32950701] {CVE-2021-3544}
+        - vhost-user-gpu: abstract vg_cleanup_mapping_iov (Li Qiang) [Orabug: 32950716] {CVE-2021-3546}
+        - vhost-user-gpu: fix OOB write in 'virgl_cmd_get_capset' (Li Qiang) [Orabug: 32950716] {CVE-2021-3546}
+        - vhost-user-gpu: fix memory leak in 'virgl_resource_attach_backing' (Li Qiang) [Orabug: 32950701] {CVE-2021-3544}
+        - vhost-user-gpu: fix memory leak in 'virgl_cmd_resource_unref' (Li Qiang) [Orabug: 32950701] {CVE-2021-3544}
+        - vhost-user-gpu: fix memory leak while calling 'vg_resource_unref' (Li Qiang) [Orabug: 32950701] {CVE-2021-3544}
+        - vhost-user-gpu: fix memory leak in vg_resource_attach_backing (Li Qiang) [Orabug: 32950701] {CVE-2021-3544}
+        - vhost-user-gpu: fix resource leak in 'vg_resource_create_2d' (Li Qiang) [Orabug: 32950701] {CVE-2021-3544}
+        - vhost-user-gpu: fix memory disclosure in virgl_cmd_get_capset_info (Li Qiang) [Orabug: 32950708] {CVE-2021-3545}
+        - usb: limit combined packets to 1 MiB (Gerd Hoffmann) [Orabug: 32842778] {CVE-2021-3527}
+        - usb/redir: avoid dynamic stack allocation (Gerd Hoffmann) [Orabug: 32842778] {CVE-2021-3527}
+        - mptsas: Remove unused MPTSASState 'pending' field (Michael Tokarev) [Orabug: 32470463] {CVE-2021-3392}
+        - oslib-posix: initialize backend memory objects in parallel (Mark Kanda) [Orabug: 32555402]
+        - oslib-posix: refactor memory prealloc threads (Mark Kanda) [Orabug: 32555402]
+
+        [4.2.1-10.el8]
+        - e1000: fail early for evil descriptor (Jason Wang) [Orabug: 32560552] {CVE-2021-20257}
+        - Document CVE-2020-27661 as fixed (Mark Kanda) [Orabug: 32960200] {CVE-2020-27661}
+        - block: Avoid stale pointer dereference in blk_get_aio_context() (Greg Kurz)
+        - block: Fix blk->in_flight during blk_wait_while_drained() (Kevin Wolf)
+        - block: Increase BB.in_flight for coroutine and sync interfaces (Kevin Wolf)
+        - block-backend: Reorder flush/pdiscard function definitions (Kevin Wolf)
+        - i386/pc: let iterator handle regions below 4G (Joao Martins)
+        - arm/virt: Add memory hot remove support (Shameer Kolothum) [Orabug: 32643506]
+        - i386/pc: consolidate usable iova iteration (Joao Martins)
+        - i386/acpi: fix SRAT ranges in accordance to usable IOVA (Joao Martins)
+        - migration: increase listening socket backlog (Elena Ufimtseva)
+        - multifd: Make multifd_save_setup() get an Error parameter (Juan Quintela)
+        - multifd: Make multifd_load_setup() get an Error parameter (Juan Quintela)
+        - migration: fix maybe-uninitialized warning (Marc-Andre Lureau)
+        - migration: Fix the re-run check of the migrate-incoming command (Yury Kotov)
+        - multifd: Initialize local variable (Juan Quintela)
+        - multifd: Be consistent about using uint64_t (Juan Quintela)
+        - Bug #1829242 correction. (Alexey Romko)
+        - migration/multifd: fix destroyed mutex access in terminating multifd threads (Jiahui Cen)
+        - migration/multifd: fix nullptr access in terminating multifd threads (Jiahui Cen)
+        - migration/multifd: not use multifd during postcopy (Wei Yang)
+        - migration/multifd: clean pages after filling packet (Wei Yang)
+        - migration: Make sure that we don't call write() in case of error (Juan Quintela)
+        - migration: fix multifd_send_pages() next channel (Laurent Vivier)
+        - migration/multifd: bypass uuid check for initial packet (Elena Ufimtseva) [Orabug: 32610480]
+        - migration/tls: add error handling in multifd_tls_handshake_thread (Hao Wang)
+        - migration/tls: fix inverted semantics in multifd_channel_connect (Hao Wang)
+        - migration/multifd: do not access uninitialized multifd_recv_state (Elena Ufimtseva) [Orabug: 32795384]
+        - io/channel-tls.c: make qio_channel_tls_shutdown thread-safe (Lukas Straub)
+        - qemu.spec: Enable qemu-guest-agent RPM for OL7 (Karl Heubaum) [Orabug: 32415543]
+        - virtio-net: Set mac address to hardware if the peer is vdpa (Cindy Lu)
+        - net: Add vhost-vdpa in show_netdevs() (Cindy Lu)
+        - vhost-vdpa: Add qemu_close in vhost_vdpa_cleanup (Cindy Lu)
+        - hw/virtio/vhost-vdpa: Fix Coverity CID 1432864 (Philippe Mathieu-Daude)
+        - vhost-vdpa: negotiate VIRTIO_NET_F_STATUS with driver (Si-Wei Liu)
+        - configure: Fix build dependencies with vhost-vdpa. (Laurent Vivier)
+        - configure: simplify vhost condition with Kconfig (Marc-Andre Lureau)
+        - vhost-vdpa: add trace-events (Laurent Vivier)
+        - dma/pl330: Fix qemu_hexdump() usage in pl330.c (Mark Kanda)
+        - util/hexdump: introduce qemu_hexdump_line() (Laurent Vivier)
+        - util/hexdump: Reorder qemu_hexdump() arguments (Philippe Mathieu-Daude)
+        - util/hexdump: Convert to take a void pointer argument (Philippe Mathieu-Daude)
+        - net/colo-compare.c: Only hexdump packets if tracing is enabled (Lukas Straub)
+        - vhost-vdpa: batch updating IOTLB mappings (Jason Wang)
+        - vhost: switch to use IOTLB v2 format (Jason Wang)
+        - vhost-vdpa: remove useless variable (Laurent Vivier)
+        - virtio: vdpa: omit check return of g_malloc (Li Qiang)
+        - vhost-vdpa: fix indentation in vdpa_ops (Stefano Garzarella)
+        - virtio-net: check the existence of peer before accessing vDPA config (Jason Wang)
+        - virtio-pci: fix wrong index in virtio_pci_queue_enabled (Yuri Benditovich)
+        - virtio-pci: fix virtio_pci_queue_enabled() (Laurent Vivier)
+        - vhost-vdpa :Fix Coverity CID 1430270 / CID 1420267 (Cindy Lu)
+        - vhost-vdpa: fix the compile issue without kvm (Cindy Lu)
+        - vhost-vdpa: introduce vhost-vdpa net client (Cindy Lu)
+        - vhost-vdpa: introduce vhost-vdpa backend (Cindy Lu)
+        - linux headers: sync to 5.9-rc4 (Jason Wang)
+        - Linux headers: update (Cornelia Huck)
+        - virtio-net: fix rsc_ext compat handling (Cornelia Huck)
+        - linux-headers: update against Linux 5.7-rc3 (Cornelia Huck)
+        - linux-headers: update (Cornelia Huck)
+        - virtiofsd: Pull in kernel's fuse.h (Dr. David Alan Gilbert)
+        - linux-headers: Update (Bharata B Rao)
+        - linux-headers: Update (Greg Kurz)
+        - vhost_net: introduce set_config & get_config (Cindy Lu)
+        - vhost: implement vhost_force_iommu method (Cindy Lu)
+        - vhost: introduce new VhostOps vhost_force_iommu (Cindy Lu)
+        - vhost: implement vhost_vq_get_addr method (Cindy Lu)
+        - vhost: introduce new VhostOps vhost_vq_get_addr (Cindy Lu)
+        - vhost: implement vhost_dev_start method (Cindy Lu)
+        - vhost: introduce new VhostOps vhost_dev_start (Cindy Lu)
+        - vhost: check the existence of vhost_set_iotlb_callback (Jason Wang)
+        - virtio-pci: implement queue_enabled method (Jason Wang)
+        - virtio-bus: introduce queue_enabled method (Jason Wang)
+        - vhost_net: use the function qemu_get_peer (Cindy Lu)
+        - net: introduce qemu_get_peer (Cindy Lu)
+        - vhost: correctly turn on VIRTIO_F_IOMMU_PLATFORM (Jason Wang)
+        - imx7-ccm: add digprog mmio write method (Prasad J Pandit) [Orabug: 31576552] {CVE-2020-15469}
+        - tz-ppc: add dummy read/write methods (Prasad J Pandit) [Orabug: 31576552] {CVE-2020-15469}
+        - spapr_pci: add spapr msi read method (Prasad J Pandit) [Orabug: 31576552] {CVE-2020-15469}
+        - nvram: add nrf51_soc flash read method (Prasad J Pandit) [Orabug: 31576552] {CVE-2020-15469}
+        - prep: add ppc-parity write method (Prasad J Pandit) [Orabug: 31576552] {CVE-2020-15469}
+        - vfio: add quirk device write method (Prasad J Pandit) [Orabug: 31576552] {CVE-2020-15469}
+        - pci-host: designware: add pcie-msi read method (Prasad J Pandit) [Orabug: 31576552] {CVE-2020-15469}
+        - hw/pci-host: add pci-intack write method (Prasad J Pandit) [Orabug: 31576552] {CVE-2020-15469}
+        - oslib-posix: take lock before qemu_cond_broadcast (Bauerchen) [Orabug: 32555402]
+        - oslib-posix: initialize mutex and condition variable (Paolo Bonzini) [Orabug: 32555402]
+        - mem-prealloc: optimize large guest startup (Bauerchen) [Orabug: 32555402]
+        - i386: Add the support for AMD EPYC 3rd generation processors (Babu Moger)
+        - acpi: cpuhp: document CPHP_GET_CPU_ID_CMD command (Igor Mammedov)
+        - acpi: cpuhp: add CPHP_GET_CPU_ID_CMD command (Igor Mammedov)
+        - acpi: cpuhp: spec: add typical usecases (Igor Mammedov)
+        - acpi: cpuhp: spec: clarify store into 'Command data' when 'Command field' == 0 (Igor Mammedov)
+        - acpi: cpuhp: spec: fix 'Command data' description (Igor Mammedov)
+        - acpi: cpuhp: spec: clarify 'CPU selector' register usage and endianness (Igor Mammedov)
+        - acpi: cpuhp: introduce 'Command data 2' field (Igor Mammedov)
+        - x86: ich9: let firmware negotiate 'CPU hot-unplug with SMI' feature (Igor Mammedov)
+        - x86: ich9: factor out 'guest_cpu_hotplug_features' (Igor Mammedov)
+        - x86: acpi: let the firmware handle pending 'CPU remove' events in SMM (Igor Mammedov)
+        - x86: acpi: introduce AcpiPmInfo::smi_on_cpu_unplug (Igor Mammedov)
+        - acpi: cpuhp: introduce 'firmware performs eject' status/control bits (Igor Mammedov)
+        - x68: acpi: trigger SMI before sending hotplug Notify event to OSPM (Igor Mammedov)
+        - x86: acpi: introduce the PCI0.SMI0 ACPI device (Igor Mammedov)
+        - x86: acpi: introduce AcpiPmInfo::smi_on_cpuhp (Igor Mammedov)
+        - x86: ich9: expose 'smi_negotiated_features' as a QOM property (Igor Mammedov)
+        - tests: acpi: mark to be changed tables in bios-tables-test-allowed-diff (Igor Mammedov)
+        - acpi: add aml_land() and aml_break() primitives (Igor Mammedov)
+        - x86: cpuhp: refuse cpu hot-unplug request earlier if not supported (Igor Mammedov)
+        - x86: cpuhp: prevent guest crash on CPU hotplug when broadcast SMI is in use (Igor Mammedov)
+        - x86: lpc9: let firmware negotiate 'CPU hotplug with SMI' features (Igor Mammedov)
+        - q35: implement 128K SMRAM at default SMBASE address (Igor Mammedov)
+        - hw/intc/arm_gic: Fix interrupt ID in GICD_SGIR register (Philippe Mathieu-Daude) [Orabug: 32470471] {CVE-2021-20221}
+        - memory: clamp cached translation in case it points to an MMIO region (Paolo Bonzini) [Orabug: 32252673] {CVE-2020-27821}
+        - hw/sd/sdhci: Fix DMA Transfer Block Size field (Philippe Mathieu-Daude) [Orabug: 32613470] {CVE-2021-3409}
+
+        [4.2.1-6.el8]
+        - i386/pc: Keep PCI 64-bit hole within usable IOVA space (Joao Martins)
+        - pc/cmos: Adjust CMOS above 4G memory size according to 1Tb boundary (Joao Martins)
+        - i386/pc: Round up the hotpluggable memory within valid IOVA ranges (Joao Martins)
+        - i386/pc: Account IOVA reserved ranges above 4G boundary (Joao Martins)
+
+        [4.2.1-5.el8]
+        - hostmem: fix default 'prealloc-threads' count (Mark Kanda)
+        - hostmem: introduce 'prealloc-threads' property (Igor Mammedov)
+        - qom: introduce object_register_sugar_prop (Paolo Bonzini)
+        - migration/multifd: Do error_free after migrate_set_error to avoid memleaks (Pan Nengyuan)
+        - multifd/tls: fix memoryleak of the QIOChannelSocket object when cancelling migration (Chuan Zheng)
+        - migration/multifd: fix hangup with TLS-Multifd due to blocking handshake (Chuan Zheng)
+        - migration/tls: add trace points for multifd-tls (Chuan Zheng)
+        - migration/tls: add support for multifd tls-handshake (Chuan Zheng)
+        - migration/tls: extract cleanup function for common-use (Chuan Zheng)
+        - migration/multifd: fix memleaks in multifd_new_send_channel_async (Pan Nengyuan)
+        - migration/multifd: fix nullptr access in multifd_send_terminate_threads (Zhimin Feng)
+        - migration/tls: add tls_hostname into MultiFDSendParams (Chuan Zheng)
+        - migration/tls: extract migration_tls_client_create for common-use (Chuan Zheng)
+        - migration/tls: save hostname into MigrationState (Chuan Zheng)
+        - tests/qtest: add a test case for pvpanic-pci (Mihai Carabas)
+        - pvpanic : update pvpanic spec document (Mihai Carabas)
+        - hw/misc/pvpanic: add PCI interface support (Mihai Carabas)
+        - hw/misc/pvpanic: split-out generic and bus dependent code (Mihai Carabas)
+        - qemu-img: Add --target-is-zero to convert (David Edmondson)
+        - 9pfs: Fully restart unreclaim loop (CVE-2021-20181) (Greg Kurz) [Orabug: 32441198] {CVE-2021-20181}
+        - ide: atapi: check logical block address and read size (CVE-2020-29443) (Prasad J Pandit) [Orabug: 32393835] {CVE-2020-29443}
+        - Document CVE-2019-20808 as fixed (Mark Kanda) [Orabug: 32339196] {CVE-2019-20808}
+        - block/iscsi:fix heap-buffer-overflow in iscsi_aio_ioctl_cb (Chen Qun) [Orabug: 32339207] {CVE-2020-11947}
+        - net: remove an assert call in eth_get_gso_type (Prasad J Pandit) [Orabug: 32102583] {CVE-2020-27617}
+        - nvdimm: honor -object memory-backend-file, readonly=on option (Stefan Hajnoczi) [Orabug: 32265408]
+        - hostmem-file: add readonly=on|off option (Stefan Hajnoczi) [Orabug: 32265408]
+        - memory: add readonly support to memory_region_init_ram_from_file() (Stefan Hajnoczi) [Orabug: 32265408]
+
+        [4.2.1-4.el8]
+        - Document CVE-2020-25723 as fixed (Mark Kanda) [Orabug: 32222397] {CVE-2020-25723}
+        - hw/net/e1000e: advance desc_offset in case of null descriptor (Prasad J Pandit) [Orabug: 32217517] {CVE-2020-28916}
+        - i386: Add 2nd Generation AMD EPYC processors (Babu Moger) [Orabug: 32217570]
+        - libslirp: Update version to include CVE fixes (Mark Kanda) [Orabug: 32208456] [Orabug: 32208462] {CVE-2020-29129} {CVE-2020-29130}
+        - Document CVE-2020-25624 as fixed (Mark Kanda) [Orabug: 32212527] {CVE-2020-25624}
+        - pvpanic: Advertise the PVPANIC_CRASHLOADED event support (Paolo Bonzini) [Orabug: 32102853]
+        - ati: check x y display parameter values (Prasad J Pandit) [Orabug: 32108251] {CVE-2020-27616}
+        - Add AArch64 support for QMP regdump tool and sosreport plugin (Mark Kanda) [Orabug: 32080658]
+        - Add qemu_regdump sosreport plugin support for '-mon' QMP sockets (Mark Kanda)
+        - migration/dirtyrate: present dirty rate only when querying the rate has completed (Chuan Zheng)
+        - migration/dirtyrate: record start_time and calc_time while at the measuring state (Chuan Zheng)
+        - migration/dirtyrate: Add trace_calls to make it easier to debug (Chuan Zheng)
+        - migration/dirtyrate: Implement qmp_cal_dirty_rate()/qmp_get_dirty_rate() function (Chuan Zheng)
+        - migration/dirtyrate: Implement calculate_dirtyrate() function (Chuan Zheng)
+        - migration/dirtyrate: Implement set_sample_page_period() and is_sample_period_valid() (Chuan Zheng)
+        - migration/dirtyrate: skip sampling ramblock with size below MIN_RAMBLOCK_SIZE (Chuan Zheng)
+        - migration/dirtyrate: Compare page hash results for recorded sampled page (Chuan Zheng)
+        - migration/dirtyrate: Record hash results for each sampled page (Chuan Zheng)
+        - migration/dirtyrate: move RAMBLOCK_FOREACH_MIGRATABLE into ram.h (Chuan Zheng)
+        - migration/dirtyrate: Add dirtyrate statistics series functions (Chuan Zheng)
+        - migration/dirtyrate: Add RamblockDirtyInfo to store sampled page info (Chuan Zheng)
+        - migration/dirtyrate: add DirtyRateStatus to denote calculation status (Chuan Zheng)
+        - migration/dirtyrate: setup up query-dirtyrate framwork (Chuan Zheng)
+        - ram_addr: Split RAMBlock definition (Juan Quintela)
+
+        [4.2.1-3.el8]
+        - qemu-kvm.spec: Install block storage module RPMs by default (Karl Heubaum) [Orabug: 31943789]
+        - qemu-kvm.spec: Enable block-ssh module RPM (Karl Heubaum) [Orabug: 31943763]
+        - hw: usb: hcd-ohci: check for processed TD before retire (Prasad J Pandit) [Orabug: 31901690] {CVE-2020-25625}
+        - hw: usb: hcd-ohci: check len and frame_number variables (Prasad J Pandit) [Orabug: 31901690] {CVE-2020-25625}
+        - hw: ehci: check return value of 'usb_packet_map' (Li Qiang) [Orabug: 31901649] {CVE-2020-25084}
+        - hw: xhci: check return value of 'usb_packet_map' (Li Qiang) [Orabug: 31901649] {CVE-2020-25084}
+        - usb: fix setup_len init (CVE-2020-14364) (Gerd Hoffmann) [Orabug: 31848849] {CVE-2020-14364}
+        - Document CVE-2020-12829 and CVE-2020-14415 as fixed (Mark Kanda) [Orabug: 31855502] [Orabug: 31855427] {CVE-2020-12829} {CVE-2020-14415}
+
+        [4.2.1-2.el8]
+        - hw/net/xgmac: Fix buffer overflow in xgmac_enet_send() (Mauro Matteo Cascella) [Orabug: 31667649] {CVE-2020-15863}
+        - hw/net/net_tx_pkt: fix assertion failure in net_tx_pkt_add_raw_fragment() (Mauro Matteo Cascella) [Orabug: 31737809] {CVE-2020-16092}
+        - migration: fix memory leak in qmp_migrate_set_parameters (Zheng Chuan) [Orabug: 31806256]
+        - virtio-net: fix removal of failover device (Juan Quintela) [Orabug: 31806255]
+        - pvpanic: introduce crashloaded for pvpanic (zhenwei pi) [Orabug: 31677154]
+
+        [4.2.1-1.el8]
+        - hw/sd/sdcard: Do not switch to ReceivingData if address is invalid (Philippe Mathieu-Daude)  [Orabug: 31414336]  {CVE-2020-13253}
+        - hw/sd/sdcard: Update coding style to make checkpatch.pl happy (Philippe Mathieu-Daude)  [Orabug: 31414336]
+        - hw/sd/sdcard: Do not allow invalid SD card sizes (Philippe Mathieu-Daude)  [Orabug: 31414336]  {CVE-2020-13253}
+        - hw/sd/sdcard: Simplify realize() a bit (Philippe Mathieu-Daude)  [Orabug: 31414336]
+        - hw/sd/sdcard: Restrict Class 6 commands to SCSD cards (Philippe Mathieu-Daude)  [Orabug: 31414336]
+        - libslirp: Update to v4.3.1 to fix CVE-2020-10756 (Karl Heubaum)  [Orabug: 31604999]  {CVE-2020-10756}
+        - Document CVEs as fixed 2/2 (Karl Heubaum)  [Orabug: 30618035]  {CVE-2017-18043} {CVE-2018-10839} {CVE-2018-11806} {CVE-2018-12617} {CVE-2018-15746} {CVE-2018-16847} {CVE-2018-16867} {CVE-2018-17958} {CVE-2018-17962} {CVE-2018-17963} {CVE-2018-18849} {CVE-2018-19364} {CVE-2018-19489} {CVE-2018-3639} {CVE-2018-5683} {CVE-2018-7550} {CVE-2018-7858} {CVE-2019-12068} {CVE-2019-15034} {CVE-2019-15890} {CVE-2019-20382} {CVE-2020-10702} {CVE-2020-10761} {CVE-2020-11102} {CVE-2020-11869} {CVE-2020-13361} {CVE-2020-13765} {CVE-2020-13800} {CVE-2020-1711} {CVE-2020-1983} {CVE-2020-8608}
+        - Document CVEs as fixed 1/2 (Karl Heubaum)  [Orabug: 30618035]  {CVE-2017-10806} {CVE-2017-11334} {CVE-2017-12809} {CVE-2017-13672} {CVE-2017-13673} {CVE-2017-13711} {CVE-2017-14167} {CVE-2017-15038} {CVE-2017-15119} {CVE-2017-15124} {CVE-2017-15268} {CVE-2017-15289} {CVE-2017-16845} {CVE-2017-17381} {CVE-2017-18030} {CVE-2017-2630} {CVE-2017-2633} {CVE-2017-5715} {CVE-2017-5753} {CVE-2017-5754} {CVE-2017-5931} {CVE-2017-6058} {CVE-2017-7471} {CVE-2017-7493} {CVE-2017-8112} {CVE-2017-8309} {CVE-2017-8379} {CVE-2017-8380} {CVE-2017-9503} {CVE-2017-9524} {CVE-2018-12126} {CVE-2018-12127} {CVE-2018-12130} {CVE-2018-16872} {CVE-2018-20123} {CVE-2018-20124} {CVE-2018-20125} {CVE-2018-20126} {CVE-2018-20191} {CVE-2018-20216} {CVE-2018-20815} {CVE-2019-11091} {CVE-2019-12155} {CVE-2019-14378} {CVE-2019-3812} {CVE-2019-5008} {CVE-2019-6501} {CVE-2019-6778} {CVE-2019-8934} {CVE-2019-9824}
+        - qemu-kvm.spec: Add .spec file for OL8 (Karl Heubaum)  [Orabug: 30618035]
+        - qemu.spec: Add .spec file for OL7 (Karl Heubaum)  [Orabug: 30618035]
+        - qemu-submodule-init: Add Git submodule init script (Karl Heubaum)  [Orabug: 30618035]
+        - vhost.conf: Initial vhost.conf (Karl Heubaum)  [Orabug: 30618035]
+        - parfait: Add buildrpm/parfait-qemu.conf (Karl Heubaum)  [Orabug: 30618035]
+        - virtio: Set PCI subsystem vendor ID to Oracle (Karl Heubaum)  [Orabug: 30618035]
+        - qemu_regdump.py: Initial qemu_regdump.py (Karl Heubaum)  [Orabug: 30618035]
+        - qmp-regdump: Initial qmp-regdump (Karl Heubaum)  [Orabug: 30618035]
+        - bridge.conf: Initial bridge.conf (Karl Heubaum)  [Orabug: 30618035]
+        - kvm.conf: Initial kvm.conf (Karl Heubaum)  [Orabug: 30618035]
+        - 80-kvm.rules: Initial 80-kvm.rules (Karl Heubaum)  [Orabug: 30618035]
+        - exec: set map length to zero when returning NULL (Prasad J Pandit)  [Orabug: 31439733]  {CVE-2020-13659}
+        - megasas: use unsigned type for reply_queue_head and check index (Prasad J Pandit)  [Orabug: 31414338]  {CVE-2020-13362}
+        - memory: Revert 'memory: accept mismatching sizes in memory_region_access_valid' (Michael S. Tsirkin)  [Orabug: 31439736] [Orabug: 31452202]  {CVE-2020-13754} {CVE-2020-13791}
+
+        [4.1.1-3.el8]
+        - buildrpm/spec files: Don't package elf2dmp (Karl Heubaum)  [Orabug: 31657424]
+        - qemu-kvm.spec: Enable the block-curl package (Karl Heubaum)  [Orabug: 31657424]
+        - qemu.spec: enable have_curl in spec (Dongli Zhang)  [Orabug: 31657424]
+
+        [4.1.1-2.el8]
+        - Document CVE-2020-13765 as fixed (Karl Heubaum)  [Orabug: 31463250]  {CVE-2020-13765}
+        - kvm: Reallocate dirty_bmap when we change a slot (Dr. David Alan Gilbert)  [Orabug: 31076399]
+        - kvm: split too big memory section on several memslots (Igor Mammedov)  [Orabug: 31076399]
+        - target/i386: do not set unsupported VMX secondary execution controls (Vitaly Kuznetsov)  [Orabug: 31463710]
+        - target/i386: add VMX definitions (Paolo Bonzini)  [Orabug: 31463710]
+        - ati-vga: check mm_index before recursive call (CVE-2020-13800) (Prasad J Pandit)  [Orabug: 31452206]  {CVE-2020-13800}
+        - es1370: check total frame count against current frame (Prasad J Pandit)  [Orabug: 31463235]  {CVE-2020-13361}
+        - ati-vga: Fix checks in ati_2d_blt() to avoid crash (BALATON Zoltan)  [Orabug: 31238432]  {CVE-2020-11869}
+        - libslirp: Update to stable-4.2 to fix CVE-2020-1983 (Karl Heubaum)  [Orabug: 31241227]  {CVE-2020-1983}
+        - Document CVEs as fixed (Karl Heubaum)   {CVE-2019-12068} {CVE-2019-15034}
+        - libslirp: Update to version 4.2.0 to fix CVEs (Karl Heubaum)  [Orabug: 30274592] [Orabug: 30869830]  {CVE-2019-15890} {CVE-2020-8608}
+        - target/i386: add support for MSR_IA32_TSX_CTRL (Paolo Bonzini)  [Orabug: 31124041]
+        - qemu-img: Add --target-is-zero to convert (David Edmondson)
+        - vnc: fix memory leak when vnc disconnect (Li Qiang)  [Orabug: 30996427]  {CVE-2019-20382}
+        - iscsi: Cap block count from GET LBA STATUS (CVE-2020-1711) (Felipe Franciosi)  [Orabug: 31124035]  {CVE-2020-1711}
+        - qemu.spec: Remove 'BuildRequires: kernel' (Karl Heubaum)  [Orabug: 31124047]
+
+        seabios
+        sgabios
+        supermin
+        [5.2.1-2.0.1.el8]
+        - Rebuild [Orabug: 35720304]
+
+        [5.2.1-2.el8]
+        - Supermin should ignore +debug kernels
+          resolves: rhbz#2051332
+        - Add copy-patches script.
+
+        [5.2.1-1.el8]
+        - Resolves: bz#2000225
+          (Rebase virt:rhel module:stream based on AV-8.6)
+
+        [5.1.19]
+        - Resolves: bz#1810193
+          (Upgrade components in virt:rhel module:stream for RHEL-8.3 release)
+
+        [5.1.19-9]
+        - Rebuild all virt packages to fix RHEL's upgrade path
+        - Resolves: rhbz#1695587
+          (Ensure modular RPM upgrade path)
+
+        [5.1.19-8]
+        - Pass CFLAGS & LDFLAGS to final supermin link
+          resolves: rhbz#1624175
+
+        [5.1.19-7]
+        - Rebuild for OCaml 4.07.0.
+
+        [5.1.19-6]
+        - Drop dietlibc in RHEL 8
+          resolves: rhbz#1588067
+
+        [5.1.19-5]
+        - Bump release and rebuild.
+
+        [5.1.19-4]
+        - Reenable hardened build
+
+        [5.1.19-3]
+        - Fix bytes/string problems.
+
+        [5.1.19-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+        [5.1.19-1]
+        - New upstream version 5.1.19.
+        - Remove all patches, now upstream.
+
+        [5.1.18-5]
+        - Rebuilt for RPM soname bump
+
+        [5.1.18-4]
+        - Fix supermin crash with truncated vmlinuz file (RHBZ#1477758).
+        - Include all upstream patches since 5.1.18.
+
+        [5.1.18-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
+        [5.1.18-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+        [5.1.18-1]
+        - New upstream release 5.1.18.
+        - Fixes problem with creating incorrect symlinks (RHBZ#1470157).
+
+        [5.1.17-5]
+        - Enable dietlibc on aarch64 and POWER.
+
+        [5.1.17-4]
+        - Drop dependency on hawkey and versioned dependencies on dnf.
+
+        [5.1.17-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+        [5.1.17-2]
+        - Rebuild for OCaml 4.04.0.
+
+        [5.1.17-1]
+        - New upstream release 5.1.17.
+        - Check signature on the tarball before unpacking it.
+        - Remove patches, all upstream.
+
+        [5.1.16-6]
+        - Switch to dietlibc on s390x
+
+        [5.1.16-5]
+        - Do not break the binary on interpreted builds (#1375213)
+
+        [5.1.16-4]
+        - Add all upstream patches since 5.1.16 was released.
+
+        [5.1.16-3]
+        - Add upstream patch for DAX / vNVDIMM support.
+
+        [5.1.16-2]
+        - New upstream version 5.1.16.
+        - Drop all patches since they are upstream.
+        - Depend on systemd-udev to work around RHBZ#1331012.
+
+        [5.1.15-2]
+        - Add all upstream patches since 5.1.15 was released.
+        - These should improve boot performance and initrd size.
+
+        [5.1.15-1]
+        - New upstream version 5.1.15.
+        - Remove all patches, since they are now included in this version.
+        - Enable dietlibc, remove glibc-static, xz-static, zlib-static.
+
+        [5.1.14-4]
+        - Add more patches since 5.1.14.
+
+        [5.1.14-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+        [5.1.14-2]
+        - Add all patches since 5.1.14.
+
+        [5.1.14-1]
+        - New upstream version 5.1.14.
+        - Remove all patches - now upstream.
+
+        [5.1.13-4]
+        - Pull in all upstream patches since 5.1.13.
+        - Choose providers better (RHBZ#1266918).
+        - Use autopatch.
+        - Explicitly depend on pod2html.
+
+        [5.1.13-3]
+        - Bump version to rebuild against new RPM in Rawhide.
+
+        [5.1.13-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+        [5.1.13-1]
+        - New upstream version 5.1.13.
+        - Remove patch, now upstream.
+
+        [5.1.12-11]
+        - Prefer 'dnf download' over 'yumdownloader' (again).
+        - BR grubby for the tests to work.
+
+        [5.1.12-9]
+        - Revert back to yumdownloader (RHBZ#1186948).
+
+        [5.1.12-8]
+        - Prefer 'dnf download' over 'yumdownloader'.
+
+        [5.1.12-7]
+        - Disable hardened build again.  See RHBZ#1202091 RHBZ#1204162.
+
+        [5.1.12-6]
+        - Enable hardening flags by building the static 'init' specially
+          before the main build.
+        - Use _smp_mflags.
+
+        [5.1.12-4]
+        - Add a -devel subpackage containing automated RPM dependency generator
+          for supermin appliances.
+
+        [5.1.12-2]
+        - Disable hardened build as it breaks building the static 'init' binary.
+
+        [5.1.12-1]
+        - New upstream version 5.1.12.
+        - Includes ARM fix: lpae kernels can now be booted (RHBZ#1199733).
+
+        [5.1.11-2]
+        - Rebuild for xz-5.2.0 in Rawhide (RHBZ#1179252).
+
+        [5.1.11-1]
+        - New upstream version 5.1.11.
+
+        [5.1.10-2]
+        - Update to upstream commit d78c898c7e2bc5f12cbebef98b95a7908d9120f1.
+        - BR rpm-devel, since it is now used instead of invoking rpm.
+        - BR automake and autoconf, and run autoreconf (configure.ac is modified by
+          the patches).
+
+        [5.1.10-1]
+        - New upstream version 5.1.10.
+        - Remove patch which is now included upstream.
+
+        [5.1.9-3]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
+        [5.1.9-2]
+        - Add upstream patch to avoid endless loop in Rawhide.
+
+        [5.1.9-1]
+        - New upstream version 5.1.9.
+        - Remove patches which are now upstream.
+
+        [5.1.8-9]
+        - Add Requires findutils (RHBZ#1113029).
+
+        [5.1.8-8]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+        [5.1.8-7]
+        - Add patch to fix RPM handler when filenames may contain spaces.
+
+        [5.1.8-4]
+        - Skip execstack test on Fedora 20 (ARM only).
+
+        [5.1.8-3]
+        - BR xz-static & xz-devel packages, to support xz-compressed kernel modules.
+
+        [5.1.8-1]
+        - New upstream version 5.1.8.
+        - Remove patches which are now upstream.
+
+        [5.1.7-3]
+        - Add upstream patch which removes need to run execstack (RHBZ#1093261).
+
+        [5.1.7-2]
+        - Add patch to fix quoting around mke2fs parameter (RHBZ#1084960).
+
+        [5.1.7-1]
+        - New upstream version 5.1.7.
+        - Remove ppc64p7 patch which is now upstream.
+
+        [5.1.6-5]
+        - Requires tar, which is not installed in an @Core installation.
+
+        [5.1.6-4]
+        - Add upstream patch to fix supermin on ppc64p7.
+
+        [5.1.6-3]
+        - New upstream version 5.1.6.
+        - Fix tests.
+
+        [5.1.5-2]
+        - Disable execstack on aarch64.
+          It comes from prelink which does not exist on aarch64.
+
+        [5.1.5-1]
+        - New upstream version 5.1.5.
+
+        [5.1.3-1]
+        - New upstream version 5.1.3.
+
+        [5.1.2-1]
+        - New upstream version 5.1.2.
+        - Fixes a serious bug in --build mode.
+
+        [5.1.1-1]
+        - New upstream version 5.1.1.
+        - Remove patch which is now upstream.
+
+        [5.1.0-3]
+        - Add BR yum-utils (for yumdownloader).
+        - Add upstream patch which stops duplicate packages appearing.
+
+        [5.1.0-2]
+        - New upstream version 5.1.0.
+        - Note this is effectively a rewrite, and is not completely compatible.
+        - There is no separate 'supermin-helper' subpackage any more.
+        - Requires rpm instead of yum.
+
+        [4.1.6-2]
+        - New upstream version 4.1.6.
+        - Should fix all autotools brokenness.
+        - Man pages are now all in section 1.
+        - Remove patch which is now upstream.
+        - +BR /usr/bin/execstack (from prelink).
+
+        [4.1.5-5]
+        - Rerun autoreconf to fix autotools brokenness.
+
+        [4.1.5-4]
+        - Why was prelink required?  Remove it.
+
+        [4.1.5-3]
+        - correct Obsoletes version for febootstrap and febootstrap-supermin-helper
+
+        [4.1.5-2]
+        - (For ARM) Don't crash if SUPERMIN_DTB is set and --dtb not specified.
+
+        [4.1.5-1]
+        - New upstream version 4.1.5.
+        - Has (optionally) a new command line syntax.
+        - Supports device trees for ARM.
+
+        [4.1.4-1]
+        - New upstream version 4.1.4.
+        - Supports compressed cpio image files, experimentally.
+
+        [4.1.3-1]
+        - New upstream version 4.1.3.
+        - Remove patch which is now upstream.
+        - Add examples directory to documentation.
+
+        [4.1.2-2]
+        - Include upstream patch to get correct directory setgid/sticky bits in
+          the appliance.
+
+        [4.1.2-1]
+        - New upstream version 4.1.2.
+        - Remove patch which is now upstream.
+
+        [4.1.1-2]
+        - Add upstream patch to ignore ghost non-regular files.
+        - This fixes builds on Fedora 20 because the filesystem package has
+          been changed so /var/lock and /var/run are marked as ghost.
+
+        [4.1.1-1]
+        - New upstream version 4.1.1.
+        - The program has been renamed 'supermin' from 'febootstrap'.
+        - Obsolete, but don't Provide because supermin is not a compatible replacement.
+        - Use '_isa' to specify architecture of supermin-helper subpackage.
+
+        [1:3.21-2]
+        - Add upstream patch to drop supplemental groups (RHBZ#902476).
+        - Remove 'Group:' RPM headers which are no longer necessary.
+        - Remove some commented-out requirements.
+
+        [1:3.21-1]
+        - New upstream version 3.21.
+
+        [1:3.20-1]
+        - New upstream version 3.20.
+
+        [1:3.19-2]
+        - Work around brokenness in yum (RHBZ#850913).
+        - Remove defattr, no longer required.
+
+        [1:3.19-1]
+        - New upstream version 3.19.
+
+        [3.18-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
+        [3.18-1]
+        - New upstream version 3.18.
+        - This adds support for EPEL 5.
+
+        [3.17-1]
+        - New upstream version 3.17.
+
+        [3.16-1]
+        - New upstream version 3.16.
+
+        [3.15-1]
+        - New upstream version 3.15.
+        - This version includes root=<device> support, needed for libguestfs
+          with virtio-scsi.
+        - Remove upstream patch.
+
+        [3.14-6]
+        - For RHEL 7 only, add ExclusiveArch x86-64.
+
+        [3.14-5]
+        - Bundled gnulib (RHBZ#821752).
+
+        [3.14-4]
+        - Add back explicit dependencies for external programs.
+
+        [3.14-3]
+        - Drop ExclusiveArch as it's supported on all primary & secondary arches
+        - Cleanup spec and deps
+
+        [3.14-2]
+        - New upstream version 3.14.
+        - Add upstream patch to fix RHBZ#808421.
+
+        [3.13-4]
+        - e2fsprogs moved /sbin/mke2fs to /usr/sbin (thanks Eric Sandeen).
+
+        [3.13-2]
+        - Missing BR zlib-static.
+
+        [3.13-1]
+        - New upstream version 3.13.
+        - Remove upstream patch which is included in this version.
+
+        [3.12-5]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
+        [3.12-4]
+        - Depend on latest e2fsprogs (RHBZ#771310).
+
+        [3.12-2]
+        - Include upstream patch to work around Python stupidity.
+
+        [3.12-1]
+        - New upstream version 3.12.
+        - Remove upstream patch which is included in this version.
+
+        [3.11-2]
+        - Add upstream patch to fix febootstrap on non-Debian.
+
+        [3.11-1]
+        - New upstream version 3.11.
+
+        [3.10-1]
+        - New upstream version 3.10.
+
+        [3.9-1]
+        - New upstream version 3.9.
+
+        [3.8-1]
+        - New upstream version 3.8.
+
+        [3.7-1]
+        - New upstream version 3.7.
+
+        [3.6-1]
+        - New upstream version 3.6.
+        - This version no longer needs external insmod.static.
+
+        [3.5-1]
+        - New upstream version 3.5.
+        - Remove patch which is now upstream.
+
+        [3.4-2]
+        - Don't fail if objects are created in a symlinked dir (RHBZ#698089).
+
+        [3.4-1]
+        - New upstream version 3.4.
+        - febootstrap-supermin-helper Obsoletes older versions of febootstrap.
+
+        [3.3-5]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+        [3.3-4]
+        - Split package into febootstrap (for building) and febootstrap-supermin-helper
+          (for running).  Note that febootstrap depends on febootstrap-supermin-helper,
+          but you can install febootstrap-supermin-helper on its own.
+
+        [3.3-3]
+        - Clear executable stack flag on febootstrap-supermin-helper.
+
+        [3.3-2]
+        - add the ocaml's ExclusiveArch
+
+        [3.3-1]
+        - New upstream version 3.3.
+
+        [3.2-1]
+        - New upstream version 3.2.
+        - Remove upstream patches.
+
+        [3.1-5]
+        - Previous fix for RHBZ#654638 didn't work, fix it correctly.
+
+        [3.1-4]
+        - Properly ignore .*.hmac files (accidental reopening of RHBZ#654638).
+
+        [3.1-3]
+        - Uses yumdownloader at runtime, so require yum-utils.
+
+        [3.1-2]
+        - New upstream version 3.1.
+        - BR insmod.static.
+
+        [3.0-2]
+        - New upstream version 3.0 (note this is incompatible with 2.x).
+        - Fix upstream URLs.
+        - fakeroot, fakechroot no longer required.
+        - insmod.static is required at runtime (missing dependency from earlier).
+        - The only programs are 'febootstrap' and 'febootstrap-supermin-helper'.
+        - BR ocaml, ocaml-findlib-devel.
+        - No examples are provided with this version of febootstrap.
+
+        [2.11-1]
+        - New upstream version 2.11.
+        - Fixes 'ext2fs_mkdir .. No free space in directory' bug which affects
+          libguestfs on rawhide.
+
+        [2.10-1]
+        - New upstream version 2.10.
+        - Adds -u and -g options to febootstrap-supermin-helper which are
+          required by virt-v2v.
+
+        [2.9-1]
+        - New upstream version 2.9.
+        - Fixes directory ordering problem in febootstrap-supermin-helper.
+
+        [2.8-1]
+        - New upstream version 2.8.
+
+        [2.8-0.2]
+        - New pre-release version of 2.8.
+          + Note this is based on 2.7 + mailing list patches.
+        - New BRs on mke2fs, libext2fs, glibc-static.
+
+        [2.7-2]
+        - New upstream version 2.7.
+        - febootstrap-supermin-helper shell script rewritten in C for speed.
+        - This package contains C code so it is no longer 'noarch'.
+        - MAKEDEV isn't required.
+
+        [2.6-1]
+        - New upstream release 2.6.
+        - Recheck package in rpmlint.
+
+        [2.5-2]
+        - New upstream release 2.5.
+        - Remove BR upx (not needed by upstream).
+        - Two more scripts / manpages.
+
+        [2.4-1]
+        - New upstream release 2.4.
+
+        [2.3-2]
+        - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+        [2.3-1]
+        - New upstream release 2.3.
+
+        [2.2-1]
+        - New upstream release 2.2.
+
+        [2.0-1]
+        - New upstream release 2.0.
+
+        [1.9-1]
+        - New upstream release 1.9.
+
+        [1.8-1]
+        - New upstream release 1.8.
+
+        [1.7-1]
+        - New upstream release 1.7.
+
+        [1.5-3]
+        - Configure script has (unnecessary) BuildRequires on fakeroot,
+          fakechroot, yum.
+
+        [1.5-2]
+        - Initial build for Fedora.
+
+        swtpm
+        virt-v2v
+    FixedIn:
+        - Module: virt:kvm_utils3
+          Name: hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: hivex-devel
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-appliance
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-bash-completion
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-gfs2
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-gobject
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-gobject-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-inspect-icons
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-java
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-java-devel
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-javadoc
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-man-pages-ja
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-man-pages-uk
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-rescue
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-rsync
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-tools
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-tools-c
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-winsupport
+          NamespaceName: ol:8
+          Version: 0:8.10-1.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libguestfs-xfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libiscsi
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libiscsi-devel
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libiscsi-utils
+          NamespaceName: ol:8
+          Version: 0:1.18.0-8.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libnbd
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libnbd-bash-completion
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libnbd-devel
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libtpms
+          NamespaceName: ol:8
+          Version: 0:0.9.1-2.20211126git1ff6fe1f43.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libtpms-devel
+          NamespaceName: ol:8
+          Version: 0:0.9.1-2.20211126git1ff6fe1f43.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-client
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-client-qemu
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-config-network
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-config-nwfilter
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-interface
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-network
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-nodedev
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-nwfilter
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-qemu
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-secret
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-core
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-disk
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-gluster
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-iscsi
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-iscsi-direct
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-logical
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-mpath
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-rbd
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-driver-storage-scsi
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-daemon-kvm
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-dbus
+          NamespaceName: ol:8
+          Version: 0:1.3.0-2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-devel
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-docs
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-libs
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-lock-sanlock
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-nss
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: libvirt-wireshark
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: lua-guestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdfuse
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-bash-completion
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-basic-filters
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-basic-plugins
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-curl-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-devel
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-example-plugins
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-gzip-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-gzip-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-linuxdisk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-nbd-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-python-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-server
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-ssh-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-tar-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-tar-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-tmpdisk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-vddk-plugin
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: nbdkit-xz-filter
+          NamespaceName: ol:8
+          Version: 0:1.24.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: netcf
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: netcf-devel
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: netcf-libs
+          NamespaceName: ol:8
+          Version: 0:0.2.8-12.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: perl-Sys-Guestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: perl-Sys-Virt
+          NamespaceName: ol:8
+          Version: 0:8.0.0-1.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: perl-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: python3-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: python3-libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: python3-libnbd
+          NamespaceName: ol:8
+          Version: 0:1.6.0-5.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: python3-libvirt
+          NamespaceName: ol:8
+          Version: 0:9.0.0-6.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-guest-agent
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-img
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-curl
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-gluster
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-iscsi
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-rbd
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-block-ssh
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-common
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-kvm-core
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: qemu-virtiofsd
+          NamespaceName: ol:8
+          Version: 15:7.2.0-15.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: ruby-hivex
+          NamespaceName: ol:8
+          Version: 0:1.3.18-23.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: ruby-libguestfs
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: seabios
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: seabios-bin
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: seavgabios-bin
+          NamespaceName: ol:8
+          Version: 0:1.16.0-4.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: sgabios
+          NamespaceName: ol:8
+          Version: 1:0.20170427git-3.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: sgabios-bin
+          NamespaceName: ol:8
+          Version: 1:0.20170427git-3.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: supermin
+          NamespaceName: ol:8
+          Version: 0:5.2.1-2.0.1.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: supermin-devel
+          NamespaceName: ol:8
+          Version: 0:5.2.1-2.0.1.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm-devel
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm-libs
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm-tools
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: swtpm-tools-pkcs11
+          NamespaceName: ol:8
+          Version: 0:0.7.0-4.20211109gitb79fd91.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-dib
+          NamespaceName: ol:8
+          Version: 1:1.44.0-9.0.2.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-v2v
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-v2v-bash-completion
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-v2v-man-pages-ja
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+        - Module: virt:kvm_utils3
+          Name: virt-v2v-man-pages-uk
+          NamespaceName: ol:8
+          Version: 1:1.42.0-22.module+el8.10.0+90377+6a12a345
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-12604.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-26327.html
+              Name: CVE-2024-26327
+            - Link: https://linux.oracle.com/cve/CVE-2024-26328.html
+              Name: CVE-2024-26328
+            - Link: https://linux.oracle.com/cve/CVE-2024-3446.html
+              Name: CVE-2024-3446
+            - Link: https://linux.oracle.com/cve/CVE-2024-4418.html
+              Name: CVE-2024-4418
+            - Link: https://linux.oracle.com/cve/CVE-2024-4467.html
+              Name: CVE-2024-4467
+        Issued: "2024-09-02"
+        RefId: ELSA-2024-12604
+    Name: ELSA-2024-12604
+    NamespaceName: ol:8
+    Severity: High
