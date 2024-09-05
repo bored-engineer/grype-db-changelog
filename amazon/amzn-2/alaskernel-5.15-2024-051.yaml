@@ -1,0 +1,73 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:tls: fix race between tx work scheduling and socket closeSimilarly to previous commit, the submitting thread (recvmsg/sendmsg)may exit as soon as the async crypto handler calls complete().Reorder scheduling the work before calling complete().This seems more logical in the first place, as it''sthe inverse order of what the submitting thread will do. (CVE-2024-26585)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: use timestamp to check for set element timeout (CVE-2024-27397)In the Linux kernel, the following vulnerability has been resolved:drm/i915/gem: Fix Virtual Memory mapping boundaries calculation (CVE-2024-42259)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.15.165-110.161
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.165-110.161.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASKERNEL-5.15-2024-051.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-26585
+            - Name: CVE-2024-27397
+            - Name: CVE-2024-42259
+    Name: ALASKERNEL-5.15-2024-051
+    NamespaceName: amzn:2
+    Severity: Medium
