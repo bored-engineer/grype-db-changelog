@@ -1,0 +1,21 @@
+Vulnerability:
+    Description: 'A potentially exploitable type confusion could be triggered when looking up a property name on an object being used as the `with` environment. This vulnerability affects Firefox < 130, Firefox ESR < 128.2, and Firefox ESR < 115.15. (CVE-2024-8381)Internal browser event interfaces were exposed to web content when privileged EventHandler listener callbacks ran for those events. Web content that tried to use those interfaces would not be able to use them with elevated privileges, but their presence would indicate certain browser features had been used, such as when a user opened the Dev Tools console. This vulnerability affects Firefox < 130, Firefox ESR < 128.2, and Firefox ESR < 115.15. (CVE-2024-8382)The Mozilla Foundation''s Security Advisory reveals that Firefox didn''t prompt for confirmation when handling Usenet schemes like news: and snews:, which could allow malicious programs to register as handlers. This oversight could enable a website to launch these programs without user consent. (CVE-2024-8383)The JavaScript garbage collector could mis-color cross-compartment objects if OOM conditions were detected at the right point between two passes. This could have led to memory corruption. This vulnerability affects Firefox < 130, Firefox ESR < 128.2, and Firefox ESR < 115.15. (CVE-2024-8384)'
+    FixedIn:
+        - Name: firefox
+          NamespaceName: amzn:2
+          Version: 115.15.0-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: firefox-debuginfo
+          NamespaceName: amzn:2
+          Version: 115.15.0-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASFIREFOX-2024-029.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-8381
+            - Name: CVE-2024-8382
+            - Name: CVE-2024-8383
+            - Name: CVE-2024-8384
+    Name: ALASFIREFOX-2024-029
+    NamespaceName: amzn:2
+    Severity: High
