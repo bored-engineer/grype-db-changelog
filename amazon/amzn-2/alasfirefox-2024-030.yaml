@@ -1,0 +1,27 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: Insufficient checks when processing graphics shared memory could have led to memory corruption. This could be leveraged by an attacker to perform a sandbox escape. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, Firefox ESR < 128.1, Thunderbird < 128.1, and Thunderbird < 115.14. (CVE-2024-7519)Incomplete WebAssembly exception handing could have led to a use-after-free. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, and Firefox ESR < 128.1. (CVE-2024-7521)Editor code failed to check an attribute value. This could have led to an out-of-bounds read. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, Firefox ESR < 128.1, Thunderbird < 128.1, and Thunderbird < 115.14. (CVE-2024-7522)Firefox adds web-compatibility shims in place of some tracking scripts blocked by Enhanced Tracking Protection.  On a site protected by Content Security Policy in "strict-dynamic" mode, an attacker able to inject an HTML element could have used a DOM Clobbering attack on some of the shims and achieved XSS, bypassing the CSP strict-dynamic protection. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, and Firefox ESR < 128.1. (CVE-2024-7524)It was possible for a web extension with minimal permissions to create a `StreamFilter` which could be used to read and modify the response body of requests on any site. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, Firefox ESR < 128.1, Thunderbird < 128.1, and Thunderbird < 115.14. (CVE-2024-7525)ANGLE failed to initialize parameters which led to reading from uninitialized memory. This could be leveraged to leak sensitive data from memory. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, Firefox ESR < 128.1, Thunderbird < 128.1, and Thunderbird < 115.14. (CVE-2024-7526)Unexpected marking work at the start of sweeping could have led to a use-after-free. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, Firefox ESR < 128.1, Thunderbird < 128.1, and Thunderbird < 115.14. (CVE-2024-7527)The date picker could partially obscure security prompts. This could be used by a malicious site to trick a user into granting permissions. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, Firefox ESR < 128.1, Thunderbird < 128.1, and Thunderbird < 115.14. (CVE-2024-7529)Calling `PK11_Encrypt()` in NSS using CKM_CHACHA20 and the same buffer for input and output can result in plaintext on an Intel Sandy Bridge processor. In Firefox this only affects the QUIC header protection feature when the connection is using the ChaCha20-Poly1305 cipher suite. The most likely outcome is connection failure, but if the connection persists despite the high packet loss it could be possible for a network observer to identify packets as coming from the same source despite a network path change. This vulnerability affects Firefox < 129, Firefox ESR < 115.14, and Firefox ESR < 128.1. (CVE-2024-7531)
+    FixedIn:
+        - Name: firefox
+          NamespaceName: amzn:2
+          Version: 115.14.0-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: firefox-debuginfo
+          NamespaceName: amzn:2
+          Version: 115.14.0-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASFIREFOX-2024-030.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-7519
+            - Name: CVE-2024-7521
+            - Name: CVE-2024-7522
+            - Name: CVE-2024-7524
+            - Name: CVE-2024-7525
+            - Name: CVE-2024-7526
+            - Name: CVE-2024-7527
+            - Name: CVE-2024-7529
+            - Name: CVE-2024-7531
+    Name: ALASFIREFOX-2024-030
+    NamespaceName: amzn:2
+    Severity: High
