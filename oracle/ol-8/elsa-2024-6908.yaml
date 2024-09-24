@@ -1,0 +1,85 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        delve
+        [1.21.2-4.0.1]
+        - Disable DWARF compression which has issues (Alex Burmashev)
+
+        [1.21.2-4]
+        - Skip tests in %check due to incompatible Go version in buildroot (temporary).
+        - Resolves: RHEL-59518
+
+        golang
+        [1.21.13-2]
+        - Rebuild Go with CVE Fixes
+        - Remove fix-memleak-setupRSA.patch (exists upstream)
+        - Resolves: RHEL-58223
+        - Resolves: RHEL-57961
+        - Resolves: RHEL-57847
+        - Resolves: RHEL-57860
+
+        [1.21.13-1]
+        - Update to Go1.21.13 to fix CVE-2024-24791
+        - Resolves: RHEL-47198
+
+        go-toolset
+        [1.21.13-1]
+        - Fix CVE-2024-24791
+        - Resolves: RHEL-47198
+    FixedIn:
+        - Module: go-toolset:ol8
+          Name: delve
+          NamespaceName: ol:8
+          Version: 0:1.21.2-4.0.1.module+el8.10.0+90407+20770c94
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: go-toolset
+          NamespaceName: ol:8
+          Version: 0:1.21.13-1.module+el8.10.0+90407+20770c94
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang
+          NamespaceName: ol:8
+          Version: 0:1.21.13-2.module+el8.10.0+90407+20770c94
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-bin
+          NamespaceName: ol:8
+          Version: 0:1.21.13-2.module+el8.10.0+90407+20770c94
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-docs
+          NamespaceName: ol:8
+          Version: 0:1.21.13-2.module+el8.10.0+90407+20770c94
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-misc
+          NamespaceName: ol:8
+          Version: 0:1.21.13-2.module+el8.10.0+90407+20770c94
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-src
+          NamespaceName: ol:8
+          Version: 0:1.21.13-2.module+el8.10.0+90407+20770c94
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-tests
+          NamespaceName: ol:8
+          Version: 0:1.21.13-2.module+el8.10.0+90407+20770c94
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-6908.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-24791.html
+              Name: CVE-2024-24791
+            - Link: https://linux.oracle.com/cve/CVE-2024-34155.html
+              Name: CVE-2024-34155
+            - Link: https://linux.oracle.com/cve/CVE-2024-34156.html
+              Name: CVE-2024-34156
+            - Link: https://linux.oracle.com/cve/CVE-2024-34158.html
+              Name: CVE-2024-34158
+        Issued: "2024-09-23"
+        RefId: ELSA-2024-6908
+    Name: ELSA-2024-6908
+    NamespaceName: ol:8
+    Severity: High
