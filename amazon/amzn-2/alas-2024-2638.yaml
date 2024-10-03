@@ -1,0 +1,21 @@
+Vulnerability:
+    Description: An error in the ECMA-262 specification relating to Async Generators could have resulted in a type confusion, potentially leading to memory corruption and an exploitable crash. This vulnerability affects Firefox < 128, Firefox ESR < 115.13, Thunderbird < 115.13, and Thunderbird < 128. (CVE-2024-7652)A potentially exploitable type confusion could be triggered when looking up a property name on an object being used as the `with` environment. This vulnerability affects Firefox < 130, Firefox ESR < 128.2, and Firefox ESR < 115.15. (CVE-2024-8381)Internal browser event interfaces were exposed to web content when privileged EventHandler listener callbacks ran for those events. Web content that tried to use those interfaces would not be able to use them with elevated privileges, but their presence would indicate certain browser features had been used, such as when a user opened the Dev Tools console. This vulnerability affects Firefox < 130, Firefox ESR < 128.2, and Firefox ESR < 115.15. (CVE-2024-8382)The JavaScript garbage collector could mis-color cross-compartment objects if OOM conditions were detected at the right point between two passes. This could have led to memory corruption. This vulnerability affects Firefox < 130, Firefox ESR < 128.2, and Firefox ESR < 115.15. (CVE-2024-8384)
+    FixedIn:
+        - Name: thunderbird
+          NamespaceName: amzn:2
+          Version: 115.15.0-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: thunderbird-debuginfo
+          NamespaceName: amzn:2
+          Version: 115.15.0-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2638.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-7652
+            - Name: CVE-2024-8381
+            - Name: CVE-2024-8382
+            - Name: CVE-2024-8384
+    Name: ALAS-2024-2638
+    NamespaceName: amzn:2
+    Severity: High

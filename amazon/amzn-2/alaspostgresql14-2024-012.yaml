@@ -1,0 +1,70 @@
+Vulnerability:
+    Description: Time-of-check Time-of-use (TOCTOU) race condition in pg_dump in PostgreSQL allows an object creator to execute arbitrary SQL functions as the user running pg_dump, which is often a superuser. The attack involves replacing another relation type with a view or foreign table. The attack requires waiting for pg_dump to start, but winning the race condition is trivial if the attacker retains an open transaction. Versions before PostgreSQL 16.4, 15.8, 14.13, 13.16, and 12.20 are affected. (CVE-2024-7348)
+    FixedIn:
+        - Name: postgresql
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-contrib
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-debuginfo
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-docs
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-llvmjit
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-plperl
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-plpython3
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-pltcl
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-server
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-server-devel
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-static
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-test
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-test-rpm-macros
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-upgrade
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: postgresql-upgrade-devel
+          NamespaceName: amzn:2
+          Version: 14.13-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASPOSTGRESQL14-2024-012.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-7348
+    Name: ALASPOSTGRESQL14-2024-012
+    NamespaceName: amzn:2
+    Severity: High

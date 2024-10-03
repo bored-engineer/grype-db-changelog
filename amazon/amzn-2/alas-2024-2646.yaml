@@ -1,0 +1,22 @@
+Vulnerability:
+    Description: Insufficient randomness in generation of DNS query IDsWhen /dev/urandom or RtlGenRandom() are unavailable, c-ares uses rand() to generate random numbers used for DNS query ids. This is not a CSPRNG, and it is also not seeded by srand() so will generate predictable output.Input from the random number generator is fed into a non-compilant RC4 implementation and may not be as strong as the original RC4 implementation.No attempt is made to look for modern OS-provided CSPRNGs like arc4random() that is widely available. (CVE-2023-31147)
+    FixedIn:
+        - Name: c-ares
+          NamespaceName: amzn:2
+          Version: 1.19.1-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: c-ares-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.19.1-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: c-ares-devel
+          NamespaceName: amzn:2
+          Version: 1.19.1-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2646.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-31147
+    Name: ALAS-2024-2646
+    NamespaceName: amzn:2
+    Severity: Medium
