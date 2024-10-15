@@ -1,0 +1,14 @@
+Vulnerability:
+    Description: Requests is a HTTP library. Prior to 2.32.0, when making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool. This vulnerability is fixed in 2.32.0. (CVE-2024-35195)
+    FixedIn:
+        - Name: aws-cfn-bootstrap
+          NamespaceName: amzn:2023
+          Version: 2.0-31.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2024-732.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-35195
+    Name: ALAS-2024-732
+    NamespaceName: amzn:2023
+    Severity: Medium
