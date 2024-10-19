@@ -8,35 +8,26 @@ Vulnerability:
         [1:21.0.5.0.10-3]
         - Sync the copy of the portable specfile with the latest update
         - ** This tarball is embargoed until 2024-10-15 @ 1pm PT. **
-        - Related: RHEL-61344
+        - Related: RHEL-61346
 
         [1:21.0.5.0.10-2]
         - Update to jdk-21.0.5+10 (GA)
         - Update release notes to 21.0.5+10
-        - Switch to GA mode.
-        - Revert JDK-8327501 & JDK-8328366 backport until more mature.
-        - ** This tarball is embargoed until 2024-10-15 @ 1pm PT. **
-        - Resolves: RHEL-61344
-
-        [1:21.0.5.0.9-0.2.ea]
-        - Update to jdk-21.0.5+9 (EA)
-        - Update release notes to 21.0.5+9
-        - Switch to EA mode
         - Bump giflib version to 5.2.2 following JDK-8328999
         - Bump libpng version to 1.6.43 following JDK-8329004
+        - Vary portablesuffix depending on whether we are on RHEL ('el8') or CentOS ('el9')
+        - Handle debugedit being a separate package installed in /usr on RHEL/CentOS 10
+        - Add build scripts to repository to ease remembering all CentOS & RHEL targets and options
         - Sync with RHEL 7 portable build:
           - Use ExclusiveArch over ExcludeArch
           - pkgos definition needs to be early enough to be used in portablesuffix
         - Make build scripts executable
         - Sync the copy of the portable specfile with the latest update
-        - Resolves: RHEL-58797
-        - Resolves: RHEL-17191
-
-        [1:21.0.4.0.7-2]
-        - Vary portablesuffix depending on whether we are on RHEL ('el8') or CentOS ('el9')
-        - Handle debugedit being a separate package installed in /usr on RHEL/CentOS 10
-        - Add build scripts to repository to ease remembering all CentOS & RHEL targets and options
-        - Related: RHEL-58797
+        - Revert JDK-8327501 & JDK-8328366 backport until more mature.
+        - Resolves: RHEL-58798
+        - Resolves: RHEL-17186
+        - Resolves: RHEL-61346
+        - ** This tarball is embargoed until 2024-10-15 @ 1pm PT. **
     FixedIn:
         - Module: null
           Name: java-21-openjdk
@@ -166,7 +157,7 @@ Vulnerability:
               Name: CVE-2024-21217
             - Link: https://linux.oracle.com/cve/CVE-2024-21235.html
               Name: CVE-2024-21235
-        Issued: "2024-10-17"
+        Issued: "2024-10-18"
         RefId: ELSA-2024-8127
     Name: ELSA-2024-8127
     NamespaceName: ol:9
