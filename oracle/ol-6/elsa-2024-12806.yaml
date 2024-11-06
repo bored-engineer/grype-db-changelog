@@ -1,0 +1,60 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.1.12-124.91.3]
+        - nfs_atomic_open(): prevent parallel nfs_lookup() on a negative hashed (Al Viro)  [Orabug: 37006239]
+
+        [4.1.12-124.91.2]
+        - vhost/scsi: null-ptr-dereference in vhost_scsi_get_req() (Haoran Zhang)  [Orabug: 37035560]
+
+        [4.1.12-124.91.1]
+        - vt_ioctl: fix array_index_nospec in vt_setactivate (Jakob Koschel)  [Orabug: 37101899]  {CVE-2022-48804}
+        - tty: vt_ioctl: fix potential Spectre v1 (Gustavo A. R. Silva)  [Orabug: 37101899]  {CVE-2022-48804}
+        - USB: core: Fix hang in usb_kill_urb by adding memory barriers (Alan Stern)  [Orabug: 37101883]  {CVE-2022-48760}
+        - smb: client: fix OOB in smbCalcSize() (Paulo Alcantara)  [Orabug: 36165420]  {CVE-2023-6606}
+    FixedIn:
+        - Module: null
+          Name: kernel-uek
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.91.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-debug
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.91.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-debug-devel
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.91.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-devel
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.91.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-doc
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.91.3.el6uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-firmware
+          NamespaceName: ol:6
+          Version: 0:4.1.12-124.91.3.el6uek
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-12806.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2022-48760.html
+              Name: CVE-2022-48760
+            - Link: https://linux.oracle.com/cve/CVE-2022-48804.html
+              Name: CVE-2022-48804
+            - Link: https://linux.oracle.com/cve/CVE-2023-6606.html
+              Name: CVE-2023-6606
+        Issued: "2024-11-01"
+        RefId: ELSA-2024-12806
+    Name: ELSA-2024-12806
+    NamespaceName: ol:6
+    Severity: High
