@@ -1,0 +1,46 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        libecap
+        squid
+        [7:4.15-10.3]
+        - Resolves: RHEL-22593 - CVE-2024-23638 squid:4/squid: vulnerable to
+          a Denial of Service attack against Cache Manager error responses
+
+        [7:4.15-10.2]
+        - Disable ESI support
+        - Resolves: RHEL-65075 - CVE-2024-45802 squid:4/squid: Denial of Service
+          processing ESI response content
+
+        [7:4.15-10.1]
+        - Resolves: RHEL-56024 - (Regression) Transfer-encoding:chunked data is not sent
+          to the client in its complementary
+    FixedIn:
+        - Module: squid:4
+          Name: libecap
+          NamespaceName: ol:8
+          Version: 0:1.0.1-2.module+el8.9.0+90083+f7556140
+          VersionFormat: rpm
+        - Module: squid:4
+          Name: libecap-devel
+          NamespaceName: ol:8
+          Version: 0:1.0.1-2.module+el8.9.0+90083+f7556140
+          VersionFormat: rpm
+        - Module: squid:4
+          Name: squid
+          NamespaceName: ol:8
+          Version: 7:4.15-10.module+el8.10.0+90442+8ef3f586.3
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-9644.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-23638.html
+              Name: CVE-2024-23638
+            - Link: https://linux.oracle.com/cve/CVE-2024-45802.html
+              Name: CVE-2024-45802
+        Issued: "2024-11-15"
+        RefId: ELSA-2024-9644
+    Name: ELSA-2024-9644
+    NamespaceName: ol:8
+    Severity: High
