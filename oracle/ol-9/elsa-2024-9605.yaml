@@ -1,0 +1,209 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        - [5.14.0-503.14.1_5.OL9]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+
+        [5.14.0-503.14.1_5]
+        - ext4: fix off by one issue in alloc_flex_gd() (Pavel Reichl) [RHEL-65318]
+        - ping: fix address binding wrt vrf (Antoine Tenart) [RHEL-57564 RHEL-50920]
+        - smb: client: stop flooding dmesg in smb2_calc_signature() (Paulo Alcantara) [RHEL-36346 RHEL-61193]
+        - smb: client: print failed session logoffs with FYI (Paulo Alcantara) [RHEL-36346 RHEL-61193]
+        - smb: client: propagate error from cifs_construct_tcon() (Paulo Alcantara) [RHEL-36346 RHEL-61193]
+        - smb: client: fix DFS failover in multiuser mounts (Paulo Alcantara) [RHEL-36346 RHEL-61193]
+        - smb: client: fix DFS interlink failover (Paulo Alcantara) [RHEL-36346 RHEL-61193]
+        - smb: client: improve purging of cached referrals (Paulo Alcantara) [RHEL-36346 RHEL-61193]
+        - smb: client: avoid unnecessary reconnects when refreshing referrals (Paulo Alcantara) [RHEL-36346 RHEL-61193]
+        - smb: client: handle lack of FSCTL_GET_REPARSE_POINT support (Paulo Alcantara) [RHEL-36346 RHEL-57983]
+        - smb: client: fix deadlock in smb2_find_smb_tcon() (Paulo Alcantara) [RHEL-36346 RHEL-57983]
+        - cifs: Fix reacquisition of volume cookie on still-live connection (Paulo Alcantara) [RHEL-36346 RHEL-57983]
+
+        [5.14.0-503.13.1_5]
+        - efi: libstub: Move screen_info handling to common code (Maxim Levitsky) [RHEL-65344]
+        - mpls: Reduce skb re-allocations due to skb_cow() (Guillaume Nault) [RHEL-61697]
+        - mptcp: pm: Fix uaf in __timer_delete_sync (CKI Backport Bot) [RHEL-64678 RHEL-60737] {CVE-2024-46858}
+        - ceph: fix cap ref leak via netfs init_request (Patrick Donnelly) [RHEL-62667 RHEL-61459]
+        - gitlab-ci: provide consistent kcidb_tree_name (Michael Hofmann)
+
+        [5.14.0-503.12.1_5]
+        - net: nexthop: Initialize all fields in dumped nexthops (Antoine Tenart) [RHEL-55080] {CVE-2024-42283}
+        - tracing/osnoise: Fix build when timerlat is not enabled (Tomas Glozar) [RHEL-61870 RHEL-39968]
+        - tracing/timerlat: Add interface_lock around clearing of kthread in stop_kthread() (Tomas Glozar) [RHEL-61870 RHEL-39968]
+        - tracing/timerlat: Only clear timer if a kthread exists (Tomas Glozar) [RHEL-61870 RHEL-39968]
+        - tracing/osnoise: Use a cpumask to know what threads are kthreads (Tomas Glozar) [RHEL-61870 RHEL-39968]
+        - iommufd: Require drivers to supply the cache_invalidate_user ops (CKI Backport Bot) [RHEL-60681 RHEL-60761] {CVE-2024-46824}
+        - Revert 'fw loader: Remove the now superfluous sentinel element from ctl_table array' (Eric Chanudet) [RHEL-62925 RHEL-50129]
+        - smb: client: fix hang in wait_for_response() for negproto (Jay Shin) [RHEL-61607 RHEL-57983]
+    FixedIn:
+        - Module: null
+          Name: bpftool
+          NamespaceName: ol:9
+          Version: 0:7.4.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: libperf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: rtla
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: rv
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.14.1.el9_5
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-9605.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-42283.html
+              Name: CVE-2024-42283
+            - Link: https://linux.oracle.com/cve/CVE-2024-46824.html
+              Name: CVE-2024-46824
+            - Link: https://linux.oracle.com/cve/CVE-2024-46858.html
+              Name: CVE-2024-46858
+        Issued: "2024-11-19"
+        RefId: ELSA-2024-9605
+    Name: ELSA-2024-9605
+    NamespaceName: ol:9
+    Severity: Medium
