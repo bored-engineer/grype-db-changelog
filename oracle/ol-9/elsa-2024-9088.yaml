@@ -1,0 +1,103 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [20240524-6.0.1]
+        - Replace upstream references [Orabug:36569119]
+
+        [20240524-6]
+        - edk2-OvmfPkg-CpuHotplugSmm-delay-SMM-exit.patch [RHEL-56974]
+        - edk2-Bumped-openssl-submodule-version-to-0205b5898872.patch [RHEL-55336]
+        - Resolves: RHEL-56974
+          (qemu-kvm: warning: Blocked re-entrant IO on MemoryRegion: acpi-cpu-hotplug at addr: 0x0 [rhel-9])
+        - Resolves: RHEL-55336
+          (CVE-2024-6119 edk2/openssl: Possible denial of service in X.509 name checks [rhel-9.5])
+
+        [20240524-5]
+        - edk2-UefiCpuPkg-PiSmmCpuDxeSmm-skip-PatchInstructionX86-c.patch [RHEL-45847]
+        - Resolves: RHEL-45847
+          ([RHEL9.5] Hotplug vcpu to a guest cause guest kernel panic)
+
+        [20240524-4]
+        - edk2-AmdSevDxe-Fix-the-shim-fallback-reboot-workaround-fo.patch [RHEL-56081]
+        - Resolves: RHEL-56081
+          ([EDK2] Shim fallback reboot workaround might not work on SNP)
+
+        [20240524-3]
+        - edk2-NetworkPkg-DxeNetLib-adjust-PseudoRandom-error-loggi.patch [RHEL-45899]
+        - edk2-NetworkPkg-DxeNetLib-Reword-PseudoRandom-error-loggi.patch [RHEL-45899]
+        - Resolves: RHEL-45899
+          ([RHEL-9.5.0] edk2 hit Failed to generate random data)
+
+        [20240524-2]
+        - edk2-MdeModulePkg-Warn-if-out-of-flash-space-when-writing.patch [RHEL-43442]
+        - Resolves: RHEL-43442
+          (edk2 disconnects abnormally before loading the kernel)
+
+        [20240524-1]
+        - Rebase to edk2-stable202405
+        - Bumo openssl to 8e5beb77088b
+        - Resolves: RHEL-32486
+          (rebase to edk2-stable202405 [rhel-9])
+        - Resolves: RHEL-36446
+          (edk2: enable MOR [rhel-9])
+        - Resolves: RHEL-21653
+          (CVE-2023-6237 edk2: openssl: Excessive time spent checking invalid RSA public keys [rhel-9])
+        - Resolves: RHEL-21150
+          (CVE-2023-6129 edk2: mysql: openssl: POLY1305 MAC implementation corrupts vector registers on PowerPC)
+        - Resolves: RHEL-22490
+          (CVE-2024-0727 edk2: openssl: denial of service via null dereference [rhel-9])
+
+        [20240214-2]
+        - edk2-OvmfPkg-PlatformPei-log-a-warning-when-memory-is-tig.patch [RHEL-22202]
+        - edk2-OvmfPkg-PlatformPei-consider-AP-stacks-for-pei-memor.patch [RHEL-22202]
+        - edk2-OvmfPkg-PlatformPei-rewrite-page-table-calculation.patch [RHEL-22202]
+        - edk2-OvmfPkg-PlatformPei-log-pei-memory-cap-details.patch [RHEL-22202]
+        - edk2-UefiCpuPkg-MpInitLib-Add-support-for-multiple-HOBs-t.patch [RHEL-22202]
+        - edk2-UefiCpuPkg-MpInitLib-Add-support-for-multiple-HOBs-t.p2.patch [RHEL-22202]
+        - edk2-UefiCpuPkg-MpInitLib-Add-support-for-multiple-HOBs-t.p3.patch [RHEL-22202]
+        - edk2-UefiCpuPkg-MpInitLib-Add-support-for-multiple-HOBs-t.p4.patch [RHEL-22202]
+        - edk2-UefiCpuPkg-MpInitLib-Add-support-for-multiple-HOBs-t.p5.patch [RHEL-22202]
+        - edk2-UefiCpuPkg-MpInitLib-return-early-in-GetBspNumber.patch [RHEL-22202]
+        - Resolves: RHEL-22202
+          ([EDK2] Support booting with 4096 vcpus)
+
+        [20240214-1]
+        - Rebase to edk2-stable202302
+        - Resolves: RHEL-26879
+    FixedIn:
+        - Module: null
+          Name: edk2-aarch64
+          NamespaceName: ol:9
+          Version: 0:20240524-6.0.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: edk2-ovmf
+          NamespaceName: ol:9
+          Version: 0:20240524-6.0.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: edk2-tools
+          NamespaceName: ol:9
+          Version: 0:20240524-6.0.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: edk2-tools-doc
+          NamespaceName: ol:9
+          Version: 0:20240524-6.0.1.el9_5
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-9088.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2023-6129.html
+              Name: CVE-2023-6129
+            - Link: https://linux.oracle.com/cve/CVE-2023-6237.html
+              Name: CVE-2023-6237
+            - Link: https://linux.oracle.com/cve/CVE-2024-0727.html
+              Name: CVE-2024-0727
+            - Link: https://linux.oracle.com/cve/CVE-2024-1298.html
+              Name: CVE-2024-1298
+        Issued: "2024-11-14"
+        RefId: ELSA-2024-9088
+    Name: ELSA-2024-9088
+    NamespaceName: ol:9
+    Severity: Medium
