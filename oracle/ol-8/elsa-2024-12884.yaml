@@ -1,0 +1,1057 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.4.17-2136.338.4.1]
+        - Revert 'ocfs2: fix the la space leak when unmounting an ocfs2 volume' (Sherry Yang)  [Orabug: 37383196]
+
+        [5.4.17-2136.338.4]
+        - devlink: fix possible use-after-free and memory leaks in devlink_init() (Vasiliy Kovalev)  [Orabug: 37284641]  {CVE-2024-26734}
+        - mm: avoid leaving partial pfn mappings around in error case (Linus Torvalds)  [Orabug: 37174200]  {CVE-2024-47674}
+        - mm: add remap_pfn_range_notrack (Christoph Hellwig)  [Orabug: 37174200]  {CVE-2024-47674}
+        - mm/memory.c: make remap_pfn_range() reject unaligned addr (Alex Zhang)  [Orabug: 37174200]  {CVE-2024-47674}
+        - mm: fix ambiguous comments for better code readability (chenqiwu)  [Orabug: 37174200]  {CVE-2024-47674}
+        - mm: clarify a confusing comment for remap_pfn_range() (WANG Wenhu)  [Orabug: 37174200]  {CVE-2024-47674}
+
+        [5.4.17-2136.338.3]
+        - drm/amdgpu: prevent NULL pointer dereference if ATIF is not supported (Antonio Quartulli) [Orabug: 37304754] {CVE-2024-53060}
+        - rds: Add rds stuck shutdown timeout (Rohit Nair)  [Orabug: 37180926]
+        - ACPI: ioremap: avoid redundant rounding to OS page size (Ard Biesheuvel)  [Orabug: 37243611]
+        - blk-mq: fix missing blk_account_io_done() in error path (Yu Kuai)  [Orabug: 37280096]
+        - Revert 'net/mlx5: disable the 'fast unload' feature on Exadata systems' (Qing Huang)  [Orabug: 37285309]
+
+        [5.4.17-2136.338.2]
+        - LTS tag: v5.4.285 (Sherry Yang)
+        - mm: krealloc: Fix MTE false alarm in __do_krealloc (Qun-Wei Lin) [Orabug: 37331939] {CVE-2024-53097}
+        - mac80211: always have ieee80211_sta_restart() (Johannes Berg)
+        - vt: prevent kernel-infoleak in con_font_get() (Jeongjun Park)
+        - Revert 'drm/mipi-dsi: Set the fwnode for mipi_dsi_device' (Jason-JH.Lin)
+        - mm: shmem: fix data-race in shmem_getattr() (Jeongjun Park) [Orabug: 37268581] {CVE-2024-50228}
+        - nilfs2: fix kernel bug due to missing clearing of checked flag (Ryusuke Konishi) [Orabug: 37268589] {CVE-2024-50230}
+        - ocfs2: pass u64 to ocfs2_truncate_inline maybe overflow (Edward Adam Davis) [Orabug: 37268564] {CVE-2024-50218}
+        - riscv: Remove unused GENERATING_ASM_OFFSETS (Chunyan Zhang)
+        - nilfs2: fix potential deadlock with newly created symlinks (Ryusuke Konishi) [Orabug: 37268585] {CVE-2024-50229}
+        - staging: iio: frequency: ad9832: fix division by zero in ad9832_calc_freqreg() (Zicheng Qu) [Orabug: 37268598] {CVE-2024-50233}
+        - wifi: iwlegacy: Clear stale interrupts before resuming device (Ville Syrjala) [Orabug: 37268603] {CVE-2024-50234}
+        - wifi: ath10k: Fix memory leak in management tx (Manikanta Pubbisetty) [Orabug: 37268611] {CVE-2024-50236}
+        - wifi: mac80211: do not pass a stopped vif to the driver in .get_txpower (Felix Fietkau) [Orabug: 37268614] {CVE-2024-50237}
+        - Revert 'driver core: Fix uevent_show() vs driver detach race' (Greg Kroah-Hartman)
+        - xhci: Fix Link TRB DMA in command ring stopped completion event (Faisal Hassan)
+        - usb: phy: Fix API devm_usb_put_phy() can not release the phy (Zijun Hu)
+        - usbip: tools: Fix detach_port() invalid port error path (Zongmin Zhou)
+        - misc: sgi-gru: Don't disable preemption in GRU driver (Dimitri Sivanich)
+        - net: amd: mvme147: Fix probe banner message (Daniel Palmer)
+        - firmware: arm_sdei: Fix the input parameter of cpuhp_remove_state() (Xiongfeng Wang)
+        - drivers/misc: ti-st: Remove unneeded variable in st_tty_open (zhong jiang)
+        - netfilter: nft_payload: sanitize offset and length before calling skb_checksum() (Pablo Neira Ayuso) [Orabug: 37268671] {CVE-2024-50251}
+        - net: skip offload for NETIF_F_IPV6_CSUM if ipv6 header contains extension (Benoit Monin)
+        - net: support ip generic csum processing in skb_csum_hwoffload_help (Xin Long)
+        - bpf: Fix out-of-bounds write in trie_get_next_key() (Byeonguk Jeong) [Orabug: 37268703] {CVE-2024-50262}
+        - net/sched: stop qdisc_tree_reduce_backlog on TC_H_ROOT (Pedro Tammela) [Orabug: 37304741] {CVE-2024-53057}
+        - gtp: allow -1 to be specified as file description from userspace (Pablo Neira Ayuso)
+        - gtp: simplify error handling code in 'gtp_encap_enable()' (Christophe JAILLET)
+        - dt-bindings: gpu: Convert Samsung Image Rotator to dt-schema (Maciej Falkowski)
+        - ASoC: cs42l51: Fix some error handling paths in cs42l51_probe() (Christophe JAILLET)
+        - wifi: iwlwifi: mvm: Fix response handling in iwl_mvm_send_recovery_cmd() (Daniel Gabay) [Orabug: 37304750] {CVE-2024-53059}
+        - wifi: iwlwifi: mvm: disconnect station vifs if recovery failed (Emmanuel Grumbach)
+        - mac80211: Add support to trigger sta disconnect on hardware restart (Youghandhar Chintala)
+        - mac80211: do drv_reconfig_complete() before restarting all (Johannes Berg)
+        - wifi: mac80211: skip non-uploaded keys in ieee80211_iter_keys (Felix Fietkau)
+        - cgroup: Fix potential overflow issue when checking max_depth (Xiu Jianfeng)
+        - xfrm: validate new SA's prefixlen using SA family when sel.family is unset (Sabrina Dubroca) [Orabug: 37264076] {CVE-2024-50142}
+        - arm64/uprobes: change the uprobe_opcode_t typedef to fix the sparse warning (junhua huang)
+        - selinux: improve error checking in sel_write_load() (Paul Moore)
+        - hv_netvsc: Fix VF namespace also in synthetic NIC NETDEV_REGISTER event (Haiyang Zhang)
+        - ALSA: hda/realtek: Add subwoofer quirk for Acer Predator G9-593 (Jose Relvas)
+        - nilfs2: fix kernel bug due to missing clearing of buffer delay flag (Ryusuke Konishi) [Orabug: 37252378] {CVE-2024-50116}
+        - ACPI: button: Add DMI quirk for Samsung Galaxy Book2 to fix initial lid detection issue (Shubham Panwar)
+        - ACPI: resource: Add LG 16T90SP to irq1_level_low_skip_override[] (Christian Heusel)
+        - drm/amd: Guard against bad data for ATIF ACPI method (Mario Limonciello) [Orabug: 37252384] {CVE-2024-50117}
+        - ALSA: hda/realtek: Update default depop procedure (Kailang Yang)
+        - ALSA: firewire-lib: Avoid division by zero in apply_constraint_to_size() (Andrey Shumilin) [Orabug: 37264275] {CVE-2024-50205}
+        - posix-clock: posix-clock: Fix unbalanced locking in pc_clock_settime() (Jinjie Ruan) [Orabug: 37304479] {CVE-2024-50210}
+        - r8169: avoid unsolicited interrupts (Heiner Kallweit)
+        - net: sched: fix use-after-free in taprio_change() (Dmitry Antipov) [Orabug: 37252408] {CVE-2024-50127}
+        - net: usb: usbnet: fix name regression (Oliver Neukum)
+        - be2net: fix potential memory leak in be_xmit() (Wang Hai) [Orabug: 37264144] {CVE-2024-50167}
+        - net/sun3_82586: fix potential memory leak in sun3_82586_send_packet() (Wang Hai) [Orabug: 37264150] {CVE-2024-50168}
+        - tracing: Consider the NULL character when validating the event length (Leo Yan) [Orabug: 37252416] {CVE-2024-50131}
+        - jfs: Fix sanity check in dbMount (Dave Kleikamp)
+        - udf: fix uninit-value use in udf_get_fileshortad (Gianfranco Trad) [Orabug: 37264081] {CVE-2024-50143}
+        - drm/vboxvideo: Replace fake VLA at end of vbva_mouse_pointer_shape with real VLA (Hans de Goede) [Orabug: 37252421] {CVE-2024-50134}
+        - KVM: s390: gaccess: Check if guest address is in memslot (Nico Boehr)
+        - KVM: s390: gaccess: Cleanup access to guest pages (Janis Schoetterl-Glausch)
+        - KVM: s390: gaccess: Refactor access address range check (Janis Schoetterl-Glausch)
+        - KVM: s390: gaccess: Refactor gpa and length calculation (Janis Schoetterl-Glausch)
+        - arm64: probes: Fix uprobes for big-endian kernels (Mark Rutland) [Orabug: 37264237] {CVE-2024-50194}
+        - arm64:uprobe fix the uprobe SWBP_INSN in big-endian (junhua huang)
+        - Bluetooth: bnep: fix wild-memory-access in proto_unregister (Ye Bin) [Orabug: 37264097] {CVE-2024-50148}
+        - usb: typec: altmode should keep reference to parent (Thadeu Lima de Souza Cascardo) [Orabug: 37264103] {CVE-2024-50150}
+        - smb: client: fix OOBs when building SMB2_IOCTL request (Paulo Alcantara) [Orabug: 37264108] {CVE-2024-50151}
+        - genetlink: hold RCU in genlmsg_mcast() (Eric Dumazet)
+        - net: systemport: fix potential memory leak in bcm_sysport_xmit() (Wang Hai) [Orabug: 37264157] {CVE-2024-50171}
+        - net: ethernet: aeroflex: fix potential memory leak in greth_start_xmit_gbit() (Wang Hai)
+        - macsec: don't increment counters for an unrelated SA (Sabrina Dubroca)
+        - drm/msm/dsi: fix 32-bit signed integer extension in pclk_rate calculation (Jonathan Marek)
+        - RDMA/bnxt_re: Return more meaningful error (Kalesh AP)
+        - ipv4: give an IPv4 dev to blackhole_netdev (Xin Long)
+        - RDMA/cxgb4: Fix RDMA_CM_EVENT_UNREACHABLE error for iWARP (Anumula Murali Mohan Reddy)
+        - ARM: dts: bcm2837-rpi-cm3-io3: Fix HDMI hpd-gpio pin (Florian Klink)
+        - RDMA/bnxt_re: Fix incorrect AVID type in WQE structure (Saravanan Vajravel)
+        - mac80211: Fix NULL ptr deref for injected rate info (Mathy Vanhoef)
+        - erofs: fix lz4 inplace decompression (Gao Xiang)
+        - nilfs2: propagate directory read errors from nilfs_find_entry() (Ryusuke Konishi) [Orabug: 37264267] {CVE-2024-50202}
+        - x86/apic: Always explicitly disarm TSC-deadline timer (Zhang Rui)
+        - x86/resctrl: Annotate get_mem_config() functions as __init (Nathan Chancellor)
+        - parport: Proper fix for array out-of-bounds access (Takashi Iwai) [Orabug: 37227436] {CVE-2024-50074}
+        - USB: serial: option: add Telit FN920C04 MBIM compositions (Daniele Palmas)
+        - USB: serial: option: add support for Quectel EG916Q-GL (Benjamin B. Frost)
+        - xhci: Fix incorrect stream context type macro (Mathias Nyman)
+        - Bluetooth: btusb: Fix regression with fake CSR controllers 0a12:0001 (Luiz Augusto von Dentz)
+        - Bluetooth: Remove debugfs directory on module init failure (Aaron Thompson)
+        - iio: adc: ti-ads124s08: add missing select IIO_(TRIGGERED_)BUFFER in Kconfig (Javier Carrasco)
+        - iio: proximity: mb1232: add missing select IIO_(TRIGGERED_)BUFFER in Kconfig (Javier Carrasco)
+        - iio: light: opt3001: add missing full-scale range value (Emil Gedenryd)
+        - iio: hid-sensors: Fix an error handling path in _hid_sensor_set_report_latency() (Christophe JAILLET)
+        - iio: adc: ti-ads8688: add missing select IIO_(TRIGGERED_)BUFFER in Kconfig (Javier Carrasco)
+        - iio: dac: stm32-dac-core: add missing select REGMAP_MMIO in Kconfig (Javier Carrasco)
+        - iio: dac: ltc1660: add missing select REGMAP_SPI in Kconfig (Javier Carrasco)
+        - drm/vmwgfx: Handle surface check failure correctly (Nikolay Kuratov)
+        - blk-rq-qos: fix crash on rq_qos_wait vs. rq_qos_wake_function race (Omar Sandoval) [Orabug: 37227404] {CVE-2024-50082}
+        - x86/cpufeatures: Define X86_FEATURE_AMD_IBPB_RET (Jim Mattson)
+        - KVM: s390: Change virtual to physical address access in diag 0x258 handler (Michael Mueller)
+        - s390/sclp_vt220: Convert newlines to CRLF instead of LFCR (Thomas Weissschuh)
+        - KVM: Fix a data race on last_boosted_vcpu in kvm_vcpu_on_spin() (Breno Leitao) [Orabug: 36835837] {CVE-2024-40953}
+        - wifi: mac80211: fix potential key use-after-free (Johannes Berg)
+        - mm/swapfile: skip HugeTLB pages for unuse_vma (Liu Shixin) [Orabug: 37264257] {CVE-2024-50199}
+        - fat: fix uninitialized variable (OGAWA Hirofumi)
+        - PCI: Add function 0 DMA alias quirk for Glenfly Arise chip (WangYuli)
+        - tracing/kprobes: Fix symbol counting logic by looking at modules as well (Andrii Nakryiko)
+        - tracing/kprobes: Return EADDRNOTAVAIL when func matches several symbols (Francis Laniel)
+        - arm64: probes: Fix simulate_ldr*_literal() (Mark Rutland)
+        - arm64: probes: Remove broken LDR (literal) uprobe support (Mark Rutland) [Orabug: 37252317] {CVE-2024-50099}
+        - posix-clock: Fix missing timespec64 check in pc_clock_settime() (Jinjie Ruan) [Orabug: 37264242] {CVE-2024-50195}
+        - nouveau/dmem: Fix vulnerability in migrate_to_ram upon copy error (Yonatan Maman) [Orabug: 37252308] {CVE-2024-50096}
+        - net: Fix an unsafe loop on the list (Anastasia Kovaleva) [Orabug: 37206409] {CVE-2024-50024}
+        - hid: intel-ish-hid: Fix uninitialized variable 'rv' in ish_fw_xfer_direct_dma (SurajSonawane2415)
+        - usb: storage: ignore bogus device raised by JieLi BR21 USB sound chip (Icenowy Zheng)
+        - usb: xhci: Fix problem with xhci resume from suspend (Jose Alberto Reguero)
+        - usb: dwc3: core: Stop processing of pending events if controller is halted (Selvarasu Ganesan)
+        - Revert 'usb: yurex: Replace snprintf() with the safer scnprintf() variant' (Oliver Neukum)
+        - HID: plantronics: Workaround for an unexcepted opposite volume key (Wade Wang)
+        - CDC-NCM: avoid overflow in sanity checking (Oliver Neukum)
+        - resource: fix region_intersects() vs add_memory_driver_managed() (Huang Ying) [Orabug: 37200931] {CVE-2024-49878}
+        - lockdep: fix deadlock issue between lockdep and rcu (Zhiguo Niu)
+        - locking/lockdep: Avoid potential access of invalid memory in lock_class (Waiman Long)
+        - locking/lockdep: Rework lockdep_lock (Peter Zijlstra)
+        - locking/lockdep: Fix bad recursion pattern (Peter Zijlstra)
+        - slip: make slhc_remember() more robust against malicious packets (Eric Dumazet) [Orabug: 37206429] {CVE-2024-50033}
+        - ppp: fix ppp_async_encode() illegal access (Eric Dumazet) [Orabug: 37206435] {CVE-2024-50035}
+        - sctp: ensure sk_state is set to CLOSED if hashing fails in sctp_listen_start (Xin Long)
+        - net: annotate lockless accesses to sk->sk_max_ack_backlog (Eric Dumazet)
+        - net: annotate lockless accesses to sk->sk_ack_backlog (Eric Dumazet)
+        - net: ibm: emac: mal: fix wrong goto (Rosen Penev)
+        - net/sched: accept TCA_STAB only for root qdisc (Eric Dumazet) [Orabug: 37206457] {CVE-2024-50039}
+        - igb: Do not bring the device up after non-fatal error (Mohamed Khalfella) [Orabug: 37206464] {CVE-2024-50040}
+        - gpio: aspeed: Use devm_clk api to manage clock source (Billy Tsai)
+        - gpio: aspeed: Add the flush write to ensure the write complete. (Billy Tsai)
+        - Bluetooth: RFCOMM: FIX possible deadlock in rfcomm_sk_state_change (Luiz Augusto von Dentz) [Orabug: 37206474] {CVE-2024-50044}
+        - netfilter: br_netfilter: fix panic with metadata_dst skb (Andy Roulin) [Orabug: 37206482] {CVE-2024-50045}
+        - tcp: fix tcp_enter_recovery() to zero retrans_stamp when it's safe (Neal Cardwell)
+        - tcp: fix to allow timestamp undo if no retransmits were sent (Neal Cardwell)
+        - SUNRPC: Fix integer overflow in decode_rc_list() (Dan Carpenter)
+        - ice: fix VLAN replay after reset (Dave Ertman)
+        - RDMA/rxe: Fix seg fault in rxe_comp_queue_pkt (Bob Pearson)
+        - fbdev: sisfb: Fix strbuf array overflow (Andrey Shumilin) [Orabug: 37264186] {CVE-2024-50180}
+        - driver core: bus: Return -EIO instead of 0 when show/store invalid bus attribute (Zijun Hu)
+        - tools/iio: Add memory allocation failure check for trigger_name (Zhu Jun)
+        - virtio_pmem: Check device status before requesting flush (Philip Chen) [Orabug: 37264205] {CVE-2024-50184}
+        - usb: dwc2: Adjust the timing of USB Driver Interrupt Registration in the Crashkernel Scenario (Shawn Shao)
+        - usb: chipidea: udc: enable suspend interrupt after usb reset (Xu Yang)
+        - media: videobuf2-core: clear memory related fields in __vb2_plane_dmabuf_put() (Yunke Cao)
+        - ntb: ntb_hw_switchtec: Fix use after free vulnerability in switchtec_ntb_remove due to race condition (Kaixin Wang) [Orabug: 37206542] {CVE-2024-50059}
+        - PCI: Mark Creative Labs EMU20k2 INTx masking as broken (Alex Williamson)
+        - i2c: i801: Use a different adapter-name for IDF adapters (Hans de Goede)
+        - PCI: Add ACS quirk for Qualcomm SA8775P (Subramanian Ananthanarayanan)
+        - clk: bcm: bcm53573: fix OF node leak in init (Krzysztof Kozlowski)
+        - ktest.pl: Avoid false positives with grub2 skip regex (Daniel Jordan)
+        - s390/cpum_sf: Remove WARN_ON_ONCE statements (Thomas Richter)
+        - ext4: nested locking for xattr inode (Wojciech Gladysz)
+        - s390/mm: Add cond_resched() to cmm_alloc/free_pages() (Gerald Schaefer)
+        - s390/facility: Disable compile time optimization for decompressor code (Heiko Carstens)
+        - bpf: Check percpu map value size first (Tao Chen)
+        - Input: synaptics-rmi4 - fix UAF of IRQ domain on driver removal (Mathias Krause)
+        - virtio_console: fix misc probe bugs (Michael S. Tsirkin)
+        - tracing: Have saved_cmdlines arrays all in one allocation (Steven Rostedt (Google))
+        - drm/crtc: fix uninitialized variable use even harder (Rob Clark)
+        - tracing: Remove precision vsnprintf() check from print event (Steven Rostedt (Google))
+        - net: ethernet: cortina: Drop TSO support (Linus Walleij)
+        - unicode: Don't special case ignorable code points (Gabriel Krisman Bertazi) [Orabug: 37252274] {CVE-2024-50089}
+        - ext4: fix inode tree inconsistency caused by ENOMEM (zhanchengbin)
+        - ACPI: battery: Fix possible crash when unregistering a battery hook (Armin Wolf) [Orabug: 37206092] {CVE-2024-49955}
+        - ACPI: battery: Simplify battery hook locking (Armin Wolf)
+        - r8169: add tally counter fields added with RTL8125 (Heiner Kallweit) [Orabug: 37206183] {CVE-2024-49973}
+        - r8169: Fix spelling mistake: 'tx_underun' -> 'tx_underrun' (Colin Ian King)
+        - clk: qcom: clk-rpmh: Fix overflow in BCM vote (Mike Tipton)
+        - clk: qcom: rpmh: Simplify clk_rpmh_bcm_send_cmd() (Stephen Boyd)
+        - nfsd: fix delegation_blocked() to block correctly for at least 30 seconds (NeilBrown)
+        - nfsd: use ktime_get_seconds() for timestamps (Arnd Bergmann)
+        - uprobes: fix kernel info leak via '[uprobes]' vma (Oleg Nesterov)
+        - arm64: errata: Expand speculative SSBS workaround once more (Mark Rutland)
+        - arm64: cputype: Add Neoverse-N3 definitions (Mark Rutland)
+        - arm64: Add Cortex-715 CPU part definition (Anshuman Khandual)
+        - i2c: qcom-geni: Use IRQF_NO_AUTOEN flag in request_irq() (Jinjie Ruan)
+        - i2c: qcom-geni: Grow a dev pointer to simplify code (Stephen Boyd)
+        - i2c: qcom-geni: Let firmware specify irq trigger flags (Stephen Boyd)
+        - gpio: davinci: fix lazy disable (Emanuele Ghidoli)
+        - btrfs: wait for fixup workers before stopping cleaner kthread during umount (Filipe Manana) [Orabug: 37200897] {CVE-2024-49867}
+        - btrfs: fix a NULL pointer dereference when failed to start a new trasacntion (Qu Wenruo) [Orabug: 37200903] {CVE-2024-49868}
+        - ACPI: resource: Add Asus ExpertBook B2502CVA to irq1_level_low_skip_override[] (Hans de Goede)
+        - ACPI: resource: Add Asus Vivobook X1704VAP to irq1_level_low_skip_override[] (Hans de Goede)
+        - Input: adp5589-keys - fix adp5589_gpio_get_value() (Nuno Sa)
+        - rtc: at91sam9: fix OF node leak in probe() error path (Krzysztof Kozlowski)
+        - tomoyo: fallback to realpath if symlink's pathname does not exist (Tetsuo Handa)
+        - iio: magnetometer: ak8975: Fix reading for ak099xx sensors (Barnabas Czeman)
+        - media: venus: fix use after free bug in venus_remove due to race condition (Zheng Wang) [Orabug: 37206210] {CVE-2024-49981}
+        - media: uapi/linux/cec.h: cec_msg_set_reply_to: zero flags (Hans Verkuil)
+        - media: sun4i_csi: Implement link validate for sun4i_csi subdev (Laurent Pinchart)
+        - clk: rockchip: fix error for unknown clocks (Sebastian Reichel)
+        - aoe: fix the potential use-after-free problem in more places (Chun-Yi Lee) [Orabug: 37206642] {CVE-2024-49982}
+        - riscv: define ILLEGAL_POINTER_VALUE for 64bit (Jisheng Zhang)
+        - ocfs2: fix possible null-ptr-deref in ocfs2_set_buffer_uptodate (Lizhi Xu) [Orabug: 37200926] {CVE-2024-49877}
+        - ocfs2: fix null-ptr-deref when journal load failed. (Julian Sun) [Orabug: 37206097] {CVE-2024-49957}
+        - ocfs2: remove unreasonable unlock in ocfs2_read_blocks (Lizhi Xu) [Orabug: 37206137] {CVE-2024-49965}
+        - ocfs2: cancel dqi_sync_work before freeing oinfo (Joseph Qi) [Orabug: 37206141] {CVE-2024-49966}
+        - ocfs2: fix uninit-value in ocfs2_get_block() (Joseph Qi)
+        - ocfs2: fix the la space leak when unmounting an ocfs2 volume (Heming Zhao)
+        - mm: krealloc: consider spare memory for __GFP_ZERO (Danilo Krummrich)
+        - jbd2: stop waiting for space when jbd2_cleanup_journal_tail() returns error (Baokun Li) [Orabug: 37206109] {CVE-2024-49959}
+        - drm: omapdrm: Add missing check for alloc_ordered_workqueue (Ma Ke) [Orabug: 37200935] {CVE-2024-49879}
+        in of_msi_get_domain (Andrew Jones)
+        - parisc: Fix stack start for ADDR_NO_RANDOMIZE personality (Helge Deller)
+        - parisc: Fix 64-bit userspace syscall path (Helge Deller)
+        - ext4: fix incorrect tid assumption in ext4_wait_for_tail_page_commit() (Luis Henriques (SUSE))
+        - ext4: fix double brelse() the buffer of the extents path (Baokun Li) [Orabug: 37200948] {CVE-2024-49882}
+        - ext4: aovid use-after-free in ext4_ext_insert_extent() (Baokun Li) [Orabug: 37200954] {CVE-2024-49883}
+        - ext4: fix incorrect tid assumption in __jbd2_log_wait_for_space() (Luis Henriques (SUSE))
+        - ext4: propagate errors from ext4_find_extent() in ext4_insert_range() (Baokun Li)
+        - ext4: no need to continue when the number of entries is 1 (Edward Adam Davis) [Orabug: 37206147] {CVE-2024-49967}
+        - ALSA: core: add isascii() check to card ID generator (Jaroslav Kysela)
+        - drm: Consistently use struct drm_mode_rect for FB_DAMAGE_CLIPS (Thomas Zimmermann)
+        - parisc: Fix itlb miss handler for 64-bit programs (Helge Deller)
+        - perf/core: Fix small negative period being ignored (Luo Gengkun)
+        - spi: bcm63xx: Fix module autoloading (Jinjie Ruan)
+        - firmware: tegra: bpmp: Drop unused mbox_client_to_bpmp() (Krzysztof Kozlowski)
+        - i2c: xiic: Wait for TX empty to avoid missed TX NAKs (Robert Hancock)
+        - i2c: stm32f7: Do not prepare/unprepare clock during runtime suspend/resume (Marek Vasut) [Orabug: 37206220] {CVE-2024-49985}
+        - selftests: vDSO: fix vDSO symbols lookup for powerpc64 (Christophe Leroy)
+        - selftests: breakpoints: use remaining time to check if suspend succeed (Yifei Liu)
+        - spi: s3c64xx: fix timeout counters in flush_fifo (Ben Dooks)
+        - ext4: fix i_data_sem unlock order in ext4_ind_migrate() (Artem Sadovnikov) [Orabug: 37206323] {CVE-2024-50006}
+        - ext4: ext4_search_dir should return a proper error (Thadeu Lima de Souza Cascardo)
+        - of/irq: Refer to actual buffer size in of_irq_parse_one() (Geert Uytterhoeven)
+        - drm/radeon/r100: Handle unknown family in r100_cp_init_microcode() (Geert Uytterhoeven)
+        - scsi: aacraid: Rearrange order of struct aac_srb_unit (Kees Cook)
+        - drm/printer: Allow NULL data in devcoredump printer (Matthew Brost)
+        - drm/amd/display: Initialize get_bytes_per_element's default to 1 (Alex Hung) [Orabug: 37205727] {CVE-2024-49892}
+        - drm/amd/display: Fix index out of bounds in degamma hardware format translation (Srinivasan Shanmugam) [Orabug: 37205740] {CVE-2024-49894}
+        - drm/amd/display: Check stream before comparing them (Alex Hung) [Orabug: 37205752] {CVE-2024-49896}
+        - jfs: Fix uninit-value access of new_ea in ea_buffer (Zhao Mengmeng) [Orabug: 37205778] {CVE-2024-49900}
+        - jfs: check if leafidx greater than num leaves per dmap tree (Edward Adam Davis) [Orabug: 37205790] {CVE-2024-49902}
+        - jfs: Fix uaf in dbFreeBits (Edward Adam Davis) [Orabug: 37205795] {CVE-2024-49903}
+        - jfs: UBSAN: shift-out-of-bounds in dbFindBits (Remington Brasga)
+        - ata: sata_sil: Rename sil_blacklist to sil_quirks (Damien Le Moal)
+        - power: reset: brcmstb: Do not go into infinite loop if reset fails (Andrew Davis)
+        - fbdev: pxafb: Fix possible use after free in pxafb_task() (Kaixin Wang) [Orabug: 37205936] {CVE-2024-49924}
+        - x86/syscall: Avoid memcpy() for ia32 syscall_get_arguments() (Kees Cook)
+        - ALSA: hdsp: Break infinite MIDI input flush loop (Takashi Iwai)
+        - ALSA: asihpi: Fix potential OOB array access (Takashi Iwai) [Orabug: 37206328] {CVE-2024-50007}
+        - signal: Replace BUG_ON()s (Thomas Gleixner)
+        - nfp: Use IRQF_NO_AUTOEN flag in request_irq() (Jinjie Ruan)
+        - wifi: mwifiex: Fix memcpy() field-spanning write warning in mwifiex_cmd_802_11_scan_ext() (Gustavo A. R. Silva) [Orabug: 37206333] {CVE-2024-50008}
+        - proc: add config & param to block forcing mem writes (Adrian Ratiu)
+        - ACPICA: iasl: handle empty connection_node (Aleksandrs Vinarskis)
+        - tcp: avoid reusing FIN_WAIT2 when trying to find port in connect() process (Jason Xing)
+        - ipv4: Mask upper DSCP bits and ECN bits in NETLINK_FIB_LOOKUP family (Ido Schimmel)
+        - ipv4: Check !in_dev earlier for ioctl(SIOCSIFADDR). (Kuniyuki Iwashima)
+        - net: mvpp2: Increase size of queue_name buffer (Simon Horman)
+        - tipc: guard against string buffer overrun (Simon Horman) [Orabug: 37206278] {CVE-2024-49995}
+        - ACPICA: check null return of ACPI_ALLOCATE_ZEROED() in acpi_db_convert_to_package() (Pei Xiao) [Orabug: 37206124] {CVE-2024-49962}
+        - ACPI: EC: Do not release locks during operation region accesses (Rafael J. Wysocki)
+        - wifi: rtw88: select WANT_DEV_COREDUMP (Zong-Zhe Yang)
+        - net: sched: consistently use rcu_replace_pointer() in taprio_change() (Dmitry Antipov)
+        - ACPICA: Fix memory leak if acpi_ps_get_next_field() fails (Armin Wolf)
+        - ACPICA: Fix memory leak if acpi_ps_get_next_namepath() fails (Armin Wolf)
+        - net: hisilicon: hns_mdio: fix OF node leak in probe() (Krzysztof Kozlowski)
+        - net: hisilicon: hns_dsaf_mac: fix OF node leak in hns_mac_get_info() (Krzysztof Kozlowski)
+        - net: hisilicon: hip04: fix OF node leak in probe() (Krzysztof Kozlowski)
+        - ice: Adjust over allocation of memory in ice_sched_add_root_node() and ice_sched_add_node() (Aleksandr Mishin)
+        - wifi: ath9k_htc: Use __skb_set_length() for resetting urb before resubmit (Toke Hoiland-Jorgensen) [Orabug: 37206029] {CVE-2024-49938}
+        - wifi: ath9k: fix possible integer overflow in ath9k_get_et_stats() (Dmitry Kandybka)
+        - f2fs: Require FMODE_WRITE for atomic write ioctls (Jann Horn) [Orabug: 37200794] {CVE-2024-47740}
+        - ALSA: hda/conexant: Fix conflicting quirk for System76 Pangolin (Takashi Iwai)
+        - ALSA: hda/generic: Unconditionally prefer preferred_dacs pairs (Takashi Iwai)
+        - ALSA: hda/realtek: Fix the push button function for the ALC257 (Oder Chiou)
+        - sctp: set sk_state back to CLOSED if autobind fails in sctp_listen_start (Xin Long) [Orabug: 37206051] {CVE-2024-49944}
+        - ipv4: ip_gre: Fix drops of small packets in ipgre_xmit (Anton Danilov)
+        - net: add more sanity checks to qdisc_pkt_len_init() (Eric Dumazet) [Orabug: 37206064] {CVE-2024-49948}
+        - net: avoid potential underflow in qdisc_pkt_len_init() with UFO (Eric Dumazet) [Orabug: 37206070] {CVE-2024-49949}
+        - net: ethernet: lantiq_etop: fix memory disclosure (Aleksander Jan Bajkowski) [Orabug: 37206289] {CVE-2024-49997}
+        - Bluetooth: btmrvl: Use IRQF_NO_AUTOEN flag in request_irq() (Jinjie Ruan)
+        - Bluetooth: btmrvl_sdio: Refactor irq wakeup (Abhishek Pandit-Subedi)
+        - netfilter: nf_tables: prevent nf_skb_duplicated corruption (Eric Dumazet) [Orabug: 37206081] {CVE-2024-49952}
+        - net: ieee802154: mcr20a: Use IRQF_NO_AUTOEN flag in request_irq() (Jinjie Ruan)
+        - netfilter: uapi: NFTA_FLOWTABLE_HOOK is NLA_NESTED (Phil Sutter)
+        - net/mlx5: Added cond_resched() to crdump collection (Mohamed Khalfella)
+        - ieee802154: Fix build error (Jinjie Ruan)
+        - drivers: net: Fix Kconfig indentation, continued (Krzysztof Kozlowski)
+        - Minor fixes to the CAIF Transport drivers Kconfig file (rd.dunlab@gmail.com)
+        - ceph: remove the incorrect Fw reference check when dirtying pages (Xiubo Li) [Orabug: 37264181] {CVE-2024-50179}
+        - mailbox: bcm2835: Fix timeout during suspend mode (Stefan Wahren) [Orabug: 37206130] {CVE-2024-49963}
+        - mailbox: rockchip: fix a typo in module autoloading (Liao Chen)
+        - usb: yurex: Fix inconsistent locking bug in yurex_read() (Harshit Mogalapalli)
+        - i2c: isch: Add missed 'else' (Andy Shevchenko)
+        - i2c: aspeed: Update the stop sw state when the bus recovery occurs (Tommy Huang)
+        - mm: only enforce minimum stack gap size if it's sensible (David Gow)
+        - pps: add an error check in parport_attach (Ma Ke)
+        - pps: remove usage of the deprecated ida_simple_xx() API (Christophe JAILLET)
+        - USB: misc: yurex: fix race between read and write (Oliver Neukum)
+        - usb: yurex: Replace snprintf() with the safer scnprintf() variant (Lee Jones)
+        - soc: versatile: realview: fix soc_dev leak during device remove (Krzysztof Kozlowski)
+        - soc: versatile: realview: fix memory leak during device remove (Krzysztof Kozlowski)
+        - PCI: xilinx-nwl: Fix off-by-one in INTx IRQ handler (Sean Anderson)
+        - PCI: xilinx-nwl: Use irq_data_get_irq_chip_data() (Thomas Gleixner)
+        - ASoC: meson: axg-card: fix 'use-after-free' (Arseniy Krasnov) [Orabug: 37116540] {CVE-2024-46849}
+        - ASoC: meson: axg: extract sound card utils (Jerome Brunet)
+        - nfs: fix memory leak in error path of nfs4_do_reclaim (Li Lingfeng)
+        - fs: Fix file_set_fowner LSM hook inconsistencies (Mickael Salaun)
+        - vfs: fix race between evice_inodes() and find_inode()&iput() (Julian Sun) [Orabug: 37200604] {CVE-2024-47679}
+        - hwrng: mtk - Use devm_pm_runtime_enable (Guoqing Jiang)
+        - f2fs: avoid potential int overflow in sanity_check_area_boundary() (Nikita Zhandarovich)
+        - f2fs: prevent possible int overflow in dir_block_index() (Nikita Zhandarovich)
+        - debugobjects: Fix conditions in fill_pool() (Zhen Lei)
+        - wifi: rtw88: 8822c: Fix reported RX band width (Bitterblue Smith)
+        - ACPI: resource: Add another DMI match for the TongFang GMxXGxx (Werner Sembach)
+        - ACPI: sysfs: validate return type of _STR method (Thomas Weissschuh) [Orabug: 37200878] {CVE-2024-49860}
+        - drbd: Add NULL check for net_conf to prevent dereference in state validation (Mikhail Lobanov)
+        - drbd: Fix atomicity violation in drbd_uuid_set_bm() (Qiu-ji Chen)
+        - tty: rp2: Fix reset with non forgiving PCIe host bridges (Florian Fainelli)
+        - firmware_loader: Block path traversal (Jann Horn) [Orabug: 37200802] {CVE-2024-47742}
+        - USB: class: CDC-ACM: fix race between get_serial and set_serial (Oliver Neukum)
+        - USB: misc: cypress_cy7c63: check for short transfer (Oliver Neukum)
+        - USB: appledisplay: close race between probe and completion handler (Oliver Neukum)
+        - drm/amd/display: Round calculated vtotal (Robin Chen)
+        - soc: versatile: integrator: fix OF node leak in probe() error path (Krzysztof Kozlowski)
+        - Remove *.orig pattern from .gitignore (Laurent Pinchart)
+        - crypto: aead,cipher - zeroize key buffer after use (Hailey Mothershead) [Orabug: 36898014] {CVE-2024-42229}
+        - netfilter: ctnetlink: compile ctnetlink_label_size with CONFIG_NF_CONNTRACK_EVENTS (Simon Horman)
+        - net: qrtr: Update packets cloning when broadcasting (Youssef Samir)
+        - tcp: check skb is non-NULL in tcp_rto_delta_us() (Josh Hunt) [Orabug: 37200624] {CVE-2024-47684}
+        - net: seeq: Fix use after free vulnerability in ether3 Driver Due to Race Condition (Kaixin Wang) [Orabug: 37200818] {CVE-2024-47747}
+        - netfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put() (Eric Dumazet) [Orabug: 37200630] {CVE-2024-47685}
+        - coresight: tmc: sg: Do not leak sg_table (Suzuki K Poulose)
+        - iio: adc: ad7606: fix standby gpio state to match the documentation (Guillaume Stols)
+        - iio: adc: ad7606: fix oversampling gpio array (Guillaume Stols)
+        - f2fs: reduce expensive checkpoint trigger frequency (Chao Yu)
+        - f2fs: remove unneeded check condition in __f2fs_setxattr() (Chao Yu)
+        - f2fs: fix to update i_ctime in __f2fs_setxattr() (Chao Yu)
+        - f2fs: fix typo (Yonggil Song)
+        - f2fs: enhance to update i_mode and acl atomically in f2fs_setattr() (Chao Yu)
+        - nfsd: return -EINVAL when namelen is 0 (Li Lingfeng) [Orabug: 37200650] {CVE-2024-47692}
+        - nfsd: call cache_put if xdr_reserve_space returns NULL (Guoqing Jiang) [Orabug: 37200783] {CVE-2024-47737}
+        - ntb: intel: Fix the NULL vs IS_ERR() bug for debugfs_create_dir() (Jinjie Ruan)
+        - RDMA/cxgb4: Added NULL check for lookup_atid (Mikhail Lobanov) [Orabug: 37200824] {CVE-2024-47749}
+        - riscv: Fix fp alignment bug in perf_callchain_user() (Jinjie Ruan)
+        - RDMA/hns: Optimize hem allocation performance (Junxian Huang)
+        - watchdog: imx_sc_wdt: Don't disable WDT in suspend (Jonas Blixt)
+        - pinctrl: mvebu: Fix devinit_dove_pinctrl_probe function (Wang Jianzheng)
+        - clk: ti: dra7-atl: Fix leak of of_nodes (David Lechner)
+        - pinctrl: single: fix missing error code in pcs_probe() (Yang Yingliang)
+        - RDMA/iwcm: Fix WARNING:at_kernel/workqueue.c:#check_flush_dependency (Zhu Yanjun) [Orabug: 37205521] {CVE-2024-47696}
+        - PCI: xilinx-nwl: Fix register misspelling (Sean Anderson)
+        - PCI: keystone: Fix if-statement expression in ks_pcie_quirk() (Dan Carpenter) [Orabug: 37205560] {CVE-2024-47756}
+        - drivers: media: dvb-frontends/rtl2830: fix an out-of-bounds write error (Junlin Li) [Orabug: 37200662] {CVE-2024-47697}
+        - drivers: media: dvb-frontends/rtl2832: fix an out-of-bounds write error (Junlin Li) [Orabug: 37200669] {CVE-2024-47698}
+        - clk: rockchip: Set parent rate for DCLK_VOP clock on RK3228 (Jonas Karlman)
+        - perf time-utils: Fix 32-bit nsec parsing (Ian Rogers)
+        - perf sched timehist: Fixed timestamp error when unable to confirm event sched_in time (Yang Jihong)
+        - perf sched timehist: Fix missing free of session in perf_sched__timehist() (Yang Jihong)
+        - bpf: Fix bpf_strtol and bpf_strtoul helpers for 32bit (Daniel Borkmann)
+        - nilfs2: fix potential oob read in nilfs_btree_check_delete() (Ryusuke Konishi) [Orabug: 37200843] {CVE-2024-47757}
+        - nilfs2: determine empty node blocks as corrupted (Ryusuke Konishi)
+        - nilfs2: fix potential null-ptr-deref in nilfs_btree_insert() (Ryusuke Konishi) [Orabug: 37200676] {CVE-2024-47699}
+        - ext4: avoid OOB when system.data xattr changes underneath the filesystem (Thadeu Lima de Souza Cascardo) [Orabug: 37200682] {CVE-2024-47701}
+        - ext4: return error on ext4_find_inline_entry (Thadeu Lima de Souza Cascardo)
+        - ext4: avoid negative min_clusters in find_group_orlov() (Kemeng Shi)
+        - smackfs: Use rcu_assign_pointer() to ensure safe assignment in smk_set_cipso (Jiawei Ye)
+        - ext4: clear EXT4_GROUP_INFO_WAS_TRIMMED_BIT even mount with discard (yangerkun)
+        - jbd2: introduce/export functions jbd2_journal_submit|finish_inode_data_buffers() (Mauricio Faria de Oliveira)
+        - kthread: fix task state in kthread worker if being frozen (Chen Yu)
+        - kthread: add kthread_work tracepoints (Rob Clark)
+        - xz: cleanup CRC32 edits from 2018 (Lasse Collin)
+        - selftests/bpf: Fix error compiling test_lru_map.c (Tony Ambardar)
+        - selftests/bpf: Fix compiling tcp_rtt.c with musl-libc (Tony Ambardar)
+        - selftests/bpf: Fix compiling flow_dissector.c with musl-libc (Tony Ambardar)
+        - selftests/bpf: Fix compile error from rlim_t in sk_storage_map.c (Tony Ambardar)
+        - tpm: Clean up TPM space after command failure (Jonathan McDowell) [Orabug: 37200851] {CVE-2024-49851}
+        - xen/swiotlb: add alignment check for dma buffers (Juergen Gross)
+        - xen: use correct end address of kernel for conflict checking (Juergen Gross)
+        - drivers:drm:exynos_drm_gsc:Fix wrong assignment in gsc_bind() (Yuesong Li)
+        - drm/msm: fix %s null argument error (Sherry Yang)
+        - ipmi: docs: don't advertise deprecated sysfs entries (Wolfram Sang)
+        - drm/msm/a5xx: fix races in preemption evaluation stage (Vladimir Lypak)
+        - drm/msm/a5xx: properly clear preemption records on resume (Vladimir Lypak)
+        - drm/msm/a5xx: disable preemption in submits by default (Vladimir Lypak)
+        - drm/msm: Fix incorrect file name output in adreno_request_fw() (Aleksandr Mishin)
+        - jfs: fix out-of-bounds in dbNextAG() and diAlloc() (Jeongjun Park) [Orabug: 37200741] {CVE-2024-47723}
+        - drm/radeon/evergreen_cs: fix int overflow errors in cs track offsets (Nikita Zhandarovich)
+        - drm/rockchip: dw_hdmi: Fix reading EDID when using a forced mode (Jonas Karlman)
+        - drm/rockchip: vop: Allow 4096px width scaling (Alex Bee)
+        - drm/radeon: properly handle vbios fake edid sizing (Alex Deucher)
+        - drm/radeon: Replace one-element array with flexible-array member (Paulo Miguel Almeida)
+        - drm/amdgpu: properly handle vbios fake edid sizing (Alex Deucher)
+        - drm/amdgpu: Replace one-element array with flexible-array member (Paulo Miguel Almeida)
+        - drm/stm: Fix an error handling path in stm_drm_platform_probe() (Christophe JAILLET)
+        - mtd: powernv: Add check devm_kasprintf() returned value (Charles Han)
+        - fbdev: hpfb: Fix an error handling path in hpfb_dio_probe() (Christophe JAILLET)
+        - power: supply: max17042_battery: Fix SOC threshold calc w/ no current sense (Artur Weber)
+        - power: supply: axp20x_battery: Remove design from min and max voltage (Chris Morgan)
+        - power: supply: axp20x_battery: allow disabling battery charging (Hermann Lauer)
+        - hwmon: (ntc_thermistor) fix module autoloading (Yuntao Liu)
+        - mtd: slram: insert break after errors in parsing the map (Mirsad Todorovac)
+        - hwmon: (max16065) Fix overflows seen when writing limits (Guenter Roeck)
+        - clocksource/drivers/qcom: Add missing iounmap() on errors in msm_dt_timer_init() (Ankit Agrawal)
+        - reset: berlin: fix OF node leak in probe() error path (Krzysztof Kozlowski)
+        - ARM: versatile: fix OF node leak in CPUs prepare (Krzysztof Kozlowski)
+        - ARM: dts: imx7d-zii-rmu2: fix Ethernet PHY pinctrl property (Krzysztof Kozlowski)
+        - spi: ppc4xx: Avoid returning 0 when failed to parse and map IRQ (Andy Shevchenko)
+        - spi: ppc4xx: handle irq_of_parse_and_map() errors (Ma Ke)
+        - block, bfq: don't break merge chain in bfq_split_bfqq() (Yu Kuai)
+        - block, bfq: choose the last bfqq from merge chain in bfq_setup_cooperator() (Yu Kuai)
+        - block, bfq: fix possible UAF for bfqq->bic with merge chain (Yu Kuai)
+        - net: tipc: avoid possible garbage value (Su Hui)
+        - Bluetooth: btusb: Fix not handling ZPL/short-transfer (Luiz Augusto von Dentz)
+        - can: bcm: Clear bo->bcm_proc_read after remove_proc_entry(). (Kuniyuki Iwashima) [Orabug: 37205476] {CVE-2024-47709}
+        - sock_map: Add a cond_resched() in sock_hash_free() (Eric Dumazet) [Orabug: 37200715] {CVE-2024-47710}
+        - wifi: wilc1000: fix potential RCU dereference issue in wilc_parse_join_bss_param (Jiawei Ye) [Orabug: 37205503] {CVE-2024-47712}
+        - wifi: mac80211: use two-phase skb reclamation in ieee80211_do_stop() (Dmitry Antipov) [Orabug: 37200721] {CVE-2024-47713}
+        - mac80211: parse radiotap header when selecting Tx queue (Mathy Vanhoef)
+        - wifi: cfg80211: fix two more possible UBSAN-detected off-by-one errors (Dmitry Antipov)
+        - wifi: cfg80211: fix UBSAN noise in cfg80211_wext_siwscan() (Dmitry Antipov)
+        - netfilter: nf_tables: reject expiration higher than timeout (Pablo Neira Ayuso)
+        - netfilter: nf_tables: reject element expiration with no timeout (Pablo Neira Ayuso)
+        - netfilter: nf_tables: elements with timeout below CONFIG_HZ never expire (Pablo Neira Ayuso)
+        - can: j1939: use correct function name in comment (Zhang Changzhong)
+        - mount: handle OOM on mnt_warn_timestamp_expiry (Olaf Hering)
+        - fs/namespace: fnic: Switch to use %ptTd (Andy Shevchenko)
+        - mount: warn only once about timestamp range expiration (Anthony Iliopoulos)
+        - fs: explicitly unregister per-superblock BDIs (Christoph Hellwig)
+        - wifi: ath9k: Remove error checks when creating debugfs entries (Toke Hoiland-Jorgensen)
+        - wifi: ath9k: fix parameter check in ath9k_init_debug() (Minjie Du)
+        - ACPI: PMIC: Remove unneeded check in tps68470_pmic_opregion_probe() (Aleksandr Mishin)
+        - USB: usbtmc: prevent kernel-usb-infoleak (Edward Adam Davis) [Orabug: 37159778] {CVE-2024-47671}
+        - USB: serial: pl2303: add device id for Macrosilicon MS3020 (Junhao Xie)
+        - bpf: Fix DEVMAP_HASH overflow check on 32-bit arches (Toke Hoiland-Jorgensen) [Orabug: 36544917] {CVE-2024-26885}
+        - inet: inet_defrag: prevent sk release while still in use (Florian Westphal) [Orabug: 36545060] {CVE-2024-26921}
+        - gpio: prevent potential speculation leaks in gpio_device_get_desc() (Hagar Hemdan) [Orabug: 36993135] {CVE-2024-44931}
+        - ocfs2: strict bound check before memcmp in ocfs2_xattr_find_entry() (Ferry Meng) [Orabug: 36891661] {CVE-2024-41016}
+        - ocfs2: add bounds checking to ocfs2_xattr_find_entry() (Ferry Meng) [Orabug: 37159773] {CVE-2024-47670}
+        - x86/hyperv: Set X86_FEATURE_TSC_KNOWN_FREQ when Hyper-V provides frequency (Michael Kelley)
+        - spi: bcm63xx: Enable module autoloading (Liao Chen)
+        - drm: komeda: Fix an issue related to normalized zpos (hongchi.peng)
+        - ASoC: tda7419: fix module autoloading (Liao Chen)
+        - wifi: iwlwifi: mvm: don't wait for tx queues if firmware is dead (Emmanuel Grumbach) [Orabug: 37159781] {CVE-2024-47672}
+        - wifi: iwlwifi: mvm: fix iwl_mvm_max_scan_ie_fw_cmd_room() (Daniel Gabay)
+        - net: ftgmac100: Ensure tx descriptor updates are visible (Jacky Chou)
+        - microblaze: don't treat zero reserved memory regions as error (Mike Rapoport)
+        - pinctrl: at91: make it work with current gpiolib (Thomas Blocher)
+        - ALSA: hda/realtek - FIxed ALC285 headphone no sound (Kailang Yang)
+        - ALSA: hda/realtek - Fixed ALC256 headphone no sound (Kailang Yang)
+        - ASoC: allow module autoloading for table db1200_pids (Hongbo Li)
+        - soundwire: stream: Revert 'soundwire: stream: fix programming slave ports for non-continous port maps' (Krzysztof Kozlowski)
+        - spi: nxp-fspi: fix the KASAN report out-of-bounds bug (Han Xu) [Orabug: 37116548] {CVE-2024-46853}
+        - net: dpaa: Pad packets to ETH_ZLEN (Sean Anderson) [Orabug: 37116551] {CVE-2024-46854}
+        - net: ftgmac100: Enable TX interrupt to avoid TX timeout (Jacky Chou)
+        - net/mlx5e: Add missing link modes to ptys2ethtool_map (Shahar Shitrit)
+        - ice: fix accounting for filters shared by multiple VSIs (Jacob Keller)
+        - arm64: dts: rockchip: override BIOS_DISABLE signal via GPIO hog on RK3399 Puma (Quentin Schulz)
+        - scripts: kconfig: merge_config: config files: add a trailing newline (Anders Roxell)
+        - net: phy: vitesse: repair vsc73xx autonegotiation (Pawel Dembicki)
+        - net: ethernet: use ip_hdrlen() instead of bit shift (Moon Yeounsu)
+        - usbnet: ipheth: fix carrier detection in modes 1 and 4 (Foster Snowhill)
+
+        [5.4.17-2136.338.1]
+        - rds: ib: Avoid reuse of IB MRs when cleaning is in progress (Hakon Bugge)  [Orabug: 33387996]
+
+        [5.4.17-2136.337.5]
+        - net/mlx5: disable the 'fast unload' feature on Exadata systems (Qing Huang)  [Orabug: 37093177]
+
+        [5.4.17-2136.337.4]
+        - ocfs2: reserve space for inline xattr before attaching reflink tree (Gautham Ananthakrishna)  [Orabug: 37199020] {CVE-2024-49958}
+        - Revert 'ocfs2: ocfs2 crash due to invalid h_next_leaf_blk value in extent block' (Gautham Ananthakrishna)  [Orabug: 37199020]
+        - net/rds: Make send+receive IRQ assignments visible to user-space (Gerd Rausch)  [Orabug: 36987151]
+        - igb: Do not free the irq resources if they are already freed by igb_close() (Yifei Liu)  [Orabug: 37005245]
+        - A/A Bonding: check port count during RDMA device addition (Arumugam Kolappan)  [Orabug: 36579195]
+
+        [5.4.17-2136.337.3]
+        - vhost/scsi: null-ptr-dereference in vhost_scsi_get_req() (Haoran Zhang)  [Orabug: 37137548] {CVE-2024-49863}
+        - rds/ib: Count memory consumed by rds_page_frag (Hans Westgaard Ry)  [Orabug: 37172717]
+        - fs/dcache: allow fractional values in fs.negative-dentry-limit (Gautham Ananthakrishna)  [Orabug: 37156523]
+        - mm/hugetlb: fix DEBUG_LOCKS_WARN_ON(1) when dissolve_free_hugetlb_folio() (Miaohe Lin)  [Orabug: 36683094]  {CVE-2024-36028}
+        - uek: Disable /proc/uek under Xen and under non-Exadata systems (Konrad Rzeszutek Wilk)  [Orabug: 37170992]
+        - uek: Add force_noio runtime option. (Konrad Rzeszutek Wilk)  [Orabug: 37145327]
+        - treewide: Make the force_noio parameter be writable. (Konrad Rzeszutek Wilk)  [Orabug: 37145327]
+        - treewide: Sample foo_bar_force_noio before use (Hakon Bugge)  [Orabug: 37145327]
+        - workqueue: Add Oracle specific code to modify the flags of tasks. (Konrad Rzeszutek Wilk)  [Orabug: 37145327]
+        - net/mlx5: Free IRQ rmap and notifier on kernel shutdown (Saeed Mahameed)  [Orabug: 36706485]
+        - net/mlx5: Free irqs only on shutdown callback (Shay Drory)  [Orabug: 36706485]
+        - kpcimgr: Add dynamic memory region allocation feature (Joe Dobosenski)  [Orabug: 36983478]
+        - uek: kabi: Introduce APIs to hide/fake inclusion of headers (Saeed Mirzamohammadi)  [Orabug: 37097450]
+        - RDMA/cma: Always set static rate to 0 for RoCE (Mark Zhang)  [Orabug: 37100215]
+        - net/mlx5e: nullify cq->dbg pointer in mlx5_debug_cq_remove() (Valentine Fatiev)  [Orabug: 37104450]
+        - net/mlx5e: Fix memory leak in mlx5_core_destroy_cq() error path (Valentine Fatiev)  [Orabug: 37099359]
+
+        [5.4.17-2136.337.2]
+        - LTS tag: v5.4.284 (Sherry Yang)
+        - Revert 'parisc: Use irq_enter_rcu() to fix warning at kernel/context_tracking.c:367' (Greg Kroah-Hartman)
+        - cx82310_eth: fix error return code in cx82310_bind() (Zhang Changzhong)
+        - net, sunrpc: Remap EPERM in case of connection failure in xs_tcp_setup_socket (Daniel Borkmann)
+        - rtmutex: Drop rt_mutex::wait_lock before scheduling (Roland Xu) [Orabug: 37116446] {CVE-2024-46829}
+        - drm/i915/fence: Mark debug_fence_free() with __maybe_unused (Andy Shevchenko)
+        - drm/i915/fence: Mark debug_fence_init_onstack() with __maybe_unused (Andy Shevchenko)
+        - nvmet-tcp: fix kernel crash if commands allocation fails (Maurizio Lombardi) [Orabug: 37074465] {CVE-2024-46737}
+        - arm64: acpi: Harden get_cpu_for_acpi_id() against missing CPU entry (Jonathan Cameron) [Orabug: 37116413] {CVE-2024-46822}
+        - arm64: acpi: Move get_cpu_for_acpi_id() to a header (James Morse)
+        - ACPI: processor: Fix memory leaks in error paths of processor_add() (Jonathan Cameron)
+        - ACPI: processor: Return an error if acpi_processor_get_info() fails in processor_add() (Jonathan Cameron)
+        - nilfs2: protect references to superblock parameters exposed in sysfs (Ryusuke Konishi) [Orabug: 37074677] {CVE-2024-46780}
+        - nilfs2: replace snprintf in show functions with sysfs_emit (Qing Wang)
+        - tracing: Avoid possible softlockup in tracing_iter_reset() (Zheng Yejian)
+        - ring-buffer: Rename ring_buffer_read() to read_buffer_iter_advance() (Steven Rostedt (VMware))
+        - uprobes: Use kzalloc to allocate xol area (Sven Schnelle)
+        - clocksource/drivers/timer-of: Remove percpu irq related code (Daniel Lezcano)
+        - clocksource/drivers/imx-tpm: Fix next event not taking effect sometime (Jacky Bai)
+        - clocksource/drivers/imx-tpm: Fix return -ETIME when delta exceeds INT_MAX (Jacky Bai)
+        - Drivers: hv: vmbus: Fix rescind handling in uio_hv_generic (Naman Jain)
+        - uio_hv_generic: Fix kernel NULL pointer dereference in hv_uio_rescind (Saurabh Sengar) [Orabug: 37074473] {CVE-2024-46739}
+        - nvmem: Fix return type of devm_nvmem_device_get() in kerneldoc (Geert Uytterhoeven)
+        - binder: fix UAF caused by offsets overwrite (Carlos Llamas) [Orabug: 37074477] {CVE-2024-46740}
+        - iio: fix scale application in iio_convert_raw_to_processed_unlocked (Matteo Martelli)
+        - iio: buffer-dmaengine: fix releasing dma channel on error (David Lechner)
+        - staging: iio: frequency: ad9834: Validate frequency parameter value (Aleksandr Mishin) [Orabug: 37159728] {CVE-2024-47663}
+        - NFSv4: Add missing rescheduling points in nfs_client_return_marked_delegations (Trond Myklebust)
+        - ata: pata_macio: Use WARN instead of BUG (Michael Ellerman)
+        - lib/generic-radix-tree.c: Fix rare race in __genradix_ptr_alloc() (Kent Overstreet) [Orabug: 37159757] {CVE-2024-47668}
+        - of/irq: Prevent device address out-of-bounds read in interrupt map walk (Stefan Wiehler) [Orabug: 37074488] {CVE-2024-46743}
+        - Squashfs: sanity check symbolic link size (Phillip Lougher) [Orabug: 37074495] {CVE-2024-46744}
+        - usbnet: ipheth: race between ipheth_close and error handling (Oliver Neukum)
+        - Input: uinput - reject requests with unreasonable number of slots (Dmitry Torokhov) [Orabug: 37074503] {CVE-2024-46745}
+        - HID: cougar: fix slab-out-of-bounds Read in cougar_report_fixup (Camila Alvarez) [Orabug: 37074513] {CVE-2024-46747}
+        - btrfs: initialize location to fix -Wmaybe-uninitialized in btrfs_lookup_dentry() (David Sterba)
+        - PCI: Add missing bridge lock to pci_bus_lock() (Dan Williams) [Orabug: 37074532] {CVE-2024-46750}
+        - btrfs: clean up our handling of refs == 0 in snapshot delete (Josef Bacik) [Orabug: 37116494] {CVE-2024-46840}
+        - btrfs: replace BUG_ON with ASSERT in walk_down_proc() (Josef Bacik)
+        - smp: Add missing destroy_work_on_stack() call in smp_call_on_cpu() (Zqiang)
+        - wifi: mwifiex: Do not return unused priv in mwifiex_get_priv_by_id() (Sascha Hauer) [Orabug: 37074561] {CVE-2024-46755}
+        - libbpf: Add NULL checks to bpf_object__{prev_map,next_map} (Andreas Ziegler)
+        - hwmon: (w83627ehf) Fix underflows seen when writing limit attributes (Guenter Roeck) [Orabug: 37074566] {CVE-2024-46756}
+        - hwmon: (nct6775-core) Fix underflows seen when writing limit attributes (Guenter Roeck) [Orabug: 37074571] {CVE-2024-46757}
+        - hwmon: (lm95234) Fix underflows seen when writing limit attributes (Guenter Roeck) [Orabug: 37074579] {CVE-2024-46758}
+        - hwmon: (adc128d818) Fix underflows seen when writing limit attributes (Guenter Roeck) [Orabug: 37074584] {CVE-2024-46759}
+        - pci/hotplug/pnv_php: Fix hotplug driver crash on Powernv (Krishna Kumar) [Orabug: 37074595] {CVE-2024-46761}
+        - devres: Initialize an uninitialized struct member (Zijun Hu)
+        - um: line: always fill *error_out in setup_one_line() (Johannes Berg) [Orabug: 37116518] {CVE-2024-46844}
+        - cgroup: Protect css->cgroup write under css_set_lock (Waiman Long)
+        - iommu/vt-d: Handle volatile descriptor status read (Jacob Pan)
+        - dm init: Handle minors larger than 255 (Benjamin Marzinski)
+        - ASoC: topology: Properly initialize soc_enum values (Amadeusz Slawinski)
+        - net: dsa: vsc73xx: fix possible subblocks range of CAPT block (Pawel Dembicki)
+        - net: bridge: br_fdb_external_learn_add(): always set EXT_LEARN (Jonas Gorski)
+        - net: bridge: fdb: convert added_by_external_learn to use bitops (Nikolay Aleksandrov)
+        - net: bridge: fdb: convert added_by_user to bitops (Nikolay Aleksandrov)
+        - net: bridge: fdb: convert is_sticky to bitops (Nikolay Aleksandrov)
+        - net: bridge: fdb: convert is_static to bitops (Nikolay Aleksandrov)
+        - net: bridge: fdb: convert is_local to bitops (Nikolay Aleksandrov)
+        - usbnet: modern method to get random MAC (Oliver Neukum)
+        - net: usb: don't write directly to netdev->dev_addr (Jakub Kicinski)
+        - drivers/net/usb: Remove all strcpy() uses (Len Baker)
+        - cx82310_eth: re-enable ethernet mode after router reboot (Ondrej Zary)
+        - tcp_bpf: fix return value of tcp_bpf_sendmsg() (Cong Wang) [Orabug: 37074693] {CVE-2024-46783}
+        - platform/x86: dell-smbios: Fix error path in dell_smbios_init() (Aleksandr Mishin)
+        - can: bcm: Remove proc entry when dev is unregistered. (Kuniyuki Iwashima) [Orabug: 37074625] {CVE-2024-46771}
+        - pcmcia: Use resource_size function on resource object (Jules Irenge)
+        - media: qcom: camss: Add check for v4l2_fwnode_endpoint_parse (Chen Ni)
+        - PCI: keystone: Add workaround for Errata #i2037 (AM65x SR 1.0) (Kishon Vijay Abraham I) [Orabug: 37159750] {CVE-2024-47667}
+        - usb: uas: set host status byte on data completion error (Shantanu Goel)
+        - wifi: brcmsmac: advertise MFP_CAPABLE to enable WPA3 (Arend van Spriel)
+        - udf: Avoid excessive partition lengths (Jan Kara) [Orabug: 37074665] {CVE-2024-46777}
+        - netfilter: nf_conncount: fix wrong variable type (Yunjian Wang)
+        - af_unix: Remove put_pid()/put_cred() in copy_peercred(). (Kuniyuki Iwashima)
+        - irqchip/armada-370-xp: Do not allow mapping IRQ 0 and 1 (Pali Rohar)
+        - smack: unix sockets: fix accept()ed socket label (Konstantin Andreev)
+        - ALSA: hda: Add input value sanity checks to HDMI channel map controls (Takashi Iwai)
+        - nilfs2: fix state management in error path of log writing function (Ryusuke Konishi) [Orabug: 37159765] {CVE-2024-47669}
+        - nilfs2: fix missing cleanup on rollforward recovery error (Ryusuke Konishi) [Orabug: 37074684] {CVE-2024-46781}
+        - sched: sch_cake: fix bulk flow accounting logic for host fairness (Toke Hoiland-Jorgensen) [Orabug: 37116443] {CVE-2024-46828}
+        - ila: call nf_unregister_net_hooks() sooner (Eric Dumazet) [Orabug: 37074689] {CVE-2024-46782}
+        - clk: qcom: clk-alpha-pll: Fix the trion pll postdiv set rate API (Satya Priya Kakitapalli)
+        - clk: qcom: clk-alpha-pll: Fix the pll post div mask (Satya Priya Kakitapalli)
+        - clk: hi6220: use CLK_OF_DECLARE_DRIVER (Peter Griffin)
+        - reset: hi6220: Add support for AO reset controller (Peter Griffin)
+        - fuse: use unsigned type for getxattr/listxattr size truncation (Jann Horn)
+        - fuse: update stats for pages in dropped aux writeback list (Joanne Koong)
+        - mmc: sdhci-of-aspeed: fix module autoloading (Liao Chen)
+        - mmc: dw_mmc: Fix IDMAC operation with pages bigger than 4K (Sam Protsenko)
+        - irqchip/gic-v2m: Fix refcount leak in gicv2m_of_init() (Ma Ke)
+        - ata: libata: Fix memory leak for error path in ata_host_alloc() (Zheng Qixing)
+        - ALSA: hda/conexant: Add pincfg quirk to enable top speakers on Sirius devices (Christoffer Sandberg)
+        - ASoC: dapm: Fix UAF for snd_soc_pcm_runtime object (robelin) [Orabug: 37074722] {CVE-2024-46798}
+        - sch/netem: fix use after free in netem_dequeue (Stephen Hemminger) [Orabug: 37074726] {CVE-2024-46800}
+        - i2c: Use IS_REACHABLE() for substituting empty ACPI functions (Richard Fitzgerald)
+        - udf: Limit file size to 4TB (Jan Kara)
+        - virtio_net: Fix napi_skb_cache_put warning (Breno Leitao) [Orabug: 36964474] {CVE-2024-43835}
+        - net: set SOCK_RCU_FREE before inserting socket into hashtable (Stanislav Fomichev)
+        - block: initialize integrity buffer to zero before writing it to media (Christoph Hellwig) [Orabug: 36964515] {CVE-2024-43854}
+        - media: uvcvideo: Enforce alignment of frame and interval (Ricardo Ribalda)
+        - drm/amd/display: Skip wbscl_set_scaler_filter if filter is null (Alex Hung) [Orabug: 37073032] {CVE-2024-46714}
+        - wifi: cfg80211: make hash table duplicates more survivable (Johannes Berg)
+        - smack: tcp: ipv4, fix incorrect labeling (Casey Schaufler)
+        - usb: typec: ucsi: Fix null pointer dereference in trace (Abhishek Pandit-Subedi) [Orabug: 37073065] {CVE-2024-46719}
+        - usbip: Don't submit special requests twice (Simon Holesch)
+        - ionic: fix potential irq name truncation (Shannon Nelson)
+        - apparmor: fix possible NULL pointer dereference (Leesoo Ahn) [Orabug: 37073078] {CVE-2024-46721}
+        - drm/amdkfd: Reconcile the definition and use of oem_id in struct kfd_topology_device (Michael Chen)
+        - drm/amdgpu: fix mc_data out-of-bounds read warning (Tim Huang) [Orabug: 37073083] {CVE-2024-46722}
+        - drm/amdgpu: fix ucode out-of-bounds read warning (Tim Huang) [Orabug: 37073088] {CVE-2024-46723}
+        - drm/amd/display: Fix Coverity INTEGER_OVERFLOW within dal_gpio_service_create (Hersen Wu)
+        - drm/amd/display: Check num_valid_sets before accessing reader_wm_sets[] (Alex Hung) [Orabug: 37116366] {CVE-2024-46815}
+        - drm/amd/display: Stop amdgpu_dm initialize when stream nums greater than 6 (Hersen Wu) [Orabug: 37116376] {CVE-2024-46817}
+        - drm/amd/display: Check gpio_id before used as array index (Alex Hung) [Orabug: 37116385] {CVE-2024-46818}
+        - drm/amdgpu: fix overflowed array index read warning (Tim Huang)
+        - drm/amdgpu: Fix uninitialized variable warning in amdgpu_afmt_acr (Ma Jun)
+        - net: usb: qmi_wwan: add MeiG Smart SRM825L (ZHANG Yuntian)
+        - i2c: Fix conditional for substituting empty ACPI functions (Richard Fitzgerald)
+        - drm: panel-orientation-quirks: Add quirk for OrangePi Neo (Philip Mueller)
+        - LTS tag: v5.4.283 (Sherry Yang)
+        - scsi: aacraid: Fix double-free on probe failure (Ben Hutchings) [Orabug: 37070700] {CVE-2024-46673}
+        - net: dsa: mv8e6xxx: Fix stub function parameters (Andrew Lunn)
+        - usb: core: sysfs: Unmerge @usb3_hardware_lpm_attr_group in remove_power_attributes() (Zijun Hu)
+        - usb: dwc3: st: add missing depopulate in probe error path (Krzysztof Kozlowski)
+        - usb: dwc3: st: fix probed platform device ref count on probe error path (Krzysztof Kozlowski) [Orabug: 37070705] {CVE-2024-46674}
+        - usb: dwc3: core: Prevent USB core invalid event buffer address access (Selvarasu Ganesan) [Orabug: 37070710] {CVE-2024-46675}
+        - usb: dwc3: omap: add missing depopulate in probe error path (Krzysztof Kozlowski)
+        - USB: serial: option: add MeiG Smart SRM825L (ZHANG Yuntian)
+        - cdc-acm: Add DISABLE_ECHO quirk for GE HealthCare UI Controller (Ian Ray)
+        - soc: qcom: cmd-db: Map shared memory as WC, not WB (Volodymyr Babchuk)
+        - nfc: pn533: Add poll mod list filling check (Aleksandr Mishin) [Orabug: 37070717] {CVE-2024-46676}
+        - nfc: pn533: Add autopoll capability (Lars Poeschel)
+        - nfc: pn533: Add dev_up/dev_down hooks to phy_ops (Lars Poeschel)
+        - net: busy-poll: use ktime_get_ns() instead of local_clock() (Eric Dumazet)
+        - gtp: fix a potential NULL pointer dereference (Cong Wang) [Orabug: 37070722] {CVE-2024-46677}
+        - ethtool: check device is present when getting link settings (Jamie Bainbridge) [Orabug: 37070728] {CVE-2024-46679}
+        - r8152: Factor out OOB link list waits (Prashant Malani)
+        - soundwire: stream: fix programming slave ports for non-continous port maps (Krzysztof Kozlowski)
+        - cgroup/cpuset: Prevent UAF in proc_cpuset_show() (Chen Ridong) [Orabug: 36964510] {CVE-2024-43853}
+        - ata: libata-core: Fix null pointer dereference on error (Niklas Cassel) [Orabug: 36897457] {CVE-2024-41098}
+        - media: uvcvideo: Fix integer overflow calculating timestamp (Ricardo Ribalda)
+        - drm/amdkfd: don't allow mapping the MMIO HDP page with large pages (Alex Deucher) [Orabug: 36867631] {CVE-2024-41011}
+        - wifi: mwifiex: duplicate static structs used in driver instances (Sascha Hauer)
+        - pinctrl: single: fix potential NULL dereference in pcs_get_function() (Ma Ke) [Orabug: 37070744] {CVE-2024-46685}
+        - drm/amdgpu: Using uninitialized value *size when calling amdgpu_vce_cs_reloc (Jesse Zhang) [Orabug: 36898009] {CVE-2024-42228}
+        (Alexander Lobakin)
+        - Input: MT - limit max slots (Tetsuo Handa) [Orabug: 37029137] {CVE-2024-45008}
+        - Bluetooth: hci_ldisc: check HCI_UART_PROTO_READY flag in HCIUARTGETPROTO (Lee, Chun-Yi) [Orabug: 36654191] {CVE-2023-31083}
+        - mmc: dw_mmc: allow biu and ciu clocks to defer (Ben Whitten)
+        - cxgb4: add forgotten u64 ivlan cast before shift (Nikolay Kuratov)
+        - HID: microsoft: Add rumble support to latest xbox controllers (Siarhei Vishniakou)
+        - HID: wacom: Defer calculation of resolution until resolution_code is known (Jason Gerecke)
+        - Bluetooth: MGMT: Add error handling to pair_device() (Griffin Kroah-Hartman) [Orabug: 36992976] {CVE-2024-43884}
+        - mmc: mmc_test: Fix NULL dereference on allocation failure (Dan Carpenter) [Orabug: 37070691] {CVE-2024-45028}
+        - drm/msm/dpu: don't play tricks with debug macros (Dmitry Baryshkov)
+        - drm/msm: use drm_debug_enabled() to check for debug categories (Jani Nikula)
+        - net: xilinx: axienet: Fix dangling multicast addresses (Sean Anderson)
+        - net: xilinx: axienet: Always disable promiscuous mode (Sean Anderson)
+        - ipv6: prevent UAF in ip6_send_skb() (Eric Dumazet) [Orabug: 37029076] {CVE-2024-44987}
+        - netem: fix return value if duplicate enqueue fails (Stephen Hemminger) [Orabug: 37070660] {CVE-2024-45016}
+        - net: dsa: mv88e6xxx: Fix out-of-bound access (Joseph Huang) [Orabug: 37029082] {CVE-2024-44988}
+        - net: dsa: mv88e6xxx: replace ATU violation prints with trace points (Vladimir Oltean)
+        - net: dsa: mv88e6xxx: read FID when handling ATU violations (Hans J. Schultz)
+        - net: dsa: mv88e6xxx: global1_atu: Add helper for get next (Andrew Lunn)
+        - net: dsa: mv88e6xxx: global2: Expose ATU stats register (Andrew Lunn)
+        - netfilter: nft_counter: Synchronize nft_counter_reset() against reader. (Sebastian Andrzej Siewior)
+        - kcm: Serialise kcm_sendmsg() for the same socket. (Kuniyuki Iwashima) [Orabug: 37013761] {CVE-2024-44946}
+        - tc-testing: don't access non-existent variable on exception (Simon Horman)
+        - Bluetooth: hci_core: Fix LE quote calculation (Luiz Augusto von Dentz)
+        - Bluetooth: hci_core: Fix not handling link timeouts propertly (Luiz Augusto von Dentz)
+        - Bluetooth: Make use of __check_timeout on hci_sched_le (Luiz Augusto von Dentz)
+        - dm suspend: return -ERESTARTSYS instead of -EINTR (Mikulas Patocka)
+        - dm: do not use waitqueue for request-based DM (Ming Lei)
+        - dm mpath: pass IO start time to path selector (Gabriel Krisman Bertazi)
+        - media: solo6x10: replace max(a, min(b, c)) by clamp(b, a, c) (Aurelien Jarno)
+        - block: use 'unsigned long' for blk_validate_block_size(). (Tetsuo Handa)
+        - gtp: pull network headers in gtp_dev_xmit() (Eric Dumazet) [Orabug: 37029111] {CVE-2024-44999}
+        - hrtimer: Prevent queuing of hrtimer without a function callback (Phil Chang)
+        - nvmet-rdma: fix possible bad dereference when freeing rsps (Sagi Grimberg)
+        - ext4: set the type of max_zeroout to unsigned int to avoid overflow (Baokun Li)
+        - irqchip/gic-v3-its: Remove BUG_ON in its_vpe_irq_domain_alloc (Guanrui Huang)
+        - usb: dwc3: core: Skip setting event buffers for host only controllers (Krishna Kurapati)
+        - s390/iucv: fix receive buffer virtual vs physical address confusion (Alexander Gordeev)
+        - openrisc: Call setup_memory() earlier in the init sequence (Oreoluwa Babatunde)
+        - NFS: avoid infinite loop in pnfs_update_layout. (NeilBrown)
+        - nvmet-tcp: do not continue for invalid icreq (Hannes Reinecke)
+        - Bluetooth: bnep: Fix out-of-bound access (Luiz Augusto von Dentz)
+        - nvme: clear caller pointer on identify failure (Keith Busch)
+        - usb: gadget: fsl: Increase size of name buffer for endpoints (Uwe Kleine-Konig)
+        - f2fs: fix to do sanity check in update_sit_entry (Zhiguo Niu)
+        - btrfs: delete pointless BUG_ON check on quota root in btrfs_qgroup_account_extent() (David Sterba)
+        - btrfs: send: handle unexpected data in header buffer in begin_cmd() (David Sterba)
+        - btrfs: handle invalid root reference found in may_destroy_subvol() (David Sterba)
+        - btrfs: change BUG_ON to assertion when checking for delayed_node root (David Sterba)
+        - powerpc/boot: Only free if realloc() succeeds (Michael Ellerman)
+        - powerpc/boot: Handle allocation failure in simple_realloc() (Li zeming)
+        - parisc: Use irq_enter_rcu() to fix warning at kernel/context_tracking.c:367 (Helge Deller)
+        - x86: Increase brk randomness entropy for 64-bit systems (Kees Cook)
+        - md: clean up invalid BUG_ON in md_ioctl (Li Nan)
+        - virtiofs: forbid newlines in tags (Stefan Hajnoczi)
+        - drm/lima: set gp bus_stop bit before hard reset (Erico Nunes)
+        - net/sun3_82586: Avoid reading past buffer in debug output (Kees Cook)
+        - scsi: lpfc: Initialize status local variable in lpfc_sli4_repost_sgl_list() (Justin Tee)
+        - fs: binfmt_elf_efpic: don't use missing interpreter's properties (Max Filippov)
+        - media: pci: cx23885: check cx23885_vdev_init() return (Hans Verkuil)
+        - quota: Remove BUG_ON from dqget() (Jan Kara)
+        - ext4: do not trim the group with corrupted block bitmap (Baokun Li)
+        - nvmet-trace: avoid dereferencing pointer too early (Daniel Wagner)
+        - powerpc/xics: Check return value of kasprintf in icp_native_map_one_cpu (Kunwu Chan)
+        - IB/hfi1: Fix potential deadlock on &irq_src_lock and &dd->uctxt_lock (Chengfeng Ye)
+        - wifi: iwlwifi: abort scan when rfkill on but device enabled (Miri Korenblit)
+        - gfs2: setattr_chown: Add missing initialization (Andreas Gruenbacher)
+        - scsi: spi: Fix sshdr use (Mike Christie)
+        - binfmt_misc: cleanup on filesystem umount (Christian Brauner)
+        - staging: ks7010: disable bh on tx_dev_lock (Chengfeng Ye)
+        - media: radio-isa: use dev_name to fill in bus_info (Hans Verkuil)
+        - i2c: riic: avoid potential division by zero (Wolfram Sang)
+        - wifi: cw1200: Avoid processing an invalid TIM IE (Jeff Johnson)
+        - ssb: Fix division by zero issue in ssb_calc_clock_rate (Rand Deeb)
+        - net: hns3: fix a deadlock problem when config TC during resetting (Jie Wang) [Orabug: 37029098] {CVE-2024-44995}
+        - net: dsa: vsc73xx: pass value in phy_write operation (Pawel Dembicki)
+        - net: axienet: Fix register defines comment description (Radhey Shyam Pandey)
+        - net: axienet: Autodetect 64-bit DMA capability (Andre Przywara)
+        - net: axienet: Upgrade descriptors to hold 64-bit addresses (Andre Przywara)
+        - net: axienet: Wrap DMA pointer writes to prepare for 64 bit (Andre Przywara)
+        - net: axienet: Drop MDIO interrupt registers from ethtools dump (Andre Przywara)
+        - net: axienet: Check for DMA mapping errors (Andre Przywara)
+        - net: axienet: Factor out TX descriptor chain cleanup (Andre Przywara)
+        - net: axienet: Improve DMA error handling (Andre Przywara)
+        - net: axienet: Fix DMA descriptor cleanup path (Andre Przywara)
+        - atm: idt77252: prevent use after free in dequeue_rx() (Dan Carpenter) [Orabug: 37029105] {CVE-2024-44998}
+        - net/mlx5e: Correctly report errors for ethtool rx flows (Cosmin Ratiu)
+        - s390/uv: Panic for set and remove shared access UVC errors (Claudio Imbrenda)
+        - btrfs: rename bitmap_set_bits() -> btrfs_bitmap_set_bits() (Alexander Lobakin)
+        - s390/cio: rename bitmap_size() -> idset_bitmap_size() (Alexander Lobakin)
+        - overflow: Implement size_t saturating arithmetic helpers (Kees Cook)
+        - overflow.h: Add flex_array_size() helper (Gustavo A. R. Silva)
+        - memcg_write_event_control(): fix a user-triggerable oops (Al Viro) [Orabug: 37070672] {CVE-2024-45021}
+        - drm/amdgpu: Actually check flags for all context ops. (Bas Nieuwenhuizen)
+        - selinux: fix potential counting error in avc_add_xperms_decision() (Zhen Lei)
+        - fix bitmap corruption on close_range() with CLOSE_RANGE_UNSHARE (Al Viro) [Orabug: 37070680] {CVE-2024-45025}
+        - bitmap: introduce generic optimized bitmap_size() (Alexander Lobakin)
+        - vfs: Don't evict inode under the inode lru traversing context (Zhihao Cheng) [Orabug: 37029119] {CVE-2024-45003}
+        - dm persistent data: fix memory allocation failure (Mikulas Patocka)
+        - dm resume: don't return EINVAL when signalled (Khazhismel Kumykov)
+        - arm64: ACPI: NUMA: initialize all values of acpi_early_node_map to NUMA_NO_NODE (Haibo Xu)
+        - s390/dasd: fix error recovery leading to data corruption on ESE devices (Stefan Haberland) [Orabug: 37070687] {CVE-2024-45026}
+        - xhci: Fix Panther point NULL pointer deref at full-speed re-enumeration (Mathias Nyman) [Orabug: 37029125] {CVE-2024-45006}
+        - ALSA: usb-audio: Support Yamaha P-125 quirk entry (Juan Jose Arboleda)
+        - fuse: Initialize beyond-EOF page contents before setting uptodate (Jann Horn) [Orabug: 37017951] {CVE-2024-44947}
+
+        [5.4.17-2136.337.1]
+        - wireguard: netlink: check for dangling peer via is_dead instead of empty list (Jason A. Donenfeld)  [Orabug: 36596766]  {CVE-2024-26951}
+        - xsigo: add prefix xve/xsvnic with gro and __path_find (Alok Tiwari)  [Orabug: 37089693]
+    FixedIn:
+        - Module: null
+          Name: kernel-uek
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.338.4.1.el8uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-container
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.338.4.1.el8uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-container-debug
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.338.4.1.el8uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-debug
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.338.4.1.el8uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-debug-devel
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.338.4.1.el8uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-devel
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.338.4.1.el8uek
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uek-doc
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.338.4.1.el8uek
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-12884.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-26734.html
+              Name: CVE-2024-26734
+            - Link: https://linux.oracle.com/cve/CVE-2024-26885.html
+              Name: CVE-2024-26885
+            - Link: https://linux.oracle.com/cve/CVE-2024-26921.html
+              Name: CVE-2024-26921
+            - Link: https://linux.oracle.com/cve/CVE-2024-40953.html
+              Name: CVE-2024-40953
+            - Link: https://linux.oracle.com/cve/CVE-2024-41016.html
+              Name: CVE-2024-41016
+            - Link: https://linux.oracle.com/cve/CVE-2024-42229.html
+              Name: CVE-2024-42229
+            - Link: https://linux.oracle.com/cve/CVE-2024-44931.html
+              Name: CVE-2024-44931
+            - Link: https://linux.oracle.com/cve/CVE-2024-46849.html
+              Name: CVE-2024-46849
+            - Link: https://linux.oracle.com/cve/CVE-2024-46853.html
+              Name: CVE-2024-46853
+            - Link: https://linux.oracle.com/cve/CVE-2024-46854.html
+              Name: CVE-2024-46854
+            - Link: https://linux.oracle.com/cve/CVE-2024-47670.html
+              Name: CVE-2024-47670
+            - Link: https://linux.oracle.com/cve/CVE-2024-47671.html
+              Name: CVE-2024-47671
+            - Link: https://linux.oracle.com/cve/CVE-2024-47672.html
+              Name: CVE-2024-47672
+            - Link: https://linux.oracle.com/cve/CVE-2024-47674.html
+              Name: CVE-2024-47674
+            - Link: https://linux.oracle.com/cve/CVE-2024-47679.html
+              Name: CVE-2024-47679
+            - Link: https://linux.oracle.com/cve/CVE-2024-47684.html
+              Name: CVE-2024-47684
+            - Link: https://linux.oracle.com/cve/CVE-2024-47685.html
+              Name: CVE-2024-47685
+            - Link: https://linux.oracle.com/cve/CVE-2024-47692.html
+              Name: CVE-2024-47692
+            - Link: https://linux.oracle.com/cve/CVE-2024-47696.html
+              Name: CVE-2024-47696
+            - Link: https://linux.oracle.com/cve/CVE-2024-47697.html
+              Name: CVE-2024-47697
+            - Link: https://linux.oracle.com/cve/CVE-2024-47698.html
+              Name: CVE-2024-47698
+            - Link: https://linux.oracle.com/cve/CVE-2024-47699.html
+              Name: CVE-2024-47699
+            - Link: https://linux.oracle.com/cve/CVE-2024-47701.html
+              Name: CVE-2024-47701
+            - Link: https://linux.oracle.com/cve/CVE-2024-47709.html
+              Name: CVE-2024-47709
+            - Link: https://linux.oracle.com/cve/CVE-2024-47710.html
+              Name: CVE-2024-47710
+            - Link: https://linux.oracle.com/cve/CVE-2024-47712.html
+              Name: CVE-2024-47712
+            - Link: https://linux.oracle.com/cve/CVE-2024-47713.html
+              Name: CVE-2024-47713
+            - Link: https://linux.oracle.com/cve/CVE-2024-47723.html
+              Name: CVE-2024-47723
+            - Link: https://linux.oracle.com/cve/CVE-2024-47737.html
+              Name: CVE-2024-47737
+            - Link: https://linux.oracle.com/cve/CVE-2024-47740.html
+              Name: CVE-2024-47740
+            - Link: https://linux.oracle.com/cve/CVE-2024-47742.html
+              Name: CVE-2024-47742
+            - Link: https://linux.oracle.com/cve/CVE-2024-47747.html
+              Name: CVE-2024-47747
+            - Link: https://linux.oracle.com/cve/CVE-2024-47749.html
+              Name: CVE-2024-47749
+            - Link: https://linux.oracle.com/cve/CVE-2024-47756.html
+              Name: CVE-2024-47756
+            - Link: https://linux.oracle.com/cve/CVE-2024-47757.html
+              Name: CVE-2024-47757
+            - Link: https://linux.oracle.com/cve/CVE-2024-49851.html
+              Name: CVE-2024-49851
+            - Link: https://linux.oracle.com/cve/CVE-2024-49860.html
+              Name: CVE-2024-49860
+            - Link: https://linux.oracle.com/cve/CVE-2024-49867.html
+              Name: CVE-2024-49867
+            - Link: https://linux.oracle.com/cve/CVE-2024-49868.html
+              Name: CVE-2024-49868
+            - Link: https://linux.oracle.com/cve/CVE-2024-49877.html
+              Name: CVE-2024-49877
+            - Link: https://linux.oracle.com/cve/CVE-2024-49878.html
+              Name: CVE-2024-49878
+            - Link: https://linux.oracle.com/cve/CVE-2024-49879.html
+              Name: CVE-2024-49879
+            - Link: https://linux.oracle.com/cve/CVE-2024-49882.html
+              Name: CVE-2024-49882
+            - Link: https://linux.oracle.com/cve/CVE-2024-49883.html
+              Name: CVE-2024-49883
+            - Link: https://linux.oracle.com/cve/CVE-2024-49892.html
+              Name: CVE-2024-49892
+            - Link: https://linux.oracle.com/cve/CVE-2024-49894.html
+              Name: CVE-2024-49894
+            - Link: https://linux.oracle.com/cve/CVE-2024-49896.html
+              Name: CVE-2024-49896
+            - Link: https://linux.oracle.com/cve/CVE-2024-49900.html
+              Name: CVE-2024-49900
+            - Link: https://linux.oracle.com/cve/CVE-2024-49902.html
+              Name: CVE-2024-49902
+            - Link: https://linux.oracle.com/cve/CVE-2024-49903.html
+              Name: CVE-2024-49903
+            - Link: https://linux.oracle.com/cve/CVE-2024-49924.html
+              Name: CVE-2024-49924
+            - Link: https://linux.oracle.com/cve/CVE-2024-49938.html
+              Name: CVE-2024-49938
+            - Link: https://linux.oracle.com/cve/CVE-2024-49944.html
+              Name: CVE-2024-49944
+            - Link: https://linux.oracle.com/cve/CVE-2024-49948.html
+              Name: CVE-2024-49948
+            - Link: https://linux.oracle.com/cve/CVE-2024-49949.html
+              Name: CVE-2024-49949
+            - Link: https://linux.oracle.com/cve/CVE-2024-49952.html
+              Name: CVE-2024-49952
+            - Link: https://linux.oracle.com/cve/CVE-2024-49955.html
+              Name: CVE-2024-49955
+            - Link: https://linux.oracle.com/cve/CVE-2024-49957.html
+              Name: CVE-2024-49957
+            - Link: https://linux.oracle.com/cve/CVE-2024-49959.html
+              Name: CVE-2024-49959
+            - Link: https://linux.oracle.com/cve/CVE-2024-49962.html
+              Name: CVE-2024-49962
+            - Link: https://linux.oracle.com/cve/CVE-2024-49963.html
+              Name: CVE-2024-49963
+            - Link: https://linux.oracle.com/cve/CVE-2024-49965.html
+              Name: CVE-2024-49965
+            - Link: https://linux.oracle.com/cve/CVE-2024-49966.html
+              Name: CVE-2024-49966
+            - Link: https://linux.oracle.com/cve/CVE-2024-49967.html
+              Name: CVE-2024-49967
+            - Link: https://linux.oracle.com/cve/CVE-2024-49973.html
+              Name: CVE-2024-49973
+            - Link: https://linux.oracle.com/cve/CVE-2024-49981.html
+              Name: CVE-2024-49981
+            - Link: https://linux.oracle.com/cve/CVE-2024-49982.html
+              Name: CVE-2024-49982
+            - Link: https://linux.oracle.com/cve/CVE-2024-49985.html
+              Name: CVE-2024-49985
+            - Link: https://linux.oracle.com/cve/CVE-2024-49995.html
+              Name: CVE-2024-49995
+            - Link: https://linux.oracle.com/cve/CVE-2024-49997.html
+              Name: CVE-2024-49997
+            - Link: https://linux.oracle.com/cve/CVE-2024-50006.html
+              Name: CVE-2024-50006
+            - Link: https://linux.oracle.com/cve/CVE-2024-50007.html
+              Name: CVE-2024-50007
+            - Link: https://linux.oracle.com/cve/CVE-2024-50008.html
+              Name: CVE-2024-50008
+            - Link: https://linux.oracle.com/cve/CVE-2024-50024.html
+              Name: CVE-2024-50024
+            - Link: https://linux.oracle.com/cve/CVE-2024-50033.html
+              Name: CVE-2024-50033
+            - Link: https://linux.oracle.com/cve/CVE-2024-50035.html
+              Name: CVE-2024-50035
+            - Link: https://linux.oracle.com/cve/CVE-2024-50039.html
+              Name: CVE-2024-50039
+            - Link: https://linux.oracle.com/cve/CVE-2024-50040.html
+              Name: CVE-2024-50040
+            - Link: https://linux.oracle.com/cve/CVE-2024-50044.html
+              Name: CVE-2024-50044
+            - Link: https://linux.oracle.com/cve/CVE-2024-50045.html
+              Name: CVE-2024-50045
+            - Link: https://linux.oracle.com/cve/CVE-2024-50059.html
+              Name: CVE-2024-50059
+            - Link: https://linux.oracle.com/cve/CVE-2024-50074.html
+              Name: CVE-2024-50074
+            - Link: https://linux.oracle.com/cve/CVE-2024-50082.html
+              Name: CVE-2024-50082
+            - Link: https://linux.oracle.com/cve/CVE-2024-50089.html
+              Name: CVE-2024-50089
+            - Link: https://linux.oracle.com/cve/CVE-2024-50096.html
+              Name: CVE-2024-50096
+            - Link: https://linux.oracle.com/cve/CVE-2024-50099.html
+              Name: CVE-2024-50099
+            - Link: https://linux.oracle.com/cve/CVE-2024-50116.html
+              Name: CVE-2024-50116
+            - Link: https://linux.oracle.com/cve/CVE-2024-50117.html
+              Name: CVE-2024-50117
+            - Link: https://linux.oracle.com/cve/CVE-2024-50127.html
+              Name: CVE-2024-50127
+            - Link: https://linux.oracle.com/cve/CVE-2024-50131.html
+              Name: CVE-2024-50131
+            - Link: https://linux.oracle.com/cve/CVE-2024-50134.html
+              Name: CVE-2024-50134
+            - Link: https://linux.oracle.com/cve/CVE-2024-50142.html
+              Name: CVE-2024-50142
+            - Link: https://linux.oracle.com/cve/CVE-2024-50143.html
+              Name: CVE-2024-50143
+            - Link: https://linux.oracle.com/cve/CVE-2024-50148.html
+              Name: CVE-2024-50148
+            - Link: https://linux.oracle.com/cve/CVE-2024-50150.html
+              Name: CVE-2024-50150
+            - Link: https://linux.oracle.com/cve/CVE-2024-50151.html
+              Name: CVE-2024-50151
+            - Link: https://linux.oracle.com/cve/CVE-2024-50167.html
+              Name: CVE-2024-50167
+            - Link: https://linux.oracle.com/cve/CVE-2024-50168.html
+              Name: CVE-2024-50168
+            - Link: https://linux.oracle.com/cve/CVE-2024-50171.html
+              Name: CVE-2024-50171
+            - Link: https://linux.oracle.com/cve/CVE-2024-50179.html
+              Name: CVE-2024-50179
+            - Link: https://linux.oracle.com/cve/CVE-2024-50180.html
+              Name: CVE-2024-50180
+            - Link: https://linux.oracle.com/cve/CVE-2024-50184.html
+              Name: CVE-2024-50184
+            - Link: https://linux.oracle.com/cve/CVE-2024-50194.html
+              Name: CVE-2024-50194
+            - Link: https://linux.oracle.com/cve/CVE-2024-50195.html
+              Name: CVE-2024-50195
+            - Link: https://linux.oracle.com/cve/CVE-2024-50199.html
+              Name: CVE-2024-50199
+            - Link: https://linux.oracle.com/cve/CVE-2024-50202.html
+              Name: CVE-2024-50202
+            - Link: https://linux.oracle.com/cve/CVE-2024-50205.html
+              Name: CVE-2024-50205
+            - Link: https://linux.oracle.com/cve/CVE-2024-50210.html
+              Name: CVE-2024-50210
+            - Link: https://linux.oracle.com/cve/CVE-2024-50218.html
+              Name: CVE-2024-50218
+            - Link: https://linux.oracle.com/cve/CVE-2024-50228.html
+              Name: CVE-2024-50228
+            - Link: https://linux.oracle.com/cve/CVE-2024-50229.html
+              Name: CVE-2024-50229
+            - Link: https://linux.oracle.com/cve/CVE-2024-50230.html
+              Name: CVE-2024-50230
+            - Link: https://linux.oracle.com/cve/CVE-2024-50233.html
+              Name: CVE-2024-50233
+            - Link: https://linux.oracle.com/cve/CVE-2024-50234.html
+              Name: CVE-2024-50234
+            - Link: https://linux.oracle.com/cve/CVE-2024-50236.html
+              Name: CVE-2024-50236
+            - Link: https://linux.oracle.com/cve/CVE-2024-50237.html
+              Name: CVE-2024-50237
+            - Link: https://linux.oracle.com/cve/CVE-2024-50251.html
+              Name: CVE-2024-50251
+            - Link: https://linux.oracle.com/cve/CVE-2024-50262.html
+              Name: CVE-2024-50262
+            - Link: https://linux.oracle.com/cve/CVE-2024-53057.html
+              Name: CVE-2024-53057
+            - Link: https://linux.oracle.com/cve/CVE-2024-53059.html
+              Name: CVE-2024-53059
+            - Link: https://linux.oracle.com/cve/CVE-2024-53060.html
+              Name: CVE-2024-53060
+            - Link: https://linux.oracle.com/cve/CVE-2024-53097.html
+              Name: CVE-2024-53097
+        Issued: "2024-12-16"
+        RefId: ELSA-2024-12884
+    Name: ELSA-2024-12884
+    NamespaceName: ol:8
+    Severity: High
