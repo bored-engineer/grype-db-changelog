@@ -1,0 +1,100 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2.22.1-5.0.1]
+        - Fix RPS/XPS and busy polling optimization not getting applied [Orabug: 32153315]
+        - Fix error in uninstalling tuned [Orabug: 351528377]
+        - Updated patch with the more recent version [Orabug: 30730976]
+        - Set AMD CPU freq governor to ondemand when unapplying cpu tunings [Orabug: 30033199]
+        - Restored the system rules in recommend.conf [Orabug: 29962987]
+        - Added oci-nic profile and updated profiles-oci-recommend [Orabug: 29869969]
+          for increasing combined channels to 16 on NICs with bnxt_en driver on BM
+        - Do not access xps_cpus on single queue devices [Orabug: 29894296]
+        - OL8 does not support System Purpose [Orabug: 29443881]
+          Remove syspurpose_role option in recommend.conf.
+        - Added profiles-oci-recommend package [Orabug: 29632202]
+        - Modified the patch for ol8 [Orabug: 29560068] (james.cheng@oracle.com)
+        - Added iscsi plugin, and
+          - added oci-rps-xps profile [Orabug: 28397039]
+          - added oci-busy-polling profile [Orabug: 28748149]
+          - added oci-cpu-power profile
+
+        [2.22.1-5]
+        - Added sanity checks for API methods parameters, (CVE-2024-52337)
+          Resolves: RHEL-66614
+
+        [2.22.1-4.1]
+        - sap-netweaver: increase vm.max_map_count
+          resolves: RHEL-32124
+    FixedIn:
+        - Module: null
+          Name: tuned
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-gtk
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-profiles-atomic
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-profiles-compat
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-profiles-cpu-partitioning
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-profiles-mssql
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-profiles-oci
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-profiles-oci-recommend
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-profiles-oracle
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-profiles-postgresql
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-utils
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: tuned-utils-systemtap
+          NamespaceName: ol:8
+          Version: 0:2.22.1-5.0.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2024-11161.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-52337.html
+              Name: CVE-2024-52337
+        Issued: "2024-12-17"
+        RefId: ELSA-2024-11161
+    Name: ELSA-2024-11161
+    NamespaceName: ol:8
+    Severity: Medium
