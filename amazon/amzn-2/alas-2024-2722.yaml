@@ -1,0 +1,41 @@
+Vulnerability:
+    Description: 'A heap overflow in LzmaUefiDecompressGetInfo function in EDK II. (CVE-2021-28211)BootPerformanceTable pointer is read from an NVRAM variable in PEI. Recommend setting PcdFirmwarePerformanceDataTableS3Support to FALSE. (CVE-2021-28216)A BIOS bug in firmware for a particular PC model leaves the Platform authorization value empty. This can be used to permanently brick the TPM in multiple ways, as well as to non-permanently DoS the system. (CVE-2021-38576)Existing CommBuffer checks in SmmEntryPoint will not catch underflow when computing BufferSize. (CVE-2021-38578)EDK2''s Network Package is susceptible to a predictable TCP Initial Sequence Number. Thisvulnerability can be exploited by an attacker to gain unauthorizedaccess and potentially lead to a loss of Confidentiality. (CVE-2023-45236)EDK2''s Network Package is susceptible to a predictable TCP Initial Sequence Number. Thisvulnerability can be exploited by an attacker to gain unauthorizedaccess and potentially lead to a loss of Confidentiality. (CVE-2023-45237)EDK2 contains a vulnerability in the PeCoffLoaderRelocateImage(). An Attacker may cause memory corruption due to an overflow via an adjacent network. A successful exploit of this vulnerability may lead to a loss of Confidentiality, Integrity, and/or Availability. (CVE-2024-38796)Issue summary: Use of the low-level GF(2^m) elliptic curve APIs with untrustedexplicit values for the field polynomial can lead to out-of-bounds memory readsor writes.Impact summary: Out of bound memory writes can lead to an application crash oreven a possibility of a remote code execution, however, in all the protocolsinvolving Elliptic Curve Cryptography that we''re aware of, either only "namedcurves" are supported, or, if explicit curve parameters are supported, theyspecify an X9.62 encoding of binary (GF(2^m)) curves that can''t representproblematic input values. Thus the likelihood of existence of a vulnerableapplication is low.In particular, the X9.62 encoding is used for ECC keys in X.509 certificates,so problematic inputs cannot occur in the context of processing X.509certificates.  Any problematic use-cases would have to be using an "exotic"curve encoding.The affected APIs include: EC_GROUP_new_curve_GF2m(), EC_GROUP_new_from_params(),and various supporting BN_GF2m_*() functions.Applications working with "exotic" explicit binary (GF(2^m)) curve parameters,that make it possible to represent invalid field polynomials with a zeroconstant term, via the above or similar APIs, may terminate abruptly as aresult of reading or writing outside of array bounds.  Remote code executioncannot easily be ruled out.The FIPS modules in 3.3, 3.2, 3.1 and 3.0 are not affected by this issue. (CVE-2024-9143)'
+    FixedIn:
+        - Name: edk2
+          NamespaceName: amzn:2
+          Version: 20240813-296.amzn2
+          VersionFormat: rpm
+        - Name: edk2-aarch64
+          NamespaceName: amzn:2
+          Version: 20240813-296.amzn2
+          VersionFormat: rpm
+        - Name: edk2-debuginfo
+          NamespaceName: amzn:2
+          Version: 20240813-296.amzn2
+          VersionFormat: rpm
+        - Name: edk2-ovmf
+          NamespaceName: amzn:2
+          Version: 20240813-296.amzn2
+          VersionFormat: rpm
+        - Name: edk2-tools
+          NamespaceName: amzn:2
+          Version: 20240813-296.amzn2
+          VersionFormat: rpm
+        - Name: edk2-tools-doc
+          NamespaceName: amzn:2
+          Version: 20240813-296.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2722.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-28211
+            - Name: CVE-2021-28216
+            - Name: CVE-2021-38576
+            - Name: CVE-2021-38578
+            - Name: CVE-2023-45236
+            - Name: CVE-2023-45237
+            - Name: CVE-2024-38796
+            - Name: CVE-2024-9143
+    Name: ALAS-2024-2722
+    NamespaceName: amzn:2
+    Severity: High
