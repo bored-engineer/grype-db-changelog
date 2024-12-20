@@ -1,0 +1,31 @@
+# schema: vulnerability/os/schema-1.0.0.json
+Vulnerability:
+    Description: A sandbox escape vulnerability was found in Flatpak due to a symlink-following issue when mounting persistent directories. This flaw allows a local user or attacker to craft a symbolic link that can bypass the intended restrictions, enabling access to and modification of files outside the designated sandbox. As a result, the attacker could potentially manipulate the file system, leading to unauthorized actions that compromise the security and integrity of the system.Flatpak is not providing a security boundary that protects the OS from untrusted content in the flatpak. Flatpak applications should be vetted and reviewed with the same attention as regular OS packages. It should be assumed that an installed flatpak shares the same privileges and access than the user running it. (CVE-2024-42472)
+    FixedIn:
+        - Name: flatpak
+          NamespaceName: amzn:2
+          Version: 1.0.9-10.amzn2.0.6
+          VersionFormat: rpm
+        - Name: flatpak-builder
+          NamespaceName: amzn:2
+          Version: 1.0.0-10.amzn2.0.6
+          VersionFormat: rpm
+        - Name: flatpak-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0.9-10.amzn2.0.6
+          VersionFormat: rpm
+        - Name: flatpak-devel
+          NamespaceName: amzn:2
+          Version: 1.0.9-10.amzn2.0.6
+          VersionFormat: rpm
+        - Name: flatpak-libs
+          NamespaceName: amzn:2
+          Version: 1.0.9-10.amzn2.0.6
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2024-2712.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-42472
+    Name: ALAS-2024-2712
+    NamespaceName: amzn:2
+    Severity: High
