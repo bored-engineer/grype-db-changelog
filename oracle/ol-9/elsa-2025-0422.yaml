@@ -2,11 +2,23 @@
 Vulnerability:
     CVSS: []
     Description: |-
-        [1:17.0.14.0.7-2.0.1]
+        [1:17.0.14.0.7-3.0.1]
         - Add Oracle vendor bug URL [Orabug: 34340155]
+
+        [1:17.0.14.0.7-3]
+        - Set rpmrelease to 3
+        - Revert 'Require tzdata-java 2024b at runtime and for build'
 
         [1:17.0.14.0.7-2]
         - Do not pass nil to _jvmdir macro in cjc logic
+        - Related: RHEL-73867
+
+        [1:17.0.14.0.7-2]
+        - Adapt to newest cjc to fix issue with rpm 4.17
+        - Disable copy-jdk-configs for Flatpak builds
+        - Remove cjc backward compatibility, to fix when both rpm 4.16 and 4.17 are in transaction
+        - Resolves: rhbz#1953923
+        - Resolves: RHEL-73867
 
         [1:17.0.14.0.7-2]
         - Update to jdk-17.0.14+7 (GA)
@@ -14,9 +26,9 @@ Vulnerability:
         - Set buildver to 7
         - Set is_ga to 1
         - Update sources to openjdk-17.0.14+7.tar.xz
+        - Require tzdata-java 2024b at runtime and for build
         - Sync java-17-openjdk-portable.specfile from openjdk-portable-rhel-8
-        - Resolves: RHEL-73981
-        - Resolves: RHEL-73559
+        - Resolves: RHEL-73545
         - ** This tarball is embargoed until 2025-01-21 @ 1pm PT. **
 
         [1:17.0.14.0.1-0.2.ea]
@@ -158,7 +170,7 @@ Vulnerability:
         CVE:
             - Link: https://linux.oracle.com/cve/CVE-2025-21502.html
               Name: CVE-2025-21502
-        Issued: "2025-01-22"
+        Issued: "2025-01-23"
         RefId: ELSA-2025-0422
     Name: ELSA-2025-0422
     NamespaceName: ol:9
