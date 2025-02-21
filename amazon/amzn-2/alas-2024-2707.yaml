@@ -1,4 +1,4 @@
-# schema: vulnerability/os/schema-1.0.0.json
+# schema: vulnerability/os/schema-1.0.2.json
 Vulnerability:
     Description: XStream is vulnerable to a Denial of Service attack due to stack overflow from a manipulated binary input stream. XStream provides a BinaryStreamDriver with an own optimized serialization format. The format uses ids for string values as deduplication. The mapping for these ids are created on-the-fly at marshalling time. At unmarshalling time the reader's implementation simply used a simple one-time recursion after reading a mapping token to process the next normal token of the data stream. However, an endless recursion could be triggered with manipulated input data resulting in a stack overflow causing a denial of service. (CVE-2024-47072)
     FixedIn:
