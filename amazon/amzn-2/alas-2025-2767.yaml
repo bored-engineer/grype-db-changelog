@@ -1,0 +1,42 @@
+Vulnerability:
+    Description: GLib's GVariant deserialization prior to GLib 2.74.4 failed to validate the input conforms to the expected format, leading to denial of service. (CVE-2023-29499)GLib's GVariant deserialization prior to GLib 2.74.4 is vulnerable to a slowdown issue where a crafted GVariant can cause excessive processing, leading to denial of service. (CVE-2023-32611)GLib's GVariant deserialization code is vulnerable to a denial of service introduced by additional input validation added to resolve CVE-2023-29499. The offset table validation may be very slow. This bug does not affect any released version of GLib, but does affect GLib distributors who followed the guidance of GLib developers to backport the initial fix for CVE-2023-29499 (CVE-2023-32636)GLib's GVariant deserialization code is vulnerable to a heap buffer overflow introduced by the fix for CVE-2023-32665. This bug does not affect any released version of GLib, but does affect GLib distributors who followed the guidance of GLib developers to backport the initial fix for CVE-2023-32665. (CVE-2023-32643)GLib's GVariant deserialization prior to GLib 2.74.4 is vulnerable to an exponential blowup issue where a crafted GVariant can cause excessive processing, leading to denial of service. (CVE-2023-32665)
+    FixedIn:
+        - Name: glib2
+          NamespaceName: amzn:2
+          Version: 2.56.1-9.amzn2.0.9
+          VersionFormat: rpm
+        - Name: glib2-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.56.1-9.amzn2.0.9
+          VersionFormat: rpm
+        - Name: glib2-devel
+          NamespaceName: amzn:2
+          Version: 2.56.1-9.amzn2.0.9
+          VersionFormat: rpm
+        - Name: glib2-doc
+          NamespaceName: amzn:2
+          Version: 2.56.1-9.amzn2.0.9
+          VersionFormat: rpm
+        - Name: glib2-fam
+          NamespaceName: amzn:2
+          Version: 2.56.1-9.amzn2.0.9
+          VersionFormat: rpm
+        - Name: glib2-static
+          NamespaceName: amzn:2
+          Version: 2.56.1-9.amzn2.0.9
+          VersionFormat: rpm
+        - Name: glib2-tests
+          NamespaceName: amzn:2
+          Version: 2.56.1-9.amzn2.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2025-2767.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-29499
+            - Name: CVE-2023-32611
+            - Name: CVE-2023-32636
+            - Name: CVE-2023-32643
+            - Name: CVE-2023-32665
+    Name: ALAS-2025-2767
+    NamespaceName: amzn:2
+    Severity: High

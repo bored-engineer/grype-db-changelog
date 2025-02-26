@@ -1,0 +1,14 @@
+Vulnerability:
+    Description: 'JWCrypto implements JWK, JWS, and JWE specifications using python-cryptography. Prior to version 1.5.6, an attacker can cause a denial of service attack by passing in a malicious JWE Token with a high compression ratio. When the server processes this token, it will consume a lot of memory and processing time. Version 1.5.6 fixes this vulnerability by limiting the maximum token length.NOTE: https://github.com/latchset/jwcrypto/security/advisories/GHSA-j857-7rvv-vj97NOTE: https://github.com/latchset/jwcrypto/commit/90477a3b6e73da69740e00b8161f53fea19b831f (v1.5.6) (CVE-2024-28102)'
+    FixedIn:
+        - Name: python-jwcrypto
+          NamespaceName: amzn:2
+          Version: 0.4.2-1.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2025-2763.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-28102
+    Name: ALAS-2025-2763
+    NamespaceName: amzn:2
+    Severity: Medium
