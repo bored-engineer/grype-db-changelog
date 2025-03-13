@@ -1,0 +1,229 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.14.0-503.31.1_5.OL9]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+
+        [5.14.0-503.31.1_5]
+        - HID: core: zero-initialize the report buffer (Benjamin Tissoires) [RHEL-81838] {CVE-2024-50302}
+        - x86/kaslr: Expose and use the end of the physical memory address space (Waiman Long) [RHEL-70002]
+        - ALSA: usb-audio: Fix a DMA to stack memory bug (Jaroslav Kysela) [RHEL-81799]
+        - ALSA: usb-audio: Fix for sampling rates support for Mbox3 (Jaroslav Kysela) [RHEL-81799]
+        - ALSA: usb-audio: Fix potential out-of-bound accesses for Extigy and Mbox devices (Jaroslav Kysela) [RHEL-81799] {CVE-2024-53197}
+        - ALSA: usb-audio: Add sampling rates support for Mbox3 (Jaroslav Kysela) [RHEL-81799]
+        - x86/kexec: Add EFI config table identity mapping for kexec kernel (Jay Shin) [RHEL-74170]
+        - mm: fix NULL pointer dereference in alloc_pages_bulk_noprof (Jay Shin) [RHEL-73210] {CVE-2024-53113}
+        - can: bcm: Fix UAF in bcm_proc_show() (CKI KWF BOT) [RHEL-80746] {CVE-2023-52922}
+        - smb: client: fix chmod(2) regression with ATTR_READONLY (Jay Shin) [RHEL-80526]
+        - hugetlb: prioritize surplus allocation from current node (Aristeu Rozanski) [RHEL-77488]
+        - dev: Acquire netdev_rename_lock before restoring dev->name in dev_change_name(). (Antoine Tenart) [RHEL-77338]
+        - net: add softirq safety to netdev_rename_lock (Antoine Tenart) [RHEL-77343]
+        - arp: Convert ioctl(SIOCGARP) to RCU. (Antoine Tenart) [RHEL-77343]
+        - net: Protect dev->name by seqlock. (Antoine Tenart) [RHEL-77343]
+        - net: Remove unused declaration dev_restart() (Antoine Tenart) [RHEL-77343]
+        - arp: Get dev after calling arp_req_(delete|set|get)(). (Antoine Tenart) [RHEL-77343]
+        - arp: Remove a nest in arp_req_get(). (Antoine Tenart) [RHEL-77343]
+        - arp: Factorise ip_route_output() call in arp_req_set() and arp_req_delete(). (Antoine Tenart) [RHEL-77343]
+        - arp: Validate netmask earlier for SIOCDARP and SIOCSARP in arp_ioctl(). (Antoine Tenart) [RHEL-77343]
+        - arp: Move ATF_COM setting in arp_req_set(). (Antoine Tenart) [RHEL-77343]
+        - ACPI: extlog: fix NULL pointer dereference check (Mark Langsdorf) [RHEL-75250] {CVE-2023-52605}
+        - vsock/virtio: Initialization of the dangling pointer occurring in vsk->trans (Jon Maloy) [RHEL-75461] {CVE-2024-50264}
+        - x86/pci: Skip early E820 check for ECAM region (CKI Backport Bot) [RHEL-67065]
+        - cpufreq: intel_pstate: Update Balance performance EPP for Emerald Rapids (Steve Best) [RHEL-64291]
+
+        [5.14.0-503.30.1_5]
+        - can: bcm: Fix UAF in bcm_proc_show() (CKI KWF BOT) [RHEL-80746] {CVE-2023-52922}
+        - smb: client: fix chmod(2) regression with ATTR_READONLY (Jay Shin) [RHEL-80526]
+        - hugetlb: prioritize surplus allocation from current node (Aristeu Rozanski) [RHEL-77488]
+        - dev: Acquire netdev_rename_lock before restoring dev->name in dev_change_name(). (Antoine Tenart) [RHEL-77338]
+        - net: add softirq safety to netdev_rename_lock (Antoine Tenart) [RHEL-77343]
+        - arp: Convert ioctl(SIOCGARP) to RCU. (Antoine Tenart) [RHEL-77343]
+        - net: Protect dev->name by seqlock. (Antoine Tenart) [RHEL-77343]
+        - net: Remove unused declaration dev_restart() (Antoine Tenart) [RHEL-77343]
+        - arp: Get dev after calling arp_req_(delete|set|get)(). (Antoine Tenart) [RHEL-77343]
+        - arp: Remove a nest in arp_req_get(). (Antoine Tenart) [RHEL-77343]
+        - arp: Factorise ip_route_output() call in arp_req_set() and arp_req_delete(). (Antoine Tenart) [RHEL-77343]
+        - arp: Validate netmask earlier for SIOCDARP and SIOCSARP in arp_ioctl(). (Antoine Tenart) [RHEL-77343]
+        - arp: Move ATF_COM setting in arp_req_set(). (Antoine Tenart) [RHEL-77343]
+        - ACPI: extlog: fix NULL pointer dereference check (Mark Langsdorf) [RHEL-75250] {CVE-2023-52605}
+        - vsock/virtio: Initialization of the dangling pointer occurring in vsk->trans (Jon Maloy) [RHEL-75461] {CVE-2024-50264}
+        - x86/pci: Skip early E820 check for ECAM region (CKI Backport Bot) [RHEL-67065]
+        - cpufreq: intel_pstate: Update Balance performance EPP for Emerald Rapids (Steve Best) [RHEL-64291]
+    FixedIn:
+        - Module: null
+          Name: bpftool
+          NamespaceName: ol:9
+          Version: 0:7.4.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: libperf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: rtla
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: rv
+          NamespaceName: ol:9
+          Version: 0:5.14.0-503.31.1.el9_5
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-2627.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2023-52605.html
+              Name: CVE-2023-52605
+            - Link: https://linux.oracle.com/cve/CVE-2023-52922.html
+              Name: CVE-2023-52922
+            - Link: https://linux.oracle.com/cve/CVE-2024-50264.html
+              Name: CVE-2024-50264
+            - Link: https://linux.oracle.com/cve/CVE-2024-50302.html
+              Name: CVE-2024-50302
+            - Link: https://linux.oracle.com/cve/CVE-2024-53113.html
+              Name: CVE-2024-53113
+            - Link: https://linux.oracle.com/cve/CVE-2024-53197.html
+              Name: CVE-2024-53197
+        Issued: "2025-03-11"
+        RefId: ELSA-2025-2627
+    Name: ELSA-2025-2627
+    NamespaceName: ol:9
+    Severity: High
