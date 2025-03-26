@@ -1,0 +1,46 @@
+Vulnerability:
+    Description: An issue was found in the CPython `zipfile` module affecting versions 3.12.2, 3.11.8, 3.10.13, 3.9.18, and 3.8.18 and prior.The zipfile module is vulnerable to "quoted-overlap" zip-bombs which exploit the zip format to create a zip-bomb with a high compression ratio. The fixed versions of CPython makes the zipfile module reject zip archives which overlap entries in the archive. (CVE-2024-0450)The urllib.parse.urlsplit() and urlparse() functions improperly validated bracketed hosts (`[]`), allowing hosts that weren't IPv6 or IPvFuture. This behavior was not conformant to RFC 3986 and potentially enabled SSRF if a URL is processed by more than one URL parser. (CVE-2024-11168)There is a MEDIUM severity vulnerability affecting CPython.Theemail module didn't properly quote newlines for email headers whenserializing an email message allowing for header injection when an emailis serialized. (CVE-2024-6923)There is a LOW severity vulnerability affecting CPython, specifically the'http.cookies' standard library module.When parsing cookies that contained backslashes for quoted characters inthe cookie value, the parser would use an algorithm with quadraticcomplexity, resulting in excess CPU resources being used while parsing thevalue. (CVE-2024-7592)The Python standard library functions `urllib.parse.urlsplit` and `urlparse` accepted domain names that included square brackets which isn't valid according to RFC 3986. Square brackets are only meant to be used as delimiters for specifying IPv6 and IPvFuture hosts in URLs. This could result in differential parsing across the Python URL parser and other specification-compliant URL parsers. (CVE-2025-0938)
+    FixedIn:
+        - Name: python
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.11
+          VersionFormat: rpm
+        - Name: python-debug
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.11
+          VersionFormat: rpm
+        - Name: python-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.11
+          VersionFormat: rpm
+        - Name: python-devel
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.11
+          VersionFormat: rpm
+        - Name: python-libs
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.11
+          VersionFormat: rpm
+        - Name: python-test
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.11
+          VersionFormat: rpm
+        - Name: python-tools
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.11
+          VersionFormat: rpm
+        - Name: tkinter
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.11
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2025-2797.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-0450
+            - Name: CVE-2024-11168
+            - Name: CVE-2024-6923
+            - Name: CVE-2024-7592
+            - Name: CVE-2025-0938
+    Name: ALAS-2025-2797
+    NamespaceName: amzn:2
+    Severity: Medium
