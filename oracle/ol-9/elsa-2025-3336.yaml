@@ -1,0 +1,57 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.2.2-15.0.1]
+        - podman: do not set rlimits to the default value [Orabug: 37310981]
+        - Add devices on container startup, not on creation
+        - overlay: Put should ignore ENINVAL for Unmount [Orabug: 36234694]
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117404]
+
+        [4:5.2.2-15]
+        - update to the latest content of https://github.com/containers/podman/tree/v5.2-rhel
+          (https://github.com/containers/podman/commit/a2d774c)
+        - fixes 'Excessive memory leak due to uncontrolled accumulation of health.log entries in Podman 5.x - [RHEL 9.5] Zstream'
+        - Resolves: RHEL-83558
+
+        [4:5.2.2-14]
+        - update to the latest content of https://github.com/containers/podman/tree/v5.2-rhel
+          (https://github.com/containers/podman/commit/ea1bef4)
+        - fixes 'CVE-2025-22869 podman: Potential denial of service in golang.org/x/crypto [rhel-9.5.z]'
+        - Resolves: RHEL-81318
+    FixedIn:
+        - Module: null
+          Name: podman
+          NamespaceName: ol:9
+          Version: 4:5.2.2-15.0.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-docker
+          NamespaceName: ol:9
+          Version: 4:5.2.2-15.0.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-plugins
+          NamespaceName: ol:9
+          Version: 4:5.2.2-15.0.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-remote
+          NamespaceName: ol:9
+          Version: 4:5.2.2-15.0.1.el9_5
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-tests
+          NamespaceName: ol:9
+          Version: 4:5.2.2-15.0.1.el9_5
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-3336.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-22869.html
+              Name: CVE-2025-22869
+        Issued: "2025-03-27"
+        RefId: ELSA-2025-3336
+    Name: ELSA-2025-3336
+    NamespaceName: ol:9
+    Severity: High
