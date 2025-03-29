@@ -1,0 +1,91 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [1.22.1-8.0.1.1]
+        - Reference oracle-indexhtml within Requires [Orabug: 33802044]
+        - Remove Red Hat references [Orabug: 29498217]
+
+        [1:1.22.1-8.1]
+        - Resolves: RHEL-84486 - nginx:1.22/nginx: specially crafted MP4 file may
+          cause denial of service (CVE-2024-7347)
+
+        [1:1.22.1-8]
+        - Resolves: RHEL-49349 - nginx worker processes memory leak
+
+        [1:1.22.1-7]
+        - Resolves: RHEL-40621 - openssl 3.2 ENGINE regression in nginx
+
+        [1:1.22.1-6]
+        - Resolves: RHEL-32650 - Nginx seg faults when proxy_ssl_certificate is set
+
+        [1:1.22.1-5]
+        - Resolves: RHEL-12737 - nginx:1.22/nginx: HTTP/2: Multiple HTTP/2 enabled web
+          servers are vulnerable to a DDoS attack (Rapid Reset Attack) (CVE-2023-44487)
+
+        [1:1.22.1-4]
+        - Resolves: #2170808 - Running nginx with systemctl and entering ssl
+          private key's pass phrase
+        - added new ssl_pass_phrase_dialog directive which enables setting
+          external program for entering password for encrypted private key
+    FixedIn:
+        - Module: nginx:1.22
+          Name: nginx
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-all-modules
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-core
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-filesystem
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-mod-devel
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-mod-http-image-filter
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-mod-http-perl
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-mod-http-xslt-filter
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-mod-mail
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+        - Module: nginx:1.22
+          Name: nginx-mod-stream
+          NamespaceName: ol:9
+          Version: 1:1.22.1-8.0.1.module+el9.5.0+90542+e87a1bbf.1
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-3261.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-7347.html
+              Name: CVE-2024-7347
+        Issued: "2025-03-27"
+        RefId: ELSA-2025-3261
+    Name: ELSA-2025-3261
+    NamespaceName: ol:9
+    Severity: Medium
