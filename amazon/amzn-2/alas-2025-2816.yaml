@@ -1,0 +1,44 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: Directory traversal vulnerability in the (1) extract and (2) extractall functions in the tarfile module in Python allows user-assisted remote attackers to overwrite arbitrary files via a .. (dot dot) sequence in filenames in a TAR archive, a related issue to CVE-2001-1267. (CVE-2007-4559)An issue was discovered in Python before 3.8.18, 3.9.x before 3.9.18, 3.10.x before 3.10.13, and 3.11.x before 3.11.5. It primarily affects servers (such as HTTP servers) that use TLS client authentication. If a TLS server-side socket is created, receives data into the socket buffer, and then is closed quickly, there is a brief window where the SSLSocket instance will detect the socket as "not connected" and won't initiate a handshake, but buffered data will still be readable from the socket buffer. This data will not be authenticated if the server-side TLS peer is expecting client certificate authentication, and is indistinguishable from valid TLS stream data. Data is limited in size to the amount that will fit in the buffer. (The TLS connection cannot directly be used for data exfiltration because the vulnerable code path requires that the connection be closed on initialization of the SSLSocket.) (CVE-2023-40217)
+    FixedIn:
+        - Name: python
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-debug
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-devel
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-libs
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-test
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.12
+          VersionFormat: rpm
+        - Name: python-tools
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.12
+          VersionFormat: rpm
+        - Name: tkinter
+          NamespaceName: amzn:2
+          Version: 2.7.18-1.amzn2.0.12
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2025-2816.html
+    Metadata:
+        CVE:
+            - Name: CVE-2007-4559
+            - Name: CVE-2023-40217
+    Name: ALAS-2025-2816
+    NamespaceName: amzn:2
+    Severity: Medium
