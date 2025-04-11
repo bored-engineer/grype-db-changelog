@@ -1,0 +1,89 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        delve
+        [1.24.1-1.0.1]
+        - Disable DWARF compression which has issues (Alex Burmashev)
+
+        [1.24.1-1]
+        - Rebase to 1.24.1
+        - Skip unsupported tests
+        - Resolves: RHEL-83451
+
+        golang
+        [1.23.6-1]
+        - Update to Go 1.23.6
+        - Resolves: RHEL-83824
+
+        [1.22.11-1]
+        - Rebase to Go1.22.11 to pick up fixes for CVE 2024-45341 and 2024-45336
+        - Fix test failures with expired certificates
+        - Resolves: RHEL-73752
+
+        [1.22.9-2]
+        - Remove bundled boringcrypto blob
+        - Resolves: RHEL-54338
+
+        go-toolset
+        [1.23.6-1]
+        - Update to Go 1.23.6
+        - Resolves: RHEL-83824
+
+        [1.22.11-1]
+        - Rebase to Go1.22.11 to pick up fixes for CVEs 2024-45341 and 2024-45336
+        - Go rebase addresses test failures with expired certificates
+        - Resolves: RHEL-73752
+    FixedIn:
+        - Module: go-toolset:ol8
+          Name: delve
+          NamespaceName: ol:8
+          Version: 0:1.24.1-1.0.1.module+el8.10.0+90545+447bd9e4
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: go-toolset
+          NamespaceName: ol:8
+          Version: 0:1.23.6-1.module+el8.10.0+90545+447bd9e4
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang
+          NamespaceName: ol:8
+          Version: 0:1.23.6-1.module+el8.10.0+90545+447bd9e4
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-bin
+          NamespaceName: ol:8
+          Version: 0:1.23.6-1.module+el8.10.0+90545+447bd9e4
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-docs
+          NamespaceName: ol:8
+          Version: 0:1.23.6-1.module+el8.10.0+90545+447bd9e4
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-misc
+          NamespaceName: ol:8
+          Version: 0:1.23.6-1.module+el8.10.0+90545+447bd9e4
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-src
+          NamespaceName: ol:8
+          Version: 0:1.23.6-1.module+el8.10.0+90545+447bd9e4
+          VersionFormat: rpm
+        - Module: go-toolset:ol8
+          Name: golang-tests
+          NamespaceName: ol:8
+          Version: 0:1.23.6-1.module+el8.10.0+90545+447bd9e4
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-3772.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-45336.html
+              Name: CVE-2024-45336
+            - Link: https://linux.oracle.com/cve/CVE-2024-45341.html
+              Name: CVE-2024-45341
+        Issued: "2025-04-10"
+        RefId: ELSA-2025-3772
+    Name: ELSA-2025-3772
+    NamespaceName: ol:8
+    Severity: Medium
