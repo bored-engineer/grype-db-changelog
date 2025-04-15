@@ -1,0 +1,35 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: An out of bounds write exists in FreeType versions 2.13.0 and below when attempting to parse font subglyph structures related to TrueType GX and variable font files. The vulnerable code assigns a signed short value to an unsigned long and then adds a static value causing it to wrap around and allocate too small of a heap buffer. The code then writes up to 6 signed long integers out of bounds relative to this buffer. This may result in arbitrary code execution. This vulnerability may have been exploited in the wild. (CVE-2025-27363)
+    FixedIn:
+        - Name: freetype
+          NamespaceName: amzn:2023
+          Version: 2.13.2-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: freetype-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.13.2-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: freetype-debugsource
+          NamespaceName: amzn:2023
+          Version: 2.13.2-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: freetype-demos
+          NamespaceName: amzn:2023
+          Version: 2.13.2-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: freetype-demos-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.13.2-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: freetype-devel
+          NamespaceName: amzn:2023
+          Version: 2.13.2-5.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2025-925.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-27363
+    Name: ALAS-2025-925
+    NamespaceName: amzn:2023
+    Severity: High
