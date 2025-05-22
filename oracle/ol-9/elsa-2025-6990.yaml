@@ -1,0 +1,180 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2.06-104.0.1]
+        - Update grub2 dependencies to match new Secure Boot certificate chain of trust [Orabug: 37766761]
+        - Fix typo in SBAT metadata [Orabug: 37693946]
+        - Allow installation of grub2 only with shim-aa64 that allows booting it [Orabug: 37693946]
+        - net/dns: Fix removal of DNS server [Orabug: 37539625]
+        - net/dns: Simplify error handling of recv_hook() function [Orabug: 37539625]
+        - net/dns: Add debugging messages in recv_hook() function [Orabug: 37539625]
+        - net/dns: Fix lookup error when no IPv6 is returned [Orabug: 37539625]
+        - efinet: close and reopen network card on failure [Orabug: 35126950], [Orabug: 37747175]
+        - efinet: Correct closing of SNP protocol [Orabug: 35126950], [Orabug: 37747175]
+        - Rework the scripts to cover both in-place upgrade and update scenarios [Orabug: 36768566]
+        - Restore correct order of processing config files [Orabug: 36758359]
+        - Support setting custom kernels as default kernels [Orabug: 36043978]
+        - Bump SBAT metadata for grub to 3 [Orabug: 34872719]
+        - Fix CVE-2022-3775 [Orabug: 34871953]
+        - Enable signing for aarch64 EFI
+        - Fix signing certificate names
+        - Enable back btrfs grub module for EFI pre-built image [Orabug: 34360986]
+        - Replaced bugzilla.oracle.com references [Orabug: 34202300]
+        - Update provided certificate version to 202204 [JIRA: OLDIS-16371]
+        - Various coverity fixes [JIRA: OLDIS-16371]
+        - bump SBAT generation
+        - Update bug url [Orabug: 34202300]
+        - Revert provided certificate version back to 202102 [JIRA: OLDIS-16371]
+        - Update signing certificate [JIRA: OLDIS-16371]
+        - fix SBAT data [JIRA: OLDIS-16371]
+        - Update requires [JIRA: OLDIS-16371]
+        - Rebuild for SecureBoot signatures [Orabug: 33801813]
+        - Do not add shim and grub certificate deps for aarch64 packages [Orabug: 32670033]
+        - Update Oracle SBAT data [Orabug: 32670033]
+        - Use new signing certificate [Orabug: 32670033]
+        - honor /etc/sysconfig/kernel DEFAULTKERNEL setting for BLS [Orabug: 30643497]
+        - set EFIDIR as redhat for additional grub2 tools [Orabug: 29875597]
+        - Update upstream references [Orabug: 26388226]
+        - Insert Unbreakable Enterprise Kernel text into BLS config file [Orabug: 29417955]
+        - Put 'with' in menuentry instead of 'using' [Orabug: 18504756]
+        - Use different titles for UEK and RHCK kernels [Orabug: 18504756]
+
+        [2.06-104]
+        - fs/xfs: Sync with latest xfs upstream
+        - Resolves: #RHEL-85960
+        - (NVR bump to catch up with zstream)
+
+        [2.06-100]
+        - ieee1275/ofnet: Fix grub_malloc() removed after added safe
+        - Resolves: #RHEL-83117
+
+        [2.06-99]
+        - Added the following 2 commits to optimize memory consumption
+        - tpm: Disable the tpm verifier if the TPM device is not present
+        - powerpc: increase MIN RMA size for CAS negotiation
+        - Resolves: #RHEL-76558
+
+        [2.06-98]
+        - Remove 'fs/ntfs: Implement attribute verification' patch
+        - Related: RHEL-83117
+
+        [2.06-97]
+        - fs/ext2: Rework out-of-bounds read for inline and external extents
+        - Related: RHEL-79857
+
+        [2.06-96]
+        - Fixes for several CVEs
+        - Resolves: CVE-2024-45779 CVE-2024-45778 CVE-2025-1118
+        - Resolves: CVE-2025-0677 CVE-2024-45782 CVE-2025-0690
+        - Resolves: CVE-2024-45783 CVE-2025-0624 CVE-2024-45776
+        - Resolves: CVE-2025-0622 CVE-2024-45774 CVE-2024-45775
+        - Resolves: CVE-2024-45781 CVE-2024-45780
+        - Resolves: #RHEL-79700
+        - Resolves: #RHEL-79341
+        - Resolves: #RHEL-79875
+        - Resolves: #RHEL-79849
+        - Resolves: #RHEL-79707
+        - Resolves: #RHEL-79857
+        - Resolves: #RHEL-79709
+        - Resolves: #RHEL-79846
+        - Resolves: #RHEL-75737
+        - Resolves: #RHEL-79713
+        - Resolves: #RHEL-73785
+        - Resolves: #RHEL-73787
+        - Resolves: #RHEL-79704
+        - Resolves: #RHEL-79702
+
+        [2.06-95]
+        - kern/ieee1275/init: Add IEEE 1275 Radix support for KVM on Power
+        - Resolves: #RHEL-52761
+    FixedIn:
+        - Module: null
+          Name: grub2-common
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-aa64
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-aa64-cdboot
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-aa64-modules
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-x64
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-x64-cdboot
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-efi-x64-modules
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-pc
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-pc-modules
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-tools
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-tools-efi
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-tools-extra
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: grub2-tools-minimal
+          NamespaceName: ol:9
+          Version: 1:2.06-104.0.1.el9_6
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-6990.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-45774.html
+              Name: CVE-2024-45774
+            - Link: https://linux.oracle.com/cve/CVE-2024-45775.html
+              Name: CVE-2024-45775
+            - Link: https://linux.oracle.com/cve/CVE-2024-45776.html
+              Name: CVE-2024-45776
+            - Link: https://linux.oracle.com/cve/CVE-2024-45781.html
+              Name: CVE-2024-45781
+            - Link: https://linux.oracle.com/cve/CVE-2024-45783.html
+              Name: CVE-2024-45783
+            - Link: https://linux.oracle.com/cve/CVE-2025-0622.html
+              Name: CVE-2025-0622
+            - Link: https://linux.oracle.com/cve/CVE-2025-0677.html
+              Name: CVE-2025-0677
+            - Link: https://linux.oracle.com/cve/CVE-2025-0690.html
+              Name: CVE-2025-0690
+        Issued: "2025-05-16"
+        RefId: ELSA-2025-6990
+    Name: ELSA-2025-6990
+    NamespaceName: ol:9
+    Severity: Medium
