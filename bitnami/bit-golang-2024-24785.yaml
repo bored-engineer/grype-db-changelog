@@ -1,0 +1,43 @@
+# schema: vulnerability/osv/schema-1.5.0.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: golang
+        purl: pkg:bitnami/golang
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.21.8
+            - introduced: 1.22.0-0
+            - fixed: 1.22.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2024-24785
+database_specific:
+    cpes:
+        - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+    severity: Medium
+details: If errors returned from MarshalJSON methods contain user controlled data, they may be used to break the contextual auto-escaping behavior of the html/template package, allowing for subsequent actions to inject unexpected content into templates.
+id: BIT-golang-2024-24785
+modified: "2025-05-20T10:02:07.006Z"
+published: "2024-03-12T08:24:09.179Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2024/03/08/4
+    - type: WEB
+      url: https://go.dev/cl/564196
+    - type: WEB
+      url: https://go.dev/issue/65697
+    - type: WEB
+      url: https://groups.google.com/g/golang-announce/c/5pwGVUPoMbg
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2024-24785
+    - type: WEB
+      url: https://pkg.go.dev/vuln/GO-2024-2610
+    - type: WEB
+      url: https://security.netapp.com/advisory/ntap-20240329-0008/
+schema_version: 1.5.0
+summary: Errors returned from JSON marshaling may break template escaping in html/template
