@@ -1,0 +1,33 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: golang
+        purl: pkg:bitnami/golang
+      ranges:
+        - events:
+            - fixed: 1.15.12
+            - fixed: 1.16.4
+            - introduced: "0"
+            - introduced: 1.16.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2021-33194
+database_specific:
+    cpes:
+        - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+    severity: High
+details: golang.org/x/net before v0.0.0-20210520170846-37e1c6afe023 allows attackers to cause a denial of service (infinite loop) via crafted ParseFragment input.
+id: BIT-golang-2021-33194
+modified: "2024-03-06T11:25:28.861Z"
+published: "2024-03-06T11:05:26.460Z"
+references:
+    - type: WEB
+      url: https://github.com/golang/net/commit/37e1c6afe02340126705deced573a85ab75209d7
+    - type: WEB
+      url: https://groups.google.com/g/golang-announce/c/wPunbCPkWUg
+    - type: WEB
+      url: https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/4CHKSFMHZVOBCZSSVRE3UEYNKARTBMTM/
+schema_version: 1.5.0

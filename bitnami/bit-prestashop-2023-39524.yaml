@@ -1,0 +1,32 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: prestashop
+        purl: pkg:bitnami/prestashop
+      ranges:
+        - events:
+            - fixed: 8.1.1
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2023-39524
+database_specific:
+    cpes:
+        - cpe:2.3:a:prestashop:prestashop:*:*:*:*:*:*:*:*
+    severity: Critical
+details: PrestaShop is an open source e-commerce web application. Prior to version 8.1.1, SQL injection possible in the product search field, in BO's product page. Version 8.1.1 contains a patch for this issue. There are no known workarounds.
+id: BIT-prestashop-2023-39524
+modified: "2025-05-20T10:02:07.006Z"
+published: "2024-03-06T11:04:07.686Z"
+references:
+    - type: WEB
+      url: https://github.com/PrestaShop/PrestaShop/commit/2047d4c053043102bc46a37d383b392704bf14d7
+    - type: WEB
+      url: https://github.com/PrestaShop/PrestaShop/security/advisories/GHSA-75p5-jwx4-qw9h
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2023-39524
+schema_version: 1.5.0
+summary: PrestaShop vulnerable to boolean SQL injection in search product in BO

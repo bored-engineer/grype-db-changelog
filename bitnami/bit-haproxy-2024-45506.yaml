@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: haproxy
+        purl: pkg:bitnami/haproxy
+      ranges:
+        - events:
+            - fixed: 2.9.10
+            - fixed: 3.0.4
+            - fixed: 3.1.1
+            - introduced: 2.9.0
+            - introduced: 3.0.0
+            - introduced: 3.1.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2024-45506
+database_specific:
+    cpes:
+        - cpe:2.3:a:haproxy:haproxy:*:*:*:*:*:*:*:*
+    severity: High
+details: HAProxy 2.9.x before 2.9.10, 3.0.x before 3.0.4, and 3.1.x through 3.1-dev6 allows a remote denial of service for HTTP/2 zero-copy forwarding (h2_send loop) under a certain set of conditions, as exploited in the wild in 2024.
+id: BIT-haproxy-2024-45506
+modified: "2025-04-03T14:40:37.652Z"
+published: "2024-09-16T11:52:22.978Z"
+references:
+    - type: WEB
+      url: http://git.haproxy.org/?p=haproxy-3.0.git%3Ba=commitdiff%3Bh=c725db17e8416ffb3c1537aea756356228ce5e3c
+    - type: WEB
+      url: http://git.haproxy.org/?p=haproxy-3.0.git%3Ba=commitdiff%3Bh=d636e515453320c6e122c313c661a8ac7d387c7f
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2024-45506
+    - type: WEB
+      url: https://www.haproxy.org/
+    - type: WEB
+      url: https://www.haproxy.org/download/3.1/src/CHANGELOG
+    - type: WEB
+      url: https://www.mail-archive.com/haproxy%40formilux.org/msg45280.html
+    - type: WEB
+      url: https://www.mail-archive.com/haproxy%40formilux.org/msg45281.html
+schema_version: 1.5.0

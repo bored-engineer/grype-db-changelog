@@ -1,0 +1,39 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: node-min
+        purl: pkg:bitnami/node-min
+      ranges:
+        - events:
+            - fixed: 12.22.2
+            - fixed: 14.17.2
+            - fixed: 16.4.1
+            - introduced: 12.0.0
+            - introduced: 14.0.0
+            - introduced: 16.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2021-22921
+database_specific:
+    cpes:
+        - cpe:2.3:a:nodejs:node.js:*:*:*:*:lts:*:*:*
+    severity: High
+details: 'Node.js before 16.4.1, 14.17.2, and 12.22.2 is vulnerable to local privilege escalation attacks under certain conditions on Windows platforms. More specifically, improper configuration of permissions in the installation directory allows an attacker to perform two different escalation attacks: PATH and DLL hijacking.'
+id: BIT-node-min-2021-22921
+modified: "2025-04-03T14:40:37.652Z"
+published: "2024-12-16T14:05:37.425Z"
+references:
+    - type: WEB
+      url: https://cert-portal.siemens.com/productcert/pdf/ssa-389290.pdf
+    - type: WEB
+      url: https://hackerone.com/reports/1211160
+    - type: WEB
+      url: https://nodejs.org/en/blog/vulnerability/july-2021-security-releases/
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2021-22921
+    - type: WEB
+      url: https://security.netapp.com/advisory/ntap-20210805-0003/
+schema_version: 1.5.0

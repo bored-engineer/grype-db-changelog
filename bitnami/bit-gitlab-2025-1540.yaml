@@ -1,0 +1,33 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - events:
+            - fixed: 17.8.2
+            - introduced: 17.5.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-1540
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Low
+details: An issue has been discovered in GitLab CE/EE for Self-Managed and Dedicated instances affecting all versions from 17.5 prior to 17.6.5, 17.7 prior to 17.7.4, and 17.8 prior to 17.8.2. It was possible for a user added as an External to read and clone internal projects under certain circumstances."
+id: BIT-gitlab-2025-1540
+modified: "2025-05-20T10:02:07.006Z"
+published: "2025-03-10T08:14:55.268Z"
+references:
+    - type: WEB
+      url: https://about.gitlab.com/releases/2025/02/12/patch-release-gitlab-17-8-2-released/#saml-authentication-misconfigures-external-user-attribute
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/issues/512765
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-1540
+schema_version: 1.5.0
+summary: Incorrect Authorization in GitLab
