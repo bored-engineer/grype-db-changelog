@@ -1,0 +1,31 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A flaw was found in the soup_multipart_new_from_message() function of the libsoup HTTP library, which is commonly used by GNOME and other applications to handle web communications. The issue occurs when the library processes specially crafted multipart messages. Due to improper validation, an internal calculation can go wrong, leading to an integer underflow. This can cause the program to access invalid memory and crash. As a result, any application or server using libsoup could be forced to exit unexpectedly, creating a denial-of-service (DoS) risk. (CVE-2025-4948)
+    FixedIn:
+        - Name: libsoup
+          NamespaceName: amzn:2023
+          Version: 2.72.0-6.amzn2023.0.6
+          VersionFormat: rpm
+        - Name: libsoup-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.72.0-6.amzn2023.0.6
+          VersionFormat: rpm
+        - Name: libsoup-debugsource
+          NamespaceName: amzn:2023
+          Version: 2.72.0-6.amzn2023.0.6
+          VersionFormat: rpm
+        - Name: libsoup-devel
+          NamespaceName: amzn:2023
+          Version: 2.72.0-6.amzn2023.0.6
+          VersionFormat: rpm
+        - Name: libsoup-doc
+          NamespaceName: amzn:2023
+          Version: 2.72.0-6.amzn2023.0.6
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2025-997.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-4948
+    Name: ALAS-2025-997
+    NamespaceName: amzn:2023
+    Severity: High

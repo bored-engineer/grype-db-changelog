@@ -1,0 +1,15 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: The tokenizer incorrectly interprets tags with unquoted attribute values that end with a solidus character (/) as self-closing. When directly using Tokenizer, this can result in such tags incorrectly being marked as self-closing, and when using the Parse functions, this can result in content following such tags as being placed in the wrong scope during DOM construction, but only when tags are in foreign content (e.g. <math>, <svg>, etc contexts).After analysis, we have determined that 2025-22872 do not pose a security risk to docker or containerd on Amazon Linux 2 or Amazon Linux 2023. Source code analysis using govulncheck has confirmed that these packages do not contain the vulnerable code. As a result, no security patches are required for these specific packages on AL2 and AL2023. (CVE-2025-22872)
+    FixedIn:
+        - Name: ecs-init
+          NamespaceName: amzn:2
+          Version: 1.94.0-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALASECS-2025-065.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-22872
+    Name: ALASECS-2025-065
+    NamespaceName: amzn:2
+    Severity: Medium
