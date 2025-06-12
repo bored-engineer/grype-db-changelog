@@ -1,0 +1,30 @@
+Vulnerability:
+    Description: 'Tornado is a Python web framework and asynchronous networking library. When Tornado''s ``multipart/form-data`` parser encounters certain errors, it logs a warning but continues trying to parse the remainder of the data. This allows remote attackers to generate an extremely high volume of logs, constituting a DoS attack. This DoS is compounded by the fact that the logging subsystem is synchronous. All versions of Tornado prior to 6.5.0 are affected. The vulnerable parser is enabled by default. Upgrade to Tornado version 6.50 to receive a patch. As a workaround, risk can be mitigated by blocking `Content-Type: multipart/form-data` in a proxy. (CVE-2025-47287)'
+    FixedIn:
+        - Name: python-tornado
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: python-tornado-debugsource
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: python-tornado-doc
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: python3-tornado
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: python3-tornado-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS-2025-1002.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-47287
+    Name: ALAS-2025-1002
+    NamespaceName: amzn:2023
+    Severity: Medium
