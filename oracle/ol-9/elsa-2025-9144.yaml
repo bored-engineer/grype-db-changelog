@@ -1,0 +1,48 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.4.0-10.0.1]
+        - Add devices on container startup, not on creation
+        - overlay: Put should ignore ENINVAL for Unmount [Orabug: 36234694]
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117404]
+
+        [5:5.4.0-10]
+        - rebuild to fix CVE-2025-22871 podman: Request smuggling due to acceptance of invalid chunked data in net/http
+        - Resolves: RHEL-90055
+    FixedIn:
+        - Module: null
+          Name: podman
+          NamespaceName: ol:9
+          Version: 5:5.4.0-10.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-docker
+          NamespaceName: ol:9
+          Version: 5:5.4.0-10.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-plugins
+          NamespaceName: ol:9
+          Version: 5:5.4.0-10.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-remote
+          NamespaceName: ol:9
+          Version: 5:5.4.0-10.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: podman-tests
+          NamespaceName: ol:9
+          Version: 5:5.4.0-10.0.1.el9_6
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-9144.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-22871.html
+              Name: CVE-2025-22871
+        Issued: "2025-06-17"
+        RefId: ELSA-2025-9144
+    Name: ELSA-2025-9144
+    NamespaceName: ol:9
+    Severity: Medium

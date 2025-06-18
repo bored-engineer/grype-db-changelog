@@ -1,0 +1,31 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [1.39.4-2.0.1]
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117178]
+
+        [2:1.39.4-2]
+        - rebuild to fix CVE-2025-22871 buildah: Request smuggling due to acceptance of invalid chunked data in net/http
+        - Resolves: RHEL-89294
+    FixedIn:
+        - Module: null
+          Name: buildah
+          NamespaceName: ol:9
+          Version: 2:1.39.4-2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: buildah-tests
+          NamespaceName: ol:9
+          Version: 2:1.39.4-2.0.1.el9_6
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-9147.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-22871.html
+              Name: CVE-2025-22871
+        Issued: "2025-06-17"
+        RefId: ELSA-2025-9147
+    Name: ELSA-2025-9147
+    NamespaceName: ol:9
+    Severity: Medium
