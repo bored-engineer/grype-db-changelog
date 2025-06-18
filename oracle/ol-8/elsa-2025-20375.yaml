@@ -1,0 +1,264 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2.28-251.0.3.22]
+        - Forward port of Oracle patches
+          Reviewed-by: David Faust <david.faust@oracle.com>
+          Oracle history:
+          April-14-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.3.16
+          - Forward port of Oracle patches
+            Reviewed-by: Elena Zannoni <elena.zannoni@oracle.com>
+          March-26-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.3.14
+          - OraBug: 36625686 Add MTE support on string functions
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          March-17-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.2.14
+          - Forward port of Oracle patches
+            Reviewed-by: David Faust <david.faust@oracle.com>
+          February-19-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.2.13
+          - Forward port of Oracle patches
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          January-28-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.2.11
+          - Forward port of Oracle patches
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          September-24-2024 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.2.5
+          - Forward port of Oracle patches over 2.28-251.5
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          August-26-2024 Jose E. Marchesi <jose.marchesi@oracle.com> - 2.28-251.0.2.4
+          - Forward port of Oracle patches over 2.28-251.4
+            Reviewed-by: David Faust <david.faust@oracle.com>
+          May-24-2024 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.2.2
+          - Forward port of Oracle patches over 2.28-251.2
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          May-23-2024 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.2.1
+          - Forward port of Oracle patches over 2.28-251.1
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          May-22-2024 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.2
+          - Forward port of Oracle patches for ol8-u10
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          March-28-2024 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-251.0.1
+          - Forward port of Oracle patches for ol8-u10-beta
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          March-5-2024 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-236.0.1.12
+          - Forward port of Oracle patches.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          November-14-2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-236.0.1.7
+          - Forward port of Oracle patches.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          October-4-2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-236.0.1.6
+          - Forward port of Oracle patches.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          April-21-2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-225.0.3
+          - OraBug 35317410 Glibc tunable to disable huge pages on pthread_create stacks
+          - Created tunable glibc.pthread.stack_hugetlb to control when hugepages
+            can be used for stack allocation.
+          - In case THP are enabled and glibc.pthread.stack_hugetlb is set to
+            0, glibc will madvise the kernel not to use allow hugepages for stack
+            allocations.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          April-11-2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-225.0.2
+          - OraBug: 35268809 Fixed initialization of VDSO for tcache_key_initialize
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          March-28-2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.28-225.0.1
+          - Merge of Oracle patches for ol8u8 beta
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          September-28-2022 Patrick McGehearty <patrick.mcgehearty@oracle.com> - 2.28-211.0.1
+          - Merge of Oracle patches for ol8u7 beta
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          August-8-2022 Patrick McGehearty <patrick.mcgehearty@oracle.com> - 2.28-189.5.0.2
+          - Enable VDSO on x86_64, aarch64, i386, arm, and mips statically linked programs.
+          - These changes enable reading the realtime clock without a kernel syscall.
+            OraBug: 30478315
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          May-2-2022 Patrick McGehearty <patrick.mcgehearty@oracle.com> - 2.28-199.0.1
+          - Merge of patches from c8s 199 with ol8u6 beta
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          - Update siginfo constants from linux kernel (OraBug: 33734528)
+          - Remove limit on MALLOC_MMAP_THRESHOLD tunable (Orabug: 29630826)
+          - Provide glibc.pthread.mutex_spin_count tunable for pthread adaptive
+          - spin mutex (Orabug: 27982358)
+            Reviewed-by: Qing Zhao <qing.zhao@oracle.com>
+          - add Ampere emag  to tunable cpu list (Patrick McGehearty)
+          - add optimized memset for emag
+          - add an ASIMD variant of strlen for falkor
+            Orabug: 2700101.
+          - Modify glibc-ora28849085.patch so it works with RHCK kernels. (Orabug: 28849085)
+          - Make _IO_funlockfile match __funlockfile and _IO_flockfile match __flockfile
+            Both should test
+              if (stream->_flags & _IO_USER_LOCK) == 0)
+                _IO_lock_lock (*stream->_lock);
+            OraBug: 28481550.
+            Reviewed-by: Qing Zhao <qing.zhao@oracle.com>
+
+        [2.28-251.22]
+        - CVE-2025-4802: static setuid dlopen may search LD_LIBRARY_PATH (RHEL-92685)
+
+        [2.28-251.21]
+        - elf: Keep using minimal malloc after early DTV resize (RHEL-71921)
+
+        [2.28-251.20]
+        - Add missing libnss_testX.so requirement for tst-nss-test3 (RHEL-88813)
+
+        [2.28-251.19]
+        - libio: Fix a deadlock after fork in popen
+        - libio: Correctly link tst-popen-fork against libpthread (RHEL-86018)
+
+        [2.28-251.18]
+        - x86: Avoid integer truncation with large cache sizes (RHEL-76387)
+
+        [2.28-251.17]
+        - x86: Check the lower byte of EAX of CPUID leaf 2 (RHEL-76211)
+
+        [2.28-251.16]
+        - nscd: Fix an unlikely TTL issue in the netgroup cache (RHEL-35280)
+
+        [2.28-251.15]
+        - CVE-2025-0395: Fix a buffer overflow in assert (RHEL-83306)
+
+        [2.28-251.14]
+        - Correct locking and cancellation cleanup in syslog functions (RHEL-78390)
+
+        [2.28-251.13]
+        - Restore internal ABI to avoid tooling false positives (RHEL-8381)
+
+        [2.28-251.12]
+        - Fix missed wakeup in POSIX thread condition variables (RHEL-8381)
+
+        [2.28-251.11]
+        - add GB18030-2022 charmap and tests (RHEL-67806)
+
+        [2.28-251.10]
+        - Remove some unused ppc64le string functions (RHEL-61259)
+
+        [2.28-251.9]
+        - Use /sbin/ldconfig path for lorax compatibility (RHEL-63048)
+
+        [2.28-251.8]
+        - aarch64: MTE compatible strncmp (RHEL-61255)
+
+        [2.28-251.7]
+        - Use UsrMove path destination in the RPM files (RHEL-63048)
+
+        [2.28-251.6]
+        - s390x: Fix segfault in wcsncmp
+        - Enhanced test coverage for strncmp, wcsncmp (RHEL-49490)
+
+        [2.28-251.5]
+        - elf: Clarify and invert second argument of _dl_allocate_tls_init
+        - elf: Avoid re-initializing already allocated TLS in dlopen (RHEL-36147)
+
+        [2.28-251.4]
+        - elf: Avoid some free (NULL) calls in _dl_update_slotinfo
+        - elf: Support recursive use of dynamic TLS in interposed malloc (RHEL-39994)
+
+        [2.28-251.3]
+        - Update i386 libm-test-ulps (RHEL-52428)
+
+        [2.28-251.2]
+        - CVE-2024-33599: nscd: buffer overflow in netgroup cache (RHEL-34264)
+        - CVE-2024-33600: nscd: null pointer dereferences in netgroup cache (RHEL-34267)
+        - CVE-2024-33601: nscd: crash on out-of-memory condition (RHEL-34271)
+        - CVE-2024-33602: nscd: memory corruption with NSS netgroup modules (RHEL-34273)
+
+        [2.28-251.1]
+        - CVE-2024-2961: Out of bounds write in iconv conversion to ISO-2022-CN-EXT (RHEL-31804)
+
+        [2.28-251]
+        - Cache information in x86_64 ld.so --list-diagnostics output (RHEL-21997)
+
+        [2.28-250]
+        - getaddrinfo: Return correct error EAI_MEMORY when out-of-memory (RHEL-19445)
+
+        [2.28-249]
+        - Updates for AMD cache size computation (RHEL-3010)
+
+        [2.28-248]
+        - Re-enable output buffering for wide stdio streams (RHEL-19824)
+
+        [2.28-247]
+        - Fix TLS corruption during dlopen()/dlclose() sequences (RHEL-17468)
+
+        [2.28-246]
+        - Include CentOS Hyperscaler SIG patches backported by Intel (RHEL-15696)
+
+        [2.28-245]
+        - Improve compatibility between underlinking and IFUNC resolvers (RHEL-16825)
+
+        [2.28-244]
+        - Restore <sys/cdefs.h> compatibility with C90 compilers (RHEL-15867)
+
+        [2.28-243]
+        - ldconfig should skip temporary files created by RPM (RHEL-13720)
+
+        [2.28-242]
+        - Fix force-first handling in dlclose (RHEL-10481)
+
+        [2.28-241]
+        - Avoid lazy binding failures during dlclose (RHEL-3639)
+
+        [2.28-240]
+        - Add /usr/share/doc/glibc/gai.conf to glibc-doc (RHEL-12894)
+
+        [2.28-239]
+        - nscd: Skip unusable entries in first pass in prune_cache (RHEL-1192)
+
+        [2.28-238]
+        - Fix slow tls access after dlopen (RHEL-2122)
+
+        [2.28-237]
+        - Enable running a single test from the testsuite (RHEL-3757)
+
+        [2.28-236.7]
+        - CVE-2023-4911 glibc: buffer overflow in ld.so leading to privilege escalation (RHEL-3036)
+
+        [2.28-236.6]
+        - Revert: Always call destructors in reverse constructor order (#2233338)
+
+        [2.28-236.5]
+        - CVE-2023-4806 glibc: potential use-after-free in getaddrinfo (RHEL-2423)
+
+        [2.28-236.4]
+        - CVE-2023-4813: Work around RHEL-8 limitation in test (RHEL-2435)
+
+        [2.28-236.3]
+        - CVE-2023-4813: potential use-after-free in gaih_inet (RHEL-2435)
+
+        [2.28-236.2]
+        - CVE-2023-4527: Stack read overflow in getaddrinfo in no-aaaa mode (#2234714)
+
+        [2.28-236.1]
+        - Always call destructors in reverse constructor order (#2233338)
+
+        [2.28-236]
+        - Fix string and memory function tuning on small systems (#2180462)
+
+        [2.28-235]
+        - Fix temporal threshold calculations (#2180462)
+
+        [2.28-234]
+        - Ignore symbolic link change on /etc/nsswitch.conf (#2229709)
+
+        [2.28-233]
+        - Update test to closer match upstream. (#2176707)
+
+        [2.28-232]
+        - Make libSegFault.so NODELETE (#2224348)
+
+        [2.28-231]
+        - Update ESTALE error message translations (#2186781)
+
+        [2.28-230]
+        - Don't block SIGCHILD when system() is called concurrently (#2176707)
+
+        [2.28-229]
+        - resolv_conf: release lock on allocation failure (#2213909)
+    FixedIn: []
+    Link: https://linux.oracle.com/errata/ELSA-2025-20375.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-4802.html
+              Name: CVE-2025-4802
+        Issued: "2025-06-17"
+        RefId: ELSA-2025-20375
+    Name: ELSA-2025-20375
+    NamespaceName: ol:8
+    Severity: Medium
