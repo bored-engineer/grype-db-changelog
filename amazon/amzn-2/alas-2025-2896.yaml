@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A crafted HTML email using mailbox:/// links can trigger automatic, unsolicited downloads of .pdf files to the user's desktop or home directory without prompting, even if auto-saving is disabled. This behavior can be abused to fill the disk with garbage data (e.g. using /dev/urandom on Linux) or to leak Windows credentials via SMB links when the email is viewed in HTML mode. While user interaction is required to download the .pdf file, visual obfuscation can conceal the download trigger. Viewing the email in HTML mode is enough to load external content. This vulnerability affects Thunderbird < 128.11.1 and Thunderbird < 139.0.2. (CVE-2025-5986)
+    FixedIn:
+        - Name: thunderbird
+          NamespaceName: amzn:2
+          Version: 128.11.1-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: thunderbird-debuginfo
+          NamespaceName: amzn:2
+          Version: 128.11.1-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS-2025-2896.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-5986
+    Name: ALAS-2025-2896
+    NamespaceName: amzn:2
+    Severity: High
