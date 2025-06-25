@@ -1,0 +1,35 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - events:
+            - fixed: 16.11.5
+            - fixed: 17.1.2
+            - introduced: 16.1.0
+            - introduced: 17.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2024-4994
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: High
+details: An issue has been discovered in GitLab CE/EE affecting all versions from 16.1.0 before 16.11.5, all versions starting from 17.0 before 17.0.3, all versions starting from 17.1.0 before 17.1.1 which allowed for a CSRF attack on GitLab's GraphQL API leading to the execution of arbitrary GraphQL mutations.
+id: BIT-gitlab-2024-4994
+modified: "2025-06-24T15:16:56.580Z"
+published: "2025-06-24T15:13:03.565Z"
+references:
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/issues/462012
+    - type: WEB
+      url: https://hackerone.com/reports/2473644
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2024-4994
+schema_version: 1.6.2
+summary: Cross-Site Request Forgery (CSRF) in GitLab
