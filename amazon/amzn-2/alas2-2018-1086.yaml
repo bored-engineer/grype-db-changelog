@@ -1,0 +1,60 @@
+Vulnerability:
+    Description: A security flaw was found in the chap_server_compute_md5() function in the ISCSI target code in the Linux kernel in a way an authentication request from an ISCSI initiator is processed. An unauthenticated remote attacker can cause a stack buffer overflow and smash up to 17 bytes of the stack. The attack requires the iSCSI target to be enabled on the victim host. Depending on how the target's code was built (i.e. depending on a compiler, compile flags and hardware architecture) an attack may lead to a system crash and thus to a denial-of-service or possibly to a non-authorized access to data exported by an iSCSI target. Due to the nature of the flaw, privilege escalation cannot be fully ruled out, although we believe it is highly unlikely.(CVE-2018-14633 )An information leak was discovered in the Linux kernel in cdrom_ioctl_drive_status() function in drivers/cdrom/cdrom.c that could be used by local attackers to read kernel memory at certain location.(CVE-2018-16658 )A security flaw was discovered in the Linux kernel. The vmacache_flush_all() function in mm/vmacache.c mishandles sequence number overflows. An attacker can trigger a use-after-free (and possibly gain privileges) via certain thread creation, map, unmap, invalidation, and dereference operations.(CVE-2018-17182 )
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.72-73.55.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2018-1086.html
+    Metadata:
+        CVE:
+            - Name: CVE-2018-14633
+            - Name: CVE-2018-16658
+            - Name: CVE-2018-17182
+    Name: ALAS2-2018-1086
+    NamespaceName: amzn:2
+    Severity: High

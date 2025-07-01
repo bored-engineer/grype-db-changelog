@@ -1,0 +1,27 @@
+Vulnerability:
+    Description: xsltGetInheritedNsList in libxslt before 1.1.43 has a use-after-free issue related to exclusion of result prefixes. (CVE-2024-55549)numbers.c in libxslt before 1.1.43 has a use-after-free because, in nested XPath evaluations, an XPath context node can be modified but never restored. This is related to xsltNumberFormatGetValue, xsltEvalXPathPredicate, xsltEvalXPathStringNs, and xsltComputeSortResultInternal. (CVE-2025-24855)
+    FixedIn:
+        - Name: libxslt
+          NamespaceName: amzn:2
+          Version: 1.1.28-6.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libxslt-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.1.28-6.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libxslt-devel
+          NamespaceName: amzn:2
+          Version: 1.1.28-6.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libxslt-python
+          NamespaceName: amzn:2
+          Version: 1.1.28-6.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2025-2823.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-55549
+            - Name: CVE-2025-24855
+    Name: ALAS2-2025-2823
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,28 @@
+Vulnerability:
+    Description: A flaw was found in squid. Due to incorrect data validation, a HTTP Request Smuggling attack against HTTP and HTTPS traffic is possible leading to cache poisoning. The highest threat from this vulnerability is to data confidentiality and integrity. (CVE-2020-15810)A flaw was found in squid. Due to incorrect data validation, an HTTP Request Splitting attack against HTTP and HTTPS traffic is possible leading to cache poisoning. The highest threat from this vulnerability is to data confidentiality and integrity. (CVE-2020-15811)Squid before 4.13 and 5.x before 5.0.4 allows a trusted peer to perform Denial of Service by consuming all available CPU cycles during handling of a crafted Cache Digest response message. This only occurs when cache_peer is used with the cache digests feature. The problem exists because peerDigestHandleReply() livelocking in peer_digest.cc mishandles EOF. (CVE-2020-24606)
+    FixedIn:
+        - Name: squid
+          NamespaceName: amzn:2
+          Version: 3.5.20-17.amzn2.4.1
+          VersionFormat: rpm
+        - Name: squid-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.5.20-17.amzn2.4.1
+          VersionFormat: rpm
+        - Name: squid-migration-script
+          NamespaceName: amzn:2
+          Version: 3.5.20-17.amzn2.4.1
+          VersionFormat: rpm
+        - Name: squid-sysvinit
+          NamespaceName: amzn:2
+          Version: 3.5.20-17.amzn2.4.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1548.html
+    Metadata:
+        CVE:
+            - Name: CVE-2020-15810
+            - Name: CVE-2020-15811
+            - Name: CVE-2020-24606
+    Name: ALAS2-2020-1548
+    NamespaceName: amzn:2
+    Severity: High

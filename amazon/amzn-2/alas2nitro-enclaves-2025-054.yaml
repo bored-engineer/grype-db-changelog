@@ -1,0 +1,19 @@
+Vulnerability:
+    Description: The net/http package accepted data in the chunked transfer encoding containing an invalid chunk-size line terminated by a bare LF. When used in conjunction with a server or proxy which incorrectly interprets a bare LF in a chunk extension as part of the extension, this could permit request smuggling. (CVE-2025-22871)golang-jwt is a Go implementation of JSON Web Tokens. Prior to5.2.2 and 4.5.2, the function parse.ParseUnverified splits (via a call to strings.Split) its argument (which is untrusted data) on periods. As a result, in the face of a malicious request whose Authorization header consists of Bearer  followed by many period characters, a call to that function incurs allocations to the tune of O(n) bytes (where n stands for the length of the function's argument), with a constant factor of about 16. This issue is fixed in 5.2.2 and 4.5.2. (CVE-2025-30204)
+    FixedIn:
+        - Name: docker
+          NamespaceName: amzn:2
+          Version: 25.0.8-1.amzn2.0.3
+          VersionFormat: rpm
+        - Name: docker-debuginfo
+          NamespaceName: amzn:2
+          Version: 25.0.8-1.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2NITRO-ENCLAVES-2025-054.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-22871
+            - Name: CVE-2025-30204
+    Name: ALAS2NITRO-ENCLAVES-2025-054
+    NamespaceName: amzn:2
+    Severity: High

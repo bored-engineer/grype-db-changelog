@@ -1,0 +1,26 @@
+Vulnerability:
+    Description: In libssh2 v1.9.0 and earlier versions, the SSH_MSG_DISCONNECT logic in packet.c has an integer overflow in a bounds check, enabling an attacker to specify an arbitrary (out-of-bounds) offset for a subsequent memory read. A crafted SSH server may be able to disclose sensitive information or cause a denial of service condition on the client system when a user connects to the server. (CVE-2019-17498)
+    FixedIn:
+        - Name: libssh2
+          NamespaceName: amzn:2
+          Version: 1.4.3-12.amzn2.2.3
+          VersionFormat: rpm
+        - Name: libssh2-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.4.3-12.amzn2.2.3
+          VersionFormat: rpm
+        - Name: libssh2-devel
+          NamespaceName: amzn:2
+          Version: 1.4.3-12.amzn2.2.3
+          VersionFormat: rpm
+        - Name: libssh2-docs
+          NamespaceName: amzn:2
+          Version: 1.4.3-12.amzn2.2.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1531.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-17498
+    Name: ALAS2-2020-1531
+    NamespaceName: amzn:2
+    Severity: Medium

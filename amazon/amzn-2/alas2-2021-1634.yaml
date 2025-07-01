@@ -1,0 +1,61 @@
+Vulnerability:
+    Description: A low severity issue was found in the Nitro Enclaves Linux kernel driver that could lead to local privilege escalation. The issue does not break the isolation or security of what is running inside the enclave as the Nitro Enclave's security model already excludes the instance running the Nitro Enclaves kernel driver from its trust boundary.For the issue to occur, the Nitro Enclaves kernel module needs to be loaded and in use, and Nitro Enclave (ne) group permissions are required. Only trusted Nitro Enclaves software runs with the ne group permissions, and no interactive logins are in the group by default. As a result, the only actors in a position to take advantage of this issue would already have to have root privileges. While this issue has no impact to Nitro Enclave's security or isolation properties, we recommend that customers update to the latest Kernel provided by Amazon Linux.
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.231-173.361
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.231-173.361.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2021-1634.html
+    Metadata:
+        CVE: []
+    Name: ALAS2-2021-1634
+    NamespaceName: amzn:2
+    Severity: Low

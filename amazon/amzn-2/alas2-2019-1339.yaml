@@ -1,0 +1,51 @@
+Vulnerability:
+    Description: An integer underflow, leading to heap-based out-of-bound read, was found in the way Exiv2 library prints IPTC Photo Metadata embedded in an image. By persuading a victim to open a crafted image, a remote attacker could crash the application or possibly retrieve a portion of memory.(CVE-2017-17724)The tEXtToDataBuf function in pngimage.cpp in Exiv2 through 0.26 allows remote attackers to cause a denial of service (application crash) or possibly have unspecified other impact via a crafted file.(CVE-2018-10772)In types.cpp in Exiv2 0.26, a large size value may lead to a SIGABRT during an attempt at memory allocation for an Exiv2::Internal::PngChunk::zlibUncompress call.(CVE-2018-10958)An issue was discovered in Exiv2 0.26. readMetadata in jp2image.cpp allows remote attackers to cause a denial of service (SIGABRT) by triggering an incorrect Safe::add call.(CVE-2018-10998)In Exiv2 0.26, the Exiv2::PngImage::printStructure function in pngimage.cpp allows remote attackers to cause an information leak via a crafted file.(CVE-2018-11037)Exiv2 0.26 has integer overflows in LoaderTiff::getData() in preview.cpp, leading to an out-of-bounds read in Exiv2::ValueType::setDataArea in value.hpp.(CVE-2018-12264)Exiv2 0.26 has an integer overflow in the LoaderExifJpeg class in preview.cpp, leading to an out-of-bounds read in Exiv2::MemIo::read in basicio.cpp.(CVE-2018-12265)Exiv2 0.26 has a heap-based buffer over-read in WebPImage::decodeChunks in webpimage.cpp.(CVE-2018-14046)An issue was discovered in Exiv2 v0.26. The function Exiv2::DataValue::copy in value.cpp has a NULL pointer dereference.(CVE-2018-17282)CiffDirectory::readDirectory() at crwimage_int.cpp in Exiv2 0.26 has excessive stack consumption due to a recursive function, leading to Denial of service.(CVE-2018-17581)There is an infinite loop in the Exiv2::Image::printIFDStructure function of image.cpp in Exiv2 0.27-RC1. A crafted input will lead to a remote denial of service attack.(CVE-2018-18915)In Exiv2 0.26, Exiv2::IptcParser::decode in iptc.cpp (called from psdimage.cpp in the PSD image reader) may suffer from a denial of service (heap-based buffer over-read) caused by an integer overflow via a crafted PSD image file.(CVE-2018-19107)In Exiv2 0.26, Exiv2::PsdImage::readMetadata in psdimage.cpp in the PSD image reader may suffer from a denial of service (infinite loop) caused by an integer overflow via a crafted PSD image file.(CVE-2018-19108)In Exiv2 0.26 and previous versions, PngChunk::readRawProfile in pngchunk_int.cpp may cause a denial of service (application crash due to a heap-based buffer over-read) via a crafted PNG file.(CVE-2018-19535)Exiv2::isoSpeed in easyaccess.cpp in Exiv2 v0.27-RC2 allows remote attackers to cause a denial of service (NULL pointer dereference and application crash) via a crafted file.(CVE-2018-19607)There is a heap-based buffer over-read in the Exiv2::tEXtToDataBuf function of pngimage.cpp in Exiv2 0.27-RC3. A crafted input will lead to a remote denial of service attack.(CVE-2018-20096)There is a SEGV in Exiv2::Internal::TiffParserWorker::findPrimaryGroups of tiffimage_int.cpp in Exiv2 0.27-RC3. A crafted input will lead to a remote denial of service attack.(CVE-2018-20097)There is a heap-based buffer over-read in Exiv2::Jp2Image::encodeJp2Header of jp2image.cpp in Exiv2 0.27-RC3. A crafted input will lead to a remote denial of service attack.(CVE-2018-20098)There is an infinite loop in Exiv2::Jp2Image::encodeJp2Header of jp2image.cpp in Exiv2 0.27-RC3. A crafted input will lead to a remote denial of service attack.(CVE-2018-20099)In Exiv2 0.26, jpgimage.cpp allows remote attackers to cause a denial of service (image.cpp Exiv2::Internal::stringFormat out-of-bounds read) via a crafted file.(CVE-2018-8976)In Exiv2 0.26, the Exiv2::Internal::printCsLensFFFF function in canonmn_int.cpp allows remote attackers to cause a denial of service (invalid memory access) via a crafted file.(CVE-2018-8977)An out-of-bounds read vulnerability has been discovered in IptcData::printStructure in iptc.cpp file of Exiv2 0.26. An attacker could cause a crash or an information leak by providing a crafted image.(CVE-2018-9305)
+    FixedIn:
+        - Name: exiv2
+          NamespaceName: amzn:2
+          Version: 0.27.0-3.amzn2.0.1
+          VersionFormat: rpm
+        - Name: exiv2-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.27.0-3.amzn2.0.1
+          VersionFormat: rpm
+        - Name: exiv2-devel
+          NamespaceName: amzn:2
+          Version: 0.27.0-3.amzn2.0.1
+          VersionFormat: rpm
+        - Name: exiv2-doc
+          NamespaceName: amzn:2
+          Version: 0.27.0-3.amzn2.0.1
+          VersionFormat: rpm
+        - Name: exiv2-libs
+          NamespaceName: amzn:2
+          Version: 0.27.0-3.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2019-1339.html
+    Metadata:
+        CVE:
+            - Name: CVE-2017-17724
+            - Name: CVE-2018-10772
+            - Name: CVE-2018-10958
+            - Name: CVE-2018-10998
+            - Name: CVE-2018-11037
+            - Name: CVE-2018-12264
+            - Name: CVE-2018-12265
+            - Name: CVE-2018-14046
+            - Name: CVE-2018-17282
+            - Name: CVE-2018-17581
+            - Name: CVE-2018-18915
+            - Name: CVE-2018-19107
+            - Name: CVE-2018-19108
+            - Name: CVE-2018-19535
+            - Name: CVE-2018-19607
+            - Name: CVE-2018-20096
+            - Name: CVE-2018-20097
+            - Name: CVE-2018-20098
+            - Name: CVE-2018-20099
+            - Name: CVE-2018-8976
+            - Name: CVE-2018-8977
+            - Name: CVE-2018-9305
+    Name: ALAS2-2019-1339
+    NamespaceName: amzn:2
+    Severity: Low

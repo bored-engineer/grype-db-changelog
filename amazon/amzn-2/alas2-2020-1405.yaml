@@ -1,0 +1,65 @@
+Vulnerability:
+    Description: A stack buffer overflow issue was found in the get_raw_socket() routine of the Host kernel accelerator for virtio net (vhost-net) driver. It could occur while doing an ictol(VHOST_NET_SET_BACKEND) call, and retrieving socket name in a kernel stack variable via get_raw_socket(). A user able to perform ioctl(2) calls on the '/dev/vhost-net' device may use this flaw to crash the kernel resulting in DoS issue. (CVE-2020-10942)A flaw was found in the way KVM hypervisor handled instruction emulation for the L2 guest when nested(=1) virtualization is enabled. In the instruction emulation, the L2 guest could trick the L0 hypervisor into accessing sensitive bits of the L1 hypervisor. An L2 guest could use this flaw to potentially access information of the L1 hypervisor. (CVE-2020-2732)A Use After Free vulnerability in Fedora Linux kernel 5.9.0-rc9 allows attackers to obatin sensitive information via vgacon_invert_region() function. (CVE-2020-27418)A use-after-free flaw was found in the Linux kernel console driver when using the copy-paste buffer. This flaw allows a local user  to crash the system. (CVE-2020-8648)
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.173-137.228
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.173-137.228.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1405.html
+    Metadata:
+        CVE:
+            - Name: CVE-2020-10942
+            - Name: CVE-2020-2732
+            - Name: CVE-2020-27418
+            - Name: CVE-2020-8648
+    Name: ALAS2-2020-1405
+    NamespaceName: amzn:2
+    Severity: High

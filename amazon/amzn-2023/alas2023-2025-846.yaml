@@ -1,0 +1,18 @@
+Vulnerability:
+    Description: 'A flaw was found in Ansible, where sensitive information stored in Ansible Vault files can be exposed in plaintext during the execution of a playbook. This occurs when using tasks such as include_vars to load vaulted variables without setting the no_log: true parameter, resulting in sensitive data being printed in the playbook output or logs. This can lead to the unintentional disclosure of secrets like passwords or API keys, compromising security and potentially allowing unauthorized access or actions. (CVE-2024-8775)'
+    FixedIn:
+        - Name: ansible-core
+          NamespaceName: amzn:2023
+          Version: 2.15.3-1.amzn2023.0.8
+          VersionFormat: rpm
+        - Name: ansible-test
+          NamespaceName: amzn:2023
+          Version: 2.15.3-1.amzn2023.0.8
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-846.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-8775
+    Name: ALAS2023-2025-846
+    NamespaceName: amzn:2023
+    Severity: Medium

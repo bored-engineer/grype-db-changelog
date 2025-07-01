@@ -1,0 +1,28 @@
+Vulnerability:
+    Description: The signature of a digitally signed S/MIME email message may optionally specify the signature creation date and time. If present, Thunderbird did not compare the signature creation date with the message date and time, and displayed a valid signature despite a date or time mismatch. This could be used to give recipients the impression that a message was sent at a different date or time. This vulnerability affects Thunderbird < 115.6. (CVE-2023-50761)When processing a PGP/MIME payload that contains digitally signed text, the first paragraph of the text was never shown to the user. This is because the text was interpreted as a MIME message and the first paragraph was always treated as an email header section. A digitally signed text from a different context, such as a signed GIT commit, could be used to spoof an email message. This vulnerability affects Thunderbird < 115.6. (CVE-2023-50762)The WebGL `DrawElementsInstanced` method was susceptible to a heap buffer overflow when used on systems with the Mesa VM driver.  This issue could allow an attacker to perform remote code execution and sandbox escape. This vulnerability affects Firefox ESR < 115.6, Thunderbird < 115.6, and Firefox < 121. (CVE-2023-6856)When resolving a symlink, a race may occur where the buffer passed to `readlink` may actually be smaller than necessary.*This bug only affects Firefox on Unix-based operating systems (Android, Linux, MacOS). Windows is unaffected.* This vulnerability affects Firefox ESR < 115.6, Thunderbird < 115.6, and Firefox < 121. (CVE-2023-6857)Firefox was susceptible to a heap buffer overflow in `nsTextFragment` due to insufficient OOM handling. This vulnerability affects Firefox ESR < 115.6, Thunderbird < 115.6, and Firefox < 121. (CVE-2023-6858)A use-after-free condition affected TLS socket creation when under memory pressure. This vulnerability affects Firefox ESR < 115.6, Thunderbird < 115.6, and Firefox < 121. (CVE-2023-6859)The `VideoBridge` allowed any content process to use textures produced by remote decoders.  This could be abused to escape the sandbox. This vulnerability affects Firefox ESR < 115.6, Thunderbird < 115.6, and Firefox < 121. (CVE-2023-6860)The `nsWindow::PickerOpen(void)` method was susceptible to a heap buffer overflow when running in headless mode. This vulnerability affects Firefox ESR < 115.6, Thunderbird < 115.6, and Firefox < 121. (CVE-2023-6861)A use-after-free was identified in the `nsDNSService::Init`.  This issue appears to manifest rarely during start-up. This vulnerability affects Firefox ESR < 115.6 and Thunderbird < 115.6. (CVE-2023-6862)The `ShutdownObserver()` was susceptible to potentially undefined behavior due to its reliance on a dynamic type that lacked a virtual destructor. This vulnerability affects Firefox ESR < 115.6, Thunderbird < 115.6, and Firefox < 121. (CVE-2023-6863)Memory safety bugs present in Firefox 120, Firefox ESR 115.5, and Thunderbird 115.5. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox ESR < 115.6, Thunderbird < 115.6, and Firefox < 121. (CVE-2023-6864)
+    FixedIn:
+        - Name: thunderbird
+          NamespaceName: amzn:2
+          Version: 115.6.0-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: thunderbird-debuginfo
+          NamespaceName: amzn:2
+          Version: 115.6.0-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2024-2377.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-50761
+            - Name: CVE-2023-50762
+            - Name: CVE-2023-6856
+            - Name: CVE-2023-6857
+            - Name: CVE-2023-6858
+            - Name: CVE-2023-6859
+            - Name: CVE-2023-6860
+            - Name: CVE-2023-6861
+            - Name: CVE-2023-6862
+            - Name: CVE-2023-6863
+            - Name: CVE-2023-6864
+    Name: ALAS2-2024-2377
+    NamespaceName: amzn:2
+    Severity: High

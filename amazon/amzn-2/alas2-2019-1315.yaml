@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: 'When sudo is configured to allow a user to run commands as an arbitrary user via the ALL keyword in a Runas specification, it is possible to run commands as root by specifying the user ID -1 or 4294967295.This can be used by a user with sufficient sudo privileges to run commands as root even if the Runas specification explicitly disallows root access as long as the ALL keyword is listed first in the Runas specification.  (CVE-2019-14287)Further details can be found here: https://www.sudo.ws/alerts/minus_1_uid.htmlA flaw was found in the way sudo parsed tty information from the process status file in the proc filesystem. A local user with privileges to execute commands via sudo could use this flaw to escalate their privileges to root.(CVE-2017-1000367)It was found that the original fix for CVE-2017-1000367 was incomplete. A flaw was found in the way sudo parsed tty information from the process status file in the proc filesystem. A local user with privileges to execute commands via sudo could use this flaw to escalate their privileges to root.(CVE-2017-1000368)'
+    FixedIn:
+        - Name: sudo
+          NamespaceName: amzn:2
+          Version: 1.8.23-4.amzn2.0.1
+          VersionFormat: rpm
+        - Name: sudo-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.8.23-4.amzn2.0.1
+          VersionFormat: rpm
+        - Name: sudo-devel
+          NamespaceName: amzn:2
+          Version: 1.8.23-4.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2019-1315.html
+    Metadata:
+        CVE:
+            - Name: CVE-2017-1000367
+            - Name: CVE-2017-1000368
+            - Name: CVE-2019-14287
+    Name: ALAS2-2019-1315
+    NamespaceName: amzn:2
+    Severity: High

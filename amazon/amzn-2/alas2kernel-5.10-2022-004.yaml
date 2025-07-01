@@ -1,0 +1,107 @@
+Vulnerability:
+    Description: 'A flaw was found in the Linux kernel, where a BPF program can obtain sensitive information from kernel memory via a Speculative Store Bypass side-channel attack. This issue occurs when the protection mechanism neglects the possibility of uninitialized memory locations on the BPF stack. The highest threat from this vulnerability is to confidentiality. (CVE-2021-34556)A flaw in the Linux kernel allows a privileged BPF program to obtain sensitive information from kernel memory via a Speculative Store Bypass side-channel in the eBPF subsystem (CVE-2021-35477)A vulnerability was found in the Linux kernel. Missing size validations on inbound SCTP packets may allow the kernel to read uninitialized memory. (CVE-2021-3655)A lack of CPU resources in the Linux kernel tracing module functionality was found in the way users use the trace ring buffer in specific way. Only privileged local users (with CAP_SYS_ADMIN capability) could use this flaw to starve the resources causing denial of service. (CVE-2021-3679)A flaw use-after-free in the Linux kernel USB High Speed Mobile Devices functionality was found in the way user detaches USB device. A local user could use this flaw to crash the system or escalate their privileges on the system. (CVE-2021-37159)** DISPUTED ** In drivers/char/virtio_console.c in the Linux kernel before 5.13.4, data corruption or loss can be triggered by an untrusted device that supplies a buf->len value exceeding the buffer size. NOTE: the vendor indicates that the cited data corruption is not a vulnerability in any existing use case; the length validation was added solely for robustness in the face of anomalous host OS behavior. (CVE-2021-38160)A flaw was found in the hanging of mounts in the Linux kernel''s NFS4 subsystem where remote servers are unreachable for the client during migration of data from one server to another (during trunking detection). This flaw allows a remote NFS4 server (if the client is connected) to starve the resources, causing a denial of service. The highest threat from this vulnerability is to system availability. (CVE-2021-38199)In the Linux kernel, the following vulnerability has been resolved:ACPI: fix NULL pointer dereference (CVE-2021-47289)In the Linux kernel, the following vulnerability has been resolved:ipv6: fix another slab-out-of-bounds in fib6_nh_flush_exceptions (CVE-2021-47291)In the Linux kernel, the following vulnerability has been resolved:net: sched: fix memory leak in tcindex_partial_destroy_work (CVE-2021-47295)In the Linux kernel, the following vulnerability has been resolved:bpf, sockmap: Fix potential memory leak on unlikely error case (CVE-2021-47298)In the Linux kernel, the following vulnerability has been resolved:xdp, net: Fix use-after-free in bpf_xdp_link_release (CVE-2021-47299)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix tail_call_reachable rejection for interpreter when jit failed (CVE-2021-47300)In the Linux kernel, the following vulnerability has been resolved:igb: Fix use-after-free error during reset (CVE-2021-47301)In the Linux kernel, the following vulnerability has been resolved:bpf: Track subprog poke descriptors correctly and fix use-after-free (CVE-2021-47303)In the Linux kernel, the following vulnerability has been resolved:tcp: fix tcp_init_transfer() to not reset icsk_ca_initialized (CVE-2021-47304)In the Linux kernel, the following vulnerability has been resolved:dma-buf/sync_file: Don''t leak fences on merge failure (CVE-2021-47305)In the Linux kernel, the following vulnerability has been resolved:cifs: prevent NULL deref in cifs_compose_mount_options() (CVE-2021-47307)In the Linux kernel, the following vulnerability has been resolved:scsi: libfc: Fix array index out of bound exception (CVE-2021-47308)In the Linux kernel, the following vulnerability has been resolved:net: validate lwtstate->data before returning from skb_tunnel_info() (CVE-2021-47309)In the Linux kernel, the following vulnerability has been resolved:net: qcom/emac: fix UAF in emac_remove (CVE-2021-47311)In the Linux kernel, the following vulnerability has been resolved:virtio-blk: Fix memory leak among suspend/resume procedure (CVE-2021-47319)In the Linux kernel, the following vulnerability has been resolved:nfs: fix acl memory leak of posix_acl_create() (CVE-2021-47320)In the Linux kernel, the following vulnerability has been resolved:NFSv4: Fix an Oops in pnfs_mark_request_commit() when doing O_DIRECT (CVE-2021-47322)In the Linux kernel, the following vulnerability has been resolved:iommu/arm-smmu: Fix arm_smmu_device refcount leak in address translation (CVE-2021-47325)In the Linux kernel, the following vulnerability has been resolved:iommu/arm-smmu: Fix arm_smmu_device refcount leak when arm_smmu_rpm_get fails (CVE-2021-47327)In the Linux kernel, the following vulnerability has been resolved:scsi: iscsi: Fix conn use after free during resets (CVE-2021-47328)In the Linux kernel, the following vulnerability has been resolved:scsi: megaraid_sas: Fix resource leak in case of probe failure (CVE-2021-47329)In the Linux kernel, the following vulnerability has been resolved:fbmem: Do not delete the mode that is still in use (CVE-2021-47338)In the Linux kernel, the following vulnerability has been resolved:jfs: fix GPF in diFree (CVE-2021-47340)In the Linux kernel, the following vulnerability has been resolved:KVM: mmio: Fix use-after-free Read in kvm_vm_ioctl_unregister_coalesced_mmio (CVE-2021-47341)In the Linux kernel, the following vulnerability has been resolved:dm btree remove: assign new_root only when removal succeeds (CVE-2021-47343)In the Linux kernel, the following vulnerability has been resolved:RDMA/cma: Fix rdma_resolve_route() memory leak (CVE-2021-47345)In the Linux kernel, the following vulnerability has been resolved:virtio-net: Add validation for used length (CVE-2021-47352)In the Linux kernel, the following vulnerability has been resolved:udf: Fix NULL pointer dereference in udf_symlink function (CVE-2021-47353)In the Linux kernel, the following vulnerability has been resolved:drm/sched: Avoid data corruptions (CVE-2021-47354)An issue was discovered in the Linux kernel before 5.13.3. lib/seq_buf.c has a seq_buf_putmem_hex buffer overflow. (CVE-2023-28772)A flaw was found in the Linux Kernel''s memory management subsytem. In this flaw, A task is exiting and releasing 2MB page in a vma (vm_area_struct) and hits the BUG statement in pfn_swap_entry_to_page() referencing pmd_t x. This may allow a local user to crash the Linux kernel. (CVE-2023-4732)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.10.59-52.142
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.59-52.142.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.10-2022-004.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-34556
+            - Name: CVE-2021-35477
+            - Name: CVE-2021-3655
+            - Name: CVE-2021-3679
+            - Name: CVE-2021-37159
+            - Name: CVE-2021-38160
+            - Name: CVE-2021-38199
+            - Name: CVE-2021-47289
+            - Name: CVE-2021-47291
+            - Name: CVE-2021-47295
+            - Name: CVE-2021-47298
+            - Name: CVE-2021-47299
+            - Name: CVE-2021-47300
+            - Name: CVE-2021-47301
+            - Name: CVE-2021-47303
+            - Name: CVE-2021-47304
+            - Name: CVE-2021-47305
+            - Name: CVE-2021-47307
+            - Name: CVE-2021-47308
+            - Name: CVE-2021-47309
+            - Name: CVE-2021-47311
+            - Name: CVE-2021-47319
+            - Name: CVE-2021-47320
+            - Name: CVE-2021-47322
+            - Name: CVE-2021-47325
+            - Name: CVE-2021-47327
+            - Name: CVE-2021-47328
+            - Name: CVE-2021-47329
+            - Name: CVE-2021-47338
+            - Name: CVE-2021-47340
+            - Name: CVE-2021-47341
+            - Name: CVE-2021-47343
+            - Name: CVE-2021-47345
+            - Name: CVE-2021-47352
+            - Name: CVE-2021-47353
+            - Name: CVE-2021-47354
+            - Name: CVE-2023-28772
+            - Name: CVE-2023-4732
+    Name: ALAS2KERNEL-5.10-2022-004
+    NamespaceName: amzn:2
+    Severity: High

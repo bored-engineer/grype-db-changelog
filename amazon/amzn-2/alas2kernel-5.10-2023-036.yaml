@@ -1,0 +1,141 @@
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:ubi: Fix race condition between ctrl_cdev_ioctl and ubi_cdev_ioctl (CVE-2021-47634)In the Linux kernel, the following vulnerability has been resolved:Revert "Revert "block, bfq: honor already-setup queue merges"" (CVE-2021-47646)In the Linux kernel, the following vulnerability has been resolved:ASoC: soc-compress: prevent the potentially use of null pointer (CVE-2021-47650)A denial of service (DOS) issue was found in the Linux kernel&rsquo;s smb2_ioctl_query_info function in the fs/cifs/smb2ops.c Common Internet File System (CIFS) due to an incorrect return from the memdup_user function. This flaw allows a local, privileged (CAP_SYS_ADMIN) attacker to crash the system. (CVE-2022-0168)When the KVM updates the guest''s page table entry, it will first use get_user_pages_fast() to pin the page, and when it fails (e.g. the vma->flags has VM_IO or VM_PFNMAP), it will get corresponding VMA where the page lies in through find_vma_intersection(), calculate the physical address, and map the page to the kernel virtual address through memremap(), and finally, write the update.The problem is that when we get the vma through find_vma_intersection(), only VM_PFNMAP is checked, not both VM_IO and VM_PFNMAP. In the reproducer below, after the KVM_SET_USER_MEMORY_REGION is completed, we replace the guest''s memory mapping with the kernel-user shared region of io_uring and then perform the KVM_TRANSLATE operation, which finally triggers the page table entry update. Now, memremap() will return page_offset_base (direct mapping of all physical memory) + vaddr (the linear address of KVM_TRANSLATE) + vm_pgoff (the offset when io_uring performs mmap(2)), and use the return value as the base address for CMPXCHG (write 0x21 in this case). Since both vaddr and vm_pgoff are controllable by the user-mode process, writing may exceed the previously mapped guest memory space and trigger exceptions such as UAF. The vulnerability shares similarities with CVE-2021-22543. (CVE-2022-1158)A vulnerability was found in the pfkey_register function in net/key/af_key.c in the Linux kernel. This flaw allows a local, unprivileged user to gain access to kernel memory, leading to a system crash or a leak of internal kernel information. (CVE-2022-1353)A use-after-free flaw was found in the Linux kernel''s io_uring interface subsystem in the way a user triggers a race condition between timeout flush and removal. This flaw allows a local user to crash or escalate their privileges on the system. (CVE-2022-29582)A flaw was found in the Linux kernel implementation of proxied virtualized TPM devices. On a system where virtualized TPM devices are configured (this is not the default) a local attacker can create a use-after-free and create a situation where it may be possible to escalate privileges on the system. (CVE-2022-2977)A flaw was found in the Linux kernel. A NULL pointer dereference may occur while a slip driver is in progress to detach in sl_tx_timeout in drivers/net/slip/slip.c. This issue could allow an attacker to crash the system or leak internal kernel information. (CVE-2022-41858)In the Linux kernel, the following vulnerability has been resolved:swiotlb: fix info leak with DMA_FROM_DEVICE (CVE-2022-48853)In the Linux kernel, the following vulnerability has been resolved:dm integrity: fix memory corruption when tag_size is less than digest size (CVE-2022-49044)In the Linux kernel, the following vulnerability has been resolved:ipv6: fix panic when forwarding a pkt with no in6 dev (CVE-2022-49048)In the Linux kernel, the following vulnerability has been resolved:mm: fix unexpected zeroed page mapping with zram swap (CVE-2022-49052)In the Linux kernel, the following vulnerability has been resolved:scsi: target: tcmu: Fix possible page UAF (CVE-2022-49053)In the Linux kernel, the following vulnerability has been resolved:cifs: potential buffer overflow in handling symlinks (CVE-2022-49058)In the Linux kernel, the following vulnerability has been resolved:SUNRPC: Fix the svc_deferred_event trace class (CVE-2022-49065)In the Linux kernel, the following vulnerability has been resolved:veth: Ensure eth header is in skb''s linear part (CVE-2022-49066)In the Linux kernel, the following vulnerability has been resolved:gpio: Restrict usage of GPIO chip irq members before initialization (CVE-2022-49072)In the Linux kernel, the following vulnerability has been resolved:ata: sata_dwc_460ex: Fix crash due to OOB write (CVE-2022-49073)In the Linux kernel, the following vulnerability has been resolved:irqchip/gic-v3: Fix GICR_CTLR.RWP polling (CVE-2022-49074)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix qgroup reserve overflow the qgroup limit (CVE-2022-49075)In the Linux kernel, the following vulnerability has been resolved:mmmremap.c: avoid pointless invalidate_range_start/end on mremap(old_size=0) (CVE-2022-49077)In the Linux kernel, the following vulnerability has been resolved:lz4: fix LZ4_decompress_safe_partial read out of bound (CVE-2022-49078)In the Linux kernel, the following vulnerability has been resolved:mm/mempolicy: fix mpol_new leak in shared_policy_replace (CVE-2022-49080)In the Linux kernel, the following vulnerability has been resolved:qede: confirm skb is allocated before using (CVE-2022-49084)In the Linux kernel, the following vulnerability has been resolved:drbd: Fix five use after free bugs in get_initial_state (CVE-2022-49085)In the Linux kernel, the following vulnerability has been resolved:net: openvswitch: fix leak of nested actions (CVE-2022-49086)In the Linux kernel, the following vulnerability has been resolved:rxrpc: fix a race in rxrpc_exit_net() (CVE-2022-49087)In the Linux kernel, the following vulnerability has been resolved:net: ipv4: fix route with nexthop object delete warning (CVE-2022-49092)In the Linux kernel, the following vulnerability has been resolved:net/tls: fix slab-out-of-bounds bug in decrypt_internal (CVE-2022-49094)In the Linux kernel, the following vulnerability has been resolved:NFS: Avoid writeback threads getting stuck in mempool_alloc() (CVE-2022-49097)In the Linux kernel, the following vulnerability has been resolved:Drivers: hv: vmbus: Fix potential crash on module unload (CVE-2022-49098)In the Linux kernel, the following vulnerability has been resolved:virtio_console: eliminate anonymous module_init & module_exit (CVE-2022-49100)In the Linux kernel, the following vulnerability has been resolved:NFSv4.2: fix reference count leaks in _nfs42_proc_copy_notify() (CVE-2022-49103)In the Linux kernel, the following vulnerability has been resolved:ceph: fix memory leak in ceph_readdir when note_last_dentry returns error (CVE-2022-49107)In the Linux kernel, the following vulnerability has been resolved:scsi: libfc: Fix use after free in fc_exch_abts_resp() (CVE-2022-49114)In the Linux kernel, the following vulnerability has been resolved:dm ioctl: prevent potential spectre v1 gadget (CVE-2022-49122)In the Linux kernel, the following vulnerability has been resolved:io_uring: fix memory leak of uid in files registration (CVE-2022-49144)In the Linux kernel, the following vulnerability has been resolved:ACPI: CPPC: Avoid out of bounds access when parsing _CPC data (CVE-2022-49145)In the Linux kernel, the following vulnerability has been resolved:watch_queue: Free the page array when watch_queue is dismantled (CVE-2022-49148)In the Linux kernel, the following vulnerability has been resolved:rxrpc: Fix call timer start racing with call destruction (CVE-2022-49149)In the Linux kernel, the following vulnerability has been resolved:wireguard: socket: free skb in send6 when ipv6 is disabled (CVE-2022-49153)In the Linux kernel, the following vulnerability has been resolved:KVM: SVM: fix panic on out-of-bounds guest IRQ (CVE-2022-49154)In the Linux kernel, the following vulnerability has been resolved:scsi: qla2xxx: Suppress a kernel complaint in qla_create_qpair() (CVE-2022-49155)In the Linux kernel, the following vulnerability has been resolved:scsi: qla2xxx: Fix scheduling while atomic (CVE-2022-49156)In the Linux kernel, the following vulnerability has been resolved:ext4: don''t BUG if someone dirty pages without asking ext4 first (CVE-2022-49171)In the Linux kernel, the following vulnerability has been resolved:ext4: fix ext4_mb_mark_bb() with flex_bg with fast_commit (CVE-2022-49174)In the Linux kernel, the following vulnerability has been resolved:PM: core: keep irq flags in device_pm_check_callbacks() (CVE-2022-49175)In the Linux kernel, the following vulnerability has been resolved:bfq: fix use-after-free in bfq_dispatch_request (CVE-2022-49176)In the Linux kernel, the following vulnerability has been resolved:block, bfq: don''t move oom_bfqq (CVE-2022-49179)In the Linux kernel, the following vulnerability has been resolved:LSM: general protection fault in legacy_parse_param (CVE-2022-49180)In the Linux kernel, the following vulnerability has been resolved:af_netlink: Fix shift out of bounds in group mask calculation (CVE-2022-49197)In the Linux kernel, the following vulnerability has been resolved:bpf, sockmap: Fix more uncharged while msg has more_data (CVE-2022-49204)In the Linux kernel, the following vulnerability has been resolved:bpf, sockmap: Fix double uncharge the mem of sk_msg (CVE-2022-49205)In the Linux kernel, the following vulnerability has been resolved:RDMA/mlx5: Fix memory leak in error flow for subscribe event routine (CVE-2022-49206)In the Linux kernel, the following vulnerability has been resolved:bpf, sockmap: Fix memleak in tcp_bpf_sendmsg while sk msg is full (CVE-2022-49209)In the Linux kernel, the following vulnerability has been resolved:MIPS: pgalloc: fix memory leak caused by pgd_free() (CVE-2022-49210)In the Linux kernel, the following vulnerability has been resolved:dax: make sure inodes are flushed before destroy cache (CVE-2022-49220)In the Linux kernel, the following vulnerability has been resolved:power: supply: ab8500: Fix memory leak in ab8500_fg_sysfs_init (CVE-2022-49224)In the Linux kernel, the following vulnerability has been resolved:watch_queue: Actually free the watch (CVE-2022-49256)In the Linux kernel, the following vulnerability has been resolved:watch_queue: Fix NULL dereference in error cleanup (CVE-2022-49257)In the Linux kernel, the following vulnerability has been resolved:block: don''t delete queue kobject before its children (CVE-2022-49259)In the Linux kernel, the following vulnerability has been resolved:drm/i915/gem: add missing boundary check in vm_access (CVE-2022-49261)In the Linux kernel, the following vulnerability has been resolved:exec: Force single empty string when argv is empty (CVE-2022-49264)In the Linux kernel, the following vulnerability has been resolved:cifs: prevent bad output lengths in smb2_ioctl_query_info() (CVE-2022-49271)In the Linux kernel, the following vulnerability has been resolved:ALSA: pcm: Fix potential AB/BA lock with buffer_mutex and mmap_lock (CVE-2022-49272)In the Linux kernel, the following vulnerability has been resolved:NFSD: prevent integer overflow on 32 bit systems (CVE-2022-49279)In the Linux kernel, the following vulnerability has been resolved:NFSD: prevent underflow in nfssvc_decode_writeargs() (CVE-2022-49280)In the Linux kernel, the following vulnerability has been resolved:tpm: fix reference counting for struct tpm_chip (CVE-2022-49287)A use-after-free flaw was found in the Linux kernel''s core dump subsystem. This flaw could allow a local user to crash the system. (CVE-2023-1249)A flaw that boot CPU could be vulnerable for the speculative execution behavior kind of attacks in the Linux kernel X86 CPU Power management options functionality was found in the way user resuming CPU from suspend-to-RAM. A local user could use this flaw to potentially get unauthorized access to some memory of the CPU similar to the speculative execution behavior kind of attacks. (CVE-2023-1637)Improper restriction of operations within the bounds of a memory buffer in some Intel(R) i915 Graphics drivers for linux before kernel version 6.2.10 may allow an authenticated user to potentially enable escalation of privilege via local access. (CVE-2023-28410)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.10.112-108.499
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.112-108.499.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.10-2023-036.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-47634
+            - Name: CVE-2021-47646
+            - Name: CVE-2021-47650
+            - Name: CVE-2022-0168
+            - Name: CVE-2022-1158
+            - Name: CVE-2022-1353
+            - Name: CVE-2022-29582
+            - Name: CVE-2022-2977
+            - Name: CVE-2022-41858
+            - Name: CVE-2022-48853
+            - Name: CVE-2022-49044
+            - Name: CVE-2022-49048
+            - Name: CVE-2022-49052
+            - Name: CVE-2022-49053
+            - Name: CVE-2022-49058
+            - Name: CVE-2022-49065
+            - Name: CVE-2022-49066
+            - Name: CVE-2022-49072
+            - Name: CVE-2022-49073
+            - Name: CVE-2022-49074
+            - Name: CVE-2022-49075
+            - Name: CVE-2022-49077
+            - Name: CVE-2022-49078
+            - Name: CVE-2022-49080
+            - Name: CVE-2022-49084
+            - Name: CVE-2022-49085
+            - Name: CVE-2022-49086
+            - Name: CVE-2022-49087
+            - Name: CVE-2022-49092
+            - Name: CVE-2022-49094
+            - Name: CVE-2022-49097
+            - Name: CVE-2022-49098
+            - Name: CVE-2022-49100
+            - Name: CVE-2022-49103
+            - Name: CVE-2022-49107
+            - Name: CVE-2022-49114
+            - Name: CVE-2022-49122
+            - Name: CVE-2022-49144
+            - Name: CVE-2022-49145
+            - Name: CVE-2022-49148
+            - Name: CVE-2022-49149
+            - Name: CVE-2022-49153
+            - Name: CVE-2022-49154
+            - Name: CVE-2022-49155
+            - Name: CVE-2022-49156
+            - Name: CVE-2022-49171
+            - Name: CVE-2022-49174
+            - Name: CVE-2022-49175
+            - Name: CVE-2022-49176
+            - Name: CVE-2022-49179
+            - Name: CVE-2022-49180
+            - Name: CVE-2022-49197
+            - Name: CVE-2022-49204
+            - Name: CVE-2022-49205
+            - Name: CVE-2022-49206
+            - Name: CVE-2022-49209
+            - Name: CVE-2022-49210
+            - Name: CVE-2022-49220
+            - Name: CVE-2022-49224
+            - Name: CVE-2022-49256
+            - Name: CVE-2022-49257
+            - Name: CVE-2022-49259
+            - Name: CVE-2022-49261
+            - Name: CVE-2022-49264
+            - Name: CVE-2022-49271
+            - Name: CVE-2022-49272
+            - Name: CVE-2022-49279
+            - Name: CVE-2022-49280
+            - Name: CVE-2022-49287
+            - Name: CVE-2023-1249
+            - Name: CVE-2023-1637
+            - Name: CVE-2023-28410
+    Name: ALAS2KERNEL-5.10-2023-036
+    NamespaceName: amzn:2
+    Severity: High

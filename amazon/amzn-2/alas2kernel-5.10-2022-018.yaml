@@ -1,0 +1,97 @@
+Vulnerability:
+    Description: 'An out-of-bounds write flaw was found in the Linux kernel&rsquo;s framebuffer-based console driver functionality in the way a user triggers ioctl FBIOPUT_VSCREENINFO with malicious data. This flaw allows a local user to crash or potentially escalate their privileges on the system. (CVE-2021-33655)There are use-after-free vulnerabilities caused by timer handler in net/rose/rose_timer.c of linux that allow attackers to crash linux kernel without any privileges. (CVE-2022-2318)Linux disk/nic frontends data leaks T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Linux Block and Network PV device frontends don''t zero memory regions before sharing them with the backend (CVE-2022-26365, CVE-2022-33740). Additionally the granularity of the grant table doesn''t allow sharing less than a 4K page, leading to unrelated data residing in the same 4K page as data shared with a backend being accessible by such backend (CVE-2022-33741, CVE-2022-33742). (CVE-2022-26365)Linux disk/nic frontends data leaks T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Linux Block and Network PV device frontends don''t zero memory regions before sharing them with the backend (CVE-2022-26365, CVE-2022-33740). Additionally the granularity of the grant table doesn''t allow sharing less than a 4K page, leading to unrelated data residing in the same 4K page as data shared with a backend being accessible by such backend (CVE-2022-33741, CVE-2022-33742). (CVE-2022-33740)Linux disk/nic frontends data leaks T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Linux Block and Network PV device frontends don''t zero memory regions before sharing them with the backend (CVE-2022-26365, CVE-2022-33740). Additionally the granularity of the grant table doesn''t allow sharing less than a 4K page, leading to unrelated data residing in the same 4K page as data shared with a backend being accessible by such backend (CVE-2022-33741, CVE-2022-33742). (CVE-2022-33741)Linux disk/nic frontends data leaks T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Linux Block and Network PV device frontends don''t zero memory regions before sharing them with the backend (CVE-2022-26365, CVE-2022-33740). Additionally the granularity of the grant table doesn''t allow sharing less than a 4K page, leading to unrelated data residing in the same 4K page as data shared with a backend being accessible by such backend (CVE-2022-33741, CVE-2022-33742). (CVE-2022-33742)network backend may cause Linux netfront to use freed SKBs While adding logic to support XDP (eXpress Data Path), a code label was moved in a way allowing for SKBs having references (pointers) retained for further processing to nevertheless be freed. (CVE-2022-33743)Arm guests can cause Dom0 DoS via PV devices When mapping pages of guests on Arm, dom0 is using an rbtree to keep track of the foreign mappings. Updating of that rbtree is not always done completely with the related lock held, resulting in a small race window, which can be used by unprivileged guests via PV devices to cause inconsistencies of the rbtree. These inconsistencies can lead to Denial of Service (DoS) of dom0, e.g. by causing crashes or the inability to perform further mappings of other guests'' memory pages. (CVE-2022-33744)A heap buffer overflow flaw was found in the Linux kernel''s Netfilter subsystem in the way a user provides incorrect input of the NFT_DATA_VERDICT type. This flaw allows a local user to crash or potentially escalate their privileges on the system. (CVE-2022-34918)In the Linux kernel, the following vulnerability has been resolved:usbnet: fix memory leak in error case (CVE-2022-49657)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix insufficient bounds propagation from adjust_scalar_min_max_vals (CVE-2022-49658)In the Linux kernel, the following vulnerability has been resolved:tunnels: do not assume mac header is set in skb_tunnel_check_pmtu() (CVE-2022-49663)In the Linux kernel, the following vulnerability has been resolved:tipc: move bc link creation back to tipc_node_create (CVE-2022-49664)In the Linux kernel, the following vulnerability has been resolved:net: bonding: fix use-after-free after 802.3ad slave unbind (CVE-2022-49667)In the Linux kernel, the following vulnerability has been resolved:linux/dim: Fix divide by 0 in RDMA DIM (CVE-2022-49670)In the Linux kernel, the following vulnerability has been resolved:RDMA/cm: Fix memory leak in ib_cm_insert_listen (CVE-2022-49671)In the Linux kernel, the following vulnerability has been resolved:net: tun: unlink NAPI from device on destruction (CVE-2022-49672)In the Linux kernel, the following vulnerability has been resolved:dm raid: fix KASAN warning in raid5_add_disks (CVE-2022-49673)In the Linux kernel, the following vulnerability has been resolved:dm raid: fix accesses beyond end of raid member array (CVE-2022-49674)In the Linux kernel, the following vulnerability has been resolved:tick/nohz: unexport __init-annotated tick_nohz_full_setup() (CVE-2022-49675)In the Linux kernel, the following vulnerability has been resolved:virtio_net: fix xdp_rxq_info bug after suspend/resume (CVE-2022-49687)In the Linux kernel, the following vulnerability has been resolved:afs: Fix dynamic root getattr (CVE-2022-49688)In the Linux kernel, the following vulnerability has been resolved:erspan: do not assume transport header is always set (CVE-2022-49691)In the Linux kernel, the following vulnerability has been resolved:igb: fix a use-after-free issue in igb_clean_tx_ring (CVE-2022-49695)In the Linux kernel, the following vulnerability has been resolved:tipc: fix use-after-free Read in tipc_named_reinit (CVE-2022-49696)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix request_sock leak in sk lookup helpers (CVE-2022-49697)In the Linux kernel, the following vulnerability has been resolved:netfilter: use get_random_u32 instead of prandom (CVE-2022-49698)In the Linux kernel, the following vulnerability has been resolved:mm/slub: add missing TID updates on slab deactivation (CVE-2022-49700)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.10.130-118.517
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.130-118.517.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.10-2022-018.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-33655
+            - Name: CVE-2022-2318
+            - Name: CVE-2022-26365
+            - Name: CVE-2022-33740
+            - Name: CVE-2022-33741
+            - Name: CVE-2022-33742
+            - Name: CVE-2022-33743
+            - Name: CVE-2022-33744
+            - Name: CVE-2022-34918
+            - Name: CVE-2022-49657
+            - Name: CVE-2022-49658
+            - Name: CVE-2022-49663
+            - Name: CVE-2022-49664
+            - Name: CVE-2022-49667
+            - Name: CVE-2022-49670
+            - Name: CVE-2022-49671
+            - Name: CVE-2022-49672
+            - Name: CVE-2022-49673
+            - Name: CVE-2022-49674
+            - Name: CVE-2022-49675
+            - Name: CVE-2022-49687
+            - Name: CVE-2022-49688
+            - Name: CVE-2022-49691
+            - Name: CVE-2022-49695
+            - Name: CVE-2022-49696
+            - Name: CVE-2022-49697
+            - Name: CVE-2022-49698
+            - Name: CVE-2022-49700
+    Name: ALAS2KERNEL-5.10-2022-018
+    NamespaceName: amzn:2
+    Severity: High

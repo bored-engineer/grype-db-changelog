@@ -1,0 +1,69 @@
+Vulnerability:
+    Description: 'A flaw in the Linux Kernel found in the GFS2 file system. On corrupted gfs2 file systems the evict code can try to reference the journal descriptor structure, jdesc, after it has been freed and set to NULL. It can lead to null pointer dereference when gfs2_trans_begin being called and then fail ingfs2_evict_inode(). (CVE-2023-3212)A use-after-free vulnerability was found in the Linux kernel''s netfilter subsystem in net/netfilter/nf_tables_api.c.Mishandled error handling with NFT_MSG_NEWRULE makes it possible to use a dangling pointer in the same transaction causing a use-after-free vulnerability. This flaw allows a local attacker with user access to cause a privilege escalation issue.We recommend upgrading past commit 1240eb93f0616b21c675416516ff3d74798fdc97. (CVE-2023-3390)The fix for XSA-423 added logic to Linux''es netback driver to deal witha frontend splitting a packet in a way such that not all of the headerswould come in one piece.  Unfortunately the logic introduced theredidn''t account for the extreme case of the entire packet being splitinto as many pieces as permitted by the protocol, yet still beingsmaller than the area that''s specially dealt with to keep all (possible)headers together.  Such an unusual packet would therefore trigger abuffer overrun in the driver. (CVE-2023-34319)A use-after-free flaw was found in net/sched/cls_fw.c in classifiers (cls_fw, cls_u32, and cls_route) in the Linux Kernel. This flaw allows a local attacker to perform a local privilege escalation due to incorrect handling of the existing filter, leading to a kernel information leak issue. (CVE-2023-4128)A use-after-free vulnerability in the Linux kernel''s net/sched: cls_route component can be exploited to achieve local privilege escalation.When route4_change() is called on an existing filter, the whole tcf_result struct is always copied into the new instance of the filter. This causes a problem when updating a filter bound to a class, as tcf_unbind_filter() is always called on the old instance in the success path, decreasing filter_cnt of the still referenced class and allowing it to be deleted, leading to a use-after-free.We recommend upgrading past commit b80b829e9e2c1b3f7aae34855e04d8f6ecaf13c8. (CVE-2023-4206)A use-after-free vulnerability in the Linux kernel''s net/sched: cls_u32 component can be exploited to achieve local privilege escalation.When u32_change() is called on an existing filter, the whole tcf_result struct is always copied into the new instance of the filter. This causes a problem when updating a filter bound to a class, as tcf_unbind_filter() is always called on the old instance in the success path, decreasing filter_cnt of the still referenced class and allowing it to be deleted, leading to a use-after-free.We recommend upgrading past commit 3044b16e7c6fe5d24b1cdbcf1bd0a9d92d1ebd81. (CVE-2023-4208)In the Linux kernel, the following vulnerability has been resolved:SUNRPC: Fix UAF in svc_tcp_listen_data_ready() (CVE-2023-52885)A denial of service vulnerability due to a deadlock was found in sctp_auto_asconf_init in net/sctp/socket.c in the Linux kernel''s SCTP subsystem. This flaw allows guests with local user privileges to trigger a deadlock and potentially crash the system. (CVE-2024-0639)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.322-244.536
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.322-244.536.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2023-2268.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-3212
+            - Name: CVE-2023-3390
+            - Name: CVE-2023-34319
+            - Name: CVE-2023-4128
+            - Name: CVE-2023-4206
+            - Name: CVE-2023-4208
+            - Name: CVE-2023-52885
+            - Name: CVE-2024-0639
+    Name: ALAS2-2023-2268
+    NamespaceName: amzn:2
+    Severity: High

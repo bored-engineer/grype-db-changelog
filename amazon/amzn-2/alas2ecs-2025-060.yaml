@@ -1,0 +1,23 @@
+Vulnerability:
+    Description: Reader.Read does not set a limit on the maximum size of file headers. A maliciously crafted archive could cause Read to allocate unbounded amounts of memory, potentially causing resource exhaustion or panics. After fix, Reader.Read limits the maximum size of header blocks to 1 MiB. (CVE-2022-2879)Programs which compile regular expressions from untrusted sources may be vulnerable to memory exhaustion or denial of service. The parsed regexp representation is linear in the size of the input, but in some cases the constant factor can be as high as 40,000, making relatively small regexps consume much larger amounts of memory. After fix, each regexp being parsed is limited to a 256 MB memory footprint. Regular expressions whose representation would use more space than that are rejected. Normal use of regular expressions is unaffected. (CVE-2022-41715)
+    FixedIn:
+        - Name: containerd
+          NamespaceName: amzn:2
+          Version: 1.6.8-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: containerd-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.6.8-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: containerd-stress
+          NamespaceName: amzn:2
+          Version: 1.6.8-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2ECS-2025-060.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-2879
+            - Name: CVE-2022-41715
+    Name: ALAS2ECS-2025-060
+    NamespaceName: amzn:2
+    Severity: Medium

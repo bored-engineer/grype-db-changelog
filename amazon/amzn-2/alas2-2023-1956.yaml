@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: 'Incomplete blacklist vulnerability in the lxml.html.clean module in lxml before 3.3.5 allows remote attackers to conduct cross-site scripting (XSS) attacks via control characters in the link scheme to the clean_html function. (CVE-2014-3146)An issue was discovered in lxml before 4.2.5. lxml/html/clean.py in the lxml.html.clean module does not remove javascript: URLs that use escaping, allowing a remote attacker to conduct XSS attacks, as demonstrated by "j a v a s c r i p t:" in Internet Explorer. This is a similar issue to CVE-2014-3146. (CVE-2018-19787)There''s a flaw in python-lxml''s HTML Cleaner component, which is responsible for sanitizing HTML and Javascript. An attacker who is able to submit a crafted payload to a web service using python-lxml''s HTML Cleaner may be able to trigger script execution in clients such as web browsers. This can occur because the HTML Cleaner did not remove scripts within SVG images in data URLs such as <img src=>. XSS can result in impacts to the integrity and availability of the web page, as well as a potential impact to data confidentiality in some circumstances. (CVE-2021-43818)'
+    FixedIn:
+        - Name: python-lxml
+          NamespaceName: amzn:2
+          Version: 3.2.1-4.amzn2.0.4
+          VersionFormat: rpm
+        - Name: python-lxml-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.2.1-4.amzn2.0.4
+          VersionFormat: rpm
+        - Name: python-lxml-docs
+          NamespaceName: amzn:2
+          Version: 3.2.1-4.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2023-1956.html
+    Metadata:
+        CVE:
+            - Name: CVE-2014-3146
+            - Name: CVE-2018-19787
+            - Name: CVE-2021-43818
+    Name: ALAS2-2023-1956
+    NamespaceName: amzn:2
+    Severity: High

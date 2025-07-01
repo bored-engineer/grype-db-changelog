@@ -1,0 +1,72 @@
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:dm: fix mempool NULL pointer race when completing IO (CVE-2021-47435)A memory leak flaw was found in the Linux kernel''s DMA subsystem, in the way a user calls DMA_FROM_DEVICE. This flaw allows a local user to read random memory from the kernel space. (CVE-2022-0854)perf: Fix sys_perf_event_open() race against self (CVE-2022-1729)An integer coercion error was found in the openvswitch kernel module. Given a sufficiently large number of actions, while copying and reserving memory for a new action of a new flow, the reserve_sfa_size() function does not return -EMSGSIZE as expected, potentially leading to an out-of-bounds write access. This flaw allows a local user to crash or potentially escalate their privileges on the system. (CVE-2022-2639)Improper Update of Reference Count vulnerability in net/sched of Linux Kernel allows local attacker to cause privilege escalation to root. This issue affects: Linux Kernel versions prior to 5.18; version 4.14 and later versions. (CVE-2022-29581)The Linux kernel before 5.17.2 mishandles seccomp permissions. The PTRACE_SEIZE code path allows attackers to bypass intended restrictions on setting the PT_SUSPEND_SECCOMP flag. (CVE-2022-30594)An issue was discovered in drivers/input/input.c in the Linux kernel before 5.17.10. An attacker can cause a denial of service (panic) because input_set_capability mishandles the situation in which an event code falls outside of a bitmap. (CVE-2022-48619)In the Linux kernel, the following vulnerability has been resolved:swiotlb: fix info leak with DMA_FROM_DEVICE (CVE-2022-48853)In the Linux kernel, the following vulnerability has been resolved:ALSA: pcm: Fix races among concurrent hw_params and hw_free calls (CVE-2022-49291)A use-after-free flaw was found in vmxnet3_rq_alloc_rx_buf in drivers/net/vmxnet3/vmxnet3_drv.c in VMware''s vmxnet3 ethernet NIC driver in the Linux Kernel. This issue could allow a local attacker to crash the system due to a double-free while cleaning up vmxnet3_rq_cleanup_all, which could also lead to a kernel information leak problem. (CVE-2023-4387)A NULL pointer dereference flaw was found in vmxnet3_rq_cleanup in drivers/net/vmxnet3/vmxnet3_drv.c in the networking sub-component in vmxnet3 in the Linux Kernel. This issue may allow a local attacker with normal user privilege to cause a denial of service due to a missing sanity check during cleanup. (CVE-2023-4459)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.281-212.502
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.281-212.502.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2022-1798.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-47435
+            - Name: CVE-2022-0854
+            - Name: CVE-2022-1729
+            - Name: CVE-2022-2639
+            - Name: CVE-2022-29581
+            - Name: CVE-2022-30594
+            - Name: CVE-2022-48619
+            - Name: CVE-2022-48853
+            - Name: CVE-2022-49291
+            - Name: CVE-2023-4387
+            - Name: CVE-2023-4459
+    Name: ALAS2-2022-1798
+    NamespaceName: amzn:2
+    Severity: High

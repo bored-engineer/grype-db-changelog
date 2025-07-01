@@ -1,0 +1,35 @@
+Vulnerability:
+    Description: Some HTTP/2 implementations are vulnerable to ping floods, potentially leading to a denial of service. The attacker sends continual pings to an HTTP/2 peer, causing the peer to build an internal queue of responses. Depending on how efficiently this data is queued, this can consume excess CPU, memory, or both. (CVE-2019-9512)Some HTTP/2 implementations are vulnerable to a reset flood, potentially leading to a denial of service. The attacker opens a number of streams and sends an invalid request over each stream that should solicit a stream of RST_STREAM frames from the peer. Depending on how the peer queues the RST_STREAM frames, this can consume excess memory, CPU, or both. (CVE-2019-9514)
+    FixedIn:
+        - Name: golang
+          NamespaceName: amzn:2
+          Version: 1.9.4-3.amzn2.0.2
+          VersionFormat: rpm
+        - Name: golang-bin
+          NamespaceName: amzn:2
+          Version: 1.9.4-3.amzn2.0.2
+          VersionFormat: rpm
+        - Name: golang-docs
+          NamespaceName: amzn:2
+          Version: 1.9.4-3.amzn2.0.2
+          VersionFormat: rpm
+        - Name: golang-misc
+          NamespaceName: amzn:2
+          Version: 1.9.4-3.amzn2.0.2
+          VersionFormat: rpm
+        - Name: golang-src
+          NamespaceName: amzn:2
+          Version: 1.9.4-3.amzn2.0.2
+          VersionFormat: rpm
+        - Name: golang-tests
+          NamespaceName: amzn:2
+          Version: 1.9.4-3.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2019-1272.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-9512
+            - Name: CVE-2019-9514
+    Name: ALAS2-2019-1272
+    NamespaceName: amzn:2
+    Severity: High

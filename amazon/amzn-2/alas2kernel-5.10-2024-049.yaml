@@ -1,0 +1,106 @@
+Vulnerability:
+    Description: 'A vulnerability was found in Linux kernel, where a use-after-frees in nouveau''s postclose() handler could happen if removing device (that is not common to remove video card physically without power-off, but same happens if unbind the driver). (CVE-2020-27820)A flaw use-after-free in function sco_sock_sendmsg() of the Linux kernel HCI subsystem was found in the way user calls ioct UFFDIO_REGISTER or other way triggers race condition of the call sco_conn_del() together with the call sco_sock_sendmsg() with the expected controllable faulting memory page. A privileged local user could use this flaw to crash the system or escalate their privileges on the system. (CVE-2021-3640)A flaw was found in the Linux SCTP stack. A blind attacker may be able to kill an existing SCTP association through invalid chunks if the attacker knows the IP-addresses and port numbers being used and the attacker can send packets with spoofed IP addresses. (CVE-2021-3772)A race condition was found in the Linux kernel''s ebpf verifier between bpf_map_update_elem and bpf_map_freeze due to a missing lock in kernel/bpf/syscall.c. In this flaw, a local user with a special privilege (cap_sys_admin or cap_bpf) can modify the frozen mapped address space. (CVE-2021-4001)A memory leak flaw in the Linux kernel''s hugetlbfs memory usage was found in the way the user maps some regions of memory twice using shmget() which are aligned to PUD alignment with the fault of some of the memory pages. A local user could use this flaw to get unauthorized access to some data. (CVE-2021-4002)A flaw heap buffer overflow in the Linux kernel''s AMD Radeon graphics card driver was found in the way user writes some malicious data to the AMD GPU Display Driver Debug Filesystem (to the VGA sub-directory of the /sys/kernel/debug/ directory). A local user could use this flaw to crash the system or escalate their privileges on the system. (CVE-2021-42327)In the Linux kernel, the following vulnerability has been resolved:i40e: Fix NULL ptr dereference on VSI filter sync (CVE-2021-47184)In the Linux kernel, the following vulnerability has been resolved:tty: tty_buffer: Fix the softlockup issue in flush_to_ldisc (CVE-2021-47185)In the Linux kernel, the following vulnerability has been resolved:tipc: check for null after calling kmemdup (CVE-2021-47186)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix memory ordering between normal and ordered work functions (CVE-2021-47189)In the Linux kernel, the following vulnerability has been resolved:perf bpf: Avoid memory leak from perf_env__insert_btf() (CVE-2021-47190)In the Linux kernel, the following vulnerability has been resolved:scsi: scsi_debug: Fix out-of-bound read in resp_readcap16() (CVE-2021-47191)In the Linux kernel, the following vulnerability has been resolved:scsi: core: sysfs: Fix hang when device state is set via sysfs (CVE-2021-47192)In the Linux kernel, the following vulnerability has been resolved:net/mlx5e: nullify cq->dbg pointer in mlx5_debug_cq_remove() (CVE-2021-47197)In the Linux kernel, the following vulnerability has been resolved:iavf: free q_vectors before queues in iavf_disable_vf (CVE-2021-47201)In the Linux kernel, the following vulnerability has been resolved:thermal: Fix NULL pointer dereferences in of_thermal_ functions (CVE-2021-47202)In the Linux kernel, the following vulnerability has been resolved:scsi: lpfc: Fix list_add() corruption in lpfc_drain_txq() (CVE-2021-47203)In the Linux kernel, the following vulnerability has been resolved:x86/hyperv: Fix NULL deref in set_hv_tscchange_cb() if Hyper-V setup fails (CVE-2021-47217)In the Linux kernel, the following vulnerability has been resolved:selinux: fix NULL-pointer dereference when hashtab allocation fails (CVE-2021-47218)In the Linux kernel, the following vulnerability has been resolved:scsi: scsi_debug: Fix out-of-bound read in resp_report_tgtpgs() (CVE-2021-47219)In the Linux kernel, the following vulnerability has been resolved:ext4: fix possible UAF when remounting r/o a mmp-protected file system (CVE-2021-47342)In the Linux kernel, the following vulnerability has been resolved:netfilter: xt_IDLETIMER: fix panic that occurs when timer_type has garbage value (CVE-2021-47451)In the Linux kernel, the following vulnerability has been resolved:can: j1939: j1939_netdev_start(): fix UAF for rx_kref of j1939_priv (CVE-2021-47459)In the Linux kernel, the following vulnerability has been resolved:ocfs2: fix data corruption after conversion from inline format (CVE-2021-47460)In the Linux kernel, the following vulnerability has been resolved:userfaultfd: fix a race between writeprotect and exit_mmap() (CVE-2021-47461)In the Linux kernel, the following vulnerability has been resolved:audit: fix possible null-pointer dereference in audit_filter_rules (CVE-2021-47464)In the Linux kernel, the following vulnerability has been resolved:mm, slub: fix potential memoryleak in kmem_cache_open() (CVE-2021-47466)In the Linux kernel, the following vulnerability has been resolved:scsi: qla2xxx: Fix a memory leak in an error path of qla2x00_process_els() (CVE-2021-47473)In the Linux kernel, the following vulnerability has been resolved:isofs: Fix out of bound access for corrupted isofs image (CVE-2021-47478)In the Linux kernel, the following vulnerability has been resolved:scsi: core: Put LLD module refcnt after SCSI device is released (CVE-2021-47480)In the Linux kernel, the following vulnerability has been resolved:regmap: Fix possible double-free in regcache_rbtree_exit() (CVE-2021-47483)In the Linux kernel, the following vulnerability has been resolved:drm/ttm: fix memleak in ttm_transfered_destroy (CVE-2021-47490)In the Linux kernel, the following vulnerability has been resolved:mm: khugepaged: skip huge page collapse for special files (CVE-2021-47491)In the Linux kernel, the following vulnerability has been resolved:mm, thp: bail out early in collapse_file for writeback page (CVE-2021-47492)In the Linux kernel, the following vulnerability has been resolved:usbnet: sanity check for maxpacket (CVE-2021-47495)In the Linux kernel, the following vulnerability has been resolved:net/tls: Fix flipped sign in tls_err_abort() calls (CVE-2021-47496)A use-after-free flaw was found in the Linux kernel''s Ext4 File System in how a user triggers several file operations simultaneously with the overlay FS usage. This flaw allows a local user to crash or potentially escalate their privileges on the system. (CVE-2023-1252)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.10.82-83.359
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.82-83.359.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.10-2024-049.html
+    Metadata:
+        CVE:
+            - Name: CVE-2020-27820
+            - Name: CVE-2021-3640
+            - Name: CVE-2021-3772
+            - Name: CVE-2021-4001
+            - Name: CVE-2021-4002
+            - Name: CVE-2021-42327
+            - Name: CVE-2021-47184
+            - Name: CVE-2021-47185
+            - Name: CVE-2021-47186
+            - Name: CVE-2021-47189
+            - Name: CVE-2021-47190
+            - Name: CVE-2021-47191
+            - Name: CVE-2021-47192
+            - Name: CVE-2021-47197
+            - Name: CVE-2021-47201
+            - Name: CVE-2021-47202
+            - Name: CVE-2021-47203
+            - Name: CVE-2021-47217
+            - Name: CVE-2021-47218
+            - Name: CVE-2021-47219
+            - Name: CVE-2021-47342
+            - Name: CVE-2021-47451
+            - Name: CVE-2021-47459
+            - Name: CVE-2021-47460
+            - Name: CVE-2021-47461
+            - Name: CVE-2021-47464
+            - Name: CVE-2021-47466
+            - Name: CVE-2021-47473
+            - Name: CVE-2021-47478
+            - Name: CVE-2021-47480
+            - Name: CVE-2021-47483
+            - Name: CVE-2021-47490
+            - Name: CVE-2021-47491
+            - Name: CVE-2021-47492
+            - Name: CVE-2021-47495
+            - Name: CVE-2021-47496
+            - Name: CVE-2023-1252
+    Name: ALAS2KERNEL-5.10-2024-049
+    NamespaceName: amzn:2
+    Severity: High

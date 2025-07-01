@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: 'In libexif, there is a possible out of bounds write due to an integer overflow. This could lead to remote escalation of privilege in the media content provider with no additional execution privileges needed. User interaction is needed for exploitation. Product: AndroidVersions: Android-10Android ID: A-112537774 (CVE-2019-9278)In exif_data_save_data_entry of exif-data.c, there is a possible out of bounds read due to a missing bounds check. This could lead to local information disclosure with no additional execution privileges needed. User interaction is needed for exploitation.Product: AndroidVersions: Android-8.0 Android-8.1 Android-9 Android-10Android ID: A-148705132 (CVE-2020-0093)In exif_entry_get_value of exif-entry.c, there is a possible out of bounds read due to a missing bounds check. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.Product: AndroidVersions: Android-10Android ID: A-147140917 (CVE-2020-0182)exif_entry_get_value in exif-entry.c in libexif 0.6.21 has a divide-by-zero error. (CVE-2020-12767)An issue was discovered in libexif before 0.6.22. Use of uninitialized memory in EXIF Makernote handling could lead to crashes and potential use-after-free conditions. (CVE-2020-13113)An issue was discovered in libexif before 0.6.22. An unrestricted size in handling Canon EXIF MakerNote data could lead to consumption of large amounts of compute time for decoding EXIF data. (CVE-2020-13114)'
+    FixedIn:
+        - Name: libexif
+          NamespaceName: amzn:2
+          Version: 0.6.22-1.amzn2
+          VersionFormat: rpm
+        - Name: libexif-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.6.22-1.amzn2
+          VersionFormat: rpm
+        - Name: libexif-devel
+          NamespaceName: amzn:2
+          Version: 0.6.22-1.amzn2
+          VersionFormat: rpm
+        - Name: libexif-doc
+          NamespaceName: amzn:2
+          Version: 0.6.22-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1523.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-9278
+            - Name: CVE-2020-0093
+            - Name: CVE-2020-0182
+            - Name: CVE-2020-12767
+            - Name: CVE-2020-13113
+            - Name: CVE-2020-13114
+    Name: ALAS2-2020-1523
+    NamespaceName: amzn:2
+    Severity: Medium

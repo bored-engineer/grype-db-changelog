@@ -1,0 +1,63 @@
+Vulnerability:
+    Description: A flaw was found in the Linux kernel's freescale hypervisor manager implementation. A parameter passed via to an ioctl was incorrectly validated and used in size calculations for the page size calculation. An attacker can use this flaw to crash the system or corrupt memory or, possibly, create other adverse security affects.(CVE-2019-10142)A new software page cache side channel attack scenario was discovered in operating systems that implement the very common 'page cache' caching mechanism. A malicious user/process could use 'in memory' page-cache knowledge to infer access timings to shared memory and gain knowledge which can be used to reduce effectiveness of cryptographic strength by monitoring algorithmic behavior, infer access patterns of memory to determine code paths taken, and exfiltrate data to a blinded attacker through page-granularity access times as a side-channel. (CVE-2019-5489)The do_hidp_sock_ioctl function in net/bluetooth/hidp/sock.c in the Linux kernel before 5.0.15 allows a local user to obtain potentially sensitive information from kernel stack memory via a HIDPCONNADD command, because a name field may not end with a '\0' character.(CVE-2019-11884)A flaw was found in the Linux kernel's vfio interface implementation that permits violation of the user's locked memory limit. If a device is bound to a vfio driver, such as vfio-pci, and the local attacker is administratively granted ownership of the device, it may cause a system memory exhaustion and thus a denial of service (DoS).(CVE-2019-3882)If the Wake-up on Wireless LAN functionality is configured in the brcmfmac driver, which only works with Broadcom FullMAC chipsets, a malicious event frame can be constructed to trigger a heap buffer overflow in the brcmf_wowl_nd_results() function. This vulnerability can be exploited by compromised chipsets to compromise the host, or when used in combination with another brcmfmac driver flaw  (CVE-2019-9503), can be used remotely. This can result in a remote denial of service (DoS). Due to the nature of the flaw, a remote privilege escalation cannot be fully ruled out.(CVE-2019-9500)A flaw was found in the Linux kernel's implementation of ext4 extent management. The kernel doesn't correctly initialize memory regions in the extent tree block which may be exported to a local user to obtain sensitive information by reading empty/uninitialized data from the filesystem. (CVE-2019-11833)
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.121-109.96.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2019-1214.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-10142
+            - Name: CVE-2019-11833
+            - Name: CVE-2019-11884
+            - Name: CVE-2019-3882
+            - Name: CVE-2019-5489
+            - Name: CVE-2019-9500
+    Name: ALAS2-2019-1214
+    NamespaceName: amzn:2
+    Severity: High

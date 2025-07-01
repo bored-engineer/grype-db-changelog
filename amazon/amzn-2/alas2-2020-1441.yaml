@@ -1,0 +1,80 @@
+Vulnerability:
+    Description: '"managed-keys" is a feature which allows a BIND resolver to automatically maintain the keys used by trust anchors which operators configure for use in DNSSEC validation. Due to an error in the managed-keys feature it is possible for a BIND server which uses managed-keys to exit due to an assertion failure if, during key rollover, a trust anchor''s keys are replaced with keys which use an unsupported algorithm. Versions affected: BIND 9.9.0 -> 9.10.8-P1, 9.11.0 -> 9.11.5-P1, 9.12.0 -> 9.12.3-P1, and versions 9.9.3-S1 -> 9.11.5-S3 of BIND 9 Supported Preview Edition. Versions 9.13.0 -> 9.13.6 of the 9.13 development branch are also affected. Versions prior to BIND 9.9.0 have not been evaluated for vulnerability to CVE-2018-5745. (CVE-2018-5745)With pipelining enabled each incoming query on a TCP connection requires a similar resource allocation to a query received via UDP or via TCP without pipelining enabled. A client using a TCP-pipelined connection to a server could consume more resources than the server has been provisioned to handle. When a TCP connection with a large number of pipelined queries is closed, the load on the server releasing these multiple resources can cause it to become unresponsive, even for queries that can be answered authoritatively or from cache. (This is most likely to be perceived as an intermittent server problem). (CVE-2019-6477)Controls for zone transfers may not be properly applied to Dynamically Loadable Zones (DLZs) if the zones are writable Versions affected: BIND 9.9.0 -> 9.10.8-P1, 9.11.0 -> 9.11.5-P2, 9.12.0 -> 9.12.3-P2, and versions 9.9.3-S1 -> 9.11.5-S3 of BIND 9 Supported Preview Edition. Versions 9.13.0 -> 9.13.6 of the 9.13 development branch are also affected. Versions prior to BIND 9.9.0 have not been evaluated for vulnerability to CVE-2019-6465. (CVE-2019-6465)'
+    FixedIn:
+        - Name: bind
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-chroot
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-debuginfo
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-devel
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-export-devel
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-export-libs
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-libs
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-libs-lite
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-license
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-lite-devel
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-pkcs11
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-pkcs11-devel
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-pkcs11-libs
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-pkcs11-utils
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-sdb
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-sdb-chroot
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+        - Name: bind-utils
+          NamespaceName: amzn:2
+          Version: 9.11.4-9.P2.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1441.html
+    Metadata:
+        CVE:
+            - Name: CVE-2018-5745
+            - Name: CVE-2019-6465
+            - Name: CVE-2019-6477
+    Name: ALAS2-2020-1441
+    NamespaceName: amzn:2
+    Severity: Medium

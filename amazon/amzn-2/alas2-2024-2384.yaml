@@ -1,0 +1,46 @@
+Vulnerability:
+    Description: Vim is a UNIX editor that, prior to version 9.0.2121, has a heap-use-after-free vulnerability. When executing a `:s` command for the very first time and using a sub-replace-special atom inside the substitution part, it is possible that the recursive `:s` call causes free-ing of memory which may later then be accessed by the initial `:s` command. The user must intentionally execute the payload and the whole process is a bit tricky to do since it seems to work only reliably for the very first :s command. It may also cause a crash of Vim. Version 9.0.2121 contains a fix for this issue. (CVE-2023-48706)
+    FixedIn:
+        - Name: vim
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: vim-X11
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: vim-common
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: vim-data
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: vim-debuginfo
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: vim-enhanced
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: vim-filesystem
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: vim-minimal
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: xxd
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2024-2384.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-48706
+    Name: ALAS2-2024-2384
+    NamespaceName: amzn:2
+    Severity: Low

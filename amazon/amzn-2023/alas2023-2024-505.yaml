@@ -1,0 +1,19 @@
+Vulnerability:
+    Description: The upstream report describes this issue as follows:When installing a maliciously created Ansible role using 'ansible-galaxy role install', arbitrary files the user has access to can be overwritten. The malicious role must contain a symlink with an absolute path to the target file, followed by a file of the same name (as the symlink) with the contents to write to the target. (CVE-2023-5115)An information disclosure flaw was found in ansible-core due to a failure to respect the ANSIBLE_NO_LOG configuration in some scenarios. It was discovered that information is still included in the output in certain tasks, such as loop items. Depending on the task, this issue may include sensitive information, such as decrypted secret values. (CVE-2024-0690)
+    FixedIn:
+        - Name: ansible-core
+          NamespaceName: amzn:2023
+          Version: 2.15.3-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: ansible-test
+          NamespaceName: amzn:2023
+          Version: 2.15.3-1.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2024-505.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-5115
+            - Name: CVE-2024-0690
+    Name: ALAS2023-2024-505
+    NamespaceName: amzn:2023
+    Severity: Medium

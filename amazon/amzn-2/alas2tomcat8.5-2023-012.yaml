@@ -1,0 +1,52 @@
+Vulnerability:
+    Description: The refactoring present in Apache Tomcat 9.0.28 to 9.0.30, 8.5.48 to 8.5.50 and 7.0.98 to 7.0.99 introduced a regression. The result of the regression was that invalid Transfer-Encoding headers were incorrectly processed leading to a possibility of HTTP Request Smuggling if Tomcat was located behind a reverse proxy that incorrectly handled the invalid Transfer-Encoding header in a particular manner. Such a reverse proxy is considered unlikely. (CVE-2019-17569)A flaw was found in Apache Tomcat. The HTTP header parsing code used an approach to end-of-line (EOL) parsing that allowed some invalid HTTP headers to be parsed as valid. This led to the possibility of HTTP Request Smuggling if Tomcat was located behind a reverse proxy that incorrectly handled the invalid Transfer-Encoding header in a particular manner. The highest threat with this vulnerability is system availability. (CVE-2020-1935)
+    FixedIn:
+        - Name: tomcat
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-admin-webapps
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-docs-webapp
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-el-3.0-api
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-javadoc
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-jsp-2.3-api
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-jsvc
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-lib
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-servlet-3.1-api
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-webapps
+          NamespaceName: amzn:2
+          Version: 8.5.51-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2TOMCAT8.5-2023-012.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-17569
+            - Name: CVE-2020-1935
+            - Name: CVE-2020-1938
+    Name: ALAS2TOMCAT8.5-2023-012
+    NamespaceName: amzn:2
+    Severity: High

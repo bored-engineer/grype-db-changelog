@@ -1,0 +1,87 @@
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:ubi: Fix race condition between ctrl_cdev_ioctl and ubi_cdev_ioctl (CVE-2021-47634)A use-after-free flaw was found in the Linux kernel''s FUSE filesystem in the way a user triggers write(). This flaw allows a local user to gain unauthorized access to data from the FUSE filesystem, resulting in privilege escalation. (CVE-2022-1011)A vulnerability was found in the pfkey_register function in net/key/af_key.c in the Linux kernel. This flaw allows a local, unprivileged user to gain access to kernel memory, leading to a system crash or a leak of internal kernel information. (CVE-2022-1353)A flaw was found in the Linux kernel implementation of proxied virtualized TPM devices. On a system where virtualized TPM devices are configured (this is not the default) a local attacker can create a use-after-free and create a situation where it may be possible to escalate privileges on the system. (CVE-2022-2977)A flaw was found in the Linux kernel. A NULL pointer dereference may occur while a slip driver is in progress to detach in sl_tx_timeout in drivers/net/slip/slip.c. This issue could allow an attacker to crash the system or leak internal kernel information. (CVE-2022-41858)In the Linux kernel, the following vulnerability has been resolved:scsi: target: tcmu: Fix possible page UAF (CVE-2022-49053)In the Linux kernel, the following vulnerability has been resolved:cifs: potential buffer overflow in handling symlinks (CVE-2022-49058)In the Linux kernel, the following vulnerability has been resolved:veth: Ensure eth header is in skb''s linear part (CVE-2022-49066)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix qgroup reserve overflow the qgroup limit (CVE-2022-49075)In the Linux kernel, the following vulnerability has been resolved:mmmremap.c: avoid pointless invalidate_range_start/end on mremap(old_size=0) (CVE-2022-49077)In the Linux kernel, the following vulnerability has been resolved:mm/mempolicy: fix mpol_new leak in shared_policy_replace (CVE-2022-49080)In the Linux kernel, the following vulnerability has been resolved:drbd: Fix five use after free bugs in get_initial_state (CVE-2022-49085)In the Linux kernel, the following vulnerability has been resolved:virtio_console: eliminate anonymous module_init & module_exit (CVE-2022-49100)In the Linux kernel, the following vulnerability has been resolved:Bluetooth: Fix use after free in hci_send_acl (CVE-2022-49111)In the Linux kernel, the following vulnerability has been resolved:scsi: libfc: Fix use after free in fc_exch_abts_resp() (CVE-2022-49114)In the Linux kernel, the following vulnerability has been resolved:dm ioctl: prevent potential spectre v1 gadget (CVE-2022-49122)In the Linux kernel, the following vulnerability has been resolved:ACPI: CPPC: Avoid out of bounds access when parsing _CPC data (CVE-2022-49145)In the Linux kernel, the following vulnerability has been resolved:scsi: qla2xxx: Suppress a kernel complaint in qla_create_qpair() (CVE-2022-49155)In the Linux kernel, the following vulnerability has been resolved:ntfs: add sanity check on allocation size (CVE-2022-49166)In the Linux kernel, the following vulnerability has been resolved:ext4: don''t BUG if someone dirty pages without asking ext4 first (CVE-2022-49171)In the Linux kernel, the following vulnerability has been resolved:PM: core: keep irq flags in device_pm_check_callbacks() (CVE-2022-49175)In the Linux kernel, the following vulnerability has been resolved:af_netlink: Fix shift out of bounds in group mask calculation (CVE-2022-49197)In the Linux kernel, the following vulnerability has been resolved:power: supply: ab8500: Fix memory leak in ab8500_fg_sysfs_init (CVE-2022-49224)In the Linux kernel, the following vulnerability has been resolved:NFSD: prevent underflow in nfssvc_decode_writeargs() (CVE-2022-49280)In the Linux kernel, the following vulnerability has been resolved:tpm: fix reference counting for struct tpm_chip (CVE-2022-49287)A flaw that boot CPU could be vulnerable for the speculative execution behavior kind of attacks in the Linux kernel X86 CPU Power management options functionality was found in the way user resuming CPU from suspend-to-RAM. A local user could use this flaw to potentially get unauthorized access to some memory of the CPU similar to the speculative execution behavior kind of attacks. (CVE-2023-1637)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.276-211.499
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.276-211.499.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2024-2569.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-47634
+            - Name: CVE-2022-1011
+            - Name: CVE-2022-1353
+            - Name: CVE-2022-2977
+            - Name: CVE-2022-41858
+            - Name: CVE-2022-49053
+            - Name: CVE-2022-49058
+            - Name: CVE-2022-49066
+            - Name: CVE-2022-49075
+            - Name: CVE-2022-49077
+            - Name: CVE-2022-49080
+            - Name: CVE-2022-49085
+            - Name: CVE-2022-49100
+            - Name: CVE-2022-49111
+            - Name: CVE-2022-49114
+            - Name: CVE-2022-49122
+            - Name: CVE-2022-49145
+            - Name: CVE-2022-49155
+            - Name: CVE-2022-49166
+            - Name: CVE-2022-49171
+            - Name: CVE-2022-49175
+            - Name: CVE-2022-49197
+            - Name: CVE-2022-49224
+            - Name: CVE-2022-49280
+            - Name: CVE-2022-49287
+            - Name: CVE-2023-1637
+    Name: ALAS2-2024-2569
+    NamespaceName: amzn:2
+    Severity: High

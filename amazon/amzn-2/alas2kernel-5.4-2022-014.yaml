@@ -1,0 +1,64 @@
+Vulnerability:
+    Description: 'A flaw was found in the AMD Cryptographic Co-processor driver in the Linux kernel. An attacker, able to send invalid SHA type commands, could cause the system to crash. The highest threat from this vulnerability is to system availability. (CVE-2019-18808)A flaw was found in the Linux kernel. The CX23888 Integrated Consumer Infrared Controller probe code handles resource cleanup low memory conditions. A local attacker able to induce low memory conditions could use this flaw to crash the system. The highest threat from this vulnerability is to system availability. (CVE-2019-19054)A flaw was found in the ZRAM kernel module, where a user with a local account and the ability to read the /sys/class/zram-control/hot_add file can create ZRAM device nodes in the /dev/ directory. This read allocates kernel memory and is not accounted for a user that triggers the creation of that ZRAM device. With this vulnerability, continually reading the device may consume a large amount of system memory and cause the Out-of-Memory (OOM) killer to activate and terminate random userspace processes, possibly making the system inoperable. (CVE-2020-10781)A flaw was found in the implementation of the Linux kernel''s GSS mechanism registration functionality. During this period, memory allocation was not freed when the module was unloaded, leading to a memory leak. This flaw allows an attacker with the ability to repeat loads and unloads, to cause the system to run out of free memory and crash eventually. (CVE-2020-12656)In the Linux kernel 4.4 through 5.7.6, usbtest_disconnect in drivers/usb/misc/usbtest.c has a memory leak, aka CID-28ebeb8db770. (CVE-2020-15393)A flaw was found in the Linux kernel. The generation of the device ID from the network RNG internal state is predictable. The highest threat from this vulnerability is to data confidentiality. (CVE-2020-16166)In dma_buf_release of dma-buf.c, there is a possible memory corruption due to a use after free. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.Product: AndroidVersions: Android kernelAndroid ID: A-155756045References: Upstream kernel (CVE-2021-0707)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.4.58-27.104.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.4-2022-014.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-18808
+            - Name: CVE-2019-19054
+            - Name: CVE-2020-10781
+            - Name: CVE-2020-12656
+            - Name: CVE-2020-15393
+            - Name: CVE-2020-16166
+            - Name: CVE-2021-0707
+    Name: ALAS2KERNEL-5.4-2022-014
+    NamespaceName: amzn:2
+    Severity: Medium

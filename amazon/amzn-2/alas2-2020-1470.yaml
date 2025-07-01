@@ -1,0 +1,18 @@
+Vulnerability:
+    Description: Python-RSA before 4.1 ignores leading '\0' bytes during decryption of ciphertext. This could conceivably have a security-relevant impact, e.g., by helping an attacker to infer that an application uses Python-RSA, or if the length of accepted ciphertext affects application behavior (such as by causing excessive memory allocation). (CVE-2020-13757)
+    FixedIn:
+        - Name: python-rsa
+          NamespaceName: amzn:2
+          Version: 3.4.1-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: python2-rsa
+          NamespaceName: amzn:2
+          Version: 3.4.1-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1470.html
+    Metadata:
+        CVE:
+            - Name: CVE-2020-13757
+    Name: ALAS2-2020-1470
+    NamespaceName: amzn:2
+    Severity: Medium

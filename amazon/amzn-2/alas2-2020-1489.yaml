@@ -1,0 +1,36 @@
+Vulnerability:
+    Description: In Dovecot before 2.3.11.3, sending a specially formatted RPA request will crash the auth service because a length of zero is mishandled. A flaw was found in dovecot. An attacker can use the way dovecot handles RPA (Remote Passphrase Authentication) to crash the authentication process repeatedly preventing login. The highest threat from this vulnerability is to system availability. (CVE-2020-12674)In Dovecot before 2.3.11.3, uncontrolled recursion in submission, lmtp, and lda allows remote attackers to cause a denial of service (resource consumption) via a crafted e-mail message with deeply nested MIME parts. A flaw was found in dovecot. A remote attacker could cause a denial of service by repeatedly sending emails containing MIME parts containing malicious content of which dovecot will attempt to parse. The highest threat from this vulnerability is to system availability. (CVE-2020-12100)In Dovecot before 2.3.11.3, sending a specially formatted NTLM request will crash the auth service because of an out-of-bounds read. A flaw was found in dovecot. An out-of-bounds read flaw was found in the way dovecot handled NTLM authentication allowing an attacker to crash the dovecot auth process repeatedly preventing login. The highest threat from this vulnerability is to system availability. (CVE-2020-12673)
+    FixedIn:
+        - Name: dovecot
+          NamespaceName: amzn:2
+          Version: 2.2.36-6.amzn2.1
+          VersionFormat: rpm
+        - Name: dovecot-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.2.36-6.amzn2.1
+          VersionFormat: rpm
+        - Name: dovecot-devel
+          NamespaceName: amzn:2
+          Version: 2.2.36-6.amzn2.1
+          VersionFormat: rpm
+        - Name: dovecot-mysql
+          NamespaceName: amzn:2
+          Version: 2.2.36-6.amzn2.1
+          VersionFormat: rpm
+        - Name: dovecot-pgsql
+          NamespaceName: amzn:2
+          Version: 2.2.36-6.amzn2.1
+          VersionFormat: rpm
+        - Name: dovecot-pigeonhole
+          NamespaceName: amzn:2
+          Version: 2.2.36-6.amzn2.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1489.html
+    Metadata:
+        CVE:
+            - Name: CVE-2020-12100
+            - Name: CVE-2020-12673
+            - Name: CVE-2020-12674
+    Name: ALAS2-2020-1489
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,14 @@
+Vulnerability:
+    Description: A flaw was found in python-twisted. This vulnerability occurs due to the parsing of illegal constructs in the twisted.web.http module. The illegal constructs include '+/-' in the Content-Length header, '\n and \t' etc. Non-conformant parsing leads to a desync if requests pass through multiple HTTP parsers. This flaw allows a remote attacker to perform an HTTP request smuggling attack. (CVE-2022-24801)
+    FixedIn:
+        - Name: python-twisted-web
+          NamespaceName: amzn:2
+          Version: 12.1.0-8.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2022-1827.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-24801
+    Name: ALAS2-2022-1827
+    NamespaceName: amzn:2
+    Severity: High
