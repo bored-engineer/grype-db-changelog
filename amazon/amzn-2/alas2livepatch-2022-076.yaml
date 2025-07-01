@@ -1,0 +1,20 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A data leak flaw was found in the way XFS_IOC_ALLOCSP IOCTL in the XFS filesystem allowed for size increase of files with unaligned size. A local attacker could use this flaw to leak data on the XFS filesystem otherwise not accessible to them. (CVE-2021-4155)A heap-based buffer overflow flaw was found in the way the legacy_parse_param function in the Filesystem Context functionality of the Linux kernel verified the supplied parameters length. An unprivileged (in case of unprivileged user namespaces enabled, otherwise needs namespaced CAP_SYS_ADMIN privilege) local user able to open a filesystem that does not support the Filesystem Context API (and thus fallbacks to legacy handling) could use this flaw to escalate their privileges on the system. (CVE-2022-0185)
+    FixedIn:
+        - Name: kernel-livepatch-5.10.82-83.359
+          NamespaceName: amzn:2
+          Version: 1.0-3.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.10.82-83.359-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0-3.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2LIVEPATCH-2022-076.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-4155
+            - Name: CVE-2022-0185
+    Name: ALAS2LIVEPATCH-2022-076
+    NamespaceName: amzn:2
+    Severity: High

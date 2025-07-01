@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A buffer overflow in the fribidi_get_par_embedding_levels_ex() function in lib/fribidi-bidi.c of GNU FriBidi through 1.0.7 allows an attacker to cause a denial of service or possibly execute arbitrary code by delivering crafted text content to a user, when this content is then rendered by an application that uses FriBidi for text layout calculations. Examples include any GNOME or GTK+ based application that uses Pango for text layout, as this internally uses FriBidi for bidirectional text layout. For example, the attacker can construct a crafted text file to be opened in GEdit, or a crafted IRC message to be viewed in HexChat. (CVE-2019-18397)
+    FixedIn:
+        - Name: fribidi
+          NamespaceName: amzn:2
+          Version: 1.0.2-1.amzn2.1
+          VersionFormat: rpm
+        - Name: fribidi-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0.2-1.amzn2.1
+          VersionFormat: rpm
+        - Name: fribidi-devel
+          NamespaceName: amzn:2
+          Version: 1.0.2-1.amzn2.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1434.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-18397
+    Name: ALAS2-2020-1434
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: In Apache Commons IO before 2.7, When invoking the method FileNameUtils.normalize with an improper input string, like "//../foo", or "\\..\foo", the result would be the same value, thus possibly providing access to files in the parent directory, but not further above (thus "limited" path traversal), if the calling code would use the result to construct a path value. (CVE-2021-29425)
+    FixedIn:
+        - Name: apache-commons-io
+          NamespaceName: amzn:2
+          Version: 2.4-12.amzn2.0.1
+          VersionFormat: rpm
+        - Name: apache-commons-io-javadoc
+          NamespaceName: amzn:2
+          Version: 2.4-12.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2023-2059.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-29425
+    Name: ALAS2-2023-2059
+    NamespaceName: amzn:2
+    Severity: Medium

@@ -1,0 +1,36 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A flaw was found in libtiff 4.4.0rc1. There is a sysmalloc assertion fail in rotateImage() at tiffcrop.c:8621 that can cause program crash when reading a crafted input. (CVE-2022-2520)libtiff's tiffcrop utility has a improper input validation flaw that can lead to out of bounds read and ultimately cause a crash if an attacker is able to supply a crafted file to tiffcrop. (CVE-2022-2868)LibTIFF 4.4.0 has an out-of-bounds read in extractImageSection in tools/tiffcrop.c:6905, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit 48d6ece8. (CVE-2022-2953)LibTIFF 4.4.0 has an out-of-bounds write in _TIFFmemcpy in libtiff/tif_unix.c:346 when called from extractImageSection, tools/tiffcrop.c:6826, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit 236b7191. (CVE-2022-3597)LibTIFF 4.4.0 has an out-of-bounds write in _TIFFmemset in libtiff/tif_unix.c:340 when called from processCropSelections, tools/tiffcrop.c:7619, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit 236b7191. (CVE-2022-3626)LibTIFF 4.4.0 has an out-of-bounds write in _TIFFmemcpy in libtiff/tif_unix.c:346 when called from extractImageSection, tools/tiffcrop.c:6860, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit 236b7191. (CVE-2022-3627)
+    FixedIn:
+        - Name: libtiff
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.9
+          VersionFormat: rpm
+        - Name: libtiff-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.9
+          VersionFormat: rpm
+        - Name: libtiff-devel
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.9
+          VersionFormat: rpm
+        - Name: libtiff-static
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.9
+          VersionFormat: rpm
+        - Name: libtiff-tools
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2023-2212.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-2520
+            - Name: CVE-2022-2868
+            - Name: CVE-2022-2953
+            - Name: CVE-2022-3597
+            - Name: CVE-2022-3626
+            - Name: CVE-2022-3627
+    Name: ALAS2-2023-2212
+    NamespaceName: amzn:2
+    Severity: Medium

@@ -1,0 +1,77 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: 'In v4l2_m2m_querybuf of v4l2-mem2mem.c, there is a possible out of bounds write due to improper input validation. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation.Product: AndroidVersions: Android kernelAndroid ID: A-223375145References: Upstream kernel (CVE-2022-20369)In pppol2tp_create of l2tp_ppp.c, there is a possible use after free due to a race condition. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. (CVE-2022-20567)Non-transparent sharing of return predictor targets between contexts in some Intel(R) Processors may allow an authorized user to potentially enable information disclosure via local access. (CVE-2022-26373)A vulnerability classified as critical was found in Linux Kernel. Affected by this vulnerability is the function l2cap_reassemble_sdu of the file net/bluetooth/l2cap_core.c of the component Bluetooth. The manipulation leads to use after free. It is recommended to apply a patch to fix this issue. The associated identifier of this vulnerability is VDB-211087. (CVE-2022-3564)There is an infoleak vulnerability in the Linux kernel''s net/bluetooth/l2cap_core.c''s l2cap_parse_conf_req function which can be used to leak kernel pointers remotely. We recommend upgrading past commit https://github.com/torvalds/linux/commit/b1a2cd50c0357f243b7435a732b4e62ba3157a2e https://www.google.com/url (CVE-2022-42895)In the Linux kernel, the following vulnerability has been resolved:ext4: fix warning in ''ext4_da_release_space'' (CVE-2022-49880)In the Linux kernel, the following vulnerability has been resolved:capabilities: fix potential memleak on error path from vfs_getxattr_alloc() (CVE-2022-49890)In the Linux kernel, the following vulnerability has been resolved:net: mdio: fix undefined behavior in bit shift for __mdiobus_register (CVE-2022-49907)In the Linux kernel, the following vulnerability has been resolved:Bluetooth: L2CAP: fix use-after-free in l2cap_conn_del() (CVE-2022-49909)In the Linux kernel, the following vulnerability has been resolved:Bluetooth: L2CAP: Fix use-after-free caused by l2cap_reassemble_sdu (CVE-2022-49910)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix ulist leaks in error paths of qgroup self tests (CVE-2022-49912)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix inode list leak during backref walking at resolve_indirect_refs() (CVE-2022-49914)In the Linux kernel, the following vulnerability has been resolved:mISDN: fix possible memory leak in mISDN_register_device() (CVE-2022-49915)In the Linux kernel, the following vulnerability has been resolved:nfs4: Fix kmemleak when allocate slot failed (CVE-2022-49927)A use-after-free flaw was found in io_uring/poll.c in io_poll_check_events in the io_uring subcomponent in the Linux Kernel due to a race condition of poll_refs. This flaw may cause a NULL pointer dereference. (CVE-2023-0468)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.299-223.520
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.299-223.520.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2022-1888.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-20369
+            - Name: CVE-2022-20567
+            - Name: CVE-2022-26373
+            - Name: CVE-2022-3564
+            - Name: CVE-2022-42895
+            - Name: CVE-2022-49880
+            - Name: CVE-2022-49890
+            - Name: CVE-2022-49907
+            - Name: CVE-2022-49909
+            - Name: CVE-2022-49910
+            - Name: CVE-2022-49912
+            - Name: CVE-2022-49914
+            - Name: CVE-2022-49915
+            - Name: CVE-2022-49927
+            - Name: CVE-2023-0468
+    Name: ALAS2-2022-1888
+    NamespaceName: amzn:2
+    Severity: High

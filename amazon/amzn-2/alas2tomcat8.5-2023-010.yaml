@@ -1,0 +1,52 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: While investigating bug 64830 it was discovered that Apache Tomcat 10.0.0-M1 to 10.0.0-M9, 9.0.0-M1 to 9.0.39 and 8.5.0 to 8.5.59 could re-use an HTTP request header value from the previous stream received on an HTTP/2 connection for the request associated with the subsequent stream. While this would most likely lead to an error and the closure of the HTTP/2 connection, it is possible that information could leak between requests. (CVE-2020-17527)When serving resources from a network location using the NTFS file system, Apache Tomcat versions 10.0.0-M1 to 10.0.0-M9, 9.0.0.M1 to 9.0.39, 8.5.0 to 8.5.59 and 7.0.0 to 7.0.106 were susceptible to JSP source code disclosure in some configurations. The root cause was the unexpected behaviour of the JRE API File.getCanonicalPath() which in turn was caused by the inconsistent behaviour of the Windows API (FindFirstFileW) in some circumstances. (CVE-2021-24122)
+    FixedIn:
+        - Name: tomcat
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-admin-webapps
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-docs-webapp
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-el-3.0-api
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-javadoc
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-jsp-2.3-api
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-jsvc
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-lib
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-servlet-3.1-api
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+        - Name: tomcat-webapps
+          NamespaceName: amzn:2
+          Version: 8.5.60-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2TOMCAT8.5-2023-010.html
+    Metadata:
+        CVE:
+            - Name: CVE-2020-17527
+            - Name: CVE-2021-24122
+    Name: ALAS2TOMCAT8.5-2023-010
+    NamespaceName: amzn:2
+    Severity: Medium

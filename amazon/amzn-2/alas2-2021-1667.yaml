@@ -1,0 +1,27 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: The urllib3 library 1.26.x before 1.26.4 for Python omits SSL certificate validation in some cases involving HTTPS to HTTPS proxies. The initial connection to the HTTPS proxy (if an SSLContext isn't given via proxy_config) doesn't verify the hostname of the certificate. This means certificates for different servers that still validate properly with the default urllib3 SSLContext will be silently accepted. (CVE-2021-28363)
+    FixedIn:
+        - Name: python-pip
+          NamespaceName: amzn:2
+          Version: 20.2.2-1.amzn2.0.3
+          VersionFormat: rpm
+        - Name: python-pip-wheel
+          NamespaceName: amzn:2
+          Version: 20.2.2-1.amzn2.0.3
+          VersionFormat: rpm
+        - Name: python2-pip
+          NamespaceName: amzn:2
+          Version: 20.2.2-1.amzn2.0.3
+          VersionFormat: rpm
+        - Name: python3-pip
+          NamespaceName: amzn:2
+          Version: 20.2.2-1.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2021-1667.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-28363
+    Name: ALAS2-2021-1667
+    NamespaceName: amzn:2
+    Severity: Medium

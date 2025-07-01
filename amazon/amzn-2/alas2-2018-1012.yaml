@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: Improper input sanitization in rfbProcessClientNormalMessage in rfbserver.cAn issue was discovered in LibVNCServer through 0.9.11. rfbProcessClientNormalMessage() in rfbserver.c does not sanitize msg.cct.length, leading to access to uninitialized and potentially sensitive data or possibly unspecified other impact (e.g., an integer overflow) via specially crafted VNC packets.(CVE-2018-7225)
+    FixedIn:
+        - Name: libvncserver
+          NamespaceName: amzn:2
+          Version: 0.9.9-12.amzn2
+          VersionFormat: rpm
+        - Name: libvncserver-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.9.9-12.amzn2
+          VersionFormat: rpm
+        - Name: libvncserver-devel
+          NamespaceName: amzn:2
+          Version: 0.9.9-12.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2018-1012.html
+    Metadata:
+        CVE:
+            - Name: CVE-2018-7225
+    Name: ALAS2-2018-1012
+    NamespaceName: amzn:2
+    Severity: Medium

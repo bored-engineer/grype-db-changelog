@@ -1,0 +1,36 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A heap-based buffer overflow was found in the NSC_EncryptUpdate() function in Mozilla nss. A remote attacker could trigger this flaw via SRTP encrypt or decrypt operations, to execute arbitrary code with the permissions of the user running the application (compiled with nss). While the attack complexity is high, the impact to confidentiality, integrity, and availability are high as well. (CVE-2019-11745)Empty or malformed p256-ECDH public keys may trigger a segmentation fault due values being improperly sanitized before being copied into memory and used. This vulnerability affects Firefox ESR < 60.8, Firefox < 68, and Thunderbird < 60.8. (CVE-2019-11729)
+    FixedIn:
+        - Name: nss
+          NamespaceName: amzn:2
+          Version: 3.44.0-7.amzn2
+          VersionFormat: rpm
+        - Name: nss-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.44.0-7.amzn2
+          VersionFormat: rpm
+        - Name: nss-devel
+          NamespaceName: amzn:2
+          Version: 3.44.0-7.amzn2
+          VersionFormat: rpm
+        - Name: nss-pkcs11-devel
+          NamespaceName: amzn:2
+          Version: 3.44.0-7.amzn2
+          VersionFormat: rpm
+        - Name: nss-sysinit
+          NamespaceName: amzn:2
+          Version: 3.44.0-7.amzn2
+          VersionFormat: rpm
+        - Name: nss-tools
+          NamespaceName: amzn:2
+          Version: 3.44.0-7.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1384.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-11729
+            - Name: CVE-2019-11745
+    Name: ALAS2-2020-1384
+    NamespaceName: amzn:2
+    Severity: High

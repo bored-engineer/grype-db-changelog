@@ -1,0 +1,28 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: An issue was discovered in ZZIPlib through 0.13.69. There is a memory leak triggered in the function __zzip_parse_root_directory in zip.c, which will lead to a denial of service attack.(CVE-2018-16548)In ZZIPlib 0.13.67, there is a bus error caused by loading of a misaligned address (when handling disk64_trailer local entries) in __zzip_fetch_disk_trailer (zzip/zip.c). Remote attackers could leverage this vulnerability to cause a denial of service via a crafted zip file.(CVE-2018-6541)
+    FixedIn:
+        - Name: zziplib
+          NamespaceName: amzn:2
+          Version: 0.13.62-11.amzn2
+          VersionFormat: rpm
+        - Name: zziplib-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.13.62-11.amzn2
+          VersionFormat: rpm
+        - Name: zziplib-devel
+          NamespaceName: amzn:2
+          Version: 0.13.62-11.amzn2
+          VersionFormat: rpm
+        - Name: zziplib-utils
+          NamespaceName: amzn:2
+          Version: 0.13.62-11.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2019-1357.html
+    Metadata:
+        CVE:
+            - Name: CVE-2018-16548
+            - Name: CVE-2018-6541
+    Name: ALAS2-2019-1357
+    NamespaceName: amzn:2
+    Severity: Low

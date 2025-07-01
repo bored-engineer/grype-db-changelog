@@ -1,0 +1,35 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: An integer overflow was found in the x64_64 Montgomery squaring procedure used in exponentiation with 512-bit moduli.  As per upstream:* No EC algorithms are affected.* Attacks against 2-prime RSA1024, 3-prime RSA1536, and DSA1024 as a result of this defect would be very difficult to perform and are not believed likely.* Attacks against DH512 are considered just feasible. However, for an attack the target would have to re-use the DH512 private key, which is not recommended anyway.* Also applications directly using the low level API BN_mod_exp may be affected if they use BN_FLG_CONSTTIME (CVE-2019-1551)
+    FixedIn:
+        - Name: openssl
+          NamespaceName: amzn:2
+          Version: 1.0.2k-19.amzn2.0.7
+          VersionFormat: rpm
+        - Name: openssl-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0.2k-19.amzn2.0.7
+          VersionFormat: rpm
+        - Name: openssl-devel
+          NamespaceName: amzn:2
+          Version: 1.0.2k-19.amzn2.0.7
+          VersionFormat: rpm
+        - Name: openssl-libs
+          NamespaceName: amzn:2
+          Version: 1.0.2k-19.amzn2.0.7
+          VersionFormat: rpm
+        - Name: openssl-perl
+          NamespaceName: amzn:2
+          Version: 1.0.2k-19.amzn2.0.7
+          VersionFormat: rpm
+        - Name: openssl-static
+          NamespaceName: amzn:2
+          Version: 1.0.2k-19.amzn2.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2021-1687.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-1551
+    Name: ALAS2-2021-1687
+    NamespaceName: amzn:2
+    Severity: Low

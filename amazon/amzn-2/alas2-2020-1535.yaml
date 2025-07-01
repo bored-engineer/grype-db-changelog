@@ -1,0 +1,28 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: libxslt through 1.1.33 allows bypass of a protection mechanism because callers of xsltCheckRead and xsltCheckWrite permit access even upon receiving a -1 error code. xsltCheckRead can return -1 for a crafted URL that is not actually invalid and is subsequently loaded. (CVE-2019-11068)In xsltCopyText in transform.c in libxslt 1.1.33, a pointer variable isn't reset under certain circumstances. If the relevant memory area happened to be freed and reused in a certain way, a bounds check could fail and memory outside a buffer could be written to, or uninitialized data could be disclosed. (CVE-2019-18197)
+    FixedIn:
+        - Name: libxslt
+          NamespaceName: amzn:2
+          Version: 1.1.28-6.amzn2
+          VersionFormat: rpm
+        - Name: libxslt-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.1.28-6.amzn2
+          VersionFormat: rpm
+        - Name: libxslt-devel
+          NamespaceName: amzn:2
+          Version: 1.1.28-6.amzn2
+          VersionFormat: rpm
+        - Name: libxslt-python
+          NamespaceName: amzn:2
+          Version: 1.1.28-6.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1535.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-11068
+            - Name: CVE-2019-18197
+    Name: ALAS2-2020-1535
+    NamespaceName: amzn:2
+    Severity: Medium

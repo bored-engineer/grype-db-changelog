@@ -1,0 +1,89 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:bpf: Defer the free of inner map when necessaryWhen updating or deleting an inner map in map array or map htab, the mapmay still be accessed by non-sleepable program or sleepable program.However bpf_map_fd_put_ptr() decreases the ref-counter of the inner mapdirectly through bpf_map_put(), if the ref-counter is the last one(which is true for most cases), the inner map will be freed byops->map_free() in a kworker. But for now, most .map_free() callbacksdon''t use synchronize_rcu() or its variants to wait for the elapse of aRCU grace period, so after the invocation of ops->map_free completes,the bpf program which is accessing the inner map may incuruse-after-free problem.Fix the free of inner map by invoking bpf_map_free_deferred() after bothone RCU grace period and one tasks trace RCU grace period if the innermap has been removed from the outer map before. The deferment isaccomplished by using call_rcu() or call_rcu_tasks_trace() whenreleasing the last ref-counter of bpf map. The newly-added rcu_headfield in bpf_map shares the same storage space with work field toreduce the size of bpf_map. (CVE-2023-52447)In the Linux kernel, the following vulnerability has been resolved:io_uring: drop any code related to SCM_RIGHTS (CVE-2023-52656)In the Linux kernel, the following vulnerability has been resolved:netfilter: nft_set_pipapo: release elements in clone only from destroy path (CVE-2024-26809)In the Linux kernel, the following vulnerability has been resolved:x86, relocs: Ignore relocations in .notes section (CVE-2024-26816)In the Linux kernel, the following vulnerability has been resolved:net/bnx2x: Prevent access to a freed page in page_pool (CVE-2024-26859)In the Linux kernel, the following vulnerability has been resolved:wireguard: receive: annotate data-race around receiving_counter.counter (CVE-2024-26861)In the Linux kernel, the following vulnerability has been resolved:packet: annotate data-races around ignore_outgoing (CVE-2024-26862)In the Linux kernel, the following vulnerability has been resolved:hsr: Fix uninit-value access in hsr_get_node() (CVE-2024-26863)In the Linux kernel, the following vulnerability has been resolved:RDMA/srpt: Do not register event handler until srpt device is fully setup (CVE-2024-26872)In the Linux kernel, the following vulnerability has been resolved:quota: Fix potential NULL pointer dereference (CVE-2024-26878)In the Linux kernel, the following vulnerability has been resolved:dm: call the resume method on internal suspend (CVE-2024-26880)In the Linux kernel, the following vulnerability has been resolved:aoe: fix the potential use-after-free problem in aoecmd_cfg_pkts (CVE-2024-26898)In the Linux kernel, the following vulnerability has been resolved:do_sys_name_to_handle(): use kzalloc() to fix kernel-infoleak (CVE-2024-26901)In the Linux kernel, the following vulnerability has been resolved:nbd: null check for nla_nest_start (CVE-2024-27025)In the Linux kernel, the following vulnerability has been resolved:clk: Fix clk_core_get NULL dereference (CVE-2024-27038)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: do not compare internal table flags on updates (CVE-2024-27065)In the Linux kernel, the following vulnerability has been resolved:media: v4l2-mem2mem: fix a memleak in v4l2_m2m_register_entity (CVE-2024-27077)In the Linux kernel, the following vulnerability has been resolved:SUNRPC: fix some memleaks in gssx_dec_option_array (CVE-2024-27388)In the Linux kernel, the following vulnerability has been resolved:keys: Fix overwrite of key expiration on instantiation (CVE-2024-36031)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.10.214-202.855
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.214-202.855.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.10-2024-054.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-52447
+            - Name: CVE-2023-52656
+            - Name: CVE-2024-26809
+            - Name: CVE-2024-26816
+            - Name: CVE-2024-26859
+            - Name: CVE-2024-26861
+            - Name: CVE-2024-26862
+            - Name: CVE-2024-26863
+            - Name: CVE-2024-26872
+            - Name: CVE-2024-26878
+            - Name: CVE-2024-26880
+            - Name: CVE-2024-26898
+            - Name: CVE-2024-26901
+            - Name: CVE-2024-27025
+            - Name: CVE-2024-27038
+            - Name: CVE-2024-27065
+            - Name: CVE-2024-27077
+            - Name: CVE-2024-27388
+            - Name: CVE-2024-36031
+    Name: ALAS2KERNEL-5.10-2024-054
+    NamespaceName: amzn:2
+    Severity: Medium

@@ -1,0 +1,53 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: 'Corrupted pointer in node::fs::ReadFileUtf8(const FunctionCallbackInfo<Value>& args) when args[0] is a string, resulting in an unrecoverable memory leak on every call. Repeated use can cause unbounded memory growth, leading to a denial of service.Info: https://nodejs.org/en/blog/vulnerability/may-2025-security-releases#corrupted-pointer-in-nodefsreadfileutf8const-functioncallbackinfovalue-args-when-args0-is-a-string-cve-2025-23165---low (CVE-2025-23165)Improper error handling in async cryptographic operations crashes processInfo: https://nodejs.org/en/blog/vulnerability/may-2025-security-releases#improper-error-handling-in-async-cryptographic-operations-crashes-process-cve-2025-23166---high (CVE-2025-23166)Undici is an HTTP/1.1 client for Node.js. Prior to versions 5.29.0, 6.21.2, and 7.5.0, applications that use undici to implement a webhook-like system are vulnerable. If the attacker set up a server with an invalid certificate, and they can force the application to call the webhook repeatedly, then they can cause a memory leak. This has been patched in versions 5.29.0, 6.21.2, and 7.5.0. As a workaound, avoid calling a webhook repeatedly if the webhook fails. (CVE-2025-47279)'
+    FixedIn:
+        - Name: nodejs22
+          NamespaceName: amzn:2023
+          Version: 22.16.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: nodejs22-debuginfo
+          NamespaceName: amzn:2023
+          Version: 22.16.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: nodejs22-debugsource
+          NamespaceName: amzn:2023
+          Version: 22.16.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: nodejs22-devel
+          NamespaceName: amzn:2023
+          Version: 22.16.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: nodejs22-docs
+          NamespaceName: amzn:2023
+          Version: 22.16.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: nodejs22-full-i18n
+          NamespaceName: amzn:2023
+          Version: 22.16.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: nodejs22-libs
+          NamespaceName: amzn:2023
+          Version: 22.16.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: nodejs22-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 22.16.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: nodejs22-npm
+          NamespaceName: amzn:2023
+          Version: 10.9.2-1.22.16.0.1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: v8-12.4-devel
+          NamespaceName: amzn:2023
+          Version: 12.4.254.21-1.22.16.0.1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1009.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-23165
+            - Name: CVE-2025-23166
+            - Name: CVE-2025-47279
+    Name: ALAS2023-2025-1009
+    NamespaceName: amzn:2023
+    Severity: High

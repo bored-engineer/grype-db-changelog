@@ -1,0 +1,42 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: Ephemeral association time spoofing additional protectionntpd in ntp 4.2.x before 4.2.8p7 and 4.3.x before 4.3.92 allows authenticated users that know the private symmetric key to create arbitrarily-many ephemeral associations in order to win the clock selection of ntpd and modify a victim's clock via a Sybil attack. This issue exists because of an incomplete fix for CVE-2016-1549.(CVE-2018-7170)Interleaved symmetric mode cannot recover from bad statentpd in ntp 4.2.8p4 before 4.2.8p11 drops bad packets before updating the "received" timestamp, which allows remote attackers to cause a denial of service (disruption) by sending a packet with a zero-origin timestamp causing the association to reset and setting the contents of the packet as the most recent timestamp. This issue is a result of an incomplete fix for CVE-2015-7704.(CVE-2018-7184)Ephemeral association time spoofingA malicious authenticated peer can create arbitrarily-many ephemeral associations in order to win the clock selection algorithm in ntpd in NTP 4.2.8p4 and earlier and NTPsec 3e160db8dc248a0bcb053b56a80167dc742d2b74 and a5fb34b9cc89b92a8fef2f459004865c93bb7f92 and modify a victim's clock.(CVE-2016-1549)Buffer read overrun leads information leak in ctl_getitem()The ctl_getitem method in ntpd in ntp-4.2.8p6 before 4.2.8p11 allows remote attackers to cause a denial of service (out-of-bounds read) via a crafted mode 6 packet with a ntpd instance from 4.2.8p6 through 4.2.8p10. (CVE-2018-7182)Unauthenticated packet can reset authenticated interleaved associationThe protocol engine in ntp 4.2.6 before 4.2.8p11 allows a remote attackers to cause a denial of service (disruption) by continually sending a packet with a zero-origin timestamp and source IP address of the "other side" of an interleaved association causing the victim ntpd to reset its association.(CVE-2018-7185)decodearr() can write beyond its buffer limitBuffer overflow in the decodearr function in ntpq in ntp 4.2.8p6 through 4.2.8p10 allows remote attackers to execute arbitrary code by leveraging an ntpq query and sending a response with a crafted array.(CVE-2018-7183)
+    FixedIn:
+        - Name: ntp
+          NamespaceName: amzn:2
+          Version: 4.2.6p5-28.amzn2.2.1
+          VersionFormat: rpm
+        - Name: ntp-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.2.6p5-28.amzn2.2.1
+          VersionFormat: rpm
+        - Name: ntp-doc
+          NamespaceName: amzn:2
+          Version: 4.2.6p5-28.amzn2.2.1
+          VersionFormat: rpm
+        - Name: ntp-perl
+          NamespaceName: amzn:2
+          Version: 4.2.6p5-28.amzn2.2.1
+          VersionFormat: rpm
+        - Name: ntpdate
+          NamespaceName: amzn:2
+          Version: 4.2.6p5-28.amzn2.2.1
+          VersionFormat: rpm
+        - Name: sntp
+          NamespaceName: amzn:2
+          Version: 4.2.6p5-28.amzn2.2.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2018-1009.html
+    Metadata:
+        CVE:
+            - Name: CVE-2016-7426
+            - Name: CVE-2016-7429
+            - Name: CVE-2016-7433
+            - Name: CVE-2016-9310
+            - Name: CVE-2016-9311
+            - Name: CVE-2017-6462
+            - Name: CVE-2017-6463
+            - Name: CVE-2017-6464
+    Name: ALAS2-2018-1009
+    NamespaceName: amzn:2
+    Severity: Medium

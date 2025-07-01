@@ -1,0 +1,24 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: An issue was discovered in dbus-broker before 31. It depends on c-uitl/c-shquote to parse the DBus service's Exec line. c-shquote contains a stack-based buffer over-read if a malicious Exec line is supplied. (CVE-2022-31212)An issue was discovered in dbus-broker before 31. Multiple NULL pointer dereferences can be found when supplying a malformed XML config file. (CVE-2022-31213)
+    FixedIn:
+        - Name: dbus-broker
+          NamespaceName: amzn:2023
+          Version: 32-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: dbus-broker-debuginfo
+          NamespaceName: amzn:2023
+          Version: 32-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Name: dbus-broker-debugsource
+          NamespaceName: amzn:2023
+          Version: 32-1.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2023-080.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-31212
+            - Name: CVE-2022-31213
+    Name: ALAS2023-2023-080
+    NamespaceName: amzn:2023
+    Severity: Medium

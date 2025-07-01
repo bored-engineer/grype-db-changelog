@@ -1,0 +1,15 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: The Apache Log4j hotpatch package starting with log4j-cve-2021-44228-hotpatch-1.1-16 will now explicitly mimic the Linux capabilities and cgroups of the target Java process that the hotpatch is applied to.In order to mimic the Linux capabilities of the target process, Amazon Linux 1 customers need to be running kernel version 4.14.275-142.503 or later, while Amazon Linux 2 customers on ARM need to be running kernel versions 4.14.275-207.503, 5.4.188-104.359, 5.10.109-104.500 or later. Amazon Linux 2 customers on Intel or AMD instances do not need an updated kernel. (CVE-2022-0070)
+    FixedIn:
+        - Name: log4j-cve-2021-44228-hotpatch
+          NamespaceName: amzn:2
+          Version: 1.1-16.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2022-1773.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-0070
+    Name: ALAS2-2022-1773
+    NamespaceName: amzn:2
+    Severity: High

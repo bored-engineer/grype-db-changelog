@@ -1,0 +1,69 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: '2023-06-29: CVE-2022-20565 was added to this advisory. The severity level has changed from Medium to Important.An issue in the HID driver in the Linux kernel may lead to invalid memory access. (CVE-2022-20565)In the Linux kernel 5.0.21 and 5.3.11, mounting a crafted btrfs filesystem image, performing some operations, and then making a syncfs system call can lead to a use-after-free in try_merge_free_space in fs/btrfs/free-space-cache.c because the pointer to a left data structure can be the same as the pointer to a right data structure.A flaw was found in the Linux kernel''s implementation of BTRFS free space management, where the kernel does not correctly manage the lifetime of internal data structures used. An attacker could use this flaw to corrupt memory or escalate privileges. (CVE-2019-19448)A memory out-of-bounds read flaw was found in the Linux kernel before 5.9-rc2 with the ext3/ext4 file system, in the way it accesses a directory with broken indexing. This flaw allows a local user to crash the system if the directory exists. The highest threat from this vulnerability is to system availability.A memory out-of-bounds read flaw was found in the Linux kernel''s ext3/ext4 file system, in the way it accesses a directory with broken indexing. This flaw allows a local user to crash the system if the directory exists. The highest threat from this vulnerability is to system availability. (CVE-2020-14314)A flaw was found in the Linux kernel''s implementation of the invert video code on VGA consoles when a local attacker attempts to resize the console, calling an ioctl VT_RESIZE, which causes an out-of-bounds write to occur. This flaw allows a local user with access to the VGA console to crash the system, potentially escalating their privileges on the system. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability.A flaw was found in the Linux kernel''s implementation of the invert video code on VGA consoles when a local attacker attempts to resize the console, calling an ioctl VT_RESIZE, which causes an out-of-bounds write to occur. This flaw allows a local user with access to the VGA console to crash the system, potentially escalating their privileges on the system. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2020-14331)In the Linux kernel through 5.8.7, local attackers able to inject conntrack netlink configuration could overflow a local buffer, causing crashes or triggering use of incorrect protocol numbers in ctnetlink_parse_tuple_filter in net/netfilter/nf_conntrack_netlink.c, aka CID-1cc5ef91d2ff.A flaw was found in the Linux kernel. A local attacker, able to inject conntrack netlink configuration, could overflow a local buffer causing crashes or triggering the use of incorrect protocol numbers in ctnetlink_parse_tuple_filter in net/netfilter/nf_conntrack_netlink.c. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2020-25211)A TOCTOU mismatch in the NFS client code in the Linux kernel before 5.8.3 could be used by local attackers to corrupt memory or possibly have unspecified other impact because a size check is in fs/nfs/nfs4proc.c instead of fs/nfs/nfs4xdr.c, aka CID-b4487b935452.A flaw was found in the NFSv4 implementation where when mounting a remote attacker controlled server it could return specially crafted response allow for local memory corruption and possibly privilege escalation. (CVE-2020-25212)A race condition between hugetlb sysctl handlers in mm/hugetlb.c in the Linux kernel before 5.8.8 could be used by local attackers to corrupt memory, cause a NULL pointer dereference, or possibly have unspecified other impact, aka CID-17743798d812. (CVE-2020-25285)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.198-152.320
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.198-152.320.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1495.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-19448
+            - Name: CVE-2020-14314
+            - Name: CVE-2020-14331
+            - Name: CVE-2020-25211
+            - Name: CVE-2020-25212
+            - Name: CVE-2020-25285
+            - Name: CVE-2022-20565
+    Name: ALAS2-2020-1495
+    NamespaceName: amzn:2
+    Severity: High

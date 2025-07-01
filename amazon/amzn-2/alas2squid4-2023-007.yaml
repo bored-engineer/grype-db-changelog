@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: An issue was discovered in Squid before 4.9. When handling a URN request, a corresponding HTTP request is made. This HTTP request doesn't go through the access checks that incoming HTTP requests go through. This causes all access checks to be bypassed and allows access to restricted HTTP servers, e.g., an attacker can connect to HTTP servers that only listen on localhost. (CVE-2019-12523)An issue was discovered in Squid 3.3.9 through 3.5.28 and 4.x through 4.7. When Squid is configured to use Digest authentication, it parses the header Proxy-Authorization. It searches for certain tokens such as domain, uri, and qop. Squid checks if this token's value starts with a quote and ends with one. If so, it performs a memcpy of its length minus 2. Squid never checks whether the value is just a single quote (which would satisfy its requirements), leading to a memcpy of its length minus 1. (CVE-2019-12525)An issue was discovered in Squid before 4.9. URN response handling in Squid suffers from a heap-based buffer overflow. When receiving data from a remote server in response to an URN request, Squid fails to ensure that the response can fit within the buffer. This leads to attacker controlled data overflowing in the heap. (CVE-2019-12526)An issue was discovered in Squid 3.x and 4.x through 4.8. Due to incorrect input validation, there is a heap-based buffer overflow that can result in Denial of Service to all clients using the proxy. Severity is high due to this vulnerability occurring before normal security checks; any remote client that can reach the proxy port can trivially perform the attack via a crafted URI scheme. (CVE-2019-18676)An issue was discovered in Squid 3.x and 4.x through 4.8. It allows attackers to smuggle HTTP requests through frontend software to a Squid instance that splits the HTTP Request pipeline differently. The resulting Response messages corrupt caches (between a client and Squid) with attacker-controlled content at arbitrary URLs. Effects are isolated to software between the attacker client and Squid. There are no effects on Squid itself, nor on any upstream servers. The issue is related to a request header containing whitespace between a header name and a colon. (CVE-2019-18678)
+    FixedIn:
+        - Name: squid
+          NamespaceName: amzn:2
+          Version: 4.10-3.amzn2.0.1
+          VersionFormat: rpm
+        - Name: squid-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.10-3.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2SQUID4-2023-007.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-12523
+            - Name: CVE-2019-12525
+            - Name: CVE-2019-12526
+            - Name: CVE-2019-18676
+            - Name: CVE-2019-18678
+    Name: ALAS2SQUID4-2023-007
+    NamespaceName: amzn:2
+    Severity: High

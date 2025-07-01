@@ -1,0 +1,29 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A flaw was found in libcurl. When sending data to an MQTT server could in some situations lead to libcurl using already freed memory and then try to free it again. The highest threat from this vulnerability is to data confidentiality as well as system availability. (CVE-2021-22945)A flaw was found in curl. This flaw lies in the --ssl-reqd option or related settings in libcurl. Users specify this flag to upgrade to TLS when communicating with either IMAP, POP3 or a FTP server. An attacker controlling such servers could return a crafted response which could lead to curl client continue its operation without TLS encryption leading to data being transmitted in clear text over the network. The highest threat from this vulnerability is to data confidentiality. (CVE-2021-22946)A flaw was found in curl. The flaw lies in how curl handles cached or pipelined responses that it receives from either a IMAP, POP3, SMTP or FTP server before the TLS upgrade using STARTTLS. In such a scenario curl even after upgrading to TLS would trust these cached responses treating them as valid and authenticated and use them. An attacker could potentially use this flaw to carry out a Man-In-The-Middle attack. The highest threat from this vulnerability is to data confidentiality. (CVE-2021-22947)
+    FixedIn:
+        - Name: curl
+          NamespaceName: amzn:2
+          Version: 7.79.1-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: curl-debuginfo
+          NamespaceName: amzn:2
+          Version: 7.79.1-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: libcurl
+          NamespaceName: amzn:2
+          Version: 7.79.1-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: libcurl-devel
+          NamespaceName: amzn:2
+          Version: 7.79.1-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2021-1724.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-22945
+            - Name: CVE-2021-22946
+            - Name: CVE-2021-22947
+    Name: ALAS2-2021-1724
+    NamespaceName: amzn:2
+    Severity: Medium

@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: org.apache.maven.shared:maven-shared-utils is a functional replacement for plexus-utils in Maven. Affected versions of this package are vulnerable to Command Injection. The Commandline class can emit double-quoted strings without proper escaping, allowing shell injection attacks. The BourneShell class should unconditionally single-quote emitted strings (including the name of the command itself being quoted), with {{\'"\'"\'}} used for embedded single quotes, for maximum safety across shells implementing a superset of POSIX quoting rules. (CVE-2022-29599)
+    FixedIn:
+        - Name: maven-shared-utils
+          NamespaceName: amzn:2023
+          Version: 3.3.4-4.amzn2023.0.3
+          VersionFormat: rpm
+        - Name: maven-shared-utils-javadoc
+          NamespaceName: amzn:2023
+          Version: 3.3.4-4.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2023-077.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-29599
+    Name: ALAS2023-2023-077
+    NamespaceName: amzn:2023
+    Severity: Critical

@@ -1,0 +1,44 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: The bfd_cache_close function in bfd/cache.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause a heap use after free and possibly achieve code execution via a crafted nested archive file. This issue occurs because incorrect functions are called during an attempt to release memory. The issue can be addressed by better input validation in the bfd_generic_archive_p function in bfd/archive.c. (CVE-2017-12448)The _bfd_vms_save_sized_string function in vms-misc.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an out of bounds heap read via a crafted vms file. (CVE-2017-12449)The alpha_vms_object_p function in bfd/vms-alpha.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an out of bounds heap write and possibly achieve code execution via a crafted vms alpha file. (CVE-2017-12450)The _bfd_xcoff_read_ar_hdr function in bfd/coff-rs6000.c and bfd/coff64-rs6000.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an out of bounds stack read via a crafted COFF image file. (CVE-2017-12451)The bfd_mach_o_i386_canonicalize_one_reloc function in bfd/mach-o-i386.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an out of bounds heap read via a crafted mach-o file. (CVE-2017-12452)The _bfd_vms_slurp_eeom function in libbfd.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an out of bounds heap read via a crafted vms alpha file. (CVE-2017-12453)The _bfd_vms_slurp_egsd function in bfd/vms-alpha.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an arbitrary memory read via a crafted vms alpha file. (CVE-2017-12454)The evax_bfd_print_emh function in vms-alpha.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an out of bounds heap read via a crafted vms alpha file. (CVE-2017-12455)The read_symbol_stabs_debugging_info function in rddbg.c in GNU Binutils 2.29 and earlier allows remote attackers to cause an out of bounds heap read via a crafted binary file. (CVE-2017-12456)The bfd_make_section_with_flags function in section.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause a NULL dereference via a crafted file. (CVE-2017-12457)The nlm_swap_auxiliary_headers_in function in bfd/nlmcode.h in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an out of bounds heap read via a crafted nlm file. (CVE-2017-12458)The bfd_mach_o_read_symtab_strtab function in bfd/mach-o.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29 and earlier, allows remote attackers to cause an out of bounds heap write and possibly achieve code execution via a crafted mach-o file. (CVE-2017-12459)The setup_group function in elf.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29, allows remote attackers to cause a denial of service (NULL pointer dereference and application crash) via a group section that is too small. (CVE-2017-13710)process_cu_tu_index in dwarf.c in GNU Binutils 2.30 allows remote attackers to cause a denial of service (heap-based buffer over-read and application crash) via a crafted binary file, as demonstrated by readelf. (CVE-2018-10372)concat_filename in dwarf2.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.30, allows remote attackers to cause a denial of service (NULL pointer dereference and application crash) via a crafted binary file, as demonstrated by nm-new. (CVE-2018-10373)The ignore_section_sym function in elf.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.30, does not validate the output_section pointer in the case of a symtab entry with a "SECTION" type that has a "0" value, which allows remote attackers to cause a denial of service (NULL pointer dereference and application crash) via a crafted file, as demonstrated by objcopy. (CVE-2018-10535)The Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.30, allows remote attackers to cause a denial of service (excessive memory allocation and application crash) via a crafted ELF file, as demonstrated by _bfd_elf_parse_attributes in elf-attrs.c and bfd_malloc in libbfd.c. This can occur during execution of nm. (CVE-2018-13033)The elf_object_p function in elfcode.h in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.29.1, has an unsigned integer overflow because bfd_size_type multiplication is not used. A crafted ELF file allows remote attackers to cause a denial of service (application crash) or possibly have unspecified other impact. (CVE-2018-6323)In the coff_pointerize_aux function in coffgen.c in the Binary File Descriptor (BFD) library (aka libbfd), as distributed in GNU Binutils 2.30, an index is not validated, which allows remote attackers to cause a denial of service (segmentation fault) or possibly have unspecified other impact via a crafted file, as demonstrated by objcopy of a COFF object. (CVE-2018-7208)An integer wraparound has been discovered in the Binary File Descriptor (BFD) library distributed in GNU Binutils up to version 2.30. An attacker could cause a crash by providing an ELF file with corrupted DWARF debug information. (CVE-2018-7568)An integer wraparound has been discovered in the Binary File Descriptor (BFD) library distributed in GNU Binutils up to version 2.30. An attacker could cause a crash by providing an ELF file with corrupted DWARF debug information. (CVE-2018-7569)The display_debug_ranges function in dwarf.c in GNU Binutils 2.30 allows remote attackers to cause a denial of service (integer overflow and application crash) or possibly have unspecified other impact via a crafted ELF file, as demonstrated by objdump. (CVE-2018-7643)
+    FixedIn:
+        - Name: binutils
+          NamespaceName: amzn:2
+          Version: 2.29.1-27.amzn2.0.1
+          VersionFormat: rpm
+        - Name: binutils-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.29.1-27.amzn2.0.1
+          VersionFormat: rpm
+        - Name: binutils-devel
+          NamespaceName: amzn:2
+          Version: 2.29.1-27.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2019-1185.html
+    Metadata:
+        CVE:
+            - Name: CVE-2017-12448
+            - Name: CVE-2017-12449
+            - Name: CVE-2017-12450
+            - Name: CVE-2017-12451
+            - Name: CVE-2017-12452
+            - Name: CVE-2017-12453
+            - Name: CVE-2017-12454
+            - Name: CVE-2017-12455
+            - Name: CVE-2017-12456
+            - Name: CVE-2017-12457
+            - Name: CVE-2017-12458
+            - Name: CVE-2017-12459
+            - Name: CVE-2017-13710
+            - Name: CVE-2018-10372
+            - Name: CVE-2018-10373
+            - Name: CVE-2018-10535
+            - Name: CVE-2018-13033
+            - Name: CVE-2018-6323
+            - Name: CVE-2018-7208
+            - Name: CVE-2018-7568
+            - Name: CVE-2018-7569
+            - Name: CVE-2018-7643
+    Name: ALAS2-2019-1185
+    NamespaceName: amzn:2
+    Severity: Medium

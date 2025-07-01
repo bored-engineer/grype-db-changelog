@@ -1,0 +1,40 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: Pillow before 2.7.0 allows remote attackers to cause a denial of service via a compressed text chunk in a PNG image that has a large size when it is decompressed. (CVE-2014-9601)Pillow before 3.3.2 allows context-dependent attackers to execute arbitrary code by using the "crafted image file" approach, related to an "Insecure Sign Extension" issue affecting the ImagingNew in Storage.c component. (CVE-2016-9190)In Pillow before 8.1.0, PcxDecode has a buffer over-read when decoding a crafted PCX file because the user-supplied stride value is trusted for buffer calculations. (CVE-2020-35653)An issue was discovered in Pillow before 8.2.0. For FLI data, FliDecode did not properly check that the block advance was non-zero, potentially leading to an infinite loop on load. (CVE-2021-28676)An issue was discovered in Pillow before 8.2.0. For EPS data, the readline implementation used in EPSImageFile has to deal with any combination of \r and \n as line endings. It used an accidentally quadratic method of accumulating lines while looking for a line ending. A malicious EPS file could use this to perform a DoS of Pillow in the open phase, before an image was accepted for opening. (CVE-2021-28677)Pillow through 8.2.0 and PIL (aka Python Imaging Library) through 1.1.7 allow an attacker to pass controlled parameters directly into a convert function to trigger a buffer overflow in Convert.c. (CVE-2021-34552)
+    FixedIn:
+        - Name: python-pillow
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.4
+          VersionFormat: rpm
+        - Name: python-pillow-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.4
+          VersionFormat: rpm
+        - Name: python-pillow-devel
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.4
+          VersionFormat: rpm
+        - Name: python-pillow-doc
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.4
+          VersionFormat: rpm
+        - Name: python-pillow-sane
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.4
+          VersionFormat: rpm
+        - Name: python-pillow-tk
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2023-2083.html
+    Metadata:
+        CVE:
+            - Name: CVE-2014-9601
+            - Name: CVE-2016-9190
+            - Name: CVE-2020-35653
+            - Name: CVE-2021-28676
+            - Name: CVE-2021-28677
+            - Name: CVE-2021-34552
+    Name: ALAS2-2023-2083
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,28 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: An off-by-one error has been discovered in libX11 in functions XGetFontPath(), XListExtensions(), and XListFonts(). An attacker who can either configure a malicious X server or modify the data coming from one could use this flaw to make the program crash or have other unspecified effects, caused by the memory corruption. (CVE-2018-14599)It was discovered that libX11 does not properly validate input coming from the server, causing XListExtensions() and XGetFontPath() functions to produce an invalid list of elements that in turn make XFreeExtensionsList() and XFreeFontPath() access invalid memory. An attacker who can either configure a malicious X server or modify the data coming from one, could use this flaw to crash the application using libX11, resulting in a denial of service. (CVE-2018-14598)
+    FixedIn:
+        - Name: libX11
+          NamespaceName: amzn:2
+          Version: 1.6.5-2.amzn2.0.2
+          VersionFormat: rpm
+        - Name: libX11-common
+          NamespaceName: amzn:2
+          Version: 1.6.5-2.amzn2.0.2
+          VersionFormat: rpm
+        - Name: libX11-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.6.5-2.amzn2.0.2
+          VersionFormat: rpm
+        - Name: libX11-devel
+          NamespaceName: amzn:2
+          Version: 1.6.5-2.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2019-1226.html
+    Metadata:
+        CVE:
+            - Name: CVE-2018-14598
+            - Name: CVE-2018-14599
+    Name: ALAS2-2019-1226
+    NamespaceName: amzn:2
+    Severity: Medium

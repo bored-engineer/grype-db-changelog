@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: An issue was discovered in libexpat before 2.6.4. There is a crash within the XML_ResumeParser function because XML_StopParser can stop/suspend an unstarted parser. (CVE-2024-50602)oc_huff_tree_unpack in huffdec.c in libtheora in Theora through 1.0 7180717 has an invalid negative left shift. (CVE-2024-56431)JavaScript code running while transforming a document with the XSLTProcessor could lead to a use-after-free. This vulnerability affects Firefox < 137, Firefox ESR < 115.22, Firefox ESR < 128.9, Thunderbird < 137, and Thunderbird < 128.9. (CVE-2025-3028)A crafted URL containing specific Unicode characters could have hidden the true origin of the page, resulting in a potential spoofing attack. This vulnerability affects Firefox < 137, Firefox ESR < 128.9, Thunderbird < 137, and Thunderbird < 128.9. (CVE-2025-3029)Memory safety bugs present in Firefox 136, Thunderbird 136, Firefox ESR 128.8, and Thunderbird 128.8. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 137, Firefox ESR < 128.9, Thunderbird < 137, and Thunderbird < 128.9. (CVE-2025-3030)
+    FixedIn:
+        - Name: firefox
+          NamespaceName: amzn:2
+          Version: 128.9.0-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: firefox-debuginfo
+          NamespaceName: amzn:2
+          Version: 128.9.0-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2FIREFOX-2025-037.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-50602
+            - Name: CVE-2024-56431
+            - Name: CVE-2025-3028
+            - Name: CVE-2025-3029
+            - Name: CVE-2025-3030
+    Name: ALAS2FIREFOX-2025-037
+    NamespaceName: amzn:2
+    Severity: High

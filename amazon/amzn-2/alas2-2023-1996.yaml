@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: An issue was discovered in libxml2 before 2.10.3. When parsing a multi-gigabyte XML document with the XML_PARSE_HUGE parser option enabled, several integer counters can overflow. This results in an attempt to access an array at a negative 2GB offset, typically leading to a segmentation fault. (CVE-2022-40303)An issue was discovered in libxml2 before 2.10.3. Certain invalid XML entity definitions can corrupt a hash table key, potentially leading to subsequent logic errors. In one case, a double-free can be provoked. (CVE-2022-40304)
+    FixedIn:
+        - Name: libxml2
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.7
+          VersionFormat: rpm
+        - Name: libxml2-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.7
+          VersionFormat: rpm
+        - Name: libxml2-devel
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.7
+          VersionFormat: rpm
+        - Name: libxml2-python
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.7
+          VersionFormat: rpm
+        - Name: libxml2-static
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2023-1996.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-40303
+            - Name: CVE-2022-40304
+    Name: ALAS2-2023-1996
+    NamespaceName: amzn:2
+    Severity: Medium

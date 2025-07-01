@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: In libxml2 before 2.13.8 and 2.14.x before 2.14.2, out-of-bounds memory access can occur in the Python API (Python bindings) because of an incorrect return value. This occurs in xmlPythonFileRead and xmlPythonFileReadRaw because of a difference between bytes and characters. (CVE-2025-32414)In libxml2 before 2.13.8 and 2.14.x before 2.14.2, xmlSchemaIDCFillNodeTables in xmlschemas.c has a heap-based buffer under-read. To exploit this, a crafted XML document must be validated against an XML schema with certain identity constraints, or a crafted XML schema must be used. (CVE-2025-32415)
+    FixedIn:
+        - Name: libxml2
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.17
+          VersionFormat: rpm
+        - Name: libxml2-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.17
+          VersionFormat: rpm
+        - Name: libxml2-devel
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.17
+          VersionFormat: rpm
+        - Name: libxml2-python
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.17
+          VersionFormat: rpm
+        - Name: libxml2-static
+          NamespaceName: amzn:2
+          Version: 2.9.1-6.amzn2.5.17
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2025-2860.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-32414
+            - Name: CVE-2025-32415
+    Name: ALAS2-2025-2860
+    NamespaceName: amzn:2
+    Severity: Medium

@@ -1,0 +1,94 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:tls: fix race between async notify and socket closeThe submitting thread (one which called recvmsg/sendmsg)may exit as soon as the async crypto handler calls complete()so any code past that point risks touching already freed data.Try to avoid the locking and extra flags altogether.Have the main thread hold an extra reference, this waywe can depend solely on the atomic ref counter forsynchronization.Don''t futz with reiniting the completion, either, we are nowtightly controlling when completion fires. (CVE-2024-26583)In the Linux kernel, the following vulnerability has been resolved:net: tls: handle backlogging of crypto requestsSince we''re setting the CRYPTO_TFM_REQ_MAY_BACKLOG flag on ourrequests to the crypto API, crypto_aead_{encrypt,decrypt} can return-EBUSY instead of -EINPROGRESS in valid situations. For example, whenthe cryptd queue for AESNI is full (easy to trigger with anartificially low cryptd.cryptd_max_cpu_qlen), requests will be enqueuedto the backlog but still processed. In that case, the async callbackwill also be called twice: first with err == -EINPROGRESS, which itseems we can just ignore, then with err == 0.Compared to Sabrina''s original patch this version uses the newtls_*crypt_async_wait() helpers and converts the EBUSY toEINPROGRESS to avoid having to modify all the error handlingpaths. The handling is identical. (CVE-2024-26584)In the Linux kernel, the following vulnerability has been resolved:netfilter: nft_set_pipapo: do not free live element (CVE-2024-26924)In the Linux kernel, the following vulnerability has been resolved:init/main.c: Fix potential static_command_line memory overflow (CVE-2024-26988)In the Linux kernel, the following vulnerability has been resolved:arm64: hibernate: Fix level3 translation fault in swsusp_save() (CVE-2024-26989)In the Linux kernel, the following vulnerability has been resolved:fs: sysfs: Fix reference leak in sysfs_break_active_protection() (CVE-2024-26993)In the Linux kernel, the following vulnerability has been resolved:serial: mxs-auart: add spinlock around changing cts state (CVE-2024-27000)In the Linux kernel, the following vulnerability has been resolved:clk: Get runtime PM before walking tree during disable_unused (CVE-2024-27004)In the Linux kernel, the following vulnerability has been resolved:tun: limit printing rate when illegal packet received by tun dev (CVE-2024-27013)In the Linux kernel, the following vulnerability has been resolved:netfilter: flowtable: incorrect pppoe tuple (CVE-2024-27015)In the Linux kernel, the following vulnerability has been resolved:netfilter: flowtable: validate pppoe header (CVE-2024-27016)In the Linux kernel, the following vulnerability has been resolved:netfilter: br_netfilter: skip conntrack input hook for promisc packets (CVE-2024-27018)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: Fix potential data-race in __nft_obj_type_get() (CVE-2024-27019)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: Fix potential data-race in __nft_expr_type_get() (CVE-2024-27020)In the Linux kernel, the following vulnerability has been resolved:net: openvswitch: Fix Use-After-Free in ovs_ct_exit (CVE-2024-27395)In the Linux kernel, the following vulnerability has been resolved:irqchip/gic-v3-its: Prevent double free on error (CVE-2024-35847)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix information leak in btrfs_ioctl_logical_to_ino() (CVE-2024-35849)In the Linux kernel, the following vulnerability has been resolved:icmp: prevent possible NULL dereferences from icmp_build_probe() (CVE-2024-35857)In the Linux kernel, the following vulnerability has been resolved:kprobes: Fix possible use-after-free issue on kprobe registration (CVE-2024-35955)In the Linux kernel, the following vulnerability has been resolved:i2c: smbus: fix NULL function pointer dereference (CVE-2024-35984)In the Linux kernel, the following vulnerability has been resolved:dmaengine: idxd: Fix oops during rmmod on single-CPU platforms (CVE-2024-35989)In the Linux kernel, the following vulnerability has been resolved:cpu: Re-enable CPU mitigations by default for !X86 architectures (CVE-2024-35996)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: honor table dormant flag from netdev release event path (CVE-2024-36005)In the Linux kernel, the following vulnerability has been resolved:ipv4: check for NULL idev in ip_route_use_hint() (CVE-2024-36008)'
+    FixedIn:
+        - Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.15.158-103.164
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.158-103.164.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.15-2024-048.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-26583
+            - Name: CVE-2024-26584
+            - Name: CVE-2024-26924
+            - Name: CVE-2024-26988
+            - Name: CVE-2024-26989
+            - Name: CVE-2024-26993
+            - Name: CVE-2024-27000
+            - Name: CVE-2024-27004
+            - Name: CVE-2024-27013
+            - Name: CVE-2024-27015
+            - Name: CVE-2024-27016
+            - Name: CVE-2024-27018
+            - Name: CVE-2024-27019
+            - Name: CVE-2024-27020
+            - Name: CVE-2024-27395
+            - Name: CVE-2024-35847
+            - Name: CVE-2024-35849
+            - Name: CVE-2024-35857
+            - Name: CVE-2024-35955
+            - Name: CVE-2024-35984
+            - Name: CVE-2024-35989
+            - Name: CVE-2024-35996
+            - Name: CVE-2024-36005
+            - Name: CVE-2024-36008
+    Name: ALAS2KERNEL-5.15-2024-048
+    NamespaceName: amzn:2
+    Severity: High

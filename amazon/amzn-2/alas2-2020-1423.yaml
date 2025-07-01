@@ -1,0 +1,64 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A flaw was found in IPA, all 4.6.x versions before 4.6.7, all 4.7.x versions before 4.7.4 and all 4.8.x versions before 4.8.3, in the way the internal function ber_scanf() was used in some components of the IPA server, which parsed kerberos key data. An unauthenticated attacker who could trigger parsing of the krb principal key could cause the IPA server to crash or in some conditions, cause arbitrary code to be executed on the server hosting the IPA server. (CVE-2019-14867)A flaw was found in IPA, all 4.6.x versions before 4.6.7, all 4.7.x versions before 4.7.4 and all 4.8.x versions before 4.8.3, in the way that FreeIPA's batch processing API logged operations. This included passing user passwords in clear text on FreeIPA masters. Batch processing of commands with passwords as arguments or options is not performed by default in FreeIPA but is possible by third-party components. An attacker having access to system logs on FreeIPA masters could use this flaw to produce log file content with passwords exposed. (CVE-2019-10195)
+    FixedIn:
+        - Name: ipa
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-client
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-client-common
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-common
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-python-compat
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-server
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-server-common
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-server-dns
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: ipa-server-trust-ad
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: python2-ipaclient
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: python2-ipalib
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+        - Name: python2-ipaserver
+          NamespaceName: amzn:2
+          Version: 4.6.5-11.amzn2.4.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1423.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-10195
+            - Name: CVE-2019-14867
+    Name: ALAS2-2020-1423
+    NamespaceName: amzn:2
+    Severity: High

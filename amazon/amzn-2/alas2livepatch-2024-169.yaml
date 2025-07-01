@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: 'An out-of-bounds access vulnerability involving netfilter was reported and fixed as: f1082dd31fe4 (netfilter: nf_tables: Reject tables of unsupported family); While creating a new netfilter table, lack of a safeguard against invalid nf_tables family (pf) values within `nf_tables_newtable` function enables an attacker to achieve out-of-bounds access. (CVE-2023-6040)An out-of-bounds read vulnerability was found in smbCalcSize in fs/smb/client/netmisc.c in the Linux Kernel. This issue could allow a local attacker to crash the system or leak internal kernel information. (CVE-2023-6606)An out-of-bounds memory read flaw was found in receive_encrypted_standard in fs/smb/client/smb2ops.c in the SMB Client sub-component in the Linux Kernel. This issue occurs due to integer underflow on the memcpy length, leading to a denial of service. (CVE-2024-0565)An out-of-bounds memory write flaw was found in the Linux kernel''s Transport Layer Security functionality in how a user calls a function splice with a ktls socket as the destination. This flaw allows a local user to crash or potentially escalate their privileges on the system. (CVE-2024-0646)In rds_recv_track_latency in net/rds/af_rds.c in the Linux kernel through 6.7.1, there is an off-by-one error for an RDS_MSG_RX_DGRAM_TRACE_MAX comparison, resulting in out-of-bounds access. (CVE-2024-23849)'
+    FixedIn:
+        - Name: kernel-livepatch-5.10.205-195.804
+          NamespaceName: amzn:2
+          Version: 1.0-1.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-5.10.205-195.804-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2LIVEPATCH-2024-169.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-6040
+            - Name: CVE-2023-6606
+            - Name: CVE-2024-0565
+            - Name: CVE-2024-0646
+            - Name: CVE-2024-23849
+    Name: ALAS2LIVEPATCH-2024-169
+    NamespaceName: amzn:2
+    Severity: High

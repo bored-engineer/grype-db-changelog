@@ -1,0 +1,70 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: 'A use-after-free flaw was found in vhost_net_set_backend in drivers/vhost/net.c in virtio network subcomponent in the Linux kernel due to a double fget. This flaw could allow a local attacker to crash the system, and could even lead to a kernel information leak problem. (CVE-2023-1838)An insufficient permission check has been found in the Bluetooth subsystem ofthe Linux kernel when handling ioctl system calls of HCI sockets. This causestasks without the proper CAP_NET_ADMIN capability can easily mark HCI socketsas _trusted_. Trusted sockets are intended to enable the sending and receivingof management commands and events, such as pairing or connecting with a newdevice.  As a result, unprivileged users can acquire a trusted socket, leadingto unauthorized execution of management commands. The exploit requires onlythe presence of a set of commonly used setuid programs (e.g., su, sudo). (CVE-2023-2002)An out-of-bounds memory access flaw was found in the Linux kernel''s XFS file system in how a user restores an XFS image after failure (with a dirty log journal). This flaw allows a local user to crash or potentially escalate their privileges on the system. (CVE-2023-2124)An out-of-bounds write vulnerability was found in the Linux kernel''s SLIMpro I2C device driver. The userspace "data->block[0]" variable was not capped to a number between 0-255 and was used as the size of a memcpy, possibly writing beyond the end of dma_buffer. This flaw could allow a local privileged user to crash the system or potentially achieve code execution. (CVE-2023-2194)cbq_classify in net/sched/sch_cbq.c in the Linux kernel through 6.1.4 allows attackers to cause a denial of service (slab-out-of-bounds read) because of type confusion (non-negative numbers can sometimes indicate a TC_ACT_SHOT condition rather than valid classification results). (CVE-2023-23454)The Linux kernel before 6.2.9 has a race condition and resultant use-after-free in drivers/net/ethernet/qualcomm/emac/emac.c if a physically proximate attacker unplugs an emac based device. (CVE-2023-33203)In the Linux kernel, the following vulnerability has been resolved:nilfs2: fix kernel-infoleak in nilfs_ioctl_wrap_copy() (CVE-2023-53035)In the Linux kernel, the following vulnerability has been resolved:dm crypt: add cond_resched() to dmcrypt_write() (CVE-2023-53051)'
+    FixedIn:
+        - Name: kernel
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.313-235.533
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: perf
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: python-perf
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+        - Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.14.313-235.533.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2023-2027.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-1838
+            - Name: CVE-2023-2002
+            - Name: CVE-2023-2124
+            - Name: CVE-2023-2194
+            - Name: CVE-2023-23454
+            - Name: CVE-2023-33203
+            - Name: CVE-2023-53035
+            - Name: CVE-2023-53051
+    Name: ALAS2-2023-2027
+    NamespaceName: amzn:2
+    Severity: High

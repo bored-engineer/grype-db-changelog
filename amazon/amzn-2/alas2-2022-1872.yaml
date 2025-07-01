@@ -1,0 +1,33 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A flaw was found in libtiffs tiffcrop utility that has a uint32_t underflow that can lead to an out-of-bounds read and write. This flaw allows an attacker who supplies a crafted file to tiffcrop to cause a crash or, in some cases, further exploitation. (CVE-2022-2867)libtiff's tiffcrop utility has a improper input validation flaw that can lead to out of bounds read and ultimately cause a crash if an attacker is able to supply a crafted file to tiffcrop. (CVE-2022-2868)A flaw was found in libtiff's tiffcrop tool that has a uint32_t underflow, which leads to an out-of-bounds read and write in the extractContigSamples8bits routine. This flaw allows an attacker who supplies a crafted file to tiffcrop to trick a user into opening the crafted file with tiffcrop, causing a crash or potential further exploitations. (CVE-2022-2869)
+    FixedIn:
+        - Name: libtiff
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libtiff-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libtiff-devel
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libtiff-static
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.3
+          VersionFormat: rpm
+        - Name: libtiff-tools
+          NamespaceName: amzn:2
+          Version: 4.0.3-35.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2022-1872.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-2867
+            - Name: CVE-2022-2868
+            - Name: CVE-2022-2869
+    Name: ALAS2-2022-1872
+    NamespaceName: amzn:2
+    Severity: High

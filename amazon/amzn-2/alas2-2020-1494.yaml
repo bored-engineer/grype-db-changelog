@@ -1,0 +1,40 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: The x/text package before 0.3.3 for Go has a vulnerability in encoding/unicode that could lead to the UTF-16 decoder entering an infinite loop, causing the program to crash or run out of memory. An attacker could provide a single byte to a UTF16 decoder instantiated with UseBOM or ExpectBOM to trigger an infinite loop if the String function on the Decoder is called, or the Decoder is passed to golang.org/x/text/transform.String.A denial of service vulnerability was found in the golang.org/x/text library. A library or application must use one of the vulnerable functions, such as unicode.Transform, transform.String, or transform.Byte, to be susceptible to this vulnerability. If an attacker is able to supply specific characters or strings to the vulnerable application, there is the potential to cause an infinite loop to occur using more memory, resulting in a denial of service. (CVE-2020-14040)Go before 1.13.15 and 14.x before 1.14.7 can have an infinite read loop in ReadUvarint and ReadVarint in encoding/binary via invalid inputs. (CVE-2020-16845)
+    FixedIn:
+        - Name: golang
+          NamespaceName: amzn:2
+          Version: 1.13.15-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-bin
+          NamespaceName: amzn:2
+          Version: 1.13.15-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-docs
+          NamespaceName: amzn:2
+          Version: 1.13.15-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-misc
+          NamespaceName: amzn:2
+          Version: 1.13.15-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-race
+          NamespaceName: amzn:2
+          Version: 1.13.15-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-src
+          NamespaceName: amzn:2
+          Version: 1.13.15-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: golang-tests
+          NamespaceName: amzn:2
+          Version: 1.13.15-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2020-1494.html
+    Metadata:
+        CVE:
+            - Name: CVE-2020-14040
+            - Name: CVE-2020-16845
+    Name: ALAS2-2020-1494
+    NamespaceName: amzn:2
+    Severity: Medium

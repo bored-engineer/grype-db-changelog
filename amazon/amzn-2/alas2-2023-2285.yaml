@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: paraparser in ReportLab before 3.5.31 allows remote code execution because start_unichar in paraparser.py evaluates untrusted user input in a unichar element in a crafted XML document with '<unichar code="' followed by arbitrary Python code, a similar issue to CVE-2019-17626. (CVE-2019-19450)
+    FixedIn:
+        - Name: python-reportlab
+          NamespaceName: amzn:2
+          Version: 2.5-10.amzn2.0.1
+          VersionFormat: rpm
+        - Name: python-reportlab-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.5-10.amzn2.0.1
+          VersionFormat: rpm
+        - Name: python-reportlab-docs
+          NamespaceName: amzn:2
+          Version: 2.5-10.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2023-2285.html
+    Metadata:
+        CVE:
+            - Name: CVE-2019-19450
+    Name: ALAS2-2023-2285
+    NamespaceName: amzn:2
+    Severity: High

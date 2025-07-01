@@ -1,0 +1,22 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A flaw was found in haproxy. An input validation flaw when processing HTTP/2 requests causes haproxy to not ensure that the scheme and path portions of a URI have the expected characters.  This may cause specially crafted input to bypass implemented security restrictions. The highest threat from this vulnerability is confidentiality. (CVE-2021-39240)haproxy has an input validation flaw that could allow a remote attacker to bypass implemented security restrictions.  An HTTP method name may contain a space followed by the name of a protected resource. Given this, It is possible that an server would interpret this as a request for that protected resource. The highest threat from this vulnerability is possible confidentiality concerns. (CVE-2021-39241)An issue was discovered in HAProxy 2.2 before 2.2.16, 2.3 before 2.3.13, and 2.4 before 2.4.3. It can lead to a situation with an attacker-controlled HTTP Host header, because a mismatch between Host and authority is mishandled. (CVE-2021-39242)Proxy server haproxy has a flaw that can could allow an HTTP request smuggling attack with the goal of bypassing access-control list rules defined by haproxy. The attack was made possible by utilizing an integer overflow vulnerability that allowed reaching an unexpected state in haproxy while parsing an HTTP request. The highest threat from this vulnerability is integrity. (CVE-2021-40346)
+    FixedIn:
+        - Name: haproxy2
+          NamespaceName: amzn:2
+          Version: 2.2.17-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: haproxy2-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.2.17-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2HAPROXY2-2023-005.html
+    Metadata:
+        CVE:
+            - Name: CVE-2021-39240
+            - Name: CVE-2021-39241
+            - Name: CVE-2021-39242
+            - Name: CVE-2021-40346
+    Name: ALAS2HAPROXY2-2023-005
+    NamespaceName: amzn:2
+    Severity: Medium

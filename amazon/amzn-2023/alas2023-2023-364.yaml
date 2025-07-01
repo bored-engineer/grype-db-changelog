@@ -1,0 +1,43 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: LibTIFF 4.4.0 has an out-of-bounds write in extractContigSamplesShifted24bits in tools/tiffcrop.c:3604, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit cfbb883b. (CVE-2022-3598)processCropSelections in tools/tiffcrop.c in LibTIFF through 4.5.0 has a heap-based buffer overflow (e.g., "WRITE of size 307203") via a crafted TIFF image. (CVE-2022-48281)A vulnerability was found in libtiff library. This security flaw causes a heap buffer overflow in extractContigSamples32bits, tiffcrop.c (CVE-2023-30775)Multiple potential integer overflow in tiffcp.c in libtiff <= 4.5.1 can allow remote attackers to cause a denial of service (application crash) or possibly execute an arbitrary code via a crafted tiff image which triggers a heap-based buffer overflow. (CVE-2023-40745)Multiple potential integer overflow in raw2tiff.c in libtiff <= 4.5.1 can allow remote attackers to cause a denial of service (application crash) or possibly execute an arbitrary code via a crafted tiff image which triggers a heap-based buffer overflow. (CVE-2023-41175)
+    FixedIn:
+        - Name: libtiff
+          NamespaceName: amzn:2023
+          Version: 4.4.0-4.amzn2023.0.16
+          VersionFormat: rpm
+        - Name: libtiff-debuginfo
+          NamespaceName: amzn:2023
+          Version: 4.4.0-4.amzn2023.0.16
+          VersionFormat: rpm
+        - Name: libtiff-debugsource
+          NamespaceName: amzn:2023
+          Version: 4.4.0-4.amzn2023.0.16
+          VersionFormat: rpm
+        - Name: libtiff-devel
+          NamespaceName: amzn:2023
+          Version: 4.4.0-4.amzn2023.0.16
+          VersionFormat: rpm
+        - Name: libtiff-static
+          NamespaceName: amzn:2023
+          Version: 4.4.0-4.amzn2023.0.16
+          VersionFormat: rpm
+        - Name: libtiff-tools
+          NamespaceName: amzn:2023
+          Version: 4.4.0-4.amzn2023.0.16
+          VersionFormat: rpm
+        - Name: libtiff-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 4.4.0-4.amzn2023.0.16
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2023-364.html
+    Metadata:
+        CVE:
+            - Name: CVE-2022-3598
+            - Name: CVE-2022-48281
+            - Name: CVE-2023-30775
+            - Name: CVE-2023-40745
+            - Name: CVE-2023-41175
+    Name: ALAS2023-2023-364
+    NamespaceName: amzn:2023
+    Severity: Medium

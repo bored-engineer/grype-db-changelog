@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A heap out-of-bounds write vulnerability in the Linux Kernel ipvlan network driver can be exploited to achieve local privilege escalation.The out-of-bounds write is caused by missing skb->cb  initialization in the ipvlan network driver. The vulnerability is reachable if CONFIG_IPVLAN is enabled.We recommend upgrading past commit 90cbed5247439a966b645b34eb0a2e037836ea8e. (CVE-2023-3090)
+    FixedIn:
+        - Name: kernel-livepatch-4.14.314-237.533
+          NamespaceName: amzn:2
+          Version: 1.0-2.amzn2
+          VersionFormat: rpm
+        - Name: kernel-livepatch-4.14.314-237.533-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0-2.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2LIVEPATCH-2023-135.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-3090
+    Name: ALAS2LIVEPATCH-2023-135
+    NamespaceName: amzn:2
+    Severity: High

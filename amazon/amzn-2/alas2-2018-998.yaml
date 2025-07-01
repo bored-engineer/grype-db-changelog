@@ -1,0 +1,23 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: Stack-based buffer overflow in relpTcpChkPeerName function in src/tcp.c:rsyslog librelp version 1.2.14 and earlier contains a Buffer Overflow vulnerability in the checking of x509 certificates from a peer that can result in Remote code execution. This attack appear to be exploitable a remote attacker that can connect to rsyslog and trigger a stack buffer overflow by sending a specially crafted x509 certificate. (CVE-2018-1000140)
+    FixedIn:
+        - Name: librelp
+          NamespaceName: amzn:2
+          Version: 1.2.12-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: librelp-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.2.12-1.amzn2.0.1
+          VersionFormat: rpm
+        - Name: librelp-devel
+          NamespaceName: amzn:2
+          Version: 1.2.12-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2018-998.html
+    Metadata:
+        CVE:
+            - Name: CVE-2018-1000140
+    Name: ALAS2-2018-998
+    NamespaceName: amzn:2
+    Severity: Critical

@@ -1,0 +1,27 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A vulnerability was discovered in fuse. When SELinux is active, fusermount is vulnerable to a restriction bypass. This allows non-root users to mount a FUSE file system with the 'allow_other' mount option regardless of whether 'user_allow_other' is set in the fuse configuration. An attacker may use this flaw to mount a FUSE file system, accessible by other users, and trick them into accessing files on that file system, possibly causing Denial of Service or other unspecified effects.(CVE-2018-10906)
+    FixedIn:
+        - Name: fuse
+          NamespaceName: amzn:2
+          Version: 2.9.2-11.amzn2
+          VersionFormat: rpm
+        - Name: fuse-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.9.2-11.amzn2
+          VersionFormat: rpm
+        - Name: fuse-devel
+          NamespaceName: amzn:2
+          Version: 2.9.2-11.amzn2
+          VersionFormat: rpm
+        - Name: fuse-libs
+          NamespaceName: amzn:2
+          Version: 2.9.2-11.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2018-1123.html
+    Metadata:
+        CVE:
+            - Name: CVE-2018-10906
+    Name: ALAS2-2018-1123
+    NamespaceName: amzn:2
+    Severity: Medium
