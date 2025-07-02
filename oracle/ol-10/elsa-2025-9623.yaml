@@ -1,0 +1,51 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [134.1-2.0.1]
+        - Add OL10 support
+        - Update repository URLs for baseos, appstream and UERK
+        - Fix the label for UEKR repository
+        - Simplify repository names [JIRA: OLDIS-35893]
+        - Ensure build on latest golang: CVE-2024-34156
+        - Refactor patches to fix some naming and set a correct kernel for Oracle Linux [Orabug: 37253643]
+        - Support using OCI variables inside built images [JIRA: OLDIS-35302]
+        - Support using repository definitons with OCI variables [JIRA: OLDIS-38657]
+        - Update repositories to contain OCI variables
+        - Remove image types Minimal-raw and wsl [JIRA: OLDIS-38123]
+        - Increase default /boot size to 1GB [Orabug: 36827079]
+        - Add support for OCI hybrid images [JIRA: OLDIS-33593]
+        - enable aarch64 OCI image builds [JIRA: OLDIS-33593]
+        - support for building OL8/9 images on Oracle Linux 9 [Orabug: 36400619]
+
+        [134.1-2]
+        - Rebuild for CVE-2025-22871
+
+        [134.1-1]
+        - Import upstream 134.1
+    FixedIn:
+        - Module: null
+          Name: osbuild-composer
+          NamespaceName: ol:10
+          Version: 0:134.1-2.0.1.el10_0
+          VersionFormat: rpm
+        - Module: null
+          Name: osbuild-composer-core
+          NamespaceName: ol:10
+          Version: 0:134.1-2.0.1.el10_0
+          VersionFormat: rpm
+        - Module: null
+          Name: osbuild-composer-worker
+          NamespaceName: ol:10
+          Version: 0:134.1-2.0.1.el10_0
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-9623.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-22871.html
+              Name: CVE-2025-22871
+        Issued: "2025-07-01"
+        RefId: ELSA-2025-9623
+    Name: ELSA-2025-9623
+    NamespaceName: ol:10
+    Severity: Medium
