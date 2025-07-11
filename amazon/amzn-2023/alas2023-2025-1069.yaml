@@ -1,0 +1,47 @@
+Vulnerability:
+    Description: A flaw was found in GLib. An integer overflow and buffer under-read occur when parsing a long invalid ISO 8601 timestamp with the g_date_time_new_from_iso8601() function. (CVE-2025-3360)A flaw was found in how GLib's GString manages memory when adding data to strings. If a string is already very large, combining it with more input can cause a hidden overflow in the size calculation. This makes the system think it has enough memory when it doesn't. As a result, data may be written past the end of the allocated memory, leading to crashes or memory corruption. (CVE-2025-6052)
+    FixedIn:
+        - Name: glib2
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+        - Name: glib2-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+        - Name: glib2-debugsource
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+        - Name: glib2-devel
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+        - Name: glib2-devel-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+        - Name: glib2-doc
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+        - Name: glib2-static
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+        - Name: glib2-tests
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+        - Name: glib2-tests-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.82.2-766.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1069.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-3360
+            - Name: CVE-2025-6052
+    Name: ALAS2023-2025-1069
+    NamespaceName: amzn:2023
+    Severity: High
