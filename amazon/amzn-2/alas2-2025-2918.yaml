@@ -1,0 +1,59 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A flaw was found in the X Rendering extension's handling of animated cursors. If a client provides no cursors, the server assumes at least one is present, leading to an out-of-bounds read and potential crash. (CVE-2025-49175)A flaw was found in the Big Requests extension. The request length is multiplied by 4 before checking against the maximum allowed size, potentially causing an integer overflow and bypassing the size check. (CVE-2025-49176)A flaw was found in the X server's request handling. Non-zero 'bytes to ignore' in a client's request can cause the server to skip processing another client's request, potentially leading to a denial of service. (CVE-2025-49178)The RecordSanityCheckRegisterClients() function in the X Record extension implementation of the Xserver checks for the request length, but does not check for integer overflow.A client might send a very large value for either the number of clients or the number of protocol ranges that will cause an integer overflow in the request length computation, defeating the check for request length. (CVE-2025-49179)A flaw was found in the RandR extension, where the RRChangeProviderProperty function does not properly validate input. This issue leads to an integer overflow when computing the total size to allocate. (CVE-2025-49180)
+    FixedIn:
+        - Name: xorg-x11-server
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-Xdmx
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-Xephyr
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-Xnest
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-Xorg
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-Xvfb
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-Xwayland
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-common
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-devel
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+        - Name: xorg-x11-server-source
+          NamespaceName: amzn:2
+          Version: 1.20.4-22.amzn2.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2025-2918.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-49175
+            - Name: CVE-2025-49176
+            - Name: CVE-2025-49178
+            - Name: CVE-2025-49179
+            - Name: CVE-2025-49180
+    Name: ALAS2-2025-2918
+    NamespaceName: amzn:2
+    Severity: Medium

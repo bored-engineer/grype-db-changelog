@@ -1,0 +1,26 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: A use-after-free in FontFaceSet resulted in a potentially exploitable crash. This vulnerability affects Firefox < 140, Firefox ESR < 115.25, and Firefox ESR < 128.12. (CVE-2025-6424)An attacker who enumerated resources from the WebCompat extension could have obtained a persistent UUID that identified the browser, and persisted between containers and normal/private browsing mode, but not profiles. This vulnerability affects Firefox < 140, Firefox ESR < 115.25, and Firefox ESR < 128.12. (CVE-2025-6425)Firefox could have incorrectly parsed a URL and rewritten it to the youtube.com domain when parsing the URL specified in an `embed` tag.  This could have bypassed website security checks that restricted which domains users were allowed to embed. This vulnerability affects Firefox < 140 and Firefox ESR < 128.12. (CVE-2025-6429)When a file download is specified via the Content-Disposition header, that directive would be ignored if the file was included via a <embed> or <object> tag, potentially making a website vulnerable to a cross-site scripting attack. (CVE-2025-6430)
+    FixedIn:
+        - Name: firefox
+          NamespaceName: amzn:2023
+          Version: 128.12.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: firefox-debuginfo
+          NamespaceName: amzn:2023
+          Version: 128.12.0-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Name: firefox-debugsource
+          NamespaceName: amzn:2023
+          Version: 128.12.0-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1055.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-6424
+            - Name: CVE-2025-6425
+            - Name: CVE-2025-6429
+            - Name: CVE-2025-6430
+    Name: ALAS2023-2025-1055
+    NamespaceName: amzn:2023
+    Severity: High
