@@ -1,0 +1,42 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [24.4-3.0.1.2]
+        - NetworkManagerActivator brings up interface failed when using sysconfig renderer [RHEL-18981]
+        - Include module cc_write_files_deferred in config template [Orabug: 36959464]
+        - Fix Oracle Datasource network, getdata methods and increase retries [Orabug: 37065979]
+        - Fix log file permission [Orabug: 35302969]
+        - Update detection logic for OL distros in config template [Orabug: 34845400]
+        - Added missing services in rhel/systemd/cloud-init.service [Orabug: 32183938]
+        - Added missing services in cloud-init.service.tmpl for sshd [Orabug: 32183938]
+        - Forward port applicable cloud-init 18.4-2.0.3 changes to cloud-init-18-5 [Orabug: 30435672]
+        - limit permissions [Orabug: 31352433]
+        - Changes to ignore all enslaved interfaces [Orabug: 30092148]
+        - add modified version of enable-ec2_utils-to-stop-retrying-to-get-ec2-metadata.patch:
+          1. Enable ec2_utils.py having a way to stop retrying to get ec2 metadata
+          2. Apply stop retrying to get ec2 metadata to helper/openstack.py MetadataReader
+          Resolves: Oracle-Bug:41660 (Bugzilla)
+        - added OL to list of known distros
+
+        [24.4-3.2]
+        - ci-fix-Don-t-attempt-to-identify-non-x86-OpenStack-inst.patch [RHEL-100617]
+        - ci-fix-strict-disable-in-ds-identify-on-no-datasources-.patch [RHEL-100617]
+        - Resolves: RHEL-100617
+          (CVE-2024-6174 cloud-init: From CVEorg collector [rhel-10.1])
+    FixedIn:
+        - Module: null
+          Name: cloud-init
+          NamespaceName: ol:10
+          Version: 0:24.4-3.0.1.el10_0.2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-10844.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-6174.html
+              Name: CVE-2024-6174
+        Issued: "2025-07-14"
+        RefId: ELSA-2025-10844
+    Name: ELSA-2025-10844
+    NamespaceName: ol:10
+    Severity: High
