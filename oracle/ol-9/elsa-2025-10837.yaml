@@ -1,0 +1,212 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.14.0-570.26.1.0.1_6.OL9]
+        - nvme-pci: remove two deallocate zeroes quirks [Orabug: 37756650]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985764]
+
+        [5.14.0-570.26.1_6]
+        - x86/microcode/AMD: Fix out-of-bounds on systems with CPU-less NUMA nodes (CKI Backport Bot) [RHEL-98996] {CVE-2025-21991}
+        - cpufreq: intel_pstate: Unchecked MSR aceess in legacy mode (David Arcari) [RHEL-90212]
+        - smb: client: fix perf regression with deferred closes (Paulo Alcantara) [RHEL-97482]
+        - smb3 client: fix open hardlink on deferred close file error (Paulo Alcantara) [RHEL-97482]
+        - Fix mmu notifiers for range-based invalidates (Jay Shin) [RHEL-93743]
+        - vfio/pci: Align huge faults to order (Alex Williamson) [RHEL-88275]
+        - vfio/type1: Use mapping page mask for pfnmaps (Alex Williamson) [RHEL-88275]
+        - mm: Provide address mask in struct follow_pfnmap_args (Alex Williamson) [RHEL-88275]
+        - vfio/type1: Use consistent types for page counts (Alex Williamson) [RHEL-88275]
+        - vfio/type1: Use vfio_batch for vaddr_get_pfns() (Alex Williamson) [RHEL-88275]
+        - vfio/type1: Convert all vaddr_get_pfns() callers to use vfio_batch (Alex Williamson) [RHEL-88275]
+        - vfio/type1: Catch zero from pin_user_pages_remote() (Alex Williamson) [RHEL-88275]
+        - vfio/pci: Fallback huge faults for unaligned pfn (Donald Dutile) [RHEL-85623]
+        - vfio/pci: implement huge_fault support (Donald Dutile) [RHEL-85623]
+        - vfio/pci: Remove unused struct 'vfio_pci_mmap_vma' (Donald Dutile) [RHEL-85623]
+        - vfio/pci: Insert full vma on mmap'd MMIO fault (Donald Dutile) [RHEL-85623]
+        - vfio/pci: Use unmap_mapping_range() (Donald Dutile) [RHEL-85623]
+        - mm/arm64: support large pfn mappings (Donald Dutile) [RHEL-85623]
+        - mm/x86: support large pfn mappings (Donald Dutile) [RHEL-85623]
+        - mm: remove follow_pte() (Donald Dutile) [RHEL-85623]
+        - mm: follow_pte() improvements (Donald Dutile) [RHEL-85623]
+        - mm/access_process_vm: use the new follow_pfnmap API (Donald Dutile) [RHEL-85623]
+        - vfio: use the new follow_pfnmap API (Donald Dutile) [RHEL-85623]
+        - mm/x86/pat: use the new follow_pfnmap API (Donald Dutile) [RHEL-85623]
+        - s390/pci_mmio: use follow_pfnmap API (Donald Dutile) [RHEL-85623]
+        - KVM: use follow_pfnmap API (Donald Dutile) [RHEL-85623]
+        - mm: pass VMA instead of MM to follow_pte() (Donald Dutile) [RHEL-85623]
+        - mm: move follow_phys to arch/x86/mm/pat/memtype.c (Donald Dutile) [RHEL-85623]
+        - mm: fix follow_pfnmap API lockdep assert (Donald Dutile) [RHEL-85623]
+        - mm: new follow_pfnmap API (Donald Dutile) [RHEL-85623]
+        - mm: remove follow_pfn (Donald Dutile) [RHEL-85623]
+        - mm: always define pxx_pgprot() (Donald Dutile) [RHEL-85623]
+        - mm/huge_memory: check pmd_special() only after pmd_present() (Donald Dutile) [RHEL-85623]
+        - mm/fork: accept huge pfnmap entries (Donald Dutile) [RHEL-85623]
+        - mm/pagewalk: check pfnmap for folio_walk_start() (Donald Dutile) [RHEL-85623]
+        - mm/gup: detect huge pfnmap entries in gup-fast (Donald Dutile) [RHEL-85623]
+        - mm: mark special bits for huge pfn mappings when inject (Donald Dutile) [RHEL-85623]
+        - mm: drop is_huge_zero_pud() (Donald Dutile) [RHEL-85623]
+        - mm: introduce ARCH_SUPPORTS_HUGE_PFNMAP and special bits to pmd/pud (Donald Dutile) [RHEL-85623]
+    FixedIn:
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: libperf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: rtla
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: rv
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.26.1.0.1.el9_6
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-10837.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-21991.html
+              Name: CVE-2025-21991
+        Issued: "2025-07-15"
+        RefId: ELSA-2025-10837
+    Name: ELSA-2025-10837
+    NamespaceName: ol:9
+    Severity: Medium
