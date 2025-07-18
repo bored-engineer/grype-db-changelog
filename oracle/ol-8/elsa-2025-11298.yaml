@@ -1,0 +1,177 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        - [4.18.0-553.62.1_10.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.3
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34750652]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985772]
+
+        [4.18.0-553.62.1_10]
+        - s390/virtio_ccw: Don't allocate/assign airqs for non-existing queues (David Hildenbrand) [RHEL-87557]
+        - mm/slab: make __free(kfree) accept error pointers (Mark Langsdorf) [RHEL-84410]
+        - driver core: fix potential NULL pointer dereference in dev_uevent() (Mark Langsdorf) [RHEL-84410]
+        - driver core: introduce device_set_driver() helper (Mark Langsdorf) [RHEL-84410]
+        - Revert 'drivers: core: synchronize really_probe() and dev_uevent()' (Mark Langsdorf) [RHEL-84410]
+        - cleanup: Add conditional guard helper (Mark Langsdorf) [RHEL-84410]
+        - cleanup: Adjust scoped_guard() macros to avoid potential warning (Mark Langsdorf) [RHEL-84410]
+        - cleanup: Remove address space of returned pointer (Mark Langsdorf) [RHEL-84410]
+        - cleanup: Add usage and style documentation (Mark Langsdorf) [RHEL-84410]
+        - file: add take_fd() cleanup helper (Mark Langsdorf) [RHEL-84410]
+        - cleanup: Standardize the header guard define's name (Mark Langsdorf) [RHEL-84410]
+        - cleanup: Add conditional guard support (Mark Langsdorf) [RHEL-84410]
+        - cleanup: Make no_free_ptr() __must_check (Mark Langsdorf) [RHEL-84410]
+        - locking: Introduce __cleanup() based infrastructure (Mark Langsdorf) [RHEL-84410]
+        - misc/vmw_vmci: fix an infoleak in vmci_host_do_receive_datagram() (CKI Backport Bot) [RHEL-100343] {CVE-2022-49788}
+        - media: uvcvideo: Announce the user our deprecation intentions (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Allow changing noparam on the fly (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Invert default value for nodrop module param (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Propagate buf->error to userspace (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Flush the control cache when we get an event (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Annotate lock requirements for uvc_ctrl_set (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Remove dangling pointers (Desnes Nunes) [RHEL-98760] {CVE-2024-58002}
+        - media: uvcvideo: Remove redundant NULL assignment (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Only save async fh if success (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Refactor iterators (Desnes Nunes) [RHEL-98760]
+        - media: uvcvideo: Fix double free in error path (CKI Backport Bot) [RHEL-98788] {CVE-2024-57980}
+        - cifs: potential buffer overflow in handling symlinks (Paulo Alcantara) [RHEL-97074] {CVE-2022-49058}
+        - Race between reading mdstat and stopping an md device (Nigel Croxon) [RHEL-95723]
+        - fs/dcache: Control # of dentries in list_lru_node (Waiman Long) [RHEL-8578]
+        - fs/dcache: Add sysctl parameter dentry-fs-klimit to control # of dentries in filesystem (Waiman Long) [RHEL-8578]
+        - mm/list_lru: Make list_lru_add() return # if items in affected list_lru_node (Waiman Long) [RHEL-8578]
+
+        [4.18.0-553.61.1_10]
+        - s390: Add z17 elf platform (Christoph Schlameuss) [RHEL-100409]
+        - ext4: ignore xattrs past end (CKI Backport Bot) [RHEL-100375] {CVE-2025-37738}
+        - ext4: fix off-by-one error in do_split (CKI Backport Bot) [RHEL-100361] {CVE-2025-23150}
+        - net: atm: fix use after free in lec_send() (CKI Backport Bot) [RHEL-93119] {CVE-2025-22004}
+        - x86/microcode/AMD: Fix out-of-bounds on systems with CPU-less NUMA nodes (CKI Backport Bot) [RHEL-98980] {CVE-2025-21991}
+    FixedIn:
+        - Module: null
+          Name: bpftool
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.62.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-11298.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2022-49058.html
+              Name: CVE-2022-49058
+            - Link: https://linux.oracle.com/cve/CVE-2022-49788.html
+              Name: CVE-2022-49788
+            - Link: https://linux.oracle.com/cve/CVE-2024-57980.html
+              Name: CVE-2024-57980
+            - Link: https://linux.oracle.com/cve/CVE-2024-58002.html
+              Name: CVE-2024-58002
+            - Link: https://linux.oracle.com/cve/CVE-2025-21991.html
+              Name: CVE-2025-21991
+            - Link: https://linux.oracle.com/cve/CVE-2025-22004.html
+              Name: CVE-2025-22004
+            - Link: https://linux.oracle.com/cve/CVE-2025-23150.html
+              Name: CVE-2025-23150
+            - Link: https://linux.oracle.com/cve/CVE-2025-37738.html
+              Name: CVE-2025-37738
+        Issued: "2025-07-16"
+        RefId: ELSA-2025-11298
+    Name: ELSA-2025-11298
+    NamespaceName: ol:8
+    Severity: Medium

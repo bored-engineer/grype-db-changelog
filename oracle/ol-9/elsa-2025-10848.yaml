@@ -1,0 +1,47 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [24.4-4.0.1.el9_6.3]
+        - Fix Oracle Datasource network and getdata methods for OCI OL [Orabug: 35950168]
+        - Fix log file permission [Orabug: 35302969]
+        - Update detection logic for OL distros in config template [Orabug: 34845400]
+        - Added missing services in rhel/systemd/cloud-init.service [Orabug: 32183938]
+        - Added missing services in cloud-init.service.tmpl for sshd [Orabug: 32183938]
+        - Forward port applicable cloud-init 18.4-2.0.3 changes to cloud-init-18-5 [Orabug: 30435672]
+        - limit permissions [Orabug: 31352433]
+        - Changes to ignore all enslaved interfaces [Orabug: 30092148]
+        - Make Oracle datasource detect dracut based config files [Orabug: 29956753]
+        - add modified version of enable-ec2_utils-to-stop-retrying-to-get-ec2-metadata.patch:
+          1. Enable ec2_utils.py having a way to stop retrying to get ec2 metadata
+          2. Apply stop retrying to get ec2 metadata to helper/openstack.py MetadataReader
+          Resolves: Oracle-Bug:41660 (Bugzilla)
+        - added OL to list of known distros
+        Resolves: rhbz#1427280
+        Resolves: rhbz#1427280
+
+        [24.4-4.el9_6.3]
+        - ci-fix-Don-t-attempt-to-identify-non-x86-OpenStack-inst.patch [RHEL-100611]
+        - ci-fix-strict-disable-in-ds-identify-on-no-datasources-.patch [RHEL-100611]
+        - Resolves: RHEL-100611
+          (CVE-2024-6174 cloud-init: From CVEorg collector [rhel-9.6.z])
+
+        [24.4-4.el9_6.2]
+        - Adding missed fix 'Retain exit code in cloud-init status for recoverable errors'
+        - Resolves: RHEL-101693
+    FixedIn:
+        - Module: null
+          Name: cloud-init
+          NamespaceName: ol:9
+          Version: 0:24.4-4.0.1.el9_6.3
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-10848.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-6174.html
+              Name: CVE-2024-6174
+        Issued: "2025-07-14"
+        RefId: ELSA-2025-10848
+    Name: ELSA-2025-10848
+    NamespaceName: ol:9
+    Severity: High
