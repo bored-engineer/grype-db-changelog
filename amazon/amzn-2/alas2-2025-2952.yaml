@@ -1,0 +1,40 @@
+Vulnerability:
+    Description: ImageMagick is free and open-source software used for editing and manipulating digital images. Versions prior to 7.1.2-0 and 6.9.13-26 have a heap buffer overflow in the `InterpretImageFilename` function. The issue stems from an off-by-one error that causes out-of-bounds memory access when processing format strings containing consecutive percent signs (`%%`). Versions 7.1.2-0 and 6.9.13-26 fix the issue. (CVE-2025-53014)ImageMagick is free and open-source software used for editing and manipulating digital images. In versions prior to 7.1.2-0 and 6.9.13-26, in ImageMagick's `magick stream` command, specifying multiple consecutive `%d` format specifiers in a filename template causes a memory leak. Versions 7.1.2-0 and 6.9.13-26 fix the issue.Affects ImageMagick < 7.1.2-0, < 6.9.13-26 (CVE-2025-53019)ImageMagick is free and open-source software used for editing and manipulating digital images. In versions prior to 7.1.2-0 and 6.9.13-26, in ImageMagick's `magick mogrify` command, specifying multiple consecutive `%d` format specifiers in a filename template causes internal pointer arithmetic to generate an address below the beginning of the stack buffer, resulting in a stack overflow through `vsnprintf()`. Versions 7.1.2-0 and 6.9.13-26 fix the issue. (CVE-2025-53101)
+    FixedIn:
+        - Name: ImageMagick
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.14
+          VersionFormat: rpm
+        - Name: ImageMagick-c++
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.14
+          VersionFormat: rpm
+        - Name: ImageMagick-c++-devel
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.14
+          VersionFormat: rpm
+        - Name: ImageMagick-debuginfo
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.14
+          VersionFormat: rpm
+        - Name: ImageMagick-devel
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.14
+          VersionFormat: rpm
+        - Name: ImageMagick-doc
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.14
+          VersionFormat: rpm
+        - Name: ImageMagick-perl
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.14
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2025-2952.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-53014
+            - Name: CVE-2025-53019
+            - Name: CVE-2025-53101
+    Name: ALAS2-2025-2952
+    NamespaceName: amzn:2
+    Severity: Medium

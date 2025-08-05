@@ -1,0 +1,30 @@
+Vulnerability:
+    Description: A vulnerability was found in PAM. The secret information is stored in memory, where the attacker can trigger the victim program to execute by sending characters to its standard input (stdin). As this occurs, the attacker can train the branch predictor to execute an ROP chain speculatively. This flaw could result in leaked passwords, such as those found in /etc/shadow while performing authentications. (CVE-2024-10041)
+    FixedIn:
+        - Name: pam
+          NamespaceName: amzn:2023
+          Version: 1.5.1-8.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: pam-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.5.1-8.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: pam-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.5.1-8.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: pam-devel
+          NamespaceName: amzn:2023
+          Version: 1.5.1-8.amzn2023.0.5
+          VersionFormat: rpm
+        - Name: pam-docs
+          NamespaceName: amzn:2023
+          Version: 1.5.1-8.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1132.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-10041
+    Name: ALAS2023-2025-1132
+    NamespaceName: amzn:2023
+    Severity: Medium
