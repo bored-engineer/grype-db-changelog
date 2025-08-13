@@ -1,0 +1,177 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.18.0-553.69.1_10.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.3
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34750652]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985772]
+
+        [4.18.0-553.69.1_10]
+        - Revert 'sch_htb: make htb_qlen_notify() idempotent' (Denys Vlasenko) [RHEL-108140]
+        - Revert 'sch_drr: make drr_qlen_notify() idempotent' (Denys Vlasenko) [RHEL-108140]
+        - Revert 'sch_qfq: make qfq_qlen_notify() idempotent' (Denys Vlasenko) [RHEL-108140]
+        - Revert 'codel: remove sch->q.qlen check before qdisc_tree_reduce_backlog()' (Denys Vlasenko) [RHEL-108140]
+        - Revert 'sch_htb: make htb_deactivate() idempotent' (Denys Vlasenko) [RHEL-108140]
+        - Revert 'net/sched: Always pass notifications when child class becomes empty' (Denys Vlasenko) [RHEL-108140]
+        - Revert 'sch_cbq: make cbq_qlen_notify() idempotent' (Denys Vlasenko) [RHEL-108140]
+
+        [4.18.0-553.68.1_10]
+        - ipv6: mcast: extend RCU protection in igmp6_send() (Hangbin Liu) [RHEL-102392] {CVE-2025-21759}
+        - md/md-bitmap: move bitmap_{start, end}write to md upper layer (Nigel Croxon) [RHEL-57991]
+        - md/raid5: implement pers->bitmap_sector() (Nigel Croxon) [RHEL-57991]
+        - md: add a new callback pers->bitmap_sector() (Nigel Croxon) [RHEL-57991]
+        - md/md-bitmap: remove the last parameter for bimtap_ops->endwrite() (Nigel Croxon) [RHEL-57991]
+        - md/md-bitmap: factor behind write counters out from bitmap_{start/end}write() (Nigel Croxon) [RHEL-57991]
+        - md/raid5: recheck if reshape has finished with device_lock held (Nigel Croxon) [RHEL-57991]
+        - md/md-linear: enable io accounting (Nigel Croxon) [RHEL-59928]
+        - md/md-multipath: enable io accounting (Nigel Croxon) [RHEL-59928]
+        - md/raid10: switch to use md_account_bio() for io accounting (Nigel Croxon) [RHEL-59928]
+        - md/raid1: switch to use md_account_bio() for io accounting (Nigel Croxon) [RHEL-59928]
+        - raid5: fix missing io accounting in raid5_align_endio() (Nigel Croxon) [RHEL-59928]
+        - md: also clone new io if io accounting is disabled (Nigel Croxon) [RHEL-59928]
+        - sch_cbq: make cbq_qlen_notify() idempotent (Ivan Vecera) [RHEL-93376]
+        - net/sched: Always pass notifications when child class becomes empty (CKI Backport Bot) [RHEL-93376] {CVE-2025-38350}
+        - sch_htb: make htb_deactivate() idempotent (CKI Backport Bot) [RHEL-93376] {CVE-2025-38350}
+        - codel: remove sch->q.qlen check before qdisc_tree_reduce_backlog() (CKI Backport Bot) [RHEL-93376] {CVE-2025-38350}
+        - sch_qfq: make qfq_qlen_notify() idempotent (CKI Backport Bot) [RHEL-93376] {CVE-2025-38350}
+        - sch_drr: make drr_qlen_notify() idempotent (CKI Backport Bot) [RHEL-93376] {CVE-2025-38350}
+        - sch_htb: make htb_qlen_notify() idempotent (CKI Backport Bot) [RHEL-93376] {CVE-2025-38350}
+        - can: peak_usb: fix use after free bugs (CKI Backport Bot) [RHEL-99447] {CVE-2021-47670}
+        - wifi: rtw88: fix the 'para' buffer size to avoid reading out of bounds (CKI Backport Bot) [RHEL-103141] {CVE-2025-38159}
+        - net/ipv6: release expired exception dst cached in socket (Guillaume Nault) [RHEL-105794] {CVE-2024-56644}
+
+        [4.18.0-553.67.1_10]
+        - mm/hugetlb: fix huge_pmd_unshare() vs GUP-fast race (Rafael Aquini) [RHEL-101233] {CVE-2025-38085}
+        - mm/khugepaged: fix collapse_pte_mapped_thp() to allow anon_vma (Rafael Aquini) [RHEL-101233] {CVE-2025-38085}
+        - mm/khugepaged: fix GUP-fast interaction by sending IPI (Rafael Aquini) [RHEL-101233] {CVE-2025-38085}
+        - mm/khugepaged: take the right locks for page table retraction (Rafael Aquini) [RHEL-101233] {CVE-2025-38085}
+        - mm/khugepaged: unify collapse pmd clear, flush and free (Rafael Aquini) [RHEL-101233] {CVE-2025-38085}
+        - padata: fix UAF in padata_reorder (Waiman Long) [RHEL-101398] {CVE-2025-21727}
+        - redhat: update BUILD_TARGET to rhel-8.10.0-z-test-pesign (Jan Stancek)
+        - ftrace: Clean up hash direct_functions on register failures (Gregory Bell) [RHEL-103912]
+    FixedIn:
+        - Module: null
+          Name: bpftool
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.69.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-13589.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2021-47670.html
+              Name: CVE-2021-47670
+            - Link: https://linux.oracle.com/cve/CVE-2024-56644.html
+              Name: CVE-2024-56644
+            - Link: https://linux.oracle.com/cve/CVE-2025-21727.html
+              Name: CVE-2025-21727
+            - Link: https://linux.oracle.com/cve/CVE-2025-21759.html
+              Name: CVE-2025-21759
+            - Link: https://linux.oracle.com/cve/CVE-2025-38085.html
+              Name: CVE-2025-38085
+            - Link: https://linux.oracle.com/cve/CVE-2025-38159.html
+              Name: CVE-2025-38159
+        Issued: "2025-08-11"
+        RefId: ELSA-2025-13589
+    Name: ELSA-2025-13589
+    NamespaceName: ol:8
+    Severity: Medium
