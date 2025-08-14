@@ -1,0 +1,198 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.14.0-570.33.2.0.1_6.OL9]
+        - nvme-pci: remove two deallocate zeroes quirks [Orabug: 37756650]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985764]
+
+        [5.14.0-570.33.2_6]
+        - Revert 'sch_htb: make htb_qlen_notify() idempotent' (Patrick Talbert) [RHEL-108138]
+        - Revert 'sch_drr: make drr_qlen_notify() idempotent' (Patrick Talbert) [RHEL-108138]
+        - Revert 'sch_qfq: make qfq_qlen_notify() idempotent' (Patrick Talbert) [RHEL-108138]
+        - Revert 'codel: remove sch->q.qlen check before qdisc_tree_reduce_backlog()' (Patrick Talbert) [RHEL-108138]
+        - Revert 'sch_htb: make htb_deactivate() idempotent' (Patrick Talbert) [RHEL-108138]
+        - Revert 'net/sched: Always pass notifications when child class becomes empty' (Patrick Talbert) [RHEL-108138]
+
+        [5.14.0-570.33.1_6]
+        - net/sched: Always pass notifications when child class becomes empty (CKI Backport Bot) [RHEL-93387] {CVE-2025-38350}
+        - sch_htb: make htb_deactivate() idempotent (CKI Backport Bot) [RHEL-93387] {CVE-2025-38350}
+        - codel: remove sch->q.qlen check before qdisc_tree_reduce_backlog() (CKI Backport Bot) [RHEL-93387] {CVE-2025-38350}
+        - sch_qfq: make qfq_qlen_notify() idempotent (CKI Backport Bot) [RHEL-93387] {CVE-2025-38350}
+        - sch_drr: make drr_qlen_notify() idempotent (CKI Backport Bot) [RHEL-93387] {CVE-2025-38350}
+        - sch_htb: make htb_qlen_notify() idempotent (CKI Backport Bot) [RHEL-93387] {CVE-2025-38350}
+        - redhat: update BUILD_TARGET to rhel-9.6.0-z-test-pesign (Jan Stancek)
+        - PCI: Use downstream bridges for distributing resources (Jennifer Berringer) [RHEL-102666]
+        - PCI/ACS: Fix 'pci=config_acs=' parameter (Charles Mirabile) [RHEL-102652]
+        - PCI: Fix pci_enable_acs() support for the ACS quirks (Charles Mirabile) [RHEL-102652]
+        - Documentation: Fix pci=config_acs= example (Charles Mirabile) [RHEL-102652]
+        - Revert 'PCI: Wait for device readiness with Configuration RRS' (John W. Linville) [RHEL-94414]
+        - bnxt_en: Skip MAC loopback selftest if it is unsupported by FW (CKI Backport Bot) [RHEL-82564]
+        - bnxt_en: Skip PHY loopback ethtool selftest if unsupported by FW (CKI Backport Bot) [RHEL-82564]
+        - wifi: ath12k: fix invalid access to memory (CKI Backport Bot) [RHEL-103219] {CVE-2025-38292}
+        - crypto: algif_hash - fix double free in hash_accept (CKI Backport Bot) [RHEL-102235] {CVE-2025-38079}
+    FixedIn:
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: libperf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: rtla
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: rv
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.33.2.0.1.el9_6
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-13602.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-38079.html
+              Name: CVE-2025-38079
+            - Link: https://linux.oracle.com/cve/CVE-2025-38292.html
+              Name: CVE-2025-38292
+        Issued: "2025-08-13"
+        RefId: ELSA-2025-13602
+    Name: ELSA-2025-13602
+    NamespaceName: ol:9
+    Severity: Medium
