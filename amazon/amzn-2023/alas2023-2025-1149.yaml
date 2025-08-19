@@ -1,0 +1,15 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    Description: 'Uncontrolled Recursion vulnerability in Apache Commons Lang.This issue affects Apache Commons Lang: Starting with commons-lang:commons-lang 2.0 to 2.6, and, from org.apache.commons:commons-lang3 3.0 before 3.18.0.The methods ClassUtils.getClass(...) can throw StackOverflowError on very long inputs. Because an Error is usually not handled by applications and libraries, aStackOverflowError could cause an application to stop.Users are recommended to upgrade to version 3.18.0, which fixes the issue. (CVE-2025-48924)'
+    FixedIn:
+        - Name: javapackages-bootstrap
+          NamespaceName: amzn:2023
+          Version: 1.5.0^20220105.git9f283b7-3.amzn2023.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1149.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-48924
+    Name: ALAS2023-2025-1149
+    NamespaceName: amzn:2023
+    Severity: Low
