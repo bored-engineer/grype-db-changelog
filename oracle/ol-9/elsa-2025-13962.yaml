@@ -1,0 +1,260 @@
+# schema: vulnerability/os/schema-1.0.2.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.14.0-570.35.1.0.1_6.OL9]
+        - nvme-pci: remove two deallocate zeroes quirks [Orabug: 37756650]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985764]
+
+        [5.14.0-570.35.1_6]
+        - s390/dasd: Remove DMA alignment (CKI Backport Bot) [RHEL-91593]
+        - s390/cpumf: Update CPU Measurement facility extended counter set support (CKI Backport Bot) [RHEL-103066]
+        - s390/topology: Improve topology detection (CKI Backport Bot) [RHEL-92100]
+        - s390/pai: export number of sysfs attribute files (CKI Backport Bot) [RHEL-87178]
+        - s390/pai: fix attr_event_free upper limit for pai device drivers (CKI Backport Bot) [RHEL-87178]
+        - powerpc/64s/radix/kfence: map __kfence_pool at page granularity (Mamatha Inamdar) [RHEL-92081]
+        - wifi: rtw88: fix the 'para' buffer size to avoid reading out of bounds (CKI Backport Bot) [RHEL-103151] {CVE-2025-38159}
+        - redhat: Mark kernel incompatible with xdp-tools<1.5.4 (Felix Maurer) [RHEL-101008]
+        - bpf, test_run: Fix use-after-free issue in eth_skb_pkt_type() (CKI Backport Bot) [RHEL-101008] {CVE-2025-21867}
+        - arm64: proton-pack: Add new CPUs 'k' values for branch mitigation (Waiman Long) [RHEL-100603]
+        - arm64: bpf: Only mitigate cBPF programs loaded by unprivileged users (Waiman Long) [RHEL-100603] {CVE-2025-37963}
+        - arm64: bpf: Add BHB mitigation to the epilogue for cBPF programs (Waiman Long) [RHEL-100603] {CVE-2025-37948}
+        - arm64: proton-pack: Expose whether the branchy loop k value (Waiman Long) [RHEL-100603]
+        - arm64: proton-pack: Expose whether the platform is mitigated by firmware (Waiman Long) [RHEL-100603]
+        - arm64: insn: Add support for encoding DSB (Waiman Long) [RHEL-100603]
+        - redhat/configs: Enable CONFIG_MITIGATION_ITS for x86 (Waiman Long) [RHEL-100603]
+        - selftest/x86/bugs: Add selftests for ITS (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/ibt: Keep IBT disabled during alternative patching (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/its: Align RETs in BHB clear sequence to avoid thunking (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/its: Add support for RSB stuffing mitigation (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/its: Add 'vmexit' option to skip mitigation on some CPUs (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/its: Enable Indirect Target Selection mitigation (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/its: Add support for ITS-safe return thunk (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/its: Add support for ITS-safe indirect thunk (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/its: Enumerate Indirect Target Selection (ITS) bug (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - Documentation: x86/bugs/its: Add ITS documentation (Waiman Long) [RHEL-100603 RHEL-92182] {CVE-2024-28956}
+        - x86/bhi: Do not set BHI_DIS_S in 32-bit mode (Waiman Long) [RHEL-100603]
+        - x86/bpf: Add IBHF call at end of classic BPF (Waiman Long) [RHEL-100603]
+        - x86/bpf: Call branch history clearing sequence on exit (Waiman Long) [RHEL-100603]
+        - arm64: errata: Assume that unknown CPUs _are_ vulnerable to Spectre BHB (Waiman Long) [RHEL-100603]
+        - arm64: errata: Add QCOM_KRYO_4XX_GOLD to the spectre_bhb_k24_list (Waiman Long) [RHEL-100603]
+        - x86/rfds: Exclude P-only parts from the RFDS affected list (Waiman Long) [RHEL-100603]
+        - x86/cpu: Update x86_match_cpu() to also use cpu-type (Waiman Long) [RHEL-100603]
+        - x86/cpu: Add cpu_type to struct x86_cpu_id (Waiman Long) [RHEL-100603]
+        - x86/cpu: Shorten CPU matching macro (Waiman Long) [RHEL-100603]
+        - x86/cpu: Fix the description of X86_MATCH_VFM_STEPS() (Waiman Long) [RHEL-100603]
+        - selftests: Warn about skipped tests in result summary (Waiman Long) [RHEL-100603]
+        - x86/cpu: Fix typo in x86_match_cpu()'s doc (Waiman Long) [RHEL-100603]
+        - x86/cpu: Expose only stepping min/max interface (Waiman Long) [RHEL-100603]
+        - x86/cpu: Add CPU type to struct cpuinfo_topology (Waiman Long) [RHEL-100603]
+        - x86/cpufeatures: Add X86_FEATURE_AMD_HETEROGENEOUS_CORES (Waiman Long) [RHEL-100603]
+        - x86/cpufeatures: Rename X86_FEATURE_FAST_CPPC to have AMD prefix (Waiman Long) [RHEL-100603]
+        - tools/include: Sync x86 headers with the kernel sources (Waiman Long) [RHEL-100603]
+        - selftests: ksft: Fix finished() helper exit code on skipped tests (Waiman Long) [RHEL-100603]
+        - kselftest: Move ksft helper module to common directory (Waiman Long) [RHEL-100603]
+        - platform/x86/intel/ifs: Switch to new Intel CPU model defines (Waiman Long) [RHEL-100603]
+        - x86/platform/atom: Switch to new Intel CPU model defines (Waiman Long) [RHEL-100603]
+        - cpufreq: Switch to new Intel CPU model defines (Waiman Long) [RHEL-100603]
+        - x86/bugs: Add 'spectre_bhi=vmexit' cmdline option (Waiman Long) [RHEL-100603]
+        - EDAC/skx: Switch to new Intel CPU model defines (Waiman Long) [RHEL-100603]
+        - EDAC/i10nm: Switch to new Intel CPU model defines (Waiman Long) [RHEL-100603]
+        - x86/cpu: Fix x86_match_cpu() to match just X86_VENDOR_INTEL (Waiman Long) [RHEL-100603]
+        - x86/aperfmperf: Switch to new Intel CPU model defines (Waiman Long) [RHEL-100603]
+        - x86/apic: Switch to new Intel CPU model defines (Waiman Long) [RHEL-100603]
+        - x86/bugs: Switch to new Intel CPU model defines (Waiman Long) [RHEL-100603]
+        - EDAC/i10nm: Add Intel Grand Ridge micro-server support (Waiman Long) [RHEL-100603]
+        - Revert 'sch_htb: make htb_qlen_notify() idempotent' (Patrick Talbert) [RHEL-108138]
+        - Revert 'sch_drr: make drr_qlen_notify() idempotent' (Patrick Talbert) [RHEL-108138]
+        - Revert 'sch_qfq: make qfq_qlen_notify() idempotent' (Patrick Talbert) [RHEL-108138]
+        - Revert 'codel: remove sch->q.qlen check before qdisc_tree_reduce_backlog()' (Patrick Talbert) [RHEL-108138]
+        - Revert 'sch_htb: make htb_deactivate() idempotent' (Patrick Talbert) [RHEL-108138]
+        - Revert 'net/sched: Always pass notifications when child class becomes empty' (Patrick Talbert) [RHEL-108138]
+
+        [5.14.0-570.34.1_6]
+        - i2c/designware: Fix an initialization issue (CKI Backport Bot) [RHEL-106625] {CVE-2025-38380}
+        - tls: always refresh the queue when reading sock (CKI Backport Bot) [RHEL-106081] {CVE-2025-38471}
+        - net: fix udp gso skb_segment after pull from frag_list (Guillaume Nault) [RHEL-103028] {CVE-2025-38124}
+        - mm/hugetlb: fix huge_pmd_unshare() vs GUP-fast race (Rafael Aquini) [RHEL-101246] {CVE-2025-38085}
+        - mm/hugetlb: unshare page tables during VMA split, not before (Rafael Aquini) [RHEL-101282] {CVE-2025-38084}
+        - mm: fix copy_vma() error handling for hugetlb mappings (Rafael Aquini) [RHEL-101282]
+        - Bluetooth: hci_core: Fix use-after-free in vhci_flush() (CKI Backport Bot) [RHEL-103256] {CVE-2025-38250}
+    FixedIn:
+        - Module: null
+          Name: kernel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-doc
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: libperf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: python3-perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: rtla
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+        - Module: null
+          Name: rv
+          NamespaceName: ol:9
+          Version: 0:5.14.0-570.35.1.0.1.el9_6
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-13962.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-28956.html
+              Name: CVE-2024-28956
+            - Link: https://linux.oracle.com/cve/CVE-2025-21867.html
+              Name: CVE-2025-21867
+            - Link: https://linux.oracle.com/cve/CVE-2025-38084.html
+              Name: CVE-2025-38084
+            - Link: https://linux.oracle.com/cve/CVE-2025-38085.html
+              Name: CVE-2025-38085
+            - Link: https://linux.oracle.com/cve/CVE-2025-38124.html
+              Name: CVE-2025-38124
+            - Link: https://linux.oracle.com/cve/CVE-2025-38159.html
+              Name: CVE-2025-38159
+            - Link: https://linux.oracle.com/cve/CVE-2025-38250.html
+              Name: CVE-2025-38250
+            - Link: https://linux.oracle.com/cve/CVE-2025-38380.html
+              Name: CVE-2025-38380
+            - Link: https://linux.oracle.com/cve/CVE-2025-38471.html
+              Name: CVE-2025-38471
+        Issued: "2025-08-19"
+        RefId: ELSA-2025-13962
+    Name: ELSA-2025-13962
+    NamespaceName: ol:9
+    Severity: High
