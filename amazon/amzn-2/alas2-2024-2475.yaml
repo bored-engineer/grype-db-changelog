@@ -1,56 +1,95 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: dm_table_create in drivers/md/dm-table.c in the Linux kernel through 6.7.4 can attempt to (in alloc_targets) allocate more than INT_MAX bytes, and crash, because of a missing check for struct dm_ioctl.target_count. (CVE-2023-52429)A flaw was found in the ATA over Ethernet (AoE) driver in the Linux kernel. The aoecmd_cfg_pkts() function improperly updates the refcnt on `struct net_device`, and a use-after-free can be triggered by racing between the free on the struct and the access through the `skbtxq` global queue. This could lead to a denial of service condition or potential code execution. (CVE-2023-6270)In rds_recv_track_latency in net/rds/af_rds.c in the Linux kernel through 6.7.1, there is an off-by-one error for an RDS_MSG_RX_DGRAM_TRACE_MAX comparison, resulting in out-of-bounds access. (CVE-2024-23849)copy_params in drivers/md/dm-ioctl.c in the Linux kernel through 6.7.1 can attempt to allocate more than INT_MAX bytes, and crash, because of a missing param_kernel->data_size check. This is related to ctl_ioctl. (CVE-2024-23851)
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.336-257.562
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.336-257.562
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2024-03-04"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.336-257.562.amzn2
           VersionFormat: rpm

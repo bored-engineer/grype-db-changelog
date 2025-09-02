@@ -1,16 +1,25 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A vulnerability was found in logrotate in how the state file is created. The state file is used to prevent parallel executions of multiple instances of logrotate by acquiring and releasing a file lock. When the state file does not exist, it is created with world-readable permission, allowing an unprivileged user to lock the state file, stopping any rotation. This flaw affects logrotate versions before 3.20.0. (CVE-2022-1348)
     FixedIn:
-        - Name: logrotate
+        - Available:
+            Date: "2022-11-01"
+            Kind: advisory
+          Name: logrotate
           NamespaceName: amzn:2022
           Version: 3.20.1-2.amzn2022.0.2
           VersionFormat: rpm
-        - Name: logrotate-debuginfo
+        - Available:
+            Date: "2022-11-01"
+            Kind: advisory
+          Name: logrotate-debuginfo
           NamespaceName: amzn:2022
           Version: 3.20.1-2.amzn2022.0.2
           VersionFormat: rpm
-        - Name: logrotate-debugsource
+        - Available:
+            Date: "2022-11-01"
+            Kind: advisory
+          Name: logrotate-debugsource
           NamespaceName: amzn:2022
           Version: 3.20.1-2.amzn2022.0.2
           VersionFormat: rpm

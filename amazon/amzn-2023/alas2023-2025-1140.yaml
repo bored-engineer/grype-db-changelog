@@ -1,44 +1,74 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in GnuTLS. A double-free vulnerability exists in GnuTLS due to incorrect ownership handling in the export logic of Subject Alternative Name (SAN) entries containing an otherName. If the type-id OID is invalid or malformed, GnuTLS will call asn1_delete_structure() on an ASN.1 node it does not own, leading to a double-free condition when the parent function or caller later attempts to free the same structure.This vulnerability can be triggered using only public GnuTLS APIs and may result in denial of service or memory corruption, depending on allocator behavior. (CVE-2025-32988)A heap-buffer-overread vulnerability was found in GnuTLS in how it handles the Certificate Transparency (CT) Signed Certificate Timestamp (SCT) extension during X.509 certificate parsing. This flaw allows a malicious user to create a certificate containing a malformed SCT extension (OID 1.3.6.1.4.1.11129.2.4.2) that contains sensitive data. This issue leads to the exposure of confidential information when GnuTLS verifies certificates from certain websites when the certificate (SCT) is not checked correctly. (CVE-2025-32989)A heap-buffer-overflow (off-by-one) flaw was found in the GnuTLS software in the template parsing logic within the certtool utility. When it reads certain settings from a template file, it allows an attacker to cause an out-of-bounds (OOB) NULL pointer write, resulting in memory corruption and a denial-of-service (DoS) that could potentially crash the system. (CVE-2025-32990)A NULL pointer dereference flaw was found in the GnuTLS software in _gnutls_figure_common_ciphersuite(). When it reads certain settings from a template file, it can allow an attacker to cause an out-of-bounds (OOB) NULL pointer write, resulting in memory corruption and a denial of service (DoS) that could crash the system. (CVE-2025-6395)
     FixedIn:
-        - Name: gnutls
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-c++
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-c++
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-c++-debuginfo
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-c++-debuginfo
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-dane
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-dane
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-dane-debuginfo
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-dane-debuginfo
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-debuginfo
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-debuginfo
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-debugsource
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-debugsource
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-devel
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-devel
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-utils
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-utils
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm
-        - Name: gnutls-utils-debuginfo
+        - Available:
+            Date: "2025-08-18"
+            Kind: advisory
+          Name: gnutls-utils-debuginfo
           NamespaceName: amzn:2023
           Version: 3.8.3-8.amzn2023.0.1
           VersionFormat: rpm

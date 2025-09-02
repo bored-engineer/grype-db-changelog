@@ -1,16 +1,25 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in the libreswan client plugin for NetworkManager (NetkworkManager-libreswan), where it fails to properly sanitize the VPN configuration from the local unprivileged user. In this configuration, composed by a key-value format, the plugin fails to escape special characters, leading the application to interpret values as keys. One of the most critical parameters that could be abused by a malicious user is the `leftupdown`key. This key takes an executable command as a value and is used to specify what executes as a callback in NetworkManager-libreswan to retrieve configuration settings back to NetworkManager. As NetworkManager uses Polkit to allow an unprivileged user to control the system's network configuration, a malicious actor could achieve local privilege escalation and potential code execution as root in the targeted machine by creating a malicious configuration. (CVE-2024-9050)
     FixedIn:
-        - Name: NetworkManager-libreswan
+        - Available:
+            Date: "2024-12-19"
+            Kind: advisory
+          Name: NetworkManager-libreswan
           NamespaceName: amzn:2
           Version: 1.2.4-4.amzn2
           VersionFormat: rpm
-        - Name: NetworkManager-libreswan-debuginfo
+        - Available:
+            Date: "2024-12-19"
+            Kind: advisory
+          Name: NetworkManager-libreswan-debuginfo
           NamespaceName: amzn:2
           Version: 1.2.4-4.amzn2
           VersionFormat: rpm
-        - Name: NetworkManager-libreswan-gnome
+        - Available:
+            Date: "2024-12-19"
+            Kind: advisory
+          Name: NetworkManager-libreswan-gnome
           NamespaceName: amzn:2
           Version: 1.2.4-4.amzn2
           VersionFormat: rpm

@@ -1,92 +1,158 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in grub 2, where a crafted 16-bit grayscale PNG image may lead to an out-of-bounds write. This flaw allows an attacker to corrupt the data on the heap portion of the grub2's memory, leading to possible code execution and the circumvention of the secure boot mechanism. (CVE-2021-3695)A flaw was found in grub2 when handling a PNG image header. When decoding the data contained in the Huffman table at the PNG file header, an out-of-bounds write may happen on grub's heap. (CVE-2021-3696)A flaw was found in grub2 when handling JPEG images. This flaw allows an attacker to craft a malicious JPEG image, which leads to an underflow on a grub2's internal pointer, leading to a heap-based out-of-bounds write. Secure-boot mechanisms circumvention and arbitrary code execution may also be achievable. (CVE-2021-3697)A flaw was found in grub2 when handling IPv4 packets. This flaw allows an attacker to craft a malicious packet, triggering an integer underflow in grub code. Consequently, the memory allocation for handling the packet data may be smaller than the size needed. This issue causes an out-of-bands write during packet handling, compromising data integrity, confidentiality issues, a denial of service, and remote code execution. (CVE-2022-28733)A flaw was found in grub2 when handling split HTTP headers. While processing a split HTTP header, grub2 wrongly advances its control pointer to the internal buffer by one position, which can lead to an out-of-bounds write. This flaw allows an attacker to leverage this issue by crafting a malicious set of HTTP packages making grub2 corrupt its internal memory metadata structure. This leads to data integrity and confidentiality issues or forces grub to crash, resulting in a denial of service attack. (CVE-2022-28734)A flaw was found in grub2. The shim_lock verifier from grub2 allows non-kernel files to be loaded when secure boot is enabled, giving the possibility of unverified code or modules to be loaded when it should not be allowed. (CVE-2022-28735)A use-after-free vulnerability was found on grub2's chainloader command. This flaw allows an attacker to gain access to restricted data or cause arbitrary code execution if they can establish control from grub's memory allocation pattern. (CVE-2022-28736)
     FixedIn:
-        - Name: grub2
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-common
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-common
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-debuginfo
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-debuginfo
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-debugsource
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-debugsource
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-efi-aa64-modules
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-efi-aa64-modules
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-efi-x64
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-efi-x64
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-efi-x64-cdboot
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-efi-x64-cdboot
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-efi-x64-ec2
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-efi-x64-ec2
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-efi-x64-modules
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-efi-x64-modules
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-emu
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-emu
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-emu-debuginfo
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-emu-debuginfo
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-emu-modules
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-emu-modules
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-pc
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-pc
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-pc-modules
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-pc-modules
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-tools
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-tools
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-tools-debuginfo
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-tools-debuginfo
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-tools-efi
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-tools-efi
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-tools-efi-debuginfo
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-tools-efi-debuginfo
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-tools-extra
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-tools-extra
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-tools-extra-debuginfo
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-tools-extra-debuginfo
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-tools-minimal
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-tools-minimal
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm
-        - Name: grub2-tools-minimal-debuginfo
+        - Available:
+            Date: "2022-07-20"
+            Kind: advisory
+          Name: grub2-tools-minimal-debuginfo
           NamespaceName: amzn:2022
           Version: 2.06-42.amzn2022.0.1
           VersionFormat: rpm

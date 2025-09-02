@@ -1,80 +1,137 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: An issue was discovered in Rsyslog v8.1908.0. contrib/pmaixforwardedfrom/pmaixforwardedfrom.c has a heap overflow in the parser for AIX log messages. The parser tries to locate a log message delimiter (in this case, a space or a colon) but fails to account for strings that do not satisfy this constraint. If the string does not match, then the variable lenMsg will reach the value zero and will skip the sanity check that detects invalid log messages. The message will then be considered valid, and the parser will eat up the nonexistent colon delimiter. In doing so, it will decrement lenMsg, a signed integer, whose value was zero and now becomes minus one. The following step in the parser is to shift left the contents of the message. To do this, it will call memmove with the right pointers to the target and destination strings, but the lenMsg will now be interpreted as a huge value, causing a heap overflow. (CVE-2019-17041)An issue was discovered in Rsyslog v8.1908.0. contrib/pmcisconames/pmcisconames.c has a heap overflow in the parser for Cisco log messages. The parser tries to locate a log message delimiter (in this case, a space or a colon), but fails to account for strings that do not satisfy this constraint. If the string does not match, then the variable lenMsg will reach the value zero and will skip the sanity check that detects invalid log messages. The message will then be considered valid, and the parser will eat up the nonexistent colon delimiter. In doing so, it will decrement lenMsg, a signed integer, whose value was zero and now becomes minus one. The following step in the parser is to shift left the contents of the message. To do this, it will call memmove with the right pointers to the target and destination strings, but the lenMsg will now be interpreted as a huge value, causing a heap overflow. (CVE-2019-17042)
     FixedIn:
-        - Name: rsyslog
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-crypto
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-crypto
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-debuginfo
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-debuginfo
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-doc
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-doc
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-elasticsearch
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-elasticsearch
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-gnutls
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-gnutls
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-gssapi
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-gssapi
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-kafka
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-kafka
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-libdbi
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-libdbi
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-mmaudit
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-mmaudit
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-mmjsonparse
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-mmjsonparse
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-mmkubernetes
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-mmkubernetes
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-mmnormalize
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-mmnormalize
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-mmsnmptrapd
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-mmsnmptrapd
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-mysql
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-mysql
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-pgsql
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-pgsql
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-relp
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-relp
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-snmp
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-snmp
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm
-        - Name: rsyslog-udpspoof
+        - Available:
+            Date: "2020-06-30"
+            Kind: advisory
+          Name: rsyslog-udpspoof
           NamespaceName: amzn:2
           Version: 8.24.0-52.amzn2
           VersionFormat: rpm

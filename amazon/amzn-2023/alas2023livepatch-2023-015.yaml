@@ -1,8 +1,11 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'A use-after-free vulnerability in the Linux kernel''s net/sched: cls_u32 component can be exploited to achieve local privilege escalation.If tcf_change_indev() fails, u32_set_parms() will immediately return an error after incrementing or decrementing the reference counter in tcf_bind_filter(). If an attacker can control the reference counter and set it to zero, they can cause the reference to be freed, leading to a use-after-free vulnerability.We recommend upgrading past commit 04c55383fa5689357bcdd2c8036725a55ed632bc. (CVE-2023-3609)A use-after-free vulnerability in the Linux kernel''s net/sched: cls_fw component can be exploited to achieve local privilege escalation.If tcf_change_indev() fails, fw_set_parms() will immediately return an error after incrementing or decrementing the reference counter in tcf_bind_filter(). If an attacker can control the reference counter and set it to zero, they can cause the reference to be freed, leading to a use-after-free vulnerability.We recommend upgrading past commit 0323bce598eea038714f941ce2b22541c46d488f. (CVE-2023-3776)'
     FixedIn:
-        - Name: kernel-livepatch-6.1.29-50.88
+        - Available:
+            Date: "2023-10-23"
+            Kind: advisory
+          Name: kernel-livepatch-6.1.29-50.88
           NamespaceName: amzn:2023
           Version: 1.0-2.amzn2023
           VersionFormat: rpm

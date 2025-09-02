@@ -1,56 +1,95 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'Guests can trigger NIC interface reset/abort/crash via netback It is possible for a guest to trigger a NIC interface reset/abort/crash in a Linux based network backend by sending certain kinds of packets. It appears to be an (unwritten?) assumption in the rest of the Linux network stack that packet protocol headers are all contained within the linear section of the SKB and some NICs behave badly if this is not the case. This has been reported to occur with Cisco (enic) and Broadcom NetXtrem II BCM5780 (bnx2x) though it may be an issue with other NICs/drivers as well. In case the frontend is sending requests with split headers, netback will forward those violating above mentioned assumption to the networking core, resulting in said misbehavior. (CVE-2022-3643)Guests can trigger deadlock in Linux netback driver T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] The patch for XSA-392 introduced another issue which might result in a deadlock when trying to free the SKB of a packet dropped due to the XSA-392 handling (CVE-2022-42328). Additionally when dropping packages for other reasons the same deadlock could occur in case of netpoll being active for the interface the xen-netback driver is connected to (CVE-2022-42329). (CVE-2022-42328)Guests can trigger deadlock in Linux netback driver T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] The patch for XSA-392 introduced another issue which might result in a deadlock when trying to free the SKB of a packet dropped due to the XSA-392 handling (CVE-2022-42328). Additionally when dropping packages for other reasons the same deadlock could occur in case of netpoll being active for the interface the xen-netback driver is connected to (CVE-2022-42329). (CVE-2022-42329)An issue was discovered in the Linux kernel through 6.0.10. l2cap_config_req in net/bluetooth/l2cap_core.c has an integer wraparound via L2CAP_CONF_REQ packets. (CVE-2022-45934)In the Linux kernel before 6.1.6, a NULL pointer dereference bug in the traffic control subsystem allows an unprivileged user to trigger a denial of service (system crash) via a crafted traffic control configuration that is set up with "tc qdisc" and "tc class" commands. This affects qdisc_graft in net/sched/sch_api.c. (CVE-2022-47929)In the Linux kernel, the following vulnerability has been resolved:udf: Fix preallocation discarding at indirect extent boundary (CVE-2022-48946)In the Linux kernel, the following vulnerability has been resolved:Bluetooth: L2CAP: Fix u8 overflow (CVE-2022-48947)In the Linux kernel, the following vulnerability has been resolved:igb: Initialize mailbox message for VF reset (CVE-2022-48949)In the Linux kernel, the following vulnerability has been resolved:ipv6: avoid use-after-free in ip6_fragment() (CVE-2022-48956)In the Linux kernel, the following vulnerability has been resolved:mac802154: fix missing INIT_LIST_HEAD in ieee802154_if_add() (CVE-2022-48972)In the Linux kernel, the following vulnerability has been resolved:HID: core: fix shift-out-of-bounds in hid_report_raw_event (CVE-2022-48978)In the Linux kernel, the following vulnerability has been resolved:media: v4l2-dv-timings.c: fix too strict blanking sanity checks (CVE-2022-48987)In the Linux kernel, the following vulnerability has been resolved:memcg: fix possible use-after-free in memcg_write_event_control() (CVE-2022-48988)In the Linux kernel, the following vulnerability has been resolved:mm/khugepaged: invoke MMU notifiers in shmem/file collapse paths (CVE-2022-48991)The Linux kernel does not correctly mitigate SMT attacks, as discovered through a strange pattern in the kernel API using STIBP as a mitigation, leaving the process exposed for a short period of time after a syscall. The kernel also does not issue an IBPB immediately during the syscall. (CVE-2023-0045)A NULL pointer dereference flaw was found in rawv6_push_pending_frames in net/ipv6/raw.c in the network subcomponent in the Linux kernel. This flaw causes the system to crash. (CVE-2023-0394)Detected a few exploitable gadgets that could leak secret memory through a side-channel such as MDS as well as insufficient hardening of the usercopy functions against spectre-v1. (CVE-2023-0459)There is a use-after-free vulnerability in the Linux Kernel which can be exploited to achieve local privilege escalation. To reach the vulnerability kernel configuration flag CONFIG_TLS or CONFIG_XFRM_ESPINTCP has to be configured, but the operation does not require any privilege.There is a use-after-free bug of icsk_ulp_data of a struct inet_connection_sock.When CONFIG_TLS is enabled, user can install a tls context (struct tls_context) on a connected tcp socket. The context is not cleared if this socket is disconnected and reused as a listener. If a new socket is created from the listener, the context is inherited and vulnerable.The setsockopt TCP_ULP operation does not require any privilege.We recommend upgrading past commit 2c02d41d71f90a5168391b6a5f2954112ba2307c (CVE-2023-0461)atm_tc_enqueue in net/sched/sch_atm.c in the Linux kernel through 6.1.4 allows attackers to cause a denial of service because of type confusion (non-negative numbers can sometimes indicate a TC_ACT_SHOT condition rather than valid classification results). (CVE-2023-23455)In the Linux kernel, the following vulnerability has been resolved:netfilter: ipset: Fix overflow before widen in the bitmap_ip_create() function. (CVE-2023-53032)'
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.304-226.531
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.304-226.531
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2023-02-07"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.304-226.531.amzn2
           VersionFormat: rpm

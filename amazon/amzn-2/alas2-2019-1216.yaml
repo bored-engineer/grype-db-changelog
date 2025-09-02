@@ -1,44 +1,74 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: An issue was discovered in OpenSSH. Due to the scp implementation being derived from 1983 rcp, the server chooses which files/directories are sent to the client. However, the scp client only performs cursory validation of the object name returned (only directory traversal attacks are prevented). A malicious scp server (or Man-in-The-Middle attacker) can overwrite arbitrary files in the scp client target directory. If recursive operation (-r) is performed, the server can manipulate subdirectories as well (for example, to overwrite the .ssh/authorized_keys file).(CVE-2019-6111)In OpenSSH, scp.c in the scp client allows remote SSH servers to bypass intended access restrictions via the filename of . or an empty filename. The impact is modifying the permissions of the target directory on the client side.(CVE-2018-20685)An issue was discovered in OpenSSH. Due to missing character encoding in the progress display, a malicious server (or Man-in-The-Middle attacker) can employ crafted object names to manipulate the client output, e.g., by using ANSI control codes to hide additional files being transferred. This affects refresh_progress_meter() in progressmeter.c.(CVE-2019-6109 )
     FixedIn:
-        - Name: openssh
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: openssh-askpass
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh-askpass
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: openssh-cavs
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh-cavs
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: openssh-clients
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh-clients
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: openssh-debuginfo
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh-debuginfo
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: openssh-keycat
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh-keycat
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: openssh-ldap
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh-ldap
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: openssh-server
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh-server
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: openssh-server-sysvinit
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: openssh-server-sysvinit
           NamespaceName: amzn:2
           Version: 7.4p1-16.amzn2.0.6
           VersionFormat: rpm
-        - Name: pam_ssh_agent_auth
+        - Available:
+            Date: "2019-05-29"
+            Kind: advisory
+          Name: pam_ssh_agent_auth
           NamespaceName: amzn:2
           Version: 0.10.3-2.16.amzn2.0.6
           VersionFormat: rpm

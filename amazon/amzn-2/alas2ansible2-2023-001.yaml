@@ -1,12 +1,18 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in Ansible, where a user's controller is vulnerable to template injection. This issue can occur through facts used in the template if the user is trying to put templates in multi-line YAML strings and the facts being handled do not routinely include special template characters. This flaw allows attackers to perform command injection, which discloses sensitive information. The highest threat from this vulnerability is to confidentiality and integrity. (CVE-2021-3583)
     FixedIn:
-        - Name: ansible
+        - Available:
+            Date: "2023-09-25"
+            Kind: advisory
+          Name: ansible
           NamespaceName: amzn:2
           Version: 2.9.23-1.amzn2
           VersionFormat: rpm
-        - Name: ansible-doc
+        - Available:
+            Date: "2023-09-25"
+            Kind: advisory
+          Name: ansible-doc
           NamespaceName: amzn:2
           Version: 2.9.23-1.amzn2
           VersionFormat: rpm

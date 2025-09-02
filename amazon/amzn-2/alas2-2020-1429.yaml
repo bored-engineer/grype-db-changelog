@@ -1,12 +1,18 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'The Mozilla Foundation Security Advisory describes this flaw as:On 32-bit builds, an out of bounds write could have occurred when processing an image larger than 4 GB in <code>GMPDecodeData</code>. It is possible that with enough effort this could have been exploited to run arbitrary code. This vulnerability affects Thunderbird < 68.7.0, Firefox ESR < 68.7, and Firefox < 75. (CVE-2020-6822)A flaw was found in Mozilla Firefox and Thunderbird. When parsing and validating SCTP chunks in WebRTC a memory buffer overflow could occur leading to memory corruption and an exploitable crash. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2020-6831)Under certain conditions, when handling a ReadableStream, a race condition can cause a use-after-free. We are aware of targeted attacks in the wild abusing this flaw. This vulnerability affects Thunderbird < 68.7.0, Firefox < 74.0.1, and Firefox ESR < 68.6.1. (CVE-2020-6820)Under certain conditions, when running the nsDocShell destructor, a race condition can cause a use-after-free. We are aware of targeted attacks in the wild abusing this flaw. This vulnerability affects Thunderbird < 68.7.0, Firefox < 74.0.1, and Firefox ESR < 68.6.1. (CVE-2020-6819)The Mozilla Foundation Security Advisory describes this flaw as:Mozilla developers reported memory safety bugs present in Firefox 74 and Firefox ESR 68.6. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Thunderbird < 68.7.0, Firefox ESR < 68.7, and Firefox < 75. (CVE-2020-6825)The Mozilla Foundation Security Advisory describes this flaw as:The ''Copy as cURL'' feature of Devtools'' network tab did not properly escape the HTTP POST data of a request, which can be controlled by the website. If a user used the ''Copy as cURL'' feature and pasted the command into a terminal, it could have resulted in the disclosure of local files. (CVE-2020-12392)When reading from areas partially or fully outside the source resource with WebGL''s <code>copyTexSubImage</code> method, the specification requires the returned values be zero. Previously, this memory was uninitialized, leading to potentially sensitive data disclosure. This vulnerability affects Thunderbird < 68.7.0, Firefox ESR < 68.7, and Firefox < 75. (CVE-2020-6821)Mozilla: Sender Email Address Spoofing using encoded Unicode characters (CVE-2020-12397)Memory safety flaws were found in Mozilla Firefox and Thunderbird. Memory corruption that an attacker could leverage with enough effort, could allow arbitrary code to run. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2020-12395)A flaw was found in Mozilla Firefox and Thunderbird. When running shutdown code for Web Worker, a race condition occurs leading to a use-after-free memory flaw that could lead to an exploitable crash. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2020-12387)'
     FixedIn:
-        - Name: thunderbird
+        - Available:
+            Date: "2020-05-20"
+            Kind: advisory
+          Name: thunderbird
           NamespaceName: amzn:2
           Version: 68.8.0-1.amzn2
           VersionFormat: rpm
-        - Name: thunderbird-debuginfo
+        - Available:
+            Date: "2020-05-20"
+            Kind: advisory
+          Name: thunderbird-debuginfo
           NamespaceName: amzn:2
           Version: 68.8.0-1.amzn2
           VersionFormat: rpm

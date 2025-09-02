@@ -1,56 +1,95 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'In the Linux kernel, the following vulnerability has been resolved:i2c: Fix a potential use after freeFree the adap structure only after we are done using it.This patch just moves the put_device() down a bit to avoid theuse after free.[wsa: added comment to the code, added Fixes tag] (CVE-2019-25162)A use-after-free flaw was found in the Linux kernel''s Atheros wireless adapter driver in the way a user forces the ath9k_htc_wait_for_target function to fail with some input messages. This flaw allows a local user to crash or potentially escalate their privileges on the system. (CVE-2022-1679)In l2cap_chan_put of l2cap_core, there is a possible use after free due to improper locking. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.Product: AndroidVersions: Android kernelAndroid ID: A-165329981References: Upstream kernel (CVE-2022-20566)A flaw was found in the Linux kernel''s KVM when attempting to set a SynIC IRQ. This issue makes it possible for a misbehaving VMM to write to SYNIC/STIMER MSRs, causing a NULL pointer dereference. This flaw allows an unprivileged local attacker on the host to issue specific ioctl calls, causing a kernel oops condition that results in a denial of service. (CVE-2022-2153)A use-after-free flaw was found in route4_change in the net/sched/cls_route.c filter implementation in the Linux kernel. This flaw allows a local user to crash the system and possibly lead to a local privilege escalation problem. (CVE-2022-2588)Non-transparent sharing of return predictor targets between contexts in some Intel(R) Processors may allow an authorized user to potentially enable information disclosure via local access. (CVE-2022-26373)A flaw was found in hw. The unprotected alternative channel of return branch target prediction in some Intel(R) Processors may allow an authorized user to enable information disclosure via local access. (CVE-2022-28693)Intel microprocessor generations 6 to 8 are affected by a new Spectre variant that is able to bypass their retpoline mitigation in the kernel to leak arbitrary data. An attacker with unprivileged user access can hijack return instructions to achieve arbitrary speculative code execution under certain microarchitecture-dependent conditions. (CVE-2022-29901)A memory corruption flaw was found in the Linux kernel''s Netfilter subsystem in the way a local user uses the libnetfilter_queue when analyzing a corrupted network packet. This flaw allows a local user to crash the system or a remote user to crash the system when the libnetfilter_queue is used by a local user. (CVE-2022-36946)In the Linux kernel, the following vulnerability has been resolved:x86/speculation: Fill RSB on vmexit for IBRS (CVE-2022-49611)In nf_tables_updtable, if nf_tables_table_enable returns an error, nft_trans_destroy is called to free the transaction object. nft_trans_destroy() calls list_del(), but the transaction was never placed on a list -- the list head is all zeroes, this results in a NULL pointer dereference. (CVE-2023-1095)'
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.291-218.527
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.291-218.527
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2022-09-13"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.291-218.527.amzn2
           VersionFormat: rpm

@@ -1,56 +1,95 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: The Serial Attached SCSI (SAS) implementation in the Linux kernel mishandles a mutex within libsas. This allows local users to cause a denial of service (deadlock) by triggering certain error-handling code. (CVE-2017-18232)The xfs_bmap_extents_to_btree function in fs/xfs/libxfs/xfs_bmap.c in the Linux kernel can cause a NULL pointer dereference in xfs_bmapi_write function. An attacker could trick a legitimate user or a privileged attacker could exploit this by mounting a crafted xfs filesystem image to cause a kernel panic and thus a denial of service. (CVE-2018-10323)The Linux kernel was found vulnerable to a NULL pointer dereference in the drivers/net/phy/mdio-bcm-unimac.c:unimac_mdio_probe() function caused by an unchecked return value from the platform_get_resource() function. A successful flaw exploitation can cause a system panic and a denial of service. This flaw is believed not to be an attacker triggerable as bad return value can be caused by hardware misconfiguration. (CVE-2018-8043)A flaw was found in the AMD Cryptographic Co-processor driver in the Linux kernel. An attacker, able to send invalid SHA type commands, could cause the system to crash. The highest threat from this vulnerability is to system availability. (CVE-2019-18808)A flaw was found in the Linux kernel. The CX23888 Integrated Consumer Infrared Controller probe code handles resource cleanup low memory conditions. A local attacker able to induce low memory conditions could use this flaw to crash the system. The highest threat from this vulnerability is to system availability. (CVE-2019-19054)A memory leak flaw was found in the adis_update_scan_mode_burst() function in drivers/iio/imu/adis_buffer.c in the Linux kernel. This flaw allows attackers to cause a denial of service. (CVE-2019-19061)Memory leaks in drivers/net/wireless/ath/ath9k/htc_hst.c in the Linux kernel through 5.3.11 allow attackers to cause a denial of service (memory consumption) by triggering wait_for_completion_timeout() failures. This affects the htc_config_pipe_credits() function, the htc_setup_complete() function, and the htc_connect_service() function, aka CID-853acf7caf10. (CVE-2019-19073)A memory leak in the ath9k_wmi_cmd() function in drivers/net/wireless/ath/ath9k/wmi.c in the Linux kernel through 5.3.11 allows attackers to cause a denial of service (memory consumption), aka CID-728c1e2a05e4. (CVE-2019-19074)A flaw was found in the way Linux kernel's KVM hypervisor handled deferred TLB flush requests from guest. A race condition may occur between the guest issuing a deferred TLB flush request to KVM, and then KVM handling and acknowledging it. This may result in invalid address translations from TLB being used to access guest memory, leading to a potential information leakage issue. An attacker may use this flaw to access guest memory locations that it should not have access to. (CVE-2019-3016)In the Android kernel in F2FS driver there is a possible out of bounds read due to a missing bounds check. This could lead to local information disclosure with system execution privileges needed. User interaction is not needed for exploitation. (CVE-2019-9445)A flaw was found in the ZRAM kernel module, where a user with a local account and the ability to read the /sys/class/zram-control/hot_add file can create ZRAM device nodes in the /dev/ directory. This read allocates kernel memory and is not accounted for a user that triggers the creation of that ZRAM device. With this vulnerability, continually reading the device may consume a large amount of system memory and cause the Out-of-Memory (OOM) killer to activate and terminate random userspace processes, possibly making the system inoperable. (CVE-2020-10781)A flaw was discovered in the XFS source in the Linux kernel. This flaw allows an attacker with the ability to mount an XFS filesystem, to trigger a denial of service while attempting to sync a file located on an XFS v5 image with crafted metadata. (CVE-2020-12655)A flaw null pointer dereference in the Linux kernel cgroupv2 subsystem in versions before 5.7.10 was found in the way when reboot the system. A local user could use this flaw to crash the system or escalate their privileges on the system. (CVE-2020-14356)In the Linux kernel 4.4 through 5.7.6, usbtest_disconnect in drivers/usb/misc/usbtest.c has a memory leak, aka CID-28ebeb8db770. (CVE-2020-15393)
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.192-147.314
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.192-147.314
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2020-08-24"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.192-147.314.amzn2
           VersionFormat: rpm

@@ -1,12 +1,18 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in the Linux kernel. A local attacker, able to inject conntrack netlink configuration, could overflow a local buffer causing crashes or triggering the use of incorrect protocol numbers in ctnetlink_parse_tuple_filter in net/netfilter/nf_conntrack_netlink.c. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2020-25211)In the Linux kernel through 5.8.7, local attackers able to inject conntrack netlink configuration could overflow a local buffer, causing crashes or triggering use of incorrect protocol numbers in ctnetlink_parse_tuple_filter in net/netfilter/nf_conntrack_netlink.c, aka CID-1cc5ef91d2ff. (CVE-2020-25211)A flaw was found in the capabilities check of the rados block device functionality in the Linux kernel. Incorrect capability checks could alllow a local user with root priviledges (but no capabilities) to add or remove Rados Block Devices from the system. (CVE-2020-25284)
     FixedIn:
-        - Name: kernel-livepatch-4.14.193-149.317
+        - Available:
+            Date: "2020-12-18"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.193-149.317
           NamespaceName: amzn:2
           Version: 1.0-3.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.193-149.317-debuginfo
+        - Available:
+            Date: "2020-12-18"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.193-149.317-debuginfo
           NamespaceName: amzn:2
           Version: 1.0-3.amzn2
           VersionFormat: rpm

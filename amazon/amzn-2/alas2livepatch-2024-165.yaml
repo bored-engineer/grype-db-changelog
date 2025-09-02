@@ -1,12 +1,18 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'An out-of-bounds access vulnerability involving netfilter was reported and fixed as: f1082dd31fe4 (netfilter: nf_tables: Reject tables of unsupported family); While creating a new netfilter table, lack of a safeguard against invalid nf_tables family (pf) values within `nf_tables_newtable` function enables an attacker to achieve out-of-bounds access. (CVE-2023-6040)In rds_recv_track_latency in net/rds/af_rds.c in the Linux kernel through 6.7.1, there is an off-by-one error for an RDS_MSG_RX_DGRAM_TRACE_MAX comparison, resulting in out-of-bounds access. (CVE-2024-23849)'
     FixedIn:
-        - Name: kernel-livepatch-4.14.336-253.554
+        - Available:
+            Date: "2024-02-20"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.336-253.554
           NamespaceName: amzn:2
           Version: 1.0-2.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.336-253.554-debuginfo
+        - Available:
+            Date: "2024-02-20"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.336-253.554-debuginfo
           NamespaceName: amzn:2
           Version: 1.0-2.amzn2
           VersionFormat: rpm

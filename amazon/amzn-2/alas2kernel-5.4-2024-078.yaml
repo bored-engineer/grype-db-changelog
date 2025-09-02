@@ -1,60 +1,102 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'A flaw was found in the smb client in the Linux kernel. A potential out-of-bounds error was seen in the smb2_parse_contexts() function. Validate offsets and lengths before dereferencing create contexts in smb2_parse_contexts(). (CVE-2023-52434)In the Linux kernel, the following vulnerability has been resolved:tls: fix race between async notify and socket closeThe submitting thread (one which called recvmsg/sendmsg)may exit as soon as the async crypto handler calls complete()so any code past that point risks touching already freed data.Try to avoid the locking and extra flags altogether.Have the main thread hold an extra reference, this waywe can depend solely on the atomic ref counter forsynchronization.Don''t futz with reiniting the completion, either, we are nowtightly controlling when completion fires. (CVE-2024-26583)In the Linux kernel, the following vulnerability has been resolved:net: tls: handle backlogging of crypto requestsSince we''re setting the CRYPTO_TFM_REQ_MAY_BACKLOG flag on ourrequests to the crypto API, crypto_aead_{encrypt,decrypt} can return-EBUSY instead of -EINPROGRESS in valid situations. For example, whenthe cryptd queue for AESNI is full (easy to trigger with anartificially low cryptd.cryptd_max_cpu_qlen), requests will be enqueuedto the backlog but still processed. In that case, the async callbackwill also be called twice: first with err == -EINPROGRESS, which itseems we can just ignore, then with err == 0.Compared to Sabrina''s original patch this version uses the newtls_*crypt_async_wait() helpers and converts the EBUSY toEINPROGRESS to avoid having to modify all the error handlingpaths. The handling is identical. (CVE-2024-26584)In the Linux kernel, the following vulnerability has been resolved: mlxsw: spectrum_acl_tcam: Fix stack corruption When tc filters are first added to a net device, the corresponding local port gets bound to an ACL group in the device. (CVE-2024-26586)In the Linux kernel, the following vulnerability has been resolved:drm/amdgpu: validate the parameters of bo mapping operations more clearly (CVE-2024-26922)In the Linux kernel, the following vulnerability has been resolved:af_unix: Fix garbage collector racing against connect() (CVE-2024-26923)In the Linux kernel, the following vulnerability has been resolved:nilfs2: fix OOB in nilfs_set_de_type (CVE-2024-26981)In the Linux kernel, the following vulnerability has been resolved:fs: sysfs: Fix reference leak in sysfs_break_active_protection() (CVE-2024-26993)In the Linux kernel, the following vulnerability has been resolved:serial: mxs-auart: add spinlock around changing cts state (CVE-2024-27000)In the Linux kernel, the following vulnerability has been resolved:clk: Get runtime PM before walking tree during disable_unused (CVE-2024-27004)In the Linux kernel, the following vulnerability has been resolved:tun: limit printing rate when illegal packet received by tun dev (CVE-2024-27013)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: Fix potential data-race in __nft_expr_type_get() (CVE-2024-27020)In the Linux kernel, the following vulnerability has been resolved:net: openvswitch: Fix Use-After-Free in ovs_ct_exit (CVE-2024-27395)In the Linux kernel, the following vulnerability has been resolved:irqchip/gic-v3-its: Prevent double free on error (CVE-2024-35847)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix information leak in btrfs_ioctl_logical_to_ino() (CVE-2024-35849)In the Linux kernel, the following vulnerability has been resolved:mlxsw: spectrum_acl_tcam: Fix memory leak when canceling rehash work (CVE-2024-35852)In the Linux kernel, the following vulnerability has been resolved:mlxsw: spectrum_acl_tcam: Fix memory leak during rehash (CVE-2024-35853)In the Linux kernel, the following vulnerability has been resolved:mlxsw: spectrum_acl_tcam: Fix possible use-after-free during rehash (CVE-2024-35854)In the Linux kernel, the following vulnerability has been resolved:mlxsw: spectrum_acl_tcam: Fix possible use-after-free during activity update (CVE-2024-35855)In the Linux kernel, the following vulnerability has been resolved:drm/client: Fully protect modes[] with dev->mode_config.mutex (CVE-2024-35950)In the Linux kernel, the following vulnerability has been resolved:kprobes: Fix possible use-after-free issue on kprobe registration (CVE-2024-35955)In the Linux kernel, the following vulnerability has been resolved:net/mlx5: Properly link new fs rules into the tree (CVE-2024-35960)In the Linux kernel, the following vulnerability has been resolved:ipv6: fix race condition between ipv6_get_ifaddr and ipv6_del_addr (CVE-2024-35969)In the Linux kernel, the following vulnerability has been resolved:geneve: fix header validation in geneve[6]_xmit_skb (CVE-2024-35973)In the Linux kernel, the following vulnerability has been resolved:i2c: smbus: fix NULL function pointer dereference (CVE-2024-35984)In the Linux kernel, the following vulnerability has been resolved:HID: i2c-hid: remove I2C_HID_READ_PENDING flag to prevent lock-up (CVE-2024-35997)In the Linux kernel, the following vulnerability has been resolved:i40e: Do not use WQ_MEM_RECLAIM flag for workqueue (CVE-2024-36004)In the Linux kernel, the following vulnerability has been resolved:mlxsw: spectrum_acl_tcam: Fix incorrect list API usage (CVE-2024-36006)In the Linux kernel, the following vulnerability has been resolved:mlxsw: spectrum_acl_tcam: Fix warning during rehash (CVE-2024-36007)'
     FixedIn:
-        - Name: bpftool
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: bpftool
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: bpftool-debuginfo
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: bpftool-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: kernel
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2024-08-13"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.275-189.375.amzn2
           VersionFormat: rpm

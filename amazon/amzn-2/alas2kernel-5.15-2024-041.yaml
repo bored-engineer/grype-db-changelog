@@ -1,64 +1,109 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'In the Linux kernel, the following vulnerability has been resolved:bpf: Defer the free of inner map when necessaryWhen updating or deleting an inner map in map array or map htab, the mapmay still be accessed by non-sleepable program or sleepable program.However bpf_map_fd_put_ptr() decreases the ref-counter of the inner mapdirectly through bpf_map_put(), if the ref-counter is the last one(which is true for most cases), the inner map will be freed byops->map_free() in a kworker. But for now, most .map_free() callbacksdon''t use synchronize_rcu() or its variants to wait for the elapse of aRCU grace period, so after the invocation of ops->map_free completes,the bpf program which is accessing the inner map may incuruse-after-free problem.Fix the free of inner map by invoking bpf_map_free_deferred() after bothone RCU grace period and one tasks trace RCU grace period if the innermap has been removed from the outer map before. The deferment isaccomplished by using call_rcu() or call_rcu_tasks_trace() whenreleasing the last ref-counter of bpf map. The newly-added rcu_headfield in bpf_map shares the same storage space with work field toreduce the size of bpf_map. (CVE-2023-52447)In the Linux kernel, the following vulnerability has been resolved:io_uring: drop any code related to SCM_RIGHTS (CVE-2023-52656)In the Linux kernel, the following vulnerability has been resolved:netfilter: nft_set_pipapo: release elements in clone only from destroy path (CVE-2024-26809)In the Linux kernel, the following vulnerability has been resolved:x86, relocs: Ignore relocations in .notes section (CVE-2024-26816)In the Linux kernel, the following vulnerability has been resolved:wireguard: receive: annotate data-race around receiving_counter.counter (CVE-2024-26861)In the Linux kernel, the following vulnerability has been resolved:packet: annotate data-races around ignore_outgoing (CVE-2024-26862)In the Linux kernel, the following vulnerability has been resolved:hsr: Fix uninit-value access in hsr_get_node() (CVE-2024-26863)In the Linux kernel, the following vulnerability has been resolved:quota: Fix potential NULL pointer dereference (CVE-2024-26878)In the Linux kernel, the following vulnerability has been resolved:dm: call the resume method on internal suspend (CVE-2024-26880)In the Linux kernel, the following vulnerability has been resolved:aoe: fix the potential use-after-free problem in aoecmd_cfg_pkts (CVE-2024-26898)In the Linux kernel, the following vulnerability has been resolved:do_sys_name_to_handle(): use kzalloc() to fix kernel-infoleak (CVE-2024-26901)In the Linux kernel, the following vulnerability has been resolved:nbd: null check for nla_nest_start (CVE-2024-27025)In the Linux kernel, the following vulnerability has been resolved:clk: Fix clk_core_get NULL dereference (CVE-2024-27038)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: do not compare internal table flags on updates (CVE-2024-27065)In the Linux kernel, the following vulnerability has been resolved:SUNRPC: fix some memleaks in gssx_dec_option_array (CVE-2024-27388)In the Linux kernel, the following vulnerability has been resolved:ipv6: mcast: remove one synchronize_net() barrier in ipv6_mc_down() (CVE-2024-27390)In the Linux kernel, the following vulnerability has been resolved:keys: Fix overwrite of key expiration on instantiation (CVE-2024-36031)'
     FixedIn:
-        - Name: bpftool
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: bpftool
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: bpftool-debuginfo
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: bpftool-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: kernel
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-5.15.153-100.162
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel-livepatch-5.15.153-100.162
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2024-04-17"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.153-100.162.amzn2
           VersionFormat: rpm

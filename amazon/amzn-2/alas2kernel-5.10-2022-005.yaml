@@ -1,64 +1,109 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in the Linux kernel's implementation of wireless drivers using the Atheros chipsets.  An attacker within wireless range could send crafted traffic leading to information disclosure. (CVE-2020-3702)A flaw was found in the KVM's AMD code for supporting SVM nested virtualization. The flaw occurs when processing the VMCB (virtual machine control block) provided by the L1 guest to spawn/handle a nested guest (L2). Due to improper validation of the "int_ctl" field, this issue could allow a malicious L1 to enable AVIC support (Advanced Virtual Interrupt Controller) for the L2 guest. As a result, the L2 guest would be allowed to read/write physical pages of the host, resulting in a crash of the entire system, leak of sensitive data or potential guest-to-host escape. (CVE-2021-3653)A flaw was found in the KVM's AMD code for supporting SVM nested virtualization. The flaw occurs when processing the VMCB (virtual machine control block) provided by the L1 guest to spawn/handle a nested guest (L2). Due to improper validation of the "virt_ext" field, this issue could allow a malicious L1 to disable both VMLOAD/VMSAVE intercepts and VLS (Virtual VMLOAD/VMSAVE) for the L2 guest. As a result, the L2 guest would be allowed to read/write physical pages of the host, resulting in a crash of the entire system, leak of sensitive data or potential guest-to-host escape. (CVE-2021-3656)A NULL pointer dereference flaw was found in the btrfs_rm_device function in fs/btrfs/volumes.c in the Linux Kernel, where triggering the bug requires 'CAP_SYS_ADMIN'. This flaw allows a local attacker to crash the system or leak kernel internal information. The highest threat from this vulnerability is to system availability. (CVE-2021-3739)A race problem was seen in the vt_k_ioctl in drivers/tty/vt/vt_ioctl.c in the Linux kernel, which may cause an out of bounds read in vt as the write access to vc_mode is not protected by lock-in vt_ioctl (KDSETMDE). The highest threat from this vulnerability is to data confidentiality. (CVE-2021-3753)A flaw was found in the Linux kernel. An integer overflow can allow an out-of-bounds write when many elements are placed in a hash's bucket. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2021-38166)A flaw was found in the Linux kernel. A race condition was discovered in the ext4 subsystem. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2021-40490)
     FixedIn:
-        - Name: bpftool
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: bpftool
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: bpftool-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: bpftool-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: kernel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-5.10.62-55.141
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-livepatch-5.10.62-55.141
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.62-55.141.amzn2
           VersionFormat: rpm

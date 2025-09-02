@@ -1,8 +1,11 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'x86: KVM: SVM: always update the x2avic msr interception (CVE-2023-5090)A heap out-of-bounds write vulnerability in the Linux kernel''s Linux Kernel Performance Events (perf) component can be exploited to achieve local privilege escalation.If perf_read_group() is called while an event''s sibling_list is smaller than its child''s sibling_list, it can increment or write to memory locations outside of the allocated buffer.We recommend upgrading past commit 32671e3799ca2e4590773fd0e63aaa4229e50c06. (CVE-2023-5717)A use-after-free vulnerability in the Linux kernel''s netfilter: nf_tables component can be exploited to achieve local privilege escalation.The function nft_trans_gc_catchall did not remove the catchall set element from the catchall_list when the argument sync is true, making it possible to free a catchall set element many times.We recommend upgrading past commit 93995bf4af2c5a99e2a87f0cd5ce547d31eb7630. (CVE-2023-6111)'
     FixedIn:
-        - Name: kernel-livepatch-6.1.59-84.139
+        - Available:
+            Date: "2023-12-18"
+            Kind: advisory
+          Name: kernel-livepatch-6.1.59-84.139
           NamespaceName: amzn:2023
           Version: 1.0-1.amzn2023
           VersionFormat: rpm

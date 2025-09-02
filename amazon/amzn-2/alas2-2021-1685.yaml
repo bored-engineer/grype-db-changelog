@@ -1,56 +1,95 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'A vulnerability was found in the bluez, where Passkey Entry protocol used in Secure Simple Pairing (SSP), Secure Connections (SC) and LE Secure Connections (LESC) of the Bluetooth Core Specification is vulnerable to an impersonation attack where an active attacker can impersonate the initiating device without any previous knowledge. (CVE-2020-26558)A flaw was found in the Linux kernel. Improper access control in BlueZ may allow an authenticated user to potentially enable information disclosure via adjacent access. The highest threat from this vulnerability is to data confidentiality and integrity. (CVE-2021-0129)A denial-of-service (DoS) flaw was identified  in the Linux kernel due to an incorrect memory barrier in xt_replace_table in net/netfilter/x_tables.c in the netfilter subsystem. (CVE-2021-29650)A flaw was found in the Linux kernel''s handling of the removal of Bluetooth HCI controllers. This flaw allows an attacker with a local account to exploit a race condition, leading to corrupted memory and possible privilege escalation. The highest threat from this vulnerability is to confidentiality, integrity, as well as system availability. (CVE-2021-32399)A use-after-free flaw was found in hci_send_acl in the bluetooth host controller interface (HCI) in Linux kernel, where a local attacker with an access rights could cause a denial of service problem on the system  The issue results from the object hchan, freed in hci_disconn_loglink_complete_evt, yet still used in other places. The highest threat from this vulnerability is to data integrity, confidentiality and system availability. (CVE-2021-33034)In kernel/bpf/verifier.c in the Linux kernel before 5.12.13, a branch can be mispredicted (e.g., because of type confusion) and consequently an unprivileged BPF program can read arbitrary memory locations via a side-channel attack, aka CID-9183671af6db. (CVE-2021-33624)A flaw double-free memory corruption in the Linux kernel HCI device initialization subsystem was found in the way user attach malicious HCI TTY Bluetooth device. A local user could use this flaw to crash the system. (CVE-2021-3564)A flaw use-after-free in function hci_sock_bound_ioctl() of the Linux kernel HCI subsystem was found in the way user calls ioct HCIUNBLOCKADDR or other way triggers race condition of the call hci_unregister_dev() together with one of the calls hci_sock_blacklist_add(), hci_sock_blacklist_del(), hci_get_conn_info(), hci_get_auth_info(). A privileged local user could use this flaw to crash the system or escalate their privileges on the system. (CVE-2021-3573)In the Linux kernel, the following vulnerability has been resolved:HID: usbhid: fix info leak in hid_submit_ctrlIn hid_submit_ctrl(), the way of calculating the report length doesn''ttake into account that report->size can be zero. When running thesyzkaller reproducer, a report of size 0 causes hid_submit_ctrl) tocalculate transfer_buffer_length as 16384. When this urb is passed tothe usb core layer, KMSAN reports an info leak of 16384 bytes.To fix this, first modify hid_report_len() to account for the zeroreport size case by using DIV_ROUND_UP for the division. Then, call itfrom hid_submit_ctrl(). (CVE-2021-46906)In the Linux kernel, the following vulnerability has been resolved:dm rq: fix double free of blk_mq_tag_set in dev remove after table load fails (CVE-2021-46938)In the Linux kernel, the following vulnerability has been resolved:tracing: Restructure trace_clock_global() to never block (CVE-2021-46939)In the Linux kernel, the following vulnerability has been resolved:md/raid1: properly indicate failure when ending a failed write requestThis patch addresses a data corruption bug in raid1 arrays using bitmaps.Without this fix, the bitmap bits for the failed I/O end up being cleared.Since we are in the failure leg of raid1_end_write_request, the requesteither needs to be retried (R1BIO_WriteError) or failed (R1BIO_Degraded). (CVE-2021-46950)In the Linux kernel, the following vulnerability has been resolved:ACPI: GTDT: Don''t corrupt interrupt mappings on watchdow probe failure (CVE-2021-46953)In the Linux kernel, the following vulnerability has been resolved:openvswitch: fix stack OOB read while fragmenting IPv4 packets (CVE-2021-46955)In the Linux kernel, the following vulnerability has been resolved:spi: Fix use-after-free with devm_spi_alloc_* (CVE-2021-46959)In the Linux kernel, the following vulnerability has been resolved:cifs: Return correct error code from smb2_get_enc_key (CVE-2021-46960)In the Linux kernel, the following vulnerability has been resolved:ACPI: scan: Fix a memory leak in an error handling path (CVE-2021-46985)In the Linux kernel, the following vulnerability has been resolved:netfilter: nftables: avoid overflows in nft_hash_buckets() (CVE-2021-46992)In the Linux kernel, the following vulnerability has been resolved:ARM: 9064/1: hw_breakpoint: Do not directly check the event''s overflow_handler hook (CVE-2021-47006)In the Linux kernel, the following vulnerability has been resolved:net:emac/emac-mac: Fix a use after free in emac_mac_tx_buf_send (CVE-2021-47013)In the Linux kernel, the following vulnerability has been resolved:bus: qcom: Put child node before return (CVE-2021-47054)In the Linux kernel, the following vulnerability has been resolved:mtd: require write permissions for locking and badblock ioctls (CVE-2021-47055)In the Linux kernel, the following vulnerability has been resolved:RDMA/rxe: Clear all QP fields if creation failed (CVE-2021-47078)In the Linux kernel, the following vulnerability has been resolved:ext4: fix bug on in ext4_es_cache_extent as ext4_split_extent_at failed (CVE-2021-47117)In the Linux kernel, the following vulnerability has been resolved:pid: take a reference when initializing `cad_pid` (CVE-2021-47118)In the Linux kernel, the following vulnerability has been resolved:drm/amdgpu: Fix a use-after-free (CVE-2021-47142)In the Linux kernel, the following vulnerability has been resolved:btrfs: do not BUG_ON in link_to_fixup_dir (CVE-2021-47145)In the Linux kernel, the following vulnerability has been resolved:mld: fix panic in mld_newpack() (CVE-2021-47146)In the Linux kernel, the following vulnerability has been resolved:tipc: skb_linearize the head skb when reassembling msgs (CVE-2021-47162)In the Linux kernel, the following vulnerability has been resolved:NFS: Don''t corrupt the value of pg_bytes_written in nfs_do_recoalesce() (CVE-2021-47166)In the Linux kernel, the following vulnerability has been resolved:NFS: fix an incorrect limit in filelayout_decode_layout() (CVE-2021-47168)In the Linux kernel, the following vulnerability has been resolved:net: usb: fix memory leak in smsc75xx_bind (CVE-2021-47171)In the Linux kernel, the following vulnerability has been resolved:iommu/vt-d: Fix sysfs leak in alloc_iommu() (CVE-2021-47177)In the Linux kernel, the following vulnerability has been resolved:net: bridge: fix vlan tunnel dst refcnt when egressing (CVE-2021-47222)In the Linux kernel, the following vulnerability has been resolved:net: bridge: fix vlan tunnel dst null pointer dereference (CVE-2021-47223)In the Linux kernel, the following vulnerability has been resolved:net: ipv4: fix memory leak in ip_mc_add1_src (CVE-2021-47238)In the Linux kernel, the following vulnerability has been resolved:netfilter: synproxy: Fix out of bounds when parsing TCP options (CVE-2021-47245)In the Linux kernel, the following vulnerability has been resolved:udp: fix race between close() and udp_abort() (CVE-2021-47248)In the Linux kernel, the following vulnerability has been resolved:net: rds: fix memory leak in rds_recvmsg (CVE-2021-47249)In the Linux kernel, the following vulnerability has been resolved:net: ipv4: fix memory leak in netlbl_cipsov4_add_std (CVE-2021-47250)In the Linux kernel, the following vulnerability has been resolved:gfs2: Fix use-after-free in gfs2_glock_shrink_scan (CVE-2021-47254)In the Linux kernel, the following vulnerability has been resolved:mm/memory-failure: make sure wait for page writeback in memory_failure (CVE-2021-47256)In the Linux kernel, the following vulnerability has been resolved:scsi: core: Fix error handling of scsi_host_alloc() (CVE-2021-47258)In the Linux kernel, the following vulnerability has been resolved:NFS: Fix use-after-free in nfs4_init_client() (CVE-2021-47259)In the Linux kernel, the following vulnerability has been resolved:NFS: Fix a potential NULL dereference in nfs_get_client() (CVE-2021-47260)In the Linux kernel, the following vulnerability has been resolved:tracing: Correct the length check which causes memory corruption (CVE-2021-47274)In the Linux kernel, the following vulnerability has been resolved:ftrace: Do not blindly read the ip address in ftrace_bug() (CVE-2021-47276)In the Linux kernel, the following vulnerability has been resolved:kvm: avoid speculation-based attacks from out-of-range memslot accesses (CVE-2021-47277)In the Linux kernel, the following vulnerability has been resolved:drm: Fix use-after-free read in drm_getunique() (CVE-2021-47280)'
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.238-182.421
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.238-182.421
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2021-07-16"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.238-182.421.amzn2
           VersionFormat: rpm

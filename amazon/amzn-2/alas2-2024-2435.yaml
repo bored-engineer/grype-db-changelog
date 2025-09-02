@@ -1,16 +1,25 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A vulnerability was found in Linux PAM. An unprivileged user that is not yet in a corresponding mount namespace with ~/tmp mounted as a polyinstantiated dir can place a FIFO there, and a subsequent attempt to login as this user with `pam_namespace` configured will cause the `openat()` in `protect_dir()` to block the attempt, causing a local denial of service. (CVE-2024-22365)
     FixedIn:
-        - Name: pam
+        - Available:
+            Date: "2024-02-05"
+            Kind: advisory
+          Name: pam
           NamespaceName: amzn:2
           Version: 1.1.8-23.amzn2.0.2
           VersionFormat: rpm
-        - Name: pam-debuginfo
+        - Available:
+            Date: "2024-02-05"
+            Kind: advisory
+          Name: pam-debuginfo
           NamespaceName: amzn:2
           Version: 1.1.8-23.amzn2.0.2
           VersionFormat: rpm
-        - Name: pam-devel
+        - Available:
+            Date: "2024-02-05"
+            Kind: advisory
+          Name: pam-devel
           NamespaceName: amzn:2
           Version: 1.1.8-23.amzn2.0.2
           VersionFormat: rpm

@@ -1,24 +1,39 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A bug was found in containerd's CRI implementation where programs inside a container can cause the containerd daemon to consume memory without bound during invocation of the ExecSync API. This can cause containerd to consume all available memory on the computer, denying service to other legitimate workloads. Kubernetes and crictl can both be configured to use containerd's CRI implementation; ExecSync may be used when running probes or when executing processes via an exec facility. (CVE-2022-31030)
     FixedIn:
-        - Name: containerd
+        - Available:
+            Date: "2022-06-06"
+            Kind: advisory
+          Name: containerd
           NamespaceName: amzn:2022
           Version: 1.4.13-3.amzn2022
           VersionFormat: rpm
-        - Name: containerd-debuginfo
+        - Available:
+            Date: "2022-06-06"
+            Kind: advisory
+          Name: containerd-debuginfo
           NamespaceName: amzn:2022
           Version: 1.4.13-3.amzn2022
           VersionFormat: rpm
-        - Name: containerd-debugsource
+        - Available:
+            Date: "2022-06-06"
+            Kind: advisory
+          Name: containerd-debugsource
           NamespaceName: amzn:2022
           Version: 1.4.13-3.amzn2022
           VersionFormat: rpm
-        - Name: containerd-stress
+        - Available:
+            Date: "2022-06-06"
+            Kind: advisory
+          Name: containerd-stress
           NamespaceName: amzn:2022
           Version: 1.4.13-3.amzn2022
           VersionFormat: rpm
-        - Name: containerd-stress-debuginfo
+        - Available:
+            Date: "2022-06-06"
+            Kind: advisory
+          Name: containerd-stress-debuginfo
           NamespaceName: amzn:2022
           Version: 1.4.13-3.amzn2022
           VersionFormat: rpm

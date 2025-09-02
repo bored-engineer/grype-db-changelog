@@ -1,8 +1,11 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: Envoy is a cloud-native, open source edge and service proxy. The HTTP/2 protocol stack in Envoy versions prior to 1.29.3, 1.28.2, 1.27.4, and 1.26.8 are vulnerable to CPU exhaustion due to flood of CONTINUATION frames. Envoy's HTTP/2 codec allows the client to send an unlimited number of CONTINUATION frames even after exceeding Envoy's header map limits. This allows an attacker to send a sequence of CONTINUATION frames without the END_HEADERS bit set causing CPU utilization, consuming approximately 1 core per 300Mbit/s of traffic and culminating in denial of service through CPU exhaustion. Users should upgrade to version 1.29.3, 1.28.2, 1.27.4, or 1.26.8 to mitigate the effects of the CONTINUATION flood. As a workaround, disable HTTP/2 protocol for downstream connections. (CVE-2024-30255)dd-trace-cpp is the Datadog distributed tracing for C++. When the library fails to extract trace context due to malformed unicode, it logs the list of audited headers and their values using the `nlohmann` JSON library. However, due to the way the JSON library is invoked, it throws an uncaught exception, which results in a crash. This vulnerability has been patched in version 0.2.2. (CVE-2024-38525)
     FixedIn:
-        - Name: ecs-service-connect-agent
+        - Available:
+            Date: "2024-07-22"
+            Kind: advisory
+          Name: ecs-service-connect-agent
           NamespaceName: amzn:2
           Version: v1.29.6.0-1.amzn2
           VersionFormat: rpm

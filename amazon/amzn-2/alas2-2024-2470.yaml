@@ -1,16 +1,25 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: Empty or malformed p256-ECDH public keys may trigger a segmentation fault due values being improperly sanitized before being copied into memory and used. This vulnerability affects Firefox ESR < 60.8, Firefox < 68, and Thunderbird < 60.8. (CVE-2019-11729)A heap-based buffer overflow was found in the NSC_EncryptUpdate() function in Mozilla nss. A remote attacker could trigger this flaw via SRTP encrypt or decrypt operations, to execute arbitrary code with the permissions of the user running the application (compiled with nss). While the attack complexity is high, the impact to confidentiality, integrity, and availability are high as well. (CVE-2019-11745)
     FixedIn:
-        - Name: nss-util
+        - Available:
+            Date: "2024-02-19"
+            Kind: advisory
+          Name: nss-util
           NamespaceName: amzn:2
           Version: 3.44.0-4.amzn2
           VersionFormat: rpm
-        - Name: nss-util-debuginfo
+        - Available:
+            Date: "2024-02-19"
+            Kind: advisory
+          Name: nss-util-debuginfo
           NamespaceName: amzn:2
           Version: 3.44.0-4.amzn2
           VersionFormat: rpm
-        - Name: nss-util-devel
+        - Available:
+            Date: "2024-02-19"
+            Kind: advisory
+          Name: nss-util-devel
           NamespaceName: amzn:2
           Version: 3.44.0-4.amzn2
           VersionFormat: rpm

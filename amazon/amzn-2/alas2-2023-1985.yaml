@@ -1,16 +1,25 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: In Sudo before 1.9.12p2, the sudoedit (aka -e) feature mishandles extra arguments passed in the user-provided environment variables (SUDO_EDITOR, VISUAL, and EDITOR), allowing a local attacker to append arbitrary entries to the list of files to process. This can lead to privilege escalation. Affected versions are 1.8.0 through 1.9.12.p1. The problem exists because a user-specified editor may contain a "--" argument that defeats a protection mechanism, e.g., an EDITOR='vim -- /path/to/extra/file' value. (CVE-2023-22809)
     FixedIn:
-        - Name: sudo
+        - Available:
+            Date: "2023-03-06"
+            Kind: advisory
+          Name: sudo
           NamespaceName: amzn:2
           Version: 1.8.23-10.amzn2.3.1
           VersionFormat: rpm
-        - Name: sudo-debuginfo
+        - Available:
+            Date: "2023-03-06"
+            Kind: advisory
+          Name: sudo-debuginfo
           NamespaceName: amzn:2
           Version: 1.8.23-10.amzn2.3.1
           VersionFormat: rpm
-        - Name: sudo-devel
+        - Available:
+            Date: "2023-03-06"
+            Kind: advisory
+          Name: sudo-devel
           NamespaceName: amzn:2
           Version: 1.8.23-10.amzn2.3.1
           VersionFormat: rpm

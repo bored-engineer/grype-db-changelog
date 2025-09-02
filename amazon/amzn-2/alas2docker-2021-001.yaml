@@ -1,12 +1,18 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in the `userns-remap` feature of Docker. The root user in the remapped namespace can modify files under /var/lib/docker/<remapping>, leading to possible privilege escalation to the root user in the host. The highest threat from this vulnerability is to data integrity. (CVE-2021-21284)A flaw was found in Docker. Pulling an intentionally malformed Docker image manifest could lead to a crash of the `dockerd` daemon, resulting in a denial of service. The highest threat from this vulnerability is to system availability. (CVE-2021-21285)
     FixedIn:
-        - Name: docker
+        - Available:
+            Date: "2021-11-18"
+            Kind: advisory
+          Name: docker
           NamespaceName: amzn:2
           Version: 20.10.4-1.amzn2
           VersionFormat: rpm
-        - Name: docker-debuginfo
+        - Available:
+            Date: "2021-11-18"
+            Kind: advisory
+          Name: docker-debuginfo
           NamespaceName: amzn:2
           Version: 20.10.4-1.amzn2
           VersionFormat: rpm

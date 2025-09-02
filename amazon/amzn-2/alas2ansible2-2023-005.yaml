@@ -1,12 +1,18 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in the Ansible Engine, in ansible-engine 2.8.x before 2.8.15 and ansible-engine 2.9.x before 2.9.13, when installing packages using the dnf module. GPG signatures are ignored during installation even when disable_gpg_check is set to False, which is the default behavior. This flaw leads to malicious packages being installed on the system and arbitrary code executed via package installation scripts. The highest threat from this vulnerability is to integrity and system availability. (CVE-2020-14365)
     FixedIn:
-        - Name: ansible
+        - Available:
+            Date: "2023-09-25"
+            Kind: advisory
+          Name: ansible
           NamespaceName: amzn:2
           Version: 2.9.13-1.amzn2
           VersionFormat: rpm
-        - Name: ansible-doc
+        - Available:
+            Date: "2023-09-25"
+            Kind: advisory
+          Name: ansible-doc
           NamespaceName: amzn:2
           Version: 2.9.13-1.amzn2
           VersionFormat: rpm

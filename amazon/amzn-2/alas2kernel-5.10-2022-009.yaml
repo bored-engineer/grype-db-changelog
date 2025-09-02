@@ -1,64 +1,109 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'A denial of service flaw for virtual machine guests in the Linux kernel''s Xen hypervisor subsystem was found in the way users call some interrupts with high frequency from one of the guests.A local user could use this flaw to starve the resources resulting in a denial of service. (CVE-2021-28711)A denial of service flaw for virtual machine guests in the Linux kernel''s Xen hypervisor subsystem was found in the way users call some interrupts with high frequency from one of the guests.A local user could use this flaw to starve the resources resulting in a denial of service. (CVE-2021-28712)A denial of service flaw for virtual machine guests in the Linux kernel''s Xen hypervisor subsystem was found in the way users call some interrupts with high frequency from one of the guests.A local user could use this flaw to starve the resources resulting in a denial of service. (CVE-2021-28713)Incoming data packets for a guest in the Linux kernel''s netback driver are buffered until the guest is ready to process them. There are some measures taken for avoiding to pile up too much data, but those can be bypassed by the guest: The timeout could even never trigger if the guest manages to have only one free slot in its RX queue ring page and the next package would require more than one free slot, which may be the case when using GSO, XDP, or software hashing. (CVE-2021-28714)Incoming data packets for a guest in the Linux kernel''s netback driver are buffered until the guest is ready to process them. There are some measures taken for avoiding to pile up too much data, but those can be bypassed by the guest: There is a timeout how long the client side of an interface can stop consuming new packets before it is assumed to have stalled, but this timeout is rather long (60 seconds by default). Using a UDP connection on a fast interface can easily accumulate gigabytes of data in that time. (CVE-2021-28715)A flaw was found in the Linux kernel''s implementation of RDMA over infiniband. An attacker with a privileged local account can leak kernel stack information when issuing commands to the /dev/infiniband/rdma_cm device node. While this access is unlikely to leak sensitive user information, it can be further used to defeat existing kernel protection mechanisms. (CVE-2021-3923)A flaw memory leak in the Linux kernel''s eBPF for the Simulated networking device driver in the way user uses BPF for the device such that function nsim_map_alloc_elem being called. A local user could use this flaw to get unauthorized access to some data. (CVE-2021-4135)A data leak flaw was found in the way XFS_IOC_ALLOCSP IOCTL in the XFS filesystem allowed for size increase of files with unaligned size. A local attacker could use this flaw to leak data on the XFS filesystem otherwise not accessible to them. (CVE-2021-4155)An out-of-bounds write flaw was found in the Linux kernel''s Aquantia AQtion Ethernet card Atlantic driver in the way the ethernet card provides malicious input to the driver. This flaw allows a local user to emulate the networking device and crash the system. The highest threat from this vulnerability is to confidentiality, integrity, as well as system availability. (CVE-2021-43975)In the Linux kernel, the following vulnerability has been resolved:sctp: use call_rcu to free endpoint (CVE-2021-46929)In the Linux kernel, the following vulnerability has been resolved:net/mlx5e: Wrap the tx reporter dump callback to extract the sq (CVE-2021-46931)In the Linux kernel, the following vulnerability has been resolved:i2c: validate user data in compat ioctlWrong user data may cause warning in i2c_transfer(), ex: zero msgs.Userspace should not be able to trigger warnings, so this patch addsvalidation checks for user data in compact ioctl to prevent reportedwarnings (CVE-2021-46934)In the Linux kernel, the following vulnerability has been resolved:net: fix use-after-free in tw_timer_handler (CVE-2021-46936)In the Linux kernel, the following vulnerability has been resolved:mm/hwpoison: clear MF_COUNT_INCREASED before retrying get_any_page() (CVE-2021-47090)In the Linux kernel, the following vulnerability has been resolved:Input: elantech - fix stack out of bound access in elantech_change_report_id() (CVE-2021-47097)In the Linux kernel, the following vulnerability has been resolved:i40e: Fix NULL pointer dereference in i40e_dbg_dump_desc (CVE-2021-47501)In the Linux kernel, the following vulnerability has been resolved:aio: fix use-after-free due to missing POLLFREE handling (CVE-2021-47505)In the Linux kernel, the following vulnerability has been resolved:nfsd: fix use-after-free due to delegation race (CVE-2021-47506)In the Linux kernel, the following vulnerability has been resolved:nfsd: Fix nsfd startup race (again) (CVE-2021-47507)In the Linux kernel, the following vulnerability has been resolved:net/sched: fq_pie: prevent dismantle issue (CVE-2021-47512)In the Linux kernel, the following vulnerability has been resolved:devlink: fix netns refcount leak in devlink_nl_cmd_reload() (CVE-2021-47514)In the Linux kernel, the following vulnerability has been resolved:seg6: fix the iif in the IPv6 socket control block (CVE-2021-47515)In the Linux kernel, the following vulnerability has been resolved:ethtool: do not perform operations on net devices being unregistered (CVE-2021-47517)In the Linux kernel, the following vulnerability has been resolved:serial: core: fix transmit-buffer reset and memleak (CVE-2021-47527)In the Linux kernel, the following vulnerability has been resolved:rxrpc: Fix rxrpc_local leak in rxrpc_lookup_peer() (CVE-2021-47538)In the Linux kernel, the following vulnerability has been resolved:rxrpc: Fix rxrpc_peer leak in rxrpc_look_up_bundle() (CVE-2021-47539)In the Linux kernel, the following vulnerability has been resolved:net/mlx4_en: Fix an use-after-free bug in mlx4_en_try_alloc_resources() (CVE-2021-47541)In the Linux kernel, the following vulnerability has been resolved:net: qlogic: qlcnic: Fix a NULL pointer dereference in qlcnic_83xx_add_rings() (CVE-2021-47542)In the Linux kernel, the following vulnerability has been resolved:tcp: fix page frag corruption on page fault (CVE-2021-47544)In the Linux kernel, the following vulnerability has been resolved:ipv6: fix memory leak in fib6_rule_suppress (CVE-2021-47546)In the Linux kernel, the following vulnerability has been resolved:ethernet: hisilicon: hns: hns_dsaf_misc: fix a possible array overflow in hns_dsaf_ge_srst_by_port() (CVE-2021-47548)In the Linux kernel, the following vulnerability has been resolved:drm/amd/amdgpu: fix potential memleak (CVE-2021-47550)In the Linux kernel, the following vulnerability has been resolved:sched/scs: Reset task stack state in bringup_cpu() (CVE-2021-47553)In the Linux kernel, the following vulnerability has been resolved:net: vlan: fix underflow for the real_dev refcnt (CVE-2021-47555)In the Linux kernel, the following vulnerability has been resolved:net/sched: sch_ets: don''t peek at classes beyond ''nbands'' (CVE-2021-47557)In the Linux kernel, the following vulnerability has been resolved:mlxsw: spectrum: Protect driver from buggy firmware (CVE-2021-47560)In the Linux kernel, the following vulnerability has been resolved:scsi: mpt3sas: Fix kernel panic during drive powercycle test (CVE-2021-47565)In the Linux kernel, the following vulnerability has been resolved:proc/vmcore: fix clearing user buffer by properly using clear_user() (CVE-2021-47566)In the Linux kernel, the following vulnerability has been resolved:net: nexthop: fix null pointer dereference when IPv6 is not enabled (CVE-2021-47572)In the Linux kernel, the following vulnerability has been resolved:scsi: scsi_debug: Sanity check block descriptor length in resp_mode_select() (CVE-2021-47576)In the Linux kernel, the following vulnerability has been resolved:scsi: scsi_debug: Don''t call kcalloc() if size arg is zero (CVE-2021-47578)In the Linux kernel, the following vulnerability has been resolved:ovl: fix warning in ovl_create_real() (CVE-2021-47579)In the Linux kernel, the following vulnerability has been resolved:scsi: scsi_debug: Fix type in min_t to avoid stack OOB (CVE-2021-47580)In the Linux kernel, the following vulnerability has been resolved:iocost: Fix divide-by-zero on donation from low hweight cgroup (CVE-2021-47584)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix memory leak in __add_inode_ref() (CVE-2021-47585)In the Linux kernel, the following vulnerability has been resolved:sit: do not call ipip6_dev_free() from sit_init_net() (CVE-2021-47588)In the Linux kernel, the following vulnerability has been resolved:igbvf: fix double free in `igbvf_probe` (CVE-2021-47589)In the Linux kernel, the following vulnerability has been resolved:mptcp: clear ''kern'' flag from fallback sockets (CVE-2021-47593)In the Linux kernel, the following vulnerability has been resolved:inet_diag: fix kernel-infoleak for UDP sockets (CVE-2021-47597)In the Linux kernel, the following vulnerability has been resolved:sch_cake: do not call cake_destroy() from cake_init() (CVE-2021-47598)In the Linux kernel, the following vulnerability has been resolved:dm btree remove: fix use after free in rebalance_children() (CVE-2021-47600)In the Linux kernel, the following vulnerability has been resolved:audit: improve robustness of the audit queue handling (CVE-2021-47603)In the Linux kernel, the following vulnerability has been resolved:net: netlink: af_netlink: Prevent empty skb by adding a check on len. (CVE-2021-47606)In the Linux kernel, the following vulnerability has been resolved:firmware: arm_scpi: Fix string overflow in SCPI genpd driver (CVE-2021-47609)A heap-based buffer overflow flaw was found in the way the legacy_parse_param function in the Filesystem Context functionality of the Linux kernel verified the supplied parameters length. An unprivileged (in case of unprivileged user namespaces enabled, otherwise needs namespaced CAP_SYS_ADMIN privilege) local user able to open a filesystem that does not support the Filesystem Context API (and thus fallbacks to legacy handling) could use this flaw to escalate their privileges on the system. (CVE-2022-0185)'
     FixedIn:
-        - Name: bpftool
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: bpftool
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: bpftool-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: bpftool-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: kernel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-5.10.93-87.444
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-livepatch-5.10.93-87.444
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.10.93-87.444.amzn2
           VersionFormat: rpm

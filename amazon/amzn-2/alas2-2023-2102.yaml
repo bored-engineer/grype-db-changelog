@@ -1,12 +1,18 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A heap use after free issue was found in Opensc before version 0.22.0 in sc_file_valid. (CVE-2021-42779)A use after return issue was found in Opensc before version 0.22.0 in insert_pin function that could potentially crash programs using the library. (CVE-2021-42780)Heap buffer overflow issues were found in Opensc before version 0.22.0 in pkcs15-oberthur.c that could potentially crash programs using the library. (CVE-2021-42781)Stack buffer overflow issues were found in Opensc before version 0.22.0 in various places that could potentially crash programs using the library. (CVE-2021-42782)A vulnerbility was found in OpenSC. This security flaw cause a buffer overrun vulnerability in pkcs15 cardos_have_verifyrc_package. The attacker can supply a smart card package with malformed ASN1 context. The cardos_have_verifyrc_package function scans the ASN1 buffer for 2 tags, where remaining length is wrongly caculated due to moved starting pointer. This leads to possible heap-based buffer oob read. In cases where ASAN is enabled while compiling this causes a crash. Further info leak or more damage is possible. (CVE-2023-2977)
     FixedIn:
-        - Name: opensc
+        - Available:
+            Date: "2023-06-27"
+            Kind: advisory
+          Name: opensc
           NamespaceName: amzn:2
           Version: 0.19.0-5.amzn2
           VersionFormat: rpm
-        - Name: opensc-debuginfo
+        - Available:
+            Date: "2023-06-27"
+            Kind: advisory
+          Name: opensc-debuginfo
           NamespaceName: amzn:2
           Version: 0.19.0-5.amzn2
           VersionFormat: rpm

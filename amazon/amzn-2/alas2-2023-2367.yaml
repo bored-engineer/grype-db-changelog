@@ -1,116 +1,200 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: When doing NTLM authentication, the client sends replies tocryptographic challenges back to the server. These replieshave variable length. Winbind did not properly bounds-checkthe lan manager response length, which despite the lanmanager version no longer being used is still part of theprotocol.If the system is running Samba's ntlm_auth as authentication backendfor services like Squid (or a very unusual configuration withFreeRADIUS), the vulnarebility is remotely exploitableIf not so configured, or to exploit this vulnerability locally, theuser must have access to the privileged winbindd UNIX domainsocket (a subdirectory with name 'winbindd_privileged' under "statedirectory", as set in the smb.conf).This access is normally only given so special system services likeSquid or FreeRADIUS, that use this feature. (CVE-2022-2127)SMB client can truncate files to 0 bytes by opening files with OVERWRITE disposition when using the acl_xattr Samba VFS module with the smb.conf setting "acl_xattr:ignore system acls = yes" (CVE-2023-4091)
     FixedIn:
-        - Name: ctdb
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: ctdb
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: ctdb-tests
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: ctdb-tests
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: libsmbclient
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: libsmbclient
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: libsmbclient-devel
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: libsmbclient-devel
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: libwbclient
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: libwbclient
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: libwbclient-devel
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: libwbclient-devel
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-client
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-client
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-client-libs
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-client-libs
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-common
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-common
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-common-libs
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-common-libs
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-common-tools
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-common-tools
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-dc
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-dc
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-dc-libs
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-dc-libs
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-debuginfo
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-debuginfo
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-devel
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-devel
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-krb5-printing
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-krb5-printing
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-libs
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-libs
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-pidl
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-pidl
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-python
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-python
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-python-test
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-python-test
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-test
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-test
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-test-libs
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-test-libs
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-vfs-glusterfs
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-vfs-glusterfs
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-winbind
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-winbind
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-winbind-clients
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-winbind-clients
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-winbind-krb5-locator
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-winbind-krb5-locator
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm
-        - Name: samba-winbind-modules
+        - Available:
+            Date: "2023-12-04"
+            Kind: advisory
+          Name: samba-winbind-modules
           NamespaceName: amzn:2
           Version: 4.10.16-24.amzn2.0.4
           VersionFormat: rpm

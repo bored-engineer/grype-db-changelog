@@ -1,16 +1,25 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in containerd. Access controls for the shim's API socket verified that a connecting process had an effective UID of 0, but otherwise did not restrict access to the abstract Unix domain socket. This could allow malicious containers running in the same network namespace as the shim, with an effective UID of 0 but otherwise reduced privileges, to cause new processes to be run with elevated privileges. The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2020-15257)
     FixedIn:
-        - Name: containerd
+        - Available:
+            Date: "2021-11-18"
+            Kind: advisory
+          Name: containerd
           NamespaceName: amzn:2
           Version: 1.4.1-2.amzn2
           VersionFormat: rpm
-        - Name: containerd-debuginfo
+        - Available:
+            Date: "2021-11-18"
+            Kind: advisory
+          Name: containerd-debuginfo
           NamespaceName: amzn:2
           Version: 1.4.1-2.amzn2
           VersionFormat: rpm
-        - Name: containerd-stress
+        - Available:
+            Date: "2021-11-18"
+            Kind: advisory
+          Name: containerd-stress
           NamespaceName: amzn:2
           Version: 1.4.1-2.amzn2
           VersionFormat: rpm

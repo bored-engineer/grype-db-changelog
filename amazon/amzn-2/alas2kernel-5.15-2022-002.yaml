@@ -1,64 +1,109 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'In the Linux kernel, the following vulnerability has been resolved:drm/plane: Move range check for format_count earlier (CVE-2021-47659)In the Linux kernel, the following vulnerability has been resolved:fs/ntfs3: Fix some memory leaks in an error handling path of ''log_replay()'' (CVE-2021-47660)A use-after-free flaw was found in fs/ext4/namei.c:dx_insert_block() in the Linux kernel''s filesystem sub-component. This flaw allows a local attacker with a user privilege to cause a denial of service. (CVE-2022-1184)With shadow paging enabled, the INVPCID instruction results in a call to kvm_mmu_invpcid_gva. If INVPCID is executed with CR0.PG=0, the invlpg callback is not set and the result is a NULL pointer dereference. (CVE-2022-1789)A NULL pointer dereference flaw was found in the Linux kernel''s KVM module, which can lead to a denial of service in the x86_emulate_insn in arch/x86/kvm/emulate.c. This flaw occurs while executing an illegal instruction in guest in the Intel CPU. (CVE-2022-1852)A use-after-free vulnerability was found in the Linux kernel''s Netfilter subsystem in net/netfilter/nf_tables_api.c. This flaw allows a local attacker with user access to cause a privilege escalation issue. (CVE-2022-1966)A use-after-free flaw was found in the Linux kernel in log_replay in fs/ntfs3/fslog.c in the NTFS journal. This flaw allows a local attacker to crash the system and leads to a kernel information leak problem. (CVE-2022-1973)A vulnerability was found in the Linux kernel''s nft_set_desc_concat_parse() function .This flaw allows an attacker to trigger a buffer overflow via nft_set_desc_concat_parse() , causing a denial of service and possibly to run code. (CVE-2022-2078)A flaw was found in hw. Incomplete cleanup of multi-core shared buffers for some Intel(r) Processors may allow an authenticated user to enable information disclosure via local access. (CVE-2022-21123)A flaw was found in hw. Incomplete cleanup of microarchitectural fill buffers on some Intel(r) Processors may allow an authenticated user to enable information disclosure via local access. (CVE-2022-21125)A flaw was found in hw. Incomplete cleanup in specific special register write operations for some Intel&reg; Processors may allow an authenticated user to enable information disclosure via local access. (CVE-2022-21166)net/netfilter/nf_tables_api.c in the Linux kernel through 5.18.1 allows a local user (able to create user/net namespaces) to escalate privileges to root because an incorrect NFT_STATEFUL_EXPR check leads to a use-after-free. (CVE-2022-32250)An issue was discovered in the Linux kernel through 5.18.3 on powerpc 32-bit platforms. There is a buffer overflow in ptrace PEEKUSER and POKEUSER (aka PEEKUSR and POKEUSR) when accessing floating point registers. (CVE-2022-32981)rpmsg_virtio_add_ctrl_dev in drivers/rpmsg/virtio_rpmsg_bus.c in the Linux kernel before 5.18.4 has a double free. (CVE-2022-34494)rpmsg_probe in drivers/rpmsg/virtio_rpmsg_bus.c in the Linux kernel before 5.18.4 has a double free. (CVE-2022-34495)In the Linux kernel, the following vulnerability has been resolved:nbd: fix io hung while disconnecting device (CVE-2022-49297)In the Linux kernel, the following vulnerability has been resolved:nbd: fix race between nbd_alloc_config() and module removal (CVE-2022-49300)In the Linux kernel, the following vulnerability has been resolved:NFSv4: Don''t hold the layoutget locks across multiple RPC calls (CVE-2022-49316)In the Linux kernel, the following vulnerability has been resolved:iommu/arm-smmu-v3: check return value after calling platform_get_resource() (CVE-2022-49319)In the Linux kernel, the following vulnerability has been resolved:tracing: Fix sleeping function called from invalid context on RT kernel (CVE-2022-49322)In the Linux kernel, the following vulnerability has been resolved:iommu/arm-smmu: fix possible null-ptr-deref in arm_smmu_device_probe() (CVE-2022-49323)In the Linux kernel, the following vulnerability has been resolved:tcp: add accessors to read/set tp->snd_cwnd (CVE-2022-49325)In the Linux kernel, the following vulnerability has been resolved:bcache: avoid journal no-space deadlock by reserving 1 journal bucket (CVE-2022-49327)In the Linux kernel, the following vulnerability has been resolved:tcp: fix tcp_mtup_probe_success vs wrong snd_cwnd (CVE-2022-49330)In the Linux kernel, the following vulnerability has been resolved:net: ipv6: unexport __init-annotated seg6_hmac_init() (CVE-2022-49339)In the Linux kernel, the following vulnerability has been resolved:ip_gre: test csum_start instead of transport header (CVE-2022-49340)In the Linux kernel, the following vulnerability has been resolved:bpf, arm64: Clear prog->jited_len along prog->jited (CVE-2022-49341)In the Linux kernel, the following vulnerability has been resolved:ext4: avoid cycles in directory h-tree (CVE-2022-49343)In the Linux kernel, the following vulnerability has been resolved:af_unix: Fix a data-race in unix_dgram_peer_wake_me(). (CVE-2022-49344)In the Linux kernel, the following vulnerability has been resolved:net: xfrm: unexport __init-annotated xfrm4_protocol_init() (CVE-2022-49345)In the Linux kernel, the following vulnerability has been resolved:ext4: fix bug_on in ext4_writepages (CVE-2022-49347)In the Linux kernel, the following vulnerability has been resolved:ext4: filter out EXT4_FC_REPLAY from on-disk superblock field s_state (CVE-2022-49348)In the Linux kernel, the following vulnerability has been resolved:ext4: fix use-after-free in ext4_rename_dir_prepare (CVE-2022-49349)In the Linux kernel, the following vulnerability has been resolved:net: mdio: unexport __init-annotated mdio_bus_init() (CVE-2022-49350)In the Linux kernel, the following vulnerability has been resolved:ext4: fix warning in ext4_handle_inode_extension (CVE-2022-49352)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: memleak flow rule from commit path (CVE-2022-49358)In the Linux kernel, the following vulnerability has been resolved:firmware: dmi-sysfs: Fix memory leak in dmi_sysfs_register_handle (CVE-2022-49370)In the Linux kernel, the following vulnerability has been resolved:driver core: fix deadlock in __device_attach (CVE-2022-49371)In the Linux kernel, the following vulnerability has been resolved:tcp: tcp_rtx_synack() can be called from process context (CVE-2022-49372)In the Linux kernel, the following vulnerability has been resolved:tipc: check attribute length for bearer name (CVE-2022-49374)In the Linux kernel, the following vulnerability has been resolved:scsi: sd: Fix potential NULL pointer dereference (CVE-2022-49376)In the Linux kernel, the following vulnerability has been resolved:blk-mq: don''t touch ->tagset in blk_mq_get_sq_hctx (CVE-2022-49377)In the Linux kernel, the following vulnerability has been resolved:driver core: Fix wait_for_device_probe() & deferred_probe_timeout interaction (CVE-2022-49379)In the Linux kernel, the following vulnerability has been resolved:md: fix double free of io_acct_set bioset (CVE-2022-49384)In the Linux kernel, the following vulnerability has been resolved:driver: base: fix UAF when driver_attach failed (CVE-2022-49385)In the Linux kernel, the following vulnerability has been resolved:usb: usbip: fix a refcount leak in stub_probe() (CVE-2022-49389)In the Linux kernel, the following vulnerability has been resolved:md: Don''t set mddev private to NULL in raid0 pers->free (CVE-2022-49400)In the Linux kernel, the following vulnerability has been resolved:ftrace: Clean up hash direct_functions on register failures (CVE-2022-49402)In the Linux kernel, the following vulnerability has been resolved:dlm: fix plock invalid read (CVE-2022-49407)In the Linux kernel, the following vulnerability has been resolved:ext4: fix bug_on in __es_tree_search (CVE-2022-49409)In the Linux kernel, the following vulnerability has been resolved:tracing: Fix potential double free in create_var_ref() (CVE-2022-49410)In the Linux kernel, the following vulnerability has been resolved:bfq: Make sure bfqg for which we are queueing requests is online (CVE-2022-49411)In the Linux kernel, the following vulnerability has been resolved:bfq: Avoid merging queues with different parents (CVE-2022-49412)In the Linux kernel, the following vulnerability has been resolved:bfq: Update cgroup information before merging bio (CVE-2022-49413)In the Linux kernel, the following vulnerability has been resolved:ext4: fix race condition between ext4_write and ext4_convert_inline_data (CVE-2022-49414)In the Linux kernel, the following vulnerability has been resolved:iommu/arm-smmu-v3-sva: Fix mm use-after-free (CVE-2022-49426)In the Linux kernel, the following vulnerability has been resolved:PCI: Avoid pci_dev_lock() AB/BA deadlock with sriov_numvfs_store() (CVE-2022-49434)In the Linux kernel, the following vulnerability has been resolved:tty: fix deadlock caused by calling printk() under tty_port->lock (CVE-2022-49441)In the Linux kernel, the following vulnerability has been resolved:drivers/base/node.c: fix compaction sysfs file leak (CVE-2022-49442)In the Linux kernel, the following vulnerability has been resolved:list: fix a data-race around ep->rdllist (CVE-2022-49443)In the Linux kernel, the following vulnerability has been resolved:nvdimm: Fix firmware activation deadlock scenarios (CVE-2022-49446)In the Linux kernel, the following vulnerability has been resolved:rxrpc: Fix listen() setting the bar too high for the prealloc rings (CVE-2022-49450)In the Linux kernel, the following vulnerability has been resolved:thermal/core: Fix memory leak in __thermal_cooling_device_register() (CVE-2022-49468)In the Linux kernel, the following vulnerability has been resolved:nvme-pci: fix a NULL pointer dereference in nvme_alloc_admin_tags (CVE-2022-49492)In the Linux kernel, the following vulnerability has been resolved:net: remove two BUG() from skb_checksum_help() (CVE-2022-49497)In the Linux kernel, the following vulnerability has been resolved:HID: elan: Fix potential double free in elan_input_configured (CVE-2022-49508)In the Linux kernel, the following vulnerability has been resolved:arm64: compat: Do not treat syscall number as ESR_ELx for a bad syscall (CVE-2022-49520)In the Linux kernel, the following vulnerability has been resolved:md/bitmap: don''t set sb values if can''t pass sanity check (CVE-2022-49526)In the Linux kernel, the following vulnerability has been resolved:rcu-tasks: Fix race in schedule and flush work (CVE-2022-49540)In the Linux kernel, the following vulnerability has been resolved:cifs: fix potential double free during failed mount (CVE-2022-49541)In the Linux kernel, the following vulnerability has been resolved:x86/kexec: fix memory leak of elf header buffer (CVE-2022-49546)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix potential array overflow in bpf_trampoline_get_progs() (CVE-2022-49548)In the Linux kernel, the following vulnerability has been resolved:x86/MCE/AMD: Fix memory leak when threshold_create_bank() fails (CVE-2022-49549)In the Linux kernel, the following vulnerability has been resolved:fs/ntfs3: validate BOOT sectors_per_clusters (CVE-2022-49553)In the Linux kernel, the following vulnerability has been resolved:zsmalloc: fix races between asynchronous zspage free and page migration (CVE-2022-49554)In the Linux kernel, the following vulnerability has been resolved:KVM: SVM: Use kzalloc for sev ioctl interfaces to prevent kernel data leak (CVE-2022-49556)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: double hook unregistration in netns path (CVE-2022-49558)In the Linux kernel, the following vulnerability has been resolved:KVM: x86: Drop WARNs that assert a triple fault never "escapes" from L2 (CVE-2022-49559)In the Linux kernel, the following vulnerability has been resolved:exfat: check if cluster num is valid (CVE-2022-49560)In the Linux kernel, the following vulnerability has been resolved:netfilter: conntrack: re-fetch conntrack after insertion (CVE-2022-49561)In the Linux kernel, the following vulnerability has been resolved:zonefs: fix zonefs_iomap_begin() for reads (CVE-2022-49706)In the Linux kernel, the following vulnerability has been resolved:ext4: add reserved GDT blocks check (CVE-2022-49707)In the Linux kernel, the following vulnerability has been resolved:ext4: fix bug_on ext4_mb_use_inode_pa (CVE-2022-49708)In the Linux kernel, the following vulnerability has been resolved:cfi: Fix __cfi_slowpath_diag RCU usage with cpuidle (CVE-2022-49709)In the Linux kernel, the following vulnerability has been resolved:dm mirror log: round up region bitmap size to BITS_PER_LONG (CVE-2022-49710)In the Linux kernel, the following vulnerability has been resolved:irqchip/gic-v3: Fix refcount leak in gic_populate_ppi_partitions (CVE-2022-49715)In the Linux kernel, the following vulnerability has been resolved:irqchip/gic-v3: Fix error handling in gic_populate_ppi_partitions (CVE-2022-49716)In the Linux kernel, the following vulnerability has been resolved:block: Fix handling of offline queues in blk_mq_alloc_request_hctx() (CVE-2022-49720)In the Linux kernel, the following vulnerability has been resolved:arm64: ftrace: consistently handle PLTs. (CVE-2022-49721)In the Linux kernel, the following vulnerability has been resolved:drm/i915/reset: Fix error_state_read ptr + offset use (CVE-2022-49723)In the Linux kernel, the following vulnerability has been resolved:clocksource: hyper-v: unexport __init-annotated hv_init_clocksource() (CVE-2022-49726)In the Linux kernel, the following vulnerability has been resolved:ata: libata-core: fix NULL pointer deref in ata_host_alloc_pinfo() (CVE-2022-49731)'
     FixedIn:
-        - Name: bpftool
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: bpftool
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: bpftool-debuginfo
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: bpftool-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: kernel
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-5.15.50-23.125
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel-livepatch-5.15.50-23.125
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2022-07-15"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.15.50-23.125.amzn2
           VersionFormat: rpm

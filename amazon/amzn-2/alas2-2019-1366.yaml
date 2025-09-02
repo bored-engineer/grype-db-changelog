@@ -1,52 +1,88 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: A flaw was found in the way Intel CPUs handle inconsistency between, virtual to physical memory address translations in CPU's local cache and system software's Paging structure entries. A privileged guest user may use this flaw to induce a hardware Machine Check Error on the host processor, resulting in a severe DoS scenario by halting the processor.\n\nSystem software like OS OR Virtual Machine Monitor (VMM) use virtual memory system for storing program instructions and data in memory.  Virtual Memory system uses Paging structures like Page Tables and Page Directories to manage system memory. The processor's Memory Management Unit (MMU) uses Paging structure entries to translate program's  virtual memory addresses to physical memory addresses. The processor stores these address translations into its local cache buffer called - Translation Lookaside Buffer (TLB).  TLB has two parts, one for instructions and other for data addresses.\n\nSystem software can modify its Paging structure entries to change address mappings OR certain attributes like page size etc. Upon such Paging structure alterations in memory, system software must invalidate the corresponding address translations in the processor's TLB cache. But before this TLB invalidation takes place, a privileged guest user may trigger an instruction fetch operation, which could use an already cached, but now invalid, virtual to physical address translation from Instruction TLB (ITLB). Thus accessing an invalid physical memory address and resulting in halting the processor due to the Machine Check Error (MCE) on Page Size Change.(CVE-2018-12207)
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2019-11-19"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.154-128.181.amzn2
           VersionFormat: rpm

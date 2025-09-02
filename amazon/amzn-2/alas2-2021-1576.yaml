@@ -1,8 +1,11 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: 'The default cloud-init configuration included "ssh_deletekeys: 0", disabling cloud-init''s deletion of ssh host keys. In some environments, this could lead to instances created by cloning a golden master or template system, sharing ssh host keys, and being able to impersonate one another or conduct man-in-the-middle attacks. (CVE-2018-10896)A flaw was found in cloud-init, where it uses the random.choice function when creating sensitive random strings used for generating a random password in new instances. Depending on the instance configuration, a remote or local attacker may abuse this vulnerability to guess the password of the victim user. (CVE-2020-8631)A flaw was found in cloud-init, where it uses short passwords when generating a random password in new instances. Depending on the instance configuration, a remote or local attacker may abuse this vulnerability to guess the password of the victim user. (CVE-2020-8632)'
     FixedIn:
-        - Name: cloud-init
+        - Available:
+            Date: "2021-01-07"
+            Kind: advisory
+          Name: cloud-init
           NamespaceName: amzn:2
           Version: 19.3-4.amzn2
           VersionFormat: rpm

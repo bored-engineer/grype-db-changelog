@@ -1,20 +1,32 @@
-# schema: vulnerability/os/schema-1.0.2.json
+# schema: vulnerability/os/schema-1.1.0.json
 Vulnerability:
     Description: The PAM module pam_cap.so of libcap configuration supports group names starting with "@", during actual parsing, configurations not starting with "@" are incorrectly recognized as group names. This may result in nonintended users being granted an inherited capability set, potentially leading to security risks. Attackers can exploit this vulnerability to achieve local privilege escalation on systems where /etc/security/capability.conf is used to configure user inherited privileges by constructing specific usernames. (CVE-2025-1390)
     FixedIn:
-        - Name: libcap
+        - Available:
+            Date: "2025-03-25"
+            Kind: advisory
+          Name: libcap
           NamespaceName: amzn:2
           Version: 2.54-1.amzn2.0.3
           VersionFormat: rpm
-        - Name: libcap-debuginfo
+        - Available:
+            Date: "2025-03-25"
+            Kind: advisory
+          Name: libcap-debuginfo
           NamespaceName: amzn:2
           Version: 2.54-1.amzn2.0.3
           VersionFormat: rpm
-        - Name: libcap-devel
+        - Available:
+            Date: "2025-03-25"
+            Kind: advisory
+          Name: libcap-devel
           NamespaceName: amzn:2
           Version: 2.54-1.amzn2.0.3
           VersionFormat: rpm
-        - Name: libcap-static
+        - Available:
+            Date: "2025-03-25"
+            Kind: advisory
+          Name: libcap-static
           NamespaceName: amzn:2
           Version: 2.54-1.amzn2.0.3
           VersionFormat: rpm
