@@ -1,55 +1,94 @@
 Vulnerability:
     Description: In the Linux kernel 5.0.21, mounting a crafted btrfs filesystem image, performing some operations, and then making a syncfs system call can lead to a use-after-free in __mutex_lock in kernel/locking/mutex.c. This is related to mutex_can_spin_on_owner in kernel/locking/mutex.c, __btrfs_qgroup_free_meta in fs/btrfs/qgroup.c, and btrfs_insert_delayed_items in fs/btrfs/delayed-inode.c. (CVE-2019-19813)A flaw was found in the implementation of the BTRFS file system code in the Linux kernel. An attacker, who is able to mount a crafted BTRFS filesystem and perform common filesystem operations, can possibly cause an out-of-bounds write to memory. This could lead to memory corruption or privilege escalation. (CVE-2019-19816)This flaw is rated as having Moderate impact, there is a possibility that there is a write, although it is an uncontrolled write in a fixed offset from the current location. Also this issue is in non-default filesystem. (CVE-2020-27815)An issue was discovered in Xen through 4.14.x. Some OSes (such as Linux, FreeBSD, and NetBSD) are processing watch events using a single thread. If the events are received faster than the thread is able to handle, they will get queued. As the queue is unbounded, a guest may be able to trigger an OOM in the backend. All systems with a FreeBSD, Linux, or NetBSD (any version) dom0 are vulnerable. ( cve-2020-29568)An issue was discovered in the Linux kernel through 5.10.1, as used with Xen through 4.14.x. The Linux kernel PV block backend expects the kernel thread handler to reset ring->xenblkd to NULL when stopped. However, the handler may not have time to run if the frontend quickly toggles between the states connect and disconnect. As a consequence, the block backend may re-use a pointer after it was freed. A misbehaving guest can trigger a dom0 crash by continuously connecting / disconnecting a block frontend. Privilege escalation and information leaks cannot be ruled out. This only affects systems with a Linux blkback. (cve-2020-29569)A locking inconsistency issue was discovered in the tty subsystem of the Linux kernel through 5.9.13. drivers/tty/tty_io.c and drivers/tty/tty_jobctrl.c may allow a read-after-free attack against TIOCGSID, aka CID-c8bcd9c5be24. (CVE-2020-29660)A locking vulnerability was found in the tty subsystem of the Linux kernel in drivers/tty/tty_jobctrl.c. This flaw allows a local attacker to possibly corrupt memory or escalate privileges. The highest threat from this vulnerability is to confidentiality, integrity, as well as system availability. (CVE-2020-29661)
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.214-160.339
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.214-160.339
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2021-01-26"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.214-160.339.amzn2
           VersionFormat: rpm

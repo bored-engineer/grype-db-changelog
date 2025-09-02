@@ -1,11 +1,17 @@
 Vulnerability:
     Description: 'In the Linux kernel, the following vulnerability has been resolved:netfilter: nftables: exthdr: fix 4-byte stack OOB writeIf priv->len is a multiple of 4, then dst[len / 4] can write pastthe destination array which leads to stack corruption.This construct is necessary to clean the remainder of the registerin case ->len is NOT a multiple of the register size, so make itconditional just like nft_payload.c does.The bug was added in 4.1 cycle and then copied/inherited whentcp/sctp and ip option support was added.Bug reported by Zero Day Initiative project (ZDI-CAN-21950,ZDI-CAN-21951, ZDI-CAN-21961). (CVE-2023-52628)'
     FixedIn:
-        - Name: kernel-livepatch-4.14.336-257.568
+        - Available:
+            Date: "2024-06-12"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.336-257.568
           NamespaceName: amzn:2
           Version: 1.0-3.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.336-257.568-debuginfo
+        - Available:
+            Date: "2024-06-12"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.336-257.568-debuginfo
           NamespaceName: amzn:2
           Version: 1.0-3.amzn2
           VersionFormat: rpm

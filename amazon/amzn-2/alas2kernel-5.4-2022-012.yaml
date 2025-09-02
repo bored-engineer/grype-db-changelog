@@ -1,51 +1,87 @@
 Vulnerability:
     Description: A NULL pointer dereference flaw may occur in the Linux kernel's relay_open in kernel/relay.c. if the alloc_percpu() function is not validated in time of failure and used as a valid address for access. An attacker could use this flaw to cause a denial of service. (CVE-2019-19462)A new domain bypass transient execution attack known as Special Register Buffer Data Sampling (SRBDS) has been found. This flaw allows data values from special internal registers to be leaked by an attacker able to execute code on any core of the CPU. An unprivileged, local attacker can use this flaw to infer values returned by affected instructions known to be commonly used during cryptographic operations that rely on uniqueness, secrecy, or both. (CVE-2020-0543)A flaw was found in the Linux kernel's implementation of Userspace core dumps. This flaw allows an attacker with a local account to crash a trivial program and exfiltrate private kernel data. (CVE-2020-10732)A flaw was found in the Linux kernel's SELinux LSM hook implementation, where it anticipated the skb would only contain a single Netlink message. The hook incorrectly validated the first Netlink message in the skb only, to allow or deny the rest of the messages within the skb with the granted permissions and without further processing. At this time, there is no known ability for an attacker to abuse this flaw. (CVE-2020-10751)A flaw was found in the way mremap handled DAX Huge Pages. This flaw allows a local attacker with access to a DAX enabled storage to escalate their privileges on the system. (CVE-2020-10757)A flaw was found in the Linux kernel. A memory leak in svm_cpu_init() is possible leading to a system crash.  The highest threat from this vulnerability is to system availability. (CVE-2020-12768)A vulnerability was found in sg_write in drivers/scsi/sg.c in the SCSI generic (sg) driver subsystem. This flaw allows an attacker with local access and special user or root privileges to cause a denial of service if the allocated list is not cleaned with an invalid (Sg_fd * sfp) pointer at the time of failure, also possibly causing a kernel internal information leak problem. (CVE-2020-12770)gadget_dev_desc_UDC_store in drivers/usb/gadget/configfs.c in the Linux kernel 3.16 through 5.6.13 relies on kstrdup without considering the possibility of an internal 0 value, which allows attackers to trigger an out-of-bounds read, aka CID-15753588bcd4. (CVE-2020-13143)
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2022-01-28"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 5.4.46-19.75.amzn2
           VersionFormat: rpm

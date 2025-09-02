@@ -1,55 +1,94 @@
 Vulnerability:
     Description: A use-after-free flaw was found in the debugfs_remove function in the Linux kernel. The flaw could allow a local attacker with special user (or root) privilege to crash the system at the time of file or directory removal. This vulnerability can lead to a kernel information leak. The highest threat from this vulnerability is to system availability. (CVE-2019-19770)A flaw was found in the Linux kernel. A use-after-free memory flaw was found in the perf subsystem allowing a local attacker with permission to monitor perf events to corrupt memory and possibly escalate privileges.  The highest threat from this vulnerability is to data confidentiality and integrity as well as system availability. (CVE-2020-14351)A flaw was found in the Linux kernel. A use-after-free was found in the way the console subsystem was using ioctls KDGKBSENT and KDSKBSENT. A local user could use this flaw to get read memory access out of bounds. The highest threat from this vulnerability is to data confidentiality. (CVE-2020-25656)A flaw was found in Linux Kernel because access to the global variable fg_console is not properly synchronized leading to a use after free in con_font_op. (CVE-2020-25668)The function sunkbd_reinit having been scheduled by sunkbd_interrupt before sunkbd being freed.Though the dangling pointer is set to NULL in sunkbd_disconnect, there is still a alias in sunkbd_reinit so that causing Use After Free. (CVE-2020-25669)A flaw memory leak in the Linux kernel performance monitoring subsystem was found in the way if using PERF_EVENT_IOC_SET_FILTER. A local user could use this flaw to starve the resources causing denial of service. (CVE-2020-25704)An issue was discovered in the Linux kernel through 5.9.1, as used with Xen through 4.14.x. Guest OS users can cause a denial of service (host OS hang) via a high rate of events to dom0, aka CID-e99502f76271. (CVE-2020-27673)An issue was discovered in the Linux kernel through 5.9.1, as used with Xen through 4.14.x. drivers/xen/events/events_base.c allows event-channel removal during the event-handling loop (a race condition). This can cause a use-after-free or NULL pointer dereference, as demonstrated by a dom0 crash via events for an in-reconfiguration paravirtualized device, aka CID-073d0552ead5. (CVE-2020-27675)The Linux kernel for powerpc has an issue with the Run-Time Abstraction Services (RTAS) interface, allowing root (or CAP_SYS_ADMIN users) in a VM to overwrite some parts of memory, including kernel memory.This issue impacts guests running on top of PowerVM or KVM hypervisors (pseries platform), and does *not* impact bare-metal machines (powernv platform). (CVE-2020-27777)An issue was discovered in drivers/accessibility/speakup/spk_ttyio.c in the Linux kernel through 5.9.9. Local attackers on systems with the speakup driver could cause a local denial of service attack, aka CID-d41227544427. This occurs because of an invalid free when the line discipline is used more than once. (CVE-2020-28941)A slab-out-of-bounds read in fbcon in the Linux kernel before 5.9.7 could be used by local attackers to read privileged information or potentially crash the kernel, aka CID-3c4e0dff2095. This occurs because KD_FONT_OP_COPY in drivers/tty/vt/vt.c can be used for manipulations such as font height. (CVE-2020-28974)A flaw was found in the Linux kernel's implementation of Intel's Running Average Power Limit (RAPL) implementation. A local attacker could infer secrets by measuring power usage and also infer private data by observing the power usage of calculations performed on the data. (CVE-2020-8694)
     FixedIn:
-        - Name: kernel
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.209-160.335
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.209-160.335
           NamespaceName: amzn:2
           Version: 1.0-0.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: python-perf
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: python-perf
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm
-        - Name: python-perf-debuginfo
+        - Available:
+            Date: "2020-12-09"
+            Kind: advisory
+          Name: python-perf-debuginfo
           NamespaceName: amzn:2
           Version: 4.14.209-160.335.amzn2
           VersionFormat: rpm

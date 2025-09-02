@@ -1,7 +1,10 @@
 Vulnerability:
     Description: In Twisted Web through 19.10.0, there was an HTTP request splitting vulnerability. When presented with a content-length and a chunked encoding header, the content-length took precedence and the remainder of the request body was interpreted as a pipelined request. (CVE-2020-10109)In Twisted Web through 19.10.0, there was an HTTP request splitting vulnerability. When presented with two content-length headers, it ignored the first header. When the second content-length value was set to zero, the request body was interpreted as a pipelined request. (CVE-2020-10108)
     FixedIn:
-        - Name: python-twisted-web
+        - Available:
+            Date: "2020-05-20"
+            Kind: advisory
+          Name: python-twisted-web
           NamespaceName: amzn:2
           Version: 12.1.0-7.amzn2
           VersionFormat: rpm

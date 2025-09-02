@@ -1,43 +1,73 @@
 Vulnerability:
     Description: 'Corrupted pointer in node::fs::ReadFileUtf8(const FunctionCallbackInfo<Value>& args) when args[0] is a string, resulting in an unrecoverable memory leak on every call. Repeated use can cause unbounded memory growth, leading to a denial of service.Info: https://nodejs.org/en/blog/vulnerability/may-2025-security-releases#corrupted-pointer-in-nodefsreadfileutf8const-functioncallbackinfovalue-args-when-args0-is-a-string-cve-2025-23165---low (CVE-2025-23165)Improper error handling in async cryptographic operations crashes processInfo: https://nodejs.org/en/blog/vulnerability/may-2025-security-releases#improper-error-handling-in-async-cryptographic-operations-crashes-process-cve-2025-23166---high (CVE-2025-23166)Improper HTTP header block termination in llhttp which enables request smuggling, allowing attackers to bypass proxy-based access controls and submit unauthorized requests. This vulnerability affects only Node.js 20.x users prior to the llhttp v9 upgrade.Info: https://nodejs.org/en/blog/vulnerability/may-2025-security-releases#improper-http-header-block-termination-in-llhttp-cve-2025-23167---medium (CVE-2025-23167)Undici is an HTTP/1.1 client for Node.js. Prior to versions 5.29.0, 6.21.2, and 7.5.0, applications that use undici to implement a webhook-like system are vulnerable. If the attacker set up a server with an invalid certificate, and they can force the application to call the webhook repeatedly, then they can cause a memory leak. This has been patched in versions 5.29.0, 6.21.2, and 7.5.0. As a workaound, avoid calling a webhook repeatedly if the webhook fails. (CVE-2025-47279)'
     FixedIn:
-        - Name: nodejs20
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20
           NamespaceName: amzn:2023
           Version: 20.19.2-1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: nodejs20-debuginfo
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20-debuginfo
           NamespaceName: amzn:2023
           Version: 20.19.2-1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: nodejs20-debugsource
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20-debugsource
           NamespaceName: amzn:2023
           Version: 20.19.2-1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: nodejs20-devel
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20-devel
           NamespaceName: amzn:2023
           Version: 20.19.2-1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: nodejs20-docs
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20-docs
           NamespaceName: amzn:2023
           Version: 20.19.2-1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: nodejs20-full-i18n
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20-full-i18n
           NamespaceName: amzn:2023
           Version: 20.19.2-1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: nodejs20-libs
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20-libs
           NamespaceName: amzn:2023
           Version: 20.19.2-1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: nodejs20-libs-debuginfo
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20-libs-debuginfo
           NamespaceName: amzn:2023
           Version: 20.19.2-1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: nodejs20-npm
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: nodejs20-npm
           NamespaceName: amzn:2023
           Version: 10.8.2-1.20.19.2.1.amzn2023.0.1
           VersionFormat: rpm
-        - Name: v8-11.3-devel
+        - Available:
+            Date: "2025-06-10"
+            Kind: advisory
+          Name: v8-11.3-devel
           NamespaceName: amzn:2023
           Version: 11.3.244.8-1.20.19.2.1.amzn2023.0.1
           VersionFormat: rpm

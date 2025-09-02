@@ -1,19 +1,31 @@
 Vulnerability:
     Description: An issue was discovered in Squid before 4.10. It allows a crafted FTP server to trigger disclosure of sensitive information from heap memory, such as information associated with other users' sessions or non-Squid processes. (CVE-2019-12528)This vulnerability allows remote attackers to deny service on vulnerable installations of The Squid Software Foundation Squid 3.5.27-20180318. Authentication is not required to exploit this vulnerability. The specific flaw exists within ClientRequestContext::sslBumpAccessCheck(). A crafted request can trigger the dereference of a null pointer. An attacker can leverage this vulnerability to create a denial-of-service condition to users of the system. Was ZDI-CAN-6088. it was found that Squid, when used as a reverse proxy, did not handle ESI responses properly. A malicious web server could use this flaw to crash Squid. (CVE-2018-1172)An issue was discovered in Squid 2.x, 3.x, and 4.x through 4.8. Due to incorrect data management, it is vulnerable to information disclosure when processing HTTP Digest Authentication. Nonce tokens contain the raw byte value of a pointer that sits within heap memory allocation. This information reduces ASLR protections and may aid attackers isolating memory areas to target for remote code execution attacks. (CVE-2019-18679)An issue was discovered in Squid before 4.10. Due to incorrect buffer management, a remote client can cause a buffer overflow in a Squid instance acting as a reverse proxy. (CVE-2020-8450)
     FixedIn:
-        - Name: squid
+        - Available:
+            Date: "2020-09-02"
+            Kind: advisory
+          Name: squid
           NamespaceName: amzn:2
           Version: 3.5.20-15.amzn2.1.1
           VersionFormat: rpm
-        - Name: squid-debuginfo
+        - Available:
+            Date: "2020-09-02"
+            Kind: advisory
+          Name: squid-debuginfo
           NamespaceName: amzn:2
           Version: 3.5.20-15.amzn2.1.1
           VersionFormat: rpm
-        - Name: squid-migration-script
+        - Available:
+            Date: "2020-09-02"
+            Kind: advisory
+          Name: squid-migration-script
           NamespaceName: amzn:2
           Version: 3.5.20-15.amzn2.1.1
           VersionFormat: rpm
-        - Name: squid-sysvinit
+        - Available:
+            Date: "2020-09-02"
+            Kind: advisory
+          Name: squid-sysvinit
           NamespaceName: amzn:2
           Version: 3.5.20-15.amzn2.1.1
           VersionFormat: rpm

@@ -1,11 +1,17 @@
 Vulnerability:
     Description: A low severity issue was found in the Nitro Enclaves Linux kernel driver that could lead to local privilege escalation. The issue does not break the isolation or security of what is running inside the enclave as the Nitro Enclave's security model already excludes the instance running the Nitro Enclaves kernel driver from its trust boundary.For the issue to occur, the Nitro Enclaves kernel module needs to be loaded and in use, and Nitro Enclave (ne) group permissions are required. Only trusted Nitro Enclaves software runs with the ne group permissions, and no interactive logins are in the group by default. As a result, the only actors in a position to take advantage of this issue would already have to have root privileges. While this issue has no impact to Nitro Enclave's security or isolation properties, we recommend that customers update to the latest Kernel provided by Amazon Linux.
     FixedIn:
-        - Name: kernel-livepatch-4.14.225-168.357
+        - Available:
+            Date: "2021-05-04"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.225-168.357
           NamespaceName: amzn:2
           Version: 1.0-2.amzn2
           VersionFormat: rpm
-        - Name: kernel-livepatch-4.14.225-168.357-debuginfo
+        - Available:
+            Date: "2021-05-04"
+            Kind: advisory
+          Name: kernel-livepatch-4.14.225-168.357-debuginfo
           NamespaceName: amzn:2
           Version: 1.0-2.amzn2
           VersionFormat: rpm

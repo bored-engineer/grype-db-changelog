@@ -1,63 +1,108 @@
 Vulnerability:
     Description: 'A flaw was found in unrestricted eBPF usage by the BPF_BTF_LOAD, leading to a possible out-of-bounds memory write in the Linux kernel''s BPF subsystem due to the way a user loads BTF. This flaw allows a local user to crash or escalate their privileges on the system. (CVE-2022-0500)A flaw was found in the Linux kernel in linux/net/netfilter/nf_tables_api.c of the netfilter subsystem. This flaw allows a local user to cause an out-of-bounds write issue. (CVE-2022-1015)A flaw was found in the Linux kernel in net/netfilter/nf_tables_core.c:nft_do_chain, which can cause a use-after-free. This issue needs to handle return with proper preconditions, as it can lead to a kernel information leak problem caused by a local, unprivileged attacker. (CVE-2022-1016)When the KVM updates the guest''s page table entry, it will first use get_user_pages_fast() to pin the page, and when it fails (e.g. the vma->flags has VM_IO or VM_PFNMAP), it will get corresponding VMA where the page lies in through find_vma_intersection(), calculate the physical address, and map the page to the kernel virtual address through memremap(), and finally, write the update.The problem is that when we get the vma through find_vma_intersection(), only VM_PFNMAP is checked, not both VM_IO and VM_PFNMAP. In the reproducer below, after the KVM_SET_USER_MEMORY_REGION is completed, we replace the guest''s memory mapping with the kernel-user shared region of io_uring and then perform the KVM_TRANSLATE operation, which finally triggers the page table entry update. Now, memremap() will return page_offset_base (direct mapping of all physical memory) + vaddr (the linear address of KVM_TRANSLATE) + vm_pgoff (the offset when io_uring performs mmap(2)), and use the return value as the base address for CMPXCHG (write 0x21 in this case). Since both vaddr and vm_pgoff are controllable by the user-mode process, writing may exceed the previously mapped guest memory space and trigger exceptions such as UAF. The vulnerability shares similarities with CVE-2021-22543. (CVE-2022-1158)A NULL pointer dereference issue was found in KVM when releasing a vCPU with dirty ring support enabled. This flaw allows an unprivileged local attacker on the host to issue specific ioctl calls, causing a kernel oops condition that results in a denial of service. (CVE-2022-1263)A vulnerability was found in the pfkey_register function in net/key/af_key.c in the Linux kernel. This flaw allows a local, unprivileged user to gain access to kernel memory, leading to a system crash or a leak of internal kernel information. (CVE-2022-1353)perf: Fix sys_perf_event_open() race against self (CVE-2022-1729)A flaw was found in the Linux kernel''s adjust_ptr_min_max_vals in the kernel/bpf/verifier.c function. In this flaw, a missing sanity check for *_OR_NULL pointer types that perform pointer arithmetic may cause a kernel information leak issue. (CVE-2022-23222)The SUNRPC subsystem in the Linux kernel through 5.17.2 can call xs_xprt_free before ensuring that sockets are in the intended state. (CVE-2022-28893)Improper Update of Reference Count vulnerability in net/sched of Linux Kernel allows local attacker to cause privilege escalation to root. This issue affects: Linux Kernel versions prior to 5.18; version 4.14 and later versions. (CVE-2022-29581)A use-after-free flaw was found in the Linux kernel''s io_uring interface subsystem in the way a user triggers a race condition between timeout flush and removal. This flaw allows a local user to crash or escalate their privileges on the system. (CVE-2022-29582)The Linux kernel before 5.17.2 mishandles seccomp permissions. The PTRACE_SEIZE code path allows attackers to bypass intended restrictions on setting the PT_SUSPEND_SECCOMP flag. (CVE-2022-30594)'
     FixedIn:
-        - Name: bpftool
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: bpftool
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: bpftool-debuginfo
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: bpftool-debuginfo
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: kernel
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: kernel-debuginfo
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel-debuginfo
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: kernel-debuginfo-common-x86_64
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: kernel-devel
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel-devel
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: kernel-headers
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel-headers
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: kernel-livepatch-5.15.43-20.123
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel-livepatch-5.15.43-20.123
           NamespaceName: amzn:2022
           Version: 1.0-0.amzn2022
           VersionFormat: rpm
-        - Name: kernel-tools
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel-tools
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: kernel-tools-debuginfo
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: kernel-tools-devel
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: kernel-tools-devel
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: perf
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: perf
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: perf-debuginfo
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: perf-debuginfo
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: python3-perf
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: python3-perf
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm
-        - Name: python3-perf-debuginfo
+        - Available:
+            Date: "2022-06-01"
+            Kind: advisory
+          Name: python3-perf-debuginfo
           NamespaceName: amzn:2022
           Version: 5.15.43-20.123.amzn2022
           VersionFormat: rpm

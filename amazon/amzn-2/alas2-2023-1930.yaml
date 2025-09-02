@@ -1,27 +1,45 @@
 Vulnerability:
     Description: FreeRDP is a free remote desktop protocol library and clients. FreeRDP based clients on unix systems using `/parallel` command line switch might read uninitialized data and send it to the server the client is currently connected to. FreeRDP based server implementations are not affected. Please upgrade to 2.8.1 where this issue is patched. If unable to upgrade, do not use parallel port redirection (`/parallel` command line switch) as a workaround. (CVE-2022-39282)FreeRDP is a free remote desktop protocol library and clients. All FreeRDP based clients when using the `/video` command line switch might read uninitialized data, decode it as audio/video and display the result. FreeRDP based server implementations are not affected. This issue has been patched in version 2.8.1. If you cannot upgrade do not use the `/video` switch. (CVE-2022-39283)FreeRDP is a free remote desktop protocol library and clients. In affected versions there is an out of bound read in ZGFX decoder component of FreeRDP. A malicious server can trick a FreeRDP based client to read out of bound data and try to decode it likely resulting in a crash. This issue has been addressed in the 2.9.0 release. Users are advised to upgrade. (CVE-2022-39316)FreeRDP is a free remote desktop protocol library and clients. Affected versions of FreeRDP are missing a range check for input offset index in ZGFX decoder. A malicious server can trick a FreeRDP based client to read out of bound data and try to decode it. This issue has been addressed in version 2.9.0. There are no known workarounds for this issue. (CVE-2022-39317)FreeRDP is a free remote desktop protocol library and clients. Affected versions of FreeRDP are missing input validation in `urbdrc` channel. A malicious server can trick a FreeRDP based client to crash with division by zero. This issue has been addressed in version 2.9.0. All users are advised to upgrade. Users unable to upgrade should not use the `/usb` redirection switch. (CVE-2022-39318)FreeRDP is a free remote desktop protocol library and clients. Affected versions of FreeRDP are missing input length validation in the `urbdrc` channel. A malicious server can trick a FreeRDP based client to read out of bound data and send it back to the server. This issue has been addressed in version 2.9.0 and all users are advised to upgrade. Users unable to upgrade should not use the `/usb` redirection switch. (CVE-2022-39319)FreeRDP is a free remote desktop protocol library and clients. Affected versions of FreeRDP may attempt integer addition on too narrow types leads to allocation of a buffer too small holding the data written. A malicious server can trick a FreeRDP based client to read out of bound data and send it back to the server. This issue has been addressed in version 2.9.0 and all users are advised to upgrade. Users unable to upgrade should not use the `/usb` redirection switch. (CVE-2022-39320)No description is available for this CVE. (CVE-2022-39347)FreeRDP is a free remote desktop protocol library and clients. Affected versions of FreeRDP are missing input length validation in `drive` channel. A malicious server can trick a FreeRDP based client to read out of bound data and send it back to the server. This issue has been addressed in version 2.9.0 and all users are advised to upgrade. Users unable to upgrade should not use the drive redirection channel - command line options `/drive`, `+drives` or `+home-drive`. (CVE-2022-41877)
     FixedIn:
-        - Name: freerdp
+        - Available:
+            Date: "2023-02-04"
+            Kind: advisory
+          Name: freerdp
           NamespaceName: amzn:2
           Version: 2.2.0-10.amzn2.0.1
           VersionFormat: rpm
-        - Name: freerdp-debuginfo
+        - Available:
+            Date: "2023-02-04"
+            Kind: advisory
+          Name: freerdp-debuginfo
           NamespaceName: amzn:2
           Version: 2.2.0-10.amzn2.0.1
           VersionFormat: rpm
-        - Name: freerdp-devel
+        - Available:
+            Date: "2023-02-04"
+            Kind: advisory
+          Name: freerdp-devel
           NamespaceName: amzn:2
           Version: 2.2.0-10.amzn2.0.1
           VersionFormat: rpm
-        - Name: freerdp-libs
+        - Available:
+            Date: "2023-02-04"
+            Kind: advisory
+          Name: freerdp-libs
           NamespaceName: amzn:2
           Version: 2.2.0-10.amzn2.0.1
           VersionFormat: rpm
-        - Name: libwinpr
+        - Available:
+            Date: "2023-02-04"
+            Kind: advisory
+          Name: libwinpr
           NamespaceName: amzn:2
           Version: 2.2.0-10.amzn2.0.1
           VersionFormat: rpm
-        - Name: libwinpr-devel
+        - Available:
+            Date: "2023-02-04"
+            Kind: advisory
+          Name: libwinpr-devel
           NamespaceName: amzn:2
           Version: 2.2.0-10.amzn2.0.1
           VersionFormat: rpm

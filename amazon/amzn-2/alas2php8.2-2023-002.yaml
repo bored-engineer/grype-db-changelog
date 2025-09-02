@@ -1,111 +1,192 @@
 Vulnerability:
     Description: 'GHSA-76gg-c692-v2mw: Missing error check and insufficient random bytes in HTTP Digest authentication for SOAPNOTE: Fixed in 8.2.7, 8.1.20, 8.0.29NOTE: https://github.com/php/php-src/security/advisories/GHSA-76gg-c692-v2mwNOTE: https://github.com/php/php-src/commit/ac4254ad764c70cb1f05c9270d8d12689fc3aeb6 (php-8.0.29)NOTE: https://github.com/php/php-src/commit/32c7c433ac1983c4497349051681a4f361d3d33e (php-8.0.29)ADVISORIES: [''DSA-5425-1'', ''DSA-5424-1''] (CVE-2023-3247)In PHP versions 8.0.* before 8.0.30, 8.1.* before 8.1.22, and 8.2.* before 8.2.8 various XML functions rely on libxml global state to track configuration variables, like whether external entities are loaded. This state is assumed to be unchanged unless the user explicitly changes it by calling appropriate function. However, since the state is process-global, other modules - such as ImageMagick - may also use this library within the same process, and change that global state for their internal purposes, and leave it in a state where external entities loading is enabled. This can lead to the situation where external XML is parsed with external entities loaded, which can lead to disclosure of any local files accessible to PHP. This vulnerable state may persist in the same process across many requests, until the process is shut down. (CVE-2023-3823)In PHP version 8.0.* before 8.0.30,  8.1.* before 8.1.22, and 8.2.* before 8.2.8, when loading phar file, while reading PHAR directory entries, insufficient length checking may lead to a stack buffer overflow, leading potentially to memory corruption or RCE. (CVE-2023-3824)'
     FixedIn:
-        - Name: php
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-bcmath
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-bcmath
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-cli
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-cli
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-common
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-common
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-dba
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-dba
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-dbg
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-dbg
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-debuginfo
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-debuginfo
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-devel
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-devel
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-embedded
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-embedded
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-enchant
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-enchant
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-fpm
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-fpm
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-gd
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-gd
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-gmp
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-gmp
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-intl
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-intl
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-ldap
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-ldap
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-mbstring
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-mbstring
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-mysqlnd
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-mysqlnd
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-odbc
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-odbc
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-opcache
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-opcache
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-pdo
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-pdo
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-pgsql
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-pgsql
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-process
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-process
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-pspell
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-pspell
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-snmp
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-snmp
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-soap
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-soap
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-sodium
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-sodium
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm
-        - Name: php-xml
+        - Available:
+            Date: "2023-09-13"
+            Kind: advisory
+          Name: php-xml
           NamespaceName: amzn:2
           Version: 8.2.9-1.amzn2
           VersionFormat: rpm

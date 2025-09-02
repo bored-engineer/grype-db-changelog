@@ -1,15 +1,24 @@
 Vulnerability:
     Description: 'An issue was discovered in arm_pt in cplus-dem.c in GNU libiberty, as distributed in GNU Binutils 2.30. Stack Exhaustion occurs in the C++ demangling functions provided by libiberty, and there are recursive stack frames: demangle_arm_hp_template, demangle_class_name, demangle_fund_type, do_type, do_arg, demangle_args, and demangle_nested_args. This can occur during execution of nm-new. (CVE-2018-12641)A NULL pointer dereference (aka SEGV on unknown address 0x000000000000) was discovered in work_stuff_copy_to_from in cplus-dem.c in GNU libiberty, as distributed in GNU Binutils 2.30. This can occur during execution of objdump. (CVE-2018-12697)binutils version 2.32 and earlier contains a Integer Overflow vulnerability in objdump, bfd_get_dynamic_reloc_upper_bound,bfd_canonicalize_dynamic_reloc that can result in Integer overflow trigger heap overflow. Successful exploitation allows execution of arbitrary code.. This attack appear to be exploitable via Local. This vulnerability appears to have been fixed in after commit 3a551c7a1b80fca579461774860574eabfd7f18f. (CVE-2018-1000876)'
     FixedIn:
-        - Name: binutils
+        - Available:
+            Date: "2019-11-11"
+            Kind: advisory
+          Name: binutils
           NamespaceName: amzn:2
           Version: 2.29.1-29.amzn2
           VersionFormat: rpm
-        - Name: binutils-debuginfo
+        - Available:
+            Date: "2019-11-11"
+            Kind: advisory
+          Name: binutils-debuginfo
           NamespaceName: amzn:2
           Version: 2.29.1-29.amzn2
           VersionFormat: rpm
-        - Name: binutils-devel
+        - Available:
+            Date: "2019-11-11"
+            Kind: advisory
+          Name: binutils-devel
           NamespaceName: amzn:2
           Version: 2.29.1-29.amzn2
           VersionFormat: rpm

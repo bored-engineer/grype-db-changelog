@@ -1,15 +1,24 @@
 Vulnerability:
     Description: It was found that the fix to address CVE-2021-44228 in Apache Log4j 2.15.0 was incomplete in certain non-default configurations. This could allows attackers with control over Thread Context Map (MDC) input data when the logging configuration uses a non-default Pattern Layout with either a Context Lookup (for example, $${ctx:loginId}) or a Thread Context Map pattern (%X, %mdc, or %MDC) to craft malicious input data using a JNDI Lookup pattern resulting in a denial of service (DOS) attack. Log4j 2.15.0 makes a best-effort attempt to restrict JNDI LDAP lookups to localhost by default. Log4j 2.16.0 fixes this issue by removing support for message lookup patterns and disabling JNDI functionality by default. (CVE-2021-45046)
     FixedIn:
-        - Name: log4j
+        - Available:
+            Date: "2021-12-17"
+            Kind: advisory
+          Name: log4j
           NamespaceName: amzn:2022
           Version: 2.16.0-1.amzn2022
           VersionFormat: rpm
-        - Name: log4j-jcl
+        - Available:
+            Date: "2021-12-17"
+            Kind: advisory
+          Name: log4j-jcl
           NamespaceName: amzn:2022
           Version: 2.16.0-1.amzn2022
           VersionFormat: rpm
-        - Name: log4j-slf4j
+        - Available:
+            Date: "2021-12-17"
+            Kind: advisory
+          Name: log4j-slf4j
           NamespaceName: amzn:2022
           Version: 2.16.0-1.amzn2022
           VersionFormat: rpm
