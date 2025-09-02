@@ -4,7 +4,13 @@ affected:
         name: varnish
         purl: pkg:bitnami/varnish
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 7.0.2
+          events:
             - fixed: 7.0.2
             - introduced: 7.0.0
           type: SEMVER

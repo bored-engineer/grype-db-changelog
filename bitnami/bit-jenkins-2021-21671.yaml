@@ -4,7 +4,13 @@ affected:
         name: jenkins
         purl: pkg:bitnami/jenkins
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 2.300.0
+          events:
             - fixed: 2.300.0
             - introduced: 2.266.0
           type: SEMVER

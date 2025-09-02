@@ -4,7 +4,13 @@ affected:
         name: varnish
         purl: pkg:bitnami/varnish
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-05-28"
+                      kind: advisory
+                      version: 6.6.2
+          events:
             - fixed: 6.6.2
             - introduced: "0"
             - introduced: 7.0.0

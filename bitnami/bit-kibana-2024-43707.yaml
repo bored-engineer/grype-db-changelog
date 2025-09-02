@@ -4,7 +4,13 @@ affected:
         name: kibana
         purl: pkg:bitnami/kibana
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-01-27"
+                      kind: advisory
+                      version: 8.15.0
+          events:
             - fixed: 8.15.0
             - introduced: 8.0.0
           type: SEMVER

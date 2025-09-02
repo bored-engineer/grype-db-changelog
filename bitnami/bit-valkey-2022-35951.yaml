@@ -4,7 +4,13 @@ affected:
         name: valkey
         purl: pkg:bitnami/valkey
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-08-22"
+                      kind: advisory
+                      version: 7.0.5
+          events:
             - fixed: 7.0.5
             - introduced: 7.0.0
           type: SEMVER

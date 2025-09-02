@@ -4,7 +4,13 @@ affected:
         name: postgresql-jdbc-driver
         purl: pkg:bitnami/postgresql-jdbc-driver
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-06-14"
+                      kind: advisory
+                      version: 42.7.7
+          events:
             - fixed: 42.7.7
             - introduced: 42.7.4
           type: SEMVER

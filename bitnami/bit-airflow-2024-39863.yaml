@@ -4,7 +4,13 @@ affected:
         name: airflow
         purl: pkg:bitnami/airflow
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-07-19"
+                      kind: advisory
+                      version: 2.9.3
+          events:
             - fixed: 2.9.3
             - introduced: "0"
           type: SEMVER

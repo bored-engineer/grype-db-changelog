@@ -4,7 +4,16 @@ affected:
         name: redis
         purl: pkg:bitnami/redis
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 6.2.9
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 7.0.8
+          events:
             - fixed: 6.2.9
             - fixed: 7.0.8
             - introduced: 6.2.0

@@ -4,7 +4,13 @@ affected:
         name: rabbitmq
         purl: pkg:bitnami/rabbitmq
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-06-24"
+                      kind: advisory
+                      version: 4.0.8
+          events:
             - fixed: 4.0.8
             - introduced: "0"
           type: SEMVER

@@ -4,7 +4,13 @@ affected:
         name: modsecurity
         purl: pkg:bitnami/modsecurity
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-06-04"
+                      kind: advisory
+                      version: 3.0.12
+          events:
             - fixed: 3.0.12
             - introduced: "0"
           type: SEMVER

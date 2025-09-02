@@ -4,7 +4,13 @@ affected:
         name: postgresql
         purl: pkg:bitnami/postgresql
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 15.4.0
+          events:
             - fixed: 15.4.0
             - introduced: 15.0.0
           type: SEMVER

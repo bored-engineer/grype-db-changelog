@@ -4,7 +4,13 @@ affected:
         name: drupal
         purl: pkg:bitnami/drupal
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-06-03"
+                      kind: advisory
+                      version: 10.3.0
+          events:
             - fixed: 10.3.0
             - introduced: 10.0.0
           type: SEMVER

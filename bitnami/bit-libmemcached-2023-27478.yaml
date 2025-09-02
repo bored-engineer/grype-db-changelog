@@ -4,7 +4,13 @@ affected:
         name: libmemcached
         purl: pkg:bitnami/libmemcached
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 1.1.4
+          events:
             - fixed: 1.1.4
             - introduced: 1.0.18
           type: SEMVER

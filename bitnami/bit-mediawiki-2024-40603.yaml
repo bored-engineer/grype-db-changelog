@@ -4,7 +4,13 @@ affected:
         name: mediawiki
         purl: pkg:bitnami/mediawiki
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-07-10"
+                      kind: advisory
+                      version: 1.42.2
+          events:
             - fixed: 1.42.2
             - introduced: "0"
           type: SEMVER

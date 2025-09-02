@@ -4,7 +4,13 @@ affected:
         name: cassandra
         purl: pkg:bitnami/cassandra
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-08-27"
+                      kind: advisory
+                      version: 4.0.17
+          events:
             - fixed: 4.0.17
             - introduced: 4.0.16
           type: SEMVER

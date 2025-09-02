@@ -4,7 +4,13 @@ affected:
         name: phpmyadmin
         purl: pkg:bitnami/phpmyadmin
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-04-24"
+                      kind: advisory
+                      version: 5.2.2
+          events:
             - fixed: 5.2.2
             - introduced: 5.0.0
           type: SEMVER

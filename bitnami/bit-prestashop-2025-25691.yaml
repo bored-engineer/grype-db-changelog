@@ -4,7 +4,13 @@ affected:
         name: prestashop
         purl: pkg:bitnami/prestashop
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-08-07"
+                      kind: advisory
+                      version: 8.2.1
+          events:
             - fixed: 8.2.1
             - introduced: 8.2.0
           type: SEMVER

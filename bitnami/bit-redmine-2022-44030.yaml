@@ -4,7 +4,13 @@ affected:
         name: redmine
         purl: pkg:bitnami/redmine
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 5.0.4
+          events:
             - fixed: 5.0.4
             - introduced: 5.0.0
           type: SEMVER

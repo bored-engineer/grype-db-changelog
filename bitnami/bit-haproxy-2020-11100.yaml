@@ -4,7 +4,13 @@ affected:
         name: haproxy
         purl: pkg:bitnami/haproxy
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 2.1.4
+          events:
             - fixed: 2.1.4
             - introduced: 1.8.0
           type: SEMVER

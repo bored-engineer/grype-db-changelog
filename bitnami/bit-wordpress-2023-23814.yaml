@@ -4,7 +4,13 @@ affected:
         name: wordpress
         purl: pkg:bitnami/wordpress
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-12-11"
+                      kind: advisory
+                      version: 1.4.15
+          events:
             - fixed: 1.4.15
             - introduced: "0"
           type: SEMVER

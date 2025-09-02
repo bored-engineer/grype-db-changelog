@@ -4,7 +4,13 @@ affected:
         name: elasticsearch
         purl: pkg:bitnami/elasticsearch
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-05-14"
+                      kind: advisory
+                      version: 8.11.1
+          events:
             - fixed: 8.11.1
             - introduced: 8.4.0
           type: SEMVER

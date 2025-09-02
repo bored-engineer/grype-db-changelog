@@ -4,7 +4,16 @@ affected:
         name: nginx-ingress-controller
         purl: pkg:bitnami/nginx-ingress-controller
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 0.49.1
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 1.0.1
+          events:
             - fixed: 0.49.1
             - fixed: 1.0.1
             - introduced: "0"

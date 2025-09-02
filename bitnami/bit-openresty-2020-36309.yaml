@@ -4,7 +4,13 @@ affected:
         name: openresty
         purl: pkg:bitnami/openresty
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 0.10.16
+          events:
             - fixed: 0.10.16
             - introduced: "0"
           type: SEMVER

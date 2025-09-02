@@ -4,7 +4,13 @@ affected:
         name: odoo
         purl: pkg:bitnami/odoo
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-03-02"
+                      kind: advisory
+                      version: 17.0.20240505
+          events:
             - fixed: 17.0.20240505
             - introduced: 17.0.0
           type: SEMVER
