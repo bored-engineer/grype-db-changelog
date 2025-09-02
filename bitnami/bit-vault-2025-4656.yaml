@@ -5,7 +5,13 @@ affected:
         name: vault
         purl: pkg:bitnami/vault
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-06-30"
+                      kind: advisory
+                      version: 1.20.0
+          events:
             - introduced: 1.14.8
             - fixed: 1.20.0
           type: SEMVER

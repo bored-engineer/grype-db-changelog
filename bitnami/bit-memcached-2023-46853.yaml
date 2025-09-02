@@ -5,7 +5,13 @@ affected:
         name: memcached
         purl: pkg:bitnami/memcached
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-11-08"
+                      kind: advisory
+                      version: 1.6.22
+          events:
             - introduced: "0"
             - fixed: 1.6.22
           type: SEMVER

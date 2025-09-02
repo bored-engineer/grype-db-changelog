@@ -5,7 +5,13 @@ affected:
         name: cert-manager
         purl: pkg:bitnami/cert-manager
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-06-28"
+                      kind: advisory
+                      version: 1.14.5
+          events:
             - introduced: 1.14.4
             - fixed: 1.14.5
           type: SEMVER

@@ -5,7 +5,13 @@ affected:
         name: mastodon
         purl: pkg:bitnami/mastodon
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-31"
+                      kind: advisory
+                      version: 4.2.6
+          events:
             - introduced: "0"
             - fixed: 4.2.6
           type: SEMVER

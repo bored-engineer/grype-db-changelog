@@ -5,7 +5,13 @@ affected:
         name: zookeeper
         purl: pkg:bitnami/zookeeper
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-11-09"
+                      kind: advisory
+                      version: 3.9.3
+          events:
             - introduced: 3.9.0
             - fixed: 3.9.3
           type: SEMVER

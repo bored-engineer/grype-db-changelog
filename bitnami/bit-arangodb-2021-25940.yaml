@@ -5,7 +5,13 @@ affected:
         name: arangodb
         purl: pkg:bitnami/arangodb
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-03-10"
+                      kind: advisory
+                      version: 3.8.4
+          events:
             - introduced: 3.7.6
             - fixed: 3.8.4
           type: SEMVER

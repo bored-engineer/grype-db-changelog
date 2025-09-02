@@ -5,7 +5,16 @@ affected:
         name: nginx
         purl: pkg:bitnami/nginx
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 1.22.1
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 1.23.2
+          events:
             - introduced: 1.1.3
             - fixed: 1.22.1
             - introduced: 1.23.0

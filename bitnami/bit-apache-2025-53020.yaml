@@ -5,7 +5,13 @@ affected:
         name: apache
         purl: pkg:bitnami/apache
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-07-16"
+                      kind: advisory
+                      version: 2.4.64
+          events:
             - introduced: 2.4.17
             - fixed: 2.4.64
           type: SEMVER

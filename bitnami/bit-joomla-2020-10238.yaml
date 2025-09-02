@@ -5,7 +5,13 @@ affected:
         name: joomla
         purl: pkg:bitnami/joomla
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-04-03"
+                      kind: advisory
+                      version: 3.9.16
+          events:
             - introduced: 2.5.0
             - fixed: 3.9.16
           type: SEMVER

@@ -5,7 +5,13 @@ affected:
         name: django
         purl: pkg:bitnami/django
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-03-10"
+                      kind: advisory
+                      version: 5.1.7
+          events:
             - introduced: 4.2.0
             - fixed: 5.1.7
           type: SEMVER

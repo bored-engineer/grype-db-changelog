@@ -5,7 +5,13 @@ affected:
         name: openldap
         purl: pkg:bitnami/openldap
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 2.4.55
+          events:
             - introduced: "0"
             - fixed: 2.4.55
           type: SEMVER

@@ -5,7 +5,13 @@ affected:
         name: consul
         purl: pkg:bitnami/consul
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 1.6.2
+          events:
             - introduced: 1.4.1
             - fixed: 1.6.2
           type: SEMVER

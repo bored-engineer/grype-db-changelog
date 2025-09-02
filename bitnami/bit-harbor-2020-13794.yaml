@@ -5,7 +5,13 @@ affected:
         name: harbor
         purl: pkg:bitnami/harbor
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 2.0.3
+          events:
             - introduced: 1.9.0
             - fixed: 2.0.3
           type: SEMVER

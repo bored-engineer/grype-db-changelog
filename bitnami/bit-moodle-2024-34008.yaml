@@ -5,7 +5,13 @@ affected:
         name: moodle
         purl: pkg:bitnami/moodle
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-07-19"
+                      kind: advisory
+                      version: 4.3.4
+          events:
             - introduced: 4.0.0
             - fixed: 4.3.4
           type: SEMVER

@@ -5,7 +5,13 @@ affected:
         name: wildfly
         purl: pkg:bitnami/wildfly
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 23.0.1
+          events:
             - introduced: "0"
             - fixed: 23.0.1
           type: SEMVER

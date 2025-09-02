@@ -5,7 +5,13 @@ affected:
         name: grafana
         purl: pkg:bitnami/grafana
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 7.4.5
+          events:
             - introduced: 7.4.0
             - fixed: 7.4.5
           type: SEMVER

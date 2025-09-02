@@ -5,7 +5,13 @@ affected:
         name: sqlite
         purl: pkg:bitnami/sqlite
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-07-31"
+                      kind: advisory
+                      version: 3.41.2
+          events:
             - introduced: 3.39.2
             - fixed: 3.41.2
           type: SEMVER

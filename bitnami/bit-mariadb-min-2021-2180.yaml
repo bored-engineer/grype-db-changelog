@@ -5,7 +5,13 @@ affected:
         name: mariadb-min
         purl: pkg:bitnami/mariadb-min
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-06-10"
+                      kind: advisory
+                      version: 10.2.38
+          events:
             - introduced: 10.2.0
             - fixed: 10.2.38
           type: SEMVER
