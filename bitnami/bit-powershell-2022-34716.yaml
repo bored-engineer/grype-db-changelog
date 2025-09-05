@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: powershell
+        purl: pkg:bitnami/powershell
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-09-04"
+                      kind: advisory
+                      version: 7.0.12
+                    - date: "2025-09-04"
+                      kind: advisory
+                      version: 7.2.6
+          events:
+            - fixed: 7.0.12
+            - fixed: 7.2.6
+            - introduced: 7.0.0
+            - introduced: 7.2.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2022-34716
+database_specific:
+    cpes:
+        - cpe:2.3:a:microsoft:powershell:*:*:*:*:*:*:*:*
+    severity: Medium
+details: .NET Spoofing Vulnerability
+id: BIT-powershell-2022-34716
+modified: "2025-09-04T18:07:55.535Z"
+published: "2025-09-04T17:48:43.155Z"
+references:
+    - type: WEB
+      url: https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34716
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2022-34716
+schema_version: 1.6.2
+summary: .NET Spoofing Vulnerability
