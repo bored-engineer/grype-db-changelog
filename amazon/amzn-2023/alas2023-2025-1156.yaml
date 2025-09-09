@@ -1,0 +1,17 @@
+Vulnerability:
+    Description: Authen::SASL::Perl::DIGEST_MD5 versions 2.04 through 2.1800 for Perl generates the cnonce insecurely.The cnonce (client nonce) is generated from an MD5 hash of the PID, the epoch time and the built-in rand function. The PID will come from a small set of numbers, and the epoch time may be guessed, if it is not leaked from the HTTP Date header. The built-in rand function is unsuitable for cryptographic usage.According to RFC 2831, The cnonce-value is an opaque quoted string value provided by the client and used by both client and server to avoid chosen plaintext attacks, and to provide mutual authentication. The security of the implementationdepends on a good choice. It is RECOMMENDED that it contain at least 64 bits of entropy. (CVE-2025-40918)
+    FixedIn:
+        - Available:
+            Date: "2025-09-08"
+            Kind: advisory
+          Name: perl-Authen-SASL
+          NamespaceName: amzn:2023
+          Version: 2.16-23.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1156.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-40918
+    Name: ALAS2023-2025-1156
+    NamespaceName: amzn:2023
+    Severity: Medium
