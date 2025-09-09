@@ -1,0 +1,49 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: The privatekey_from_file() uses an uninitialized variable under certainconditions, such as if the file specified by the filename argument doesn'texist. This causes the code to return an invalid private key.This defect, in turn, might cause signing failure. The bug might also cause aUse-After-Free or corrupt the heap.Note that privatekey_from_file() is a deprecated function and shouldn't be usedanymore! (CVE-2025-4878)An incorrect comparison check allows to read beyond bounds in the sftp_handle() in the sftp server implementation. Thus an invalid pointer is returned as the handle and we try to continue using that. (CVE-2025-5318)pki_key_to_blob() can cause a double free on certain errors when using OpenSSL>= 3.0.  The function is used by different other functions which allow toexport public or private keys to blobs or base64.The function is using the variable params without resetting it to NULL afterfree.  In case of low-memory conditions when the allocation of string fails,the libssh calls the OSSL_PARAM_free() with the same arguments, which willlikely crash. (CVE-2025-5351)If there is an error in initializing ChaCha20 cipher with OpenSSL, an invaliderror code is returned. This can happen if there is an heap exhaustion.  Thiserror is not correctly detected and could allow libssh to use partiallyinitialized cipher context.This is caused by the mismatch of return value meaning from OpenSSL and libssh,where OpenSSL error (rv=0) aliases with SSH_OK (0) and is returned directlyfrom the function chacha20_poly1305_set_key(). This will likely cause errorsomewhere down the road. (CVE-2025-5987)
+    FixedIn:
+        - Available:
+            Date: "2025-09-08"
+            Kind: advisory
+          Name: libssh
+          NamespaceName: amzn:2023
+          Version: 0.10.6-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-08"
+            Kind: advisory
+          Name: libssh-config
+          NamespaceName: amzn:2023
+          Version: 0.10.6-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-08"
+            Kind: advisory
+          Name: libssh-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.10.6-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-08"
+            Kind: advisory
+          Name: libssh-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.10.6-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-08"
+            Kind: advisory
+          Name: libssh-devel
+          NamespaceName: amzn:2023
+          Version: 0.10.6-1.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1155.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-4878
+            - Name: CVE-2025-5318
+            - Name: CVE-2025-5351
+            - Name: CVE-2025-5987
+    Name: ALAS2023-2025-1155
+    NamespaceName: amzn:2023
+    Severity: Medium
