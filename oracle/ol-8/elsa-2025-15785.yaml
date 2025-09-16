@@ -1,0 +1,213 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.18.0-553.75.1_10.OL8]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.3
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34750652]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985772]
+
+        [4.18.0-553.75.1_10]
+        - Revert 'module, async: async_synchronize_full() on module init iff async is used' (Herton R. Krzesinski) [RHEL-99812]
+        - mm/page_alloc: make sure free_pcppages_bulk() bails when given count < 0 (Rafael Aquini) [RHEL-85453]
+        - sch_cbq: make cbq_qlen_notify() idempotent (Ivan Vecera) [RHEL-93376]
+        - net/sched: ets: use old 'nbands' while purging unused classes (Ivan Vecera) [RHEL-107541] {CVE-2025-38350}
+        - net_sched: sch_ets: implement lockless ets_dump() (Ivan Vecera) [RHEL-107541] {CVE-2025-38350}
+        - net/sched: Always pass notifications when child class becomes empty (Ivan Vecera) [RHEL-93376] {CVE-2025-38350}
+        - net_sched: ets: fix a race in ets_qdisc_change() (Ivan Vecera) [RHEL-107541] {CVE-2025-38107}
+        - sch_htb: make htb_deactivate() idempotent (Ivan Vecera) [RHEL-93376] {CVE-2025-37953}
+        - codel: remove sch->q.qlen check before qdisc_tree_reduce_backlog() (Ivan Vecera) [RHEL-93376] {CVE-2025-37798}
+        - sch_qfq: make qfq_qlen_notify() idempotent (Ivan Vecera) [RHEL-93376] {CVE-2025-38350}
+        - sch_drr: make drr_qlen_notify() idempotent (Ivan Vecera) [RHEL-93376] {CVE-2025-38350}
+        - sch_htb: make htb_qlen_notify() idempotent (Ivan Vecera) [RHEL-93376] {CVE-2025-37932}
+        - idpf: convert control queue mutex to a spinlock (CKI Backport Bot) [RHEL-106049] {CVE-2025-38392}
+        - drm/framebuffer: Acquire internal references on GEM handles (Anusha Srivatsa) [RHEL-106684] {CVE-2025-38449}
+        - drm/gem: Acquire references on GEM handles for framebuffers (Anusha Srivatsa) [RHEL-106684] {CVE-2025-38449}
+        - tracing: Disable interrupt or preemption before acquiring arch_spinlock_t (partial) (Luis Claudio R. Goncalves) [RHEL-95713]
+        - vmxnet3: disable rx data ring on dma allocation failure (Michal Schmidt) [RHEL-106160]
+        - xfs: fix error returns from xfs_bmapi_write (Carlos Maiolino) [RHEL-93655]
+        - xfs: handle nimaps=0 from xfs_bmapi_write in xfs_alloc_file_space (Carlos Maiolino) [RHEL-93655]
+        - net: usb: smsc75xx: Move packet length check to prevent kernel panic in skb_pull (CKI Backport Bot) [RHEL-112239] {CVE-2023-53125}
+        - net: usb: smsc75xx: Limit packet length to skb->len (CKI Backport Bot) [RHEL-112239] {CVE-2023-53125}
+        - PCI: Support BAR sizes up to 8TB (Myron Stowe) [RHEL-106671]
+    FixedIn:
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: bpftool
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.75.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-15785.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2023-53125.html
+              Name: CVE-2023-53125
+            - Link: https://linux.oracle.com/cve/CVE-2025-38350.html
+              Name: CVE-2025-38350
+            - Link: https://linux.oracle.com/cve/CVE-2025-38392.html
+              Name: CVE-2025-38392
+            - Link: https://linux.oracle.com/cve/CVE-2025-38449.html
+              Name: CVE-2025-38449
+        Issued: "2025-09-15"
+        RefId: ELSA-2025-15785
+    Name: ELSA-2025-15785
+    NamespaceName: ol:8
+    Severity: High
