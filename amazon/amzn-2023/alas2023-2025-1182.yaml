@@ -1,0 +1,97 @@
+Vulnerability:
+    Description: ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to version 7.1.2-1, ImageMagick is vulnerable to heap-buffer overflow read around the handling of images with separate alpha channels when performing image magnification in ReadOneMNGIMage. This can likely be used to leak subsequent memory contents into the output image. This issue has been patched in version 7.1.2-1. (CVE-2025-55004)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to version 7.1.2-1, when preparing to transform from Log to sRGB colorspaces, the logmap construction fails to handle cases where the reference-black or reference-white value is larger than 1024. This leads to corrupting memory beyond the end of the allocated logmap buffer. This issue has been patched in version 7.1.2-1. (CVE-2025-55005)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to versions 6.9.13-27 and 7.1.2-1, there is undefined behavior (function-type-mismatch) in splay tree cloning callback. This results in a deterministic abort under UBSan (DoS in sanitizer builds), with no crash in a non-sanitized build. This issue has been patched in versions 6.9.13-27 and 7.1.2-1. (CVE-2025-55160)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to ImageMagick versions 6.9.13-28 and 7.1.2-2, a format string bug vulnerability exists in InterpretImageFilename function where user input is directly passed to FormatLocaleString without proper sanitization. An attacker can overwrite arbitrary memory regions, enabling a wide range of attacks from heap overflow to remote code execution. This issue has been patched in versions 6.9.13-28 and 7.1.2-2. (CVE-2025-55298)
+    FixedIn:
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-c++
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-c++-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-c++-devel
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-debugsource
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-devel
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-doc
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-libs
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-perl
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-15"
+            Kind: advisory
+          Name: ImageMagick-perl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.9.12.82-1.amzn2023.0.11
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1182.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-55004
+            - Name: CVE-2025-55005
+            - Name: CVE-2025-55160
+            - Name: CVE-2025-55298
+    Name: ALAS2023-2025-1182
+    NamespaceName: amzn:2023
+    Severity: High
