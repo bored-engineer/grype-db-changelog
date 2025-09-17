@@ -1,0 +1,59 @@
+Vulnerability:
+    Description: A flaw was found in the Udisks daemon, where it allows unprivileged users to create loop devices using the D-BUS system. This is achieved via the loop device handler, which handles requests sent through the D-BUS interface. As two of the parameters of this handle, it receives the file descriptor list and index specifying the file where the loop device should be backed. The function itself validates the index value to ensure it isn't bigger than the maximum value allowed. However, it fails to validate the lower bound, allowing the index parameter to be a negative value. Under these circumstances, an attacker can cause the UDisks daemon to crash or perform a local privilege escalation by gaining access to files owned by privileged users. (CVE-2025-8067)
+    FixedIn:
+        - Available:
+            Date: "2025-09-16"
+            Kind: advisory
+          Name: libudisks2
+          NamespaceName: amzn:2
+          Version: 2.7.3-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-16"
+            Kind: advisory
+          Name: libudisks2-devel
+          NamespaceName: amzn:2
+          Version: 2.7.3-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-16"
+            Kind: advisory
+          Name: udisks2
+          NamespaceName: amzn:2
+          Version: 2.7.3-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-16"
+            Kind: advisory
+          Name: udisks2-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.7.3-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-16"
+            Kind: advisory
+          Name: udisks2-iscsi
+          NamespaceName: amzn:2
+          Version: 2.7.3-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-16"
+            Kind: advisory
+          Name: udisks2-lsm
+          NamespaceName: amzn:2
+          Version: 2.7.3-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-16"
+            Kind: advisory
+          Name: udisks2-lvm2
+          NamespaceName: amzn:2
+          Version: 2.7.3-9.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2025-2992.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-8067
+    Name: ALAS2-2025-2992
+    NamespaceName: amzn:2
+    Severity: High
