@@ -1,0 +1,38 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: jenkins
+        purl: pkg:bitnami/jenkins
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-09-19"
+                      kind: advisory
+                      version: 2.516.3
+                    - date: "2025-09-19"
+                      kind: advisory
+                      version: 2.528.0
+          events:
+            - introduced: "0"
+            - fixed: 2.516.3
+            - introduced: 2.517.0
+            - fixed: 2.528.0
+          type: SEMVER
+aliases:
+    - CVE-2025-59476
+database_specific:
+    cpes:
+        - cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:maven:*:*
+    severity: Unknown
+details: Jenkins 2.527 and earlier, LTS 2.516.2 and earlier does not restrict or transform the characters that can be inserted from user-specified content in log messages, allowing attackers able to control log message contents to insert line break characters, followed by forged log messages that may mislead administrators reviewing log output.
+id: BIT-jenkins-2025-59476
+modified: "2025-09-19T10:21:21.758Z"
+published: "2025-09-19T09:57:11.182Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-59476
+    - type: WEB
+      url: https://www.jenkins.io/security/advisory/2025-09-17/#SECURITY-3424
+schema_version: 1.6.2
