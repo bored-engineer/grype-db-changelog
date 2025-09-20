@@ -1,0 +1,37 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: jenkins
+        purl: pkg:bitnami/jenkins
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-09-19"
+                      kind: advisory
+                      version: 2.516.3
+                    - date: "2025-09-19"
+                      kind: advisory
+                      version: 2.528.0
+          events:
+            - fixed: 2.516.3
+            - fixed: 2.528.0
+            - introduced: "0"
+            - introduced: 2.517.0
+          type: SEMVER
+aliases:
+    - CVE-2025-59475
+database_specific:
+    cpes:
+        - cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:maven:*:*
+    severity: Unknown
+details: Jenkins 2.527 and earlier, LTS 2.516.2 and earlier does not perform a permission check for the authenticated user profile dropdown menu, allowing attackers without Overall/Read permission to obtain limited information about the Jenkins configuration by listing available options in this menu (e.g., whether Credentials Plugin is installed).
+id: BIT-jenkins-2025-59475
+modified: "2025-09-19T10:21:21.758Z"
+published: "2025-09-19T09:57:09.400Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-59475
+    - type: WEB
+      url: https://www.jenkins.io/security/advisory/2025-09-17/#SECURITY-3625
+schema_version: 1.6.2
