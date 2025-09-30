@@ -1,0 +1,53 @@
+Vulnerability:
+    Description: A heap overflow vulnerability exists in libvpx - Encoding a frame that has larger dimensions than the originally configured size with VP9 may result in a heap overflow in libvpx.We recommend upgrading to version 1.13.1 or above (CVE-2023-6349)There exists interger overflows in libvpx in versions prior to 1.14.1. Calling vpx_img_alloc() with a large value of the d_w, d_h, or align parameter may result in integer overflows in the calculations of buffer sizes and offsets and some fields of the returned vpx_image_t struct may be invalid. Calling vpx_img_wrap() with a large value of the d_w, d_h, or stride_align parameter may result in integer overflows in the calculations of buffer sizes and offsets and some fields of the returned vpx_image_t struct may be invalid. We recommend upgrading to version 1.14.1 or beyond (CVE-2024-5197)
+    FixedIn:
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: libvpx
+          NamespaceName: amzn:2023
+          Version: 1.11.0-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: libvpx-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.11.0-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: libvpx-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.11.0-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: libvpx-devel
+          NamespaceName: amzn:2023
+          Version: 1.11.0-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: libvpx-utils
+          NamespaceName: amzn:2023
+          Version: 1.11.0-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: libvpx-utils-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.11.0-1.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1207.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-6349
+            - Name: CVE-2024-5197
+    Name: ALAS2023-2025-1207
+    NamespaceName: amzn:2023
+    Severity: Medium

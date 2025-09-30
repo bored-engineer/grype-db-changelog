@@ -1,0 +1,127 @@
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:RDMA/core: Fix "KASAN: slab-use-after-free Read in ib_register_device" problem (CVE-2025-38022)In the Linux kernel, the following vulnerability has been resolved:dma-buf: insert memory barrier before updating num_fences (CVE-2025-38095)In the Linux kernel, the following vulnerability has been resolved:netfilter: nft_set_pipapo: clamp maximum map bucket size to INT_MAX (CVE-2025-38201)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix oob access in cgroup local storage (CVE-2025-38502)In the Linux kernel, the following vulnerability has been resolved:can: netlink: can_changelink(): fix NULL pointer deref of struct can_priv::do_set_mode (CVE-2025-38665)In the Linux kernel, the following vulnerability has been resolved:net/sched: Fix backlog accounting in qdisc_dequeue_internal (CVE-2025-39677)In the Linux kernel, the following vulnerability has been resolved:batman-adv: fix OOB read/write in network-coding decode (CVE-2025-39839)In the Linux kernel, the following vulnerability has been resolved:mm: move page table sync declarations to linux/pgtable.h (CVE-2025-39844)In the Linux kernel, the following vulnerability has been resolved:x86/mm/64: define ARCH_PAGE_TABLE_SYNC_MASK and arch_sync_kernel_mappings() (CVE-2025-39845)In the Linux kernel, the following vulnerability has been resolved:pcmcia: Fix a NULL pointer dereference in __iodyn_find_io_region() (CVE-2025-39846)In the Linux kernel, the following vulnerability has been resolved:ppp: fix memory leak in pad_compress_skb (CVE-2025-39847)In the Linux kernel, the following vulnerability has been resolved:ax25: properly unshare skbs in ax25_kiss_rcv() (CVE-2025-39848)In the Linux kernel, the following vulnerability has been resolved:x86/vmscape: Add conditional IBPB mitigationVMSCAPE is a vulnerability that exploits insufficient branch predictor isolation between a guest and a userspace hypervisor (like QEMU). Existing mitigations already protect kernel/KVM from a malicious guest. Userspace can additionally be protected by flushing the branch predictors after a VMexit.Since it is the userspace that consumes the poisoned branch predictors, conditionally issue an IBPB after a VMexit and before returning to userspace. Workloads that frequently switch between hypervisor and userspace will incur the most overhead from the new IBPB.This new IBPB is not integrated with the existing IBPB sites. For instance, a task can use the existing speculation control prctl() to get an IBPB at context switch time. With this implementation, the IBPB is doubled up: one at context switch and another before running userspace. The intent is to integrate and optimize these cases post-embargo.[ dhansen: elaborate on suboptimal IBPB solution ] (CVE-2025-40300)'
+    FixedIn:
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-livepatch-5.15.193-133.214
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: perf
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.193-133.214.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.15-2025-091.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-38022
+            - Name: CVE-2025-38095
+            - Name: CVE-2025-38201
+            - Name: CVE-2025-38502
+            - Name: CVE-2025-38665
+            - Name: CVE-2025-39677
+            - Name: CVE-2025-39839
+            - Name: CVE-2025-39844
+            - Name: CVE-2025-39845
+            - Name: CVE-2025-39846
+            - Name: CVE-2025-39847
+            - Name: CVE-2025-39848
+            - Name: CVE-2025-40300
+    Name: ALAS2KERNEL-5.15-2025-091
+    NamespaceName: amzn:2
+    Severity: High
