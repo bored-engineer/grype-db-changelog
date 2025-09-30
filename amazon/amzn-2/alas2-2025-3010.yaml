@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: The net/http package accepted data in the chunked transfer encoding containing an invalid chunk-size line terminated by a bare LF. When used in conjunction with a server or proxy which incorrectly interprets a bare LF in a chunk extension as part of the extension, this could permit request smuggling. (CVE-2025-22871)The tokenizer incorrectly interprets tags with unquoted attribute values that end with a solidus character (/) as self-closing. When directly using Tokenizer, this can result in such tags incorrectly being marked as self-closing, and when using the Parse functions, this can result in content following such tags as being placed in the wrong scope during DOM construction, but only when tags are in foreign content (e.g. <math>, <svg>, etc contexts).After analysis, we have determined that 2025-22872 do not pose a security risk to docker or containerd on Amazon Linux 2 or Amazon Linux 2023. Source code analysis using govulncheck has confirmed that these packages do not contain the vulnerable code. As a result, no security patches are required for these specific packages on AL2 and AL2023. (CVE-2025-22872)
+    FixedIn:
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: amazon-ssm-agent
+          NamespaceName: amzn:2
+          Version: 3.3.3050.0-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2025-3010.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-22871
+            - Name: CVE-2025-22872
+    Name: ALAS2-2025-3010
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,60 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'ImageMagick is free and open-source software used for editing and manipulating digital images. ImageMagick versions lower than 14.8.2 include  insecure functions: SeekBlob(), which permits advancing the stream offset beyond the current end without increasing capacity, and WriteBlob(), which then expands by quantum + length (amortized) instead of offset + length, and copies to data + offset. When offset [?] extent, the copy targets memory beyond the allocation, producing a deterministic heap write on 64-bit builds. No 264 arithmetic wrap, external delegates, or policy settings are required. This is fixed in version 14.8.2. (CVE-2025-57807)'
+    FixedIn:
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: ImageMagick
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: ImageMagick-c++
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: ImageMagick-c++-devel
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: ImageMagick-debuginfo
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: ImageMagick-devel
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: ImageMagick-doc
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: ImageMagick-perl
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.17
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2025-3009.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-57807
+    Name: ALAS2-2025-3009
+    NamespaceName: amzn:2
+    Severity: Medium

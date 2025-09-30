@@ -1,0 +1,178 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:fs: relax assertions on failure to encode file handles (CVE-2024-57924)In the Linux kernel, the following vulnerability has been resolved:net: Fix null-ptr-deref by sock_lock_init_class_and_name() and rmmod. (CVE-2025-23143)In the Linux kernel, the following vulnerability has been resolved:media: mediatek: vcodec: Fix a resource leak related to the scp device in FW initialization (CVE-2025-23160)In the Linux kernel, the following vulnerability has been resolved:btrfs: adjust subpage bit start based on sectorsize (CVE-2025-37931)In the Linux kernel, the following vulnerability has been resolved:RDMA/core: Fix "KASAN: slab-use-after-free Read in ib_register_device" problem (CVE-2025-38022)In the Linux kernel, the following vulnerability has been resolved:netfilter: nft_set_pipapo: clamp maximum map bucket size to INT_MAX (CVE-2025-38201)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix oob access in cgroup local storage (CVE-2025-38502)In the Linux kernel, the following vulnerability has been resolved:net/mlx5e: Remove skb secpath if xfrm state is not found (CVE-2025-38590)In the Linux kernel, the following vulnerability has been resolved:net/sched: Fix backlog accounting in qdisc_dequeue_internal (CVE-2025-39677)In the Linux kernel, the following vulnerability has been resolved:cifs: prevent NULL pointer dereference in UTF16 conversion (CVE-2025-39838)In the Linux kernel, the following vulnerability has been resolved:batman-adv: fix OOB read/write in network-coding decode (CVE-2025-39839)In the Linux kernel, the following vulnerability has been resolved:ocfs2: prevent release journal inode after journal shutdown (CVE-2025-39842)In the Linux kernel, the following vulnerability has been resolved:mm: slub: avoid wake up kswapd in set_track_prepare (CVE-2025-39843)In the Linux kernel, the following vulnerability has been resolved:mm: move page table sync declarations to linux/pgtable.h (CVE-2025-39844)In the Linux kernel, the following vulnerability has been resolved:x86/mm/64: define ARCH_PAGE_TABLE_SYNC_MASK and arch_sync_kernel_mappings() (CVE-2025-39845)In the Linux kernel, the following vulnerability has been resolved:pcmcia: Fix a NULL pointer dereference in __iodyn_find_io_region() (CVE-2025-39846)In the Linux kernel, the following vulnerability has been resolved:ppp: fix memory leak in pad_compress_skb (CVE-2025-39847)In the Linux kernel, the following vulnerability has been resolved:ax25: properly unshare skbs in ax25_kiss_rcv() (CVE-2025-39848)In the Linux kernel, the following vulnerability has been resolved:wifi: cfg80211: sme: cap SSID length in __cfg80211_connect_result() (CVE-2025-39849)In the Linux kernel, the following vulnerability has been resolved:fs: writeback: fix use-after-free in __mark_inode_dirty() (CVE-2025-39866)In the Linux kernel, the following vulnerability has been resolved:x86/vmscape: Add conditional IBPB mitigationVMSCAPE is a vulnerability that exploits insufficient branch predictor isolation between a guest and a userspace hypervisor (like QEMU). Existing mitigations already protect kernel/KVM from a malicious guest. Userspace can additionally be protected by flushing the branch predictors after a VMexit.Since it is the userspace that consumes the poisoned branch predictors, conditionally issue an IBPB after a VMexit and before returning to userspace. Workloads that frequently switch between hypervisor and userspace will incur the most overhead from the new IBPB.This new IBPB is not integrated with the existing IBPB sites. For instance, a task can use the existing speculation control prctl() to get an IBPB at context switch time. With this implementation, the IBPB is doubled up: one at context switch and another before running userspace. The intent is to integrate and optimize these cases post-embargo.[ dhansen: elaborate on suboptimal IBPB solution ] (CVE-2025-40300)'
+    FixedIn:
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: bpftool
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: bpftool-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-devel
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-headers
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-libbpf
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-libbpf-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-libbpf-devel
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-libbpf-static
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-livepatch-6.1.153-175.280
+          NamespaceName: amzn:2023
+          Version: 1.0-0.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-modules-extra
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-modules-extra-common
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-tools
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: kernel-tools-devel
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: perf
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: perf-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: python3-perf
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: python3-perf-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.153-175.280.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1210.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-57924
+            - Name: CVE-2025-23143
+            - Name: CVE-2025-23160
+            - Name: CVE-2025-37931
+            - Name: CVE-2025-38022
+            - Name: CVE-2025-38201
+            - Name: CVE-2025-38502
+            - Name: CVE-2025-38590
+            - Name: CVE-2025-39677
+            - Name: CVE-2025-39838
+            - Name: CVE-2025-39839
+            - Name: CVE-2025-39842
+            - Name: CVE-2025-39843
+            - Name: CVE-2025-39844
+            - Name: CVE-2025-39845
+            - Name: CVE-2025-39846
+            - Name: CVE-2025-39847
+            - Name: CVE-2025-39848
+            - Name: CVE-2025-39849
+            - Name: CVE-2025-39866
+            - Name: CVE-2025-40300
+    Name: ALAS2023-2025-1210
+    NamespaceName: amzn:2023
+    Severity: High

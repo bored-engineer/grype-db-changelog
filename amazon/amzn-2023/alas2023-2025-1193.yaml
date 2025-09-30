@@ -1,0 +1,39 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: tracing is a framework for instrumenting Rust programs to collect structured, event-based diagnostic information. Prior to version 0.3.20, tracing-subscriber was vulnerable to ANSI escape sequence injection attacks. Untrusted user input containing ANSI escape sequences could be injected into terminal output when logged, potentially allowing attackers to manipulate terminal title bars, clear screens or modify terminal display, and potentially mislead users through terminal manipulation. tracing-subscriber version 0.3.20 fixes this vulnerability by escaping ANSI control characters when writing events to destinations that may be printed to the terminal. A workaround involves avoiding printing logs to terminal emulators without escaping ANSI control sequences. (CVE-2025-58160)
+    FixedIn:
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: glycin
+          NamespaceName: amzn:2023
+          Version: 1.1.2-9.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: glycin-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.1.2-9.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: glycin-loaders
+          NamespaceName: amzn:2023
+          Version: 1.1.2-9.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-09-29"
+            Kind: advisory
+          Name: glycin-loaders-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.1.2-9.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1193.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-58160
+    Name: ALAS2023-2025-1193
+    NamespaceName: amzn:2023
+    Severity: Medium
