@@ -4,9 +4,15 @@ affected:
         name: wordpress-multisite
         purl: pkg:bitnami/wordpress-multisite
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-09-25"
+                      kind: advisory
+                      version: 6.8.3
+          events:
+            - fixed: 6.8.3
             - introduced: "0"
-            - last_affected: 6.8.2
           type: SEMVER
       severity:
         - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N
@@ -23,7 +29,7 @@ details: |-
     The WordPress Core security team is aware of the issue and is already working on a fix. This is a low-severity vulnerability. Contributor-level privileges required in order to exploit it.
     This issue affects WordPress: from n/a through 6.8.2
 id: BIT-wordpress-multisite-2025-58246
-modified: "2025-09-25T09:09:38.625Z"
+modified: "2025-10-01T09:06:36.513Z"
 published: "2025-09-25T08:55:08.408Z"
 references:
     - type: WEB
@@ -31,4 +37,4 @@ references:
     - type: WEB
       url: https://patchstack.com/database/wordpress/wordpress/wordpress/vulnerability/wordpress-wordpress-wordpress-6-8-2-sensitive-data-exposure-vulnerability?_s_id=cve
 schema_version: 1.6.2
-summary: WordPress core <= 6.8.2 - (Contributor+) Sensitive Data Exposure vulnerability
+summary: WordPress <= 6.8.2 - (Contributor+) Sensitive Data Exposure Vulnerability
