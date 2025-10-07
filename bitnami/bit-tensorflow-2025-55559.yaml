@@ -1,0 +1,37 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: tensorflow
+        purl: pkg:bitnami/tensorflow
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-10-05"
+                      kind: advisory
+                      version: 2.18.1
+          events:
+            - fixed: 2.18.1
+            - introduced: 2.18.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2025-55559
+database_specific:
+    cpes:
+        - cpe:2.3:a:google:tensorflow:*:*:*:*:-:*:*:*
+    severity: High
+details: An issue was discovered TensorFlow v2.18.0. A Denial of Service (DoS) occurs when padding is set to 'valid' in tf.keras.layers.Conv2D.
+id: BIT-tensorflow-2025-55559
+modified: "2025-10-06T00:06:00.502Z"
+published: "2025-10-05T23:59:43.523Z"
+references:
+    - type: WEB
+      url: https://gist.github.com/shaoyuyoung/0e7d2a586297ae9c8ed14d8706749efc
+    - type: WEB
+      url: https://github.com/tensorflow/tensorflow/issues/84205
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-55559
+schema_version: 1.6.2
