@@ -1,0 +1,42 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Redis is an open source, in-memory database that persists on disk. Versions 8.2.1 and below allow an authenticated user to use a specially crafted Lua script to cause an integer overflow and potentially lead to remote code execution The problem exists in all versions of Redis with Lua scripting. This issue is fixed in version 8.2.2. (CVE-2025-46817)Redis is an open source, in-memory database that persists on disk. Versions 8.2.1 and below allow an authenticated user to use a specially crafted Lua script to manipulate different LUA objects and potentially run their own code in the context of another user. The problem exists in all versions of Redis with LUA scripting. This issue is fixed in version 8.2.2. A workaround to mitigate the problem without patching the redis-server executable is to prevent users from executing LUA scripts. This can be done using ACL to block a script by restricting both the EVAL and FUNCTION command families. (CVE-2025-46818)Redis is an open source, in-memory database that persists on disk. Versions 8.2.1 and below allow an authenticated user to use a specially crafted LUA script to read out-of-bound data or crash the server and subsequent denial of service. The problem exists in all versions of Redis with Lua scripting. This issue is fixed in version 8.2.2. To workaround this issue without patching the redis-server executable is to prevent users from executing Lua scripts. This can be done using ACL to block a script by restricting both the EVAL and FUNCTION command families. (CVE-2025-46819)Redis is an open source, in-memory database that persists on disk. Versions 8.2.1 and below allow an authenticated user to use a specially crafted Lua script to manipulate the garbage collector, trigger a use-after-free and potentially lead to remote code execution. The problem exists in all versions of Redis with Lua scripting. This issue is fixed in version 8.2.2. To workaround this issue without patching the redis-server executable is to prevent users from executing Lua scripts. This can be done using ACL to restrict EVAL and EVALSHA commands. (CVE-2025-49844)
+    FixedIn:
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: valkey
+          NamespaceName: amzn:2023
+          Version: 8.0.6-3.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: valkey-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.0.6-3.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: valkey-debugsource
+          NamespaceName: amzn:2023
+          Version: 8.0.6-3.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: valkey-devel
+          NamespaceName: amzn:2023
+          Version: 8.0.6-3.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1221.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-46817
+            - Name: CVE-2025-46818
+            - Name: CVE-2025-46819
+            - Name: CVE-2025-49844
+    Name: ALAS2023-2025-1221
+    NamespaceName: amzn:2023
+    Severity: High

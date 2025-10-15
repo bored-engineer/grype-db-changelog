@@ -1,0 +1,53 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Issue summary: An application trying to decrypt CMS messages encrypted usingpassword based encryption can trigger an out-of-bounds read and write.Impact summary: This out-of-bounds read may trigger a crash which leads toDenial of Service for an application. The out-of-bounds write can causea memory corruption which can have various consequences includinga Denial of Service or Execution of attacker-supplied code.Although the consequences of a successful exploit of this vulnerabilitycould be severe, the probability that the attacker would be able toperform it is low. Besides, password based (PWRI) encryption support in CMSmessages is very rarely used. For that reason the issue was assessed asModerate severity according to our Security Policy.The FIPS modules in 3.5, 3.4, 3.3, 3.2, 3.1 and 3.0 are not affected by thisissue, as the CMS implementation is outside the OpenSSL FIPS moduleboundary. (CVE-2025-9230)'
+    FixedIn:
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: openssl
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: openssl-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: openssl-devel
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: openssl-libs
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: openssl-perl
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: openssl-static
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.16
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2025-3034.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-9230
+    Name: ALAS2-2025-3034
+    NamespaceName: amzn:2
+    Severity: Medium
