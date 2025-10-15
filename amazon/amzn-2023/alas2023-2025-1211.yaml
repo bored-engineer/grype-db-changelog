@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: When extracting a tar archive pip may not check symbolic links point into the extraction directory if the tarfile module doesn't implement PEP 706.Note that upgrading pip to a "fixed" version for this vulnerability doesn't fix all known vulnerabilities that are remediated by using a Python version that implements PEP 706.Note that this is a vulnerability in pip's fallback implementation of tar extraction for Python versions that don't implement PEP 706and therefore are not secure to all vulnerabilities in the Python 'tarfile' module. If you're using a Python version that implements PEP 706then pip doesn't use the "vulnerable" fallback code.Mitigations include upgrading to a version of pip that includes the fix, upgrading to a Python version that implements PEP 706 (Python >=3.9.17, >=3.10.12, >=3.11.4, or >=3.12),applying the linked patch, or inspecting source distributions (sdists) before installation as is already a best-practice. (CVE-2025-8869)
+    FixedIn:
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: python3.11-pip
+          NamespaceName: amzn:2023
+          Version: 22.3.1-2.amzn2023.0.8
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Name: python3.11-pip-wheel
+          NamespaceName: amzn:2023
+          Version: 22.3.1-2.amzn2023.0.8
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1211.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-8869
+    Name: ALAS2023-2025-1211
+    NamespaceName: amzn:2023
+    Severity: Medium
