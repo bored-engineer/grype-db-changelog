@@ -1,0 +1,327 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.15.0-313.189.5.1]
+        - af_unix: Don't leave consecutive consumed OOB skbs. (Kuniyuki Iwashima)  [Orabug: 38528187]  {CVE-2025-38236}
+        - fs: writeback: fix use-after-free in __mark_inode_dirty() (Jiufei Xue)  [Orabug: 38528183]  {CVE-2025-39866}
+        - rtnetlink: Fix L3 stats disable handling in rtnl_offload_xstats_fill() (Vijayendra Suman)  [Orabug: 38528177]
+
+        [5.15.0-313.189.5]
+        - net/rds: tracepoints for rds_conn_kref_get and put (Sharath Srinivasan) [Orabug: 37793025]
+        - net/rds: Add krefs to struct rds_connection (Sharath Srinivasan) [Orabug: 37793025]
+        - nvme-tcp: sanitize request list handling (Hannes Reinecke) [Orabug: 38175126,38454661] {CVE-2025-38264}
+        - llist: add interface to check if a node is on a list. (Neil Brown) [Orabug: 38175126] {CVE-2025-38264}
+
+        [5.15.0-313.189.4]
+        - uek-rpm: Move ifb module to modules-core (Harshit Mogalapalli) [Orabug: 38224682]
+
+        [5.15.0-313.189.3]
+        - x86/vmscape: Warn when STIBP is disabled with SMT (Pawan Gupta) [Orabug: 38424092]
+        - x86/bugs: Move cpu_bugs_smt_update() down (Pawan Gupta) [Orabug: 38424092]
+        - x86/vmscape: Enable the mitigation (Pawan Gupta) [Orabug: 38424092]
+        - x86/vmscape: Add conditional IBPB mitigation (Pawan Gupta) [Orabug: 38424092]
+        - x86/bugs: Fix RSB clearing in indirect_branch_prediction_barrier() (Josh Poimboeuf) [Orabug: 38424092]
+        - x86/vmscape: Add old Intel CPUs to affected list (Pawan Gupta) [Orabug: 38424092]
+        - x86/vmscape: Enumerate VMSCAPE bug (Pawan Gupta) [Orabug: 38424092]
+        - Documentation/hw-vuln: Add VMSCAPE documentation (Pawan Gupta) [Orabug: 38424092]
+        - vsock: Do not allow binding to VMADDR_PORT_ANY (Budimir Markovic) [Orabug: 38454665,38351770] {CVE-2025-38618}
+        - HID: core: ensure the allocated report buffer can contain the reserved report ID (Benjamin Tissoires) [Orabug: 38254347,38454662] {CVE-2025-38495}
+        - HID: core: do not bypass hid_hw_raw_request (Benjamin Tissoires) [Orabug: 38254339,38454666] {CVE-2025-38494}
+        - clone_private_mnt(): make sure that caller has CAP_SYS_ADMIN in the right userns (Al Viro) [Orabug: 38310006,38454664] {CVE-2025-38499}
+        - igc: fix disabling L1.2 PCI-E link substate on I226 on init (Valdikss) [Orabug: 38343660]
+        - Input: xpad - set correct controller type for Acer NGR200 (Nilton Perim Neto)
+        - ASoC: soc-dai: tidyup return value of snd_soc_xlate_tdm_slot_mask() (Kuninori Morimoto)
+        - squashfs: fix memory leak in squashfs_fill_super (Phillip Lougher) [Orabug: 38343660]
+        - ASoC: ops: dynamically allocate struct snd_ctl_elem_value (Arnd Bergmann)
+        - compiler: remove __ADDRESSABLE_ASM{_STR,}() again (Jan Beulich)
+        - mm/memory-failure: fix infinite UCE for VM_PFNMAP pfn (Tu Jinjiang)
+        - KVM: arm64: Fix kernel BUG() due to bad backport of FPSIMD/SVE/SME fix (Will Deacon)
+        - benet: fix BUG when creating VFs (Michal Schmidt) [Orabug: 38334975] {CVE-2025-38569}
+        - smb: client: fix use-after-free in crypt_message when using async crypto (Wang Zhaolong) [Orabug: 38254323] {CVE-2025-38488}
+        - kbuild: userprogs: use correct linker when mixing clang and GNU ld (Thomas Weissschuh)
+        - ARM: 9448/1: Use an absolute path to unified.h in KBUILD_AFLAGS (Nathan Chancellor)
+        - NFSv4.2: another fix for listxattr (Olga Kornievskaia)
+        - cpuidle: governors: menu: Avoid using invalid recent intervals data (Rafael J. Wysocki)
+        - netlink: avoid infinite retry looping in netlink_unicast() (Fedor Pchelkin) [Orabug: 38395124] {CVE-2025-38727}
+        - Revert 'vgacon: Add check for vc_origin address range in vgacon_scroll()' (Helge Deller) [Orabug: 38343660]
+        - bpf, sockmap: Fix panic when calling skb_linearize (Jiayuan Chen) [Orabug: 38394723] {CVE-2025-38165}
+        - netfilter: nf_tables: adjust lockdep assertions handling (Fedor Pchelkin)
+        - arm64: errata: Work around AmpereOne's erratum AC04_CPU_23 (D Scott Phillips) [Orabug: 38166347]
+        - ARM: UEK: Disable arm64 erratum QCOM_FALKOR_ERRATUM_1003 (Boris Ostrovsky) [Orabug: 38166347]
+        - vhost-scsi: Fix check for inline_sg_cnt exceeding preallocated limit (Alok Tiwari) [Orabug: 38324335]
+        - mm/hugetlb: fix copy_hugetlb_page_range() to check ->pt_share_count (Jane Chu) [Orabug: 38346475]
+        - Reapply 'mm: hugetlb: independent PMD page table shared count' (Jane Chu) [Orabug: 38346475]
+        - uek-rpm: pensando: enable config options for fips (Joseph Dobosenski) [Orabug: 38354692]
+
+        [5.15.0-313.189.2]
+        - LTS version: v5.15.189 (Vijayendra Suman)
+        - rseq: Fix segfault on registration when rseq_cs is non-zero (Michael Jeanson) [Orabug: 38095071] {CVE-2025-38067}
+        - x86/mm: Disable hugetlb page table sharing on 32-bit (Jann Horn)
+        - Input: atkbd - do not skip atkbd_deactivate() when skipping ATKBD_CMD_GETID (Hans de Goede)
+        - HID: quirks: Add quirk for 2 Chicony Electronics HP 5MP Cameras (Chia-Lin Kao) [Orabug: 38324278] {CVE-2025-38540}
+        - HID: Add IGNORE quirk for SMARTLINKTECHNOLOGY (Zhang Heng)
+        - vt: add missing notification when switching back to text mode (Nicolas Pitre)
+        - HID: lenovo: Add support for ThinkPad X1 Tablet Thin Keyboard Gen2 (Akira Inoue)
+        - net: usb: qmi_wwan: add SIMCom 8230C composition (Xiaowei Li)
+        - um: vector: Reduce stack usage in vector_eth_configure() (Tiwei Bie)
+        - atm: idt77252: Add missing dma_map_error() (Thomas Fourier)
+        - bnxt_en: Set DMA unmap len correctly for XDP_REDIRECT (Somnath Kotur) [Orabug: 38254089] {CVE-2025-38439}
+        - bnxt_en: Fix DCB ETS validation (Shravya Kn)
+        - net: ll_temac: Fix missing tx_pending check in ethtools_set_ringparam() (Alok Tiwari)
+        - can: m_can: m_can_handle_lost_msg(): downgrade msg lost in rx message to debug level (Sean Nyekjaer)
+        - net: phy: microchip: limit 100M workaround to link-down events on LAN88xx (Oleksij Rempel)
+        - net: appletalk: Fix device refcount leak in atrtr_create() (Kito Xu) [Orabug: 38324289] {CVE-2025-38542}
+        - netfilter: flowtable: account for Ethernet header in nf_flow_pppoe_proto() (Eric Dumazet) [Orabug: 38254095] {CVE-2025-38441}
+        - ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked() (Al Viro)
+        - smb: server: make use of rdma_destroy_qp() (Stefan Metzmacher)
+        - nbd: fix uaf in nbd_genl_connect() error path (Zheng Qixing) [Orabug: 38254101] {CVE-2025-38443}
+        - raid10: cleanup memleak at raid10_make_request (Nigel Croxon) [Orabug: 38254105] {CVE-2025-38444}
+        - md/raid1: Fix stack memory use after return in raid1_reshape (Wang Jinchao) [Orabug: 38254108] {CVE-2025-38445}
+        - wifi: zd1211rw: Fix potential NULL pointer dereference in zd_mac_tx_to_dev() (Daniil Dulov) [Orabug: 38324160] {CVE-2025-38513}
+        - dma-buf: fix timeout handling in dma_resv_wait_timeout v2 (Christian Konig)
+        - dma-buf: use new iterator in dma_resv_wait_timeout (Christian Konig)
+        - dma-buf: add dma_resv_for_each_fence_unlocked v8 (Christian Konig)
+        - usb: dwc3: Abort suspend on soft disconnect failure (Kuen-Han Tsai)
+        - usb: cdnsp: Fix issue with CV Bad Descriptor test (Pawel Laszczak)
+        - usb: cdnsp: Replace snprintf() with the safer scnprintf() variant (Lee Jones)
+        - usb:cdnsp: remove TRB_FLUSH_ENDPOINT command (Pawel Laszczak)
+        - Input: xpad - support Acer NGR 200 Controller (Nilton Perim Neto)
+        - xhci: Disable stream for xHC controller with XHCI_BROKEN_STREAMS (Hongyu Xie)
+        - usb: xhci: quirk for data loss in ISOC transfers (Raju Rangoju)
+        - xhci: Allow RPM on the USB controller (1022:43f7) by default (Basavaraj Natikar)
+        - virtio-net: ensure the received length does not exceed allocated size (Bui Quang Minh) [Orabug: 38253833] {CVE-2025-38375}
+        - netlink: make sure we allow at least one dump skb (Jakub Kicinski)
+        - netlink: Fix rmem check in netlink_broadcast_deliver(). (Kuniyuki Iwashima)
+        - btrfs: use btrfs_record_snapshot_destroy() during rmdir (Filipe Manana)
+        - btrfs: propagate last_unlink_trans earlier when doing a rmdir (Filipe Manana)
+        - Revert 'ACPI: battery: negate current when discharging' (Rafael J. Wysocki)
+        - usb: gadget: u_serial: Fix race condition in TTY wakeup (Kuen-Han Tsai) [Orabug: 38254117] {CVE-2025-38448}
+        - drm/gem: Fix race in drm_gem_handle_create_tail() (Simona Vetter)
+        - drm/sched: Increment job count before swapping tail spsc queue (Matthew Brost) [Orabug: 38324179] {CVE-2025-38515}
+        - pinctrl: qcom: msm: mark certain pins as invalid for interrupts (Bartosz Golaszewski) [Orabug: 38324185] {CVE-2025-38516}
+        - x86/mce: Make sure CMCI banks are cleared during shutdown on Intel (Jp Kobryn)
+        - x86/mce: Don't remove sysfs if thresholding sysfs init fails (Yazen Ghannam)
+        - x86/mce/amd: Fix threshold limit reset (Yazen Ghannam)
+        - xen: replace xen_remap() with memremap() (Juergen Gross)
+        - jfs: fix null ptr deref in dtInsertEntry (Edward Adam Davis) [Orabug: 36993160] {CVE-2024-44939}
+        - bpf, sockmap: Fix skb refcnt race after locking changes (John Fastabend)
+        - aoe: avoid potential deadlock at set_capacity (Maksim Kiselev) [Orabug: 36530894] {CVE-2024-26775}
+        - thermal/int340x_thermal: handle data_vault when the value is ZERO_SIZE_PTR (Lee, Chun-Yi) [Orabug: 37283277] {CVE-2022-48703}
+        - bpf: fix precision backtracking instruction iteration (Andrii Nakryiko)
+        - rxrpc: Fix oops due to non-existence of prealloc backlog struct (David Howells) [Orabug: 38324169] {CVE-2025-38514}
+        - net/sched: Abort __tc_modify_qdisc if parent class does not exist (Victor Nogueira) [Orabug: 38254146] {CVE-2025-38457}
+        - atm: clip: Fix NULL pointer dereference in vcc_sendmsg() (Yue Haibing) [Orabug: 38254152] {CVE-2025-38458}
+        - atm: clip: Fix infinite recursive call of clip_push(). (Kuniyuki Iwashima) [Orabug: 38254160] {CVE-2025-38459}
+        - atm: clip: Fix memory leak of struct clip_vcc. (Kuniyuki Iwashima) [Orabug: 38324308] {CVE-2025-38546}
+        - atm: clip: Fix potential null-ptr-deref in to_atmarpd(). (Kuniyuki Iwashima) [Orabug: 38254166] {CVE-2025-38460}
+        - net: phy: smsc: Fix link failure in forced mode with Auto-MDIX (Oleksij Rempel)
+        - net: phy: smsc: Fix Auto-MDIX configuration when disabled by strap (Oleksij Rempel)
+        - vsock: Fix IOCTL_VM_SOCKETS_GET_LOCAL_CID to check also transport_local (Michal Luczaj)
+        - vsock: Fix transport_* TOCTOU (Michal Luczaj) [Orabug: 38254172] {CVE-2025-38461}
+        - vsock: Fix transport_{g2h,h2g} TOCTOU (Michal Luczaj) [Orabug: 38254175] {CVE-2025-38462}
+        - tipc: Fix use-after-free in tipc_conn_close(). (Kuniyuki Iwashima) [Orabug: 38254180] {CVE-2025-38464}
+        - netlink: Fix wraparounds of sk->sk_rmem_alloc. (Kuniyuki Iwashima) [Orabug: 38254187] {CVE-2025-38465}
+        - fix proc_sys_compare() handling of in-lookup dentries (Al Viro)
+        - perf: Revert to requiring CAP_SYS_ADMIN for uprobes (Peter Zijlstra) [Orabug: 38254196] {CVE-2025-38466}
+        - ASoC: fsl_asrc: use internal measured ratio for non-ideal ratio mode (Shengjiu Wang)
+        - drm/exynos: exynos7_drm_decon: add vblank check in IRQ handling (Kaustabh Chakraborty) [Orabug: 38254202] {CVE-2025-38467}
+
+        [5.15.0-313.187.1]
+        - drm/amdgpu: Remove ATC L2 access for MMHUB 2.1.x (Lijo Lazar) [Orabug: 37778293]
+        - PCI/portdrv: Don't disable AER reporting in get_port_device_capability() (Stefan Roese) [Orabug: 37778293]
+        - PCI/AER: Enable error reporting when AER is native (Stefan Roese) [Orabug: 37778293]
+        - PCI/AER: Configure ECRC for every device (Stefan Roese) [Orabug: 37778293]
+        - net/rds: Add support for RDS_CMSG_TOS (Gerd Rausch) [Orabug: 38058308]
+        - net/rds: Add support RDS_FEATURE ELF notes (Gerd Rausch) [Orabug: 38063328]
+    FixedIn:
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: bpftool
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-container
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-container-debug
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-core
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-core
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-devel
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-modules
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-modules-extra
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-devel
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-doc
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-modules
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-14"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-modules-extra
+          NamespaceName: ol:8
+          Version: 0:5.15.0-313.189.5.1.el8uek
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-20716.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2022-48703.html
+              Name: CVE-2022-48703
+            - Link: https://linux.oracle.com/cve/CVE-2024-26775.html
+              Name: CVE-2024-26775
+            - Link: https://linux.oracle.com/cve/CVE-2025-38067.html
+              Name: CVE-2025-38067
+            - Link: https://linux.oracle.com/cve/CVE-2025-38165.html
+              Name: CVE-2025-38165
+            - Link: https://linux.oracle.com/cve/CVE-2025-38236.html
+              Name: CVE-2025-38236
+            - Link: https://linux.oracle.com/cve/CVE-2025-38264.html
+              Name: CVE-2025-38264
+            - Link: https://linux.oracle.com/cve/CVE-2025-38375.html
+              Name: CVE-2025-38375
+            - Link: https://linux.oracle.com/cve/CVE-2025-38439.html
+              Name: CVE-2025-38439
+            - Link: https://linux.oracle.com/cve/CVE-2025-38441.html
+              Name: CVE-2025-38441
+            - Link: https://linux.oracle.com/cve/CVE-2025-38443.html
+              Name: CVE-2025-38443
+            - Link: https://linux.oracle.com/cve/CVE-2025-38444.html
+              Name: CVE-2025-38444
+            - Link: https://linux.oracle.com/cve/CVE-2025-38445.html
+              Name: CVE-2025-38445
+            - Link: https://linux.oracle.com/cve/CVE-2025-38448.html
+              Name: CVE-2025-38448
+            - Link: https://linux.oracle.com/cve/CVE-2025-38457.html
+              Name: CVE-2025-38457
+            - Link: https://linux.oracle.com/cve/CVE-2025-38458.html
+              Name: CVE-2025-38458
+            - Link: https://linux.oracle.com/cve/CVE-2025-38459.html
+              Name: CVE-2025-38459
+            - Link: https://linux.oracle.com/cve/CVE-2025-38460.html
+              Name: CVE-2025-38460
+            - Link: https://linux.oracle.com/cve/CVE-2025-38461.html
+              Name: CVE-2025-38461
+            - Link: https://linux.oracle.com/cve/CVE-2025-38462.html
+              Name: CVE-2025-38462
+            - Link: https://linux.oracle.com/cve/CVE-2025-38464.html
+              Name: CVE-2025-38464
+            - Link: https://linux.oracle.com/cve/CVE-2025-38465.html
+              Name: CVE-2025-38465
+            - Link: https://linux.oracle.com/cve/CVE-2025-38466.html
+              Name: CVE-2025-38466
+            - Link: https://linux.oracle.com/cve/CVE-2025-38467.html
+              Name: CVE-2025-38467
+            - Link: https://linux.oracle.com/cve/CVE-2025-38494.html
+              Name: CVE-2025-38494
+            - Link: https://linux.oracle.com/cve/CVE-2025-38495.html
+              Name: CVE-2025-38495
+            - Link: https://linux.oracle.com/cve/CVE-2025-38499.html
+              Name: CVE-2025-38499
+            - Link: https://linux.oracle.com/cve/CVE-2025-38513.html
+              Name: CVE-2025-38513
+            - Link: https://linux.oracle.com/cve/CVE-2025-38515.html
+              Name: CVE-2025-38515
+            - Link: https://linux.oracle.com/cve/CVE-2025-38516.html
+              Name: CVE-2025-38516
+            - Link: https://linux.oracle.com/cve/CVE-2025-38540.html
+              Name: CVE-2025-38540
+            - Link: https://linux.oracle.com/cve/CVE-2025-38546.html
+              Name: CVE-2025-38546
+            - Link: https://linux.oracle.com/cve/CVE-2025-38569.html
+              Name: CVE-2025-38569
+            - Link: https://linux.oracle.com/cve/CVE-2025-38618.html
+              Name: CVE-2025-38618
+            - Link: https://linux.oracle.com/cve/CVE-2025-38727.html
+              Name: CVE-2025-38727
+            - Link: https://linux.oracle.com/cve/CVE-2025-39866.html
+              Name: CVE-2025-39866
+        Issued: "2025-10-14"
+        RefId: ELSA-2025-20716
+    Name: ELSA-2025-20716
+    NamespaceName: ol:8
+    Severity: High
