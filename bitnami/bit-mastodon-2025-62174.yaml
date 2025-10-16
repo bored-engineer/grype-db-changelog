@@ -1,0 +1,48 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: mastodon
+        purl: pkg:bitnami/mastodon
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-10-15"
+                      kind: advisory
+                      version: 4.2.27
+                    - date: "2025-10-15"
+                      kind: advisory
+                      version: 4.3.14
+                    - date: "2025-10-15"
+                      kind: advisory
+                      version: 4.4.6
+          events:
+            - fixed: 4.2.27
+            - fixed: 4.3.14
+            - fixed: 4.4.6
+            - introduced: "0"
+            - introduced: 4.3.0-beta.1
+            - introduced: 4.4.0-beta.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-62174
+database_specific:
+    cpes:
+        - cpe:2.3:a:joinmastodon:mastodon:*:*:*:*:*:*:*:*
+    severity: Low
+details: Mastodon is a free, open-source social network server based on ActivityPub.  In Mastodon before 4.4.6, 4.3.14, and 4.2.27, when an administrator resets a user account's password via the command-line interface using `bin/tootctl accounts modify --reset-password`, active sessions and access tokens for that account are not revoked. This allows an attacker with access to a previously compromised session or token to continue using the account after the password has been reset. This issue has been patched in versions 4.2.27, 4.3.14, and 4.4.6. No known workarounds exist.
+id: BIT-mastodon-2025-62174
+modified: "2025-10-15T09:08:35.035Z"
+published: "2025-10-15T08:44:02.890Z"
+references:
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/commit/1631fb80e8029d2c5425a03a2297b93f7e225217
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/security/advisories/GHSA-f3q3-rmf7-9655
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-62174
+schema_version: 1.6.2
+summary: Mastodon allows continued access after password reset via CLI

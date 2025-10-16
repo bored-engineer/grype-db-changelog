@@ -4,9 +4,15 @@ affected:
         name: pytorch
         purl: pkg:bitnami/pytorch
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-10-05"
+                      kind: advisory
+                      version: 2.9.0
+          events:
+            - fixed: 2.9.0
             - introduced: "0"
-            - last_affected: 2.8.0
           type: SEMVER
       severity:
         - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
@@ -19,7 +25,7 @@ database_specific:
     severity: High
 details: An issue in the component torch.linalg.lu of pytorch v2.8.0 allows attackers to cause a Denial of Service (DoS) when performing a slice operation.
 id: BIT-pytorch-2025-55551
-modified: "2025-10-06T00:06:00.502Z"
+modified: "2025-10-16T00:08:58.048Z"
 published: "2025-10-05T23:47:52.236Z"
 references:
     - type: WEB
