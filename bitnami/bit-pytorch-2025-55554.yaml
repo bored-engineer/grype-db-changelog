@@ -5,9 +5,15 @@ affected:
         name: pytorch
         purl: pkg:bitnami/pytorch
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-10-05"
+                      kind: advisory
+                      version: 2.9.0
+          events:
             - introduced: "0"
-            - last_affected: 2.8.0
+            - fixed: 2.9.0
           type: SEMVER
       severity:
         - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L
@@ -20,7 +26,7 @@ database_specific:
     severity: Medium
 details: pytorch v2.8.0 was discovered to contain an integer overflow in the component torch.nan_to_num-.long().
 id: BIT-pytorch-2025-55554
-modified: "2025-10-06T00:06:00.502Z"
+modified: "2025-10-16T00:08:58.048Z"
 published: "2025-10-05T23:47:56.493Z"
 references:
     - type: WEB
