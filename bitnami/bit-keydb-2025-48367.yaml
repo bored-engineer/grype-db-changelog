@@ -7,24 +7,28 @@ affected:
         - database_specific:
             anchore:
                 fixes:
-                    - date: "2025-07-09"
+                    - date: "2025-07-10"
+                      kind: first-observed
+                      version: 7.4.5
+                    - date: "2025-10-16"
                       kind: advisory
-                      version: 6.3.4
+                      version: 6.2.19
+                    - date: "2025-10-16"
+                      kind: advisory
+                      version: 7.2.10
+                    - date: "2025-10-16"
+                      kind: advisory
+                      version: 8.0.3
           events:
-            - fixed: 6.3.4
+            - fixed: 6.2.19
+            - fixed: 7.2.10
+            - fixed: 7.4.5
+            - fixed: 8.0.3
             - introduced: "0"
             - introduced: 7.0.0
+            - introduced: 7.4.0
+            - introduced: 8.0.0
           type: SEMVER
-        - database_specific:
-            anchore:
-                fixes:
-                    - date: "2025-07-09"
-                      kind: advisory
-                      version: 7.4.5
-          events:
-            - fixed: 7.4.5
-            - introduced: 7.4-rc1.0
-          type: ECOSYSTEM
       severity:
         - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
           type: CVSS_V3
@@ -36,8 +40,8 @@ database_specific:
     severity: High
 details: Redis is an open source, in-memory database that persists on disk. An unauthenticated connection can cause repeated IP protocol errors, leading to client starvation and, ultimately, a denial of service. This vulnerability is fixed in 8.0.3, 7.4.5, 7.2.10, and 6.2.19.
 id: BIT-keydb-2025-48367
-modified: "2025-07-09T06:18:38.715Z"
-published: "2025-07-09T05:46:57.866Z"
+modified: "2025-10-16T12:31:38.153Z"
+published: "2025-10-16T12:00:55.638Z"
 references:
     - type: WEB
       url: https://github.com/redis/redis/commit/bde62951accfc4bb0a516276fd0b4b307e140ce2

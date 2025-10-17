@@ -7,28 +7,28 @@ affected:
         - database_specific:
             anchore:
                 fixes:
-                    - date: "2025-07-09"
-                      kind: advisory
-                      version: 7.2.10
-                    - date: "2025-07-09"
-                      kind: advisory
+                    - date: "2025-07-10"
+                      kind: first-observed
+                      version: 7.4.5
+                    - date: "2025-07-10"
+                      kind: first-observed
                       version: 8.0.3
+                    - date: "2025-07-11"
+                      kind: first-observed
+                      version: 7.2.10
+                    - date: "2025-10-16"
+                      kind: advisory
+                      version: 6.2.19
           events:
+            - fixed: 6.2.19
             - fixed: 7.2.10
+            - fixed: 7.4.5
             - fixed: 8.0.3
             - introduced: 2.8.0
+            - introduced: 7.0.0
+            - introduced: 7.4.0
             - introduced: 8.0.0
           type: SEMVER
-        - database_specific:
-            anchore:
-                fixes:
-                    - date: "2025-07-09"
-                      kind: advisory
-                      version: 7.4.5
-          events:
-            - fixed: 7.4.5
-            - introduced: 7.4-rc1.0
-          type: ECOSYSTEM
       severity:
         - score: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
           type: CVSS_V3
@@ -40,8 +40,8 @@ database_specific:
     severity: High
 details: Redis is an open source, in-memory database that persists on disk. From 2.8 to before 8.0.3, 7.4.5, 7.2.10, and 6.2.19, an authenticated user may use a specially crafted string to trigger a stack/heap out of bounds write on hyperloglog operations, potentially leading to remote code execution. The bug likely affects all Redis versions with hyperloglog operations implemented. This vulnerability is fixed in 8.0.3, 7.4.5, 7.2.10, and 6.2.19. An additional workaround to mitigate the problem without patching the redis-server executable is to prevent users from executing hyperloglog operations. This can be done using ACL to restrict HLL commands.
 id: BIT-valkey-2025-32023
-modified: "2025-09-09T06:08:46.021Z"
-published: "2025-07-09T06:05:04.442Z"
+modified: "2025-10-16T12:31:38.153Z"
+published: "2025-10-16T12:07:58.321Z"
 references:
     - type: WEB
       url: https://github.com/redis/redis/commit/50188747cbfe43528d2719399a2a3c9599169445
