@@ -1,0 +1,46 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: aspnet-core
+        purl: pkg:bitnami/aspnet-core
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-10-17"
+                      kind: advisory
+                      version: 2.3.6
+                    - date: "2025-10-17"
+                      kind: advisory
+                      version: 8.0.21
+                    - date: "2025-10-17"
+                      kind: advisory
+                      version: 9.0.10
+          events:
+            - fixed: 2.3.6
+            - fixed: 8.0.21
+            - fixed: 9.0.10
+            - introduced: 2.3.0
+            - introduced: 8.0.0
+            - introduced: 9.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2025-55315
+database_specific:
+    cpes:
+        - cpe:2.3:a:microsoft:asp.net_core:*:*:*:*:*:*:*:*
+    severity: Critical
+details: Inconsistent interpretation of http requests ('http request/response smuggling') in ASP.NET Core allows an authorized attacker to bypass a security feature over a network.
+id: BIT-aspnet-core-2025-55315
+modified: "2025-10-17T21:09:44.551Z"
+published: "2025-10-17T20:39:56.125Z"
+references:
+    - type: WEB
+      url: https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-55315
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-55315
+schema_version: 1.6.2
+summary: ASP.NET Security Feature Bypass Vulnerability
