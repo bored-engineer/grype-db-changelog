@@ -25,7 +25,7 @@ database_specific:
     severity: Critical
 details: "Improper escaping of output in mod_rewrite in Apache HTTP Server 2.4.59 and earlier allows an attacker to map URLs to filesystem locations that are permitted to be served by the server but are not intentionally/directly reachable by any URL, resulting in code execution or source code disclosure. \n\nSubstitutions in server context that use a backreferences or variables as the first segment of the substitution are affected.  Some unsafe RewiteRules will be broken by this change and the rewrite flag \"UnsafePrefixStat\" can be used to opt back in once ensuring the substitution is appropriately constrained."
 id: BIT-apache-2024-38475
-modified: "2025-05-20T10:02:07.006Z"
+modified: "2025-10-22T09:08:25.162Z"
 published: "2024-07-03T07:17:00.654Z"
 references:
     - type: WEB
@@ -40,5 +40,7 @@ references:
       url: https://security.netapp.com/advisory/ntap-20240712-0001/
     - type: WEB
       url: https://www.blackhat.com/us-24/briefings/schedule/index.html#confusion-attacks-exploiting-hidden-semantic-ambiguity-in-apache-http-server-pre-recorded-40227
+    - type: WEB
+      url: https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2024-38475
 schema_version: 1.5.0
 summary: Apache HTTP Server weakness in mod_rewrite when first segment of substitution matches filesystem path.
