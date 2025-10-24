@@ -1,0 +1,50 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: django
+        purl: pkg:bitnami/django
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-10-23"
+                      kind: advisory
+                      version: 4.2.25
+                    - date: "2025-10-23"
+                      kind: advisory
+                      version: 5.1.13
+                    - date: "2025-10-23"
+                      kind: advisory
+                      version: 5.2.7
+          events:
+            - introduced: 4.2.0
+            - fixed: 4.2.25
+            - introduced: 5.1.0
+            - fixed: 5.1.13
+            - introduced: 5.2.0
+            - fixed: 5.2.7
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-59682
+database_specific:
+    cpes:
+        - cpe:2.3:a:djangoproject:django:*:*:*:*:*:*:*:*
+    severity: Medium
+details: An issue was discovered in Django 4.2 before 4.2.25, 5.1 before 5.1.13, and 5.2 before 5.2.7. The django.utils.archive.extract() function, used by the "startapp --template" and "startproject --template" commands, allows partial directory traversal via an archive with file paths sharing a common prefix with the target directory.
+id: BIT-django-2025-59682
+modified: "2025-10-23T09:07:45.437Z"
+published: "2025-10-23T08:40:14.229Z"
+references:
+    - type: WEB
+      url: https://docs.djangoproject.com/en/dev/releases/security/
+    - type: WEB
+      url: https://groups.google.com/g/django-announce
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-59682
+    - type: WEB
+      url: https://www.djangoproject.com/weblog/2025/oct/01/security-releases/
+schema_version: 1.6.2
