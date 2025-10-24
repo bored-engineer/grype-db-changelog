@@ -1,0 +1,90 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - ecosystem_specific:
+        rpm_modularity: squid:4
+      package:
+        ecosystem: AlmaLinux:8
+        name: libecap
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.1-2.module_el8.6.0+2741+01592ae8
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: squid:4
+      package:
+        ecosystem: AlmaLinux:8
+        name: libecap-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.1-2.module_el8.6.0+2741+01592ae8
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: squid:4
+      package:
+        ecosystem: AlmaLinux:8
+        name: squid
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 7:4.15-3.module_el8.6.0+3010+383bc947.1
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    Squid is a high-performance proxy caching server for web clients, supporting FTP, Gopher, and HTTP data objects.
+
+    The following packages have been upgraded to a later upstream version: squid (4.15). (BZ#1964384)
+
+    Security Fix(es):
+
+    * squid: denial of service in URN processing (CVE-2021-28651)
+
+    * squid: denial of service issue in Cache Manager (CVE-2021-28652)
+
+    * squid: denial of service in HTTP response processing (CVE-2021-28662)
+
+    * squid: improper input validation in HTTP Range header (CVE-2021-31806)
+
+    * squid: incorrect memory management in HTTP Range header (CVE-2021-31807)
+
+    * squid: integer overflow in HTTP Range header (CVE-2021-31808)
+
+    * squid: denial of service in HTTP response processing (CVE-2021-33620)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2021:4292
+modified: "2021-11-09T13:01:13Z"
+published: "2021-11-09T08:56:14Z"
+references:
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2021-4292.html
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-28651
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-28652
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-28662
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-31806
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-31807
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-31808
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-33620
+related:
+    - CVE-2021-28651
+    - CVE-2021-28652
+    - CVE-2021-28662
+    - CVE-2021-31806
+    - CVE-2021-31807
+    - CVE-2021-31808
+    - CVE-2021-33620
+summary: 'Moderate: squid:4 security, bug fix, and enhancement update'

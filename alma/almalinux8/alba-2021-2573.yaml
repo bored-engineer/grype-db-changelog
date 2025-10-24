@@ -1,0 +1,31 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: sanlock-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 3.8.3-3.el8_4
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The sanlock packages provide a shared storage lock manager. Hosts with
+    shared access to a block device or a file can use sanlock to synchronize
+    their activities. VDSM and libvirt use sanlock to synchronize access to
+    shared devices or files.
+
+    Bug Fix(es) and Enhancement(s):
+
+    * bad client message causes closed connection and released leases
+    (BZ#1965481)
+
+    * Expose sanlock_inquire() in python bindings (BZ#1965483)
+id: ALBA-2021:2573
+modified: "2021-08-11T08:54:00Z"
+published: "2021-06-29T13:43:10Z"
+references: []
+related: []
+summary: sanlock bug fix and enhancement update

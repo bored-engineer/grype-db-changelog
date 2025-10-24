@@ -1,0 +1,42 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: dbus-broker
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 28-5.1.el9_0
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    dbus-broker is an implementation of a message bus as defined by the D-Bus specification. Its aim is to provide high performance and reliability, while keeping compatibility to the D-Bus reference implementation. It is exclusively written for Linux systems, and makes use of many modern features provided by recent Linux kernel releases.
+
+    Security Fix(es):
+
+    * dbus-broker: a stack buffer over-read if a malicious Exec line is supplied (CVE-2022-31212)
+    * dbus-broker: null pointer reference when supplying a malformed XML config file (CVE-2022-31213)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2022:6608
+modified: "2022-10-14T13:43:57Z"
+published: "2022-09-20T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2022:6608
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2022-6608.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-31212
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-31213
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2094718
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2094722
+related:
+    - CVE-2022-31212
+    - CVE-2022-31213
+summary: 'Moderate: dbus-broker security update'

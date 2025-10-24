@@ -1,0 +1,38 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: NetworkManager-libnm-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:1.30.0-9.el8_4
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    NetworkManager is a system network service that manages network devices and
+    connections, attempting to keep active network connectivity when available.
+    Its capabilities include managing Ethernet, wireless, mobile broadband
+    (WWAN), and PPPoE devices, as well as providing VPN integration with a
+    variety of different VPN services.
+
+    Bug Fix(es) and Enhancement(s):
+
+    * [NMCI] Automatic connection not removed when veth device gets removed
+    (BZ#1965336)
+
+    * [SNO][assisted-operator][nmstate] Bond Interface is down when booting
+    from the discovery ISO (BZ#1965337)
+
+    * NetworkManager doesn't honour tlb_dynamic_lb=0 when creating a bonding
+    device with mode=balance-alb (BZ#1965948)
+
+    * Provide a way to ignore existing TC qdiscs and filters (BZ#1972566)
+id: ALBA-2021:2576
+modified: "2021-08-11T08:54:00Z"
+published: "2021-06-29T13:43:51Z"
+references: []
+related: []
+summary: NetworkManager bug fix and enhancement update

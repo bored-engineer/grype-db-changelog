@@ -1,0 +1,48 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: c-ares
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.13.0-8.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: c-ares-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.13.0-8.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The c-ares C library defines asynchronous DNS (Domain Name System) requests and provides name resolving API.
+
+    Security Fix(es):
+
+    * c-ares: buffer overflow in config_sortlist() due to missing string length check (CVE-2022-4904)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2023:7116
+modified: "2023-11-24T10:32:56Z"
+published: "2023-11-14T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:7116
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2023-7116.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-4904
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2168631
+related:
+    - CVE-2022-4904
+summary: 'Moderate: c-ares security update'

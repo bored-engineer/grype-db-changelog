@@ -1,0 +1,50 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: lua
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 5.3.4-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: lua-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 5.3.4-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: lua-libs
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 5.3.4-11.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The lua packages provide support for Lua, a powerful light-weight programming language designed for extending applications. Lua is also frequently used as a general-purpose, stand-alone language.
+
+    Security Fix(es):
+
+    * lua: use-after-free in lua_upvaluejoin in lapi.c resulting in denial of service (CVE-2019-6706)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2019:3706
+modified: "2021-08-11T08:54:00Z"
+published: "2019-11-05T20:53:20Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2019-6706
+related:
+    - CVE-2019-6706
+summary: 'Moderate: lua security and bug fix update'

@@ -1,0 +1,57 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - ecosystem_specific:
+        rpm_modularity: squid:4
+      package:
+        ecosystem: AlmaLinux:8
+        name: libecap
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.1-2.module_el8.6.0+2741+01592ae8
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: squid:4
+      package:
+        ecosystem: AlmaLinux:8
+        name: libecap-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.1-2.module_el8.6.0+2741+01592ae8
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: squid:4
+      package:
+        ecosystem: AlmaLinux:8
+        name: squid
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 7:4.15-3.module_el8.6.0+2741+01592ae8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    Squid is a high-performance proxy caching server for web clients, supporting FTP, Gopher, and HTTP data objects.
+    Security Fix(es):
+    * squid: out-of-bounds read in WCCP protocol data may lead to information disclosure (CVE-2021-28116)
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+    Additional Changes:
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2022:1939
+modified: "2022-07-07T14:00:36Z"
+published: "2022-05-10T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2022:1939
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2022-1939.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2021-28116
+    - type: REPORT
+      url: https://bugzilla.redhat.com/1939939
+related:
+    - CVE-2021-28116
+summary: 'Moderate: squid:4 security and bug fix update'

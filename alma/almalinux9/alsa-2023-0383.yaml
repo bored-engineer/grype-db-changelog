@@ -1,0 +1,56 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libXpm
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 3.5.13-8.el9_1
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libXpm-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 3.5.13-8.el9_1
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    X.Org X11 libXpm runtime library.
+
+    Security Fix(es):
+
+    * libXpm: compression commands depend on $PATH (CVE-2022-4883)
+    * libXpm: Runaway loop on width of 0 and enormous height (CVE-2022-44617)
+    * libXpm: Infinite loop on unclosed comments (CVE-2022-46285)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2023:0383
+modified: "2023-03-13T16:36:46Z"
+published: "2023-01-23T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:0383
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2023-0383.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-44617
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-46285
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-4883
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2160092
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2160193
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2160213
+related:
+    - CVE-2022-4883
+    - CVE-2022-44617
+    - CVE-2022-46285
+summary: 'Important: libXpm security update'

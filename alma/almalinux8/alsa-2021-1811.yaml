@@ -1,0 +1,64 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libvncserver
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.9.11-17.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libvncserver-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.9.11-17.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    LibVNCServer is a C library that enables you to implement VNC server functionality into own programs.
+
+    Security Fix(es):
+
+    * libvncserver: uninitialized memory contents are vulnerable to Information Leak (CVE-2018-21247)
+
+    * libvncserver: buffer overflow in ConnectClientToUnixSock() (CVE-2019-20839)
+
+    * libvncserver: libvncserver/rfbregion.c has a NULL pointer dereference (CVE-2020-14397)
+
+    * libvncserver: libvncclient/rfbproto.c does not limit TextChat size (CVE-2020-14405)
+
+    * libvncserver: libvncserver/rfbserver.c has a divide by zero which could result in DoS (CVE-2020-25708)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2021:1811
+modified: "2021-11-12T10:20:56Z"
+published: "2021-05-18T06:09:01Z"
+references:
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2021-1811.html
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2018-21247
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2019-20839
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2020-14397
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2020-14405
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2020-25708
+related:
+    - CVE-2018-21247
+    - CVE-2019-20839
+    - CVE-2020-14397
+    - CVE-2020-14405
+    - CVE-2020-25708
+summary: 'Moderate: libvncserver security update'

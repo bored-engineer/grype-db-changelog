@@ -1,0 +1,51 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - ecosystem_specific:
+        rpm_modularity: libsndfile:1.0.31
+      package:
+        ecosystem: AlmaLinux:9
+        name: libsndfile
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.31-8.el9_5.2
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: libsndfile:1.0.31
+      package:
+        ecosystem: AlmaLinux:9
+        name: libsndfile-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.31-8.el9_5.2
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: libsndfile:1.0.31
+      package:
+        ecosystem: AlmaLinux:9
+        name: libsndfile-utils
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.31-8.el9_5.2
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "libsndfile is a C library for reading and writing files containing sampled sound, such as AIFF, AU, or WAV.   \n\nSecurity Fix(es):  \n\n  * libsndfile: Segmentation fault error in ogg_vorbis.c:417 vorbis_analysis_wrote() (CVE-2024-50612)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2024:11237
+modified: "2024-12-23T08:24:26Z"
+published: "2024-12-17T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:11237
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2024-11237.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2024-50612
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2322057
+related:
+    - CVE-2024-50612
+summary: 'Moderate: libsndfile:1.0.31 security update'

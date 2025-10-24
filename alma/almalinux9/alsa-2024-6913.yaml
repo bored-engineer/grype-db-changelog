@@ -1,0 +1,102 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: go-toolset
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.21.13-3.el9_4
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: golang
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.21.13-3.el9_4
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: golang-bin
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.21.13-3.el9_4
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: golang-docs
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.21.13-3.el9_4
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: golang-misc
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.21.13-3.el9_4
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: golang-src
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.21.13-3.el9_4
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: golang-tests
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.21.13-3.el9_4
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The golang packages provide the Go programming language compiler.
+
+    Security Fix(es):
+
+    * net/http: Denial of service due to improper 100-continue handling in net/http (CVE-2024-24791)
+    * go/parser: golang: Calling any of the Parse functions containing deeply nested literals can cause a panic/stack exhaustion (CVE-2024-34155)
+    * encoding/gob: golang: Calling Decoder.Decode on a message which contains deeply nested structures can cause a panic due to stack exhaustion (CVE-2024-34156)
+    * go/build/constraint: golang: Calling Parse on a "// +build" build tag line with deeply nested expressions can cause a panic due to stack exhaustion (CVE-2024-34158)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2024:6913
+modified: "2024-09-24T09:37:21Z"
+published: "2024-09-23T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:6913
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2024-6913.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2024-24791
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2024-34155
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2024-34156
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2024-34158
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2295310
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2310527
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2310528
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2310529
+related:
+    - CVE-2024-24791
+    - CVE-2024-34155
+    - CVE-2024-34156
+    - CVE-2024-34158
+summary: 'Important: golang security update'

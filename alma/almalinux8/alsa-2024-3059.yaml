@@ -1,0 +1,56 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libtiff
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 4.0.9-31.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libtiff-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 4.0.9-31.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libtiff-tools
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 4.0.9-31.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The libtiff packages contain a library of functions for manipulating Tagged Image File Format (TIFF) files.
+
+    Security Fix(es):
+
+    * libtiff: out-of-bounds read in tiffcp in tools/tiffcp.c (CVE-2022-4645)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2024:3059
+modified: "2024-05-29T14:42:13Z"
+published: "2024-05-22T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:3059
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2024-3059.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-4645
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2176220
+related:
+    - CVE-2022-4645
+summary: 'Moderate: libtiff security update'

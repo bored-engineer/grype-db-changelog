@@ -1,0 +1,46 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: c-ares
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.13.0-11.el8_10
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: c-ares-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.13.0-11.el8_10
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The c-ares C library defines asynchronous DNS (Domain Name System) requests and
+    provides name resolving API.
+
+    Security Fix(es):
+
+    * c-ares: Out of bounds read in ares__read_line() (CVE-2024-25629)
+
+    For more details about the security issue(s), including the impact, a CVSS
+    score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2024:4249
+modified: "2024-07-03T15:15:20Z"
+published: "2024-07-02T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:4249
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2024-4249.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2024-25629
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2265713
+related:
+    - CVE-2024-25629
+summary: 'Low: c-ares security update'

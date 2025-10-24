@@ -1,0 +1,135 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: cpp
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: gcc
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: gcc-c++
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: gcc-gdb-plugin
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: gcc-gfortran
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: gcc-offload-nvptx
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: gcc-plugin-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libgcc
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libitm-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libquadmath-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libstdc++-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libstdc++-docs
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libstdc++-static
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 8.5.0-4.el8_5.alma
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The gcc packages provide compilers for C, C++, Java, Fortran, Objective C, and Ada 95 GNU, as well as related support libraries.
+
+    Security Fix(es):
+
+    * Developer environment: Unicode's bidirectional (BiDi) override characters can cause trojan source attacks (CVE-2021-42574)
+
+    The following changes were introduced in gcc in order to facilitate detection of BiDi Unicode characters:
+
+    This update implements a new warning option -Wbidirectional to warn about possibly dangerous bidirectional characters.
+
+    There are three levels of warning supported by gcc:
+    "-Wbidirectional=unpaired", which warns about improperly terminated BiDi contexts. (This is the default.)
+    "-Wbidirectional=none", which turns the warning off.
+    "-Wbidirectional=any", which warns about any use of bidirectional characters.
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2021:4587
+modified: "2021-11-18T09:31:35Z"
+published: "2021-11-10T08:34:56Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-42574
+related:
+    - CVE-2021-42574
+summary: 'Moderate: gcc security update'

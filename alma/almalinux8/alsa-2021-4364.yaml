@@ -1,0 +1,49 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: binutils-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.30-108.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The binutils packages provide a collection of binary utilities for the manipulation of object code in various object file formats. It includes the ar, as, gprof, ld, nm, objcopy, objdump, ranlib, readelf, size, strings, strip, and addr2line utilities.
+
+    Security Fix(es):
+
+    * binutils: Excessive debug section size can cause excessive memory consumption in bfd's dwarf2.c read_section() (CVE-2021-3487)
+
+    * binutils: Race window allows users to own arbitrary files (CVE-2021-20197)
+
+    * binutils: Heap-based buffer overflow in bfd_getl_signed_32() in libbfd.c because sh_entsize is not validated in _bfd_elf_slurp_secondary_reloc_section() in elf.c (CVE-2020-35448)
+
+    * binutils: Heap-based buffer overflow in _bfd_elf_slurp_secondary_reloc_section in elf.c (CVE-2021-20284)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2021:4364
+modified: "2021-11-12T10:20:56Z"
+published: "2021-11-09T09:11:20Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2020-35448
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-20197
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-20284
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-3487
+related:
+    - CVE-2021-3487
+    - CVE-2021-20197
+    - CVE-2020-35448
+    - CVE-2021-20284
+summary: 'Moderate: binutils security update'

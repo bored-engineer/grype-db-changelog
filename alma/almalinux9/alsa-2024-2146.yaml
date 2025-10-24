@@ -1,0 +1,54 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libXpm
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 3.5.13-10.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libXpm-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 3.5.13-10.el9
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    X.Org X11 libXpm runtime library.
+
+    Security Fix(es):
+
+    * libXpm: out of bounds read in XpmCreateXpmImageFromBuffer() (CVE-2023-43788)
+    * libXpm: out of bounds read on XPM with corrupted colormap (CVE-2023-43789)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2024:2146
+modified: "2024-05-07T15:00:27Z"
+published: "2024-04-30T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:2146
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2024-2146.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-43788
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-43789
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2242248
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2242249
+related:
+    - CVE-2023-43788
+    - CVE-2023-43789
+summary: 'Moderate: libXpm security update'

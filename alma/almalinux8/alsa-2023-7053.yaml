@@ -1,0 +1,109 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: ghostscript
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9.27-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: ghostscript-doc
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9.27-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: ghostscript-tools-dvipdf
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9.27-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: ghostscript-tools-fonts
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9.27-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: ghostscript-tools-printing
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9.27-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: ghostscript-x11
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9.27-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libgs
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9.27-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libgs-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9.27-11.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The Ghostscript suite contains utilities for rendering PostScript and PDF documents. Ghostscript translates PostScript code to common bitmap formats so that the code can be displayed or printed.
+
+    Security Fix(es):
+
+    * ghostscript: buffer overflow in base/sbcp.c leading to data corruption (CVE-2023-28879)
+    * ghostscript: Out-of-bound read in base/gdevdevn.c:1973 in devn_pcx_write_rle could result in DoS (CVE-2023-38559)
+    * ghostscript: Incomplete fix for CVE-2020-16305 (CVE-2023-4042)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2023:7053
+modified: "2023-11-23T10:22:35Z"
+published: "2023-11-14T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:7053
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2023-7053.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-28879
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-38559
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-4042
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2184585
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2224367
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2228151
+related:
+    - CVE-2023-28879
+    - CVE-2023-38559
+    - CVE-2020-16305
+    - CVE-2023-4042
+summary: 'Moderate: ghostscript security and bug fix update'

@@ -1,0 +1,59 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-tools-libs-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 4.18.0-305.3.1.el8_4
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The kernel packages contain the Linux kernel, the core of any Linux operating system.
+
+    Security Fix(es):
+
+    * kernel: userspace applications can misuse the KVM API to cause a write of 16 bytes at an offset up to 32 GB from vcpu->run (CVE-2021-3501)
+
+    * kernel: nitro_enclaves stale file descriptors on failed usercopy (CVE-2021-3543)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Bug Fix(es):
+
+    * OVS mistakenly using local IP as tun_dst for VXLAN packets (?) (BZ#1944667)
+
+    * Selinux: The task calling security_set_bools() deadlocks with itself when it later calls  selinux_audit_rule_match(). (BZ#1945123)
+
+    * [mlx5] tc flower mpls match options does not work (BZ#1952061)
+
+    * mlx5: missing patches for ct.rel (BZ#1952062)
+
+    * CT HWOL: with OVN/OVS, intermittently, load balancer hairpin TCP packets get dropped for seconds in a row (BZ#1952065)
+
+    * [Lenovo 8.3 bug] Blackscreen after clicking on "Settings" icon from top-right corner. (BZ#1952900)
+
+    * AlmaLinux 8.x missing uio upstream fix. (BZ#1952952)
+
+    * Turbostat doesn't show any measured data on AMD Milan (BZ#1952987)
+
+    * P620 no sound from front headset jack (BZ#1954545)
+
+    * AlmaLinux kernel 8.2 and higher are affected by data corruption bug in raid1 arrays using bitmaps. (BZ#1955188)
+
+    * [net/sched] connection failed with DNAT + SNAT by tc action ct (BZ#1956458)
+id: ALSA-2021:2168
+modified: "2021-08-11T08:54:00Z"
+published: "2021-06-01T09:02:01Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-3501
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-3543
+related:
+    - CVE-2021-3501
+    - CVE-2021-3543
+summary: 'Important: kernel security and bug fix update'

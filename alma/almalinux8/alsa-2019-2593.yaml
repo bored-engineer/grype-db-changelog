@@ -1,0 +1,44 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - ecosystem_specific:
+        rpm_modularity: squid:4
+      package:
+        ecosystem: AlmaLinux:8
+        name: libecap
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.1-2.module_el8.6.0+2741+01592ae8
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: squid:4
+      package:
+        ecosystem: AlmaLinux:8
+        name: libecap-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.0.1-2.module_el8.6.0+2741+01592ae8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    Squid is a high-performance proxy caching server for web clients, supporting FTP, Gopher, and HTTP data objects.
+
+    Security Fix(es):
+
+    * squid: heap-based buffer overflow in HttpHeader::getAuth (CVE-2019-12527)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2019:2593
+modified: "2019-09-02T10:22:04Z"
+published: "2019-09-02T10:22:04Z"
+references:
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2019-2593.html
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2019-12527
+related:
+    - CVE-2019-12527
+summary: 'Important: squid:4 security update'

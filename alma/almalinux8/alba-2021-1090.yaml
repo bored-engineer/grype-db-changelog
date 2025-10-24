@@ -1,0 +1,30 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: sanlock-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 3.8.2-4.el8_3
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The sanlock packages provide a shared storage lock manager. Hosts with
+    shared access to a block device or a file can use sanlock to synchronize
+    their activities. VDSM and libvirt use sanlock to synchronize access to
+    shared devices or files.
+
+    Bug Fix(es) and Enhancement(s):
+
+    * Support 50 concurrent add_lockspace operations (BZ#1912923)
+
+    * Expose reading and writing LVB in the python bindings (BZ#1920150)
+id: ALBA-2021:1090
+modified: "2021-08-11T08:54:00Z"
+published: "2021-04-06T13:32:47Z"
+references: []
+related: []
+summary: sanlock bug fix and enhancement update

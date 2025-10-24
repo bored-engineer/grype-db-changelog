@@ -1,0 +1,59 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - ecosystem_specific:
+        rpm_modularity: httpd:2.4
+      package:
+        ecosystem: AlmaLinux:8
+        name: mod_http2
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1.15.7-3.module_el8.5.0+2609+b30d9eec
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: httpd:2.4
+      package:
+        ecosystem: AlmaLinux:8
+        name: mod_md
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.0.8-8.module_el8.5.0+2609+b30d9eec
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: httpd:2.4
+      package:
+        ecosystem: AlmaLinux:8
+        name: mod_md
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.0.8-8.module_el8.6.0+2872+fe0ff7aa
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The httpd packages provide the Apache HTTP Server, a powerful, efficient, and extensible web server.
+
+    Security Fix(es):
+
+    * httpd: mod_proxy: SSRF via a crafted request uri-path containing "unix:" (CVE-2021-40438)
+
+    * httpd: mod_session: Heap overflow via a crafted SessionHeader value (CVE-2021-26691)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2021:3816
+modified: "2022-01-26T07:27:24Z"
+published: "2021-10-12T15:53:03Z"
+references:
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2021-3816.html
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-26691
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-40438
+related:
+    - CVE-2021-40438
+    - CVE-2021-26691
+summary: 'Important: httpd:2.4 security update'

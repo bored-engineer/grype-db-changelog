@@ -1,0 +1,65 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: mingw32-glib2
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.66.7-2.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: mingw32-glib2-static
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.66.7-2.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: mingw64-glib2
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.66.7-2.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: mingw64-glib2-static
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.66.7-2.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    GLib provides the core application building blocks for libraries and applications written in C. It provides the core object system used in GNOME, the main loop implementation, and a large set of utility functions for strings and common data structures.
+
+    The following packages have been upgraded to a later upstream version: mingw-glib2 (2.66.7). (BZ#1935248, BZ#1939111)
+
+    Security Fix(es):
+
+    * glib: integer overflow in g_bytes_new function on 64-bit platforms due to an implicit cast from 64 bits to 32 bits (CVE-2021-27219)
+
+    * glib: integer overflow in g_byte_array_new_take function when called with a buffer of 4GB or more on a 64-bit platform (CVE-2021-27218)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2021:4526
+modified: "2021-11-12T10:21:01Z"
+published: "2021-11-09T09:43:49Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-27218
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-27219
+related:
+    - CVE-2021-27219
+    - CVE-2021-27218
+summary: 'Important: mingw-glib2 security, bug fix, and enhancement update'

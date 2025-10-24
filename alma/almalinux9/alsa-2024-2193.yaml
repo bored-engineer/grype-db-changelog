@@ -1,0 +1,78 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: podman
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2:4.9.4-0.1.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: podman-docker
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2:4.9.4-0.1.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: podman-plugins
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2:4.9.4-0.1.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: podman-remote
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2:4.9.4-0.1.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: podman-tests
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2:4.9.4-0.1.el9
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The podman tool manages pods, container images, and containers. It is part of the libpod library, which is for applications that use container pods. Container pods is a concept in Kubernetes.
+
+    Security Fix(es):
+
+    * golang: net/http/internal: Denial of Service (DoS) via Resource Consumption via HTTP requests (CVE-2023-39326)
+    * golang: crypto/tls: Timing Side Channel attack in RSA based TLS key exchanges. (CVE-2023-45287)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2024:2193
+modified: "2024-05-07T15:12:28Z"
+published: "2024-04-30T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:2193
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2024-2193.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-39326
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-45287
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2253193
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2253330
+related:
+    - CVE-2023-39326
+    - CVE-2023-45287
+summary: 'Moderate: podman security update'

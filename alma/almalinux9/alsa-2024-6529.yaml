@@ -1,0 +1,66 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: dovecot
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.3.16-11.el9_4.1
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: dovecot-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.3.16-11.el9_4.1
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: dovecot-mysql
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.3.16-11.el9_4.1
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: dovecot-pgsql
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.3.16-11.el9_4.1
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: dovecot-pigeonhole
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.3.16-11.el9_4.1
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "Dovecot is an IMAP server for Linux and other UNIX-like systems, written primarily with security in mind. It also contains a small POP3 server, and supports e-mail in either the maildir or mbox format. The SQL drivers and authentication plug-ins are provided as subpackages. \n\nSecurity Fix(es):\n\n* dovecot: using a large number of address headers may trigger a denial of service (CVE-2024-23184)\n* dovecot: very large headers can cause resource exhaustion when parsing message (CVE-2024-23185)\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section."
+id: ALSA-2024:6529
+modified: "2024-09-11T09:48:12Z"
+published: "2024-09-10T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:6529
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2024-6529.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2024-23184
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2024-23185
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2305909
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2305910
+related:
+    - CVE-2024-23184
+    - CVE-2024-23185
+summary: 'Moderate: dovecot security update'

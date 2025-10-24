@@ -1,0 +1,35 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: lttng-ust
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.8.1-11.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: lttng-ust-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.8.1-11.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    This update fixes two issues in lttng-ust and subpackages.
+
+    There was a bad shebang in the /usr/bin/lttng-gen-tp utility that prevented users from executing it. This issue has been fixed.
+
+    lttng-ust was only available for x86_64 architectures. lttng-ust is now available for all architectures supported on AlmaLinux.
+id: ALBA-2019:3411
+modified: "2023-09-15T13:41:48Z"
+published: "2019-11-05T17:42:56Z"
+references:
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALBA-2019-3411.html
+related: []
+summary: lttng-ust bug fix and enhancement update

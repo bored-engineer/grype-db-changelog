@@ -1,0 +1,84 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: glib2
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.68.4-11.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: glib2-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.68.4-11.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: glib2-doc
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.68.4-11.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: glib2-static
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.68.4-11.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: glib2-tests
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.68.4-11.el9
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    GLib provides the core application building blocks for libraries and applications written in C. It provides the core object system used in GNOME, the main loop implementation, and a large set of utility functions for strings and common data structures.
+
+    Security Fix(es):
+
+    * glib: GVariant offset table entry size is not checked in is_normal() (CVE-2023-29499)
+    * glib: g_variant_byteswap() can take a long time with some non-normal inputs (CVE-2023-32611)
+    * glib: GVariant deserialisation does not match spec for non-normal data (CVE-2023-32665)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2023:6631
+modified: "2023-11-14T12:11:13Z"
+published: "2023-11-07T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:6631
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2023-6631.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-29499
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-32611
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-32665
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2211827
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2211828
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2211829
+related:
+    - CVE-2023-29499
+    - CVE-2023-32611
+    - CVE-2023-32665
+summary: 'Low: glib2 security and bug fix update'

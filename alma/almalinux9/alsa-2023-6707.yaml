@@ -1,0 +1,124 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-compat-howl
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-compat-howl-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-compat-libdns_sd
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-compat-libdns_sd-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-glib
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-glib-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-libs
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: avahi-tools
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 0.8-15.el9
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    Avahi is an implementation of the DNS Service Discovery and Multicast DNS specifications for Zero Configuration Networking. It facilitates service discovery on a local network. Avahi and Avahi-aware applications allow you to plug your computer into a network and, with no configuration, view other people to chat with, view printers to print with, and find shared files on other computers.
+
+    Security Fix(es):
+
+    * avahi: Local DoS by event-busy-loop from writing long lines to /run/avahi-daemon/socket (CVE-2021-3468)
+    * avahi: reachable assertion in avahi_s_host_name_resolver_start when trying to resolve badly-formatted hostnames (CVE-2021-3502)
+    * avahi: avahi-daemon can be crashed via DBus (CVE-2023-1981)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2023:6707
+modified: "2023-11-14T12:09:38Z"
+published: "2023-11-07T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:6707
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2023-6707.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2021-3468
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2021-3502
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-1981
+    - type: REPORT
+      url: https://bugzilla.redhat.com/1939614
+    - type: REPORT
+      url: https://bugzilla.redhat.com/1946914
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2185911
+related:
+    - CVE-2021-3468
+    - CVE-2021-3502
+    - CVE-2023-1981
+summary: 'Moderate: avahi security update'

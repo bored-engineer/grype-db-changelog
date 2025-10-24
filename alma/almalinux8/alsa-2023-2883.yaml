@@ -1,0 +1,62 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libtiff
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 4.0.9-27.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libtiff-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 4.0.9-27.el8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libtiff-tools
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 4.0.9-27.el8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The libtiff packages contain a library of functions for manipulating Tagged Image File Format (TIFF) files.
+
+    Security Fix(es):
+
+    * libtiff: out-of-bounds write in _TIFFmemcpy in libtiff/tif_unix.c (CVE-2022-3627)
+    * libtiff: integer overflow in function TIFFReadRGBATileExt of the file (CVE-2022-3970)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2023:2883
+modified: "2023-05-19T22:01:55Z"
+published: "2023-05-16T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:2883
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2023-2883.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-3627
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-3970
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2142742
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2148918
+related:
+    - CVE-2022-3627
+    - CVE-2022-3970
+summary: 'Moderate: libtiff security update'

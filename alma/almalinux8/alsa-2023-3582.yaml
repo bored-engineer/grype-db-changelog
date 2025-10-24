@@ -1,0 +1,122 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: aspnetcore-runtime-6.0
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.18-1.el8_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: aspnetcore-targeting-pack-6.0
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.18-1.el8_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: dotnet-apphost-pack-6.0
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.18-1.el8_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: dotnet-hostfxr-6.0
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.18-1.el8_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: dotnet-runtime-6.0
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.18-1.el8_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: dotnet-sdk-6.0
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.118-1.el8_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: dotnet-sdk-6.0-source-built-artifacts
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.118-1.el8_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: dotnet-targeting-pack-6.0
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.18-1.el8_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: dotnet-templates-6.0
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 6.0.118-1.el8_8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    .NET is a managed-software framework. It implements a subset of the .NET framework APIs and several new APIs, and it includes a CLR implementation.
+
+    New versions of .NET that address a security vulnerability are now available. The updated versions are .NET SDK 6.0.118 and .NET Runtime 6.0.18.
+
+    The following packages have been upgraded to a later upstream version: dotnet6.0 (6.0.118). (BZ#2212378)
+
+    Security Fix(es):
+
+    * dotnet: .NET Kestrel: Denial of Service processing X509 Certificates (CVE-2023-29331)
+    * dotnet: vulnerability exists in NuGet where a potential race condition can lead to a symlink attack (CVE-2023-29337)
+    * dotnet: Remote Code Execution - Source generators issue can lead to a crash due to unmanaged heap corruption (CVE-2023-33128)
+    * dotnet: Bypass restrictions when deserializing a DataSet or DataTable from XML (CVE-2023-24936)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2023:3582
+modified: "2023-06-24T08:08:38Z"
+published: "2023-06-14T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:3582
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2023-3582.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-24936
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-29331
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-29337
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-33128
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2192438
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2212617
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2212618
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2213703
+related:
+    - CVE-2023-29331
+    - CVE-2023-29337
+    - CVE-2023-33128
+    - CVE-2023-24936
+summary: 'Important: .NET 6.0 security, bug fix, and enhancement update'
