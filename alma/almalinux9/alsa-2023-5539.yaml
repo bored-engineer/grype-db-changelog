@@ -1,0 +1,49 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libvpx
+      ranges:
+        - events:
+            - fixed: 1.9.0-7.el9_2.alma.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libvpx-devel
+      ranges:
+        - events:
+            - fixed: 1.9.0-7.el9_2.alma.1
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The libvpx packages provide the VP8 SDK, which allows the encoding and decoding of the VP8 video codec, commonly used with the WebM multimedia container file format.
+
+    Security Fix(es):
+
+    * libvpx: Heap buffer overflow in vp8 encoding in libvpx (CVE-2023-5217)
+    * libvpx: crash related to VP9 encoding in libvpx (CVE-2023-44488)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2023:5539
+modified: "2023-10-09T19:24:40Z"
+published: "2023-10-09T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:5539
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2023-5539.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-44488
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-5217
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2241191
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2241806
+related:
+    - CVE-2023-5217
+    - CVE-2023-44488
+summary: 'Important: libvpx security update'

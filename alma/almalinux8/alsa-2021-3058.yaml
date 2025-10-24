@@ -1,0 +1,37 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glib2-doc
+      ranges:
+        - events:
+            - fixed: 2.56.4-10.el8_4.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glib2-static
+      ranges:
+        - events:
+            - fixed: 2.56.4-10.el8_4.1
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    GLib provides the core application building blocks for libraries and applications written in C. It provides the core object system used in GNOME, the main loop implementation, and a large set of utility functions for strings and common data structures.
+
+    Security Fix(es):
+
+    * glib: integer overflow in g_byte_array_new_take function when called with a buffer of 4GB or more on a 64-bit platform (CVE-2021-27218)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2021:3058
+modified: "2021-08-11T08:54:00Z"
+published: "2021-08-10T11:56:26Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-27218
+related:
+    - CVE-2021-27218
+summary: 'Moderate: glib2 security update'

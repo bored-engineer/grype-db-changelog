@@ -1,0 +1,57 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libxml2
+      ranges:
+        - events:
+            - fixed: 2.9.13-3.el9_2.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libxml2-devel
+      ranges:
+        - events:
+            - fixed: 2.9.13-3.el9_2.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: python3-libxml2
+      ranges:
+        - events:
+            - fixed: 2.9.13-3.el9_2.1
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The libxml2 library is a development toolbox providing the implementation of various XML standards.
+
+    Security Fix(es):
+
+    * libxml2: NULL dereference in xmlSchemaFixupComplexType (CVE-2023-28484)
+    * libxml2: Hashing of empty dict strings isn't deterministic (CVE-2023-29469)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2023:4349
+modified: "2023-08-02T13:24:37Z"
+published: "2023-08-01T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:4349
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2023-4349.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-28484
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-29469
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2185984
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2185994
+related:
+    - CVE-2023-28484
+    - CVE-2023-29469
+summary: 'Moderate: libxml2 security update'

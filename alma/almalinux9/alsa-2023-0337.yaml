@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: expat
+      ranges:
+        - events:
+            - fixed: 2.4.9-1.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: expat-devel
+      ranges:
+        - events:
+            - fixed: 2.4.9-1.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    Expat is a C library for parsing XML documents.
+
+    Security Fix(es):
+
+    * expat: use-after free caused by overeager destruction of a shared DTD in XML_ExternalEntityParserCreate (CVE-2022-43680)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2023:0337
+modified: "2023-01-24T11:01:47Z"
+published: "2023-01-23T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:0337
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2023-0337.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-43680
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2140059
+related:
+    - CVE-2022-43680
+summary: 'Moderate: expat security update'

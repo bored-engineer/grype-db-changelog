@@ -1,0 +1,76 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: curl
+      ranges:
+        - events:
+            - fixed: 7.61.1-33.el8_9.5
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libcurl
+      ranges:
+        - events:
+            - fixed: 7.61.1-33.el8_9.5
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libcurl-devel
+      ranges:
+        - events:
+            - fixed: 7.61.1-33.el8_9.5
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libcurl-minimal
+      ranges:
+        - events:
+            - fixed: 7.61.1-33.el8_9.5
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The curl packages provide the libcurl library and the curl utility for downloading files from servers using various protocols, including HTTP, FTP, and LDAP.
+
+    Security Fix(es):
+
+    * curl: information disclosure by exploiting a mixed case flaw (CVE-2023-46218)
+    * curl: more POST-after-PUT confusion (CVE-2023-28322)
+    * curl: cookie injection with none file (CVE-2023-38546)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Bug Fix(es):
+
+    * libssh (curl sftp) not trying password auth (BZ#2240033)
+    * libssh: cap SFTP packet size sent (AlmaLinux-5485)
+id: ALSA-2024:1601
+modified: "2024-04-02T22:28:33Z"
+published: "2024-04-02T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:1601
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2024-1601.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-28322
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-38546
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-46218
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2196793
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2241938
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2252030
+related:
+    - CVE-2023-46218
+    - CVE-2023-28322
+    - CVE-2023-38546
+summary: 'Moderate: curl security and bug fix update'

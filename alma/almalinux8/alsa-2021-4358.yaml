@@ -1,0 +1,83 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: compat-libpthread-nonshared
+      ranges:
+        - events:
+            - fixed: 2.28-164.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glibc-benchtests
+      ranges:
+        - events:
+            - fixed: 2.28-164.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glibc-nss-devel
+      ranges:
+        - events:
+            - fixed: 2.28-164.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glibc-static
+      ranges:
+        - events:
+            - fixed: 2.28-164.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glibc-utils
+      ranges:
+        - events:
+            - fixed: 2.28-164.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: nss_hesiod
+      ranges:
+        - events:
+            - fixed: 2.28-164.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The glibc packages provide the standard C libraries (libc), POSIX thread libraries (libpthread), standard math libraries (libm), and the name service cache daemon (nscd) used by multiple programs on the system. Without these libraries, the Linux system cannot function correctly.
+
+    Security Fix(es):
+
+    * glibc: Arbitrary read in wordexp() (CVE-2021-35942)
+
+    * glibc: Use-after-free in addgetnetgrentX function in netgroupcache.c (CVE-2021-27645)
+
+    * glibc: mq_notify does not handle separately allocated thread attributes (CVE-2021-33574)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2021:4358
+modified: "2021-11-12T10:21:01Z"
+published: "2021-11-09T09:08:59Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-27645
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-33574
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-35942
+related:
+    - CVE-2021-35942
+    - CVE-2021-27645
+    - CVE-2021-33574
+summary: 'Moderate: glibc security, bug fix, and enhancement update'

@@ -1,0 +1,69 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: resource-agents
+      ranges:
+        - events:
+            - fixed: 4.9.0-54.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: resource-agents-aliyun
+      ranges:
+        - events:
+            - fixed: 4.9.0-54.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: resource-agents-gcp
+      ranges:
+        - events:
+            - fixed: 4.9.0-54.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: resource-agents-paf
+      ranges:
+        - events:
+            - fixed: 4.9.0-54.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The resource-agents packages provide the Pacemaker and RGManager service managers with a set of scripts. These scripts interface with several services to allow operating in a high-availability (HA) environment.
+
+    Security Fix(es):
+
+    * urllib3: Request body not stripped after redirect from 303 status changes request method to GET (CVE-2023-45803)
+    * pycryptodome: side-channel leakage for OAEP decryption in PyCryptodome and pycryptodomex (CVE-2023-52323)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2024:2952
+modified: "2024-05-29T14:41:52Z"
+published: "2024-05-22T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:2952
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2024-2952.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-45803
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-52323
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2246840
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2257028
+related:
+    - CVE-2023-45803
+    - CVE-2023-52323
+summary: 'Moderate: resource-agents security and bug fix update'

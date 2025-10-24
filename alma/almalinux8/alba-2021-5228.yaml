@@ -1,0 +1,39 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libsss_nss_idmap-devel
+      ranges:
+        - events:
+            - fixed: 2.5.2-2.el8_5.3
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The System Security Services Daemon (SSSD) service provides a set of
+    daemons to manage access to remote directories and authentication
+    mechanisms. It also provides the Name Service Switch (NSS) and the
+    Pluggable Authentication Modules (PAM) interfaces toward the system, and a
+    pluggable back-end system to connect to multiple different account sources.
+
+    Bug Fix(es) and Enhancement(s):
+
+    * Lookup with fully-qualified name does not work with 'cache_first = True'
+    (BZ#2013379)
+
+    * autofs lookups for unknown mounts are delayed for 50s (BZ#2016923)
+
+    * 2.5.x based SSSD adds more AD domains than it should based on the
+    configuration file (not trusted and from a different forest) (BZ#2018440)
+
+    * Make backtrace less "chatty" (avoid duplicate backtraces) (BZ#2021499)
+
+    * pam responder does not call initgroups to refresh the user entry
+    (BZ#2028828)
+id: ALBA-2021:5228
+modified: "2021-12-22T17:06:56Z"
+published: "2021-12-21T09:07:51Z"
+references: []
+related: []
+summary: sssd bug fix and enhancement update

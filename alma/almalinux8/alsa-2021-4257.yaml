@@ -1,0 +1,62 @@
+affected:
+    - ecosystem_specific:
+        rpm_modularity: httpd:2.4
+      package:
+        ecosystem: AlmaLinux:8
+        name: mod_http2
+      ranges:
+        - events:
+            - fixed: 1.15.7-3.module_el8.5.0+2609+b30d9eec
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: httpd:2.4
+      package:
+        ecosystem: AlmaLinux:8
+        name: mod_md
+      ranges:
+        - events:
+            - fixed: 1:2.0.8-8.module_el8.5.0+2609+b30d9eec
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: httpd:2.4
+      package:
+        ecosystem: AlmaLinux:8
+        name: mod_md
+      ranges:
+        - events:
+            - fixed: 1:2.0.8-8.module_el8.6.0+2872+fe0ff7aa
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The httpd packages provide the Apache HTTP Server, a powerful, efficient, and extensible web server.
+
+    Security Fix(es):
+
+    * httpd: mod_session: NULL pointer dereference when parsing Cookie header (CVE-2021-26690)
+
+    * httpd: Unexpected URL matching with 'MergeSlashes OFF' (CVE-2021-30641)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2021:4257
+modified: "2022-01-26T07:27:24Z"
+published: "2021-11-09T08:52:38Z"
+references:
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2021-4257.html
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-26690
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-30641
+related:
+    - CVE-2021-26690
+    - CVE-2021-30641
+summary: 'Moderate: httpd:2.4 security, bug fix, and enhancement update'

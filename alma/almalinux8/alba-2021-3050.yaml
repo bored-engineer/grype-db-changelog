@@ -1,0 +1,50 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libsmbclient-devel
+      ranges:
+        - events:
+            - fixed: 4.13.3-4.el8_4
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libwbclient-devel
+      ranges:
+        - events:
+            - fixed: 4.13.3-4.el8_4
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: samba-devel
+      ranges:
+        - events:
+            - fixed: 4.13.3-4.el8_4
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    Samba is an open-source implementation of the Server Message Block (SMB)
+    protocol and the related Common Internet File System (CIFS) protocol, which
+    allow PC-compatible machines to share files, printers, and various
+    information.
+
+    Bug Fix(es) and Enhancement(s):
+
+    * /sbin/ldconfig: /lib64/libsmbldap.so.2 is not a symbolic link
+    (BZ#1964314)
+
+    * smbd tries to delete files with wrong permissions (uses guest instead of
+    user from force user) (BZ#1964398)
+
+    * Memory leak in RPC server could allocate a lot of memory for print
+    servers (BZ#1969831)
+id: ALBA-2021:3050
+modified: "2021-08-11T08:54:00Z"
+published: "2021-08-10T11:54:50Z"
+references: []
+related: []
+summary: samba bug fix and enhancement update

@@ -1,0 +1,47 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: gcc-toolset-10-binutils
+      ranges:
+        - events:
+            - fixed: 2.35-8.el8_5.6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: gcc-toolset-10-binutils-devel
+      ranges:
+        - events:
+            - fixed: 2.35-8.el8_5.6
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The binutils packages provide a collection of binary utilities for the manipulation of object code in various object file formats. It includes the ar, as, gprof, ld, nm, objcopy, objdump, ranlib, readelf, size, strings, strip, and addr2line utilities.
+
+    Security Fix(es):
+
+    * Developer environment: Unicode's bidirectional (BiDi) override characters can cause trojan source attacks (CVE-2021-42574)
+
+    The following changes were introduced in binutils in order to facilitate detection of BiDi Unicode characters:
+
+    Tools which display names or strings (readelf, strings, nm, objdump) have a new command line option --unicode / -U which controls how Unicode characters are handled.
+
+    Using "--unicode=default" will treat them as normal for the tool. This is the default behaviour when --unicode option is not used.
+    Using "--unicode=locale" will display them according to the current locale.
+    Using "--unicode=hex" will display them as hex byte values.
+    Using "--unicode=escape" will display them as Unicode escape sequences.
+    Using "--unicode=highlight" will display them as Unicode escape sequences highlighted in red, if supported by the output device.
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2021:4649
+modified: "2021-11-16T08:43:55Z"
+published: "2021-11-15T10:00:59Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-42574
+related:
+    - CVE-2021-42574
+summary: 'Moderate: gcc-toolset-10-binutils security update'

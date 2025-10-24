@@ -1,0 +1,40 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libgcrypt
+      ranges:
+        - events:
+            - fixed: 1.8.5-7.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libgcrypt-devel
+      ranges:
+        - events:
+            - fixed: 1.8.5-7.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The libgcrypt library provides general-purpose implementations of various cryptographic algorithms.
+    Security Fix(es):
+    * libgcrypt: ElGamal implementation allows plaintext recovery (CVE-2021-40528)
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2022:5311
+modified: "2022-07-21T17:42:38Z"
+published: "2022-06-30T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2022:5311
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2022-5311.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2021-40528
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2002816
+related:
+    - CVE-2021-40528
+summary: 'Moderate: libgcrypt security update'

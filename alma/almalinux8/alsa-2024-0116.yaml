@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: python3-urllib3
+      ranges:
+        - events:
+            - fixed: 1.24.2-5.el8_9.2
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The python-urllib3 package provides the Python HTTP module with connection pooling and file POST abilities.
+
+    Security Fix(es):
+
+    * python-urllib3: Cookie request header isn't stripped during cross-origin redirects (CVE-2023-43804)
+    * urllib3: Request body not stripped after redirect from 303 status changes request method to GET (CVE-2023-45803)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2024:0116
+modified: "2024-01-16T17:20:14Z"
+published: "2024-01-10T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2024:0116
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2024-0116.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-43804
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-45803
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2242493
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2246840
+related:
+    - CVE-2023-43804
+    - CVE-2023-45803
+summary: 'Moderate: python-urllib3 security update'

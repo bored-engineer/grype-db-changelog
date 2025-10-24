@@ -1,0 +1,55 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glibc-benchtests
+      ranges:
+        - events:
+            - fixed: 2.28-127.el8_3.2
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glibc-nss-devel
+      ranges:
+        - events:
+            - fixed: 2.28-127.el8_3.2
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: glibc-static
+      ranges:
+        - events:
+            - fixed: 2.28-127.el8_3.2
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: nss_hesiod
+      ranges:
+        - events:
+            - fixed: 2.28-127.el8_3.2
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The glibc packages provide the standard C libraries (libc), POSIX thread
+    libraries (libpthread), standard math libraries (libm), and the name
+    service cache daemon (nscd) used by multiple programs on the system.
+    Without these libraries, the Linux system cannot function correctly.
+
+    Bug Fix(es) and Enhancement(s):
+
+    * glibc: Transaction ID collisions cause slow DNS lookups in getaddrinfo
+    (BZ#1904153)
+
+    * glibc: memcpy calls are slower for AMD processors on AlmaLinux 8 than AlmaLinux 7
+    (BZ#1913750)
+id: ALBA-2021:0556
+modified: "2021-08-11T08:54:00Z"
+published: "2021-02-16T07:35:28Z"
+references: []
+related: []
+summary: glibc bug fix and enhancement update

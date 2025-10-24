@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: pcs
+      ranges:
+        - events:
+            - fixed: 0.11.1-10.el9_0.2
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: pcs-snmp
+      ranges:
+        - events:
+            - fixed: 0.11.1-10.el9_0.2
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The pcs packages provide a command-line configuration system for the Pacemaker and Corosync utilities.
+
+    Security Fix(es):
+
+    * pcs: obtaining an authentication token for hacluster user could lead to privilege escalation (CVE-2022-2735)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+id: ALSA-2022:6313
+modified: "2022-10-07T07:56:28Z"
+published: "2022-09-01T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2022:6313
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2022-6313.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-2735
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2116815
+related:
+    - CVE-2022-2735
+summary: 'Important: pcs security update'

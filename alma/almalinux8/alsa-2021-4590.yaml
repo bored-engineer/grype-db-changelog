@@ -1,0 +1,164 @@
+affected:
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: cargo
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: cargo-doc
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: clippy
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rls
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-analysis
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-debugger-common
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-doc
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-gdb
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-lldb
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-src
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-std-static
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-std-static-wasm32-unknown-unknown
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rust-toolset
+      ranges:
+        - events:
+            - fixed: 1.54.0-1.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+    - ecosystem_specific:
+        rpm_modularity: rust-toolset:rhel8
+      package:
+        ecosystem: AlmaLinux:8
+        name: rustfmt
+      ranges:
+        - events:
+            - fixed: 1.54.0-3.module_el8.5.0+2599+d655d86c
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "Rust Toolset provides the Rust programming language compiler rustc, the cargo build tool and dependency manager, and required libraries. \n\nSecurity Fix(es):\n\n* Developer environment: Unicode's bidirectional (BiDi) override characters can cause trojan source attacks (CVE-2021-42574)\n\nThe following changes were introduced in rust in order to facilitate detection of BiDi Unicode characters:\n\nRust introduces two new lints to detect and reject code containing the affected codepoints. These new deny-by-default lints detect affected codepoints in string literals and comments. The lints will prevent source code file containing these codepoints from being compiled. If your code has legitimate uses for the codepoints we recommend replacing them with the related escape sequence. The error messages will suggest the right escapes to use.\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section."
+id: ALSA-2021:4590
+modified: "2021-11-12T17:54:17Z"
+published: "2021-11-10T08:37:57Z"
+references:
+    - type: REPORT
+      url: https://vulners.com/cve/CVE-2021-42574
+related:
+    - CVE-2021-42574
+summary: 'Moderate: rust-toolset:rhel8 security update'

@@ -1,0 +1,55 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: bsdtar
+      ranges:
+        - events:
+            - fixed: 3.3.3-5.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libarchive
+      ranges:
+        - events:
+            - fixed: 3.3.3-5.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libarchive-devel
+      ranges:
+        - events:
+            - fixed: 3.3.3-5.el8
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The libarchive programming library can create and read several different streaming archive formats, including GNU tar, cpio, and ISO 9660 CD-ROM images. Libarchive is used notably in the bsdtar utility, scripting language bindings such as python-libarchive, and several popular desktop file managers.
+
+    Security Fix(es):
+
+    * libarchive: NULL pointer dereference in archive_write.c (CVE-2022-36227)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2023:3018
+modified: "2023-05-19T22:01:23Z"
+published: "2023-05-16T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:3018
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2023-3018.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-36227
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2144972
+related:
+    - CVE-2022-36227
+summary: 'Low: libarchive security update'

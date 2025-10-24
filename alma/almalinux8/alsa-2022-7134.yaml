@@ -1,0 +1,161 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-core
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-core
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-devel
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-kvm
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-modules
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-modules-extra
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-devel
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-kvm
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-modules
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-modules-extra
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.32.1.rt7.189.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The kernel-rt packages provide the Real Time Linux Kernel, which enables fine-tuning for systems with extremely high determinism requirements.
+
+    Security Fix(es):
+
+    * kernel: a use-after-free in cls_route filter implementation may lead to privilege escalation (CVE-2022-2588)
+    * kernel: information leak in  scsi_ioctl() (CVE-2022-0494)
+    * Kernel: A kernel-info-leak issue in pfkey_register (CVE-2022-1353)
+    * hw: cpu: AMD: RetBleed Arbitrary Speculative Code Execution with Return Instructions (CVE-2022-23816, CVE-2022-29900)
+    * hw: cpu: AMD:  Branch Type Confusion (non-retbleed) (CVE-2022-23825)
+    * hw: cpu: Intel: RetBleed Arbitrary Speculative Code Execution with Return Instructions (CVE-2022-29901)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Bug Fix(es):
+
+    * [almalinux8-rt] BUG: using __this_cpu_add() in preemptible [00000000] - caller is __mod_memcg_lruvec_state+0x69/0x1c0 (BZ#2122600)
+    * The latest AlmaLinux 8.6.z4 kernel changes need to be merged into the RT source tree to keep source parity between the two kernels. (BZ#2125396)
+id: ALSA-2022:7134
+modified: "2023-09-15T13:41:48Z"
+published: "2022-10-25T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2022:7134
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2022-7134.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-0494
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-1353
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-23816
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-23825
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-2588
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-29900
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-29901
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2039448
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2066819
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2090226
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2103148
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2103153
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2114849
+related:
+    - CVE-2022-2588
+    - CVE-2022-0494
+    - CVE-2022-1353
+    - CVE-2022-23816
+    - CVE-2022-29900
+    - CVE-2022-23825
+    - CVE-2022-29901
+summary: 'Important: kernel-rt security and bug fix update'

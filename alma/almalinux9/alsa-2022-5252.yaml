@@ -1,0 +1,54 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: bsdtar
+      ranges:
+        - events:
+            - fixed: 3.5.3-2.el9_0
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libarchive
+      ranges:
+        - events:
+            - fixed: 3.5.3-2.el9_0
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libarchive-devel
+      ranges:
+        - events:
+            - fixed: 3.5.3-2.el9_0
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The libarchive programming library can create and read several different
+    streaming archive formats, including GNU tar, cpio, and ISO 9660 CD-ROM images.
+    Libarchive is used notably in the bsdtar utility, scripting language bindings
+    such as python-libarchive, and several popular desktop file managers.
+    Security Fix(es):
+    * libarchive: an out-of-bounds read via the component zipx_lzma_alone_init
+    (CVE-2022-26280)
+    For more details about the security issue(s), including the impact, a CVSS
+    score, acknowledgments, and other related information, refer to the CVE page(s)
+    listed in the References section.
+id: ALSA-2022:5252
+modified: "2022-07-21T17:29:54Z"
+published: "2022-07-01T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2022:5252
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2022-5252.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-26280
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2071931
+related:
+    - CVE-2022-26280
+summary: 'Moderate: libarchive security update'

@@ -1,0 +1,131 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: httpd
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: httpd-core
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: httpd-devel
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: httpd-filesystem
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: httpd-manual
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: httpd-tools
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: mod_ldap
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: mod_lua
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: mod_proxy_html
+      ranges:
+        - events:
+            - fixed: 1:2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: mod_session
+      ranges:
+        - events:
+            - fixed: 2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: mod_ssl
+      ranges:
+        - events:
+            - fixed: 1:2.4.53-7.el9_1.1
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The httpd packages provide the Apache HTTP Server, a powerful, efficient, and extensible web server.
+
+    Security Fix(es):
+
+    * httpd: mod_dav: out-of-bounds read/write of zero byte (CVE-2006-20001)
+    * httpd: mod_proxy_ajp: Possible request smuggling (CVE-2022-36760)
+    * httpd: mod_proxy: HTTP response splitting (CVE-2022-37436)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Bug Fix(es):
+
+    * httpd-init fails to create localhost.crt, localhost.key due to "sscg" default now creates a /dhparams.pem and is not idempotent if the file /dhparams.pem already exists. (BZ#2165975)
+id: ALSA-2023:0970
+modified: "2023-02-28T18:31:17Z"
+published: "2023-02-28T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:0970
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2023-0970.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2006-20001
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-36760
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-37436
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2161773
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2161774
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2161777
+related:
+    - CVE-2006-20001
+    - CVE-2022-36760
+    - CVE-2022-37436
+summary: 'Moderate: httpd security and bug fix update'

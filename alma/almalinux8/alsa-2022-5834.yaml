@@ -1,0 +1,128 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-core
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-core
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-devel
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-kvm
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-modules
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-debug-modules-extra
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-devel
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-kvm
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-modules
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: kernel-rt-modules-extra
+      ranges:
+        - events:
+            - fixed: 4.18.0-372.19.1.rt7.176.el8_6
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The kernel-rt packages provide the Real Time Linux Kernel, which enables fine-tuning for systems with extremely high determinism requirements.
+    Security Fix(es):
+    * kernel: Small table perturb size in the TCP source port generation algorithm can lead to information leak (CVE-2022-1012)
+    * kernel: a use-after-free write in the netfilter subsystem can lead to privilege escalation to root (CVE-2022-32250)
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+    Bug Fix(es):
+    * The latest AlmaLinux 8.6.z2 kernel changes need to be merged into the RT source tree to keep source parity between the two kernels. (BZ#2107215)
+id: ALSA-2022:5834
+modified: "2022-08-05T10:36:05Z"
+published: "2022-08-02T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2022:5834
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2022-5834.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-1012
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-32250
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2064604
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2092427
+related:
+    - CVE-2022-1012
+    - CVE-2022-32250
+summary: 'Important: kernel-rt security and bug fix update'

@@ -1,0 +1,203 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-demo
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-demo-fastdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-demo-slowdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-devel
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-devel-fastdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-devel-slowdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-fastdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-headless
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-headless-fastdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-headless-slowdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-javadoc
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-javadoc-zip
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-slowdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-src
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-src-fastdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: java-1.8.0-openjdk-src-slowdebug
+      ranges:
+        - events:
+            - fixed: 1:1.8.0.372.b07-1.el9_1
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    The java-1.8.0-openjdk packages provide the OpenJDK 8 Java Runtime Environment and the OpenJDK 8 Java Software Development Kit.
+
+    Security Fix(es):
+
+    * OpenJDK: improper connection handling during TLS handshake (8294474) (CVE-2023-21930)
+    * OpenJDK: Swing HTML parsing issue (8296832) (CVE-2023-21939)
+    * OpenJDK: incorrect enqueue of references in garbage collector (8298191) (CVE-2023-21954)
+    * OpenJDK: certificate validation issue in TLS session negotiation (8298310) (CVE-2023-21967)
+    * OpenJDK: missing string checks for NULL characters (8296622) (CVE-2023-21937)
+    * OpenJDK: incorrect handling of NULL characters in ProcessBuilder (8295304) (CVE-2023-21938)
+    * OpenJDK: missing check for slash characters in URI-to-path conversion (8298667) (CVE-2023-21968)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Bug Fix(es):
+
+    * The RSAPSSSignature implementation works with RSA keys via the SunRSASign provider. However, it did not fully check that the RSA key could be used by the provider before attempting to do so, leading to the possibility of errors being returned with custom security providers. The implementation now validates RSA keys and will allow other providers to handle such keys where it cannot. (RHBZ#2188024)
+id: ALSA-2023:1909
+modified: "2023-05-02T23:24:58Z"
+published: "2023-04-25T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2023:1909
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2023-1909.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-21930
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-21937
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-21938
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-21939
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-21954
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-21967
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2023-21968
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2187435
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2187441
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2187704
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2187724
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2187758
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2187790
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2187802
+related:
+    - CVE-2023-21930
+    - CVE-2023-21939
+    - CVE-2023-21954
+    - CVE-2023-21967
+    - CVE-2023-21937
+    - CVE-2023-21938
+    - CVE-2023-21968
+summary: 'Important: java-1.8.0-openjdk security and bug fix update'

@@ -1,0 +1,59 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: fribidi
+      ranges:
+        - events:
+            - fixed: 1.0.10-6.el9.2
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: fribidi-devel
+      ranges:
+        - events:
+            - fixed: 1.0.10-6.el9.2
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: |-
+    FriBidi is a library to handle bidirectional scripts (for example Hebrew, Arabic), so that the display is done in the proper way, while the text data itself is always written in logical order.
+
+    Security Fix(es):
+
+    * fribidi: Stack based buffer overflow (CVE-2022-25308)
+    * fribidi: Heap-buffer-overflow in fribidi_cap_rtl_to_unicode (CVE-2022-25309)
+    * fribidi: SEGV in fribidi_remove_bidi_marks (CVE-2022-25310)
+
+    For more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.
+
+    Additional Changes:
+
+    For detailed information on changes in this release, see the AlmaLinux Release Notes linked from the References section.
+id: ALSA-2022:8011
+modified: "2022-11-18T13:00:34Z"
+published: "2022-11-15T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2022:8011
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2022-8011.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-25308
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-25309
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2022-25310
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2047890
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2047896
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2047923
+related:
+    - CVE-2022-25308
+    - CVE-2022-25309
+    - CVE-2022-25310
+summary: 'Moderate: fribidi security update'
