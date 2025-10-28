@@ -1,0 +1,98 @@
+Vulnerability:
+    Description: libexpat through 2.5.0 allows a denial of service (resource consumption) because many full reparsings are required in the case of a large token for which multiple buffer fills are needed.Considering the tradeoff between the stability of Amazon Linux and the impact of CVE-2023-52425 a fix will not be provided for firefox and thunderbird in Amazon Linux 2 at this time. (CVE-2023-52425)libexpat through 2.5.0 allows recursive XML Entity Expansion if XML_DTD is undefined at compile time.Considering the tradeoff between the stability of Amazon Linux and the impact of CVE-2023-52426 a fix will not be provided for firefox and thunderbird in Amazon Linux 2 at this time. (CVE-2023-52426)libexpat through 2.6.1 allows an XML Entity Expansion attack when there is isolated use of external parsers (created via XML_ExternalEntityParserCreate). (CVE-2024-28757)A stack overflow vulnerability exists in the libexpat library due to the way it handles recursive entity expansion in XML documents. When parsing an XML document with deeply nested entity references, libexpat can be forced to recurse indefinitely, exhausting the stack space and causing a crash. This issue could lead to denial of service (DoS) or, in some cases, exploitable memory corruption, depending on the environment and library usage. (CVE-2024-8176)libexpat in Expat before 2.7.2 allows attackers to trigger large dynamic memory allocations via a small document that is submitted for parsing. (CVE-2025-59375)
+    FixedIn:
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-apps
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-apps-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-c++
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-c++-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-client
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-client++
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-client++-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-client-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-10-27"
+            Kind: advisory
+          Name: xmlrpc-c-devel
+          NamespaceName: amzn:2023
+          Version: 1.51.08-2.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1229.html
+    Metadata:
+        CVE:
+            - Name: CVE-2023-52425
+            - Name: CVE-2023-52426
+            - Name: CVE-2024-28757
+            - Name: CVE-2024-8176
+            - Name: CVE-2025-59375
+    Name: ALAS2023-2025-1229
+    NamespaceName: amzn:2023
+    Severity: High
