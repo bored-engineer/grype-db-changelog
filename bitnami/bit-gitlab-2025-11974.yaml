@@ -1,0 +1,49 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-10-28"
+                      kind: advisory
+                      version: 18.3.5
+                    - date: "2025-10-28"
+                      kind: advisory
+                      version: 18.4.3
+                    - date: "2025-10-28"
+                      kind: advisory
+                      version: 18.5.1
+          events:
+            - fixed: 18.3.5
+            - fixed: 18.4.3
+            - fixed: 18.5.1
+            - introduced: 11.7.0
+            - introduced: 18.4.0
+            - introduced: 18.5.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2025-11974
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Medium
+details: GitLab has remediated an issue in GitLab CE/EE affecting all versions from 11.7 before 18.3.5, 18.4 before 18.4.3, and 18.5 before 18.5.1 that could have allowed an unauthenticated attacker to create a denial of service condition by uploading large files to specific API endpoints.
+id: BIT-gitlab-2025-11974
+modified: "2025-10-28T12:07:16.062Z"
+published: "2025-10-28T12:03:52.509Z"
+references:
+    - type: WEB
+      url: https://about.gitlab.com/releases/2025/10/22/patch-release-gitlab-18-5-1-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/issues/571761
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-11974
+schema_version: 1.6.2
+summary: Allocation of Resources Without Limits or Throttling in GitLab
