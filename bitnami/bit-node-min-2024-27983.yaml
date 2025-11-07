@@ -36,13 +36,15 @@ database_specific:
     severity: High
 details: An attacker can make the Node.js HTTP/2 server completely unavailable by sending a small amount of HTTP/2 frames packets with a few HTTP/2 frames inside. It is possible to leave some data in nghttp2 memory after reset when headers with HTTP/2 CONTINUATION frame are sent to the server and then a TCP connection is abruptly closed by the client triggering the Http2Session destructor while header frames are still being processed (and stored in memory) causing a race condition.
 id: BIT-node-min-2024-27983
-modified: "2025-04-03T14:40:37.652Z"
+modified: "2025-11-06T13:25:46.476Z"
 published: "2024-12-16T13:53:58.325Z"
 references:
     - type: WEB
       url: http://www.openwall.com/lists/oss-security/2024/04/03/16
     - type: WEB
       url: https://hackerone.com/reports/2319584
+    - type: WEB
+      url: https://lists.debian.org/debian-lts-announce/2024/09/msg00029.html
     - type: WEB
       url: https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/JDECX4BYZLMM4S4LALN4DPZ2HUTTPLKE/
     - type: WEB
@@ -51,4 +53,6 @@ references:
       url: https://nvd.nist.gov/vuln/detail/CVE-2024-27983
     - type: WEB
       url: https://security.netapp.com/advisory/ntap-20240510-0002/
+    - type: WEB
+      url: https://www.kb.cert.org/vuls/id/421644
 schema_version: 1.5.0

@@ -5,33 +5,15 @@ affected:
         name: discourse
         purl: pkg:bitnami/discourse
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2024-03-06"
+                      kind: advisory
+                      version: 2.8.12
+          events:
             - introduced: "0"
-            - last_affected: 2.8.11
-            - introduced: 2.9.0-beta1
-            - last_affected: 2.9.0-beta1
-            - introduced: 2.9.0-beta10
-            - last_affected: 2.9.0-beta10
-            - introduced: 2.9.0-beta11
-            - last_affected: 2.9.0-beta11
-            - introduced: 2.9.0-beta12
-            - last_affected: 2.9.0-beta12
-            - introduced: 2.9.0-beta2
-            - last_affected: 2.9.0-beta2
-            - introduced: 2.9.0-beta3
-            - last_affected: 2.9.0-beta3
-            - introduced: 2.9.0-beta4
-            - last_affected: 2.9.0-beta4
-            - introduced: 2.9.0-beta5
-            - last_affected: 2.9.0-beta5
-            - introduced: 2.9.0-beta6
-            - last_affected: 2.9.0-beta6
-            - introduced: 2.9.0-beta7
-            - last_affected: 2.9.0-beta7
-            - introduced: 2.9.0-beta8
-            - last_affected: 2.9.0-beta8
-            - introduced: 2.9.0-beta9
-            - last_affected: 2.9.0-beta9
+            - fixed: 2.8.12
           type: SEMVER
       severity:
         - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N
@@ -56,7 +38,7 @@ database_specific:
     severity: Medium
 details: Discourse is an open-source discussion platform. In stable versions prior to 2.8.12 and beta or tests-passed versions prior to 2.9.0.beta.13, under certain conditions, a user can see notifications for topics they no longer have access to. If there is sensitive information in the topic title, it will therefore have been exposed. This issue is patched in stable version 2.8.12, beta version 2.9.0.beta13, and tests-passed version 2.9.0.beta13. There are no workarounds available.
 id: BIT-discourse-2022-41944
-modified: "2025-05-20T10:02:07.006Z"
+modified: "2025-11-06T13:25:46.476Z"
 published: "2024-03-06T11:03:09.082Z"
 references:
     - type: WEB
