@@ -1,0 +1,38 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: airflow
+        purl: pkg:bitnami/airflow
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-11-06"
+                      kind: advisory
+                      version: 3.1.1
+          events:
+            - fixed: 3.1.1
+            - introduced: 3.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-62402
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:airflow:*:*:*:*:*:python:*:*
+    severity: Medium
+details: API users via `/api/v2/dagReports` could perform Dag code execution in the context of the api-server if the api-server was deployed in the environment where Dag files were available.
+id: BIT-airflow-2025-62402
+modified: "2025-11-06T13:25:46.476Z"
+published: "2025-11-06T12:52:57.926Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2025/10/29/7
+    - type: WEB
+      url: https://lists.apache.org/thread/vbzxnxn031wb998hsd7vqnvh4z8nx6rs
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-62402
+schema_version: 1.6.2
+summary: 'Apache Airflow: Airflow 3 API: /api/v2/dagReports executes DAG Python in API'

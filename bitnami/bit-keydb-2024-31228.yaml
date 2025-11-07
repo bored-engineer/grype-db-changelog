@@ -26,13 +26,15 @@ database_specific:
     severity: Medium
 details: Redis is an open source, in-memory database that persists on disk. Authenticated users can trigger a denial-of-service by using specially crafted, long string match patterns on supported commands such as `KEYS`, `SCAN`, `PSUBSCRIBE`, `FUNCTION LIST`, `COMMAND LIST` and ACL definitions. Matching of extremely long patterns may result in unbounded recursion, leading to stack overflow and process crash. This problem has been fixed in Redis versions 6.2.16, 7.2.6, and 7.4.1. Users are advised to upgrade. There are no known workarounds for this vulnerability.
 id: BIT-keydb-2024-31228
-modified: "2025-09-09T06:08:46.021Z"
+modified: "2025-11-06T13:25:46.476Z"
 published: "2024-10-09T16:30:39.030Z"
 references:
     - type: WEB
       url: https://github.com/redis/redis/commit/9317bf64659b33166a943ec03d5d9b954e86afb0
     - type: WEB
       url: https://github.com/redis/redis/security/advisories/GHSA-66gq-c942-6976
+    - type: WEB
+      url: https://lists.debian.org/debian-lts-announce/2024/11/msg00031.html
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2024-31228
 schema_version: 1.5.0

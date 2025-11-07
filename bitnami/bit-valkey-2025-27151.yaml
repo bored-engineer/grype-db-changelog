@@ -9,15 +9,20 @@ affected:
                 fixes:
                     - date: "2025-05-31"
                       kind: advisory
-                      version: 7.2.9
+                      version: 7.2.10
                     - date: "2025-05-31"
                       kind: advisory
-                      version: 8.0.2
+                      version: 8.0.5
+                    - date: "2025-05-31"
+                      kind: advisory
+                      version: 8.1.2
           events:
-            - fixed: 7.2.9
-            - fixed: 8.0.2
-            - introduced: 7.0.0
+            - fixed: 7.2.10
+            - fixed: 8.0.5
+            - fixed: 8.1.2
+            - introduced: "0"
             - introduced: 7.3.0
+            - introduced: 8.1.0
           type: SEMVER
       severity:
         - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
@@ -27,10 +32,11 @@ aliases:
 database_specific:
     cpes:
         - cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:valkey-io:valkey:*:*:*:*:*:*:*:*
     severity: Critical
 details: Redis is an open source, in-memory database that persists on disk. In versions starting from 7.0.0 to before 8.0.2, a stack-based buffer overflow exists in redis-check-aof due to the use of memcpy with strlen(filepath) when copying a user-supplied file path into a fixed-size stack buffer. This allows an attacker to overflow the stack and potentially achieve code execution. This issue has been patched in version 8.0.2.
 id: BIT-valkey-2025-27151
-modified: "2025-08-22T06:06:45.932Z"
+modified: "2025-11-06T13:25:46.476Z"
 published: "2025-05-31T06:02:22.962Z"
 references:
     - type: WEB

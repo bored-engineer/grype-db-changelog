@@ -9,28 +9,18 @@ affected:
                 fixes:
                     - date: "2025-10-16"
                       kind: advisory
-                      version: 6.2.20
-                    - date: "2025-10-16"
-                      kind: advisory
                       version: 7.2.11
                     - date: "2025-10-16"
                       kind: advisory
-                      version: 7.4.6
+                      version: 8.0.6
                     - date: "2025-10-16"
                       kind: advisory
-                      version: 8.0.4
-                    - date: "2025-10-16"
-                      kind: advisory
-                      version: 8.2.2
+                      version: 8.1.4
           events:
-            - fixed: 6.2.20
             - fixed: 7.2.11
-            - fixed: 7.4.6
-            - fixed: 8.0.4
-            - fixed: 8.2.2
+            - fixed: 8.0.6
+            - fixed: 8.1.4
             - introduced: "0"
-            - introduced: 7.0.0
-            - introduced: 7.3.0
             - introduced: 8.0.0
             - introduced: 8.1.0
           type: SEMVER
@@ -42,12 +32,15 @@ aliases:
 database_specific:
     cpes:
         - cpe:2.3:a:redis:redis:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:valkey-io:valkey:*:*:*:*:*:*:*:*
     severity: Critical
 details: Redis is an open source, in-memory database that persists on disk. Versions 8.2.1 and below allow an authenticated user to use a specially crafted Lua script to manipulate the garbage collector, trigger a use-after-free and potentially lead to remote code execution. The problem exists in all versions of Redis with Lua scripting. This issue is fixed in version 8.2.2. To workaround this issue without patching the redis-server executable is to prevent users from executing Lua scripts. This can be done using ACL to restrict EVAL and EVALSHA commands.
 id: BIT-valkey-2025-49844
-modified: "2025-10-16T09:42:37.786Z"
+modified: "2025-11-06T13:25:46.476Z"
 published: "2025-10-16T09:19:55.260Z"
 references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2025/10/07/2
     - type: WEB
       url: https://github.com/redis/redis/commit/d5728cb5795c966c5b5b1e0f0ac576a7e69af539
     - type: WEB

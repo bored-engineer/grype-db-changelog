@@ -35,7 +35,7 @@ database_specific:
     severity: Medium
 details: Redis is an in-memory database that persists on disk. Authenticated users issuing specially crafted `SETRANGE` and `SORT(_RO)` commands can trigger an integer overflow, resulting with Redis attempting to allocate impossible amounts of memory and abort with an out-of-memory (OOM) panic. The problem is fixed in Redis versions 7.0.8, 6.2.9 and 6.0.17. Users are advised to upgrade. There are no known workarounds for this vulnerability.
 id: BIT-redis-2022-35977
-modified: "2025-05-20T10:02:07.006Z"
+modified: "2025-11-06T13:25:46.476Z"
 published: "2024-03-06T11:05:24.585Z"
 references:
     - type: WEB
@@ -48,6 +48,8 @@ references:
       url: https://github.com/redis/redis/releases/tag/7.0.8
     - type: WEB
       url: https://github.com/redis/redis/security/advisories/GHSA-mrcw-fhw9-fj8j
+    - type: WEB
+      url: https://lists.debian.org/debian-lts-announce/2024/11/msg00031.html
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2022-35977
 schema_version: 1.5.0
