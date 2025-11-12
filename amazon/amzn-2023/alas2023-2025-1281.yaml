@@ -1,0 +1,68 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Relative Path Traversal vulnerability in Apache Tomcat.The fix for bug 60013 introduced a regression where the       rewritten URL was normalized before it was decoded. This introduced the       possibility that, for rewrite rules that rewrite query parameters to the       URL, an attacker could manipulate the request URI to bypass security       constraints including the protection for /WEB-INF/ and /META-INF/. If PUT requests were also enabled then malicious files could be uploaded leading to remote code execution. PUT requests are normally limited to trusted users and it is considered unlikely that PUT requests would be enabled in conjunction with a rewrite that manipulated the URI.This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.10, from 10.1.0-M1 through 10.1.44, from 9.0.0.M11 through 9.0.108.The following versions were EOL at the time the CVE was created but areknown to be affected: 8.5.6 though 8.5.100. Other, older, EOL versions may also be affected.Users are recommended to upgrade to version 11.0.11 or later, 10.1.45 or later or 9.0.109 or later, which fix the issue. (CVE-2025-55752)Improper Resource Shutdown or Release vulnerability in Apache Tomcat.If an error occurred (including exceeding limits) during the processing of a multipart upload, temporary copies of the uploaded parts written to disc were not cleaned up immediately but left for the garbage collection process to delete. Depending on JVM settings, application memory usage and application load, it was possible that space for the temporary copies of uploaded parts would be filled faster than GC cleared it, leading to a DoS.This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.11, from 10.1.0-M1 through 10.1.46, from 9.0.0.M1 through 9.0.109.The following versions were EOL at the time the CVE was created but areknown to be affected: 8.5.0 though 8.5.100. Other, older, EOL versions may also be affected.Users are recommended to upgrade to version 11.0.12 or later, 10.1.47 or later or 9.0.110 or later which fixes the issue. (CVE-2025-61795)'
+    FixedIn:
+        - Available:
+            Date: "2025-11-10"
+            Kind: advisory
+          Name: tomcat9
+          NamespaceName: amzn:2023
+          Version: 9.0.111-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-10"
+            Kind: advisory
+          Name: tomcat9-admin-webapps
+          NamespaceName: amzn:2023
+          Version: 9.0.111-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-10"
+            Kind: advisory
+          Name: tomcat9-docs-webapp
+          NamespaceName: amzn:2023
+          Version: 9.0.111-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-10"
+            Kind: advisory
+          Name: tomcat9-el-3.0-api
+          NamespaceName: amzn:2023
+          Version: 9.0.111-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-10"
+            Kind: advisory
+          Name: tomcat9-jsp-2.3-api
+          NamespaceName: amzn:2023
+          Version: 9.0.111-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-10"
+            Kind: advisory
+          Name: tomcat9-lib
+          NamespaceName: amzn:2023
+          Version: 9.0.111-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-10"
+            Kind: advisory
+          Name: tomcat9-servlet-4.0-api
+          NamespaceName: amzn:2023
+          Version: 9.0.111-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-10"
+            Kind: advisory
+          Name: tomcat9-webapps
+          NamespaceName: amzn:2023
+          Version: 9.0.111-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1281.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-55752
+            - Name: CVE-2025-61795
+    Name: ALAS2023-2025-1281
+    NamespaceName: amzn:2023
+    Severity: High
