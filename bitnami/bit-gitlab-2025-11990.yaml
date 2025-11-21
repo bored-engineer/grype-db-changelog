@@ -1,0 +1,45 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-11-20"
+                      kind: advisory
+                      version: 18.4.4
+                    - date: "2025-11-20"
+                      kind: advisory
+                      version: 18.5.2
+          events:
+            - fixed: 18.4.4
+            - fixed: 18.5.2
+            - introduced: 18.4.0
+            - introduced: 18.5.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-11990
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Low
+details: GitLab has remediated an issue in GitLab EE affecting all versions from 18.4 before 18.4.4, and 18.5 before 18.5.2 that could have allowed an authenticated user to gain CSRF tokens by exploiting improper input validation in repository references combined with redirect handling weaknesses.
+id: BIT-gitlab-2025-11990
+modified: "2025-11-20T09:06:46.640Z"
+published: "2025-11-20T09:03:19.328Z"
+references:
+    - type: WEB
+      url: https://about.gitlab.com/releases/2025/11/12/patch-release-gitlab-18-5-2-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/issues/577850
+    - type: WEB
+      url: https://hackerone.com/reports/3257843
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-11990
+schema_version: 1.6.2
+summary: Improper Handling of URL Encoding (Hex Encoding) in GitLab
