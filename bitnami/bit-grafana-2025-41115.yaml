@@ -1,0 +1,44 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: grafana
+        purl: pkg:bitnami/grafana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-11-25"
+                      kind: advisory
+                      version: 12.2.1
+          events:
+            - introduced: 12.0.0
+            - fixed: 12.2.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2025-41115
+database_specific:
+    cpes:
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:go:*:*
+    severity: Critical
+details: |-
+    SCIM provisioning was introduced in Grafana Enterprise and Grafana Cloud in April to improve how organizations manage users and teams in Grafana by introducing automated user lifecycle management.
+
+    In Grafana versions 12.x where SCIM provisioning is enabled and configured, a vulnerability in user identity handling allows a malicious or compromised SCIM client to provision a user with a numeric externalId, which in turn could allow to override internal user IDs and lead to impersonation or privilege escalation.
+
+    This vulnerability applies only if all of the following conditions are met:
+    - `enableSCIM` feature flag set to true
+    - `user_sync_enabled` config option in the `[auth.scim]` block set to true
+id: BIT-grafana-2025-41115
+modified: "2025-11-25T18:26:29.568Z"
+published: "2025-11-25T17:58:55.355Z"
+references:
+    - type: WEB
+      url: https://grafana.com/security/security-advisories/CVE-2025-41115
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-41115
+schema_version: 1.6.2
+summary: Incorrect privilege assignment
