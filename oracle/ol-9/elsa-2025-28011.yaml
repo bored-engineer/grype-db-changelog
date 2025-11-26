@@ -1,0 +1,96 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [3.5.1-4.0.2_fips]
+        - Update additional upstream references
+
+        [3.5.1-4.0.1_fips]
+        - Add FIPS package change: add fips suffix to Release and
+          set Epoch to 10 [Orabug: 35824276]
+        - Update FIPS module name [Orabug: 35824276]
+
+        [3.5.1-4.0.1]
+        - Enable openssl-fips-provider dependency [Orabug: 36504822]
+        - Temporary disable openssl-fips-provider dependency [Orabug: 36504822]
+        - Replace upstream references [Orabug: 34340177]
+
+        [3.5.1.openela.0.1]
+        - Add OpenELA specific changes
+
+        [1:3.5.1-4]
+        - Fix CVE-2025-9230
+          Resolves: RHEL-115929
+
+        [1:3.5.1-3]
+        - Add custom define to disable symbol versioning in downstream patched code
+          Also add stricter Suggests for openssl-fips-provider
+          Resolves: RHEL-104236
+        - Fix Requires/Provider to fix default install of fips providers
+          Resolves: RHEL-104856
+
+        [1:3.5.1-2]
+        - Move fips.so to a seprate subpackage
+          Reverts FIPS self test for SLH-DSA
+          Add Suggests to try to prefer the openssl-fips-provider package
+          over the fips-provider-next package by default
+          Revolves: RHEL-102408
+          Related: RHEL-80854
+
+        [1:3.5.1-1]
+        - Rebasing to OpenSSL 3.5.1
+          Resolves: RHEL-97797
+          Resolves: RHEL-98723
+          Resolves: RHEL-99352
+
+        [1:3.5.0-4]
+        - Compact patches for better maintainability
+          Related: RHEL-80854
+        - Make hybrid MLKEM work with our FIPS provider (3.0.7)
+          Resolves: RHEL-95239
+
+        [1:3.5.0-3]
+        - Fix regressions caused by rebase to OpenSSL 3.5
+          Related: RHEL-80854
+    FixedIn:
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: openssl
+          NamespaceName: ol:9
+          Version: 10:3.5.1-4.0.2.el9_7_fips
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: openssl-devel
+          NamespaceName: ol:9
+          Version: 10:3.5.1-4.0.2.el9_7_fips
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: openssl-libs
+          NamespaceName: ol:9
+          Version: 10:3.5.1-4.0.2.el9_7_fips
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: openssl-perl
+          NamespaceName: ol:9
+          Version: 10:3.5.1-4.0.2.el9_7_fips
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-28011.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-9230.html
+              Name: CVE-2025-9230
+        Issued: "2025-11-25"
+        RefId: ELSA-2025-28011
+    Name: ELSA-2025-28011
+    NamespaceName: ol:9
+    Severity: Medium
