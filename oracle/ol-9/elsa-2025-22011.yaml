@@ -1,0 +1,59 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [1.41.6-1.0.1]
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117178]
+
+        [2:1.41.6-1]
+        - update to the latest content of https://github.com/containers/buildah/tree/release-1.41
+          (https://github.com/containers/buildah/commit/2ece502)
+        - fixes '[Minor Incident] CVE-2025-52881 buildah: container escape and denial of service due to arbitrary write gadgets and procfs write redirects [rhel-9.7.z]'
+        - Resolves: RHEL-126925
+
+        [2:1.41.4-4]
+        - rebuild for CVE-2025-58183
+        - Resolves: RHEL-125680
+
+        [2:1.41.4-3]
+        - fix the TMT tests
+        - Related: RHEL-115166
+
+        [2:1.41.4-2]
+        - rebuild as last build was built in the wrong tag
+        - Related: RHEL-115166
+
+        [2:1.41.4-1]
+        - update to the latest content of https://github.com/containers/buildah/tree/release-1.41
+          (https://github.com/containers/buildah/commit/ee5b574)
+        - fixes 'buildah: create parent directories of mount targets with mode 0755 - [RHEL-9.7]  0day'
+        - Resolves: RHEL-115166
+    FixedIn:
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: buildah
+          NamespaceName: ol:9
+          Version: 2:1.41.6-1.0.1.el9_7
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: buildah-tests
+          NamespaceName: ol:9
+          Version: 2:1.41.6-1.0.1.el9_7
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-22011.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-52881.html
+              Name: CVE-2025-52881
+            - Link: https://linux.oracle.com/cve/CVE-2025-58183.html
+              Name: CVE-2025-58183
+        Issued: "2025-11-25"
+        RefId: ELSA-2025-22011
+    Name: ELSA-2025-22011
+    NamespaceName: ol:9
+    Severity: High

@@ -1,0 +1,87 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.6.0-7.0.1]
+        - Add devices on container startup, not on creation
+        - overlay: Put should ignore ENINVAL for Unmount [Orabug: 36234694]
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117404]
+
+        [6:5.6.0-7]
+        - update to the latest content of https://github.com/containers/podman/tree/v5.6-rhel
+          (https://github.com/containers/podman/commit/2791007)
+        - fixes '[Minor Incident] CVE-2025-52881 podman: container escape and denial of service due to arbitrary write gadgets and procfs write redirects [rhel-9.7.z]'
+        - Resolves: RHEL-126913
+
+        [6:5.6.0-6]
+        - update to the latest content of https://github.com/containers/podman/tree/v5.6-rhel
+          (https://github.com/containers/podman/commit/61231e1)
+        - fixes 'Timeouts while pushing Sigstore logs to Rekor - [RHEL 9.7] 0day'
+        - Resolves: RHEL-111076
+
+        [6:5.6.0-5]
+        - rebuild as last build was built in the wrong tag
+        - Related: RHEL-110317
+
+        [6:5.6.0-4]
+        - update to the latest content of https://github.com/containers/podman/tree/v5.6-rhel
+          (https://github.com/containers/podman/commit/c5a3735)
+        - fixes 'Can not find network create and rm message from podman event when set --events-backend to journald - [RHEL 9.7] 0day'
+        - Resolves: RHEL-110317
+
+        [6:5.6.0-3]
+        - update to the latest content of https://github.com/containers/podman/tree/v5.6-rhel
+          (https://github.com/containers/podman/commit/7078b79)
+        - fixes 'CVE-2025-9566 podman: Podman kube play command may overwrite host files [rhel-9.7]'
+        - Resolves: RHEL-113151
+    FixedIn:
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: podman
+          NamespaceName: ol:9
+          Version: 6:5.6.0-7.0.1.el9_7
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: podman-docker
+          NamespaceName: ol:9
+          Version: 6:5.6.0-7.0.1.el9_7
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: podman-plugins
+          NamespaceName: ol:9
+          Version: 6:5.6.0-7.0.1.el9_7
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: podman-remote
+          NamespaceName: ol:9
+          Version: 6:5.6.0-7.0.1.el9_7
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-11-25"
+            Kind: advisory
+          Module: null
+          Name: podman-tests
+          NamespaceName: ol:9
+          Version: 6:5.6.0-7.0.1.el9_7
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-21702.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-52881.html
+              Name: CVE-2025-52881
+        Issued: "2025-11-25"
+        RefId: ELSA-2025-21702
+    Name: ELSA-2025-21702
+    NamespaceName: ol:9
+    Severity: High
