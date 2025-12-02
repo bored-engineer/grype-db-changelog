@@ -1,0 +1,78 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2.39-58.0.1]
+        - Forward port Oracle changes to 2.39-58.
+        - Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Oracle history:
+          August-29-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.39-54.0.1
+          - Forward port Oracle changes.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          August-7-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.39-46.0.1
+          - Forward port Oracle changes.
+            Reviewed-by: David Faust <david.faust@oracle.com>
+          July-15-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.39-43.0.1
+          - Forward port Oracle changes.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          March-5-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.39-37.0.1
+          - Forward port Oracle changes to 2.39-37.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Jan-22-2025 Cupertino Miranda <cupertino.miranda@oracle.com> - 2.39-32.0.1
+          - Integration of relevant Oracle patches.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+
+        [2.39-58]
+        - Use Requires(pre): libgcc(x86-64) to break libgcc cycle (RHEL-110559)
+
+        [2.39-57]
+        - Sync with upstream branch release/2.39/master (RHEL-109536)
+        - Upstream commit: fffc2df8a3e2c8cda2991063d23086360268b777
+        - Extend struct r_debug to support multiple namespaces (RHEL-101985)
+        - Fix a potential crash in the dynamic loader when processing specific
+          symbol versions (RHEL-109683)
+        - Signal la_objopen for ld.so with dlmopen (RHEL-109693)
+        - Switch to main malloc after final ld.so self-relocation (RHEL-109703)
+        - Prevent ld.so from asserting and crashing during audited library loads
+          (RHEL-109702)
+        - x86-64: Provide GLIBC_ABI_DT_X86_64_PLT symbol version (RHEL-109621)
+        - x86-64: Provide GLIBC_ABI_GNU2_TLS symbol version (RHEL-109625)
+        - Ensure fallback initialization of ctype TLS data pointers to fix segfaults in
+          programs using dlmopen or auditors (RHEL-72018)
+        - Handle load segment gaps in _dl_find_object (RHEL-104854)
+        - AArch64: Improve codegen in SVE log1p
+        - AArch64: Optimize inverse trig functions
+        - AArch64: Avoid memset ifunc in cpu-features.c [BZ #33112]
+
+        [2.39-56]
+        - Add FUSE based tests for fchmod, lstat, and mkstemp (RHEL-108823)
+
+        [2.39-55]
+        - Various updates to the manual from upstream (RHEL-108974)
+
+        [2.39-54]
+        - Fix memory leak after fdopen seek failure (RHEL-108475)
+
+        [2.39-53]
+        - Updated glibc to support Linux 6.15 kernel system calls and constants.
+          (RHEL-107695)
+
+        [2.39-52]
+        - Add sched_setattr and sched_getattr functions (RHEL-58357)
+
+        [2.39-51]
+        - Enhanced glibc documentation for core descriptor APIs. (RHEL-107861)
+
+        [2.39-50]
+        - Improve test coverage (RHEL-106562)
+    FixedIn: []
+    Link: https://linux.oracle.com/errata/ELSA-2025-28003.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-8058.html
+              Name: CVE-2025-8058
+        Issued: "2025-11-20"
+        RefId: ELSA-2025-28003
+    Name: ELSA-2025-28003
+    NamespaceName: ol:10
+    Severity: Medium
