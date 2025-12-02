@@ -1,0 +1,80 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [3.5.1-4.0.1]
+        - Enable openssl-fips-provider dependency [Orabug: 36504822]
+        - Temporary disable openssl-fips-provider dependency [Orabug: 36504822]
+        - Replace upstream references [Orabug: 34340177]
+
+        [3.5.1.openela.0.1]
+        - Add OpenELA specific changes
+
+        [1:3.5.1-4]
+        - Fix CVE-2025-9230
+          Resolves: RHEL-115929
+
+        [1:3.5.1-3]
+        - Add custom define to disable symbol versioning in downstream patched code
+          Also add stricter Suggests for openssl-fips-provider
+          Resolves: RHEL-104236
+        - Fix Requires/Provider to fix default install of fips providers
+          Resolves: RHEL-104856
+
+        [1:3.5.1-2]
+        - Move fips.so to a seprate subpackage
+          Reverts FIPS self test for SLH-DSA
+          Add Suggests to try to prefer the openssl-fips-provider package
+          over the fips-provider-next package by default
+          Revolves: RHEL-102408
+          Related: RHEL-80854
+
+        [1:3.5.1-1]
+        - Rebasing to OpenSSL 3.5.1
+          Resolves: RHEL-97797
+          Resolves: RHEL-98723
+          Resolves: RHEL-99352
+
+        [1:3.5.0-4]
+        - Compact patches for better maintainability
+          Related: RHEL-80854
+        - Make hybrid MLKEM work with our FIPS provider (3.0.7)
+          Resolves: RHEL-95239
+
+        [1:3.5.0-3]
+        - Fix regressions caused by rebase to OpenSSL 3.5
+          Related: RHEL-80854
+
+        [1:3.5.0-2]
+        - OpenSSL ignores 'rh-allow-sha1-signatures = yes' option on RHEL-9
+          Resolves: RHEL-88910
+        - PKCS#12 should not default to pbmac1 in FIPS mode in RHEL-9
+          Resolves: RHEL-88912
+        - Fix openssl speed running in FIPS mode
+          Resolves: RHEL-89860
+        - pkeyutl ecdsa signature with sha1 shouldn't work by default
+          Resolves: RHEL-89861
+        - Expose settable params for EVP_SKEY
+          Resolves: RHEL-89862
+        - Restore RHEL9-style indicators defines
+          Resolves: RHEL-89859
+        - Enable sslkeylog support
+          Resolves: RHEL-90854
+
+        [1:3.5.0-1]
+        - Rebasing OpenSSL to 3.5
+          Resolves: RHEL-80854
+          Resolves: RHEL-50208
+          Resolves: RHEL-50210
+          Resolves: RHEL-50211
+          Resolves: RHEL-85954
+    FixedIn: []
+    Link: https://linux.oracle.com/errata/ELSA-2025-28020.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-9230.html
+              Name: CVE-2025-9230
+        Issued: "2025-12-01"
+        RefId: ELSA-2025-28020
+    Name: ELSA-2025-28020
+    NamespaceName: ol:9
+    Severity: Medium
