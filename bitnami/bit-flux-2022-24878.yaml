@@ -1,0 +1,36 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: flux
+        purl: pkg:bitnami/flux
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-02"
+                      kind: advisory
+                      version: 0.29.0
+          events:
+            - fixed: 0.29.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2022-24878
+database_specific:
+    cpes:
+        - cpe:2.3:a:fluxcd:flux2:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Flux is an open and extensible continuous delivery solution for Kubernetes. Path Traversal in the kustomize-controller via a malicious `kustomization.yaml` allows an attacker to cause a Denial of Service at the controller level. Workarounds include automated tooling in the user's CI/CD pipeline to validate `kustomization.yaml` files conform with specific policies. This vulnerability is fixed in kustomize-controller v0.24.0 and included in flux2 v0.29.0. Users are recommended to upgrade.
+id: BIT-flux-2022-24878
+modified: "2025-12-02T18:06:28.296Z"
+published: "2025-12-02T17:36:56.954Z"
+references:
+    - type: WEB
+      url: https://github.com/fluxcd/flux2/security/advisories/GHSA-7pwf-jg34-hxwp
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2022-24878
+schema_version: 1.6.2
+summary: Improper path handling in Kustomization files allows for denial of service
