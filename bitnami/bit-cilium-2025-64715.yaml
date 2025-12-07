@@ -26,7 +26,7 @@ affected:
             - fixed: 1.18.4
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+        - score: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
           type: CVSS_V3
 aliases:
     - CVE-2025-64715
@@ -36,7 +36,7 @@ database_specific:
     severity: Medium
 details: Cilium is a networking, observability, and security solution with an eBPF-based dataplane. Prior to versions 1.16.17, 1.17.10, and 1.18.4, CiliumNetworkPolicys which use egress.toGroups.aws.securityGroupsIds to reference AWS security group IDs that do not exist or are not attached to any network interface may unintentionally allow broader outbound access than intended by the policy authors. In such cases, the toCIDRset section of the derived policy is not generated, which means outbound traffic may be permitted to more destinations than originally intended. This issue has been patched in versions 1.16.17, 1.17.10, and 1.18.4. There are no workarounds for this issue.
 id: BIT-cilium-2025-64715
-modified: "2025-12-02T12:07:28.677Z"
+modified: "2025-12-06T12:06:23.267Z"
 published: "2025-12-02T11:35:57.032Z"
 references:
     - type: WEB

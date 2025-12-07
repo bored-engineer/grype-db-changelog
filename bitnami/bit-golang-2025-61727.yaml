@@ -1,0 +1,48 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: golang
+        purl: pkg:bitnami/golang
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-06"
+                      kind: advisory
+                      version: 1.24.11
+                    - date: "2025-12-06"
+                      kind: advisory
+                      version: 1.25.5
+          events:
+            - introduced: "0"
+            - fixed: 1.24.11
+            - introduced: 1.25.0
+            - fixed: 1.25.5
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-61727
+database_specific:
+    cpes:
+        - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+    severity: Medium
+details: An excluded subdomain constraint in a certificate chain does not restrict the usage of wildcard SANs in the leaf certificate. For example a constraint that excludes the subdomain test.example.com does not prevent a leaf certificate from claiming the SAN *.example.com.
+id: BIT-golang-2025-61727
+modified: "2025-12-06T12:06:23.267Z"
+published: "2025-12-06T11:41:09.464Z"
+references:
+    - type: WEB
+      url: https://go.dev/cl/723900
+    - type: WEB
+      url: https://go.dev/issue/76442
+    - type: WEB
+      url: https://groups.google.com/g/golang-announce/c/8FJoBkPddm4
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-61727
+    - type: WEB
+      url: https://pkg.go.dev/vuln/GO-2025-4175
+schema_version: 1.6.2
+summary: Improper application of excluded DNS name constraints when verifying wildcard names in crypto/x509
