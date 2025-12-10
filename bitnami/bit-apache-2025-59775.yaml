@@ -1,0 +1,39 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: apache
+        purl: pkg:bitnami/apache
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-09"
+                      kind: advisory
+                      version: 2.4.66
+          events:
+            - introduced: 2.4.0
+            - fixed: 2.4.66
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-59775
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*
+    severity: High
+details: "Server-Side Request Forgery (SSRF) vulnerability \n\n in Apache HTTP Server on Windows \n\nwith AllowEncodedSlashes On and MergeSlashes Off  allows to potentially leak NTLM \nhashes to a malicious server via SSRF and malicious requests or content\n\nUsers are recommended to upgrade to version 2.4.66, which fixes the issue."
+id: BIT-apache-2025-59775
+modified: "2025-12-09T12:08:00.393Z"
+published: "2025-12-09T11:38:16.754Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2025/12/04/6
+    - type: WEB
+      url: https://httpd.apache.org/security/vulnerabilities_24.html
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-59775
+schema_version: 1.6.2
+summary: 'Apache HTTP Server: NTLM Leakage on Windows through UNC SSRF'
