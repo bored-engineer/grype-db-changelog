@@ -1,0 +1,69 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [3.5.1-4.0.1]
+        - Replace upstream references [Orabug: 34340177]
+        - Update FIPS provider name [Orabug: 35824276]
+
+        [1:3.5.1-4]
+        - Fix CVE-2025-9230
+          Resolves: RHEL-115885
+
+        [1:3.5.1-3]
+        - Add custom define to disable symbol versioning in downstream patched code
+          Also add stricter Suggests for openssl-fips-provider
+          Resolves: RHEL-101548
+        - Fix Requires/Provider to fix default install of fips providers
+          Resolves: RHEL-105010
+
+        [1:3.5.1-2]
+        - Move fips.so to a seprate subpackage
+          Reverts FIPS self test for SLH-DSA
+          Add Suggests to try to prefer the openssl-fips-provider package
+          over the fips-provider-next package by default
+          Revolves: RHEL-102408
+          Related: RHEL-80811
+
+        [1:3.5.1-1]
+        - Rebasing to OpenSSL 3.5.1
+          Resolves: RHEL-90350
+          Resolves: RHEL-95613
+          Resolves: RHEL-97796
+          Resolves: RHEL-99353
+          Resolves: RHEL-100168
+
+        [1:3.5.0-8]
+        - rebuilt
+          Related: RHEL-80811
+
+        [1:3.5.0-7]
+        - rebuilt
+          Related: RHEL-80811
+
+        [1:3.5.0-6]
+        - rebuilt
+          Related: RHEL-80811
+
+        [1:3.5.0-5]
+        - Compact patches for better maintainability
+          Related: RHEL-80811
+        - Make hybrid MLKEM work with our FIPS provider (3.0.7)
+          Resolves: RHEL-94614
+
+        [1:3.5.0-4]
+        - Fix regressions caused by rebase to OpenSSL 3.5
+          Related: RHEL-80811
+        - Fix UEFI builds on double function definitions
+          Resolves: RHEL-93168
+    FixedIn: []
+    Link: https://linux.oracle.com/errata/ELSA-2025-28041.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-9230.html
+              Name: CVE-2025-9230
+        Issued: "2025-12-09"
+        RefId: ELSA-2025-28041
+    Name: ELSA-2025-28041
+    NamespaceName: ol:10
+    Severity: Medium
