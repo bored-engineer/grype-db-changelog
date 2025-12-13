@@ -1,0 +1,45 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [20250905-4]
+        - Create new 20250905 release for OL9 which includes the following fixed CVEs:
+        - EDK2: EDK2 contains a vulnerability in BIOS where an attacker may cause 'Protection Mechanism Failure' by local access [Orabug: 38381983] {CVE-2025-3770}
+        - EDK2: EDK2 contains a vulnerability in BIOS where a user may cause an Integer Overflow or Wraparound by network means [Orabug: 38382190] {CVE-2024-38805}
+        - EDK2: EDK2 contains a vulnerability in the HashPeImageByType(). A user may cause a read out of bounds when a corrupted data pointer and length are sent via an adjecent network [Orabug: 38382286] {CVE-2024-38797}
+        - EDK2:  Improper initialization of CPU cache memory could allow a privileged attacker with hypervisor access to overwrite SEV-SNP guest memory resulting in loss of data integrity. [Orabug: 38413860] {CVE-2024-36331}
+        - Update to OpenSSL 3.5.1 which includes the following fixed CVEs:
+          {CVE-2025-4575} {CVE-2024-12797} {CVE-2024-13176} {CVE-2024-12797} {CVE-2024-13176} {CVE-2024-9143}
+    FixedIn:
+        - Available:
+            Date: "2025-12-11"
+            Kind: advisory
+          Module: null
+          Name: edk2-aarch64
+          NamespaceName: ol:9
+          Version: 30:20250905-4.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-11"
+            Kind: advisory
+          Module: null
+          Name: edk2-ovmf
+          NamespaceName: ol:9
+          Version: 30:20250905-4.el9
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-28047.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-36331.html
+              Name: CVE-2024-36331
+            - Link: https://linux.oracle.com/cve/CVE-2024-38797.html
+              Name: CVE-2024-38797
+            - Link: https://linux.oracle.com/cve/CVE-2024-38805.html
+              Name: CVE-2024-38805
+            - Link: https://linux.oracle.com/cve/CVE-2025-3770.html
+              Name: CVE-2025-3770
+        Issued: "2025-12-11"
+        RefId: ELSA-2025-28047
+    Name: ELSA-2025-28047
+    NamespaceName: ol:9
+    Severity: High
