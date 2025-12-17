@@ -1,0 +1,45 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libluksmeta
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9-4.el8_10.1
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libluksmeta-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9-4.el8_10.1
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: luksmeta
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 9-4.el8_10.1
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "LUKSMeta is a simple library for storing metadata in the LUKSv1 header. The luksmeta package is a dependency of the clevis and tang packages, together providing the Network Bound Disk Encryption (NBDE) in AlmaLinux.  \n\nSecurity Fix(es):  \n\n  * luksmeta: Data corruption when handling LUKS1 partitions with luksmeta (CVE-2025-11568)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2025:23086
+modified: "2025-12-11T13:43:22Z"
+published: "2025-12-11T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2025:23086
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2025-23086.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2025-11568
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2404244
+related:
+    - CVE-2025-11568
+summary: 'Moderate: luksmeta security update'
