@@ -1,0 +1,51 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.4.6
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.5.4
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.6.2
+          events:
+            - introduced: 13.2.0
+            - fixed: 18.4.6
+            - introduced: 18.5.0
+            - fixed: 18.5.4
+            - introduced: 18.6.0
+            - fixed: 18.6.2
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-11247
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Medium
+details: GitLab has remediated an issue in GitLab EE affecting all versions from 13.2 before 18.4.6, 18.5 before 18.5.4, and 18.6 before 18.6.2 that could have allowed an authenticated user to disclose sensitive information from private projects by executing specifically crafted GraphQL queries.
+id: BIT-gitlab-2025-11247
+modified: "2025-12-18T12:08:20.703Z"
+published: "2025-12-18T12:03:59.823Z"
+references:
+    - type: WEB
+      url: https://about.gitlab.com/releases/2025/12/10/patch-release-gitlab-18-6-2-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/issues/573766
+    - type: WEB
+      url: https://hackerone.com/reports/3307422
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-11247
+schema_version: 1.6.2
+summary: Authorization Bypass Through User-Controlled Key in GitLab
