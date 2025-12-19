@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.4.6
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.5.4
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.6.2
+          events:
+            - fixed: 18.4.6
+            - fixed: 18.5.4
+            - fixed: 18.6.2
+            - introduced: 11.10.0
+            - introduced: 18.5.0
+            - introduced: 18.6.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2025-12562
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: High
+details: GitLab has remediated an issue in GitLab CE/EE affecting all versions from 11.10 before 18.4.6, 18.5 before 18.5.4, and 18.6 before 18.6.2 that could have allowed an unauthenticated user to create a denial of service condition by sending crafted GraphQL queries that bypass query complexity limits.
+id: BIT-gitlab-2025-12562
+modified: "2025-12-18T12:08:20.703Z"
+published: "2025-12-18T12:04:25.675Z"
+references:
+    - type: WEB
+      url: https://about.gitlab.com/releases/2025/12/10/patch-release-gitlab-18-6-2-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/issues/579152
+    - type: WEB
+      url: https://hackerone.com/reports/3360710
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-12562
+schema_version: 1.6.2
+summary: Allocation of Resources Without Limits or Throttling in GitLab

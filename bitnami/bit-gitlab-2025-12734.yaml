@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.4.6
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.5.4
+                    - date: "2025-12-18"
+                      kind: advisory
+                      version: 18.6.2
+          events:
+            - fixed: 18.4.6
+            - fixed: 18.5.4
+            - fixed: 18.6.2
+            - introduced: 15.6.0
+            - introduced: 18.5.0
+            - introduced: 18.6.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-12734
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Low
+details: GitLab has remediated an issue in GitLab CE/EE affecting all versions from 15.6 before 18.4.6, 18.5 before 18.5.4, and 18.6 before 18.6.2 that could have allowed an authenticated user to, under certain conditions, render content in dialogs to other users by injecting malicious HTML content into merge request titles.
+id: BIT-gitlab-2025-12734
+modified: "2025-12-18T12:08:20.703Z"
+published: "2025-12-18T12:04:35.112Z"
+references:
+    - type: WEB
+      url: https://about.gitlab.com/releases/2025/12/10/patch-release-gitlab-18-6-2-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/issues/579573
+    - type: WEB
+      url: https://hackerone.com/reports/3379381
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-12734
+schema_version: 1.6.2
+summary: Improper Encoding or Escaping of Output in GitLab
