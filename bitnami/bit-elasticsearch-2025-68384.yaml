@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 8.19.9
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 9.1.9
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 9.2.3
+          events:
+            - introduced: "0"
+            - fixed: 8.19.9
+            - introduced: 9.0.0
+            - fixed: 9.1.9
+            - introduced: 9.2.0
+            - fixed: 9.2.3
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2025-68384
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:maven:*:*
+    severity: Medium
+details: Allocation of Resources Without Limits or Throttling (CWE-770) in Elasticsearch can allow a low-privileged authenticated user to cause Excessive Allocation (CAPEC-130) causing a persistent denial of service (OOM crash) via submission of oversized user settings data.
+id: BIT-elasticsearch-2025-68384
+modified: "2025-12-20T12:06:39.262Z"
+published: "2025-12-20T11:36:34.496Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/elasticsearch-8-19-9-9-1-9-and-9-2-3-security-update-esa-2025-33/384181
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-68384
+schema_version: 1.6.2
+summary: Elasticsearch Allocation of Resources Without Limits or Throttling
