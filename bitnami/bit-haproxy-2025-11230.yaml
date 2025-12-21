@@ -1,0 +1,61 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: haproxy
+        purl: pkg:bitnami/haproxy
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 2.4.30
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 2.6.23
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 2.8.16
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 3.0.12
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 3.1.9
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 3.2.6
+          events:
+            - fixed: 2.4.30
+            - fixed: 2.6.23
+            - fixed: 2.8.16
+            - fixed: 3.0.12
+            - fixed: 3.1.9
+            - fixed: 3.2.6
+            - introduced: 2.4.0
+            - introduced: 2.6.0
+            - introduced: 2.8.0
+            - introduced: 3.0.0
+            - introduced: 3.1.0
+            - introduced: 3.2.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2025-11230
+database_specific:
+    cpes:
+        - cpe:2.3:a:haproxy:haproxy:*:*:*:*:*:*:*:*
+    severity: High
+details: Inefficient algorithm complexity in mjson in HAProxy allows remote attackers to cause a denial of service via specially crafted JSON requests.
+id: BIT-haproxy-2025-11230
+modified: "2025-12-20T12:06:39.262Z"
+published: "2025-12-20T11:38:08.173Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-11230
+    - type: WEB
+      url: https://www.haproxy.com/blog/october-2025-cve-2025-11230-haproxy-mjson-library-denial-of-service-vulnerability
+schema_version: 1.6.2
+summary: Denial of service vulnerability in HAProxy mjson library

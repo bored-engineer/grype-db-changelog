@@ -1,0 +1,46 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elk
+        purl: pkg:bitnami/elk
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 8.19.9
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 9.1.9
+                    - date: "2025-12-20"
+                      kind: advisory
+                      version: 9.2.3
+          events:
+            - fixed: 8.19.9
+            - fixed: 9.1.9
+            - fixed: 9.2.3
+            - introduced: "0"
+            - introduced: 9.0.0
+            - introduced: 9.2.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-68387
+database_specific:
+    cpes:
+        - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Improper neutralization of input during web page generation ('Cross-site Scripting') (CWE-79) allows an unauthenticated user to embed a malicious script in content that will be served to web browsers causing cross-site scripting (XSS) (CAPEC-63) via a vulnerability a function handler in the Vega AST evaluator.
+id: BIT-elk-2025-68387
+modified: "2025-12-20T12:06:39.262Z"
+published: "2025-12-20T11:36:38.841Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/kibana-8-19-9-9-1-9-and-9-2-3-security-update-esa-2025-35/384183
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-68387
+schema_version: 1.6.2
+summary: Kibana Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
