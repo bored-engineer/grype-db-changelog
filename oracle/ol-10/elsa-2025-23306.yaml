@@ -1,0 +1,108 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2.41-58.0.1.2]
+        - Forward-port Oracle patches to 2.41-58.2
+        - CVE-2025-11082
+        - CVE-2025-11083
+          Reviewed-by: David Faust <david.faust@oracle.com>
+          Oracle history:
+          September-29-2025 David Faust <david.faust@oracle.com> - 2.41-58.0.1
+          - Forward-port Oracle patches to 2.41-58.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          August-29-2025 Bruce McCulloch <bruce.mcculloch@oracle.com> - 2.41-57.0.1
+          - Forward-port Oracle patches to 2.41-57.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Jun-04-2025 Bruce McCulloch <bruce.mcculloch@oracle.com> - 2.41-53.0.3
+          - Add binutils-orabug-38018827.patch.
+            - Fix ctf_dict_open clobbering errno.
+            - Backport of upstream commit:
+              - 14303d6295e libctf: archive, open: when opening, always set errp to
+                something.
+            - [Orabug: 38018827]
+          - Add binutils-orabug-38018828.patch.
+            - In kernel links, properly hide CTF types only if conflicting.
+            - Backport of upstream commits:
+              - 75e514cfa56 Revert 'libctf: fix linking of non-root-visible types'
+              - 002957be18e libctf: dedup: improve hiding of conflicting types in the
+                same dict
+            - [Orabug: 38018828]
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+            Reviewed-by: Nick Alcock <nick.alcock@oracle.com>
+            Reviewed-by: Elena Zannoni <elena.zannoni@oracle.com>
+          May-28-2025 Vladimir Mezentsev  <vladimir.mezentsev@oracle.com> - 2.41-53.0.2
+          - Backported updates for gprofng.
+            Reviewed-by: Bruce McCulloch <bruce.mcculloch@oracle.com>
+          April-02-2025 Bruce McCulloch  <bruce.mcculloch@oracle.com> - 2.41-53.0.1
+          - Merge Oracle patches to 2.41-53.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          November-28-2024 Nick Alcock <nick.alcock@oracle.com> - 2.41-45.0.1
+          - Latest CTF changes from upstream
+            - add ctf_dict_set_flag, ctf_lookup_enumerator, ctf_lookup_enumerator_next,
+              ctf_arc_lookup_enumerator_next; consider enums with differing enumerators
+              to be conflicting
+           - add documentation to ctf-api.h
+           - allow modification of ctf_opened dicts and opening of foreign-
+             endian older dicts
+           - looking up types by name prefers non-bitfields if possible
+           - bugfixes to parent propagation, rewriting of existing dicts,
+             ctf_archive_count, CU-mapped links, and dumping and linking of
+             non-root-visible types.
+           - fix a bunch of small leaks and one big one (on ctf_open error)
+           - fix a write into freed memory after ctf_rollback and writeout
+           - internal improvements to serialization, name lookup, symbol
+             lookup, string handling, and more
+          - explicitly disable zstd support (enabling requires addition of zstd to
+            the .so scripts)
+
+        [2.41-58.2]
+        - Fix a potential illegal memory access when linking a corrupt input file.  (RHEL-126875)
+
+        [2.41-58.1]
+        - Fix a potential illegal memory access when linking a corrupt input file.  (RHEL-125206)
+    FixedIn:
+        - Available:
+            Date: "2025-12-19"
+            Kind: advisory
+          Module: null
+          Name: binutils
+          NamespaceName: ol:10
+          Version: 0:2.41-58.0.1.el10_1.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-19"
+            Kind: advisory
+          Module: null
+          Name: binutils-devel
+          NamespaceName: ol:10
+          Version: 0:2.41-58.0.1.el10_1.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-19"
+            Kind: advisory
+          Module: null
+          Name: binutils-gold
+          NamespaceName: ol:10
+          Version: 0:2.41-58.0.1.el10_1.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-19"
+            Kind: advisory
+          Module: null
+          Name: binutils-gprofng
+          NamespaceName: ol:10
+          Version: 0:2.41-58.0.1.el10_1.2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-23306.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-11082.html
+              Name: CVE-2025-11082
+            - Link: https://linux.oracle.com/cve/CVE-2025-11083.html
+              Name: CVE-2025-11083
+        Issued: "2025-12-19"
+        RefId: ELSA-2025-23306
+    Name: ELSA-2025-23306
+    NamespaceName: ol:10
+    Severity: Medium
