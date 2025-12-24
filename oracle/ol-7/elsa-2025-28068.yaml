@@ -1,0 +1,466 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.4.17-2136.350.3.2]
+        - fs/proc: fix uaf in proc_readdir_de() (Wei Yang)  [Orabug: 38786776]  {CVE-2025-40271}
+
+        [5.4.17-2136.350.3.1]
+        - Reapply 'cpuidle: menu: Avoid discarding useful information' (Harshvardhan Jha)  [Orabug: 38744458]
+        - fbcon: fix integer overflow in font allocation (Samasth Norway Ananda)  [Orabug: 38744453]
+
+        [5.4.17-2136.350.3]
+        - net/rds: Fix rs_recv_pending counting issue (Gerd Rausch) [Orabug: 38506370]
+
+        [5.4.17-2136.350.2]
+        - LTS tag: v5.4.301 (Alok Tiwari)
+        - net: rtnetlink: fix module reference count leak issue in rtnetlink_rcv_msg (Zhengchao Shao)
+        - media: s5p-mfc: remove an unused/uninitialized variable (Arnd Bergmann)
+        - NFSD: Fix last write offset handling in layoutcommit (Sergey Bashirov)
+        - NFSD: Minor cleanup in layoutcommit processing (Sergey Bashirov)
+        - padata: Reset next CPU when reorder sequence wraps around (Xiao Liang)
+        - KEYS: trusted_tpm1: Compare HMAC values in constant time (Eric Biggers)
+        - NFSD: Define a proc_layoutcommit for the FlexFiles layout type (Chuck Lever) [Orabug: 38601819] {CVE-2025-40087}
+        - vfs: Don't leak disconnected dentries on umount (Jan Kara) [Orabug: 38601924] {CVE-2025-40105}
+        - jbd2: ensure that all ongoing I/O complete before freeing blocks (Zhang Yi)
+        - ext4: detect invalid INLINE_DATA + EXTENTS flag combination (Deepanshu Kartikey) [Orabug: 38649223] {CVE-2025-40167}
+        - drm/amdgpu: use atomic functions with memory barriers for vm fault info (Gui-Dong Han)
+        - ext4: avoid potential buffer over-read in parse_apply_sb_mount_options() (Theodore Ts'O) [Orabug: 38649412] {CVE-2025-40198}
+        - spi: cadence-quadspi: Flush posted register writes before DAC access (Pratyush Yadav)
+        - spi: cadence-quadspi: Flush posted register writes before INDAC access (Pratyush Yadav)
+        - memory: samsung: exynos-srom: Fix of_iomap leak in exynos_srom_probe (Zhen Ni)
+        - memory: samsung: exynos-srom: Correct alignment (Krzysztof Kozlowski)
+        - arm64: errata: Apply workarounds for Neoverse-V3AE (Mark Rutland)
+        - arm64: cputype: Add Neoverse-V3AE definitions (Mark Rutland)
+        - comedi: fix divide-by-zero in comedi_buf_munge() (Deepanshu Kartikey)
+        - binder: remove 'invalid inc weak' check (Alice Ryhl)
+        - xhci: dbc: enable back DbC in resume if it was enabled before suspend (Mathias Nyman)
+        - usb/core/quirks: Add Huawei ME906S to wakeup quirk (Tim Guttzeit)
+        - USB: serial: option: add Telit FN920C04 ECM compositions (Li Qingwu)
+        - USB: serial: option: add Quectel RG255C (Reinhard Speyerer)
+        - USB: serial: option: add UNISOC UIS7720 (Renjun Wang)
+        - net: ravb: Ensure memory write completes before ringing TX doorbell (Lad Prabhakar)
+        - net: usb: rtl8150: Fix frame padding (Michal Pecio)
+        - ocfs2: clear extent cache after moving/defragmenting extents (Deepanshu Kartikey) [Orabug: 38730547] {CVE-2025-40233}
+        - MIPS: Malta: Fix keyboard resource preventing i8042 driver from registering (Maciej W. Rozycki)
+        - Revert 'cpuidle: menu: Avoid discarding useful information' (Rafael J. Wysocki)
+        - net: bonding: fix possible peer notify event loss or dup issue (Tonghao Zhang)
+        - sctp: avoid NULL dereference when chunk data buffer is missing (Alexey Simakov) [Orabug: 38730567] {CVE-2025-40240}
+        - arm64, mm: avoid always making PTE dirty in pte_mkwrite() (Huang, Ying)
+        - net: enetc: correct the value of ENETC_RXB_TRUESIZE (Wei Fang)
+        - rtnetlink: Allow deleting FDB entries in user namespace (Johannes Wiesboeck)
+        - net: rtnetlink: add NLM_F_BULK support to rtnl_fdb_del (Nikolay Aleksandrov)
+        - net: add ndo_fdb_del_bulk (Nikolay Aleksandrov)
+        - net: rtnetlink: add bulk delete support flag (Nikolay Aleksandrov)
+        - net: netlink: add NLM_F_BULK delete request modifier (Nikolay Aleksandrov)
+        - net: rtnetlink: use BIT for flag values (Nikolay Aleksandrov)
+        - net: rtnetlink: add helper to extract msg type's kind (Nikolay Aleksandrov)
+        - net: rtnetlink: add msg kind names (Nikolay Aleksandrov)
+        - net: rtnetlink: remove redundant assignment to variable err (Colin Ian King)
+        - m68k: bitops: Fix find_*_bit() signatures (Geert Uytterhoeven)
+        - hfsplus: return EIO when type of hidden directory mismatch in hfsplus_fill_super() (Yangtao Li)
+        - hfs: fix KMSAN uninit-value issue in hfs_find_set_zero_bits() (Viacheslav Dubeyko)
+        - dlm: check for defined force value in dlm_lockspace_release (Alexander Aring)
+        - hfsplus: fix KMSAN uninit-value issue in hfsplus_delete_cat() (Viacheslav Dubeyko)
+        - hfs: validate record offset in hfsplus_bmap_alloc (Yang Chenzhi)
+        - hfsplus: fix KMSAN uninit-value issue in __hfsplus_ext_cache_extent() (Viacheslav Dubeyko)
+        - hfs: make proper initalization of struct hfs_find_data (Viacheslav Dubeyko)
+        - hfs: clear offset and space out of valid records in b-tree node (Viacheslav Dubeyko)
+        - exec: Fix incorrect type for ret (Xichao Zhao)
+        - hfsplus: fix slab-out-of-bounds read in hfsplus_strcasecmp() (Viacheslav Dubeyko)
+        - ALSA: firewire: amdtp-stream: fix enum kernel-doc warnings (Randy Dunlap)
+        - sched/fair: Fix pelt lost idle time detection (Vincent Guittot)
+        - sched/balancing: Rename newidle_balance() => sched_balance_newidle() (Ingo Molnar)
+        - sched/fair: Trivial correction of the newidle_balance() comment (Barry Song)
+        - sched: Make newidle_balance() static again (Chen Yu)
+        - tls: don't rely on tx_work during send() (Sabrina Dubroca)
+        - tls: always set record_type in tls_process_cmsg (Sabrina Dubroca)
+        - tg3: prevent use of uninitialized remote_adv and local_adv variables (Alexey Simakov)
+        - tcp: fix tcp_tso_should_defer() vs large RTT (Eric Dumazet)
+        - amd-xgbe: Avoid spurious link down messages during interface toggle (Raju Rangoju)
+        - net/ip6_tunnel: Prevent perpetual tunnel growth (Dmitry Safonov) [Orabug: 38649261] {CVE-2025-40173}
+        - net: dlink: handle dma_map_single() failure properly (Moon Yeounsu)
+        - net: dl2k: switch from 'pci_' to 'dma_' API (Christophe Jaillet)
+        - media: pci: ivtv: Add missing check after DMA map (Thomas Fourier)
+        - media: pci/ivtv: switch from 'pci_' to 'dma_' API (Christophe Jaillet)
+        - xen/events: Update virq_to_irq on migration (Jason Andryuk)
+        - media: lirc: Fix error handling in lirc_register() (Ma Ke)
+        - media: rc: Directly use ida_free() (Keliu)
+        - drm/exynos: exynos7_drm_decon: remove ctx->suspended (Kaustabh Chakraborty)
+        - btrfs: avoid potential out-of-bounds in btrfs_encode_fh() (Anderson Nascimento) [Orabug: 38649463] {CVE-2025-40205}
+        - pwm: berlin: Fix wrong register in suspend/resume (Jisheng Zhang)
+        - media: cx18: Add missing check after DMA map (Thomas Fourier)
+        - xen/events: Cleanup find_virq() return codes (Jason Andryuk)
+        - cramfs: Verify inode mode when loading from disk (Tetsuo Handa)
+        - fs: Add 'initramfs_options' to set initramfs mount options (Lichen Liu)
+        - pid: Add a judgment for ns null in pid_nr_ns (Gaoxiang17) [Orabug: 38649276] {CVE-2025-40178}
+        - minixfs: Verify inode mode when loading from disk (Tetsuo Handa)
+        - tracing: Fix race condition in kprobe initialization causing NULL pointer dereference (Yuan Chen) [Orabug: 38592033] {CVE-2025-40042}
+        - dm: fix NULL pointer dereference in __dm_suspend() (Zheng Qixing) [Orabug: 38649057] {CVE-2025-40134}
+        - mfd: intel_soc_pmic_chtdc_ti: Set use_single_read regmap_config flag (Hans de Goede)
+        - mfd: intel_soc_pmic_chtdc_ti: Drop unneeded assignment for cache_type (Andy Shevchenko)
+        - mfd: intel_soc_pmic_chtdc_ti: Fix invalid regmap-config max_register value (Hans de Goede)
+        - Squashfs: reject negative file sizes in squashfs_read_inode() (Phillip Lougher) [Orabug: 38649425] {CVE-2025-40200}
+        - Squashfs: add additional inode sanity checking (Phillip Lougher)
+        - media: mc: Clear minor number before put device (Edward Adam Davis) [Orabug: 38649399] {CVE-2025-40197}
+        - mfd: vexpress-sysreg: Check the return value of devm_gpiochip_add_data() (Bartosz Golaszewski)
+        - fs: udf: fix OOB read in lengthAllocDescs handling (Larshin Sergey) [Orabug: 38592048] {CVE-2025-40044}
+        - KVM: x86: Don't (re)check L1 intercepts when completing userspace I/O (Sean Christopherson) [Orabug: 38591959] {CVE-2025-40026}
+        - net/9p: fix double req put in p9_fd_cancelled (Nalivayko Sergey) [Orabug: 38591965] {CVE-2025-40027}
+        - ext4: guard against EA inode refcount underflow in xattr update (Ahmet Eray Karadag) [Orabug: 38649330] {CVE-2025-40190}
+        - ext4: correctly handle queries for metadata mappings (Ojaswin Mujoo)
+        - ext4: increase i_disksize to offset + len in ext4_update_disksize_before_punch() (Yongjian Sun)
+        - nfsd: nfserr_jukebox in nlm_fopen should lead to a retry (Olga Kornievskaia)
+        - x86/umip: Fix decoding of register forms of 0F 01 (SGDT and SIDT aliases) (Sean Christopherson)
+        - x86/umip: Check that the instruction opcode is at least two bytes (Sean Christopherson)
+        - PCI: keystone: Use devm_request_irq() to free 'ks-pcie-error-irq' on exit (Siddharth Vadapalli)
+        - PCI/AER: Fix missing uevent on recovery when a reset is requested (Niklas Schnelle)
+        - PCI/IOV: Add PCI rescan-remove locking when enabling/disabling SR-IOV (Niklas Schnelle) [Orabug: 38730513] {CVE-2025-40219}
+        - rseq/selftests: Use weak symbol reference, not definition, to link with glibc (Sean Christopherson)
+        - rtc: interface: Fix long-standing race when setting alarm (Esben Haabendal)
+        - rtc: interface: Ensure alarm irq is enabled when UIE is enabled (Esben Haabendal)
+        - mmc: core: SPI mode remove cmd7 (Rex Chen)
+        - mtd: rawnand: fsmc: Default to autodetect buswidth (Linus Walleij)
+        - sparc: fix error handling in scan_one_device() (Ma Ke)
+        - sparc64: fix hugetlb for sun4u (Anthony Yznaga)
+        - sctp: Fix MAC comparison to be constant-time (Eric Biggers) [Orabug: 38649451] {CVE-2025-40204}
+        - scsi: hpsa: Fix potential memory leak in hpsa_big_passthru_ioctl() (Thorsten Blum)
+        - parisc: don't reference obsolete termio struct for TC* constants (Sam James)
+        - lib/genalloc: fix device leak in of_gen_pool_get() (Johan Hovold)
+        - iio: frequency: adf4350: Fix prescaler usage. (Michael Hennerich)
+        - iio: dac: ad5421: use int type to store negative error codes (Rong Qianfeng)
+        - iio: dac: ad5360: use int type to store negative error codes (Rong Qianfeng)
+        - crypto: atmel - Fix dma_unmap_sg() direction (Thomas Fourier)
+        - cpufreq: intel_pstate: Fix object lifecycle issue in update_qos_request() (Rafael J. Wysocki) [Orabug: 38649367] {CVE-2025-40194}
+        - drm/nouveau: fix bad ret code in nouveau_bo_move_prep (Shuhao Fu)
+        - media: i2c: mt9v111: fix incorrect type for ret (Rong Qianfeng)
+        - firmware: meson_sm: fix device leak at probe (Johan Hovold)
+        - xen/manage: Fix suspend error path (Lukas Wunner)
+        - arm64: dts: qcom: msm8916: Add missing MDSS reset (Stephan Gerhold)
+        - ACPI: debug: fix signedness issues in read/write helpers (Amir Mohammad Jahangirzad)
+        - ACPI: TAD: Add missing sysfs_remove_group() for ACPI_TAD_RT (Daniel Tang)
+        - tpm_tis: Fix incorrect arguments in tpm_tis_probe_irq_single (Gunnar Kudrjavets)
+        - tpm, tpm_tis: Claim locality before writing interrupt registers (Lino Sanfilippo)
+        - crypto: essiv - Check ssize for decryption and in-place encryption (Herbert Xu) [Orabug: 38581456,38705546] {CVE-2025-40019}
+        - mailbox: zynqmp-ipi: Remove dev.parent check in zynqmp_ipi_free_mboxes (Harini T)
+        - mailbox: zynqmp-ipi: Remove redundant mbox_controller_unregister() call (Harini T)
+        - tools build: Align warning options with perf (Leo Yan)
+        - net: fsl_pq_mdio: Fix device node reference leak in fsl_pq_mdio_probe (Erick Karanja)
+        - tcp: Don't call reqsk_fastopen_remove() in tcp_conn_request(). (Kuniyuki Iwashima) [Orabug: 38649579] {CVE-2025-40186}
+        - net/sctp: fix a null dereference in sctp_disposition sctp_sf_do_5_1D_ce() (Alexandr Sapozhnikov) [Orabug: 38649313] {CVE-2025-40187}
+        - drm/vmwgfx: Fix Use-after-free in validation (Ian Forbes) [Orabug: 38643546] {CVE-2025-40111}
+        - net/mlx4: prevent potential use after free in mlx4_en_do_uc_filter() (Dan Carpenter)
+        - scsi: mvsas: Fix use-after-free bugs in mvs_work_queue (Duoming Zhou) [Orabug: 38557654] {CVE-2025-40001}
+        - scsi: mvsas: Use sas_task_find_rq() for tagging (John Garry)
+        - scsi: mvsas: Delete mvs_tag_init() (John Garry)
+        - scsi: libsas: Add sas_task_find_rq() (John Garry)
+        - clk: nxp: Fix pll0 rate check condition in LPC18xx CGU driver (Alok Tiwari)
+        - clk: nxp: lpc18xx-cgu: convert from round_rate() to determine_rate() (Brian Masney)
+        - perf session: Fix handling when buffer exceeds 2 GiB (Leo Yan)
+        - rtc: x1205: Fix Xicor X1205 vendor prefix (Rob Herring)
+        - perf util: Fix compression checks returning -1 as bool (Yunseong Kim)
+        - iio: frequency: adf4350: Fix ADF4350_REG3_12BIT_CLKDIV_MODE (Michael Hennerich)
+        - clocksource/drivers/clps711x: Fix resource leaks in error paths (Zhen Ni)
+        - pinctrl: check the return value of pinmux_ops::get_function_name() (Bartosz Golaszewski) [Orabug: 38591981] {CVE-2025-40030}
+        - Input: uinput - zero-initialize uinput_ff_upload_compat to avoid info leak (Zhen Ni) [Orabug: 38592002] {CVE-2025-40035}
+        - mm: hugetlb: avoid soft lockup when mprotect to large memory area (Yang Shi) [Orabug: 38649150] {CVE-2025-40153}
+        - uio_hv_generic: Let userspace take care of interrupt mask (Naman Jain) [Orabug: 38592067] {CVE-2025-40048}
+        - Squashfs: fix uninit-value in squashfs_get_parent (Phillip Lougher) [Orabug: 38592077] {CVE-2025-40049}
+        - net: ena: return 0 in ena_get_rxfh_key_size() when RSS hash key is not configurable (Kohei Enju)
+        - nfp: fix RSS hash key size when RSS is not supported (Kohei Enju)
+        - drivers/base/node: fix double free in register_one_node() (Donet Tom)
+        - ocfs2: fix double free in user_cluster_connect() (Dan Carpenter) [Orabug: 38592110] {CVE-2025-40055}
+        - net: usb: Remove disruptive netif_wake_queue in rtl8150_set_multicast (I Viswanath) [Orabug: 38649096] {CVE-2025-40140}
+        - RDMA/siw: Always report immediate post SQ errors (Bernard Metzler)
+        - usb: vhci-hcd: Prevent suspending virtually attached devices (Cristian Ciocaltea)
+        - scsi: mpt3sas: Fix crash in transport port remove by using ioc_info() (Ranjan Kumar) [Orabug: 38648982] {CVE-2025-40115}
+        - ipvs: Defer ip_vs_ftp unregister during netns cleanup (Slavin Liu) [Orabug: 38581446] {CVE-2025-40018}
+        - NFSv4.1: fix backchannel max_resp_sz verification check (Anthony Iliopoulos)
+        - remoteproc: qcom: q6v5: Avoid disabling handover IRQ twice (Stephan Gerhold)
+        - sparc: fix accurate exception reporting in copy_{from,to}_user for M7 (Michael Karcher)
+        - sparc: fix accurate exception reporting in copy_to_user for Niagara 4 (Michael Karcher)
+        - sparc: fix accurate exception reporting in copy_{from_to}_user for Niagara (Michael Karcher)
+        - sparc: fix accurate exception reporting in copy_{from_to}_user for UltraSPARC III (Michael Karcher)
+        - sparc: fix accurate exception reporting in copy_{from_to}_user for UltraSPARC (Michael Karcher)
+        - IB/sa: Fix sa_local_svc_timeout_ms read race (Vlad Dumitrescu)
+        - RDMA/core: Resolve MAC of next-hop device without ARP support (Parav Pandit)
+        - wifi: mt76: fix potential memory leak in mt76_wmac_probe() (Abdun Nihaal)
+        - drivers/base/node: handle error properly in register_one_node() (Donet Tom)
+        - watchdog: mpc8xxx_wdt: Reload the watchdog timer when enabling the watchdog (Christophe Leroy)
+        - netfilter: ipset: Remove unused htable_bits in macro ahash_region (Zhen Ni)
+        - iio: consumers: Fix offset handling in iio_convert_raw_to_processed() (Hans de Goede)
+        - ASoC: Intel: bytcr_rt5651: Fix invalid quirk input mapping (Takashi Iwai)
+        - ASoC: Intel: bytcr_rt5640: Fix invalid quirk input mapping (Takashi Iwai)
+        - ASoC: Intel: bytcht_es8316: Fix invalid quirk input mapping (Takashi Iwai)
+        - pps: fix warning in pps_register_cdev when register device fail (Wang Liang) [Orabug: 38592170] {CVE-2025-40070}
+        - misc: genwqe: Fix incorrect cmd field being reported in error (Colin Ian King)
+        - usb: gadget: configfs: Correctly set use_os_string at bind (William Wu)
+        - usb: phy: twl6030: Fix incorrect type for ret (Xichao Zhao)
+        - tcp: fix __tcp_close() to only send RST when required (Eric Dumazet)
+        - PCI: tegra: Fix devm_kcalloc() argument order for port->phys allocation (Alok Tiwari)
+        - wifi: mwifiex: send world regulatory domain to driver (Stefan Kerkmann)
+        - ALSA: lx_core: use int type to store negative error codes (Rong Qianfeng)
+        - media: rj54n1cb0c: Fix memleak in rj54n1_probe() (Zhang Shurong)
+        - scsi: myrs: Fix dma_alloc_coherent() error check (Thomas Fourier)
+        - scsi: pm80xx: Fix array-index-out-of-of-bounds on rmmod (Niklas Cassel) [Orabug: 38649567] {CVE-2025-40118}
+        - serial: max310x: Add error checking in probe() (Dan Carpenter)
+        - usb: host: max3421-hcd: Fix error pointer dereference in probe cleanup (Dan Carpenter)
+        - drm/radeon/r600_cs: clean up of dead code in r600_cs (Brahmajit Das)
+        - i2c: designware: Add disabling clocks when probe fails (Kunihiko Hayashi)
+        - i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD (Leilk Liu)
+        - bpf: Explicitly check accesses to bpf_sock_addr (Paul Chaignon) [Orabug: 38592205] {CVE-2025-40078}
+        - selftests: watchdog: skip ping loop if WDIOF_KEEPALIVEPING not supported (Akhilesh Patil)
+        - pwm: tiehrpwm: Fix corner case in clock divisor calculation (Uwe Kleine-Konig)
+        - block: use int to store blk_stack_limits() return value (Rong Qianfeng)
+        - blk-mq: check kobject state_in_sysfs before deleting in blk_mq_unregister_hctx (Li Nan) [Orabug: 38649026] {CVE-2025-40125}
+        - pinctrl: meson-gxl: add missing i2c_d pinmux (Da Xue)
+        - soc: qcom: rpmh-rsc: Unconditionally clear _TRIGGER bit for TCS (Sneh Mankad)
+        - ACPI: processor: idle: Fix memory leak when register cpuidle device failed (Huisong Li)
+        - regmap: Remove superfluous check for !config in __regmap_init() (Geert Uytterhoeven)
+        - x86/vdso: Fix output operand size of RDPID (Uros Bizjak)
+        - perf: arm_spe: Prevent overflow in PERF_IDX2OFF() (Leo Yan) [Orabug: 38592223] {CVE-2025-40081}
+        - driver core/PM: Set power.no_callbacks along with power.no_pm (Rafael J. Wysocki)
+        - staging: axis-fifo: flush RX FIFO on read errors (Ovidiu Panait)
+        - staging: axis-fifo: fix maximum TX packet length check (Ovidiu Panait)
+        - perf subcmd: avoid crash in exclude_cmds when excludes is empty (Hupu)
+        - dm-integrity: limit MAX_TAG_SIZE to 255 (Mikulas Patocka)
+        - wifi: rtlwifi: rtl8192cu: Don't claim USB ID 07b8:8188 (Bitterblue Smith)
+        - USB: serial: option: add SIMCom 8230C compositions (Xiaowei Li)
+        - media: rc: fix races with imon_disconnect() (Larshin Sergey) [Orabug: 38548027] {CVE-2025-39993}
+        - media: imon: grab lock earlier in imon_ir_change_protocol() (Tetsuo Handa)
+        - media: imon: reorganize serialization (Tetsuo Handa)
+        - media: rc: Add support for another iMON 0xffdc device (Flavius Georgescu)
+        - media: i2c: tc358743: Fix use-after-free bugs caused by orphan timer in probe (Duoming Zhou) [Orabug: 38548044] {CVE-2025-39995}
+        - media: tuner: xc5000: Fix use-after-free in xc5000_release (Duoming Zhou) [Orabug: 38548037] {CVE-2025-39994}
+        - media: tunner: xc5000: Refactor firmware load (Ricardo Ribalda)
+        - udp: Fix memory accounting leak. (Kuniyuki Iwashima) [Orabug: 37844325] {CVE-2025-22058}
+        - media: b2c2: Fix use-after-free causing by irq_check_work in flexcop_pci_remove (Duoming Zhou) [Orabug: 38548051] {CVE-2025-39996}
+        - scsi: target: target_core_configfs: Add length check to avoid buffer overflow (Wang Haoran) [Orabug: 38548059] {CVE-2025-39998}
+        - LTS tag: v5.4.300 (Alok Tiwari)
+        - KVM: SVM: Sync TPR from LAPIC into VMCB::V_TPR even if AVIC is active (Maciej S. Szmigiero)
+        - mm/hugetlb: fix folio is still mapped when deleted (Tu Jinjiang) [Orabug: 38560482] {CVE-2025-40006}
+        - i40e: add mask to apply valid bits for itr_idx (Lukasz Czapnik)
+        - i40e: fix validation of VF state in get resources (Lukasz Czapnik) [Orabug: 38547929] {CVE-2025-39969}
+        - i40e: fix idx validation in config queues msg (Lukasz Czapnik) [Orabug: 38547938] {CVE-2025-39971}
+        - i40e: add validation for ring_len param (Lukasz Czapnik) [Orabug: 38547952,38604168,38604171] {CVE-2025-39973}
+        - i40e: increase max descriptors for XL710 (Justin Bronder)
+        - mm/migrate_device: don't add folio to be freed to LRU in migrate_device_finalize() (David Hildenbrand)
+        - fbcon: Fix OOB access in font allocation (Thomas Zimmermann)
+        - fbcon: fix integer overflow in fbcon_do_set_font (Samasth Norway Ananda) [Orabug: 38547913] {CVE-2025-39967}
+        - i40e: add max boundary check for VF filters (Lukasz Czapnik) [Orabug: 38547923] {CVE-2025-39968}
+        - i40e: fix input validation logic for action_meta (Lukasz Czapnik) [Orabug: 38547933] {CVE-2025-39970}
+        - i40e: fix idx validation in i40e_validate_queue_map (Lukasz Czapnik) [Orabug: 38547946] {CVE-2025-39972}
+        - drm/gma500: Fix null dereference in hdmi teardown (Zabelin Nikita) [Orabug: 38560496] {CVE-2025-40011}
+        - can: peak_usb: fix shift-out-of-bounds issue (Stephane Grosjean) [Orabug: 38581463] {CVE-2025-40020}
+        - can: mcba_usb: populate ndo_change_mtu() to prevent buffer overflow (Vincent Mailhol)
+        - can: sun4i_can: populate ndo_change_mtu() to prevent buffer overflow (Vincent Mailhol)
+        - can: hi311x: populate ndo_change_mtu() to prevent buffer overflow (Vincent Mailhol)
+        - can: rcar_can: rcar_can_resume(): fix s2ram with PSCI (Geert Uytterhoeven)
+        - IB/mlx5: Fix obj_type mismatch for SRQ event subscriptions (Or Har-Toov)
+        - usb: core: Add 0x prefix to quirks debug output (Jiayi Li)
+        - ALSA: usb-audio: Fix build with CONFIG_INPUT=n (Takashi Iwai)
+        - ALSA: usb-audio: Convert comma to semicolon (Chen Ni)
+        - ALSA: usb-audio: Add mixer quirk for Sony DualSense PS5 (Cristian Ciocaltea)
+        - ALSA: usb-audio: Remove unneeded wmb() in mixer_quirks (Cristian Ciocaltea)
+        - ALSA: usb-audio: Simplify NULL comparison in mixer_quirks (Cristian Ciocaltea)
+        - ALSA: usb-audio: Avoid multiple assignments in mixer_quirks (Cristian Ciocaltea)
+        - ALSA: usb-audio: Fix block comments in mixer_quirks (Cristian Ciocaltea)
+        - net: rfkill: gpio: Fix crash due to dereferencering uninitialized pointer (Hans de Goede)
+        - net: rfkill: gpio: add DT support (Philipp Zabel)
+        - serial: sc16is7xx: fix bug in flow control levels init (Hugo Villeneuve)
+        - USB: gadget: dummy-hcd: Fix locking bug in RT-enabled kernels (Alan Stern)
+        - usb: gadget: dummy_hcd: remove usage of list iterator past the loop body (Jakob Koschel)
+        - ASoC: SOF: Intel: hda-stream: Fix incorrect variable used in error message (Colin Ian King)
+        - ASoC: wm8974: Correct PLL rate rounding (Charles Keepax)
+        - ASoC: wm8940: Correct typo in control name (Charles Keepax)
+        - mmc: mvsdio: Fix dma_unmap_sg() nents value (Thomas Fourier)
+        - nilfs2: fix CFI failure when accessing /sys/fs/nilfs2/features/* (Nathan Chancellor)
+        - cnic: Fix use-after-free bugs in cnic_delete_task (Duoming Zhou) [Orabug: 38503849] {CVE-2025-39945}
+        - net: liquidio: fix overflow in octeon_init_instr_queue() (Alexey Nepomnyashih)
+        - tcp: Clear tcp_sk(sk)->fastopen_rsk in tcp_disconnect(). (Kuniyuki Iwashima) [Orabug: 38526388] {CVE-2025-39955}
+        - i40e: remove redundant memory barrier when cleaning Tx descs (Maciej Fijalkowski)
+        - net: natsemi: fix rx_dropped double accounting on netif_rx() failure (Moon Yeounsu)
+        - cgroup: split cgroup_destroy_wq into 3 workqueues (Chen Ridong) [Orabug: 38503892] {CVE-2025-39953}
+        - pcmcia: omap_cf: Mark driver struct with __refdata to prevent section mismatch (Geert Uytterhoeven)
+        - wifi: mac80211: fix incorrect type for ret (Liao Yuanhong)
+        - ALSA: firewire-motu: drop EPOLLOUT from poll return values as write is not supported (Takashi Sakamoto)
+        - mm/memory-failure: fix VM_BUG_ON_PAGE(PagePoisoned(page)) when unpoison memory (Miaohe Lin) [Orabug: 38461848] {CVE-2025-39883}
+        - phy: ti-pipe3: fix device leak at unbind (Johan Hovold)
+        - dmaengine: qcom: bam_dma: Fix DT error handling for num-channels/ees (Stephan Gerhold) [Orabug: 38494822] {CVE-2025-39923}
+        - dmaengine: ti: edma: Fix memory allocation size for queue_priority_map (Anders Roxell)
+        - can: j1939: j1939_local_ecu_get(): undo increment when j1939_local_ecu_get() fails (Tetsuo Handa)
+        - can: j1939: j1939_sk_bind(): call j1939_priv_put() immediately when j1939_local_ecu_get() failed (Tetsuo Handa)
+        - i40e: fix IRQ freeing in i40e_vsi_request_irq_msix error path (Michal Schmidt) [Orabug: 38494787] {CVE-2025-39911}
+        - i40e: Use irq_update_affinity_hint() (Nitesh Narayan Lal)
+        - genirq: Provide new interfaces for affinity hints (Thomas Gleixner)
+        - genirq: Export affinity setter for modules (Thomas Gleixner)
+        - genirq/affinity: Add irq_update_affinity_desc() (John Garry)
+        - igb: fix link test skipping when interface is admin down (Kohei Enju)
+        - net: fec: Fix possible NPD in fec_enet_phy_reset_after_clk_enable() (Stefan Wahren)
+        - USB: serial: option: add Telit Cinterion LE910C4-WWX new compositions (Fabio Porcedda)
+        - USB: serial: option: add Telit Cinterion FN990A w/audio compositions (Fabio Porcedda)
+        - tty: hvc_console: Call hvc_kick in hvc_write unconditionally (Fabian Vogt)
+        - mtd: nand: raw: atmel: Respect tAR, tCLR in read setup timing (Alexander Sverdlin)
+        - mtd: nand: raw: atmel: Fix comment in timings preparation (Alexander Dahl)
+        - mtd: rawnand: stm32_fmc2: avoid overlapping mappings on ECC buffer (Christophe Kerello)
+        - mm/khugepaged: fix the address passed to notifier on testing young (Wei Yang)
+        - fuse: prevent overflow in copy_file_range return value (Miklos Szeredi)
+        - fuse: check if copy_file_range() returns larger than requested size (Miklos Szeredi)
+        - mtd: rawnand: stm32_fmc2: fix ECC overwrite (Christophe Kerello)
+        - ocfs2: fix recursive semaphore deadlock in fiemap call (Mark Tinguely) [Orabug: 38461859] {CVE-2025-39885}
+        - EDAC/altera: Delete an inappropriate dma_free_coherent() call (Salah Triki)
+        - tcp_bpf: Call sk_msg_free() when tcp_bpf_send_verdict() fails to allocate psock->cork. (Kuniyuki Iwashima) [Orabug: 38494797] {CVE-2025-39913}
+        - net: Fix null-ptr-deref by sock_lock_init_class_and_name() and rmmod. (Kuniyuki Iwashima) [Orabug: 37901604] {CVE-2025-23143}
+
+        [5.4.17-2136.350.1]
+        - device-dax: correct pgoff align in dax_set_mapping() (Kun(Llfl)) [Orabug: 37206404] {CVE-2024-50022}
+
+        [5.4.17-2136.349.3]
+        - Revert 'net/mlx5e: Update and set Xon/Xoff upon MTU set' (Jakub Kicinski) [Orabug: 38545204]
+        - KVM: x86: Take irqfds.lock when adding/deleting IRQ bypass producer (Sean Christopherson) [Orabug: 38494247]
+        - rds: Free all frags when rds_ib_recv_cache_put() fails (Hans Westgaard Ry) [Orabug: 38492234]
+
+        [5.4.17-2136.349.2]
+        - bpf/bpf_get,set_sockopt: add option to set TCP-BPF sock ops flags (Alan Maguire) [Orabug: 36699199]
+
+        [5.4.17-2136.349.1]
+        - NFSv4: Don't clear capabilities that won't be reset (Trond Myklebust)
+        - power: supply: bq27xxx: restrict no-battery detection to bq27000 (H. Nikolaus Schaller)
+        - power: supply: bq27xxx: fix error return in case of no bq27000 hdq battery (H. Nikolaus Schaller)
+        - usb: hub: Fix flushing of delayed work used for post resume purposes (Mathias Nyman)
+        - soc: qcom: mdt_loader: Deal with zero e_shentsize (Bjorn Andersson)
+        - Revert 'net/mlx5e: Update and set Xon/Xoff upon port speed set' (Tariq Toukan)
+        - LTS tag: v5.4.299 (Alok Tiwari)
+        - scsi: lpfc: Fix buffer free/clear order in deferred receive path (John Evans) [Orabug: 38456754] {CVE-2025-39841}
+        - dmaengine: mediatek: Fix a flag reuse error in mtk_cqdma_tx_status() (Qiu-Ji Chen)
+        - cifs: fix integer overflow in match_server() (Roman Smirnov)
+        - spi: spi-fsl-lpspi: Reset FIFO and disable module on transfer abort (Larisa Grigore)
+        - spi: spi-fsl-lpspi: Set correct chip-select polarity bit (Larisa Grigore)
+        - spi: spi-fsl-lpspi: Fix transmissions when using CONT (Larisa Grigore)
+        - pcmcia: Add error handling for add_interval() in do_validate_mem() (Xu Wang)
+        - ALSA: hda/hdmi: Add pin fix for another HP EliteDesk 800 G4 model (Takashi Iwai)
+        - randstruct: gcc-plugin: Fix attribute addition (Kees Cook)
+        - randstruct: gcc-plugin: Remove bogus void member (Kees Cook)
+        - vmxnet3: update MTU after device quiesce (Ronak Doshi)
+        - net: dsa: microchip: linearize skb for tail-tagging switches (Jakob Unterwurzacher)
+        - net: dsa: microchip: update tag_ksz masks for KSZ9477 family (Pieter Van Trappen)
+        - dmaengine: mediatek: Fix a possible deadlock error in mtk_cqdma_tx_status() (Qiu-Ji Chen)
+        - ALSA: hda/realtek - Add new HP ZBook laptop with micmute led fixup (Chris Chiu)
+        - gpio: pca953x: fix IRQ storm on system wake up (Emanuele Ghidoli)
+        - iio: light: opt3001: fix deadlock due to concurrent flag access (Luca Ceresoli) [Orabug: 37977028] {CVE-2025-37968}
+        - iio: chemical: pms7003: use aligned_s64 for timestamp (David Lechner)
+        - cpufreq/sched: Explicitly synchronize limits_changed flag handling (Rafael J. Wysocki)
+        - mm/slub: avoid accessing metadata when pointer is invalid in object_err() (Li Qiong) [Orabug: 38494761] {CVE-2025-39902}
+        - mm/khugepaged: fix ->anon_vma race (Jann Horn)
+        - e1000e: fix heap overflow in e1000_set_eeprom (Vitaly Lifshits)
+        - batman-adv: fix OOB read/write in network-coding decode (Stanislav Fort)
+        - drm/amdgpu: drop hw access in non-DC audio fini (Alex Deucher)
+        - wifi: mwifiex: Initialize the chan_stats array to zero (Rong Qianfeng) [Orabug: 38494723] {CVE-2025-39891}
+        - pcmcia: Fix a NULL pointer dereference in __iodyn_find_io_region() (Ma Ke)
+        - ALSA: usb-audio: Add mute TLV for playback volumes on some devices (Cryolitia Pukngae)
+        - ppp: fix memory leak in pad_compress_skb (Qingfang Deng) [Orabug: 38456781] {CVE-2025-39847}
+        - net: atm: fix memory leak in atm_register_sysfs when device_register fail (Wang Liang)
+        - ax25: properly unshare skbs in ax25_kiss_rcv() (Eric Dumazet)
+        - ipv4: Fix NULL vs error pointer check in inet_blackhole_dev_init() (Dan Carpenter)
+        - net: thunder_bgx: add a missing of_node_put (Rosen Penev)
+        - wifi: libertas: cap SSID len in lbs_associate() (Dan Carpenter)
+        - wifi: cw1200: cap SSID length in cw1200_do_join() (Dan Carpenter)
+        - net: ethernet: mtk_eth_soc: fix tx vlan tag for llc packets (Felix Fietkau)
+        - i40e: Fix potential invalid access when MAC list is empty (Zhen Ni) [Orabug: 38456814] {CVE-2025-39853}
+        - icmp: fix icmp_ndo_send address translation for reply direction (Fabian Blase)
+        - mISDN: Fix memory leak in dsp_hwec_enable() (Miaoqian Lin)
+        - xirc2ps_cs: fix register access when enabling FullDuplex (Alok Tiwari)
+        - Bluetooth: Fix use-after-free in l2cap_sock_cleanup_listen() (Kuniyuki Iwashima) [Orabug: 38456834] {CVE-2025-39860}
+        - netfilter: conntrack: helper: Replace -EEXIST by -EBUSY (Phil Sutter)
+        - wifi: cfg80211: fix use-after-free in cmp_bss() (Dmitry Antipov) [Orabug: 38456860] {CVE-2025-39864}
+        - powerpc: boot: Remove leading zero in label in udelay() (Nathan Chancellor)
+
+        [5.4.17-2136.348.3]
+        - hugetlbfs: take read_lock on i_mmap for PMD sharing (Waiman Long) [Orabug: 38459576]
+        - kallsyms: add module_kallsyms_on_each_symbol_locked (Julian Pidancet) [Orabug: 38418686]
+        - kallsyms: export module_kallsyms_on_each_symbol (Julian Pidancet) [Orabug: 38418686]
+
+        [5.4.17-2136.348.2]
+        - uek-rpm: Move ifb module to nano modules (Harshit Mogalapalli) [Orabug: 38443798]
+        - clone_private_mnt(): make sure that caller has CAP_SYS_ADMIN in the right userns (Al Viro) [Orabug: 38310007,38453918] {CVE-2025-38499}
+        - x86/vmscape: Warn when STIBP is disabled with SMT (Pawan Gupta) [Orabug: 38424094]
+        - x86/bugs: Move cpu_bugs_smt_update() down (Pawan Gupta) [Orabug: 38424094]
+        - x86/vmscape: Enable the mitigation (Pawan Gupta) [Orabug: 38424094]
+        - x86/vmscape: Add conditional IBPB mitigation (Pawan Gupta) [Orabug: 38424094]
+        - x86/vmscape: Add old Intel CPUs to affected list (Pawan Gupta) [Orabug: 38424094]
+        - x86/vmscape: Enumerate VMSCAPE bug (Pawan Gupta) [Orabug: 38424094]
+        - Documentation/hw-vuln: Add VMSCAPE documentation (Pawan Gupta) [Orabug: 38424094]
+    FixedIn:
+        - Available:
+            Date: "2025-12-22"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek
+          NamespaceName: ol:7
+          Version: 0:5.4.17-2136.350.3.2.el7uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-22"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-container
+          NamespaceName: ol:7
+          Version: 0:5.4.17-2136.350.3.2.el7uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-22"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-container-debug
+          NamespaceName: ol:7
+          Version: 0:5.4.17-2136.350.3.2.el7uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-22"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug
+          NamespaceName: ol:7
+          Version: 0:5.4.17-2136.350.3.2.el7uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-22"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-devel
+          NamespaceName: ol:7
+          Version: 0:5.4.17-2136.350.3.2.el7uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-22"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-devel
+          NamespaceName: ol:7
+          Version: 0:5.4.17-2136.350.3.2.el7uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-22"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-doc
+          NamespaceName: ol:7
+          Version: 0:5.4.17-2136.350.3.2.el7uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2025-12-22"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-tools
+          NamespaceName: ol:7
+          Version: 0:5.4.17-2136.350.3.2.el7uek
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2025-28068.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-40271.html
+              Name: CVE-2025-40271
+        Issued: "2025-12-22"
+        RefId: ELSA-2025-28068
+    Name: ELSA-2025-28068
+    NamespaceName: ol:7
+    Severity: High
