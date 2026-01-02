@@ -1,0 +1,40 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitea
+        purl: pkg:bitnami/gitea
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-01-01"
+                      kind: advisory
+                      version: 1.21.2
+          events:
+            - introduced: "0"
+            - fixed: 1.21.2
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-68945
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitea:gitea:*:*:*:*:*:-:*:*
+    severity: Medium
+details: In Gitea before 1.21.2, an anonymous user can visit a private user's project.
+id: BIT-gitea-2025-68945
+modified: "2026-01-01T12:06:33.381Z"
+published: "2026-01-01T11:37:48.522Z"
+references:
+    - type: WEB
+      url: https://blog.gitea.com/release-of-1.21.2/
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/pull/28423
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/releases/tag/v1.21.2
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-68945
+schema_version: 1.6.2
