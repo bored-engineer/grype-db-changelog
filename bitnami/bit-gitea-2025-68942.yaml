@@ -1,0 +1,39 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitea
+        purl: pkg:bitnami/gitea
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-01-03"
+                      kind: advisory
+                      version: 1.22.2
+          events:
+            - fixed: 1.22.2
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-68942
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitea:gitea:*:*:*:*:*:-:*:*
+    severity: Medium
+details: Gitea before 1.22.2 allows XSS because the search input box (for creating tags and branches) is v-html instead of v-text.
+id: BIT-gitea-2025-68942
+modified: "2026-01-03T12:07:32.193Z"
+published: "2026-01-03T11:37:48.385Z"
+references:
+    - type: WEB
+      url: https://blog.gitea.com/release-of-1.22.2/
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/pull/31966
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/releases/tag/v1.22.2
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-68942
+schema_version: 1.6.2

@@ -1,0 +1,46 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: pytorch
+        purl: pkg:bitnami/pytorch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-01-03"
+                      kind: advisory
+                      version: 2.5.1
+                    - date: "2026-01-03"
+                      kind: advisory
+                      version: 2.8.0
+          events:
+            - fixed: 2.5.1
+            - fixed: 2.8.0
+            - introduced: 2.5.0
+            - introduced: 2.7.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2025-63396
+database_specific:
+    cpes:
+        - cpe:2.3:a:linuxfoundation:pytorch:*:*:*:*:*:python:*:*
+    severity: Low
+details: An issue was discovered in PyTorch v2.5 and v2.7.1. Omission of profiler.stop() can cause torch.profiler.profile (PythonTracer) to crash or hang during finalization, leading to a Denial of Service (DoS).
+id: BIT-pytorch-2025-63396
+modified: "2026-01-03T12:07:32.193Z"
+published: "2026-01-03T11:47:28.014Z"
+references:
+    - type: WEB
+      url: http://pytorch.com
+    - type: WEB
+      url: https://github.com/Daisy2ang
+    - type: WEB
+      url: https://github.com/pytorch/pytorch
+    - type: WEB
+      url: https://github.com/pytorch/pytorch/issues/156563
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-63396
+schema_version: 1.6.2
