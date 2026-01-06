@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: Within HostnameError.Error(), when constructing an error string, there is no limit to the number of hosts that will be printed out. Furthermore, the error string is constructed by repeated string concatenation, leading to quadratic runtime. Therefore, a certificate provided by a malicious actor can result in excessive resource consumption. (CVE-2025-61729)
+    FixedIn:
+        - Available:
+            Date: "2026-01-05"
+            Kind: advisory
+          Name: docker
+          NamespaceName: amzn:2
+          Version: 25.0.14-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-05"
+            Kind: advisory
+          Name: docker-debuginfo
+          NamespaceName: amzn:2
+          Version: 25.0.14-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2NITRO-ENCLAVES-2025-084.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-61729
+    Name: ALAS2NITRO-ENCLAVES-2025-084
+    NamespaceName: amzn:2
+    Severity: Medium
