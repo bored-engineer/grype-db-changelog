@@ -1,0 +1,84 @@
+Vulnerability:
+    Description: 'When asked to both use a `.netrc` file for credentials and to follow HTTPredirects, curl could leak the password used for the first host to thefollowed-to host under certain circumstances.This flaw only manifests itself if the netrc file has an entry that matchesthe redirect target hostname but the entry either omits just the password oromits both login and password. (CVE-2024-11053)When asked to use a `.netrc` file for credentials **and** to follow HTTPredirects, curl could leak the password used for the first host to thefollowed-to host under certain circumstances.This flaw only manifests itself if the netrc file has a `default` entry thatomits both login and password. A rare circumstance. (CVE-2025-0167)predictable WebSocket maskNOTE: https://curl.se/docs/CVE-2025-10148.htmlNOTE: Fixed by: https://github.com/curl/curl/commit/84db7a9eae8468c0445b15aa806fa7fa806fa0f2 (curl-8_16_0) (CVE-2025-10148)curl''s code for managing SSH connections when SFTP was done using the wolfSSH powered backend was flawed and missed host verification mechanisms.This prevents curl from detecting MITM attackers and more. (CVE-2025-10966)Out of bounds read for cookie pathNOTE: https://curl.se/docs/CVE-2025-9086.htmlNOTE: Introduced with: https://github.com/curl/curl/commit/f24dc09d209a2f91ca38d854f0c15ad93f3d7e2d (curl-7_31_0)NOTE: Fixed by: https://github.com/curl/curl/commit/c6ae07c6a541e0e96d0040afb62b45dd37711300 (rc-8_16_0-1) (CVE-2025-9086)'
+    FixedIn:
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: curl
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: curl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: curl-debugsource
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: curl-minimal
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: curl-minimal-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: libcurl
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: libcurl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: libcurl-devel
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: libcurl-minimal
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: libcurl-minimal-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.15.0-4.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1351.html
+    Metadata:
+        CVE:
+            - Name: CVE-2024-11053
+            - Name: CVE-2025-0167
+            - Name: CVE-2025-10148
+            - Name: CVE-2025-10966
+            - Name: CVE-2025-9086
+    Name: ALAS2023-2025-1351
+    NamespaceName: amzn:2023
+    Severity: Medium
