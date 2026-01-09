@@ -1,0 +1,48 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Tornado is a Python web framework and asynchronous networking library. In versions 6.5.2 and below, the supplied reason phrase is used unescaped in HTTP headers (where it could be used for header injection) or in HTML in the default error page (where it could be used for XSS) and can be exploited by passing untrusted or malicious data into the reason argument. Used by both RequestHandler.set_status and tornado.web.HTTPError, the argument is designed to allow applications to pass custom "reason" phrases (the "Not Found" in HTTP/1.1 404 Not Found) to the HTTP status line (mainly for non-standard status codes). This issue is fixed in version 6.5.3. (CVE-2025-67724)Tornado is a Python web framework and asynchronous networking library. In versions 6.5.2 and below, a single maliciously crafted HTTP request can block the server's event loop for an extended period, caused by the HTTPHeaders.add method. The function accumulates values using string concatenation when the same header name is repeated, causing a Denial of Service (DoS).  Due to Python string immutability, each concatenation copies the entire string, resulting in O(n2) time complexity. The severity can vary from high if max_header_size has been increased from its default, to low if it has its default value of 64KB. This issue is fixed in version 6.5.3. (CVE-2025-67725)Tornado is a Python web framework and asynchronous networking library. Versions 6.5.2 and below use an inefficient algorithm when parsing parameters for HTTP header values, potentially causing a DoS. The _parseparam function in httputil.py is used to parse specific HTTP header values, such as those in multipart/form-data and repeatedly calls string.count() within a nested loop while processing quoted semicolons. If an attacker sends a request with a large number of maliciously crafted parameters in a Content-Disposition header, the server's CPU usage increases quadratically (O(n2)) during parsing. Due to Tornado's single event loop architecture, a single malicious request can cause the entire server to become unresponsive for an extended period. This issue is fixed in version 6.5.3. (CVE-2025-67726)
+    FixedIn:
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: python-tornado
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: python-tornado-debugsource
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: python-tornado-doc
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: python3-tornado
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-07"
+            Kind: advisory
+          Name: python3-tornado-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.1.0-2.amzn2023.0.6
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2025-1338.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-67724
+            - Name: CVE-2025-67725
+            - Name: CVE-2025-67726
+    Name: ALAS2023-2025-1338
+    NamespaceName: amzn:2023
+    Severity: High
