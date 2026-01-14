@@ -1,0 +1,52 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-01-13"
+                      kind: advisory
+                      version: 18.5.5
+                    - date: "2026-01-13"
+                      kind: advisory
+                      version: 18.6.3
+                    - date: "2026-01-13"
+                      kind: advisory
+                      version: 18.7.1
+          events:
+            - introduced: 15.4.0
+            - fixed: 18.5.5
+            - introduced: 18.6.0
+            - fixed: 18.6.3
+            - introduced: 18.7.0
+            - fixed: 18.7.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2025-11246
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Medium
+details: GitLab has remediated an issue in GitLab CE/EE affecting all versions from 15.4 before 18.5.5, 18.6 before 18.6.3, and 18.7 before 18.7.1 that could have allowed an authenticated user with specific permissions to remove all project runners from unrelated projects by manipulating GraphQL runner associations.
+id: BIT-gitlab-2025-11246
+modified: "2026-01-13T09:11:00.781Z"
+published: "2026-01-13T09:06:35.458Z"
+references:
+    - type: WEB
+      url: https://about.gitlab.com/releases/2026/01/07/patch-release-gitlab-18-7-1-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/issues/573728
+    - type: WEB
+      url: https://hackerone.com/reports/3292475
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-11246
+schema_version: 1.6.2
+summary: Insufficient Granularity of Access Control in GitLab
