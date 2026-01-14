@@ -1,0 +1,329 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [6.12.0-124.27.1]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985782]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Update module name for cryptographic module [Orabug: 37400433]
+        - Clean git history at setup stage
+
+        [6.12.0-124.27.1]
+        - arm64: errata: Expand speculative SSBS workaround for Cortex-A720AE (Waiman Long) [RHEL-120684]
+        - arm64: cputype: Add Cortex-A720AE definitions (Waiman Long) [RHEL-120684]
+        - arm64: errata: Add missing sentinels to Spectre-BHB MIDR arrays (Waiman Long) [RHEL-120684]
+        - arm64: Add support for HIP09 Spectre-BHB mitigation (Waiman Long) [RHEL-120684]
+        - arm64: errata: Add newer ARM cores to the spectre_bhb_loop_affected() lists (Waiman Long) [RHEL-120684]
+        - arm64: cputype: Add MIDR_CORTEX_A76AE (Waiman Long) [RHEL-120684]
+        - arm64: errata: Add KRYO 2XX/3XX/4XX silver cores to Spectre BHB safe list (Waiman Long) [RHEL-120684]
+        - kmem/tracing: add kmem name to kmem_cache_alloc tracepoint (Charles Haithcock) [RHEL-129882]
+        - mm: memory-tiering: fix PGPROMOTE_CANDIDATE counting (Rafael Aquini) [RHEL-128383]
+
+        [6.12.0-124.26.1]
+        - usb: dwc3: Fix race condition between concurrent dwc3_remove_requests() call paths (CKI Backport Bot) [RHEL-137150] {CVE-2025-68287}
+        - drm/vmwgfx: Validate command header size against SVGA_CMD_MAX_DATASIZE (CKI Backport Bot) [RHEL-134431] {CVE-2025-40277}
+        - net: phylink: add lock for serializing concurrent pl->phydev writes with resolver (CKI Backport Bot) [RHEL-129812] {CVE-2025-39905}
+
+        [6.12.0-124.25.1]
+        - sctp: avoid NULL dereference when chunk data buffer is missing (CKI Backport Bot) [RHEL-134010] {CVE-2025-40240}
+        - HID: i2c-hid: Resolve touchpad issues on Dell systems during S4 (CKI Backport Bot) [RHEL-128281]
+        - HID: multitouch: fix slab out-of-bounds access in mt_report_fixup() (CKI Backport Bot) [RHEL-124610] {CVE-2025-39806}
+        - inetpeer: do not get a refcount in inet_getpeer() (Guillaume Nault) [RHEL-115287]
+        - inetpeer: update inetpeer timestamp in inet_getpeer() (Guillaume Nault) [RHEL-115287]
+        - inetpeer: remove create argument of inet_getpeer() (Guillaume Nault) [RHEL-115287]
+        - inetpeer: remove create argument of inet_getpeer_v[46]() (Guillaume Nault) [RHEL-115287]
+
+        [6.12.0-124.24.1]
+        - audit: fix out-of-bounds read in audit_compare_dname_path() (Richard Guy Briggs) [RHEL-119185] {CVE-2025-39840}
+
+        [6.12.0-124.23.1]
+        - redhat: use RELEASE_LOCALVERSION also for dist-get-tag (Jan Stancek)
+        - redhat: introduce RELEASE_LOCALVERSION variable (Jan Stancek)
+        - iommufd: Fix race during abort for file descriptors (Eder Zulian) [RHEL-123789] {CVE-2025-39966}
+        - smb: client: handle lack of IPC in dfs_cache_refresh() (Paulo Alcantara) [RHEL-126227]
+        - mm: slub: avoid wake up kswapd in set_track_prepare (Audra Mitchell) [RHEL-125522] {CVE-2025-39843}
+        - dpll: zl3073x: Increase maximum size of flash utility (Ivan Vecera) [RHEL-116157]
+        - dpll: zl3073x: Fix double free in zl3073x_devlink_flash_update() (Ivan Vecera) [RHEL-116157]
+        - dpll: zl3073x: Implement devlink flash callback (Ivan Vecera) [RHEL-116157]
+        - dpll: zl3073x: Add firmware loading functionality (Ivan Vecera) [RHEL-116157]
+        - dpll: zl3073x: Add low-level flash functions (Ivan Vecera) [RHEL-116157]
+        - dpll: zl3073x: Add functions to access hardware registers (Ivan Vecera) [RHEL-116157]
+
+        [6.12.0-124.22.1]
+        - ASoC: Intel: sof_sdw: Add quirks for Lenovo P1 and P16 (CKI Backport Bot) [RHEL-130550]
+        - tls: wait for pending async decryptions if tls_strp_msg_hold fails (CKI Backport Bot) [RHEL-128866] {CVE-2025-40176}
+        - sched/deadline: Fix RT task potential starvation when expiry time passed (CKI Backport Bot) [RHEL-124660]
+    FixedIn:
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: libperf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: rtla
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-12"
+            Kind: advisory
+          Module: null
+          Name: rv
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.27.1.el10_1
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-0453.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-39806.html
+              Name: CVE-2025-39806
+            - Link: https://linux.oracle.com/cve/CVE-2025-39840.html
+              Name: CVE-2025-39840
+            - Link: https://linux.oracle.com/cve/CVE-2025-39843.html
+              Name: CVE-2025-39843
+            - Link: https://linux.oracle.com/cve/CVE-2025-39905.html
+              Name: CVE-2025-39905
+            - Link: https://linux.oracle.com/cve/CVE-2025-39966.html
+              Name: CVE-2025-39966
+            - Link: https://linux.oracle.com/cve/CVE-2025-40176.html
+              Name: CVE-2025-40176
+            - Link: https://linux.oracle.com/cve/CVE-2025-40240.html
+              Name: CVE-2025-40240
+            - Link: https://linux.oracle.com/cve/CVE-2025-40277.html
+              Name: CVE-2025-40277
+            - Link: https://linux.oracle.com/cve/CVE-2025-68287.html
+              Name: CVE-2025-68287
+        Issued: "2026-01-12"
+        RefId: ELSA-2026-0453
+    Name: ELSA-2026-0453
+    NamespaceName: ol:10
+    Severity: High

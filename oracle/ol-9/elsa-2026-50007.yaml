@@ -1,0 +1,252 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.15.0-316.196.4.1]
+        - tipc: Fix use-after-free in tipc_mon_reinit_self(). (Kuniyuki Iwashima)  [Orabug: 38788585]  {CVE-2025-40280}
+        - fs/proc: fix uaf in proc_readdir_de() (Wei Yang)  [Orabug: 38788587]  {CVE-2025-40271}
+        - vsock: Ignore signal/timeout on connect() if already established (Michal Luczaj)  [Orabug: 38788594]  {CVE-2025-40248}
+
+        [5.15.0-316.196.4]
+        - vhost_scsi: Sync up cmd completion locking with upstream (Mike Christie)  [Orabug: 38545946]
+        - vhost_scsi: add support for worker ioctls (Mike Christie)  [Orabug: 38545946]
+        - vhost: Limit access to vhost worker ioctls (Mike Christie)  [Orabug: 38545946]
+        - vhost: allow userspace to create workers (Mike Christie)  [Orabug: 38545946]
+        - vhost: replace single worker pointer with xarray (Mike Christie)  [Orabug: 38545946]
+        - vhost: add helper to parse userspace vring state/file (Mike Christie)  [Orabug: 38545946]
+        - vhost: remove vhost_work_queue (Mike Christie)  [Orabug: 38545946]
+        - vhost_scsi: flush IO vqs then send TMF rsp (Mike Christie)  [Orabug: 38545946]
+        - vhost_scsi: convert to vhost_vq_work_queue (Mike Christie)  [Orabug: 38545946]
+        - vhost_scsi: make SCSI cmd completion per vq (Mike Christie)  [Orabug: 38545946]
+        - vhost_sock: convert to vhost_vq_work_queue (Mike Christie)  [Orabug: 38545946]
+        - vhost: convert poll work to be vq based (Mike Christie)  [Orabug: 38545946]
+        - vhost: take worker or vq for flushing (Mike Christie)  [Orabug: 38545946]
+        - vhost: take worker or vq instead of dev for queueing (Mike Christie)  [Orabug: 38545946]
+        - vhost, vhost_net: add helper to check if vq has work (Mike Christie)  [Orabug: 38545946]
+        - vhost: add vhost_worker pointer to vhost_virtqueue (Mike Christie)  [Orabug: 38545946]
+        - vhost: dynamically allocate vhost_worker (Mike Christie)  [Orabug: 38545946]
+        - vhost: create worker at end of vhost_dev_set_owner (Mike Christie)  [Orabug: 38545946]
+        - vhost-scsi: Fix crash during LUN unmapping (Mike Christie)  [Orabug: 38545946]
+        - vhost: move worker thread fields to new struct (Mike Christie)  [Orabug: 38545946]
+        - vhost: Fix livepatch timeouts in vhost_worker() (Josh Poimboeuf)  [Orabug: 38545946]
+        - vhost: rename vhost_work_dev_flush (Mike Christie)  [Orabug: 38545946]
+        - vhost-test: drop flush after vhost_dev_cleanup (Mike Christie)  [Orabug: 38545946]
+        - vhost/test: fix memory leak of vhost virtqueues (Xianting Tian)  [Orabug: 38545946]
+        - vhost-scsi: drop flush after vhost_dev_cleanup (Mike Christie)  [Orabug: 38545946]
+        - vhost_vsock: simplify vhost_vsock_flush() (Andrey Ryabinin)  [Orabug: 38545946]
+        - vhost_test: remove vhost_test_flush_vq() (Andrey Ryabinin)  [Orabug: 38545946]
+        - vhost_net: get rid of vhost_net_flush_vq() and extra flush calls (Andrey Ryabinin)  [Orabug: 38545946]
+        - vhost: flush dev once during vhost_dev_stop (Mike Christie)  [Orabug: 38545946]
+        - vhost: get rid of vhost_poll_flush() wrapper (Andrey Ryabinin)  [Orabug: 38545946]
+        - net/mlx5e: Add a miss level for ipsec crypto offload (Lama Kayal)  [Orabug: 38600056]
+        - net/mlx5e: Add new prio for promiscuous mode (Jianbo Liu)  [Orabug: 38600056]
+        - mm/hugetlb: add option to allows disabling CVE-2025-38085 mitigation (Joe Jin)  [Orabug: 38728358]
+        - uek-rpm: Replace check-kabi tool with kabi (Yifei Liu)  [Orabug: 38673381]
+        - uek-rpm: Introduce check function for uek-rpm/tools/kabi (Yifei Liu)  [Orabug: 38673381]
+        - rtc: expose RTC_FEATURE_UPDATE_INTERRUPT (Alexandre Belloni)  [Orabug: 38708842]
+        - Reapply 'cpuidle: menu: Avoid discarding useful information' (Harshvardhan Jha)  [Orabug: 38710346]
+        - netfilter: nf_tables: reject duplicate device on updates (Pablo Neira Ayuso)  [Orabug: 38389767]  {CVE-2025-38678}
+        - HID: quirks: work around VID/PID conflict for 0x4c4a/0x4155 (Zhang Heng)
+        - mptcp: pm: in-kernel: C-flag: handle late ADD_ADDR (Matthieu Baerts (NGI0))
+        - USB: storage: Remove subclass and protocol overrides from Novatek quirk (Alan Stern)
+        - most: usb: fix double free on late probe failure (Johan Hovold)
+        - uio_hv_generic: Set event for all channels on the device (Long Li)
+        - regmap: slimbus: fix bus_context pointer in regmap init calls (Alexey Klimov)
+        - usb: typec: ucsi: psy: Set max current to zero when disconnected (Jameson Thies)
+        - ata: libata-scsi: Fix system suspend for a security locked drive (Niklas Cassel)
+        - MIPS: mm: Prevent a TLB shutdown on initial uniquification (Maciej W. Rozycki)
+
+        [5.15.0-316.196.3]
+        - rds: Add smp_rmb before reading c_destroy_in_prog (Hakon Bugge) [Orabug: 38352484]
+        - Revert 'block: don't add or resize partition on the disk with GENHD_FL_NO_PART' (Gulam Mohamed) [Orabug: 38652797]
+        - Revert 'block: Move checking GENHD_FL_NO_PART to bdev_add_partition()' (Gulam Mohamed) [Orabug: 38652797]
+
+        [5.15.0-316.196.2]
+        - net/mlx5: Clean up only new IRQ glue on request_irq() failure (Pradyumn Rahar) [Orabug: 37961220,38730620] {CVE-2025-40250}
+
+        [5.15.0-316.196.1]
+        - uek-rpm: kabi: Remove the kabi protection for debug kernels (Yifei Liu) [Orabug: 38609547]
+        - bnxt_en: Fix memory corruption when FW resources change during ifdown (Sreekanth Reddy) [Orabug: 38440240] {CVE-2025-39810}
+        - selftests/proc: add PROCMAP_QUERY ioctl tests (Andrii Nakryiko) [Orabug: 38410775]
+        - tools: sync uapi/linux/fs.h header into tools subdir (Andrii Nakryiko) [Orabug: 38410775]
+        - docs/procfs: call out ioctl()-based PROCMAP_QUERY command existence (Andrii Nakryiko) [Orabug: 38410775]
+        - fs/procfs: add build ID fetching to PROCMAP_QUERY API (Andrii Nakryiko) [Orabug: 38410775]
+        - fs/procfs: implement efficient VMA querying API for /proc/<pid>/maps (Andrii Nakryiko) [Orabug: 38410775]
+        - fs/procfs: extract logic for getting VMA name constituents (Andrii Nakryiko) [Orabug: 38410775]
+        - fs: create helper file_user_path() for user displayed mapped file path (Amir Goldstein) [Orabug: 38410775]
+        - mm: factor out VMA stack and heap checks (Kefeng Wang) [Orabug: 38410775]
+    FixedIn:
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: bpftool
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-container
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-container-debug
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-core
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-devel
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-doc
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-modules
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek64k
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek64k-core
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek64k-devel
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek64k-modules
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-01-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek64k-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.15.0-316.196.4.1.el9uek
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-50007.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-38085.html
+              Name: CVE-2025-38085
+            - Link: https://linux.oracle.com/cve/CVE-2025-38678.html
+              Name: CVE-2025-38678
+            - Link: https://linux.oracle.com/cve/CVE-2025-39810.html
+              Name: CVE-2025-39810
+            - Link: https://linux.oracle.com/cve/CVE-2025-40248.html
+              Name: CVE-2025-40248
+            - Link: https://linux.oracle.com/cve/CVE-2025-40250.html
+              Name: CVE-2025-40250
+            - Link: https://linux.oracle.com/cve/CVE-2025-40271.html
+              Name: CVE-2025-40271
+            - Link: https://linux.oracle.com/cve/CVE-2025-40280.html
+              Name: CVE-2025-40280
+        Issued: "2026-01-13"
+        RefId: ELSA-2026-50007
+    Name: ELSA-2026-50007
+    NamespaceName: ol:9
+    Severity: High
