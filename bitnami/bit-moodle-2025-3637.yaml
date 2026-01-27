@@ -1,0 +1,51 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: moodle
+        purl: pkg:bitnami/moodle
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-01-26"
+                      kind: advisory
+                      version: 4.3.12
+                    - date: "2026-01-26"
+                      kind: advisory
+                      version: 4.4.8
+                    - date: "2026-01-26"
+                      kind: advisory
+                      version: 4.5.4
+          events:
+            - introduced: "0"
+            - fixed: 4.3.12
+            - introduced: 4.4.0
+            - fixed: 4.4.8
+            - introduced: 4.5.0
+            - fixed: 4.5.4
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-3637
+database_specific:
+    cpes:
+        - cpe:2.3:a:moodle:moodle:*:*:*:*:*:*:*:*
+    severity: Low
+details: 'A security vulnerability was found in Moodle where confidential information that prevents cross-site request forgery (CSRF) attacks was shared publicly through the site''s URL. This vulnerability occurred specifically on two types of pages within the mod_data module: edit and delete pages.'
+id: BIT-moodle-2025-3637
+modified: "2026-01-26T15:09:56.435Z"
+published: "2026-01-26T14:49:40.549Z"
+references:
+    - type: WEB
+      url: http://git.moodle.org/gw?p=moodle.git&a=search&h=HEAD&st=commit&s=MDL-65356
+    - type: WEB
+      url: https://access.redhat.com/security/cve/CVE-2025-3637
+    - type: WEB
+      url: https://bugzilla.redhat.com/show_bug.cgi?id=2359727
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-3637
+schema_version: 1.6.2
+summary: 'Moodle: csrf token exposure via url in moodle mod_data module'
