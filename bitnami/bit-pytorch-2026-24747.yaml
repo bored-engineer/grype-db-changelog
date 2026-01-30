@@ -1,0 +1,42 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: pytorch
+        purl: pkg:bitnami/pytorch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-01-29"
+                      kind: advisory
+                      version: 2.10.0
+          events:
+            - fixed: 2.10.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-24747
+database_specific:
+    cpes:
+        - cpe:2.3:a:linuxfoundation:pytorch:*:*:*:*:*:python:*:*
+    severity: High
+details: PyTorch is a Python package that provides tensor computation. Prior to version 2.10.0, a vulnerability in PyTorch's `weights_only` unpickler allows an attacker to craft a malicious checkpoint file (`.pth`) that, when loaded with `torch.load(..., weights_only=True)`, can corrupt memory and potentially lead to arbitrary code execution. Version 2.10.0 fixes the issue.
+id: BIT-pytorch-2026-24747
+modified: "2026-01-29T09:11:54.406Z"
+published: "2026-01-29T08:50:25.994Z"
+references:
+    - type: WEB
+      url: https://github.com/pytorch/pytorch/163122/commit/954dc5183ee9205cbe79876ad05dd2d9ae752139
+    - type: WEB
+      url: https://github.com/pytorch/pytorch/issues/163105
+    - type: WEB
+      url: https://github.com/pytorch/pytorch/releases/tag/v2.10.0
+    - type: WEB
+      url: https://github.com/pytorch/pytorch/security/advisories/GHSA-63cw-57p8-fm3p
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-24747
+schema_version: 1.6.2
+summary: PyTorch Vulnerable to Remote Code Execution via Untrusted Checkpoint Files
