@@ -1,0 +1,44 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitea
+        purl: pkg:bitnami/gitea
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-01-30"
+                      kind: advisory
+                      version: 1.25.4
+          events:
+            - fixed: 1.25.4
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-20750
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitea:gitea:*:*:*:*:*:-:*:*
+    severity: Critical
+details: Gitea does not properly validate project ownership in organization project operations. A user with project write access in one organization may be able to modify projects belonging to a different organization.
+id: BIT-gitea-2026-20750
+modified: "2026-01-30T09:12:31.676Z"
+published: "2026-01-30T08:40:37.768Z"
+references:
+    - type: WEB
+      url: https://blog.gitea.com/release-of-1.25.4/
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/pull/36318
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/pull/36373
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/releases/tag/v1.25.4
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/security/advisories/GHSA-h4fh-pc4w-8w27
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-20750
+schema_version: 1.6.2
+summary: Gitea Organization Projects Cross-Organization Authorization Bypass via Project ID (IDOR)
