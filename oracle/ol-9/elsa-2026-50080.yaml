@@ -1,0 +1,100 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [3.5.1-7.0.1]
+        - Enable openssl-fips-provider dependency [Orabug: 36504822]
+        - Temporary disable openssl-fips-provider dependency [Orabug: 36504822]
+        - Replace upstream references [Orabug: 34340177]
+
+        [3.5.1.openela.0.1]
+        - Add OpenELA specific changes
+
+        [1:3.5.1-7]
+        - Fix CVE-2025-11187 CVE-2025-15467 CVE-2025-15468 CVE-2025-15469
+          CVE-2025-66199 CVE-2025-68160 CVE-2025-69418 CVE-2025-69419 CVE-2025-69420
+          CVE-2025-69421 CVE-2026-22795 CVE-2026-22796
+          Resolves: RHEL-142068
+          Resolves: RHEL-142002
+          Resolves: RHEL-142055
+          Resolves: RHEL-142051
+          Resolves: RHEL-142047
+          Resolves: RHEL-142043
+          Resolves: RHEL-142039
+          Resolves: RHEL-142035
+          Resolves: RHEL-142031
+          Resolves: RHEL-142011
+          Resolves: RHEL-142027
+          Resolves: RHEL-142023
+
+        [1:3.5.1-6]
+        - Fix AES/GCM ppc64le encrypt/decrypt
+          Resolves: RHEL-139131
+
+        [1:3.5.1-5]
+        - Do not make key share choice in tls1_set_groups()
+          Resolves: RHEL-131010
+
+        [1:3.5.1-4]
+        - Fix CVE-2025-9230
+          Resolves: RHEL-115929
+
+        [1:3.5.1-3]
+        - Add custom define to disable symbol versioning in downstream patched code
+          Also add stricter Suggests for openssl-fips-provider
+          Resolves: RHEL-104236
+        - Fix Requires/Provider to fix default install of fips providers
+          Resolves: RHEL-104856
+
+        [1:3.5.1-2]
+        - Move fips.so to a seprate subpackage
+          Reverts FIPS self test for SLH-DSA
+          Add Suggests to try to prefer the openssl-fips-provider package
+          over the fips-provider-next package by default
+          Revolves: RHEL-102408
+          Related: RHEL-80854
+
+        [1:3.5.1-1]
+        - Rebasing to OpenSSL 3.5.1
+          Resolves: RHEL-97797
+          Resolves: RHEL-98723
+          Resolves: RHEL-99352
+
+        [1:3.5.0-4]
+        - Compact patches for better maintainability
+          Related: RHEL-80854
+        - Make hybrid MLKEM work with our FIPS provider (3.0.7)
+          Resolves: RHEL-95239
+    FixedIn: []
+    Link: https://linux.oracle.com/errata/ELSA-2026-50080.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-11187.html
+              Name: CVE-2025-11187
+            - Link: https://linux.oracle.com/cve/CVE-2025-15467.html
+              Name: CVE-2025-15467
+            - Link: https://linux.oracle.com/cve/CVE-2025-15468.html
+              Name: CVE-2025-15468
+            - Link: https://linux.oracle.com/cve/CVE-2025-15469.html
+              Name: CVE-2025-15469
+            - Link: https://linux.oracle.com/cve/CVE-2025-66199.html
+              Name: CVE-2025-66199
+            - Link: https://linux.oracle.com/cve/CVE-2025-68160.html
+              Name: CVE-2025-68160
+            - Link: https://linux.oracle.com/cve/CVE-2025-69418.html
+              Name: CVE-2025-69418
+            - Link: https://linux.oracle.com/cve/CVE-2025-69419.html
+              Name: CVE-2025-69419
+            - Link: https://linux.oracle.com/cve/CVE-2025-69420.html
+              Name: CVE-2025-69420
+            - Link: https://linux.oracle.com/cve/CVE-2025-69421.html
+              Name: CVE-2025-69421
+            - Link: https://linux.oracle.com/cve/CVE-2026-22795.html
+              Name: CVE-2026-22795
+            - Link: https://linux.oracle.com/cve/CVE-2026-22796.html
+              Name: CVE-2026-22796
+        Issued: "2026-01-30"
+        RefId: ELSA-2026-50080
+    Name: ELSA-2026-50080
+    NamespaceName: ol:9
+    Severity: High
