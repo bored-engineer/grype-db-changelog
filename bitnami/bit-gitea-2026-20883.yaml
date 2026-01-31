@@ -1,0 +1,45 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitea
+        purl: pkg:bitnami/gitea
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-01-30"
+                      kind: advisory
+                      version: 1.25.4
+          events:
+            - introduced: "0"
+            - fixed: 1.25.4
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-20883
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitea:gitea:*:*:*:*:*:-:*:*
+    severity: Medium
+details: Gitea's stopwatch API does not re-validate repository access permissions. After a user's access to a private repository is revoked, they may still view issue titles and repository names through previously started stopwatches.
+id: BIT-gitea-2026-20883
+modified: "2026-01-30T09:12:31.676Z"
+published: "2026-01-30T08:40:41.879Z"
+references:
+    - type: WEB
+      url: https://blog.gitea.com/release-of-1.25.4/
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/pull/36340
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/pull/36368
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/releases/tag/v1.25.4
+    - type: WEB
+      url: https://github.com/go-gitea/gitea/security/advisories/GHSA-644v-xv3j-xgqg
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-20883
+schema_version: 1.6.2
+summary: Gitea Stopwatch API Missing Authorization Check Leads to Post-Revocation Information Disclosure
