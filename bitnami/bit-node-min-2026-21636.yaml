@@ -15,14 +15,14 @@ affected:
             - introduced: 25.0.0
           type: SEMVER
       severity:
-        - score: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
           type: CVSS_V3
 aliases:
     - CVE-2026-21636
 database_specific:
     cpes:
         - cpe:2.3:a:nodejs:node.js:*:*:*:*:*:*:*:*
-    severity: Medium
+    severity: Critical
 details: |-
     A flaw in Node.js's permission model allows Unix Domain Socket (UDS) connections to bypass network restrictions when `--permission` is enabled. Even without `--allow-net`, attacker-controlled inputs (such as URLs or socketPath options) can connect to arbitrary local sockets via net, tls, or undici/fetch. This breaks the intended security boundary of the permission model and enables access to privileged local services, potentially leading to privilege escalation, data exposure, or local code execution.
 
@@ -30,7 +30,7 @@ details: |-
 
     In the moment of this vulnerability, network permissions (`--allow-net`) are still in the experimental phase.
 id: BIT-node-min-2026-21636
-modified: "2026-01-26T15:09:56.435Z"
+modified: "2026-01-31T09:09:11.750Z"
 published: "2026-01-26T14:48:00.596Z"
 references:
     - type: WEB
