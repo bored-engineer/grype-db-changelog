@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2022-23530
@@ -26,9 +26,21 @@ Advisory:
             - CVE-2022-23530
     Severity: Low
     Summary: GuardDog vulnerable to arbitrary file write when scanning a specially-crafted remote PyPI package
+    cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:L/A:L
+          version: "3.1"
+        - vector: CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:L/VA:L/SC:L/SI:L/SA:L
+          version: "4.0"
     ghsaId: GHSA-78m5-jpmf-ch7v
     namespace: github:python
     published: "2022-12-05T23:34:43Z"
+    references:
+        - url: https://github.com/DataDog/guarddog/blob/a1d064ceb09d39bb28deb6972bc0a278756ea91f/guarddog/scanners/package_scanner.py#L153..158
+        - url: https://github.com/DataDog/guarddog/commit/37c7d0767ba28f4df46117d478f97652594c491c
+        - url: https://github.com/DataDog/guarddog/security/advisories/GHSA-78m5-jpmf-ch7v
+        - url: https://github.com/advisories/GHSA-78m5-jpmf-ch7v
+        - url: https://github.com/pypa/advisory-database/tree/main/vulns/guarddog/PYSEC-2022-42993.yaml
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2022-23530
     updated: "2024-11-18T16:26:29Z"
     url: https://github.com/advisories/GHSA-78m5-jpmf-ch7v
     withdrawn: null

@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2024-45041
@@ -26,9 +26,23 @@ Advisory:
             - CVE-2024-45041
     Severity: High
     Summary: External Secrets Operator vulnerable to privilege escalation
+    cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:H
+          version: "3.1"
+        - vector: CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:H/SC:N/SI:N/SA:N
+          version: "4.0"
     ghsaId: GHSA-qwgc-rr35-h4x9
     namespace: github:go
     published: "2024-09-09T18:16:22Z"
+    references:
+        - url: https://github.com/advisories/GHSA-qwgc-rr35-h4x9
+        - url: https://github.com/external-secrets/external-secrets/blob/main/deploy/charts/external-secrets/templates/cert-controller-rbac.yaml#L27
+        - url: https://github.com/external-secrets/external-secrets/blob/main/deploy/charts/external-secrets/templates/cert-controller-rbac.yaml#L49
+        - url: https://github.com/external-secrets/external-secrets/commit/0368b9806f660fa6bc52cbbf3c6ccdb27c58bb35
+        - url: https://github.com/external-secrets/external-secrets/commit/428a452fd2ad45935312f2c2c0d40bc37ce6e67c
+        - url: https://github.com/external-secrets/external-secrets/security/advisories/GHSA-qwgc-rr35-h4x9
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2024-45041
+        - url: https://pkg.go.dev/vuln/GO-2024-3126
     updated: "2024-09-18T18:44:48Z"
     url: https://github.com/advisories/GHSA-qwgc-rr35-h4x9
     withdrawn: null

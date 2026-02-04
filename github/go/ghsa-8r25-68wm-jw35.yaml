@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2024-22198
@@ -26,9 +26,22 @@ Advisory:
             - CVE-2024-22198
     Severity: High
     Summary: Authenticated (user role) arbitrary command execution by modifying `start_cmd` setting (GHSL-2023-268)
+    cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:L
+          version: "3.1"
     ghsaId: GHSA-8r25-68wm-jw35
     namespace: github:go
     published: "2024-01-11T16:32:14Z"
+    references:
+        - url: https://github.com/0xJacky/nginx-ui/blob/04bf8ec487f06ab17a9fb7f34a28766e5f53885e/api/system/settings.go#L18
+        - url: https://github.com/0xJacky/nginx-ui/blob/04bf8ec487f06ab17a9fb7f34a28766e5f53885e/api/terminal/pty.go#L11
+        - url: https://github.com/0xJacky/nginx-ui/blob/04bf8ec487f06ab17a9fb7f34a28766e5f53885e/internal/pty/pipeline.go#L29
+        - url: https://github.com/0xJacky/nginx-ui/blob/04bf8ec487f06ab17a9fb7f34a28766e5f53885e/router/middleware.go#L45
+        - url: https://github.com/0xJacky/nginx-ui/blob/04bf8ec487f06ab17a9fb7f34a28766e5f53885e/settings/server.go#L12
+        - url: https://github.com/0xJacky/nginx-ui/commit/827e76c46e63c52114a62a899f61313039c754e3
+        - url: https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-8r25-68wm-jw35
+        - url: https://github.com/advisories/GHSA-8r25-68wm-jw35
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2024-22198
     updated: "2024-01-11T21:43:14Z"
     url: https://github.com/advisories/GHSA-8r25-68wm-jw35
     withdrawn: null

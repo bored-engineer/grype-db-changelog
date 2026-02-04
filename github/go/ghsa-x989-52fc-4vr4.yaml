@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2024-25631
@@ -26,9 +26,19 @@ Advisory:
             - CVE-2024-25631
     Severity: Medium
     Summary: Unencrypted traffic between pods when using Wireguard and an external kvstore
+    cvss_severities:
+        - vector: CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:H/I:N/A:N
+          version: "3.1"
     ghsaId: GHSA-x989-52fc-4vr4
     namespace: github:go
     published: "2024-02-20T23:45:16Z"
+    references:
+        - url: https://docs.cilium.io/en/stable/installation/k8s-install-external-etcd/#when-do-i-need-to-use-a-kvstore
+        - url: https://docs.cilium.io/en/stable/security/network/encryption-wireguard/#encryption-wg
+        - url: https://github.com/advisories/GHSA-x989-52fc-4vr4
+        - url: https://github.com/cilium/cilium/releases/tag/v1.14.7
+        - url: https://github.com/cilium/cilium/security/advisories/GHSA-x989-52fc-4vr4
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2024-25631
     updated: "2024-12-18T19:19:52Z"
     url: https://github.com/advisories/GHSA-x989-52fc-4vr4
     withdrawn: null

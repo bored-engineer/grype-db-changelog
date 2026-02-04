@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2022-2255
@@ -26,9 +26,23 @@ Advisory:
             - CVE-2022-2255
     Severity: High
     Summary: Incorrect header handling in mod-wsgi
+    cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N
+          version: "3.1"
+        - vector: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N
+          version: "4.0"
     ghsaId: GHSA-7527-8855-9cf8
     namespace: github:python
     published: "2022-08-26T00:03:30Z"
+    references:
+        - url: https://github.com/GrahamDumpleton/mod_wsgi/blob/4.9.2/src/server/mod_wsgi.c#L13940-L13941
+        - url: https://github.com/GrahamDumpleton/mod_wsgi/blob/4.9.2/src/server/mod_wsgi.c#L14046-L14082
+        - url: https://github.com/GrahamDumpleton/mod_wsgi/commit/af3c0c2736bc0b0b01fa0f0aad3c904b7fa9c751
+        - url: https://github.com/advisories/GHSA-7527-8855-9cf8
+        - url: https://github.com/pypa/advisory-database/tree/main/vulns/mod-wsgi/PYSEC-2022-254.yaml
+        - url: https://lists.debian.org/debian-lts-announce/2022/09/msg00021.html
+        - url: https://modwsgi.readthedocs.io/en/latest/release-notes/version-4.9.3.html
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2022-2255
     updated: "2024-09-25T20:02:58Z"
     url: https://github.com/advisories/GHSA-7527-8855-9cf8
     withdrawn: null

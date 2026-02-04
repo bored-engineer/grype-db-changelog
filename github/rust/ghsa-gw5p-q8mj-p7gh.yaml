@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2023-41880
@@ -42,9 +42,21 @@ Advisory:
             - CVE-2023-41880
     Severity: Low
     Summary: Miscompilation of wasm `i64x2.shr_s` instruction with constant input on x86_64
+    cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:L/A:N
+          version: "3.1"
     ghsaId: GHSA-gw5p-q8mj-p7gh
     namespace: github:rust
     published: "2023-09-14T19:33:17Z"
+    references:
+        - url: https://docs.rs/wasmtime/latest/wasmtime/struct.Config.html#method.wasm_simd
+        - url: https://github.com/advisories/GHSA-gw5p-q8mj-p7gh
+        - url: https://github.com/bytecodealliance/wasmtime/commit/8d7eda15b0badcbea83a7aac2d08f80788b59240
+        - url: https://github.com/bytecodealliance/wasmtime/pull/6372
+        - url: https://github.com/bytecodealliance/wasmtime/security/advisories/GHSA-gw5p-q8mj-p7gh
+        - url: https://github.com/bytecodealliance/wasmtime/security/advisories/GHSA-gw5p-q8mj-p7gh#:~:text=Mailing%20list%20announcement
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2023-41880
+        - url: https://rustsec.org/advisories/RUSTSEC-2023-0091.html
     updated: "2025-05-02T12:53:16Z"
     url: https://github.com/advisories/GHSA-gw5p-q8mj-p7gh
     withdrawn: null

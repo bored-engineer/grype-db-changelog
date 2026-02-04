@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2024-53916
@@ -42,9 +42,22 @@ Advisory:
             - CVE-2024-53916
     Severity: Medium
     Summary: OpenStack Neutron can use an incorrect ID during policy enforcement
+    cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N
+          version: "3.1"
+        - vector: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N
+          version: "4.0"
     ghsaId: GHSA-f27h-g923-68hw
     namespace: github:python
     published: "2024-11-25T00:31:55Z"
+    references:
+        - url: http://www.openwall.com/lists/oss-security/2024/12/03/1
+        - url: https://github.com/advisories/GHSA-f27h-g923-68hw
+        - url: https://github.com/openstack/neutron/blob/363ffa6e9e1ab5968f87d45bc2f1cb6394f48b9f/neutron/extensions/tagging.py#L138-L232
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2024-53916
+        - url: https://review.opendev.org/c/openstack/neutron/+/935883
+        - url: https://review.opendev.org/q/project:openstack/neutron
+        - url: https://security.openstack.org/ossa/OSSA-2024-005.html
     updated: "2025-01-09T15:50:51Z"
     url: https://github.com/advisories/GHSA-f27h-g923-68hw
     withdrawn: null

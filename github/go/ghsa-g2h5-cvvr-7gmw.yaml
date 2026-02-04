@@ -1,11 +1,11 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2025-59342
     Classification: GENERAL
     FixedIn:
         - available:
-            date: "2026-01-14"
+            date: "2026-01-15"
             kind: first-observed
           ecosystem: go
           identifier: "136.1"
@@ -17,9 +17,20 @@ Advisory:
             - CVE-2025-59342
     Severity: Medium
     Summary: esm.sh has arbitrary file write via path traversal in `X-Zone-Id` header
+    cvss_severities:
+        - vector: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:P
+          version: "4.0"
     ghsaId: GHSA-g2h5-cvvr-7gmw
     namespace: github:go
     published: "2025-09-17T19:03:05Z"
+    references:
+        - url: https://github.com/advisories/GHSA-g2h5-cvvr-7gmw
+        - url: https://github.com/esm-dev/esm.sh/blob/main/server/router.go#L116
+        - url: https://github.com/esm-dev/esm.sh/blob/main/server/router.go#L411
+        - url: https://github.com/esm-dev/esm.sh/commit/833a29f42aeb0acbd7089a71be11dd0a292d3151
+        - url: https://github.com/esm-dev/esm.sh/security/advisories/GHSA-g2h5-cvvr-7gmw
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2025-59342
+        - url: https://pkg.go.dev/vuln/GO-2025-3967
     updated: "2026-01-14T15:51:10Z"
     url: https://github.com/advisories/GHSA-g2h5-cvvr-7gmw
     withdrawn: null

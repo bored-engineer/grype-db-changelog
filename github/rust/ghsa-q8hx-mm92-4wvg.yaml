@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2024-47763
@@ -58,9 +58,26 @@ Advisory:
             - CVE-2024-47763
     Severity: Medium
     Summary: wasmtime has a runtime crash when combining tail calls with trapping imports
+    cvss_severities:
+        - vector: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          version: "3.1"
+        - vector: CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N
+          version: "4.0"
     ghsaId: GHSA-q8hx-mm92-4wvg
     namespace: github:rust
     published: "2024-10-09T19:14:03Z"
+    references:
+        - url: https://docs.rs/wasmtime/latest/wasmtime/struct.Config.html#method.wasm_tail_call
+        - url: https://github.com/WebAssembly/proposals
+        - url: https://github.com/advisories/GHSA-q8hx-mm92-4wvg
+        - url: https://github.com/bytecodealliance/wasmtime/commit/0ebe54d05f0e1f6c64b7c8bb48c9e9f6c95cacba
+        - url: https://github.com/bytecodealliance/wasmtime/pull/6774
+        - url: https://github.com/bytecodealliance/wasmtime/pull/8540
+        - url: https://github.com/bytecodealliance/wasmtime/pull/8682
+        - url: https://github.com/bytecodealliance/wasmtime/security/advisories/GHSA-q8hx-mm92-4wvg
+        - url: https://github.com/webassembly/tail-call
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2024-47763
+        - url: https://rustsec.org/advisories/RUSTSEC-2024-0440.html
     updated: "2025-05-02T12:54:35Z"
     url: https://github.com/advisories/GHSA-q8hx-mm92-4wvg
     withdrawn: null

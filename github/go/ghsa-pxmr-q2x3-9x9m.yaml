@@ -1,4 +1,4 @@
-# schema: vulnerability/github-security-advisory/schema-1.0.2.json
+# schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE:
         - CVE-2024-22197
@@ -26,9 +26,20 @@ Advisory:
             - CVE-2024-22197
     Severity: High
     Summary: Authenticated (user role) remote command execution by modifying `nginx` settings (GHSL-2023-269)
+    cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:L
+          version: "3.1"
     ghsaId: GHSA-pxmr-q2x3-9x9m
     namespace: github:go
     published: "2024-01-11T16:30:29Z"
+    references:
+        - url: https://github.com/0xJacky/nginx-ui/blob/04bf8ec487f06ab17a9fb7f34a28766e5f53885e/api/system/router.go#L13
+        - url: https://github.com/0xJacky/nginx-ui/blob/04bf8ec487f06ab17a9fb7f34a28766e5f53885e/api/system/settings.go#L18
+        - url: https://github.com/0xJacky/nginx-ui/blob/04bf8ec487f06ab17a9fb7f34a28766e5f53885e/router/middleware.go#L45
+        - url: https://github.com/0xJacky/nginx-ui/commit/827e76c46e63c52114a62a899f61313039c754e3
+        - url: https://github.com/0xJacky/nginx-ui/security/advisories/GHSA-pxmr-q2x3-9x9m
+        - url: https://github.com/advisories/GHSA-pxmr-q2x3-9x9m
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2024-22197
     updated: "2024-01-11T19:00:48Z"
     url: https://github.com/advisories/GHSA-pxmr-q2x3-9x9m
     withdrawn: null
