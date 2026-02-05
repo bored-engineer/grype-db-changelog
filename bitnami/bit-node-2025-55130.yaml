@@ -31,19 +31,19 @@ affected:
             - fixed: 25.3.0
           type: SEMVER
       severity:
-        - score: CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N
           type: CVSS_V3
 aliases:
     - CVE-2025-55130
 database_specific:
     cpes:
         - cpe:2.3:a:nodejs:node.js:*:*:*:*:*:*:*:*
-    severity: High
+    severity: Critical
 details: |-
     A flaw in Node.js’s Permissions model allows attackers to bypass `--allow-fs-read` and `--allow-fs-write` restrictions using crafted relative symlink paths. By chaining directories and symlinks, a script granted access only to the current directory can escape the allowed path and read sensitive files. This breaks the expected isolation guarantees and enables arbitrary file read/write, leading to potential system compromise.
     This vulnerability affects users of the permission model on Node.js v20,  v22,  v24, and v25.
 id: BIT-node-2025-55130
-modified: "2026-01-26T15:09:56.435Z"
+modified: "2026-02-04T10:19:33.233Z"
 published: "2026-01-26T14:47:49.864Z"
 references:
     - type: WEB
