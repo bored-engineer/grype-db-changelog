@@ -3,35 +3,35 @@ Vulnerability:
     Description: In Expat (aka libexpat) before 2.4.3, a left shift by 29 (or more) places in the storeAtts function in xmlparse.c can lead to realloc misbehavior (e.g., allocating too few bytes, or only freeing memory). (CVE-2021-45960)In doProlog in xmlparse.c in Expat (aka libexpat) before 2.4.3, an integer overflow exists for m_groupSize. (CVE-2021-46143)addBinding in xmlparse.c in Expat (aka libexpat) before 2.4.3 has an integer overflow. (CVE-2022-22822)build_model in xmlparse.c in Expat (aka libexpat) before 2.4.3 has an integer overflow. (CVE-2022-22823)defineAttribute in xmlparse.c in Expat (aka libexpat) before 2.4.3 has an integer overflow. (CVE-2022-22824)lookup in xmlparse.c in Expat (aka libexpat) before 2.4.3 has an integer overflow. (CVE-2022-22825)nextScaffoldPart in xmlparse.c in Expat (aka libexpat) before 2.4.3 has an integer overflow. (CVE-2022-22826)storeAtts in xmlparse.c in Expat (aka libexpat) before 2.4.3 has an integer overflow. (CVE-2022-22827)expat (libexpat) is susceptible to a software flaw that causes process interruption. When processing a large number of prefixed XML attributes on a single tag can libexpat can terminate unexpectedly due to integer overflow. The highest threat from this vulnerability is to availability, confidentiality and integrity. (CVE-2022-23852)Expat (aka libexpat) before 2.4.4 has an integer overflow in the doProlog function. (CVE-2022-23990)A flaw was found in expat. Passing malformed 2- and 3-byte UTF-8 sequences (for example, from start tag names) to the XML processing application on top of expat can lead to arbitrary code execution. This issue is dependent on how invalid UTF-8 is handled inside the XML processor. (CVE-2022-25235)A flaw was found in expat. Passing one or more namespace separator characters in the "xmlns[:prefix]" attribute values made expat send malformed tag names to the XML processor on top of expat. This issue causes arbitrary code execution depending on how unexpected cases are handled inside the XML processor. (CVE-2022-25236)A flaw was found in expat. A stack exhaustion in doctype parsing could be triggered by a file with a large number of opening braces, resulting in a denial of service. (CVE-2022-25313)An integer overflow flaw was found in expat. This issue affects the encoding name parameter at the parser creation time, which is often hard-coded (rather than user input), takes a value in the gigabytes to trigger, and on a 64-bit machine. This flaw can cause a denial of service. (CVE-2022-25314)An integer overflow was found in expat. The issue occurs in storeRawNames() by abusing the m_buffer expansion logic to allow allocations very close to INT_MAX and out-of-bounds heap writes. This flaw can cause a denial of service or potentially arbitrary code execution. (CVE-2022-25315)A vulnerability was found in expat. With this flaw, it is possible to create a situation in which parsing is suspended while substituting in an internal entity so that XML_ResumeParser directly uses the internalEntityProcessor as its processor. If the subsequent parse includes some unclosed tags, this will return without calling storeRawNames to ensure that the raw versions of the tag names are stored in memory other than the parse buffer itself. Issues occur if the parse buffer is changed or reallocated (for example, if processing a file line by line), problems occur. Using this vulnerability in the doContent function allows an attacker to triage a denial of service or potentially arbitrary code execution. (CVE-2022-40674)In libexpat through 2.4.9, there is a use-after free caused by overeager destruction of a shared DTD in XML_ExternalEntityParserCreate in out-of-memory situations. (CVE-2022-43680)
     FixedIn:
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: expat
           NamespaceName: amzn:2023
           Version: 2.5.0-1.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: expat-debuginfo
           NamespaceName: amzn:2023
           Version: 2.5.0-1.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: expat-debugsource
           NamespaceName: amzn:2023
           Version: 2.5.0-1.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: expat-devel
           NamespaceName: amzn:2023
           Version: 2.5.0-1.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: expat-static
           NamespaceName: amzn:2023

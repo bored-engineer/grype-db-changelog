@@ -3,126 +3,126 @@ Vulnerability:
     Description: 'An issue was discovered in the USB subsystem in the Linux kernel through 6.4.2. There is an out-of-bounds and crash in read_descriptors in drivers/usb/core/sysfs.c. (CVE-2023-37453)nftables out-of-bounds read in nf_osf_match_one() (CVE-2023-39189)A flaw was found in the Netfilter subsystem in the Linux kernel. The xt_u32 module did not validate the fields in the xt_u32 structure. This flaw allows a local privileged attacker to trigger an out-of-bounds read by setting the size fields with a value beyond the array boundaries, leading to a crash or information disclosure. (CVE-2023-39192)A flaw was found in the Netfilter subsystem in the Linux kernel. The sctp_mt_check did not validate the flag_count field. This flaw allows a local privileged (CAP_NET_ADMIN) attacker to trigger an out-of-bounds read, leading to a crash or information disclosure. (CVE-2023-39193)An integer overflow in kmalloc_reserve() in the Linux kernel may allow a local user to crash the system, or in some cases obtain code execution in kernel space. (CVE-2023-42752)The upstream commit describes this issue as follows:The missing IP_SET_HASH_WITH_NET0 macro in ip_set_hash_netportnet can lead to the use of wrong `CIDR_POS(c)` for calculating array offsets, which can lead to integer underflow. As a result, it leads to slab out-of-bound access. (CVE-2023-42753)A flaw was found in rsvp_change(). The root cause is an slab-out-of-bound access, but since the offset to the original pointer is an `unsign int` fully controlled by users, the behavior is usually a wild pointer access. (CVE-2023-42755)An issue was discovered in drivers/net/ethernet/intel/igb/igb_main.c in the IGB driver in the Linux kernel before 6.5.3. A buffer size may not be adequate for frames larger than the MTU. (CVE-2023-45871)A use-after-free vulnerability in the Linux kernel''s net/sched: sch_hfsc (HFSC qdisc traffic control) component can be exploited to achieve local privilege escalation.If a class with a link-sharing curve (i.e. with the HFSC_FSC flag set) has a parent without a link-sharing curve, then init_vf() will call vttree_insert() on the parent, but vttree_remove() will be skipped in update_vf(). This leaves a dangling pointer that can cause a use-after-free.We recommend upgrading past commit b3d26c5702c7d6c45456326e56d2ccf3f103e60f. (CVE-2023-4623)A use-after-free vulnerability in the Linux kernel''s net/sched: sch_qfq component can be exploited to achieve local privilege escalation.When the plug qdisc is used as a class of the qfq qdisc, sending network packets triggers use-after-free in qfq_dequeue() due to the incorrect .peek handler of sch_plug and lack of error checking in agg_dequeue().We recommend upgrading past commit 8fc134fee27f2263988ae38920bc03da416b03d8. (CVE-2023-4921)In the Linux kernel, the following vulnerability has been resolved:netfilter: nftables: exthdr: fix 4-byte stack OOB writeIf priv->len is a multiple of 4, then dst[len / 4] can write pastthe destination array which leads to stack corruption.This construct is necessary to clean the remainder of the registerin case ->len is NOT a multiple of the register size, so make itconditional just like nft_payload.c does.The bug was added in 4.1 cycle and then copied/inherited whentcp/sctp and ip option support was added.Bug reported by Zero Day Initiative project (ZDI-CAN-21950,ZDI-CAN-21951, ZDI-CAN-21961). (CVE-2023-52628)A null pointer dereference flaw was found in the Linux kernel API for the cryptographic algorithm scatterwalk functionality. This issue occurs when a user constructs a malicious packet with specific socket configuration, which could allow a local user to crash the system or escalate their privileges on the system. (CVE-2023-6176)'
     FixedIn:
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: bpftool
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: bpftool-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-devel
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-headers
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf-devel
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf-static
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-livepatch-6.1.55-75.123
           NamespaceName: amzn:2023
           Version: 1.0-0.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools-devel
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: perf
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: perf-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-perf
           NamespaceName: amzn:2023
           Version: 6.1.55-75.123.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-10-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-perf-debuginfo
           NamespaceName: amzn:2023

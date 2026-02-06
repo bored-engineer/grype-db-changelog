@@ -3,140 +3,140 @@ Vulnerability:
     Description: "A flaw has been found in Xen. An unprivileged guest can cause Denial of Service (DoS) of the host by sending network packets to the backend, causing the backend to crash. (CVE-2023-46838)In the Linux kernel, the following vulnerability has been resolved:uio: Fix use-after-free in uio_opencore-1\t\t\t\tcore-2-------------------------------------------------------uio_unregister_device\t\tuio_openidev = idr_find()device_unregister(&idev->dev)put_device(&idev->dev)uio_device_releaseget_device(&idev->dev)kfree(idev)uio_free_minor(minor)uio_releaseput_device(&idev->dev)kfree(idev)-------------------------------------------------------In the core-1 uio_unregister_device(), the device_unregister will kfreeidev when the idev->dev kobject ref is 1. But after core-1device_unregister, put_device and before doing kfree, the core-2 mayget_device. Then:1. After core-1 kfree idev, the core-2 will do use-after-free for idev.2. When core-2 do uio_release and put_device, the idev will be doublefreed.To address this issue, we can get idev atomic & inc idev reference withminor_lock. (CVE-2023-52439)In the Linux kernel, the following vulnerability has been resolved:bpf: Defer the free of inner map when necessaryWhen updating or deleting an inner map in map array or map htab, the mapmay still be accessed by non-sleepable program or sleepable program.However bpf_map_fd_put_ptr() decreases the ref-counter of the inner mapdirectly through bpf_map_put(), if the ref-counter is the last one(which is true for most cases), the inner map will be freed byops->map_free() in a kworker. But for now, most .map_free() callbacksdon't use synchronize_rcu() or its variants to wait for the elapse of aRCU grace period, so after the invocation of ops->map_free completes,the bpf program which is accessing the inner map may incuruse-after-free problem.Fix the free of inner map by invoking bpf_map_free_deferred() after bothone RCU grace period and one tasks trace RCU grace period if the innermap has been removed from the outer map before. The deferment isaccomplished by using call_rcu() or call_rcu_tasks_trace() whenreleasing the last ref-counter of bpf map. The newly-added rcu_headfield in bpf_map shares the same storage space with work field toreduce the size of bpf_map. (CVE-2023-52447)In the Linux kernel, the following vulnerability has been resolved:block: add check that partition length needs to be aligned with block sizeBefore calling add partition or resize partition, there is no checkon whether the length is aligned with the logical block size.If the logical block size of the disk is larger than 512 bytes,then the partition size maybe not the multiple of the logical block size,and when the last sector is read, bio_truncate() will adjust the bio size,resulting in an IO error if the size of the read command is smaller thanthe logical block size.If integrity data is supported, this will alsoresult in a null pointer dereference when calling bio_integrity_free. (CVE-2023-52458)In the Linux kernel, the following vulnerability has been resolved:bpf: fix check for attempt to corrupt spilled pointer (CVE-2023-52462)In the Linux kernel, the following vulnerability has been resolved: efivarfs: force RO when remounting if SetVariable is not supported If SetVariable at runtime is not supported by the firmware we never assign a callback for that function. At the same time mount the efivarfs as RO so no one can call that. However, we never check the permission flags when someone remounts the filesystem as RW. As a result this leads to a crash (CVE-2023-52463)In the Linux kernel, the following vulnerability has been resolved:mfd: syscon: Fix null pointer dereference in of_syscon_register()kasprintf() returns a pointer to dynamically allocated memorywhich can be NULL upon failure. (CVE-2023-52467)In the Linux kernel, the following vulnerability has been resolved:net/sched: act_ct: fix skb leak and crash on ooo frags (CVE-2023-52610)In the Linux kernel, the following vulnerability has been resolved:crypto: scomp - fix req->dst buffer overflow (CVE-2023-52612)In the Linux kernel, the following vulnerability has been resolved:powerpc/imc-pmu: Add a null pointer check in update_events_in_group() (CVE-2023-52675)In the Linux kernel, the following vulnerability has been resolved:of: Fix double free in of_parse_phandle_with_args_map (CVE-2023-52679)In the Linux kernel, the following vulnerability has been resolved:ACPI: LPIT: Avoid u32 multiplication overflow (CVE-2023-52683)In the Linux kernel, the following vulnerability has been resolved:ACPI: video: check for error while searching for backlight device parent (CVE-2023-52693)In the Linux kernel, the following vulnerability has been resolved:calipso: fix memory leak in netlbl_calipso_add_pass() (CVE-2023-52698)A Null pointer dereference problem was found in ida_free in lib/idr.c in the Linux Kernel. This issue may allow an attacker using this library to cause a denial of service problem due to a missing check at a function return. (CVE-2023-6915)A use-after-free vulnerability in the Linux kernel's netfilter: nf_tables component can be exploited to achieve local privilege escalation.The nft_setelem_catchall_deactivate() function checks whether the catch-all set element is active in the current generation instead of the next generation before freeing it, but only flags it inactive in the next generation, making it possible to free the element multiple times, leading to a double free vulnerability.We recommend upgrading past commit b1db244ffd041a49ecc9618e8feb6b5c1afcdaa7. (CVE-2024-1085)In the Linux kernel, the following vulnerability has been resolved:bpf: Reject variable offset alu on PTR_TO_FLOW_KEYScheck_flow_keys_access() results in out of bounds access .For PTR_TO_FLOW_KEYS, check_flow_keys_access() only uses fixed offfor validation. However, variable offset ptr alu is not prohibitedfor this ptr kind. So the variable offset is not checked. (CVE-2024-26589)bpf: Fix re-attachment branch in bpf_tracing_prog_attachThe following case can cause a crash due to missing attach_btf:1) load rawtp program2) load fentry program with rawtp as target_fd3) create tracing link for fentry program with target_fd = 04) repeat 3 (CVE-2024-26591)In the Linux kernel, the following vulnerability has been resolved:KVM: arm64: vgic-its: Avoid potential UAF in LPI translation cache (CVE-2024-26598)In the Linux kernel, the following vulnerability has been resolved:ipv6: mcast: fix data-race in ipv6_mc_down / mld_ifc_work (CVE-2024-26631)In the Linux kernel, the following vulnerability has been resolved:block: Fix iterating over an empty bio with bio_for_each_folio_all (CVE-2024-26632)In the Linux kernel, the following vulnerability has been resolved:ip6_tunnel: fix NEXTHDR_FRAGMENT handling in ip6_tnl_parse_tlv_enc_lim() (CVE-2024-26633)In the Linux kernel, the following vulnerability has been resolved:netfilter: bridge: replace physindev with physinif in nf_bridge_info (CVE-2024-35839)In the Linux kernel, the following vulnerability has been resolved:mptcp: use OPTION_MPTCP_MPJ_SYNACK in subflow_finish_connect() (CVE-2024-35840)"
     FixedIn:
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: bpftool
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: bpftool-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-devel
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-headers
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf-devel
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf-static
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-livepatch-6.1.75-99.163
           NamespaceName: amzn:2023
           Version: 1.0-0.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-modules-extra
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-modules-extra-common
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools-devel
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: perf
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: perf-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-perf
           NamespaceName: amzn:2023
           Version: 6.1.75-99.163.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2024-02-19"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-perf-debuginfo
           NamespaceName: amzn:2023

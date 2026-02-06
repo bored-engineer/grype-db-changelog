@@ -3,14 +3,14 @@ Vulnerability:
     Description: A flaw was found in Apache Ivy. With Apache Ivy 2.4.0, an optional packaging attribute was introduced that allows artifacts to be unpacked on the fly if pack200 or zip packaging was used. This issue could allow a malicious user to have unwanted access. Ivy users of version 2.4.0 to 2.5.0 should upgrade to Ivy 2.5.1. (CVE-2022-37865)When Apache Ivy downloads artifacts from a repository it stores them in the local file system based on a user-supplied "pattern" that may include placeholders for artifacts coordinates like the organisation, module or version. If said coordinates contain "../" sequences - which are valid characters for Ivy coordinates in general - it is possible the artifacts are stored outside of Ivy's local cache or repository or can overwrite different artifacts inside of the local cache. In order to exploit this vulnerability an attacker needs collaboration by the remote repository as Ivy will issue http requests containing ".." sequences and a "normal" repository will not interpret them as part of the artifact coordinates. Users of Apache Ivy 2.0.0 to 2.5.1 should upgrade to Ivy 2.5.1. (CVE-2022-37866)
     FixedIn:
         - Available:
-            Date: "2023-05-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: apache-ivy
           NamespaceName: amzn:2023
           Version: 2.5.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-05-03"
+            Date: "2025-04-14"
             Kind: advisory
           Name: apache-ivy-javadoc
           NamespaceName: amzn:2023

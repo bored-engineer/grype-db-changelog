@@ -3,378 +3,378 @@ Vulnerability:
     Description: 'GHSA-76gg-c692-v2mw: Missing error check and insufficient random bytes in HTTP Digest authentication for SOAPNOTE: Fixed in 8.2.7, 8.1.20, 8.0.29NOTE: https://github.com/php/php-src/security/advisories/GHSA-76gg-c692-v2mwNOTE: https://github.com/php/php-src/commit/ac4254ad764c70cb1f05c9270d8d12689fc3aeb6 (php-8.0.29)NOTE: https://github.com/php/php-src/commit/32c7c433ac1983c4497349051681a4f361d3d33e (php-8.0.29)ADVISORIES: [''DSA-5425-1'', ''DSA-5424-1''] (CVE-2023-3247)In PHP versions 8.0.* before 8.0.30, 8.1.* before 8.1.22, and 8.2.* before 8.2.8 various XML functions rely on libxml global state to track configuration variables, like whether external entities are loaded. This state is assumed to be unchanged unless the user explicitly changes it by calling appropriate function. However, since the state is process-global, other modules - such as ImageMagick - may also use this library within the same process, and change that global state for their internal purposes, and leave it in a state where external entities loading is enabled. This can lead to the situation where external XML is parsed with external entities loaded, which can lead to disclosure of any local files accessible to PHP. This vulnerable state may persist in the same process across many requests, until the process is shut down. (CVE-2023-3823)In PHP version 8.0.* before 8.0.30,  8.1.* before 8.1.22, and 8.2.* before 8.2.8, when loading phar file, while reading PHAR directory entries, insufficient length checking may lead to a stack buffer overflow, leading potentially to memory corruption or RCE. (CVE-2023-3824)'
     FixedIn:
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-bcmath
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-bcmath-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-cli
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-cli-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-common
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-common-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-dba
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-dba-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-dbg
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-dbg-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-debugsource
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-devel
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-embedded
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-embedded-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-enchant
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-enchant-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-ffi
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-ffi-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-fpm
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-fpm-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-gd
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-gd-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-gmp
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-gmp-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-intl
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-intl-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-ldap
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-ldap-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-mbstring
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-mbstring-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-mysqlnd
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-mysqlnd-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-odbc
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-odbc-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-opcache
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-opcache-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-pdo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-pdo-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-pgsql
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-pgsql-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-process
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-process-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-pspell
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-pspell-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-snmp
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-snmp-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-soap
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-soap-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-tidy
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-tidy-debuginfo
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-xml
           NamespaceName: amzn:2023
           Version: 8.1.22-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2023-09-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: php8.1-xml-debuginfo
           NamespaceName: amzn:2023

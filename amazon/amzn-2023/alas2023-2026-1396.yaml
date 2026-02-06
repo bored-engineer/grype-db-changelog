@@ -1,0 +1,61 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in libxml2, an XML parsing library. This uncontrolled recursion vulnerability occurs in the xmlCatalogXMLResolveURI function when an XML catalog contains a delegate URI entry that references itself. A remote attacker could exploit this configuration-dependent issue by providing a specially crafted XML catalog, leading to infinite recursion and call stack exhaustion. This ultimately results in a segmentation fault, causing a Denial of Service (DoS) by crashing affected applications. (CVE-2026-0990)A flaw was found in the libxml2 library. This uncontrolled resource consumption vulnerability occurs when processing XML catalogs that contain repeated <nextCatalog> elements pointing to the same downstream catalog. A remote attacker can exploit this by supplying crafted catalogs, causing the parser to redundantly traverse catalog chains. This leads to excessive CPU consumption and degrades application availability, resulting in a denial-of-service condition. (CVE-2026-0992)
+    FixedIn:
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: libxml2
+          NamespaceName: amzn:2023
+          Version: 2.10.4-1.amzn2023.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: libxml2-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.10.4-1.amzn2023.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: libxml2-debugsource
+          NamespaceName: amzn:2023
+          Version: 2.10.4-1.amzn2023.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: libxml2-devel
+          NamespaceName: amzn:2023
+          Version: 2.10.4-1.amzn2023.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: libxml2-static
+          NamespaceName: amzn:2023
+          Version: 2.10.4-1.amzn2023.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: python3-libxml2
+          NamespaceName: amzn:2023
+          Version: 2.10.4-1.amzn2023.0.16
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: python3-libxml2-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.10.4-1.amzn2023.0.16
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1396.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-0990
+            - Name: CVE-2026-0992
+    Name: ALAS2023-2026-1396
+    NamespaceName: amzn:2023
+    Severity: Medium
