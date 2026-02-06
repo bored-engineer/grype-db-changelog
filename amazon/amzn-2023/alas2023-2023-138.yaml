@@ -2,126 +2,126 @@ Vulnerability:
     Description: 'A double-free vulnerability was found in the handling of IORING_OP_SOCKET operation with io_uring on the Linux kernel. (CVE-2023-1032)Due to a type confusion during initializations, the tun and tap sockets in the Linux Kernel have their socket UID hardcoded to 0, i.e. root. While it will be often correct, as TUN/TAP devices require CAP_NET_ADMIN, it may not always be the case. The socket UID may be used for network filtering and routing, thus TUN/TAP sockets may be incorrectly managed, potentially bypassing network filters based on UID. (CVE-2023-1076)kernel: Type confusion in pick_next_rt_entity(), which can result in memory corruption. (CVE-2023-1077)A flaw use after free in the Linux kernel integrated infrared receiver/transceiver driver was found in the way user detaching rc device. A local user could use this flaw to crash the system or potentially escalate their privileges on the system. (CVE-2023-1118)A use-after-free vulnerability in the Linux Kernel traffic control index filter (tcindex) can be exploited to achieve local privilege escalation. The tcindex_delete function which does not properly deactivate filters in case of a perfect hashes while deleting the underlying structure which can later lead to double freeing the structure. A local attacker user can use this vulnerability to elevate its privileges to root.We recommend upgrading past commit 8c710f75256bb3cf05ac7b1672c82b92c43f3d28. (CVE-2023-1829)When plain IBRS is enabled (not enhanced IBRS), the logic in spectre_v2_user_select_mitigation() determines that STIBP is not needed. The IBRS bit implicitly protects against cross-thread branch targetinjection. However, with legacy IBRS, the IBRS bit is cleared on returning to userspace for performance reasons which leaves userspace threads vulnerable to cross-thread branch target injection against which STIBP protects. (CVE-2023-1998)A use-after-free flaw was found in hfsplus_put_super in fs/hfsplus/super.c in the Linux Kernel. This flaw could allow a local user to cause a denial of service. (CVE-2023-2985)An issue was discovered in lib/kobject.c in the Linux kernel before 6.2.3. With root access, an attacker can trigger a race condition that results in a fill_kobj_path out-of-bounds write. (CVE-2023-45863)kernel: refcount leak in ctnetlink_create_conntrack() (CVE-2023-7192)'
     FixedIn:
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: bpftool
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: bpftool-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-devel
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-headers
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf-devel
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-libbpf-static
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-livepatch-6.1.19-30.43
           NamespaceName: amzn:2023
           Version: 1.0-0.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: kernel-tools-devel
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: perf
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: perf-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-perf
           NamespaceName: amzn:2023
           Version: 6.1.19-30.43.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-perf-debuginfo
           NamespaceName: amzn:2023

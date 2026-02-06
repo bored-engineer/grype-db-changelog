@@ -2,70 +2,70 @@ Vulnerability:
     Description: 'When gRPC HTTP2 stack raised a header size exceeded error, it skipped parsing the rest of the HPACK frame. This caused any HPACK table mutations to also be skipped, resulting in a desynchronization of HPACK tables between sender and receiver. If leveraged, say, between a proxy and a backend, this could lead to requests from the proxy being interpreted as containing headers from different proxy clients - leading to an information leak that can be used for privilege escalation or data exfiltration. We recommend upgrading beyond the commit contained in  https://github.com/grpc/grpc/pull/33005 https://github.com/grpc/grpc/pull/33005 (CVE-2023-32731)gRPC contains a vulnerability whereby a client can cause a termination of connection between a HTTP2 proxy and a gRPC server: a base64 encoding error for `-bin` suffixed headers will result in a disconnection by the gRPC server, but is typically allowed by HTTP2 proxies. We recommend upgrading beyond the commit in  https://github.com/grpc/grpc/pull/32309 https://www.google.com/url (CVE-2023-32732)Lack of error handling in the TCP server in Google''s gRPC starting version 1.23 on posix-compatible platforms (ex. Linux) allows an attacker to cause a denial of service by initiating a significant number of connections with the server. Note that gRPC C++ Python, and Ruby are affected, but gRPC Java, and Go are NOT affected. (CVE-2023-4785)'
     FixedIn:
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-cpp
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-cpp-debuginfo
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-data
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-debuginfo
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-debugsource
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-devel
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-doc
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-plugins
           NamespaceName: amzn:2023
           Version: 1.56.2-10.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-08-09"
+            Date: "2025-04-14"
             Kind: advisory
           Name: grpc-plugins-debuginfo
           NamespaceName: amzn:2023

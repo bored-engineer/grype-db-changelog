@@ -2,70 +2,70 @@ Vulnerability:
     Description: 'The curl advisory describes this issue as follows:curl supports communicating using the TELNET protocol and as a part of this it offers users to pass on user name and "telnet options" for the server negotiation.Due to lack of proper input scrubbing and without it being the documented functionality, curl would pass on user name and telnet options to the server as provided. This could allow users to pass in carefully crafted content that pass on content or do option negotiation without the application intending to do so. In particular if an application for example allows users to provide the data or parts of the data. (CVE-2023-27533)The curl advisory describes this issue as follows:curl supports SFTP transfers. curl''s SFTP implementation offers a special feature in the path component of URLs: a tilde (~) character as the first path element in the path to denotes a path relative to the user''s home directory. This is supported because of wording in the once proposed to-become RFC draft that was to dictate how SFTP URLs work.Due to a bug, the handling of the tilde in SFTP path did however not only replace it when it is used stand-alone as the first path element but also wrongly when used as a mere prefix in the first element.Using a path like /~2/foo when accessing a server using the user dan (with home directory /home/dan) would then quite surprisingly access the file /home/dan2/foo.This can be taken advantage of to circumvent filtering or worse. (CVE-2023-27534)The curl advisory describes this issue as follows:libcurl would reuse a previously created FTP connection even when one or more options had been changed that could have made the effective user a very different one, thus leading to the doing the second transfer with wrong credentials. (CVE-2023-27535)The curl advisory describes this issue as follows:libcurl would reuse a previously created connection even when the GSS delegation (CURLOPT_GSSAPI_DELEGATION) option had been changed that could have changed the user''s permissions in a second transfer.libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup. However, this GSS delegation setting was left out from the configuration match checks, making them match too easily, affecting krb5/kerberos/negotiate/GSSAPI transfers. (CVE-2023-27536)The curl advisory describes this issue as follows:libcurl supports sharing HSTS data between separate "handles". This sharing was introduced without considerations for doing this sharing across separate threads, but there was no indication of this fact in the documentation. Due to missing mutexes or thread locks, two threads sharing the same HSTS data could end up doing a double-free or use-after-free. (CVE-2023-27537)The curl advisory describes this issue as follows:libcurl would reuse a previously created connection even when an SSH related option had been changed that should have prohibited reuse.libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup. However, two SSH settings were left out from the configuration match checks, making them match too easily. (CVE-2023-27538)'
     FixedIn:
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: curl
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: curl-debuginfo
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: curl-debugsource
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: curl-minimal
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: curl-minimal-debuginfo
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libcurl
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libcurl-debuginfo
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libcurl-devel
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libcurl-minimal
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2023-06-07"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libcurl-minimal-debuginfo
           NamespaceName: amzn:2023

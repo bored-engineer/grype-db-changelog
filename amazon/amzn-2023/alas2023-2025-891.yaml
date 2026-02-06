@@ -2,28 +2,28 @@ Vulnerability:
     Description: A use-after-free flaw was found in X.Org and Xwayland. The root cursor is referenced in the X server as a global variable. If a client frees the root cursor, the internal reference points to freed memory and causes a use-after-free. (CVE-2025-26594)A buffer overflow flaw was found in X.Org and Xwayland. The code in XkbVModMaskText() allocates a fixed-sized buffer on the stack and copies the names of the virtual modifiers to that buffer. The code fails to check the bounds of the buffer and would copy the data regardless of the size. (CVE-2025-26595)A heap overflow flaw was found in X.Org and Xwayland. The computation of the length in XkbSizeKeySyms() differs from what is written in XkbWriteKeySyms(), which may lead to a heap-based buffer overflow. (CVE-2025-26596)A buffer overflow flaw was found in X.Org and Xwayland. If XkbChangeTypesOfKey() is called with a 0 group, it will resize the key symbols table to 0 but leave the key actions unchanged. If the same function is later called with a non-zero value of groups, this will cause a buffer overflow because the key actions are of the wrong size. (CVE-2025-26597)An out-of-bounds write flaw was found in X.Org and Xwayland. The function GetBarrierDevice() searches for the pointer device based on its device ID and returns the matching value, or supposedly NULL, if no match was found. However, the code will return the last element of the list if no matching device ID is found, which can lead to out-of-bounds memory access. (CVE-2025-26598)An access to an uninitialized pointer flaw was found in X.Org and Xwayland. The function compCheckRedirect() may fail if it cannot allocate the backing pixmap. In that case, compRedirectWindow() will return a BadAlloc error without validating the window tree marked just before, which leaves the validated data partly initialized and the use of an uninitialized pointer later. (CVE-2025-26599)A use-after-free flaw was found in X.Org and Xwayland. When a device is removed while still frozen, the events queued for that device remain while the device is freed. Replaying the events will cause a use-after-free. (CVE-2025-26600)A use-after-free flaw was found in X.Org and Xwayland. When changing an alarm, the values of the change mask are evaluated one after the other, changing the trigger values as requested, and eventually, SyncInitTrigger() is called. If one of the changes triggers an error, the function will return early, not adding the new sync object, possibly causing a use-after-free when the alarm eventually triggers. (CVE-2025-26601)
     FixedIn:
         - Available:
-            Date: "2025-03-26"
+            Date: "2025-04-14"
             Kind: advisory
           Name: xorg-x11-server-Xwayland
           NamespaceName: amzn:2023
           Version: 21.1.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-03-26"
+            Date: "2025-04-14"
             Kind: advisory
           Name: xorg-x11-server-Xwayland-debuginfo
           NamespaceName: amzn:2023
           Version: 21.1.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-03-26"
+            Date: "2025-04-14"
             Kind: advisory
           Name: xorg-x11-server-Xwayland-debugsource
           NamespaceName: amzn:2023
           Version: 21.1.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-03-26"
+            Date: "2025-04-14"
             Kind: advisory
           Name: xorg-x11-server-Xwayland-devel
           NamespaceName: amzn:2023

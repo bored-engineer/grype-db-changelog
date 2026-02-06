@@ -2,364 +2,364 @@ Vulnerability:
     Description: A flaw was found in the way samba implemented SMB1 authentication. An attacker could use this flaw to retrieve the plaintext password sent over the wire even if Kerberos authentication was required. (CVE-2016-2124)It was found that the Kerberos Key Distribution Center (KDC) delegation feature, Service for User (S4U), did not sufficiently protect the tickets it's providing from tempering. A malicious, authenticated service principal allowed to delegate could use this flaw to impersonate a non-forwardable user. (CVE-2020-17049)A flaw was found in the way Samba handled file/directory metadata. This flaw allows an authenticated attacker with permissions to read or modify share metadata, to perform this operation outside of the share.A fix for CVE-2021-20316 will not be provided for Amazon Linux 1 and Amazon Linux 2. You can mitigate this issue by disabling SMBv1.To do so, add server min protocol = SMB2 to the [global] section of /etc/samba/smb.conf (CVE-2021-20316)All versions of Samba prior to 4.13.16 are vulnerable to a malicious client using an SMB1 or NFS race to allow a directory to be created in an area of the server file system not exported under the share definition. Note that SMB1 has to be enabled, or the share also available via NFS in order for this attack to succeed. (CVE-2021-43566)All versions of Samba prior to 4.15.5 are vulnerable to a malicious client using a server symlink to determine if a file or directory exists in an area of the server file system not exported under the share definition. SMB1 with unix extensions has to be enabled in order for this attack to succeed.A fix for CVE-2021-44141 for will not be provided for Amazon Linux 1 and Amazon Linux 2. You can mitigate this issue by disabling SMBv1.To do so, add server min protocol = SMB2 to the [global] section of /etc/samba/smb.conf (CVE-2021-44141)Samba AD users with permission to write to an account can impersonate arbitrary services (CVE-2022-0336)In Samba, GnuTLS gnutls_rnd() can fail and give predictable random values. (CVE-2022-1615)A flaw was found in Samba. Some SMB1 write requests were not correctly range-checked to ensure the client had sent enough data to fulfill the write, allowing server memory contents to be written into the file (or printer) instead of client-supplied data. The client cannot control the area of the server memory written to the file (or printer). (CVE-2022-32742)Samba does not validate the Validated-DNS-Host-Name right for the dNSHostName attribute which could permit unprivileged users to write it. (CVE-2022-32743)A flaw was found in the Samba AD LDAP server. The AD DC database audit logging module can access LDAP message values freed by a preceding database module, resulting in a use-after-free issue. This issue is only possible when modifying certain privileged attributes, such as userAccountControl. (CVE-2022-32746)A heap-based buffer overflow vulnerability was found in Samba within the GSSAPI unwrap_des() and unwrap_des3() routines of Heimdal. The DES and Triple-DES decryption routines in the Heimdal GSSAPI library allow a length-limited write buffer overflow on malloc() allocated memory when presented with a maliciously small packet. This flaw allows a remote user to send specially crafted malicious data to the application, possibly resulting in a denial of service (DoS) attack. (CVE-2022-3437)Samba 4.17 introduced following symlinks in user space with the intent to properly check symlink targets to stay within the share that was configured by the administrator. The check does not properly cover a corner case, so that a user can create a symbolic link that will make smbd escape the configured share path. (CVE-2022-3592)Windows Kerberos RC4-HMAC Elevation of Privilege Vulnerability. (CVE-2022-37966)Windows Kerberos Elevation of Privilege Vulnerability. (CVE-2022-37967)Netlogon RPC Elevation of Privilege Vulnerability. (CVE-2022-38023)Samba AD DC using Heimdal can be forced to issue rc4-hmac encrypted Kerberos tickets (CVE-2022-45141)
     FixedIn:
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libnetapi
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libnetapi-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libnetapi-devel
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libsmbclient
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libsmbclient-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libsmbclient-devel
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libwbclient
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libwbclient-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: libwbclient-devel
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-samba
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-samba-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-samba-devel
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: python3-samba-test
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-client
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-client-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-client-libs
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-client-libs-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-common
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-common-libs
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-common-libs-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-common-tools
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-common-tools-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-dc-libs
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-dc-libs-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-dcerpc
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-dcerpc-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-debugsource
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-devel
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-krb5-printing
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-krb5-printing-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-ldb-ldap-modules
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-ldb-ldap-modules-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-libs
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-libs-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-pidl
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-test
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-test-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-test-libs
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-test-libs-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-usershares
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-vfs-iouring
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-vfs-iouring-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-winbind
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-winbind-clients
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-winbind-clients-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-winbind-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-winbind-krb5-locator
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-winbind-krb5-locator-debuginfo
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-winbind-modules
           NamespaceName: amzn:2023
           Version: 4.17.5-0.amzn2023.0.2
           VersionFormat: rpm
         - Available:
-            Date: "2023-03-22"
+            Date: "2025-04-14"
             Kind: advisory
           Name: samba-winbind-modules-debuginfo
           NamespaceName: amzn:2023

@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: 'A flaw in libsoup''s HTTP header handling allows multiple Host: headers in a request and returns the last occurrence for server-side processing. Common front proxies often honor the first Host: header, so this mismatch can cause vhost confusion where a proxy routes a request to one backend but the backend interprets it as destined for another host. This discrepancy enables request-smuggling style attacks, cache poisoning, or bypassing host-based access controls when an attacker supplies duplicate Host headers. (CVE-2025-14523)'
+    FixedIn:
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: libsoup
+          NamespaceName: amzn:2
+          Version: 2.56.0-6.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: libsoup-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.56.0-6.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-05"
+            Kind: advisory
+          Name: libsoup-devel
+          NamespaceName: amzn:2
+          Version: 2.56.0-6.amzn2.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3142.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-14523
+    Name: ALAS2-2026-3142
+    NamespaceName: amzn:2
+    Severity: High
