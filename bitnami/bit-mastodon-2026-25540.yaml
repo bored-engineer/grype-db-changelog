@@ -1,0 +1,36 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: mastodon
+        purl: pkg:bitnami/mastodon
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-02-06"
+                      kind: advisory
+                      version: 4.5.6
+          events:
+            - fixed: 4.5.6
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2026-25540
+database_specific:
+    cpes:
+        - cpe:2.3:a:joinmastodon:mastodon:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Mastodon is a free, open-source social network server based on ActivityPub. Prior to versions 4.3.19, 4.4.13, 4.5.6, Mastodon is vulnerable to web cache poisoning via `Rails.cache. When AUTHORIZED_FETCH is enabled, the ActivityPub endpoints for pinned posts and featured hashtags have contents that depend on the account that signed the HTTP request. However, these contents are stored in an internal cache and reused with no regards to the signing actor. As a result, an empty response generated for a blocked user account may be served to requests from legitimate non-blocked actors, or conversely, content intended for non-blocked actors may be returned to blocked actors. This issue has been patched in versions 4.3.19, 4.4.13, 4.5.6.
+id: BIT-mastodon-2026-25540
+modified: "2026-02-06T09:20:48.186Z"
+published: "2026-02-06T08:46:33.665Z"
+references:
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/security/advisories/GHSA-ccpr-m53r-mfwr
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-25540
+schema_version: 1.6.2
+summary: Mastodon's signature-dependent ActivityPub collection responses cached under signature-independent keys (Web Cache Poisoning via `Rails.cache`)
