@@ -2,126 +2,126 @@ Vulnerability:
     Description: 'A division-by-zero error on some AMD processors can potentially return speculative data resulting in loss of confidentiality. (CVE-2023-20588)A buffer overrun vulnerability was found in the netback driver in Xen due to an unusual split packet. This flaw allows an unprivileged guest to cause a denial of service (DoS) of the host by sending network packets to the backend, causing the backend to crash. (CVE-2023-34319)A flaw was found in the Linux kernel''s IP framework for transforming packets (XFRM subsystem). This issue may allow a malicious user with CAP_NET_ADMIN privileges to directly dereference a NULL pointer in xfrm_update_ae_params(), leading to a possible kernel crash and denial of service. (CVE-2023-3772)A flaw was found in the Linux kernel''s IP framework for transforming packets (XFRM subsystem). This issue may allow a malicious user with CAP_NET_ADMIN privileges to cause a 4 byte out-of-bounds read of XFRMA_MTIMER_THRESH when parsing netlink attributes, leading to potential leakage of sensitive heap data to userspace. (CVE-2023-3773)A use-after-free vulnerability in the Linux kernel''s netfilter: nf_tables component can be exploited to achieve local privilege escalation.When nf_tables_delrule() is flushing table rules, it is not checked whether the chain is bound and the chain''s owner rule can also release the objects in certain circumstances.We recommend upgrading past commit 6eaf41e87a223ae6f8e7a28d6e78384ad7e407f8. (CVE-2023-3777)net: xfrm: Fix xfrm_address_filter OOB readNOTE: https://www.zerodayinitiative.com/advisories/ZDI-23-1492/NOTE: https://git.kernel.org/linus/dfa73c17d55b921e1d4e154976de35317e43a93a (6.5-rc7) (CVE-2023-39194)A use-after-free flaw was found in the Linux kernel''s netfilter in the way a user triggers the nft_pipapo_remove function with the element, without a NFT_SET_EXT_KEY_END. This issue could allow a local user to crash the system or potentially escalate their privileges on the system. (CVE-2023-4004)A use-after-free vulnerability in the Linux kernel''s netfilter: nf_tables component can be exploited to achieve local privilege escalation.On an error when building a nftables rule, deactivating immediate expressions in nft_immediate_deactivate() can lead unbinding the chain and objects be deactivated but later used.We recommend upgrading past commit 0a771f7b266b02d262900c75f1e175c7fe76fec2. (CVE-2023-4015)A use-after-free flaw was found in net/sched/cls_fw.c in classifiers (cls_fw, cls_u32, and cls_route) in the Linux Kernel. This flaw allows a local attacker to perform a local privilege escalation due to incorrect handling of the existing filter, leading to a kernel information leak issue. (CVE-2023-4128)netfilter: nf_tables: disallow rule addition to bound chain via NFTA_RULE_CHAIN_ID (CVE-2023-4147)A flaw was found in the Linux kernel''s TUN/TAP functionality. This issue could allow a local user to bypass network filters and gain unauthorized access to some resources. The original patches fixing CVE-2023-1076 are incorrect or incomplete. The problem is that the following upstream commits - a096ccca6e50 ("tun: tun_chr_open(): correctly initialize socket uid"), - 66b2c338adce ("tap: tap_open(): correctly initialize socket uid"), pass "inode->i_uid" to sock_init_data_uid() as the last parameter and that turns out to not be accurate. (CVE-2023-4194)A use-after-free vulnerability in the Linux kernel''s net/sched: cls_route component can be exploited to achieve local privilege escalation.When route4_change() is called on an existing filter, the whole tcf_result struct is always copied into the new instance of the filter. This causes a problem when updating a filter bound to a class, as tcf_unbind_filter() is always called on the old instance in the success path, decreasing filter_cnt of the still referenced class and allowing it to be deleted, leading to a use-after-free.We recommend upgrading past commit b80b829e9e2c1b3f7aae34855e04d8f6ecaf13c8. (CVE-2023-4206)A use-after-free vulnerability in the Linux kernel''s net/sched: cls_fw component can be exploited to achieve local privilege escalation.When fw_change() is called on an existing filter, the whole tcf_result struct is always copied into the new instance of the filter. This causes a problem when updating a filter bound to a class, as tcf_unbind_filter() is always called on the old instance in the success path, decreasing filter_cnt of the still referenced class and allowing it to be deleted, leading to a use-after-free.We recommend upgrading past commit 76e42ae831991c828cffa8c37736ebfb831ad5ec. (CVE-2023-4207)A use-after-free vulnerability in the Linux kernel''s net/sched: cls_u32 component can be exploited to achieve local privilege escalation.When u32_change() is called on an existing filter, the whole tcf_result struct is always copied into the new instance of the filter. This causes a problem when updating a filter bound to a class, as tcf_unbind_filter() is always called on the old instance in the success path, decreasing filter_cnt of the still referenced class and allowing it to be deleted, leading to a use-after-free.We recommend upgrading past commit 3044b16e7c6fe5d24b1cdbcf1bd0a9d92d1ebd81. (CVE-2023-4208)A flaw was found in the exFAT driver of the Linux kernel. The vulnerability exists in the implementation of the file name reconstruction function, which is responsible for reading file name entries from a directory index and merging file name parts belonging to one file into a single long file name. Since the file name characters are copied into a stack variable, a local privileged attacker could use this flaw to overflow the kernel stack. (CVE-2023-4273)A memory leak flaw was found in nft_set_catchall_flush in net/netfilter/nf_tables_api.c in the Linux Kernel. This issue may allow a local attacker to cause a double-deactivations of catchall elements, which results in a memory leak. (CVE-2023-4569)A use-after-free vulnerability in the Linux kernel''s af_unix component can be exploited to achieve local privilege escalation.The unix_stream_sendpage() function tries to add data to the last skb in the peer''s recv queue without locking the queue. Thus there is a race where unix_stream_sendpage() could access an skb locklessly that is being released by garbage collection, resulting in use-after-free.We recommend upgrading past commit 790c2f9d15b594350ae9bca7b236f2b1859de02c. (CVE-2023-4622)'
     FixedIn:
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: bpftool
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: bpftool-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-devel
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-headers
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-libbpf
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-libbpf-devel
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-libbpf-static
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-livepatch-6.1.49-69.116
           NamespaceName: amzn:2023
           Version: 1.0-0.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-tools
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-tools-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: kernel-tools-devel
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: perf
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: perf-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: python3-perf
           NamespaceName: amzn:2023
           Version: 6.1.49-69.116.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-09-07"
             Kind: advisory
           Name: python3-perf-debuginfo
           NamespaceName: amzn:2023

@@ -2,28 +2,28 @@ Vulnerability:
     Description: A flaw was found in the c-ares package. The ares_set_sortlist is missing checks about the validity of the input string, which allows a possible arbitrary length stack overflow. This issue may cause a denial of service or a limited impact on confidentiality and integrity. (CVE-2022-4904)When cross-compiling c-ares and using the autotools build system, CARES_RANDOM_FILE will not be set, as seen when cross compiling aarch64 android. This will downgrade to using rand() as a fallback which could allow an attacker to take advantage of the lack of entropy by not using a CSPRNG. (CVE-2023-31124)ares_inet_net_pton() is vulnerable to a buffer underflow for certain ipv6 addresses, in particular "0::00:00:00/2" was found to cause an issue. C-ares only uses this function internally for configuration purposes which would require an administrator to configure such an address via ares_set_sortlist().However, users may externally use ares_inet_net_pton() for other purposes and thus be vulnerable to more severe issues. (CVE-2023-31130)Insufficient randomness in generation of DNS query IDsWhen /dev/urandom or RtlGenRandom() are unavailable, c-ares uses rand() to generate random numbers used for DNS query ids. This is not a CSPRNG, and it is also not seeded by srand() so will generate predictable output.Input from the random number generator is fed into a non-compilant RC4 implementation and may not be as strong as the original RC4 implementation.No attempt is made to look for modern OS-provided CSPRNGs like arc4random() that is widely available. (CVE-2023-31147)Denial of Service.Attack Steps:The target resolver sends a queryThe attacker forges a malformed UDP packet with a length of 0 and returns them to the target resolverThe target resolver erroneously interprets the 0 length as a graceful shutdown of the connection. (this is only valid for TCP connections, UDP is connection-less)Current resolution fails, DoS attack is achieved. (CVE-2023-32067)
     FixedIn:
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-06-07"
             Kind: advisory
           Name: c-ares
           NamespaceName: amzn:2023
           Version: 1.19.0-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-06-07"
             Kind: advisory
           Name: c-ares-debuginfo
           NamespaceName: amzn:2023
           Version: 1.19.0-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-06-07"
             Kind: advisory
           Name: c-ares-debugsource
           NamespaceName: amzn:2023
           Version: 1.19.0-1.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-06-07"
             Kind: advisory
           Name: c-ares-devel
           NamespaceName: amzn:2023
