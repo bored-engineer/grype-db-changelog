@@ -3,70 +3,70 @@ Vulnerability:
     Description: libcurl offers a feature to verify an SSH server's public key using a SHA 256 hash. When this check fails, libcurl would free the memory for the fingerprint before it returns an error message containing the (now freed) hash.This flaw risks inserting sensitive heap-based data into the error message that might be shown to users or otherwise get leaked and revealed. (CVE-2023-28319)curl supports matching of wildcard patterns when listed as "Subject Alternative Name" in TLS server certificates. curl can be built to use its own name matching function for TLS rather than one provided by a TLS library. This private wildcard matching function would match IDN (International Domain Name) hosts incorrectly and could as a result accept patterns that otherwise should mismatch.IDN hostnames are converted to puny code before used for certificate checks. Puny coded names always start with xn-- and should not be allowed to pattern match, but the wildcard check in curl could still check for x*, which would match even though the IDN name most likely contained nothing even resembling an x. (CVE-2023-28321)When doing HTTP(S) transfers, libcurl might erroneously use the read callback (CURLOPT_READFUNCTION) to ask for data to send, even when the CURLOPT_POSTFIELDS option has been set, if the same handle previously was used to issue a PUT request which used that callback.This flaw may surprise the application and cause it to misbehave and either send off the wrong data or use memory after free or similar in the second transfer.The problem exists in the logic for a reused handle when it is (expected to be) changed from a PUT to a POST. (CVE-2023-28322)
     FixedIn:
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: curl
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: curl-debuginfo
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: curl-debugsource
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: curl-minimal
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: curl-minimal-debuginfo
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: libcurl
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: libcurl-debuginfo
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: libcurl-devel
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: libcurl-minimal
           NamespaceName: amzn:2023
           Version: 8.0.1-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-07-26"
             Kind: advisory
           Name: libcurl-minimal-debuginfo
           NamespaceName: amzn:2023

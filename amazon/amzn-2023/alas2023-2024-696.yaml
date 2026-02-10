@@ -3,140 +3,140 @@ Vulnerability:
     Description: 'In the Linux kernel, the following vulnerability has been resolved:io_uring: drop any code related to SCM_RIGHTS (CVE-2023-52656)Integer Overflow or Wraparound vulnerability in Linux kernel on x86 and ARM (md, raid, raid5 modules) allows Forced Integer Overflow. (CVE-2024-23307)A malicious hypervisor can potentially break confidentiality and integrity of Linux SEV-SNP guests by injecting interrupts. (CVE-2024-25742)In the Linux kernel, the following vulnerability has been resolved:net: tls: handle backlogging of crypto requestsSince we''re setting the CRYPTO_TFM_REQ_MAY_BACKLOG flag on ourrequests to the crypto API, crypto_aead_{encrypt,decrypt} can return-EBUSY instead of -EINPROGRESS in valid situations. For example, whenthe cryptd queue for AESNI is full (easy to trigger with anartificially low cryptd.cryptd_max_cpu_qlen), requests will be enqueuedto the backlog but still processed. In that case, the async callbackwill also be called twice: first with err == -EINPROGRESS, which itseems we can just ignore, then with err == 0.Compared to Sabrina''s original patch this version uses the newtls_*crypt_async_wait() helpers and converts the EBUSY toEINPROGRESS to avoid having to modify all the error handlingpaths. The handling is identical. (CVE-2024-26584)In the Linux kernel, the following vulnerability has been resolved:tls: fix race between tx work scheduling and socket closeSimilarly to previous commit, the submitting thread (recvmsg/sendmsg)may exit as soon as the async crypto handler calls complete().Reorder scheduling the work before calling complete().This seems more logical in the first place, as it''sthe inverse order of what the submitting thread will do. (CVE-2024-26585)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: disallow anonymous set with timeout flag (CVE-2024-26642)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: mark set as dead when unbinding anonymous set with timeout (CVE-2024-26643)In the Linux kernel, the following vulnerability has been resolved:netfilter: nft_set_pipapo: release elements in clone only from destroy path (CVE-2024-26809)In the Linux kernel, the following vulnerability has been resolved:vfio/pci: Lock external INTx masking ops (CVE-2024-26810)In the Linux kernel, the following vulnerability has been resolved:vfio/pci: Create persistent INTx handler (CVE-2024-26812)In the Linux kernel, the following vulnerability has been resolved:net/sched: taprio: proper TCA_TAPRIO_TC_ENTRY_INDEX check (CVE-2024-26815)In the Linux kernel, the following vulnerability has been resolved:x86, relocs: Ignore relocations in .notes section (CVE-2024-26816)In the Linux kernel, the following vulnerability has been resolved:dm-integrity: fix a memory leak when rechecking the data (CVE-2024-26860)In the Linux kernel, the following vulnerability has been resolved:wireguard: receive: annotate data-race around receiving_counter.counter (CVE-2024-26861)In the Linux kernel, the following vulnerability has been resolved:packet: annotate data-races around ignore_outgoing (CVE-2024-26862)In the Linux kernel, the following vulnerability has been resolved:hsr: Fix uninit-value access in hsr_get_node() (CVE-2024-26863)In the Linux kernel, the following vulnerability has been resolved:tcp: Fix refcnt handling in __inet_hash_connect(). (CVE-2024-26864)In the Linux kernel, the following vulnerability has been resolved: rds: tcp: Fix use-after-free of net in reqsk_timer_handler(). syzkaller reported a warning of netns tracker [0] followed by KASAN splat [1] and another ref tracker warning [1]. syzkaller could not find a repro, but in the log, the only suspicious sequence was as follows: 18:26:22 executing program 1: r0 = socket$inet6_mptcp(0xa, 0x1, 0x106) ... connect$inet6(r0, &(0x7f0000000080)={0xa, 0x4001, 0x0, @loopback}, 0x1c) (async) The notable thing here is 0x4001 in connect(), which is RDS_TCP_PORT. (CVE-2024-26865)In the Linux kernel, the following vulnerability has been resolved:nfs: fix panic when nfs4_ff_layout_prepare_ds() fails (CVE-2024-26868)In the Linux kernel, the following vulnerability has been resolved:NFSv4.2: fix nfs4_listxattr kernel BUG at mm/usercopy.c:102 (CVE-2024-26870)In the Linux kernel, the following vulnerability has been resolved:quota: Fix potential NULL pointer dereference (CVE-2024-26878)In the Linux kernel, the following vulnerability has been resolved:dm: call the resume method on internal suspend (CVE-2024-26880)In the Linux kernel, the following vulnerability has been resolved:net: ip_tunnel: make sure to pull inner header in ip_tunnel_rcv() (CVE-2024-26882)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix stackmap overflow check on 32-bit arches (CVE-2024-26883)In the Linux kernel, the following vulnerability has been resolved:iommu/vt-d: Don''t issue ATS Invalidation request when device is disconnected (CVE-2024-26891)In the Linux kernel, the following vulnerability has been resolved:ACPI: processor_idle: Fix memory leak in acpi_processor_power_exit() (CVE-2024-26894)In the Linux kernel, the following vulnerability has been resolved:aoe: fix the potential use-after-free problem in aoecmd_cfg_pkts (CVE-2024-26898)In the Linux kernel, the following vulnerability has been resolved:do_sys_name_to_handle(): use kzalloc() to fix kernel-infoleak (CVE-2024-26901)In the Linux kernel, the following vulnerability has been resolved:x86/mm: Disallow vsyscall page read for copy_from_kernel_nofault() (CVE-2024-26906)In the Linux kernel, the following vulnerability has been resolved:USB: core: Fix deadlock in port "disable" sysfs attribute (CVE-2024-26933)In the Linux kernel, the following vulnerability has been resolved:USB: core: Fix deadlock in usb_deauthorize_interface() (CVE-2024-26934)In the Linux kernel, the following vulnerability has been resolved:scsi: core: Fix unremoved procfs host directory regression (CVE-2024-26935)In the Linux kernel, the following vulnerability has been resolved:drm/i915/gt: Reset queue_priority_hint on parking (CVE-2024-26937)In the Linux kernel, the following vulnerability has been resolved:drm/i915/bios: Tolerate devdata==NULL in intel_bios_encoder_supports_dp_dual_mode() (CVE-2024-26938)In the Linux kernel, the following vulnerability has been resolved:kprobes/x86: Use copy_from_kernel_nofault() to read from unsafe address (CVE-2024-26946)In the Linux kernel, the following vulnerability has been resolved:wireguard: netlink: access device through ctx instead of peer (CVE-2024-26950)In the Linux kernel, the following vulnerability has been resolved:wireguard: netlink: check for dangling peer via is_dead instead of empty list (CVE-2024-26951)In the Linux kernel, the following vulnerability has been resolved:nfs: fix UAF in direct writes (CVE-2024-26958)In the Linux kernel, the following vulnerability has been resolved:mm: swap: fix race between free_swap_and_cache() and swapoff() (CVE-2024-26960)In the Linux kernel, the following vulnerability has been resolved:usb: xhci: Add error handling in xhci_map_urb_for_dma (CVE-2024-26964)In the Linux kernel, the following vulnerability has been resolved:fat: fix uninitialized field in nostale filehandles (CVE-2024-26973)In the Linux kernel, the following vulnerability has been resolved:KVM: Always flush async #PF workqueue when vCPU is being destroyed (CVE-2024-26976)In the Linux kernel, the following vulnerability has been resolved:pci_iounmap(): Fix MMIO mapping leak (CVE-2024-26977)In the Linux kernel, the following vulnerability has been resolved:nbd: null check for nla_nest_start (CVE-2024-27025)In the Linux kernel, the following vulnerability has been resolved:clk: Fix clk_core_get NULL dereference (CVE-2024-27038)In the Linux kernel, the following vulnerability has been resolved:net: phy: fix phy_get_internal_delay accessing an empty array (CVE-2024-27047)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: do not compare internal table flags on updates (CVE-2024-27065)In the Linux kernel, the following vulnerability has been resolved:SUNRPC: fix some memleaks in gssx_dec_option_array (CVE-2024-27388)In the Linux kernel, the following vulnerability has been resolved:pstore: inode: Only d_invalidate() is needed (CVE-2024-27389)In the Linux kernel, the following vulnerability has been resolved:ipv6: mcast: remove one synchronize_net() barrier in ipv6_mc_down() (CVE-2024-27390)In the Linux kernel, the following vulnerability has been resolved:nvme: fix reconnection fail due to reserved tag allocation (CVE-2024-27435)In the Linux kernel, the following vulnerability has been resolved:vfio/pci: Disable auto-enable of exclusive INTx IRQ (CVE-2024-27437)In the Linux kernel, the following vulnerability has been resolved:KVM: SVM: Flush pages under kvm->lock to fix UAF in svm_register_enc_region() (CVE-2024-35791)In the Linux kernel, the following vulnerability has been resolved:efi: fix panic in kdump kernel (CVE-2024-35800)In the Linux kernel, the following vulnerability has been resolved:x86/fpu: Keep xfd_state in sync with MSR_IA32_XFD (CVE-2024-35801)In the Linux kernel, the following vulnerability has been resolved:KVM: x86: Mark target gfn of emulated atomic instruction as dirty (CVE-2024-35804)In the Linux kernel, the following vulnerability has been resolved:dm snapshot: fix lockup in dm_exception_table_exit (CVE-2024-35805)In the Linux kernel, the following vulnerability has been resolved:PCI/PM: Drain runtime-idle callbacks before driver removal (CVE-2024-35809)In the Linux kernel, the following vulnerability has been resolved:fs/aio: Check IOCB_AIO_RW before the struct aio_kiocb conversion (CVE-2024-35815)In the Linux kernel, the following vulnerability has been resolved:vt: fix unicode buffer corruption when deleting characters (CVE-2024-35823)In the Linux kernel, the following vulnerability has been resolved:block: Fix page refcounts for unaligned buffers in __bio_release_pages() (CVE-2024-35826)In the Linux kernel, the following vulnerability has been resolved:io_uring/net: fix overflow check in io_recvmsg_mshot_prep() (CVE-2024-35827)In the Linux kernel, the following vulnerability has been resolved:keys: Fix overwrite of key expiration on instantiation (CVE-2024-36031)'
     FixedIn:
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: bpftool
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: bpftool-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-devel
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-headers
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-libbpf
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-libbpf-devel
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-libbpf-static
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-livepatch-6.1.84-99.169
           NamespaceName: amzn:2023
           Version: 1.0-0.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-modules-extra
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-modules-extra-common
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-tools
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-tools-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: kernel-tools-devel
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: perf
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: perf-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: python3-perf
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-08-15"
             Kind: advisory
           Name: python3-perf-debuginfo
           NamespaceName: amzn:2023

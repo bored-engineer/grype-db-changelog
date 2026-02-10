@@ -3,210 +3,210 @@ Vulnerability:
     Description: Certain aggregate function calls receiving "unknown"-type arguments could disclose bytes of server memory from the end of the "unknown"-type value to the next zero byte. One typically gets an "unknown"-type value via a string literal having no type designation. We have not confirmed or ruled out viability of attacks that arrange for presence of notable, confidential information in disclosed bytes. (CVE-2023-5868)While modifying certain SQL array values, missing overflow checks let authenticated database users write arbitrary bytes to a memory area that facilitates arbitrary code execution. Missing overflow checks also let authenticated database users read a wide area of server memory. The CVE-2021-32027 fix covered some attacks of this description, but it missed others. (CVE-2023-5869)The documentation says the pg_cancel_backend role cannot signal "a backend owned by a superuser". On the contrary, it can signal background workers, including the logical replication launcher. It can signal autovacuum workers and the autovacuum launcher. Signaling autovacuum workers and those two launchers provides no meaningful exploit, so exploiting this vulnerability requires a non-core extension with a less-resilient background worker. For example, a non-core background worker that does not auto-restart would experience a denial of service with respect to that particular background worker. (CVE-2023-5870)
     FixedIn:
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-contrib
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-contrib-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-debugsource
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-docs
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-docs-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-llvmjit
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-llvmjit-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-plperl
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-plperl-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-plpython3
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-plpython3-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-pltcl
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-pltcl-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-private-devel
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-private-libs
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-private-libs-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-server
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-server-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-server-devel
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-server-devel-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-static
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-test
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-test-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-test-rpm-macros
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-upgrade
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-upgrade-debuginfo
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-upgrade-devel
           NamespaceName: amzn:2023
           Version: 15.5-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: postgresql15-upgrade-devel-debuginfo
           NamespaceName: amzn:2023

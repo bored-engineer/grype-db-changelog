@@ -3,28 +3,28 @@ Vulnerability:
     Description: There's a flaw in python-lxml's HTML Cleaner component, which is responsible for sanitizing HTML and Javascript. An attacker who is able to submit a crafted payload to a web service using python-lxml's HTML Cleaner may be able to trigger script execution in clients such as web browsers. This can occur because the HTML Cleaner did not remove scripts within SVG images in data URLs such as <img src=>. XSS can result in impacts to the integrity and availability of the web page, as well as a potential impact to data confidentiality in some circumstances. (CVE-2021-43818)NULL Pointer Dereference allows attackers to cause a denial of service (or application crash). This only applies when lxml is used together with libxml2 2.9.10 through 2.9.14. libxml2 2.9.9 and earlier are not affected. It allows triggering crashes through forged input data, given a vulnerable code sequence in the application. The vulnerability is caused by the iterwalk function (also used by the canonicalize function). Such code shouldn't be in wide-spread use, given that parsing + iterwalk would usually be replaced with the more efficient iterparse function. However, an XML converter that serialises to C14N would also be vulnerable, for example, and there are legitimate use cases for this code sequence. If untrusted input is received (also remotely) and processed via iterwalk function, a crash can be triggered. (CVE-2022-2309)
     FixedIn:
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-03-22"
             Kind: advisory
           Name: python-lxml
           NamespaceName: amzn:2023
           Version: 4.7.1-3.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-03-22"
             Kind: advisory
           Name: python-lxml-debugsource
           NamespaceName: amzn:2023
           Version: 4.7.1-3.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-03-22"
             Kind: advisory
           Name: python3-lxml
           NamespaceName: amzn:2023
           Version: 4.7.1-3.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2023-03-22"
             Kind: advisory
           Name: python3-lxml-debuginfo
           NamespaceName: amzn:2023

@@ -3,49 +3,49 @@ Vulnerability:
     Description: 'A malicious HTTP sender can use chunk extensions to cause a receiver reading from a request or response body to read many more bytes from the network than are in the body. A malicious HTTP client can further exploit this to cause a server to automatically read a large amount of data (up to about 1GiB) when a handler fails to read the entire body of a request. Chunk extensions are a little-used HTTP feature which permit including additional metadata in a request or response body sent using the chunked encoding. The net/http chunked encoding reader discards this metadata. A sender can exploit this by inserting a large metadata segment with each byte transferred. The chunk reader now produces an error if the ratio of real body to encoded bytes grows too small. (CVE-2023-39326)path/filepath: recognize \??\ as a Root Local Device path prefix.On Windows, a path beginning with \??\ is a Root Local Device path equivalentto a path beginning with \\?\. Paths with a \??\ prefix may be used toaccess arbitrary locations on the system. For example, the path \??\c:\xis equivalent to the more common path c:\x.The filepath package did not recognize paths with a \??\ prefix as special.Clean could convert a rooted path such as \a\..\??\b intothe root local device path \??\b. It will now convert thispath into .\??\b.IsAbs did not report paths beginning with \??\ as absolute.It now does so.VolumeName now reports the \??\ prefix as a volume name.Join(`\`, `??`, `b`) could convert a seemingly innocentsequence of path elements into the root local device path\??\b. It will now convert this to \.\??\b. (CVE-2023-45283)path/filepath: recognize device names with trailing spaces and superscriptsThe IsLocal function did not correctly detect reserved names in some cases:- reserved names followed by spaces, such as "COM1 ".- "COM" or "LPT" followed by a superscript 1, 2, or 3.IsLocal now correctly reports these names as non-local. (CVE-2023-45284)'
     FixedIn:
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: golang
           NamespaceName: amzn:2023
           Version: 1.20.12-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: golang-bin
           NamespaceName: amzn:2023
           Version: 1.20.12-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: golang-docs
           NamespaceName: amzn:2023
           Version: 1.20.12-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: golang-misc
           NamespaceName: amzn:2023
           Version: 1.20.12-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: golang-shared
           NamespaceName: amzn:2023
           Version: 1.20.12-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: golang-src
           NamespaceName: amzn:2023
           Version: 1.20.12-1.amzn2023.0.1
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-01-08"
             Kind: advisory
           Name: golang-tests
           NamespaceName: amzn:2023

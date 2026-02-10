@@ -3,140 +3,140 @@ Vulnerability:
     Description: 'Integer Overflow or Wraparound vulnerability in Linux kernel on x86 and ARM (md, raid, raid5 modules) allows Forced Integer Overflow. (CVE-2024-23307)A malicious hypervisor can potentially break confidentiality and integrity of Linux SEV-SNP guests by injecting interrupts. (CVE-2024-25742)In the Linux kernel, the following vulnerability has been resolved:net: tls: handle backlogging of crypto requestsSince we''re setting the CRYPTO_TFM_REQ_MAY_BACKLOG flag on ourrequests to the crypto API, crypto_aead_{encrypt,decrypt} can return-EBUSY instead of -EINPROGRESS in valid situations. For example, whenthe cryptd queue for AESNI is full (easy to trigger with anartificially low cryptd.cryptd_max_cpu_qlen), requests will be enqueuedto the backlog but still processed. In that case, the async callbackwill also be called twice: first with err == -EINPROGRESS, which itseems we can just ignore, then with err == 0.Compared to Sabrina''s original patch this version uses the newtls_*crypt_async_wait() helpers and converts the EBUSY toEINPROGRESS to avoid having to modify all the error handlingpaths. The handling is identical. (CVE-2024-26584)In the Linux kernel, the following vulnerability has been resolved:tls: fix race between tx work scheduling and socket closeSimilarly to previous commit, the submitting thread (recvmsg/sendmsg)may exit as soon as the async crypto handler calls complete().Reorder scheduling the work before calling complete().This seems more logical in the first place, as it''sthe inverse order of what the submitting thread will do. (CVE-2024-26585)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: disallow anonymous set with timeout flag (CVE-2024-26642)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: mark set as dead when unbinding anonymous set with timeout (CVE-2024-26643)In the Linux kernel, the following vulnerability has been resolved:net/sched: taprio: proper TCA_TAPRIO_TC_ENTRY_INDEX check (CVE-2024-26815)In the Linux kernel, the following vulnerability has been resolved: rds: tcp: Fix use-after-free of net in reqsk_timer_handler(). syzkaller reported a warning of netns tracker [0] followed by KASAN splat [1] and another ref tracker warning [1]. syzkaller could not find a repro, but in the log, the only suspicious sequence was as follows: 18:26:22 executing program 1: r0 = socket$inet6_mptcp(0xa, 0x1, 0x106) ... connect$inet6(r0, &(0x7f0000000080)={0xa, 0x4001, 0x0, @loopback}, 0x1c) (async) The notable thing here is 0x4001 in connect(), which is RDS_TCP_PORT. (CVE-2024-26865)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix stackmap overflow check on 32-bit arches (CVE-2024-26883)In the Linux kernel, the following vulnerability has been resolved:aoe: fix the potential use-after-free problem in aoecmd_cfg_pkts (CVE-2024-26898)In the Linux kernel, the following vulnerability has been resolved:x86/fpu: Keep xfd_state in sync with MSR_IA32_XFD (CVE-2024-35801)In the Linux kernel, the following vulnerability has been resolved:PCI/PM: Drain runtime-idle callbacks before driver removal (CVE-2024-35809)In the Linux kernel, the following vulnerability has been resolved:keys: Fix overwrite of key expiration on instantiation (CVE-2024-36031)'
     FixedIn:
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: bpftool
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: bpftool-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-debuginfo-common-x86_64
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-devel
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-headers
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-libbpf
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-libbpf-devel
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-libbpf-static
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-livepatch-6.1.84-99.169
           NamespaceName: amzn:2023
           Version: 1.0-0.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-modules-extra
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-modules-extra-common
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-tools
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-tools-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: kernel-tools-devel
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: perf
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: perf-debuginfo
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: python3-perf
           NamespaceName: amzn:2023
           Version: 6.1.84-99.169.amzn2023
           VersionFormat: rpm
         - Available:
-            Date: "2025-04-14"
+            Date: "2024-04-17"
             Kind: advisory
           Name: python3-perf-debuginfo
           NamespaceName: amzn:2023
