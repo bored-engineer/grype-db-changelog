@@ -1,0 +1,45 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: prestashop
+        purl: pkg:bitnami/prestashop
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-02-10"
+                      kind: advisory
+                      version: 8.2.4
+                    - date: "2026-02-10"
+                      kind: advisory
+                      version: 9.0.3
+          events:
+            - fixed: 8.2.4
+            - fixed: 9.0.3
+            - introduced: "0"
+            - introduced: 9.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-25597
+database_specific:
+    cpes:
+        - cpe:2.3:a:prestashop:prestashop:*:*:*:*:*:php:*:*
+    severity: Medium
+details: PrestaShop is an open source e-commerce web application. Prior to 8.2.4 and 9.0.3, there is a time-based user enumeration vulnerability in the user authentication functionality of PrestaShop. This vulnerability allows an attacker to determine whether a customer account exists in the system by measuring response times. This vulnerability is fixed in 8.2.4 and 9.0.3.
+id: BIT-prestashop-2026-25597
+modified: "2026-02-10T10:34:11.934Z"
+published: "2026-02-10T10:02:58.336Z"
+references:
+    - type: WEB
+      url: https://github.com/PrestaShop/PrestaShop/releases/tag/8.2.4
+    - type: WEB
+      url: https://github.com/PrestaShop/PrestaShop/releases/tag/9.0.3
+    - type: WEB
+      url: https://github.com/PrestaShop/PrestaShop/security/advisories/GHSA-67v7-3g49-mxh2
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-25597
+schema_version: 1.6.2
+summary: PrestaShop has a time based enumeration in FO login form
