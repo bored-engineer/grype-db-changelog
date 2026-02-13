@@ -1,0 +1,48 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: moodle
+        purl: pkg:bitnami/moodle
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-02-12"
+                      kind: advisory
+                      version: 4.5.8
+                    - date: "2026-02-12"
+                      kind: advisory
+                      version: 5.0.4
+                    - date: "2026-02-12"
+                      kind: advisory
+                      version: 5.1.1
+          events:
+            - fixed: 4.5.8
+            - fixed: 5.0.4
+            - fixed: 5.1.1
+            - introduced: 4.5.0
+            - introduced: 5.0.0
+            - introduced: 5.1.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-67849
+database_specific:
+    cpes:
+        - cpe:2.3:a:moodle:moodle:*:*:*:*:*:*:*:*
+    severity: Medium
+details: A flaw was found in Moodle. This cross-site scripting (XSS) vulnerability, caused by improper sanitization of AI prompt responses, allows attackers to inject malicious HTML or script into web pages. When other users view these compromised pages, their sessions could be stolen, or the user interface could be manipulated.
+id: BIT-moodle-2025-67849
+modified: "2026-02-12T09:10:24.600Z"
+published: "2026-02-12T08:51:02.532Z"
+references:
+    - type: WEB
+      url: https://access.redhat.com/security/cve/CVE-2025-67849
+    - type: WEB
+      url: https://bugzilla.redhat.com/show_bug.cgi?id=2423835
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-67849
+schema_version: 1.6.2
+summary: 'Moodle: moodle: cross-site scripting (xss) via improper sanitization of ai prompt responses'

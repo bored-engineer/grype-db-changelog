@@ -1,0 +1,58 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: moodle
+        purl: pkg:bitnami/moodle
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-02-12"
+                      kind: advisory
+                      version: 4.1.22
+                    - date: "2026-02-12"
+                      kind: advisory
+                      version: 4.4.11
+                    - date: "2026-02-12"
+                      kind: advisory
+                      version: 4.5.8
+                    - date: "2026-02-12"
+                      kind: advisory
+                      version: 5.0.4
+                    - date: "2026-02-12"
+                      kind: advisory
+                      version: 5.1.1
+          events:
+            - fixed: 4.1.22
+            - fixed: 4.4.11
+            - fixed: 4.5.8
+            - fixed: 5.0.4
+            - fixed: 5.1.1
+            - introduced: "0"
+            - introduced: 4.4.0
+            - introduced: 4.5.0
+            - introduced: 5.0.0
+            - introduced: 5.1.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-67855
+database_specific:
+    cpes:
+        - cpe:2.3:a:moodle:moodle:*:*:*:*:*:*:*:*
+    severity: Medium
+details: A flaw was found in mooodle. A remote attacker could exploit a reflected Cross-Site Scripting (XSS) vulnerability in the policy tool return URL. This vulnerability arises from insufficient sanitization of URL parameters, allowing attackers to inject malicious scripts through specially crafted links. Successful exploitation could lead to information disclosure or arbitrary client-side script execution within the user's browser.
+id: BIT-moodle-2025-67855
+modified: "2026-02-12T09:10:24.600Z"
+published: "2026-02-12T08:51:10.563Z"
+references:
+    - type: WEB
+      url: https://access.redhat.com/security/cve/CVE-2025-67855
+    - type: WEB
+      url: https://bugzilla.redhat.com/show_bug.cgi?id=2423861
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-67855
+schema_version: 1.6.2
+summary: 'Mooodle: mooodle: information disclosure and script execution via reflected cross-site scripting'
