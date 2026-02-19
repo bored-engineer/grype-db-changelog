@@ -1,0 +1,96 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'If an application using the SSL_CIPHER_find() function in a QUIC protocol client or server receives an unknown cipher suite from the peer, a NULL dereference occurs. (CVE-2025-15468)A TLS 1.3 connection using certificate compression can be forced to allocate a large buffer before decompression without checking against the configured certificate size limit. (CVE-2025-66199)Writing large, newline-free data into a BIO chain using the line-buffering filter where the next BIO performs short writes can trigger a heap-based out-of-bounds write. (CVE-2025-68160)When using the low-level OCB API directly with AES-NI or other hardware-accelerated code paths, inputs whose length is not a multiple of 16 bytes can leave the final partial block unencrypted and unauthenticated. (CVE-2025-69418)Calling PKCS12_get_friendlyname() function on a maliciously crafted PKCS#12 file with a BMPString (UTF-16BE) friendly name containing non-ASCII BMP code point can trigger a one byte write before the allocated buffer. (CVE-2025-69419)A type confusion vulnerability exists in the TimeStamp Response verification code where an ASN1_TYPE union member is accessed without first validating the type, causing an invalid or NULL pointer dereference when processing a malformed TimeStamp Response file. (CVE-2025-69420)Processing a malformed PKCS#12 file can trigger a NULL pointer dereference in the PKCS12_item_decrypt_d2i_ex() function. (CVE-2025-69421)An invalid or NULL pointer dereference can happen in an application processing a malformed PKCS#12 file. (CVE-2026-22795)ASN1_TYPE Type Confusion in the PKCS7_digest_from_attributes() functionNOTE: https://openssl-library.org/news/secadv/20260127.txt (CVE-2026-22796)'
+    FixedIn:
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-devel
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-fips-provider-latest
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-fips-provider-latest-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-libs
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-perl
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-snapsafe-libs
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-02-18"
+            Kind: advisory
+          Name: openssl-snapsafe-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.2.2-1.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1434.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-15468
+            - Name: CVE-2025-66199
+            - Name: CVE-2025-68160
+            - Name: CVE-2025-69418
+            - Name: CVE-2025-69419
+            - Name: CVE-2025-69420
+            - Name: CVE-2025-69421
+            - Name: CVE-2026-22795
+            - Name: CVE-2026-22796
+    Name: ALAS2023-2026-1434
+    NamespaceName: amzn:2023
+    Severity: High
