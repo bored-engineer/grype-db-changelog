@@ -1,0 +1,50 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: airflow
+        purl: pkg:bitnami/airflow
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-02-24"
+                      kind: advisory
+                      version: 2.11.1
+                    - date: "2026-02-24"
+                      kind: advisory
+                      version: 3.1.4
+          events:
+            - fixed: 2.11.1
+            - fixed: 3.1.4
+            - introduced: "0"
+            - introduced: 3.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-65995
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:airflow:*:*:*:*:*:python:*:*
+    severity: Medium
+details: |-
+    When a DAG failed during parsing, Airflow’s error-reporting in the UI could include the full kwargs passed to the operators. If those kwargs contained sensitive values (such as secrets), they might be exposed in the UI tracebacks to authenticated users who had permission to view that DAG. 
+
+    The issue has been fixed in Airflow 3.1.4 and 2.11.1, and users are strongly advised to upgrade to prevent potential disclosure of sensitive information.
+id: BIT-airflow-2025-65995
+modified: "2026-02-24T09:11:39.593Z"
+published: "2026-02-24T08:38:47.831Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2025/12/12/2
+    - type: WEB
+      url: https://github.com/apache/airflow/pull/58252
+    - type: WEB
+      url: https://github.com/apache/airflow/pull/61883
+    - type: WEB
+      url: https://lists.apache.org/thread/1qzlrjo2wmlzs0rrgzgslj2pzkor0dr2
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-65995
+schema_version: 1.6.2
+summary: 'Apache Airflow: Disclosure of secrets to UI via kwargs'
