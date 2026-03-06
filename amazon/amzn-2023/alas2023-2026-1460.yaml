@@ -1,0 +1,47 @@
+Vulnerability:
+    Description: 'A flaw was found in libsoup. An attacker who can control the input for the Content-Disposition header can inject CRLF (Carriage Return Line Feed) sequences into the header value. These sequences are then interpreted verbatim when the HTTP request or response is constructed, allowing arbitrary HTTP headers to be injected. This vulnerability can lead to HTTP header injection or HTTP response splitting without requiring authentication or user interaction. (CVE-2026-1536)A flaw was found in the libsoup HTTP library that can cause proxy authentication credentials to be sent to unintended destinations. When handling HTTP redirects, libsoup removes the Authorization header but does not remove the Proxy-Authorization header if the request is redirected to a different host. As a result, sensitive proxy credentials may be leaked to third-party servers. Applications using libsoup for HTTP communication may unintentionally expose proxy authentication data. (CVE-2026-1539)libsoup: heap buffer overflow in soup_content_sniffer_sniff (CVE-2026-2369)'
+    FixedIn:
+        - Available:
+            Date: "2026-03-05"
+            Kind: advisory
+          Name: libsoup3
+          NamespaceName: amzn:2023
+          Version: 3.6.5-56.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-05"
+            Kind: advisory
+          Name: libsoup3-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.5-56.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-05"
+            Kind: advisory
+          Name: libsoup3-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.6.5-56.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-05"
+            Kind: advisory
+          Name: libsoup3-devel
+          NamespaceName: amzn:2023
+          Version: 3.6.5-56.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-05"
+            Kind: advisory
+          Name: libsoup3-doc
+          NamespaceName: amzn:2023
+          Version: 3.6.5-56.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1460.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-1536
+            - Name: CVE-2026-1539
+            - Name: CVE-2026-2369
+    Name: ALAS2023-2026-1460
+    NamespaceName: amzn:2023
+    Severity: High
