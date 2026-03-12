@@ -1,0 +1,45 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libnfsidmap
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.3.3-68.el8_10
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: libnfsidmap-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.3.3-68.el8_10
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:8
+        name: nfs-utils
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 1:2.3.3-68.el8_10
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "The nfs-utils packages provide a daemon for the kernel Network File System (NFS) server and related tools, which provides better performance than the traditional Linux NFS server used by most users. These packages also contain the mount.nfs, umount.nfs, and showmount programs.   \n\nSecurity Fix(es):  \n\n  * nfs-utils: rpc.mountd in the nfs-utils privilege escalation (CVE-2025-12801)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2026:3938
+modified: "2026-03-10T01:58:47Z"
+published: "2026-03-05T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:3938
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2026-3938.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2025-12801
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2413081
+related:
+    - CVE-2025-12801
+summary: 'Moderate: nfs-utils security update'
