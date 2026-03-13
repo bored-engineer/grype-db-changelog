@@ -1,0 +1,36 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: appsmith
+        purl: pkg:bitnami/appsmith
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-12"
+                      kind: advisory
+                      version: 1.96.0
+          events:
+            - fixed: 1.96.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-30862
+database_specific:
+    cpes:
+        - cpe:2.3:a:appsmith:appsmith:*:*:*:*:*:*:*:*
+    severity: Critical
+details: Appsmith is a platform to build admin panels, internal tools, and dashboards. Prior to 1.96, a Critical Stored XSS vulnerability exists in the Table Widget (TableWidgetV2). The root cause is a lack of HTML sanitization in the React component rendering pipeline, allowing malicious attributes to be interpolated into the DOM. By leveraging the "Invite Users" feature, an attacker with a regular user account (user@gmail.com) can force a System Administrator to execute a high-privileged API call (/api/v1/admin/env), resulting in a Full Administrative Account Takeover. This vulnerability is fixed in 1.96.
+id: BIT-appsmith-2026-30862
+modified: "2026-03-12T09:10:07.191Z"
+published: "2026-03-12T08:36:03.908Z"
+references:
+    - type: WEB
+      url: https://github.com/appsmithorg/appsmith/security/advisories/GHSA-5hw4-whxv-6794
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-30862
+schema_version: 1.6.2
+summary: Critical Stored XSS & Privilege Escalation in Appsmith

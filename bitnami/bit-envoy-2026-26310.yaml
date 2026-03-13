@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: envoy
+        purl: pkg:bitnami/envoy
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-12"
+                      kind: advisory
+                      version: 1.34.13
+                    - date: "2026-03-12"
+                      kind: advisory
+                      version: 1.35.9
+                    - date: "2026-03-12"
+                      kind: advisory
+                      version: 1.36.5
+                    - date: "2026-03-12"
+                      kind: advisory
+                      version: 1.37.1
+          events:
+            - fixed: 1.34.13
+            - fixed: 1.35.9
+            - fixed: 1.36.5
+            - fixed: 1.37.1
+            - introduced: "0"
+            - introduced: 1.35.0
+            - introduced: 1.36.0
+            - introduced: 1.37.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-26310
+database_specific:
+    cpes:
+        - cpe:2.3:a:envoyproxy:envoy:*:*:*:*:*:go:*:*
+    severity: High
+details: Envoy is a high-performance edge/middle/service proxy. Prior to 1.37.1, 1.36.5, 1.35.8, and 1.34.13, calling Utility::getAddressWithPort with a scoped IPv6 addresses causes a crash. This utility is called in the data plane from the original_src filter and the dns filter. This vulnerability is fixed in 1.37.1, 1.36.5, 1.35.8, and 1.34.13.
+id: BIT-envoy-2026-26310
+modified: "2026-03-12T09:10:07.191Z"
+published: "2026-03-12T08:39:44.551Z"
+references:
+    - type: WEB
+      url: https://github.com/envoyproxy/envoy/security/advisories/GHSA-3cw6-2j68-868p
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-26310
+schema_version: 1.6.2
+summary: Crash for scoped ip address in Envoy during DNS
