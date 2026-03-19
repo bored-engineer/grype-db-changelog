@@ -1,0 +1,190 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2.02-170.0.1.el8_10.1]
+        - Update grub2 dependencies to match new Secure Boot certificate chain of trust [Orabug: 37766761]
+        - Fix typo in SBAT metadata [Orabug: 37693946]
+        - Allow installation of grub2 only with shim-aa64 that allows booting it [Orabug: 37693946]
+        - net/dns: Fix removal of DNS server [Orabug: 37539625]
+        - net/dns: Simplify error handling of recv_hook() function [Orabug: 37539625]
+        - net/dns: Add debugging messages in recv_hook() function [Orabug: 37539625]
+        - net/dns: Fix lookup error when no IPv6 is returned [Orabug: 37539625]
+        - Use correct os_name on OL
+        - Backport the support for setting custom kernels as default kernels [Orabug: 36690061]
+        - Restore correct SBAT entries
+        - Replaced bugzilla.oracle.com references [Orabug: 35475894]
+        - efinet: Close and reopen card on failure [Orabug: 35126950]
+        - Fix CVE-2022-3775 [Orabug: 34867710]
+        - Bump SBAT metadata for grub to 3 [Orabug: 34871758]
+        - Enable signing on aarch64
+        - Don't try to switch to a BLS config if GRUB_ENABLE_BLSCFG is already set (Javier Martinez Canillas) [Orabug: 34375996]
+        - Enable back btrfs module by default [Orabug: 34377188]
+        - Backport upstream SNP protocol fixes [Orabug: 34195100]
+        - Rebase Fix EFI loader kernel image allocation patch, adapt it to new NX code [Orabug: 34352232]
+        - enable multiboot2 [Orabug: 34285558]
+        - backport arm64: Fix EFI loader kernel image allocation [Orabug: 33702462]
+        - backport Arm: check for the PE magic for the compiled arch [Orabug: 33702462]
+        - Backport some better script logic for BTRFS support [Orabug: 32448171]
+        - Do not add shim and grub certificate deps for aarch64 packages [Orabug: 32670033]
+        - Update Oracle SBAT data [Orabug: 32670033]
+        - Use new signing certificate [Orabug: 32670033]
+        - Fix various coverity issues [Orabug: 32530657]
+        - Set proper blsdir if /boot is on btrfs rootfs [Orabug: 32063327]
+        - Add CVE-2020-15706, CVE-2020-15707 to the list [Orabug: 31225072]
+        - honor /etc/sysconfig/kernel DEFAULTKERNEL setting for BLS [Orabug: 30643497]
+        - set EFIDIR as redhat for additional grub2 tools [Orabug: 29875597]
+        - Update upstream references [Orabug: 26388226]
+        - Insert Unbreakable Enterprise Kernel text into BLS config file [Orabug: 29417955]
+        - fix symlink removal scriptlet, to be executed only on removal [Orabug: 19231481]
+        - Fix comparison in patch for 18504756
+        - Remove symlink to grub environment file during uninstall on EFI platforms [Orabug: 19231481]
+        - Put 'with' in menuentry instead of 'using' [Orabug: 18504756]
+        - Use different titles for UEK and RHCK kernels [Orabug: 18504756]
+
+        [2.02-170.1]
+        - Fixes CVE-2025-61662 Missing unregister call for gettext command may lead to use-after-free
+        - Resolves: #RHEL-141583
+
+        [2.02-170]
+        - fs/xfs/ppc64le: Update xfs code to fix install on 4KB block size
+        - Resolves: #RHEL-142208
+    FixedIn:
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-common
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-aa64
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-aa64-cdboot
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-aa64-modules
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-ia32
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-ia32-cdboot
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-ia32-modules
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-x64
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-x64-cdboot
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-efi-x64-modules
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-pc
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-pc-modules
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-tools
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-tools-efi
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-tools-extra
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-17"
+            Kind: advisory
+          Module: null
+          Name: grub2-tools-minimal
+          NamespaceName: ol:8
+          Version: 1:2.02-170.0.1.el8_10.1
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-4648.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-61662.html
+              Name: CVE-2025-61662
+        Issued: "2026-03-17"
+        RefId: ELSA-2026-4648
+    Name: ELSA-2026-4648
+    NamespaceName: ol:8
+    Severity: Medium
