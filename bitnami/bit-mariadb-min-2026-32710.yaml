@@ -1,0 +1,48 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: mariadb-min
+        purl: pkg:bitnami/mariadb-min
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-25"
+                      kind: advisory
+                      version: 11.4.10
+                    - date: "2026-03-25"
+                      kind: advisory
+                      version: 11.8.6
+                    - date: "2026-03-25"
+                      kind: advisory
+                      version: 12.2.2
+          events:
+            - fixed: 11.4.10
+            - fixed: 11.8.6
+            - fixed: 12.2.2
+            - introduced: 11.4.1
+            - introduced: 11.8.1
+            - introduced: 12.1.2
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-32710
+database_specific:
+    cpes:
+        - cpe:2.3:a:mariadb:mariadb:*:*:*:*:*:*:*:*
+    severity: High
+details: MariaDB server is a community developed fork of MySQL server. An authenticated user can crash MariaDB versions 11.4 before 11.4.10 and 11.8 before 11.8.6 via a bug in JSON_SCHEMA_VALID() function. Under certain conditions it might be possible to turn the crash into a remote code execution. These conditions require tight control over memory layout which is generally only attainable in a lab environment. This issue is fixed in MariaDB 11.4.10, MariaDB 11.8.6, and MariaDB 12.2.2.
+id: BIT-mariadb-min-2026-32710
+modified: "2026-03-25T09:15:17.567Z"
+published: "2026-03-25T08:46:23.287Z"
+references:
+    - type: WEB
+      url: https://github.com/MariaDB/server/security/advisories/GHSA-4rj5-2227-9wgc
+    - type: WEB
+      url: https://jira.mariadb.org/browse/MDEV-38356
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-32710
+schema_version: 1.6.2
+summary: Heap-based Buffer Overflow in MariaDB
