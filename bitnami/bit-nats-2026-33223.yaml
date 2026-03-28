@@ -1,0 +1,44 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: nats
+        purl: pkg:bitnami/nats
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2.11.15
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2.12.6
+          events:
+            - introduced: "0"
+            - fixed: 2.11.15
+            - introduced: 2.12.0
+            - fixed: 2.12.6
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-33223
+database_specific:
+    cpes:
+        - cpe:2.3:a:nats:nats_server:*:*:*:*:*:go:*:*
+    severity: Medium
+details: NATS-Server is a High-Performance server for NATS.io, a cloud and edge native messaging system. Prior to versions 2.11.15 and 2.12.6, the NATS message header `Nats-Request-Info:` is supposed to be a guarantee of identity by the NATS server, but the stripping of this header from inbound messages was not fully effective. An attacker with valid credentials for any regular client interface could thus spoof their identity to services which rely upon this header. Versions 2.11.15 and 2.12.6 contain a fix. No known workarounds are available.
+id: BIT-nats-2026-33223
+modified: "2026-03-27T18:14:10.313Z"
+published: "2026-03-27T17:45:21.527Z"
+references:
+    - type: WEB
+      url: https://advisories.nats.io/CVE/secnote-2026-09.txt
+    - type: WEB
+      url: https://github.com/nats-io/nats-server/security/advisories/GHSA-pwx7-fx9r-hr4h
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-33223
+schema_version: 1.6.2
+summary: 'NATS Server: Incomplete Stripping of Nats-Request-Info Header Allows Identity Spoofing'
