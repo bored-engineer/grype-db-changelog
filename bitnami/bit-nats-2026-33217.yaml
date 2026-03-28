@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: nats
+        purl: pkg:bitnami/nats
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2.11.15
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2.12.6
+          events:
+            - fixed: 2.11.15
+            - fixed: 2.12.6
+            - introduced: "0"
+            - introduced: 2.12.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-33217
+database_specific:
+    cpes:
+        - cpe:2.3:a:nats:nats_server:*:*:*:*:*:go:*:*
+    severity: Medium
+details: NATS-Server is a High-Performance server for NATS.io, a cloud and edge native messaging system. Prior to versions 2.11.15 and 2.12.6, when using ACLs on message subjects, these ACLs were not applied in the `$MQTT.>` namespace, allowing MQTT clients to bypass ACL checks for MQTT subjects. Versions 2.11.15 and 2.12.6 contain a fix. No known workarounds are available.
+id: BIT-nats-2026-33217
+modified: "2026-03-27T18:14:10.313Z"
+published: "2026-03-27T17:45:15.042Z"
+references:
+    - type: WEB
+      url: https://advisories.nats.io/CVE/secnote-2026-07.txt
+    - type: WEB
+      url: https://github.com/nats-io/nats-server/security/advisories/GHSA-jxxm-27vp-c3m5
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-33217
+schema_version: 1.6.2
+summary: NATS allows MQTT clients to bypass ACL checks

@@ -1,0 +1,52 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: discourse
+        purl: pkg:bitnami/discourse
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2026.1.2
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2026.2.1
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2026.3.0
+          events:
+            - fixed: 2026.1.2
+            - fixed: 2026.2.1
+            - fixed: 2026.3.0
+            - introduced: 2026.1.0
+            - introduced: 2026.2.0
+            - introduced: 2026.3.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-33394
+database_specific:
+    cpes:
+        - cpe:2.3:a:discourse:discourse:*:*:*:*:*:*:*:*
+    severity: Low
+details: Discourse is an open-source discussion platform. Prior to versions 2026.3.0, 2026.2.1, and 2026.1.2, the Post Edits admin report (/admin/reports/post_edits) leaked the first 40 characters of raw post content from private messages and secure categories to moderators who shouldn't have access. Versions 2026.3.0, 2026.2.1, and 2026.1.2 contain a patch. No known workarounds are available.
+id: BIT-discourse-2026-33394
+modified: "2026-03-27T07:40:55.991Z"
+published: "2026-03-27T07:10:53.768Z"
+references:
+    - type: WEB
+      url: https://github.com/discourse/discourse/commit/3bf3793a708662716c0a4eaf64ae091abe71ab4c
+    - type: WEB
+      url: https://github.com/discourse/discourse/commit/473288219e93cd17576cf15e4f0b9e388a31d0c1
+    - type: WEB
+      url: https://github.com/discourse/discourse/commit/62721429d4402505d21280bcbe5894032447d800
+    - type: WEB
+      url: https://github.com/discourse/discourse/security/advisories/GHSA-wxvr-pm5c-829p
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-33394
+schema_version: 1.6.2
+summary: Discourse leaks PM post edits to moderators

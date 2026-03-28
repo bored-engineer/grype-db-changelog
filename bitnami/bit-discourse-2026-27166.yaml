@@ -1,0 +1,48 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: discourse
+        purl: pkg:bitnami/discourse
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2026.1.2
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2026.2.1
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 2026.3.0
+          events:
+            - fixed: 2026.1.2
+            - fixed: 2026.2.1
+            - fixed: 2026.3.0
+            - introduced: 2026.1.0
+            - introduced: 2026.2.0
+            - introduced: 2026.3.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-27166
+database_specific:
+    cpes:
+        - cpe:2.3:a:discourse:discourse:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Discourse is an open source discussion platform. Prior to versions 2026.3.0, 2026.2.1 and 2026.1.2, insufficient cleanup in the default Codepen allowed iframes value allows an attacker to trick a user into changing the URL of the main page. This issue has been fixed in versions 2026.3.0, 2026.2.1 and 2026.1.2. To workaround this issue, remove Codepen from the list of allowed iframes.
+id: BIT-discourse-2026-27166
+modified: "2026-03-27T07:40:55.991Z"
+published: "2026-03-27T07:09:46.264Z"
+references:
+    - type: WEB
+      url: https://github.com/discourse/discourse/commit/c4762a4fac2f61f52f325396b11d3aeb955ea925
+    - type: WEB
+      url: https://github.com/discourse/discourse/security/advisories/GHSA-h653-cq78-vjj2
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-27166
+schema_version: 1.6.2
+summary: Discourse vulnerable to HTML injection via prohibited iframe URLs

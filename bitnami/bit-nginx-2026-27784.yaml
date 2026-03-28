@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: nginx
+        purl: pkg:bitnami/nginx
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 1.28.3
+                    - date: "2026-03-27"
+                      kind: advisory
+                      version: 1.29.7
+          events:
+            - fixed: 1.28.3
+            - fixed: 1.29.7
+            - introduced: 1.1.19
+            - introduced: 1.29.0
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:L/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-27784
+database_specific:
+    cpes:
+        - cpe:2.3:a:f5:nginx:*:*:*:*:*:*:*:*
+    severity: High
+details: "The 32-bit implementation of NGINX Open Source has a vulnerability in the ngx_http_mp4_module module, which might allow an attacker to over-read or over-write NGINX worker memory resulting in its termination, using a specially crafted MP4 file. The issue only affects 32-bit NGINX Open Source if it is built with the ngx_http_mp4_module module and the mp4 directive is used in the configuration file. Additionally, the attack is possible only if an attacker can trigger the processing of a specially crafted MP4 file with the ngx_http_mp4_module module. \n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated."
+id: BIT-nginx-2026-27784
+modified: "2026-03-27T07:40:55.991Z"
+published: "2026-03-27T07:10:08.052Z"
+references:
+    - type: WEB
+      url: https://my.f5.com/manage/s/article/K000160364
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-27784
+schema_version: 1.6.2
+summary: NGINX ngx_http_mp4_module vulnerability
