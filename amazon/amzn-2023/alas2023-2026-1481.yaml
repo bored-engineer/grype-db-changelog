@@ -1,0 +1,53 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: OpenEXR provides the specification and reference implementation of the EXR file format, an image storage format for the motion picture industry. In CompositeDeepScanLine::readPixels, per-pixel totals are accumulated in vector<unsigned int> total_sizes for attacker-controlled large counts across many parts, total_sizes[ptr] wraps modulo 2^32.  overall_sample_count is then derived from wrapped totals and used in samples[channel].resize(overall_sample_count). Decode pointer setup/consumption proceeds with true sample counts, and write operations in core unpack (generic_unpack_deep_pointers) overrun the undersized composite sample buffer. This vulnerability is fixed in v3.2.6, v3.3.8, and v3.4.6. (CVE-2026-27622)
+    FixedIn:
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: openexr
+          NamespaceName: amzn:2023
+          Version: 3.1.5-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: openexr-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.1.5-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: openexr-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.1.5-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: openexr-devel
+          NamespaceName: amzn:2023
+          Version: 3.1.5-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: openexr-libs
+          NamespaceName: amzn:2023
+          Version: 3.1.5-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: openexr-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.1.5-1.amzn2023.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1481.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-27622
+    Name: ALAS2023-2026-1481
+    NamespaceName: amzn:2023
+    Severity: High

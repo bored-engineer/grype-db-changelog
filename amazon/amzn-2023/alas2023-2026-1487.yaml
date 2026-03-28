@@ -1,0 +1,188 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:md: suspend array while updating raid_disks via sysfs (CVE-2025-71225)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix reservation leak in some error paths when inserting inline extent (CVE-2025-71268)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: fix inverted genmask check in nft_map_catchall_activate() (CVE-2026-23111)In the Linux kernel, the following vulnerability has been resolved:net: fix segmentation of forwarding fraglist GRO (CVE-2026-23154)In the Linux kernel, the following vulnerability has been resolved:efivarfs: fix error propagation in efivar_entry_get() (CVE-2026-23156)In the Linux kernel, the following vulnerability has been resolved:perf: sched: Fix perf crash with new is_user_task() helper (CVE-2026-23159)In the Linux kernel, the following vulnerability has been resolved:mm/shmem, swap: fix race of truncate and swap entry split (CVE-2026-23161)In the Linux kernel, the following vulnerability has been resolved:flex_proportions: make fprop_new_period() hardirq safe (CVE-2026-23168)In the Linux kernel, the following vulnerability has been resolved:mptcp: fix race in mptcp_pm_nl_flush_addrs_doit() (CVE-2026-23169)In the Linux kernel, the following vulnerability has been resolved:net/mlx5e: TC, delete flows only for existing peers (CVE-2026-23173)In the Linux kernel, the following vulnerability has been resolved:mm, shmem: prevent infinite loop on truncate race (CVE-2026-23177)In the Linux kernel, the following vulnerability has been resolved:ceph: fix NULL pointer dereference in ceph_mds_auth_match() (CVE-2026-23189)In the Linux kernel, the following vulnerability has been resolved:scsi: target: iscsi: Fix use-after-free in iscsit_dec_session_usage_count() (CVE-2026-23193)In the Linux kernel, the following vulnerability has been resolved:KVM: Don''t clobber irqfd routing type when deassigning irqfd (CVE-2026-23198)In the Linux kernel, the following vulnerability has been resolved:procfs: avoid fetching build ID while holding VMA lock (CVE-2026-23199)In the Linux kernel, the following vulnerability has been resolved:ipv6: Fix ECMP sibling count mismatch when clearing RTF_ADDRCONF (CVE-2026-23200)In the Linux kernel, the following vulnerability has been resolved:ceph: fix oops due to invalid pointer for kfree() in parse_longname() (CVE-2026-23201)In the Linux kernel, the following vulnerability has been resolved:spi: tegra210-quad: Protect curr_xfer in tegra_qspi_combined_seq_xfer (CVE-2026-23202)In the Linux kernel, the following vulnerability has been resolved:net/sched: cls_u32: use skb_header_pointer_careful() (CVE-2026-23204)In the Linux kernel, the following vulnerability has been resolved:smb/client: fix memory leak in smb2_open_file() (CVE-2026-23205)In the Linux kernel, the following vulnerability has been resolved:macvlan: fix error recovery in macvlan_common_newlink() (CVE-2026-23209)In the Linux kernel, the following vulnerability has been resolved:bonding: annotate data-races around slave->last_rx (CVE-2026-23212)In the Linux kernel, the following vulnerability has been resolved:btrfs: reject new transactions if the fs is fully read-only (CVE-2026-23214)In the Linux kernel, the following vulnerability has been resolved:x86/vmware: Fix hypercall clobbers (CVE-2026-23215)In the Linux kernel, the following vulnerability has been resolved:scsi: target: iscsi: Fix use-after-free in iscsit_dec_conn_usage_count() (CVE-2026-23216)In the Linux kernel, the following vulnerability has been resolved:mm/slab: Add alloc_tagging_slab_free_hook for memcg_alloc_abort_single (CVE-2026-23219)In the Linux kernel, the following vulnerability has been resolved: xfs: fix UAF in xchk_btree_check_block_owner We cannot dereference bs->cur when trying to determine if bs->cur aliases bs->sc->sa.{bno,rmap}_cur after the latter has been freed. Fix this by sampling before type before any freeing could happen. The correct temporal ordering was broken when we removed xfs_btnum_t. (CVE-2026-23223)In the Linux kernel, the following vulnerability has been resolved: erofs: fix UAF issue for file-backed mounts w/ directio option [ 9.269940][ T3222] Call trace: [ 9.269948][ T3222] ext4_file_read_iter+0xac/0x108 [ 9.269979][ T3222] vfs_iocb_iter_read+0xac/0x198 [ 9.269993][ T3222] erofs_fileio_rq_submit+0x12c/0x180 [ 9.270008][ T3222] erofs_fileio_submit_bio+0x14/0x24 [ 9.270030][ T3222] z_erofs_runqueue+0x834/0x8ac [ 9.270054][ T3222] z_erofs_read_folio+0x120/0x220 [ 9.270083][ T3222] filemap_read_folio+0x60/0x120 [ 9.270102][ T3222] filemap_fault+0xcac/0x1060 [ 9.270119][ T3222] do_pte_missing+0x2d8/0x1554 [ 9.270131][ T3222] handle_mm_fault+0x5ec/0x70c [ 9.270142][ T3222] do_page_fault+0x178/0x88c [ 9.270167][ T3222] do_translation_fault+0x38/0x54 [ 9.270183][ T3222] do_mem_abort+0x54/0xac [ 9.270208][ T3222] el0_da+0x44/0x7c [ 9.270227][ T3222] el0t_64_sync_handler+0x5c/0xf4 [ 9.270253][ T3222] el0t_64_sync+0x1bc/0x1c0 EROFS may encounter above panic when enabling file-backed mount w/ directio mount option, the root cause is it may suffer UAF in below race condition: - z_erofs_read_folio wq s_dio_done_wq - z_erofs_runqueue - erofs_fileio_submit_bio - erofs_fileio_rq_submit - vfs_iocb_iter_read - ext4_file_read_iter - ext4_dio_read_iter - iomap_dio_rw : bio was submitted and return -EIOCBQUEUED - dio_aio_complete_work - dio_complete - dio->iocb->ki_complete (erofs_fileio_ki_complete()) - kfree(rq) : it frees iocb, iocb.ki_filp can be UAF in file_accessed(). - file_accessed : access NULL file point Introduce a reference count in struct erofs_fileio_rq, and initialize it as two, both erofs_fileio_ki_complete() and erofs_fileio_rq_submit() will decrease reference count, the last one decreasing the reference count to zero will free rq. (CVE-2026-23224)In the Linux kernel, the following vulnerability has been resolved: smb: client: split cached_fid bitfields to avoid shared-byte RMW races is_open, has_lease and on_list are stored in the same bitfield byte in struct cached_fid but are updated in different code paths that may run concurrently. Bitfield assignments generate byte read-modify-write operations (e.g. `orb $mask, addr` on x86_64), so updating one flag can restore stale values of the others. A possible interleaving is: CPU1: load old byte (has_lease=1, on_list=1) CPU2: clear both flags (store 0) CPU1: RMW store (old | IS_OPEN) -> reintroduces cleared bits To avoid this class of races, convert these flags to separate bool fields. (CVE-2026-23230)In the Linux kernel, the following vulnerability has been resolved:net: gro: fix outer network offset (CVE-2026-23254)In the Linux kernel, the following vulnerability has been resolved:regmap: maple: free entry on mas_store_gfp() failure (CVE-2026-23260)'
+    FixedIn:
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: bpftool6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: bpftool6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel-livepatch-6.12.73-95.123
+          NamespaceName: amzn:2023
+          Version: 1.0-0.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-debuginfo-common-x86_64
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-devel
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-headers
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-libbpf
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-libbpf-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-libbpf-devel
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-libbpf-static
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-modules-extra
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-modules-extra-common
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-tools
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: kernel6.12-tools-devel
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: perf6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: perf6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: python3-perf6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-03-27"
+            Kind: advisory
+          Name: python3-perf6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.73-95.123.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1487.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-71225
+            - Name: CVE-2025-71268
+            - Name: CVE-2026-23111
+            - Name: CVE-2026-23154
+            - Name: CVE-2026-23156
+            - Name: CVE-2026-23159
+            - Name: CVE-2026-23161
+            - Name: CVE-2026-23168
+            - Name: CVE-2026-23169
+            - Name: CVE-2026-23173
+            - Name: CVE-2026-23177
+            - Name: CVE-2026-23189
+            - Name: CVE-2026-23193
+            - Name: CVE-2026-23198
+            - Name: CVE-2026-23199
+            - Name: CVE-2026-23200
+            - Name: CVE-2026-23201
+            - Name: CVE-2026-23202
+            - Name: CVE-2026-23204
+            - Name: CVE-2026-23205
+            - Name: CVE-2026-23209
+            - Name: CVE-2026-23212
+            - Name: CVE-2026-23214
+            - Name: CVE-2026-23215
+            - Name: CVE-2026-23216
+            - Name: CVE-2026-23219
+            - Name: CVE-2026-23223
+            - Name: CVE-2026-23224
+            - Name: CVE-2026-23230
+            - Name: CVE-2026-23254
+            - Name: CVE-2026-23260
+    Name: ALAS2023-2026-1487
+    NamespaceName: amzn:2023
+    Severity: High
