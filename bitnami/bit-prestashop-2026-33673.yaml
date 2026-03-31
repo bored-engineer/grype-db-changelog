@@ -1,0 +1,46 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: prestashop
+        purl: pkg:bitnami/prestashop
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-30"
+                      kind: advisory
+                      version: 8.2.5
+                    - date: "2026-03-30"
+                      kind: advisory
+                      version: 9.1.0
+          events:
+            - introduced: "0"
+            - fixed: 8.2.5
+            - introduced: 9.0.0
+            - fixed: 9.1.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:H/UI:R/S:C/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-33673
+database_specific:
+    cpes:
+        - cpe:2.3:a:prestashop:prestashop:*:*:*:*:*:php:*:*
+    severity: High
+details: PrestaShop is an open source e-commerce web application. Versions prior to 8.2.5 and 9.1.0 are vulnerable to stored Cross-Site Scripting (stored XSS) vulnerabilities in the BO. An attacker who can inject data into the database, via limited back-office access or a previously existing vulnerability, can exploit unprotected variables in back-office templates. Versions 8.2.5 and 9.1.0 contain a fix. No known workarounds are available.
+id: BIT-prestashop-2026-33673
+modified: "2026-03-30T12:13:12.971Z"
+published: "2026-03-30T11:49:49.224Z"
+references:
+    - type: WEB
+      url: https://github.com/PrestaShop/PrestaShop/releases/tag/8.2.5
+    - type: WEB
+      url: https://github.com/PrestaShop/PrestaShop/releases/tag/9.1.0
+    - type: WEB
+      url: https://github.com/PrestaShop/PrestaShop/security/advisories/GHSA-35pf-37c6-jxjv
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-33673
+schema_version: 1.6.2
+summary: PrestaShop has multiple stored XSS vulnerabilities via unprotected Template variables
