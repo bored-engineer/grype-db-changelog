@@ -1,0 +1,86 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Undici allows duplicate HTTP Content-Length headers when they are provided in an array with case-variant names (e.g., Content-Length and content-length). This produces malformed HTTP/1.1 requests with multiple conflicting Content-Length values on the wire.Who is impacted:*  Applications using undici.request(), undici.Client, or similar low-level APIs with headers passed as flat arrays*  Applications that accept user-controlled header names without case-normalizationPotential consequences:*  Denial of Service: Strict HTTP parsers (proxies, servers) will reject requests with duplicate Content-Length headers (400 Bad Request)*  HTTP Request Smuggling: In deployments where an intermediary and backend interpret duplicate headers inconsistently (e.g., one uses the first value, the other uses the last), this can enable request smuggling attacks leading to ACL bypass, cache poisoning, or credential hijacking (CVE-2026-1525)The undici WebSocket client is vulnerable to a denial-of-service attack via unbounded memory consumption during permessage-deflate decompression. When a WebSocket connection negotiates the permessage-deflate extension, the client decompresses incoming compressed frames without enforcing any limit on the decompressed data size. A malicious WebSocket server can send a small compressed frame (a "decompression bomb") that expands to an extremely large size in memory, causing the Node.js process to exhaust available memory and crash or become unresponsive.The vulnerability exists in the PerMessageDeflate.decompress() method, which accumulates all decompressed chunks in memory and concatenates them into a single Buffer without checking whether the total size exceeds a safe threshold. (CVE-2026-1526)ImpactWhen an application passes user-controlled input to the upgrade option of client.request(), an attacker can inject CRLF sequences (\r\n) to:*  Inject arbitrary HTTP headers*  Terminate the HTTP request prematurely and smuggle raw data to non-HTTP services (Redis, Memcached, Elasticsearch)The vulnerability exists because undici writes the upgrade value directly to the socket without validating for invalid header characters:// lib/dispatcher/client-h1.js:1121if (upgrade) {header += `connection: upgrade\r\nupgrade: ${upgrade}\r\n`} (CVE-2026-1527)ImpactA server can reply with a WebSocket frame using the 64-bit length form and an extremely large length. undici''s ByteParser overflows internal math, ends up in an invalid state, and throws a fatal TypeError that terminates the process.PatchesPatched in the undici version v7.24.0 and v6.24.0. Users should upgrade to this version or later. (CVE-2026-1528)ImpactThe undici WebSocket client is vulnerable to a denial-of-service attack due to improper validation of the server_max_window_bits parameter in the permessage-deflate extension. When a WebSocket client connects to a server, it automatically advertises support for permessage-deflate compression. A malicious server can respond with an out-of-range server_max_window_bits value (outside zlib''s valid range of 8-15). When the server subsequently sends a compressed frame, the client attempts to create a zlib InflateRaw instance with the invalid windowBits value, causing a synchronous RangeError exception that is not caught, resulting in immediate process termination.The vulnerability exists because:*  The isValidClientWindowBits() function only validates that the value contains ASCII digits, not that it falls within the valid range 8-15*  The createInflateRaw() call is not wrapped in a try-catch block*  The resulting exception propagates up through the call stack and crashes the Node.js process (CVE-2026-2229)This is an uncontrolled resource consumption vulnerability (CWE-400) that can lead to Denial of Service (DoS).In vulnerable Undici versions, when interceptors.deduplicate() is enabled, response data for deduplicated requests could be accumulated in memory for downstream handlers. An attacker-controlled or untrusted upstream endpoint can exploit this with large/chunked responses and concurrent identical requests, causing high memory usage and potential OOM process termination.Impacted users are applications that use Undici''s deduplication interceptor against endpoints that may produce large or long-lived response bodies.PatchesThe issue has been patched by changing deduplication behavior to stream response chunks to downstream handlers as they arrive (instead of full-body accumulation), and by preventing late deduplication when body streaming has already started.Users should upgrade to the first official Undici (and Node.js, where applicable) releases that include this patch. (CVE-2026-2581)'
+    FixedIn:
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24
+          NamespaceName: amzn:2023
+          Version: 24.14.0-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24-debuginfo
+          NamespaceName: amzn:2023
+          Version: 24.14.0-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24-debugsource
+          NamespaceName: amzn:2023
+          Version: 24.14.0-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24-devel
+          NamespaceName: amzn:2023
+          Version: 24.14.0-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24-docs
+          NamespaceName: amzn:2023
+          Version: 24.14.0-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24-full-i18n
+          NamespaceName: amzn:2023
+          Version: 24.14.0-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24-libs
+          NamespaceName: amzn:2023
+          Version: 24.14.0-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 24.14.0-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: nodejs24-npm
+          NamespaceName: amzn:2023
+          Version: 11.9.0-1.24.14.0.1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: v8-13.6-devel
+          NamespaceName: amzn:2023
+          Version: 13.6.233.17-1.24.14.0.1.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1526.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-1525
+            - Name: CVE-2026-1526
+            - Name: CVE-2026-1527
+            - Name: CVE-2026-1528
+            - Name: CVE-2026-2229
+            - Name: CVE-2026-2581
+    Name: ALAS2023-2026-1526
+    NamespaceName: amzn:2023
+    Severity: High

@@ -1,0 +1,110 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in ImageMagick. An integer overflow vulnerability exists in the SIXEL decoder, which allows a remote attacker to perform an out-of-bounds write via a specially crafted image. This can lead to a Denial of Service (DoS) and potentially information disclosure. (CVE-2026-28493)A flaw was found in ImageMagick. This vulnerability, a stack buffer overflow, allows an attacker to cause stack corruption by providing maliciously crafted kernel strings. This can lead to arbitrary code execution or a denial of service (DoS), impacting the availability and integrity of the system. (CVE-2026-28494)A flaw was found in ImageMagick, free and open-source software used for editing and manipulating digital images. A local attacker could exploit a heap-buffer-overflow vulnerability in the PCL encode due to an undersized output buffer allocation. This could lead to a denial of service (DoS), making the software unavailable, and potentially impact data integrity. (CVE-2026-28686)A flaw was found in ImageMagick, free and open-source software used for editing and manipulating digital images. A heap use-after-free vulnerability in ImageMagick's MSL (Magick Scripting Language) decoder allows an attacker to trigger access to freed memory by crafting a malicious MSL file. This can lead to a denial of service. (CVE-2026-28687)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to versions 7.1.2-16 and 6.9.13-41, a heap-use-after-free vulnerability exists in the MSL encoder, where a cloned image is destroyed twice. The MSL coder does not support writing MSL so the write capability has been removed. This vulnerability is fixed in 7.1.2-16 and 6.9.13-41. (CVE-2026-28688)A flaw was found in ImageMagick, a free and open-source software used for editing and manipulating digital images. A time-of-check to time-of-use (TOCTOU) vulnerability exists where authorization for a file path is checked before the file is finally opened or used. A local attacker can exploit this by performing a symlink swap between the check-time and use-time, bypassing policy-denied read/write operations. This can lead to information disclosure and unauthorized modification of files. (CVE-2026-28689)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to versions 7.1.2-16 and 6.9.13-41, a stack buffer overflow vulnerability exists in the MNG encoder. There is a bounds checks missing that could corrupting the stack with attacker-controlled data. This vulnerability is fixed in 7.1.2-16 and 6.9.13-41. (CVE-2026-28690)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to versions 7.1.2-16 and 6.9.13-41, an uninitialized pointer dereference vulnerability exists in the JBIG decoder due to a missing check. This vulnerability is fixed in 7.1.2-16 and 6.9.13-41. (CVE-2026-28691)A flaw was found in ImageMagick, a free and open-source software used for editing and manipulating digital images. A remote attacker could exploit a heap over-read vulnerability in the MAT decoder due to incorrect parenthesization when using 32-bit arithmetic. This could lead to the disclosure of sensitive information and a denial of service (DoS) condition. (CVE-2026-28692)A flaw was found in ImageMagick, a free and open-source software used for editing and manipulating digital images. An integer overflow vulnerability in the DIB (Device Independent Bitmap) coder component can be exploited by a remote attacker. By processing a specially crafted image file, this flaw may lead to an out-of-bounds read or write, potentially resulting in arbitrary code execution, privilege escalation, information disclosure, or a Denial of Service (DoS). (CVE-2026-28693)A flaw was found in ImageMagick, a free and open-source software used for editing and manipulating digital images. A local attacker could exploit this vulnerability by providing an extremely large image profile when encoding a PNG image. This could result in a heap overflow, leading to a Denial of Service (DoS), which makes the affected system or application unavailable to legitimate users. (CVE-2026-30883)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to versions 7.1.2-16 and 6.9.13-41, MagnifyImage uses a fixed-size stack buffer. When using a specific image it is possible to overflow this buffer and corrupt the stack. This vulnerability is fixed in 7.1.2-16 and 6.9.13-41. (CVE-2026-30929)A flaw was found in ImageMagick, a free and open-source software for editing and manipulating digital images. A remote attacker could exploit this vulnerability by providing a specially crafted image to a user, which, when processed with the -wavelet-denoise operation, could lead to an out-of-bounds heap write. This issue can result in a denial of service (DoS), causing the application to become unstable or crash. (CVE-2026-30936)A flaw was found in ImageMagick, a software suite for editing and manipulating digital images. An integer overflow vulnerability exists in the XWD (X Windows) encoder when processing extremely large images. This flaw can lead to an undersized memory allocation, resulting in an out-of-bounds write to the heap. A local attacker could exploit this to cause a denial of service (DoS) or potentially impact data integrity. (CVE-2026-30937)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to 7.1.2-16 and 6.9.13-41, an overflow on 32-bit systems can cause a crash in the SFW decoder when processing extremely large images. This vulnerability is fixed in 7.1.2-16 and 6.9.13-41. (CVE-2026-31853)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to 7.1.2-16 and 6.9.13-41, when a memory allocation fails in the sixel encoder it would be possible to write past the end of a buffer on the stack. This vulnerability is fixed in 7.1.2-16 and 6.9.13-41. (CVE-2026-32259)
+    FixedIn:
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-c++
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-c++-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-c++-devel
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-debugsource
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-devel
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-doc
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-libs
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-perl
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: ImageMagick-perl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.9.13.41-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1500.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-28493
+            - Name: CVE-2026-28494
+            - Name: CVE-2026-28686
+            - Name: CVE-2026-28687
+            - Name: CVE-2026-28688
+            - Name: CVE-2026-28689
+            - Name: CVE-2026-28690
+            - Name: CVE-2026-28691
+            - Name: CVE-2026-28692
+            - Name: CVE-2026-28693
+            - Name: CVE-2026-30883
+            - Name: CVE-2026-30929
+            - Name: CVE-2026-30936
+            - Name: CVE-2026-30937
+            - Name: CVE-2026-31853
+            - Name: CVE-2026-32259
+    Name: ALAS2023-2026-1500
+    NamespaceName: amzn:2023
+    Severity: High

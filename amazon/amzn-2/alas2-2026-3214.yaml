@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Tornado is a Python web framework and asynchronous networking library. In versions of Tornado prior to 6.5.5, the only limit on the number of parts in multipart/form-data is the max_body_size setting (default 100MB). Since parsing occurs synchronously on the main thread, this creates the possibility of denial-of-service due to the cost of parsing very large multipart bodies with many parts. This vulnerability is fixed in 6.5.5. (CVE-2026-31958)
+    FixedIn:
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: python-tornado
+          NamespaceName: amzn:2
+          Version: 4.2.1-3.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: python-tornado-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.2.1-3.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: python-tornado-doc
+          NamespaceName: amzn:2
+          Version: 4.2.1-3.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3214.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-31958
+    Name: ALAS2-2026-3214
+    NamespaceName: amzn:2
+    Severity: High
