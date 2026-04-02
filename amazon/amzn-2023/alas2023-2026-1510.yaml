@@ -1,0 +1,34 @@
+Vulnerability:
+    Description: 'time provides date and time handling in Rust. From 0.3.6 to before 0.3.47, when user-provided input is provided to any type that parses with the RFC 2822 format, a denial of service attack via stack exhaustion is possible. The attack relies on formally deprecated and rarely-used features that are part of the RFC 2822 format used in a malicious manner. Ordinary, non-malicious input will never encounter this scenario. A limit to the depth of recursion was added in v0.3.47. From this version, an error will be returned rather than exhausting the stack. (CVE-2026-25727)Improper certificate validation in PKCS7_verify() in AWS-LC allows an unauthenticated user to bypass certificate chain verification when processing PKCS7 objects with multiple signers, except the final signer.Customers of AWS services do not need to take action. Applications using AWS-LC should upgrade to AWS-LC version 1.69.0. (CVE-2026-3336)Observable timing discrepancy in AES-CCM decryption in AWS-LC allows an unauthenticated user to potentially determine authentication tag validity via timing analysis.The impacted implementations are through the EVP CIPHER API: EVP_aes_128_ccm, EVP_aes_192_ccm, and EVP_aes_256_ccm.Customers of AWS services do not need to take action. Applications using AWS-LC should upgrade to AWS-LC version 1.69.0. (CVE-2026-3337)Improper signature validation in PKCS7_verify() in AWS-LC allows an unauthenticated user to bypass signature verification when processing PKCS7 objects with Authenticated Attributes.Customers of AWS services do not need to take action. Applications using AWS-LC should upgrade to AWS-LC version 1.69.0. (CVE-2026-3338)'
+    FixedIn:
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: mount-s3
+          NamespaceName: amzn:2023
+          Version: 1.22.2-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: mount-s3-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.22.2-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-01"
+            Kind: advisory
+          Name: mount-s3-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.22.2-1.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1510.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-25727
+            - Name: CVE-2026-3336
+            - Name: CVE-2026-3337
+            - Name: CVE-2026-3338
+    Name: ALAS2023-2026-1510
+    NamespaceName: amzn:2023
+    Severity: High
