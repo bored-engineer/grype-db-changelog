@@ -1,0 +1,30 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: minio
+        purl: pkg:bitnami/minio
+      ranges:
+        - events:
+            - introduced: 2024.03.30
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:L/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-34204
+database_specific:
+    cpes:
+        - cpe:2.3:a:minio:minio:*:*:*:*:*:go:*:*
+    severity: High
+details: MinIO is a high-performance object storage system. Prior to version 2026.03.26, a flaw in extractMetadataFromMime() allows any authenticated user with s3:PutObject permission to inject internal server-side encryption metadata into objects by sending crafted X-Minio-Replication-* headers on a normal PutObject request. This issue has been patched in version 2026.03.26.
+id: BIT-minio-2026-34204
+modified: "2026-04-06T11:34:08.453Z"
+published: "2026-04-06T09:26:13.602Z"
+references:
+    - type: WEB
+      url: https://github.com/minio/minio/security/advisories/GHSA-3rh2-v3gr-35p9
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-34204
+schema_version: 1.6.2
+summary: MinIO is Vulnerable to SSE Metadata Injection via Replication Headers
