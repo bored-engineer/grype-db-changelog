@@ -14,12 +14,15 @@ affected:
             - fixed: 4.0.20
             - introduced: 4.0.0
           type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
 aliases:
     - CVE-2026-27315
 database_specific:
     cpes:
         - cpe:2.3:a:apache:cassandra:*:*:*:*:*:*:*:*
-    severity: Unknown
+    severity: Medium
 details: |-
     Sensitive Information Leak in cqlsh in Apache Cassandra 4.0 allows access to sensitive information, like passwords, from previously executed cqlsh command via  ~/.cassandra/cqlsh_history local file access.
 
@@ -30,7 +33,7 @@ details: |-
 
     However, cqlsh does not redact sensitive information when saving command history. This means that if a user executes operations involving passwords (such as logging in or creating users) within cqlsh, these passwords are permanently stored in cleartext in the history file on the disk.
 id: BIT-cassandra-2026-27315
-modified: "2026-04-09T09:13:50.652Z"
+modified: "2026-04-10T09:26:18.172Z"
 published: "2026-04-09T08:36:45.141Z"
 references:
     - type: WEB
