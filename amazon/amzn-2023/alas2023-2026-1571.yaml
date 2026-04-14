@@ -1,0 +1,35 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: url.Parse insufficiently validated the host/authority component and accepted some invalid URLs. (CVE-2026-25679)On Unix platforms, when listing the contents of a directory using File.ReadDir or File.Readdir the returned FileInfo could reference a file outside of the Root in which the File was opened. The impact of this escape is limited to reading metadata provided by lstat from arbitrary locations on the filesystem without permitting reading or writing files outside the root. (CVE-2026-27139)Actions which insert URLs into the content attribute of HTML meta tags are not escaped. This can allow XSS if the meta tag also has an http-equiv attribute with the value "refresh". A new GODEBUG setting has been added, htmlmetacontenturlescape, which can be used to disable escaping URLs in actions in the meta content attribute which follow "url=" by setting htmlmetacontenturlescape=0. (CVE-2026-27142)Moby is an open source container framework. Prior to version 29.3.1, a security vulnerability has been detected that allows plugins privilege validation to be bypassed during docker plugin install. Due to an error in the daemon's privilege comparison logic, the daemon may incorrectly accept a privilege set that differs from the one approved by the user. Plugins that request exactly one privilege are also affected, because no comparison is performed at all. This issue has been patched in version 29.3.1. (CVE-2026-33997)
+    FixedIn:
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: docker
+          NamespaceName: amzn:2023
+          Version: 25.0.14-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: docker-debuginfo
+          NamespaceName: amzn:2023
+          Version: 25.0.14-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: docker-debugsource
+          NamespaceName: amzn:2023
+          Version: 25.0.14-1.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1571.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-25679
+            - Name: CVE-2026-27139
+            - Name: CVE-2026-27142
+            - Name: CVE-2026-33997
+    Name: ALAS2023-2026-1571
+    NamespaceName: amzn:2023
+    Severity: Medium

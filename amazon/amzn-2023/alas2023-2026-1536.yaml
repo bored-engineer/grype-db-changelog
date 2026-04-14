@@ -1,0 +1,40 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: XML::Parser versions through 2.47 for Perl could overflow the pre-allocated buffer size cause a heap corruption (double free or corruption) and crashes.A :utf8 PerlIO layer, parse_stream() in Expat.xs could overflow the XML input buffer because Perl's read() returns decoded characters while SvPV() gives back multi-byte UTF-8 bytes that can exceed the pre-allocated buffer size. This can cause heap corruption (double free or corruption) and crashes. (CVE-2006-10002)XML::Parser versions through 2.47 for Perl has an off-by-one heap buffer overflow in st_serial_stack.In the case (stackptr == stacksize - 1), the stack will NOT be expanded. Then the new value will be written at location (++stackptr), which equals stacksize and therefore falls just outside the allocated buffer.The bug can be observed when parsing an XML file with very deep element nesting (CVE-2006-10003)
+    FixedIn:
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: perl-XML-Parser
+          NamespaceName: amzn:2023
+          Version: 2.51-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: perl-XML-Parser-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2.51-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: perl-XML-Parser-debugsource
+          NamespaceName: amzn:2023
+          Version: 2.51-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: perl-XML-Parser-tests
+          NamespaceName: amzn:2023
+          Version: 2.51-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1536.html
+    Metadata:
+        CVE:
+            - Name: CVE-2006-10002
+            - Name: CVE-2006-10003
+    Name: ALAS2023-2026-1536
+    NamespaceName: amzn:2023
+    Severity: High

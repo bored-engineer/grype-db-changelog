@@ -1,0 +1,95 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: When folding a long comment in an email header containing exclusively unfoldable characters, the parenthesis would not be preserved. This could be used for injecting headers into email messages where addresses are user-controlled and not sanitized. (CVE-2025-11468)User-controlled data URLs parsed by urllib.request.DataHandler allow injecting headers through newlines in the data URL mediatype. (CVE-2025-15282)When using http.cookies.Morsel, user-controlled cookie values and parameters can allow injecting HTTP headers into messages. Patch rejects all control characters within cookie names, values, and parameters. (CVE-2026-0672)User-controlled header names and values containing newlines can allow injecting HTTP headers. (CVE-2026-0865)The email module, specifically the "BytesGenerator" class, didn't properly quote newlines for email headers when serializing an email message allowing for header injection when an email is serialized. This is only applicable if using "LiteralHeader" writing headers that don't respect email folding rules, the new behavior will reject the incorrectly folded headers in "BytesGenerator". (CVE-2026-1299)The import hook in CPython that handles legacy *.pyc files (SourcelessFileLoader) is incorrectly handled in FileLoader (a base class) and so does not use io.open_code() to read the .pyc files. sys.audit handlers for this audit event therefore do not fire. (CVE-2026-2297)When an Expat parser with a registered ElementDeclHandler parses an inlinedocument type definition containing a deeply nested content model a C stackoverflow occurs. (CVE-2026-4224)The webbrowser.open() API would accept leading dashes in the URL whichcould be handled as command line options for certain web browsers. Newbehavior rejects leading dashes. Users are recommended to sanitize URLsprior to passing to webbrowser.open(). (CVE-2026-4519)
+    FixedIn:
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python-unversioned-command
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3-debug
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3-devel
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3-idle
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3-libs
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3-test
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3-tkinter
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3.9
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3.9-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: python3.9-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.9.25-1.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1583.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-11468
+            - Name: CVE-2025-15282
+            - Name: CVE-2026-0672
+            - Name: CVE-2026-0865
+            - Name: CVE-2026-1299
+            - Name: CVE-2026-2297
+            - Name: CVE-2026-4224
+            - Name: CVE-2026-4519
+    Name: ALAS2023-2026-1583
+    NamespaceName: amzn:2023
+    Severity: High
