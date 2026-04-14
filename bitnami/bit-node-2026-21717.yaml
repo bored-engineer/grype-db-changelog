@@ -12,16 +12,21 @@ affected:
                       version: 20.20.2
                     - date: "2026-04-06"
                       kind: advisory
+                      version: 22.22.2
+                    - date: "2026-04-06"
+                      kind: advisory
                       version: 24.14.1
                     - date: "2026-04-06"
                       kind: advisory
                       version: 25.8.2
           events:
             - fixed: 20.20.2
+            - fixed: 22.22.2
             - fixed: 24.14.1
             - fixed: 25.8.2
             - introduced: "0"
             - introduced: 21.0.0
+            - introduced: 23.0.0
             - introduced: 25.0.0
           type: SEMVER
       severity:
@@ -35,7 +40,7 @@ database_specific:
     severity: Medium
 details: "A flaw in V8's string hashing mechanism causes integer-like strings to be hashed to their numeric value, making hash collisions trivially predictable. By crafting a request that causes many such collisions in V8's internal string table, an attacker can significantly degrade performance of the Node.js process.\r\n\r\nThe most common trigger is any endpoint that calls `JSON.parse()` on attacker-controlled input, as JSON parsing automatically internalizes short strings into the affected hash table.\r\n\r\nThis vulnerability affects **20.x, 22.x, 24.x, and 25.x**."
 id: BIT-node-2026-21717
-modified: "2026-04-06T08:26:41.107Z"
+modified: "2026-04-13T06:11:47.324Z"
 published: "2026-04-06T07:58:47.295Z"
 references:
     - type: WEB

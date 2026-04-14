@@ -1,0 +1,53 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: tomcat
+        purl: pkg:bitnami/tomcat
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-13"
+                      kind: advisory
+                      version: 10.1.53
+                    - date: "2026-04-13"
+                      kind: advisory
+                      version: 11.0.19
+                    - date: "2026-04-13"
+                      kind: advisory
+                      version: 9.0.116
+          events:
+            - fixed: 10.1.53
+            - fixed: 11.0.19
+            - fixed: 9.0.116
+            - introduced: 10.0.0
+            - introduced: 11.0.0
+            - introduced: 7.0.100
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-29146
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:tomcat:*:*:*:*:*:maven:*:*
+    severity: High
+details: |-
+    Padding Oracle vulnerability in Apache Tomcat's EncryptInterceptor with default configuration.
+
+    This issue affects Apache Tomcat: from 11.0.0 through 11.0.18, from 10.0.0 through 10.1.52, from 9.0.13 through 9..115, from 8.5.38 through 8.5.100, from 7.0.100 through 7.0.109.
+
+    Users are recommended to upgrade to version 11.0.19, 10.1.53 and 9.0.116, which fixes the issue.
+id: BIT-tomcat-2026-29146
+modified: "2026-04-13T16:23:32.396Z"
+published: "2026-04-13T16:01:34.700Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/04/09/24
+    - type: WEB
+      url: https://lists.apache.org/thread/lzt04z2pb3dc5tk85obn80xygw3z1p0w
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-29146
+schema_version: 1.6.2
+summary: 'Apache Tomcat: EncryptInterceptor vulnerable to padding oracle attack by default'

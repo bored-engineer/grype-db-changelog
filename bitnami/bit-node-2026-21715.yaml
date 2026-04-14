@@ -12,16 +12,21 @@ affected:
                       version: 20.20.2
                     - date: "2026-04-06"
                       kind: advisory
+                      version: 22.22.2
+                    - date: "2026-04-06"
+                      kind: advisory
                       version: 24.14.1
                     - date: "2026-04-06"
                       kind: advisory
                       version: 25.8.2
           events:
             - fixed: 20.20.2
+            - fixed: 22.22.2
             - fixed: 24.14.1
             - fixed: 25.8.2
             - introduced: "0"
             - introduced: 21.0.0
+            - introduced: 23.0.0
             - introduced: 25.0.0
           type: SEMVER
       severity:
@@ -35,7 +40,7 @@ database_specific:
     severity: Low
 details: "A flaw in Node.js Permission Model filesystem enforcement leaves `fs.realpathSync.native()` without the required read permission checks, while all comparable filesystem functions correctly enforce them.\r\n\r\nAs a result, code running under `--permission` with restricted `--allow-fs-read` can still use `fs.realpathSync.native()` to check file existence, resolve symlink targets, and enumerate filesystem paths outside of permitted directories.\r\n\r\nThis vulnerability affects **20.x, 22.x, 24.x, and 25.x** processes using the Permission Model where `--allow-fs-read` is intentionally restricted."
 id: BIT-node-2026-21715
-modified: "2026-04-06T08:26:41.107Z"
+modified: "2026-04-13T06:11:47.324Z"
 published: "2026-04-06T07:58:41.424Z"
 references:
     - type: WEB

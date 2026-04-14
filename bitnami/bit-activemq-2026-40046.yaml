@@ -1,0 +1,50 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: activemq
+        purl: pkg:bitnami/activemq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-13"
+                      kind: advisory
+                      version: 6.2.4
+          events:
+            - fixed: 6.2.4
+            - introduced: 6.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-40046
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:activemq:*:*:*:*:*:maven:*:*
+    severity: High
+details: |-
+    Integer Overflow or Wraparound vulnerability in Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ MQTT.
+
+    The fix for "CVE-2025-66168: MQTT control packet remaining length field is not properly validated" was only applied to 5.19.2 (and future 5.19.x) releases but was missed for all 6.0.0+ versions.
+
+
+    This issue affects Apache ActiveMQ: from 6.0.0 before 6.2.4; Apache ActiveMQ All: from 6.0.0 before 6.2.4; Apache ActiveMQ MQTT: from 6.0.0 before 6.2.4.
+
+
+
+    Users are recommended to upgrade to version 6.2.4 or a 5.19.x version starting with 5.19.2 or later (currently latest is 5.19.5), which fixes the issue.
+id: BIT-activemq-2026-40046
+modified: "2026-04-13T06:11:47.324Z"
+published: "2026-04-13T05:36:23.428Z"
+references:
+    - type: WEB
+      url: https://activemq.apache.org/security-advisories.data/CVE-2026-40046-announcement.txt
+    - type: WEB
+      url: https://lists.apache.org/thread/zdntj5rcgjjzrpow84o339lzldy68zrg
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-40046
+    - type: WEB
+      url: https://www.cve.org/CVERecord?id=CVE-2025-66168
+schema_version: 1.6.2
+summary: 'Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ MQTT: Missing fix for CVE-2025-66168: MQTT control packet remaining length field is not properly validated'
