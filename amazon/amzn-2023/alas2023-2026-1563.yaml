@@ -1,0 +1,67 @@
+Vulnerability:
+    Description: 'LIBPNG is a reference library for use in applications that read, create, and manipulate PNG (Portable Network Graphics) raster image files. In versions 1.2.1 through 1.6.55, `png_set_tRNS` and `png_set_PLTE` each alias a heap-allocated buffer between `png_struct` and `png_info`, sharing a single allocation across two structs with independent lifetimes. The `trans_alpha` aliasing has been present since at least libpng 1.0, and the `palette` aliasing since at least 1.2.1. Both affect all prior release lines `png_set_tRNS` sets `png_ptr->trans_alpha = info_ptr->trans_alpha` (256-byte buffer) and `png_set_PLTE` sets `info_ptr->palette = png_ptr->palette` (768-byte buffer). In both cases, calling `png_free_data` (with `PNG_FREE_TRNS` or `PNG_FREE_PLTE`) frees the buffer through `info_ptr` while the corresponding `png_ptr` pointer remains dangling. Subsequent row-transform functions dereference and, in some code paths, write to the freed memory. A second call to `png_set_tRNS` or `png_set_PLTE` has the same effect, because both functions call `png_free_data` internally before reallocating the `info_ptr` buffer. Version 1.6.56 fixes the issue.NOTE: https://github.com/pnggroup/libpng/security/advisories/GHSA-m4pc-p4q3-4c7jNOTE: https://github.com/pnggroup/libpng/pull/824NOTE: Fixed by: https://github.com/pnggroup/libpng/commit/23019269764e35ed8458e517f1897bd3c54820eb (v1.6.56)NOTE: Fixed by: https://github.com/pnggroup/libpng/commit/a3a21443ed12bfa1ef46fa0d4fb2b74a0fa34a25 (v1.6.56)NOTE: Fixed by: https://github.com/pnggroup/libpng/commit/7ea9eea884a2328cc7fdcb3c0c00246a50d90667 (v1.6.56)NOTE: Fixed by: https://github.com/pnggroup/libpng/commit/c1b0318b393c90679e6fa5bc1d329fd5d5012ec1 (v1.6.56) (CVE-2026-33416)LIBPNG is a reference library for use in applications that read, create, and manipulate PNG (Portable Network Graphics) raster image files. In versions 1.6.36 through 1.6.55, an out-of-bounds read and write exists in libpng''s ARM/AArch64 Neon-optimized palette expansion path. When expanding 8-bit paletted rows to RGB or RGBA, the Neon loop processes a final partial chunk without verifying that enough input pixels remain. Because the implementation works backward from the end of the row, the final iteration dereferences pointers before the start of the row buffer (OOB read) and writes expanded pixel data to the same underflowed positions (OOB write). This is reachable via normal decoding of attacker-controlled PNG input if Neon is enabled. Version 1.6.56 fixes the issue.NOTE: https://github.com/pnggroup/libpng/security/advisories/GHSA-wjr5-c57x-95m2NOTE: Introduced with: https://github.com/pnggroup/libpng/commit/7734cda20cf1236aef60f3bbd2267c97bbb40869 (v1.6.36)NOTE: Fixed by: https://github.com/pnggroup/libpng/commit/aba9f18eba870d14fb52c5ba5d73451349e339c3 (v1.6.56) (CVE-2026-33636)'
+    FixedIn:
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: libpng
+          NamespaceName: amzn:2023
+          Version: 1.6.37-10.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: libpng-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.6.37-10.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: libpng-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.6.37-10.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: libpng-devel
+          NamespaceName: amzn:2023
+          Version: 1.6.37-10.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: libpng-devel-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.6.37-10.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: libpng-static
+          NamespaceName: amzn:2023
+          Version: 1.6.37-10.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: libpng-tools
+          NamespaceName: amzn:2023
+          Version: 1.6.37-10.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-13"
+            Kind: advisory
+          Name: libpng-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.6.37-10.amzn2023.0.12
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1563.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-33416
+            - Name: CVE-2026-33636
+    Name: ALAS2023-2026-1563
+    NamespaceName: amzn:2023
+    Severity: High
