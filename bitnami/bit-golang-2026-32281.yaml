@@ -1,0 +1,45 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: golang
+        purl: pkg:bitnami/golang
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-13"
+                      kind: advisory
+                      version: 1.25.9
+                    - date: "2026-04-13"
+                      kind: advisory
+                      version: 1.26.2
+          events:
+            - introduced: "0"
+            - fixed: 1.25.9
+            - introduced: 1.26.0-0
+            - fixed: 1.26.2
+          type: SEMVER
+aliases:
+    - CVE-2026-32281
+database_specific:
+    cpes:
+        - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+    severity: Unknown
+details: Validating certificate chains which use policies is unexpectedly inefficient when certificates in the chain contain a very large number of policy mappings, possibly causing denial of service. This only affects validation of otherwise trusted certificate chains, issued by a root CA in the VerifyOptions.Roots CertPool, or in the system certificate pool.
+id: BIT-golang-2026-32281
+modified: "2026-04-13T06:11:47.324Z"
+published: "2026-04-13T05:43:40.495Z"
+references:
+    - type: WEB
+      url: https://go.dev/cl/758061
+    - type: WEB
+      url: https://go.dev/issue/78281
+    - type: WEB
+      url: https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-32281
+    - type: WEB
+      url: https://pkg.go.dev/vuln/GO-2026-4946
+schema_version: 1.6.2
+summary: Inefficient policy validation in crypto/x509
