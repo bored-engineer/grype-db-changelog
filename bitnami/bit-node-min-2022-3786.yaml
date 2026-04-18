@@ -38,9 +38,11 @@ database_specific:
     severity: High
 details: A buffer overrun can be triggered in X.509 certificate verification, specifically in name constraint checking. Note that this occurs after certificate chain signature verification and requires either a CA to have signed a malicious certificate or for an application to continue certificate verification despite failure to construct a path to a trusted issuer. An attacker can craft a malicious email address in a certificate to overflow an arbitrary number of bytes containing the `.' character (decimal 46) on the stack. This buffer overflow could result in a crash (causing a denial of service). In a TLS client, this can be triggered by connecting to a malicious server. In a TLS server, this can be triggered if the server requests client authentication and a malicious client connects.
 id: BIT-node-min-2022-3786
-modified: "2025-11-06T13:25:46.476Z"
+modified: "2026-04-17T00:10:47.507Z"
 published: "2024-12-16T14:01:09.418Z"
 references:
+    - type: WEB
+      url: https://cert-portal.siemens.com/productcert/html/ssa-408105.html
     - type: WEB
       url: https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=c42165b5706e42f67ef8ef4c351a9a4c5d21639a
     - type: WEB

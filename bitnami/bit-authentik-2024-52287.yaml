@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: authentik
+        purl: pkg:bitnami/authentik
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-16"
+                      kind: advisory
+                      version: 2024.10.3
+                    - date: "2026-04-16"
+                      kind: advisory
+                      version: 2024.8.5
+          events:
+            - fixed: 2024.10.3
+            - fixed: 2024.8.5
+            - introduced: "0"
+            - introduced: 2024.10.0
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2024-52287
+database_specific:
+    cpes:
+        - cpe:2.3:a:goauthentik:authentik:*:*:*:*:*:go:*:*
+    severity: Medium
+details: authentik is an open-source identity provider. When using the client_credentials or device_code OAuth grants, it was possible for an attacker to get a token from authentik with scopes that haven't been configured in authentik. authentik 2024.8.5 and 2024.10.3 fix this issue.
+id: BIT-authentik-2024-52287
+modified: "2026-04-17T00:10:47.507Z"
+published: "2026-04-16T23:36:20.916Z"
+references:
+    - type: WEB
+      url: https://github.com/goauthentik/authentik/commit/e9c29e1644e9199b4ba58d2b10eb8c322138eea2
+    - type: WEB
+      url: https://github.com/goauthentik/authentik/security/advisories/GHSA-v6m7-8j37-8f4v
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2024-52287
+schema_version: 1.6.2
+summary: authentik performs insufficient validation of OAuth scopes
