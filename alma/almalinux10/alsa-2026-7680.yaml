@@ -1,0 +1,34 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:10
+        name: perl-XML-Parser
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.47-6.1.el10_1
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "This module provides ways to parse XML documents. It is built on top of XML::Parser::Expat, which is a lower level interface to James Clark's expat library. Each call to one of the parsing methods creates a new instance of XML::Parser::Expat which is then used to parse the document. Expat options may be provided when the XML::Parser object is created. These options are then passed on to the Expat object on each parse call. They can also be given as extra arguments to the parse methods, in which case they override options given at XML::Parser creation time.  \n\nSecurity Fix(es):  \n\n  * perl-xml-parser: XML::Parser: Memory corruption via deeply nested XML files (CVE-2006-10003)\n  * perl-xml-parser: XML::Parser for Perl: Heap corruption and denial of service from crafted XML input (CVE-2006-10002)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2026:7680
+modified: "2026-04-15T07:45:45Z"
+published: "2026-04-13T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:7680
+    - type: ADVISORY
+      url: https://errata.almalinux.org/10/ALSA-2026-7680.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2006-10002
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2006-10003
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2448999
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2449001
+related:
+    - CVE-2006-10003
+    - CVE-2006-10002
+summary: 'Important: perl-XML-Parser security update'
