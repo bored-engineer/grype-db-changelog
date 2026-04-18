@@ -15,15 +15,18 @@ affected:
             - introduced: 1.26.0-0
             - fixed: 1.26.2
           type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N
+          type: CVSS_V3
 aliases:
     - CVE-2026-33810
 database_specific:
     cpes:
         - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
-    severity: Unknown
+    severity: High
 details: When verifying a certificate chain containing excluded DNS constraints, these constraints are not correctly applied to wildcard DNS SANs which use a different case than the constraint. This only affects validation of otherwise trusted certificate chains, issued by a root CA in the VerifyOptions.Roots CertPool, or in the system certificate pool.
 id: BIT-golang-2026-33810
-modified: "2026-04-13T06:11:47.324Z"
+modified: "2026-04-17T00:10:47.507Z"
 published: "2026-04-13T05:43:50.259Z"
 references:
     - type: WEB
