@@ -26,17 +26,17 @@ affected:
             - fixed: 9.3.3
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
           type: CVSS_V3
 aliases:
     - CVE-2026-33461
 database_specific:
     cpes:
         - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
-    severity: High
+    severity: Medium
 details: Incorrect Authorization (CWE-863) in Kibana can lead to information disclosure via Privilege Abuse (CAPEC-122). A user with limited Fleet privileges can exploit an internal API endpoint to retrieve sensitive configuration data, including private keys and authentication tokens, that should only be accessible to users with higher-level settings privileges. The endpoint composes its response by fetching full configuration objects and returning them directly, bypassing the authorization checks enforced by the dedicated settings APIs.
 id: BIT-kibana-2026-33461
-modified: "2026-04-13T06:11:47.324Z"
+modified: "2026-04-23T09:10:51.830Z"
 published: "2026-04-13T05:42:03.441Z"
 references:
     - type: WEB
