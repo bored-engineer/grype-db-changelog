@@ -1,0 +1,237 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [7.2.0-37.el9]
+        - hashing: use mmap/munmap for isal functions (Elena Ufimtseva) [Orabug: 39165991]
+        - multifd: replace allocations/free with mmap/munmap (Elena Ufimtseva) [Orabug: 39165991]
+        - page_cache: use mmap() based data pool for cache items (Elena Ufimtseva) [Orabug: 39165991]
+        - page_cache: change cache allocations to mmap (Elena Ufimtseva) [Orabug: 39165991]
+        - migration: add mmap/munmap wrapper (Elena Ufimtseva) [Orabug: 39165991]
+        - target/i386/kvm: Use zero if kvm_msr_entry_add() is called by getter (Dongli Zhang) [Orabug: 38965920]
+        - target/i386/kvm: Use logical counter index for AMD PMU getter (Dongli Zhang) [Orabug: 38965920]
+        - Document CVEs (Mark Kanda) {CVE-2025-54566} {CVE-2025-54567} {CVE-2025-8860} {CVE-2026-0665} {CVE-2026-3886}
+        - hw/usb/hcd-ohci: check for MPS=0 to avoid infinite loop (Jenny Guanni Qu) [Orabug: 39160764] {CVE-2026-3890}
+        - hyperv/syndbg: check length returned by cpu_physical_memory_map() (Paolo Bonzini) [Orabug: 39160749] {CVE-2026-3842}
+        - block/vmdk: fix OOB read in vmdk_read_extent() (Halil Oktay) [Orabug: 39160776] {CVE-2026-2243}
+        - cryptodev-builtin: Limit the maximum size (zhenwei pi) [Orabug: 39173335] {CVE-2025-14876}
+        - hw/virtio/virtio-crypto: verify asym request size (zhenwei pi) [Orabug: 39173335] {CVE-2025-14876}
+
+        [7.2.0-36.el9]
+        - migration: Fix missing Error return in .load_setup() handlers (Maciej S. Szmigiero) [Orabug: 39154816]
+        - migration: Fix missing Error return in .save_setup() handlers (Maciej S. Szmigiero) [Orabug: 39154816]
+        - migration: qemu_savevm_state_setup(): Fix double PRECOPY_NOTIFY_SETUP call (Maciej S. Szmigiero) [Orabug: 39154816]
+        - multifd: Fix device state transfer (Maciej S. Szmigiero) [Orabug: 39154816]
+        - vfio/migration: Send VFIO_MIGRATION event before PRE_COPY_P2P transition (Avihai Horon) [Orabug: 39122260]
+        - vfio/migration: Adapt to upstream uAPI for VFIO_PRECOPY_INFO_REINIT (Maciej S. Szmigiero) [Orabug: 39121536]
+
+        [7.2.0-35.el9]
+        - migration: Disable switchover-ack-legacy by default for Exadata (Maciej S. Szmigiero) [Orabug: 37502472]
+        - vfio/migration: Check VFIO_PRECOPY_INFO_REINIT during completion (Avihai Horon) [Orabug: 37502472]
+        - vfio/migration: Implement VFIO_PRECOPY_INFO_REINIT (Avihai Horon) [Orabug: 37502472]
+        - vfio/migration: Implement new switchover-ack mechanism (Avihai Horon) [Orabug: 37502472]
+        - vfio/migration: Add Error ** parameter to vfio_migration_init() (Avihai Horon) [Orabug: 37502472]
+        - vfio/migration: Re-query precopy size before sending VFIO_MIG_FLAG_DEV_INIT_DATA_SENT (Avihai Horon) [Orabug: 37502472]
+        - migration: Check switchover-ack during switchover phase (Avihai Horon) [Orabug: 37502472]
+        - migration: Make switchover-ack re-usable (Avihai Horon) [Orabug: 37502472]
+        - migration: Refactor switchover-ack code (Avihai Horon) [Orabug: 37502472]
+        - linux-headers: Bring initial bytes re-init uAPI (Avihai Horon) [Orabug: 37502472]
+        - qemu-img: convert: add cli argument to use IO large buffers for convert (Akash Kulhalli) [Orabug: 37502472]
+        - hw/core/machine: Limit x-orcl-vm-tsc-khz-post-loadvm to KVM (Mark Kanda) [Orabug: 39095032]
+        - migration: add extra check for block in cache_fini (Elena Ufimtseva) [Orabug: 38885625]
+        - migration: do not tear down hash cache in critical path (Elena Ufimtseva) [Orabug: 38885625]
+        - migration: free cache->blocks in cache_fini() (Elena Ufimtseva) [Orabug: 39061395]
+
+        [7.2.0-34.el9]
+        - migration: bugfix - free migration_ops correctly (Elena Ufimtseva) [Orabug: 38977316]
+        - target/i386/kvm: set VM ioctl KVM_SET_TSC_KHZ post loadvm (Dongli Zhang) [Orabug: 38928409]
+        - migration: introduce KVM function called post loadvm (Dongli Zhang) [Orabug: 38928409]
+        - migration: add extra checks in multifd_ram_fill_packet (Elena Ufimtseva) [Orabug: 38949741]
+        - migration: fix the error path semantic in multifd thread (Elena Ufimtseva) [Orabug: 38949741]
+        - page_cache: dynamic cache allocation (Elena Ufimtseva) [Orabug: 38854239] [Orabug: 38949741]
+        - multifd: return errors on packets filling (Elena Ufimtseva) [Orabug: 38854239]
+        - migration: detect errors on hash initialization (Elena Ufimtseva) [Orabug: 38876780]
+        - migration: propagate hashing errors (Elena Ufimtseva) [Orabug: 38876780]
+        - migration/multifd: Handle allocation failures (Elena Ufimtseva) [Orabug: 38876780]
+        - migration: Add Error** argument to ram_state_init() (Cedric Le Goater) [Orabug: 38876780]
+        - migration: Add Error** argument to .load_setup() handler (Cedric Le Goater) [Orabug: 38876780]
+        - migration: Add Error** argument to .save_setup() handler (Cedric Le Goater) [Orabug: 38876780]
+        - migration: Add Error** argument to qemu_savevm_state_setup() (Cedric Le Goater) [Orabug: 38876780]
+        - migration: Add Error** argument to vmstate_save() (Cedric Le Goater) [Orabug: 38876780]
+        - migration: Always report an error in ram_save_setup() (Cedric Le Goater) [Orabug: 38876780]
+        - qemu-file: Make qemu_fflush() return errors (Juan Quintela) [Orabug: 38876780]
+        - qemu-file: remove shutdown member (Juan Quintela) [Orabug: 38876780]
+        - vfio: Always report an error in vfio_save_setup() (Cedric Le Goater) [Orabug: 38876780]
+        - migration/vmstate: Introduce vmstate_save_state_with_err (Tejus GK) [Orabug: 38876780]
+        - migration/vfio: Remove x-orcl-device-dirty-page-tracking (Elena Ufimtseva) [Orabug: 38944077]
+        - target/i386/kvm: write tsc_offset for parked vCPUs too (Dongli Zhang) [Orabug: 38853905]
+        - accel/kvm:: move KVMParkedVcpu definition to header file (Dongli Zhang) [Orabug: 38853905]
+        - target/i386/kvm: use vCPU 0 tsc_offset for all vCPUs (Dongli Zhang) [Orabug: 38853905]
+        - target/i386/kvm: account downtime only with synchronized TSC (Dongli Zhang) [Orabug: 38853905]
+        - target/i386/kvm: implement reset method for kvmclock (Dongli Zhang) [Orabug: 38853905]
+
+        [7.2.0-33.el9]
+        - migration: Change default pages to scan to 8192 for Exadata (Elena Ufimtseva) [Orabug: 38732433]
+        - meson: check if isa-l installed and enable it (Elena Ufimtseva) [Orabug: 38732433]
+        - migration/page_cache: Improve isal-crypto-mb-sha256 cache-miss handling (Joao Martins) [Orabug: 38732433]
+        - migration/page_cache: Add isal_crypto multi-buffer sha256 variant (Joao Martins) [Orabug: 38732433]
+        - migration/page_cache: Add batching mode support for isa-l_crypto (Joao Martins) [Orabug: 38732433]
+        - migration: Use algorithm table to initialize hashing (Elena Ufimtseva) [Orabug: 38732433]
+        - migration: Add existing algorithms to description table (Elena Ufimtseva) [Orabug: 38732433]
+        - migration: Add a unified description structure for hashing algorithms (Elena Ufimtseva) [Orabug: 38732433]
+
+        [7.2.0-32.el9]
+        - spec: Provide aarch64 and mips user static packages (Mark Kanda)
+          These packages are for Oracle internal use only (not for external customers)
+        - cpu: Only compile runstate_is_running() for system mode (Mark Kanda)
+        - linux-user: Do not define struct sched_attr if libc headers do (Khem Raj)
+
+        [7.2.0-31.el9]
+        - migration: Fix the cancellation/error path (Elena Ufimtseva) [Orabug: 38739293]
+
+        [7.2.0-30.el9]
+        - live migration: scan and clear contiguous dirty pages regions of ram (Elena Ufimtseva) [Orabug: 38388170]
+        - migration: add hash_rate trace point (Elena Ufimtseva) [Orabug: 38388170]
+        - migration: add parameter to specify max number of contiguous pages (Elena Ufimtseva) [Orabug: 38388170]
+        - multifd: send more pages then IOV_MAX (Elena Ufimtseva) [Orabug: 38388170]
+        - io: fix use after free in websocket handshake code (Daniel P. Berrange) [Orabug: 38687831] {CVE-2025-11234}
+
+        [7.2.0-29.el9]
+        - hw/core/machine.c: Add vhost-scsi-pci num_queues = 1 to hw_compat_7_2_exadata (Greg Jumper) [Orabug: 38544462]
+        - target/i386/kvm: account blackout downtime for kvm-clock and guest TSC (Dongli Zhang) [Orabug: 38307402]
+        - cpus: resume hotplugged vCPU only when the guest is running (Dongli Zhang) [Orabug: 38307402]
+        - system/qdev-monitor: move drain_call_rcu call under if (!dev) in qmp_device_add() (Dmitrii Gavrilov) [Orabug: 38298220]
+        - acpi: pcihp: allow repeating hot-unplug requests (Igor Mammedov) [Orabug: 38257990]
+        - hw/usb/hcd-uhci: don't assert for SETUP to non-0 endpoint (Peter Maydell) [Orabug: 37517799] {CVE-2024-8354}
+        - target/i386: Introduce GraniteRapids-v2 model (Tao Su) [Orabug: 38330786]
+        - target/i386: Add AVX512 state when AVX10 is supported (Tao Su) [Orabug: 38330786]
+        - target/i386: Add feature dependencies for AVX10 (Tao Su) [Orabug: 38330786]
+        - target/i386: add CPUID.24 features for AVX10 (Tao Su) [Orabug: 38330786]
+        - target/i386: add AVX10 feature and AVX10 version property (Tao Su) [Orabug: 38330786]
+        - target/i386: return bool from x86_cpu_filter_features (Paolo Bonzini) [Orabug: 38330786]
+        - target/i386: do not rely on ExtSaveArea for accelerator-supported XCR0 bits (Paolo Bonzini) [Orabug: 38330786]
+        - target/i386: Call accel-agnostic x86_cpu_get_supported_cpuid() (Philippe Mathieu-Daude) [Orabug: 38330786]
+        - target/i386: Add new CPU model GraniteRapids (Tao Su) [Orabug: 38330786]
+
+        [7.2.0-28.el9]
+        - hw/i386: Add an exadata machine (Joao Martins) [Orabug: 38408711]
+        - arm/kvm: add support for MTE (Cornelia Huck)
+        - target/arm: When tag memory is not present, set MTE=1 (Richard Henderson)
+        - spec: provide qemu-kvm-device-usb-host package (Mark Kanda) [Orabug: 38355110]
+        - kvm.conf: do not automatically enable virt when loading kvm (Mark Kanda) [Orabug: 38320046]
+    FixedIn:
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-guest-agent
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-img
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-kvm
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-kvm-block-curl
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-kvm-block-iscsi
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-kvm-block-rbd
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-kvm-block-ssh
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-kvm-common
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-kvm-core
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-kvm-device-usb-host
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-24"
+            Kind: advisory
+          Module: null
+          Name: qemu-virtiofsd
+          NamespaceName: ol:9
+          Version: 31:7.2.0-37.el9
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-50241.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2024-36350.html
+              Name: CVE-2024-36350
+            - Link: https://linux.oracle.com/cve/CVE-2024-36357.html
+              Name: CVE-2024-36357
+            - Link: https://linux.oracle.com/cve/CVE-2024-8354.html
+              Name: CVE-2024-8354
+            - Link: https://linux.oracle.com/cve/CVE-2025-11234.html
+              Name: CVE-2025-11234
+            - Link: https://linux.oracle.com/cve/CVE-2025-14876.html
+              Name: CVE-2025-14876
+            - Link: https://linux.oracle.com/cve/CVE-2025-54566.html
+              Name: CVE-2025-54566
+            - Link: https://linux.oracle.com/cve/CVE-2025-54567.html
+              Name: CVE-2025-54567
+            - Link: https://linux.oracle.com/cve/CVE-2025-8860.html
+              Name: CVE-2025-8860
+            - Link: https://linux.oracle.com/cve/CVE-2026-0665.html
+              Name: CVE-2026-0665
+            - Link: https://linux.oracle.com/cve/CVE-2026-2243.html
+              Name: CVE-2026-2243
+        Issued: "2026-04-24"
+        RefId: ELSA-2026-50241
+    Name: ELSA-2026-50241
+    NamespaceName: ol:9
+    Severity: Medium
