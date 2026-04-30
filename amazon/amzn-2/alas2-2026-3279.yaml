@@ -1,0 +1,70 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. In versions 2.4.16 and prior, the RSS notifier allows .. path traversal in notify-recipient-uri (e.g., rss:///../job.cache), letting a remote IPP client write RSS XML bytes outside CacheDir/rss (anywhere that is lp-writable). In particular, because CacheDir is group-writable by default (typically root:lp and mode 0770), the notifier (running as lp) can replace root-managed state files via temp-file + rename(). This PoC clobbers CacheDir/job.cache with RSS XML, and after restarting cupsd the scheduler fails to parse the job cache and previously queued jobs disappear. At time of publication, there are no publicly available patches. (CVE-2026-34978)OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. In versions 2.4.16 and prior, there is a heap-based buffer overflow in the CUPS scheduler when building filter option strings from job attribute. At time of publication, there are no publicly available patches. (CVE-2026-34979)OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. In versions 2.4.16 and prior, in a network-exposed cupsd with a shared target queue, an unauthorized client can send a Print-Job to that shared PostScript queue without authentication. The server accepts a page-border value supplied as textWithoutLanguage, preserves an embedded newline through option escaping and reparse, and then reparses the resulting second-line PPD: text as a trusted scheduler control record. A follow-up raw print job can therefore make the server execute an attacker-chosen existing binary such as /usr/bin/vim as lp. At time of publication, there are no publicly available patches. (CVE-2026-34980)OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. In versions 2.4.16 and prior, a local unprivileged user can coerce cupsd into authenticating to an attacker-controlled localhost IPP service with a reusable Authorization: Local ... token. That token is enough to drive /admin/ requests on localhost, and the attacker can combine CUPS-Create-Local-Printer with printer-is-shared=true to persist a file:///... queue even though the normal FileDevice policy rejects such URIs. Printing to that queue gives an arbitrary root file overwrite; the PoC below uses that primitive to drop a sudoers fragment and demonstrate root command execution. At time of publication, there are no publicly available patches. (CVE-2026-34990)'
+    FixedIn:
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: cups
+          NamespaceName: amzn:2
+          Version: 1.6.3-51.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: cups-client
+          NamespaceName: amzn:2
+          Version: 1.6.3-51.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: cups-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.6.3-51.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: cups-devel
+          NamespaceName: amzn:2
+          Version: 1.6.3-51.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: cups-filesystem
+          NamespaceName: amzn:2
+          Version: 1.6.3-51.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: cups-ipptool
+          NamespaceName: amzn:2
+          Version: 1.6.3-51.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: cups-libs
+          NamespaceName: amzn:2
+          Version: 1.6.3-51.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: cups-lpd
+          NamespaceName: amzn:2
+          Version: 1.6.3-51.amzn2.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3279.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-34978
+            - Name: CVE-2026-34979
+            - Name: CVE-2026-34980
+            - Name: CVE-2026-34990
+    Name: ALAS2-2026-3279
+    NamespaceName: amzn:2
+    Severity: High

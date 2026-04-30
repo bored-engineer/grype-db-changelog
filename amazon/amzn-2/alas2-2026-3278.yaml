@@ -1,0 +1,68 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to 7.1.2-18 and 6.9.13-43, an out-of-bounds write of a zero byte exists in the X11 `display` interaction path that could lead to a crash. Versions 7.1.2-18 and 6.9.13-43 patch the issue. (CVE-2026-33535)ImageMagick is free and open-source software used for editing and manipulating digital images. Prior to 7.1.2-18 and 6.9.13-43, due to an incorrect return value on certain platforms a pointer is incremented past the end of a buffer that is on the stack and that could result in an out of bounds write. Versions 7.1.2-18 and 6.9.13-43 patch the issue. (CVE-2026-33536)ImageMagick is free and open-source software used for editing and manipulating digital images. In versions below 7.1.2-189 and 6.9.13-44, when `Magick` parses an XML file it is possible that a single zero byte is written out of the bounds. This issue has been fixed in versions 6.9.13-44 and 7.1.2-19. (CVE-2026-33899)ImageMagick is free and open-source software used for editing and manipulating digital images. In versions below both 7.1.2-19 and 6.9.13-44, the -sample operation has an out of bounds read when an specific offset is set through the `sample:offset` define that could lead to an out of bounds read. This issue has been fixed in versions 6.9.13-44 and 7.1.2-19. (CVE-2026-33905)ImageMagick is free and open-source software used for editing and manipulating digital images. In versions below both 7.1.2-19 and 6.9.13-44, Magick frees the memory of the XML tree via the `DestroyXMLTree()` function; however, this process is executed recursively with no depth limit imposed. When Magick processes an XML file with deeply nested structures, it will exhaust the stack memory, resulting in a Denial of Service (DoS) attack. This issue has been fixed in versions 6.9.13-44 and 7.1.2-19. (CVE-2026-33908)ImageMagick is free and open-source software used for editing and manipulating digital images. In versions below 7.1.2-19, a crafted image could result in an out of bounds heap write when writing a yaml or json output, resulting in a crash. This issue has been fixed in version 7.1.2-19. (CVE-2026-40169)ImageMagick is free and open-source software used for editing and manipulating digital images. Versions below both 7.1.2-19 and 6.9.13-44, contain a heap out-of-bounds write in the JP2 encoder with when a user specifies an invalid sampling index. This issue has been fixed in versions 6.9.13-44 and 7.1.2-19. (CVE-2026-40310)ImageMagick is free and open-source software used for editing and manipulating digital images. Versions below 7.1.2-19 and 6.9.13-44 contain a heap use-after-free vulnerability that can cause a crash when reading and printing values from an invalid XMP profile. This issue has been fixed in versions 6.9.13-44 and 7.1.2-19. (CVE-2026-40311)ImageMagick is free and open-source software used for editing and manipulating digital images. In versions below 7.1.2-19, an off by one error in the MSL decoder could result in a crash when a malicous MSL file is read. This issue has been fixed in version 7.1.2-19. (CVE-2026-40312)
+    FixedIn:
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: ImageMagick
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.26
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: ImageMagick-c++
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.26
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: ImageMagick-c++-devel
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.26
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: ImageMagick-debuginfo
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.26
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: ImageMagick-devel
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.26
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: ImageMagick-doc
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.26
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: ImageMagick-perl
+          NamespaceName: amzn:2
+          Version: 6.9.10.97-1.amzn2.0.26
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3278.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-33535
+            - Name: CVE-2026-33536
+            - Name: CVE-2026-33899
+            - Name: CVE-2026-33905
+            - Name: CVE-2026-33908
+            - Name: CVE-2026-40169
+            - Name: CVE-2026-40310
+            - Name: CVE-2026-40311
+            - Name: CVE-2026-40312
+    Name: ALAS2-2026-3278
+    NamespaceName: amzn:2
+    Severity: High

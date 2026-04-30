@@ -1,0 +1,39 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Use-after-free in png_set_PLTE, png_set_tRNS and png_set_hIST in libpng before 1.6.57. Passing a pointer returned by the corresponding getter back into the setter causes the setter to read from a stale pointer after freeing the internal buffer, leading to corrupted chunk data and potential heap information disclosure. (CVE-2026-34757)
+    FixedIn:
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: libpng
+          NamespaceName: amzn:2
+          Version: 1.5.13-8.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: libpng-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.5.13-8.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: libpng-devel
+          NamespaceName: amzn:2
+          Version: 1.5.13-8.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: libpng-static
+          NamespaceName: amzn:2
+          Version: 1.5.13-8.amzn2.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3266.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-34757
+    Name: ALAS2-2026-3266
+    NamespaceName: amzn:2
+    Severity: Medium
