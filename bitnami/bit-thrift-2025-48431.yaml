@@ -1,0 +1,45 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: thrift
+        purl: pkg:bitnami/thrift
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-29"
+                      kind: advisory
+                      version: 0.23.0
+          events:
+            - fixed: 0.23.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2025-48431
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:thrift:*:*:*:*:*:*:*:*
+    severity: High
+details: |-
+    Mismatched Memory Management Routines vulnerability in Apache Thrift c_glib language bindings.
+
+    This issue affects Apache Thrift: before 0.23.0.
+
+    Users are recommended to upgrade to version 0.23.0, which fixes the issue.
+
+    Description: Specially crafted requests can crash an c_glib-based Thrift server with a clean but fatal "free(): invalid pointer" error message.
+id: BIT-thrift-2025-48431
+modified: "2026-04-29T09:10:02.628Z"
+published: "2026-04-29T08:50:17.283Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/04/28/8
+    - type: WEB
+      url: https://lists.apache.org/thread/lb4j0zyd5f3g36cos0wql925przpnwql
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-48431
+schema_version: 1.6.2
+summary: 'Apache Thrift: Specially crafted input can crash a c_glib Thrift server with invalid pointer error.'
