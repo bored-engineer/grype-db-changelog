@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Net::CIDR::Lite versions before 0.23 for Perl does not validate IPv6 group count, which may allow IP ACL bypass._pack_ipv6() does not check that uncompressed IPv6 addresses (without ::) have exactly 8 hex groups. Inputs like "abcd", "1:2:3", or "1:2:3:4:5:6:7" are accepted and produce packed values of wrong length (3, 7, or 15 bytes instead of 17).The packed values are used internally for mask and comparison operations. find() and bin_find() use Perl string comparison (lt/gt) on these values, and comparing strings of different lengths gives wrong results. This can cause find() to incorrectly report an address as inside or outside a range.Example:my $cidr = Net::CIDR::Lite->new("::/8");$cidr->find("1:2:3");  # invalid input, incorrectly returns trueThis is the same class of input validation issue as CVE-2021-47154 (IPv4 leading zeros) previously fixed in this module.See also CVE-2026-40199, a related issue in the same function affecting IPv4 mapped IPv6 addresses. (CVE-2026-40198)Net::CIDR::Lite versions before 0.23 for Perl mishandles IPv4 mapped IPv6 addresses, which may allow IP ACL bypass._pack_ipv6() includes the sentinel byte from _pack_ipv4() when building the packed representation of IPv4 mapped addresses like ::ffff:192.168.1.1. This produces an 18 byte value instead of 17 bytes, misaligning the IPv4 part of the address.The wrong length causes incorrect results in mask operations (bitwise AND truncates to the shorter operand) and in find() / bin_find() which use Perl string comparison (lt/gt). This can cause find() to incorrectly match or miss addresses.Example:my $cidr = Net::CIDR::Lite->new("::ffff:192.168.1.0/120");$cidr->find("::ffff:192.168.2.0");  # incorrectly returns trueThis is triggered by valid RFC 4291 IPv4 mapped addresses (::ffff:x.x.x.x).See also CVE-2026-40198, a related issue in the same function affecting malformed IPv6 addresses. (CVE-2026-40199)'
+    FixedIn:
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: perl-Net-CIDR-Lite
+          NamespaceName: amzn:2023
+          Version: 0.22-8.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1624.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-40198
+            - Name: CVE-2026-40199
+    Name: ALAS2023-2026-1624
+    NamespaceName: amzn:2023
+    Severity: Medium
