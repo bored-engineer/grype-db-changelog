@@ -1,0 +1,76 @@
+Vulnerability:
+    Description: The fix for CVE-2026-0672, which rejected control characters in http.cookies.Morsel, was incomplete. The Morsel.update(), |= operator, and unpickling paths were not patched, allowing control characters to bypass input validation. Additionally, BaseCookie.js_output() lacked the output validation applied to BaseCookie.output(). (CVE-2026-3644)When an Expat parser with a registered ElementDeclHandler parses an inlinedocument type definition containing a deeply nested content model a C stackoverflow occurs. (CVE-2026-4224)Mitgation of CVE-2026-4519 was incomplete. If the URL contained "%action" the mitigation could be bypassed for certain browser types the "webbrowser.open()" API could have commands injected into the underlying shell. See CVE-2026-4519 for details. (CVE-2026-4786)Use-after-free (UAF) was possible in the `lzma.LZMADecompressor`, `bz2.BZ2Decompressor`, and `gzip.GzipFile` when a memory allocation fails with a `MemoryError` and the decompression instance is re-used. This scenario can be triggered if the process is under memory pressure. The fix cleans up the dangling pointer in this specific error condition.The vulnerability is only present if the program re-uses decompressor instances across multiple decompression calls even after a `MemoryError` is raised during decompression. Using the helper functions to one-shot decompress data such as `lzma.decompress()`, `bz2.decompress()`, `gzip.decompress()`, and `zlib.decompress()` are not affected as a new decompressor instance is used per call. If the decompressor instance is not re-used after an error condition, this usage is similarly not vulnerable. (CVE-2026-6100)
+    FixedIn:
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12-debug
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12-devel
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12-idle
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12-libs
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12-test
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-04-30"
+            Kind: advisory
+          Name: python3.12-tkinter
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1619.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-3644
+            - Name: CVE-2026-4224
+            - Name: CVE-2026-4786
+            - Name: CVE-2026-6100
+    Name: ALAS2023-2026-1619
+    NamespaceName: amzn:2023
+    Severity: High
