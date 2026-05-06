@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: apache
+        purl: pkg:bitnami/apache
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-05"
+                      kind: advisory
+                      version: 2.4.67
+          events:
+            - fixed: 2.4.67
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-33006
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*
+    severity: Medium
+details: |-
+    A timing attack against mod_auth_digest in Apache HTTP Server 2.4.66 allows a bypass of Digest authentication by a remote attacker.
+
+    Users are recommended to upgrade to version 2.4.67, which fixes this issue.
+id: BIT-apache-2026-33006
+modified: "2026-05-05T09:14:00.532Z"
+published: "2026-05-05T08:39:01.278Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/05/04/21
+    - type: WEB
+      url: https://httpd.apache.org/security/vulnerabilities_24.html
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-33006
+schema_version: 1.6.2
+summary: 'Apache HTTP Server: mod_auth_digest timing attack'
