@@ -1,0 +1,159 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [252-55.0.3.el9_7.9]
+        - serialize: don't allocate 1M on the stack just like that [LINUX-16166]
+        - Route logs from container mapped uids to the system journal [Orabug: 38135007]
+        - Drop delay when nspawn fails to reset loginuid [Orabug: 37793135]
+        - Improve logging for api bus connection and subscribers [Orabug: 38040980]
+        - Defer processing of timeout events in sd-bus api [Orabug: 38064217]
+        - coredump: use %d in kernel core pattern - CVE-2025-4598
+        - Add bus description to sd-bus outgoing sockets [Orabug: 37347576]
+        - Add log messages about daemon-reload requester and duration [Orabug: 37347576]
+        - Reverted back to previous Tony Lam patch [Orabug: 25897792] until issue with [Orabug: 36564551] is resolved.
+        - drop IN_ATTRIB from parent directory inotify watches [Orabug: 37118224]
+        - 1A) Fix local-fs and remote-fs targets during system boot (replaces old Orabug: 25897792) [Orabug: 36269319]
+        - 1B) Add 'systemd-fstab-generator-reload-targets.service' file [Orabug: 36269319]
+        - 1C) Add required rpms for correct kickstart/systemd functionality within systemd.spec [Orabug: 36269319]
+        - 1D) Important: Review 1001-systemd-fstab-generator-reload-targets.patch for important build details/steps [Orabug: 36269319]
+        - Due to a new [Orabug: 36564551] filed on April 29 2024, reverting from back to
+        - previous Tony Lam patch [Orabug: 25897792] until issue with [Orabug: 36564551] is resolved.
+        - drop IN_ATTRIB from parent directory inotify watches [Orabug: 37118224]
+        - Reverted back to previous Tony Lam patch [Orabug: 25897792] until issue with [Orabug: 36564551] is resolved.
+        - Re-Added 1001-Fix-missing-netdev-for-iscsi-entry-in-fstab.patch [Orabug: 25897792]
+        - Backport upstream pstore dmesg fix [Orabug: 34868110]
+        - Remove upstream references  [Orabug: 33995357]
+        - Disable unprivileged BPF by default [Orabug: 32870980]
+        - udev rules: fix memory hot add and remove [Orabug: 31310273]
+        - set 'RemoveIPC=no' in logind.conf as default for OL7.2 [Orabug: 22224874]
+        - allow dm remove ioctl to co-operate with UEK3 [Orabug: 18467469]
+        - shutdown: get only active md arrays. [Orabug: 34467234]
+        - Wait for an extra configurable time before udevd kills a worker [Orabug: 36017407]
+        - Removed unneeded patches from the systemd.spec
+        - 1A) 1004-orabug34272490-0001-core-device-ignore-DEVICE_FOUND_UDEV-bit-on-switchin.patch [Orabug: 34272490]
+        - 1B) 1005-orabug34272490-0002-core-device-drop-unnecessary-condition.patch [Orabug: 34272490]
+        - 1C) 1007-orabug34868110-pstore-fixes-for-dmesg.txt-reconstruction.patch [Orabug: 34868110]
+        - Removed the following, associated with [Orabug: 36269319]:
+        - 2A) Remove 1001-systemd-fstab-generator-reload-targets.patch
+        - 2B) Remove Fix local-fs and remote-fs targets during system boot [Orabug: 36269319]
+        - 2C) Remove 'systemd-fstab-generator-reload-targets.service' file [Orabug: 36269319]
+        - 2D) Remove required rpms for correct kickstart/systemd functionality within systemd.spec [Orabug: 36269319]
+        - 2E) Remove Important: Review 1001-systemd-fstab-generator-reload-targets.patch for important build details/steps [Orabug: 36269319]
+
+        [252-55.9]
+        - core: validate input cgroup path more prudently (RHEL-155391)
+    FixedIn:
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: rhel-net-naming-sysattrs
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-boot-unsigned
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-container
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-devel
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-journal-remote
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-libs
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-oomd
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-pam
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-resolved
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-rpm-macros
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-udev
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-ukify
+          NamespaceName: ol:9
+          Version: 0:252-55.0.3.el9_7.9
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-13677.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-29111.html
+              Name: CVE-2026-29111
+        Issued: "2026-05-05"
+        RefId: ELSA-2026-13677
+    Name: ELSA-2026-13677
+    NamespaceName: ol:9
+    Severity: Medium
