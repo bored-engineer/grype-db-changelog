@@ -1,0 +1,168 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [257-13.0.1.el10_1.3]
+        - Fix detection of Oracle Virtualization or BM envs [Orabug: 37531877]
+        - Avoid udevadm warnings when using udev valid configs [Orabug: 37503197]
+        - allow dm remove ioctl to co-operate with UEK3 [Orabug: 18467469]
+        - set 'RemoveIPC=no' in logind.conf as default [Orabug: 22224874]
+        - Fix missing netdev for iscsi entry in fstab [Orabug: 25897792]
+        - udev rules: fix memory hot add and remove [Orabug: 31310273]
+        - Disable unprivileged BPF by default [Orabug: 32870980]
+        - Remove upstream references [Orabug: 33995357]
+        - Wait for an extra configurable time before udevd kills a worker [Orabug: 36017407]
+        - Removed unneeded patches from the systemd.spec
+        - 1004-orabug34272490-0001-core-device-ignore-DEVICE_FOUND_UDEV-bit-on-switchin.patch [Orabug: 34272490]
+        - 1005-orabug34272490-0002-core-device-drop-unnecessary-condition.patch [Orabug: 34272490]
+        - 1006-orabug34467234-shutdown-get-only-active-md-arrays.patch [Orabug: 34467234]
+        - 1007-orabug34868110-pstore-fixes-for-dmesg.txt-reconstruction.patch [Orabug: 34868110]
+        - 1008-path-drop-IN_ATTRIB-from-parent-directory-watches.patch [Orabug: 36780432]
+
+        [257-13.3]
+        - ci: re-enable bpf-framework option for build and unit test jobs (RHEL-155394)
+        - ci: add bpftool workaround to codeql job too (RHEL-155394)
+        - ci: fix workaround about bpftool for codeql (RHEL-155394)
+        - ci: add bpftool workaround to coverity too (RHEL-155394)
+        - ci: pin Packit/mkosi to the latest RHEL 10.1 commit (RHEL-155394)
+        - ci: run apt-get update before running mkosi (RHEL-155394)
+        - path-util: add flavour of path_startswith() that leaves a leading slash in place (RHEL-155394)
+        - cgroup: port some code over to path_startswith_full() (RHEL-155394)
+        - path-util: invert PATH_STARTSWITH_ACCEPT_DOT_DOT flag (RHEL-155394)
+        - sd-json: fix off-by-one issue when updating parent for array elements (RHEL-155394)
+        - core/cgroup: avoid one unnecessary strjoina() (RHEL-155394)
+        - core: validate input cgroup path more prudently (RHEL-155394)
+
+        [257-13.2]
+        - Revert 'coredump: fix 0-passed-as-pointer warning' (RHEL-104135)
+        - Revert 'Define helper to call PR_SET_DUMPABLE' (RHEL-104135)
+        - Revert 'coredump: introduce an enum to wrap dumpable constants' (RHEL-104135)
+        - Revert 'coredump: when %F/pidfd is used, again allow forwarding to containers' (RHEL-104135)
+        - Revert 'coredump: add support for new %F PIDFD specifier' (RHEL-104135)
+        - Revert 'coredump: get rid of a bogus assertion' (RHEL-104135)
+        - Revert 'coredump: also stop forwarding non-dumpable processes' (RHEL-104135)
+        - Revert 'coredump: use %d in kernel core pattern' (RHEL-104135)
+        - Revert 'coredump: get rid of _META_MANDATORY_MAX' (RHEL-104135)
+        - Revert 'coredump: wrap long lines, fix grammar in comments' (RHEL-104135)
+        - Revert 'coredump: restore compatibility with older patterns' (RHEL-104135)
+        - Revert 'coredump: verify pidfd after parsing data in usermode helper' (RHEL-104135)
+
+        [257-13.1]
+        - coredump: verify pidfd after parsing data in usermode helper (RHEL-104135)
+        - coredump: restore compatibility with older patterns (RHEL-104135)
+        - coredump: wrap long lines, fix grammar in comments (RHEL-104135)
+        - coredump: get rid of _META_MANDATORY_MAX (RHEL-104135)
+        - coredump: use %d in kernel core pattern (RHEL-104135)
+        - coredump: also stop forwarding non-dumpable processes (RHEL-104135)
+        - coredump: get rid of a bogus assertion (RHEL-104135)
+        - coredump: add support for new %F PIDFD specifier (RHEL-104135)
+        - coredump: when %F/pidfd is used, again allow forwarding to containers (RHEL-104135)
+        - coredump: introduce an enum to wrap dumpable constants (RHEL-104135)
+        - Define helper to call PR_SET_DUMPABLE (RHEL-104135)
+        - coredump: fix 0-passed-as-pointer warning (RHEL-104135)
+    FixedIn:
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-boot-unsigned
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-container
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-devel
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-journal-remote
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-libs
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-oomd
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-pam
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-resolved
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-rpm-macros
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-udev
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: systemd-ukify
+          NamespaceName: ol:10
+          Version: 0:257-13.0.1.el10_1.3
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-13651.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-29111.html
+              Name: CVE-2026-29111
+        Issued: "2026-05-05"
+        RefId: ELSA-2026-13651
+    Name: ELSA-2026-13651
+    NamespaceName: ol:10
+    Severity: Medium

@@ -1,0 +1,294 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [6.12.0-124.55.1]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985782]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Update module name for cryptographic module [Orabug: 37400433]
+        - Clean git history at setup stage
+
+        [6.12.0-124.55.1]
+        - crypto: algif_aead - snapshot IV for async AEAD requests (Vladislav Dronov) [RHEL-172211]
+        - crypto: algif_aead - Fix minimum RX size check for decryption (Vladislav Dronov) [RHEL-172211]
+        - crypto: authencesn - reject short ahash digests during instance creation (Vladislav Dronov) [RHEL-172211]
+        - crypto: authencesn - Fix src offset when decrypting in-place (Vladislav Dronov) [RHEL-172211]
+        - crypto: authencesn - Do not place hiseq at end of dst for out-of-place decryption (Vladislav Dronov) [RHEL-172211] {CVE-2026-31431}
+        - crypto: authencesn - reject too-short AAD (assoclen<8) to match ESP/ESN spec (Vladislav Dronov) [RHEL-172211] {CVE-2026-23060}
+        - crypto: af_alg - Fix page reassignment overflow in af_alg_pull_tsgl (Vladislav Dronov) [RHEL-172211]
+        - crypto: af_alg - limit RX SG extraction by receive buffer budget (Vladislav Dronov) [RHEL-172211] {CVE-2026-31677}
+        - crypto: algif_aead - Revert to operating out-of-place (Vladislav Dronov) [RHEL-172211] {CVE-2026-31431}
+        - crypto: af-alg - fix NULL pointer dereference in scatterwalk (Vladislav Dronov) [RHEL-172211]
+
+        [6.12.0-124.54.1]
+        - thunderbolt: Fix wake on connect at runtime (Desnes Nunes) [RHEL-108357]
+        - thunderbolt: Fix a logic error in wake on connect (Desnes Nunes) [RHEL-108357]
+        - thunderbolt: Use wake on connect and disconnect over suspend (Desnes Nunes) [RHEL-108357]
+        - net: bonding: fix use-after-free in bond_xmit_broadcast() (CKI Backport Bot) [RHEL-168071] {CVE-2026-31419}
+        - net/sched: Only allow act_ct to bind to clsact/ingress qdiscs and shared blocks (CKI Backport Bot) [RHEL-157330] {CVE-2026-23270}
+
+        [6.12.0-124.53.1]
+        - nfsd: fix heap overflow in NFSv4.0 LOCK replay cache (Scott Mayhew) [RHEL-167019] {CVE-2026-31402}
+    FixedIn:
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: libperf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: rtla
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-05"
+            Kind: advisory
+          Module: null
+          Name: rv
+          NamespaceName: ol:10
+          Version: 0:6.12.0-124.55.1.el10_1
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-13566.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-23270.html
+              Name: CVE-2026-23270
+            - Link: https://linux.oracle.com/cve/CVE-2026-31402.html
+              Name: CVE-2026-31402
+            - Link: https://linux.oracle.com/cve/CVE-2026-31419.html
+              Name: CVE-2026-31419
+            - Link: https://linux.oracle.com/cve/CVE-2026-31431.html
+              Name: CVE-2026-31431
+        Issued: "2026-05-05"
+        RefId: ELSA-2026-13566
+    Name: ELSA-2026-13566
+    NamespaceName: ol:10
+    Severity: High
