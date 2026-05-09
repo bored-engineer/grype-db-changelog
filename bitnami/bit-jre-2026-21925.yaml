@@ -1,0 +1,61 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: jre
+        purl: pkg:bitnami/jre
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-08"
+                      kind: advisory
+                      version: 1.8.0
+                    - date: "2026-05-08"
+                      kind: advisory
+                      version: 11.0.30
+                    - date: "2026-05-08"
+                      kind: advisory
+                      version: 17.0.18
+                    - date: "2026-05-08"
+                      kind: advisory
+                      version: 21.0.10
+                    - date: "2026-05-08"
+                      kind: advisory
+                      version: 25.0.2
+                    - date: "2026-05-08"
+                      kind: advisory
+                      version: 8.0.481
+          events:
+            - introduced: "0"
+            - fixed: 1.8.0
+            - introduced: 1.9.0
+            - fixed: 8.0.481
+            - introduced: 9.0.0
+            - fixed: 11.0.30
+            - introduced: 12.0.0
+            - fixed: 17.0.18
+            - introduced: 18.0.0
+            - fixed: 21.0.10
+            - introduced: 22.0.0
+            - fixed: 25.0.2
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-21925
+database_specific:
+    cpes:
+        - cpe:2.3:a:bellsoft:libericajre:*:*:*:*:*:*:*:*
+    severity: Medium
+details: 'Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: RMI).  Supported versions that are affected are Oracle Java SE: 8u471, 8u471-b50, 8u471-perf, 11.0.29, 17.0.17, 21.0.9, 25.0.1; Oracle GraalVM for JDK: 17.0.17 and  21.0.9; Oracle GraalVM Enterprise Edition: 21.3.16. Difficult to exploit vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as  unauthorized read access to a subset of Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 4.8 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N).'
+id: BIT-jre-2026-21925
+modified: "2026-05-08T06:11:36.072Z"
+published: "2026-05-08T05:47:42.250Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-21925
+    - type: WEB
+      url: https://www.oracle.com/security-alerts/cpujan2026.html
+schema_version: 1.6.2

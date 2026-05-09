@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: jre
+        purl: pkg:bitnami/jre
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-08"
+                      kind: advisory
+                      version: 1.8.0
+                    - date: "2026-05-08"
+                      kind: advisory
+                      version: 8.0.461
+          events:
+            - introduced: "0"
+            - fixed: 1.8.0
+            - introduced: 1.9.0
+            - fixed: 8.0.461
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-24928
+database_specific:
+    cpes:
+        - cpe:2.3:a:bellsoft:libericajre:*:*:*:*:*:*:*:*
+    severity: High
+details: 'libxml2 before 2.12.10 and 2.13.x before 2.13.6 has a stack-based buffer overflow in xmlSnprintfElements in valid.c. To exploit this, DTD validation must occur for an untrusted document or untrusted DTD. NOTE: this is similar to CVE-2017-9047.'
+id: BIT-jre-2025-24928
+modified: "2026-05-08T06:11:36.072Z"
+published: "2026-05-08T05:46:59.239Z"
+references:
+    - type: WEB
+      url: https://gitlab.gnome.org/GNOME/libxml2/-/issues/847
+    - type: WEB
+      url: https://issues.oss-fuzz.com/issues/392687022
+    - type: WEB
+      url: https://lists.debian.org/debian-lts-announce/2025/02/msg00028.html
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-24928
+    - type: WEB
+      url: https://security.netapp.com/advisory/ntap-20250321-0006/
+schema_version: 1.6.2
