@@ -1,0 +1,47 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: golang
+        purl: pkg:bitnami/golang
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-11"
+                      kind: advisory
+                      version: 1.25.10
+                    - date: "2026-05-11"
+                      kind: advisory
+                      version: 1.26.3
+          events:
+            - fixed: 1.25.10
+            - fixed: 1.26.3
+            - introduced: "0"
+            - introduced: 1.26.0-0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-39825
+database_specific:
+    cpes:
+        - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+    severity: Medium
+details: ReverseProxy can forward queries containing parameters not visible to Rewrite functions. When used with a Rewrite function, or a Director function which parses query parameters, ReverseProxy sanitizes the forwarded request to remove query parameters which are not parsed by url.ParseQuery. ReverseProxy does not take ParseQuery's limit on the total number of query parameters (controlled by GODEBUG=urlmaxqueryparams=N) into account. This can permit ReverseProxy to forward a request containing a query parameter that is not visible to the Rewrite function. For example, the query "a1=x&a2=x&...&a10000=x&hidden=y" can forward the parameter "hidden=y" while hiding it from the proxy's Rewrite function.
+id: BIT-golang-2026-39825
+modified: "2026-05-11T06:12:18.508Z"
+published: "2026-05-11T05:44:35.906Z"
+references:
+    - type: WEB
+      url: https://go.dev/cl/770541
+    - type: WEB
+      url: https://go.dev/issue/78948
+    - type: WEB
+      url: https://groups.google.com/g/golang-announce/c/qcCIEXso47M
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-39825
+    - type: WEB
+      url: https://pkg.go.dev/vuln/GO-2026-4976
+schema_version: 1.6.2
+summary: ReverseProxy forwards queries with more than urlmaxqueryparams parameters in net/http/httputil
