@@ -1,0 +1,37 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: pgbouncer
+        purl: pkg:bitnami/pgbouncer
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 1.25.2
+          events:
+            - introduced: "0"
+            - fixed: 1.25.2
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-6664
+database_specific:
+    cpes:
+        - cpe:2.3:a:pgbouncer:pgbouncer:*:*:*:*:*:*:*:*
+    severity: High
+details: An integer overflow in network packet parsing code in PgBouncer before 1.25.2 bypasses a boundary check and can lead to a crash. An unauthenticated remote attacker can crash PgBouncer with a malformed SCRAM authentication packet.
+id: BIT-pgbouncer-2026-6664
+modified: "2026-05-12T09:14:35.689Z"
+published: "2026-05-12T08:52:50.459Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-6664
+    - type: WEB
+      url: https://www.pgbouncer.org/changelog.html#pgbouncer-125x
+schema_version: 1.6.2
+summary: PgBouncer integer overflow in PgBouncer network packet parsing

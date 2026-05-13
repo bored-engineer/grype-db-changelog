@@ -1,0 +1,53 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: cilium-operator
+        purl: pkg:bitnami/cilium-operator
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 1.17.15
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 1.18.9
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 1.19.3
+          events:
+            - introduced: "0"
+            - fixed: 1.17.15
+            - introduced: 1.18.0
+            - fixed: 1.18.9
+            - introduced: 1.19.0
+            - fixed: 1.19.3
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-41520
+database_specific:
+    cpes:
+        - cpe:2.3:a:cilium:cilium:*:*:*:*:*:go:*:*
+    severity: High
+details: Cilium is a networking, observability, and security solution with an eBPF-based dataplane. Prior to versions 1.17.15, 1.18.9, and 1.19.3, the output of cilium-bugtool can contain sensitive data when the tool is run against Cilium deployments with WireGuard encryption enabled. This issue has been patched in versions 1.17.15, 1.18.9, and 1.19.3.
+id: BIT-cilium-operator-2026-41520
+modified: "2026-05-12T09:14:35.689Z"
+published: "2026-05-12T08:39:54.775Z"
+references:
+    - type: WEB
+      url: https://github.com/cilium/cilium/releases/tag/v1.17.15
+    - type: WEB
+      url: https://github.com/cilium/cilium/releases/tag/v1.18.9
+    - type: WEB
+      url: https://github.com/cilium/cilium/releases/tag/v1.19.3
+    - type: WEB
+      url: https://github.com/cilium/cilium/security/advisories/GHSA-gj49-89wh-h4gj
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-41520
+schema_version: 1.6.2
+summary: Cillium exposes sensitive information included in the cilium-bugtool debug archive
