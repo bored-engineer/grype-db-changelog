@@ -1,0 +1,36 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: pgbouncer
+        purl: pkg:bitnami/pgbouncer
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 1.25.2
+          events:
+            - fixed: 1.25.2
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-6666
+database_specific:
+    cpes:
+        - cpe:2.3:a:pgbouncer:pgbouncer:*:*:*:*:*:*:*:*
+    severity: Medium
+details: A possible null pointer reference in PgBouncer before 1.25.2 could lead to a crash, if a server sends an error response without SQLSTATE field.
+id: BIT-pgbouncer-2026-6666
+modified: "2026-05-12T09:14:35.689Z"
+published: "2026-05-12T08:52:53.259Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-6666
+    - type: WEB
+      url: https://www.pgbouncer.org/changelog.html#pgbouncer-125x
+schema_version: 1.6.2
+summary: PgBouncer crash in kill_pool_logins_server_error

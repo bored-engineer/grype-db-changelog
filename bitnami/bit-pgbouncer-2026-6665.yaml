@@ -1,0 +1,36 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: pgbouncer
+        purl: pkg:bitnami/pgbouncer
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 1.25.2
+          events:
+            - fixed: 1.25.2
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-6665
+database_specific:
+    cpes:
+        - cpe:2.3:a:pgbouncer:pgbouncer:*:*:*:*:*:*:*:*
+    severity: High
+details: The SCRAM code in PgBouncer before 1.25.2 did not check the return value of strlcat() correctly when building the contents of the SCRAM client-final-message. A malicious backend that sends a SCRAM server-final-message with a long nonce can trigger a stack overflow.
+id: BIT-pgbouncer-2026-6665
+modified: "2026-05-12T09:14:35.689Z"
+published: "2026-05-12T08:52:51.850Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-6665
+    - type: WEB
+      url: https://www.pgbouncer.org/changelog.html#pgbouncer-125x
+schema_version: 1.6.2
+summary: PgBouncer buffer overflow in SCRAM

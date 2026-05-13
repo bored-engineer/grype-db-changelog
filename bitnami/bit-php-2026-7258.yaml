@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: php
+        purl: pkg:bitnami/php
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 8.2.31
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 8.3.31
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 8.4.21
+                    - date: "2026-05-12"
+                      kind: advisory
+                      version: 8.5.6
+          events:
+            - fixed: 8.2.31
+            - fixed: 8.3.31
+            - fixed: 8.4.21
+            - fixed: 8.5.6
+            - introduced: 8.2.0
+            - introduced: 8.3.0
+            - introduced: 8.4.0
+            - introduced: 8.5.0
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:Amber
+          type: CVSS_V4
+aliases:
+    - CVE-2026-7258
+database_specific:
+    cpes:
+        - cpe:2.3:a:php:php:*:*:*:*:*:*:*:*
+    severity: Medium
+details: In PHP versions 8.2.* before 8.2.31, 8.3.* before 8.3.31, 8.4.* before 8.4.21, and 8.5.* before 8.5.6, some functions, including urldecode(), pass signed char to ctype functions (like isxdigit()). On the systems with default signed char and optimized table-lookup ctype functions - such as NetBSD - this can lead to accessing array with negative offset, which can trigger a denial of service.
+id: BIT-php-2026-7258
+modified: "2026-05-12T09:14:35.689Z"
+published: "2026-05-12T08:56:03.887Z"
+references:
+    - type: WEB
+      url: https://github.com/php/php-src/security/advisories/GHSA-m8rr-4c36-8gq4
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-7258
+schema_version: 1.6.2
+summary: Out-of-bounds read in urldecode() on NetBSD
