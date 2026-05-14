@@ -4,7 +4,14 @@ affected:
         name: minio
         purl: pkg:bitnami/minio
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-13"
+                      kind: advisory
+                      version: 2026.04.10
+          events:
+            - fixed: 2026.04.10
             - introduced: 2018.08.18
           type: SEMVER
       severity:
@@ -18,7 +25,7 @@ database_specific:
     severity: High
 details: 'MinIO is a high-performance object storage system. From RELEASE.2018-08-18T03-49-57Z to before RELEASE.2025-12-20T04-58-37Z, MinIO''s S3 Select feature is vulnerable to memory exhaustion when processing CSV files containing lines longer than available memory. The CSV reader''s nextSplit() function calls bufio.Reader.ReadBytes(''\n'') with no size limit, buffering the entire input in memory until a newline is found. A CSV file with no newline characters causes the entire contents to be read into a single allocation, leading to an OOM crash of the MinIO server process. This is exploitable by any authenticated user with s3:PutObject and s3:GetObject permissions. The attack is especially practical when combined with compression: a ~2 MB gzip-compressed CSV can decompress to gigabytes of data without newlines, allowing a small upload to cause large memory consumption on the server. However, compression is not required — a sufficiently large uncompressed CSV with no newlines triggers the same issue.'
 id: BIT-minio-2026-39414
-modified: "2026-04-13T10:42:00.723Z"
+modified: "2026-05-13T15:43:44.805Z"
 published: "2026-04-13T10:10:51.384Z"
 references:
     - type: WEB
