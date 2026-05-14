@@ -1,0 +1,25 @@
+Vulnerability:
+    Description: 'Rclone is a command-line program to sync files and directories to and from different cloud storage providers. The RC endpoint `options/set` is exposed without `AuthRequired: true`, but it can mutate global runtime configuration, including the RC option block itself. Starting in version 1.45.0 and prior to version 1.73.5, an unauthenticated attacker can set `rc.NoAuth=true`, which disables the authorization gate for many RC methods registered with `AuthRequired: true` on reachable RC servers that are started without global HTTP authentication. This can lead to unauthorized access to sensitive administrative functionality, including configuration and operational RC methods. Version 1.73.5 patches the issue. (CVE-2026-41176)Rclone is a command-line program to sync files and directories to and from different cloud storage providers. Starting in version 1.48.0 and prior to version 1.73.5, the RC endpoint `operations/fsinfo` is exposed without `AuthRequired: true` and accepts attacker-controlled `fs` input. Because `rc.GetFs(...)` supports inline backend definitions, an unauthenticated attacker can instantiate an attacker-controlled backend on demand. For the WebDAV backend, `bearer_token_command` is executed during backend initialization, making single-request unauthenticated local command execution possible on reachable RC deployments without global HTTP authentication. Version 1.73.5 patches the issue. (CVE-2026-41179)'
+    FixedIn:
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: rclone
+          NamespaceName: amzn:2
+          Version: 1.55.1-1.amzn2.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: rclone-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.55.1-1.amzn2.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3285.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-41176
+            - Name: CVE-2026-41179
+    Name: ALAS2-2026-3285
+    NamespaceName: amzn:2
+    Severity: High
