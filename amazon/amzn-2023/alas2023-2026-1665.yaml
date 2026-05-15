@@ -1,0 +1,25 @@
+Vulnerability:
+    Description: pip handles concatenated tar and ZIP files as ZIP files regardless of filename or whether a file is both a tar and ZIP file. This behavior could result in confusing installation behavior, such as installing "incorrect" files according to the filename of the archive. New behavior only proceeds with installation if the file identifies uniquely as a ZIP or tar archive, not as both. (CVE-2026-3219)pip prior to version 26.1 would run self-update check functionality after installing wheel files which required importing well-known Python modules names. These module imports were intentionally deferred to increase startup time of the pip CLI. The patch changes self-update functionality to run before wheels are installed to prevent newly-installed modules from being imported shortly after the installation of a wheel package. Users should still review package contents prior to installation. (CVE-2026-6357)
+    FixedIn:
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: python3.11-pip
+          NamespaceName: amzn:2023
+          Version: 22.3.1-2.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: python3.11-pip-wheel
+          NamespaceName: amzn:2023
+          Version: 22.3.1-2.amzn2023.0.12
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1665.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-3219
+            - Name: CVE-2026-6357
+    Name: ALAS2023-2026-1665
+    NamespaceName: amzn:2023
+    Severity: High
