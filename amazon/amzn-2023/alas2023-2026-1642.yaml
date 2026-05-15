@@ -1,0 +1,53 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: editorconfig-core-c  is an EditorConfig core library for use by plugins supporting EditorConfig parsing. Versions up to and including 0.12.10 have a stack-based buffer overflow in ec_glob() that allows an attacker to crash any application using libeditorconfig by providing a specially crafted directory structure and .editorconfig file. This is an incomplete fix for CVE-2023-0341. The pcre_str buffer was protected in 0.12.6 but the adjacent l_pattern[8194] stack buffer received no equivalent protection. On Ubuntu 24.04, FORTIFY_SOURCE converts the overflow to SIGABRT (DoS). Version 0.12.11 contains an updated fix. (CVE-2026-40489)
+    FixedIn:
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: editorconfig
+          NamespaceName: amzn:2023
+          Version: 0.12.11-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: editorconfig-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.12.11-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: editorconfig-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.12.11-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: editorconfig-devel
+          NamespaceName: amzn:2023
+          Version: 0.12.11-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: editorconfig-libs
+          NamespaceName: amzn:2023
+          Version: 0.12.11-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-14"
+            Kind: advisory
+          Name: editorconfig-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.12.11-2.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1642.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-40489
+    Name: ALAS2023-2026-1642
+    NamespaceName: amzn:2023
+    Severity: Medium
