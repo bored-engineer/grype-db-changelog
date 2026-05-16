@@ -1,0 +1,56 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: grafana
+        purl: pkg:bitnami/grafana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-15"
+                      kind: advisory
+                      version: 11.6.14
+                    - date: "2026-05-15"
+                      kind: advisory
+                      version: 12.2.8
+                    - date: "2026-05-15"
+                      kind: advisory
+                      version: 12.3.6
+                    - date: "2026-05-15"
+                      kind: advisory
+                      version: 12.4.3
+                    - date: "2026-05-15"
+                      kind: advisory
+                      version: 13.0.1
+          events:
+            - fixed: 11.6.14
+            - fixed: 12.2.8
+            - fixed: 12.3.6
+            - fixed: 12.4.3
+            - fixed: 13.0.1
+            - introduced: 11.6.0
+            - introduced: 12.0.0
+            - introduced: 12.3.0
+            - introduced: 12.4.0
+            - introduced: 13.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-33380
+database_specific:
+    cpes:
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:*:go:*:*
+    severity: Medium
+details: A vulnerability in SQL Expressions allows an authenticated attacker to read arbitrary files from the Grafana server's filesystem. Only instances with the sqlExpressions feature toggle enabled are vulnerable.
+id: BIT-grafana-2026-33380
+modified: "2026-05-15T09:12:54.074Z"
+published: "2026-05-15T08:42:49.081Z"
+references:
+    - type: WEB
+      url: https://grafana.com/security/security-advisories/cve-2026-33380
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-33380
+schema_version: 1.6.2
+summary: SQL Expressions Read File From Disk
