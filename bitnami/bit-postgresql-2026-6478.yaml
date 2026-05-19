@@ -1,0 +1,57 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: postgresql
+        purl: pkg:bitnami/postgresql
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 14.23.0
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 15.18.0
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 16.14.0
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 17.10.0
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 18.4.0
+          events:
+            - introduced: "0"
+            - fixed: 14.23.0
+            - introduced: 15.0.0
+            - fixed: 15.18.0
+            - introduced: 16.0.0
+            - fixed: 16.14.0
+            - introduced: 17.0.0
+            - fixed: 17.10.0
+            - introduced: 18.0.0
+            - fixed: 18.4.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-6478
+database_specific:
+    cpes:
+        - cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Covert timing channel in comparison of MD5-hashed password in PostgreSQL authentication allows an attacker to recover user credentials sufficient to authenticate.  This does not affect scram-sha-256 passwords, the default in all supported releases.  However, current databases may have MD5-hashed passwords originating in upgrades from PostgreSQL 13 or earlier.  Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.
+id: BIT-postgresql-2026-6478
+modified: "2026-05-18T06:13:08.477Z"
+published: "2026-05-18T05:53:06.189Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-6478
+    - type: WEB
+      url: https://www.postgresql.org/support/security/CVE-2026-6478/
+schema_version: 1.6.2
+summary: PostgreSQL discloses MD5-hashed passwords via covert timing channel
