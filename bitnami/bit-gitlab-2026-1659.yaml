@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 18.10.6
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 18.11.3
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 18.9.7
+          events:
+            - fixed: 18.10.6
+            - fixed: 18.11.3
+            - fixed: 18.9.7
+            - introduced: 18.10.0
+            - introduced: 18.11.0
+            - introduced: 9.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-1659
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: High
+details: GitLab has remediated an issue in GitLab CE/EE affecting all versions from 9.0 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an unauthenticated user to cause denial of service by sending specially crafted requests due to insufficient input validation.
+id: BIT-gitlab-2026-1659
+modified: "2026-05-18T06:13:08.477Z"
+published: "2026-05-18T06:10:07.888Z"
+references:
+    - type: WEB
+      url: https://about.gitlab.com/releases/2026/05/13/patch-release-gitlab-18-11-3-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/work_items/588201
+    - type: WEB
+      url: https://hackerone.com/reports/3519824
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-1659
+schema_version: 1.6.2
+summary: Allocation of Resources Without Limits or Throttling in GitLab

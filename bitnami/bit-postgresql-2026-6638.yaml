@@ -1,0 +1,46 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: postgresql
+        purl: pkg:bitnami/postgresql
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 16.14.0
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 17.10.0
+                    - date: "2026-05-18"
+                      kind: advisory
+                      version: 18.4.0
+          events:
+            - fixed: 16.14.0
+            - fixed: 17.10.0
+            - fixed: 18.4.0
+            - introduced: 16.0.0
+            - introduced: 17.0.0
+            - introduced: 18.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-6638
+database_specific:
+    cpes:
+        - cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*
+    severity: Low
+details: SQL injection in PostgreSQL logical replication ALTER SUBSCRIPTION ... REFRESH PUBLICATION allows a subscriber table creator to execute arbitrary SQL with the subscription's publication-side credentials.  The attack takes effect at the next REFRESH PUBLICATION.  Within major versions 16, 17, and 18, minor versions before PostgreSQL 18.4, 17.10, and 16.14 are affected.  Versions before PostgreSQL 16 are unaffected.
+id: BIT-postgresql-2026-6638
+modified: "2026-05-18T06:13:08.477Z"
+published: "2026-05-18T05:53:12.118Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-6638
+    - type: WEB
+      url: https://www.postgresql.org/support/security/CVE-2026-6638/
+schema_version: 1.6.2
+summary: PostgreSQL REFRESH PUBLICATION allows SQL injection via table name
