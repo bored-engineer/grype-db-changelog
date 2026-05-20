@@ -1,0 +1,56 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: flink
+        purl: pkg:bitnami/flink
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-19"
+                      kind: advisory
+                      version: 1.20.4
+                    - date: "2026-05-19"
+                      kind: advisory
+                      version: 2.0.2
+                    - date: "2026-05-19"
+                      kind: advisory
+                      version: 2.1.1
+                    - date: "2026-05-19"
+                      kind: advisory
+                      version: 2.2.1
+          events:
+            - fixed: 1.20.4
+            - fixed: 2.0.2
+            - fixed: 2.1.1
+            - fixed: 2.2.1
+            - introduced: 1.15.0
+            - introduced: 2.0.0
+            - introduced: 2.1.0
+            - introduced: 2.2.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-35194
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:flink:*:*:*:*:*:*:*:*
+    severity: High
+details: |-
+    Code injection in SQL code generation in Apache Flink 1.15.0 through 1.20.x and 2.0.0 through 2.x allows authenticated users with query submission privileges to execute arbitrary code on TaskManagers via maliciously crafted SQL queries. The vulnerability affects JSON functions (1.15.0+) and LIKE expressions with ESCAPE clauses (1.17.0+). User-controlled strings are interpolated into generated Java code without proper escaping, allowing attackers to break out of string literals and inject arbitrary expressions.
+
+    Users are recommended to upgrade to either version 1.20.4, 2.0.2, 2.1.2 or 2.2.1, which fixes this issue.
+id: BIT-flink-2026-35194
+modified: "2026-05-19T09:16:23.954Z"
+published: "2026-05-19T08:43:28.119Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/05/15/20
+    - type: WEB
+      url: https://lists.apache.org/thread/qh52bw4hhvy7n2owd8b3bt51mz0lvj9x
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-35194
+schema_version: 1.6.2
+summary: 'Apache Flink: Remote code execution via SQL injection in code generation'
