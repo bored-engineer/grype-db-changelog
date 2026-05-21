@@ -5,8 +5,15 @@ affected:
         name: python-min
         purl: pkg:bitnami/python-min
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-29"
+                      kind: advisory
+                      version: 3.14.5
+          events:
             - introduced: "0"
+            - fixed: 3.14.5
           type: SEMVER
       severity:
         - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
@@ -19,7 +26,7 @@ database_specific:
     severity: Medium
 details: If `shutil.unpack_archive()` is given a ZIP archive with an absolute Windows path containing a drive (`C:\\...`) then the archive will be extracted outside the target directory which is different than other operating systems. Only Windows is affected by this vulnerability.
 id: BIT-python-min-2026-3087
-modified: "2026-04-30T09:12:59.139Z"
+modified: "2026-05-20T16:54:12.697Z"
 published: "2026-04-29T11:50:18.934Z"
 references:
     - type: WEB

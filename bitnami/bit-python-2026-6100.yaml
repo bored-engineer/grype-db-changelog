@@ -5,8 +5,15 @@ affected:
         name: python
         purl: pkg:bitnami/python
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-16"
+                      kind: advisory
+                      version: 3.14.5
+          events:
             - introduced: "0"
+            - fixed: 3.14.5
           type: SEMVER
       severity:
         - score: CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
@@ -22,7 +29,7 @@ details: |-
 
     The vulnerability is only present if the program re-uses decompressor instances across multiple decompression calls even after a `MemoryError` is raised during decompression. Using the helper functions to one-shot decompress data such as `lzma.decompress()`, `bz2.decompress()`, `gzip.decompress()`, and `zlib.decompress()` are not affected as a new decompressor instance is used per call. If the decompressor instance is not re-used after an error condition, this usage is similarly not vulnerable.
 id: BIT-python-2026-6100
-modified: "2026-04-21T12:33:30.555Z"
+modified: "2026-05-20T16:54:12.697Z"
 published: "2026-04-16T23:50:36.926Z"
 references:
     - type: WEB
