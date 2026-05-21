@@ -4,7 +4,14 @@ affected:
         name: python
         purl: pkg:bitnami/python
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-04-16"
+                      kind: advisory
+                      version: 3.14.5
+          events:
+            - fixed: 3.14.5
             - introduced: "0"
           type: SEMVER
       severity:
@@ -18,7 +25,7 @@ database_specific:
     severity: High
 details: Mitgation of CVE-2026-4519 was incomplete. If the URL contained "%action" the mitigation could be bypassed for certain browser types the "webbrowser.open()" API could have commands injected into the underlying shell. See CVE-2026-4519 for details.
 id: BIT-python-2026-4786
-modified: "2026-04-30T09:12:59.139Z"
+modified: "2026-05-20T16:54:12.697Z"
 published: "2026-04-16T23:50:33.477Z"
 references:
     - type: WEB
