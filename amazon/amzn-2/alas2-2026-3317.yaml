@@ -1,0 +1,39 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: pip prior to version 26.1 would run self-update check functionality after installing wheel files which required importing well-known Python modules names. These module imports were intentionally deferred to increase startup time of the pip CLI. The patch changes self-update functionality to run before wheels are installed to prevent newly-installed modules from being imported shortly after the installation of a wheel package. Users should still review package contents prior to installation. (CVE-2026-6357)
+    FixedIn:
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: python-pip
+          NamespaceName: amzn:2
+          Version: 20.2.2-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: python-pip-wheel
+          NamespaceName: amzn:2
+          Version: 20.2.2-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: python2-pip
+          NamespaceName: amzn:2
+          Version: 20.2.2-1.amzn2.0.17
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: python3-pip
+          NamespaceName: amzn:2
+          Version: 20.2.2-1.amzn2.0.17
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3317.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-6357
+    Name: ALAS2-2026-3317
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,37 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Actions which insert URLs into the content attribute of HTML meta tags are not escaped. This can allow XSS if the meta tag also has an http-equiv attribute with the value "refresh". A new GODEBUG setting has been added, htmlmetacontenturlescape, which can be used to disable escaping URLs in actions in the meta content attribute which follow "url=" by setting htmlmetacontenturlescape=0. (CVE-2026-27142)When using LookupCNAME with the cgo DNS resolver, a very long CNAME response can trigger a double-free of C memory and a crash. (CVE-2026-33811)When processing HTTP/2 SETTINGS frames, transport will enter an infinite loop of writing CONTINUATION frames if it receives a SETTINGS_MAX_FRAME_SIZE with a value of 0. (CVE-2026-33814)Well-crafted inputs reaching ParseAddress, ParseAddressList, and ParseDate were able to trigger excessive CPU exhaustion and memory allocations. (CVE-2026-39820)CVE-2026-27142 fixed a vulnerability in which URLs were not correctly escaped inside of a <meta> tag's <content> attribute. If the URL content were to insert ASCII whitespaces around the '=' rune inside of the <content> attribute, the escaper would fail to similarly escape it, leading to XSS. (CVE-2026-39823)Pathological inputs could cause DoS through consumePhrase when parsing an email address according to RFC 5322. (CVE-2026-42499)
+    FixedIn:
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: git-lfs
+          NamespaceName: amzn:2023
+          Version: 3.7.1-80.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: git-lfs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.7.1-80.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: git-lfs-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.7.1-80.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1722.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-27142
+            - Name: CVE-2026-33811
+            - Name: CVE-2026-33814
+            - Name: CVE-2026-39820
+            - Name: CVE-2026-39823
+            - Name: CVE-2026-42499
+    Name: ALAS2023-2026-1722
+    NamespaceName: amzn:2023
+    Severity: High

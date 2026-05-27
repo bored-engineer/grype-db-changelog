@@ -1,0 +1,87 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: GnuTLS didn't check that DTLS fragments claimed a consistent message_length value. Additionally, a crucial array size check was missing, enabling an attacker to cause a heap overwrite. (CVE-2026-33846)A flaw was found in gnutls. This vulnerability occurs because gnutls performs case-sensitive comparisons of `nameConstraints` labels, specifically for `dNSName` (DNS) or `rfc822Name` (email) constraints within `excludedSubtrees` or `permittedSubtrees`. A remote attacker can exploit this by crafting a leaf certificate with casing differences in the Subject Alternative Name (SAN), leading to a policy bypass where a certificate that should be rejected is instead accepted. This could result in unauthorized access or information disclosure. (CVE-2026-3833)The comparator function used for ordering DTLS packets by sequence numbers did not follow qsort comparator contracts in case of packets with duplicate sequence numbers, which could lead to undefined behaviour. (CVE-2026-42009)Servers configured with RSA-PSK wrongfully matched usernames with NUL character in them to ones truncated to NUL character, which could lead to an authentication bypass. (CVE-2026-42010)Changing the Security Officer PIN with gnutls_pkcs11_token_set_pin() with oldpin == NULL for a token lacking a protected authentication path led to a use-after-free. (CVE-2026-42014)Appending to a PKCS#12 bag that already contained 32 elements could write past the bag's internal array. (CVE-2026-42015)For a server using an RSA key backed by a PKCS#11 token, a client sending an extremely short premaster secret during an RSA key exchange could trigger a short heap overread. (CVE-2026-5260)
+    FixedIn:
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-c++
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-c++-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-dane
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-dane-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-devel
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-utils
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: gnutls-utils-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.8.3-8.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1757.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-33846
+            - Name: CVE-2026-3833
+            - Name: CVE-2026-42009
+            - Name: CVE-2026-42010
+            - Name: CVE-2026-42014
+            - Name: CVE-2026-42015
+            - Name: CVE-2026-5260
+    Name: ALAS2023-2026-1757
+    NamespaceName: amzn:2023
+    Severity: High
