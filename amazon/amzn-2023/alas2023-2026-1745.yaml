@@ -1,0 +1,91 @@
+Vulnerability:
+    Description: Vulnerability in the OpenSSH GSSAPI delta included in various Linux distributions. This vulnerability affects the GSSAPI patches added by various Linux distributions and does not affect the OpenSSH upstream project itself. The usage of sshpkt_disconnect() on an error, which does not terminate the process, allows an attacker to send an unexpected GSSAPI message type during the GSSAPI key exchange to the server, which will call the underlying function and continue the execution of the program without setting the related connection variables. As the variables are not initialized to NULL the code later accesses those uninitialized variables, accessing random memory, which could lead to undefined behavior. The recommended workaround is to use ssh_packet_disconnect() instead, which does terminate the process. The impact of the vulnerability depends heavily on the compiler flag hardening configuration. (CVE-2026-3497)In OpenSSH before 10.3, command execution can occur via shell metacharacters in a username within a command line. This requires a scenario where the username on the command line is untrusted, and also requires a non-default configurations of % in ssh_config. (CVE-2026-35386)OpenSSH before 10.3 can use unintended ECDSA algorithms. Listing of any ECDSA algorithm in PubkeyAcceptedAlgorithms or HostbasedAcceptedAlgorithms is misinterpreted to mean all ECDSA algorithms. (CVE-2026-35387)OpenSSH before 10.3 omits connection multiplexing confirmation for proxy-mode multiplexing sessions. (CVE-2026-35388)OpenSSH before 10.3 mishandles the authorized_keys principals option in uncommon scenarios involving a principals list in conjunction with a Certificate Authority that makes certain use of comma characters. (CVE-2026-35414)
+    FixedIn:
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh-clients
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh-clients-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh-debugsource
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh-keycat
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh-keycat-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh-server
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: openssh-server-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.7p1-8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: pam_ssh_agent_auth
+          NamespaceName: amzn:2023
+          Version: 0.10.4-4.8.amzn2023.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: pam_ssh_agent_auth-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.10.4-4.8.amzn2023.0.18
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1745.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-3497
+            - Name: CVE-2026-35386
+            - Name: CVE-2026-35387
+            - Name: CVE-2026-35388
+            - Name: CVE-2026-35414
+    Name: ALAS2023-2026-1745
+    NamespaceName: amzn:2023
+    Severity: Medium

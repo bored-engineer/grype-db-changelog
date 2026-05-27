@@ -1,0 +1,40 @@
+Vulnerability:
+    Description: Redis is an in-memory data structure store. In redis-server from 7.2.0 until 8.6.3, the unblock client flow does not handle an error return from `processCommandAndResetClient` when re-executing a blocked command. If a blocked client is evicted during this flow, an authenticated attacker can trigger a use-after-free that may lead to remote code execution. This has been patched in version 8.6.3. (CVE-2026-23479)Redis is an in-memory data structure store. In all versions of redis-server with Lua scripting, an authenticated attacker can exploit the master-replica synchronization mechanism to trigger a use-after-free on replicas where replica-read-only is disabled or can be disabled, which may lead to remote code execution. A workaround is to prevent users from executing Lua scripts or avoid using replicas where replica-read-only is disabled. This is patched in version 8.6.3. (CVE-2026-23631)Redis is an in-memory data structure store. In versions of redis-server up to 8.6.3, the RESTORE command does not properly validate serialized values. An authenticated attacker with permission to execute RESTORE can supply a crafted serialized payload that triggers invalid memory access and may lead to remote code execution. A workaround is to restrict access to the RESTORE command with ACL rules. This is patched in version 8.6.3. (CVE-2026-25243)
+    FixedIn:
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: valkey
+          NamespaceName: amzn:2023
+          Version: 9.0.4-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: valkey-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.0.4-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: valkey-debugsource
+          NamespaceName: amzn:2023
+          Version: 9.0.4-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: valkey-devel
+          NamespaceName: amzn:2023
+          Version: 9.0.4-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1748.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-23479
+            - Name: CVE-2026-23631
+            - Name: CVE-2026-25243
+    Name: ALAS2023-2026-1748
+    NamespaceName: amzn:2023
+    Severity: High

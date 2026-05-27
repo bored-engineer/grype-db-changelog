@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: The twisted.names module is vulnerable to a Denial of Service (DoS) attack via resource exhaustion during DNS name decompression. A remote, unauthenticated attacker can exploit this by sending a crafted TCP DNS packet containing deeply chained compression pointers. This flaw bypasses previous loop-prevention logic, causing the single-threaded Twisted reactor to hang while processing millions of recursive lookups, effectively freezing the server. (CVE-2026-42304)
+    FixedIn:
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: python-twisted
+          NamespaceName: amzn:2023
+          Version: 22.4.0-129.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: python3-twisted
+          NamespaceName: amzn:2023
+          Version: 22.4.0-129.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-05-26"
+            Kind: advisory
+          Name: python3-twisted+tls
+          NamespaceName: amzn:2023
+          Version: 22.4.0-129.amzn2023.0.6
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1734.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-42304
+    Name: ALAS2023-2026-1734
+    NamespaceName: amzn:2023
+    Severity: High
