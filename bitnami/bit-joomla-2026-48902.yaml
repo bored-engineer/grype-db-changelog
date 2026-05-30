@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: joomla
+        purl: pkg:bitnami/joomla
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-29"
+                      kind: advisory
+                      version: 5.4.6
+                    - date: "2026-05-29"
+                      kind: advisory
+                      version: 6.1.1
+          events:
+            - fixed: 5.4.6
+            - fixed: 6.1.1
+            - introduced: 3.0.0
+            - introduced: 6.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-48902
+database_specific:
+    cpes:
+        - cpe:2.3:a:joomla:joomla!:*:*:*:*:*:*:*:*
+    severity: Critical
+details: The password and username reset features created plain http links for https connections if the "Force SSL" flag wasn't explicitly set.
+id: BIT-joomla-2026-48902
+modified: "2026-05-29T09:07:36.285Z"
+published: "2026-05-29T08:44:46.031Z"
+references:
+    - type: WEB
+      url: https://developer.joomla.org/security-centre/1050-20260518-core-transport-encryption-downgrade-for-password-and-username-reset-links.html
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-48902
+schema_version: 1.6.2
+summary: Joomla! Core - [20260518] - Transport encryption downgrade for password and username reset links
