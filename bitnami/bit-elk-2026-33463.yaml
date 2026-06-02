@@ -1,0 +1,42 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elk
+        purl: pkg:bitnami/elk
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-01"
+                      kind: advisory
+                      version: 8.19.16
+                    - date: "2026-06-01"
+                      kind: advisory
+                      version: 9.3.5
+          events:
+            - introduced: 8.0.0
+            - fixed: 8.19.16
+            - introduced: 9.0.0
+            - fixed: 9.3.5
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-33463
+database_specific:
+    cpes:
+        - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Operation on a Resource after Expiration or Termination (CWE-672) in Kibana can lead to unauthorized information disclosure. A logic error in how expiration timestamps were validated allowed a time-bounded access token to remain usable beyond its intended validity window, enabling an unauthenticated actor in possession of the token to retrieve the associated content after expiration.
+id: BIT-elk-2026-33463
+modified: "2026-06-01T12:05:25.064Z"
+published: "2026-06-01T11:39:09.271Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/8-19-16-9-3-5-security-update-esa-2026-33/386551
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-33463
+schema_version: 1.6.2
+summary: Operation on a Resource after Expiration or Termination in Kibana Leading to Unauthorized File Access
