@@ -1,0 +1,46 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: kibana
+        purl: pkg:bitnami/kibana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-01"
+                      kind: advisory
+                      version: 8.19.16
+                    - date: "2026-06-01"
+                      kind: advisory
+                      version: 9.3.5
+                    - date: "2026-06-01"
+                      kind: advisory
+                      version: 9.4.2
+          events:
+            - fixed: 8.19.16
+            - fixed: 9.3.5
+            - fixed: 9.4.2
+            - introduced: 8.0.0
+            - introduced: 9.0.0
+            - introduced: 9.4.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-49095
+database_specific:
+    cpes:
+        - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Improper Input Validation (CWE-20) in the Kibana Fleet agent policy management feature can lead to privilege escalation. An authenticated user with Fleet management privileges can manipulate agent policy configuration by injecting values into a configuration override mechanism that is not adequately validated. An attacker can cause Elastic Agents to be issued API keys with elevated Elasticsearch privileges, potentially granting unauthorized read and write access to sensitive Elasticsearch security indices beyond what is intended for the Fleet management role.
+id: BIT-kibana-2026-49095
+modified: "2026-06-01T12:05:25.064Z"
+published: "2026-06-01T11:42:58.198Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/kibana-fleet-8-19-16-9-3-5-and-9-4-2-security-update-esa-2026-38/386559
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-49095
+schema_version: 1.6.2
+summary: Improper Input Validation in Kibana Fleet Leading to Privilege Escalation
