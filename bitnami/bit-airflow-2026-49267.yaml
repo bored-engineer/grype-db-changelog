@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: airflow
+        purl: pkg:bitnami/airflow
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-05"
+                      kind: advisory
+                      version: 3.2.2
+          events:
+            - fixed: 3.2.2
+            - introduced: 2.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-49267
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:airflow:*:*:*:*:*:python:*:*
+    severity: Medium
+details: |-
+    Apache Airflow's EmailOperator and the underlying `airflow.utils.email` helpers established SMTP STARTTLS connections without verifying the remote certificate when the deployment used `[email] smtp_starttls=True` without `[email] smtp_ssl`. An attacker positioned between the worker and the configured SMTP server (network MITM — typical hostile-network attack-surface for environments where the SMTP relay sits outside the worker's trust boundary) could present a self-signed certificate, have the worker complete the STARTTLS handshake silently, and capture the SMTP AUTH credentials and message contents the worker forwarded.
+
+    This CVE covers the **core apache-airflow side** of the same root cause already covered for the SMTP provider by `CVE-2026-41016` (published 2026-04-27, covering `apache-airflow-providers-smtp`). Users who already applied the SMTP-provider fix from CVE-2026-41016 should additionally upgrade `apache-airflow` to 3.2.2 or later to cover the core-side path through `airflow.utils.email`. Affects deployments configured with `smtp_starttls=True` and `smtp_ssl=False` where the SMTP relay is reachable across a less-trusted network segment than the worker.
+
+    Users are advised to upgrade to `apache-airflow` 3.2.2 or later.
+id: BIT-airflow-2026-49267
+modified: "2026-06-05T06:08:58.631Z"
+published: "2026-06-05T05:40:51.158Z"
+references:
+    - type: WEB
+      url: https://github.com/apache/airflow/pull/65346
+    - type: WEB
+      url: https://lists.apache.org/thread/6v2ds757000msmjmovnnqryqzks83ps0
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-49267
+schema_version: 1.6.2
+summary: 'Apache Airflow: No certificate validation on SMTP STARTTLS connections'

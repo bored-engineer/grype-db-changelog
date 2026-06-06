@@ -1,0 +1,40 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: airflow
+        purl: pkg:bitnami/airflow
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-05"
+                      kind: advisory
+                      version: 3.2.2
+          events:
+            - fixed: 3.2.2
+            - introduced: 3.2.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-41014
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:airflow:*:*:*:*:*:python:*:*
+    severity: Medium
+details: The partitioned_dag_runs endpoints in the Airflow UI enforced only asset-level access control, not per-Dag authorization. An authenticated UI/API user with global Asset:read permission could enumerate partition run state, schedule configuration, and asset wiring for Dags they were not authorized to read. Affects deployments that rely on per-Dag read scoping while granting users broader Asset access. Users are advised to upgrade to `apache-airflow` 3.2.2 or later.
+id: BIT-airflow-2026-41014
+modified: "2026-06-05T06:08:58.631Z"
+published: "2026-06-05T05:40:32.703Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/05/31/4
+    - type: WEB
+      url: https://github.com/apache/airflow/pull/65344
+    - type: WEB
+      url: https://lists.apache.org/thread/12nbzwwby7g883w2j13gn7ny1545xob9
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-41014
+schema_version: 1.6.2
+summary: 'Apache Airflow: per-DAG RBAC bypass on /ui/partitioned_dag_runs endpoints'

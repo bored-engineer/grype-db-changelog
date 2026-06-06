@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: authentik
+        purl: pkg:bitnami/authentik
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-05"
+                      kind: advisory
+                      version: 2025.12.5
+                    - date: "2026-06-05"
+                      kind: advisory
+                      version: 2026.2.3
+          events:
+            - fixed: 2025.12.5
+            - fixed: 2026.2.3
+            - introduced: "0"
+            - introduced: 2026.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-42849
+database_specific:
+    cpes:
+        - cpe:2.3:a:goauthentik:authentik:*:*:*:*:*:*:*:*
+    severity: Critical
+details: authentik is an open-source identity provider. Prior to versions 2025.12.5 and 2026.2.3, due to the implementation of stages in the SFE (Simple Flow Executor) in order to make the interface more compatible with legacy browsers, it was possible to use an XSS exploit in the AutosubmitStage. This issue has been patched in versions 2025.12.5 and 2026.2.3.
+id: BIT-authentik-2026-42849
+modified: "2026-06-05T06:08:58.631Z"
+published: "2026-06-05T05:38:23.946Z"
+references:
+    - type: WEB
+      url: https://github.com/goauthentik/authentik/security/advisories/GHSA-pgff-5mx8-fqj3
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-42849
+schema_version: 1.6.2
+summary: 'authentik: Reflected XSS in SFE AutosubmitStage allows IDP account takeover'
