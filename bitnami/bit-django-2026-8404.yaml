@@ -1,0 +1,50 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: django
+        purl: pkg:bitnami/django
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-06"
+                      kind: advisory
+                      version: 5.2.15
+                    - date: "2026-06-06"
+                      kind: advisory
+                      version: 6.0.6
+          events:
+            - introduced: 5.2.0
+            - fixed: 5.2.15
+            - introduced: 6.0.0
+            - fixed: 6.0.6
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:L/VI:N/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-8404
+database_specific:
+    cpes:
+        - cpe:2.3:a:djangoproject:django:*:*:*:*:*:*:*:*
+    severity: Low
+details: |-
+    An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.
+    `django.middleware.cache.UpdateCacheMiddleware` in Django does not match `Cache-Control` response directives case-insensitively, which allows remote attackers to read responses that were incorrectly cached because their `Cache-Control` directives used uppercase or mixed-case values.
+    Earlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.
+    Django would like to thank Ahmed Badawe for reporting this issue.
+id: BIT-django-2026-8404
+modified: "2026-06-06T09:05:43.229Z"
+published: "2026-06-06T08:39:25.918Z"
+references:
+    - type: WEB
+      url: https://docs.djangoproject.com/en/dev/releases/security/
+    - type: WEB
+      url: https://groups.google.com/g/django-announce
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-8404
+    - type: WEB
+      url: https://www.djangoproject.com/weblog/2026/jun/03/security-releases/
+schema_version: 1.6.2
+summary: Potential exposure of private data via case-sensitive Cache-Control directives in UpdateCacheMiddleware
