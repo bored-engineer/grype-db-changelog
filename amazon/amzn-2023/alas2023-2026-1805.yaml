@@ -1,0 +1,27 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Archive::Tar versions before 3.08 for Perl extract symlinks with attacker controlled targets outside the extraction directory.  _make_special_file() passes the tar header''s linkname to symlink() without validating it against absolute paths or .. segments. The secure-extract mode check that guards regular file extraction does not cover the symlink target.  A subsequent open through the extracted name reads or writes the attacker chosen path.NOTE: https://lists.security.metacpan.org/cve-announce/msg/40396459/ (CVE-2026-42496)Archive::Tar versions before 3.08 for Perl extract hardlinks to attacker controlled paths outside the extraction directory.  _make_special_file() passes the tar header''s linkname to link() without validating it against absolute paths or .. segments, creating a hardlink that shares the victim file''s inode.  A subsequent write through the extracted name modifies the victim file, and the post-extraction chmod, chown, and utime block in _extract_file() (guarded only against symlinks via -l) applies the tar header''s mode, owner, and timestamps to the shared inode during extraction alone.NOTE: https://lists.security.metacpan.org/cve-announce/msg/40396457/ (CVE-2026-42497)Archive::Tar versions before 3.10 for Perl allow memory exhaustion via attacker controlled entry size field in tar header.  _read_tar() reads each entry''s payload with $handle->read($$data, $block), where $block is derived from the entry''s 12-byte size field in the tar header with no upper bound on that value.  A crafted header declaring a multi-gigabyte size causes Perl to allocate a scalar of that size.NOTE: https://lists.security.metacpan.org/cve-announce/msg/40396448/ (CVE-2026-9538)'
+    FixedIn:
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: perl-Archive-Tar
+          NamespaceName: amzn:2023
+          Version: 3.04-522.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: perl-Archive-Tar-tests
+          NamespaceName: amzn:2023
+          Version: 3.04-522.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1805.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-42496
+            - Name: CVE-2026-42497
+            - Name: CVE-2026-9538
+    Name: ALAS2023-2026-1805
+    NamespaceName: amzn:2023
+    Severity: High

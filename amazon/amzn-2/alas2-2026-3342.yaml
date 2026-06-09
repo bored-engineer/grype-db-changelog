@@ -1,0 +1,25 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: XML::LibXML versions through 2.0210 for Perl read out-of-bounds heap memory when parsing XML node names containing truncated UTF-8 byte sequences.A node name ending in the middle of a multi byte UTF-8 sequence causes the parser to read past the end of the input string into adjacent heap memory.Any Perl process that passes attacker controlled strings to XML::LibXML's DOM node-name methods can reach this path on the default API. The likely consequence is a crash, causing denial of service. (CVE-2026-8177)
+    FixedIn:
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: perl-XML-LibXML
+          NamespaceName: amzn:2
+          Version: 2.0018-5.amzn2.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: perl-XML-LibXML-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.0018-5.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3342.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-8177
+    Name: ALAS2-2026-3342
+    NamespaceName: amzn:2
+    Severity: Medium

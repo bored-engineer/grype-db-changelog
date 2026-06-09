@@ -1,0 +1,25 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: YAML::Syck versions before 1.38 for Perl  has an out-of-bounds read.The base60 (sexagesimal) parsing code in perl_syck.h has a buffer underflow bug in both int#base60 and float#base60 handlers. When processing the leftmost segment of a colon-separated value (e.g., the 1 in 1:30:45), the inner while loop can decrement a pointer past the start of the string buffer:while ( colon >= ptr && *colon != ':' ){colon--;}if ( *colon == ':' ) *colon = '\0';  // colon may be ptr-1 hereWhen no colon is found (final/leftmost segment), colon becomes ptr-1, and the subsequent *colon dereference reads one byte before the allocated buffer. (CVE-2026-5089)
+    FixedIn:
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: perl-YAML-Syck
+          NamespaceName: amzn:2
+          Version: 1.27-3.amzn2.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: perl-YAML-Syck-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.27-3.amzn2.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3327.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-5089
+    Name: ALAS2-2026-3327
+    NamespaceName: amzn:2
+    Severity: Medium
