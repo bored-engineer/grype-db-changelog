@@ -1,0 +1,68 @@
+Vulnerability:
+    Description: libheif is a HEIF and AVIF file format decoder and encoder. Versions 1.21.2 and prior contain a heap-buffer-overflow (write) vulnerability in the grid tile compositing, allowing an attacker to write 64 bytes of fully attacker-controlled data past the end of a chroma plane heap allocation by crafting a HEIF/AVIF file with a 1x4 grid of odd-height tiles. The overflow is triggered during normal image decoding with default build configuration. The written bytes are chroma (Cb/Cr) pixel values from the attacking tile, giving the attacker full control over the overflow content. This issue has been fixed in version 1.22.0. (CVE-2026-32740)libheif is a HEIF and AVIF file format decoder and encoder. Versions 1.21.2 and below contain a heap buffer overflow in MaskImageCodec::decode_mask_image(). When decoding a HEIF file containing a mask image (mski), the function copies the full iloc extent data into a pixel buffer using memcpy(dst, data.data(), data.size()). The copy length data.size() is determined by the iloc extent in the file (attacker-controlled), while the destination buffer is sized based on the declared image dimensions. Because no upper-bound check exists on the data length, a crafted file whose iloc extent exceeds the pixel buffer allocation overflows the heap. The vulnerable single-memcpy branch is reached when the mskC property specifies bits_per_pixel = 8 and the ispe property declares an even width >= 64 (so that stride == width), with no changes to default security limits or external codec plugins required. This issue has been fixed in version 1.22.0. (CVE-2026-32741)libheif is a HEIF and AVIF file format decoder and encoder. Versions 1.21.2 and prior contain a heap buffer over-read in HeifPixelImage::overlay() in libheif/pixelimage.cc. When compositing an overlay image (iovl) whose child image has a different bit depth for the alpha channel than for the color channels, the function indexes into the alpha plane using the color channel stride (in_stride) instead of the previously retrieved alpha_stride, causing reads past the end of the alpha buffer (up to 3,123 bytes for a 100x50 image with 10-bit color and 8-bit alpha). A crafted HEIF file can exploit this to cause a denial of service (crash) or potentially disclose adjacent heap memory through leaked bytes embedded in the decoded output pixels. This issue has been fixed in versionThis issue has been fixed in version 1.22.0. (CVE-2026-32882)
+    FixedIn:
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: heif-pixbuf-loader
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: heif-pixbuf-loader-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: libheif
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: libheif-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: libheif-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: libheif-devel
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: libheif-tools
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: libheif-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1814.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-32740
+            - Name: CVE-2026-32741
+            - Name: CVE-2026-32882
+    Name: ALAS2023-2026-1814
+    NamespaceName: amzn:2023
+    Severity: High

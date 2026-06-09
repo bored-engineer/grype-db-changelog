@@ -1,0 +1,83 @@
+Vulnerability:
+    Description: 'Permitted name constraints were wrongfully ignored when prior CAs only had excluded name constraints, resulting in a name constraint bypass. The issue was reported in the issue tracker as #1824 by Haruto Kimura (Stella). (CVE-2026-42011)Certificates containing URI or SRV Subject Alternative Names would fall back to checking DNS hostnames against Common Name, allowing potential misuse of such certificates beyond their original purpose. The issue was reported in the issue tracker as #1802 by Oleh Konko (1seal). (CVE-2026-42012)Validation of certificates with oversized Subject Alternative Names would fall back to checking DNS hostnames against Common Name. (CVE-2026-42013)The PKCS#7 padding check performed during decryption was not constant-time, potentially leaking information about the padding bytes through timing differences. The issue was reported in the issue tracker as #1815 by Doria Tang of Stony Brook University.Recommendation: To address the issue found, upgrade to GnuTLS 3.8.13 or later versions. (CVE-2026-5419)'
+    FixedIn:
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-c++
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-c++-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-dane
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-dane-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-devel
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-utils
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-utils-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.8.10-4.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1808.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-42011
+            - Name: CVE-2026-42012
+            - Name: CVE-2026-42013
+            - Name: CVE-2026-5419
+    Name: ALAS2023-2026-1808
+    NamespaceName: amzn:2023
+    Severity: Medium

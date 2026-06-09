@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: HTTP::Tiny versions before 0.093 for Perl do not validate CRLF in HTTP request lines or control field header values.The unvalidated inputs are the method and URI in the request line, the URL host that becomes the `Host:` header, and HTTP/1.1 control data field values.An attacker who controls one of these inputs, for example a user supplied URL passed to a webhook or URL fetch endpoint, can inject additional headers and smuggle requests to the upstream server. (CVE-2026-7010)
+    FixedIn:
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: perl-HTTP-Tiny
+          NamespaceName: amzn:2023
+          Version: 0.092-2.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: perl-HTTP-Tiny-tests
+          NamespaceName: amzn:2023
+          Version: 0.092-2.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1765.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-7010
+    Name: ALAS2023-2026-1765
+    NamespaceName: amzn:2023
+    Severity: Medium

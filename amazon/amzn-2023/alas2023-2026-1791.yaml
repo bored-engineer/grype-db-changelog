@@ -1,0 +1,30 @@
+Vulnerability:
+    Description: An unsoundness issue (RUSTSEC-2026-0097) was found in the bundled Rust rand crate used by device-mapper-persistent-data. ThreadRng methods use unsafe code that can create aliased mutable references when a custom logger accesses rand::rng() or rand::thread_rng() during reseeding, resulting in undefined behavior.
+    FixedIn:
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: device-mapper-persistent-data
+          NamespaceName: amzn:2023
+          Version: 0.9.0-7.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: device-mapper-persistent-data-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.9.0-7.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: device-mapper-persistent-data-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.9.0-7.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1791.html
+    Metadata:
+        CVE: []
+    Name: ALAS2023-2026-1791
+    NamespaceName: amzn:2023
+    Severity: Medium

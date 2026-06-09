@@ -1,0 +1,54 @@
+Vulnerability:
+    Description: 'A remotely triggerable underflow in the DTLS reassembly code led to a heap overrun. The issue was reported in the issue tracker as #1811 by Joshua Rogers of AISLE Research Team. (CVE-2026-33845)GnuTLS didn''t check that DTLS fragments claimed a consistent message_length value. Additionally, a crucial array size check was missing, enabling an attacker to cause a heap overwrite. (CVE-2026-33846)The comparator function used for ordering DTLS packets by sequence numbers did not follow qsort comparator contracts in case of packets with duplicate sequence numbers, which could lead to undefined behaviour. (CVE-2026-42009)'
+    FixedIn:
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls
+          NamespaceName: amzn:2
+          Version: 3.3.29-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-c++
+          NamespaceName: amzn:2
+          Version: 3.3.29-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-dane
+          NamespaceName: amzn:2
+          Version: 3.3.29-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.3.29-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-devel
+          NamespaceName: amzn:2
+          Version: 3.3.29-9.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-08"
+            Kind: advisory
+          Name: gnutls-utils
+          NamespaceName: amzn:2
+          Version: 3.3.29-9.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3324.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-33845
+            - Name: CVE-2026-33846
+            - Name: CVE-2026-42009
+    Name: ALAS2-2026-3324
+    NamespaceName: amzn:2
+    Severity: High
