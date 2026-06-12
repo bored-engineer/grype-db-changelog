@@ -19,11 +19,19 @@ database_specific:
     severity: High
 details: bz2.BZ2Decompressor objects could be reused after a decompression error. If an application caught the resulting OSError and retried with the same decompressor, crafted input could cause the decompressor to resume from an invalid internal state and perform out-of-bounds writes to a stack buffer. This could crash the process when processing untrusted data.
 id: BIT-python-min-2026-9669
-modified: "2026-06-10T10:34:44.297Z"
+modified: "2026-06-11T12:03:00.378Z"
 published: "2026-06-10T10:16:27.981Z"
 references:
     - type: WEB
       url: http://www.openwall.com/lists/oss-security/2026/06/08/17
+    - type: WEB
+      url: https://github.com/python/cpython/commit/157a5df8cb5d82b33f918a7489e72ce95ceb12b6
+    - type: WEB
+      url: https://github.com/python/cpython/commit/5755d0f083949ff3c5bf3a37e673e24e306b036e
+    - type: WEB
+      url: https://github.com/python/cpython/commit/619a12b2e545391dc436b3af79dda22337382a6f
+    - type: WEB
+      url: https://github.com/python/cpython/commit/d3ca26983dfbccdf609f24ff5877dc3118e4702d
     - type: WEB
       url: https://github.com/python/cpython/issues/150599
     - type: WEB
