@@ -10,9 +10,14 @@ affected:
                 fixes:
                     - date: "2026-06-12"
                       kind: advisory
+                      version: 2.555.3
+                    - date: "2026-06-12"
+                      kind: advisory
                       version: 2.568.0
           events:
             - introduced: "0"
+            - fixed: 2.555.3
+            - introduced: 2.556.0
             - fixed: 2.568.0
           type: SEMVER
       severity:
@@ -24,10 +29,11 @@ database_specific:
     cpes:
         - cpe:2.3:a:jenkins:jenkins:*:*:*:*:lts:*:*:*
         - cpe:2.3:a:jenkins:jenkins:*:*:*:*:-:*:*:*
+        - cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:maven:*:*
     severity: Medium
 details: Jenkins 2.567 and earlier, LTS 2.555.2 and earlier does not encrypt secrets from POST config.xml submissions before storing them in job configurations unencrypted in job config.xml files on the Jenkins controller where they can be viewed by users with Item/Extended Read permission, or access to the Jenkins controller file system.
 id: BIT-jenkins-2026-53442
-modified: "2026-06-12T09:06:56.549Z"
+modified: "2026-06-13T09:00:17.512Z"
 published: "2026-06-12T08:43:11.942Z"
 references:
     - type: WEB
