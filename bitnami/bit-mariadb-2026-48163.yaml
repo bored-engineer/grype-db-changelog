@@ -1,0 +1,59 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: mariadb
+        purl: pkg:bitnami/mariadb
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 10.11.18
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 10.6.27
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 11.4.12
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 11.8.8
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 12.3.2
+          events:
+            - introduced: 10.6.1
+            - fixed: 10.6.27
+            - introduced: 10.11.1
+            - fixed: 10.11.18
+            - introduced: 11.4.1
+            - fixed: 11.4.12
+            - introduced: 11.8.1
+            - fixed: 11.8.8
+            - introduced: 12.3.1
+            - fixed: 12.3.2
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-48163
+database_specific:
+    cpes:
+        - cpe:2.3:a:mariadb:mariadb:*:*:*:*:*:*:*:*
+    severity: High
+details: MariaDB server is a community developed fork of MySQL server. From versions 10.6.1 to before 10.6.27, 10.11.1 to before 10.11.18, 11.4.1 to before 11.4.12, 11.8.1 to before 11.8.8, and 12.3.1, during the SST the donor node is interpolating parameters that the joiner sent into the command line. Not all parameters were properly validated which could allow a malicious joiner to execute arbitrary shell commands on the donor side via the rsync SST method. This issue has been patched in versions 10.6.27, 10.11.18, 11.4.12, 11.8.8, and 12.3.2.
+id: BIT-mariadb-2026-48163
+modified: "2026-06-16T12:06:30.986Z"
+published: "2026-06-16T11:47:01.952Z"
+references:
+    - type: WEB
+      url: https://github.com/MariaDB/server/security/advisories/GHSA-rpgv-q6gv-684r
+    - type: WEB
+      url: https://jira.mariadb.org/browse/MDEV-39648
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-48163
+schema_version: 1.6.2
+summary: 'MariaDB: wsrep SST unsafe parameter handling on the donor side (rsync)'
