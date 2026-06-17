@@ -1,0 +1,58 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: mariadb
+        purl: pkg:bitnami/mariadb
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 10.11.17
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 10.6.26
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 11.4.11
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 11.8.7
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 12.3.2
+          events:
+            - fixed: 10.11.17
+            - fixed: 10.6.26
+            - fixed: 11.4.11
+            - fixed: 11.8.7
+            - fixed: 12.3.2
+            - introduced: 10.11.1
+            - introduced: 10.6.1
+            - introduced: 11.4.1
+            - introduced: 11.8.1
+            - introduced: 12.3.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:L/AC:H/PR:H/UI:R/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-44171
+database_specific:
+    cpes:
+        - cpe:2.3:a:mariadb:mariadb:*:*:*:*:*:*:*:*
+    severity: Medium
+details: MariaDB server is a community developed fork of MySQL server. From versions 10.6.1 to before 10.6.26, 10.11.1 to before 10.11.17, 11.4.1 to before 11.4.11, 11.8.1 to before 11.8.7, and 12.3.1, mbstream did not check for /../ in the path when unpacking the archive. A proper backup can never contain such paths, but a specially crafted archive could have caused mbstream to create files outside of the target-dir path. This issue has been patched in versions 10.6.26, 10.11.17, 11.4.11, 11.8.7, and 12.3.2.
+id: BIT-mariadb-2026-44171
+modified: "2026-06-16T12:06:30.986Z"
+published: "2026-06-16T11:46:58.715Z"
+references:
+    - type: WEB
+      url: https://github.com/MariaDB/server/security/advisories/GHSA-9pjh-5hhw-65v9
+    - type: WEB
+      url: https://jira.mariadb.org/browse/MDEV-39408
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-44171
+schema_version: 1.6.2
+summary: 'MariaDB: path traversal in mbstream'

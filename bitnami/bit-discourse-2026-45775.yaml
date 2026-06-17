@@ -1,0 +1,46 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: discourse
+        purl: pkg:bitnami/discourse
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 2026.1.4
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 2026.3.1
+                    - date: "2026-06-16"
+                      kind: advisory
+                      version: 2026.4.1
+          events:
+            - fixed: 2026.1.4
+            - fixed: 2026.3.1
+            - fixed: 2026.4.1
+            - introduced: 2026.1.0
+            - introduced: 2026.3.0
+            - introduced: 2026.4.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-45775
+database_specific:
+    cpes:
+        - cpe:2.3:a:discourse:discourse:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Discourse is an open-source discussion platform. From versions 2026.1.0 to before 2026.1.4, 2026.3.0 to before 2026.3.1, and 2026.4.0 to before 2026.4.1, a path traversal vulnerability in Discourse backup handling could allow an authenticated administrator on one site in a multisite deployment to access backup files belonging to another site when backups are stored locally. In affected configurations, an admin on Site A could potentially retrieve sensitive backup data from Site B (same host, multisite) by crafting a backup download request with a traversal payload. This issue has been patched in versions 2026.1.4, 2026.3.1, 2026.4.1, and 2026.5.0.
+id: BIT-discourse-2026-45775
+modified: "2026-06-16T12:59:08.700Z"
+published: "2026-06-16T12:37:42.347Z"
+references:
+    - type: WEB
+      url: https://github.com/discourse/discourse/security/advisories/GHSA-5j6v-4x6g-9pg5
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-45775
+schema_version: 1.6.2
+summary: 'Discourse: Cross-site backup access via path traversal in multisite local backups'
