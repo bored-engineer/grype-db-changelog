@@ -1,0 +1,45 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: cassandra
+        purl: pkg:bitnami/cassandra
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-18"
+                      kind: advisory
+                      version: 4.0.20-0
+                    - date: "2026-06-18"
+                      kind: advisory
+                      version: 4.1.11-0
+                    - date: "2026-06-18"
+                      kind: advisory
+                      version: 5.0.8-0
+          events:
+            - introduced: 4.0.0
+            - fixed: 4.0.20-0
+            - introduced: 4.1.0
+            - fixed: 4.1.11-0
+            - introduced: 5.0.0
+            - fixed: 5.0.8-0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-47846
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:cassandra:*:*:*:*:*:*:*:*
+    severity: Critical
+details: Bitnami Cassandra container images are affected by a retained default superuser vulnerability. When a custom administrator account is configured via the CASSANDRA_USER environment variable, the container initialization script creates the new superuser account but fails to drop the built-in cassandra account in certain scenarios. This leaves the default cassandra:cassandra superuser active as an unintended access path. Any remote attacker who knows the default Cassandra credentials, can authenticate to the cluster as a full superuser regardless of the operator's configuration, bypassing the intent to replace the built-in account.
+id: BIT-cassandra-2026-47846
+modified: "2026-06-18T12:00:00.000Z"
+published: "2026-06-18T12:00:00.000Z"
+references:
+    - type: WEB
+      url: https://github.com/bitnami/containers/security/advisories/GHSA-8q3j-37vg-8fc2
+schema_version: 1.6.2
+summary: Default superuser cassandra:cassandra left active when CASSANDRA_USER is customized
