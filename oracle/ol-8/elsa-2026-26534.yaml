@@ -1,0 +1,116 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [049-244.git20260529.0.1]
+        - Refactor get_ucode_file [Orabug: 36989953]
+        - Revert the fixes for bugs 33676753 and 33888951 due to regressions [Orabug: 35656614]
+        - Fix typo in orabug33888951-dracut-Enable-the-code-to-create-ifcfg-file.patch [Orabug: 35268918]
+        - Enable the code to create ifcfg file [Orabug: 33888951]
+        - Skip parse iscsiroot.sh on PV VMs [Orabug: 33676753]
+        - Add blk_mq_alloc_disk and blk_cleanup_disk to blockfuncs [Orabug: 33603682]
+        - Change installation dir in network legacy module-setup so that file is never missing [Orabug: 33516170]
+        - Fix paths in squash module, so that correct modprobe is installed [Orabug: 33514517]
+        - Restore 51-dracut-rescue-postinst.sh for anaconda compatibility
+        - Install missing 68-del-part-node.rules [Orabug: 32827579]
+        - Add manpage for single-dhcp [Orabug 32201686]
+        - Fix permission denied error while upgrading from OL8u2 to OL8u3 [Orabug 32160196]
+        - Use pgrep in dhcp-multi.sh to make efficient and error free [Orabug 32254008]
+        - Send DHCP request in parallel on all interfaces for 80% boot time improvement [Orabug: 32034110]
+        - Revert fix for [Orabug: 31404167]
+        - drop 51-dracut-rescue.install patch
+        - Send DHCP query only on min BDF device to improve boot times by 50-60 secs [Orabug: 31404167]
+        - add ofb and cts to 01fips kernel module list [Orabug: 30622737]
+        - dracut-shutdown.service should run before shutdown.target is invoked [Orabug: 29629738]
+        - Fix kernel-core POSTTRANS script issues with kernel command line [Orabug: 29542203]
+        - Update list of necessary files after squashfs execution [Orabug: 29864620]
+        - Supress iscsidm error output during non-debug PV boot [Orabug: 29846195]
+        - Stop block device service in case system is dropped to emergency shell [Orabug: 29851988]
+        - Enable booting from block device if netroot=iscsi has failed [Orabug: 29478156]
+        - Fix BOOTPROTO calculation for iscsi [Orabug: 29518713]
+        - Calculate relative path for kernel and initrd in 51-dracut-rescue.instal [Orabug: 29503293]
+        - 40network scripts ifup and netlib updates for iSCSI [Orabug: 28502725]
+        - Increase timeout when waiting for carrier detection on a network interface [Orabug: 24657828] (kevin.x.lyons@oracle.com)
+        - add hyperv-keyboard for Hyper-V Gen2 VM [Orabug: 19191303] (Vaughan Cao)
+
+        [049-244.git20260529]
+        - fix(network-manager): escape DHCP lease values in dhcpopts
+        - fix(network-legacy): replace echo writes with printf to
+        - fix(iscsi): replace echo writes with printf to prevent
+        - fix(network): warn on suspicious shell metacharacters in
+        - fix(base): escape arguments in initqueue hook script
+    FixedIn:
+        - Available:
+            Date: "2026-06-17"
+            Kind: advisory
+          Module: null
+          Name: dracut
+          NamespaceName: ol:8
+          Version: 0:049-244.git20260529.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-17"
+            Kind: advisory
+          Module: null
+          Name: dracut-caps
+          NamespaceName: ol:8
+          Version: 0:049-244.git20260529.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-17"
+            Kind: advisory
+          Module: null
+          Name: dracut-config-generic
+          NamespaceName: ol:8
+          Version: 0:049-244.git20260529.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-17"
+            Kind: advisory
+          Module: null
+          Name: dracut-config-rescue
+          NamespaceName: ol:8
+          Version: 0:049-244.git20260529.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-17"
+            Kind: advisory
+          Module: null
+          Name: dracut-live
+          NamespaceName: ol:8
+          Version: 0:049-244.git20260529.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-17"
+            Kind: advisory
+          Module: null
+          Name: dracut-network
+          NamespaceName: ol:8
+          Version: 0:049-244.git20260529.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-17"
+            Kind: advisory
+          Module: null
+          Name: dracut-squash
+          NamespaceName: ol:8
+          Version: 0:049-244.git20260529.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-17"
+            Kind: advisory
+          Module: null
+          Name: dracut-tools
+          NamespaceName: ol:8
+          Version: 0:049-244.git20260529.0.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-26534.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-6893.html
+              Name: CVE-2026-6893
+        Issued: "2026-06-17"
+        RefId: ELSA-2026-26534
+    Name: ELSA-2026-26534
+    NamespaceName: ol:8
+    Severity: High
