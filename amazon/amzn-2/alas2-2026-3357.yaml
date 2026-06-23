@@ -1,0 +1,25 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: HTML::Entities versions before 3.84 for Perl read freed heap memory in _decode_entities.The XS routine backing HTML::Entities::_decode_entities cached a pointer (repl) into the entity-value SV returned by hv_fetch on the entity2char hash. When the input SV was identical to a value SV in that hash, and that value contained its own key as an entity reference, a later call to grow_gap() reallocated the SV's PV buffer and freed the backing allocation that repl still pointed into. The subsequent copy loop read repl_len bytes from the freed allocation.The read may disclose adjacent heap contents into the destination SV. (CVE-2026-8829)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-HTML-Parser
+          NamespaceName: amzn:2
+          Version: 3.71-4.amzn2.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-HTML-Parser-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.71-4.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3357.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-8829
+    Name: ALAS2-2026-3357
+    NamespaceName: amzn:2
+    Severity: Low

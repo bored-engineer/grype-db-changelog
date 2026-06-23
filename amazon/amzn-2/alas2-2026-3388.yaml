@@ -1,0 +1,25 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Storable versions before 3.05 for Perl has a stack overflow.The retrieve_hook function stored the length of the class name into a signed integer but in read operations treated the length as unsigned. This allowed an attacker to craft data that could trigger the overflow. (CVE-2017-20230)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Storable
+          NamespaceName: amzn:2
+          Version: 2.45-3.amzn2.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Storable-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.45-3.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3388.html
+    Metadata:
+        CVE:
+            - Name: CVE-2017-20230
+    Name: ALAS2-2026-3388
+    NamespaceName: amzn:2
+    Severity: Medium

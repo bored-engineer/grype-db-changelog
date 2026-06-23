@@ -1,0 +1,50 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Issue summary: Parsing a crafted DER-encoded ASN.1 structure with a primitiveelement whose content exceeds 2 gigabytes in length may cause a heap bufferover-read on 64-bit Unix and Unix-like platforms.Impact summary: The heap buffer over-read may crash the application (Denial ofService) or to load into the decoded ASN.1 object contents of memory beyond theend of the input buffer.  More typically such ASN.1 elements would instead betruncated.An integer truncation in OpenSSL''s ASN.1 decoder causes the content length ofan ASN.1 primitive element to be mishandled when it exceeds 2 gigabytes. In theworst case the truncated length is treated as a request to scan the binarycontent for a terminating zero byte, possibly causing OpenSSL to read eitherless than or beyond the end of the allocated buffer.Applications that pass attacker-supplied data to d2i_X509(), d2i_PKCS7(), orany other d2i_* decoding function are affected. OpenSSL''s own command-linetools are not vulnerable, as data read through the BIO layer is checked beforeit reaches the affected code. The issue only affects 64-bit Unix and Unix-likeplatforms; 32-bit platforms and 64-bit Windows are not affected.The FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected by this issue,as the affected code is outside the OpenSSL FIPS module boundary. (CVE-2026-34180)Issue summary: A specially crafted password-encrypted CMS messagecan trigger a NULL pointer dereference during CMS decryption.Impact summary: This NULL pointer dereference leads to an application crashand a Denial of Service.The CMS PasswordRecipientInfo.keyDerivationAlgorithm field is defined asOPTIONAL in the ASN.1 specification and may therefore be absent in speciallycrafted inputs. During the password-based CMS decryption the OpenSSLCMS implementation dereferences this field without first checking whether itwas present.An attacker who supplies such a CMS message to an application performingpassword-based CMS decryption can trigger an application crash, leading toa Denial of Service.Applications that process password-encrypted CMS messages may be affected.The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by thisissue, as the affected code is outside the OpenSSL FIPS module boundary. (CVE-2026-42766)Issue summary: A specially crafted PKCS#7 or S/MIME signed message couldtrigger a use-after-free during PKCS#7 signature verification.Impact summary: A use-after-free may result in process crashes, heapcorruption, or potentially remote code execution.When processing a PKCS#7 or S/MIME signed message, if the SignedDatadigestAlgorithms field is present as an empty ASN.1 SET, OpenSSL mayincorrectly free a caller-owned BIO during PKCS7_verify(). A subsequentuse of the BIO by the calling application results in a use-after-freecondition.In the common case this occurs when the application later callsBIO_free() on the BIO originally passed to PKCS7_verify(). Dependingon allocator behavior and application-specific BIO usage patterns, thismay result in a crash or other memory corruption. In some applicationcontexts this may potentially be exploitable for remote code execution.Applications that process PKCS#7 or S/MIME signed messages using OpenSSLPKCS#7 APIs may be affected. Applications using the CMS APIs for thisprocessing are not affected.The FIPS modules in 4.0, 3.6, 3.5, 3.4, and 3.0 are not affected by thisissue, as the affected code is outside the OpenSSL FIPS module boundary. (CVE-2026-45447)Issue summary: A signed integer overflow when sizing the destinationbuffer for Unicode output in ASN1_mbstring_ncopy() can lead to a heapbuffer overflow.Impact summary: A heap buffer overflow may lead to a crash or possiblyattacker controlled code execution or other undefined behaviour.In ASN1_mbstring_copy() and ASN1_mbstring_ncopy() the destinationsize for Unicode output is computed in a signed int: by left shiftof the input character count for BMPSTRING (UTF-16) andUNIVERSALSTRING (UTF-32), and by summing per-character byte countsfor UTF8STRING. The calculation overflows when the input reachesaround 2^30 characters. In the worst case (UNIVERSALSTRING at 2^30characters) the size wraps to zero, OPENSSL_malloc(1) is called, andthe subsequent character copy writes several gigabytes past theone-byte allocation.X.509 certificate processing routes through ASN1_STRING_set_by_NID(),whose DIRSTRING_TYPE mask excludes UNIVERSALSTRING and whose per-NIDsize limits cap the input length; no network protocol orcertificate-handling path in OpenSSL exercises the overflow.Triggering the bug requires an application that callsASN1_mbstring_copy() or ASN1_mbstring_ncopy() directly, or registersa custom string type via ASN1_STRING_TABLE_add(), withattacker-controlled input on the order of half a gigabyte or more.For these reasons this issue was assigned Low severity.The FIPS modules in 4.0, 3.6, 3.5, 3.4 and 3.0 are not affected bythis issue, as the affected code is outside the OpenSSL FIPS moduleboundary. (CVE-2026-7383)Issue summary: When CMS password-based decryption (RFC 3211 / PWRI key unwrap)processes attacker-supplied CMS data, an attacker-chosen stream-mode KEKcipher can trigger a heap out-of-bounds read in kek_unwrap_key().Impact summary: A heap buffer over-read may trigger a crash which leads toDenial of Service for an application if the input buffer ends at a memorypage boundary and the following page is unmapped. There is no informationdisclosure as the over-read bytes are not revealed to the attacker.The key unwrapping function performs a check-byte test as specified in theRFC that reads 7 bytes from a heap allocation that is based on the wrappedkey length from the message. There is a minimum length check based on theblock length of the wrapping cipher. However the cipher is selected froman OID carried in the attacker''s PWRI keyEncryptionAlgorithm with norequirement that the cipher be a block cipher. When an attacker selectsa stream-mode cipher the guard will be ineffective and the allocated buffercontaining the unwrapped key can be too small to fit the check-bytesspecified in the RFC and a buffer over-read can happen.Applications calling CMS_decrypt() or CMS_decrypt_set1_password()(equivalently openssl cms -decrypt -pwri_password ...) on untrusted CMSdata are vulnerable to this issue. No password knowledge is required: theover-read happens during the unwrap attempt before any authenticationsucceeds.The over-read is limited to a few bytes and is not written to output, sothere is no information disclosure. Triggering a crash requires theallocation to border unmapped memory, which is unlikely with the normalallocator.The FIPS modules are not affected by this issue. (CVE-2026-9076)'
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: openssl11
+          NamespaceName: amzn:2
+          Version: 1.1.1zh-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: openssl11-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.1.1zh-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: openssl11-devel
+          NamespaceName: amzn:2
+          Version: 1.1.1zh-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: openssl11-libs
+          NamespaceName: amzn:2
+          Version: 1.1.1zh-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: openssl11-static
+          NamespaceName: amzn:2
+          Version: 1.1.1zh-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3364.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-34180
+            - Name: CVE-2026-42766
+            - Name: CVE-2026-45447
+            - Name: CVE-2026-7383
+            - Name: CVE-2026-9076
+    Name: ALAS2-2026-3364
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,60 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: libusb before version 1.0.30 contains a NULL pointer dereference vulnerability that allows attackers to crash applications by supplying a malformed USB configuration descriptor where an interface claims bNumEndpoints greater than zero but is followed by a class-specific descriptor whose bLength exceeds the remaining buffer size, causing parse_interface() to return early without allocating the endpoint array. Attackers can exploit this flaw through libusb_get_active_config_descriptor or libusb_get_config_descriptor by providing crafted descriptors via virtualized USB passthrough, file-based descriptor parsing, or network sources, causing any application iterating over endpoints to dereference a NULL endpoint pointer and crash. (CVE-2026-23679)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx
+          NamespaceName: amzn:2023
+          Version: 1.0.24-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.0.24-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.0.24-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-devel
+          NamespaceName: amzn:2023
+          Version: 1.0.24-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-devel-doc
+          NamespaceName: amzn:2023
+          Version: 1.0.24-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-tests-examples
+          NamespaceName: amzn:2023
+          Version: 1.0.24-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-tests-examples-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.0.24-2.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1848.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-23679
+    Name: ALAS2023-2026-1848
+    NamespaceName: amzn:2023
+    Severity: Medium

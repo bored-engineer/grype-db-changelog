@@ -1,0 +1,33 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in libinput. A local attacker with access to /dev/uinput can inject arbitrary udev properties through the libinput-device-group helper. This injection can lead to root code execution, for example, by exploiting REMOVE_CMD properties that are executed when a device is removed. This vulnerability allows an attacker to gain elevated privileges on the system. (CVE-2026-50265)In libinput before 1.30.4 and 1.31.x before 1.31.3, libinput-device-group unescaped phys output can inject udev properties leading to arbitrary root code execution (CVE-2026-50292)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libinput
+          NamespaceName: amzn:2
+          Version: 1.8.4-2.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libinput-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.8.4-2.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libinput-devel
+          NamespaceName: amzn:2
+          Version: 1.8.4-2.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3370.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-50265
+            - Name: CVE-2026-50292
+    Name: ALAS2-2026-3370
+    NamespaceName: amzn:2
+    Severity: High

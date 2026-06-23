@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Sereal::Decoder versions before 5.005 for Perl allow heap out-of-bounds read via crafted input.In Perl/Decoder/srl_decoder.c, srl_read_object() and srl_read_hash() process a COPY tag, a back-reference whose target byte the decoder re-decodes as a fresh tag. When that target byte matches the SHORT_BINARY pattern (an inline string whose length is encoded in the low bits of the tag), the resulting read is not bounded to precede the COPY tag's own offset and can run past the end of the input buffer. An attacker controlled COPY offset can land inside a previously decoded value rather than on a tag boundary, planting a byte that the decoder reads as a SHORT_BINARY tag and consuming up to 31 following bytes from the heap as a class name (OBJECT path) or hash key (HASH path). (CVE-2026-8796)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Sereal-Decoder
+          NamespaceName: amzn:2023
+          Version: 4.018-2.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Sereal-Decoder-debuginfo
+          NamespaceName: amzn:2023
+          Version: 4.018-2.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Sereal-Decoder-debugsource
+          NamespaceName: amzn:2023
+          Version: 4.018-2.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1830.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-8796
+    Name: ALAS2023-2026-1830
+    NamespaceName: amzn:2023
+    Severity: High

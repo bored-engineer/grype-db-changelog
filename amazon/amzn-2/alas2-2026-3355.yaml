@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: IO::Uncompress::Unzip versions before 2.220 for Perl allow CPU exhaustion via per-byte read loop in fastForward.fastForward() compares length $offset (the digit count of the offset, 1 to 19) against the chunk size $c instead of $offset itself, so $c shrinks from 16 KiB to 1-19 bytes per iteration.Extracting a named entry from an attacker supplied zip via IO::Uncompress::Unzip->new($zip, Name => $target) drives a per-byte read loop scaling with the entry's compressed size, up to the non-Zip64 4 GiB cap. (CVE-2026-48959)IO::Compress versions before 2.220 for Perl can execute arbitrary code in File::GlobMapper via an attacker-controlled output glob._parseOutputGlob() wraps the caller-supplied output glob string in double quotes and stores it in the parser state; _getFiles() then runs the stored expression through eval STRING. A literal double quote in the output glob closes the dquote wrapper, and the characters that follow are evaluated as Perl.Arbitrary Perl in the output glob executes at the calling process's privilege. (CVE-2026-48962)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-IO-Compress
+          NamespaceName: amzn:2
+          Version: 2.061-2.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3355.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-48959
+            - Name: CVE-2026-48962
+    Name: ALAS2-2026-3355
+    NamespaceName: amzn:2
+    Severity: High
