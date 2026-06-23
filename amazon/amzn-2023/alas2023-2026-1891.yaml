@@ -1,0 +1,19 @@
+Vulnerability:
+    Description: Crypt::PBKDF2 versions before 0.261630 for Perl are vulnerable to timing attacks.These versions use Perl's built-in eq comparison. Discrepancies in timing could be used to guess the underlying derived-key. (CVE-2017-20240)Crypt::PBKDF2 versions before 0.261630 for Perl generate insecure random values for salts.These versions use the built-in rand function, which is predictable and unsuitable for cryptography. (CVE-2026-9638)Crypt::PBKDF2 versions before 0.261630 for Perl have a weak default algorithm and number of iterations.The default algorithm is HMAC-SHA1, which should only be used for legacy systems.These versions default to using 1000 iterations.Depending on the chosen algorithm, 220,000 to 1,400,000 iterations should be used. (CVE-2026-9641)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Crypt-PBKDF2
+          NamespaceName: amzn:2023
+          Version: 0.261630-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1891.html
+    Metadata:
+        CVE:
+            - Name: CVE-2017-20240
+            - Name: CVE-2026-9638
+            - Name: CVE-2026-9641
+    Name: ALAS2023-2026-1891
+    NamespaceName: amzn:2023
+    Severity: Medium

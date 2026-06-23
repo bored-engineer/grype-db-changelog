@@ -1,0 +1,39 @@
+Vulnerability:
+    Description: DBI versions before 1.648 for Perl have a heap overflow when preparsing SQL statements with more than 9 binders.The preparse method expands SQL placeholder characters to numbered binders of the form :pN, but only allocates three characters per binder in the buffer.  Placeholders 10-99 require four characters, 100-999 require five characters, et cetera. (CVE-2026-10879)DBI versions before 1.648 for Perl saved errors in a limited-sized buffer. Error messages that were returned when RaiseError, PrintError or HandleError were set were written to a 200-byte buffer without a length limit. Attackers that can influence the error text in an application can trigger a buffer overflow. (CVE-2026-9698)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-DBI
+          NamespaceName: amzn:2023
+          Version: 1.648-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-DBI-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.648-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-DBI-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.648-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-DBI-tests
+          NamespaceName: amzn:2023
+          Version: 1.648-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1850.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-10879
+            - Name: CVE-2026-9698
+    Name: ALAS2023-2026-1850
+    NamespaceName: amzn:2023
+    Severity: High

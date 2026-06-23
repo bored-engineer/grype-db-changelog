@@ -1,0 +1,102 @@
+Vulnerability:
+    Description: A stack-based buffer overflow flaw was found in the X.Org X server and Xwayland. A mismatch between the X server and the libXfont2 library's maximum font name length can cause a stack buffer overflow during font alias resolution. The server allocates a 256 byte stack buffer but libXfont2's alias target name length is 1024 bytes. A font alias name between 257 and 1023 bytes causes the X server to copy that name into the undersized stack buffer without further checks. This may be used to crash the server, or for privilege escalation if the X server runs as root. (CVE-2026-50256)A use-after-free flaw was found in the X.Org X server and Xwayland in miSyncDestroyFence(). A client that sets up multiple fence triggers can trigger a use-after-free function pointer call. An attacker would connect to the X server to set up a fence and await that fence, then a second X connection destroys the fence, causing the use-after-free. This may be used to crash the server, or for privilege escalation if the X server runs as root. (CVE-2026-50257)A stack-based buffer overflow flaw was found in the X.Org X server and Xwayland. The X server has multiple stack buffers sized XkbMaxShiftLevel * XkbNumKbdGroups but CheckKeyTypes() does not verify or clamp non-canonical key types to XkbMaxShiftLevel. A client can change key types to excessive shift levels and trigger stack overflows. This is caused by an incomplete fix of CVE-2025-26597. This may be used to crash the server, or for privilege escalation if the X server runs as root. (CVE-2026-50258)A stack-based buffer overflow flaw was found in the X.Org X server and Xwayland. _XkbSetMapChecks() declares a fixed-size stack buffer mapWidths[256] indexed by key type index. The helper function CheckKeyTypes() writes to this buffer at a client-controlled offset, allowing a stack buffer overflow. This may be used to crash the server, or for privilege escalation if the X server runs as root. (CVE-2026-50259)A use-after-free flaw was found in the X.Org X server and Xwayland in FreeCounter(). A client that sets up multiple SyncCounters and awaits on those triggers can trigger a use-after-free when destroying those counters via a second client connection. This may be used to crash the server, or for privilege escalation if the X server runs as root. (CVE-2026-50260)A use-after-free flaw was found in the X.Org X server and Xwayland in SyncChangeCounter(). A client that sets up multiple SyncCounters can trigger a use-after-free when destroying those counters via a second client connection while changing those counters. This may be used to crash the server, or for privilege escalation if the X server runs as root. (CVE-2026-50261)Multiple issues have been found in the X server and Xwayland implementations published by X.Org for which we are releasing security fixes for in xorg-server-21.1.23 and xwayland-24.1.12. (CVE-2026-50262)A use-after-free flaw was found in the X.Org X server and Xwayland in CreateSaverWindow(). A client can trigger a use-after-free read after changing window attributes and forcing the screen saver, leading to information disclosure. (CVE-2026-50263)An out-of-bounds write flaw was found in the X.Org X server and Xwayland in DRIGetBuffers/DRIGetBuffersWithFormat. A client that requests multiple DRI2BufferBackLeft attachments and one DRI2BufferFrontLeft can trigger an out-of-bounds heap write. This may be used to crash the server, or for privilege escalation if the X server runs as root. (CVE-2026-50264)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-icons
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-license
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-selinux
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-server
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-server-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-server-minimal
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-server-minimal-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-server-module
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: tigervnc-server-module-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.14.1-3.amzn2023.0.6
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1892.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-50256
+            - Name: CVE-2026-50257
+            - Name: CVE-2026-50258
+            - Name: CVE-2026-50259
+            - Name: CVE-2026-50260
+            - Name: CVE-2026-50261
+            - Name: CVE-2026-50262
+            - Name: CVE-2026-50263
+            - Name: CVE-2026-50264
+    Name: ALAS2023-2026-1892
+    NamespaceName: amzn:2023
+    Severity: High

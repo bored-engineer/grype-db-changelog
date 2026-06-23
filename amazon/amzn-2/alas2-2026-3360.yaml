@@ -1,0 +1,38 @@
+Vulnerability:
+    Description: libusb before version 1.0.30 contains a NULL pointer dereference vulnerability that allows attackers to crash applications by supplying a malformed USB configuration descriptor where an interface claims bNumEndpoints greater than zero but is followed by a class-specific descriptor whose bLength exceeds the remaining buffer size, causing parse_interface() to return early without allocating the endpoint array. Attackers can exploit this flaw through libusb_get_active_config_descriptor or libusb_get_config_descriptor by providing crafted descriptors via virtualized USB passthrough, file-based descriptor parsing, or network sources, causing any application iterating over endpoints to dereference a NULL endpoint pointer and crash. (CVE-2026-23679)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx
+          NamespaceName: amzn:2
+          Version: 1.0.21-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0.21-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-devel
+          NamespaceName: amzn:2
+          Version: 1.0.21-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libusbx-devel-doc
+          NamespaceName: amzn:2
+          Version: 1.0.21-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3360.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-23679
+    Name: ALAS2-2026-3360
+    NamespaceName: amzn:2
+    Severity: Medium

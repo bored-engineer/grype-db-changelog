@@ -1,0 +1,90 @@
+Vulnerability:
+    Description: 'FreeRDP before 3.26.0 contains a heap-buffer-overflow vulnerability in gdi_CacheToSurface that allows remote attackers to write out-of-bounds heap memory. The vulnerability occurs because rectangle validation clamps coordinates to UINT16_MAX but performs copy operations using unclamped cache entry dimensions, enabling malicious RDP servers to trigger large out-of-bounds writes and potentially achieve remote code execution or client crash. (CVE-2026-40033)FreeRDP is a free implementation of the Remote Desktop Protocol. Prior to 3.26.0, a malicious RDP client can trigger a heap-buffer-overflow write in FreeRDP''s server-side clipboard (cliprdr) channel by sending a CB_CLIP_CAPS PDU with a too-small capabilitySetLength. This can crash the server process (remote DoS) and may be exploitable for code execution because it corrupts heap memory. This vulnerability is fixed in 3.26.0. (CVE-2026-44420)FreeRDP is a free implementation of the Remote Desktop Protocol. Prior to 3.26.0, a malicious RDP server can trigger a heap-buffer-overflow write in the FreeRDP client by sending crafted RDPGFX PDUs. The bug is in gdi_CacheToSurface: it validates a destination rectangle that is clamped to UINT16_MAX, but then performs the copy using the original cacheEntry->width/height. This can cause a large out-of-bounds heap write and may lead to client crashes or code execution. This bug is reachable from a malicious RDP server, but only when the client has RDPGFX enabled. This vulnerability is fixed in 3.26.0. (CVE-2026-44421)FreeRDP is a free implementation of the Remote Desktop Protocol. Prior to 3.26.0, FreeRDP''s planar bitmap decoder has an out-of-bounds heap write when decoding RLE planar data. In libfreerdp/codec/planar.c, freerdp_bitmap_decompress_planar() validates the X destination coordinate nXDst against the caller-provided destination stride (nDstStep) even when it is writing into the internal temp buffer pTempData. An attacker can bypass the check with a large nDstStep and a large nXDst, causing planar_decompress_plane_rle() to write past the end of pTempData. This vulnerability is fixed in 3.26.0. (CVE-2026-45700)'
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: freerdp
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: freerdp-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: freerdp-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: freerdp-devel
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: freerdp-libs
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: freerdp-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: freerdp-server
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: freerdp-server-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libwinpr
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libwinpr-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: libwinpr-devel
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.12
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1822.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-40033
+            - Name: CVE-2026-44420
+            - Name: CVE-2026-44421
+            - Name: CVE-2026-45700
+    Name: ALAS2023-2026-1822
+    NamespaceName: amzn:2023
+    Severity: High

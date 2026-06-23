@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: Text::LineFold versions through 2019.001 for Perl duplicate the output based on the number of special break characters.Text::LineFold splits the input string by specific line break characters (such as VT, FF and others) into segments, but applies the break function to the entire string, not just the segment.A side effect of this is that the full input can be duplicated for each segment.  Besides being incorrect, this can lead to unexpected resource consumption and possible denial of service.Note that Text::LineFold is part of the Unicode-LineBreak distribution, which may have a higher version number than the module. (CVE-2026-8594)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Unicode-LineBreak
+          NamespaceName: amzn:2023
+          Version: 2019.001-9.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Unicode-LineBreak-debuginfo
+          NamespaceName: amzn:2023
+          Version: 2019.001-9.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-Unicode-LineBreak-debugsource
+          NamespaceName: amzn:2023
+          Version: 2019.001-9.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1831.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-8594
+    Name: ALAS2023-2026-1831
+    NamespaceName: amzn:2023
+    Severity: Medium

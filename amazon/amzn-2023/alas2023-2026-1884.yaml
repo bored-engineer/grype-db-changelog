@@ -1,0 +1,25 @@
+Vulnerability:
+    Description: Parsing arbitrary HTML can consume excessive CPU time, possibly leading to denial of service. (CVE-2026-25680)Parsing arbitrary HTML which is then rendered using Render can result in an unexpected HTML tree. This can be leveraged to execute XSS attacks in applications that attempt to sanitize input HTML before rendering. (CVE-2026-25681)Parsing arbitrary HTML which is then rendered using Render can result in an unexpected HTML tree. This can be leveraged to execute XSS attacks in applications that attempt to sanitize input HTML before rendering. (CVE-2026-27136)(*x509.Certificate).VerifyHostname previously called matchHostnames in a loop over all DNS Subject Alternative Name (SAN) entries. This caused strings.Split(host, ".") to execute repeatedly on the same input hostname. With a large DNS SAN list, verification costs scaled quadratically based on the number of SAN entries multiplied by the hostname's label count. Because x509.Verify validates hostnames before building the certificate chain, this overhead occurred even for untrusted certificates. (CVE-2026-27145)The ToASCII and ToUnicode functions incorrectly accept Punycode-encoded labels that decode to an ASCII-only label. For example, ToUnicode("xn--example-.com") incorrectly returns the name "example.com" rather than an error. This behavior can lead to privilege escalation in programs using the idna package. For example, a program which performs privilege checks on the ASCII hostname may reject "example.com" but permit "xn--example-.com". If that program subsequently converts the ASCII hostname to Unicode, it will inadvertently permits access to the Unicode name "example.com". (CVE-2026-39821)Parsing arbitrary HTML which is then rendered using Render can result in an unexpected HTML tree. This can be leveraged to execute XSS attacks in applications that attempt to sanitize input HTML before rendering. (CVE-2026-42502)Decoding a maliciously-crafted MIME header containing many invalid encoded-words can consume excessive CPU. (CVE-2026-42504)Parsing arbitrary HTML which is then rendered using Render can result in an unexpected HTML tree. This can be leveraged to execute XSS attacks in applications that attempt to sanitize input HTML before rendering. (CVE-2026-42506)When returning errors, functions in the net/textproto package would include its input as part of the error. This might allow an attacker to inject misleading content to errors that are printed or logged. (CVE-2026-42507)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: soci-snapshotter
+          NamespaceName: amzn:2023
+          Version: 0.14.1-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1884.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-25680
+            - Name: CVE-2026-25681
+            - Name: CVE-2026-27136
+            - Name: CVE-2026-27145
+            - Name: CVE-2026-39821
+            - Name: CVE-2026-42502
+            - Name: CVE-2026-42504
+            - Name: CVE-2026-42506
+            - Name: CVE-2026-42507
+    Name: ALAS2023-2026-1884
+    NamespaceName: amzn:2023
+    Severity: High

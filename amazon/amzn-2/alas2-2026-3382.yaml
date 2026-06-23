@@ -1,0 +1,26 @@
+Vulnerability:
+    Description: (*x509.Certificate).VerifyHostname previously called matchHostnames in a loop over all DNS Subject Alternative Name (SAN) entries. This caused strings.Split(host, ".") to execute repeatedly on the same input hostname. With a large DNS SAN list, verification costs scaled quadratically based on the number of SAN entries multiplied by the hostname's label count. Because x509.Verify validates hostnames before building the certificate chain, this overhead occurred even for untrusted certificates. (CVE-2026-27145)Decoding a maliciously-crafted MIME header containing many invalid encoded-words can consume excessive CPU. (CVE-2026-42504)When returning errors, functions in the net/textproto package would include its input as part of the error. This might allow an attacker to inject misleading content to errors that are printed or logged. (CVE-2026-42507)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: golist
+          NamespaceName: amzn:2
+          Version: 0.10.1-10.amzn2.0.14
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: golist-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.10.1-10.amzn2.0.14
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3382.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-27145
+            - Name: CVE-2026-42504
+            - Name: CVE-2026-42507
+    Name: ALAS2-2026-3382
+    NamespaceName: amzn:2
+    Severity: Medium

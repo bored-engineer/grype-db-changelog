@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: Mako is a template library written in Python. Prior to 1.3.11, TemplateLookup.get_template() is vulnerable to path traversal when a URI starts with // (e.g., //../../../secret.txt). The root cause is an inconsistency between two slash-stripping implementations. Any file readable by the process can be returned as rendered template content when an application passes untrusted input directly to TemplateLookup.get_template(). This vulnerability is fixed in 1.3.11. (CVE-2026-41205)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: python-mako
+          NamespaceName: amzn:2023
+          Version: 1.1.4-3.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: python-mako-doc
+          NamespaceName: amzn:2023
+          Version: 1.1.4-3.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: python3-mako
+          NamespaceName: amzn:2023
+          Version: 1.1.4-3.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1846.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-41205
+    Name: ALAS2023-2026-1846
+    NamespaceName: amzn:2023
+    Severity: Medium

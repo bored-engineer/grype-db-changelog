@@ -1,0 +1,38 @@
+Vulnerability:
+    Description: CryptX versions before 0.088_001 for Perl have a stack buffer overflow in four AEAD decrypt_verify helpers.The gcm_decrypt_verify, ccm_decrypt_verify, chacha20poly1305_decrypt_verify and eax_decrypt_verify XS routines copied the caller-supplied authentication tag into a fixed 144-byte stack buffer (MAXBLOCKSIZE) without checking the supplied length. A longer tag overwrites the stack past the buffer. Version 0.088 added the clamp to gcm_decrypt_verify, and 0.088_001 added it to the other three.Any caller of an affected helper that forwards an attacker-controlled tag longer than the buffer can trigger the overflow. (CVE-2026-41565)
+    FixedIn:
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-CryptX
+          NamespaceName: amzn:2023
+          Version: 0.088-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-CryptX-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.088-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-CryptX-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.088-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-06-22"
+            Kind: advisory
+          Name: perl-CryptX-tests
+          NamespaceName: amzn:2023
+          Version: 0.088-2.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1834.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-41565
+    Name: ALAS2023-2026-1834
+    NamespaceName: amzn:2023
+    Severity: High
