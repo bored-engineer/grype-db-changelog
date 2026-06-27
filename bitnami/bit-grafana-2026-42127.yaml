@@ -1,0 +1,37 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: grafana
+        purl: pkg:bitnami/grafana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-26"
+                      kind: advisory
+                      version: 13.0.2
+          events:
+            - fixed: 13.0.2
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-42127
+database_specific:
+    cpes:
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:*:go:*:*
+    severity: High
+details: The public dashboard query endpoint does not limit request body size before processing, allowing unauthenticated attackers to trigger excessive memory allocation by sending arbitrarily large JSON payloads. This can lead to denial of service through memory exhaustion. No valid dashboard access token or authentication is required to exploit this vulnerability.
+id: BIT-grafana-2026-42127
+modified: "2026-06-26T09:09:39.774Z"
+published: "2026-06-26T08:43:07.401Z"
+references:
+    - type: WEB
+      url: https://grafana.com/security/security-advisories/cve-2026-42127
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-42127
+schema_version: 1.6.2
+summary: Grafana pre-auth DoS through arbitrarily large input to public dashboard query handler
