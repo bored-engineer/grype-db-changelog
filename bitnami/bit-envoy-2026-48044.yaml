@@ -1,0 +1,52 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: envoy
+        purl: pkg:bitnami/envoy
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-30"
+                      kind: advisory
+                      version: 1.35.13
+                    - date: "2026-06-30"
+                      kind: advisory
+                      version: 1.36.9
+                    - date: "2026-06-30"
+                      kind: advisory
+                      version: 1.37.5
+                    - date: "2026-06-30"
+                      kind: advisory
+                      version: 1.38.3
+          events:
+            - introduced: 1.23.0
+            - fixed: 1.35.13
+            - introduced: 1.36.0
+            - fixed: 1.36.9
+            - introduced: 1.37.0
+            - fixed: 1.37.5
+            - introduced: 1.38.0
+            - fixed: 1.38.3
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-48044
+database_specific:
+    cpes:
+        - cpe:2.3:a:envoyproxy:envoy:*:*:*:*:*:*:*:*
+    severity: High
+details: Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.23.0 until 1.35.11, 1.36.7, 1.37.3, and 1.38.1, a  vulnerability has been identified in Envoy's zstd decompressor implementation (ZstdDecompressorImpl). When zstd decompression is enabled, processing a specially crafted, highly compressed zstd payload can lead to massive memory allocation. An attacker can exploit this to cause severe memory exhaustion, potentially resulting in an Out-Of-Memory (OOM) kill and Denial of Service (DoS) for the Envoy proxy. This vulnerability is fixed in 1.35.11, 1.36.7, 1.37.3, and 1.38.1.
+id: BIT-envoy-2026-48044
+modified: "2026-07-01T00:07:50.168Z"
+published: "2026-06-30T23:39:33.609Z"
+references:
+    - type: WEB
+      url: https://github.com/envoyproxy/envoy/security/advisories/GHSA-m3p9-47wh-88wg
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-48044
+schema_version: 1.6.2
+summary: 'Envoy Zstd Decompressor: Ratio Check at Wrong Loop Depth lead to memory explosion'
