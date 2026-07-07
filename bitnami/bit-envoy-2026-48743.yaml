@@ -10,25 +10,25 @@ affected:
                 fixes:
                     - date: "2026-06-30"
                       kind: advisory
-                      version: 1.35.13
+                      version: 1.35.11
                     - date: "2026-06-30"
                       kind: advisory
-                      version: 1.36.9
+                      version: 1.36.7
                     - date: "2026-06-30"
                       kind: advisory
-                      version: 1.37.5
+                      version: 1.37.3
                     - date: "2026-06-30"
                       kind: advisory
-                      version: 1.38.3
+                      version: 1.38.1
           events:
             - introduced: 1.35.0
-            - fixed: 1.35.13
+            - fixed: 1.35.11
             - introduced: 1.36.0
-            - fixed: 1.36.9
+            - fixed: 1.36.7
             - introduced: 1.37.0
-            - fixed: 1.37.5
+            - fixed: 1.37.3
             - introduced: 1.38.0
-            - fixed: 1.38.3
+            - fixed: 1.38.1
           type: SEMVER
       severity:
         - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:L/I:H/A:N
@@ -41,7 +41,7 @@ database_specific:
     severity: High
 details: 'Envoy is an open source edge and service proxy designed for cloud-native applications. Prior to 1.35.11, 1.36.7, 1.37.3, and 1.38.1, Envoy can translate a downstream HTTP/3 request that is complete at the transport layer (HEADERS with FIN / headers-only close) but still carries a nonzero Content-Length into a complete upstream HTTP/1 request with unresolved body debt. In an HTTP/1 upstream deployment where the origin replies before reading the declared body and keeps the connection reusable, the beginning of the next Envoy-generated upstream request can be consumed as the first request''s body. The remaining bytes are then parsed by the origin as a new HTTP/1 request. This was reproduced as a route-bypass/desync: direct /pwn was denied by Envoy, but the second downstream H3 stream received the response for backend-parsed GET /pwn HTTP/1.1. This vulnerability is fixed in 1.35.11, 1.36.7, 1.37.3, and 1.38.1.'
 id: BIT-envoy-2026-48743
-modified: "2026-07-01T00:07:50.168Z"
+modified: "2026-07-06T06:18:57.499Z"
 published: "2026-06-30T23:39:39.412Z"
 references:
     - type: WEB

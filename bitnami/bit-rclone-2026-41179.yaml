@@ -26,9 +26,13 @@ database_specific:
     severity: Critical
 details: 'Rclone is a command-line program to sync files and directories to and from different cloud storage providers. Starting in version 1.48.0 and prior to version 1.73.5, the RC endpoint `operations/fsinfo` is exposed without `AuthRequired: true` and accepts attacker-controlled `fs` input. Because `rc.GetFs(...)` supports inline backend definitions, an unauthenticated attacker can instantiate an attacker-controlled backend on demand. For the WebDAV backend, `bearer_token_command` is executed during backend initialization, making single-request unauthenticated local command execution possible on reachable RC deployments without global HTTP authentication. Version 1.73.5 patches the issue.'
 id: BIT-rclone-2026-41179
-modified: "2026-05-21T09:12:24.336Z"
+modified: "2026-07-06T06:18:57.499Z"
 published: "2026-04-24T08:51:09.638Z"
 references:
+    - type: WEB
+      url: https://access.redhat.com/security/cve/CVE-2026-41179
+    - type: WEB
+      url: https://bugzilla.redhat.com/show_bug.cgi?id=2460988
     - type: WEB
       url: https://github.com/rclone/rclone/blob/bf55d5e6d37fd86164a87782191f9e1ffcaafa82/backend/webdav/webdav.go
     - type: WEB
@@ -45,5 +49,7 @@ references:
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-41179
     - type: WEB
       url: https://rclone.org/changelog/#v1-73-5-2026-04-19
+    - type: WEB
+      url: https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-41179.json
 schema_version: 1.6.2
 summary: 'RClone: Unauthenticated operations/fsinfo allows attacker-controlled backend instantiation and local command execution'

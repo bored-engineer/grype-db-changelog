@@ -8,11 +8,16 @@ affected:
         - database_specific:
             anchore:
                 fixes:
-                    - date: "2026-04-23"
-                      kind: advisory
+                    - date: "2026-05-21"
+                      kind: first-observed
                       version: 3.14.5
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 3.13.14
           events:
-            - introduced: 3.11.0
+            - introduced: "0"
+            - fixed: 3.13.14
+            - introduced: 3.14.0
             - fixed: 3.14.5
           type: SEMVER
       severity:
@@ -26,8 +31,8 @@ database_specific:
     severity: High
 details: The method "sock_recvfrom_into()" of "asyncio.ProacterEventLoop" (Windows only) was missing a boundary check for the data buffer when using nbytes parameter. This allowed for an out-of-bounds buffer write if data was larger than the buffer size. Non-Windows platforms are not affected.
 id: BIT-python-2026-3298
-modified: "2026-05-20T16:54:12.697Z"
-published: "2026-04-23T08:52:48.858Z"
+modified: "2026-07-06T15:47:40.851Z"
+published: "2026-07-06T15:27:55.061Z"
 references:
     - type: WEB
       url: https://github.com/python/cpython/commit/1274766d3c29007ab77245a72abbf8dce2a9db4d

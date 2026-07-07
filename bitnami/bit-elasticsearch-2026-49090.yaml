@@ -1,0 +1,42 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 7.17.24
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 8.15.0
+          events:
+            - introduced: 7.0.0
+            - fixed: 7.17.24
+            - introduced: 8.0.0
+            - fixed: 8.15.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-49090
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Uncontrolled Resource Consumption (CWE-400) in Elasticsearch can lead to a denial of service via Excessive Allocation (CAPEC-130). An authenticated user can submit a specially crafted bulk request that causes sustained high CPU consumption, which can render the affected node unable to process requests.
+id: BIT-elasticsearch-2026-49090
+modified: "2026-07-06T06:18:57.499Z"
+published: "2026-07-06T05:48:35.959Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/elasticsearch-7-17-24-8-15-0-security-update-esa-2026-52
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-49090
+schema_version: 1.6.2
+summary: Uncontrolled Resource Consumption in Elasticsearch Leading to Denial of Service
