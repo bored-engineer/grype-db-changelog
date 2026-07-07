@@ -1,0 +1,46 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: mastodon
+        purl: pkg:bitnami/mastodon
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 4.3.23
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 4.4.17
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 4.5.10
+          events:
+            - fixed: 4.3.23
+            - fixed: 4.4.17
+            - fixed: 4.5.10
+            - introduced: "0"
+            - introduced: 4.4.0
+            - introduced: 4.5.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2026-48028
+database_specific:
+    cpes:
+        - cpe:2.3:a:joinmastodon:mastodon:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Mastodon is a free, open-source social network server based on ActivityPub. Prior to 4.5.10, 4.4.17, and 4.3.23, Mastodon's normalization of incoming activities signed with Linked-Data Signatures does not sufficiently protect the activities from a certain class of spoofing, allowing threat actors to remove JSON entries from valid signed activities from a third-party actor. This vulnerability is fixed in 4.5.10, 4.4.17, and 4.3.23.
+id: BIT-mastodon-2026-48028
+modified: "2026-07-06T06:18:57.499Z"
+published: "2026-07-06T05:55:20.384Z"
+references:
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/security/advisories/GHSA-53m7-2wrh-q839
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-48028
+schema_version: 1.6.2
+summary: 'Mastodon: Removal of integrity-protected JSON entries from signed activities'

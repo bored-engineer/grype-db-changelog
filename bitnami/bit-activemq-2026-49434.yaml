@@ -1,0 +1,50 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: activemq
+        purl: pkg:bitnami/activemq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 5.19.8
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 6.2.7
+          events:
+            - fixed: 5.19.8
+            - fixed: 6.2.7
+            - introduced: "0"
+            - introduced: 6.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-49434
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:activemq:*:*:*:*:*:*:*:*
+    severity: High
+details: |-
+    Improper Input Validation vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ, Apache ActiveMQ All.
+
+    An attacker that has access to publish or modify entries in LDAP that match the configured searchBase and searchFilter can instantiate denied transports inside the broker JVM. This can be used to fetch an attacker URL and spawn a second BrokerService inside the same JVM.
+    This issue affects Apache ActiveMQ Broker: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ All: before 5.19.8, from 6.0.0 before 6.2.7.
+
+
+    Users are recommended to upgrade to version 6.2.7 or 5.19.8, which fixes the issue.
+id: BIT-activemq-2026-49434
+modified: "2026-07-06T06:18:57.499Z"
+published: "2026-07-06T05:47:10.787Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/06/29/8
+    - type: WEB
+      url: https://lists.apache.org/thread/hcjh7kdk4l85tb9ksmvcnkhso1ngj50o
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-49434
+schema_version: 1.6.2
+summary: 'Apache ActiveMQ Broker, Apache ActiveMQ, Apache ActiveMQ All: LdapNetworkConnector instantiates denied transports and a remote-properties broker'

@@ -18,7 +18,7 @@ database_specific:
     severity: High
 details: "tarfile.extractall() with the 'data' or 'tar'\n filter could be bypassed by a crafted archive where a hardlink \nreferences a symlink stored at a deeper name than the hardlink itself.  \nThe extraction fallback validated the symlink at it's archived location \nbut recreated it at the hardlink's shallower\npath, letting a relative\n target the filter judged contained escape the destination directory.  \nThis allowed a malicious tar archive to create a symlink pointing \noutside the destination, enabling out-of-destination file reads or \nwrites. This was an incomplete fix of CVE-2025-4330."
 id: BIT-python-2026-11940
-modified: "2026-06-29T11:33:52.451Z"
+modified: "2026-07-06T06:18:57.499Z"
 published: "2026-06-29T11:14:50.493Z"
 references:
     - type: WEB
@@ -29,6 +29,8 @@ references:
       url: https://github.com/python/cpython/commit/771d12dda5140313db0ac550292987975651bbde
     - type: WEB
       url: https://github.com/python/cpython/commit/79c06bd5c6afa3c440d50faf7ee1b147c8832b4c
+    - type: WEB
+      url: https://github.com/python/cpython/commit/be13e86f6b9788a6f4d0419dffef72cbae5865c9
     - type: WEB
       url: https://github.com/python/cpython/issues/151558
     - type: WEB

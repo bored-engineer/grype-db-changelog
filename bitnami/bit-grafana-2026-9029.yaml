@@ -15,17 +15,17 @@ affected:
             - introduced: 12.4.0
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N
           type: CVSS_V3
 aliases:
     - CVE-2026-9029
 database_specific:
     cpes:
         - cpe:2.3:a:grafana:grafana:*:*:*:*:*:go:*:*
-    severity: High
+    severity: Medium
 details: The geomap panel's XYZ tile layer has a sanitize-then-interpolate ordering bug. sanitizeTextPanelContent() runs on the raw template string before getTemplateSrv().replace() substitutes the variable value, which uses the glob format with no HTML escaping. The result is passed to OpenLayers via element.innerHTML. An Editor can set a textbox variable's default value to an XSS payload that executes for every user who opens the dashboard. This is a bypass of the CVE-2023-0507 fix
 id: BIT-grafana-2026-9029
-modified: "2026-06-26T09:09:39.774Z"
+modified: "2026-07-06T06:18:57.499Z"
 published: "2026-06-26T08:43:08.876Z"
 references:
     - type: WEB

@@ -4,9 +4,15 @@ affected:
         name: mysql-shell
         purl: pkg:bitnami/mysql-shell
       ranges:
-        - events:
-            - introduced: 2026.2.0
-            - last_affected: 2026.2.0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-06-22"
+                      kind: advisory
+                      version: 2026.5.0
+          events:
+            - fixed: 2026.5.0
+            - introduced: "0"
           type: SEMVER
       severity:
         - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H
@@ -16,10 +22,11 @@ aliases:
 database_specific:
     cpes:
         - cpe:2.3:a:oracle:mysql_shell:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:oracle:mysql_shell:*:*:*:*:*:visual_studio_code:*:*
     severity: High
 details: 'Vulnerability in the MySQL Shell product of Oracle MySQL (component: Shell for VS Code).   The supported version that is affected is 2026.2.0+9.6.1. Difficult to exploit vulnerability allows low privileged attacker with network access via multiple protocols to compromise MySQL Shell.  While the vulnerability is in MySQL Shell, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of MySQL Shell. CVSS 3.1 Base Score 8.5 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H).'
 id: BIT-mysql-shell-2026-46870
-modified: "2026-06-22T06:07:36.958Z"
+modified: "2026-07-06T06:18:57.499Z"
 published: "2026-06-22T05:46:22.506Z"
 references:
     - type: WEB
