@@ -1,0 +1,34 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A denial of service vulnerability was found in GStreamer's AV1 codec parser in gst-plugins-bad. The gst_av1_parser_parse_tile_list_obu() function passes a byte count to a bit-reader API that expects a bit count, causing parser desynchronization. A remote attacker could trick a user into opening a specially crafted AV1 media file, triggering an assertion abort and causing the application to crash. (CVE-2026-52718)Multiple out-of-bounds read vulnerabilities were found in GStreamer's pcapparse element. Malformed PCAP records can trigger reads beyond buffer boundaries during IPv4/TCP header parsing. This element is primarily used in debugging pipelines, limiting real-world exposure. A local attacker could trick a user into processing a specially crafted PCAP file, potentially leading to a crash or information disclosure. (CVE-2026-52721)A signed integer overflow vulnerability was found in GStreamer's VMnc decoder. A crafted VMnc stream with large cursor dimensions can overflow signed integer payload-size arithmetic, bypassing a length check and leading to out-of-bounds reads. A remote attacker could trick a user into opening a specially crafted VMnc file, potentially causing a crash or information disclosure. (CVE-2026-52722)
+    FixedIn:
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-devel
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.6
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3790.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-52718
+            - Name: CVE-2026-52721
+            - Name: CVE-2026-52722
+    Name: ALAS2-2026-3790
+    NamespaceName: amzn:2
+    Severity: Medium

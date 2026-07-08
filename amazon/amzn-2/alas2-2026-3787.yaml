@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in GStreamer's WavPack audio decoder in gst-plugins-good. When processing a specially crafted WavPack file, an integer overflow in the buffer size calculation (4 * block_samples * channels) in gst_wavpack_dec_handle_frame() causes a very small heap allocation. The WavPack library then writes decoded audio samples far beyond the allocated buffer, resulting in heap memory corruption. This affects both 32-bit and 64-bit systems since the arithmetic is performed in 32-bit integers before promotion to the allocation size type. A remote attacker could use this flaw to crash an application or potentially execute arbitrary code by convincing a user to open a malicious WavPack audio file. (CVE-2026-53705)
+    FixedIn:
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: gstreamer-plugins-good
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: gstreamer-plugins-good-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: gstreamer-plugins-good-devel-docs
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3787.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-53705
+    Name: ALAS2-2026-3787
+    NamespaceName: amzn:2
+    Severity: High
