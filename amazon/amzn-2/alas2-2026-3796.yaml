@@ -1,0 +1,45 @@
+Vulnerability:
+    Description: An integer overflow flaw was found in the SASL I/O layer of 389 Directory Server (389-ds-base). In sasl_io_start_packet(), adding sizeof(uint32_t) to a crafted SASL packet length prefix of 0xFFFFFFFC causes unsigned wraparound to zero, bypassing the nsslapd-maxsasliosize limit and leading to a heap buffer overflow of up to approximately 2 megabytes of attacker-controlled data. After a successful SASL bind with integrity protection (SSF > 0), a remote attacker can cause a Denial of Service (DoS) or achieve Remote Code Execution (RCE). In FreeIPA and Red Hat Identity Management deployments, any domain user with a valid Kerberos ticket, enrolled host, or service account can trigger this vulnerability over the network. This flaw is independent of CVE-2025-14905, which patched schema.c only and did not modify sasl_io.c. (CVE-2026-11774)
+    FixedIn:
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: 389-ds-base
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: 389-ds-base-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: 389-ds-base-devel
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: 389-ds-base-libs
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Name: 389-ds-base-snmp
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3796.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-11774
+    Name: ALAS2-2026-3796
+    NamespaceName: amzn:2
+    Severity: High
