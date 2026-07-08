@@ -1,0 +1,60 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in the cifs-utils package where the cifs.upcall helper fails to securely drop its root privileges before looking up user information inside a user-controlled environment. A local, low privileged attacker can exploit this by using a crafted request_key payload to trick the root-owned helper into entering a custom environment (namespace) containing a malicious NSS module. This forces the system to load the attacker's controlled NSS Module and configuration, allowing them to execute arbitrary commands as the root user, elevating their privileges and fully compromising the system. (CVE-2026-12505)
+    FixedIn:
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: cifs-utils
+          NamespaceName: amzn:2023
+          Version: 7.5-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: cifs-utils-debuginfo
+          NamespaceName: amzn:2023
+          Version: 7.5-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: cifs-utils-debugsource
+          NamespaceName: amzn:2023
+          Version: 7.5-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: cifs-utils-devel
+          NamespaceName: amzn:2023
+          Version: 7.5-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: cifs-utils-info
+          NamespaceName: amzn:2023
+          Version: 7.5-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: pam_cifscreds
+          NamespaceName: amzn:2023
+          Version: 7.5-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: pam_cifscreds-debuginfo
+          NamespaceName: amzn:2023
+          Version: 7.5-1.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1927.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-12505
+    Name: ALAS2023-2026-1927
+    NamespaceName: amzn:2023
+    Severity: High

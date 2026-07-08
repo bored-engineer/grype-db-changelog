@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: HAProxy through  3.4.0, fixed in commit 9a6d1fe, contains a null pointer dereference vulnerability in hpack_dht_insert() within src/hpack-tbl.c that fails to validate the return value of hpack_dht_defrag() when the memory pool is exhausted. An attacker can trigger HPACK dynamic table insertions under memory pressure to dereference a NULL pointer and crash HAProxy worker processes, causing denial of service. (CVE-2026-55204)
+    FixedIn:
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: haproxy
+          NamespaceName: amzn:2023
+          Version: 3.0.23-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: haproxy-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.0.23-2.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: haproxy-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.0.23-2.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1915.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-55204
+    Name: ALAS2023-2026-1915
+    NamespaceName: amzn:2023
+    Severity: High

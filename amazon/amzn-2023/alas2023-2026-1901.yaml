@@ -1,0 +1,35 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: (*x509.Certificate).VerifyHostname previously called matchHostnames in a loop over all DNS Subject Alternative Name (SAN) entries. This caused strings.Split(host, ".") to execute repeatedly on the same input hostname. With a large DNS SAN list, verification costs scaled quadratically based on the number of SAN entries multiplied by the hostname's label count. Because x509.Verify validates hostnames before building the certificate chain, this overhead occurred even for untrusted certificates. (CVE-2026-27145)Moby is an open source container framework. In versions prior to 29.5.1 and in moby/moby v2 prior to v2.0.0-beta.14, when a compressed archive is uploaded to a container via `PUT /containers/{id}/archive` or piped through `docker cp -`, the daemon resolves decompression binaries (such as `xz` or `unpigz`) from the container's filesystem rather than the host's due to incorrect ordering of operations. A malicious container image containing a trojanized decompression binary can achieve arbitrary code execution with full daemon privileges, including host root UID and unrestricted capabilities, when a user uploads a compressed (xz or gzip) archive into that container. This issue is fixed in Docker Engine 29.5.1 and moby/moby v2.0.0-beta.14. Workarounds include only running containers from trusted images, using authorization plugins to restrict access to the `PUT /containers/{id}/archive` endpoint, and avoiding piping compressed archives into containers created from untrusted images (CVE-2026-41567)Decoding a maliciously-crafted MIME header containing many invalid encoded-words can consume excessive CPU. (CVE-2026-42504)When returning errors, functions in the net/textproto package would include its input as part of the error. This might allow an attacker to inject misleading content to errors that are printed or logged. (CVE-2026-42507)
+    FixedIn:
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: docker
+          NamespaceName: amzn:2023
+          Version: 25.0.16-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: docker-debuginfo
+          NamespaceName: amzn:2023
+          Version: 25.0.16-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: docker-debugsource
+          NamespaceName: amzn:2023
+          Version: 25.0.16-1.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1901.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-27145
+            - Name: CVE-2026-41567
+            - Name: CVE-2026-42504
+            - Name: CVE-2026-42507
+    Name: ALAS2023-2026-1901
+    NamespaceName: amzn:2023
+    Severity: High
