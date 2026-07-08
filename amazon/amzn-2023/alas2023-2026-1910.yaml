@@ -1,0 +1,93 @@
+Vulnerability:
+    Description: tarfile.extractall() with the 'data' or 'tar'filter could be bypassed by a crafted archive where a hardlinkreferences a symlink stored at a deeper name than the hardlink itself.The extraction fallback validated the symlink at it's archived locationbut recreated it at the hardlink's shallowerpath, letting a relativetarget the filter judged contained escape the destination directory.This allowed a malicious tar archive to create a symlink pointingoutside the destination, enabling out-of-destination file reads orwrites. This was an incomplete fix of CVE-2025-4330. (CVE-2026-11940)CR/LF bytes were not rejected by HTTP client proxy tunnel headers or host. (CVE-2026-1502)unicodedata.normalize() can take excessive CPU time when processing specially crafted Unicode input containing long runs of combining characters with alternating Canonical Combining Class values. This affects all normalization forms. (CVE-2026-3276)`xml.parsers.expat` and `xml.etree.ElementTree` use insufficient entropy for Expat hash-flooding protection, which allows a crafted XML document to trigger hash flooding.\\r\\n\\r\\nFully mitigating this vulnerability requires both updating libexpat to 2.8.0 or later and applying this patch. (CVE-2026-7210)tarfile.data_filter could be bypassed using crafted link entries, including symlinks with empty or directory-like names, to redirect later archive members outside the intended extraction directory. This allowed a malicious tar archive to cause tarfile.extractall() to write files outside the destination directory, subject to the permissions of the extracting process. (CVE-2026-7774)The ftpcp() function in Lib/ftplib.py was not updated whenCVE-2021-4189 was fixed. While makepasv() was patched to replaceserver-supplied PASV host addresses with the actual peer address(getpeername()[0]), ftpcp() still calls parse227() directly and passesthe raw attacker-controllable IP address and port to target.sendport(). This patch is related to CVE-2021-4189. (CVE-2026-8328)bz2.BZ2Decompressor objects could be reused after a decompression error. If an application caught the resulting OSError and retried with the same decompressor, crafted input could cause the decompressor to resume from an invalid internal state and perform out-of-bounds writes to a stack buffer. This could crash the process when processing untrusted data. (CVE-2026-9669)
+    FixedIn:
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-debug
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-devel
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-freethreading
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-freethreading-debug
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-idle
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-libs
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-test
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.13-tkinter
+          NamespaceName: amzn:2023
+          Version: 3.13.14-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1910.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-11940
+            - Name: CVE-2026-1502
+            - Name: CVE-2026-3276
+            - Name: CVE-2026-7210
+            - Name: CVE-2026-7774
+            - Name: CVE-2026-8328
+            - Name: CVE-2026-9669
+    Name: ALAS2023-2026-1910
+    NamespaceName: amzn:2023
+    Severity: High

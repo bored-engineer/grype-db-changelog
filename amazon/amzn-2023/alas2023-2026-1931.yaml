@@ -1,0 +1,76 @@
+Vulnerability:
+    Description: The "tarfile" module would still apply normalization of AREGTYPE (\x00) blocks to DIRTYPE, even while processing a multi-block member such as GNUTYPE_LONGNAME or GNUTYPE_LONGLINK. This could result in a crafted tar archive being misinterpreted by the tarfile module compared to other implementations. (CVE-2025-13462)tarfile.extractall() with the 'data' or 'tar'filter could be bypassed by a crafted archive where a hardlinkreferences a symlink stored at a deeper name than the hardlink itself.The extraction fallback validated the symlink at it's archived locationbut recreated it at the hardlink's shallowerpath, letting a relativetarget the filter judged contained escape the destination directory.This allowed a malicious tar archive to create a symlink pointingoutside the destination, enabling out-of-destination file reads orwrites. This was an incomplete fix of CVE-2025-4330. (CVE-2026-11940)`xml.parsers.expat` and `xml.etree.ElementTree` use insufficient entropy for Expat hash-flooding protection, which allows a crafted XML document to trigger hash flooding.\\r\\n\\r\\nFully mitigating this vulnerability requires both updating libexpat to 2.8.0 or later and applying this patch. (CVE-2026-7210)The ftpcp() function in Lib/ftplib.py was not updated whenCVE-2021-4189 was fixed. While makepasv() was patched to replaceserver-supplied PASV host addresses with the actual peer address(getpeername()[0]), ftpcp() still calls parse227() directly and passesthe raw attacker-controllable IP address and port to target.sendport(). This patch is related to CVE-2021-4189. (CVE-2026-8328)
+    FixedIn:
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12-debug
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12-devel
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12-idle
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12-libs
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12-test
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-07"
+            Kind: advisory
+          Name: python3.12-tkinter
+          NamespaceName: amzn:2023
+          Version: 3.12.13-2.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1931.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-13462
+            - Name: CVE-2026-11940
+            - Name: CVE-2026-7210
+            - Name: CVE-2026-8328
+    Name: ALAS2023-2026-1931
+    NamespaceName: amzn:2023
+    Severity: High
