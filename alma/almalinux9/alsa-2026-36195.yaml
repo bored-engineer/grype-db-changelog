@@ -1,0 +1,66 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: 389-ds-base
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.8.0-8.el9_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: 389-ds-base-devel
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.8.0-8.el9_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: 389-ds-base-libs
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.8.0-8.el9_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: 389-ds-base-snmp
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.8.0-8.el9_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: python3-lib389
+      ranges:
+        - events:
+            - introduced: "0"
+            - fixed: 2.8.0-8.el9_8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "389 Directory Server is an LDAP version 3 (LDAPv3) compliant server. The base packages include the Lightweight Directory Access Protocol (LDAP) server and command-line utilities for server administration.  \n\nSecurity Fix(es):  \n\n  * 389-ds-base: 389-ds-base: Heap buffer overflow in sasl_io_recv() via padded SASL UNBIND (CVE-2026-11610)\n  * 389-ds-base: 389-ds-base: integer overflow in SASL packet length bypasses size limit leading to heap buffer overflow (CVE-2026-11774)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2026:36195
+modified: "2026-07-08T11:49:58Z"
+published: "2026-07-07T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:36195
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-36195.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2026-11610
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2026-11774
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2484414
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2484916
+related:
+    - CVE-2026-11610
+    - CVE-2026-11774
+summary: 'Important: 389-ds-base security update'
