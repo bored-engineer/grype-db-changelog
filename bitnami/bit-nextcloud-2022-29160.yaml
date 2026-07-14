@@ -1,0 +1,40 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: nextcloud
+        purl: pkg:bitnami/nextcloud
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-07-12"
+                      kind: advisory
+                      version: 3.19.0
+          events:
+            - fixed: 3.19.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2022-29160
+database_specific:
+    cpes:
+        - cpe:2.3:a:nextcloud:nextcloud:*:*:*:*:*:android:*:*
+    severity: Low
+details: Nextcloud Android is the Android client for Nextcloud, a self-hosted productivity platform. Prior to version 3.19.0, sensitive tokens, images, and user related details exist after deletion of a user account. This could result in misuse of the former account holder's information. Nextcloud Android version 3.19.0 contains a patch for this issue. There are no known workarounds available.
+id: BIT-nextcloud-2022-29160
+modified: "2026-07-13T00:08:34.851Z"
+published: "2026-07-12T23:47:49.478Z"
+references:
+    - type: WEB
+      url: https://github.com/nextcloud/android/pull/9644
+    - type: WEB
+      url: https://github.com/nextcloud/security-advisories/security/advisories/GHSA-xcj9-3jch-qr2r
+    - type: WEB
+      url: https://hackerone.com/reports/1222873
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2022-29160
+schema_version: 1.6.2
+summary: Sensitive files/data exist after deletion of user account in Nextcloud Android
