@@ -1,0 +1,318 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [257-23.0.1.el10_2.1]
+        - Fix detection of Oracle Virtualization or BM envs [Orabug: 37531877]
+        - Avoid udevadm warnings when using udev valid configs [Orabug: 37503197]
+        - allow dm remove ioctl to co-operate with UEK3 [Orabug: 18467469]
+        - set 'RemoveIPC=no' in logind.conf as default [Orabug: 22224874]
+        - Fix missing netdev for iscsi entry in fstab [Orabug: 25897792]
+        - udev rules: fix memory hot add and remove [Orabug: 31310273]
+        - Disable unprivileged BPF by default [Orabug: 32870980]
+        - Remove upstream references [Orabug: 33995357]
+        - Wait for an extra configurable time before udevd kills a worker [Orabug: 36017407]
+        - Removed unneeded patches from the systemd.spec
+        - 1004-orabug34272490-0001-core-device-ignore-DEVICE_FOUND_UDEV-bit-on-switchin.patch [Orabug: 34272490]
+        - 1005-orabug34272490-0002-core-device-drop-unnecessary-condition.patch [Orabug: 34272490]
+        - 1006-orabug34467234-shutdown-get-only-active-md-arrays.patch [Orabug: 34467234]
+        - 1007-orabug34868110-pstore-fixes-for-dmesg.txt-reconstruction.patch [Orabug: 34868110]
+        - 1008-path-drop-IN_ATTRIB-from-parent-directory-watches.patch [Orabug: 36780432]
+
+        [257-23.1]
+        - ci: re-enable bpf-framework option for build and unit test jobs (RHEL-152080)
+        - ci: add bpftool workaround to codeql job too (RHEL-152080)
+        - ci: fix workaround about bpftool for codeql (RHEL-152080)
+        - ci: add bpftool workaround to coverity too (RHEL-152080)
+        - path-util: add flavour of path_startswith() that leaves a leading slash in place (RHEL-152080)
+        - cgroup: port some code over to path_startswith_full() (RHEL-152080)
+        - path-util: invert PATH_STARTSWITH_ACCEPT_DOT_DOT flag (RHEL-152080)
+        - sd-json: fix off-by-one issue when updating parent for array elements (RHEL-152080)
+        - core/cgroup: avoid one unnecessary strjoina() (RHEL-152080)
+        - core: validate input cgroup path more prudently (RHEL-152080)
+
+        [257-23]
+        - test-journal-dump: dump the headers of journal files (RHEL-106795)
+        - journal: store counts, not byte sizes, in table size constants (RHEL-106795)
+        - journal: treble field hash table size (RHEL-106795)
+        - nspawn: move uid shift/chown() code into shared/ (RHEL-143036)
+        - user-classification: add new 'foreign' UID range (RHEL-143036)
+        - userdb: synthesize stub user records for the foreign UID (RHEL-143036)
+        - dissect: add new --shift command (RHEL-143036)
+        - userdb: optionally parse numeric UIDs/GIDs where a username is expected (RHEL-143036)
+        - userdbd: separate parameter structure of GetMemberships() varlink call from the GetUserRecord() one (RHEL-143036)
+        - userdb: move setting of 'service' varlink parameter into userdb_connect() (RHEL-143036)
+        - user-record: make a NULL UserDBMatch be equivalent to no filtering (RHEL-143036)
+        - sd-varlink: add sd_varlink_get_description() call (RHEL-143036)
+        - user-record: add helper for dispatching a disposition mask (RHEL-143036)
+        - user-record: rename USER_DISPOSITION_MASK_MAX -> USER_DISPOSITION_MASK_ALL (RHEL-143036)
+        - user-record: add some helpers for working with UserDBMatch (RHEL-143036)
+        - varlink: add new calls for server-side user record filtering to varlink IDL + to spec (RHEL-143036)
+        - userdb: move UserDBMatch handling from userdbctl into generic userdb code to allow it to be done server side (RHEL-143036)
+        - userdbd: implement server side filtering in the Multiplexer API (RHEL-143036)
+        - homectl: port has_regular_user() + acquire_group_list() to use server-side filtering (RHEL-143036)
+        - update TODO (RHEL-143036)
+        - JSON User/Group records: Add properties for UUIDs (RHEL-143036)
+        - userdb: add support for printing the UUID from user and group records (RHEL-143036)
+        - userdb: add support for looking up users or groups by uuid. (RHEL-143036)
+        - userdbctl: add --uuid filtering option (RHEL-143036)
+        - userdbctl: add missing --uuid= to --help text (RHEL-143036)
+        - userdb: fix typo (RHEL-143036)
+        - man/userdbctl: fixup version info (RHEL-143036)
+        - user-record: add a concept of inverting per-host matching sections in user record (RHEL-143034)
+        - homectl: add interface for controlling storage for negative machine ID matches (RHEL-143034)
+        - logind: also save pidfdid as part of session state, even if we don't parse it (RHEL-53112)
+        - logind: support deserializing session leader through pidfdid (RHEL-53112)
+        - TEST-35-LOGIN: test coldplug without fdstore on kernels with pidfd id (RHEL-53112)
+        - logind: fix potential fd leak in deliver_session_leader_fd_consume() (RHEL-53112)
+        - Revert 'coredump: lock down EnterNamespace= mount even more' (RHEL-95219)
+        - coredump: add compat support for SYSTEMD_COREDUMP_ALLOW_NAMESPACE_CHANGE (RHEL-95219)
+
+        [257-22]
+        - fstab-generator: fix options in systemd.mount-extra= arg (RHEL-125822)
+        - hwdb: Add Accelerometer mount matrix for Irbis TW43 (RHEL-72702)
+        - hwdb: map FN key on TongFang X4SP4NAL laptops (RHEL-72702)
+        - hwdb: update rules (RHEL-72702)
+        - hwdb: update autosuspend rules (RHEL-72702)
+        - Add Razer Cobra mouse to hwdb (RHEL-72702)
+        - hwdb: enable autosuspend for Dell DW5826e WWAN modem (RHEL-72702)
+        - hwdb: sort SDR devices by vendor name (RHEL-72702)
+        - 70-mouse.hwdb: Add Razer Basilisk V3, Asus Cerberus, +2 more (RHEL-72702)
+        - hwdb: run 'update-hwdb' (RHEL-72702)
+        - Add Hantek DSO-6022 oscilloscopes and compatible devices (RHEL-72702)
+        - Update 60-sensor.hwdb - Add support for Lenovo Legion Go (RHEL-72702)
+        - hwdb: add Airspy devices (RHEL-72702)
+        - hwdb: add more devices (RHEL-72702)
+        - hwdb: add MiriSDR MSi2500 devices (RHEL-72702)
+        - hwdb: add missing Ettus Research B200 rule (RHEL-72702)
+        - hwdb: add LimeSDR XTRX devices (RHEL-72702)
+        - hwdb: add HydraSDR RFOne (RHEL-72702)
+        - hwdb: add SDRplay devices (RHEL-72702)
+        - hwdb: update (RHEL-72702)
+        - hwdb: fix calibrate rotation sensor for Positivo K116J (#39189) (RHEL-72702)
+        - Add Nulea M501 trackball to hwdb (RHEL-72702)
+        - add comment to 70-mouse.hwdb regarding generic name for Nulea M501 USB dongle (RHEL-72702)
+        - remove extra space from new hwdb.d/70-mouse.hwdb entries to fix failing test (RHEL-72702)
+        - remove bonus line (RHEL-72702)
+        - hwdb: drop trailing whitespace (RHEL-72702)
+        - remove Nulea M501 usb entry from hwdb (RHEL-72702)
+        - test/parse_hwdb: wrap Or inside an And in a Group (RHEL-72702)
+        - rules: extend 60-input-id.rules to allow for bus/vid/pid/name matches (RHEL-72702)
+        - hwdb: don't tag a named Mouse device as pointingstick (RHEL-72702)
+        - hwdb: Add V64x_V65xAU to list of Clevo models where scancode f7+f8 get mapped to touchpad-toggle (RHEL-72702)
+        - hwdb: gpd micropc2 sensor (#39493) (RHEL-72702)
+        - hwdb: add support for the Logitech MX Master 4 (#39490) (RHEL-72702)
+        - hwdb: add entry for Acer Switch One 10 (SW1-011) (#39716) (RHEL-72702)
+        - keymap: Ignore brightness keys on Dell Inspiron 3505 to avoid double events (RHEL-72702)
+        - Update hwdb (RHEL-72702)
+        - hwdb: Add Elecom IST Pro trackball (#39762) (RHEL-72702)
+        - hwdb: Fix keyboard backlight keys on Acer Nitro 5 AN515-58 (#39769) (RHEL-72702)
+        - hwdb: Add alternative mode for Beacn Mic (#39868) (RHEL-72702)
+        - Update hwdb (RHEL-72702)
+        - hwdb: add ProtoArc EM01 NL mouse configuration (RHEL-72702)
+        - hwdb: add Magic Trackpad v2 USB-C (2024) to quirks (#40032) (RHEL-72702)
+        - hwdb: sensor: Remove Lenovo IdeaPad D330 accel mount matrix (RHEL-72702)
+        - Update hwdb (RHEL-72702)
+        - hwdb: update autosuspend rules (RHEL-72702)
+        - hwdb: Add ACCEL_MOUNT_MATRIX for variant of TERRA PAD 1061 (RHEL-72702)
+        - hwdb: sensor: Add HP OmniBook Ultra Flip 14 accel mount matrix (#40076) (RHEL-72702)
+        - hwdb: sensor: Remove Lenovo IdeaPad Duet 3 accel mount matrix (#40075) (RHEL-72702)
+        - hwdb: Fix ACCEL_MOUNT_MATRIX for Lenovo Ideapad MIIX 310-ICR (#40067) (RHEL-72702)
+        - hwdb: fix unstable button triggering on Mipad 2 under GNOME (#40071) (RHEL-72702)
+        - Update hwdb (RHEL-72702)
+        - hwdb: touchpad config for Apple MacbookPro12,1 Early 2015 (RHEL-72702)
+        - Add Lenovo Y50-70 touchpad to 60-evdev.hwdb (RHEL-72702)
+        - quirks: sensor: add info about ACPI accel_matrix (RHEL-72702)
+        - quirks: Re-add D330 accel_matrix as identity one (#40226) (RHEL-72702)
+        - quirks: touchpad: Set Duet 3 bt touchpad internal (RHEL-72702)
+        - hwdb: Add missing scancodes for Lenovo Legion devices (RHEL-72702)
+        - hwdb: Add missing vendor names for older AYANEO devices Adds AYADEVICE and AYA NEO vendor names. Early founders editon and 2021 models used these DMI values instead of AYANEO (RHEL-72702)
+        - hwdb: add matrix for ASUS 2-in-1 T101HA (RHEL-72702)
+        - hwdb: add HP EliteBoard Mic mute key mapping (RHEL-72702)
+        - hwdb: Add GPD Pocket 4 chassis quirk (RHEL-72702)
+        - hwdb: make three more hwdb files parsed by parse_hwdb.py (RHEL-72702)
+        - hwdb: set touchpad resolution for all ThinkPad T49x chassis laptops (RHEL-72702)
+        - hwdb: Update Lenovo Legion Go Models - Different BIOS versions of the Legion Go 2 can init the keyboard   device as set 1 (appears as raw set 2) or as set 2 (appears as   translated set 2). Add the Legion Go 2 to the Translated list. - While at it, specify the models in a more verbose manner for   posterity. (RHEL-72702)
+        - hwdb: Add extended SteelSeries Arctis headset device support (#40479) (RHEL-72702)
+        - hwdb: keyboard: fix typo CAPSLOCK to NUMLOCK (RHEL-72702)
+        - hwdb: keyboard: uppercase apple id (RHEL-72702)
+        - integritysetup: Add support for hmac-sha512 (RHEL-27852)
+        - integritysetup: Add PHMAC algorithm to list of known algorithms (RHEL-27852)
+        - core: increment start limit counter only when we can start the unit (RHEL-115032)
+        - TEST-07-PID1: wait for systemd-resolved being stopped (RHEL-115032)
+        - test: extend start limit interval (RHEL-115032)
+        - userdbctl: optionally show user/group data from JSON filerather than from system (RHEL-143029)
+        - man: fix typo (RHEL-143029)
+        - test: fix test with -Dnetworkd=false (RHEL-143029)
+        - ci: run apt-get update before running mkosi (RHEL-115001)
+
+        [257-21]
+        - add GUID for clock group (RHEL-113051)
+
+        [257-20]
+        - tools/check-version-history: avoid DeprecationWarning with newer lxml (RHEL-128767)
+        - man: don't duplicate version in History section (RHEL-128767)
+        - tools: ignore root element explicitly in check-version-history (RHEL-128767)
+        - systemd-logind: Add signal section in man systemd-logind (RHEL-128767)
+        - timer: rebase the next elapse timestamp only if timer didn't already run (RHEL-118216)
+        - timer: rebase last_trigger timestamp if needed (RHEL-118216)
+
+        [257-19]
+        - man: fix a missing word (RHEL-120277)
+        - sd_bus_open_user_machine(): Don't shortcut without necessary env (RHEL-129179)
+        - udev: set clock group for PTP and RTC devices (RHEL-113051)
+        - coredump: handle ENOBUFS and EMSGSIZE the same way (RHEL-126122)
+        - strv: introduce string_strv_hashmap_remove() (RHEL-126937)
+        - unit-file: introduce unit_file_remove_from_name_map() (RHEL-126937)
+        - core/unit: remove path to transient unit file from unit name maps on stop (RHEL-126937)
+        - TEST-07-PID1: add reprudcer for issue #35190 (RHEL-126937)
+
+        [257-18]
+        - spec: ukify: require python3-zstandard (RHEL-103523)
+
+        [257-17]
+        - pam_systemd: honor session class provided via PAM environment (RHEL-109832)
+        - udev/net_id: introduce naming scheme for RHEL-10.2 (RHEL-72813)
+        - udev/net_id: introduce naming scheme for RHEL-9.8 (RHEL-72813)
+        - test: split VM-only subtests from TEST-74-AUX-UTILS to new VM-only test (RHEL-112205)
+        - core/transaction: first drop unmergable jobs for anchor jobs (RHEL-112205)
+        - test: add test case for issue #38765 (RHEL-112205)
+        - strv: add strv_equal_ignore_order() helper (RHEL-109902)
+        - pam: minor coding style tweaks (RHEL-109902)
+        - user-record: add helper that checks if a provided user name matches a record (RHEL-109902)
+        - user-record: add support for alias user names to user record (RHEL-109902)
+        - pam_systemd_home: use right field name in error message (RHEL-109902)
+        - pam_systemd_home: support login with alias names + user names with realms (RHEL-109902)
+        - homed: support user record aliases (RHEL-109902)
+        - homectl: add support for creating users with alias names (RHEL-109902)
+        - test: add test for homed alias and realm user resolution (RHEL-109902)
+        - update TODO (RHEL-109902)
+        - udev: create symlinks for s390 PTP devices (RHEL-120177)
+        - test: build the crashing test binary outside of the test (RHEL-113920)
+        - test: exclude test-stacktrace(-not)?-symbolized from the coredump check (RHEL-113920)
+        - mkosi: install test dependencies for EnterNamespace= test (RHEL-113920)
+        - coredump: verify pidfd after parsing data in usermode helper (RHEL-104135)
+        - coredump: restore compatibility with older patterns (RHEL-104135)
+        - coredump: wrap long lines, fix grammar in comments (RHEL-104135)
+        - coredump: get rid of _META_MANDATORY_MAX (RHEL-104135)
+        - coredump: use %d in kernel core pattern (RHEL-104135)
+        - coredump: also stop forwarding non-dumpable processes (RHEL-104135)
+        - coredump: get rid of a bogus assertion (RHEL-104135)
+        - coredump: add support for new %F PIDFD specifier (RHEL-104135)
+        - coredump: when %F/pidfd is used, again allow forwarding to containers (RHEL-104135)
+        - coredump: introduce an enum to wrap dumpable constants (RHEL-104135)
+        - Define helper to call PR_SET_DUMPABLE (RHEL-104135)
+        - coredump: fix 0-passed-as-pointer warning (RHEL-104135)
+
+        [257-16]
+        - test: rename TEST-53-ISSUE-16347 to TEST-53-TIMER (RHEL-118216)
+        - test: restarting elapsed timer shouldn't trigger the corresponding service (RHEL-118216)
+        - test: check the next elapse timer timestamp after deserialization (RHEL-118216)
+        - timer: don't run service immediately after restart of a timer (RHEL-118216)
+        - test: store and compare just the property value (RHEL-118216)
+    FixedIn:
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-boot-unsigned
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-container
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-devel
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-journal-remote
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-libs
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-oomd
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-pam
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-resolved
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-rpm-macros
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-udev
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-08"
+            Kind: advisory
+          Module: null
+          Name: systemd-ukify
+          NamespaceName: ol:10
+          Version: 0:257-23.0.1.el10_2.1
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-19068.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-29111.html
+              Name: CVE-2026-29111
+        Issued: "2026-07-08"
+        RefId: ELSA-2026-19068
+    Name: ELSA-2026-19068
+    NamespaceName: ol:10
+    Severity: Medium
