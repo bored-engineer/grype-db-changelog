@@ -2,19 +2,33 @@
 Advisory:
     CVE:
         - CVE-2026-54235
+    CVSS:
+        base_metrics:
+            base_score: 6.5
+            base_severity: Medium
+            exploitability_score: 3.9
+            impact_score: 2.5
+        status: N/A
+        vector_string: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L
+        version: "3.1"
     Classification: GENERAL
     FixedIn:
-        - ecosystem: python
-          identifier: None
+        - available:
+            date: "2026-07-18"
+            kind: first-observed
+          ecosystem: python
+          identifier: 0.24.0
           name: vllm
           namespace: github:python
-          range: <= 0.23.0
+          range: '>= 0.8.5 <= 0.23.0'
     Metadata:
         CVE:
             - CVE-2026-54235
     Severity: Medium
     Summary: 'vLLM: temperature=NaN and temperature=Infinity bypass validation and propagate to GPU kernels'
     cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L
+          version: "3.1"
         - vector: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N
           version: "4.0"
     ghsaId: GHSA-7h4p-rffg-7823
@@ -22,10 +36,14 @@ Advisory:
     published: "2026-06-17T14:02:22Z"
     references:
         - url: https://github.com/advisories/GHSA-7h4p-rffg-7823
+        - url: https://github.com/pypa/advisory-database/tree/main/vulns/vllm/PYSEC-2026-3405.yaml
+        - url: https://github.com/vllm-project/vllm
         - url: https://github.com/vllm-project/vllm/commit/d598d239737cfa37bcfcb98886ec3f3557fc7198
         - url: https://github.com/vllm-project/vllm/pull/45116
         - url: https://github.com/vllm-project/vllm/security/advisories/GHSA-7h4p-rffg-7823
-    updated: "2026-06-17T14:02:24Z"
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2026-54235
+        - url: https://pypi.org/project/vllm
+    updated: "2026-07-17T16:40:01Z"
     url: https://github.com/advisories/GHSA-7h4p-rffg-7823
     withdrawn: null
 Vulnerability: {}
