@@ -1,0 +1,380 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        aardvark-dns
+        [2:1.10.1-2]
+        - build off the RHEL maintenance branch
+        - Resolves: RHEL-59129
+
+        buildah
+        [2:1.33.14-4]
+        - switch source URL from GitHub to the internal GitLab sustaining-engineering repo
+        - update to the latest content of release-1.33 (commit 2cbee78)
+        - bump golang.org/x/crypto to v0.53.0 to fix CVE-2026-39829, CVE-2026-39830, CVE-2026-39832
+
+        cockpit-podman
+        [84.1-1]
+        - update to https://github.com/cockpit-project/cockpit-podman/releases/tag/84.1
+        - Related: Jira:RHEL-25557
+
+        conmon
+        [3:2.1.10-1]
+        - update to https://github.com/containers/conmon/releases/tag/v2.1.10
+        - Related: Jira:RHEL-2110
+
+        containernetworking-plugins
+        [1:1.4.0-8]
+        - rebuild for CVE-2025-68121
+        - Resolves: RHEL-149265
+
+        containers-common
+        [1-82.0.1]
+        - Updated removed references [Orabug: 33473101] (Alex Burmashev)
+        - Adjust registries.conf (Nikita Gerasimov)
+        - remove references to RedHat registry (Nikita Gerasimov)
+
+        container-selinux
+        [2:2.229.0-3]
+        - add user_t confined user container support (cherry-pick of upstream PR #443)
+        - Resolves: RHEL-135342
+
+        criu
+        [3.18-5]
+        - rebuild to preserve upgrade path
+        - Related: RHEL-32671
+
+        crun
+        [1.14.3-2]
+        - remove BR libgcrypt-devel, no longer needed
+        - Related: Jira:RHEL-2110
+
+        fuse-overlayfs
+        [1.13-1]
+        - update to https://github.com/containers/fuse-overlayfs/releases/tag/v1.13
+        - Related: Jira:RHEL-2110
+
+        libslirp
+        [4.4.0-2]
+        - rebuild to preserve upgrade path 8.9 -> 8.10
+        - Related: RHEL-32671
+
+        netavark
+        [2:1.10.3-1]
+        - update to https://github.com/containers/netavark/releases/tag/v1.10.3
+        - Related: Jira:RHEL-2110
+
+        oci-seccomp-bpf-hook
+        [1.2.10-1]
+        - update to https://github.com/containers/oci-seccomp-bpf-hook/releases/tag/v1.2.10
+        - Related: Jira:RHEL-2110
+
+        podman
+        [4.9.4-34.0.1]
+        - Fixes issue of container created in cgroupv2 not start in cgroupv1 [Orabug: 36136813]
+        - Fixes container memory limit not set after host is rebooted with cgroupv2 [Orabug: 36136802]
+        - Fixes issue of podman execvp error while using podmansh [Orabug: 36756665]
+
+        [4:4.9.4-34]
+        - upload source tarball for v4.9-rhel (commit bd39e82)
+        - Resolves: RHEL-190070 RHEL-190856 RHEL-191102 RHEL-191553
+
+        [4:4.9.4-33]
+        - update to the latest content of v4.9-rhel (commit bd39e82) to fix CVE-2026-39835, CVE-2026-57231, CVE-2026-25681, CVE-2026-27136
+        - Resolves: RHEL-190070 RHEL-190856 RHEL-191102 RHEL-191553
+
+        python-podman
+        [4.9.0-3]
+        - sync with release-4.9 branch
+        - Resolves: RHEL-31069
+
+        runc
+        [4:1.2.9-4]
+        - rebuild for CVE-2025-68121
+        - Resolves: RHEL-149266
+
+        skopeo
+        [2:1.14.6-2]
+        - Rebuild for CVE-2026-32281
+        - Resolves: RHEL-177067
+
+        slirp4netns
+        [1.2.3-1]
+        - update to https://github.com/rootless-containers/slirp4netns/releases/tag/v1.2.3
+        - Related: Jira:RHEL-2110
+
+        udica
+        [0.2.6-21]
+        - bump release to preserve update path
+        - Resolves: RHEL-32671
+    FixedIn:
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: aardvark-dns
+          NamespaceName: ol:8
+          Version: 2:1.10.1-2.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: buildah
+          NamespaceName: ol:8
+          Version: 2:1.33.14-4.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: buildah-tests
+          NamespaceName: ol:8
+          Version: 2:1.33.14-4.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: cockpit-podman
+          NamespaceName: ol:8
+          Version: 0:84.1-1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: conmon
+          NamespaceName: ol:8
+          Version: 3:2.1.10-1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: container-selinux
+          NamespaceName: ol:8
+          Version: 2:2.229.0-3.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: containernetworking-plugins
+          NamespaceName: ol:8
+          Version: 1:1.4.0-8.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: containers-common
+          NamespaceName: ol:8
+          Version: 2:1-82.0.1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: crit
+          NamespaceName: ol:8
+          Version: 0:3.18-5.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: criu
+          NamespaceName: ol:8
+          Version: 0:3.18-5.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: criu-devel
+          NamespaceName: ol:8
+          Version: 0:3.18-5.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: criu-libs
+          NamespaceName: ol:8
+          Version: 0:3.18-5.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: crun
+          NamespaceName: ol:8
+          Version: 0:1.14.3-2.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: fuse-overlayfs
+          NamespaceName: ol:8
+          Version: 0:1.13-1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: libslirp
+          NamespaceName: ol:8
+          Version: 0:4.4.0-2.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: libslirp-devel
+          NamespaceName: ol:8
+          Version: 0:4.4.0-2.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: netavark
+          NamespaceName: ol:8
+          Version: 2:1.10.3-1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: oci-seccomp-bpf-hook
+          NamespaceName: ol:8
+          Version: 0:1.2.10-1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: podman
+          NamespaceName: ol:8
+          Version: 4:4.9.4-34.0.1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: podman-catatonit
+          NamespaceName: ol:8
+          Version: 4:4.9.4-34.0.1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: podman-docker
+          NamespaceName: ol:8
+          Version: 4:4.9.4-34.0.1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: podman-gvproxy
+          NamespaceName: ol:8
+          Version: 4:4.9.4-34.0.1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: podman-plugins
+          NamespaceName: ol:8
+          Version: 4:4.9.4-34.0.1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: podman-remote
+          NamespaceName: ol:8
+          Version: 4:4.9.4-34.0.1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: podman-tests
+          NamespaceName: ol:8
+          Version: 4:4.9.4-34.0.1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: python3-criu
+          NamespaceName: ol:8
+          Version: 0:3.18-5.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: python3-podman
+          NamespaceName: ol:8
+          Version: 0:4.9.0-3.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: runc
+          NamespaceName: ol:8
+          Version: 4:1.2.9-4.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: skopeo
+          NamespaceName: ol:8
+          Version: 2:1.14.6-2.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: skopeo-tests
+          NamespaceName: ol:8
+          Version: 2:1.14.6-2.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: slirp4netns
+          NamespaceName: ol:8
+          Version: 0:1.2.3-1.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-15"
+            Kind: advisory
+          Module: container-tools:ol8
+          Name: udica
+          NamespaceName: ol:8
+          Version: 0:0.2.6-21.module+el8.10.0+90960+1362bdc4
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-38504.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-33811.html
+              Name: CVE-2026-33811
+            - Link: https://linux.oracle.com/cve/CVE-2026-39835.html
+              Name: CVE-2026-39835
+            - Link: https://linux.oracle.com/cve/CVE-2026-57231.html
+              Name: CVE-2026-57231
+        Issued: "2026-07-15"
+        RefId: ELSA-2026-38504
+    Name: ELSA-2026-38504
+    NamespaceName: ol:8
+    Severity: High
