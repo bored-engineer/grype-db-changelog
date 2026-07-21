@@ -1,0 +1,70 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Pillow is a Python imaging library. Prior to 12.3.0, PIL/PcfFontFile.py _load_bitmaps() read glyph dimensions from the PCF METRICS section and passed them directly to Image.frombytes() without calling Image._decompression_bomb_check(), allowing crafted PCF font data to cause excessive memory allocation. This issue is fixed in version 12.3.0. (CVE-2026-54059)Pillow is a Python imaging library. Prior to 12.3.0, PIL/FontFile.py FontFile.compile() assembled per-glyph images into a combined bitmap with Image.new("1", (xsize, ysize)) without calling Image._decompression_bomb_check(), allowing a font to trigger excessive allocation during conversion or saving. This issue is fixed in version 12.3.0. (CVE-2026-54060)Pillow is a Python imaging library. Prior to 12.3.0, PIL/BdfFontFile.py bdf_char() read the BBX width and height field from a BDF font file and passed attacker-controlled dimensions to Image.new() without calling Image._decompression_bomb_check(), bypassing Pillow's documented decompression bomb protection and allowing excessive memory allocation. This issue is fixed in version 12.3.0. (CVE-2026-55379)Pillow is a Python imaging library. Prior to 12.3.0, PIL/GdImageFile.py GdImageFile._open() read image dimensions from the GD 2.x header and stored them in self._size without calling Image._decompression_bomb_check(), allowing a crafted .gd file to trigger excessive C-heap allocation when loaded. This issue is fixed in version 12.3.0. (CVE-2026-55380)
+    FixedIn:
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python-pillow
+          NamespaceName: amzn:2023
+          Version: 9.4.0-2.amzn2023.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python-pillow-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.4.0-2.amzn2023.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python-pillow-debugsource
+          NamespaceName: amzn:2023
+          Version: 9.4.0-2.amzn2023.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3-pillow
+          NamespaceName: amzn:2023
+          Version: 9.4.0-2.amzn2023.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3-pillow-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.4.0-2.amzn2023.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3-pillow-devel
+          NamespaceName: amzn:2023
+          Version: 9.4.0-2.amzn2023.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3-pillow-tk
+          NamespaceName: amzn:2023
+          Version: 9.4.0-2.amzn2023.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3-pillow-tk-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.4.0-2.amzn2023.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1985.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-54059
+            - Name: CVE-2026-54060
+            - Name: CVE-2026-55379
+            - Name: CVE-2026-55380
+    Name: ALAS2023-2026-1985
+    NamespaceName: amzn:2023
+    Severity: High

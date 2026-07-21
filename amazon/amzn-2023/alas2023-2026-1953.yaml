@@ -1,0 +1,78 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: When using the "configparser" module to write configuration filescontaining multi-line text values with carriage return characters (\r) theresulting file could be injected with unexpected keys and values if theattacker controls the written value. (CVE-2026-0864)When using the "tarfile" module with a file opened in "streaming mode" (mode="r|") the tarfile module did not properly handle EOF, making archive parsing take exponentially longer. (CVE-2026-11972)unicodedata.normalize() can take excessive CPU time when processing specially crafted Unicode input containing long runs of combining characters with alternating Canonical Combining Class values. This affects all normalization forms. (CVE-2026-3276)tarfile.data_filter could be bypassed using crafted link entries, including symlinks with empty or directory-like names, to redirect later archive members outside the intended extraction directory. This allowed a malicious tar archive to cause tarfile.extractall() to write files outside the destination directory, subject to the permissions of the extracting process. (CVE-2026-7774)bz2.BZ2Decompressor objects could be reused after a decompression error. If an application caught the resulting OSError and retried with the same decompressor, crafted input could cause the decompressor to resume from an invalid internal state and perform out-of-bounds writes to a stack buffer. This could crash the process when processing untrusted data. (CVE-2026-9669)
+    FixedIn:
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11-debug
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11-devel
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11-idle
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11-libs
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11-test
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: python3.11-tkinter
+          NamespaceName: amzn:2023
+          Version: 3.11.15-1.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1953.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-0864
+            - Name: CVE-2026-11972
+            - Name: CVE-2026-3276
+            - Name: CVE-2026-7774
+            - Name: CVE-2026-9669
+    Name: ALAS2023-2026-1953
+    NamespaceName: amzn:2023
+    Severity: High
