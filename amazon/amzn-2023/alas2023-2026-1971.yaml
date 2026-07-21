@@ -1,0 +1,69 @@
+Vulnerability:
+    Description: Heap Information Disclosure via Grid Image Gap + Uninitialized Pixel Plane Allocation (CVE-2026-47247)libheif crashes in the public C API heif_image_handle_get_image_tiling() when a malformed uncompressed HEIF image item has an associated uncC property but no associated ispe property. In debug builds this trips the ispe && uncC assertion in ImageItem_uncompressed::get_heif_image_tiling(). In a release/NDEBUG ASan build, the same file causes a null pointer read at address 0xa8. (CVE-2026-47709)Integer overflow in inline mask size calculation causes undersized buffer allocation (CVE-2026-47714)heap OOB read in ImageItem_Grid::decode_grid_tile via irot-induced tile-coordinate underflow (CVE-2026-48029)
+    FixedIn:
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: heif-pixbuf-loader
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: heif-pixbuf-loader-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: libheif
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: libheif-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: libheif-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: libheif-devel
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: libheif-tools
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: libheif-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.19.8-1.amzn2023.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-1971.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-47247
+            - Name: CVE-2026-47709
+            - Name: CVE-2026-47714
+            - Name: CVE-2026-48029
+    Name: ALAS2023-2026-1971
+    NamespaceName: amzn:2023
+    Severity: High
