@@ -1,0 +1,73 @@
+Vulnerability:
+    Description: An integer underflow vulnerability was found in MIT krb5 in the berval2tl_data() function in plugins/kdb/ldap/libkdb_ldap/ldap_principal2.c. The function performs an unsigned subtraction (bv_len - 2) without a prior bounds check. When bv_len is 0 or 1, the subtraction wraps to a large value which is then truncated to uint16_t, yielding 0xFFFE (65534) or 0xFFFF (65535). The subsequent malloc succeeds and memcpy reads up to 65534 bytes from a 0-1 byte buffer, resulting in a heap out-of-bounds read.The attack vector involves a malicious or compromised LDAP KDB backend returning a krbExtraData attribute with bv_len < 2, triggering the underflow when the KDC or kadmind reads principal data. (CVE-2026-11850)
+    FixedIn:
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: krb5
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: krb5-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: krb5-devel
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: krb5-libs
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: krb5-pkinit
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: krb5-server
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: krb5-server-ldap
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: krb5-workstation
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Name: libkadm5
+          NamespaceName: amzn:2
+          Version: 1.15.1-55.amzn2.2.10
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3798.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-11850
+    Name: ALAS2-2026-3798
+    NamespaceName: amzn:2
+    Severity: Medium
