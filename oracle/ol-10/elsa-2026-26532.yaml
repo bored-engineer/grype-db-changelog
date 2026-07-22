@@ -1,0 +1,116 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [107-8.0.1]
+        - Suppress stderr for btrfs subvolume check [Orabug: 39059254]
+        - fips: add logic for /boot subvolume on BTRFS [Orabug: 36028061]
+        - Skip unneeded FIPS logic on UEK with special FIPS [Orabug: 38138800] [Orabug: 38709306]
+        - Include correct modprobe into squashfs root [Orabug: 38559936]
+        - Ship Oracle IMA certificate [Orabug: 35992862]
+        - Ship 98-integrity.conf, populating initramfs with Oracle IMA certificate [Orabug: 35992862]
+        - Include sys-fs-fuse-connections.mount if needed [Orabug: 35267570]
+        - Change installation dir in network legacy module-setup so that file is never missing [Orabug: 33516170]
+        - Fix paths in squash module, so that correct modprobe is installed [Orabug: 33514517]
+        - Install missing 68-del-part-node.rules [Orabug: 32827579]
+        - Fix permission denied error while upgrading from OL8u2 to OL8u3 [Orabug 32160196]
+        - dracut-shutdown.service should run before shutdown.target is invoked [Orabug: 29629738]
+        - Update list of necessary files after squashfs execution [Orabug: 29864620]
+        - Supress iscsidm error output during non-debug PV boot [Orabug: 29846195]
+        - Stop block device service in case system is dropped to emergency shell [Orabug: 29851988]
+        - Enable booting from block device if netroot=iscsi has failed [Orabug: 29478156]
+        - Calculate relative path for kernel and initrd in 51-dracut-rescue.instal [Orabug: 29503293]
+        - Increase timeout when waiting for carrier detection on a network interface [Orabug: 24657828] (kevin.x.lyons@oracle.com)
+        - add hyperv-keyboard for Hyper-V Gen2 VM [Orabug: 19191303] (Vaughan Cao)
+
+        [107-8]
+        - revert: 'feat(i18n): pull 'drm' or 'simpledrm' module unless excluded'
+
+        [107-7]
+        - build: rebuild without an obsoleted patch
+
+        [107-6]
+        - fix(base): escape arguments in initqueue hook script generation
+        - fix(net-lib): warn on suspicious shell metacharacters in hostname file
+        - fix(systemd-networkd): escape DHCP lease values in dhcpopts generation
+          Related: RHEL-170844
+
+        [107-5]
+        - fix(network-legacy): remove network-legacy completely from the codebase
+        - fix(iscsi): replace echo writes with printf to prevent variable injection
+          Resolves: RHEL-170844
+    FixedIn:
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Module: null
+          Name: dracut
+          NamespaceName: ol:10
+          Version: 0:107-8.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Module: null
+          Name: dracut-caps
+          NamespaceName: ol:10
+          Version: 0:107-8.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Module: null
+          Name: dracut-config-generic
+          NamespaceName: ol:10
+          Version: 0:107-8.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Module: null
+          Name: dracut-config-rescue
+          NamespaceName: ol:10
+          Version: 0:107-8.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Module: null
+          Name: dracut-live
+          NamespaceName: ol:10
+          Version: 0:107-8.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Module: null
+          Name: dracut-network
+          NamespaceName: ol:10
+          Version: 0:107-8.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Module: null
+          Name: dracut-squash
+          NamespaceName: ol:10
+          Version: 0:107-8.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-20"
+            Kind: advisory
+          Module: null
+          Name: dracut-tools
+          NamespaceName: ol:10
+          Version: 0:107-8.0.1.el10_2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-26532.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-6893.html
+              Name: CVE-2026-6893
+        Issued: "2026-07-20"
+        RefId: ELSA-2026-26532
+    Name: ELSA-2026-26532
+    NamespaceName: ol:10
+    Severity: High
