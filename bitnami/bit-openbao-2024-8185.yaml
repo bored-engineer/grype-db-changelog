@@ -1,0 +1,39 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: openbao
+        purl: pkg:bitnami/openbao
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-07-27"
+                      kind: advisory
+                      version: 2.0.3
+          events:
+            - fixed: 2.0.3
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2024-8185
+database_specific:
+    cpes:
+        - cpe:2.3:a:openbao:openbao:*:*:*:*:*:go:*:*
+    severity: High
+details: |-
+    Vault Community and Vault Enterprise (“Vault”) clusters using Vault’s Integrated Storage backend are vulnerable to a denial-of-service (DoS) attack through memory exhaustion through a Raft cluster join API endpoint . An attacker may send a large volume of requests to the endpoint which may cause Vault to consume excessive system memory resources, potentially leading to a crash of the underlying system and the Vault process itself.
+
+    This vulnerability, CVE-2024-8185, is fixed in Vault Community 1.18.1 and Vault Enterprise 1.18.1, 1.17.8, and 1.16.12.
+id: BIT-openbao-2024-8185
+modified: "2026-07-27T06:08:49.409Z"
+published: "2026-07-27T05:48:44.517Z"
+references:
+    - type: WEB
+      url: https://discuss.hashicorp.com/t/hcsec-2024-26-vault-vulnerable-to-denial-of-service-through-memory-exhaustion-when-processing-raft-cluster-join-requests/71047
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2024-8185
+schema_version: 1.6.2
+summary: Vault Vulnerable to Denial of Service When Processing Raft Join Requests
