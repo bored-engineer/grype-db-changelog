@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-07-28"
+                      kind: advisory
+                      version: 8.19.19
+                    - date: "2026-07-28"
+                      kind: advisory
+                      version: 9.3.8
+                    - date: "2026-07-28"
+                      kind: advisory
+                      version: 9.4.4
+          events:
+            - introduced: 8.0.0
+            - fixed: 8.19.19
+            - introduced: 9.0.0
+            - fixed: 9.3.8
+            - introduced: 9.4.0
+            - fixed: 9.4.4
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-63263
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:maven:*:*
+    severity: Medium
+details: Uncontrolled Resource Consumption (CWE-400) in Elasticsearch can lead to denial of service via Exponential Data Expansion (CAPEC-197). An authenticated user may submit a specially crafted query to the ES|QL engine that causes exponential CPU consumption during query evaluation. Because the resource exhaustion persists beyond query completion, repeated requests can fully exhaust the available query worker resources, rendering ES|QL queries unavailable until the node is restarted.
+id: BIT-elasticsearch-2026-63263
+modified: "2026-07-28T09:23:53.136Z"
+published: "2026-07-28T08:53:06.126Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/elasticsearch-8-19-19-9-3-8-9-4-4-security-update-esa-2026-74/388577
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-63263
+schema_version: 1.6.2
+summary: Uncontrolled Resource Consumption in Elasticsearch Leading to Denial of Service
