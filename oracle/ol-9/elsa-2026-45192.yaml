@@ -1,0 +1,281 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.14.0-687.30.1]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985764]
+
+        [5.14.0-687.30.1]
+        - KVM: x86/mmu: Ensure hugepage is in by slot before checking max mapping level (Aidan Wallace) [RHEL-213468] {CVE-2026-63807}
+        - KVM: nVMX: Hide shadow VMCS right after VMCLEAR (Aidan Wallace) [RHEL-213468]
+        - KVM: x86: Check for invalid/obsolete root *after* making MMU pages available (Aidan Wallace) [RHEL-213468]
+        - KVM: nVMX: Put vmcs12 pages if nested VM-Enter fails due to invalid guest state (Aidan Wallace) [RHEL-213468]
+        - KVM: nVMX: Add helper to put (unmap) vmcs12 pages (Paolo Bonzini) [RHEL-211277]
+        - KVM: x86: Don't (re)check L1 intercepts when completing userspace I/O (Aidan Wallace) [RHEL-211277] {CVE-2025-40026}
+        - scsi: core: Run queues for all non-SDEV_DEL devices from scsi_run_host_queues (David Jeffery) [RHEL-187412]
+        - drm/xe/dma-buf: fix UAF with retry loop (Anusha Srivatsa) [RHEL-192228] {CVE-2026-52950}
+        - drm/xe/dma-buf: handle empty bo and UAF races (Anusha Srivatsa) [RHEL-192228] {CVE-2026-52950}
+        - drm/xe: Fix bo leak in xe_dma_buf_init_obj() on allocation failure (Anusha Srivatsa) [RHEL-192228] {CVE-2026-52950}
+        - drm/xe: Fix dma-buf attachment leak in xe_gem_prime_import() (Anusha Srivatsa) [RHEL-192228] {CVE-2026-52950}
+        - ipv6: fix possible UAF in icmpv6_rcv() (CKI Backport Bot) [RHEL-192220] {CVE-2026-53006}
+        - drm/xe: Fix error cleanup in xe_exec_queue_create_ioctl() (CKI Backport Bot) [RHEL-188647] {CVE-2026-52976}
+        - dm log: fix out-of-bounds write due to region_count overflow (CKI Backport Bot) [RHEL-188541] {CVE-2026-53059}
+    FixedIn:
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: libperf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: rtla
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-07-29"
+            Kind: advisory
+          Module: null
+          Name: rv
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.30.1.el9_8
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-45192.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-40026.html
+              Name: CVE-2025-40026
+            - Link: https://linux.oracle.com/cve/CVE-2026-52950.html
+              Name: CVE-2026-52950
+            - Link: https://linux.oracle.com/cve/CVE-2026-52976.html
+              Name: CVE-2026-52976
+            - Link: https://linux.oracle.com/cve/CVE-2026-53006.html
+              Name: CVE-2026-53006
+            - Link: https://linux.oracle.com/cve/CVE-2026-53059.html
+              Name: CVE-2026-53059
+        Issued: "2026-07-29"
+        RefId: ELSA-2026-45192
+    Name: ELSA-2026-45192
+    NamespaceName: ol:9
+    Severity: High
