@@ -1,0 +1,46 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server(389-ds-base). After a successful SASL bind with integrity protection (SSF > 0),an authenticated attacker can send a specially crafted oversized LDAP UNBIND packetthat is copied into a 512-byte heap receive buffer without a bounds check insasl_io_recv() in sasl_io.c. This allows up to approximately 2 megabytes ofattacker-controlled data to overflow the buffer, causing a denial of service (servercrash). In FreeIPA and Red Hat Identity Management deployments, any domain user witha valid Kerberos ticket, any enrolled host, or any service account can trigger thisvulnerability over the network after authenticating via GSSAPI.The vulnerable code path has existed since approximately 2013 (389-ds-base 1.3.2) andwas not addressed by the CVE-2025-14905 fix, which patched a separate heap overflowin schema.c only. (CVE-2026-11610)
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: 389-ds-base
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: 389-ds-base-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: 389-ds-base-devel
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: 389-ds-base-libs
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: 389-ds-base-snmp
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.8
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3853.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-11610
+    Name: ALAS2-2026-3853
+    NamespaceName: amzn:2
+    Severity: High

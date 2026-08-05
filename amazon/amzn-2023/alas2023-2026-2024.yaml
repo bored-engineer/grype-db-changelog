@@ -1,0 +1,39 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: gix-submodule before 0.29.0 (gitoxide before 0.5.21, gix before 0.84.0) incorrectly validates the update field in .gitmodules, allowing attackers to bypass the CommandForbiddenInModulesConfiguration guard when a submodule has been initialized with only partial configuration in .git/config. An attacker can inject arbitrary shell commands via the update field in .gitmodules that will be executed when Submodule::update() is called on a previously-initialized submodule, enabling remote code execution. (CVE-2026-40034)
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: cargo-c
+          NamespaceName: amzn:2023
+          Version: 0.10.19-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: cargo-c-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.10.19-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: rust-cargo-c
+          NamespaceName: amzn:2023
+          Version: 0.10.19-1.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: rust-cargo-c-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.10.19-1.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2024.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-40034
+    Name: ALAS2023-2026-2024
+    NamespaceName: amzn:2023
+    Severity: High

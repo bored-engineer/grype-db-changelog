@@ -1,0 +1,42 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: DBI::SQL::Nano versions from 1.42 before 1.651 for Perl have inverted <= and >= SQL operators on text.DBI::SQL::Nano, DBI's built-in mini-SQL engine, evaluated WHERE predicates incorrectly in some cases. In the non-numeric string branch of the is_matched method, <= was evaluated using Perl's ge operator, and >= was evaluated using Perl's le operator.SQL::Nano is the fallback query engine for DBI's file-backed drivers (DBD::File, DBD::DBM, CSV-style drivers) whenever SQL::Statement is not installed, and is forced whenever DBI_SQL_NANO=1. Queries over such tables use these predicates directly.The impact depends on the context. Where an application relies on a WHERE clause to filter file-backed data for policy or authorization, an inverted <=/>= comparison silently returns the wrong rows. (CVE-2026-15043)DBD::File versions before 1.651 for Perl do not ensure the table file is not a symlink to an untrusted location.The complete_table_name method builds the absolute table file path without checking whether the file is a symbolic link. A link inside the data directory can point to a table file at any path outside of the configured f_dir and f_dir_search directories.Callers of file-based drivers can read or write files outside of the data directory. (CVE-2026-15392)DBI::ProfileData versions before 1.651 for Perl do not limit the path index.The path index column of profile dump files is used to allocate an array of data for the parser. An unbounded value allows an attacker to specify a large index and consume available memory. (CVE-2026-60081)DBI versions before 1.651 for Perl do not enforce statement handle consistency with the row.When the statement handle had no fields but the source row was non-empty, the internal row-buffer helper would read from a negative array index.This could be triggered by a caller supplying inconsistent metadata and rows to the prepare method. (CVE-2026-60082)
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: perl-DBI
+          NamespaceName: amzn:2023
+          Version: 1.651-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: perl-DBI-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.651-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: perl-DBI-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.651-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: perl-DBI-tests
+          NamespaceName: amzn:2023
+          Version: 1.651-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2006.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-15043
+            - Name: CVE-2026-15392
+            - Name: CVE-2026-60081
+            - Name: CVE-2026-60082
+    Name: ALAS2023-2026-2006
+    NamespaceName: amzn:2023
+    Severity: High

@@ -1,0 +1,75 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Vim is an open source, command line text editor. Prior to 9.2.0736, the PHP omni-completion script in runtime/autoload/phpcomplete.vim interpolates a class or trait name, taken from the contents of the edited buffer, into a search() pattern that is run via win_execute() without escaping. A name containing a single quote can terminate the search() string argument early, and because the bar is honored as an Ex command separator, the remainder of the name is run as Ex commands; via the :! command this allows arbitrary operating-system command execution when a victim opens a crafted PHP file and invokes omni-completion. This issue is fixed in version 9.2.0736. (CVE-2026-59856)Vim is an open source, command line text editor. Prior to 9.2.0735, the C omni-completion script in runtime/autoload/ccomplete.vim interpolates the typeref: or typename: extension field of a tags entry, without escaping, into a :vimgrep pattern that is run through :execute. Because :vimgrep honors the bar as a command separator, a crafted tag field can close the search pattern and append an arbitrary Ex command; opening a hostile .c file whose project tags file contains such an entry and invoking C omni-completion runs that command as the editing user. This issue is fixed in version 9.2.0735. (CVE-2026-59858)'
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: vim
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: vim-X11
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: vim-common
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: vim-data
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: vim-debuginfo
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: vim-enhanced
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: vim-filesystem
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: vim-minimal
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: xxd
+          NamespaceName: amzn:2
+          Version: 9.0.2153-1.amzn2.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3829.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-59856
+            - Name: CVE-2026-59858
+    Name: ALAS2-2026-3829
+    NamespaceName: amzn:2
+    Severity: High
