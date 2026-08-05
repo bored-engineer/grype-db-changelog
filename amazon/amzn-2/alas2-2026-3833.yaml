@@ -1,0 +1,33 @@
+Vulnerability:
+    Description: A flaw was found in GStreamer's gst-plugins-bad package. When processing a specially crafted H.264 video file containing malformed MVC or SVC extension slice NAL units, a 1-byte heap out-of-bounds read can occur during parsing. This happens when the parser attempts to check slice boundary information without first verifying that the NAL unit contains enough data beyond the extension header. An attacker could exploit this by tricking a user into opening a malicious H.264 video file, potentially causing the application to crash or leak a single byte of heap memory. (CVE-2026-12892)A heap buffer overflow vulnerability was found in GStreamer's rfbsrc plugin. When a client connects to a malicious RFB/VNC server that advertises a 16bpp framebuffer and sends Hextile-encoded updates, the Hextile background fill path writes 32-bit pixel values into a buffer allocated for 16-bit pixels. This type mismatch causes an out-of-bounds heap write that can lead to denial of service (process crash) and potential memory corruption. (CVE-2026-59691)A stack buffer overflow vulnerability was found in GStreamer's DTLS plugin. During a DTLS handshake, the peer certificate Subject Distinguished Name is printed into a fixed-size 2048-byte stack buffer without bounds checking. A remote unauthenticated attacker can send a certificate with an oversized Subject DN that exceeds the buffer, causing a stack buffer overflow and process crash, resulting in denial of service. (CVE-2026-59692)
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-devel
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3833.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-12892
+            - Name: CVE-2026-59691
+            - Name: CVE-2026-59692
+    Name: ALAS2-2026-3833
+    NamespaceName: amzn:2
+    Severity: High

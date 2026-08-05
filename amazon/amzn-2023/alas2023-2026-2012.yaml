@@ -1,0 +1,96 @@
+Vulnerability:
+    Description: 'Heap-buffer-overflow write in AVC444 YUV buffer allocationIn libfreerdp/codec/h264.c, avc444_ensure_buffer() computes the AVC444 YUV444 intermediate buffer size as piDstSize[x] = piDstStride[x] * padDstHeight using UINT32 arithmetic. When the true product exceeds UINT32_MAX, the value wraps to a small non-zero integer. The only guard is if (piDstSize[x] == 0) return FALSE, so non-zero wraps pass. winpr_aligned_recalloc() then allocates a buffer far too small, and yuv444_context_decode() - YUV420CombineToYUV444() writes using the real stride and rectangle dimensions, causing a heap-buffer-overflow write.The reallocation trigger at lines 498-499 correctly compares against 1ull * piMainStride[0] * padDstHeight (64-bit), but the allocation at line 504 still uses 32-bit multiply. (CVE-2026-55191)Out-of-bounds read in H.264 YUV-to-RGB conversion due to decoder/surface dimension mismatchAfter h264->subsystem->Decompress() returns, all major H.264 backends overwrite h264->pYUVData and h264->iStride with decoder-internal YUV buffers sized by the H.264 bitstream SPS. These dimensions are never compared against the RDPGFX surface dimensions stored in h264->width / h264->height.areRectsValid() validates region rectangles against the surface width/height passed into avc420_decompress() / avc444_decompress(). Subsequent YUV-RGB conversion (yuv420_context_decode - avc420_yuv_to_rgb or avc444_yuv_to_rgb) consumes those surface-sized rectangles against the smaller decoder-sized YUV planes, causing out-of-bounds reads on both axes.clamp() only limits rect.top/rect.bottom using MIN(context->height, srcHeight) where srcHeight is h264->height (surface height on FFmpeg/OpenH264/MediaCodec paths). It does not clamp rect.left/rect.right. check_rect() is only invoked on the YUV444 combine path, not on the AVC420/AVC444 RGB conversion paths. (CVE-2026-55192)Heap-buffer-overflow write in TS Gateway RPC fragment receive due to uncapped bind_ack max_xmit_fragOn TS Gateway connections, rpc->max_recv_frag is initialized to 0x0FF8 (4088) and ReceiveFragment is allocated to that size. In rpc_bind.c, the client assigns rpc->max_recv_frag = header.bind_ack.max_xmit_frag from the server without an upper bound. A malicious gateway can set max_xmit_frag = 0xFFFF while ReceiveFragment is never resized.Later, rpc_client.c rejects fragments with if (header.frag_length > rpc->max_recv_frag). When both values are 65535, the check passes (65535 > 65535 is false). The receive loop then calls rpc_channel_read() - BIO_read() into the fixed 4088-byte ReceiveFragment, writing up to 65535 bytes and overflowing by up to 61447 attacker-controlled bytes. (CVE-2026-55193)Heap-buffer-overflow write in TS Gateway RPC RESPONSE reassembly due to alloc_hint capacity mismatchIn rpc_client_recv_fragment(), when reassembling a PTYPE_RESPONSE PDU, the client calls Stream_EnsureCapacity(pdu->s, response->alloc_hint) using only the server-declared alloc_hint. Stream_EnsureCapacity() returns success if the existing capacity is already >= alloc_hint, without considering the current write offset or the actual stub length about to be copied.A malicious gateway can set a small alloc_hint (e.g. 100) while sending a large fragment (frag_length = 6000, yielding StubLength [?] 5968). The 4096-byte reassembly buffer is not grown, and Stream_Write(pdu->s, ..., StubLength) copies attacker-controlled stub data past the end of the heap allocation. On default builds this may abort via WINPR_ASSERT; on Release builds (NDEBUG) the assert is elided and the overflow becomes an exploitable heap write.This is distinct from the separate ReceiveFragment / bind_ack max_xmit_frag issue (different buffer and code path in the same gateway module). (CVE-2026-55194)Out-of-bounds read in glyph_cache_get via crafted glyph fragmentsA malicious RDP server can trigger an out-of-bounds heap read in a FreeRDP client through the glyph cache. glyph_cache_get() bounds-checks the index with > where it should use >= -- the sibling glyph_cache_put() already gets it right. Since the cache''s entries array holds exactly number pointers, an index equal to number slips past the check and reads one slot past the end, which the caller then dereferences as a glyph. It''s the read-side twin of CVE-2020-11098 (the write side was fixed back in 2.1.2; the read side never was), and it''s still present in 3.25.0 and master. (CVE-2026-55564)Integer Overflow in freerdp_image_copy_from_icon_data Bypasses Bounds Check (CVE-2026-55648)Heap out-of-bounds write in FreeRDP RemoteFX (RFX) Cache Bitmap V3 decode - malicious RDP server achieves controlled `$pc` in a connecting client (CVE-2026-55827)FreeRDP before 3.22.0 contains a use-after-free vulnerability in dvcman_channel_close and dvcman_call_on_receive due to improper synchronization of channel_callback access. A malicious RDP server can trigger a race condition by sending DYNVC_DATA and DYNVC_CLOSE messages concurrently, causing heap-use-after-free in the drdynvc client thread and potentially enabling remote code execution or denial of service. (CVE-2026-56297)Out-of-bounds read in the camera device enumerator server (rdpecam) via unterminated DeviceName / VirtualChannelName (CVE-2026-57157)planar_decompress_plane_rle_only: heap OOB read -- incomplete fix for CVE-2026-23530The fix for CVE-2026-23530 (GHSA-r4hv-852m-fq7p) correctly adds dimension guardsat the entry point of freerdp_bitmap_decompress_planar but is incomplete in scope.planar_decompress_plane_rle_only dereferences *srcp before validating thatsrcp is within SrcSize. A malicious server can reach this path via a truncatedRLE planar payload in RDPGFX_CMDID_WIRETOSURFACE_1. (CVE-2026-57158)'
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-devel
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-libs
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-server
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-server-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: libwinpr
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: libwinpr-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: libwinpr-devel
+          NamespaceName: amzn:2023
+          Version: 3.6.3-1.amzn2023.0.13
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2012.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-55191
+            - Name: CVE-2026-55192
+            - Name: CVE-2026-55193
+            - Name: CVE-2026-55194
+            - Name: CVE-2026-55564
+            - Name: CVE-2026-55648
+            - Name: CVE-2026-55827
+            - Name: CVE-2026-56297
+            - Name: CVE-2026-57157
+            - Name: CVE-2026-57158
+    Name: ALAS2023-2026-2012
+    NamespaceName: amzn:2023
+    Severity: High

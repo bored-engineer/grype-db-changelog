@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: A flaw was found in ansible-core. The _extract_collection_from_git() function in ansible-core's concrete_artifact_manager.py constructs git clone commands without a '--' (end-of-options) separator before user-supplied URLs when installing collections from git sources. An attacker who provides a crafted collection source URI containing git argument injection payloads can achieve arbitrary command execution when a user runs 'ansible-galaxy collection install' with the malicious source. This is an incomplete fix for CVE-2026-11332, which hardened the role install path but missed the equivalent collection install code path. (CVE-2026-16493)
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: ansible-core
+          NamespaceName: amzn:2023
+          Version: 2.15.3-1.amzn2023.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: ansible-test
+          NamespaceName: amzn:2023
+          Version: 2.15.3-1.amzn2023.0.13
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2036.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-16493
+    Name: ALAS2023-2026-2036
+    NamespaceName: amzn:2023
+    Severity: High

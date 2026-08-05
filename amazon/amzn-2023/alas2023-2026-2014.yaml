@@ -1,0 +1,162 @@
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:ipv6: use RCU in ip6_output() (CVE-2025-40158)In the Linux kernel, the following vulnerability has been resolved:gpio: Fix resource leaks on errors in gpiochip_add_data_with_key() (CVE-2026-31732)In the Linux kernel, the following vulnerability has been resolved:bpf: Reject sleepable kprobe_multi programs at attach time (CVE-2026-43010)In the Linux kernel, the following vulnerability has been resolved:net: Drop the lock in skb_may_tx_timestamp() (CVE-2026-43216)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix tcx/netkit detach permissions when prog fd isn''t given (CVE-2026-45932)In the Linux kernel, the following vulnerability has been resolved:ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)In the Linux kernel, the following vulnerability has been resolved:bonding: 3ad: implement proper RCU rules for port->aggregator (CVE-2026-52975)In the Linux kernel, the following vulnerability has been resolved:sched/psi: fix race between file release and pressure write (CVE-2026-52991)In the Linux kernel, the following vulnerability has been resolved:sctp: disable BH before calling udp_tunnel_xmit_skb() (CVE-2026-53070)In the Linux kernel, the following vulnerability has been resolved:fuse: limit FUSE_NOTIFY_RETRIEVE to uptodate folios (CVE-2026-53167)In the Linux kernel, the following vulnerability has been resolved:fhandle: fix UAF due to unlocked ->mnt_ns read in may_decode_fh() (CVE-2026-53341)In the Linux kernel, the following vulnerability has been resolved:af_unix: Set gc_in_progress to true in unix_gc(). (CVE-2026-53361)In the Linux kernel, the following vulnerability has been resolved:virtiofs: fix UAF on submount umountiput() called from fuse_release_end() can Oops if the super block hasalready been destroyed.  Normally this is prevented by waiting fornum_waiting to go down to zero before commencing with super block shutdown.This only works, however, for the last submount instance, as the waitcounter is per connection, not per superblock.Revert to using synchronous release requests for the auto_submounts case,which is virtiofs only at this time. (CVE-2026-53381)In the Linux kernel, the following vulnerability has been resolved:vc_screen: fix null-ptr-deref in vcs_notifier() during concurrent vcs_writeA KASAN null-ptr-deref was observed in vcs_notifier():BUG: KASAN: null-ptr-deref in vcs_notifier+0x98/0x130Read of size 2 at addr qmp_cmd_name: qmp_capabilities, arguments: {}The issue is a race condition in vcs_write(). When the console_lock istemporarily dropped (to copy data from userspace), the vc_data pointerobtained from vcs_vc() may become stale. After re-acquiring the lock,vcs_vc() is called again to re-validate the pointer. If the vc has beendeallocated in the meantime, vcs_vc() returns NULL, and the while loopbreaks (with written > 0). However, after the loop, vcs_scr_updated(vc)is still called with the now-NULL vc pointer, leading to a null pointerdereference in the notifier chain (vcs_notifier dereferences param->vc).Fix this by adding a NULL check for vc before calling vcs_scr_updated(). (CVE-2026-53385)In the Linux kernel, the following vulnerability has been resolved:fuse: re-lock request before replacing page cache foliofuse_try_move_folio() unlocks the request on entry but does notre-lock it on the success path. This means fuse_chan_abort() can end therequest and free the fuse_io_args (eg fuse_readpages_end()) while thesubsequent copy chain logic after fuse_try_move_folio() accesses thefuse_io_args, leading to use-after-free issues.Fix this by calling lock_request() before replace_page_cache_folio().This ensures the request is locked on the success path which willprevent the fuse_io_args from being freed while the later copying logicruns, and also ensures that the ap->folios[i]->mapping is never nullsince ap->folios[i] will always point to the newfolio afterreplace_page_cache_folio(). (CVE-2026-53388)In the Linux kernel, the following vulnerability has been resolved:NFSv4/pNFS: reject zero-length r_addr in nfs4_decode_mp_ds_addr (CVE-2026-53391)In the Linux kernel, the following vulnerability has been resolved:nfsd: reset write verifier on deferred writeback errors (CVE-2026-53393)In the Linux kernel, the following vulnerability has been resolved:nfsd: avoid leaking pre-allocated openowner on unconfirmed retry race (CVE-2026-53394)In the Linux kernel, the following vulnerability has been resolved:nfsd: fix posix_acl leak on SETACL decode failure (CVE-2026-53397)In the Linux kernel, the following vulnerability has been resolved:i2c: core: fix adapter registration raceAdapters can be looked up based on their id using i2c_get_adapter()which takes a reference to the embedded struct device.Make sure that the adapter (including its struct device) has beeninitialised before adding it to the IDR to avoid accessing uninitialiseddata which could, for example, lead to NULL-pointer dereferences oruse-after-free.Note that the i2c-dev chardev, which is registered from a bus notifier,currently uses i2c_get_adapter() so the adapter needs to be added to theIDR before registration. (CVE-2026-53400)In the Linux kernel, the following vulnerability has been resolved:fbdev: Fix fb_new_modelist to prevent null-ptr-deref in fb_videomode_to_varinfo->var, a framebuffer''s current mode, is expected to have a matchingentry in info->modelist. var_to_display() relies on this and treats afailed fb_match_mode() as "This should not happen". fb_set_var() keeps ittrue by adding the mode to the list on every change, anddo_register_framebuffer() does the same at registration.store_modes() replaces the modelist from userspace. fb_new_modelist()validates the new modes but does not check that info->var still has amatch. It relies on fbcon_new_modelist() to re-point consoles, but thatonly handles consoles mapped to the framebuffer. With fbcon unbound thereare none, so info->var is left describing a mode that is no longer in thelist.A later console takeover runs var_to_display(), where fb_match_mode()returns NULL and leaves fb_display[i].mode NULL. fbcon_switch() passes itto display_to_var(), and fb_videomode_to_var() dereferences the NULL mode.Keep the current mode in the list in fb_new_modelist(), the same wayfb_set_var() does. (CVE-2026-53403)In the Linux kernel, the following vulnerability has been resolved:pNFS: Fix use-after-free in pnfs_update_layout() (CVE-2026-63800)In the Linux kernel, the following vulnerability has been resolved:blk-cgroup: fix UAF in __blkcg_rstat_flush() (CVE-2026-63802)In the Linux kernel, the following vulnerability has been resolved:KVM: Replace guest-triggerable BUG_ON() in ioeventfd datamatch with get_unaligned() (CVE-2026-63806)In the Linux kernel, the following vulnerability has been resolved:KVM: x86/mmu: Ensure hugepage is in by slot before checking max mapping level (CVE-2026-63807)In the Linux kernel, the following vulnerability has been resolved:bpf: use kvfree() for replaced sysctl write buffer (CVE-2026-63809)In the Linux kernel, the following vulnerability has been resolved:block: Avoid mounting the bdev pseudo-filesystem in userspace (CVE-2026-63810)In the Linux kernel, the following vulnerability has been resolved:keys: Pin request_key_auth payload in instantiate paths (CVE-2026-63823)In the Linux kernel, the following vulnerability has been resolved:KEYS: fix overflow in keyctl_pkey_params_get_2() (CVE-2026-63824)In the Linux kernel, the following vulnerability has been resolved:fbdev: fix use-after-free in store_modes() (CVE-2026-63826)In the Linux kernel, the following vulnerability has been resolved:net: ip_gre: require CAP_NET_ADMIN in the device netns for changelink (CVE-2026-63829)In the Linux kernel, the following vulnerability has been resolved:drivers/base/memory: set mem->altmap after successful device registration (CVE-2026-64244)In the Linux kernel, the following vulnerability has been resolved:fbdev: modedb: fix a possible UAF in fb_find_mode() (CVE-2026-64245)In the Linux kernel, the following vulnerability has been resolved:kernel/fork: clear PF_BLOCK_TS in copy_process() (CVE-2026-64253)'
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: bpftool6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: bpftool6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel-livepatch-6.12.95-124.187
+          NamespaceName: amzn:2023
+          Version: 1.0-0.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-debuginfo-common-x86_64
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-devel
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-headers
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-modules-extra
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-modules-extra-common
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-tools
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: kernel6.12-tools-devel
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: perf6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: perf6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: python3-perf6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: python3-perf6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.95-124.187.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2014.html
+    Metadata:
+        CVE:
+            - Name: CVE-2025-40158
+            - Name: CVE-2026-31732
+            - Name: CVE-2026-43010
+            - Name: CVE-2026-43216
+            - Name: CVE-2026-45932
+            - Name: CVE-2026-52909
+            - Name: CVE-2026-52975
+            - Name: CVE-2026-52991
+            - Name: CVE-2026-53070
+            - Name: CVE-2026-53167
+            - Name: CVE-2026-53341
+            - Name: CVE-2026-53361
+            - Name: CVE-2026-53381
+            - Name: CVE-2026-53385
+            - Name: CVE-2026-53388
+            - Name: CVE-2026-53391
+            - Name: CVE-2026-53393
+            - Name: CVE-2026-53394
+            - Name: CVE-2026-53397
+            - Name: CVE-2026-53400
+            - Name: CVE-2026-53403
+            - Name: CVE-2026-63800
+            - Name: CVE-2026-63802
+            - Name: CVE-2026-63806
+            - Name: CVE-2026-63807
+            - Name: CVE-2026-63809
+            - Name: CVE-2026-63810
+            - Name: CVE-2026-63823
+            - Name: CVE-2026-63824
+            - Name: CVE-2026-63826
+            - Name: CVE-2026-63829
+            - Name: CVE-2026-64244
+            - Name: CVE-2026-64245
+            - Name: CVE-2026-64253
+    Name: ALAS2023-2026-2014
+    NamespaceName: amzn:2023
+    Severity: High

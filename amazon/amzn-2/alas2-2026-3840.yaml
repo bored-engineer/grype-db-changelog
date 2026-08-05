@@ -1,0 +1,57 @@
+Vulnerability:
+    Description: 'Heap-buffer-overflow write in TS Gateway RPC fragment receive due to uncapped bind_ack max_xmit_fragOn TS Gateway connections, rpc->max_recv_frag is initialized to 0x0FF8 (4088) and ReceiveFragment is allocated to that size. In rpc_bind.c, the client assigns rpc->max_recv_frag = header.bind_ack.max_xmit_frag from the server without an upper bound. A malicious gateway can set max_xmit_frag = 0xFFFF while ReceiveFragment is never resized.Later, rpc_client.c rejects fragments with if (header.frag_length > rpc->max_recv_frag). When both values are 65535, the check passes (65535 > 65535 is false). The receive loop then calls rpc_channel_read() - BIO_read() into the fixed 4088-byte ReceiveFragment, writing up to 65535 bytes and overflowing by up to 61447 attacker-controlled bytes. (CVE-2026-55193)Heap-buffer-overflow write in TS Gateway RPC RESPONSE reassembly due to alloc_hint capacity mismatchIn rpc_client_recv_fragment(), when reassembling a PTYPE_RESPONSE PDU, the client calls Stream_EnsureCapacity(pdu->s, response->alloc_hint) using only the server-declared alloc_hint. Stream_EnsureCapacity() returns success if the existing capacity is already >= alloc_hint, without considering the current write offset or the actual stub length about to be copied.A malicious gateway can set a small alloc_hint (e.g. 100) while sending a large fragment (frag_length = 6000, yielding StubLength [?] 5968). The 4096-byte reassembly buffer is not grown, and Stream_Write(pdu->s, ..., StubLength) copies attacker-controlled stub data past the end of the heap allocation. On default builds this may abort via WINPR_ASSERT; on Release builds (NDEBUG) the assert is elided and the overflow becomes an exploitable heap write.This is distinct from the separate ReceiveFragment / bind_ack max_xmit_frag issue (different buffer and code path in the same gateway module). (CVE-2026-55194)Out-of-bounds read in glyph_cache_get via crafted glyph fragmentsA malicious RDP server can trigger an out-of-bounds heap read in a FreeRDP client through the glyph cache. glyph_cache_get() bounds-checks the index with > where it should use >= -- the sibling glyph_cache_put() already gets it right. Since the cache''s entries array holds exactly number pointers, an index equal to number slips past the check and reads one slot past the end, which the caller then dereferences as a glyph. It''s the read-side twin of CVE-2020-11098 (the write side was fixed back in 2.1.2; the read side never was), and it''s still present in 3.25.0 and master. (CVE-2026-55564)Integer Overflow in freerdp_image_copy_from_icon_data Bypasses Bounds Check (CVE-2026-55648)Out-of-bounds read in the camera device enumerator server (rdpecam) via unterminated DeviceName / VirtualChannelName (CVE-2026-57157)planar_decompress_plane_rle_only: heap OOB read -- incomplete fix for CVE-2026-23530The fix for CVE-2026-23530 (GHSA-r4hv-852m-fq7p) correctly adds dimension guardsat the entry point of freerdp_bitmap_decompress_planar but is incomplete in scope.planar_decompress_plane_rle_only dereferences *srcp before validating thatsrcp is within SrcSize. A malicious server can reach this path via a truncatedRLE planar payload in RDPGFX_CMDID_WIRETOSURFACE_1. (CVE-2026-57158)'
+    FixedIn:
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: freerdp-libs
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: libwinpr
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.13
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-04"
+            Kind: advisory
+          Name: libwinpr-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.13
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3840.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-55193
+            - Name: CVE-2026-55194
+            - Name: CVE-2026-55564
+            - Name: CVE-2026-55648
+            - Name: CVE-2026-57157
+            - Name: CVE-2026-57158
+    Name: ALAS2-2026-3840
+    NamespaceName: amzn:2
+    Severity: High
