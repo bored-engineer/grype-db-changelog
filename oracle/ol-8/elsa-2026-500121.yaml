@@ -48,6 +48,55 @@ Vulnerability:
         - ipv6: icmp: clear skb2->cb[] in ip6_err_gen_icmpv6_unreach() (Eric Dumazet)  [Orabug: 39300930]  {CVE-2026-43038}
         - tracing/events: Expand global buffer for in-kernel event enables (Manjunath Patil)  [Orabug: 38790406]
         - net/mlx5: poll mlx5 eq during irq migration (Praveen Kumar Kannoju)  [Orabug: 38776184]
+
+        [5.4.17-2136.357.3]
+        - net: skbuff: fix missing zerocopy reference in pskb_carve helpers (Minh Nguyen)  [Orabug: 39619389]  {CVE-2026-52943}
+
+        [5.4.17-2136.357.2]
+        - net: fix fanout UAF in packet_release() via NETDEV_UP race (Yochai Eisenrich)  [Orabug: 39250953]  {CVE-2026-31504}
+        - x86/kaslr: Recognize all ZONE_DEVICE users as physaddr consumers (Dan Williams)  [Orabug: 39429802]
+        - x86/kaslr: Reduce KASLR entropy on most x86 systems (Balbir Singh)  [Orabug: 39429802]
+        - net: tap: NULL pointer derefence in dev_parse_header_protocol when skb->dev is null (Cezar Bulinaru)  [Orabug: 39526882]  {CVE-2022-50073}
+        - arm64: errata: Mitigate TLBI errata on various Arm CPUs (Mark Rutland)  [Orabug: 39548666]  {CVE-2025-10263}
+        - arm64: tlb: Add ARM64_WORKAROUND_REPEAT_TLBI_SYNC (Mark Rutland)  [Orabug: 39548666]
+        - ARM: uek: Disable CONFIG_QCOM_FALKOR_ERRATUM_1003 (Boris Ostrovsky)  [Orabug: 39548666]
+        - arm64: tlb: allow XZR argument to TLBI ops (Mark Rutland)  [Orabug: 39548666]
+        - arm64: cputype: Add C1-Premium definitions (Mark Rutland)  [Orabug: 39548666]
+        - arm64: cputype: Add C1-Ultra definitions (Mark Rutland)  [Orabug: 39548666]
+        - ip6_tunnel: clear skb2->cb[] in ip4ip6_err() (Eric Dumazet)  [Orabug: 39300926]  {CVE-2026-43037}
+
+        [5.4.17-2136.357.1]
+        - batman-adv: hold claim backbone gateways by reference (Haoze Xie)  [Orabug: 39262375]  {CVE-2026-31657}
+        - scsi: fcoe: Reject FIP descriptors with zero fip_dlen in CVL walker (Michael Bommarito)  [Orabug: 39446045]
+        - scsi: target: iscsi: Fix CRC overread and double-free in iscsit_handle_text_cmd() (Michael Bommarito)  [Orabug: 39446045]
+        - scsi: target: iscsi: Bound iscsi_encode_text_output() appends to rsp_buf (Michael Bommarito)  [Orabug: 39446045]
+        - rds: Drop rds conn in connect worker if not in down state. (Rohit Nair)  [Orabug: 39152239]
+
+        [5.4.17-2136.356.4.1]
+        - smb: client: reject userspace cifs.spnego descriptions (Asim Viladi Oglu Manizada)  [Orabug: 39463669] {CVE-2026-46243}
+
+        [5.4.17-2136.356.4]
+        - tun: free page on build_skb failure in tun_xdp_one() (Weiming Shi) [Orabug: 39429147]
+        - tap: free page on error paths in tap_get_user_xdp() (Weiming Shi) [Orabug: 39429147]
+        - tun: free page on short-frame rejection in tun_xdp_one() (Weiming Shi) [Orabug: 39429147]
+
+        [5.4.17-2136.356.3]
+        - ptrace: slightly saner 'get_dumpable()' logic (Linus Torvalds) [Orabug: 39384275,39391459] {CVE-2026-46333}
+        - net: skbuff: propagate shared-frag marker through frag-transfer helpers (Hyunwoo Kim) [Orabug: 39368828,39441326] {CVE-2026-43503,CVE-2026-46300}
+        - net: skbuff: preserve shared-frag marker during coalescing (William Bowling) [Orabug: 39368828] {CVE-2026-46300}
+
+        [5.4.17-2136.356.2]
+        - nfsd: fix heap overflow in NFSv4.0 LOCK replay cache (Jeff Layton) [Orabug: 39167617,39368718] {CVE-2026-31402}
+        - scsi: target: iscsi: Fix use-after-free in iscsit_dec_conn_usage_count() (Maurizio Lombardi) [Orabug: 38985173,39368732] {CVE-2026-23216}
+        - scsi: target: iscsi: Fix use-after-free in iscsit_dec_session_usage_count() (Maurizio Lombardi) [Orabug: 38970455,39368774] {CVE-2026-23193}
+        - xfrm: esp: avoid in-place decrypt on shared skb frags (Kuan-Ting Chen) [Orabug: 39334580,39367147] {CVE-2026-43284}
+        - x86/CPU/AMD: Add a fix for AMD-SB-7052 (Prathyushi Nangia) [Orabug: 39218897] {CVE-2025-54518}
+
+        [5.4.17-2136.356.1]
+        - arm64/kvm: Include linux/random.h in trng.c (Siddh Raman Pant) [Orabug: 39327096]
+        - i2c: designware: Disable TX_EMPTY irq while waiting for block length byte (Tam Nguyen) [Orabug: 39174662]
+        - i2c: designware: Handle invalid SMBus block data response length value (Tam Nguyen) [Orabug: 39174662]
+        - i2c: designware: fix __i2c_dw_disable() in case master is holding SCL low (Yann Sionneau) [Orabug: 39174662]
     FixedIn:
         - Available:
             Date: "2026-08-03"
