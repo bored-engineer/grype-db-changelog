@@ -1,0 +1,296 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [6.12.0-211.43.1]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985782]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Update module name for cryptographic module [Orabug: 37400433]
+        - Clean git history at setup stage
+
+        [6.12.0-211.43.1]
+        - redhat/kernel.spec: make module and modules-core provides use variant (Jan Stancek) [RHEL-213965]
+        - dpll: allow fwnode pins to attempt state change without capability bit (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: extend pin notifier with notification source ID (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: balance create/delete notifications in __dpll_pin_(un)register (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: guard sync-pair removal on full pin unregister (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: emit per-dpll delete notifications in dpll_pin_on_pin_unregister() (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: send delete notification before unregister in on-pin rollback (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: fix stale iteration in dpll_pin_on_pin_unregister() (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: allow registering FW-identified pin with a different DPLL (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: add generic DPLL type (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: zl3073x: make frequency monitor a per-device attribute (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: zl3073x: use __dpll_device_change_ntf() and remove change_work (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: export __dpll_device_change_ntf() for use under dpll_lock (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: change dpll_netdev_pin_handle_size() to assume DPLL_A_PIN_ID will be used (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: zl3073x: fix memory leak on pin registration failure (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: zl3073x: Use named initializers for struct i2c_device_id (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: Prevent duplicate registrations (Jakub Ramaseuski) [RHEL-211011]
+        - dpll: export __dpll_pin_change_ntf() for use under dpll_lock (Jakub Ramaseuski) [RHEL-211011]
+        - drm/i915/psr: Use DC_OFF wake reference to block DC6 on vblank enable (Anusha Srivatsa) [RHEL-172832]
+        - drm/i915/psr: Block DC states on vblank enable when Panel Replay supported (Anusha Srivatsa) [RHEL-172832]
+        - drm/i915/psr: Don't enable Panel Replay on sink if globally disabled (Anusha Srivatsa) [RHEL-172832]
+        - drm/i915/alpm: ALPM disable fixes (Anusha Srivatsa) [RHEL-172832]
+        - procfs: fix possible double mmput() in do_procmap_query() (Rafael Aquini) [RHEL-189665] {CVE-2026-23199}
+        - procfs: avoid fetching build ID while holding VMA lock (Rafael Aquini) [RHEL-189665] {CVE-2026-23199}
+        - timers: Fix NULL function pointer race in timer_shutdown_sync() (CKI Backport Bot) [RHEL-189563] {CVE-2025-68214}
+        - net: wwan: t7xx: Add delay between MD and SAP suspend (CKI Backport Bot) [RHEL-184266]
+    FixedIn:
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: libperf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: rtla
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-06"
+            Kind: advisory
+          Module: null
+          Name: rv
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.43.1.el10_2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-49871.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-68214.html
+              Name: CVE-2025-68214
+            - Link: https://linux.oracle.com/cve/CVE-2026-23199.html
+              Name: CVE-2026-23199
+        Issued: "2026-08-06"
+        RefId: ELSA-2026-49871
+    Name: ELSA-2026-49871
+    NamespaceName: ol:10
+    Severity: Medium
