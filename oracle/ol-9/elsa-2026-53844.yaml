@@ -1,0 +1,79 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [6.2.1.11-1.git4b3e853.0.1.el9_8.2]
+        - iscsi validate interface IP against target address family [Orabug: 39491394]
+        - iscsi delay reconnect until interface has valid IP [Orabug: 38441836]
+        - Correct the typos in email addresses in changelog in OL9.5 [Orabug: 37910459]
+        - Change the order of restart iscsi services in spec file [Orabug: 37749406]
+        - Rate limit session reopen and initial connect log messages [Orabug: 37681887]
+        - Change the log_level of log_debug message in actor_delete()
+        - Remove incorrect keyword from install section in iscsi-init [Orabug: 37544462]
+        - Add python3-rpm-macros to BuildRequires
+        - Allow systemd-remount-fs complete before iscsi-init.service [Orabug: 34325406]
+        - Allow iscsi-init.service to start after local-fs.target [Orabug: 33930979]
+        - Rename 0008-use-red-hat-name.patch to 0008-use-oracle-for-name.patch
+          and use com.oracle in prefix
+        - Complete the following tasks to address [Orabug: 29311709]
+          The following patches address [Orabug: 29128380] (Jianchao Wang)
+          Add 0032-Add-Requires-iscsid.service-in-iscsi.service.patch
+          The following patch addresses [Orabug: 29306329]
+          Add 0033-Update-systemd-to-always-restart-iscsid-service.patch
+        - Print vital iscsid messages on console using rsyslog facility. This
+          is particularly useful when using iscsi boot and there is a connection
+          or session issue. [Orabug: 29503805]
+        - Modify iscsi-mark-root-nodes script to only update node.startup to onboot
+          for iscsi sessions that are active during boot. [Orabug: 29653342]
+        - Modify iscsi-mark-root nodes script to not mark nodes when iscsi.service
+          is restarted. [Orabug: 29851447]
+        - Modify patches 0007 and 0032-0035 to apply cleanly
+        - Tune TimeoutSec of iscsid service to 10 minutes [Orabug: 29869817]
+
+        [6.2.1.11-1.git4b3e853.2]
+        - fix CVE-2026-44943: path traversal via IQN names in discovery
+        - fix CVE-2026-44944: iscsiuio socket credential verification bypass
+
+        [6.2.1.11-1.git4b3e853.1]
+        - fix CVE-2026-44943: path traversal via IQN names in discovery
+        - fix CVE-2026-44944: iscsiuio socket credential verification bypass
+
+        [6.2.1.11-1.git4b3e853]
+        - fix regression in fw and static node records
+    FixedIn:
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: iscsi-initiator-utils
+          NamespaceName: ol:9
+          Version: 0:6.2.1.11-1.git4b3e853.0.1.el9_8.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: iscsi-initiator-utils-iscsiuio
+          NamespaceName: ol:9
+          Version: 0:6.2.1.11-1.git4b3e853.0.1.el9_8.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: python3-iscsi-initiator-utils
+          NamespaceName: ol:9
+          Version: 0:6.2.1.11-1.git4b3e853.0.1.el9_8.2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-53844.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-44943.html
+              Name: CVE-2026-44943
+            - Link: https://linux.oracle.com/cve/CVE-2026-44944.html
+              Name: CVE-2026-44944
+        Issued: "2026-08-13"
+        RefId: ELSA-2026-53844
+    Name: ELSA-2026-53844
+    NamespaceName: ol:9
+    Severity: High
