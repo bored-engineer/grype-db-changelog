@@ -1,0 +1,101 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [057-120.git20260728.0.1]
+        - Skip the default FIPS logic on special UEK kernels where the FIPS module is linked directly into the kernel. [Orabug: 38705580]
+        - Ship Oracle IMA certificate [Orabug: 35992862]
+        - Ship 98-integrity.conf, populating initramfs with Oracle IMA certificate [Orabug: 35992862]
+        - Include sys-fs-fuse-connections.mount if needed [Orabug: 35267570]
+        - network-legacy: Revert some shellcheck that breaks parse_option_121 in dhclient [Orabug: 33778173]
+        - Change installation dir in network legacy module-setup so that file is never missing [Orabug: 33516170]
+        - Fix paths in squash module, so that correct modprobe is installed [Orabug: 33514517]
+        - Install missing 68-del-part-node.rules [Orabug: 32827579]
+        - Fix permission denied error while upgrading from OL8u2 to OL8u3 [Orabug 32160196]
+        - dracut-shutdown.service should run before shutdown.target is invoked [Orabug: 29629738]
+        - Update list of necessary files after squashfs execution [Orabug: 29864620]
+        - Supress iscsidm error output during non-debug PV boot [Orabug: 29846195]
+        - Stop block device service in case system is dropped to emergency shell [Orabug: 29851988]
+        - Enable booting from block device if netroot=iscsi has failed [Orabug: 29478156]
+        - Calculate relative path for kernel and initrd in 51-dracut-rescue.instal [Orabug: 29503293]
+        - 40network scripts ifup and netlib updates for iSCSI [Orabug: 28502725]
+        - Increase timeout when waiting for carrier detection on a network interface [Orabug: 24657828] (kevin.x.lyons@oracle.com)
+        - add hyperv-keyboard for Hyper-V Gen2 VM [Orabug: 19191303] (Vaughan Cao)
+
+        [057-120.git20260728]
+        - fix(base): escape die() message in emergency hook script
+        - fix(base): replace eval with safe variable indirection in
+    FixedIn:
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: dracut
+          NamespaceName: ol:9
+          Version: 0:057-120.git20260728.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: dracut-caps
+          NamespaceName: ol:9
+          Version: 0:057-120.git20260728.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: dracut-config-generic
+          NamespaceName: ol:9
+          Version: 0:057-120.git20260728.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: dracut-config-rescue
+          NamespaceName: ol:9
+          Version: 0:057-120.git20260728.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: dracut-live
+          NamespaceName: ol:9
+          Version: 0:057-120.git20260728.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: dracut-network
+          NamespaceName: ol:9
+          Version: 0:057-120.git20260728.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: dracut-squash
+          NamespaceName: ol:9
+          Version: 0:057-120.git20260728.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-13"
+            Kind: advisory
+          Module: null
+          Name: dracut-tools
+          NamespaceName: ol:9
+          Version: 0:057-120.git20260728.0.1.el9_8
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-54571.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-15816.html
+              Name: CVE-2026-15816
+        Issued: "2026-08-13"
+        RefId: ELSA-2026-54571
+    Name: ELSA-2026-54571
+    NamespaceName: ol:9
+    Severity: High
