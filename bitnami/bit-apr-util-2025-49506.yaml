@@ -1,0 +1,42 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: apr-util
+        purl: pkg:bitnami/apr-util
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-17"
+                      kind: advisory
+                      version: 1.6.4
+          events:
+            - introduced: 1.2.0
+            - fixed: 1.6.4
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-49506
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:apr-util:*:*:*:*:*:*:*:*
+    severity: High
+details: |-
+    APR-util versions 1.6.3 (and earlier) function apr_password_validate() was not constant-time with regards to hashes or passwords comparisons, potentially leaking their content via a side channel timing attack particularly on platforms without crypt() such as  Windows, BeOS, NetWare, or Android.
+
+    Users are recommended to upgrade to version 1.6.4, which fixes this issue.
+id: BIT-apr-util-2025-49506
+modified: "2026-08-17T06:10:32.268Z"
+published: "2026-08-17T05:36:30.228Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/08/06/8
+    - type: WEB
+      url: https://lists.apache.org/thread/2v8o3bj9pb7lfcr57bdnjg9xfkj04mg5
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-49506
+schema_version: 1.6.2
+summary: 'Apache Portable Runtime Utility: apr_password_validate() vulnerable to timing attack'

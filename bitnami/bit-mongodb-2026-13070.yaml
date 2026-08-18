@@ -1,0 +1,52 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: mongodb
+        purl: pkg:bitnami/mongodb
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-17"
+                      kind: advisory
+                      version: 7.0.39
+                    - date: "2026-08-17"
+                      kind: advisory
+                      version: 8.0.28
+                    - date: "2026-08-17"
+                      kind: advisory
+                      version: 8.2.12
+                    - date: "2026-08-17"
+                      kind: advisory
+                      version: 8.3.7
+          events:
+            - introduced: 7.0.0
+            - fixed: 7.0.39
+            - introduced: 8.0.0
+            - fixed: 8.0.28
+            - introduced: 8.2.0
+            - fixed: 8.2.12
+            - introduced: 8.3.0
+            - fixed: 8.3.7
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:A/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-13070
+database_specific:
+    cpes:
+        - cpe:2.3:a:mongodb:mongodb:*:*:*:*:-:*:*:*
+    severity: Medium
+details: A MongoDB server initiating an outbound TLS connection may terminate abnormally when processing a malformed OCSP response from a remote peer during the TLS handshake. OCSP stapling validation is enabled by default for outgoing TLS connections. Affected scenarios require the remote peer to hold a certificate issued by the cluster's trusted certificate authority, or for the connection to traverse an untrusted network path.
+id: BIT-mongodb-2026-13070
+modified: "2026-08-17T06:10:32.268Z"
+published: "2026-08-17T05:49:41.500Z"
+references:
+    - type: WEB
+      url: https://jira.mongodb.org/browse/SERVER-128362
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-13070
+schema_version: 1.6.2
+summary: Improper Validation of OCSP Response During Outbound TLS Handshake Leading to Process Termination
