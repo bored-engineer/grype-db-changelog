@@ -1,0 +1,44 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: mastodon
+        purl: pkg:bitnami/mastodon
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-17"
+                      kind: advisory
+                      version: 4.6.4
+          events:
+            - fixed: 4.6.4
+            - introduced: 4.6.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-72915
+database_specific:
+    cpes:
+        - cpe:2.3:a:joinmastodon:mastodon:*:*:*:*:*:*:*:*
+    severity: High
+details: Mastodon is a free, open-source social network server based on ActivityPub. From 4.6.0 until 4.6.4 and 4.7.0, any logged-in local user could use the show action in app/controllers/admin/collections_controller.rb to access personally identifying information about another local user in a collection because the controller used the general collection policy instead of the admin collection policy namespace. The exposed data included the other user's current email address and last-used IP address. This issue is fixed in versions 4.6.4 and 4.7.0.
+id: BIT-mastodon-2026-72915
+modified: "2026-08-17T06:10:32.268Z"
+published: "2026-08-17T05:46:38.079Z"
+references:
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/commit/467c933459c7d0e5513475b9e4888afaedfb1074
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/commit/930aa9fee26bf9eaefe27826fa1061288d83373b
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/releases/tag/v4.6.4
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/releases/tag/v4.7.0-beta.1
+    - type: WEB
+      url: https://github.com/mastodon/mastodon/security/advisories/GHSA-hx34-2pfw-2qfj
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-72915
+schema_version: 1.6.2
+summary: 'Mastodon: Personally-identifying information disclosure due to incorrect access control validation'

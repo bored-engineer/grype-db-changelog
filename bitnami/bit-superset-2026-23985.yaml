@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: superset
+        purl: pkg:bitnami/superset
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-17"
+                      kind: advisory
+                      version: 6.0.0
+          events:
+            - fixed: 6.0.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-23985
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:superset:*:*:*:*:*:*:*:*
+    severity: Medium
+details: |-
+    A Regular Expression Denial of Service (ReDoS) vulnerability exists in Apache Superset versions 1.5.0 through 5.0.0. The vulnerability is located in the sql_parse.py component, specifically within the SQL_REGEX used for parsing SQL statements in the sqlparse library integration.
+    The affected regular expression contains overlapping disjunctions that share a common outer quantifier. An authenticated attacker can exploit this by sending a maliciously crafted input string (specifically a long sequence of backslashes or similar characters) to endpoints that process SQL queries
+
+    This issue affects Apache Superset: before 6.0.0.
+
+    Users are recommended to upgrade to version 6.0.0, which fixes the issue. 
+
+    Workarounds:
+    ● WAF Rules: Implement Web Application Firewall (WAF) rules to detect and block
+    requests containing excessively long sequences of backslashes or suspicious repeated
+    patterns in the queries.extras.where parameter.
+    ● Rate Limiting: Ensure strict rate limiting is applied to the /api/v1/chart/data endpoint to
+    reduce the impact of potential attacks.
+id: BIT-superset-2026-23985
+modified: "2026-08-17T06:10:32.268Z"
+published: "2026-08-17T05:55:44.269Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/07/30/7
+    - type: WEB
+      url: https://lists.apache.org/thread/fdy7tx7glv90ypd7qnm1g1pt7nn336qx
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-23985
+schema_version: 1.6.2
+summary: 'Apache Superset: Regular Expression Denial of Service (ReDoS) in SQL Parser'

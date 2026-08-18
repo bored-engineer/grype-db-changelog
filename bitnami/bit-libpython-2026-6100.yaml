@@ -33,7 +33,7 @@ details: |-
 
     The vulnerability is only present if the program re-uses decompressor instances across multiple decompression calls even after a `MemoryError` is raised during decompression. Using the helper functions to one-shot decompress data such as `lzma.decompress()`, `bz2.decompress()`, `gzip.decompress()`, and `zlib.decompress()` are not affected as a new decompressor instance is used per call. If the decompressor instance is not re-used after an error condition, this usage is similarly not vulnerable.
 id: BIT-libpython-2026-6100
-modified: "2026-07-06T15:47:40.851Z"
+modified: "2026-08-17T06:10:32.268Z"
 published: "2026-07-06T15:23:15.247Z"
 references:
     - type: WEB
@@ -115,6 +115,8 @@ references:
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:30089
     - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:52400
+    - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:8822
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:8824
@@ -134,6 +136,8 @@ references:
       url: https://github.com/python/cpython/commit/c3cf71c3366fe49acb776a639405c0eea6169c20
     - type: WEB
       url: https://github.com/python/cpython/commit/e20c6c9667c99ecaab96e1a2b3767082841ffc8b
+    - type: WEB
+      url: https://github.com/python/cpython/commit/ea8d735eb084cf8cc021df1a30e90d10a8f052e3
     - type: WEB
       url: https://github.com/python/cpython/issues/148395
     - type: WEB

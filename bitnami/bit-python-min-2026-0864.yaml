@@ -4,8 +4,20 @@ affected:
         name: python-min
         purl: pkg:bitnami/python-min
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-07-30"
+                      kind: advisory
+                      version: 3.13.15
+                    - date: "2026-07-30"
+                      kind: advisory
+                      version: 3.14.7
+          events:
+            - fixed: 3.13.15
+            - fixed: 3.14.7
             - introduced: "0"
+            - introduced: 3.14.0
           type: SEMVER
       severity:
         - score: CVSS:4.0/AV:L/AC:L/AT:P/PR:H/UI:P/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
@@ -22,17 +34,23 @@ details: |-
     resulting file could be injected with unexpected keys and values if the
     attacker controls the written value.
 id: BIT-python-min-2026-0864
-modified: "2026-07-30T11:52:58.921Z"
+modified: "2026-08-17T09:10:07.402Z"
 published: "2026-07-30T11:33:58.743Z"
 references:
     - type: WEB
       url: https://github.com/python/cpython/commit/0adb386f6e68eb2e73d32e19f235d012df009528
+    - type: WEB
+      url: https://github.com/python/cpython/commit/12dcbd74d3563016a8cb8c47e4898889f34f74dd
+    - type: WEB
+      url: https://github.com/python/cpython/commit/274de100bbf4345bd0c23ef5b446722e9e636908
     - type: WEB
       url: https://github.com/python/cpython/commit/5858e42c539dac8394636a6e9b30472b8994851f
     - type: WEB
       url: https://github.com/python/cpython/commit/71f2e02a52d47417a6fd69f456346cd8aa7aca98
     - type: WEB
       url: https://github.com/python/cpython/commit/aaf850fd333cd89e9aada03d92aaa788a6cb1bb8
+    - type: WEB
+      url: https://github.com/python/cpython/commit/db4a157c790479710a1a840d7937c5c815a6f8b6
     - type: WEB
       url: https://github.com/python/cpython/issues/143927
     - type: WEB

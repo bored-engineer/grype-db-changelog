@@ -1,0 +1,37 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: consul
+        purl: pkg:bitnami/consul
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-17"
+                      kind: advisory
+                      version: 2.0.3
+          events:
+            - fixed: 2.0.3
+            - introduced: 1.2.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2026-19015
+database_specific:
+    cpes:
+        - cpe:2.3:a:hashicorp:consul:*:*:*:*:enterprise:*:*:*
+        - cpe:2.3:a:hashicorp:consul:*:*:*:*:community:go:*:*
+    severity: Medium
+details: Consul Community Edition and Consul Enterprise 1.2.0 through 2.0.2 are vulnerable to an uncontrolled resource consumption issue in the Connect CA roots endpoint that may allow a remote caller to grow the agent's Connect CA roots cache without bound, defeating the operator's cache-disable configuration. This vulnerability, CVE-2026-19015, is fixed in Consul 2.0.3 and Consul Enterprise 1.21.17, 1.22.11, and 2.0.3.
+id: BIT-consul-2026-19015
+modified: "2026-08-17T06:10:32.268Z"
+published: "2026-08-17T05:38:14.318Z"
+references:
+    - type: WEB
+      url: https://discuss.hashicorp.com/t/hcsec-2026-25-multiple-vulnerabilities-impacting-hashicorp-consul/77629
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-19015
+schema_version: 1.6.2
+summary: Uncontrolled resource consumption in the Consul Connect CA roots endpoint
