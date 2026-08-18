@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in gnome-remote-desktop as shipped in Red Hat Enterprise Linux. When the daemon is running in system mode with RDP enabled, the incoming connection handler bypasses the connection throttler, allowing an unauthenticated remote attacker to open many parallel pre-authentication connections to the RDP listener. This can accumulate accepted sockets and pending routing-token operations until timeout, exhausting resources and preventing legitimate users from establishing RDP sessions. This issue does not affect the upstream version. (CVE-2026-18358)
+    FixedIn:
+        - Available:
+            Date: "2026-08-17"
+            Kind: advisory
+          Name: gnome-remote-desktop
+          NamespaceName: amzn:2023
+          Version: 47.3-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-17"
+            Kind: advisory
+          Name: gnome-remote-desktop-debuginfo
+          NamespaceName: amzn:2023
+          Version: 47.3-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-17"
+            Kind: advisory
+          Name: gnome-remote-desktop-debugsource
+          NamespaceName: amzn:2023
+          Version: 47.3-1.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2068.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-18358
+    Name: ALAS2023-2026-2068
+    NamespaceName: amzn:2023
+    Severity: High
