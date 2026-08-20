@@ -1,0 +1,52 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: golang
+        purl: pkg:bitnami/golang
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 1.25.13
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 1.26.6
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 1.27.0
+          events:
+            - fixed: 1.25.13
+            - fixed: 1.26.6
+            - fixed: 1.27.0
+            - introduced: "0"
+            - introduced: 1.26.0-0
+            - introduced: 1.27.0-0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-56862
+database_specific:
+    cpes:
+        - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+    severity: High
+details: Handshake messages, such as KeyUpdate, are always considered as state-advancing, regardless of whether a handshake has been completed or not. As a result, a malicious client can keep sending KeyUpdate messages to force the server to keep performing key derivation operations indefinitely.
+id: BIT-golang-2026-56862
+modified: "2026-08-19T12:00:51.730Z"
+published: "2026-08-19T11:37:50.799Z"
+references:
+    - type: WEB
+      url: https://go.dev/cl/804261
+    - type: WEB
+      url: https://go.dev/issue/80528
+    - type: WEB
+      url: https://groups.google.com/g/golang-announce/c/94pEornpRlI
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-56862
+    - type: WEB
+      url: https://pkg.go.dev/vuln/GO-2026-6090
+schema_version: 1.6.2
+summary: Limit handshake messages we are willing to accept post-handshake in crypto/tls

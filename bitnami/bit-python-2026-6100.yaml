@@ -12,11 +12,26 @@ affected:
                       version: 3.14.5
                     - date: "2026-07-06"
                       kind: advisory
+                      version: 3.10.21
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 3.11.16
+                    - date: "2026-07-06"
+                      kind: advisory
+                      version: 3.12.14
+                    - date: "2026-07-06"
+                      kind: advisory
                       version: 3.13.14
           events:
+            - fixed: 3.10.21
+            - fixed: 3.11.16
+            - fixed: 3.12.14
             - fixed: 3.13.14
             - fixed: 3.14.5
             - introduced: "0"
+            - introduced: 3.11.0
+            - introduced: 3.12.0
+            - introduced: 3.13.0
             - introduced: 3.14.0
           type: SEMVER
       severity:
@@ -33,7 +48,7 @@ details: |-
 
     The vulnerability is only present if the program re-uses decompressor instances across multiple decompression calls even after a `MemoryError` is raised during decompression. Using the helper functions to one-shot decompress data such as `lzma.decompress()`, `bz2.decompress()`, `gzip.decompress()`, and `zlib.decompress()` are not affected as a new decompressor instance is used per call. If the decompressor instance is not re-used after an error condition, this usage is similarly not vulnerable.
 id: BIT-python-2026-6100
-modified: "2026-08-17T06:10:32.268Z"
+modified: "2026-08-19T09:09:14.600Z"
 published: "2026-07-06T15:28:05.314Z"
 references:
     - type: WEB

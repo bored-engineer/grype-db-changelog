@@ -1,0 +1,47 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 8.19.20
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 9.4.5
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 9.5.1
+          events:
+            - fixed: 8.19.20
+            - fixed: 9.4.5
+            - fixed: 9.5.1
+            - introduced: 8.19.0
+            - introduced: 9.4.0
+            - introduced: 9.5.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-72642
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:maven:*:*
+    severity: High
+details: The native inference process that Elasticsearch uses to evaluate uploaded machine learning models accepts a model operation that computes a memory address from an offset supplied inside the model, without validating that the offset stays within the bounds of the underlying storage. A user with the privileges required to upload and deploy a trained model can craft a model that reads and writes memory outside the intended allocation. The result is heap corruption that crashes the inference process, and, with sufficient control over the heap layout, could allow arbitrary code execution in the context of that process.
+id: BIT-elasticsearch-2026-72642
+modified: "2026-08-19T09:09:14.600Z"
+published: "2026-08-19T08:39:40.388Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-123/389504
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-72642
+schema_version: 1.6.2
+summary: Use of Out-of-range Pointer Offset in the Elasticsearch Machine Learning Native Inference Process

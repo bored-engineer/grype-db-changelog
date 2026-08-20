@@ -9,14 +9,29 @@ affected:
                 fixes:
                     - date: "2026-06-08"
                       kind: advisory
+                      version: 3.10.21
+                    - date: "2026-06-08"
+                      kind: advisory
+                      version: 3.11.16
+                    - date: "2026-06-08"
+                      kind: advisory
+                      version: 3.12.14
+                    - date: "2026-06-08"
+                      kind: advisory
                       version: 3.13.14
                     - date: "2026-06-08"
                       kind: advisory
                       version: 3.14.6
           events:
+            - fixed: 3.10.21
+            - fixed: 3.11.16
+            - fixed: 3.12.14
             - fixed: 3.13.14
             - fixed: 3.14.6
             - introduced: "0"
+            - introduced: 3.11.0
+            - introduced: 3.12.0
+            - introduced: 3.13.0
             - introduced: 3.14.0
           type: SEMVER
       severity:
@@ -30,7 +45,7 @@ database_specific:
     severity: Medium
 details: tarfile.data_filter could be bypassed using crafted link entries, including symlinks with empty or directory-like names, to redirect later archive members outside the intended extraction directory. This allowed a malicious tar archive to cause tarfile.extractall() to write files outside the destination directory, subject to the permissions of the extracting process.
 id: BIT-python-min-2026-7774
-modified: "2026-07-08T11:55:33.732Z"
+modified: "2026-08-19T09:09:14.600Z"
 published: "2026-06-08T08:13:38.988Z"
 references:
     - type: WEB
