@@ -1,0 +1,48 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 8.19.19
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 9.3.8
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 9.4.4
+          events:
+            - introduced: 5.0.0
+            - fixed: 8.19.19
+            - introduced: 9.3.0
+            - fixed: 9.3.8
+            - introduced: 9.4.0
+            - fixed: 9.4.4
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-72683
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:maven:*:*
+    severity: Medium
+details: A flaw in Elasticsearch allows an authenticated user with the privileges required to invoke the simulate pipeline API endpoint (https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) to submit a request that causes a self-referential data structure to be created. When a specific internal component later processes that structure, the operation recurses without bound and raises a fatal error that is not handled by the surrounding execution path, terminating the affected node process and resulting in a denial of service.
+id: BIT-elasticsearch-2026-72683
+modified: "2026-08-19T09:09:14.600Z"
+published: "2026-08-19T08:39:47.224Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/elasticsearch-8-19-19-9-3-8-9-4-4-security-update-esa-2026-75/389496
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-72683
+schema_version: 1.6.2
+summary: Uncontrolled Recursion in Elasticsearch Leading to Denial of Service

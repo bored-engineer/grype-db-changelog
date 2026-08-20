@@ -1,0 +1,42 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: kibana
+        purl: pkg:bitnami/kibana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 9.4.5
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 9.5.1
+          events:
+            - introduced: 9.1.0
+            - fixed: 9.4.5
+            - introduced: 9.5.0
+            - fixed: 9.5.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-72631
+database_specific:
+    cpes:
+        - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Improper Privilege Management (CWE-269) in Kibana Fleet can lead to privilege escalation via Privilege Escalation (CAPEC-233). An integration policy may optionally declare extra data streams that the integration writes to, which Fleet adds to the Elasticsearch API key issued to Elastic Agents enrolled in the corresponding agent policy. The resulting key allows new documents to be inserted and index mappings to be extended for specific indices. The key does not allow reading, updating, or deleting existing documents
+id: BIT-kibana-2026-72631
+modified: "2026-08-19T09:09:14.600Z"
+published: "2026-08-19T08:44:55.431Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/kibana-9-4-5-9-5-1-security-update-esa-2026-128/389539
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-72631
+schema_version: 1.6.2
+summary: Improper Privilege Management in Kibana Fleet Leading to Over-Scoped Elastic Agent API Keys

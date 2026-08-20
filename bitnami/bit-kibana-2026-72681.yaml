@@ -1,0 +1,37 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: kibana
+        purl: pkg:bitnami/kibana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-19"
+                      kind: advisory
+                      version: 9.4.4
+          events:
+            - introduced: 9.4.0
+            - fixed: 9.4.4
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-72681
+database_specific:
+    cpes:
+        - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Kibana Agent Builder does not correctly verify that the requesting user holds the privileges required by a separate Kibana feature before it creates and runs a tool that invokes that feature's functionality. This allows privilege escalation and could lead to disclosure of sensitive information that the user is not authorized to read.
+id: BIT-kibana-2026-72681
+modified: "2026-08-19T09:09:14.600Z"
+published: "2026-08-19T08:45:23.034Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/kibana-9-4-4-security-update-esa-2026-83/389534
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-72681
+schema_version: 1.6.2
+summary: Missing Authorization in Kibana Leading to Privilege Escalation and Information Disclosure
