@@ -1,0 +1,42 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: wordpress-multisite
+        purl: pkg:bitnami/wordpress-multisite
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-21"
+                      kind: advisory
+                      version: 7.0.4
+          events:
+            - fixed: 7.0.4
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-65640
+database_specific:
+    cpes:
+        - cpe:2.3:a:wordpress:wordpress:*:*:*:*:*:*:*:*
+    severity: High
+details: |-
+    WordPress is vulnerable to a remote code execution vulnerability via malicious Postscript file upload by an Author level user or higher.
+
+    Prerequisites:
+    * Imagick and Ghostscript in use on the server
+    * A malicious user with the `upload_files` capability
+
+    This issue affects all versions of WordPress. Version 7.0.4 has been released, containing a fix for the vulnerability, and as a courtesy to users on older branches the fix has been backported to all branches back to 4.7.
+id: BIT-wordpress-multisite-2026-65640
+modified: "2026-08-21T09:11:01.118Z"
+published: "2026-08-21T08:58:11.209Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-65640
+    - type: WEB
+      url: https://wordpress.org/news/2026/08/wordpress-7-0-4-release/
+schema_version: 1.6.2
