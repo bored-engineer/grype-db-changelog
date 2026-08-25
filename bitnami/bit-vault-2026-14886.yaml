@@ -1,0 +1,37 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: vault
+        purl: pkg:bitnami/vault
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-24"
+                      kind: advisory
+                      version: 2.0.4
+          events:
+            - introduced: 2.0.0
+            - fixed: 2.0.4
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:N/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-14886
+database_specific:
+    cpes:
+        - cpe:2.3:a:hashicorp:vault:*:*:*:*:enterprise:go:*:*
+    severity: High
+details: Vault Enterprise's identity entity batch-delete endpoint is vulnerable to a cross-namespace authorization bypass that may allow an authenticated caller in one namespace to permanently delete the storage backing of entities belonging to another namespace. This vulnerability (CVE-2026-14886) is fixed in Vault Enterprise 2.0.4, 1.21.9, 1.20.14 and 1.19.20.
+id: BIT-vault-2026-14886
+modified: "2026-08-24T06:09:24.796Z"
+published: "2026-08-24T05:55:35.006Z"
+references:
+    - type: WEB
+      url: https://discuss.hashicorp.com/t/hcsec-2026-27-vault-enterprise-vulnerable-to-cross-namespace-entity-deletion/77634
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-14886
+schema_version: 1.6.2
+summary: Vault Enterprise vulnerable to cross-namespace entity deletion
