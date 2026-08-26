@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: keycloak
+        purl: pkg:bitnami/keycloak
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-25"
+                      kind: advisory
+                      version: 26.4.13
+                    - date: "2026-08-25"
+                      kind: advisory
+                      version: 26.6.4
+          events:
+            - fixed: 26.4.13
+            - fixed: 26.6.4
+            - introduced: 26.4.0
+            - introduced: 26.6.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-9705
+database_specific:
+    cpes:
+        - cpe:2.3:a:redhat:build_of_keycloak:*:*:*:*:*:*:*:*
+    severity: Medium
+details: A flaw was found in Keycloak's client registration service. A remote attacker, possessing a previously issued Registration Access Token (RAT), could exploit this vulnerability to re-enable a client that an administrator had explicitly disabled. This bypasses security controls, allowing the attacker to reset the client's secret and potentially regain privileged API access. The primary impact includes unauthorized information disclosure and potential integrity compromise.
+id: BIT-keycloak-2026-9705
+modified: "2026-08-25T12:00:59.918Z"
+published: "2026-08-25T11:42:44.567Z"
+references:
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:30049
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:30050
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:30083
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:30084
+    - type: WEB
+      url: https://access.redhat.com/security/cve/CVE-2026-9705
+    - type: WEB
+      url: https://bugzilla.redhat.com/show_bug.cgi?id=2481878
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-9705
+schema_version: 1.6.2
+summary: 'Keycloak: keycloak: attacker can re-enable and take over disabled clients via registration access token'
