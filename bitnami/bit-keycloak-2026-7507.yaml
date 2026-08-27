@@ -22,10 +22,11 @@ aliases:
 database_specific:
     cpes:
         - cpe:2.3:a:redhat:build_of_keycloak:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:keycloak:keycloak:*:*:*:*:*:*:*:*
     severity: High
 details: A session fixation vulnerability was found in Keycloak's login-actions endpoints. An unauthenticated attacker could exploit this flaw by pre-creating an authentication session and tricking a victim into visiting a maliciously crafted link. By leveraging the /login-actions/restart endpoint—which processes session handles without adequate CSRF protection or cookie ownership validation—an attacker can reset the authentication flow state. This causes Single Sign-On (SSO) to authenticate the victim transparently upon clicking the link, allowing the attacker to hijack the required-action form without needing the victim's credentials. A successful exploit could lead to complete account takeover, including highly privileged administrative accounts.
 id: BIT-keycloak-2026-7507
-modified: "2026-08-25T12:00:59.918Z"
+modified: "2026-08-26T10:56:00.040Z"
 published: "2026-08-25T11:42:36.076Z"
 references:
     - type: WEB

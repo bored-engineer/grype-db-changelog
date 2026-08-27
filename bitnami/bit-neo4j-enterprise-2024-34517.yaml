@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: neo4j-enterprise
+        purl: pkg:bitnami/neo4j-enterprise
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-26"
+                      kind: advisory
+                      version: 5.19.0
+          events:
+            - fixed: 5.19.0
+            - introduced: 5.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2024-34517
+database_specific:
+    cpes:
+        - cpe:2.3:a:neo4j:neo4j:*:*:*:*:*:community:*:*
+    severity: Medium
+details: The Cypher component in Neo4j 5.0.0 through 5.18 mishandles IMMUTABLE privileges in some situations where an attacker already has admin access.
+id: BIT-neo4j-enterprise-2024-34517
+modified: "2026-08-26T15:21:35.978Z"
+published: "2026-08-26T15:00:12.325Z"
+references:
+    - type: WEB
+      url: https://github.com/advisories/GHSA-p343-9qwp-pqxv
+    - type: WEB
+      url: https://github.com/neo4j/neo4j/wiki/Neo4j-5-changelog#cypher
+    - type: WEB
+      url: https://neo4j.com/security/cve-2024-34517/
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2024-34517
+    - type: WEB
+      url: https://trust.neo4j.com
+schema_version: 1.6.2
