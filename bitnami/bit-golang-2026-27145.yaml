@@ -30,7 +30,7 @@ database_specific:
     severity: Medium
 details: (*x509.Certificate).VerifyHostname previously called matchHostnames in a loop over all DNS Subject Alternative Name (SAN) entries. This caused strings.Split(host, ".") to execute repeatedly on the same input hostname. With a large DNS SAN list, verification costs scaled quadratically based on the number of SAN entries multiplied by the hostname's label count. Because x509.Verify validates hostnames before building the certificate chain, this overhead occurred even for untrusted certificates.
 id: BIT-golang-2026-27145
-modified: "2026-08-21T09:11:01.118Z"
+modified: "2026-08-28T15:12:02.697Z"
 published: "2026-06-05T05:44:57.398Z"
 references:
     - type: WEB
@@ -110,9 +110,13 @@ references:
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:47737
     - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:49702
+    - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:49703
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:49705
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:49712
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:49729
     - type: WEB
@@ -169,6 +173,38 @@ references:
       url: https://access.redhat.com/errata/RHSA-2026:55899
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:57194
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:57482
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:57488
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:57649
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:59556
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:59557
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:59558
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:59559
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:59579
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:59593
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:60315
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:60354
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:60386
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:60387
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:60388
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:60390
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:60391
     - type: WEB
       url: https://access.redhat.com/security/cve/CVE-2026-27145
     - type: WEB

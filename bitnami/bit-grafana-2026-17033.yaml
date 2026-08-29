@@ -1,0 +1,39 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: grafana
+        purl: pkg:bitnami/grafana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-28"
+                      kind: advisory
+                      version: 13.1.0
+          events:
+            - fixed: 13.1.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:L/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2026-17033
+database_specific:
+    cpes:
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:*:*:*:*
+    severity: Medium
+details: |-
+    An authenticated attacker with Editor access or alert.instances.external:write can submit an external Alertmanager alert containing a controlled generatorURL. The attacker is authorized to create the alert, but not to execute script in another user's Grafana session.
+
+    Grafana renders alert.generatorURL directly as the Alert Details See source LinkButton href without URL-scheme sanitization or a safe-protocol allowlist. The click interceptor's :// heuristic can be bypassed by placing :// inside a JavaScript comment. When a user with read access clicks See source, the browser executes attacker-controlled JavaScript in the Grafana origin with the clicking user's permissions.
+id: BIT-grafana-2026-17033
+modified: "2026-08-28T15:12:02.697Z"
+published: "2026-08-28T14:43:54.092Z"
+references:
+    - type: WEB
+      url: https://grafana.com/security/security-advisories/cve-2026-17033
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-17033
+schema_version: 1.6.2
+summary: CVE-2026-17033 CVE Record
