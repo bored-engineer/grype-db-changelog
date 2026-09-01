@@ -25,13 +25,15 @@ database_specific:
     severity: High
 details: A vulnerability in the `_create_model_version()` handler of `mlflow/server/handlers.py` in mlflow/mlflow versions 3.9.0 and earlier allows an unauthenticated remote attacker to read arbitrary files from the server's filesystem. The issue arises when a `CreateModelVersion` request includes the tag `mlflow.prompt.is_prompt`, which bypasses source path validation. This enables an attacker to store an arbitrary local filesystem path as the model version source. The `get_model_version_artifact_handler()` function later uses this source to serve files without verifying the model version's prompt status, leading to a complete confidentiality compromise. This issue is fixed in version 3.10.0.
 id: BIT-mlflow-2026-2614
-modified: "2026-07-13T00:08:34.851Z"
+modified: "2026-08-31T06:11:21.365Z"
 published: "2026-05-28T08:50:49.461Z"
 references:
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:34456
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:37275
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:60520
     - type: WEB
       url: https://access.redhat.com/security/cve/CVE-2026-2614
     - type: WEB

@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elk
+        purl: pkg:bitnami/elk
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-31"
+                      kind: advisory
+                      version: 8.16.3
+                    - date: "2026-08-31"
+                      kind: advisory
+                      version: 8.17.2
+          events:
+            - fixed: 8.16.3
+            - fixed: 8.17.2
+            - introduced: 8.0.0
+            - introduced: 8.17.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-78581
+database_specific:
+    cpes:
+        - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Authorization Bypass Through User-Controlled Key (CWE-639) in Kibana can lead to unauthorized data modification via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). Under certain conditions, an authenticated user could reference another user's AI Assistant conversation identifier to access or modify a conversation they do not own. Successful exploitation requires knowledge of a hard-to-guess identifier.
+id: BIT-elk-2026-78581
+modified: "2026-08-31T06:11:21.365Z"
+published: "2026-08-31T05:41:10.306Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/kibana-8-16-3-8-17-2-security-update-esa-2026-51/387446
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-78581
+schema_version: 1.6.2
+summary: Authorization Bypass Through User-Controlled Key in Kibana Leading to Unauthorized Data Modification in Kibana
