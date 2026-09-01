@@ -1,0 +1,107 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Integer wraparound in PostgreSQL tsvector and tsquery data type functions allows an unprivileged database user to cause the server to undersize an allocation and write out-of-bounds, via crafted large inputs.  This may execute arbitrary code as the operating system user running the database.  These types are typically sourced from application logic, not taken from the application''s user.  Hence, application users attacking the database, through the application as a conduit, are unlikely.  CVE-2026-6473 had fixed similar problems.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected. (CVE-2026-14662)Heap buffer overflow in PostgreSQL to_char(timestamptz) allows the party choosing the timezone to execute arbitrary code as the operating system user running the database, via a long POSIX timezone abbreviation.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected. (CVE-2026-14669)Heap buffer overflow in PostgreSQL plperl return of a tied hash allows the function owner to execute arbitrary code as the operating system user running the database, via a crafted function body.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected. (CVE-2026-14670)Type confusion in PostgreSQL module "refint" allows an object creator to execute arbitrary code as the operating system user running the database.  The fix for this emerged as a non-security bug report, and the fix appear in the git repository with subject "refint: Remove plan cache.", without a CVE number.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected. (CVE-2026-14671)Type confusion with PostgreSQL "internal" data type arguments allows any user to execute arbitrary code as the operating system user running the database, via calls to functions with that argument type.  Type "internal" represents a class of mutually-incompatible data structures not intended for access from SQL.  The system intended to prevent such function calls, but this prevention had gaps.  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected. (CVE-2026-14680)Integer wraparound in PostgreSQL fuzzystrmatch allows a user to direct writes to a huge range of addresses, executing arbitrary code as the operating system user running the database, via extreme inputs to SQL function levenshtein() or levenshtein_less_equal().  Versions before PostgreSQL 18.5, 17.11, 16.15, 15.19, and 14.24 are affected. (CVE-2026-15742)'
+    FixedIn:
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-contrib
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-debuginfo
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-devel
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-docs
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-libs
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-plperl
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-plpython
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-pltcl
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-server
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-static
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-test
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: postgresql-upgrade
+          NamespaceName: amzn:2
+          Version: 9.2.24-8.amzn2.0.11
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3900.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-14662
+            - Name: CVE-2026-14669
+            - Name: CVE-2026-14670
+            - Name: CVE-2026-14671
+            - Name: CVE-2026-14680
+            - Name: CVE-2026-15742
+    Name: ALAS2-2026-3900
+    NamespaceName: amzn:2
+    Severity: High

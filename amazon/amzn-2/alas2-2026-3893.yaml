@@ -1,0 +1,67 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Enforce a recursion limit in Unmarshal to prevent stack exhaustion when parsing deeply-nested, recursive structures. (CVE-2026-33818)When a server is configured to support unencrypted HTTP/2, it reads a few bytes from each new connection to see if they contain the HTTP/2 client preface. ReadHeaderTimeout is unexpectedly not being applied when doing this. (CVE-2026-56853)Previously, pathological inputs could close an unescaped ''/'' early, allowing for attack-controlled data to inject arbitrary content, potentially leading to XSS. (CVE-2026-56858)Previously, DecodeElement would reset the depth counter causing it to never fire; this could lead to stack exhaustion. (CVE-2026-56859)Previously, resolving relative paths containing parent directory (''..'') segments performed string conversions and buffer rewrites on each step, resulting in quadratic time complexity and high memory allocation overhead. Now, path resolution operates on a byte buffer using index-based backtracking for ''..'' segments, eliminating the quadratic time complexity and significantly reducing memory allocations. (CVE-2026-56860)Handshake messages, such as KeyUpdate, are always considered as state-advancing, regardless of whether a handshake has been completed or not. As a result, a malicious client can keep sending KeyUpdate messages to force the server to keep performing key derivation operations indefinitely. (CVE-2026-56862)A malicious GOSUMDB was capable of serving arbitrary module content not contained within the transparency log. This attack allows for a coordinating GOPROXY and GOSUMDB to serve a client malicious module content that cannot be detected by evaluating the transparency log. In order to determine if you have been affected:   rm -r go.sum go.work.sum vendor/ && go mod tidy (CVE-2026-56864)A malicious GOPROXY was previously capable of forging up to two sumdb tiles that allow for a requested module to bypass the GOSUMDB check and persist attacker-controlled module content to a local Go module cache. This attack allows for a malicious GOPROXY to serve malicious module content that cannot be detected by evaluating the transparency log. All tiles are now correctly verified against their parents. In order to determine if you have been affected:   rm -r go.sum go.work.sum vendor/ && go mod tidy (CVE-2026-56865)'
+    FixedIn:
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: golang
+          NamespaceName: amzn:2
+          Version: 1.26.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: golang-bin
+          NamespaceName: amzn:2
+          Version: 1.26.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: golang-docs
+          NamespaceName: amzn:2
+          Version: 1.26.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: golang-misc
+          NamespaceName: amzn:2
+          Version: 1.26.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: golang-shared
+          NamespaceName: amzn:2
+          Version: 1.26.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: golang-src
+          NamespaceName: amzn:2
+          Version: 1.26.7-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: golang-tests
+          NamespaceName: amzn:2
+          Version: 1.26.7-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3893.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-33818
+            - Name: CVE-2026-56853
+            - Name: CVE-2026-56858
+            - Name: CVE-2026-56859
+            - Name: CVE-2026-56860
+            - Name: CVE-2026-56862
+            - Name: CVE-2026-56864
+            - Name: CVE-2026-56865
+    Name: ALAS2-2026-3893
+    NamespaceName: amzn:2
+    Severity: High

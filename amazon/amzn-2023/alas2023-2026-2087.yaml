@@ -1,0 +1,46 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A vulnerability was found in libsoup's WebSocket frame parsing implementation. The library fails to validate length rules specified in RFC 6455 SS5.5, which mandates that all WebSocket control frames (e.g., PING, PONG, CLOSE) contain a payload of 125 bytes or less. A remote, unauthenticated attacker can exploit this by sending a non-compliant, oversized control frame. Because the parser handles this protocol violation improperly instead of throwing an immediate connection termination error, it triggers a internal processing crash, resulting in a remote denial of service (DoS) for applications utilizing libsoup WebSockets. (CVE-2026-15711)
+    FixedIn:
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: libsoup3
+          NamespaceName: amzn:2023
+          Version: 3.6.6-59.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: libsoup3-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.6-59.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: libsoup3-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.6.6-59.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: libsoup3-devel
+          NamespaceName: amzn:2023
+          Version: 3.6.6-59.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: libsoup3-doc
+          NamespaceName: amzn:2023
+          Version: 3.6.6-59.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2087.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-15711
+    Name: ALAS2023-2026-2087
+    NamespaceName: amzn:2023
+    Severity: High

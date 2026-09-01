@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A heap out-of-bounds write vulnerability was found in the GStreamer gst-plugins-bad adpcmdec element when decoding IMA/DVI ADPCM audio. Insufficient validation of the per-block sample count for multi-channel streams allows a crafted WAV file to cause writes beyond the allocated output buffer. This can lead to application crash, denial of service, memory corruption, or potentially arbitrary code execution when untrusted media is processed. (CVE-2026-19387)
+    FixedIn:
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-devel
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.9
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3895.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-19387
+    Name: ALAS2-2026-3895
+    NamespaceName: amzn:2
+    Severity: High
