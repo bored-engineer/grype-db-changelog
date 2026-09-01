@@ -1,0 +1,39 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: keycloak
+        purl: pkg:bitnami/keycloak
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-08-31"
+                      kind: advisory
+                      version: 26.7.3
+          events:
+            - introduced: "0"
+            - fixed: 26.7.3
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-18572
+database_specific:
+    cpes:
+        - cpe:2.3:a:redhat:build_of_keycloak:*:*:*:*:-:*:*:*
+    severity: Medium
+details: Keycloak provides authorization services that allow administrators to restrict access to resources based on time policies (for example, only allowing access during business hours). A flaw was discovered where a user can include a fake time value in their authorization request that overrides the actual server time. This allows the user to bypass these time-based restrictions and access protected resources at unauthorized times.
+id: BIT-keycloak-2026-18572
+modified: "2026-08-31T15:03:11.569Z"
+published: "2026-08-31T14:37:21.286Z"
+references:
+    - type: WEB
+      url: https://access.redhat.com/security/cve/CVE-2026-18572
+    - type: WEB
+      url: https://bugzilla.redhat.com/show_bug.cgi?id=2509763
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-18572
+schema_version: 1.6.2
+summary: 'Keycloak-services: keycloak-services: uma claim token can override authorization time-policy evaluation attributes'
