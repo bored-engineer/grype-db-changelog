@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: The Advanced Linux Sound Architecture (ALSA) library before 1.2.16.1 contains a double-free vulnerability in parse_def() in src/conf.c that allows attackers to corrupt memory by supplying maliciously crafted ALSA configuration text. When parsing nested compound or array configuration blocks, parse_def() fails to check return values before continuing, causing snd_config_delete() to be called twice on the same already-freed node, resulting in a NULL-pointer write or invalid memory read. (CVE-2026-56109)
+    FixedIn:
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: alsa-lib
+          NamespaceName: amzn:2
+          Version: 1.1.4.1-2.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: alsa-lib-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.1.4.1-2.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: alsa-lib-devel
+          NamespaceName: amzn:2
+          Version: 1.1.4.1-2.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3874.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-56109
+    Name: ALAS2-2026-3874
+    NamespaceName: amzn:2
+    Severity: Medium

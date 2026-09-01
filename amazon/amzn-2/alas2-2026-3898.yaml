@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: A flaw was found in the GStreamer gst-plugins-good package. The rtph264depay and rtph265depay RTP depayloader elements do not enforce a maximum size limit on the reassembly buffer used during fragmented RTP packet processing. A remote, unauthenticated attacker can send a continuous stream of RTP fragments without ever transmitting an end-of-fragment marker, causing the reassembly buffer to grow without bound until process memory is exhausted. This results in a denial of service through process termination. (CVE-2026-18649)
+    FixedIn:
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gstreamer-plugins-good
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gstreamer-plugins-good-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gstreamer-plugins-good-devel-docs
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3898.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-18649
+    Name: ALAS2-2026-3898
+    NamespaceName: amzn:2
+    Severity: High

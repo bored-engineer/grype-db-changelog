@@ -1,0 +1,46 @@
+Vulnerability:
+    Description: A flaw was found in GIMP. A signed integer overflow vulnerability exists in the `file-fli` plugin when processing FLI image files. This occurs due to an incorrect calculation during memory allocation for image buffers, where the multiplication of image width and height can exceed the maximum integer value. A remote attacker could exploit this by tricking a user into opening a specially crafted FLI file, leading to the application crashing and resulting in a denial of service. (CVE-2026-59088)A flaw was found in GIMP's PSD file format plugin. This vulnerability, an unsigned integer underflow in the `block_rem` variable, occurs when a user opens a specially crafted `.psd` image file. The underflow leads to parser confusion, enabling an attacker to inject arbitrary data as layer resource blocks. This can ultimately result in arbitrary code execution, allowing the attacker to run malicious code on the victim's system. (CVE-2026-59090)
+    FixedIn:
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gimp
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gimp-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gimp-devel
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gimp-devel-tools
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-31"
+            Kind: advisory
+          Name: gimp-libs
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.18
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2GIMP-2026-019.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-59088
+            - Name: CVE-2026-59090
+    Name: ALAS2GIMP-2026-019
+    NamespaceName: amzn:2
+    Severity: High
