@@ -1,15 +1,20 @@
 # schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
-    CVE: []
+    CVE:
+        - CVE-2026-66393
     Classification: GENERAL
     FixedIn:
-        - ecosystem: python
-          identifier: None
+        - available:
+            date: "2026-09-02"
+            kind: first-observed
+          ecosystem: python
+          identifier: 3.9.4
           name: nltk
           namespace: github:python
           range: <= 3.9.3
     Metadata:
-        CVE: []
+        CVE:
+            - CVE-2026-66393
     Severity: Medium
     Summary: Natural Language Toolkit (NLTK) has unbounded recursion in JSONTaggedDecoder.decode_obj() may cause DoS
     cvss_severities:
@@ -20,8 +25,12 @@ Advisory:
     published: "2026-03-18T20:17:43Z"
     references:
         - url: https://github.com/advisories/GHSA-rf74-v2fm-23pw
+        - url: https://github.com/nltk/nltk/commit/00cdcd392142e6c745e7120c8d50a24127df5fad
         - url: https://github.com/nltk/nltk/security/advisories/GHSA-rf74-v2fm-23pw
-    updated: "2026-03-18T20:17:44Z"
+        - url: https://github.com/pypa/advisory-database/tree/main/vulns/nltk/PYSEC-2026-3724.yaml
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2026-66393
+        - url: https://www.vulncheck.com/advisories/nltk-before-denial-of-service-via-jsontaggeddecoder
+    updated: "2026-09-02T15:33:52Z"
     url: https://github.com/advisories/GHSA-rf74-v2fm-23pw
     withdrawn: null
 Vulnerability: {}
