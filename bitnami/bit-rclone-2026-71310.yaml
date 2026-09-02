@@ -25,7 +25,7 @@ database_specific:
     severity: Medium
 details: rclone is a command-line program to sync files and directories to and from different cloud storage providers. Prior to 1.75.0, the shared HTTP CONNECT helper in lib/proxy/http.go parses proxy CONNECT responses with http.ReadResponse over an unrestricted buffered reader, allowing a malicious or compromised configured proxy, or an active on-path actor controlling a plaintext HTTP proxy hop, to send oversized headers that grow memory until the rclone process fails. The affected helper is used by FTP and SFTP proxy connections, and SFTP reaches the parser before SSH server authentication, so target host key validation does not constrain a malicious proxy. This issue is fixed in 1.75.0.
 id: BIT-rclone-2026-71310
-modified: "2026-08-17T06:10:32.268Z"
+modified: "2026-09-01T09:14:09.053Z"
 published: "2026-08-17T05:53:31.348Z"
 references:
     - type: WEB
@@ -36,5 +36,7 @@ references:
       url: https://github.com/rclone/rclone/security/advisories/GHSA-xhf4-832v-7xcr
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-71310
+    - type: WEB
+      url: https://pkg.go.dev/vuln/GO-2026-6199
 schema_version: 1.6.2
 summary: 'rclone: Unbounded HTTP CONNECT Response Headers Can Exhaust rclone Memory'
