@@ -1,0 +1,40 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [2:1.34-13]
+        - Backport upstream patches for CVE-2026-18477, fixes a bug
+          where incremental restore with cyclic renames between backups
+          may create a temporary directory at an archive-controlled path
+          outside the extraction tree.
+          The fix for CVE-2025-45582 already prevents exploiting
+          this problem, so it is more a correctness and hardening change.
+
+        [2:1.34-12]
+        - Backport upstream fix for CVE-2026-5704 (file injection hidden from -t)
+        - Fix --one-top-level with absolute path (broken by the CVE-2025-45582 fix)
+          Also fixes CVE-2026-18508 (escape from --one-top-level via hardlinks).
+        - Upstream fix for build with libacl 2.4.0
+    FixedIn:
+        - Available:
+            Date: "2026-09-01"
+            Kind: advisory
+          Module: null
+          Name: tar
+          NamespaceName: ol:9
+          Version: 2:1.34-13.el9_8
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-61581-0.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-18477.html
+              Name: CVE-2026-18477
+            - Link: https://linux.oracle.com/cve/CVE-2026-18508.html
+              Name: CVE-2026-18508
+            - Link: https://linux.oracle.com/cve/CVE-2026-5704.html
+              Name: CVE-2026-5704
+        Issued: "2026-09-01"
+        RefId: ELSA-2026-61581-0
+    Name: ELSA-2026-61581-0
+    NamespaceName: ol:9
+    Severity: Medium

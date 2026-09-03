@@ -1,0 +1,42 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [3.0.7-11.0.1]
+        - Drop OpenELA branding [Orabug: 37274593]
+        - Add bundle with Oracle Linux 9 OpenSSL FIPS module packages [Orabug: 39910507]
+        - Update extract-src.sh script to support non-hobbled openssl tarball [Orabug: 39910507]
+
+        [3.0.7.openela.0.1]
+        - Add OpenELA specific changes
+
+        [3.0.7-11]
+        - Update sources and scripts for new build, to address CVE-2026-31790
+          Resolves: RHEL-173517
+    FixedIn:
+        - Available:
+            Date: "2026-08-28"
+            Kind: advisory
+          Module: null
+          Name: openssl-fips-provider
+          NamespaceName: ol:9
+          Version: 0:3.0.7-11.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-08-28"
+            Kind: advisory
+          Module: null
+          Name: openssl-fips-provider-so
+          NamespaceName: ol:9
+          Version: 0:3.0.7-11.0.1.el9_8
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-27744.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-31790.html
+              Name: CVE-2026-31790
+        Issued: "2026-08-28"
+        RefId: ELSA-2026-27744
+    Name: ELSA-2026-27744
+    NamespaceName: ol:9
+    Severity: Medium
