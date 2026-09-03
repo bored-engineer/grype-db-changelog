@@ -2,42 +2,72 @@
 Advisory:
     CVE:
         - CVE-2026-53622
+    CVSS:
+        base_metrics:
+            base_score: 10.0
+            base_severity: Critical
+            exploitability_score: 3.9
+            impact_score: 5.8
+        status: N/A
+        vector_string: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N
+        version: "3.1"
     Classification: GENERAL
     FixedIn:
         - available:
-            date: "2026-06-17"
+            date: "2026-09-03"
+            kind: first-observed
+          ecosystem: go
+          identifier: 2.11.51
+          name: github.com/traefik/traefik/v2
+          namespace: github:go
+          range: <= 2.11.50
+        - available:
+            date: "2026-09-03"
+            kind: first-observed
+          ecosystem: go
+          identifier: 3.6.18
+          name: github.com/traefik/traefik/v3
+          namespace: github:go
+          range: <= 3.6.17
+        - available:
+            date: "2026-09-03"
             kind: first-observed
           ecosystem: go
           identifier: 3.7.3
-          name: Traefik
+          name: github.com/traefik/traefik/v3
           namespace: github:go
-          range: <= 3.7.2
+          range: '>= 3.7.0 <= 3.7.2'
         - ecosystem: go
           identifier: None
           name: github.com/traefik/traefik
           namespace: github:go
           range: <= 1.7.34
-        - ecosystem: go
-          identifier: None
-          name: github.com/traefik/traefik/v2
-          namespace: github:go
-          range: <= 2.11.50
     Metadata:
         CVE:
             - CVE-2026-53622
     Severity: High
     Summary: 'Traefik: HTTP/3 mTLS bypass via exact SNI TLSOptions lookup for wildcard and mixed-case hosts'
     cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N
+          version: "3.1"
         - vector: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:H/SI:H/SA:N
           version: "4.0"
     ghsaId: GHSA-9cr8-q42q-g8m7
     namespace: github:go
     published: "2026-06-16T21:04:29Z"
     references:
+        - url: https://access.redhat.com/errata/RHSA-2026:62260
+        - url: https://access.redhat.com/security/cve/CVE-2026-53622
+        - url: https://bugzilla.redhat.com/show_bug.cgi?id=2491924
+        - url: https://community.traefik.io/t/new-security-update-for-traefik-2-11-2-11-48-3-6-3-6-19-and-3-7-3-7-3/29917
         - url: https://github.com/advisories/GHSA-9cr8-q42q-g8m7
+        - url: https://github.com/traefik/traefik/compare/v3.6.17...v3.6.18
+        - url: https://github.com/traefik/traefik/pull/13214
         - url: https://github.com/traefik/traefik/releases/tag/v3.7.3
         - url: https://github.com/traefik/traefik/security/advisories/GHSA-9cr8-q42q-g8m7
-    updated: "2026-06-16T21:04:30Z"
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2026-53622
+        - url: https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-53622.json
+    updated: "2026-09-02T21:11:50Z"
     url: https://github.com/advisories/GHSA-9cr8-q42q-g8m7
     withdrawn: null
 Vulnerability: {}
