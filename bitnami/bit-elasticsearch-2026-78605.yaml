@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-09-03"
+                      kind: advisory
+                      version: 8.19.20
+                    - date: "2026-09-03"
+                      kind: advisory
+                      version: 9.4.5
+                    - date: "2026-09-03"
+                      kind: advisory
+                      version: 9.5.1
+          events:
+            - introduced: 8.18.0
+            - fixed: 8.19.20
+            - introduced: 9.0.0
+            - fixed: 9.4.5
+            - introduced: 9.5.0
+            - fixed: 9.5.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-78605
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') (CWE-444) in Elasticsearch can lead to information disclosure via HTTP Request Smuggling (CAPEC-33). Under specific proxy deployment configurations, a network attacker could obtain confidential responses intended for other authenticated users.
+id: BIT-elasticsearch-2026-78605
+modified: "2026-09-03T09:07:28.402Z"
+published: "2026-09-03T08:40:51.447Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/elasticsearch-8-19-20-9-4-5-9-5-1-security-update-esa-2026-141/390092
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-78605
+schema_version: 1.6.2
+summary: Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling') in Elasticsearch Leading to Information Disclosure
