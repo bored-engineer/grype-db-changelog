@@ -25,17 +25,17 @@ affected:
             - introduced: 9.4.0
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:L
           type: CVSS_V3
 aliases:
     - CVE-2026-49096
 database_specific:
     cpes:
         - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
-    severity: Medium
+    severity: Low
 details: Uncaught Exception (CWE-248) in Kibana Cases can lead to denial of service via Input Data Manipulation (CAPEC-153). Malformed link syntax stored in a case comment was not rejected or sanitized when the comment was later formatted for display, and the resulting unhandled error prevented the affected case from being displayed. An authenticated user holding privileges to comment on a case could store such a comment, after which that case became inaccessible to every user who opened it until the stored comment was removed.
 id: BIT-elk-2026-49096
-modified: "2026-08-19T09:09:14.600Z"
+modified: "2026-09-03T09:07:28.402Z"
 published: "2026-08-19T08:40:04.904Z"
 references:
     - type: WEB
