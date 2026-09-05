@@ -1,0 +1,207 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.4.17-2136.359.3.1]
+        - inet: frags: strip GSO state from fragments before reassembly (Xinyang Ge)  [Orabug: 39974845]  {CVE-2026-80590}
+
+        [5.4.17-2136.359.3]
+        - Partial revert of 'x86/alternatives: Optimize optimize_nops()' (Harshit Mogalapalli)  [Orabug: 39866546]
+        - Revert 'x86/alternatives: Add alt_instr.flags' (Harshit Mogalapalli)  [Orabug: 39866546]
+        - x86/bugs: Make Safe-RET robust against interrupt injection (Borislav Petkov (AMD))  [Orabug: 39784513]  {CVE-2026-68480}
+        - x86/alternatives: Disable interrupts and sync when optimizing NOPs in place (Thomas Gleixner)  [Orabug: 39784513]
+        - x86/alternative: Support relocations in alternatives (Peter Zijlstra)  [Orabug: 39784513]
+        - x86/alternative: Make debug-alternative selective (Peter Zijlstra)  [Orabug: 39784513]
+        - x86/alternatives: Add alt_instr.flags (Borislav Petkov (AMD))  [Orabug: 39784513]
+        - x86/asm: Provide ALTERNATIVE_3 (Peter Zijlstra)  [Orabug: 39784513]
+        - x86/alternative: Optimize single-byte NOPs at an arbitrary position (Borislav Petkov)  [Orabug: 39784513]
+        - x86/alternative: Align insn bytes vertically (Borislav Petkov)  [Orabug: 39784513]
+        (H. Peter Anvin (Intel))  [Orabug: 39784513]
+        - x86/alternatives: Optimize optimize_nops() (Peter Zijlstra)  [Orabug: 39784513]
+        - x86: Add insn_decode_kernel() (Peter Zijlstra)  [Orabug: 39784513]
+        - x86/insn: Add an insn_decode() API (Borislav Petkov)  [Orabug: 39784513]
+        - x86/alternative: Use ALTERNATIVE_TERNARY() in _static_cpu_has() (Juergen Gross)  [Orabug: 39784513]
+        - x86/alternative: Support ALTERNATIVE_TERNARY (Juergen Gross)  [Orabug: 39784513]
+        - x86/alternative: Merge include files (Juergen Gross)  [Orabug: 39784513]
+        - x86/alternative: Drop unused feature parameter from ALTINSTR_REPLACEMENT() (Juergen Gross)  [Orabug: 39784513]
+        - x86/insn: Support big endian cross-compiles (Martin Schwidefsky)  [Orabug: 39784513]
+        - x86/tools: Use tools headers for instruction decoder selftests (Vasily Gorbik)  [Orabug: 39784513]
+        - tools headers: Get tools's linux/compiler.h closer to the kernel's (Arnaldo Carvalho de Melo)  [Orabug: 39784513]
+        - perf build: Allow nested externs to enable BUILD_BUG() usage (Vasily Gorbik)  [Orabug: 39784513]
+        - objtool: Allow nested externs to enable BUILD_BUG() (Vasily Gorbik)  [Orabug: 39784513]
+        - objtool: Make relocation in alternative handling arch dependent (Julien Thierry)  [Orabug: 39784513]
+        - x86/alternatives: Add pr_fmt() to debug macros (Borislav Petkov)  [Orabug: 39784513]
+        - tools headers: Adopt verbatim copy of compiletime_assert() from kernel sources (Arnaldo Carvalho de Melo)  [Orabug: 39784513]
+        - x86/alternatives: Teach text_poke_bp() to emulate instructions (Peter Zijlstra)  [Orabug: 39784513]
+        - tools headers: Synchronize linux/bits.h with the kernel sources (Arnaldo Carvalho de Melo)  [Orabug: 39784513]
+        - net/rds: restrict RDS_INFO dumps to caller netns (Praveen Kumar Kannoju)  [Orabug: 39681637]
+
+        [5.4.17-2136.359.2]
+        - net: tap: set skb->dev before parsing virtio net header in tap_get_user_xdp() (Dongli Zhang)  [Orabug: 39558751]
+        - rds: tcp: fix uninit-value in __inet_bind (Tabrez Ahmed)  [Orabug: 39668203]
+        - rds: tcp: cleanup if kmem_cache_alloc fails in rds_tcp_conn_alloc() (Sowmini Varadhan)  [Orabug: 39668203]
+        - net/rds: harden rds_rm_size (Manjunath Patil)  [Orabug: 39812534]
+        - rds: ib: move gc_count reset before free_percpu (Manjunath Patil)  [Orabug: 39818510]
+        - rds: fix lfstack_pop_all sequence reset (Manjunath Patil)  [Orabug: 39818510]
+
+        [5.4.17-2136.359.1]
+        - KVM: arm64: Make nVHE ASLR conditional on RANDOMIZE_BASE (David Brazdil)  [Orabug: 39374251]
+        - arm64: kvm: Fix IDMAP overlap with HYP VA (Russell King)  [Orabug: 39374251]
+        - arm64: KVM: Invoke compute_layout() before alternatives are applied (Sebastian Andrzej Siewior)  [Orabug: 39374251]
+        - ocfs2: fix possible deadlock between unlink and dio_end_io_write (Joseph Qi)  [Orabug: 39273589]  {CVE-2026-31598}
+        - fs/ocfs2: fix comments mentioning i_mutex (hongnanli)  [Orabug: 39273589]
+        - xfrm: defensively unhash xfrm_state lists in __xfrm_state_delete (Michal Kosiorek)  [Orabug: 39460235]  {CVE-2026-46116}
+        - net/rds: zero per-item info buffer before handing it to visitors (Michael Bommarito)  [Orabug: 39638198] {CVE-2026-52995}
+        - uek: kabi: update x86_64 kABI files for a new symbol (Saeed Mirzamohammadi)  [Orabug: 39651636]
+        - IB/rxe: use rxe_drop_ref to release rxe_pd (Wengang Wang)  [Orabug: 39674348]
+        - IB/uverbs: enhance authorization checks for ib_uverbs_share_pd() (Wengang Wang)  [Orabug: 39674348]
+        - fs/binfmt_elf: validate reserved VA ELF notes (Jianfeng Wang)  [Orabug: 39681044]
+        - mm: preserve page-table boundaries for reserved VA mappings (Jianfeng Wang)  [Orabug: 39681044]
+        - mm: enforce max_map_count for reserved VA mappings (Jianfeng Wang)  [Orabug: 39681044]
+        - xen/ovmapi: terminate values passed to xenbus_write (Joe Jin)  [Orabug: 39726701]
+        - xen/ovmapi: free queued events on release (Joe Jin)  [Orabug: 39726701]
+        - xen/ovmapi: prevent duplicate app registration (Joe Jin)  [Orabug: 39726701]
+        - xen/ovmapi: avoid raw user pointer access in get_next_event (Joe Jin)  [Orabug: 39726701]
+        - xen/ovmapi: reject oversized posted event payloads (Joe Jin)  [Orabug: 39726701]
+        - rds: Prevent kernel-infoleak in rds_notify_queue_get() (Peilin Ye)  [Orabug: 39772651]
+        - rds: do not leak kernel memory to user land (Eric Dumazet)  [Orabug: 39772651]
+
+        [5.4.17-2136.358.2]
+        - xfs: resample the data fork mapping after cycling ILOCK (Darrick J. Wong)  [Orabug: 39776792]  {CVE-2026-64600}
+        - net: Work around Marvell NIC TX stalls (Venkat Venkatsubra)  [Orabug: 39765820]
+
+        [5.4.17-2136.358.1]
+        - KVM: x86: Fix shadow paging use-after-free due to unexpected role (Paolo Bonzini)  [Orabug: 39673871] {CVE-2026-53359}
+        - KVM: x86: Fix shadow paging use-after-free due to unexpected GFN (Sean Christopherson)  [Orabug: 39673871] {CVE-2026-46113}
+        - KVM: x86/MMU: Recursively zap nested TDP SPs when zapping last/only parent (Ben Gardon)  [Orabug: 39673871]
+        - KVM: x86/mmu: Move flush logic from mmu_page_zap_pte() to FNAME(invlpg) (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: pull call to drop_large_spte() into __link_shadow_page() (Paolo Bonzini)  [Orabug: 39673871]
+        - KVM: x86/mmu: Passing up the error state of mmu_alloc_shadow_roots() (Like Xu)  [Orabug: 39673871]
+        - KVM: MMU: load PDPTRs outside mmu_lock (Paolo Bonzini)  [Orabug: 39673871]
+        - KVM: x86/mmu: Check PDPTRs before allocating PAE roots (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: Always pass 0 for @quadrant when gptes are 8 bytes (David Matlack)  [Orabug: 39673871]
+        - KVM: x86/mmu: Derive shadow MMU page role from parent (David Matlack)  [Orabug: 39673871]
+        - KVM: X86: Remove useless code to set role.gpte_is_8_bytes when role.direct (Lai Jiangshan)  [Orabug: 39673871]
+        - KVM: X86: Synchronize the shadow pagetable before link it (Lai Jiangshan)  [Orabug: 39673871]
+        - KVM: X86: Fix missed remote tlb flush in rmap_write_protect() (Lai Jiangshan)  [Orabug: 39673871]
+        - KVM: x86/mmu: Refactor shadow walk in __direct_map() to reduce indentation (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: Stop passing 'direct' to mmu_alloc_root() (David Matlack)  [Orabug: 39673871]
+        - KVM: x86/mmu: Use a bool for direct (David Matlack)  [Orabug: 39673871]
+        - kvm: mmu: Replace unsigned with unsigned int for PTE access (Ben Gardon)  [Orabug: 39673871]
+        - KVM: x86/mmu: Ensure MMU pages are available when allocating roots (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: Allocate pae_root and lm_root pages in dedicated helper (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: Allocate the lm_root before allocating PAE roots (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: Capture 'mmu' in a local variable when allocating roots (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: Alloc page for PDPTEs when shadowing 32-bit NPT with 64-bit (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: Stash 'kvm' in a local variable in kvm_mmu_free_roots() (Sean Christopherson)  [Orabug: 39673871]
+        - KVM: x86/mmu: Add a helper to consolidate root sp allocation (Sean Christopherson)  [Orabug: 39673871]
+        - Revert 'net/rds: poll eq during user-reset' (Praveen Kumar Kannoju)  [Orabug: 39659401]
+        - net/sched: act_pedit: fix action bind logic (Pedro Tammela)  [Orabug: 39567287]
+        - net/sched: act_pedit: free pedit keys on bail from offset check (Pedro Tammela)  [Orabug: 39567287]
+        - net/sched: fix pedit partial COW leading to page cache corruption (Rajat Gupta)  [Orabug: 39567287]  {CVE-2026-46331}
+        - net/sched: act_pedit: Parse L3 Header for L4 offset (Max Tottenham)  [Orabug: 39567287]
+        - net/sched: act_pedit: rate limit datapath messages (Pedro Tammela)  [Orabug: 39567287]
+        - net/sched: act_pedit: check static offsets a priori (Pedro Tammela)  [Orabug: 39567287]
+        - net/sched: act_pedit: remove extra check for key type (Pedro Tammela)  [Orabug: 39567287]
+        - net/sched: simplify tcf_pedit_act (Pedro Tammela)  [Orabug: 39567287]
+        - net/sched: transition act_pedit to rcu and percpu stats (Pedro Tammela)  [Orabug: 39567287]
+        - net/sched: act_pedit: use NLA_POLICY for parsing 'ex' keys (Pedro Tammela)  [Orabug: 39567287]
+        - RDMA/rxe: Validate pad and ICRC before payload_size() in rxe_rcv (hkbinbin)  [Orabug: 39452261]  {CVE-2026-46043}
+        - locking/rtmutex: Skip remove_waiter() when waiter is not enqueued (Davidlohr Bueso)  [Orabug: 39426001] {CVE-2026-53163}
+        - rtmutex: Use waiter::task instead of current in remove_waiter() (Keenan Dong)  [Orabug: 39426001]  {CVE-2026-43499}
+        - ipv6: icmp: clear skb2->cb[] in ip6_err_gen_icmpv6_unreach() (Eric Dumazet)  [Orabug: 39300930]  {CVE-2026-43038}
+        - tracing/events: Expand global buffer for in-kernel event enables (Manjunath Patil)  [Orabug: 38790406]
+        - net/mlx5: poll mlx5 eq during irq migration (Praveen Kumar Kannoju)  [Orabug: 38776184]
+
+        [5.4.17-2136.357.3]
+        - net: skbuff: fix missing zerocopy reference in pskb_carve helpers (Minh Nguyen)  [Orabug: 39619389]  {CVE-2026-52943}
+
+        [5.4.17-2136.357.2]
+        - net: fix fanout UAF in packet_release() via NETDEV_UP race (Yochai Eisenrich)  [Orabug: 39250953]  {CVE-2026-31504}
+        - x86/kaslr: Recognize all ZONE_DEVICE users as physaddr consumers (Dan Williams)  [Orabug: 39429802]
+        - x86/kaslr: Reduce KASLR entropy on most x86 systems (Balbir Singh)  [Orabug: 39429802]
+        - net: tap: NULL pointer derefence in dev_parse_header_protocol when skb->dev is null (Cezar Bulinaru)  [Orabug: 39526882]  {CVE-2022-50073}
+        - arm64: errata: Mitigate TLBI errata on various Arm CPUs (Mark Rutland)  [Orabug: 39548666]  {CVE-2025-10263} {CVE-2026-53354}
+        - arm64: tlb: Add ARM64_WORKAROUND_REPEAT_TLBI_SYNC (Mark Rutland)  [Orabug: 39548666]
+        - ARM: uek: Disable CONFIG_QCOM_FALKOR_ERRATUM_1003 (Boris Ostrovsky)  [Orabug: 39548666]
+        - arm64: tlb: allow XZR argument to TLBI ops (Mark Rutland)  [Orabug: 39548666]
+        - arm64: cputype: Add C1-Premium definitions (Mark Rutland)  [Orabug: 39548666]
+        - arm64: cputype: Add C1-Ultra definitions (Mark Rutland)  [Orabug: 39548666]
+        - ip6_tunnel: clear skb2->cb[] in ip4ip6_err() (Eric Dumazet)  [Orabug: 39300926]  {CVE-2026-43037}
+
+        [5.4.17-2136.357.1]
+        - batman-adv: hold claim backbone gateways by reference (Haoze Xie)  [Orabug: 39262375]  {CVE-2026-31657}
+        - scsi: fcoe: Reject FIP descriptors with zero fip_dlen in CVL walker (Michael Bommarito)  [Orabug: 39446045] {CVE-2026-63890}
+        - scsi: target: iscsi: Fix CRC overread and double-free in iscsit_handle_text_cmd() (Michael Bommarito)  [Orabug: 39446045] {CVE-2026-63888}
+        - scsi: target: iscsi: Bound iscsi_encode_text_output() appends to rsp_buf (Michael Bommarito)  [Orabug: 39446045] {CVE-2026-63887}
+        - rds: Drop rds conn in connect worker if not in down state. (Rohit Nair)  [Orabug: 39152239]
+
+        [5.4.17-2136.356.4.1]
+        - smb: client: reject userspace cifs.spnego descriptions (Asim Viladi Oglu Manizada)  [Orabug: 39463669] {CVE-2026-46243}
+    FixedIn:
+        - Available:
+            Date: "2026-09-04"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.359.3.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-04"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-container
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.359.3.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-04"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-container-debug
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.359.3.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-04"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.359.3.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-04"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-debug-devel
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.359.3.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-04"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-devel
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.359.3.1.el8uek
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-04"
+            Kind: advisory
+          Module: null
+          Name: kernel-uek-doc
+          NamespaceName: ol:8
+          Version: 0:5.4.17-2136.359.3.1.el8uek
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-500247.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-80590.html
+              Name: CVE-2026-80590
+        Issued: "2026-09-04"
+        RefId: ELSA-2026-500247
+    Name: ELSA-2026-500247
+    NamespaceName: ol:8
+    Severity: High
