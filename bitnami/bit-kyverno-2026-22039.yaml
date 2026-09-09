@@ -31,15 +31,15 @@ database_specific:
     severity: Critical
 details: Kyverno is a policy engine designed for cloud native platform engineering teams. Versions prior to 1.16.3 and 1.15.3 have a critical authorization boundary bypass in namespaced Kyverno Policy apiCall. The resolved `urlPath` is executed using the Kyverno admission controller ServiceAccount, with no enforcement that the request is limited to the policy’s namespace. As a result, any authenticated user with permission to create a namespaced Policy can cause Kyverno to perform Kubernetes API requests using Kyverno’s admission controller identity, targeting any API path allowed by that ServiceAccount’s RBAC. This breaks namespace isolation by enabling cross-namespace reads (for example, ConfigMaps and, where permitted, Secrets) and allows cluster-scoped or cross-namespace writes (for example, creating ClusterPolicies) by controlling the urlPath through context variable substitution. Versions 1.16.3 and 1.15.3 contain a patch for the vulnerability.
 id: BIT-kyverno-2026-22039
-modified: "2026-02-03T09:12:55.720Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-02-03T08:42:37.380Z"
 references:
-    - type: WEB
-      url: https://github.com/kyverno/kyverno/commit/e0ba4de4f1e0ca325066d5095db51aec45b1407b
-    - type: WEB
-      url: https://github.com/kyverno/kyverno/commit/eba60fa856c781bcb9c3be066061a3df03ae4e3e
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/kyverno/kyverno/security/advisories/GHSA-8p9x-46gm-qfx2
+    - type: FIX
+      url: https://github.com/kyverno/kyverno/commit/e0ba4de4f1e0ca325066d5095db51aec45b1407b
+    - type: FIX
+      url: https://github.com/kyverno/kyverno/commit/eba60fa856c781bcb9c3be066061a3df03ae4e3e
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-22039
 schema_version: 1.6.2

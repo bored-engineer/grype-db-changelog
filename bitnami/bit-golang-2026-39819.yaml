@@ -31,18 +31,18 @@ database_specific:
     severity: Medium
 details: The "go bug" command writes to two files with predictable names in the system temporary directory (for example, "/tmp"). An attacker with access to the temporary directory can create a symlink in one of these names, causing "go bug" to overwrite the target of the symlink.
 id: BIT-golang-2026-39819
-modified: "2026-05-11T06:12:18.508Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-05-11T05:44:30.210Z"
 references:
-    - type: WEB
+    - type: ADVISORY
+      url: https://pkg.go.dev/vuln/GO-2026-4978
+    - type: FIX
       url: https://go.dev/cl/763882
-    - type: WEB
+    - type: REPORT
       url: https://go.dev/issue/78584
-    - type: WEB
+    - type: REPORT
       url: https://groups.google.com/g/golang-announce/c/qcCIEXso47M
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-39819
-    - type: WEB
-      url: https://pkg.go.dev/vuln/GO-2026-4978
 schema_version: 1.6.2
 summary: Invoking "go bug" follows symlinks in predictable temporary filenames in cmd/go

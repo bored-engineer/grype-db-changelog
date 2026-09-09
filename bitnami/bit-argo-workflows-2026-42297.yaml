@@ -26,19 +26,19 @@ database_specific:
     severity: High
 details: Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. From version 4.0.0 to before version 4.0.5, the Sync Service's ConfigMap-backed provider (server/sync/sync_cm.go) performs zero authorization checks on all CRUD operations (create, read, update, delete). Any authenticated user — including those using fake Bearer tokens — can create, read, update, and delete Kubernetes ConfigMaps containing synchronization limits. This issue has been patched in version 4.0.5.
 id: BIT-argo-workflows-2026-42297
-modified: "2026-07-06T06:18:57.499Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-05-12T08:38:51.379Z"
 references:
+    - type: ADVISORY
+      url: https://github.com/argoproj/argo-workflows/security/advisories/GHSA-xchc-cqwg-g76q
+    - type: ARTICLE
+      url: https://github.com/argoproj/argo-workflows/releases/tag/v4.0.5
+    - type: FIX
+      url: https://github.com/argoproj/argo-workflows/commit/09fff05e0830c14a5e36cc40597ad84881db1ab6
     - type: WEB
       url: https://access.redhat.com/security/cve/CVE-2026-42297
     - type: WEB
       url: https://bugzilla.redhat.com/show_bug.cgi?id=2468448
-    - type: WEB
-      url: https://github.com/argoproj/argo-workflows/commit/09fff05e0830c14a5e36cc40597ad84881db1ab6
-    - type: WEB
-      url: https://github.com/argoproj/argo-workflows/releases/tag/v4.0.5
-    - type: WEB
-      url: https://github.com/argoproj/argo-workflows/security/advisories/GHSA-xchc-cqwg-g76q
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-42297
     - type: WEB

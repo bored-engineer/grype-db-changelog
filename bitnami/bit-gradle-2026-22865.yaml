@@ -26,10 +26,10 @@ database_specific:
     severity: High
 details: Gradle is a build automation tool, and its native-platform tool provides Java bindings for native APIs. When resolving dependencies in versions before 9.3.0, some exceptions were not treated as fatal errors and would not cause a repository to be disabled. If a build encountered one of these exceptions, Gradle would continue to the next repository in the list and potentially resolve dependencies from a different repository. An exception like NoHttpResponseException can indicate transient errors. If the errors persist after a maximum number of retries, Gradle would continue to the next repository. This behavior could allow an attacker to disrupt the service of a repository and leverage another repository to serve malicious artifacts. This attack requires the attacker to have control over a repository after the disrupted repository. Gradle has introduced a change in behavior in Gradle 9.3.0 to stop searching other repositories when encountering these errors.
 id: BIT-gradle-2026-22865
-modified: "2026-01-21T09:22:22.325Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-01-21T08:41:11.981Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/gradle/gradle/security/advisories/GHSA-mqwm-5m85-gmcv
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-22865

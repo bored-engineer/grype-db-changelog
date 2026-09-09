@@ -26,15 +26,15 @@ database_specific:
     severity: Critical
 details: A vulnerability in MLflow's pyfunc extraction process allows for arbitrary file writes due to improper handling of tar archive entries. Specifically, the use of `tarfile.extractall` without path validation enables crafted tar.gz files containing `..` or absolute paths to escape the intended extraction directory. This issue affects the latest version of MLflow and poses a high/critical risk in scenarios involving multi-tenant environments or ingestion of untrusted artifacts, as it can lead to arbitrary file overwrites and potential remote code execution.
 id: BIT-mlflow-2025-15031
-modified: "2026-07-06T06:18:57.499Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-24T08:47:14.572Z"
 references:
+    - type: ADVISORY
+      url: https://huntr.com/bounties/09856f77-f968-446f-a930-657d126efe4e
     - type: WEB
       url: https://access.redhat.com/security/cve/CVE-2025-15031
     - type: WEB
       url: https://bugzilla.redhat.com/show_bug.cgi?id=2448912
-    - type: WEB
-      url: https://huntr.com/bounties/09856f77-f968-446f-a930-657d126efe4e
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2025-15031
     - type: WEB

@@ -26,10 +26,10 @@ database_specific:
     severity: Medium
 details: OpenBao is an open source identity-based secrets management system. Prior to version 2.5.3, `ExtractPluginFromImage()` in OpenBao's OCI plugin downloader extracts a plugin binary from a container image by streaming decompressed tar data via `io.Copy` with no upper bound on the number of bytes written. An attacker who controls or compromises the OCI registry referenced in the victim's configuration can serve a crafted image containing a decompression bomb that decompresses to an arbitrarily large file. The SHA256 integrity check occurs after the full file is written to disk, meaning the hash mismatch is detected only after the damage (disk exhaustion) has already occurred. This allow the attacker to replace **legit plugin image** with no need to change its signature. Version 2.5.3 contains a patch.
 id: BIT-openbao-2026-39396
-modified: "2026-07-27T06:08:49.409Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-07-27T05:49:07.469Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/openbao/openbao/security/advisories/GHSA-r65v-xgwc-g56j
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-39396

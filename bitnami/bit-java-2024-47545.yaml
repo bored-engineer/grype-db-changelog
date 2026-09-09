@@ -31,18 +31,18 @@ database_specific:
     severity: Medium
 details: GStreamer is a library for constructing graphs of media-handling components. An integer underflow has been detected in qtdemux_parse_trak function within qtdemux.c. During the strf parsing case, the subtraction size -= 40 can lead to a negative integer overflow if it is less than 40. If this happens, the subsequent call to gst_buffer_fill will invoke memcpy with a large tocopy size, resulting in an OOB-read. This vulnerability is fixed in 1.24.10.
 id: BIT-java-2024-47545
-modified: "2026-05-08T06:11:36.072Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-05-06T14:44:55.155Z"
 references:
-    - type: WEB
-      url: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8059.patch
-    - type: WEB
+    - type: ADVISORY
+      url: https://securitylab.github.com/advisories/GHSL-2024-242_Gstreamer/
+    - type: ARTICLE
       url: https://gstreamer.freedesktop.org/security/sa-2024-0010.html
+    - type: FIX
+      url: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8059.patch
     - type: WEB
       url: https://lists.debian.org/debian-lts-announce/2025/02/msg00035.html
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2024-47545
-    - type: WEB
-      url: https://securitylab.github.com/advisories/GHSL-2024-242_Gstreamer/
 schema_version: 1.6.2
 summary: 'GHSL-2024-242: GStreamer has an integer underflow in FOURCC_strf parsing leading to OOB-read'

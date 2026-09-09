@@ -36,28 +36,28 @@ database_specific:
     severity: High
 details: The fix for bug 63362 present in Apache Tomcat 10.1.0 to 10.1.0, 10.0.0 to 10.0.11, 9.0.40 to 9.0.53 and 8.5.60 to 8.5.71 introduced a memory leak. The object introduced to collect metrics for HTTP upgrade connections was not released for WebSocket connections once the connection was closed. This created a memory leak that, over time, could lead to a denial of service via an OutOfMemoryError.
 id: BIT-tomcat-2021-42340
-modified: "2026-03-20T09:47:33.381Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2024-03-06T11:09:50.280Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: https://kc.mcafee.com/corporate/index?page=content&id=SB10379
+    - type: ADVISORY
+      url: https://lists.apache.org/thread.html/r83a35be60f06aca2065f188ee542b9099695d57ced2e70e0885f905c%40%3Cannounce.tomcat.apache.org%3E
+    - type: ADVISORY
+      url: https://security.gentoo.org/glsa/202208-34
+    - type: ADVISORY
+      url: https://security.netapp.com/advisory/ntap-20211104-0001/
+    - type: ADVISORY
+      url: https://www.debian.org/security/2021/dsa-5009
+    - type: ADVISORY
+      url: https://www.oracle.com/security-alerts/cpuapr2022.html
+    - type: ADVISORY
+      url: https://www.oracle.com/security-alerts/cpujan2022.html
+    - type: ADVISORY
+      url: https://www.oracle.com/security-alerts/cpujul2022.html
     - type: WEB
       url: https://lists.apache.org/thread.html/r8097a2d1550aa78e585fc77e602b9046e6d4099d8d132497c5387784%40%3Ccommits.myfaces.apache.org%3E
     - type: WEB
-      url: https://lists.apache.org/thread.html/r83a35be60f06aca2065f188ee542b9099695d57ced2e70e0885f905c%40%3Cannounce.tomcat.apache.org%3E
-    - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2021-42340
-    - type: WEB
-      url: https://security.gentoo.org/glsa/202208-34
-    - type: WEB
-      url: https://security.netapp.com/advisory/ntap-20211104-0001/
-    - type: WEB
-      url: https://www.debian.org/security/2021/dsa-5009
-    - type: WEB
-      url: https://www.oracle.com/security-alerts/cpuapr2022.html
-    - type: WEB
-      url: https://www.oracle.com/security-alerts/cpujan2022.html
-    - type: WEB
-      url: https://www.oracle.com/security-alerts/cpujul2022.html
 schema_version: 1.5.0
 summary: DoS via memory leak with WebSocket connections

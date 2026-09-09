@@ -31,20 +31,20 @@ database_specific:
     severity: High
 details: Validating certificate chains which contain DSA public keys can cause programs to panic, due to a interface cast that assumes they implement the Equal method. This affects programs which validate arbitrary certificate chains.
 id: BIT-golang-2025-58188
-modified: "2025-11-06T13:25:46.476Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2025-11-06T12:58:26.740Z"
 references:
-    - type: WEB
+    - type: ADVISORY
+      url: https://pkg.go.dev/vuln/GO-2025-4013
+    - type: DISCUSSION
       url: http://www.openwall.com/lists/oss-security/2025/10/08/1
-    - type: WEB
+    - type: DISCUSSION
+      url: https://groups.google.com/g/golang-announce/c/4Emdl2iQ_bI
+    - type: FIX
       url: https://go.dev/cl/709853
-    - type: WEB
+    - type: REPORT
       url: https://go.dev/issue/75675
     - type: WEB
-      url: https://groups.google.com/g/golang-announce/c/4Emdl2iQ_bI
-    - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2025-58188
-    - type: WEB
-      url: https://pkg.go.dev/vuln/GO-2025-4013
 schema_version: 1.6.2
 summary: Panic when validating certificates with DSA public keys in crypto/x509

@@ -41,10 +41,10 @@ database_specific:
     severity: High
 details: The $_internalConvertBucketIndexStats stage used PauseExecution as a way to signal "skip this document" when an index stats conversion failed. But PauseExecution is not a general purpose skip mechanism, but rather a TeeBuffer-internal signal used solely by $facet to coordinate its sub-pipelines. When this stage is placed before $facet in a pipeline, TeeBuffer receives the unexpected PauseExecution from upstream and hits a hard invariant assertion, crashing mongod.
 id: BIT-mongodb-2026-9748
-modified: "2026-06-16T12:06:30.986Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-06-16T11:48:13.844Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: https://jira.mongodb.org/browse/SERVER-123951
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-9748

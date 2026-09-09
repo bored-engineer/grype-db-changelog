@@ -31,19 +31,19 @@ database_specific:
     severity: High
 details: Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to versions 8.6.61 and 9.6.0, an authenticated user calling GET /users/me receives unsanitized auth data, including sensitive credentials such as MFA TOTP secrets and recovery codes. The endpoint internally uses master-level authentication for the session query, and the master context leaks through to the user data, bypassing auth adapter sanitization. An attacker who obtains a user's session token can extract MFA secrets to generate valid TOTP codes indefinitely. This issue has been patched in versions 8.6.61 and 9.6.0
 id: BIT-parse-2026-33627
-modified: "2026-03-27T07:40:55.991Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-27T07:14:47.660Z"
 references:
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/commit/5b8998e6866bcf75be7b5bb625e27d23bfaf912c
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/commit/875cf10ac979bd60f70e7a0c534e2bc194d6982f
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/pull/10278
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/pull/10279
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/parse-community/parse-server/security/advisories/GHSA-37mj-c2wf-cx96
+    - type: FIX
+      url: https://github.com/parse-community/parse-server/commit/5b8998e6866bcf75be7b5bb625e27d23bfaf912c
+    - type: FIX
+      url: https://github.com/parse-community/parse-server/commit/875cf10ac979bd60f70e7a0c534e2bc194d6982f
+    - type: REPORT
+      url: https://github.com/parse-community/parse-server/pull/10278
+    - type: REPORT
+      url: https://github.com/parse-community/parse-server/pull/10279
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-33627
 schema_version: 1.6.2

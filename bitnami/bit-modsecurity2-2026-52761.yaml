@@ -26,15 +26,15 @@ database_specific:
     severity: Medium
 details: ModSecurity is an open source, cross platform web application firewall (WAF) engine for Apache, IIS and Nginx. From 3.0.0 through 3.0.15, the t:utf8toUnicode transformation in src/actions/transformations/utf8_to_unicode.cc produces wrong output on i386 architecture because snprintf uses sizeof on a char pointer rather than the length of the unicode buffer, allowing rules that use this transformation to be bypassed on i386 architecture. This issue is fixed in version 3.0.16.
 id: BIT-modsecurity2-2026-52761
-modified: "2026-07-15T09:15:52.837Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-07-15T08:51:49.093Z"
 references:
-    - type: WEB
-      url: https://github.com/owasp-modsecurity/ModSecurity/commit/edcd010814e234d46e2ec55a0f1078ff9d3032e4
-    - type: WEB
-      url: https://github.com/owasp-modsecurity/ModSecurity/releases/tag/v3.0.16
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/owasp-modsecurity/ModSecurity/security/advisories/GHSA-qjgm-7gp4-f8qq
+    - type: ARTICLE
+      url: https://github.com/owasp-modsecurity/ModSecurity/releases/tag/v3.0.16
+    - type: FIX
+      url: https://github.com/owasp-modsecurity/ModSecurity/commit/edcd010814e234d46e2ec55a0f1078ff9d3032e4
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-52761
 schema_version: 1.6.2

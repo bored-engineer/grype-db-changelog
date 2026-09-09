@@ -36,13 +36,13 @@ database_specific:
     severity: High
 details: RedisBloom is a probabilistic data structures module for Redis. In all versions of RedisBloom before 2.8.20, the module does not properly validate serialized values processed through the Redis RESTORE command. An authenticated attacker with permission to execute RESTORE on a server with the RedisBloom module loaded can supply a crafted serialized payload that triggers invalid memory access and may lead to remote code execution. A workaround is to restrict access to the RESTORE command with ACL rules. This issue is fixed in version 2.8.20.
 id: BIT-redis-2026-25589
-modified: "2026-05-07T09:12:02.780Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-05-07T08:53:11.906Z"
 references:
-    - type: WEB
-      url: https://github.com/RedisBloom/RedisBloom/releases/tag/v2.8.20
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/RedisBloom/RedisBloom/security/advisories/GHSA-7862-34pw-44wv
+    - type: FIX
+      url: https://github.com/RedisBloom/RedisBloom/releases/tag/v2.8.20
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-25589
 schema_version: 1.6.2

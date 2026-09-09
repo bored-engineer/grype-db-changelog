@@ -26,9 +26,17 @@ database_specific:
     severity: High
 details: When verifying a certificate chain containing excluded DNS constraints, these constraints are not correctly applied to wildcard DNS SANs which use a different case than the constraint. This only affects validation of otherwise trusted certificate chains, issued by a root CA in the VerifyOptions.Roots CertPool, or in the system certificate pool.
 id: BIT-golang-2026-33810
-modified: "2026-09-07T06:10:52.979Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-04-13T05:43:50.259Z"
 references:
+    - type: ADVISORY
+      url: https://pkg.go.dev/vuln/GO-2026-4866
+    - type: DISCUSSION
+      url: https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU
+    - type: FIX
+      url: https://go.dev/cl/763763
+    - type: REPORT
+      url: https://go.dev/issue/78332
     - type: WEB
       url: http://www.openwall.com/lists/oss-security/2026/04/19/4
     - type: WEB
@@ -166,15 +174,7 @@ references:
     - type: WEB
       url: https://bugzilla.redhat.com/show_bug.cgi?id=2456335
     - type: WEB
-      url: https://go.dev/cl/763763
-    - type: WEB
-      url: https://go.dev/issue/78332
-    - type: WEB
-      url: https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU
-    - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-33810
-    - type: WEB
-      url: https://pkg.go.dev/vuln/GO-2026-4866
     - type: WEB
       url: https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-33810.json
 schema_version: 1.6.2

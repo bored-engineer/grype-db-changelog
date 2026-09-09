@@ -31,15 +31,15 @@ database_specific:
     severity: Medium
 details: Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0 and 8.6.35, an attacker can exploit LiveQuery subscriptions to infer the values of protected fields without directly receiving them. By subscribing with a WHERE clause that references a protected field (including via dot-notation or $regex), the attacker can observe whether LiveQuery events are delivered for matching objects. This creates a boolean oracle that leaks protected field values. The attack affects any class that has both protectedFields configured in Class-Level Permissions and LiveQuery enabled. This vulnerability is fixed in 9.6.0 and 8.6.35.
 id: BIT-parse-2026-32098
-modified: "2026-03-13T12:55:29.610Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-13T12:28:55.457Z"
 references:
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/releases/tag/8.6.35
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/releases/tag/9.6.0-alpha.9
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/parse-community/parse-server/security/advisories/GHSA-j7mm-f4rv-6q6q
+    - type: ARTICLE
+      url: https://github.com/parse-community/parse-server/releases/tag/8.6.35
+    - type: ARTICLE
+      url: https://github.com/parse-community/parse-server/releases/tag/9.6.0-alpha.9
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-32098
 schema_version: 1.6.2

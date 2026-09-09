@@ -30,12 +30,12 @@ database_specific:
     severity: Critical
 details: "Hardcoded credentials in the Basic Authentication setup tool (bin/solr auth enable) in Apache Solr versions 9.4.0 through 9.10.1 and 10.0.0 allows a remote attacker to gain full administrative access to the cluster via publicly known default credentials installed silently alongside the user-specified account. \n\nAs an immediate workaround without upgrading, delete the template users (superadmin, admin, search, index) from security.json or change their passwords.\nThe future, not yet released, versions 9.11.0 and 10.1.0 will not be vulnerable, and it will be enough to upgrade to solve the issue.\n\nNot affected:\n  *  Clusters where bin/solr auth enable was not used to bootstrap BasicAuth\n  *  Clusters where template users have been assigned strong passwords after bootstrap"
 id: BIT-solr-2026-44825
-modified: "2026-06-05T06:08:58.631Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-06-05T05:53:30.550Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: http://www.openwall.com/lists/oss-security/2026/05/29/6
-    - type: WEB
+    - type: ADVISORY
       url: https://lists.apache.org/thread/5xg6xr99glocp3zsg9ht2zlbwlrst7ch
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-44825
