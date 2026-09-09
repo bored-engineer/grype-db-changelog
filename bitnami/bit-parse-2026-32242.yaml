@@ -30,15 +30,15 @@ database_specific:
     severity: Critical
 details: 'Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0 and 8.6.37, Parse Server''s built-in OAuth2 auth adapter exports a singleton instance that is reused directly across all OAuth2 provider configurations. Under concurrent authentication requests for different OAuth2 providers, one provider''s token validation may execute using another provider''s configuration, potentially allowing a token that should be rejected by one provider to be accepted because it is validated against a different provider''s policy. Deployments that configure multiple OAuth2 providers via the oauth2: true flag are affected. This vulnerability is fixed in 9.6.0 and 8.6.37.'
 id: BIT-parse-2026-32242
-modified: "2026-03-20T09:47:33.381Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-16T09:53:39.413Z"
 references:
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/releases/tag/8.6.37
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/releases/tag/9.6.0-alpha.11
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/parse-community/parse-server/security/advisories/GHSA-2cjm-2gwv-m892
+    - type: ARTICLE
+      url: https://github.com/parse-community/parse-server/releases/tag/8.6.37
+    - type: ARTICLE
+      url: https://github.com/parse-community/parse-server/releases/tag/9.6.0-alpha.11
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-32242
 schema_version: 1.6.2

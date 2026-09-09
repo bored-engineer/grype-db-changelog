@@ -35,13 +35,13 @@ database_specific:
     severity: High
 details: RedisTimeSeries is a time-series module for Redis. In all versions before 1.12.14 of RedisTimeSeries, the module does not properly validate serialized values processed through the Redis RESTORE command. An authenticated attacker with permission to execute RESTORE on a server with the RedisTimeSeries module loaded can supply a crafted serialized payload that triggers invalid memory access and may lead to remote code execution. A workaround is to restrict access to the RESTORE command with ACL rules. This has been patched in version 1.12.14.
 id: BIT-keydb-2026-25588
-modified: "2026-05-07T09:12:02.780Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-05-07T08:42:57.726Z"
 references:
-    - type: WEB
-      url: https://github.com/RedisTimeSeries/RedisTimeSeries/releases/tag/v1.12.14
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/RedisTimeSeries/RedisTimeSeries/security/advisories/GHSA-7jwr-g5qv-w3gw
+    - type: FIX
+      url: https://github.com/RedisTimeSeries/RedisTimeSeries/releases/tag/v1.12.14
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-25588
 schema_version: 1.6.2

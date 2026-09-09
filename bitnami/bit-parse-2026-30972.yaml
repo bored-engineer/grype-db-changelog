@@ -30,15 +30,15 @@ database_specific:
     severity: Medium
 details: Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior o 9.5.2 and 8.6.23, Parse Server's rate limiting middleware is applied at the Express middleware layer, but the batch request endpoint (/batch) processes sub-requests internally by routing them directly through the Promise router, bypassing Express middleware including rate limiting. An attacker can bundle multiple requests targeting a rate-limited endpoint into a single batch request to circumvent the configured rate limit. Any Parse Server deployment that relies on the built-in rate limiting feature is affected. This vulnerability is fixed in 9.5.2 and 8.6.23.
 id: BIT-parse-2026-30972
-modified: "2026-03-20T09:47:33.381Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-12T14:48:14.900Z"
 references:
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/releases/tag/8.6.23
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.10
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/parse-community/parse-server/security/advisories/GHSA-775h-3xrc-c228
+    - type: ARTICLE
+      url: https://github.com/parse-community/parse-server/releases/tag/8.6.23
+    - type: ARTICLE
+      url: https://github.com/parse-community/parse-server/releases/tag/9.5.2-alpha.10
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-30972
 schema_version: 1.6.2

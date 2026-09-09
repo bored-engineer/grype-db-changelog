@@ -30,11 +30,13 @@ database_specific:
     severity: High
 details: Hostname verification in Apache ZooKeeper ZKTrustManager falls back to reverse DNS (PTR) when IP SAN validation fails, allowing attackers who control or spoof PTR records to impersonate ZooKeeper servers or clients with a valid certificate for the PTR name. It's important to note that attacker must present a certificate which is trusted by ZKTrustManager which makes the attack vector harder to exploit. Users are recommended to upgrade to version 3.8.6 or 3.9.5, which fixes this issue by introducing a new configuration option to disable reverse DNS lookup in client and quorum protocols.
 id: BIT-zookeeper-2026-24281
-modified: "2026-07-06T06:18:57.499Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-10T08:52:16.699Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: http://www.openwall.com/lists/oss-security/2026/03/07/4
+    - type: ADVISORY
+      url: https://lists.apache.org/thread/088ddsbrzhd5lxzbqf5n24yg0mwh9jt2
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:10184
     - type: WEB
@@ -49,8 +51,6 @@ references:
       url: https://access.redhat.com/security/cve/CVE-2026-24281
     - type: WEB
       url: https://bugzilla.redhat.com/show_bug.cgi?id=2445449
-    - type: WEB
-      url: https://lists.apache.org/thread/088ddsbrzhd5lxzbqf5n24yg0mwh9jt2
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-24281
     - type: WEB

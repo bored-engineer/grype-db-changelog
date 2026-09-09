@@ -26,32 +26,32 @@ database_specific:
     severity: High
 details: ruby-saml provides security assertion markup language (SAML) single sign-on (SSO) for Ruby. Prior to versions 1.12.4 and 1.18.0, ruby-saml is susceptible to remote Denial of Service (DoS) with compressed SAML responses. ruby-saml uses zlib to decompress SAML responses in case they're compressed. It is possible to bypass the message size check with a compressed assertion since the message size is checked before inflation and not after. This issue may lead to remote Denial of Service (DoS). Versions 1.12.4 and 1.18.0 fix the issue.
 id: BIT-gitlab-2025-25293
-modified: "2025-11-06T13:25:46.476Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2025-04-14T11:55:21.293Z"
 references:
-    - type: WEB
-      url: https://about.gitlab.com/releases/2025/03/12/patch-release-gitlab-17-9-2-released
-    - type: WEB
+    - type: ADVISORY
       url: https://github.blog/security/sign-in-as-anyone-bypassing-saml-sso-authentication-with-parser-differentials
-    - type: WEB
-      url: https://github.com/SAML-Toolkits/ruby-saml/commit/acac9e9cc0b9a507882c614f25d41f8b47be349a
-    - type: WEB
-      url: https://github.com/SAML-Toolkits/ruby-saml/commit/e2da4c6dae7dc01a4d9cd221395140a67e2b3eb1
-    - type: WEB
-      url: https://github.com/SAML-Toolkits/ruby-saml/releases/tag/v1.12.4
-    - type: WEB
-      url: https://github.com/SAML-Toolkits/ruby-saml/releases/tag/v1.18.0
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/SAML-Toolkits/ruby-saml/security/advisories/GHSA-92rq-c8cf-prrq
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/omniauth/omniauth-saml/security/advisories/GHSA-hw46-3hmr-x9xv
+    - type: ADVISORY
+      url: https://security.netapp.com/advisory/ntap-20250314-0008/
+    - type: ADVISORY
+      url: https://securitylab.github.com/advisories/GHSL-2024-355_ruby-saml
+    - type: ARTICLE
+      url: https://github.com/SAML-Toolkits/ruby-saml/releases/tag/v1.12.4
+    - type: ARTICLE
+      url: https://github.com/SAML-Toolkits/ruby-saml/releases/tag/v1.18.0
+    - type: FIX
+      url: https://about.gitlab.com/releases/2025/03/12/patch-release-gitlab-17-9-2-released
+    - type: FIX
+      url: https://github.com/SAML-Toolkits/ruby-saml/commit/acac9e9cc0b9a507882c614f25d41f8b47be349a
+    - type: FIX
+      url: https://github.com/SAML-Toolkits/ruby-saml/commit/e2da4c6dae7dc01a4d9cd221395140a67e2b3eb1
     - type: WEB
       url: https://lists.debian.org/debian-lts-announce/2025/04/msg00011.html
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2025-25293
-    - type: WEB
-      url: https://security.netapp.com/advisory/ntap-20250314-0008/
-    - type: WEB
-      url: https://securitylab.github.com/advisories/GHSL-2024-355_ruby-saml
 schema_version: 1.6.2
 summary: ruby-saml vulnerable to Remote Denial of Service (DoS) with compressed SAML responses

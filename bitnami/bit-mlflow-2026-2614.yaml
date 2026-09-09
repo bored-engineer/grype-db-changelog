@@ -25,9 +25,13 @@ database_specific:
     severity: High
 details: A vulnerability in the `_create_model_version()` handler of `mlflow/server/handlers.py` in mlflow/mlflow versions 3.9.0 and earlier allows an unauthenticated remote attacker to read arbitrary files from the server's filesystem. The issue arises when a `CreateModelVersion` request includes the tag `mlflow.prompt.is_prompt`, which bypasses source path validation. This enables an attacker to store an arbitrary local filesystem path as the model version source. The `get_model_version_artifact_handler()` function later uses this source to serve files without verifying the model version's prompt status, leading to a complete confidentiality compromise. This issue is fixed in version 3.10.0.
 id: BIT-mlflow-2026-2614
-modified: "2026-08-31T06:11:21.365Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-05-28T08:50:49.461Z"
 references:
+    - type: ADVISORY
+      url: https://huntr.com/bounties/19380271-3fbf-4beb-987e-6fd7069c55e6
+    - type: FIX
+      url: https://github.com/mlflow/mlflow/commit/6e801f4259d96804c73107315b24cef0f6aa115a
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:34456
     - type: WEB
@@ -38,10 +42,6 @@ references:
       url: https://access.redhat.com/security/cve/CVE-2026-2614
     - type: WEB
       url: https://bugzilla.redhat.com/show_bug.cgi?id=2469309
-    - type: WEB
-      url: https://github.com/mlflow/mlflow/commit/6e801f4259d96804c73107315b24cef0f6aa115a
-    - type: WEB
-      url: https://huntr.com/bounties/19380271-3fbf-4beb-987e-6fd7069c55e6
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-2614
     - type: WEB

@@ -45,9 +45,11 @@ database_specific:
     severity: High
 details: Integer wraparound in multiple PostgreSQL server features allows an unprivileged database user to cause the server to undersize an allocation and write out-of-bounds.  This may execute arbitrary code as the operating system user running the database.  In applications that pass gigabyte-scale user inputs to the relevant database functions, the application input provider may achieve a segmentation fault.  Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.
 id: BIT-postgresql-2026-6473
-modified: "2026-08-26T09:13:18.225Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-05-18T05:52:58.988Z"
 references:
+    - type: ADVISORY
+      url: https://www.postgresql.org/support/security/CVE-2026-6473/
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:22878
     - type: WEB
@@ -124,7 +126,5 @@ references:
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-6473
     - type: WEB
       url: https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-6473.json
-    - type: WEB
-      url: https://www.postgresql.org/support/security/CVE-2026-6473/
 schema_version: 1.6.2
 summary: PostgreSQL server undersizes allocations, via integer wraparound

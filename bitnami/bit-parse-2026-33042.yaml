@@ -30,15 +30,15 @@ database_specific:
     severity: Medium
 details: Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0 and 8.6.49, a user can sign up without providing credentials by sending an empty `authData` object, bypassing the username and password requirement. This allows the creation of authenticated sessions without proper credentials, even when anonymous users are disabled. The fix in 9.6.0 and 8.6.49 ensures that empty or non-actionable `authData` is treated the same as absent `authData` for the purpose of credential validation on new user creation. Username and password are now required when no valid auth provider data is present. As a workaround, use a Cloud Code `beforeSave` trigger on the `_User` class to reject signups where `authData` is empty and no username/password is provided.
 id: BIT-parse-2026-33042
-modified: "2026-03-20T12:05:40.000Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-20T11:37:48.161Z"
 references:
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/pull/10219
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/pull/10220
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/parse-community/parse-server/security/advisories/GHSA-wjqw-r9x4-j59v
+    - type: REPORT
+      url: https://github.com/parse-community/parse-server/pull/10219
+    - type: REPORT
+      url: https://github.com/parse-community/parse-server/pull/10220
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-33042
 schema_version: 1.6.2

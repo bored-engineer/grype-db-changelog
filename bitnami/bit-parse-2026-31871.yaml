@@ -30,15 +30,15 @@ database_specific:
     severity: Critical
 details: Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.6.0 and 8.6.31, a SQL injection vulnerability exists in the PostgreSQL storage adapter when processing Increment operations on nested object fields using dot notation (e.g., stats.counter). The sub-key name is interpolated directly into SQL string literals without escaping. An attacker who can send write requests to the Parse Server REST API can inject arbitrary SQL via a crafted sub-key name containing single quotes, potentially executing commands or reading data from the database, bypassing CLPs and ACLs. Only Postgres deployments are affected. This vulnerability is fixed in 9.6.0 and 8.6.31.
 id: BIT-parse-2026-31871
-modified: "2026-03-13T12:55:29.610Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-13T12:28:44.452Z"
 references:
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/releases/tag/8.6.31
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/releases/tag/9.6.0-alpha.5
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/parse-community/parse-server/security/advisories/GHSA-gqpp-xgvh-9h7h
+    - type: ARTICLE
+      url: https://github.com/parse-community/parse-server/releases/tag/8.6.31
+    - type: ARTICLE
+      url: https://github.com/parse-community/parse-server/releases/tag/9.6.0-alpha.5
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-31871
 schema_version: 1.6.2

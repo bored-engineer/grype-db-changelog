@@ -25,17 +25,23 @@ database_specific:
     severity: Medium
 details: Redis is an in-memory database that persists on disk. Prior to versions 6.2.7 and 7.0.0, an attacker attempting to load a specially crafted Lua script can cause NULL pointer dereference which will result with a crash of the redis-server process. The problem is fixed in Redis versions 7.0.0 and 6.2.7. An additional workaround to mitigate this problem without patching the redis-server executable, if Lua scripting is not being used, is to block access to `SCRIPT LOAD` and `EVAL` commands using ACL rules.
 id: BIT-keydb-2022-24736
-modified: "2025-05-20T10:02:07.006Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2024-08-22T19:27:22.053Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/redis/redis/pull/10651
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/redis/redis/releases/tag/6.2.7
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/redis/redis/releases/tag/7.0.0
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/redis/redis/security/advisories/GHSA-3qpw-7686-5984
+    - type: ADVISORY
+      url: https://security.gentoo.org/glsa/202209-17
+    - type: ADVISORY
+      url: https://security.netapp.com/advisory/ntap-20220715-0003/
+    - type: ADVISORY
+      url: https://www.oracle.com/security-alerts/cpujul2022.html
     - type: WEB
       url: https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/J4ZK3675DGHVVDOFLJN7WX6YYH27GPMK/
     - type: WEB
@@ -44,11 +50,5 @@ references:
       url: https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/WSTPUCAPBRHIFPSCOURR4OYX4E2OISAF/
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2022-24736
-    - type: WEB
-      url: https://security.gentoo.org/glsa/202209-17
-    - type: WEB
-      url: https://security.netapp.com/advisory/ntap-20220715-0003/
-    - type: WEB
-      url: https://www.oracle.com/security-alerts/cpujul2022.html
 schema_version: 1.5.0
 summary: A Malformed Lua script can crash Redis

@@ -35,10 +35,10 @@ database_specific:
     severity: Medium
 details: Discourse is an open-source discussion platform. Prior to versions 2026.3.0, 2026.2.1, and 2026.1.2, the ComposerController#mentions endpoint reveals hidden group membership to any authenticated user who can message the group. By supplying allowed_names referencing a hidden-membership group and probing arbitrary usernames, an attacker can infer membership based on whether user_reasons returns "private" for a given user. This bypasses group member-visibility controls. Versions 2026.3.0, 2026.2.1, and 2026.1.2 contain a patch. To work around this issue, restrict the messageable policy of any hidden-membership group to staff or group members only, so untrusted users cannot reach the vulnerable code path.
 id: BIT-discourse-2026-31869
-modified: "2026-03-27T07:40:55.991Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-03-27T07:10:33.910Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/discourse/discourse/security/advisories/GHSA-5f9h-vp7v-7vq5
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-31869

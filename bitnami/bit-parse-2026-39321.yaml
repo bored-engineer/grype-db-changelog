@@ -30,15 +30,15 @@ database_specific:
     severity: Medium
 details: Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.8.0 and 8.6.74, he login endpoint response time differs measurably depending on whether the submitted username or email exists in the database. When a user is not found, the server responds immediately. When a user exists but the password is wrong, a bcrypt comparison runs first, adding significant latency. This timing difference allows an unauthenticated attacker to enumerate valid usernames. This vulnerability is fixed in 9.8.0 and 8.6.74.
 id: BIT-parse-2026-39321
-modified: "2026-04-09T15:05:10.890Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-04-09T14:37:40.125Z"
 references:
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/pull/10398
-    - type: WEB
-      url: https://github.com/parse-community/parse-server/pull/10399
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/parse-community/parse-server/security/advisories/GHSA-mmpq-5hcv-hf2v
+    - type: FIX
+      url: https://github.com/parse-community/parse-server/pull/10398
+    - type: FIX
+      url: https://github.com/parse-community/parse-server/pull/10399
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-39321
 schema_version: 1.6.2

@@ -30,20 +30,20 @@ database_specific:
     severity: Low
 details: It was possible to improperly access the parent directory of an os.Root by opening a filename ending in "../". For example, Root.Open("../") would open the parent directory of the Root. This escape only permits opening the parent directory itself, not ancestors of the parent or files contained within the parent.
 id: BIT-golang-2025-22873
-modified: "2026-02-06T09:20:48.186Z"
+modified: "2026-09-08T08:34:36.952Z"
 published: "2026-02-06T08:45:38.334Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: http://www.openwall.com/lists/oss-security/2025/05/06/2
-    - type: WEB
+    - type: ADVISORY
+      url: https://go.dev/issue/73555
+    - type: ADVISORY
+      url: https://pkg.go.dev/vuln/GO-2026-4403
+    - type: DISCUSSION
+      url: https://groups.google.com/g/golang-announce/c/UZoIkUT367A/m/5WDxKizJAQAJ
+    - type: FIX
       url: https://go.dev/cl/670036
     - type: WEB
-      url: https://go.dev/issue/73555
-    - type: WEB
-      url: https://groups.google.com/g/golang-announce/c/UZoIkUT367A/m/5WDxKizJAQAJ
-    - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2025-22873
-    - type: WEB
-      url: https://pkg.go.dev/vuln/GO-2026-4403
 schema_version: 1.6.2
 summary: Improper access to parent directory of root in os
