@@ -10,9 +10,19 @@ affected:
                 fixes:
                     - date: "2026-09-08"
                       kind: advisory
+                      version: 12.4.10
+                    - date: "2026-09-08"
+                      kind: advisory
+                      version: 13.0.8
+                    - date: "2026-09-08"
+                      kind: advisory
                       version: 13.2.1
           events:
-            - introduced: "0"
+            - introduced: 11.0.0
+            - fixed: 12.4.10
+            - introduced: 13.0.0
+            - fixed: 13.0.8
+            - introduced: 13.1.0
             - fixed: 13.2.1
           type: SEMVER
       severity:
@@ -29,7 +39,7 @@ database_specific:
     severity: High
 details: Only self-managed Grafana instances with Auth Proxy authentication and identity caching enabled (sync_ttl greater than zero) are affected. The Auth Proxy cache key concatenated the username and forwarded identity attributes without a delimiter, so distinct identities could collide on one key. An authenticated user who shapes their own attributes to collide with a higher-privileged user's, while that user's cache entry is live, is authenticated as that user, up to Administrator (authentication bypass by spoofing).
 id: BIT-grafana-2026-14199
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-09T09:13:23.794Z"
 published: "2026-09-08T08:14:51.153Z"
 references:
     - type: WEB

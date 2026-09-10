@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: kibana
+        purl: pkg:bitnami/kibana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-09-09"
+                      kind: advisory
+                      version: 8.19.21
+                    - date: "2026-09-09"
+                      kind: advisory
+                      version: 9.4.6
+                    - date: "2026-09-09"
+                      kind: advisory
+                      version: 9.5.3
+          events:
+            - introduced: 8.0.0
+            - fixed: 8.19.21
+            - introduced: 9.0.0
+            - fixed: 9.4.6
+            - introduced: 9.5.0
+            - fixed: 9.5.3
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2026-82298
+database_specific:
+    cpes:
+        - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Incorrect Authorization (CWE-863) in Kibana can lead to denial of service via Exploiting Incorrectly Configured Access Control Security Levels (CAPEC-180).
+id: BIT-kibana-2026-82298
+modified: "2026-09-09T09:13:23.794Z"
+published: "2026-09-09T08:48:28.034Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/kibana-8-19-21-9-4-6-9-5-3-security-update-esa-2026-174/390162
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-82298
+schema_version: 1.6.2
+summary: Incorrect Authorization in Kibana Leading to Denial of Service

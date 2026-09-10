@@ -10,9 +10,24 @@ affected:
                 fixes:
                     - date: "2026-09-08"
                       kind: advisory
+                      version: 12.4.11
+                    - date: "2026-09-08"
+                      kind: advisory
+                      version: 13.0.8
+                    - date: "2026-09-08"
+                      kind: advisory
+                      version: 13.1.5
+                    - date: "2026-09-08"
+                      kind: advisory
                       version: 13.2.1
           events:
-            - introduced: "0"
+            - introduced: 11.6.0
+            - fixed: 12.4.11
+            - introduced: 13.0.0
+            - fixed: 13.0.8
+            - introduced: 13.1.0
+            - fixed: 13.1.5
+            - introduced: 13.2.0
             - fixed: 13.2.1
           type: SEMVER
       severity:
@@ -26,7 +41,7 @@ database_specific:
     severity: Medium
 details: When SAML IdP-initiated login is enabled in Grafana Enterprise, the SAML library skips validation of the InResponseTo field on all SAML responses, including SP-initiated logins. This removes anti-replay protection, allowing an attacker who obtains a valid signed SAML assertion to replay it and gain a session as the victim user. Only instances with the allow_idp_initiated SAML setting enabled are affected; this setting is off by default and Grafana OSS is not affected.
 id: BIT-grafana-2026-12704
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-09T09:13:23.794Z"
 published: "2026-09-08T08:14:50.124Z"
 references:
     - type: WEB

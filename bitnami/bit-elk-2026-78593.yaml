@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elk
+        purl: pkg:bitnami/elk
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-09-09"
+                      kind: advisory
+                      version: 8.19.21
+                    - date: "2026-09-09"
+                      kind: advisory
+                      version: 9.4.6
+                    - date: "2026-09-09"
+                      kind: advisory
+                      version: 9.5.3
+          events:
+            - introduced: 8.0.0
+            - fixed: 8.19.21
+            - introduced: 9.0.0
+            - fixed: 9.4.6
+            - introduced: 9.5.0
+            - fixed: 9.5.3
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-78593
+database_specific:
+    cpes:
+        - cpe:2.3:a:elasticsearch:kibana:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: An insufficiently validated configuration field in Kibana's Cribl integration allows an authenticated user holding Kibana Fleet management privileges to inject attacker-controlled expressions into a server-side script template, resulting in an Elasticsearch ingest pipeline being written beyond the caller's authorized Elasticsearch permissions.
+id: BIT-elk-2026-78593
+modified: "2026-09-09T09:13:23.794Z"
+published: "2026-09-09T08:41:44.135Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/kibana-8-19-21-9-4-6-9-5-3-security-update-esa-2026-151/390159
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-78593
+schema_version: 1.6.2
+summary: Improper Control of Generation of Code in Kibana Leading to Privilege Escalation
