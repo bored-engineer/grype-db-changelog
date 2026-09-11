@@ -16,17 +16,17 @@ affected:
             - fixed: 2.5.2
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:L
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:L
           type: CVSS_V3
 aliases:
     - CVE-2026-33757
 database_specific:
     cpes:
         - cpe:2.3:a:openbao:openbao:*:*:*:*:*:*:*:*
-    severity: High
+    severity: Critical
 details: OpenBao is an open source identity-based secrets management system. Prior to version 2.5.2, OpenBao does not prompt for user confirmation when logging in via JWT/OIDC and a role with `callback_mode` set to `direct`. This allows an attacker to start an authentication request and perform "remote phishing" by having the victim visit the URL and automatically log-in to the session of the attacker. Despite being based on the authorization code flow, the  `direct` mode calls back directly to the API and allows an attacker to poll for an OpenBao token until it is issued. Version 2.5.2 includes an additional confirmation screen for `direct` type logins that requires manual user interaction in order to finish the authentication. This issue can be worked around either by removing any roles with `callback_mode=direct` or enforcing confirmation for every session on the token issuer side for the Client ID used by OpenBao.
 id: BIT-openbao-2026-33757
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2026-07-27T05:49:03.835Z"
 references:
     - type: ADVISORY

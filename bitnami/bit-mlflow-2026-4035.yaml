@@ -16,17 +16,17 @@ affected:
             - fixed: 3.11.0
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N
+        - score: CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:L
           type: CVSS_V3
 aliases:
     - CVE-2026-4035
 database_specific:
     cpes:
         - cpe:2.3:a:lfprojects:mlflow:*:*:*:*:*:*:*:*
-    severity: High
+    severity: Critical
 details: A vulnerability in mlflow/mlflow versions prior to 3.11.0 allows for the resolution of environment variables in AI Gateway secrets, which can be exploited to exfiltrate sensitive server-side environment credentials to an attacker-controlled endpoint. This issue arises because the `api_key` field in gateway secrets can accept `$ENV_VAR` references, which are resolved against the MLflow server's environment during runtime. The resolved secrets are then sent in provider authentication headers to the configured upstream `api_base`. This vulnerability can be exploited by low-privileged authenticated users in basic-auth deployments or by unauthenticated users in default deployments without `basic-auth`. The impact includes potential leakage of sensitive credentials such as cloud artifact credentials (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`), which could lead to artifact poisoning and cross-boundary code execution in downstream environments. The issue is fixed in version 3.11.0.
 id: BIT-mlflow-2026-4035
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2026-06-05T08:52:23.138Z"
 references:
     - type: ADVISORY

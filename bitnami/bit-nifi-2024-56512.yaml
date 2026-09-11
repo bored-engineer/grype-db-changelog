@@ -16,14 +16,14 @@ affected:
             - fixed: 2.1.0
           type: SEMVER
       severity:
-        - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:L/VI:L/VA:N/SC:L/SI:L/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:P/AU:Y/R:U/V:C/RE:L/U:Green
-          type: CVSS_V4
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
 aliases:
     - CVE-2024-56512
 database_specific:
     cpes:
         - cpe:2.3:a:apache:nifi:*:*:*:*:*:maven:*:*
-    severity: Low
+    severity: Medium
 details: |-
     Apache NiFi 1.10.0 through 2.0.0 are missing fine-grained authorization checking for Parameter Contexts, referenced Controller Services, and referenced Parameter Providers, when creating new Process Groups.
 
@@ -33,7 +33,7 @@ details: |-
 
     This vulnerability is limited in scope to authenticated users authorized to create Process Groups. The scope is further limited to deployments with component-based authorization policies. Upgrading to Apache NiFi 2.1.0 is the recommended mitigation, which includes authorization checking for Parameter and Controller Service references on Process Group creation.
 id: BIT-nifi-2024-56512
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2025-09-12T11:47:06.460Z"
 references:
     - type: DISCUSSION

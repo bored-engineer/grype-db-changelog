@@ -31,17 +31,17 @@ affected:
             - fixed: 1.36.1
           type: SEMVER
       severity:
-        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:U/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
-          type: CVSS_V4
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
 aliases:
     - CVE-2025-62409
 database_specific:
     cpes:
         - cpe:2.3:a:envoyproxy:envoy:*:*:*:*:*:*:*:*
-    severity: Medium
+    severity: High
 details: Envoy is a cloud-native, open source edge and service proxy. Prior to 1.36.1, 1.35.5, 1.34.9, and 1.33.10, large requests and responses can potentially trigger TCP connection pool crashes due to flow control management in Envoy. It will happen when the connection is closing but upstream data is still coming, resulting in a buffer watermark callback nullptr reference. The vulnerability impacts TCP proxy and HTTP 1 & 2 mixed use cases based on ALPN. This vulnerability is fixed in 1.36.1, 1.35.5, 1.34.9, and 1.33.10.
 id: BIT-envoy-2025-62409
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2025-10-21T08:41:16.273Z"
 references:
     - type: ADVISORY

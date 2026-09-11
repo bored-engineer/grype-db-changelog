@@ -16,17 +16,17 @@ affected:
             - fixed: 2.11.0
           type: SEMVER
       severity:
-        - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:L/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:N/AU:Y/R:U/V:C/RE:L/U:Clear
-          type: CVSS_V4
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N
+          type: CVSS_V3
 aliases:
     - CVE-2026-68980
 database_specific:
     cpes:
         - cpe:2.3:a:apache:nifi:*:*:*:*:*:*:*:*
-    severity: Low
+    severity: Critical
 details: Apache NiFi 2.0.0 through 2.10.0 support creating, reading, and deleting Assets associated with Parameter Contexts through the REST API. The framework authorizes asset deletion against the owning Parameter Context using the supplied Parameter Context Identifier and Asset Identifier. The framework performed authorized based on the supplied Parameter Context Identifier without verifying the requested Identifier against the stored Identifier. Apache NiFi installations that do not implement different levels of authorization across Parameter Contexts are not subject to this vulnerability, because the framework enforces write permissions as the security boundary. Upgrading to Apache NiFi 2.11.0 is the recommended mitigation, which verifies Parameter Context ownership of the requested Asset before deletion using the same strategy applied to Asset read operations.
 id: BIT-nifi-2026-68980
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2026-08-17T05:49:54.818Z"
 references:
     - type: ADVISORY

@@ -26,7 +26,7 @@ affected:
             - fixed: 2.7.1
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H
           type: CVSS_V3
 aliases:
     - CVE-2022-21736
@@ -34,10 +34,10 @@ database_specific:
     cpes:
         - cpe:2.3:a:google:tensorflow:*:*:*:*:*:*:*:*
         - cpe:2.3:a:google:tensorflow:2.7.0:*:*:*:*:*:*:*
-    severity: Medium
+    severity: High
 details: 'Tensorflow is an Open Source Machine Learning Framework. The implementation of `SparseTensorSliceDataset` has an undefined behavior: under certain condition it can be made to dereference a `nullptr` value. The 3 input arguments to `SparseTensorSliceDataset` represent a sparse tensor. However, there are some preconditions that these arguments must satisfy but these are not validated in the implementation. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.'
 id: BIT-tensorflow-2022-21736
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2024-03-06T11:15:39.237Z"
 references:
     - type: ADVISORY

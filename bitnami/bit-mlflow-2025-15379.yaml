@@ -16,7 +16,7 @@ affected:
             - fixed: 3.8.1
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H
           type: CVSS_V3
 aliases:
     - CVE-2025-15379
@@ -26,7 +26,7 @@ database_specific:
     severity: Critical
 details: A command injection vulnerability exists in MLflow's model serving container initialization code, specifically in the `_install_model_dependencies_to_env()` function. When deploying a model with `env_manager=LOCAL`, MLflow reads dependency specifications from the model artifact's `python_env.yaml` file and directly interpolates them into a shell command without sanitization. This allows an attacker to supply a malicious model artifact and achieve arbitrary command execution on systems that deploy the model. The vulnerability affects versions 3.8.0 and is fixed in version 3.8.2.
 id: BIT-mlflow-2025-15379
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2026-04-29T08:45:22.489Z"
 references:
     - type: ADVISORY

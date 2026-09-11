@@ -26,17 +26,17 @@ affected:
             - fixed: 1.13.2
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N
+        - score: CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:N
           type: CVSS_V3
 aliases:
     - CVE-2023-29002
 database_specific:
     cpes:
         - cpe:2.3:a:cilium:cilium:*:*:*:*:*:*:*:*
-    severity: Medium
+    severity: High
 details: Cilium is a networking, observability, and security solution with an eBPF-based dataplane. When run in debug mode, Cilium will log the contents of the `cilium-secrets` namespace. This could include data such as TLS private keys for Ingress and GatewayAPI resources. An attacker with access to debug output from the Cilium containers could use the resulting output to intercept and modify traffic to and from the affected cluster. Output of the sensitive information would occur at Cilium agent restart, when secrets in the namespace are modified, and on creation of Ingress or GatewayAPI resources. This vulnerability is fixed in Cilium releases 1.11.16, 1.12.9, and 1.13.2. Users unable to upgrade should disable debug mode.
 id: BIT-hubble-relay-2023-29002
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2024-05-24T19:23:03.090Z"
 references:
     - type: ADVISORY

@@ -16,17 +16,17 @@ affected:
             - fixed: 5.1.1
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:L
           type: CVSS_V3
 aliases:
     - CVE-2020-11053
 database_specific:
     cpes:
         - cpe:2.3:a:oauth2_proxy_project:oauth2_proxy:*:*:*:*:*:*:*:*
-    severity: Medium
+    severity: High
 details: In OAuth2 Proxy before 5.1.1, there is an open redirect vulnerability. Users can provide a redirect address for the proxy to send the authenticated user to at the end of the authentication flow. This is expected to be the original URL that the user was trying to access. This redirect URL is checked within the proxy and validated before redirecting the user to prevent malicious actors providing redirects to potentially harmful sites. However, by crafting a redirect URL with HTML encoded whitespace characters the validation could be bypassed and allow a redirect to any URL provided. This has been patched in 5.1.1.
 id: BIT-oauth2-proxy-2020-11053
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2024-03-06T10:59:48.385Z"
 references:
     - type: ADVISORY
