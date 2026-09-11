@@ -15,7 +15,7 @@ affected:
             - introduced: 2.7.0
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+        - score: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H
           type: CVSS_V3
 aliases:
     - CVE-2022-23594
@@ -23,10 +23,10 @@ database_specific:
     cpes:
         - cpe:2.3:a:google:tensorflow:2.7.0:*:*:*:*:*:*:*
         - cpe:2.3:a:google:tensorflow:*:*:*:*:*:*:*:*
-    severity: Medium
+    severity: High
 details: Tensorflow is an Open Source Machine Learning Framework. The TFG dialect of TensorFlow (MLIR) makes several assumptions about the incoming `GraphDef` before converting it to the MLIR-based dialect. If an attacker changes the `SavedModel` format on disk to invalidate these assumptions and the `GraphDef` is then converted to MLIR-based IR then they can cause a crash in the Python interpreter. Under certain scenarios, heap OOB read/writes are possible. These issues have been discovered via fuzzing and it is possible that more weaknesses exist. We will patch them as they are discovered.
 id: BIT-tensorflow-2022-23594
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2024-03-06T11:14:43.924Z"
 references:
     - type: ADVISORY

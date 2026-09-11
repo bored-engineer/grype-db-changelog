@@ -25,7 +25,7 @@ affected:
             - introduced: 2.7.0
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:H
           type: CVSS_V3
 aliases:
     - CVE-2022-23584
@@ -33,10 +33,10 @@ database_specific:
     cpes:
         - cpe:2.3:a:google:tensorflow:*:*:*:*:*:*:*:*
         - cpe:2.3:a:google:tensorflow:2.7.0:*:*:*:*:*:*:*
-    severity: Medium
+    severity: High
 details: Tensorflow is an Open Source Machine Learning Framework. A malicious user can cause a use after free behavior when decoding PNG images. After `png::CommonFreeDecode(&decode)` gets called, the values of `decode.width` and `decode.height` are in an unspecified state. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.
 id: BIT-tensorflow-2022-23584
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2024-03-06T11:14:56.474Z"
 references:
     - type: ADVISORY

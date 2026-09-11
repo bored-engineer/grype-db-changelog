@@ -15,17 +15,17 @@ affected:
             - introduced: 7.0.0
           type: SEMVER
       severity:
-        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
-          type: CVSS_V4
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H
+          type: CVSS_V3
 aliases:
     - CVE-2026-42557
 database_specific:
     cpes:
         - cpe:2.3:a:jupyter:notebook:*:*:*:*:*:*:*:*
-    severity: High
+    severity: Critical
 details: jupyterlab is an extensible environment for interactive and reproducible computing, based on the Jupyter Notebook Architecture. Prior to 4.5.7, JupyterLab's HTML sanitizer allowlists data-commandlinker-command and data-commandlinker-args on button elements, while CommandLinker listens for all click events on document.body and executes the named command without checking whether the element came from trusted JupyterLab UI. A notebook with a pre-saved HTML cell output containing a deceptive button can trigger arbitrary JupyterLab commands - including arbitrary code execution - on a single user click, without any code being submitted for execution by the user. This vulnerability is fixed in 4.5.7.
 id: BIT-jupyter-base-notebook-2026-42557
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2026-05-15T08:41:44.516Z"
 references:
     - type: ADVISORY

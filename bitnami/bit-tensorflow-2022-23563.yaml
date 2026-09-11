@@ -25,7 +25,7 @@ affected:
             - introduced: 2.7.0
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N
+        - score: CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N
           type: CVSS_V3
 aliases:
     - CVE-2022-23563
@@ -33,10 +33,10 @@ database_specific:
     cpes:
         - cpe:2.3:a:google:tensorflow:*:*:*:*:*:*:*:*
         - cpe:2.3:a:google:tensorflow:2.7.0:*:*:*:*:*:*:*
-    severity: Medium
+    severity: High
 details: Tensorflow is an Open Source Machine Learning Framework. In multiple places, TensorFlow uses `tempfile.mktemp` to create temporary files. While this is acceptable in testing, in utilities and libraries it is dangerous as a different process can create the file between the check for the filename in `mktemp` and the actual creation of the file by a subsequent operation (a TOC/TOU type of weakness). In several instances, TensorFlow was supposed to actually create a temporary directory instead of a file. This logic bug is hidden away by the `mktemp` function usage. We have patched the issue in several commits, replacing `mktemp` with the safer `mkstemp`/`mkdtemp` functions, according to the usage pattern. Users are advised to upgrade as soon as possible.
 id: BIT-tensorflow-2022-23563
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2024-03-06T11:15:23.924Z"
 references:
     - type: ADVISORY

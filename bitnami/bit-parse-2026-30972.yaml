@@ -20,17 +20,17 @@ affected:
             - introduced: 9.0.0
           type: SEMVER
       severity:
-        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:N/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
-          type: CVSS_V4
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
 aliases:
     - CVE-2026-30972
 database_specific:
     cpes:
         - cpe:2.3:a:parseplatform:parse-server:*:*:*:*:*:node.js:*:*
-    severity: Medium
+    severity: High
 details: Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior o 9.5.2 and 8.6.23, Parse Server's rate limiting middleware is applied at the Express middleware layer, but the batch request endpoint (/batch) processes sub-requests internally by routing them directly through the Promise router, bypassing Express middleware including rate limiting. An attacker can bundle multiple requests targeting a rate-limited endpoint into a single batch request to circumvent the configured rate limit. Any Parse Server deployment that relies on the built-in rate limiting feature is affected. This vulnerability is fixed in 9.5.2 and 8.6.23.
 id: BIT-parse-2026-30972
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2026-03-12T14:48:14.900Z"
 references:
     - type: ADVISORY

@@ -20,17 +20,17 @@ affected:
             - introduced: 1.9.0
           type: SEMVER
       severity:
-        - score: CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
-          type: CVSS_V4
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H
+          type: CVSS_V3
 aliases:
     - CVE-2024-47597
 database_specific:
     cpes:
         - cpe:2.3:a:bellsoft:libericajdk:*:*:*:*:*:*:*:*
-    severity: Medium
+    severity: Critical
 details: GStreamer is a library for constructing graphs of media-handling components. An OOB-read has been detected in the function qtdemux_parse_samples within qtdemux.c. This issue arises when the function qtdemux_parse_samples reads data beyond the boundaries of the stream->stco buffer. The following code snippet shows the call to qt_atom_parser_get_offset_unchecked, which leads to the OOB-read when parsing the provided GHSL-2024-245_crash1.mp4 file. This issue may lead to read up to 8 bytes out-of-bounds. This vulnerability is fixed in 1.24.10.
 id: BIT-java-2024-47597
-modified: "2026-09-08T08:34:36.952Z"
+modified: "2026-09-10T15:46:03.895Z"
 published: "2026-05-06T14:44:59.658Z"
 references:
     - type: ADVISORY
