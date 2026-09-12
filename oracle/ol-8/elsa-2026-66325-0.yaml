@@ -1,0 +1,256 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.18.0-553.162.1]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.3
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34750652]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985772]
+
+        [4.18.0-553.162.1]
+        - scsi: mpt3sas: Avoid freeing unallocated PCIe SGL buffers (Laurence Oberman) [RHEL-194117]
+        - tipc: fix slab-use-after-free Read in tipc_aead_decrypt_done (Xin Long) [RHEL-228877] {CVE-2026-63801}
+        - tipc: clear sock->sk on the failed-insert path in tipc_sk_create() (Xin Long) [RHEL-238050] {CVE-2026-68117}
+        - sctp: fix race between sctp_wait_for_connect and peeloff (Xin Long) [RHEL-229464] {CVE-2026-63971}
+        - sctp: diag: reject stale associations in dump_one path (Xin Long) [RHEL-231561] {CVE-2026-52917}
+        - sctp: validate stream count in sctp_process_strreset_inreq() (Xin Long) [RHEL-236135] {CVE-2026-68315}
+        - sctp: fix auth_hmacs array size in struct sctp_cookie (Xin Long) [RHEL-237394] {CVE-2026-68376}
+        - sctp: auth: verify auth requirement when auth_chunk is NULL (Xin Long) [RHEL-237088] {CVE-2026-68300}
+        - gfs2: harden gfs2_glock_hold (Andreas Gruenbacher) [RHEL-240340]
+        - gfs2: gfs2_glock_hold cleanup (Andreas Gruenbacher) [RHEL-240340]
+        - sctp: validate embedded INIT chunk and address list lengths in cookie (Xin Long) [RHEL-190202]
+        - sctp: validate cached peer INIT chunk length in COOKIE_ECHO processing (Xin Long) [RHEL-190202] {CVE-2026-53246}
+        - netfilter: nf_log: validate MAC header was set before dumping it (CKI Backport Bot) [RHEL-232055] {CVE-2026-52942}
+        - netfilter: nf_conntrack_sip: don't use simple_strtoul (CKI Backport Bot) [RHEL-232024] {CVE-2026-52986}
+        - scsi: qla2xxx: Clear cmds after chip reset (CKI Backport Bot) [RHEL-230822] {CVE-2025-68745}
+        - scsi: target: configfs: Bound snprintf() return in tg_pt_gp_members_show() (CKI Backport Bot) [RHEL-225791] {CVE-2026-46149}
+
+        [4.18.0-553.161.1]
+        - security/keys: fix missed RCU read section on lookup (Bruno Meneguele) [RHEL-225679] {CVE-2026-64015}
+        - ixgbevf: fix use-after-free in VEPA multicast source pruning (CKI Backport Bot) [RHEL-227760] {CVE-2026-64113}
+        - xfrm: Don't clobber inner headers when already set (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net: pull headers in qdisc_pkt_len_segs_init() (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net: qdisc_pkt_len_segs_init() cleanup (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net: use qdisc_pkt_len_segs_init() in sch_handle_ingress() (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net_sched: initialize qdisc_skb_cb(skb)->pkt_segs in qdisc_pkt_len_init() (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net: init shinfo->gso_segs from qdisc_pkt_len_init() (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net: add more sanity checks to qdisc_pkt_len_init() (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net_sched: make room for (struct qdisc_skb_cb)->pkt_segs (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net: account for encap headers in qdisc pkt len (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - sch_cake: do not use skb_mac_header() in cake_overhead() (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net: do not use skb_mac_header() in qdisc_pkt_len_init() (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+        - net: Skip GSO length estimation if transport header is not set (Ivan Vecera) [RHEL-188227] {CVE-2026-53091}
+
+        [4.18.0-553.160.1]
+        - rhashtable: clear stale iter->p on table restart (CKI Backport Bot) [RHEL-248433] {CVE-2026-64563}
+        - net: bridge: stop fast-leave after deleting a port group (CKI Backport Bot) [RHEL-246938] {CVE-2026-74480}
+        - nvmet-rdma: handle inline data with a nonzero offset (CKI Backport Bot) [RHEL-244910] {CVE-2026-72129}
+        - crypto: pcrypt - Fix handling of MAY_BACKLOG requests (Ricardo Robaina) [RHEL-226702] {CVE-2026-43493}
+        - crypto: pcrypt - Delay write to padata->info (Ricardo Robaina) [RHEL-226702] {CVE-2026-43493}
+        - crypto: pcrypt - Do not clear MAY_SLEEP flag in original request (Ricardo Robaina) [RHEL-226702] {CVE-2026-43493}
+        - smb: client: validate DFS referral PathConsumed (CKI Backport Bot) [RHEL-237655] {CVE-2026-68343}
+        - netfilter: synproxy: refresh tcphdr after skb_ensure_writable (CKI Backport Bot) [RHEL-228903] {CVE-2026-64007}
+        - netfilter: conntrack: remove sprintf usage (CKI Backport Bot) [RHEL-224448] {CVE-2026-53002}
+    FixedIn:
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: bpftool
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-10"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.162.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-66325-0.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-68745.html
+              Name: CVE-2025-68745
+            - Link: https://linux.oracle.com/cve/CVE-2026-46149.html
+              Name: CVE-2026-46149
+            - Link: https://linux.oracle.com/cve/CVE-2026-52917.html
+              Name: CVE-2026-52917
+            - Link: https://linux.oracle.com/cve/CVE-2026-52942.html
+              Name: CVE-2026-52942
+            - Link: https://linux.oracle.com/cve/CVE-2026-52986.html
+              Name: CVE-2026-52986
+            - Link: https://linux.oracle.com/cve/CVE-2026-53091.html
+              Name: CVE-2026-53091
+            - Link: https://linux.oracle.com/cve/CVE-2026-53246.html
+              Name: CVE-2026-53246
+            - Link: https://linux.oracle.com/cve/CVE-2026-63801.html
+              Name: CVE-2026-63801
+            - Link: https://linux.oracle.com/cve/CVE-2026-63971.html
+              Name: CVE-2026-63971
+            - Link: https://linux.oracle.com/cve/CVE-2026-64015.html
+              Name: CVE-2026-64015
+            - Link: https://linux.oracle.com/cve/CVE-2026-64113.html
+              Name: CVE-2026-64113
+            - Link: https://linux.oracle.com/cve/CVE-2026-68117.html
+              Name: CVE-2026-68117
+            - Link: https://linux.oracle.com/cve/CVE-2026-68300.html
+              Name: CVE-2026-68300
+            - Link: https://linux.oracle.com/cve/CVE-2026-68315.html
+              Name: CVE-2026-68315
+            - Link: https://linux.oracle.com/cve/CVE-2026-68376.html
+              Name: CVE-2026-68376
+        Issued: "2026-09-10"
+        RefId: ELSA-2026-66325-0
+    Name: ELSA-2026-66325-0
+    NamespaceName: ol:8
+    Severity: High
