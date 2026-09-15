@@ -1,0 +1,47 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Issue summary: Receiving a DTLS record for a future epoch while a handshakeis in progress causes OpenSSL to buffer far more memory than the recorditself requires.Impact summary: A peer can use a small amount of network traffic to make anOpenSSL DTLS endpoint retain a disproportionately large amount of memory,which may lead to a Denial of Service.CWE: CWE-405: Asymmetric Resource Consumption (Amplification)Description: While a DTLS handshake is in progress, a peer may legitimatelyhave already moved on to the next epoch (for example, having sent itsChangeCipherSpec and Finished messages) before the local endpoint hasprocessed the same transition, typically because of reordering on theunderlying UDP transport. OpenSSL buffers such early records so that theycan be processed once the local endpoint catches up.Buffering a record currently retains the entire read buffer it arrived in,which is sized to hold the largest possible DTLS record (around 16kilobytes), rather than just the bytes that make up the record itself. Upto 100 such records may be buffered per connection. As a result, a peerthat sends a stream of small forged records claiming to belong to the nextepoch can cause an OpenSSL DTLS endpoint to retain around 1.7 megabytes ofmemory, despite sending only a small fraction of that amount of data overthe network.An attacker therefore gains a memory amplification factor of around 1200,and can multiply the effect across as many associations as it is able toopen, making this a remote memory exhaustion Denial of Service risk forDTLS servers. Since the memory retained per connection remains bounded,and any limit an application already places on the number of concurrentassociations also bounds the total exposure, this issue has been assessedas Low severity.FIPS impact: noNo FIPS modules are affected by this issue as the affected code is outsidethe OpenSSL FIPS module boundary.OpenSSL 4.0, 3.6, 3.5, 3.4, 3.0, 1.1.1 and 1.0.2 are vulnerable to thisissue.OpenSSL 4.0 users should upgrade to OpenSSL 4.0.2.OpenSSL 3.6 users should upgrade to OpenSSL 3.6.4.OpenSSL 3.5 users should upgrade to OpenSSL 3.5.8.OpenSSL 3.4 users should upgrade to OpenSSL 3.4.7.OpenSSL 3.0 users should upgrade to OpenSSL 3.0.22.Premium support customers only:OpenSSL 1.1.1 users should upgrade to OpenSSL 1.1.1ziOpenSSL 1.0.2 users should upgrade to OpenSSL 1.0.2zrThis issue was reported on 18 May 2026 by Amazon Web Services.The fix has been developed by Matt Caswell.-- cut (non-publishing metadata for internal use) --Reported by: Amazon Web ServicesFixed by: Matt Caswell (CVE-2026-54874)Issue summary: OpenSSL CMS decryption sizes the key-unwrap output buffer basedon querying the unwrapped key size, but the AES-WRAP-PAD unwrap primitivecan write and cleanse more bytes than that query reports, causing an 8-byteout-of-bounds heap write.Impact summary: An attacker who supplies a crafted CMS message can trigger adeterministic 8-byte out-of-bounds heap write when the victim decrypts itwith CMS_decrypt(), corrupting the heap and typically resulting in a Denialof Service.CWE: CWE-787: Out-of-bounds WriteDescription: The key-wrap OID is potentially attacker-controlled on the wire.CMS unwrapping allows both id-aesNNN-wrap-pad and id-aesNNN-wrap ciphers.An attacker can take a legitimate message and change a single OID byte toselect the padded variant while leaving the message otherwise valid. Sincethe unwrap key is derived from the recipient''s private operation (ECDH keyagreement or ML-KEM decapsulation), the RFC 5649 integrity check cannotpass, and the decryption fails with integrity failure.The write is a fixed-size (8-byte), fixed-value (zero) heap overflowimmediately past the allocation, requires no special configuration, and isreachable from the public CMS_decrypt() function. The consequence isa heap corruption leading to a Denial of Service. The fix in the CMS codesizes the unwrap output buffer for the worst case so a failed unwrap cannotwrite past the allocation.FIPS impact: noAs the CMS code lives outside the FIPS module boundary, no FIPSmodules are affected by this CVE. (CVE-2026-63072)'
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl11
+          NamespaceName: amzn:2
+          Version: 1.1.1zi-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl11-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.1.1zi-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl11-devel
+          NamespaceName: amzn:2
+          Version: 1.1.1zi-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl11-libs
+          NamespaceName: amzn:2
+          Version: 1.1.1zi-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl11-static
+          NamespaceName: amzn:2
+          Version: 1.1.1zi-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3907.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-54874
+            - Name: CVE-2026-63072
+    Name: ALAS2-2026-3907
+    NamespaceName: amzn:2
+    Severity: High

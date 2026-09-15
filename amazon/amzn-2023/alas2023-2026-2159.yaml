@@ -1,0 +1,46 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in libsoup's WebSocket implementation when using the permessage-deflate extension. The extension's decompression loop (inflate()) processes data in chunks without enforcing an upper boundary limit on the output buffer size. While libsoup limits the incoming compressed frame size via max_incoming_payload_size, it fails to track or limit memory allocation during decompression. A separate check for decompressed size (max_total_message_size) exists but executes only after inflation is complete, and it is entirely disabled by default for client connections. A remote, unauthenticated attacker can exploit this by sending a small, highly compressed payload (a decompression bomb), causing unbounded memory allocation that triggers an Out-of-Memory (OOM) crash and a Denial of Service (DoS). (CVE-2026-15709)
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libsoup3
+          NamespaceName: amzn:2023
+          Version: 3.6.6-60.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libsoup3-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.6.6-60.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libsoup3-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.6.6-60.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libsoup3-devel
+          NamespaceName: amzn:2023
+          Version: 3.6.6-60.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libsoup3-doc
+          NamespaceName: amzn:2023
+          Version: 3.6.6-60.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2159.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-15709
+    Name: ALAS2023-2026-2159
+    NamespaceName: amzn:2023
+    Severity: High

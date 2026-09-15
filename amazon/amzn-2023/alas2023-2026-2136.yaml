@@ -1,0 +1,96 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Issue summary: In a server or client configuration with RFC7250 Raw Public Keys (RPKs)enabled, and only the private key (with no associated certificate) configured locally,a NULL pointer dereference may occur when the remote peer solicits raw public keys andalso sends the typically omitted "signature_algorithms_cert" TLS extension.Impact summary: The impact is limited to a possible Denial of Service as a result ofan application abort, no data disclosure or remote command execution are possible.CWE: CWE-476: NULL Pointer DereferenceDescription: While a passing comment in sample code in the documentation suggeststhat key-only RPK configurations are supported, the best-practice RPK configurationis to always configure a corresponding certificate (possibly self-signed orsigned by any convenient CA).When the private key is configured along with a matching certificate, the"signature_algorithms_cert" extension is handled reliably even without thefix, and peer clients or servers that don''t support raw public keys may beable to complete a TLS connection by pinning or verifying the correspondingcertificate or its public key.Deployments that prefer to configure just a private key with no certificateneed to upgrade to an updated release as noted below.FIPS impact: noNo FIPS modules are affected by this issue, as the SSL protocol implementationis outside the OpenSSL FIPS module boundary. (CVE-2026-14457)Issue summary: QUIC server may double free QRX (QUIC record layer RX) objectwhen channel creation fails for initial packet.Impact summary: Double free leads to heap corruption, which typically results intermination of QUIC server process, leading to Denial of Service. There is sofar no evidence that this double free is exploitable for remote code execution,thus it is considered highly improbable.CWE: CWE-415: Double FreeDescription: In order to validate initial packet, OpenSSL QUIC stack defaultpacket handler (port_default_packet_handler()) creates a so-called QRX object.If the initial packet validates successfully with QRX object, the default packethandler proceeds to channel (connection object) creation. The QRX object usedfor packet validation is passed to port_bind_channel(), so it becomes part ofthe newly created connection. If port_bind_channel() fails, then it also freesthe QRX object. Once port_bind_channel() returns, the port_default_packet_handler()detects the failure and proceeds to the error branch, where the same QRX object isfreed for the second time.The failure in port_bind_channel() function can be induced with a relativelylow effort by a malformed (non RFC 9000 compliant) INITIAL packet. If the packetcarries DCID (destination connection ID) which is shorter than 8 bytes, thenport_bind_channel() jumps to the error path after ossl_quic_lcidm_enrol_odcid()detects that the DCID has invalid length.FIPS impact: noThe FIPS module is not affected, as the QUIC implementation is outside ofthe OpenSSL FIPS module boundary. (CVE-2026-18798)Issue summary: Receiving a DTLS record for a future epoch while a handshakeis in progress causes OpenSSL to buffer far more memory than the recorditself requires.Impact summary: A peer can use a small amount of network traffic to make anOpenSSL DTLS endpoint retain a disproportionately large amount of memory,which may lead to a Denial of Service.CWE: CWE-405: Asymmetric Resource Consumption (Amplification)Description: While a DTLS handshake is in progress, a peer may legitimatelyhave already moved on to the next epoch (for example, having sent itsChangeCipherSpec and Finished messages) before the local endpoint hasprocessed the same transition, typically because of reordering on theunderlying UDP transport. OpenSSL buffers such early records so that theycan be processed once the local endpoint catches up.Buffering a record currently retains the entire read buffer it arrived in,which is sized to hold the largest possible DTLS record (around 16kilobytes), rather than just the bytes that make up the record itself. Upto 100 such records may be buffered per connection. As a result, a peerthat sends a stream of small forged records claiming to belong to the nextepoch can cause an OpenSSL DTLS endpoint to retain around 1.7 megabytes ofmemory, despite sending only a small fraction of that amount of data overthe network.An attacker therefore gains a memory amplification factor of around 1200,and can multiply the effect across as many associations as it is able toopen, making this a remote memory exhaustion Denial of Service risk forDTLS servers. Since the memory retained per connection remains bounded,and any limit an application already places on the number of concurrentassociations also bounds the total exposure, this issue has been assessedas Low severity.FIPS impact: noNo FIPS modules are affected by this issue as the affected code is outsidethe OpenSSL FIPS module boundary.OpenSSL 4.0, 3.6, 3.5, 3.4, 3.0, 1.1.1 and 1.0.2 are vulnerable to thisissue.OpenSSL 4.0 users should upgrade to OpenSSL 4.0.2.OpenSSL 3.6 users should upgrade to OpenSSL 3.6.4.OpenSSL 3.5 users should upgrade to OpenSSL 3.5.8.OpenSSL 3.4 users should upgrade to OpenSSL 3.4.7.OpenSSL 3.0 users should upgrade to OpenSSL 3.0.22.Premium support customers only:OpenSSL 1.1.1 users should upgrade to OpenSSL 1.1.1ziOpenSSL 1.0.2 users should upgrade to OpenSSL 1.0.2zrThis issue was reported on 18 May 2026 by Amazon Web Services.The fix has been developed by Matt Caswell.-- cut (non-publishing metadata for internal use) --Reported by: Amazon Web ServicesFixed by: Matt Caswell (CVE-2026-54874)Issue summary: OpenSSL CMS decryption sizes the key-unwrap output buffer basedon querying the unwrapped key size, but the AES-WRAP-PAD unwrap primitivecan write and cleanse more bytes than that query reports, causing an 8-byteout-of-bounds heap write.Impact summary: An attacker who supplies a crafted CMS message can trigger adeterministic 8-byte out-of-bounds heap write when the victim decrypts itwith CMS_decrypt(), corrupting the heap and typically resulting in a Denialof Service.CWE: CWE-787: Out-of-bounds WriteDescription: The key-wrap OID is potentially attacker-controlled on the wire.CMS unwrapping allows both id-aesNNN-wrap-pad and id-aesNNN-wrap ciphers.An attacker can take a legitimate message and change a single OID byte toselect the padded variant while leaving the message otherwise valid. Sincethe unwrap key is derived from the recipient''s private operation (ECDH keyagreement or ML-KEM decapsulation), the RFC 5649 integrity check cannotpass, and the decryption fails with integrity failure.The write is a fixed-size (8-byte), fixed-value (zero) heap overflowimmediately past the allocation, requires no special configuration, and isreachable from the public CMS_decrypt() function. The consequence isa heap corruption leading to a Denial of Service. The fix in the CMS codesizes the unwrap output buffer for the worst case so a failed unwrap cannotwrite past the allocation.FIPS impact: noAs the CMS code lives outside the FIPS module boundary, no FIPSmodules are affected by this CVE. (CVE-2026-63072)Issue summary: OpenSSL CMP response validation passed an unexpected responsesender distinguished name directly as the format string to `ERR_raise_data()`.Impact summary: A malicious or intercepted CMP endpoint can crash a CMP clientthat enforces an expected sender or uses a pinned server certificate whosesubject becomes the default expected sender.CWE: CWE-134 (Use of Externally-Controlled Format String)Description: When validating a received CMP message, ossl_cmp_msg_check_update()converts the peer-supplied sender distinguished name with X509_NAME_oneline()and passes it directly as the format argument to ERR_raise_data(). Percentcharacters survive the conversion, so a sender DN such as "CN=%s%n" reachesBIO_vsnprintf() as an attacker-controlled format string with no matching variadicarguments. This path is only reached when the caller configures an expectedsender or pins a server certificate, which is the normal configuration for aCMP client validating server responses.Since the attacker controls the format string but none of the variadicarguments, such specifiers as %s and %n dereference or write through unrelatedstack contents and crash the client. The reliable consequence is a denial ofservice, when the response comes from a malicious or intercepted CMP endpoint.There is no controlled memory write, arbitrary-address read, or reliable pathto remote code execution.FIPS impact: noNo FIPS modules are affected by this issue, as the CMP protocolimplementation is outside the OpenSSL FIPS module boundary. (CVE-2026-63073)Issue summary: The OpenSSL Certificate Management Protocol (CMP) cachesadditional certificates (extraCerts) sent in a CMP message, but never expungesthem (for instance if they are invalid).  If a server reuses an OSSL_CMP_CTXfrequently, this cache of extraCerts may grow unboundedly, and a maliciousclient may flood a CMP server with requests driving this growth.Impact summary: Users utilizing a CMP server that reuses a single OSSL_CMP_CTXfor the lifetime of a server process may observe unbounded memory growth in theevent a malicious client repeatedly sends requests containing unique extracertificates, which may lead to OOM conditions.CWE: CWE-770: Allocation of Resources Without Limits or ThrottlingDescription: If a remote user sends CMP messages to a server with a list ofextraCerts and the message is rejected, the extraCerts from the message remainsin the server contexts untrusted certificate stack.  This exposes servers withlong lived ctx objects to Denial of Service attacks in which an attacker sendsmessages intending to be rejected with a large list of additional certificatesrepeatedly, forcing the server to store them indefinitely.The issue was fixed by removing the added extra certs if the message isrejected, using the same method as when the context is configured to not docaching at all.FIPS impact: noAs the CMP code lives outside the FIPS module boundary, no FIPSmodules are affected by this CVE. (CVE-2026-63074)Issue summary: When OpenSSL processes QUIC traffic from a peer that repeatedlysends ack-eliciting packets while not acknowledging ACK-only responses, theQUIC stack can retain ACK-only packet metadata for the lifetime of theconnection.Impact summary: A remote peer that can complete a QUIC handshake cancause connection-scoped memory growth which may lead to Denial of Servicethrough memory exhaustion, especially with sustained traffic or many concurrentQUIC connections.CWE: CWE-770: Allocation of Resources Without Limits or ThrottlingDescription: When the OpenSSL QUIC stack sends an ACK-only packet,there is no requirement by the QUIC protocol that the peer will acknowledgethat ACK-only packet (i.e. it is itself not ack-eliciting). However, the OpenSSLimplementation stores the metadata about the ACK frames regardless.In and of itself that''s ok, but if a malicious peer establishes a connection, andthen drives the connection such that ACK-only packets are forced from theOpenSSL implementation peer (i.e., by sending numerous PING frames),and then withholding any subsequent acks for ack-eliciting data, likelegitimate data, said malicious peer can force inappropriate memory growthon the OpenSSL peer, potentially leading to a Denial of Service.The fix is to ensure that we account for the transmission of the ACK-onlypacket in the packet histories high and low watermark without actually storingthe ACK-only packet metadata itself.FIPS impact: noThe OpenSSL FIPS module is not affected as the QUIC code isoutside the FIPS module boundary. (CVE-2026-63075)Issue summary: OpenSSL CMP password based protection verification onlychecks whether the protectionAlg parameter was not NULL and not itsASN.1 type, before treating it as a PBMParameter. A crafted message cancontain a parameter of a different type, which is then dereferenced as aninvalid pointer.Impact summary: A remote, unauthenticated attacker can crash an applicationacting as a CMP server that accepts PBM-protected messages, or a CMP clienttalking to a malicious or intercepted CMP server, resulting in a Denial ofService.CWE: CWE-476: NULL Pointer DereferenceDescription: When verifying the password-based MAC protection of a CMPmessage, OpenSSL library reads the protectionAlg algorithm parameter withX509_ALGOR_get0(), which returns both the parameter type and its valuepointer. The value is then cast to an ASN1_STRING and treated as theexpected PBMParameter after only checking that pointer is not NULL. Theparameter type returned by X509_ALGOR_get0() was never consulted.This happens during protection verification, before any MAC is computed, sono knowledge of the PBM shared secret is required; the only precondition isthat PBM verification is reachable. On the server side this is reached fromOSSL_CMP_SRV_process_request() for any application that stands up a CMPserver accepting PBM-protected messages, and on the client side from CMPresponse validation against a malicious or on-path (MITM) server. Thereliable consequence is a denial of service; there is no memory disclosure,no controlled memory write, and no path to code execution. CMP is aspecialized feature that an application must explicitly enable.FIPS impact: noAs the CMP code lives outside the FIPS module boundary, no FIPS modulesare affected by this CVE. (CVE-2026-63076)Check the tag on EVP_Cipher() finalize: Poly1305 and OCB AEADs (CVE-2026-75803)'
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-devel
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-fips-provider-latest
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-fips-provider-latest-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-libs
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-perl
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-snapsafe-libs
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: openssl-snapsafe-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.5.8-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2136.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-14457
+            - Name: CVE-2026-18798
+            - Name: CVE-2026-54874
+            - Name: CVE-2026-63072
+            - Name: CVE-2026-63073
+            - Name: CVE-2026-63074
+            - Name: CVE-2026-63075
+            - Name: CVE-2026-63076
+            - Name: CVE-2026-75803
+    Name: ALAS2023-2026-2136
+    NamespaceName: amzn:2023
+    Severity: High

@@ -1,0 +1,18 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: jsoup is a Java library for working with real-world HTML. From 1.14.3 until 1.23.1, jsoup's HTML parser could incorrectly handle a malformed tag name ending in a control character, causing the tag to acquire the parsing behavior of a different element. When a custom Safelist permits certain raw-text elements, this misparsing can cause content that should remain inert text to be emitted as active markup after serialization, potentially resulting in cross-site scripting. jsoup's built-in Safelists are not affected. This issue is fixed in version 1.23.1. (CVE-2026-71497)
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: jsoup
+          NamespaceName: amzn:2023
+          Version: 1.23.2-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2150.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-71497
+    Name: ALAS2023-2026-2150
+    NamespaceName: amzn:2023
+    Severity: Medium

@@ -1,0 +1,30 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: (*x509.Certificate).VerifyHostname previously called matchHostnames in a loop over all DNS Subject Alternative Name (SAN) entries. This caused strings.Split(host, ".") to execute repeatedly on the same input hostname. With a large DNS SAN list, verification costs scaled quadratically based on the number of SAN entries multiplied by the hostname's label count. Because x509.Verify validates hostnames before building the certificate chain, this overhead occurred even for untrusted certificates. (CVE-2026-27145)On Unix systems, opening a file in an os.Root improperly follows symlinks to locations outside of the Root when the final path component of the a path is a symbolic link and the path ends in /. For example, 'root.Open("symlink/")' will open "symlink" even when "symlink" is a symbolic link pointing outside of the root. (CVE-2026-39822)When setting up the container rootfs, setupPtmx and setupDevSymlinks call os.Remove and os.Symlink with a filepath.Join string which allow an image with /dev as a symlink to trick runc into deleting files called ptmx on the host or creating a hardcoded set of symlinks with specific names and targets in an arbitrary pre-existing host directory. (from https://github.com/opencontainers/runc/security/advisories/GHSA-xjvp-4fhw-gc47) (CVE-2026-41579)Decoding a maliciously-crafted MIME header containing many invalid encoded-words can consume excessive CPU. (CVE-2026-42504)Handshakes which used Encrypted Client Hello could be de-anonymized by a passive network observer due to a disclosure of pre-shared key identities in the unencrypted client hello. (CVE-2026-42505)When returning errors, functions in the net/textproto package would include its input as part of the error. This might allow an attacker to inject misleading content to errors that are printed or logged. (CVE-2026-42507)
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: runc
+          NamespaceName: amzn:2
+          Version: 1.3.6-1.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: runc-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.3.6-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2NITRO-ENCLAVES-2026-119.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-27145
+            - Name: CVE-2026-39822
+            - Name: CVE-2026-41579
+            - Name: CVE-2026-42504
+            - Name: CVE-2026-42505
+            - Name: CVE-2026-42507
+    Name: ALAS2NITRO-ENCLAVES-2026-119
+    NamespaceName: amzn:2
+    Severity: Medium

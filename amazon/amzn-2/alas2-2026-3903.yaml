@@ -1,0 +1,28 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'A vulnerability has been found in cilium ebpf up to 0.21.0. This affects the function loadRawSpec of the file btf/btf.go of the component LoadCollectionSpec/LoadCollectionSpecFromReader. Such manipulation of the argument offset leads to integer overflow. The attack can only be performed from a local environment. The exploit has been disclosed to the public and may be used. The name of the patch is 533dfc82fd228bfadf42ea7180c39de7d9af47fa. A patch should be applied to remediate this issue. (CVE-2026-10722)On Unix systems, opening a file in an os.Root improperly follows symlinks to locations outside of the Root when the final path component of the a path is a symbolic link and the path ends in /. For example, ''root.Open("symlink/")'' will open "symlink" even when "symlink" is a symbolic link pointing outside of the root. (CVE-2026-39822)Handshakes which used Encrypted Client Hello could be de-anonymized by a passive network observer due to a disclosure of pre-shared key identities in the unencrypted client hello. (CVE-2026-42505)Memory exhaustion DoS causing OOM kill of containerd processNOTE: https://github.com/containerd/containerd/security/advisories/GHSA-jpcc-p29g-p8mq (CVE-2026-47262)'
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: nerdctl
+          NamespaceName: amzn:2
+          Version: 2.3.5-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: nerdctl-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.3.5-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3903.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-10722
+            - Name: CVE-2026-39822
+            - Name: CVE-2026-42505
+            - Name: CVE-2026-47262
+    Name: ALAS2-2026-3903
+    NamespaceName: amzn:2
+    Severity: Medium
