@@ -1,0 +1,52 @@
+Vulnerability:
+    Description: FreeRDP is a free implementation of the Remote Desktop Protocol. Prior to 3.28.0, rdpsnd_server_recv_formats in channels/rdpsnd/server/rdpsnd_main.c frees context->client_formats on a malformed Client Audio Formats PDU without clearing the owning pointer or num_client_formats. An authenticated RDP client can trigger an error such as a cbSize larger than the remaining record, leave the dangling pointer in the server context, and cause rdpsnd_server_context_free to free the same allocation again at session teardown. This reliably terminates the server and can create allocator-dependent heap corruption. This issue is fixed in version 3.28.0. (CVE-2026-63652)
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: freerdp
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.15
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: freerdp-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.15
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: freerdp-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.15
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: freerdp-libs
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.15
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libwinpr
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.15
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libwinpr-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.15
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3906.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-63652
+    Name: ALAS2-2026-3906
+    NamespaceName: amzn:2
+    Severity: Medium

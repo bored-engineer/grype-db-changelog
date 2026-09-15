@@ -1,0 +1,38 @@
+Vulnerability:
+    Description: Mistune is a Python Markdown parser with renderers and plugins. Versions 3.3.0 through 3.3.2 are vulnerable to DoS through deeply nested tokens. HTML rendering creates deeply nested emphasis tokens from consecutive asterisk characters, and recursive rendering in HTMLRenderer.render_token() can exceed Python's recursion limit and raise RecursionError, allowing crafted Markdown to crash a parsing process. This issue is fixed in version 3.3.3 (CVE-2026-76098)
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: python-mistune
+          NamespaceName: amzn:2023
+          Version: 0.8.3-14.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: python-mistune-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.8.3-14.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: python3-mistune
+          NamespaceName: amzn:2023
+          Version: 0.8.3-14.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: python3-mistune-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.8.3-14.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2148.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-76098
+    Name: ALAS2023-2026-2148
+    NamespaceName: amzn:2023
+    Severity: High

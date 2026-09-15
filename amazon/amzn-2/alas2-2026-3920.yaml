@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: mod_auth_openidc is an OpenID Certified authentication and authorization module for the Apache 2.x HTTP server that implements the OpenID Connect Relying Party functionality. Prior to 2.4.19.4, an out-of-bounds read and a one-byte out-of-bounds write exist in the state-cookie parser of `mod_auth_openidc`. The issue is fixed in version 2.4.19.4 by stopping the scan at the string terminator so a value-less token is rejected. No in-product workarounds are available. As a stop-gap, an upstream reverse proxy or WAF that rejects or normalizes malformed `Cookie` headers (tokens lacking `=`) can reduce exposure, but upgrading is the recommended remediation. (CVE-2026-54789)
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: mod_auth_openidc
+          NamespaceName: amzn:2
+          Version: 1.8.8-7.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: mod_auth_openidc-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.8.8-7.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3920.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-54789
+    Name: ALAS2-2026-3920
+    NamespaceName: amzn:2
+    Severity: High

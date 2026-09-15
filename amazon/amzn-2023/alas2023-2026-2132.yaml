@@ -1,0 +1,94 @@
+Vulnerability:
+    Description: 'A use-after-free vulnerability exists in libcurl when an application configures an HTTP/2 stream-dependency tree via CURLOPT_STREAM_DEPENDS or CURLOPT_STREAM_DEPENDS_E, subsequently invokes curl_easy_reset(), and finally terminates the handle with curl_easy_cleanup(). During this final cleanup phase, libcurl attempts to access and modify an internal structure that was already freed during the reset operation. (CVE-2026-10536)By default, curl automatically responds to WebSocket PING frames. Because curl lacks an upper bound on memory allocation for unacknowledged frames, a malicious server can exhaust all available memory by flooding curl with rapid, sequential PING messages. (CVE-2026-11586)Successfully using libcurl to do a transfer to a specific HTTP origin (hostA) with Digest authentication and then changing the origin to a different one (hostB) for a second transfer, reusing the same handle, makes libcurl wrongly pass on the Authorization: header field meant for hostA, to hostB. (CVE-2026-11856)When a user invokes curl using a schemeless URL combined with --proto-default sftp (or scp), a disconnect occurs between the tool layer and libcurl. The tool layer incorrectly infers the URL scheme, which erroneously bypasses the initialization of critical SSH security options like CURLOPT_SSH_HOST_PUBLIC_KEY_SHA256 and CURLOPT_SSH_KNOWNHOSTS. Conversely, the libcurl runtime successfully honors CURLOPT_DEFAULT_PROTOCOL and establishes the connection via SFTP/SCP as specified. Because the tool layer skipped the security configuration, these SSH host verification options are silently omitted, causing curl to connect to an unverified SSH remote host without throwing an error. (CVE-2026-12064)A vulnerability exists where a new transfer that uses STARTTLS to upgrade the connection might reuse an existing live connection even though the TLS configuration mismatches so it should not. (CVE-2026-8286)libcurl might in some circumstances reuse the wrong connection when asked to do Negotiate-authenticated ones, even when they are set to use different "services".libcurl features a pool of recent connections so that subsequent requests can reuse an existing connection to avoid overhead.When reusing a connection a range of criteria must be met. Due to a logical error in the code, a request that was issued by an application could wrongfully reuse an existing connection to the same server that was authenticated using different services. (CVE-2026-8458)A flaw in curl''s cookie parsing logic allows a malicious HTTP server to set "super cookies" that bypass the Public Suffix List check. This enables an attacker-controlled origin to inject cookies that curl subsequently scopes and transmits to unrelated third-party domains. (CVE-2026-8924)The curl logic that works with SASL authentication could end up cleaning up the GSASL context twice without clearing the pointer in between, making it free() the same pointer twice. (CVE-2026-8925)When asking curl to use a .netrc file to find credentials and at the same time specifying a URL with a username (without a password), like https://user@example.com/, curl could wrongly get and use the password for another user set in the .netrc file for that host if such a one exists and there is no match for the specified user. (CVE-2026-8926)When reusing a libcurl handle for sequential transfers driven by environment-variable proxy configuration, libcurl fails to clear the proxy authentication state between requests. Specifically, if the initial transfer authenticates against proxyA using Digest auth, a subsequent transfer routed through proxyB erroneously leaks the Proxy-Authorization: header intended solely for proxyA. (CVE-2026-8927)libcurl would reuse a previously created connection even when some mTLS config related option had been changed that should have prohibited reuse.libcurl keeps previously used connections in a connection pool for subsequent transfers to reuse if one of them matches the setup. However, some TLS settings related to client certificates were left out from the configuration match checks, making them match too easily. In particular options related to the private key. (CVE-2026-8932)libcurl had a flaw that when instructed to clear proxy authentication credentials which made it not do so, leaving the old credentials around to get used for subsequent transfers that should not know nor use them. (CVE-2026-9079)Calling curl_easy_pause() within the event-based CURLMOPT_SOCKETFUNCTION callback triggers a use-after-free vulnerability, where libcurl attempts to store a flag using a dangling struct pointer immediately after that pointer''s memory has been freed. (CVE-2026-9080)In this scenario, libcurl first uses a proper HTTP/3 server for the initial transfers, and when it makes a second transfer to the same site it has been replaced by the attacker''s impostor machine - without a valid certificate.When libcurl returns to the hostname the second time with a cached SSL session (CURLOPT_SSL_SESSIONID_CACHE is not disabled) and early data enabled (the CURLSSLOPT_EARLYDATA bit is set in CURLOPT_SSL_OPTIONS), libcurl might send off the second request''s bytes on that new connection before enforcing the certificate verification failure. Potentially leaking sensitive information. (CVE-2026-9545)When a libcurl-based application performs transfers via SCP:// or SFTP:// and utilizes the CURLOPT_SSH_KEYFUNCTION callback, it may silently accept an untrusted server. This vulnerability occurs when a server presents a host key type that does not match the specific key type already recorded for that host in the known_hosts file. Instead of rejecting the mismatch, the callback mechanism fails to properly enforce the restriction, allowing the connection to succeed without warning and risking a potential man-in-the-middle attack. (CVE-2026-9547)'
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: curl
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: curl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: curl-debugsource
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: curl-minimal
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: curl-minimal-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libcurl
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libcurl-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libcurl-devel
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libcurl-minimal
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Name: libcurl-minimal-debuginfo
+          NamespaceName: amzn:2023
+          Version: 8.21.0-5.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-2132.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-10536
+            - Name: CVE-2026-11586
+            - Name: CVE-2026-11856
+            - Name: CVE-2026-12064
+            - Name: CVE-2026-8286
+            - Name: CVE-2026-8458
+            - Name: CVE-2026-8924
+            - Name: CVE-2026-8925
+            - Name: CVE-2026-8926
+            - Name: CVE-2026-8927
+            - Name: CVE-2026-8932
+            - Name: CVE-2026-9079
+            - Name: CVE-2026-9080
+            - Name: CVE-2026-9545
+            - Name: CVE-2026-9547
+    Name: ALAS2023-2026-2132
+    NamespaceName: amzn:2023
+    Severity: Medium
