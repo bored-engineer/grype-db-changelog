@@ -1,0 +1,47 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [1.4.0-3.0.1]
+        - Change distroname_ext in spec file to oracle
+
+        [1.4.0-3]
+        - CVE-2026-71226: Fix memory corruption via uncanceled AIO requests
+          on error in libkcapi's one-shot AIO path
+          Resolves: RHEL-224809
+        - CVE-2026-71227: Fix infinite loop denial of service in libkcapi
+          _kcapi_aio_read_all() due to unhandled io_getevents() timeout return
+          Resolves: RHEL-224975
+        - CVE-2026-71225: Fix IV reuse in libkcapi one-shot symmetric cipher chunking
+          Resolves: RHEL-224697
+    FixedIn:
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Module: null
+          Name: libkcapi
+          NamespaceName: ol:8
+          Version: 0:1.4.0-3.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-14"
+            Kind: advisory
+          Module: null
+          Name: libkcapi-hmaccalc
+          NamespaceName: ol:8
+          Version: 0:1.4.0-3.0.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-67266-0.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-71225.html
+              Name: CVE-2026-71225
+            - Link: https://linux.oracle.com/cve/CVE-2026-71226.html
+              Name: CVE-2026-71226
+            - Link: https://linux.oracle.com/cve/CVE-2026-71227.html
+              Name: CVE-2026-71227
+        Issued: "2026-09-14"
+        RefId: ELSA-2026-67266-0
+    Name: ELSA-2026-67266-0
+    NamespaceName: ol:8
+    Severity: Medium
