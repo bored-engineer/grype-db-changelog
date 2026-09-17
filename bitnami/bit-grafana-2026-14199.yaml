@@ -26,7 +26,7 @@ affected:
             - fixed: 13.2.1
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:L
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N
           type: CVSS_V3
 aliases:
     - CVE-2026-14199
@@ -39,10 +39,10 @@ database_specific:
     severity: High
 details: Only self-managed Grafana instances with Auth Proxy authentication and identity caching enabled (sync_ttl greater than zero) are affected. The Auth Proxy cache key concatenated the username and forwarded identity attributes without a delimiter, so distinct identities could collide on one key. An authenticated user who shapes their own attributes to collide with a higher-privileged user's, while that user's cache entry is live, is authenticated as that user, up to Administrator (authentication bypass by spoofing).
 id: BIT-grafana-2026-14199
-modified: "2026-09-09T09:13:23.794Z"
+modified: "2026-09-16T15:48:17.670Z"
 published: "2026-09-08T08:14:51.153Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: https://grafana.com/security/security-advisories/cve-2026-14199
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-14199
