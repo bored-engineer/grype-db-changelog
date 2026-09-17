@@ -1,0 +1,52 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [9.5-8.0.1.el10_2.1]
+        - clean up empty file if cp is failed [Orabug 15973168]
+
+        [9.5-8.1]
+        - uniq: fix CVE-2026-56391 (RHEL-216794)
+          - fix read overrun with -w
+        - unexpand: fix CVE-2026-56392 and related crashes (RHEL-216784)
+          - fix direct.sh and unexpand/mb.sh tests
+          - fix unexpand/expand crash on invalid multibyte characters
+          - fix heap overflow with large tab stops
+          - fix heap overflow when a wide blank overshoots a tab stop
+    FixedIn:
+        - Available:
+            Date: "2026-09-16"
+            Kind: advisory
+          Module: null
+          Name: coreutils
+          NamespaceName: ol:10
+          Version: 0:9.5-8.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-16"
+            Kind: advisory
+          Module: null
+          Name: coreutils-common
+          NamespaceName: ol:10
+          Version: 0:9.5-8.0.1.el10_2.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-16"
+            Kind: advisory
+          Module: null
+          Name: coreutils-single
+          NamespaceName: ol:10
+          Version: 0:9.5-8.0.1.el10_2.1
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-67886.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-56391.html
+              Name: CVE-2026-56391
+            - Link: https://linux.oracle.com/cve/CVE-2026-56392.html
+              Name: CVE-2026-56392
+        Issued: "2026-09-16"
+        RefId: ELSA-2026-67886
+    Name: ELSA-2026-67886
+    NamespaceName: ol:10
+    Severity: Medium
