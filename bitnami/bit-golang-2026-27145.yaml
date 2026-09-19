@@ -30,7 +30,7 @@ database_specific:
     severity: High
 details: (*x509.Certificate).VerifyHostname previously called matchHostnames in a loop over all DNS Subject Alternative Name (SAN) entries. This caused strings.Split(host, ".") to execute repeatedly on the same input hostname. With a large DNS SAN list, verification costs scaled quadratically based on the number of SAN entries multiplied by the hostname's label count. Because x509.Verify validates hostnames before building the certificate chain, this overhead occurred even for untrusted certificates.
 id: BIT-golang-2026-27145
-modified: "2026-09-12T09:08:08.194Z"
+modified: "2026-09-18T09:06:02.240Z"
 published: "2026-06-05T05:44:57.398Z"
 references:
     - type: WEB
@@ -215,6 +215,10 @@ references:
       url: https://access.redhat.com/errata/RHSA-2026:63016
     - type: WEB
       url: https://access.redhat.com/errata/RHSA-2026:66022
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:68334
+    - type: WEB
+      url: https://access.redhat.com/errata/RHSA-2026:68335
     - type: WEB
       url: https://access.redhat.com/security/cve/CVE-2026-27145
     - type: WEB
