@@ -1,0 +1,38 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: kyverno
+        purl: pkg:bitnami/kyverno
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-09-25"
+                      kind: advisory
+                      version: 1.16.4
+          events:
+            - fixed: 1.16.4
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-84195
+database_specific:
+    cpes:
+        - cpe:2.3:a:kyverno:kyverno:*:*:*:*:*:go:*:*
+    severity: High
+details: Kyverno before 1.16.4 automatically attaches the admission controller's ServiceAccount token to outbound HTTP requests in apiCall service mode without explicit authorization headers. Attackers can exfiltrate the token by directing apiCall requests to external or attacker-controlled endpoints, gaining full control over Kyverno policies and cluster resources.
+id: BIT-kyverno-2026-84195
+modified: "2026-09-25T12:52:12.177Z"
+published: "2026-09-25T12:23:40.057Z"
+references:
+    - type: WEB
+      url: https://github.com/kyverno/kyverno/security/advisories/GHSA-8wfp-579w-6r25
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-84195
+    - type: WEB
+      url: https://www.vulncheck.com/advisories/kyverno-before-1.16.4-credential-leak-via-apicall
+schema_version: 1.6.2
+summary: Kyverno before 1.16.4 Credential Leak via apiCall

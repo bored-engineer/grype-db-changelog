@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-09-25"
+                      kind: advisory
+                      version: 19.1.8
+                    - date: "2026-09-25"
+                      kind: advisory
+                      version: 19.2.6
+                    - date: "2026-09-25"
+                      kind: advisory
+                      version: 19.3.2
+          events:
+            - fixed: 19.1.8
+            - fixed: 19.2.6
+            - fixed: 19.3.2
+            - introduced: 13.0.0
+            - introduced: 19.2.0
+            - introduced: 19.3.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2026-8030
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Medium
+details: GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.0 before 19.1.8, 19.2 before 19.2.6, and 19.3 before 19.3.2 that under certain conditions could have allowed an authenticated user to prevent another user from modifying their group settings due to improper validation of group URL slugs during namespace transfers.
+id: BIT-gitlab-2026-8030
+modified: "2026-09-25T12:52:12.177Z"
+published: "2026-09-25T12:50:02.953Z"
+references:
+    - type: WEB
+      url: https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/work_items/599240
+    - type: WEB
+      url: https://hackerone.com/reports/3689558
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-8030
+schema_version: 1.6.2
+summary: Missing Authorization in GitLab
