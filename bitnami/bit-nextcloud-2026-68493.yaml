@@ -1,0 +1,36 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: nextcloud
+        purl: pkg:bitnami/nextcloud
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-09-25"
+                      kind: advisory
+                      version: 34.0.1
+          events:
+            - introduced: 32.0.0
+            - fixed: 34.0.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-68493
+database_specific:
+    cpes:
+        - cpe:2.3:a:nextcloud:nextcloud:*:*:*:*:*:*:*:*
+    severity: Low
+details: After guessing a 62^15 complex unique identifier, a malicious logged in user was able to retrieve a list of memberships for a circle they are not a member of.
+id: BIT-nextcloud-2026-68493
+modified: "2026-09-25T12:52:12.177Z"
+published: "2026-09-25T12:27:06.092Z"
+references:
+    - type: WEB
+      url: https://hackerone.com/reports/3484601
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-68493
+schema_version: 1.6.2
