@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: The source-address critical option in the Permissions returned by an authentication callback was only enforced for the PublicKeyCallback and VerifiedPublicKeyCallback paths, extending the fix for CVE-2026-46595. Permissions returned by the PasswordCallback, KeyboardInteractiveCallback, NoClientAuthCallback, and GSSAPIWithMICConfig.AllowLogin callbacks were not validated against the client's remote address, so a source-address restriction set by those callbacks was silently ignored. The check is now applied to the Permissions returned by any authentication callback. (CVE-2026-56854)
+    FixedIn:
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: rclone
+          NamespaceName: amzn:2
+          Version: 1.55.1-1.amzn2.0.11
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: rclone-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.55.1-1.amzn2.0.11
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3947.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-56854
+    Name: ALAS2-2026-3947
+    NamespaceName: amzn:2
+    Severity: High

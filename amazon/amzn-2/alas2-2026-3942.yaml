@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: _module_comgen_words_and_files() fed untrusted text (module names readoff disk, LOADEDMODULES, MODULEPATH) straight into `compgen -W`, whichperforms a full unquoted-word expansion on its wordlist -- includingcommand substitution -- as a normal, documented part of its behavior.A module name, loaded-module entry, or MODULEPATH component containinge.g. `$(...)` therefore ran arbitrary shell code the moment a userpressed Tab. (CVE-2026-85013)
+    FixedIn:
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: environment-modules
+          NamespaceName: amzn:2
+          Version: 3.2.10-11.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: environment-modules-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.2.10-11.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3942.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-85013
+    Name: ALAS2-2026-3942
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,25 @@
+Vulnerability:
+    Description: 'rsync before 3.5.0 contains an algorithmic complexity vulnerability in the hash_search() function that allows a remote attacker to cause a denial of service by delivering a carefully constructed file list. A sender can exploit the quadratic-time worst-case behavior in hash lookups to exhaust receiver CPU resources with a modest number of crafted entries, causing a sustained denial of service.NOTE: https://download.samba.org/pub/rsync/NEWS#3.5.0 (CVE-2026-70453)rsync 3.0.0 before 3.5.0 contains an out-of-bounds write vulnerability that allows attackers to corrupt memory by triggering HLINK_BUMP processing on file entries with the FLAG_HLINKED flag set while the hard-link preservation option is inactive. Attackers can exploit the missing F_SUM field in the file_struct layout to access memory past the end of the allocated structure, corrupting adjacent heap or stack data.NOTE: https://download.samba.org/pub/rsync/NEWS#3.5.0 (CVE-2026-70458)'
+    FixedIn:
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: rsync
+          NamespaceName: amzn:2
+          Version: 3.1.2-11.amzn2.0.8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: rsync-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.1.2-11.amzn2.0.8
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3945.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-70453
+            - Name: CVE-2026-70458
+    Name: ALAS2-2026-3945
+    NamespaceName: amzn:2
+    Severity: High
