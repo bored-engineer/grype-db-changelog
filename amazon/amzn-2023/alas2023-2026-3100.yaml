@@ -1,0 +1,43 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'In BPF instructions that load/store a value from/to a scratch memory register the register index is an unsigned 32-bit integer and must not exceed 15, but libpcap BPF interpreter does not validate the value.  In particular uncommon use cases a crafted filter program can cause the interpreter to try reading and writing the OS process memory in the 16GiB starting at the current stack frame on 64-bit architectures and in the entire address space on 32-bit architectures. (CVE-2026-0799)libpcap BPF interpreter calls abort() if it encounters a BPF instruction that has an invalid opcode.  In particular uncommon use cases a crafted filter program can terminate the OS process. (CVE-2026-31911)libpcap BPF interpreter detects neither reaching the end of the filter program buffer due to lack of a return instruction nor executing a jump instruction with an offset that translates to a pointer outside of the buffer.  In particular uncommon use cases a crafted filter program can cause the interpreter to try reading the OS process memory in the 32GiB around the buffer on 64-bit architectures and in the entire address space on 32-bit architectures. (CVE-2026-31912)libpcap BPF interpreter for the ''div #k'' and ''mod #k'' ALU instructions does not check whether the immediate value is zero.  In particular uncommon use cases a crafted filter program can cause a division by zero. (CVE-2026-6244)libpcap BPF interpreter treats the offset in the ''ja L'' BPF instruction as a signed integer to implement looping via backward jumps, but it does not limit the number of loop iterations.  In particular uncommon use cases a crafted filter program can cause the interpreter to loop infinitely. (CVE-2026-6554)'
+    FixedIn:
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libpcap
+          NamespaceName: amzn:2023
+          Version: 1.10.7-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libpcap-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.10.7-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libpcap-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.10.7-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libpcap-devel
+          NamespaceName: amzn:2023
+          Version: 1.10.7-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3100.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-0799
+            - Name: CVE-2026-31911
+            - Name: CVE-2026-31912
+            - Name: CVE-2026-6244
+            - Name: CVE-2026-6554
+    Name: ALAS2023-2026-3100
+    NamespaceName: amzn:2023
+    Severity: High

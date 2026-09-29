@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: libgit2 version 1.9.4 and below is vulnerable to a heap out-of-bounds read in set_data() in src/libgit2/transports/smart_pkt.c.The vulnerable code uses a fixed-size strncmp (smart_pkt.c:239) against the unvalidated capability buffer of a smart-protocol pkt-line. When the bytes following the pkt-line in the contiguous receive buffer happen to continue with "ct-format=", the comparison spuriously matches, advancing format_str past the pkt-line boundary. The following memchr(format_str, ' ', len - (format_str - line)) (smart_pkt.c:246) then underflows its size_t size argument to ~SIZE_MAX and walks the heap looking for a space byte. An unauthenticated remote attacker who controls (or man-in-the-middles) a Git server reached over HTTP/HTTPS/SSH/git:// can trigger this on the FIRST ref-pkt of the refs advertisement, before any capability negotiation has taken place. The OOB walk causes a process crash (SIGSEGV) when memchr enters an unmapped page, and -- on heap layouts where memchr finds a stray space byte before crashing -- can additionally drive the git_error_set("...'%.*s'", format_len, format_str) formatter to copy a large window of heap memory into the error string. (CVE-2026-53587)
+    FixedIn:
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: network-flow-monitor-agent
+          NamespaceName: amzn:2023
+          Version: 1.1.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: network-flow-monitor-agent-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.1.8-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: network-flow-monitor-agent-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.1.8-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3116.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-53587
+    Name: ALAS2023-2026-3116
+    NamespaceName: amzn:2023
+    Severity: High
