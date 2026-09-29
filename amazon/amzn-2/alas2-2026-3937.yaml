@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in GDB's STABS debug format parser. Theread_member_functions() function in gdb/stabsread.c contains a linkedlist removal bug in the code that separates destructor and non-destructormember functions of C++ classes. The bug causes the destructor entries toremain in the main function list while the list length counter isdecremented, resulting in an out-of-bounds write when the function listis copied to its final allocated array. An attacker can craft an ELFbinary with malicious .stab and .stabstr sections that triggers thisout-of-bounds write when a user opens the file in GDB and performs anysymbol-inspection operation such as setting a breakpoint. The inferiorprocess does not need to be executed. Under controlled conditions, thiswas demonstrated to achieve execution of arbitrary commands within theGDB process. (CVE-2026-13732)
+    FixedIn:
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: crash
+          NamespaceName: amzn:2
+          Version: 8.0.4-4.amzn2.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: crash-debuginfo
+          NamespaceName: amzn:2
+          Version: 8.0.4-4.amzn2.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: crash-devel
+          NamespaceName: amzn:2
+          Version: 8.0.4-4.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3937.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-13732
+    Name: ALAS2-2026-3937
+    NamespaceName: amzn:2
+    Severity: High

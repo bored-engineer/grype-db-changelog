@@ -1,0 +1,18 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: RustCrypto CMOV provides conditional move CPU intrinsics which are guaranteed on major platforms to execute in constant-time and not be rewritten as branches by the compiler. From 0.1.1 until 0.5.4, the aarch64 implementations of Cmov and CmovEq in cmov/src/backends/aarch64.rs assume high bits are zero-extended when loading values smaller than a register, so set high bits such as [8..] in a Cmov selector or [16..] of self or other in the u16 and i16 CmovEq implementations can cause left.cmovz(&right, condition) to produce incorrect output. This issue is fixed in version 0.5.4. (CVE-2026-50185)
+    FixedIn:
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: amazon-efs-utils
+          NamespaceName: amzn:2
+          Version: 3.3.2-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3948.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-50185
+    Name: ALAS2-2026-3948
+    NamespaceName: amzn:2
+    Severity: Low

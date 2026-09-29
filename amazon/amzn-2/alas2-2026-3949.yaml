@@ -1,0 +1,67 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A TOCTOU (Time-of-Check-Time-of-Use) race condition vulnerability was found in the fixfiles script in policycoreutils. When running fixfiles relabel or fixfiles restore, the script used find and chcon commands to locate and relabel unlabeled files under /tmp and other directories. A local attacker could exploit a race window between the file discovery and the label change operation by swapping directory components with symlinks, causing chcon to follow the symlink and modify SELinux labels on arbitrary system files. This could undermine SELinux mandatory access control protections on critical files such as /etc/shadow. (CVE-2026-19079)
+    FixedIn:
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: policycoreutils
+          NamespaceName: amzn:2
+          Version: 2.5-22.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: policycoreutils-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.5-22.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: policycoreutils-devel
+          NamespaceName: amzn:2
+          Version: 2.5-22.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: policycoreutils-gui
+          NamespaceName: amzn:2
+          Version: 2.5-22.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: policycoreutils-newrole
+          NamespaceName: amzn:2
+          Version: 2.5-22.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: policycoreutils-python
+          NamespaceName: amzn:2
+          Version: 2.5-22.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: policycoreutils-restorecond
+          NamespaceName: amzn:2
+          Version: 2.5-22.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-28"
+            Kind: advisory
+          Name: policycoreutils-sandbox
+          NamespaceName: amzn:2
+          Version: 2.5-22.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3949.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-19079
+    Name: ALAS2-2026-3949
+    NamespaceName: amzn:2
+    Severity: Medium
