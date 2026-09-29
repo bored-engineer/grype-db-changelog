@@ -1,0 +1,45 @@
+Vulnerability:
+    Description: _module_comgen_words_and_files() fed untrusted text (module names readoff disk, LOADEDMODULES, MODULEPATH) straight into `compgen -W`, whichperforms a full unquoted-word expansion on its wordlist -- includingcommand substitution -- as a normal, documented part of its behavior.A module name, loaded-module entry, or MODULEPATH component containinge.g. `$(...)` therefore ran arbitrary shell code the moment a userpressed Tab. (CVE-2026-85013)
+    FixedIn:
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: environment-modules
+          NamespaceName: amzn:2023
+          Version: 4.8.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: environment-modules-compat
+          NamespaceName: amzn:2023
+          Version: 4.8.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: environment-modules-compat-debuginfo
+          NamespaceName: amzn:2023
+          Version: 4.8.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: environment-modules-debuginfo
+          NamespaceName: amzn:2023
+          Version: 4.8.0-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: environment-modules-debugsource
+          NamespaceName: amzn:2023
+          Version: 4.8.0-1.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3135.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-85013
+    Name: ALAS2023-2026-3135
+    NamespaceName: amzn:2023
+    Severity: High

@@ -1,0 +1,67 @@
+Vulnerability:
+    Description: 'Incomplete fix for GHSA-73p7-m7gg-w2jv leaves libheif 1.23.1 vulnerable to an out-of-bounds readNOTE: https://github.com/strukturag/libheif/security/advisories/GHSA-hh47-fhqr-cj2r (CVE-2026-84450)Incomplete fix for GHSA-73p7-m7gg-w2jv leaves libheif 1.23.1 vulnerable to an out-of-bounds readNOTE: https://github.com/strukturag/libheif/security/advisories/GHSA-hh47-fhqr-cj2r (CVE-2026-84451)Box_iref::parse puts no cap on the total number of reference entries, and HeifFile::check_for_ref_cycle_recursion walks the resulting graph with no depth bound. A linear chain of references in an 810 KB file exhausts the stack and terminates the process with SIGSEGV inside heif_context_read_from_*, before any decode. The file needs no image items at all: its iinf declares zero.The parallel grid tile-decode path in 1.23.3 deadlocks on a mutual alpha auxiliary reference between two grid tiles. ImageItem::decode_image() holds the per-item, non-recursive m_decode_mutex across its nested decodes, while ImageItem_Grid::decode_full_grid_image() decodes grid tiles concurrently through std::async. A grid whose two tiles are declared as each other''s alpha auxiliary image makes two worker threads take the same two item mutexes in opposite order, so the decode never returns. One 2 MB file wedges the calling thread plus two workers for the life of the process. There is no timeout, and the cancel callback stops being polled before the deadlock forms. ENABLE_PARALLEL_TILE_DECODING is ON by default and the default thread count is 4, so a stock build is affected.The per-channel bit-depth equality check added in 1.23.3 for GHSA-w7mc-p8jc-p853 lives inside convert_colorspace(), but Encoder::convert_colorspace_for_encoding() returns before it ever calls that function when the image already matches what the encoder asked for. A YCbCr 4:2:0 image whose Y channel declares 10 or 12 bits while Cb and Cr declare 8 takes that early return, reaches the AOM and x265 encoder plugins unconverted, and those plugins read the one-byte-per-sample chroma planes at two bytes per sample. The result is a heap out-of-bounds read. Through the x265 sink the over-read bytes are carried into the encoded image the attacker gets back, byte-exactly under lossless encoding. Through the AOM sink libaom aborts on the garbage it is handed.Heap buffer overflow in unci mixed-interleave decoding with unequal chroma bit depthsHeap buffer overflow in SVT-AV1 encoder for high-bit-depth alpha channelsOut-of-bounds read in RGB-YCbCr identity-matrix colour conversion with mismatched per-channel bit depthsheap OOB read / info disclosure (Op_YCbCr420_to_RRGGBBaa)The max_items security limit is not enforced for iinf child boxesTwo defects sit in the public raw sequence sample API of libheif 1.23.3. On each of four error returns taken after the sample object is allocated, Track::get_next_sample_raw_data() abandons a heif_raw_sequence_sample that already holds a full deep copy of the sample payload; the caller never receives the pointer, so the memory can never be released. Because nothing requires distinct trak boxes to reference distinct media bytes, one 10 MB file with 100 tracks aliasing the same range makes one pass of the raw-sample loop retain 1 GB of unreclaimable heap. Separately, that same entry point performs an attacker-sized allocation on an unguarded path: it is not wrapped in exception_guard(), unlike its sibling heif_track_decode_next_image(). When the allocation fails, std::bad_alloc unwinds out of a function with C language linkage and the host process dies in abort() instead of receiving heif_error_out_of_memory. The two have different root causes (a missing free, a missing guard) and are reported together only because they sit in the same entry point and one patch closes both.'
+    FixedIn:
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: heif-pixbuf-loader
+          NamespaceName: amzn:2023
+          Version: 1.23.4-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: heif-pixbuf-loader-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.23.4-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libheif
+          NamespaceName: amzn:2023
+          Version: 1.23.4-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libheif-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.23.4-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libheif-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.23.4-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libheif-devel
+          NamespaceName: amzn:2023
+          Version: 1.23.4-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libheif-tools
+          NamespaceName: amzn:2023
+          Version: 1.23.4-1.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-09-29"
+            Kind: advisory
+          Name: libheif-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.23.4-1.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3124.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-84450
+            - Name: CVE-2026-84451
+    Name: ALAS2023-2026-3124
+    NamespaceName: amzn:2023
+    Severity: High
