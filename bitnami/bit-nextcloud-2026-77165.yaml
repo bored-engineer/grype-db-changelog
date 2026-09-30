@@ -1,0 +1,36 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: nextcloud
+        purl: pkg:bitnami/nextcloud
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-09-29"
+                      kind: advisory
+                      version: 34.0.1
+          events:
+            - introduced: 32.0.0
+            - fixed: 34.0.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-77165
+database_specific:
+    cpes:
+        - cpe:2.3:a:nextcloud:nextcloud:*:*:*:*:*:*:*:*
+    severity: Medium
+details: File owners were unable to unlock TYPE_TOKEN locks placed by other users, leaving files permanently locked with no recovery path outside of the database.
+id: BIT-nextcloud-2026-77165
+modified: "2026-09-29T09:14:51.928Z"
+published: "2026-09-29T08:51:55.250Z"
+references:
+    - type: WEB
+      url: https://hackerone.com/reports/3770482
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-77165
+schema_version: 1.6.2
