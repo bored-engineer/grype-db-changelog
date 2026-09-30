@@ -22,6 +22,7 @@ aliases:
 database_specific:
     cpes:
         - cpe:2.3:a:apache:airflow:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:apache:airflow:*:*:*:*:*:python:*:*
     severity: Medium
 details: |-
     When a request to the Airflow core API carries both a session cookie and an explicit `Authorization: Bearer` token, Airflow resolves the caller from the cookie and ignores the bearer token, inverting the intended precedence of bearer over cookie. The request then executes -- and is recorded in the audit log -- as the cookie's principal rather than the identity the client explicitly presented.
@@ -32,7 +33,7 @@ details: |-
 
     Users of 3.3.0 or 3.3.1 should upgrade to Apache Airflow 3.3.2 or later, which resolves the caller from the explicitly supplied credential whenever one is present.
 id: BIT-airflow-2026-82355
-modified: "2026-09-26T09:13:27.730Z"
+modified: "2026-09-29T09:14:51.928Z"
 published: "2026-09-26T08:41:41.787Z"
 references:
     - type: ADVISORY
