@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.19.21
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 9.4.6
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 9.5.3
+          events:
+            - introduced: 8.0.0
+            - fixed: 8.19.21
+            - introduced: 9.0.0
+            - fixed: 9.4.6
+            - introduced: 9.5.0
+            - fixed: 9.5.3
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-82294
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:maven:*:*
+    severity: Medium
+details: Uncontrolled Resource Consumption (CWE-400) in Elasticsearch can lead to denial of service via Excessive Allocation (CAPEC-130).
+id: BIT-elasticsearch-2026-82294
+modified: "2026-10-01T09:55:18.588Z"
+published: "2026-10-01T09:24:16.264Z"
+references:
+    - type: ADVISORY
+      url: https://discuss.elastic.co/t/elasticsearch-8-19-21-9-4-6-9-5-3-security-update-esa-2026-170/390681
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-82294
+schema_version: 1.6.2
+summary: Uncontrolled Resource Consumption in Elasticsearch Leading to Denial of Service

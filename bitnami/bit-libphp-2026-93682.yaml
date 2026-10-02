@@ -1,0 +1,52 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: libphp
+        purl: pkg:bitnami/libphp
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.2.34
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.3.35
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.4.26
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.5.11
+          events:
+            - introduced: 8.2.0
+            - fixed: 8.2.34
+            - introduced: 8.3.0
+            - fixed: 8.3.35
+            - introduced: 8.4.0
+            - fixed: 8.4.26
+            - introduced: 8.5.0
+            - fixed: 8.5.11
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-93682
+database_specific:
+    cpes:
+        - cpe:2.3:a:php:php:*:*:*:*:*:*:*:*
+    severity: Medium
+details: When the HTTP stream wrapper follows a redirect and the response carries a Location header with an empty value, the redirect code reads one byte past the end of the heap buffer holding the location. The value of that out-of-bounds byte decides which redirect target is built, so a malicious server controls whether the client is sent to the host root or to the current directory.
+id: BIT-libphp-2026-93682
+modified: "2026-10-01T09:55:18.588Z"
+published: "2026-10-01T09:29:29.647Z"
+references:
+    - type: WEB
+      url: https://github.com/php/php-src/security/advisories/GHSA-7875-c8px-7q5f
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-93682
+schema_version: 1.6.2
+summary: Out-of-bounds read in the HTTP stream wrapper when following a redirect with an empty Location header

@@ -1,0 +1,52 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: php
+        purl: pkg:bitnami/php
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.2.34
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.3.35
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.4.26
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.5.11
+          events:
+            - introduced: 8.2.0
+            - fixed: 8.2.34
+            - introduced: 8.3.0
+            - fixed: 8.3.35
+            - introduced: 8.4.0
+            - fixed: 8.4.26
+            - introduced: 8.5.0
+            - fixed: 8.5.11
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:N/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-6103
+database_specific:
+    cpes:
+        - cpe:2.3:a:php:php:*:*:*:*:*:*:*:*
+    severity: Medium
+details: phar_tar_number() parses the octal size field of a TAR header into a uint32_t with no overflow check. The field is 11 octal digits wide and holds values up to 0x1FFFFFFFF, so a size above 0xFFFFFFFF silently wraps. The parser then skips the wrong number of data blocks and interprets attacker-controlled file content as the next TAR header, which lets a crafted archive inject entries that PharData reports and extracts as if they were genuine.
+id: BIT-php-2026-6103
+modified: "2026-10-01T09:55:18.588Z"
+published: "2026-10-01T09:33:52.290Z"
+references:
+    - type: WEB
+      url: https://github.com/php/php-src/security/advisories/GHSA-j3wh-g957-2m85
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-6103
+schema_version: 1.6.2
+summary: Phar TAR phar_tar_number() Integer Overflow - Archive Entry Injection

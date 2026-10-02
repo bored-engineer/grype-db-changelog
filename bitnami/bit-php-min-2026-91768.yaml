@@ -1,0 +1,52 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: php-min
+        purl: pkg:bitnami/php-min
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.2.34
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.3.35
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.4.26
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.5.11
+          events:
+            - introduced: 8.2.0
+            - fixed: 8.2.34
+            - introduced: 8.3.0
+            - fixed: 8.3.35
+            - introduced: 8.4.0
+            - fixed: 8.4.26
+            - introduced: 8.5.0
+            - fixed: 8.5.11
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-91768
+database_specific:
+    cpes:
+        - cpe:2.3:a:php:php:*:*:*:*:*:*:*:*
+    severity: Medium
+details: The IPv6 branch of the FastCGI client access check compares only the first 12 bytes of a 16-byte IPv6 address, so listen.allowed_clients matches on a /96 prefix instead of the exact address. An attacker who can source an address sharing the first 96 bits with an allowed one passes the check and reaches the FastCGI endpoint.
+id: BIT-php-min-2026-91768
+modified: "2026-10-01T09:55:18.588Z"
+published: "2026-10-01T09:34:22.148Z"
+references:
+    - type: WEB
+      url: https://github.com/php/php-src/security/advisories/GHSA-62xp-839h-2637
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-91768
+schema_version: 1.6.2
+summary: IPv6 ACL bypass in FastCGI listen.allowed_clients due to partial address comparison (memcmp 12 bytes)

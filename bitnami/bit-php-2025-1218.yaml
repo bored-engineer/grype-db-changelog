@@ -1,0 +1,52 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: php
+        purl: pkg:bitnami/php
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.2.34
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.3.35
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.4.26
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 8.5.11
+          events:
+            - introduced: 8.2.0
+            - fixed: 8.2.34
+            - introduced: 8.3.0
+            - fixed: 8.3.35
+            - introduced: 8.4.0
+            - fixed: 8.4.26
+            - introduced: 8.5.0
+            - fixed: 8.5.11
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:A/AC:H/PR:N/UI:N/S:C/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2025-1218
+database_specific:
+    cpes:
+        - cpe:2.3:a:php:php:*:*:*:*:*:*:*:*
+    severity: Low
+details: The mysqlnd wire protocol parser reads fields out of server packets before checking that the packet still holds enough bytes for them. A malicious or compromised MySQL server can send a truncated packet and make the client read past the end of the packet buffer, which is undefined behaviour and can crash the process.
+id: BIT-php-2025-1218
+modified: "2026-10-01T09:55:18.588Z"
+published: "2026-10-01T09:33:30.678Z"
+references:
+    - type: WEB
+      url: https://github.com/php/php-src/security/advisories/GHSA-r6x9-5r99-36j7
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-1218
+schema_version: 1.6.2
+summary: Various packet overreads in mysqlnd_writeprotocol.c

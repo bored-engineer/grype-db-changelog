@@ -1,0 +1,61 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: rabbitmq
+        purl: pkg:bitnami/rabbitmq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 3.13.15
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 4.0.20
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 4.1.11
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 4.2.6
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 4.3.1
+          events:
+            - introduced: 3.13.0
+            - fixed: 3.13.15
+            - introduced: 4.0.0
+            - fixed: 4.0.20
+            - introduced: 4.1.0
+            - fixed: 4.1.11
+            - introduced: 4.2.0
+            - fixed: 4.2.6
+            - introduced: 4.3.0
+            - fixed: 4.3.1
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-66072
+database_specific:
+    cpes:
+        - cpe:2.3:a:vmware:rabbitmq:*:*:*:*:*:*:*:*
+    severity: Medium
+details: RabbitMQ is a messaging and streaming broker. Prior to versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.1, get_chunk_selector/1 calls binary_to_atom on the raw client-supplied <<"chunk_selector">> property from post-auth subscribe and resolve_offset_spec frames, with no whitelist and no existing guard. An authenticated stream client with read access to any stream can crash the broker node. Preconditions include rabbitmq_stream plugin enabled Authenticated stream-protocol user with read access to at least one stream. This issue is fixed in versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.1.
+id: BIT-rabbitmq-2026-66072
+modified: "2026-10-01T09:55:18.588Z"
+published: "2026-10-01T09:32:48.520Z"
+references:
+    - type: WEB
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
+    - type: WEB
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.1
+    - type: WEB
+      url: https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-48hm-chgv-398r
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-66072
+schema_version: 1.6.2
+summary: 'RabbitMQ: Atom table exhaustion via stream `chunk_selector`'
