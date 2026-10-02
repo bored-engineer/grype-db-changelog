@@ -16,13 +16,18 @@ affected:
                     - date: "2026-09-17"
                       kind: advisory
                       version: 8.3.9
+                    - date: "2026-09-17"
+                      kind: advisory
+                      version: 9.0.2
           events:
             - fixed: 7.0.41
             - fixed: 8.0.30
             - fixed: 8.3.9
+            - fixed: 9.0.2
             - introduced: 7.0.0
             - introduced: 8.0.0
             - introduced: 8.2.0
+            - introduced: 9.0.0
           type: SEMVER
       severity:
         - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
@@ -36,7 +41,7 @@ database_specific:
     severity: High
 details: A security issue exists in MongoDB's LDAP authorization integration where pooled LDAP connections can retain stale authentication identities after user authentication under certain configurations. Subsequent authorization queries may execute under an unintended LDAP identity rather than the expected one. This can result in incorrect role assignments based on the LDAP directory's access control configuration, potentially allowing an authenticated user to acquire elevated privileges that were not intended by the deployment's authorization policy.
 id: BIT-mongodb-2026-82053
-modified: "2026-09-17T12:08:03.261Z"
+modified: "2026-10-01T09:55:18.588Z"
 published: "2026-09-17T11:50:39.078Z"
 references:
     - type: ADVISORY

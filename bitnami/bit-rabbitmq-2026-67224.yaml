@@ -1,0 +1,60 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: rabbitmq
+        purl: pkg:bitnami/rabbitmq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 3.13.15
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 4.0.20
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 4.1.11
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 4.2.6
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 4.3.1
+          events:
+            - fixed: 3.13.15
+            - fixed: 4.0.20
+            - fixed: 4.1.11
+            - fixed: 4.2.6
+            - fixed: 4.3.1
+            - introduced: 3.13.0
+            - introduced: 4.0.0
+            - introduced: 4.1.0
+            - introduced: 4.2.0
+            - introduced: 4.3.0
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-67224
+database_specific:
+    cpes:
+        - cpe:2.3:a:vmware:rabbitmq:*:*:*:*:*:*:*:*
+    severity: Low
+details: RabbitMQ is a messaging and streaming broker. Prior to versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.1, The trace consumer constructs the output path as filename:join(TraceDir, Name ++ ".log") where Name comes from PUT /api/traces/:vhost/:name. No safe_relative_path / traversal check is applied on the write side, while the read side (rabbit_tracing_files.erl) does call rabbit_misc:safe_relative_path/1 , proving the omission is an oversight, not design. The .log suffix is forced and the endpoint requires administrator. A user with the administrator tag can write a .log-suffixed file to an arbitrary filesystem path writable by the rabbitmq user via the tracing plugin's name parameter, e.g. /etc/cron.d/x.log (if writable) or overwrite existing .log files outside the trace directory. Preconditions include rabbitmq_tracing plugin enabled administrator tag Target path writable by rabbitmq OS user. This issue is fixed in versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.1.
+id: BIT-rabbitmq-2026-67224
+modified: "2026-10-01T09:55:18.588Z"
+published: "2026-10-01T09:33:13.511Z"
+references:
+    - type: WEB
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
+    - type: WEB
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.1
+    - type: WEB
+      url: https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-h7cq-qrr8-7vgc
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-67224
+schema_version: 1.6.2
+summary: 'RabbitMQ: Admin path-traversal write via trace name'

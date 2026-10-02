@@ -1,0 +1,38 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: kyverno
+        purl: pkg:bitnami/kyverno
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-01"
+                      kind: advisory
+                      version: 1.19.1
+          events:
+            - fixed: 1.19.1
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-100706
+database_specific:
+    cpes:
+        - cpe:2.3:a:kyverno:kyverno:*:*:*:*:*:go:*:*
+    severity: Critical
+details: kyverno before 1.19.1 fails to properly validate URL-encoded path segments in Policy apiCall urlPath, allowing namespace tenants to bypass the per-namespace clamp and create objects in other namespaces as the admission-controller ServiceAccount. Attackers can exploit this by using percent-encoded directory traversal sequences to create MutatingWebhookConfiguration objects cluster-wide or PolicyException objects in the kyverno namespace, enabling privilege escalation to cluster admin.
+id: BIT-kyverno-2026-100706
+modified: "2026-10-01T09:55:18.588Z"
+published: "2026-10-01T09:26:27.308Z"
+references:
+    - type: WEB
+      url: https://github.com/kyverno/kyverno/security/advisories/GHSA-5qq8-67g6-4h2w
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-100706
+    - type: WEB
+      url: https://www.vulncheck.com/advisories/kyverno-before-1.19.1-privilege-escalation-via-policy-apicall-urlpath
+schema_version: 1.6.2
+summary: kyverno before 1.19.1 Privilege Escalation via Policy apiCall urlPath
