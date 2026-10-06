@@ -1,0 +1,328 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [11.10.0-12.9.0.1]
+        - Set SOURCE_DATE_EPOCH from changelog [Orabug: 32019554]
+
+        [11.10.0-12.9.el10_2]
+        - remote: Fix integer overflow in RPC handler for virNodeGetFreePages (CVE-2026-18917) (RHEL-245266, CVE-2026-18917)
+        - qemu: Always assume support for 'QEMU_CAPS_SET_ACTION' (RHEL-242547)
+        - qemu: Remove unused 'qemuProcessRebootAllowed' (RHEL-242547)
+        - qemu: monitor: Remove support for 'watchdog-set-action' (RHEL-242547)
+        - qemu: Remove 'allowReboot' field (RHEL-242547)
+        - qemu: capabilities: Retire QEMU_CAPS_SET_ACTION (RHEL-242547)
+        - qemuProcessSetupLifecycleActions: Prepare to handle other actions (RHEL-242547)
+        - qemuDomainModifyLifecycleActionLive: Prepare to handle other actions (RHEL-242547)
+        - processGuestPanicEvent: Don't pass panic action via parameter (RHEL-242547)
+        - conf: Use proper enum types for 'onReboot', 'onPoweroff', 'onCrash', and 'onLockFailure' (RHEL-242547)
+        - qemuMonitorGuestPanicEventInfoFormatMsg: Directly return message (RHEL-242547)
+        - qemuProcessGuestPanicEventInfo: Fold into only caller (RHEL-242547)
+        - qemu: processGuestPanicEvent: Split individual steps under separate conditions (RHEL-242547)
+        - Add support for keeping VM running when panic notifier is used (RHEL-242547)
+
+        [11.10.0-12.8.el10_2]
+        - qemu: Fix proper ordering of 'virtlockd' shutdown (RHEL-224982)
+        - Add guest device info to virDomainGetGuestInfo (RHEL-243305)
+        - qemu_agent: Introduce guest-get-devices (RHEL-243305)
+        - qemuagenttest: Introduce GetGuestDeviceInfo test case (RHEL-243305)
+        - qemu: Implement device info for virDomainGetGuestInfo() API (RHEL-243305)
+        - virsh: Add support for VIR_DOMAIN_GUEST_INFO_DEVICES (RHEL-243305)
+
+        [11.10.0-12.7.el10_2]
+        - qemu: Ensure proper shutdown ordering of virtlockd/virtlogd daemons (RHEL-224982)
+        - util: virFileChownFiles: do not follow symlinks (CVE-2026-63622)
+
+        [11.10.0-12.6.el10_2]
+        - qemu: capabilities: Apply 'capability_filters' configration option on all capabilities (RHEL-186019)
+        - qemu: capabilities: Export 'virQEMUCapsNewCopy' outside of 'qemu_capspriv' (RHEL-186019)
+        - qemu: Allow reuse of 'qemuProcessStartUpdateCustomCaps' (RHEL-186019)
+        - qemu: validate: Validate VM config with qemuCaps influenced by <qemu:capabilities> (RHEL-186019)
+        - qemu: postparse: Process VM config with qemuCaps influenced by <qemu:capabilities> (RHEL-186019)
+        - virQEMUCapsCacheLookupDefault: Fix error message when no emulators are installed (RHEL-186019)
+        - qemuxmlconfdata: un-symlink 'video-virtio-vga-gpu-gl' output (RHEL-186019)
+        - qemuxmlconftest: Add 'video-virtio-vga' invocation with QEMU_CAPS_DEVICE_VIRTIO_VGA disabled (RHEL-186019)
+        - qemuxmlconftest: Add test cases for configs asking for 'virtio-gpu-gl' or 'virtio-vga-gl' without the capability (RHEL-186019)
+        - qemuxmlconftest: Add invocation of 'video-virtio-vga-gpu-gl' with missing caps and VIR_DOMAIN_DEF_PARSE_ABI_UPDATE (RHEL-186019)
+        - qemustatusxml2xml: Add test case capturing virtio video device (RHEL-186019)
+        - virDomainVideoDefFormat: Use 'virXMLFormatElement' instead of custom formatter (RHEL-186019)
+        - conf: Add fields for recording actually-selected virtio video device (RHEL-186019)
+        - qemuxmlconftest: Add test case for specifying 'virtio-gpu' where 'virtio-vga' would be picked (RHEL-186019)
+        - qemuDeviceVideoGetModel: Directly return picked model (RHEL-186019)
+        - qemu: postparse: Fill in selected virtio video frondend device in the XML (RHEL-186019)
+        - qemuValidateDomainDeviceDefVideo: Fix checks of virtio video devices (RHEL-186019)
+        - qemuDeviceVideoGetModel: Remove logic for selecting 'virtio' devices (RHEL-186019)
+        - qemuDeviceVideoGetModel: Simplify by relying on checks from 'qemuValidateDomainDeviceDefVideo' (RHEL-186019)
+        - qemu: Remove 'qemuDomainSupportsVideoVga' (RHEL-186019)
+
+        [11.10.0-12.5.el10_2]
+        - vmx: Generate correct disk target device ID for superwide SCSI (RHEL-191267)
+        - vmx: Fix a case with 64 disks on one SCSI controller (RHEL-191267)
+    FixedIn:
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-client
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-client-qemu
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-common
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-config-network
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-config-nwfilter
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-interface
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-network
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-nodedev
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-nwfilter
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-qemu
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-secret
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-storage
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-storage-core
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-storage-disk
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-storage-iscsi
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-storage-logical
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-storage-mpath
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-storage-rbd
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-driver-storage-scsi
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-kvm
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-lock
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-log
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-plugin-lockd
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-plugin-sanlock
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-daemon-proxy
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-devel
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-docs
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-libs
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-nss
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-05"
+            Kind: advisory
+          Module: null
+          Name: libvirt-ssh-proxy
+          NamespaceName: ol:10
+          Version: 0:11.10.0-12.9.0.1.el10_2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-75583.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-18917.html
+              Name: CVE-2026-18917
+            - Link: https://linux.oracle.com/cve/CVE-2026-63622.html
+              Name: CVE-2026-63622
+        Issued: "2026-10-05"
+        RefId: ELSA-2026-75583
+    Name: ELSA-2026-75583
+    NamespaceName: ol:10
+    Severity: High
