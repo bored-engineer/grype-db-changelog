@@ -4,8 +4,35 @@ affected:
         name: libpython
         purl: pkg:bitnami/libpython
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-09-11"
+                      kind: advisory
+                      version: 3.10.22
+                    - date: "2026-09-11"
+                      kind: advisory
+                      version: 3.11.17
+                    - date: "2026-09-11"
+                      kind: advisory
+                      version: 3.12.15
+                    - date: "2026-09-11"
+                      kind: advisory
+                      version: 3.13.16
+                    - date: "2026-09-11"
+                      kind: advisory
+                      version: 3.14.8
+          events:
+            - fixed: 3.10.22
+            - fixed: 3.11.17
+            - fixed: 3.12.15
+            - fixed: 3.13.16
+            - fixed: 3.14.8
             - introduced: "0"
+            - introduced: 3.11.0
+            - introduced: 3.12.0
+            - introduced: 3.13.0
+            - introduced: 3.14.0
           type: SEMVER
       severity:
         - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
@@ -18,7 +45,7 @@ database_specific:
     severity: Low
 details: "When decompressing crafted zip files using the bzip/LZMA/Zstandard \n\ncompressions, Python could use an attacker-controlled size to \n\npre-allocate memory, possibly resulting in memory exhaustion."
 id: BIT-libpython-2026-15310
-modified: "2026-10-01T09:55:18.588Z"
+modified: "2026-10-05T12:12:53.169Z"
 published: "2026-09-11T05:48:20.534Z"
 references:
     - type: WEB
@@ -28,7 +55,11 @@ references:
     - type: WEB
       url: https://github.com/python/cpython/commit/31980e84b9a708424a0a1dfecde3fc991e313f89
     - type: WEB
+      url: https://github.com/python/cpython/commit/6257029de42ef89b67f3d20137de87d43e197530
+    - type: WEB
       url: https://github.com/python/cpython/commit/9d167992b59cf5e23c66b9ed742b13f5925f7d70
+    - type: WEB
+      url: https://github.com/python/cpython/commit/c2bfbcdd1a11690507a10bc0998f95b8dc6b6fac
     - type: WEB
       url: https://github.com/python/cpython/commit/dcdd406ddbfc4cb29b24c3df17cbabe21d316ce1
     - type: WEB
