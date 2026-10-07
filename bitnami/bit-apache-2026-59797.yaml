@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: apache
+        purl: pkg:bitnami/apache
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-06"
+                      kind: advisory
+                      version: 2.4.69
+          events:
+            - fixed: 2.4.69
+            - introduced: 2.4.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-59797
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*
+    severity: Critical
+details: |-
+    Improper Privilege Management vulnerability in Apache HTTP Server's mod_ssl via SSLRequire and file-related expressions.
+
+
+
+    This issue affects Apache HTTP Server: from 2.4.0 through 2.4.68.
+id: BIT-apache-2026-59797
+modified: "2026-10-06T12:12:21.709Z"
+published: "2026-10-06T11:40:58.873Z"
+references:
+    - type: ADVISORY
+      url: http://www.openwall.com/lists/oss-security/2026/10/01/22
+    - type: ADVISORY
+      url: https://httpd.apache.org/security/vulnerabilities_24.html
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-59797
+schema_version: 1.6.2
+summary: 'Apache HTTP Server: mod_ssl SSLRequire allows .htaccess ap_expr file-function'
