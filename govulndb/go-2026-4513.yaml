@@ -26,7 +26,14 @@ affected:
         ecosystem: Go
         name: github.com/shamaton/msgpack/v2
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-14"
+                      kind: release
+                      version: 2.4.1
+          events:
+            - fixed: 2.4.1
             - introduced: "0"
           type: SEMVER
     - ecosystem_specific:
@@ -40,17 +47,26 @@ affected:
         ecosystem: Go
         name: github.com/shamaton/msgpack/v3
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-05-12"
+                      kind: release
+                      version: 3.1.1
+          events:
+            - fixed: 3.1.1
             - introduced: "0"
           type: SEMVER
 aliases:
     - CVE-2026-32284
+    - CVE-2026-32284
+    - GHSA-h9q6-hc68-35rp
 database_specific:
     review_status: REVIEWED
     url: https://pkg.go.dev/vuln/GO-2026-4513
 details: The msgpack decoder fails to properly validate the input buffer length when processing truncated fixext data (format codes 0xd4-0xd8). This can lead to an out-of-bounds read and a runtime panic, allowing a denial of service attack.
 id: GO-2026-4513
-modified: "2026-03-26T19:14:13Z"
+modified: "2026-10-07T14:09:50Z"
 published: "2026-03-16T20:27:23Z"
 references:
     - type: REPORT
