@@ -1,0 +1,39 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: ghost
+        purl: pkg:bitnami/ghost
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-09"
+                      kind: advisory
+                      version: 6.23.0
+          events:
+            - introduced: 3.23.0
+            - fixed: 6.23.0
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-103281
+database_specific:
+    cpes:
+        - cpe:2.3:a:ghost:ghost:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Ghost (npm package 'ghost') versions from 3.23.0 up to, but not including, 6.23.0 expose API keys to users with low-privilege staff accounts. An authenticated low-privilege staff user can read API keys returned by the Admin API, which are intended to be available only to higher-privileged users.
+id: BIT-ghost-2026-103281
+modified: "2026-10-09T11:12:02.352Z"
+published: "2026-10-09T10:44:59.840Z"
+references:
+    - type: WEB
+      url: https://github.com/TryGhost/Ghost/security/advisories/GHSA-q98w-jm4q-wch7
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-103281
+    - type: WEB
+      url: https://www.vulncheck.com/advisories/ghost-3.23.0-before-6.23.0-api-key-exposure-via-admin-api
+schema_version: 1.6.2
+summary: Ghost 3.23.0 before 6.23.0 API Key Exposure via Admin API

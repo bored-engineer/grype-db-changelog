@@ -1,0 +1,39 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: ghost
+        purl: pkg:bitnami/ghost
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-09"
+                      kind: advisory
+                      version: 6.64.0
+          events:
+            - introduced: 6.10.3
+            - fixed: 6.64.0
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-104418
+database_specific:
+    cpes:
+        - cpe:2.3:a:ghost:ghost:*:*:*:*:*:node.js:*:*
+    severity: High
+details: Ghost from 6.10.3 before 6.64.0 contains a remote code execution vulnerability that allows authenticated administrators to run code by abusing theme translation file loading. Attackers with administrator access can upload a crafted theme containing malicious translation files to execute arbitrary code on the Ghost server.
+id: BIT-ghost-2026-104418
+modified: "2026-10-09T11:12:02.352Z"
+published: "2026-10-09T10:45:20.542Z"
+references:
+    - type: WEB
+      url: https://github.com/TryGhost/Ghost/security/advisories/GHSA-jj74-hc2q-xrvm
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-104418
+    - type: WEB
+      url: https://www.vulncheck.com/advisories/ghost-from-6.10.3-before-6.64.0-rce-via-theme-translation-files
+schema_version: 1.6.2
+summary: Ghost from 6.10.3 before 6.64.0 RCE via Theme Translation Files
