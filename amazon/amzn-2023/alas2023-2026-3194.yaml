@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: HTTP::Tiny versions before 0.095 for Perl forward credential headers to cross-origin redirect targets.When the server returns a 3xx redirect, `_maybe_redirect` follows the `Location:` header and `_prepare_headers_and_cb` re-merges the caller's `headers` argument into the new request, without checking whether the redirect target shares an origin with the original URL. Caller-supplied `Authorization`, `Cookie` and `Proxy-Authorization` headers are therefore re-sent to whatever host the redirect names, across scheme, host or port boundaries, and including `https` to `http` downgrades that expose them in plaintext on the wire.The HTTP::Tiny POD note that "Authorization headers will not be included in a redirected request" applied only to the URL-userinfo Basic-auth path, not to headers passed explicitly by the caller. (CVE-2026-7017)
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: perl-HTTP-Tiny
+          NamespaceName: amzn:2023
+          Version: 0.092-2.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: perl-HTTP-Tiny-tests
+          NamespaceName: amzn:2023
+          Version: 0.092-2.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3194.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-7017
+    Name: ALAS2023-2026-3194
+    NamespaceName: amzn:2023
+    Severity: Medium

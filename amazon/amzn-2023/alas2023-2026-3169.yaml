@@ -1,0 +1,33 @@
+Vulnerability:
+    Description: A stack-based buffer overflow was found in rpcbind's rpcinfo utility. When querying a remote rpcbind service with `rpcinfo -l`, address information returned by the server is copied into a fixed-size buffer without sufficient bounds checking. A malicious or compromised rpcbind server could use this flaw to crash the rpcinfo client, resulting in a denial of service. The highest threat from this vulnerability is to system availability. (CVE-2026-16277)A stack-based buffer overflow was found in rpcbind's rpcinfo utility. In rpcbdump() short mode (used by `rpcinfo -s`), version numbers from a remote RPCBPROC_DUMP reply are written into a fixed-size stack buffer without bounds checking. A user or administrator who runs `rpcinfo -s` against a malicious or compromised rpcbind endpoint could experience a crash or denial of service of the rpcinfo client. (CVE-2026-16461)A flaw was found in rpcbind. This vulnerability allows a remote, unauthenticated attacker to cause a Denial of Service (DoS) by sending a large number of unique requests. The rpcbind service records previously unseen RPC (Remote Procedure Call) statistics in unbounded in-memory lists, leading to persistent memory growth and increased CPU usage. This can degrade or exhaust service availability. (CVE-2026-94640)
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: rpcbind
+          NamespaceName: amzn:2023
+          Version: 1.2.6-0.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: rpcbind-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.2.6-0.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: rpcbind-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.2.6-0.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3169.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-16277
+            - Name: CVE-2026-16461
+            - Name: CVE-2026-94640
+    Name: ALAS2023-2026-3169
+    NamespaceName: amzn:2023
+    Severity: High

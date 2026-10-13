@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: An incorrect implementation of message filtering in xdg-dbus-proxy versions before 0.1.9 allows an attacker to bypass the intended message filtering on the D-Bus session bus by setting a reply serial number on non-reply messages.xdg-dbus-proxy was designed to be part of the sandbox boundary for Flatpak, but it is released as a separate project and is sometimes used by other app frameworks such as Firejail.A malicious or compromised Flatpak app could achieve arbitrary code execution outside its sandbox.If other app frameworks rely on xdg-dbus-proxy in the same way that Flatpak does, then they will have an equivalent vulnerability until xdg-dbus-proxy is updated. (CVE-2026-94422)
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: xdg-dbus-proxy
+          NamespaceName: amzn:2023
+          Version: 0.1.9-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: xdg-dbus-proxy-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.1.9-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: xdg-dbus-proxy-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.1.9-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3185.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-94422
+    Name: ALAS2023-2026-3185
+    NamespaceName: amzn:2023
+    Severity: High

@@ -1,0 +1,17 @@
+Vulnerability:
+    Description: 'parse_date() -- and str2time(), which delegates to it -- used regexes withambiguous adjacent greedy runs (year/clock/timezone digits andtimezone/ASCII-timezone letters) before a trailing anchor. A valid-lookingdate prefix followed by a long interior run of digits, letters, or whitespaceand a trailing junk character forced O(N^2) backtracking, so a ~100 KB stringburned tens of seconds of CPU: a denial of service. (CVE-2026-14741)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: perl-HTTP-Date
+          NamespaceName: amzn:2
+          Version: 6.02-8.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3996.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-14741
+    Name: ALAS2-2026-3996
+    NamespaceName: amzn:2
+    Severity: Medium

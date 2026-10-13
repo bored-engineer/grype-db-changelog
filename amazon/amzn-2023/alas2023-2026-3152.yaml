@@ -1,0 +1,38 @@
+Vulnerability:
+    Description: 'When use-git-am: true is enabled for a patch source, flatpak-builder invokes git am without disabling git hooks. A malicious source can include a post-applypatch hook, which will be executed automatically when a patch with use-git-am: true is applied. Since git itself runs unsandboxed in host context at this stage, the hook is executed with host privileges, allowing arbitrary code execution on the host. (CVE-2026-86320)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: flatpak-builder
+          NamespaceName: amzn:2023
+          Version: 1.4.4-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: flatpak-builder-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.4.4-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: flatpak-builder-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.4.4-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: flatpak-builder-tests
+          NamespaceName: amzn:2023
+          Version: 1.4.4-1.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3152.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-86320
+    Name: ALAS2023-2026-3152
+    NamespaceName: amzn:2023
+    Severity: High

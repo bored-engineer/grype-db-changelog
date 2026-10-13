@@ -1,0 +1,89 @@
+Vulnerability:
+    Description: Improper output neutralization (XML injection) in QDom comment, CDATA, and processing-instruction serialization in Qt XML from 4.0.0 through 6.11 allows untrusted text serialized by an application into those nodes to inject arbitrary XML markup, because the node terminators are not escaped under the default InvalidDataPolicy (AcceptInvalidChars). Fixed in Qt 6.12. (CVE-2026-15037)Out-of-bounds read (buffer over-read) in the HTTP Cache-Control response header parsing in the QtNetwork module in Qt Group Qt 6.0.0 through 6.8.8, and 6.9.0 through 6.11.1, allows remote attackers to cause a denial of service (application crash) via an excessively large Cache-Control header value returned by an untrusted or compromised HTTP server to an application using QNetworkAccessManager. Only the client side of the connection is affected and 32-bit builds are not affected; the out-of-bounds access is read-only, with no information disclosure and no code execution. (CVE-2026-76151)An out-of-bounds read (buffer over-read) vulnerability exists in QTextCodec::codecForName() in Qt. When the function is called with a QByteArray that is not NUL-terminated (for example, one created with QByteArray::fromRawData()), the codec-name matching routine reads past the end of the supplied buffer. In most cases this results in an incorrect text codec being selected; in the worst case, if the over-read reaches unmapped memory, the process crashes (denial of service). The over-read is bounded by the length of the longest codec-name candidate, and the out-of-bounds bytes are only compared internally against Qt's fixed list of codec names, so no data is disclosed to an attacker. Applications that do not pass non-NUL-terminated QByteArrays to QTextCodec::codecForName() are not exposed. The affected code resides in the Qt5Compat module from Qt 6.0.0 onward, and in Qt Core (qtbase) in Qt 4.x and Qt 5.x. (CVE-2026-9499)
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-common
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-devel
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-examples
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-gui
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-mysql
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-odbc
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-postgresql
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-private-devel
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: qt5-qtbase-static
+          NamespaceName: amzn:2
+          Version: 5.15.3-1.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3980.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-15037
+            - Name: CVE-2026-76151
+            - Name: CVE-2026-9499
+    Name: ALAS2-2026-3980
+    NamespaceName: amzn:2
+    Severity: High

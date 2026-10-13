@@ -1,0 +1,130 @@
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_tables: add hook transactions for device deletions (CVE-2026-63858)In the Linux kernel, the following vulnerability has been resolved:bpf, skmsg: fix verdict sk_data_ready racing with ktls rxsk_psock_strp_data_ready() already checks tls_sw_has_ctx_rx() anddefers to psock->saved_data_ready when a TLS RX context is present,avoiding a conflict with the TLS strparser''s ownership of the receivequeue (commit e91de6afa81c, "bpf: Fix running sk_skb program typeswith ktls").sk_psock_verdict_data_ready() has no equivalent guard.  When a socketis inserted into a sockmap (BPF_SK_SKB_VERDICT) before TLS RX isconfigured, tls_sw_strparser_arm() saves sk_psock_verdict_data_readyas rx_ctx->saved_data_ready.  On data arrival:tls_data_ready -> tls_strp_data_ready -> tls_rx_msg_ready-> saved_data_ready() = sk_psock_verdict_data_ready()-> tcp_read_skb() drains sk_receive_queue via __skb_unlink()without calling tcp_eat_skb(), so copied_seq is not advanced.tls_strp_msg_load() then finds tcp_inq() >= full_len (stale), callstcp_recv_skb() on the now-empty queue, hits WARN_ON_ONCE(!first), andreturns with rx_ctx->strp.anchor.frag_list pointing at a psock-owned(potentially freed) skb.  tls_decrypt_sg() subsequently walks thatfrag_list: use-after-free.Apply the same fix as sk_psock_strp_data_ready(): if a TLS RX contextis present, call psock->saved_data_ready (sock_def_readable) to wakerecv() waiters and return immediately, leaving the receive queueuntouched.  TLS retains sole ownership of the queue and decrypts therecord normally through tls_sw_recvmsg(). (CVE-2026-64025)In the Linux kernel, the following vulnerability has been resolved:USB: iowarrior: fix use-after-free on disconnect race (CVE-2026-64341)In the Linux kernel, the following vulnerability has been resolved:ipvs: reload ip header after head reallocation (CVE-2026-68476)In the Linux kernel, the following vulnerability has been resolved:ipv4: igmp: Fix potential UAF in igmp_gq_start_timer() (CVE-2026-72323)In the Linux kernel, the following vulnerability has been resolved:bridge: stp: Fix a potential use-after-free when deleting a bridge (CVE-2026-72389)In the Linux kernel, the following vulnerability has been resolved:ipvlan: inherit needed_headroom and needed_tailroom from phy_dev (CVE-2026-74744)In the Linux kernel, the following vulnerability has been resolved:HID: magicmouse: do not keep a stale msc->input if no input is claimed (CVE-2026-80782)In the Linux kernel, the following vulnerability has been resolved:ext4: don''t enable DAX on new encrypted files (CVE-2026-80806)In the Linux kernel, the following vulnerability has been resolved:nilfs2: reject invalid block index in GC ioctl (CVE-2026-80807)In the Linux kernel, the following vulnerability has been resolved:usb: usbfs: fix use-after-free of usb_device in usbdev_release() (CVE-2026-80824)In the Linux kernel, the following vulnerability has been resolved:USB: serial: option: fix slab OOB read in interrupt URB callback (CVE-2026-80827)In the Linux kernel, the following vulnerability has been resolved:usb: core: Add lock to usb_wakeup_notification() (CVE-2026-80830)In the Linux kernel, the following vulnerability has been resolved:ipv6: seg6: clear IPv4 control block on IPIP decapsulation (CVE-2026-80840)In the Linux kernel, the following vulnerability has been resolved:xfrm: fix xfrm_state_construct() auth-trunc leak (CVE-2026-80843)In the Linux kernel, the following vulnerability has been resolved:RDMA/rxe: Fix OOB in free_rd_atomic_resources() (CVE-2026-80863)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: bpftool
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: bpftool-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-debuginfo-common-x86_64
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-devel
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-headers
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-livepatch-5.10.269-270.1108
+          NamespaceName: amzn:2
+          Version: 1.0-0.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-tools
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-tools-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-tools-devel
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: perf
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: python-perf
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: python-perf-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.10.269-270.1108.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2KERNEL-5.10-2026-133.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-63858
+            - Name: CVE-2026-64025
+            - Name: CVE-2026-64341
+            - Name: CVE-2026-68476
+            - Name: CVE-2026-72323
+            - Name: CVE-2026-72389
+            - Name: CVE-2026-74744
+            - Name: CVE-2026-80782
+            - Name: CVE-2026-80806
+            - Name: CVE-2026-80807
+            - Name: CVE-2026-80824
+            - Name: CVE-2026-80827
+            - Name: CVE-2026-80830
+            - Name: CVE-2026-80840
+            - Name: CVE-2026-80843
+            - Name: CVE-2026-80863
+    Name: ALAS2KERNEL-5.10-2026-133
+    NamespaceName: amzn:2
+    Severity: High
