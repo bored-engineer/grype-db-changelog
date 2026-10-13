@@ -1,0 +1,55 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Issue summary: A certificate with many nameRelativeToCRLIssuer CRLdistribution points causes disproportionate heap growth when OpenSSL cachesX.509 extensions.Impact summary: Receiving a crafted certificate from a malicious peer can leadto significant memory pressure and possible Denial of Service in clients orin servers that solicit client certificates.CWE: CWE-770: Allocation of Resources Without Limits or ThrottlingDescription: A certificate or a set of certificates that fits under the limit forsize of certificates accepted from the peer (~100 KiB) can result in allocationof several hundred MiB of resident memory on the receiving sideduring a normal TLS handshake.  This may be enough to crash the client orserver, if multiple concurrent connections lead to similarly large memoryallocations.The fix postpones processing of the CRL distribution points extensions incertificates to the time when the processed value is required for CRL processing.This avoids keeping large memory allocations for a long time when suchcertificates are received.FIPS impact: noThe affected code is outside the FIPS module boundary. (CVE-2026-35189)Issue summary: The generic elliptic-curve scalar multiplication used forECDSA and SM2 signature operations with curves that do not have a dedicatedimplementation leaks information about the secret nonce through timing.Impact summary: An attacker able to measure signing times may learninformation about the per-signature secret nonce, which over many signaturescan, via a lattice / Hidden Number Problem attack, lead to recovery of theprivate key.CWE: CWE-208: Observable Timing DiscrepancyDescription: The generic elliptic-curve scalar multiplication used forcurves that do not have a dedicated constant-time implementation pads thesecret scalar with non-constant-time BIGNUM operations, so the time takendepends on the value of the secret scalar derived from the ECDSA and SM2 nonce.The leak is very small; observing it requires a large number ofmeasurements. The effect is largest for curves whose group order lieson a machine-word boundary, such as brainpoolP384r1.Applications using ECDSA signing over the Brainpool and other generic primecurves, and SM2 signing on platforms that use the generic implementation,are vulnerable to this issue.The NIST curves P-256, P-384 and P-521 use dedicated constant-timeimplementations and are not affected.FIPS Impact: noThe FIPS modules are not affected: the approved NIST curves used in the FIPSprovider have dedicated constant-time implementations and do not use theaffected code path. (CVE-2026-54872)A flaw was found in OpenSSL. The Datagram Transport Layer Security (DTLS) retransmission mechanism fails to properly handle handshake message writes that are suspended before completion. A remote attacker could exploit this vulnerability during handshake message retransmission, causing OpenSSL to read past the message buffer or overwrite internal state required to resume writing. This issue can result in information disclosure through out-of-bounds memory reads or cause a Denial of Service (DoS) by crashing the process. (CVE-2026-84782)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: openssl
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.23
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: openssl-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.23
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: openssl-devel
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.23
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: openssl-libs
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.23
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: openssl-perl
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.23
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: openssl-static
+          NamespaceName: amzn:2
+          Version: 1.0.2k-24.amzn2.0.23
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3992.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-35189
+            - Name: CVE-2026-54872
+            - Name: CVE-2026-84782
+    Name: ALAS2-2026-3992
+    NamespaceName: amzn:2
+    Severity: High

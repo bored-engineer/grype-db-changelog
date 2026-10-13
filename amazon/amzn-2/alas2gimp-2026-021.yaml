@@ -1,0 +1,49 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in GIMP. When processing a specially crafted lighting preset file, the Lighting Effects filter does not properly validate the number of light sources. This can lead to an out-of-bounds write, corrupting memory. An attacker could exploit this by convincing a user to open a malicious preset file, potentially causing a crash or enabling arbitrary code execution. (CVE-2026-90947)A flaw was found in GIMP's ICO file loader. When processing an ICO file containing an embedded PNG image, an integer overflow can occur during the calculation of the required buffer size. This leads to an undersized buffer being allocated, causing a heap-based buffer overflow when the decoded pixel data is written. A remote attacker could exploit this by crafting a malicious ICO file, which, when opened, could lead to arbitrary code execution or a crash. (CVE-2026-90948)A flaw was found in the file-psd plugin in GIMP. When generating a thumbnail preview for a specially crafted PSD (Photoshop Document) image file, an integer overflow occurs during the multiplication of values from an embedded JPEG header. This leads to an undersized heap allocation, resulting in a heap-based buffer overflow when the image data is decoded. This buffer overflow corrupts adjacent heap objects, allowing for a controlled memory write that can result in an application crash or arbitrary code execution. (CVE-2026-92248)A flaw was found in GIMP. When processing a specially crafted GIMPressionist preset file, the plug-in does not properly validate vector indices before writing into fixed-size arrays. This can lead to an out-of-bounds write, corrupting memory. An attacker could exploit this by convincing a user to load a malicious preset file, potentially causing a crash or enabling arbitrary code execution. (CVE-2026-97185)
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: gimp
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: gimp-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: gimp-devel
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: gimp-devel-tools
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: gimp-libs
+          NamespaceName: amzn:2
+          Version: 2.8.22-1.amzn2.0.21
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2GIMP-2026-021.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-90947
+            - Name: CVE-2026-90948
+            - Name: CVE-2026-92248
+            - Name: CVE-2026-97185
+    Name: ALAS2GIMP-2026-021
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,32 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A stack-based buffer overflow flaw was found in fetchmail when built with NTLM support. A malicious or compromised mail server advertising NTLM authentication can send a crafted Type 2 challenge that causes fetchmail to write past a fixed stack buffer while building the NTLM authenticate response. This may lead to remote code execution depending on stack-frame layout, or to authentication failure or process termination under memory hardening. (CVE-2026-94184)
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: fetchmail
+          NamespaceName: amzn:2023
+          Version: 6.5.7-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: fetchmail-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.5.7-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: fetchmail-debugsource
+          NamespaceName: amzn:2023
+          Version: 6.5.7-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3186.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-94184
+    Name: ALAS2023-2026-3186
+    NamespaceName: amzn:2023
+    Severity: High

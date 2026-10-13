@@ -1,0 +1,25 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: The PackagerResolver of Apache Ivy is able to download onlineartifacts and to (re)package them in a format defined by apackager.xml file. This repackaging is done by an Ant script, which isstored in a subdirectory of the configured "buildRoot" directory. Thissubdirectory is calculated based on modules coordinates, like theorganisation, name or version.If one of the coordinates contains "../" sequences - which are validcharacters for Ivy coordinates in general- it is possible to break outof the configured "buildRoot" directory where other files can beoverwritten.In order to exploit this vulnerability an attacker needs to haveaccess to a packager repository and add or modify the coordinates inivy.xml files to have such "../" sequences.Users of Apache Ivy 2.0.0 to 2.5.3 (inclusive) should upgrade to Ivy 2.6.0. (CVE-2026-26032)
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: apache-ivy
+          NamespaceName: amzn:2
+          Version: 2.3.0-4.amzn2.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: apache-ivy-javadoc
+          NamespaceName: amzn:2
+          Version: 2.3.0-4.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-3993.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-26032
+    Name: ALAS2-2026-3993
+    NamespaceName: amzn:2
+    Severity: Medium

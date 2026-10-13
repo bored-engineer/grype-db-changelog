@@ -1,0 +1,314 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'In the Linux kernel, the following vulnerability has been resolved:tipc: fix integer overflow in tipc_recvmsg() and tipc_recvstream() (CVE-2026-68289)In the Linux kernel, the following vulnerability has been resolved:bpf: Reject redirect helpers without a bpf_net_context (CVE-2026-68337)In the Linux kernel, the following vulnerability has been resolved:bpf: Mask pseudo pointer values in verifier logs (CVE-2026-72402)In the Linux kernel, the following vulnerability has been resolved:md/raid10: fix writes_pending and barrier reference leaks on discard failures (CVE-2026-72438)In the Linux kernel, the following vulnerability has been resolved:bpf: Guard __get_user acesss with access_ok for uprobe_multi data (CVE-2026-74258)In the Linux kernel, the following vulnerability has been resolved:ipv4: fib: Don''t dump dying fib_info in fib_leaf_notify(). (CVE-2026-74289)In the Linux kernel, the following vulnerability has been resolved:fou: Fix use-after-free in fou_create() (CVE-2026-74496)In the Linux kernel, the following vulnerability has been resolved:net/packet: defer vmalloc TX_RING free until skbs finish (CVE-2026-80841)In the Linux kernel, the following vulnerability has been resolved:tcp: clamp route advmss to TCP_MIN_MSS (CVE-2026-80847)In the Linux kernel, the following vulnerability has been resolved:fuse: fix race between interrupt and resend (CVE-2026-80860)In the Linux kernel, the following vulnerability has been resolved:usb: xhci: bail out of setup if the controller is inaccessible (CVE-2026-80861)In the Linux kernel, the following vulnerability has been resolved:vlan: fix skb_under_panic and races when toggling HW VLAN offload (CVE-2026-80925)In the Linux kernel, the following vulnerability has been resolved:sunrpc: fix use-after-free in __rpc_clnt_handle_event and __rpc_clnt_remove_pipedirNormal client creation goes through rpc_setup_pipedir(), which recordsclnt->pipefs_sb, but the mount-event path in __rpc_clnt_handle_event()calls rpc_setup_pipedir_sb() directly and never refreshes that field.The umount path also removes the directory without clearingclnt->pipefs_sb.After a late pipefs mount or any remount, rpc_clnt_remove_pipedir()compares the current superblock against a stale pipefs_sb pointer andskips cleanup, leaving pipefs dentries whose inode private data stillpoints at a freed rpc_clnt, leading to a potential use-after-free duringsubsequent rpc_info_open() or rpc_show_info() calls.Fix this by properly updating clnt->pipefs_sb upon mount events andclearing it during unmount or failure paths. (CVE-2026-89543)In the Linux kernel, the following vulnerability has been resolved:SUNRPC: fix gssx_dec_option_array error path bugs (CVE-2026-89544)In the Linux kernel, the following vulnerability has been resolved:sunrpc: defer rq_argp and rq_resp free until after RCU grace period (CVE-2026-89545)In the Linux kernel, the following vulnerability has been resolved:ipv6: rpl: fix NULL dereference of idev in ipv6_rpl_srh_rcv() (CVE-2026-89561)In the Linux kernel, the following vulnerability has been resolved:ip: orphan prefetched skbs before multicast forwarding (CVE-2026-89564)In the Linux kernel, the following vulnerability has been resolved:acpi/apei/ghes: Use raw_spinlock_t for CXL CPER work locks (CVE-2026-89589)In the Linux kernel, the following vulnerability has been resolved:erofs: skip sufficiently large global buffers when resizing (CVE-2026-89602)In the Linux kernel, the following vulnerability has been resolved:smb: client: fix UAF and buffer leak in cifs_check_trans2() for malformed secondary T2 (CVE-2026-89637)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix extent map leak in NOCOW direct I/O write (CVE-2026-89644)In the Linux kernel, the following vulnerability has been resolved:NFSD: Prevent client use-after-free during delegation revoke (CVE-2026-89659)In the Linux kernel, the following vulnerability has been resolved:NFSD: Prevent client use-after-free during admin state revocationA stateid holds only a bare pointer to its nfs4_client; a stateidreference does not pin it.  The client survives only because__destroy_client() drains its stateids before free_client() runs.nfsd4_revoke_states() drops nn->client_lock across revoke_one_stid(),which dereferences the client to revoke a stateid and readclp->cl_minorversion.  A teardown racing the dropped lock can freethe client first.Pinning cl_rpc_users under client_lock blocks the DESTROY_CLIENTID andEXCHANGE_ID teardown, which refuses while cl_rpc_users is non-zero.force_expire_client() ignores it: once its wait for cl_rpc_users toreach zero has passed, a later pin goes unnoticed.Under client_lock, skip a client whose cl_time is already zero --force_expire_client() clears it there before waiting -- otherwise pincl_rpc_users before dropping the lock.  The walk then either sees theexpiry and skips, or pins in time for that wait to cover the revoke. (CVE-2026-89660)In the Linux kernel, the following vulnerability has been resolved:nfsd: close shrinker/GC/fsnotify vs per-net shutdown race in filecache (CVE-2026-89667)In the Linux kernel, the following vulnerability has been resolved:nfsd: fix stale s2s_cp_stateids IDR entry for async COPY (CVE-2026-89676)In the Linux kernel, the following vulnerability has been resolved:nfsd: fix clock domain mismatch in clients_still_reclaiming() (CVE-2026-89685)In the Linux kernel, the following vulnerability has been resolved:nfsd: check nfsd4_acl_to_attr() return value in nfsd4_create()nfsd4_create() stores the return value of nfsd4_acl_to_attr() instatus, but the switch(create->cr_type) block unconditionallyoverwrites it in every branch. ACL translation errors are silentlydiscarded, and the CREATE proceeds without the requested ACL.Add an early exit check after nfsd4_acl_to_attr(), matching thepattern already used in nfsd4_setattr().[ cel: prefer NFS4ERR_BADTYPE over NFS4ERR_ATTRNOTSUPP ] (CVE-2026-89693)In the Linux kernel, the following vulnerability has been resolved:nfsd: widen nfsd_genl_rqstp address fields to sockaddr_storage (CVE-2026-89698)In the Linux kernel, the following vulnerability has been resolved:nfsd: validate sockaddr length per family in listener_set (CVE-2026-89700)In the Linux kernel, the following vulnerability has been resolved:nfsd: RCU-protect cl_cb_session to fix use-after-free on session teardown (CVE-2026-89708)In the Linux kernel, the following vulnerability has been resolved:zram: set default primary compressor in zram_destroy_comps() (CVE-2026-89717)In the Linux kernel, the following vulnerability has been resolved:mm/migrate_device: clear stale mapping after freeing swapcache (CVE-2026-89755)In the Linux kernel, the following vulnerability has been resolved:KEYS: trusted: Fix TPM teardown ordering (CVE-2026-89763)In the Linux kernel, the following vulnerability has been resolved:mm/damon/core: avoid infinite kdamond_merge_regions() internal loop (CVE-2026-89796)In the Linux kernel, the following vulnerability has been resolved:bpf: Disable preemption in bpf_get_stackid (CVE-2026-89799)In the Linux kernel, the following vulnerability has been resolved:NFSD: Prevent client use-after-free during blocked-lock reaping (CVE-2026-90036)In the Linux kernel, the following vulnerability has been resolved:NFSD: Prevent client use-after-free during close_lru reaping (CVE-2026-90037)In the Linux kernel, the following vulnerability has been resolved:NFSD: Guard admin state-revocation walks with NFSD_NET_UP (CVE-2026-90039)In the Linux kernel, the following vulnerability has been resolved:ceph: properly decrypt filenames in vmalloc() buffers (CVE-2026-90042)In the Linux kernel, the following vulnerability has been resolved:iommu/tegra241-cmdqv: Publish an LVCMDQ only after it is fully initialized (CVE-2026-90430)In the Linux kernel, the following vulnerability has been resolved:bpf: Reject rdonly/rdwr_buf_size kfunc arguments that exceed u32 max (CVE-2026-93125)In the Linux kernel, the following vulnerability has been resolved:i2c: smbus: reject oversized block transfers in the common path (CVE-2026-93287)In the Linux kernel, the following vulnerability has been resolved:netfilter: nfnetlink_log: wait for rcu grace period before freeing pernet state (CVE-2026-93288)In the Linux kernel, the following vulnerability has been resolved:scsi: core: Do not block on tag allocation in scsi_eh_lock_door() (CVE-2026-93781)In the Linux kernel, the following vulnerability has been resolved:cifs: validate idmap key payload length (CVE-2026-93785)In the Linux kernel, the following vulnerability has been resolved:smb: client: bound dirent name against end of SMB response in cifs_filldir (CVE-2026-93787)In the Linux kernel, the following vulnerability has been resolved:smb/client: flush dirty data before punching a hole (CVE-2026-93794)In the Linux kernel, the following vulnerability has been resolved:blk-cgroup: fix leaks and online flag on radix_tree_insert failure (CVE-2026-93795)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix reloc root cleanup in merge_reloc_roots() (CVE-2026-93798)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix use-after-free on reloc root after error in insert_dirty_subvol() (CVE-2026-93800)In the Linux kernel, the following vulnerability has been resolved:smb/client: zero-initialize stack-allocated cifs_open_info_data (CVE-2026-93801)In the Linux kernel, the following vulnerability has been resolved:cachefiles: Fix double fput (CVE-2026-93810)In the Linux kernel, the following vulnerability has been resolved:btrfs: tree-checker: validate INODE_REF''s namelen (CVE-2026-93813)In the Linux kernel, the following vulnerability has been resolved:perf: Fix addr_filter_ranges lifetime (CVE-2026-93817)In the Linux kernel, the following vulnerability has been resolved:tls: reject the combination of TLS and sockmap (CVE-2026-93824)In the Linux kernel, the following vulnerability has been resolved:spi: Add NULL check for spi_get_device_id() in spi_get_device_match_data() (CVE-2026-93825)In the Linux kernel, the following vulnerability has been resolved:virtio-fs: avoid double-free on failed queue setup (CVE-2026-93827)In the Linux kernel, the following vulnerability has been resolved:exfat: fix handling of damaged volume in exfat_create_upcase_table() (CVE-2026-93828)In the Linux kernel, the following vulnerability has been resolved:smb: client: fix races in cifsd thread creation (CVE-2026-93829)In the Linux kernel, the following vulnerability has been resolved:btrfs: tree-checker: validate names in ROOT_REF and ROOT_BACKREF (CVE-2026-97415)In the Linux kernel, the following vulnerability has been resolved:btrfs: balance: fix potential bg lookup failure in btrfs_may_alloc_data_chunk() (CVE-2026-97416)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_conntrack: use get_unaligned_be32() in tcp_sack() (CVE-2026-97417)In the Linux kernel, the following vulnerability has been resolved:bpf: NUL-terminate replaced sysctl value (CVE-2026-97420)In the Linux kernel, the following vulnerability has been resolved:RDMA/umem: Be careful about boundary conditions in ib_umem_find_best_pgsz() (CVE-2026-97421)In the Linux kernel, the following vulnerability has been resolved:xhci: Prevent queuing new commands if xhci is inaccessible (CVE-2026-97430)In the Linux kernel, the following vulnerability has been resolved:ntfs3: fix out-of-bounds read in ntfs_dir_emit() and hdr_find_e() (CVE-2026-97437)In the Linux kernel, the following vulnerability has been resolved:fs/ntfs3: validate index entry key bounds (CVE-2026-97438)In the Linux kernel, the following vulnerability has been resolved:fs/ntfs3: preserve non-DOS attribute bits in system.dos_attrib (CVE-2026-97439)In the Linux kernel, the following vulnerability has been resolved:ata: ahci: fail probe if BAR too small for claimed ports (CVE-2026-97441)In the Linux kernel, the following vulnerability has been resolved:perf/ftrace: Fix WARNING in __unregister_ftrace_function (CVE-2026-97443)In the Linux kernel, the following vulnerability has been resolved:ACPICA: add boundary checks in two places (CVE-2026-97444)In the Linux kernel, the following vulnerability has been resolved:ACPICA: Enhance buffer validation in acpi_ut_walk_aml_resources() (CVE-2026-97445)In the Linux kernel, the following vulnerability has been resolved:ACPICA: Fix NULL pointer dereference in acpi_ns_custom_package() (CVE-2026-97446)In the Linux kernel, the following vulnerability has been resolved:ACPICA: Add validation for node in acpi_ns_build_normalized_path() (CVE-2026-97448)In the Linux kernel, the following vulnerability has been resolved:ACPICA: Add package limit checks in parser functions (CVE-2026-97449)In the Linux kernel, the following vulnerability has been resolved:ACPICA: validate handler object type in two places (CVE-2026-97450)In the Linux kernel, the following vulnerability has been resolved:ACPICA: Fix integer overflow in acpi_ex_opcode_3A_1T_1R() (mid_op) (CVE-2026-97451)In the Linux kernel, the following vulnerability has been resolved:ACPICA: Prevent adding invalid references (CVE-2026-97452)In the Linux kernel, the following vulnerability has been resolved:ACPICA: validate byte_count in acpi_ps_get_next_package_length() (CVE-2026-97453)In the Linux kernel, the following vulnerability has been resolved:ACPICA: add boundary checks in acpi_ps_get_next_field() (CVE-2026-97454)In the Linux kernel, the following vulnerability has been resolved:ACPICA: Fix use-after-free in acpi_ds_terminate_control_method() (CVE-2026-97455)In the Linux kernel, the following vulnerability has been resolved:ACPICA: Fix condition check in acpi_ps_parse_loop() (CVE-2026-97456)In the Linux kernel, the following vulnerability has been resolved:ipv6: addrconf: fix temp address generation after prefix deprecation (CVE-2026-97472)In the Linux kernel, the following vulnerability has been resolved:rds: filter RDS_INFO_* getsockopt by caller''s netns (CVE-2026-97476)In the Linux kernel, the following vulnerability has been resolved:serial: 8250: fix possible ISR soft lockup (CVE-2026-97481)In the Linux kernel, the following vulnerability has been resolved:usb: core: hcd: fix possible deadlock in rh control transfers (CVE-2026-97483)In the Linux kernel, the following vulnerability has been resolved:usbip: vhci_hcd: fix NULL deref in status_show_vhci (CVE-2026-97484)In the Linux kernel, the following vulnerability has been resolved:PCI/sysfs: Add CAP_SYS_ADMIN check to __resource_resize_store() (CVE-2026-97505)In the Linux kernel, the following vulnerability has been resolved:mptcp: fix bad accounting in __mptcp_subflow_push_pending() (CVE-2026-97522)In the Linux kernel, the following vulnerability has been resolved:mptcp: close race between scheduler and state change (CVE-2026-97523)In the Linux kernel, the following vulnerability has been resolved:mptcp: avoid unneeded actions on subflow reset (CVE-2026-97524)In the Linux kernel, the following vulnerability has been resolved:xfs: initialise args->total for parent pointer updates (CVE-2026-97551)In the Linux kernel, the following vulnerability has been resolved:smb: client: fix heap overflow in DACL owner/group rewrite (CVE-2026-97555)In the Linux kernel, the following vulnerability has been resolved:smb: client: avoid leaking refcount when cifs_sb_tlink() fails (CVE-2026-97556)In the Linux kernel, the following vulnerability has been resolved:smb: client: fix one-byte OOB read in smb2_parse_native_symlink() (CVE-2026-97560)In the Linux kernel, the following vulnerability has been resolved:smb: client: pin DFS superblock in iterator callback (CVE-2026-97562)In the Linux kernel, the following vulnerability has been resolved:smb: client: reject userspace cifs.idmap descriptions (CVE-2026-97564)In the Linux kernel, the following vulnerability has been resolved:mptcp: syncookies: remember the request backup flag (CVE-2026-97568)In the Linux kernel, the following vulnerability has been resolved:ipvs: reject invalid states in connection template sync records (CVE-2026-97596)In the Linux kernel, the following vulnerability has been resolved:ipv4: fib: bound automatic table ID allocation (CVE-2026-97598)In the Linux kernel, the following vulnerability has been resolved:inet: frags: invalidate queues before flushing them (CVE-2026-97602)In the Linux kernel, the following vulnerability has been resolved:fs: autofs: fix memory leak in autofs_fill_super() (CVE-2026-97606)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_log: unregister loggers before per-net teardown (CVE-2026-97608)In the Linux kernel, the following vulnerability has been resolved:net: openvswitch: fix use-after-free of the flow table mask array (CVE-2026-97611)In the Linux kernel, the following vulnerability has been resolved:net: mpls: clear inner_protocol when the last label is popped (CVE-2026-97612)In the Linux kernel, the following vulnerability has been resolved:net/sched: act_api: release all action references on NEWACTION failure (CVE-2026-97616)In the Linux kernel, the following vulnerability has been resolved:ring-buffer: Check resize_disabled before publishing the new subbuf order (CVE-2026-97617)In the Linux kernel, the following vulnerability has been resolved:drm/i915: Fix memory leak in query_perf_config_list() (CVE-2026-97899)In the Linux kernel, the following vulnerability has been resolved:drm/drm_exec: fix up contended obj when num_objects is 0 (CVE-2026-97900)In the Linux kernel, the following vulnerability has been resolved:fs: don''t return -EINVAL for successful nested thaw (CVE-2026-97902)In the Linux kernel, the following vulnerability has been resolved:cpufreq: initialize policy rwsem before sysfs publication (CVE-2026-97904)In the Linux kernel, the following vulnerability has been resolved:cpufreq: zero-initialize policy cpumask before sysfs publication (CVE-2026-97905)In the Linux kernel, the following vulnerability has been resolved:tick/broadcast: Plug clockevents replacement race (CVE-2026-97925)In the Linux kernel, the following vulnerability has been resolved:ipv6: fix fib6 walker UAF on seq stop (CVE-2026-97940)In the Linux kernel, the following vulnerability has been resolved:x86/mm: Fix user-space data loss with MADV_FREE and THP (CVE-2026-97945)In the Linux kernel, the following vulnerability has been resolved:scsi: target: iscsi: Fix hang for aborted WRITE_PENDING commands (CVE-2026-97951)In the Linux kernel, the following vulnerability has been resolved:net/sched: cls_api: Don''t replay RTM_GETCHAIN in tc_ctl_chain(). (CVE-2026-97958)In the Linux kernel, the following vulnerability has been resolved:net/sched: cls_route: free emptied bucket on filter move (CVE-2026-97959)In the Linux kernel, the following vulnerability has been resolved:perf/core: Allow list_del during perf_event_overflow() (CVE-2026-97961)In the Linux kernel, the following vulnerability has been resolved:ppp_synctty: ensure a writeable skb header (CVE-2026-97964)In the Linux kernel, the following vulnerability has been resolved:vxlan: initialize _md in vxlan_xmit_one() (CVE-2026-97965)In the Linux kernel, the following vulnerability has been resolved:eth: ice: don''t dereference pointers from TP_printk() (CVE-2026-97978)In the Linux kernel, the following vulnerability has been resolved:ice: add missing xa_destroy for sched_node_ids (CVE-2026-97979)In the Linux kernel, the following vulnerability has been resolved:net: ipv6: Fix UDP length overflow with PMTU discover and big MTU (CVE-2026-97984)In the Linux kernel, the following vulnerability has been resolved:af_unix: Update last skb marker in manage_oob(). (CVE-2026-97985)In the Linux kernel, the following vulnerability has been resolved:virtio_console: do not free control-out buffers on remove (CVE-2026-97995)In the Linux kernel, the following vulnerability has been resolved:netfilter: nfnetlink_log: cope with concurrent instance destruction (CVE-2026-97998)In the Linux kernel, the following vulnerability has been resolved:bpf: Reject non-scalar bpf_loop iteration counts (CVE-2026-98007)In the Linux kernel, the following vulnerability has been resolved:net/sched: drr: clamp quantum in change class (CVE-2026-98010)In the Linux kernel, the following vulnerability has been resolved:net/sched: hhf: clamp quantum in change and init paths (CVE-2026-98011)In the Linux kernel, the following vulnerability has been resolved:net/sched: sfq: clamp quantum in change path (CVE-2026-98012)In the Linux kernel, the following vulnerability has been resolved:net/mlx5: E-Switch, prevent mc_list repopulation during vport disable (CVE-2026-98014)In the Linux kernel, the following vulnerability has been resolved:net/mlx5: E-Switch: fix use-after-free in mlx5_eswitch_termtbl_put (CVE-2026-98015)In the Linux kernel, the following vulnerability has been resolved:net/mlx5e: Fix use-after-free race in sample_restore_put() (CVE-2026-98016)In the Linux kernel, the following vulnerability has been resolved:net/sched: defer qdisc freeing after failed creation (CVE-2026-98017)In the Linux kernel, the following vulnerability has been resolved:net: reject oversized tx_queue_len at netlink parse time (CVE-2026-98021)In the Linux kernel, the following vulnerability has been resolved:net: cap tx_queue_len at S16_MAX to prevent oversized ring allocations (CVE-2026-98022)In the Linux kernel, the following vulnerability has been resolved:vxlan: reject dynamic fdb entries that reference a nexthop id (CVE-2026-98023)In the Linux kernel, the following vulnerability has been resolved:net: bridge: mcast: properly convert mglist to rcu (CVE-2026-98026)In the Linux kernel, the following vulnerability has been resolved:nexthop: Initialize extack in remove_nh_grp_entry() (CVE-2026-98031)In the Linux kernel, the following vulnerability has been resolved:bpf: Reject untrusted allocated-object pointers (CVE-2026-98037)In the Linux kernel, the following vulnerability has been resolved:bpf: Require MEM_PERCPU for percpu kptr stores (CVE-2026-98039)In the Linux kernel, the following vulnerability has been resolved:bpf: Don''t predict JMP32 pointer vs zero comparisons (CVE-2026-98041)In the Linux kernel, the following vulnerability has been resolved:bpf: Mark faultable stack helpers as sleepable (CVE-2026-98045)In the Linux kernel, the following vulnerability has been resolved:bpf: Mark bpf_btf_find_by_name_kind() as sleepable (CVE-2026-98046)In the Linux kernel, the following vulnerability has been resolved:nvme: remove stale namespaces by NSID range during scan (CVE-2026-98056)In the Linux kernel, the following vulnerability has been resolved:ring-buffer: Add checking nr_subbufs to persistent ring buffer validation (CVE-2026-98057)In the Linux kernel, the following vulnerability has been resolved:bpf: Mark sched_process_wait argument as nullable (CVE-2026-98059)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix NULL-ptr-deref in btf_var_show() (CVE-2026-98063)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix NULL-ptr-deref when showing a void BTF type (CVE-2026-98064)In the Linux kernel, the following vulnerability has been resolved:net/rds: don''t let rds_conn_shutdown() consume a concurrent drop (CVE-2026-98068)In the Linux kernel, the following vulnerability has been resolved:net/rds: acquire the fastpath locks in rds_conn_shutdown() (CVE-2026-98069)In the Linux kernel, the following vulnerability has been resolved:net/rds: acquire RDS_IN_XMIT in rds_tcp_reset_callbacks() (CVE-2026-98070)In the Linux kernel, the following vulnerability has been resolved:net/rds: clear cp_flags bits individually in rds_conn_path_reset() (CVE-2026-98071)In the Linux kernel, the following vulnerability has been resolved:net/rds: use wq_has_sleeper() in release_in_xmit() (CVE-2026-98072)In the Linux kernel, the following vulnerability has been resolved:bonding: do not clear curr_active_slave prematurely when releasing all slaves (CVE-2026-98074)In the Linux kernel, the following vulnerability has been resolved:bpf: reject BPF_PSEUDO_FUNC reference to the main program (CVE-2026-98075)In the Linux kernel, the following vulnerability has been resolved:tracing/probes: Fix use-after-free on field name/type of events with multiple probes (CVE-2026-98076)In the Linux kernel, the following vulnerability has been resolved:netfilter: nf_conntrack_sip: fix OOB read in sip_skip_whitespace() (CVE-2026-98077)In the Linux kernel, the following vulnerability has been resolved:ipvs: fix reversed sequence option serialization (CVE-2026-98078)In the Linux kernel, the following vulnerability has been resolved:btrfs: do not force reloc root creation during qgroup_account_snapshot() (CVE-2026-98080)In the Linux kernel, the following vulnerability has been resolved:btrfs: zoned: finish active block group cleanup if call_zone_finish() fails (CVE-2026-98081)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix the possible bioc_list memory leak during error (CVE-2026-98082)In the Linux kernel, the following vulnerability has been resolved:btrfs: fix transaction use-after-free in raid stripe insertion (CVE-2026-98083)In the Linux kernel, the following vulnerability has been resolved:scsi: mpt3sas: Avoid out-of-bounds cpumask_of_node() call in _base_assign_reply_queues() (CVE-2026-98088)In the Linux kernel, the following vulnerability has been resolved:bonding: alb: fix uninitialized transport header access in alb_determine_nd() (CVE-2026-98089)In the Linux kernel, the following vulnerability has been resolved:btrfs: restore active device pointers after failed sprout (CVE-2026-98090)In the Linux kernel, the following vulnerability has been resolved:btrfs: detach failed sprout device from transaction update list (CVE-2026-98091)In the Linux kernel, the following vulnerability has been resolved:af_packet: Don''t cast tpacket_hdr.tp_len to int in tpacket_parse_header(). (CVE-2026-98095)In the Linux kernel, the following vulnerability has been resolved:ipv6: sr: restore network header before routing and forwarding (CVE-2026-98096)In the Linux kernel, the following vulnerability has been resolved:tipc: Dont send random pad bytes in RESET/ACTIVATE messages (CVE-2026-98097)In the Linux kernel, the following vulnerability has been resolved:tipc: fix NULL deref in tipc_named_node_up() on empty publication list (CVE-2026-98098)In the Linux kernel, the following vulnerability has been resolved:ipv6: mcast: fix RCU list diversion in ip6_mc_del1_src() (CVE-2026-98102)In the Linux kernel, the following vulnerability has been resolved:igmp: convert struct ip_sf_list to RCU (CVE-2026-98103)In the Linux kernel, the following vulnerability has been resolved:net/sched: cls_u32: fix duplicate handle when node ID pool is exhausted (CVE-2026-98104)In the Linux kernel, the following vulnerability has been resolved:vxlan: mdb: Fix use-after-free in vxlan_mdb_remote_src_del() (CVE-2026-98122)In the Linux kernel, the following vulnerability has been resolved:sctp: fix soft lockup from unpadded ASCONF-ACK parameter iteration (CVE-2026-98123)In the Linux kernel, the following vulnerability has been resolved:smb/client: validate new EOF for zero range (CVE-2026-98126)In the Linux kernel, the following vulnerability has been resolved:smb/client: validate new EOF for insert range (CVE-2026-98127)In the Linux kernel, the following vulnerability has been resolved:scsi: mpi3mr: Fix target device refcount leak in mpi3mr_sas_port_add() (CVE-2026-98128)In the Linux kernel, the following vulnerability has been resolved:scsi: mpi3mr: Fix NULL pointer dereference in mpi3mr_sas_port_add() (CVE-2026-98129)In the Linux kernel, the following vulnerability has been resolved:sctp: fix a TOCTOU race in SCTP_CMD_TIMER_START (CVE-2026-98130)In the Linux kernel, the following vulnerability has been resolved:bpf: Fix REG INVARIANTS VIOLATION on speculative pointer arithmetic (CVE-2026-98151)In the Linux kernel, the following vulnerability has been resolved:EDAC/device_sysfs: Use kstrtouint() for poll_msec to prevent truncation (CVE-2026-98157)In the Linux kernel, the following vulnerability has been resolved:ppp_async: drop the errored frame instead of resetting its headroom (CVE-2026-98158)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: bpftool6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: bpftool6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel-livepatch-6.12.111-136.204
+          NamespaceName: amzn:2023
+          Version: 1.0-0.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-debuginfo-common-x86_64
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-devel
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-headers
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-modules-extra
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-modules-extra-common
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-tools
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: kernel6.12-tools-devel
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: perf6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: perf6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: python3-perf6.12
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-12"
+            Kind: advisory
+          Name: python3-perf6.12-debuginfo
+          NamespaceName: amzn:2023
+          Version: 6.12.111-136.204.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3193.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-68289
+            - Name: CVE-2026-68337
+            - Name: CVE-2026-72402
+            - Name: CVE-2026-72438
+            - Name: CVE-2026-74258
+            - Name: CVE-2026-74289
+            - Name: CVE-2026-74496
+            - Name: CVE-2026-80841
+            - Name: CVE-2026-80847
+            - Name: CVE-2026-80860
+            - Name: CVE-2026-80861
+            - Name: CVE-2026-80925
+            - Name: CVE-2026-89543
+            - Name: CVE-2026-89544
+            - Name: CVE-2026-89545
+            - Name: CVE-2026-89561
+            - Name: CVE-2026-89564
+            - Name: CVE-2026-89589
+            - Name: CVE-2026-89602
+            - Name: CVE-2026-89637
+            - Name: CVE-2026-89644
+            - Name: CVE-2026-89659
+            - Name: CVE-2026-89660
+            - Name: CVE-2026-89667
+            - Name: CVE-2026-89676
+            - Name: CVE-2026-89685
+            - Name: CVE-2026-89693
+            - Name: CVE-2026-89698
+            - Name: CVE-2026-89700
+            - Name: CVE-2026-89708
+            - Name: CVE-2026-89717
+            - Name: CVE-2026-89755
+            - Name: CVE-2026-89763
+            - Name: CVE-2026-89796
+            - Name: CVE-2026-89799
+            - Name: CVE-2026-90036
+            - Name: CVE-2026-90037
+            - Name: CVE-2026-90039
+            - Name: CVE-2026-90042
+            - Name: CVE-2026-90430
+            - Name: CVE-2026-93125
+            - Name: CVE-2026-93287
+            - Name: CVE-2026-93288
+            - Name: CVE-2026-93781
+            - Name: CVE-2026-93785
+            - Name: CVE-2026-93787
+            - Name: CVE-2026-93794
+            - Name: CVE-2026-93795
+            - Name: CVE-2026-93798
+            - Name: CVE-2026-93800
+            - Name: CVE-2026-93801
+            - Name: CVE-2026-93810
+            - Name: CVE-2026-93813
+            - Name: CVE-2026-93817
+            - Name: CVE-2026-93824
+            - Name: CVE-2026-93825
+            - Name: CVE-2026-93827
+            - Name: CVE-2026-93828
+            - Name: CVE-2026-93829
+            - Name: CVE-2026-97415
+            - Name: CVE-2026-97416
+            - Name: CVE-2026-97417
+            - Name: CVE-2026-97420
+            - Name: CVE-2026-97421
+            - Name: CVE-2026-97430
+            - Name: CVE-2026-97437
+            - Name: CVE-2026-97438
+            - Name: CVE-2026-97439
+            - Name: CVE-2026-97441
+            - Name: CVE-2026-97443
+            - Name: CVE-2026-97444
+            - Name: CVE-2026-97445
+            - Name: CVE-2026-97446
+            - Name: CVE-2026-97448
+            - Name: CVE-2026-97449
+            - Name: CVE-2026-97450
+            - Name: CVE-2026-97451
+            - Name: CVE-2026-97452
+            - Name: CVE-2026-97453
+            - Name: CVE-2026-97454
+            - Name: CVE-2026-97455
+            - Name: CVE-2026-97456
+            - Name: CVE-2026-97472
+            - Name: CVE-2026-97476
+            - Name: CVE-2026-97481
+            - Name: CVE-2026-97483
+            - Name: CVE-2026-97484
+            - Name: CVE-2026-97505
+            - Name: CVE-2026-97522
+            - Name: CVE-2026-97523
+            - Name: CVE-2026-97524
+            - Name: CVE-2026-97551
+            - Name: CVE-2026-97555
+            - Name: CVE-2026-97556
+            - Name: CVE-2026-97560
+            - Name: CVE-2026-97562
+            - Name: CVE-2026-97564
+            - Name: CVE-2026-97568
+            - Name: CVE-2026-97596
+            - Name: CVE-2026-97598
+            - Name: CVE-2026-97602
+            - Name: CVE-2026-97606
+            - Name: CVE-2026-97608
+            - Name: CVE-2026-97611
+            - Name: CVE-2026-97612
+            - Name: CVE-2026-97616
+            - Name: CVE-2026-97617
+            - Name: CVE-2026-97899
+            - Name: CVE-2026-97900
+            - Name: CVE-2026-97902
+            - Name: CVE-2026-97904
+            - Name: CVE-2026-97905
+            - Name: CVE-2026-97925
+            - Name: CVE-2026-97940
+            - Name: CVE-2026-97945
+            - Name: CVE-2026-97951
+            - Name: CVE-2026-97958
+            - Name: CVE-2026-97959
+            - Name: CVE-2026-97961
+            - Name: CVE-2026-97964
+            - Name: CVE-2026-97965
+            - Name: CVE-2026-97978
+            - Name: CVE-2026-97979
+            - Name: CVE-2026-97984
+            - Name: CVE-2026-97985
+            - Name: CVE-2026-97995
+            - Name: CVE-2026-97998
+            - Name: CVE-2026-98007
+            - Name: CVE-2026-98010
+            - Name: CVE-2026-98011
+            - Name: CVE-2026-98012
+            - Name: CVE-2026-98014
+            - Name: CVE-2026-98015
+            - Name: CVE-2026-98016
+            - Name: CVE-2026-98017
+            - Name: CVE-2026-98021
+            - Name: CVE-2026-98022
+            - Name: CVE-2026-98023
+            - Name: CVE-2026-98026
+            - Name: CVE-2026-98031
+            - Name: CVE-2026-98037
+            - Name: CVE-2026-98039
+            - Name: CVE-2026-98041
+            - Name: CVE-2026-98045
+            - Name: CVE-2026-98046
+            - Name: CVE-2026-98056
+            - Name: CVE-2026-98057
+            - Name: CVE-2026-98059
+            - Name: CVE-2026-98063
+            - Name: CVE-2026-98064
+            - Name: CVE-2026-98068
+            - Name: CVE-2026-98069
+            - Name: CVE-2026-98070
+            - Name: CVE-2026-98071
+            - Name: CVE-2026-98072
+            - Name: CVE-2026-98074
+            - Name: CVE-2026-98075
+            - Name: CVE-2026-98076
+            - Name: CVE-2026-98077
+            - Name: CVE-2026-98078
+            - Name: CVE-2026-98080
+            - Name: CVE-2026-98081
+            - Name: CVE-2026-98082
+            - Name: CVE-2026-98083
+            - Name: CVE-2026-98088
+            - Name: CVE-2026-98089
+            - Name: CVE-2026-98090
+            - Name: CVE-2026-98091
+            - Name: CVE-2026-98095
+            - Name: CVE-2026-98096
+            - Name: CVE-2026-98097
+            - Name: CVE-2026-98098
+            - Name: CVE-2026-98102
+            - Name: CVE-2026-98103
+            - Name: CVE-2026-98104
+            - Name: CVE-2026-98122
+            - Name: CVE-2026-98123
+            - Name: CVE-2026-98126
+            - Name: CVE-2026-98127
+            - Name: CVE-2026-98128
+            - Name: CVE-2026-98129
+            - Name: CVE-2026-98130
+            - Name: CVE-2026-98151
+            - Name: CVE-2026-98157
+            - Name: CVE-2026-98158
+    Name: ALAS2023-2026-3193
+    NamespaceName: amzn:2023
+    Severity: High
