@@ -32,10 +32,11 @@ aliases:
 database_specific:
     cpes:
         - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:maven:*:*
     severity: Medium
 details: Uncontrolled Recursion (CWE-674) in Elasticsearch can lead to Denial of Service via a specially crafted request that causes the server to construct and process a deeply nested data structure with no bound on recursion depth. Elasticsearch contains an uncontrolled recursion weakness in how it builds and serializes geometry values produced by scripted runtime fields. Unlike geometry supplied as text, which is subject to a nesting-depth limit, geometry constructed from a script's output is not bounded. An authenticated user with read access to a single index can submit a request defining such a field with a script that produces a deeply nested structure. Processing this request recurses past the available stack space, causing the affected node to terminate. The node does not recover automatically on all deployments and may require manual intervention to restore service.
 id: BIT-elasticsearch-2026-103008
-modified: "2026-10-13T07:22:07.779Z"
+modified: "2026-10-14T09:12:20.145Z"
 published: "2026-10-13T06:47:24.793Z"
 references:
     - type: ADVISORY

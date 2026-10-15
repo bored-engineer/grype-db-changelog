@@ -1,0 +1,42 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitea
+        purl: pkg:bitnami/gitea
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-14"
+                      kind: advisory
+                      version: 28.0.0
+          events:
+            - fixed: 28.0.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-94205
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitea:gitea:*:*:*:*:*:*:*:*
+    severity: Critical
+details: Gitea Actions decided whether a fork pull request run needed approval based on the user who triggered the event rather than the pull request author. For `pull_request` activity triggered by a maintainer during ordinary triage, such as adding a label, the run was created without requiring approval, while the workflow definition was still taken from the fork head. Where Actions is enabled and a matching runner is registered, fork-controlled workflow code could run on the base repository's runners without an explicit approval.
+id: BIT-gitea-2026-94205
+modified: "2026-10-14T09:12:20.145Z"
+published: "2026-10-14T08:43:07.222Z"
+references:
+    - type: ADVISORY
+      url: https://github.com/go-gitea/gitea/security/advisories/GHSA-xh39-mxw9-34pp
+    - type: ARTICLE
+      url: https://blog.gitea.com/release-of-28.0.0/
+    - type: ARTICLE
+      url: https://github.com/go-gitea/gitea/releases/tag/v28.0.0
+    - type: FIX
+      url: https://github.com/go-gitea/gitea/pull/39399
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-94205
+schema_version: 1.6.2
+summary: Gitea fork workflow approval bypass through maintainer-triggered events

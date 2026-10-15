@@ -1,0 +1,42 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitea
+        purl: pkg:bitnami/gitea
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-14"
+                      kind: advisory
+                      version: 28.0.0
+          events:
+            - fixed: 28.0.0
+            - introduced: "0"
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-96399
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitea:gitea:*:*:*:*:*:*:*:*
+    severity: High
+details: A repository's external issue tracker regular expression containing alternating capture groups could produce invalid slice indexes when Gitea rendered issue references, causing a runtime panic that terminated the Gitea process. A user who can edit a repository's external issue tracker settings could make any later rendering of matching content, such as viewing a README, crash the instance for all users.
+id: BIT-gitea-2026-96399
+modified: "2026-10-14T09:12:20.145Z"
+published: "2026-10-14T08:43:11.018Z"
+references:
+    - type: ADVISORY
+      url: https://github.com/go-gitea/gitea/security/advisories/GHSA-mw6q-qj47-9g5q
+    - type: ARTICLE
+      url: https://blog.gitea.com/release-of-28.0.0/
+    - type: ARTICLE
+      url: https://github.com/go-gitea/gitea/releases/tag/v28.0.0
+    - type: FIX
+      url: https://github.com/go-gitea/gitea/pull/39354
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-96399
+schema_version: 1.6.2
+summary: Gitea denial of service through external issue tracker patterns
