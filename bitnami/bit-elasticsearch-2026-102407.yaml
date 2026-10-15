@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-14"
+                      kind: advisory
+                      version: 8.19.19
+                    - date: "2026-10-14"
+                      kind: advisory
+                      version: 9.3.8
+                    - date: "2026-10-14"
+                      kind: advisory
+                      version: 9.4.4
+          events:
+            - introduced: 7.17.5
+            - fixed: 8.19.19
+            - introduced: 9.0.0
+            - fixed: 9.3.8
+            - introduced: 9.4.0
+            - fixed: 9.4.4
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2026-102407
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:maven:*:*
+    severity: Medium
+details: Incorrect Authorization (CWE-863) in Elasticsearch can lead to unauthorized data stream modification via Accessing Functionality Not Properly Constrained by ACLs (CAPEC-1). An authenticated user with sufficient privileges over a single resource could use the Modify Data Streams API to modify a data stream to which they were not otherwise authorized, potentially injecting data into it or affecting its ability to be searched normally. This issue does not allow an attacker to read the contents of a data stream they do not otherwise have access to.
+id: BIT-elasticsearch-2026-102407
+modified: "2026-10-14T09:12:20.145Z"
+published: "2026-10-14T08:40:26.339Z"
+references:
+    - type: ADVISORY
+      url: https://discuss.elastic.co/t/elasticsearch-8-19-19-9-3-8-9-4-4-security-update-esa-2026-188/390861
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-102407
+schema_version: 1.6.2
+summary: Incorrect Authorization in Elasticsearch Leading to Unauthorized Data Stream Modification
