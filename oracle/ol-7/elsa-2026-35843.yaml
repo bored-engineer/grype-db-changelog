@@ -1,0 +1,85 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [1.12.9-4.0.1]
+        - Restore the flatpak-builder 1.0.0 subpackage [Orabug: 40105180]
+        - Move flatpak-session-helper back into flatpak [Orabug: 40105180]
+
+        [1.12.9-4]
+        - Import to OL7 [Orabug: 39695281]
+
+        [1.12.9-4]
+        - Fix arbitrary code execution via crafted symlinks in sandbox-expose options
+          Resolves: RHEL-165633
+        - Fix arbitrary file deletion on host via improper cache file path validation
+          Resolves: RHEL-170160
+
+        [1.12.9-3]
+        - Fix previous changelog entry
+
+        [1.12.9-2]
+        - Backport upstream patches for CVE-2024-42472
+        - Require bubblewrap version that has new --bind-fd option backported for
+          addressing CVE-2024-42472
+
+        [1.12.9-1]
+        - Update to 1.12.9 (CVE-2024-32462)
+
+        [1.12.8-1]
+        - Rebase to 1.12.8 (RHEL-4220)
+
+        [1.10.8-3]
+        - Let flatpak own %{_sysconfdir}/flatpak (RHEL-15822)
+
+        [1.10.8-2]
+        - Make sure to use the RHEL-lifetime supported Python and no other (RHEL-2225)
+
+        [1.10.8-1]
+        - Rebase to 1.10.8 (#2222103)
+        - Fix CVE-2023-28100 and CVE-2023-28101 (#2180311)
+    FixedIn:
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: flatpak
+          NamespaceName: ol:7
+          Version: 0:1.12.9-4.0.1.el7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: flatpak-builder
+          NamespaceName: ol:7
+          Version: 0:1.0.0-17.0.1.el7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: flatpak-devel
+          NamespaceName: ol:7
+          Version: 0:1.12.9-4.0.1.el7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: flatpak-libs
+          NamespaceName: ol:7
+          Version: 0:1.12.9-4.0.1.el7
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-35843.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-34078.html
+              Name: CVE-2026-34078
+            - Link: https://linux.oracle.com/cve/CVE-2026-34079.html
+              Name: CVE-2026-34079
+        Issued: "2026-10-13"
+        RefId: ELSA-2026-35843
+    Name: ELSA-2026-35843
+    NamespaceName: ol:7
+    Severity: High

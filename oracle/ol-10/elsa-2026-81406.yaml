@@ -1,0 +1,362 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [6.12.0-211.65.1]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985782]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Update module name for cryptographic module [Orabug: 37400433]
+        - Clean git history at setup stage
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985782]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Update module name for cryptographic module [Orabug: 37400433]
+        - Clean git history at setup stage
+
+        [6.12.0-211.65.1]
+        - nvmet-auth: Synchronize timeout work during SQ teardown (CKI Backport Bot) [RHEL-276363] {CVE-2026-89970}
+        - thermal: core: Fix thermal zone device registration error path (Dennis Chen) [RHEL-226827] {CVE-2026-43332}
+        - bpf: Restrict JIT predictor flush to cBPF (Viktor Malik) [RHEL-273875] {CVE-2026-64508}
+        - x86/bugs: Enable IBPB flush on BPF JIT allocation (Viktor Malik) [RHEL-273900] {CVE-2026-64507}
+        - bpf: Support for hardening against JIT spraying (Viktor Malik) [RHEL-273875] {CVE-2026-64508}
+        - tls: Preserve sk_err across recvmsg() when data has been copied (Valentin Schneider) [RHEL-275027]
+        - net: tls: prevent chain-after-chain in plain text SG (Valentin Schneider) [RHEL-275027]
+        - net: tls: fix off-by-one in sg_chain entry count for wrapped sk_msg ring (Valentin Schneider) [RHEL-275027]
+        - net: tls: fix silent data drop under pipe back-pressure (Valentin Schneider) [RHEL-275027]
+        - net: tls: fix strparser anchor skb leak on offload RX setup failure (Valentin Schneider) [RHEL-275027]
+        - net/tls: fix use-after-free in -EBUSY error path of tls_do_encryption (Valentin Schneider) [RHEL-275027]
+        - tls: Purge async_hold in tls_decrypt_async_wait() (Valentin Schneider) [RHEL-275027]
+        - tls: Fix race condition in tls_sw_cancel_work_tx() (Valentin Schneider) [RHEL-275027]
+        - af_unix: Unlink scc_entry in unix_del_edge(). (CKI Backport Bot) [RHEL-270654] {CVE-2026-80521}
+        - openvswitch: fix GSO userspace truncation underflow (CKI Backport Bot) [RHEL-263802] {CVE-2026-68123}
+        - macsec: fix replay protection at XPN lower-PN wrap (Abhishek Rawal) [RHEL-226678] {CVE-2026-63925}
+        - cifs: validate DFS referral string offsets (CKI Backport Bot) [RHEL-261989] {CVE-2026-72318}
+        - smb: client: fix double-free in SMB2_ioctl() replay (CKI Backport Bot) [RHEL-259796] {CVE-2026-64385}
+        - KVM: arm64: vgic: Check the interrupt is still ours before migrating it (CKI Backport Bot) [RHEL-252479] {CVE-2026-72289}
+        - i2c: stub: Reject I2C block transfers with invalid length (CKI Backport Bot) [RHEL-232114] {CVE-2026-64191}
+
+        [6.12.0-211.64.1]
+        - ice: use per-interface clock_id for E825 generic DPLLs (Jakub Ramaseuski) [RHEL-273805]
+        - ice: add TSPLL DPLL device and TIME_REF pin for E825 (Jakub Ramaseuski) [RHEL-273805]
+        - ice: monitor TSPLL lock from PTP periodic worker (Jakub Ramaseuski) [RHEL-273805]
+        - ice: suppress DPLL errors during reset recovery (Jakub Ramaseuski) [RHEL-273805]
+        - udp: fix potential use-after-free in tunnel segmentation (Antoine Tenart) [RHEL-268127] {CVE-2026-74705}
+        - nfsd: defer vfree of compound ops to fix rpc_status UAF (Roberto Bergantinos Corpas) [RHEL-264930] {CVE-2026-89690}
+        - svcrdma: Reject inline replies that overflow the pull-up buffer (Roberto Bergantinos Corpas) [RHEL-187745] {CVE-2026-89530}
+        - nfsd: fix stale s2s_cp_stateids IDR entry for async COPY (Roberto Bergantinos Corpas) [RHEL-264798] {CVE-2026-89676}
+        - nfsd: fix UAF in async copy cancel and shutdown (Roberto Bergantinos Corpas) [RHEL-264749] {CVE-2026-89675}
+        - nfsd: initialize copy-notify stateid before publishing it (Roberto Bergantinos Corpas) [RHEL-264168] {CVE-2026-89669}
+        - nfsd: revoke copy-notify stateids before dropping their reference (Roberto Bergantinos Corpas) [RHEL-264134] {CVE-2026-89663}
+        - nfsd: check client ownership when cancelling a copy-notify stateid (Roberto Bergantinos Corpas) [RHEL-264134]
+        - nfsd: fix cpntf publish race in nfs4_init_cp_state (Roberto Bergantinos Corpas) [RHEL-264134]
+        - NFSD: Fix SECINFO_NO_NAME decode error cleanup (Roberto Bergantinos Corpas) [RHEL-259243] {CVE-2026-53398}
+        - SUNRPC: pin upper rpc_clnt across the TLS connect_worker (Roberto Bergantinos Corpas) [RHEL-261492] {CVE-2026-72317}
+        - vlan: fix skb_under_panic and races when toggling HW VLAN offload (Vb Vasu) [RHEL-254268]
+        - macvlan: inherit needed_headroom and needed_tailroom from lowerdev (Vb Vasu) [RHEL-254268]
+        - ipvlan: inherit needed_headroom and needed_tailroom from phy_dev (Vb Vasu) [RHEL-254268] {CVE-2026-74744}
+        - ipvlan: Make the addrs_lock be per port (Vb Vasu) [RHEL-246118] {CVE-2026-23103}
+        - vsock/virtio: bind uarg before filling zerocopy skb (Jon Maloy) [RHEL-229037] {CVE-2026-63970}
+        - vsock/virtio: fix zerocopy completion for multi-skb sends (Jon Maloy) [RHEL-232860] {CVE-2026-53365}
+        - vsock/virtio: fix MSG_ZEROCOPY pinned-pages accounting (Jon Maloy) [RHEL-232860] {CVE-2026-53365}
+        - KVM: SEV: Use READ_ONCE() when reading entries/indices from PSC buffer (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: Check PSC request indices against the actual size of the buffer (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: Don't explicitly pass PSC buffer to snp_begin_psc() (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: WARN if KVM attempts to setup scratch area with min_len==0 (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: Compute the correct max length of the in-GHCB scratch area (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: Use the size of the PSC header as the minimum size for PSC requests (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: Ignore Port I/O requests of length '0' (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: Reject MMIO requests larger than 8 bytes with GHCB v2+ (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: Ignore MMIO requests of length '0' (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: x86: Consolidate SEV-ES MMIO emulation into a single public API (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: x86: Dedup kvm_sev_es_mmio_{read,write}() (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: x86: Harden SEV-ES MMIO against on-stack use-after-free (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - KVM: SEV: Require in-GHCB scratch area if GHCB v2+ is in use (Rahul Kumar) [RHEL-192289] {CVE-2026-53360}
+        - vsock/vmci: fix UAF when peer resets connection during handshake (CKI Backport Bot) [RHEL-232273] {CVE-2026-64115}
+        - mlxbf-bootctl: use sysfs_emit_at() in secure_boot_fuse_state_show() (CKI Backport Bot) [RHEL-212709]
+        - mlxbf-bootctl: Support sysfs entries for RTC battery status (CKI Backport Bot) [RHEL-212709]
+        - platform/mellanox: mlxbf-bootctl: use sysfs_emit() instead of sprintf() (CKI Backport Bot) [RHEL-212709]
+        - igc: set tx buffer type for SMD frames (CKI Backport Bot) [RHEL-227035] {CVE-2026-64035}
+    FixedIn:
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: libperf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: rtla
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-13"
+            Kind: advisory
+          Module: null
+          Name: rv
+          NamespaceName: ol:10
+          Version: 0:6.12.0-211.65.1.el10_2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-81406.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-43332.html
+              Name: CVE-2026-43332
+            - Link: https://linux.oracle.com/cve/CVE-2026-63925.html
+              Name: CVE-2026-63925
+            - Link: https://linux.oracle.com/cve/CVE-2026-64191.html
+              Name: CVE-2026-64191
+            - Link: https://linux.oracle.com/cve/CVE-2026-64385.html
+              Name: CVE-2026-64385
+            - Link: https://linux.oracle.com/cve/CVE-2026-64507.html
+              Name: CVE-2026-64507
+            - Link: https://linux.oracle.com/cve/CVE-2026-64508.html
+              Name: CVE-2026-64508
+            - Link: https://linux.oracle.com/cve/CVE-2026-68123.html
+              Name: CVE-2026-68123
+            - Link: https://linux.oracle.com/cve/CVE-2026-72289.html
+              Name: CVE-2026-72289
+            - Link: https://linux.oracle.com/cve/CVE-2026-72318.html
+              Name: CVE-2026-72318
+            - Link: https://linux.oracle.com/cve/CVE-2026-80521.html
+              Name: CVE-2026-80521
+            - Link: https://linux.oracle.com/cve/CVE-2026-89970.html
+              Name: CVE-2026-89970
+        Issued: "2026-10-13"
+        RefId: ELSA-2026-81406
+    Name: ELSA-2026-81406
+    NamespaceName: ol:10
+    Severity: High
