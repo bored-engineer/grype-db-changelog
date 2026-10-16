@@ -1,0 +1,377 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        bind-dyndb-ldap
+        [11.6-6]
+        - Fix rpminspect warnings
+          Resolves: RHEL-22497
+
+        custodia
+        [0.6.0-3]
+        - Require platform-python-setuptools instead of python3-setuptools
+        - Resolves: rhbz#1650508
+
+        ipa
+        [4.9.13-21.3.0.2]
+        - Set IPAPLATFORM=rhel when build on Oracle Linux [Orabug: 29516674]
+
+        [4.9.13-21.3]
+        - Updated the application() function in install/migration/migration.py to resolve the error.
+        - CVE-2026-73197 ipa: FreeIPA: Unauthenticated DoS in /ipa/migration/migration.py via Unbounded Request Body Read
+          Resolves: RHEL-240819
+
+        [4.9.13-21.2]
+        - Fix ipatests for kdcproxy after CVE-2025-59088 fix
+          Resolves: RHEL-129966
+        - CVE-2026-18147 idm:DL1/ipa: FreeIPA/IdM: Cross-Site Scripting vulnerability allows arbitrary code execution via crafted URL
+          Resolves: RHEL-218850
+        - CVE-2026-18147 idm:client/ipa: FreeIPA/IdM: Cross-Site Scripting vulnerability allows arbitrary code execution via crafted URL
+          Resolves: RHEL-218856
+        - CVE-2026-73198 ipa: FreeIPA: Unauthenticated DoS in /ipa/i18n_messages via Unbounded Request Body Read
+          Resolves: RHEL-240798
+        - CVE-2026-73197 ipa: FreeIPA: Unauthenticated DoS in /ipa/migration/migration.py via Unbounded Request Body Read
+          Resolves: RHEL-240819
+        - CVE-2026-11861 ipa: FreeIPA: Obtaining TGS with impersonating cname through trust relationships
+          Resolves: RHEL-240840
+        - CVE-2026-13097 ipa: Privilege escalation via krbCanonicalName manipulation due to realm-unaware uniqueness enforcement in FreeIPA LDAP datastore
+          Resolves: RHEL-240905
+        - CVE-2026-76578 idm:DL1/ipa: FreeIPA: unauthenticated LDAP client can obtain administrator credentials via the self-managed-token ACI
+          Resolves: RHEL-245481
+        - CVE-2026-19550 ipa: FreeIPA: trust-fetch-domains uses trust-read ACI to gate a privileged AD trust refresh, allowing unauthorized LDAP writes
+          Resolves: RHEL-245621
+        - CVE-2026-79678 idm:DL1/ipa: freeipa: idp-add eval() reachable before authorization check allows environment disclosure and denial of service
+          Resolves: RHEL-255682
+
+        [4.9.13-21.1]
+        - Fix ipatests for kdcproxy after CVE-2025-59088 fix
+          Resolves: RHEL-129966
+        - CVE-2026-18147 idm:DL1/ipa: FreeIPA/IdM: Cross-Site Scripting vulnerability allows arbitrary code execution via crafted URL
+          Resolves: RHEL-218850
+        - CVE-2026-18147 idm:client/ipa: FreeIPA/IdM: Cross-Site Scripting vulnerability allows arbitrary code execution via crafted URL
+          Resolves: RHEL-218856
+        - CVE-2026-73198 ipa: FreeIPA: Unauthenticated DoS in /ipa/i18n_messages via Unbounded Request Body Read
+          Resolves: RHEL-240798
+        - CVE-2026-73197 ipa: FreeIPA: Unauthenticated DoS in /ipa/migration/migration.py via Unbounded Request Body Read
+          Resolves: RHEL-240819
+        - CVE-2026-11861 ipa: FreeIPA: Obtaining TGS with impersonating cname through trust relationships
+          Resolves: RHEL-240840
+        - CVE-2026-13097 ipa: Privilege escalation via krbCanonicalName manipulation due to realm-unaware uniqueness enforcement in FreeIPA LDAP datastore
+          Resolves: RHEL-240905
+        - CVE-2026-76578 idm:DL1/ipa: FreeIPA: unauthenticated LDAP client can obtain administrator credentials via the self-managed-token ACI
+          Resolves: RHEL-245481
+        - CVE-2026-19550 ipa: FreeIPA: trust-fetch-domains uses trust-read ACI to gate a privileged AD trust refresh, allowing unauthorized LDAP writes
+          Resolves: RHEL-245621
+        - CVE-2026-79678 idm:DL1/ipa: freeipa: idp-add eval() reachable before authorization check allows environment disclosure and denial of service
+          Resolves: RHEL-255682
+
+        ipa-healthcheck
+        [0.12-6]
+        - Don't rely on order in trust roles (RHEL-99487)
+
+        opendnssec
+        [2.1.7-2]
+        - Don't creat /var/run/opendnssec directory
+        - Resolves: RHEL-12163
+
+        python-jwcrypto
+        [0.5.0-2]
+        - Address potential DoS with high compression ratio
+          Resolves: RHEL-28697
+        - Limit number of iterations for PBES
+          Resolves: RHEL-23036 RHEL-23037
+
+        python-kdcproxy
+        [0.4-5.2]
+        - Use DNS discovery for declared realms only (CVE-2025-59088)
+          Resolves: RHEL-113657
+        - Fix DoS vulnerability based on unbounded TCP buffering (CVE-2025-59089)
+          Resolves: RHEL-113664
+
+        python-qrcode
+        [5.3-1]
+        - Resolves: RHEL-15090 Generation of image file fails with Python 3
+
+        python-yubico
+        [1.3.2-9.1]
+        - Rebuilt to fix NVR issue (#2097803)
+
+        pyusb
+        [1.0.0-9.1]
+        - Rebuilt to fix the NVR issue (#2094880)
+
+        slapi-nis
+        [0.60.0-4]
+        - Ignore updates from non-tracked subtrees during modify/modrdn/update
+          to avoid deadlocks with retro changelog
+        - Resolves: RHEL-5134
+
+        softhsm
+        [2.6.0-5]
+        - Install prever devel package requirements for new negative option patch
+          Related: RHBZ#1857272
+    FixedIn:
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: bind-dyndb-ldap
+          NamespaceName: ol:8
+          Version: 0:11.6-6.module+el8.10.0+90553+1bd85afa
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: custodia
+          NamespaceName: ol:8
+          Version: 0:0.6.0-3.module+el8.9.0+90094+20819f5a
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-client
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-client-common
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-client-epn
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-client-samba
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-common
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-healthcheck
+          NamespaceName: ol:8
+          Version: 0:0.12-6.module+el8.10.0+91065+f06407c0
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-healthcheck-core
+          NamespaceName: ol:8
+          Version: 0:0.12-6.module+el8.10.0+91065+f06407c0
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-python-compat
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-selinux
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-server
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-server-common
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-server-dns
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: ipa-server-trust-ad
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: opendnssec
+          NamespaceName: ol:8
+          Version: 0:2.1.7-2.module+el8.10.0+90553+1bd85afa
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-custodia
+          NamespaceName: ol:8
+          Version: 0:0.6.0-3.module+el8.9.0+90094+20819f5a
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-ipaclient
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-ipalib
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-ipaserver
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-ipatests
+          NamespaceName: ol:8
+          Version: 0:4.9.13-21.0.2.module+el8.10.0+91065+f06407c0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-jwcrypto
+          NamespaceName: ol:8
+          Version: 0:0.5.0-2.module+el8.10.0+90573+7d6bd8da
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-kdcproxy
+          NamespaceName: ol:8
+          Version: 0:0.4-5.module+el8.10.0+90703+a2faa53f.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-pyusb
+          NamespaceName: ol:8
+          Version: 0:1.0.0-9.1.module+el8.9.0+90094+20819f5a
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-qrcode
+          NamespaceName: ol:8
+          Version: 0:5.3-1.module+el8.10.0+91065+f06407c0
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-qrcode-core
+          NamespaceName: ol:8
+          Version: 0:5.3-1.module+el8.10.0+91065+f06407c0
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: python3-yubico
+          NamespaceName: ol:8
+          Version: 0:1.3.2-9.1.module+el8.9.0+90094+20819f5a
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: slapi-nis
+          NamespaceName: ol:8
+          Version: 0:0.60.0-4.module+el8.10.0+90297+bfe93ccc
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: softhsm
+          NamespaceName: ol:8
+          Version: 0:2.6.0-5.module+el8.9.0+90094+20819f5a
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: idm:DL1
+          Name: softhsm-devel
+          NamespaceName: ol:8
+          Version: 0:2.6.0-5.module+el8.9.0+90094+20819f5a
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-83460.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-11861.html
+              Name: CVE-2026-11861
+            - Link: https://linux.oracle.com/cve/CVE-2026-13097.html
+              Name: CVE-2026-13097
+            - Link: https://linux.oracle.com/cve/CVE-2026-18147.html
+              Name: CVE-2026-18147
+            - Link: https://linux.oracle.com/cve/CVE-2026-19550.html
+              Name: CVE-2026-19550
+            - Link: https://linux.oracle.com/cve/CVE-2026-73197.html
+              Name: CVE-2026-73197
+            - Link: https://linux.oracle.com/cve/CVE-2026-73198.html
+              Name: CVE-2026-73198
+            - Link: https://linux.oracle.com/cve/CVE-2026-76578.html
+              Name: CVE-2026-76578
+            - Link: https://linux.oracle.com/cve/CVE-2026-79678.html
+              Name: CVE-2026-79678
+        Issued: "2026-10-15"
+        RefId: ELSA-2026-83460
+    Name: ELSA-2026-83460
+    NamespaceName: ol:8
+    Severity: Critical
