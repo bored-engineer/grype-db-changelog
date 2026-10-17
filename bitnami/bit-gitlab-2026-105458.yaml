@@ -1,0 +1,48 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-16"
+                      kind: advisory
+                      version: 19.2.8
+                    - date: "2026-10-16"
+                      kind: advisory
+                      version: 19.3.5
+                    - date: "2026-10-16"
+                      kind: advisory
+                      version: 19.4.2
+          events:
+            - fixed: 19.2.8
+            - fixed: 19.3.5
+            - fixed: 19.4.2
+            - introduced: 19.1.0
+            - introduced: 19.3.0
+            - introduced: 19.4.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-105458
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Medium
+details: GitLab has remediated an issue in GitLab EE affecting all versions from 19.1 before 19.2.8, 19.3 before 19.3.5, and 19.4 before 19.4.2 that, under certain conditions, could have allowed an authenticated user holding a specific granular permission to obtain a GitLab Duo Agent Platform token that bypasses governance controls, due to reliance on untrusted input in a security decision.
+id: BIT-gitlab-2026-105458
+modified: "2026-10-16T09:07:50.945Z"
+published: "2026-10-16T09:01:26.391Z"
+references:
+    - type: ADVISORY
+      url: https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-4-2-released/
+    - type: REPORT
+      url: https://gitlab.com/gitlab-org/gitlab/-/work_items/627711
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-105458
+schema_version: 1.6.2
+summary: Reliance on Untrusted Inputs in a Security Decision in GitLab

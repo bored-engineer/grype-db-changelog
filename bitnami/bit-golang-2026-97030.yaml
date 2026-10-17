@@ -1,0 +1,47 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: golang
+        purl: pkg:bitnami/golang
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-16"
+                      kind: advisory
+                      version: 1.26.9
+                    - date: "2026-10-16"
+                      kind: advisory
+                      version: 1.27.2
+          events:
+            - fixed: 1.26.9
+            - fixed: 1.27.2
+            - introduced: "0"
+            - introduced: 1.27.0-0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-97030
+database_specific:
+    cpes:
+        - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+    severity: Medium
+details: A trusted template author may have previously written a valid template wherein the use of the 'yield' keyword would not be correctly escaped. We now ensure that valid keyword uses are escaped and non-keyword uses are not escaped.
+id: BIT-golang-2026-97030
+modified: "2026-10-16T09:07:50.945Z"
+published: "2026-10-16T08:40:14.207Z"
+references:
+    - type: WEB
+      url: https://go.dev/cl/840925
+    - type: WEB
+      url: https://go.dev/issue/81823
+    - type: WEB
+      url: https://groups.google.com/g/golang-announce/c/U2fTuyDJznI
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-97030
+    - type: WEB
+      url: https://pkg.go.dev/vuln/GO-2026-6600
+schema_version: 1.6.2
+summary: Recognize yield as regexp preceder keyword in html/template
