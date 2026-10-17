@@ -1,0 +1,316 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.14.0-687.58.1]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985764]
+
+        [5.14.0-687.58.1]
+        - net/smc: carry oversized SMC-Rv2 LLC messages in the queue entry (Jan Polensky) [RHEL-271472] {CVE-2026-80985}
+        - net/smc: bound the peer rkey counts in SMC-Rv2 LLC messages (Jan Polensky) [RHEL-271472] {CVE-2026-80985}
+        - net/smc: fix use-after-free of the LLC qentry in smc_llc_srv_add_link() (Jan Polensky) [RHEL-271472] {CVE-2026-80985}
+        - KVM: arm64: vgic: Handle race between interrupt affinity change and LPI disabling (Mohammadfaiz Bawa) [RHEL-243814] {CVE-2026-72288}
+        - SUNRPC: Zero rpc_gss_wire_cred at svcauth_gss_decode_credbody() entry (Olga Kornievskaia) [RHEL-275058] {CVE-2026-93207}
+        - svcrdma: Reject Write/Reply chunks with segcount 0 (Olga Kornievskaia) [RHEL-275076] {CVE-2026-93228}
+        - NFSD: Prevent client use-after-free during blocked-lock reaping (Olga Kornievskaia) [RHEL-270929] {CVE-2026-90036}
+        - NFSD: Prevent client use-after-free during delegation revoke (Olga Kornievskaia) [RHEL-270929] {CVE-2026-89659}
+        - svcrdma: Validate Read chunk positions before reconstruction (Olga Kornievskaia) [RHEL-271453] {CVE-2026-89526}
+        - udp: fix potential use-after-free in tunnel segmentation (Antoine Tenart) [RHEL-268122] {CVE-2026-74705}
+        - net/iucv: filter frames in afiucv_hs_rcv() by ingress device (CKI Backport Bot) [RHEL-270908] {CVE-2026-81003}
+        - wifi: cfg80211: use wiphy work for socket owner autodisconnect (Jose Ignacio Tornos Martinez) [RHEL-240485] {CVE-2026-68404}
+        - wifi: cfg80211: convert pmsr_free_wk to wiphy_work to fix deadlock (Jose Ignacio Tornos Martinez) [RHEL-240485] {CVE-2026-68404}
+        - wifi: cfg80211: cancel pmsr_free_wk in cfg80211_pmsr_wdev_down (Jose Ignacio Tornos Martinez) [RHEL-240485] {CVE-2026-68404}
+        - wifi: mac80211: defer link RX stats percpu free to RCU (Jose Ignacio Tornos Martinez) [RHEL-263788] {CVE-2026-68409}
+        - wifi: mac80211: bounds-check link_id in ieee80211_ml_epcs (Jose Ignacio Tornos Martinez) [RHEL-259560] {CVE-2026-64030}
+        - ASoC: SOF: ipc3-control: Fix heap overflow in bytes_ext put/get (CKI Backport Bot) [RHEL-261686] {CVE-2026-72262}
+        - net/iucv: fix use-after-free of a severed iucv_path (CKI Backport Bot) [RHEL-260511] {CVE-2026-68140}
+        - netfilter: nft_lookup: fix catchall element handling with inverted lookups (CKI Backport Bot) [RHEL-261293] {CVE-2026-72320}
+        - ALSA: usx2y: bound the hwdep mmap fault offset (CKI Backport Bot) [RHEL-256448] {CVE-2026-74641}
+        - net/sched: act_tunnel_key: Defer dst_release to RCU callback (CKI Backport Bot) [RHEL-237219] {CVE-2026-68377}
+        - net/sched: act_ct: Only release RCU read lock after ct_ft (CKI Backport Bot) [RHEL-229654] {CVE-2026-46319}
+        - net/sched: taprio: fix use-after-free in advance_sched() on schedule switch (CKI Backport Bot) [RHEL-226490] {CVE-2026-53011}
+    FixedIn:
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: libperf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: rtla
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-15"
+            Kind: advisory
+          Module: null
+          Name: rv
+          NamespaceName: ol:9
+          Version: 0:5.14.0-687.58.1.el9_8
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-83156.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-46319.html
+              Name: CVE-2026-46319
+            - Link: https://linux.oracle.com/cve/CVE-2026-53011.html
+              Name: CVE-2026-53011
+            - Link: https://linux.oracle.com/cve/CVE-2026-64030.html
+              Name: CVE-2026-64030
+            - Link: https://linux.oracle.com/cve/CVE-2026-68140.html
+              Name: CVE-2026-68140
+            - Link: https://linux.oracle.com/cve/CVE-2026-68377.html
+              Name: CVE-2026-68377
+            - Link: https://linux.oracle.com/cve/CVE-2026-68404.html
+              Name: CVE-2026-68404
+            - Link: https://linux.oracle.com/cve/CVE-2026-68409.html
+              Name: CVE-2026-68409
+            - Link: https://linux.oracle.com/cve/CVE-2026-72262.html
+              Name: CVE-2026-72262
+            - Link: https://linux.oracle.com/cve/CVE-2026-72288.html
+              Name: CVE-2026-72288
+            - Link: https://linux.oracle.com/cve/CVE-2026-72320.html
+              Name: CVE-2026-72320
+            - Link: https://linux.oracle.com/cve/CVE-2026-74641.html
+              Name: CVE-2026-74641
+            - Link: https://linux.oracle.com/cve/CVE-2026-74705.html
+              Name: CVE-2026-74705
+            - Link: https://linux.oracle.com/cve/CVE-2026-80985.html
+              Name: CVE-2026-80985
+            - Link: https://linux.oracle.com/cve/CVE-2026-81003.html
+              Name: CVE-2026-81003
+            - Link: https://linux.oracle.com/cve/CVE-2026-89526.html
+              Name: CVE-2026-89526
+            - Link: https://linux.oracle.com/cve/CVE-2026-90036.html
+              Name: CVE-2026-90036
+            - Link: https://linux.oracle.com/cve/CVE-2026-93207.html
+              Name: CVE-2026-93207
+            - Link: https://linux.oracle.com/cve/CVE-2026-93228.html
+              Name: CVE-2026-93228
+        Issued: "2026-10-15"
+        RefId: ELSA-2026-83156
+    Name: ELSA-2026-83156
+    NamespaceName: ol:9
+    Severity: High
