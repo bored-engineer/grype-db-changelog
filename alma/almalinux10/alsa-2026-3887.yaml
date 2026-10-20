@@ -3,7 +3,13 @@ affected:
         ecosystem: AlmaLinux:10
         name: postgresql-test-rpm-macros
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-03-05"
+                      kind: advisory
+                      version: 16.13-1.el10_1
+          events:
             - fixed: 16.13-1.el10_1
             - introduced: "0"
           type: ECOSYSTEM
