@@ -40,13 +40,13 @@ database_specific:
     severity: Medium
 details: RabbitMQ is a messaging and streaming broker. Prior to versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.0, The AMQP 0-9-1 shovel calls amqp_uri:remove_credentials before storing its connection URI, but the AMQP 1.0 shovel stores the raw URI including the password. The stored URI is visible via GET /api/shovels and via rabbitmqctl shovel_status. Preconditions include The Shovel plugin must be in use with AMQP 1.0 shovels configured using URI-embedded credentials. Reading the exposed status requires the monitoring tag.. This issue is fixed in versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.0.
 id: BIT-rabbitmq-2026-67221
-modified: "2026-10-01T09:55:18.588Z"
+modified: "2026-10-20T09:10:19.569Z"
 published: "2026-10-01T09:33:08.478Z"
 references:
-    - type: WEB
-      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-x5h5-588r-cv55
+    - type: ARTICLE
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-67221
 schema_version: 1.6.2

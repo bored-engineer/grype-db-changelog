@@ -40,15 +40,15 @@ database_specific:
     severity: Medium
 details: RabbitMQ is a messaging and streaming broker. Prior to versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.0, match_value/3 passes the user-supplied ?name= regular expression to re:run with no match_limit option, and executes it once per resource in the result set. OTP's default 10M match_limit caps each call at roughly 100-200ms, but the regex runs once per resource in the result set. With a large set, for example 5000 queues at 150ms each, a single request consumes 12 or more minutes of CPU. Parallel requests saturate the schedulers. The use_regex=true option is a supported feature on list endpoints, so this path is reachable through normal API use. Preconditions include Any user with the management tag can exploit this.. This issue is fixed in versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.0.
 id: BIT-rabbitmq-2026-66074
-modified: "2026-10-01T09:55:18.588Z"
+modified: "2026-10-20T09:10:19.569Z"
 published: "2026-10-01T09:32:51.334Z"
 references:
-    - type: WEB
-      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
-    - type: WEB
-      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.0
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-rg5q-vcgf-rfh7
+    - type: ARTICLE
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
+    - type: ARTICLE
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.0
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-66074
 schema_version: 1.6.2

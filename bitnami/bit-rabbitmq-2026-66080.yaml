@@ -30,15 +30,15 @@ database_specific:
     severity: Medium
 details: RabbitMQ is a messaging and streaming broker. Prior to versions 4.1.11, 4.2.6, and 4.3.0, validate_partitions only checks that the requested partition count is at least 1, with no upper bound. A large count such as lists:seq(0, 500000000) allocates roughly 8GB. Preconditions include The rabbitmq_stream_management plugin must be enabled. The caller needs the management tag and access to the target vhost.. This issue is fixed in versions 4.1.11, 4.2.6, and 4.3.0.
 id: BIT-rabbitmq-2026-66080
-modified: "2026-10-01T09:55:18.588Z"
+modified: "2026-10-20T09:10:19.569Z"
 published: "2026-10-01T09:32:59.964Z"
 references:
-    - type: WEB
-      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
-    - type: WEB
-      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.0
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-wg79-5449-m728
+    - type: ARTICLE
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
+    - type: ARTICLE
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.0
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-66080
 schema_version: 1.6.2
