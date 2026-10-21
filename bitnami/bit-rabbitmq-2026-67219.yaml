@@ -41,15 +41,15 @@ database_specific:
     severity: Medium
 details: RabbitMQ is a messaging and streaming broker. Prior to versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.0, add_binding/3 parses the routing key as an integer weight N and computes ring positions with lists:seq(NextN0, NextN0 + N - 1). validate_binding/2 only checks N >= 1 , no upper bound. The resulting list is stored in the exchange's Khepri record, replicated cluster-wide, and reloaded on restart. A user with write permission on a consistent-hash exchange and read on a queue can create a binding whose routing key (the hash-ring weight) is an arbitrarily large integer. The broker allocates a list of that many integers via lists:seq/2 and persists it to Khepri across all cluster nodes , a single binding with weight 100000000 allocates ~800 MB on every node and survives restarts. Preconditions include rabbitmq_consistent_hash_exchange plugin enabled write permission on a consistent-hash exchange + read on a queue (standard binding perms). This issue is fixed in versions 3.13.15, 4.0.20, 4.1.11, 4.2.6, and 4.3.0.
 id: BIT-rabbitmq-2026-67219
-modified: "2026-10-01T09:55:18.588Z"
+modified: "2026-10-20T09:10:19.569Z"
 published: "2026-10-01T09:33:03.838Z"
 references:
-    - type: WEB
-      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
-    - type: WEB
-      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.0
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/rabbitmq/rabbitmq-server/security/advisories/GHSA-m8pg-4x2h-jvgr
+    - type: ARTICLE
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
+    - type: ARTICLE
+      url: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.3.0
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-67219
 schema_version: 1.6.2
