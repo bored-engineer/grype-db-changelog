@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: parse
+        purl: pkg:bitnami/parse
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-21"
+                      kind: advisory
+                      version: 8.6.97
+                    - date: "2026-10-21"
+                      kind: advisory
+                      version: 9.10.2
+          events:
+            - fixed: 8.6.97
+            - fixed: 9.10.2
+            - introduced: "0"
+            - introduced: 9.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-110854
+database_specific:
+    cpes:
+        - cpe:2.3:a:parseplatform:parse-server:*:*:*:*:*:node.js:*:*
+    severity: High
+details: Parse Server before 8.6.97 and 9.0.0 before 9.10.2 does not handle errors raised while sending verification or password reset emails, causing the server process to exit. A client holding only the public application keys can sign up, request a verification email, or request a password reset while the mail provider rejects, rate limits, or is unavailable, crashing the server.
+id: BIT-parse-2026-110854
+modified: "2026-10-21T12:32:51.589Z"
+published: "2026-10-21T12:11:18.367Z"
+references:
+    - type: WEB
+      url: https://github.com/parse-community/parse-server/security/advisories/GHSA-46jj-qw3p-48fc
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-110854
+    - type: WEB
+      url: https://www.vulncheck.com/advisories/parse-server-before-8.6.97-and-9.10.2-alpha.6-denial-of-service-via-unhandled-email-error
+schema_version: 1.6.2
+summary: Parse Server before 8.6.97 and 9.10.2 Denial of Service via Unhandled Email Error
