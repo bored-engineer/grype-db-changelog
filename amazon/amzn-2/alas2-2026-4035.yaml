@@ -1,0 +1,19 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: YAML versions before 1.30 for Perl allow a loaded document to trigger the DESTROY method of arbitrary classes.A perl/hash:Class tag blesses a hash into the class it names. The document supplies the object's fields, and Perl calls DESTROY when it goes out of scope.What DESTROY does depends on the classes the process has loaded. With File::Temp::Dir from core Perl, it can delete a directory tree the document names. (CVE-2017-20285)YAML versions before 1.27_001 for Perl allow a loaded perl/glob document to replace any package variable, which can lead to arbitrary code execution.A perl/glob document names a package and a symbol, and supplies the value assigned to it. Nothing restricts the name, so the target can be @INC or YAML's own load options.A perl/glob document that sets $YAML::LoadCode or $YAML::UseCode turns on code loading, which is off by default, for every later Load() in the process. A perl/code document is then passed to a string eval, so an attacker who supplies two documents to separate Load() calls in one process can execute arbitrary Perl code. (CVE-2019-25777)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: perl-YAML
+          NamespaceName: amzn:2
+          Version: 0.84-5.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4035.html
+    Metadata:
+        CVE:
+            - Name: CVE-2017-20285
+            - Name: CVE-2019-25777
+    Name: ALAS2-2026-4035
+    NamespaceName: amzn:2
+    Severity: High

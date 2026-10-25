@@ -1,0 +1,75 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: MariaDB server is a community developed fork of MySQL server. From 10.6.1 until 10.6.28, 10.11.19, 11.4.13, 11.8.9, 12.3.3, and 13.0.2, MariaDB RPM packages created the dedicated mysql service account with the database data directory as its home directory. A database user with the FILE privilege could write startup dot-files such as .bash_profile into $HOME, and those files could execute when an administrator opened a login shell for the mysql account. Debian packages are not affected because they use /nonexistent as the account home. This issue is fixed in versions 10.6.28, 10.11.19, 11.4.13, 11.8.9, 12.3.3, and 13.0.2. (CVE-2026-107814)MariaDB server is a community developed fork of MySQL server. From 10.6.1 until 10.6.28, 10.11.19, 11.4.13, 11.8.9, 12.3.3, and 13.0.2, the MariaDB view FRM parser did not safely encode embedded newline characters in a username. An account with CREATE USER and CREATE VIEW WITH GRANT OPTION could create a crafted username containing additional view metadata, causing the parser to interpret part of the username as security metadata and potentially escalating database privileges. This issue is fixed in versions 10.6.28, 10.11.19, 11.4.13, 11.8.9, 12.3.3, and 13.0.2. (CVE-2026-107823)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb-bench
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb-debuginfo
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb-devel
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb-embedded
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb-embedded-devel
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb-libs
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb-server
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: mariadb-test
+          NamespaceName: amzn:2
+          Version: 5.5.68-1.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4028.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-107814
+            - Name: CVE-2026-107823
+    Name: ALAS2-2026-4028
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,40 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in spice-server. Multiple migration data handlers use client-supplied offsets from SPICE_MSGC_MIGRATE_DATA messages without bounds validation, allowing a malicious authenticated SPICE client during VM live migration to read arbitrary heap memory or trigger heap corruption via out-of-bounds read and write operations on the message buffer. (CVE-2026-105958)A flaw was found in spice-server. The GLZ encoder dictionary restore path truncates a size_t allocation size to int when calling the malloc callback, allowing a malicious authenticated SPICE client during VM live migration to trigger a massive heap buffer overflow by sending a crafted max_encoders value in migration data. (CVE-2026-105959)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: spice
+          NamespaceName: amzn:2
+          Version: 0.14.0-10.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: spice-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.14.0-10.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: spice-server
+          NamespaceName: amzn:2
+          Version: 0.14.0-10.amzn2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: spice-server-devel
+          NamespaceName: amzn:2
+          Version: 0.14.0-10.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4030.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-105958
+            - Name: CVE-2026-105959
+    Name: ALAS2-2026-4030
+    NamespaceName: amzn:2
+    Severity: High
