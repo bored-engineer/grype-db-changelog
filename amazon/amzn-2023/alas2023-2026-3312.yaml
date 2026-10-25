@@ -1,0 +1,106 @@
+Vulnerability:
+    Description: 'Inbound-message resource exhaustion (CWE-400) leading to denial of service. No configuration precondition; version applicability is the deciding factor. Affected versions: 9.11.0-9.18.50, 9.20.0-9.20.29, 9.21.0-9.21.26. (CVE-2026-19630)A BIND recursive resolver may experience excessive resource consumption if it encounters large numbers of a particular kind of invalid DNSSEC record.  Default limits on "max-records-per-type" and "max-types-per-name" help mitigate the exposure.This issue affects BIND 9 versions 9.11.0 through 9.18.50, 9.20.0 through 9.20.27, 9.21.0 through 9.21.25, 9.11.3-S1 through 9.18.50-S1, and 9.20.9-S1 through 9.20.27-S1. (CVE-2026-19668)A validly signed NSEC3 from an unrelated sibling zone may be accepted as an insecurity proof, downgrading a secure delegation and letting a forged unsigned answer through.This issue affects BIND 9 versions 9.11.0 through 9.18.50, 9.20.0 through 9.20.27, 9.21.0 through 9.21.25, 9.11.3-S1 through 9.18.50-S1, and 9.20.9-S1 through 9.20.27-S1. (CVE-2026-77119)Replaying GSS-TSIG signed UDP messages can result in memory corruption in named. An attacker who can capture a previously signed UDP message can replay it while the negotiated TSIG key is still valid. By also sending crafted queries to a zone the attacker controls, the attacker may potentially achieve remote code execution. (CVE-2026-94300)Named may terminate unexpectedly when a redirect zone is used with strict QNAME minimization (CWE-617). A resolver is only affected when configured with both a redirect zone AND qname-minimization strict. Affected versions: 9.16.0-9.18.50, 9.20.0-9.20.29, 9.21.0-9.21.26. (CVE-2026-96888)Named exits on an assertion failure, resulting in denial of service. Affected versions: 9.16.0-9.18.50, 9.20.0-9.20.29. (CVE-2026-97313)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-chroot
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-debugsource
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-devel
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-dnssec-utils
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-dnssec-utils-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-doc
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-libs
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-license
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-utils
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: bind-utils-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.18.50-1.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3312.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-19630
+            - Name: CVE-2026-19668
+            - Name: CVE-2026-77119
+            - Name: CVE-2026-94300
+            - Name: CVE-2026-96888
+            - Name: CVE-2026-97313
+    Name: ALAS2023-2026-3312
+    NamespaceName: amzn:2023
+    Severity: High

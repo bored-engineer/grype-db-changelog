@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: Mozilla blocked compromised intermediate eMudhra certificates via OneCRL on the 17th of October which was distributed to clients via RemoteSettings the same day. This update contains the updated OneCRL block list, ensuring clients will block the compromised certificates even if RemoteSettings is disabled by policy or otherwise unavailable in the user's network environment. This vulnerability was fixed in Firefox 158.0.1, Firefox ESR 153.5.1, and Firefox ESR 115.43.1.The ca-certificates package contains the set of system-wide trusted Root CA certificates. The ca-certificates package is not itself vulnerable because it contains no compromised certificates, but it does include the eMudhra root CAs that signed the compromised intermediate certificates. Because those roots are trust anchors for the intermediates, Amazon Linux will remove the affected eMudhra root certificates from the package. After updating, certificates that chain to the removed roots will no longer be trusted. Customers are advised to update ca-certificates as soon as the fixed package is available. (CVE-2026-113470)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: firefox
+          NamespaceName: amzn:2023
+          Version: 153.5.1-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: firefox-debuginfo
+          NamespaceName: amzn:2023
+          Version: 153.5.1-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: firefox-debugsource
+          NamespaceName: amzn:2023
+          Version: 153.5.1-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3329.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-113470
+    Name: ALAS2023-2026-3329
+    NamespaceName: amzn:2023
+    Severity: Medium
