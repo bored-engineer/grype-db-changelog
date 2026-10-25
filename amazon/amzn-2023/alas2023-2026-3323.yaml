@@ -1,0 +1,33 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Due to security concerns regarding a small set of intermediate certificates issued by a specific Certificate Authority (CA), the Go's crypto/x509 package is updated to not trust certificates issued by the affected intermediate certificates. This would prevent possible future misuse of certificate issued by the affected intermediate certificates. (CVE-2026-111943)The `github.com/moby/sys/user` package provides Go utilities for parsing and looking up entries in Unix-style user and group database files. Versions before 0.4.1 do not sufficiently limit entries when parsing `/etc/passwd`- or `/etc/group`-style files, allowing an attacker who can supply a specially crafted file to cause excessive memory consumption and potentially terminate the affected process due to an out-of-memory condition. This issue is patched in version 0.4.1. As a workaround, avoid parsing attacker-controlled user or group database files, or validate and limit untrusted input before parsing it. (CVE-2026-61801)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: runc
+          NamespaceName: amzn:2023
+          Version: 1.4.3-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: runc-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.4.3-1.amzn2023.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: runc-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.4.3-1.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3323.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-111943
+            - Name: CVE-2026-61801
+    Name: ALAS2023-2026-3323
+    NamespaceName: amzn:2023
+    Severity: Medium

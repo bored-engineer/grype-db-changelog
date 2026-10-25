@@ -1,0 +1,50 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Issue summary: A certificate with many nameRelativeToCRLIssuer CRLdistribution points causes disproportionate heap growth when OpenSSL cachesX.509 extensions.Impact summary: Receiving a crafted certificate from a malicious peer can leadto significant memory pressure and possible Denial of Service in clients orin servers that solicit client certificates.CWE: CWE-770: Allocation of Resources Without Limits or ThrottlingDescription: A certificate or a set of certificates that fits under the limit forsize of certificates accepted from the peer (~100 KiB) can result in allocationof several hundred MiB of resident memory on the receiving sideduring a normal TLS handshake.  This may be enough to crash the client orserver, if multiple concurrent connections lead to similarly large memoryallocations.The fix postpones processing of the CRL distribution points extensions incertificates to the time when the processed value is required for CRL processing.This avoids keeping large memory allocations for a long time when suchcertificates are received.FIPS impact: noThe affected code is outside the FIPS module boundary. (CVE-2026-35189)Issue summary: The generic elliptic-curve scalar multiplication used forECDSA and SM2 signature operations with curves that do not have a dedicatedimplementation leaks information about the secret nonce through timing.Impact summary: An attacker able to measure signing times may learninformation about the per-signature secret nonce, which over many signaturescan, via a lattice / Hidden Number Problem attack, lead to recovery of theprivate key.CWE: CWE-208: Observable Timing DiscrepancyDescription: The generic elliptic-curve scalar multiplication used forcurves that do not have a dedicated constant-time implementation pads thesecret scalar with non-constant-time BIGNUM operations, so the time takendepends on the value of the secret scalar derived from the ECDSA and SM2 nonce.The leak is very small; observing it requires a large number ofmeasurements. The effect is largest for curves whose group order lieson a machine-word boundary, such as brainpoolP384r1.Applications using ECDSA signing over the Brainpool and other generic primecurves, and SM2 signing on platforms that use the generic implementation,are vulnerable to this issue.The NIST curves P-256, P-384 and P-521 use dedicated constant-timeimplementations and are not affected.FIPS Impact: noThe FIPS modules are not affected: the approved NIST curves used in the FIPSprovider have dedicated constant-time implementations and do not use theaffected code path. (CVE-2026-54872)Issue summary: A TLS server that calls SSL_set_SSL_CTX() to switch aconnection to a different SSL_CTX part way through a handshake may accessmemory beyond the end of an internal array if the replacement context knowsabout more provider signature algorithms than the context the connection wascreated from. Applications which never call SSL_set_SSL_CTX() are notaffected.Impact summary: A remote peer may be able to cause a small out-of-boundsread, and in some circumstances a fixed-value out-of-bounds write, on theserver heap. This may lead to a Denial of Service.CWE: CWE-787: Out-of-bounds WriteDescription: A TLS connection records how many certificate slots it haswhen it is created, taken from the SSL_CTX that created it: the built-incertificate types plus one slot for each provider TLS-SIGALG entry thatcontext was aware of. That count sizes an internal array of per-slotcertificate validity flags.An application may replace a connection''s SSL_CTX part way through thehandshake by calling SSL_set_SSL_CTX(), most commonly from a servernamecallback in order to serve a different virtual host. Doing so did notrefresh the recorded count. A provider signature algorithm''s slot index isits position in the list of whichever context resolves it, so if thereplacement context is aware of more of them than the original, analgorithm offered by the peer can resolve to an index beyond the end of thearray. Processing the peer''s signature algorithms then reads one four byteword past the end for each such algorithm and, where the word read is zero,writes a fixed value over it. A peer offering many of them can corrupt heapmetadata and abort the process.Only provider signature algorithms which occupy one of the excess slots,and which the server also has configured, have this effect. Codepoints thereplacement context does not recognise are discarded without being resolvedto a slot, and provider signature algorithms are usable only from TLS 1.3.The two contexts must therefore be aware of different numbers of providersignature algorithms, which requires separate library contexts, a providerloaded between the two being created, or providers which differ in whatthey advertise - in 4.0, for example, the default provider advertises SM2where the FIPS provider does not. A deployment meeting the condition isalso unable to negotiate the affected algorithms with legitimate clients,since the same stale count hides the corresponding certificates, so themisconfiguration is likely to be noticed. For that reason, and because theconfiguration is not the default, this issue has been assessed as Lowseverity.FIPS impact: noNo FIPS modules are affected by this issue as the affected code is outsidethe OpenSSL FIPS module boundary. (CVE-2026-72897)Issue summary: An established DTLS 1.2 association using an AEAD cipher suitecan be terminated by a single unauthenticated datagram whose encryptedfragment is shorter than the mandatory explicit IV and authentication tagoverhead.Impact summary: An attacker who can send a datagram that is routed to anexisting DTLS 1.2 association can tear that association down without knowingany key material. This is a Denial of Service limited to the targetedassociation. There is no memory safety or confidentiality impact.CWE: CWE-1284: Improper Validation of Specified Quantity in InputDescription: In TLS 1.2 and DTLS 1.2 every record protected by an AEAD ciphersuite carries an explicit IV followed by the ciphertext and an authenticationtag. When decrypting such a record the record layer passed the record length tothe cipher implementation before checking that the record was long enough tocontain the explicit IV and the tag. For a record shorter than that overhead thecipher implementation rejected the impossible length, and the record layertreated this as an internal failure and raised a fatal internal_error alertinstead of treating the record as one that failed authentication.In TLS 1.2 the same record causes a fatal internal_error alert instead of theexpected bad_record_mac alert. Since any undecryptable record alreadyterminates a TLS connection, this is a protocol conformance issue rather thana security issue in TLS.The fix validates the record length against the explicit IV and tag lengthbefore any AEAD processing, so that TLS reports bad_record_mac and DTLSsilently discards the record.FIPS impact: noThe affected code is outside the FIPS module boundary. (CVE-2026-75806)A flaw was found in OpenSSL. The Datagram Transport Layer Security (DTLS) retransmission mechanism fails to properly handle handshake message writes that are suspended before completion. A remote attacker could exploit this vulnerability during handshake message retransmission, causing OpenSSL to read past the message buffer or overwrite internal state required to resume writing. This issue can result in information disclosure through out-of-bounds memory reads or cause a Denial of Service (DoS) by crashing the process. (CVE-2026-84782)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: edk2
+          NamespaceName: amzn:2023
+          Version: 20260508-2.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: edk2-aarch64
+          NamespaceName: amzn:2023
+          Version: 20260508-2.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: edk2-ovmf
+          NamespaceName: amzn:2023
+          Version: 20260508-2.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: edk2-shell-aa64
+          NamespaceName: amzn:2023
+          Version: 20260508-2.amzn2023
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: edk2-shell-x64
+          NamespaceName: amzn:2023
+          Version: 20260508-2.amzn2023
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3227.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-35189
+            - Name: CVE-2026-54872
+            - Name: CVE-2026-72897
+            - Name: CVE-2026-75806
+            - Name: CVE-2026-84782
+    Name: ALAS2023-2026-3227
+    NamespaceName: amzn:2023
+    Severity: High

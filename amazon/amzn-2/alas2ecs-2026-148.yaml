@@ -1,0 +1,29 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'The tar extraction routines in moby/go-archive (Unpack, UnpackLayer, Untar/UntarUncompressed, and the ApplyLayer helpers) do not confine filesystem operations to the destination directory. A crafted archive can create or overwrite files outside the intended destination. (CVE-2026-17106)When parsing a Range header containing a large number of small ranges, FileServer(FS), ServeContent, and ServeFile(FS) could consume an excessive amount of CPU.These functions now ignore Range headers containing more than 200 ranges.The limit is controlled by the new httpservecontentmaxranges=GODEBUG setting. Setting GODEBUG=httpservecontentmaxranges=0 disables the limit.NOTE: https://www.openwall.com/lists/oss-security/2026/10/08/9NOTE: https://github.com/golang/go/issues/81858NOTE: Fixed by: https://github.com/golang/go/commit/ababc3cd873d8acce1777268aa7a817e6b672028 (go1.27.2)NOTE: Fixed by: https://github.com/golang/go/commit/eb25b4e532c5a01f99ef860ec66743a8783f992b (go1.26.9) (CVE-2026-78667)The firewall rules which mark VXLAN datagrams for encryption indiscriminately match both authentic VXLAN datagrams sent from the kernel and forged datagrams sent by user processes. Any packet sent from the host network namespace of a Linux Swarm node is encrypted with the overlay-network IPsec parameters which meets the following criteria:- UDP datagram- Destination port is the Swarm data-path port- Datagram starts with a VXLAN header for the VNI of an encrypted overlay network which any running container on the node is connected to (CVE-2026-92542)Docker Engine classifies a registry hostname as insecure using an any-match DNS check. loadInsecureRegistries() injects 127.0.0.0/8 and ::1/128 as insecure CIDRs by default. isCIDRMatch resolves all of the hostname''s addresses and returns true if a single address is in the insecure CIDR list. Because the transport re-dials the hostname rather than the CIDR-matching address, a DNS answer set of one loopback IP plus a non-loopback attacker IP disables certificate verification and enables HTTP fallback for the registry connection. (CVE-2026-92543)BuildKit may be tricked into performing file actions with special file inodes where regular files are expected. Special files may block operations or, on rootful workers, allow unintended host device access. (CVE-2026-93320)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: docker
+          NamespaceName: amzn:2
+          Version: 25.0.18-1.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: docker-debuginfo
+          NamespaceName: amzn:2
+          Version: 25.0.18-1.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2ECS-2026-148.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-17106
+            - Name: CVE-2026-78667
+            - Name: CVE-2026-92542
+            - Name: CVE-2026-92543
+            - Name: CVE-2026-93320
+    Name: ALAS2ECS-2026-148
+    NamespaceName: amzn:2
+    Severity: High

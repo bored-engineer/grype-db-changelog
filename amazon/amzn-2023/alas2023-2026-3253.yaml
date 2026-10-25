@@ -1,0 +1,33 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A null pointer dereference flaw was found in Libreswan's PKCS#7 certificate payload handling. When processing a crafted IKEv2 IKE_AUTH packet containing a PKCS#7 bundle with a certificate revocation list but no certificates, Libreswan may dereference a null pointer, causing the pluto daemon to crash and restart. A remote, unauthenticated attacker could repeatedly trigger this flaw to cause a denial of service. (CVE-2026-77207)A use-after-free flaw was found in Libreswan's IKE-over-TCP handling. When a TCP connection closes and additional packet processing occurs for the same connection tuple, the IKE daemon may access a previously freed interface endpoint object. A remote, unauthenticated attacker may exploit this flaw to cause the pluto daemon to crash and restart, resulting in denial of service. (CVE-2026-94453)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: libreswan
+          NamespaceName: amzn:2023
+          Version: 4.12-3.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: libreswan-debuginfo
+          NamespaceName: amzn:2023
+          Version: 4.12-3.amzn2023.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: libreswan-debugsource
+          NamespaceName: amzn:2023
+          Version: 4.12-3.amzn2023.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3253.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-77207
+            - Name: CVE-2026-94453
+    Name: ALAS2023-2026-3253
+    NamespaceName: amzn:2023
+    Severity: High

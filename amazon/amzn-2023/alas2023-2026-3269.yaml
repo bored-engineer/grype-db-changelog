@@ -1,0 +1,98 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in pcre2. When an application processes attacker-controlled regular expressions using certain Just-In-Time (JIT) compiler interfaces, an out-of-bounds write with arbitrary data can occur. An attacker could exploit this vulnerability to achieve arbitrary code execution, corrupt memory, or cause a denial of service (DoS). (CVE-2026-103111)PCRE2 before 10.48 allows a pcre2_dfa_match out-of-bounds write because reuse of a cached workspace block, in a recursive DFA matching workspace, lacks a size check (even though a newly allocated block, for the same purpose, does have a size check). This outcome requires an attacker-controlled regular expression, or a recursive pattern in conjunction with a small heap limit (this can be set through the API). (CVE-2026-86145)PCRE2 before 10.48 has a pcre2_match out-of-bounds read after a JIT fallback when an attacker can provide invalid UTF data. (CVE-2026-89156)PCRE2 before 10.48 has a pcre2_match out-of-bounds read during the PCRE2_MATCH_INVALID_UTF matching of an invalid UTF subject. (CVE-2026-89160)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-debuginfo
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-debugsource
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-devel
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-static
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-syntax
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-tools
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-utf16
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-utf16-debuginfo
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-utf32
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: pcre2-utf32-debuginfo
+          NamespaceName: amzn:2023
+          Version: 10.40-1.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3269.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-103111
+            - Name: CVE-2026-86145
+            - Name: CVE-2026-89156
+            - Name: CVE-2026-89160
+    Name: ALAS2023-2026-3269
+    NamespaceName: amzn:2023
+    Severity: High
