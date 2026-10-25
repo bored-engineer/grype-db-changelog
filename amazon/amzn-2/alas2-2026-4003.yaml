@@ -1,0 +1,46 @@
+Vulnerability:
+    Description: A flaw was found in 389-ds-base. An unauthenticated remote attacker can send a complete LDAP operation followed by the first bytes of an incomplete LDAPMessage on the same connection, causing the server to hand that connection to a second worker thread before the first worker's result is flushed. The second worker blocks until nsslapd-ioblocktimeout while holding the connection mutex, preventing delivery of the completed operation's result. Repeating this across a small number of connections proportional to the configured worker-thread pool size exhausts the entire pool under default configuration, denying service to all clients (anonymous and authenticated, plaintext and TLS) for as long as the attacker maintains the connections. (CVE-2026-86344)A flaw was found in 389-ds-base. The server does not discard plaintext bytes already buffered from a client connection when negotiating StartTLS, allowing an on-path attacker to inject a crafted LDAP message that is processed after the TLS upgrade and whose response is delivered to the client in place of the client's own pending operation's response, due to messageID collision. This can cause a client application to treat a failed authentication (bind) attempt as successful. (CVE-2026-86345)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: 389-ds-base
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.14
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: 389-ds-base-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.14
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: 389-ds-base-devel
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.14
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: 389-ds-base-libs
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.14
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: 389-ds-base-snmp
+          NamespaceName: amzn:2
+          Version: 1.3.10.2-17.amzn2.0.14
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4003.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-86344
+            - Name: CVE-2026-86345
+    Name: ALAS2-2026-4003
+    NamespaceName: amzn:2
+    Severity: High

@@ -1,0 +1,24 @@
+Vulnerability:
+    Description: lrzsz before 0.13.0 contains an OS command injection vulnerability in the lrz receive utility's pipe mode that allows remote senders to execute commands by supplying crafted filenames. When lrz runs under a suffixed name such as lrztar, procheader() in src/lrz.c passes the unescaped ZMODEM/YMODEM filename to popen(), so shell metacharacters execute as the receiving user. (CVE-2026-105841)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: lrzsz
+          NamespaceName: amzn:2
+          Version: 0.12.20-36.amzn2.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: lrzsz-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.12.20-36.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4031.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-105841
+    Name: ALAS2-2026-4031
+    NamespaceName: amzn:2
+    Severity: High

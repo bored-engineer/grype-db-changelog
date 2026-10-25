@@ -1,0 +1,32 @@
+Vulnerability:
+    Description: A flaw was found in GStreamer's gst-plugins-good. A heap-based out-of-bounds read of 4 bytes can occur when parsing FLAC audio stream headers embedded in a Matroska or WebM container file. The vulnerability is triggered by a boundary check that does not account for the full size of the data being copied, allowing a small read past the end of the allocated buffer. An attacker could exploit this by crafting a malicious Matroska or WebM file and tricking a user into opening it, potentially leaking a small amount of adjacent heap memory. (CVE-2026-17072)A flaw was found in GStreamer gst-plugins-good (avidemux). In gst_avi_demux_riff_parse_vprp(), the number of available gst_riff_vprp_video_field_desc entries is calculated by dividing the remaining buffer size by the attacker-controlled vprp->fields value, rather than by sizeof(gst_riff_vprp_video_field_desc). This can cause the parser to treat more field descriptors as available than fit in the input buffer, resulting in out-of-bounds reads. Processing a crafted AVI via playbin/decodebin can crash the application (denial of service). Fixed upstream in gst-plugins-good 1.28.6 (GStreamer-SA-2026-0072). (CVE-2026-73434)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: gstreamer-plugins-good
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: gstreamer-plugins-good-debuginfo
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.7
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: gstreamer-plugins-good-devel-docs
+          NamespaceName: amzn:2
+          Version: 0.10.31-20.amzn2.0.7
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4023.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-17072
+            - Name: CVE-2026-73434
+    Name: ALAS2-2026-4023
+    NamespaceName: amzn:2
+    Severity: Medium

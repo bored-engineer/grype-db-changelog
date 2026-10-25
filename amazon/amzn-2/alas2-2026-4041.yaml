@@ -1,0 +1,32 @@
+Vulnerability:
+    Description: alsa-lib through 1.2.16.1 contains a stack buffer overflow in the __snd_ctl_ascii_elem_id_parse() function that writes one byte past a 64-byte buffer when parsing a name= field with 64 or more characters. Attackers can supply a long control-element identifier string through saved state files or command-line arguments to overwrite adjacent stack memory and crash the calling process. (CVE-2026-90781)alsa-lib through 1.2.16.1 contains a denial of service vulnerability in the multi PCM plugin that fails to validate sparse binding indices before array access. Attackers can supply a malicious ALSA configuration file with sparse bindings to trigger an out-of-bounds array read and assertion failure, causing the application to abort. (CVE-2026-96675)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: alsa-lib
+          NamespaceName: amzn:2
+          Version: 1.1.4.1-2.amzn2.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: alsa-lib-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.1.4.1-2.amzn2.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: alsa-lib-devel
+          NamespaceName: amzn:2
+          Version: 1.1.4.1-2.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4041.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-90781
+            - Name: CVE-2026-96675
+    Name: ALAS2-2026-4041
+    NamespaceName: amzn:2
+    Severity: Medium

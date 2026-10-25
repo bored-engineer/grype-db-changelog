@@ -1,0 +1,40 @@
+Vulnerability:
+    Description: SCTP protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service (CVE-2026-95389)Heap buffer overflow (WRITE) in CSN.1 dissector -- CSN_RECURSIVE_ARRAY writes past destination array with no capacity check (packet-csn1.c). (CVE-2026-95393)The X11 dissector caches, per TCP conversation, one keysym array per keycode in x11_conv_data_t.keycodemap[256]. Each array is allocated in listOfKeysyms() with the keysyms-per-keycode width in force for the message being dissected, but the dissector records only a single scalar state->keysyms_per_keycode, with no per-array width. The X_ChangeKeyboardMapping request writes entries with a request-local width and leaves the scalar untouched; the X_GetKeyboardMapping reply sets the scalar. The two therefore diverge. When a later KeyPress/KeyRelease event is dissected, keycode2keysymString() indexes the cached arrays with the current scalar and never consults each array's real length, so any array allocated narrower than the scalar is read out of bounds. This is reachable from a capture with the default configuration (the X11 dissector is registered on TCP 6000-6063 and enabled by default; no protocol preference or key is required). (CVE-2026-96423)
+    FixedIn:
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: wireshark
+          NamespaceName: amzn:2
+          Version: 2.6.2-15.amzn2.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: wireshark-cli
+          NamespaceName: amzn:2
+          Version: 2.6.2-15.amzn2.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: wireshark-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.6.2-15.amzn2.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-24"
+            Kind: advisory
+          Name: wireshark-devel
+          NamespaceName: amzn:2
+          Version: 2.6.2-15.amzn2.0.12
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4006.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-95389
+            - Name: CVE-2026-95393
+            - Name: CVE-2026-96423
+    Name: ALAS2-2026-4006
+    NamespaceName: amzn:2
+    Severity: High
