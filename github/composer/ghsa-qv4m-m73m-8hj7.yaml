@@ -1,6 +1,7 @@
 # schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
-    CVE: []
+    CVE:
+        - CVE-2026-76913
     CVSS:
         base_metrics:
             base_score: 8.8
@@ -12,13 +13,17 @@ Advisory:
         version: "3.1"
     Classification: GENERAL
     FixedIn:
-        - ecosystem: composer
-          identifier: None
+        - available:
+            date: "2026-10-27"
+            kind: first-observed
+          ecosystem: composer
+          identifier: 1.1.0
           name: notrinos/notrinos-erp
           namespace: github:composer
           range: <= 1.0.0
     Metadata:
-        CVE: []
+        CVE:
+            - CVE-2026-76913
     Severity: High
     Summary: 'NotrinosERP: Authenticated arbitrary file upload leads to remote code execution via HRM employee "Documents" (doc_file)'
     cvss_severities:
@@ -29,8 +34,10 @@ Advisory:
     published: "2026-07-10T19:34:03Z"
     references:
         - url: https://github.com/advisories/GHSA-qv4m-m73m-8hj7
+        - url: https://github.com/notrinos/NotrinosERP/commit/71cac7cd199e40cff7f2b18551620133e29f8967
+        - url: https://github.com/notrinos/NotrinosERP/releases/tag/1.1.0
         - url: https://github.com/notrinos/NotrinosERP/security/advisories/GHSA-qv4m-m73m-8hj7
-    updated: "2026-10-25T15:02:57Z"
+    updated: "2026-10-27T15:09:57Z"
     url: https://github.com/advisories/GHSA-qv4m-m73m-8hj7
     withdrawn: null
 Vulnerability: {}
