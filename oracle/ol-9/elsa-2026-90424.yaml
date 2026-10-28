@@ -1,0 +1,50 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [1.43.4-2.0.1]
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117178]
+
+        [2:1.43.4-2]
+        - Rebuild for CVE-2026-78667 and CVE-2026-111943
+        - Resolves: RHEL-279009
+        - Resolves: RHEL-287507
+
+        [2:1.43.4-1]
+        - Update to buildah 1.43.4 (c7061d00) - fix CVE-2026-56855
+          (golang.org/x/crypto/ssh DoS) and CVE-2025-11395 (arbitrary file write in
+          copier)
+        - Resolves: RHEL-256886 RHEL-121272
+    FixedIn:
+        - Available:
+            Date: "2026-10-27"
+            Kind: advisory
+          Module: null
+          Name: buildah
+          NamespaceName: ol:9
+          Version: 2:1.43.4-2.0.1.el9_8
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-27"
+            Kind: advisory
+          Module: null
+          Name: buildah-tests
+          NamespaceName: ol:9
+          Version: 2:1.43.4-2.0.1.el9_8
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-90424.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2025-11395.html
+              Name: CVE-2025-11395
+            - Link: https://linux.oracle.com/cve/CVE-2026-111943.html
+              Name: CVE-2026-111943
+            - Link: https://linux.oracle.com/cve/CVE-2026-56855.html
+              Name: CVE-2026-56855
+            - Link: https://linux.oracle.com/cve/CVE-2026-78667.html
+              Name: CVE-2026-78667
+        Issued: "2026-10-27"
+        RefId: ELSA-2026-90424
+    Name: ELSA-2026-90424
+    NamespaceName: ol:9
+    Severity: High

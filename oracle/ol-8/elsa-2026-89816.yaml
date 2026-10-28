@@ -1,0 +1,301 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.18.0-553.179.1]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.3
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34750652]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985772]
+
+        [4.18.0-553.179.1]
+        - KVM: s390: pci: Reject adapter interrupt forwarding if already enabled (CKI Backport Bot) [RHEL-277607] {CVE-2026-74515}
+
+        [4.18.0-553.178.1]
+        - selinux: avoid sk_socket dereference in selinux_sctp_bind_connect() (Ondrej Mosnacek) [RHEL-243220] {CVE-2026-72242}
+        - ipv4: validate checksum_start before completing checksum (Davide Caratti) [RHEL-280584] {CVE-2026-99999}
+        - smb: client: clear setuid/setgid bit on write with cifsacl/modefromsid/posix extensions (Jorge San Emeterio Villalain) [RHEL-271260] {CVE-2026-89638}
+        - mptcp: options: reset DSS fields in case of unexpected size (Prasenjit Mukherjee) [RHEL-250583] {CVE-2026-80586}
+        - net/iucv: filter frames in afiucv_hs_rcv() by ingress device (CKI Backport Bot) [RHEL-270897] {CVE-2026-81003}
+        - net/packet: avoid fanout hook re-registration after unregister (Jamie Bainbridge) [RHEL-246978] {CVE-2026-68338}
+        - net/packet: fix a race in packet_set_ring() and packet_notifier() (Jamie Bainbridge) [RHEL-246978]
+        - net/packet: annotate accesses to po->bind (Jamie Bainbridge) [RHEL-246978]
+        - net: gro: fix double aggregation of flush-marked skbs (Jamie Bainbridge) [RHEL-242641] {CVE-2026-68136}
+        - tcp: restrict SO_ATTACH_FILTER to priv users (Jamie Bainbridge) [RHEL-257722] {CVE-2026-53236}
+        - net: use sk_is_tcp() in more places (Jamie Bainbridge) [RHEL-257722]
+        - fuse: re-lock request before replacing page cache folio (Miklos Szeredi) [RHEL-226080] {CVE-2026-53388}
+        - fuse: release pipe buf after last use (Miklos Szeredi) [RHEL-226080] {CVE-2026-53388}
+        - fuse: fix page stealing (Miklos Szeredi) [RHEL-226080] {CVE-2026-53388}
+        - ipvs: reload ip header after head reallocation (Phil Sutter) [RHEL-263780] {CVE-2026-68476}
+        - net/sched: serialize qdisc_rtab_list against concurrent get/put (CKI Backport Bot) [RHEL-266389] {CVE-2026-68138}
+        - net/iucv: fix use-after-free of a severed iucv_path (CKI Backport Bot) [RHEL-260491] {CVE-2026-68140}
+        - writeback: fix race between cgroup_writeback_umount() and inode_switch_wbs() (CKI Backport Bot) [RHEL-260517] {CVE-2026-64378}
+        - usb: usbfs: fix use-after-free of usb_device in usbdev_release() (CKI Backport Bot) [RHEL-258546] {CVE-2026-80824}
+
+        [4.18.0-553.177.1]
+        - vfio/pci: clear vdev->msi_perm after freeing it on init failure (Rodolfo Vick) [RHEL-270905] {CVE-2026-89777}
+        - ALSA: seq: close a re-opened queue timer in the destructor (CKI Backport Bot) [RHEL-263644] {CVE-2026-68202}
+        - inet: frags: strip GSO state from fragments before reassembly (Jamie Bainbridge) [RHEL-254200] {CVE-2026-80590}
+        - ipv4: fib: free fib_alias with kfree_rcu() on insert error path (Jamie Bainbridge) [RHEL-233134] {CVE-2026-64572}
+        - ipv4: raw: reject IP_HDRINCL packets with ihl < 5 (Jamie Bainbridge) [RHEL-225459] {CVE-2026-64114}
+        - xfs: bounds-check buffer log item's dirty bitmap (CKI Backport Bot) [RHEL-253365] {CVE-2026-80536}
+        - fuse: re-lock request before returning from fuse_ref_folio() (CKI Backport Bot) [RHEL-234242] {CVE-2026-64266}
+
+        [4.18.0-553.176.1]
+        - smb: client: reject a tree connect response whose byte count is too small (CKI Backport Bot) [RHEL-271288] {CVE-2026-89631}
+        - netfilter: flowtable: hold reference on ct until flow is released (CKI Backport Bot) [RHEL-280060] {CVE-2026-98320}
+        - perf: Fix addr_filter_ranges lifetime (Vratislav Bendel) [RHEL-271853] {CVE-2026-93817}
+        - USB: serial: io_ti: fix heap overflow in build_i2c_fw_hdr() (Desnes Nunes) [RHEL-191034] {CVE-2026-53195}
+        - USB: serial: io_ti: fix heap overflow in get_manuf_info() (Desnes Nunes) [RHEL-191034] {CVE-2026-53196}
+        - gfs2: a minor finish_xmote cleanup (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Minor run_queue fixes (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: run_queue cleanup (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: only apply DLM_LKF_VALBLK if sb_lvbptr is not NULL (Alexander Aring) [RHEL-129363]
+        - gfs2: Fix 'gfs2: Switch to wait_event in gfs2_quotad' (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Use wait_event_freezable_timeout() for freezable kthread (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: less aggressive low-memory log flushing (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: low-memory forced flush fixes (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: add missing withdraw locking (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Disable GL_NOPID (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Rename 'gfs_recovery' workqueue to 'gfs2_recovery' (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Clean up SDF_JOURNAL_LIVE flag handling (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: No longer thaw filesystems during a withdraw (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: gfs2_freeze_unlock cleanup (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Refcounting fix in gfs2_thaw_super (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Minor gfs2_{freeze,thaw}_super cleanup (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Withdraw immediately in gfs2_trans_add_meta (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: New gfs2_withdraw_helper (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Clean up properly during a withdraw (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Simplify do_promote (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Rename gfs2_{gl_dq_holders => withdraw_glocks} (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: fix infinite loop when checking ail item count before go_inval' (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: introduce new gfs2_glock_assert_withdraw (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Get rid of GLF_INVALIDATE_IN_PROGRESS (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: Allow some glocks to be used during withdraw' (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: Check for log write errors before telling dlm to unlock' (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: fix a deadlock on withdraw-during-mount' (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Simplify refcounting in do_xmote (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: Force withdraw to replay journals and wait for it to finish' (6/6) (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Make recovery error more readable (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: Force withdraw to replay journals and wait for it to finish' (5/6) (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: Force withdraw to replay journals and wait for it to finish' (4/6) (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: Force withdraw to replay journals and wait for it to finish' (3/6) (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: Force withdraw to replay journals and wait for it to finish' (2/6) (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: Force withdraw to replay journals and wait for it to finish' (1/6) (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Follow-up to flag rename in sysfs status file (Andreas Gruenbacher) [RHEL-129363]
+        - Revert 'gfs2: don't stop reads while withdraw in progress' (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Rename LM_FLAG_{NOEXP -> RECOVER} (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Mark the remaining process-independent glock holders as GL_NOPID (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Mark flock glock holders as GL_NOPID (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Kill gfs2_io_error_bh_wd (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Get rid of newlines in log messages (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Withdraw immediately on log write errors (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Sanitize kthread stopping (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Fix logd wakeup on I/O error (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Switch to wait_event in gfs2_quotad (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Switch to wait_event in gfs2_logd (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Remove duplicate check in do_xmote (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Remove space before newline (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Fix LM_FLAG_TRY* logic in add_to_queue (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Remove DLM_LKF_ALTCW / DLM_LKF_ALTPR code (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Further sanitize lock_dlm.c (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: sanitize the gdlm_ast -> finish_xmote interface (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Simplify DLM_LKF_QUECVT use (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Fix freeze consistency check in log_write_header (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Get rid of delayed withdraws (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Lift withdraw check out of gfs2_ail1_empty (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: don't withdraw if init_threads() got interrupted (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Fix usage of bio->bi_status in gfs2_end_log_write (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Asynchronous withdraw (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Fix slab-use-after-free in gfs2_qd_dealloc (Andreas Gruenbacher) [RHEL-129363] {CVE-2023-52760}
+        - gfs2: Fix asynchronous thread destruction (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Stop using gfs2_make_fs_ro for withdraw (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Add clean argument to lm_unmount hook (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Turn gfs2_withdraw into a void function (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: Mark withdraws as unlikely (Andreas Gruenbacher) [RHEL-129363]
+        - gfs2: ignore rindex_update failure in dinode_dealloc (Andreas Gruenbacher) [RHEL-129363]
+
+        [4.18.0-553.175.1]
+        - strparser: make sure __strp_recv isn't running before tearing down the parser (Sabrina Dubroca) [RHEL-270732]
+        - xfrm: espintcp: fix UAF during close (CKI Backport Bot) [RHEL-256684]
+        - xfrm: Check for underflow in xfrm_state_mtu (CKI Backport Bot) [RHEL-256684]
+        - xfrm: route MIGRATE notifications to caller's netns (CKI Backport Bot) [RHEL-256684]
+        - netfilter: nfnetlink_log: wait for rcu grace period before freeing pernet state (CKI Backport Bot) [RHEL-271657] {CVE-2026-93288}
+        - sctp: validate cookie AUTH state before use (Xin Long) [RHEL-254282] {CVE-2026-74752}
+        - sctp: stop processing a packet once its association is deleted (Xin Long) [RHEL-263292] {CVE-2026-89479}
+        - sctp: keep chunk->transport in step with the list it is queued on (Xin Long) [RHEL-254357] {CVE-2026-74588}
+        - xfrm: espintcp: do not reuse an in-progress partial send (CKI Backport Bot) [RHEL-222954] {CVE-2026-52935}
+    FixedIn:
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: bpftool
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-26"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.179.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-89816.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-74515.html
+              Name: CVE-2026-74515
+        Issued: "2026-10-26"
+        RefId: ELSA-2026-89816
+    Name: ELSA-2026-89816
+    NamespaceName: ol:8
+    Severity: Medium
