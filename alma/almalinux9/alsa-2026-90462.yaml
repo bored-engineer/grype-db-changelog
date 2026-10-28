@@ -1,0 +1,57 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: skopeo
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-26"
+                      kind: advisory
+                      version: 2:1.22.2-9.el9_8
+          events:
+            - introduced: "0"
+            - fixed: 2:1.22.2-9.el9_8
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: skopeo-tests
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-26"
+                      kind: advisory
+                      version: 2:1.22.2-9.el9_8
+          events:
+            - introduced: "0"
+            - fixed: 2:1.22.2-9.el9_8
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "The skopeo command lets you inspect images from container image registries, get images and image layers, and use signatures to create and verify files.   \n\nSecurity Fix(es):  \n\n  * podman: Arbitrary file write when importing OCI archive (CVE-2025-11395)\n  * net/[http:](http:) golang: golang: Denial of Service via crafted HTTP Range headers (CVE-2026-78667)\n  * crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates (CVE-2026-111943)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2026:90462
+modified: "2026-10-27T00:51:26Z"
+published: "2026-10-26T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:90462
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-90462.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2025-11395
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2026-111943
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2026-78667
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2548334
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2556068
+related:
+    - CVE-2025-11395
+    - CVE-2026-78667
+    - CVE-2026-111943
+summary: 'Important: skopeo security update'
