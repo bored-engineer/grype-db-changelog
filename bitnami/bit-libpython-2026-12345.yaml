@@ -18,11 +18,13 @@ database_specific:
     severity: Medium
 details: The cleanup of tempfile.TemporaryDirectory is vulnerable to a race condition. An attacker who can modify the tree during cleanup can replace a directory with a symbolic link, causing files outside of the temporary directory to be deleted or have their permissions and file flags reset, with the privileges of the process performing the cleanup. Note that platforms where shutil.rmtree.avoids_symlink_attacks is false, remain affected, and file flags may still be reset outside of the tree on all platforms.
 id: BIT-libpython-2026-12345
-modified: "2026-10-13T07:22:07.779Z"
+modified: "2026-10-27T09:15:46.416Z"
 published: "2026-10-05T11:47:53.804Z"
 references:
     - type: WEB
       url: http://www.openwall.com/lists/oss-security/2026/09/29/40
+    - type: WEB
+      url: https://github.com/python/cpython/commit/0478b52788117db4b831b3efd648f56b777628aa
     - type: WEB
       url: https://github.com/python/cpython/commit/06ef3d43fdaf4da97af12fa694b4886092c4b970
     - type: WEB
@@ -31,6 +33,8 @@ references:
       url: https://github.com/python/cpython/commit/58ed0259cae509a19138795df302fe60b544dc74
     - type: WEB
       url: https://github.com/python/cpython/commit/5c20517a4fc56683efe63a7751020db9573f538d
+    - type: WEB
+      url: https://github.com/python/cpython/commit/c39b52d00b42200aaadff679e2fe3f1006d57c58
     - type: WEB
       url: https://github.com/python/cpython/commit/e1f3590f155c6d66007e958c98c9d69316551993
     - type: WEB
