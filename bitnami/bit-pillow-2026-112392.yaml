@@ -26,15 +26,15 @@ database_specific:
     severity: High
 details: Pillow is a Python imaging library. Prior to 13.0.0, Pillow's rank-based filters can dereference invalid image storage for a zero-size image. ImagingExpand() allocates a non-empty output and then faults while replicating edges by reading the first pixel from empty input storage; ImagingRankFilter is never reached. An attacker can supply or cause creation of a zero-size image to an application that applies a rank, median, minimum, or maximum filter. This causes a native process crash. This issue is fixed in version 13.0.0.
 id: BIT-pillow-2026-112392
-modified: "2026-10-26T06:13:43.911Z"
+modified: "2026-10-27T09:15:46.416Z"
 published: "2026-10-26T05:55:33.132Z"
 references:
-    - type: WEB
-      url: https://github.com/python-pillow/Pillow/commit/443e3130a8c11594fd0e296afad497e11e678961
-    - type: WEB
-      url: https://github.com/python-pillow/Pillow/releases/tag/13.0.0
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/python-pillow/Pillow/security/advisories/GHSA-27h8-gf7j-v5hc
+    - type: ARTICLE
+      url: https://github.com/python-pillow/Pillow/releases/tag/13.0.0
+    - type: FIX
+      url: https://github.com/python-pillow/Pillow/commit/443e3130a8c11594fd0e296afad497e11e678961
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-112392
 schema_version: 1.6.2
