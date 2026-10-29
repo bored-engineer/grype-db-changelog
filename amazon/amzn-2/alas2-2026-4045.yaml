@@ -1,0 +1,17 @@
+Vulnerability:
+    Description: 'The system certificate authority (CA) store in Amazon Linux, distributed via the ca-certificates RPM package, included multiple root CA certificates belonging to authorities that signed eMudhra intermediate CA certificates with weak private keys.The root CA certificates that signed the weak intermediates were removed under CVE-2026-113470, which is the primary fix for this exposure: https://explore.alas.aws.amazon.com/CVE-2026-113470.html. Systems with that update installed no longer trust the weak intermediate CA certificates.CVE-2026-114406 additionally removes the remaining CA certificates that were associated with the same CA operators, and removing them ensures no residual trust in those operators remains in the system CA store (CVE-2026-114406)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-28"
+            Kind: advisory
+          Name: ca-certificates
+          NamespaceName: amzn:2
+          Version: 2025.2.76-1.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4045.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-114406
+    Name: ALAS2-2026-4045
+    NamespaceName: amzn:2
+    Severity: Medium
