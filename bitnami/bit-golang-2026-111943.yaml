@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: golang
+        purl: pkg:bitnami/golang
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 1.26.10
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 1.27.3
+          events:
+            - introduced: "0"
+            - fixed: 1.26.10
+            - introduced: 1.27.0-0
+            - fixed: 1.27.3
+          type: SEMVER
+aliases:
+    - CVE-2026-111943
+database_specific:
+    cpes:
+        - cpe:2.3:a:golang:go:*:*:*:*:*:*:*:*
+    severity: Unknown
+details: On most platforms, Go uses the given system root certificates. However, in some narrower cases, the system trust stores may not be updated without further action. To defend against the narrower set of cases that may remain affected, a denylist was added in crypto/x509 to return an error when calling Verify with any of the known intermediate certificates that are no longer considered to be trustworthy.
+id: BIT-golang-2026-111943
+modified: "2026-10-29T09:16:42.832Z"
+published: "2026-10-29T08:47:05.399Z"
+references:
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2026/10/20/29
+    - type: WEB
+      url: https://go.dev/cl/851047
+    - type: WEB
+      url: https://go.dev/issue/82345
+    - type: WEB
+      url: https://groups.google.com/g/golang-announce/c/66pojueaQek
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-111943
+    - type: WEB
+      url: https://pkg.go.dev/vuln/GO-2026-6809
+schema_version: 1.6.2
+summary: Distrust compromised intermediate certificates in crypto/x509

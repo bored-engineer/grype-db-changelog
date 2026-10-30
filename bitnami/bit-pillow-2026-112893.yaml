@@ -26,15 +26,15 @@ database_specific:
     severity: High
 details: Pillow is a Python imaging library. From 10.0.0 until 13.0.0, Pillow can free an invalid glyph pointer during FreeType rendering with an active stroker. If FT_Load_Glyph fails, cleanup may call FT_Done_Glyph on an uninitialized or stale glyph variable. An attacker can supply a malformed font as untrusted bytes to an application that draws text with a nonzero stroke width, forcing the glyph-load failure path. This can corrupt memory or crash the process. This issue is fixed in version 13.0.0.
 id: BIT-pillow-2026-112893
-modified: "2026-10-26T06:13:43.911Z"
+modified: "2026-10-29T09:16:42.832Z"
 published: "2026-10-26T05:55:54.218Z"
 references:
-    - type: WEB
-      url: https://github.com/python-pillow/Pillow/commit/a7416de7f3a43128179d2cf68df3240ea8dafe13
-    - type: WEB
-      url: https://github.com/python-pillow/Pillow/releases/tag/13.0.0
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/python-pillow/Pillow/security/advisories/GHSA-j4m9-6w36-pw47
+    - type: ARTICLE
+      url: https://github.com/python-pillow/Pillow/releases/tag/13.0.0
+    - type: FIX
+      url: https://github.com/python-pillow/Pillow/commit/a7416de7f3a43128179d2cf68df3240ea8dafe13
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-112893
 schema_version: 1.6.2

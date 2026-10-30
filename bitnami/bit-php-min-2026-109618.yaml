@@ -41,7 +41,7 @@ database_specific:
     severity: Critical
 details: PHP uses longjmp() for out-of-memory (OOM) errors to exit the current context and abort handling of the request. Some contexts may not properly account for this scenario and leave request memory in an uninitialized state before performing an allocation. The subsequent request cleanup procedure may read or branch on this memory. Multiple OOM strategies can consistently trigger this condition and lead to remote code execution (RCE).
 id: BIT-php-min-2026-109618
-modified: "2026-10-26T06:13:43.911Z"
+modified: "2026-10-29T09:16:42.832Z"
 published: "2026-10-22T08:08:28.663Z"
 references:
     - type: ADVISORY
@@ -49,10 +49,16 @@ references:
     - type: ADVISORY
       url: http://www.openwall.com/lists/oss-security/2026/10/23/5
     - type: ADVISORY
+      url: https://arcticwolf.com/resources/blog/php2shell-critical-php-vulnerabilities-enable-unauthenticated-remote-code-execution/
+    - type: ADVISORY
       url: https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w
+    - type: ADVISORY
+      url: https://php2shell.delftintellab.com
     - type: ADVISORY
       url: https://www.wiz.io/blog/php2shell-php-rce
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-109618
+    - type: WEB
+      url: https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-109618
 schema_version: 1.6.2
 summary: RCE via OOM corruption

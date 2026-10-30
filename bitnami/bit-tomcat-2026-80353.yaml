@@ -1,0 +1,44 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: tomcat
+        purl: pkg:bitnami/tomcat
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 9.0.123
+          events:
+            - introduced: 9.0.47
+            - fixed: 9.0.123
+          type: SEMVER
+aliases:
+    - CVE-2026-80353
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:tomcat:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:apache:tomcat:*:*:*:*:*:maven:*:*
+    severity: Unknown
+details: |-
+    Time-of-check time-of-use (TOCTOU) race condition vulnerability in Apache Tomcat when creating unix domain sockets for the APR/Native connector allows an unauthorised local user to access the unix domain socket. The fix for CVE-2026-65183 only addressed the NIO connector. It did not address the same issue in the APR/Native connector.
+
+
+
+    This issue affects Apache Tomcat: from 9.0.47 through 9.0.122.
+
+
+
+    Users are recommended to upgrade to version 9.0.123, which fixes the issue.
+id: BIT-tomcat-2026-80353
+modified: "2026-10-29T09:16:42.832Z"
+published: "2026-10-29T09:02:36.268Z"
+references:
+    - type: WEB
+      url: https://lists.apache.org/thread.html/tr0q87qwvs80p9hc53tkwpzvnx0ywftr
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-80353
+schema_version: 1.6.2
+summary: 'Apache Tomcat: TOCTOU when setting specific permissions for Unix Domain Sockets - Fix for CVE-2026-65183 did not address APR connector'

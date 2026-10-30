@@ -20,6 +20,9 @@ affected:
                     - date: "2026-09-17"
                       kind: advisory
                       version: 3.13.16
+                    - date: "2026-09-17"
+                      kind: advisory
+                      version: 3.14.9
           events:
             - introduced: "0"
             - fixed: 3.10.22
@@ -30,6 +33,7 @@ affected:
             - introduced: 3.13.0
             - fixed: 3.13.16
             - introduced: 3.14.0
+            - fixed: 3.14.9
           type: SEMVER
       severity:
         - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:A/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
@@ -42,7 +46,7 @@ database_specific:
     severity: Medium
 details: 'When tarfile extracts a link on a system that doesn''t support links, it falls back to extracting a member from the archive. In this case, the filter function is run twice: once for the extracted member, and once with name set to the location of the link. For one of the calls, the return value was ignored. Instead, the member should be skipped if either call returns None.'
 id: BIT-libpython-2026-87910
-modified: "2026-10-05T12:12:53.169Z"
+modified: "2026-10-29T12:40:48.706Z"
 published: "2026-09-17T11:47:03.864Z"
 references:
     - type: WEB

@@ -41,7 +41,7 @@ database_specific:
     severity: Critical
 details: PHP has various global state that temporarily points into request memory. In some scenarios, global state may not be correctly reset, or may be repopulated after being reset. The global state may then refer to request memory even after it has been freed. Subsequent requests may read or branch on this stale state before it is fully initialized. Multiple strategies can trigger this condition and produce remote code execution (RCE).
 id: BIT-php-min-2026-109619
-modified: "2026-10-26T06:13:43.911Z"
+modified: "2026-10-29T09:16:42.832Z"
 published: "2026-10-22T08:08:29.805Z"
 references:
     - type: ADVISORY
@@ -67,10 +67,16 @@ references:
     - type: ADVISORY
       url: http://www.openwall.com/lists/oss-security/2026/10/23/4
     - type: ADVISORY
+      url: https://arcticwolf.com/resources/blog/php2shell-critical-php-vulnerabilities-enable-unauthenticated-remote-code-execution/
+    - type: ADVISORY
       url: https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp
+    - type: ADVISORY
+      url: https://php2shell.delftintellab.com/
     - type: ADVISORY
       url: https://www.wiz.io/blog/php2shell-php-rce
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-109619
+    - type: WEB
+      url: https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-109619
 schema_version: 1.6.2
 summary: RCE via stale global state

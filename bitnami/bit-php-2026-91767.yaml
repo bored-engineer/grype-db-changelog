@@ -31,7 +31,7 @@ affected:
             - fixed: 8.5.11
           type: SEMVER
       severity:
-        - score: CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N
+        - score: CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
           type: CVSS_V3
 aliases:
     - CVE-2026-91767
@@ -41,10 +41,10 @@ database_specific:
     severity: Medium
 details: php_openssl_matches_wildcard_name() in ext/openssl/xp_ssl.c underflows the length argument passed to memchr() when a TLS server certificate presents a wildcard name whose literal characters are together longer than the hostname being verified. A malicious server presenting such a certificate makes the PHP client read up to SIZE_MAX bytes past the end of a heap allocation. The path is reachable from any default client stream, because verify_peer_name is enabled by default.
 id: BIT-php-2026-91767
-modified: "2026-10-01T09:55:18.588Z"
+modified: "2026-10-29T09:16:42.832Z"
 published: "2026-10-01T09:34:08.275Z"
 references:
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/php/php-src/security/advisories/GHSA-xr7j-rvgx-xq5p
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-91767
