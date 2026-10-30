@@ -1,0 +1,40 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: node
+        purl: pkg:bitnami/node
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 26.12.1
+          events:
+            - fixed: 26.12.1
+            - introduced: 25.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.0/AV:L/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-106071
+database_specific:
+    cpes:
+        - cpe:2.3:a:nodejs:node.js:*:*:*:*:*:*:*:*
+    severity: Low
+details: |-
+    A flaw in Node.js Permission Model filesystem enforcement can grant access to paths that do not match a wildcard `--allow-fs-read` or `--allow-fs-write` rule.
+
+    When the requested path is shorter than the prefix of a wildcard grant, the radix tree lookup stops comparing early and treats the path as a match. For example, `--allow-fs-read=/etc/passwd.*` also allows reading `/etc/passwd`. This requires the wildcard grant to sit directly under the root of the permission tree, for example when it is the only grant for that scope. This is a different root cause from CVE-2026-58043.
+
+    This vulnerability affects Node.js **26.x**.
+id: BIT-node-2026-106071
+modified: "2026-10-29T09:16:42.832Z"
+published: "2026-10-29T08:55:59.241Z"
+references:
+    - type: WEB
+      url: https://nodejs.org/en/blog/vulnerability/october-2026-security-releases
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-106071
+schema_version: 1.6.2

@@ -25,15 +25,15 @@ database_specific:
     severity: High
 details: Pillow is a Python imaging library. From 9.2.0 until 13.0.0, Pillow can retain a rejected GIF frame size after a decompression-bomb exception. In GifImageFile._seek, a crafted GIF can leave rejected dimensions stored after Image.DecompressionBombError; if an application catches that exception and continues processing the same image object, later seek or load operations allocate according to those dimensions and can exhaust memory, denying service. This issue is fixed in version 13.0.0.
 id: BIT-pillow-2026-112400
-modified: "2026-10-26T06:13:43.911Z"
+modified: "2026-10-29T09:16:42.832Z"
 published: "2026-10-26T05:55:43.287Z"
 references:
-    - type: WEB
-      url: https://github.com/python-pillow/Pillow/commit/6faed707cfb760a4cbd726ddc8406f576cf35bf7
-    - type: WEB
-      url: https://github.com/python-pillow/Pillow/releases/tag/13.0.0
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/python-pillow/Pillow/security/advisories/GHSA-65qm-jvmh-6pqg
+    - type: ARTICLE
+      url: https://github.com/python-pillow/Pillow/releases/tag/13.0.0
+    - type: FIX
+      url: https://github.com/python-pillow/Pillow/commit/6faed707cfb760a4cbd726ddc8406f576cf35bf7
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-112400
 schema_version: 1.6.2

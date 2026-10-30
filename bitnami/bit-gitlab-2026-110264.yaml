@@ -1,0 +1,71 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: gitlab
+        purl: pkg:bitnami/gitlab
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 18.11.13
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 19.0.10
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 19.1.9
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 19.2.9
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 19.3.6
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 19.4.3
+                    - date: "2026-10-29"
+                      kind: advisory
+                      version: 19.5.1
+          events:
+            - fixed: 18.11.13
+            - fixed: 19.0.10
+            - fixed: 19.1.9
+            - fixed: 19.2.9
+            - fixed: 19.3.6
+            - fixed: 19.4.3
+            - fixed: 19.5.1
+            - introduced: 19.0.0
+            - introduced: 19.1.0
+            - introduced: 19.2.0
+            - introduced: 19.3.0
+            - introduced: 19.4.0
+            - introduced: 19.5.0
+            - introduced: 7.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-110264
+database_specific:
+    cpes:
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*
+    severity: Critical
+details: An issue has been discovered in GitLab CE/EE affecting all versions from 7.0 before 18.11.13, 19.0 before 19.0.10, 19.1 before 19.1.9, 19.2 before 19.2.9, 19.3 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1 that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server due to integer overflow when compiling a specially crafted regular expression.
+id: BIT-gitlab-2026-110264
+modified: "2026-10-29T09:16:42.832Z"
+published: "2026-10-29T09:10:13.820Z"
+references:
+    - type: ADVISORY
+      url: https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/
+    - type: WEB
+      url: https://gitlab.com/gitlab-org/gitlab/-/work_items/633633
+    - type: WEB
+      url: https://hackerone.com/reports/4093475
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-110264
+schema_version: 1.6.2
+summary: Integer Overflow or Wraparound in GitLab
