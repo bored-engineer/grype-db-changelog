@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: A flaw was found in file-roller. When opening or extracting a malicious 7z or RAR archive containing a file entry with an excessively long path, file-roller's progress-line parsing copies the path into a fixed-size stack buffer using an unbounded string copy. This can trigger a stack buffer overflow and cause file-roller to terminate, resulting in a denial of service. To exploit this flaw, a victim must open or extract the crafted archive using file-roller. (CVE-2026-78322)
+    FixedIn:
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: file-roller
+          NamespaceName: amzn:2
+          Version: 3.28.1-2.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: file-roller-debuginfo
+          NamespaceName: amzn:2
+          Version: 3.28.1-2.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: file-roller-nautilus
+          NamespaceName: amzn:2
+          Version: 3.28.1-2.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4050.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-78322
+    Name: ALAS2-2026-4050
+    NamespaceName: amzn:2
+    Severity: Low

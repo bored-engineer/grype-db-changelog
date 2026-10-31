@@ -1,0 +1,118 @@
+Vulnerability:
+    Description: 'In sftp in OpenSSH before 10.6, a server can trigger directory traversal (causing files to be written to unintended locations) during a recursive copy operation. (CVE-2026-106552)In sshd in OpenSSH before 10.6, credentials can incorrectly persist after failure of a GSSAPIAuthentication authentication attempt. (CVE-2026-106553)In sshd in OpenSSH before 10.6, GSSAPIAuthentication authentication state can incorrectly be persisted across authentication attempts. (CVE-2026-106555)In sshd and ssh in OpenSSH before 10.6, an LZ77 dictionary coder can be used even though this is contraindicated by the arXiv 2609.07709 "Crossing the Streams" findings. (CVE-2026-106582)In ssh in OpenSSH before 10.6, a $ or \ character can occur in a command-line username, leading to injection. (CVE-2026-106583)In ssh-keygen in OpenSSH before 10.6, certificates could have incorrect expiration times because of Daylight Saving mishandling. There can be a slightly more severe effect on users in certain Antarctic locations. (CVE-2026-106584)In sshd and ssh in OpenSSH before 10.6, there is no check for whether the maximum packet length is exceeded during decompression of highly compressed data. (CVE-2026-106585)In sshd in OpenSSH before 10.6, the restrict keyword (in authorized_keys) was supposed to be applicable to tunnel forwarding but was not, a different vulnerability than CVE-2026-73283. (CVE-2026-106586)In sshd in OpenSSH before 10.6, the value "none" for a configuration option is sometimes interpreted as a filename but was intended to mean that a feature is disabled. (CVE-2026-106587)sftp in OpenSSH before 10.4 does not properly constrain the location of downloaded files when "sftp server:/path ." is used with an attacker-controlled server. (CVE-2026-59995)internal-sftp in sshd in OpenSSH before 10.4 recognizes only the first 9 command-line arguments, which can be important if a later command-line argument would have helped to ensure the intended security properties of an SFTP connection. (CVE-2026-59997)sshd in OpenSSH before 10.4 has an undocumented security-relevant behavior: GSSAPIStrictAcceptorCheck has no value if the server is in Windows Active Directory. (CVE-2026-59998)In sshd in OpenSSH before 10.4, DisableForwarding=yes was supposed to take precedence over PermitTunnel=yes, but did not. (CVE-2026-59999)sshd in OpenSSH before 10.4 allows remote attackers to cause a denial of service (resource consumption from excessive authentication attempts) because MaxAuthTries was mishandled for GSSAPIAuthentication. (CVE-2026-60000)sshd in OpenSSH before 10.4 does not always honor the minimum authentication delay. (CVE-2026-60001)In ssh-agent in OpenSSH before 10.5, some operations can occur remotely but were intended to occur only locally, including operations that add tokens or use keys. This is caused by misinteraction between agent locking and the session-bind@openssh.com extension. (CVE-2026-73281)In ssh in OpenSSH before 10.5, a use-after-free for realloc data can occur if a certain pair of remote-forwarding operations are concurrent. (CVE-2026-73282)In sshd in OpenSSH before 10.5, the restrict keyword (in authorized_keys) was supposed to be applicable to tunnel forwarding but was not. (CVE-2026-73283)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-clients
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-clients-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-debugsource
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-keycat
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-keycat-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-server
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-server-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-sk-dummy
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: openssh-sk-dummy-debuginfo
+          NamespaceName: amzn:2023
+          Version: 9.9p1-16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: pam_ssh_agent_auth
+          NamespaceName: amzn:2023
+          Version: 0.10.4-10.16.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: pam_ssh_agent_auth-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.10.4-10.16.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3354.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-106552
+            - Name: CVE-2026-106553
+            - Name: CVE-2026-106555
+            - Name: CVE-2026-106582
+            - Name: CVE-2026-106583
+            - Name: CVE-2026-106584
+            - Name: CVE-2026-106585
+            - Name: CVE-2026-106586
+            - Name: CVE-2026-106587
+            - Name: CVE-2026-59995
+            - Name: CVE-2026-59997
+            - Name: CVE-2026-59998
+            - Name: CVE-2026-59999
+            - Name: CVE-2026-60000
+            - Name: CVE-2026-60001
+            - Name: CVE-2026-73281
+            - Name: CVE-2026-73282
+            - Name: CVE-2026-73283
+    Name: ALAS2023-2026-3354
+    NamespaceName: amzn:2023
+    Severity: Medium

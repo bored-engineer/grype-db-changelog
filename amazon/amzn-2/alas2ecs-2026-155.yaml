@@ -1,0 +1,17 @@
+Vulnerability:
+    Description: 'Issue summary: A certificate with many nameRelativeToCRLIssuer CRLdistribution points causes disproportionate heap growth when OpenSSL cachesX.509 extensions.Impact summary: Receiving a crafted certificate from a malicious peer can leadto significant memory pressure and possible Denial of Service in clients orin servers that solicit client certificates.CWE: CWE-770: Allocation of Resources Without Limits or ThrottlingDescription: A certificate or a set of certificates that fits under the limit forsize of certificates accepted from the peer (~100 KiB) can result in allocationof several hundred MiB of resident memory on the receiving sideduring a normal TLS handshake.  This may be enough to crash the client orserver, if multiple concurrent connections lead to similarly large memoryallocations.The fix postpones processing of the CRL distribution points extensions incertificates to the time when the processed value is required for CRL processing.This avoids keeping large memory allocations for a long time when suchcertificates are received.FIPS impact: noThe affected code is outside the FIPS module boundary. (CVE-2026-35189)'
+    FixedIn:
+        - Available:
+            Date: "2026-10-30"
+            Kind: advisory
+          Name: ecs-service-connect-agent
+          NamespaceName: amzn:2
+          Version: v1.39.4.0-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2ECS-2026-155.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-35189
+    Name: ALAS2ECS-2026-155
+    NamespaceName: amzn:2
+    Severity: Low
