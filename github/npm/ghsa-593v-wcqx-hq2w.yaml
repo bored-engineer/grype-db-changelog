@@ -1,6 +1,15 @@
 # schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
     CVE: []
+    CVSS:
+        base_metrics:
+            base_score: 7.5
+            base_severity: High
+            exploitability_score: 1.6
+            impact_score: 5.9
+        status: N/A
+        vector_string: CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H
+        version: "3.1"
     Classification: GENERAL
     FixedIn:
         - available:
@@ -21,16 +30,24 @@ Advisory:
           range: '>= 4.0.0 < 4.5.2'
     Metadata:
         CVE: []
-    Severity: Critical
+    Severity: High
     Summary: Incorrect version tags linked to external repository
-    cvss_severities: []
+    cvss_severities:
+        - vector: CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H
+          version: "3.1"
+        - vector: CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N
+          version: "4.0"
     ghsaId: GHSA-593v-wcqx-hq2w
     namespace: github:npm
     published: "2021-09-07T22:57:58Z"
     references:
         - url: https://github.com/advisories/GHSA-593v-wcqx-hq2w
         - url: https://github.com/parse-community/parse-server/security/advisories/GHSA-593v-wcqx-hq2w
-    updated: "2023-01-09T05:05:10Z"
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2021-47986
+        - url: https://nvd.nist.gov/vuln/detail/CVE-2021-47987
+        - url: https://www.vulncheck.com/advisories/parse-server-arbitrary-code-execution-via-malicious-version-tags
+        - url: https://www.vulncheck.com/advisories/parse-server-unreviewed-code-execution-via-malicious-version-tags
+    updated: "2026-11-02T18:34:07Z"
     url: https://github.com/advisories/GHSA-593v-wcqx-hq2w
     withdrawn: null
 Vulnerability: {}

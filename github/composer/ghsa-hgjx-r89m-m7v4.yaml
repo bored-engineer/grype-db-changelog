@@ -1,6 +1,7 @@
 # schema: vulnerability/github-security-advisory/schema-1.0.3.json
 Advisory:
-    CVE: []
+    CVE:
+        - CVE-2026-77526
     CVSS:
         base_metrics:
             base_score: 9.9
@@ -12,13 +13,17 @@ Advisory:
         version: "3.1"
     Classification: GENERAL
     FixedIn:
-        - ecosystem: composer
-          identifier: None
+        - available:
+            date: "2026-11-03"
+            kind: first-observed
+          ecosystem: composer
+          identifier: "2026.3"
           name: facturascripts/facturascripts
           namespace: github:composer
           range: '>= 2025 <= 2026.2'
     Metadata:
-        CVE: []
+        CVE:
+            - CVE-2026-77526
     Severity: Critical
     Summary: 'FacturaScripts: Path traversal in UploadedFile::move() via getClientOriginalName() — arbitrary file write outside MyFiles/ leading to   RCE'
     cvss_severities:
@@ -30,7 +35,7 @@ Advisory:
     references:
         - url: https://github.com/NeoRazorX/facturascripts/security/advisories/GHSA-hgjx-r89m-m7v4
         - url: https://github.com/advisories/GHSA-hgjx-r89m-m7v4
-    updated: "2026-07-14T20:52:00Z"
+    updated: "2026-11-02T23:03:15Z"
     url: https://github.com/advisories/GHSA-hgjx-r89m-m7v4
     withdrawn: null
 Vulnerability: {}
