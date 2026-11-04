@@ -1,0 +1,174 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [32:9.11.36-18]
+        - CVE-2026-94300 bind: bind: Arbitrary code execution via GSS-TSIG
+          UDP message replay
+
+        [32:9.11.36-17]
+        - CVE-2026-19630 bind: BIND: Denial of Service via unbounded processing of crafted DNS messages
+          processing of crafted DNS messages
+
+        [32:9.11.36-16.17]
+        - Backport additional checks for the RDATASET_ATTR_ANCIENT flag when
+          looking for rdatasetheaders. Functions find_deepest_zonecut() and
+          cache_findzonecut() would otherwise pickup headers with the ancient
+          flag set, which other threads may attempt to free in the timespan between
+          unlocking the read lock and locking the write lock, causing
+          need_header_update() and update_header() to work with invalidated data.
+          (RHEL-257162)
+        - Fix CVE-2026-19662. The patch for CVE-2026-11622, which added reference
+          counting to rdatasetheaders within rbtdb, introduced a regression where
+          under certain timing conditions concurrent recursive queries could cause
+          named to crash due to use-after-free.
+    FixedIn:
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-chroot
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-devel
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-export-devel
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-export-libs
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-libs
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-libs-lite
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-license
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-lite-devel
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-pkcs11
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-pkcs11-devel
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-pkcs11-libs
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-pkcs11-utils
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-sdb
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-sdb-chroot
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: bind-utils
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-02"
+            Kind: advisory
+          Module: null
+          Name: python3-bind
+          NamespaceName: ol:8
+          Version: 32:9.11.36-18.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-93925.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-19630.html
+              Name: CVE-2026-19630
+            - Link: https://linux.oracle.com/cve/CVE-2026-19662.html
+              Name: CVE-2026-19662
+            - Link: https://linux.oracle.com/cve/CVE-2026-94300.html
+              Name: CVE-2026-94300
+        Issued: "2026-11-02"
+        RefId: ELSA-2026-93925
+    Name: ELSA-2026-93925
+    NamespaceName: ol:8
+    Severity: High
