@@ -1,0 +1,90 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [8.2-20.1.0.1]
+        - Import gdb-8.2-20.1.el8_10 and forward-port Oracle changes.
+          Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Oracle history:
+          Thu Dec 7 2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 8.2-20.0.2
+          - OraBug 36055910 Support RDTSCP in RECORD/REPLAY in interpreter mode (record full)
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Wed Oct 4 2023 Cupertino Miranda <cupertino.miranda@oracle.com> - 8.2-20.0.1
+          - Forward-port Oracle patches.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Wed Sep 28 2022 Weimin Pan  <weimin.pan@oracle.com> - 8.2-19.0.1
+          - Forward-port CTF patches.
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Mon May  2 2022 Weimin Pan  <weimin.pan@oracle.com> - 8.2-18.0.3
+          - Take out '#ifnarch i386' for CTF patch.
+          Fri Apr 29 2022 Nick Alcock <nick.alcock@oracle.com> 8.2-18.0.2
+          - Add missing upstream CTF patches present in OL8 binutils backport;
+            re-merge into one patch for simplicity
+          Tue Mar 29 2022 Weimin Pan  <weimin.pan@oracle.com> - 8.2-18.0.1
+          - Forward-port 'Fix avx512 -m32 support in gdbserver'
+          - (Tom de Vries, RH BZ 2011520)
+          - Forward-port IBM arch14 updates.
+            (Andreas Krebbel, RHBZ 2012818)
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Sun Nov 14 2021 Alex Burmashev <alexander.burmashev@oracle.com> 8.2-16.0.4
+          - Do not pack *ctf* libs [Orabug: 33565602]
+          Mon Nov  8 2021 Weimin Pan  <weimin.pan@oracle.com> - 8.2-16.0.3
+          - Fix Orabug 33501071
+          Fri Oct 15 2021 Weimin Pan  <weimin.pan@oracle.com> - 8.2-16.0.2
+          - Add gdb-ctf-fix-enum-type.patch
+            Reviewed-by: Jose E. Marchesi <jose.marchesi@oracle.com>
+          Tue Oct  5 2021 Weimin Pan  <weimin.pan@oracle.com> - 8.2-16.0.1
+          - Forward-port CTF patches:
+            gdb-ctf.patch
+            gdb-ctf-forward-type.patch
+            gdb-ctf-func-args.patch
+            gdb-ctf-optout-var.patch
+            gdb-ctf-prfunc.patch
+            gdb-ctf-upstream1.patch
+            Reviewed-by: Elena Zannoni <elena.zannoni@oracle.com>
+
+        [8.2-20.1.el8]
+        - Backport 'Fix out-of-bounds write in read_member_functions'
+          (Tom de Vries, RHEL-190110)
+    FixedIn:
+        - Available:
+            Date: "2026-11-06"
+            Kind: advisory
+          Module: null
+          Name: gdb
+          NamespaceName: ol:8
+          Version: 0:8.2-20.1.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-06"
+            Kind: advisory
+          Module: null
+          Name: gdb-doc
+          NamespaceName: ol:8
+          Version: 0:8.2-20.1.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-06"
+            Kind: advisory
+          Module: null
+          Name: gdb-gdbserver
+          NamespaceName: ol:8
+          Version: 0:8.2-20.1.0.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-06"
+            Kind: advisory
+          Module: null
+          Name: gdb-headless
+          NamespaceName: ol:8
+          Version: 0:8.2-20.1.0.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-73425.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-13732.html
+              Name: CVE-2026-13732
+        Issued: "2026-11-06"
+        RefId: ELSA-2026-73425
+    Name: ELSA-2026-73425
+    NamespaceName: ol:8
+    Severity: High
