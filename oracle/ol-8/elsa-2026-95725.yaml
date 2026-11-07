@@ -1,0 +1,58 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.1.1-7]
+        - Rebuilt for mtime issue
+
+        [4.1.1-6]
+        - Fix incomplete CVE-2026-88051: reset 'size_used_' on validation failure
+          in 'GenericVector::read()'; check 'fontinfo_table_' and 'fontset_table_'
+          read return values in 'ReadIntTemplates'; fix callback leak on all early
+          return paths in 'GenericVector::read()' (4.1.1-specific)
+
+        [4.1.1-5]
+        - Replace ASSERT_HOST around LSTM model Load with graceful error
+          handling; fixes denial-of-service crash (exit 134) when CVE
+          validation correctly rejects a malformed LSTM traineddata file
+
+        [4.1.1-4]
+        - Resolves: CVE-2026-88047 CVE-2026-88048 CVE-2026-88049
+        - Resolves: CVE-2026-88051 CVE-2026-88052 CVE-2026-88053
+    FixedIn:
+        - Available:
+            Date: "2026-11-05"
+            Kind: advisory
+          Module: null
+          Name: tesseract
+          NamespaceName: ol:8
+          Version: 0:4.1.1-7.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-05"
+            Kind: advisory
+          Module: null
+          Name: tesseract-devel
+          NamespaceName: ol:8
+          Version: 0:4.1.1-7.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-95725.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-88047.html
+              Name: CVE-2026-88047
+            - Link: https://linux.oracle.com/cve/CVE-2026-88048.html
+              Name: CVE-2026-88048
+            - Link: https://linux.oracle.com/cve/CVE-2026-88049.html
+              Name: CVE-2026-88049
+            - Link: https://linux.oracle.com/cve/CVE-2026-88051.html
+              Name: CVE-2026-88051
+            - Link: https://linux.oracle.com/cve/CVE-2026-88052.html
+              Name: CVE-2026-88052
+            - Link: https://linux.oracle.com/cve/CVE-2026-88053.html
+              Name: CVE-2026-88053
+        Issued: "2026-11-05"
+        RefId: ELSA-2026-95725
+    Name: ELSA-2026-95725
+    NamespaceName: ol:8
+    Severity: High
