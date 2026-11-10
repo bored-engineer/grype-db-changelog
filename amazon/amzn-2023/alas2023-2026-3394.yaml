@@ -1,0 +1,47 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'libXi XGetDeviceControl Control Type Mismatch Heap Buffer Overflow (CVE-2026-109089)libXi XGetDeviceControl DEVICE_ENABLE Heap Buffer OverflowNOTE: https://lists.x.org/archives/xorg-announce/2026-October/003752.htmlNOTE: https://gitlab.freedesktop.org/xorg/lib/libxi/-/merge_requests/26NOTE: Fixed by: https://gitlab.freedesktop.org/xorg/lib/libxi/-/commit/4eb9f70b67034ace1abdf785fd8dcba7b6dc739d (CVE-2026-109090)A flaw was found in libXi. An out-of-bounds read vulnerability in the XQueryDeviceState() function allows a malicious X server to trigger an application crash. By returning a specially crafted response to a device state query, the server causes the client application to read memory beyond allocated buffer boundaries, resulting in a Denial of Service (DoS). (CVE-2026-93541)An out-of-bounds read in libXi''s XI2 class parsing via size_classes() and copy_classes() in libXi before 1.8.4 could be used by malicous servers to crash the X client. (CVE-2026-93542)An out-of-bounds read in libXi''s XI2 class parser in libXi before 1.8.4 could be used by malicious X servers to crash an attached X client. (CVE-2026-93543)An out-of-bounds read in libXi''s XI2 XIQueryDevice reply parsing in libXi before 1.8.4 can be used by a malicious X server to crash an attached X client. (CVE-2026-93544)An out-of-bounds read in libXi''s XListInputDevices() in libXi before 1.8.4 could be used by malicious X servers to crash an attached X client. (CVE-2026-93545)An out-of-bounds read in libXi''s XListInputDevices() class parsing in libXi before 1.8.4 could be used by malicious X servers to crash an attached X client. (CVE-2026-94281)Out-of-bounds read in libXi''s XI2 enter/leave/focus cookie conversion. (CVE-2026-94282)'
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: libXi
+          NamespaceName: amzn:2023
+          Version: 1.8.4-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: libXi-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.8.4-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: libXi-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.8.4-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: libXi-devel
+          NamespaceName: amzn:2023
+          Version: 1.8.4-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3394.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-109089
+            - Name: CVE-2026-109090
+            - Name: CVE-2026-93541
+            - Name: CVE-2026-93542
+            - Name: CVE-2026-93543
+            - Name: CVE-2026-93544
+            - Name: CVE-2026-93545
+            - Name: CVE-2026-94281
+            - Name: CVE-2026-94282
+    Name: ALAS2023-2026-3394
+    NamespaceName: amzn:2023
+    Severity: High

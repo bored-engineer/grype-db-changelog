@@ -1,0 +1,39 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: gitoxide's gix-url crate (<= 0.32.0, fixed in 0.37.1) uses a hand-rolled URL parser that does not treat '?' or '#' as terminating the authority component, contrary to RFC 3986. As a consequence, gix-transport's HTTP redirect identity guard (can_reuse_identity) compares the wrong host and fails open. An attacker controlling a redirect response can craft a Location header of the form <attacker-authority>?@<original-authority> so that gitoxide sends the caller's HTTP Basic Authorization credentials to an unintended host. gix-transport is affected in versions <= 0.49.0 (fixed in 0.58.1). (CVE-2026-82247)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: cargo-c
+          NamespaceName: amzn:2023
+          Version: 0.10.25-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: cargo-c-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.10.25-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: rust-cargo-c
+          NamespaceName: amzn:2023
+          Version: 0.10.25-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: rust-cargo-c-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.10.25-1.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3381.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-82247
+    Name: ALAS2023-2026-3381
+    NamespaceName: amzn:2023
+    Severity: Medium

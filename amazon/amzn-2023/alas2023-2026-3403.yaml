@@ -1,0 +1,25 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: URI::_idna::nameprep only lowercased the label and skipped the Unicodenormalization that RFC 3490/3491 require. As a result, a host that wasnot already in NFC encoded to a non-standard A-label that disagrees withwhat browsers, curl, Go, Java, and Python compute for the same input --and that A-label does not round-trip. Code that reads $uri->host for asecurity decision (allow/deny lists, SSRF filters, routing, dedup) couldtherefore disagree with the host that is actually fetched. (CVE-2026-19953)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: perl-URI
+          NamespaceName: amzn:2023
+          Version: 5.18-1.amzn2023.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: perl-URI-tests
+          NamespaceName: amzn:2023
+          Version: 5.18-1.amzn2023.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3403.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-19953
+    Name: ALAS2023-2026-3403
+    NamespaceName: amzn:2023
+    Severity: Medium

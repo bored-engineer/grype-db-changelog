@@ -1,0 +1,55 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: Pillow is a Python imaging library. Prior to 13.0.0, Pillow's rank-based filters can dereference invalid image storage for a zero-size image. ImagingExpand() allocates a non-empty output and then faults while replicating edges by reading the first pixel from empty input storage; ImagingRankFilter is never reached. An attacker can supply or cause creation of a zero-size image to an application that applies a rank, median, minimum, or maximum filter. This causes a native process crash. This issue is fixed in version 13.0.0. (CVE-2026-112392)Pillow is a Python imaging library. Prior to 13.0.0, Pillow's FlashPix JPEG-tile decoder can write decoded scanlines beyond the allocated tile buffer. FlashPix (FPX) JPEG decoding selects raw mode LA with two bytes per pixel, while an unrecognized JPEG mode can be decoded as JCS_UNKNOWN with four components, causing ImagingJpegDecode to write four-component scanlines into the two-byte tile buffer. An attacker can supply a crafted OLE2 FlashPix file to an application with the optional olefile dependency installed that opens or thumbnails untrusted input. This can corrupt heap memory and may allow arbitrary code execution. This issue is fixed in version 13.0.0. (CVE-2026-112398)Pillow is a Python imaging library. Prior to 13.0.0, Pillow's XBM header parser is vulnerable to regular-expression denial of service. In XbmImageFile._open, when an application calls Image.open() on a small crafted XBM file, XbmImagePlugin applies a backtracking expression to the attacker-controlled header before image dimensions are accepted, stalling a worker for minutes and denying service. This issue is fixed in version 13.0.0. (CVE-2026-112901)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python-pillow
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python-pillow-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python-pillow-devel
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python-pillow-doc
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python-pillow-sane
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.21
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python-pillow-tk
+          NamespaceName: amzn:2
+          Version: 2.0.0-23.gitd1c6db8.amzn2.0.21
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4075.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-112392
+            - Name: CVE-2026-112398
+            - Name: CVE-2026-112901
+    Name: ALAS2-2026-4075
+    NamespaceName: amzn:2
+    Severity: High
