@@ -1,0 +1,63 @@
+Vulnerability:
+    Description: FreeRDP before 3.32.0 contains a NULL pointer dereference vulnerability in the client video redirection channel that allows malicious servers to crash clients by sending out-of-order messages. Attackers can send a Geometry CLEAR message that nulls presentation->geometry, then send VideoData that dereferences it, causing client denial of service. (CVE-2026-109241)FreeRDP before 3.0.0 and 3.6.0 before 3.32.0 renders uninitialized heap memory from un-decoded progressive tiles because the tile->current buffer is allocated without zeroing. A malicious RDP server can send a crafted WBT_TILE_FIRST then WBT_TILE_UPGRADE sequence to paint heap bytes onscreen or abort the client process. (CVE-2026-109242)FreeRDP from 2.0.0 before 3.32.0 contains an insecure permission vulnerability in winpr-makecert that creates unencrypted private keys without owner-only file modes. Local users on multi-user Unix hosts can read world-readable key files or open PFX files protected by the hard-coded default password to steal private keys. (CVE-2026-109244)FreeRDP from 2.0.0-beta1 before 3.28.0 contains an out-of-bounds read vulnerability in smartcard_LocateCardsByATRA_Call because the ATR pattern cbAtr byte count is not capped. Malicious RDP servers can send crafted ATR mask arrays to use query timing as an oracle, leaking heap memory bit-by-bit to defeat ASLR and aid RCE exploits. (CVE-2026-109677)FreeRDP from 2.3.0 before 3.32.0 contains an infinite loop vulnerability in http_chuncked_read that allows malicious RD Gateways to hang clients by sending incomplete chunked responses. Attackers can send a partial chunk-size line or footer followed by a clean TLS shutdown, causing zero-byte reads to loop forever and freeze the client decoder thread. (CVE-2026-109941)FreeRDP 2.3.0 before 3.32.0 dereferences a NULL stream in rdg_process_close_packet in libfreerdp/core/gateway/rdg.c because rdg_process_control_packet accepts a header-only PKT_TYPE_CLOSE_CHANNEL packet and passes the null payload without a check. A malicious or compromised RD Gateway can send an eight-byte CLOSE_CHANNEL header to crash a connecting FreeRDP client. (CVE-2026-109942)FreeRDP from 3.0.0 before 3.32.0 contains an uninitialized memory disclosure vulnerability in smartcard_Transmit_Call that allows malicious RDP servers to read client memory. Servers can send SCardTransmit requests with an invalid card handle and nonzero receive length, causing smartcard_pack_transmit_return to serialize up to 66,560 uninitialized heap bytes. (CVE-2026-109948)FreeRDP 3.0.0 before 3.32.0 contains an insufficiently protected credentials vulnerability where the /restricted-admin option fails to suppress CredSSP credential delegation, sending the cleartext password to the RDP server. A compromised or man-in-the-middle destination host can decode TSPasswordCreds and the Client Info PDU to obtain reusable administrative domain, username, and password values. (CVE-2026-109953)FreeRDP versions from 3.0.0 before 3.32.0 contain a null pointer dereference in the rdpsnd channel when a fragment sets CHANNEL_FLAG_LAST without CHANNEL_FLAG_FIRST. A malicious RDP server can send a malformed rdpsnd PDU on a fresh channel to crash the client and cause denial of service. (CVE-2026-110829)FreeRDP from 2.0.0 before 3.32.0 contains a memory exhaustion vulnerability in wts_read_drdynvc_data_first that allows authenticated clients to force servers to commit large memory allocations. Attackers can send a seven-byte DATA_FIRST message on an opened DVC declaring a large 32-bit length, causing zeroed resident memory growth and server resource exhaustion. (CVE-2026-110832)FreeRDP from 3.0.0 before 3.32.0 contains an infinite loop vulnerability in http_response_recv() that allows malicious gateways to exhaust client CPU via crafted Content-Type headers. Attackers controlling a gateway can return a nonzero Content-Length with a semicolon-containing unrecognized Content-Type, pinning a client thread at full CPU indefinitely. (CVE-2026-110836)FreeRDP 2.0.0 before 3.32.0, when built with WITH_LAME=ON and WITH_DSP_FFMPEG=OFF, has a heap-based buffer overflow in freerdp_dsp_decode_mp3 because the right-channel PCM pointer is offset by a byte count treated as short elements. A malicious RDP server can send MP3 audio over rdpsnd so decoded samples cross the heap allocation, crashing the client. (CVE-2026-110837)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: freerdp
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: freerdp-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: freerdp-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: freerdp-libs
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: libwinpr
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.18
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: libwinpr-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.18
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4087.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-109241
+            - Name: CVE-2026-109242
+            - Name: CVE-2026-109244
+            - Name: CVE-2026-109677
+            - Name: CVE-2026-109941
+            - Name: CVE-2026-109942
+            - Name: CVE-2026-109948
+            - Name: CVE-2026-109953
+            - Name: CVE-2026-110829
+            - Name: CVE-2026-110832
+            - Name: CVE-2026-110836
+            - Name: CVE-2026-110837
+    Name: ALAS2-2026-4087
+    NamespaceName: amzn:2
+    Severity: High

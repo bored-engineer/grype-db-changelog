@@ -1,0 +1,17 @@
+Vulnerability:
+    Description: Pod::Text versions before 6.1.1 for Perl allow CPU and memory exhaustion formatting a POD document whose =over nesting drives the margin to the output width.Each =over adds its indent to the margin, which wrap() subtracts from the output width to get the space available for text. When that space reaches zero, the line-splitting substitution matches the empty string, and the loop consumes no input while appending the margin padding on every pass.Formatting an attacker-supplied POD document never returns, and the output grows until memory is exhausted. (CVE-2026-82560)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: perl-podlators
+          NamespaceName: amzn:2023
+          Version: 4.14-458.amzn2023.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3399.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-82560
+    Name: ALAS2023-2026-3399
+    NamespaceName: amzn:2023
+    Severity: Medium

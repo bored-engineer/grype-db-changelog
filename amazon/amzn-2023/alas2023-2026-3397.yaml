@@ -1,0 +1,52 @@
+Vulnerability:
+    Description: A flaw was found in gst-plugins-base. A heap buffer overflow can be triggered when processing video buffers whose attached GstVideoMeta metadata declares plane strides and offsets that exceed the actual backing memory allocation. The metadata is not range-checked during deserialization, and the video frame mapping code does not verify that the declared plane geometry fits within the buffer before allowing consumers to read or write video data. A local attacker who controls the sending side of a GStreamer inter-process IPC pipeline can deliver a crafted buffer carrying fabricated strides, causing the receiving process to read or write beyond heap boundaries. Successful exploitation can cause a denial of service or potentially allow code execution within the affected process. (CVE-2026-86476)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: gstreamer1-plugins-base
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: gstreamer1-plugins-base-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: gstreamer1-plugins-base-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: gstreamer1-plugins-base-devel
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: gstreamer1-plugins-base-tools
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.6
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: gstreamer1-plugins-base-tools-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.6
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3397.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-86476
+    Name: ALAS2023-2026-3397
+    NamespaceName: amzn:2023
+    Severity: High

@@ -1,0 +1,25 @@
+Vulnerability:
+    Description: A flaw was found in rpmbuild. When rpmbuild processes a crafted tarball in tarball mode, a specially designed tar member name can lead to macro injection. This vulnerability allows a remote attacker to execute arbitrary code on the system by convincing a user to build a malicious tarball. (CVE-2026-78367)A flaw was found in rpm. An attacker can supply a crafted manifest file that, when processed by a user or automation using `rpm -q -p` or similar manifest-processing flows, leads to arbitrary code execution. This occurs because manifest entries are unexpectedly macro-expanded before being opened, allowing embedded shell commands to run with the privileges of the `rpm` process. Successful exploitation can lead to a full compromise of confidentiality, integrity, and availability for the affected account. (CVE-2026-95519)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: compat-rpm-411
+          NamespaceName: amzn:2
+          Version: 4.11.3-40.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: compat-rpm-411-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.11.3-40.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2MOCK2-2026-004.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-78367
+            - Name: CVE-2026-95519
+    Name: ALAS2MOCK2-2026-004
+    NamespaceName: amzn:2
+    Severity: High

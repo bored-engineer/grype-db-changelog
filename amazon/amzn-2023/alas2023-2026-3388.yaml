@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: A flaw was found in haproxy. A remote, unauthenticated attacker can trigger a denial of service (DoS) by sending a specially crafted HTTP/1.1 chunked request. When processing the request, the parser repeatedly re-evaluates the same data without making forward progress, trapping the worker thread in a continuous loop that consumes 100% CPU. Multiple malicious requests can exhaust all worker threads, rendering the proxy completely unresponsive until restarted. (CVE-2026-110354)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: haproxy
+          NamespaceName: amzn:2023
+          Version: 3.0.30-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: haproxy-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.0.30-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: haproxy-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.0.30-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3388.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-110354
+    Name: ALAS2023-2026-3388
+    NamespaceName: amzn:2023
+    Severity: High

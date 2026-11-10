@@ -1,0 +1,39 @@
+Vulnerability:
+    Description: Mistune before 3.3.0 contains an inefficient algorithmic complexity vulnerability in parse_link_text that allows remote attackers to cause denial of service through unbalanced square brackets. Attackers can submit markdown containing long runs of unmatched brackets to mistune.html(), triggering repeated forward scans that stall worker processes for minutes. (CVE-2026-115347)Mistune before 3.3.0 contains an algorithmic complexity vulnerability in the inline link parser that allows unauthenticated attackers to exhaust CPU by submitting long runs of unmatched '[' characters. Attackers can send small markdown payloads that trigger O(N^2) parse_link_text and parse_link_label probing, occupying rendering workers for 30+ seconds per 16 KB input. (CVE-2026-115352)
+    FixedIn:
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python-mistune
+          NamespaceName: amzn:2023
+          Version: 0.8.3-14.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python-mistune-debugsource
+          NamespaceName: amzn:2023
+          Version: 0.8.3-14.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python3-mistune
+          NamespaceName: amzn:2023
+          Version: 0.8.3-14.amzn2023.0.5
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-09"
+            Kind: advisory
+          Name: python3-mistune-debuginfo
+          NamespaceName: amzn:2023
+          Version: 0.8.3-14.amzn2023.0.5
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3386.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-115347
+            - Name: CVE-2026-115352
+    Name: ALAS2023-2026-3386
+    NamespaceName: amzn:2023
+    Severity: High
