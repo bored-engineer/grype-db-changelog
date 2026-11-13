@@ -1,0 +1,25 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A command injection flaw was found in rpm. Installing or rebuilding a source RPM whose source or spec file basenames contain a %() macro construct causes rpm to execute an attacker-controlled shell command via popen() while relocating the source file list. This allows arbitrary command execution as the invoking (typically non-root) user, simply by installing, rebuilding, or otherwise processing an untrusted .src.rpm. (CVE-2026-95521)
+    FixedIn:
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: compat-rpm-411
+          NamespaceName: amzn:2
+          Version: 4.11.3-40.amzn2.0.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: compat-rpm-411-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.11.3-40.amzn2.0.2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2MOCK2-2026-005.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-95521
+    Name: ALAS2MOCK2-2026-005
+    NamespaceName: amzn:2
+    Severity: High
