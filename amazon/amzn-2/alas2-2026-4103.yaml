@@ -1,0 +1,26 @@
+Vulnerability:
+    Description: psqlODBC copies the reply to a large-object read (loread) into the application's buffer using the length sent by the server, without comparing it to the buffer size. A server not trusted under current SSL settings, or a man-in-the-middle, can return more bytes than the buffer holds and overwrite adjacent memory in the client process with server-chosen bytes. Fetching any large-object column is sufficient to trigger it. Versions before psqlODBC 18.00.0006 are affected. (CVE-2026-120057)For an updatable cursor over a table without OIDs that has an auto-increment int4 column, psqlODBC places that column's name, as reported by the server, into a printf-style format string. It later expands that string with one argument while it builds the WHERE clause of its positioned SELECT, UPDATE, and DELETE statements. A column name that contains format directives makes the driver read unrelated memory, which can crash the application or copy client memory into query text sent to the server. The name can come from a server not trusted under current SSL settings, or from any database user who can create a table that the application reads with an updatable cursor. Versions before psqlODBC 18.00.0006 are affected. (CVE-2026-120059)For an updatable cursor over a table without OIDs that has an auto-increment int4 column, psqlODBC uses that column to identify rows. It places the column's name, as reported by the server, between double quotes in its keyset queries and in the WHERE clause of its positioned SELECT, UPDATE, and DELETE statements, without doubling any double quote in the name. A column name that contains a double quote therefore changes the SQL that the driver runs with the application's privileges, including which rows a positioned UPDATE or DELETE affects. Any database user who can create a table that the application reads with an updatable cursor can choose such a name, and so can a server not trusted under current SSL settings. Versions before psqlODBC 18.00.0006 are affected. (CVE-2026-120065)
+    FixedIn:
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: postgresql-odbc
+          NamespaceName: amzn:2
+          Version: 09.03.0100-2.amzn2.0.3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: postgresql-odbc-debuginfo
+          NamespaceName: amzn:2
+          Version: 09.03.0100-2.amzn2.0.3
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4103.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-120057
+            - Name: CVE-2026-120059
+            - Name: CVE-2026-120065
+    Name: ALAS2-2026-4103
+    NamespaceName: amzn:2
+    Severity: High

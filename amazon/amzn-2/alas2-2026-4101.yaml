@@ -1,0 +1,18 @@
+Vulnerability:
+    Description: When coalescing adjacent text nodes in addText and fosterParent, appending to an existing TextNode's Data via string concatenation (n.Data += text) reallocated and copied the accumulated string on every token. Inputs containing many short text runs separated by ignored end tags (such as "a</x>") caused O(n^2) allocations and byte copies. Accumulate coalesced text in per-node byte slices during parsing and materialize Data strings once at the end of parse. (CVE-2026-78661)In childTextNodesAreLiteral, walking up the tree previously stopped at the nearest foreign ancestor once an HTML integration point was found. However, that integration point may itself be a descendant of an element that was foster-parented into a foreign namespace (such as <mglyph> or <malignmark> fostered under <mtext>), causing a parser to resolve the subtree in a different foreign namespace upon re-parsing the rendered output. Continue walking the full ancestor chain and verify that every transition from a non-empty namespace occurs at an HTML integration point before emitting literal text. (CVE-2026-97045)
+    FixedIn:
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: amazon-ssm-agent
+          NamespaceName: amzn:2
+          Version: 3.3.5828.0-1.amzn2
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4101.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-78661
+            - Name: CVE-2026-97045
+    Name: ALAS2-2026-4101
+    NamespaceName: amzn:2
+    Severity: Medium

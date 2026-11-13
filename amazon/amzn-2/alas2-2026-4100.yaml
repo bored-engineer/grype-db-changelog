@@ -1,0 +1,38 @@
+Vulnerability:
+    Description: A flaw was found in gdk-pixbuf. When loading a specially crafted JPEG image containing chunked ICC profile markers, an error during ICC profile parsing can leave stale size metadata after the profile buffer is freed. A subsequent allocation in the same decode can cause an out-of-bounds write, potentially crashing the application. To exploit this flaw, an application using gdk-pixbuf must process the malicious JPEG image.Affected version >= 2.26.4 (CVE-2026-81893)
+    FixedIn:
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: gdk-pixbuf2
+          NamespaceName: amzn:2
+          Version: 2.36.12-3.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: gdk-pixbuf2-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.36.12-3.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: gdk-pixbuf2-devel
+          NamespaceName: amzn:2
+          Version: 2.36.12-3.amzn2.0.4
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-12"
+            Kind: advisory
+          Name: gdk-pixbuf2-tests
+          NamespaceName: amzn:2
+          Version: 2.36.12-3.amzn2.0.4
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4100.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-81893
+    Name: ALAS2-2026-4100
+    NamespaceName: amzn:2
+    Severity: Medium
