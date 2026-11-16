@@ -1,0 +1,48 @@
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: pytorch-2.7-cuda12.8-python3.12
+        purl: pkg:deb/dhi/pytorch-2.7-cuda12.8-python3.12
+      versions:
+        - 2.7.0-0
+        - 2.7.0-1
+        - 2.7.0-2
+        - 2.7.0-3
+        - 2.7.0-4
+        - 2.7.0-5
+        - 2.7.0-6
+        - 2.7.0-7
+details: A buffer overflow occurs in pytorch v2.7.0 when a PyTorch model consists of torch.nn.Conv2d, torch.nn.functional.hardshrink, and torch.Tensor.view-torch.mv() and is compiled by Inductor, leading to a Denial of Service (DoS).
+id: DHI-wqrn-fgka-em66-s2ky
+modified: "2026-11-12T06:10:31Z"
+published: "2026-11-12T06:10:31Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2025-55558
+    - type: ADVISORY
+      url: https://access.redhat.com/security/cve/CVE-2025-55558
+    - type: ADVISORY
+      url: https://gist.github.com/shaoyuyoung/0e7d2a586297ae9c8ed14d8706749efc
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-55558
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-wqrn-fgka-em66-s2ky
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2025-55558
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2025-55558
+    - type: FIX
+      url: https://github.com/pytorch/pytorch/pull/151887
+    - type: WEB
+      url: https://github.com/pytorch/pytorch/issues/151523
+    - type: WEB
+      url: https://www.cve.org/CVERecord?id=CVE-2025-55558
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+      type: CVSS_V3
+summary: A buffer overflow occurs in pytorch v2.7.0 when a PyTorch model consists of torch.nn.Conv2d…
+upstream:
+    - CVE-2025-55558

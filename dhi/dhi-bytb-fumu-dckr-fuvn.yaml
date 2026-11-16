@@ -1,0 +1,42 @@
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: jpeg-xl
+        purl: pkg:deb/dhi/jpeg-xl
+      versions:
+        - 0.11.2-0.1~deb13u2+dhi0
+        - 0.11.2-0.1~deb13u2+dhi1
+        - 0.11.2-0.1~deb13u2+dhi2
+details: |-
+    Buffer Overflow vulnerability in libjxl v.0.11.2 and before allows a local attacker to obtain sensitive information via the DecodeImageAPNG function
+
+    ---
+    - jpeg-xl 0.11.2-5.1 (bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1142476)
+    https://github.com/libjxl/libjxl/issues/4803
+    https://github.com/libjxl/libjxl/pull/4804
+    https://github.com/libjxl/libjxl/pull/4870
+    Fixed by: https://github.com/libjxl/libjxl/commit/2cdc4c78b6f08c09ae70627d99900446b4450b47 (v0.12.0)
+id: DHI-bytb-fumu-dckr-fuvn
+modified: "2026-11-12T03:55:02Z"
+published: "2026-11-12T03:55:02Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-52584
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-bytb-fumu-dckr-fuvn
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-52584
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2026-52584
+    - type: FIX
+      url: https://github.com/libjxl/libjxl/pull/4804
+    - type: FIX
+      url: https://github.com/libjxl/libjxl/pull/4870
+    - type: WEB
+      url: https://github.com/libjxl/libjxl/issues/4803
+schema_version: 1.8.0
+summary: Buffer Overflow vulnerability in libjxl v.0.11.2 and before allows a local attacker to obtain sensitive information via…
+upstream:
+    - CVE-2026-52584

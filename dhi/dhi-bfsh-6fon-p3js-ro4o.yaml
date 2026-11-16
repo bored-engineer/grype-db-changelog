@@ -1,0 +1,88 @@
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: rust
+        purl: pkg:apk/dhi/rust
+      versions:
+        - 1.91.1-r0
+        - 1.91.1-r2
+        - 1.91.1-r3
+        - 1.91.1-r4
+        - 1.93.1-r0
+        - 1.93.1-r1
+        - 1.94.0-r0
+        - 1.94.0-r1
+        - 1.94.1-r0
+        - 1.94.1-r1
+        - 1.95.0-r0
+        - 1.96.0-r0
+        - 1.96.1-r0
+        - 1.97.0-r0
+        - 1.97.0-r1
+        - 1.98.1-r0
+        - 1.99.0-r2
+        - 1.99.1-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: meilisearch
+        purl: pkg:deb/dhi/meilisearch
+      versions:
+        - 1.53.1-0
+        - 1.53.2-0
+        - 1.54.0-0
+        - 1.54.1-0
+        - 1.54.2-0
+        - 1.54.3-0
+        - 1.55.0-0
+        - 1.56.0-0
+        - 1.56.1-0
+        - 1.56.2-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: vector
+        purl: pkg:deb/dhi/vector
+      versions:
+        - 0.58.0-0
+        - 0.59.0-0
+        - 0.60.0-0
+        - 0.61.0-0
+details: |-
+    Shared pointer validation keyed already-validated pointees by their address and
+    type, but did not include pointer metadata. For unsized pointees, an archive
+    could therefore contain multiple `Rc`, `Arc`, or weak pointers that shared a
+    data address but used different metadata, such as different slice lengths.
+
+    Once the first pointer had been validated, later pointers to the same address
+    skipped pointee validation. The safe checked `rkyv::access` API could
+    consequently return a slice with a forged length, allowing safe indexing to
+    read out of bounds. The same validation bypass was reachable through checked
+    deserialization with `rkyv::from_bytes`.
+
+    Version 0.8.17 includes pointer metadata in shared pointer validation and
+    rejects conflicting metadata. The 0.7 series is also affected but is no
+    longer supported by upstream. Users who process untrusted archives should upgrade
+    to 0.8.17 or later.
+id: DHI-bfsh-6fon-p3js-ro4o
+modified: "2026-11-10T04:00:43Z"
+published: "2026-11-10T04:00:43Z"
+references:
+    - type: ADVISORY
+      url: https://rustsec.org/advisories/RUSTSEC-2026-0235
+    - type: ADVISORY
+      url: https://rustsec.org/advisories/RUSTSEC-2026-0235.html
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-bfsh-6fon-p3js-ro4o
+    - type: FIX
+      url: https://github.com/rkyv/rkyv/commit/3c9d07fbff5949261bef38d00ab160b129bd9d3a
+    - type: WEB
+      url: https://github.com/rkyv/rkyv/issues/670
+schema_version: 1.8.0
+summary: Shared pointer validation keyed already-validated pointees by their address and
+upstream:
+    - RUSTSEC-2026-0235
