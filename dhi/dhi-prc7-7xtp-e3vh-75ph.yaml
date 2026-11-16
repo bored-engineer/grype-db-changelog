@@ -1,0 +1,34 @@
+# schema: vulnerability/osv/schema-1.8.0.json
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: lcms2
+        purl: pkg:deb/dhi/lcms2
+      versions:
+        - 2.16-2+deb13u2+dhi0
+details: 'A heap buffer overflow vulnerability has been identified in the lcms2-2.16. The vulnerability exists in the UnrollChunkyBytes function in cmspack.c, which is responsible for handling color space transformations. NOTE: this is disputed by the Supplier because the finding identified a bug in a third-party calling program, not in lcms.'
+id: DHI-prc7-7xtp-e3vh-75ph
+modified: "2026-11-10T08:36:33Z"
+published: "2026-11-10T08:36:33Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2025-29069
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-29069
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-prc7-7xtp-e3vh-75ph
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2025-29069
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2025-29069
+    - type: WEB
+      url: https://github.com/mm2/Little-CMS/issues/476
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L
+      type: CVSS_V3
+summary: A heap buffer overflow vulnerability has been identified in the lcms2-2.16. The vulnerability exists in the…
+upstream:
+    - CVE-2025-29069

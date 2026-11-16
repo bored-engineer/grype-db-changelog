@@ -1,0 +1,315 @@
+# schema: vulnerability/osv/schema-1.8.0.json
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: telegraf
+        purl: pkg:apk/dhi/telegraf
+      versions:
+        - 1.39.1-r0
+        - 1.39.2-r0
+        - 1.39.3-r0
+        - 1.39.3-r1
+        - 1.39.3-r2
+        - 1.39.3-r3
+        - 1.39.3-r4
+        - 1.39.3-r5
+        - 1.39.3-r6
+        - 1.40.0-r0
+        - 1.40.0-r1
+        - 1.40.1-r0
+        - 1.40.1-r1
+        - 1.40.1-r2
+        - 1.40.2-r0
+        - 1.40.2-r1
+        - 1.40.2-r2
+        - 1.40.2-r3
+        - 1.40.3-r0
+        - 1.40.3-r1
+        - 1.40.3-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: telegraf-dev
+        purl: pkg:apk/dhi/telegraf-dev
+      versions:
+        - 1.39.1-r0
+        - 1.39.2-r0
+        - 1.39.3-r0
+        - 1.39.3-r1
+        - 1.39.3-r2
+        - 1.39.3-r3
+        - 1.39.3-r4
+        - 1.39.3-r5
+        - 1.39.3-r6
+        - 1.40.0-r0
+        - 1.40.0-r1
+        - 1.40.1-r0
+        - 1.40.1-r1
+        - 1.40.1-r2
+        - 1.40.2-r0
+        - 1.40.2-r1
+        - 1.40.2-r2
+        - 1.40.2-r3
+        - 1.40.3-r0
+        - 1.40.3-r1
+        - 1.40.3-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: telegraf-fips
+        purl: pkg:apk/dhi/telegraf-fips
+      versions:
+        - 1.39.1-r0
+        - 1.39.2-r0
+        - 1.39.3-r0
+        - 1.39.3-r1
+        - 1.39.3-r2
+        - 1.39.3-r3
+        - 1.39.3-r4
+        - 1.39.3-r5
+        - 1.39.3-r6
+        - 1.40.0-r0
+        - 1.40.0-r1
+        - 1.40.1-r0
+        - 1.40.1-r1
+        - 1.40.1-r2
+        - 1.40.2-r0
+        - 1.40.2-r1
+        - 1.40.2-r2
+        - 1.40.2-r3
+        - 1.40.3-r0
+        - 1.40.3-r1
+        - 1.40.3-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: telegraf-fips-dev
+        purl: pkg:apk/dhi/telegraf-fips-dev
+      versions:
+        - 1.39.1-r0
+        - 1.39.2-r0
+        - 1.39.3-r0
+        - 1.39.3-r1
+        - 1.39.3-r2
+        - 1.39.3-r3
+        - 1.39.3-r4
+        - 1.39.3-r5
+        - 1.39.3-r6
+        - 1.40.0-r0
+        - 1.40.0-r1
+        - 1.40.1-r0
+        - 1.40.1-r1
+        - 1.40.1-r2
+        - 1.40.2-r0
+        - 1.40.2-r1
+        - 1.40.2-r2
+        - 1.40.2-r3
+        - 1.40.3-r0
+        - 1.40.3-r1
+        - 1.40.3-r2
+details: |-
+    ### Summary
+
+    `rclone archive extract` can write extracted files outside the user-selected destination prefix when extracting a crafted archive. A malicious archive entry containing parent path components such as `../` can escape the requested extraction prefix and create or overwrite sibling objects in the same bucket/path scope.
+
+    ### Details
+
+    The affected code path is in `cmd/archive/extract/extract.go`.
+
+    In `ArchiveExtract()`, the archive entry path is taken from `f.NameInArchive`. The code strips only a leading `./` prefix and then joins the archive entry path with the destination directory:
+
+    ```go
+    remote := f.NameInArchive
+    remote = strings.TrimPrefix(remote, "./")
+    if dstDir != "" {
+        remote = path.Join(dstDir, remote)
+    }
+    _, err = operations.Rcat(ctx, dst, remote, fin, f.ModTime(), nil)
+    ```
+
+    Parent path components such as `../` are not rejected before `path.Join()` is used.
+
+    When the destination is an S3-style remote such as:
+
+    ```text
+    :s3:bucket/safe/prefix
+    ```
+
+    rclone creates the destination filesystem rooted at `bucket/safe` and treats `prefix` as the destination directory. If the archive contains an entry named:
+
+    ```text
+    ../escaped-from-prefix.txt
+    ```
+
+    then `path.Join("prefix", "../escaped-from-prefix.txt")` resolves to:
+
+    ```text
+    escaped-from-prefix.txt
+    ```
+
+    As a result, the S3 backend uploads the object to:
+
+    ```text
+    bucket/safe/escaped-from-prefix.txt
+    ```
+
+    instead of the expected destination:
+
+    ```text
+    bucket/safe/prefix/escaped-from-prefix.txt
+    ```
+
+    This allows an attacker-controlled archive to escape the selected extraction prefix on object-storage remotes.
+
+    ### PoC
+
+    Test environment:
+
+    - Windows 11
+    - rclone v1.74.3 official Windows amd64 binary
+    - Local fake S3 HTTP endpoint
+    - Crafted ZIP archive containing `../escaped-from-prefix.txt`
+
+    Steps to reproduce:https://drive.google.com/file/d/1P_cLKFgiWSVSATB8500yP28jdzwt9FAt/view?usp=sharing
+
+    1. Extract the attached PoC ZIP.
+
+    2. Run the PoC script:
+
+    ```powershell
+    powershell -ExecutionPolicy Bypass -File .\run-poc.ps1 -RcloneExe "C:\path\to\rclone.exe"
+    ```
+
+    3. The PoC creates a ZIP archive containing this entry:
+
+    ```text
+    ../escaped-from-prefix.txt
+    ```
+
+    4. The PoC starts a local fake S3 endpoint and runs rclone with an S3-style destination prefix:
+
+    ```powershell
+    rclone archive extract malicious.zip :s3:bucket/safe/prefix
+    ```
+
+    5. Observe the fake S3 request log.
+
+    Expected safe behavior:
+
+    ```text
+    PUT /bucket/safe/prefix/escaped-from-prefix.txt
+    ```
+
+    Observed behavior:
+
+    ```text
+    PUT /bucket/safe/escaped-from-prefix.txt?x-id=PutObject
+    ```
+
+    This shows that the archive entry escaped the requested `safe/prefix` destination and was written under `safe/` instead.
+
+    The PoC package includes:
+
+    - `run-poc.ps1`
+    - `fake-s3-server.py`
+    - `README.md`
+    - `report-draft.md`
+    - captured proof logs
+
+    ### Impact
+
+    An attacker who supplies an archive that a victim extracts with `rclone archive extract` can cause extracted files to be written outside the destination prefix selected by the victim when the destination is an S3-style object storage remote.
+
+    Depending on the victim's configured remote credentials and bucket permissions, this may allow creation or overwrite of sibling objects outside the intended extraction directory/prefix.
+
+    This does not require compromising the S3 service itself. The attack relies on the victim extracting an attacker-controlled archive with rclone into an object-storage prefix.
+id: DHI-yfaf-7nm2-hwnv-dzzi
+modified: "2026-11-13T19:15:46Z"
+published: "2026-11-12T04:38:49Z"
+references:
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-39822
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-42505
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-46603
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56854
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-56855
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-59732
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-71313
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-78662
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79775
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79776
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79777
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79778
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79779
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79780
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79781
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79782
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-79783
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-88013
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-88014
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-88015
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-88016
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-88017
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-88018
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-88044
+    - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-88046
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-59732
+    - type: ADVISORY
+      url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3129.html
+    - type: ADVISORY
+      url: https://github.com/advisories/GHSA-4vr5-p2gc-h23p
+    - type: ADVISORY
+      url: https://github.com/rclone/rclone/security/advisories/GHSA-4vr5-p2gc-h23p
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-59732
+    - type: ADVISORY
+      url: https://pkg.go.dev/vuln/GO-2026-6185
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-yfaf-7nm2-hwnv-dzzi
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-59732
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2026-59732
+    - type: FIX
+      url: https://github.com/rclone/rclone/commit/1a746732441e8158f32fab35924b23701e719a8c
+    - type: FIX
+      url: https://github.com/rclone/rclone/commit/d11efe0d58fe6a2d6d90675bb9d8ee5840c51e1d
+    - type: WEB
+      url: https://github.com/rclone/rclone/releases/tag/v1.74.4
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:C/C:N/I:L/A:L
+      type: CVSS_V3
+summary: '### Summary'
+upstream:
+    - CVE-2026-59732

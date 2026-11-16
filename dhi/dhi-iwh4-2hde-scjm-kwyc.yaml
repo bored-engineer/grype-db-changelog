@@ -1,0 +1,37 @@
+# schema: vulnerability/osv/schema-1.8.0.json
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: nfs-ganesha
+        purl: pkg:deb/dhi/nfs-ganesha
+      versions:
+        - 6.5-5+dhi0
+        - 6.5-5+dhi1
+details: |-
+    - nfs-ganesha 9.14-2 (bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1150366)
+    https://bugzilla.redhat.com/show_bug.cgi?id=2545962
+    Since 9.14-2 the nfs-ganesha-mount-9p binary package is not built anymore,
+    consider this as the fixing version.
+id: DHI-iwh4-2hde-scjm-kwyc
+modified: "2026-11-10T06:55:06Z"
+published: "2026-11-10T06:55:06Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-105516
+    - type: ADVISORY
+      url: https://access.redhat.com/security/cve/CVE-2026-105516
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-iwh4-2hde-scjm-kwyc
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-105516
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2026-105516
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+      type: CVSS_V3
+summary: '- nfs-ganesha 9.14-2 (bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1150366)'
+upstream:
+    - CVE-2026-105516
