@@ -1,0 +1,37 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: python3-tornado
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 6.5.10-1.el9_9
+          events:
+            - fixed: 6.5.10-1.el9_9
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "Python is an interpreted, interactive, object-oriented programming language, which includes modules, classes, exceptions, very high level dynamic data types and dynamic typing. Python supports interfaces to many system calls and libraries, as well as to various windowing systems.  \n\nSecurity Fix(es):  \n\n  * tornado: Tornado: Denial of Service via decompression bomb in CurlAsyncHTTPClient (CVE-2026-103262)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2026:98473
+modified: "2026-11-16T14:09:17Z"
+published: "2026-11-11T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:98473
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-98473.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2026-103262
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2544534
+related:
+    - CVE-2026-103262
+schema_version: 1.7.0
+summary: 'Important: python-tornado security update'
+upstream:
+    - CVE-2026-103262
