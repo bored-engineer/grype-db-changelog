@@ -1,0 +1,52 @@
+# schema: vulnerability/osv/schema-1.7.0.json
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: sos
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 4.11.2-7.el9_9
+          events:
+            - introduced: "0"
+            - fixed: 4.11.2-7.el9_9
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: sos-audit
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 4.11.2-7.el9_9
+          events:
+            - introduced: "0"
+            - fixed: 4.11.2-7.el9_9
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "The sos package contains a set of utilities that gather information from system hardware, logs, and configuration files. The information can then be used for diagnostic purposes and debugging.  \n\nSecurity Fix(es):  \n\n  * sos: sos: path traversal in sos clean tar extraction via unvalidated symlink/hardlink targets leads to arbitrary file write (CVE-2026-79655)\n\n\nBug Fix(es) and Enhancement(s):  \n\n  * Hydra to GraphQL migration and sos upload [rhel-9.9.z] (JIRA:RHEL-290949)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2026:97867
+modified: "2026-11-16T14:10:46Z"
+published: "2026-11-10T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:97867
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-97867.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2026-79655
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2523363
+related:
+    - CVE-2026-79655
+schema_version: 1.7.0
+summary: 'Important: sos security, bug fix, and enhancement update'
+upstream:
+    - CVE-2026-79655
