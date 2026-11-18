@@ -9,7 +9,7 @@ affected:
         - 1:11.8.6-0+deb13u1+dhi0
 details: MariaDB server is a community developed fork of MySQL server. From 10.11.1 until 10.11.19, 11.4.13, 11.8.9, 12.3.3, and 13.0.2, ALTER TABLE ... CONVERT ... PARTITION does not apply filename encoding to user-specified partition names before using them in filesystem path construction. An authenticated database user can use a partition name requiring filename escaping to make the conversion operate on table files the user is not authorized to access, allowing unauthorized table reads or modifications. This issue is fixed in versions 10.11.19, 11.4.13, 11.8.9, 12.3.3, and 13.0.2.
 id: DHI-53p5-cug2-3olj-ejck
-modified: "2026-11-13T02:43:13Z"
+modified: "2026-11-18T04:12:25Z"
 published: "2026-11-10T04:04:50Z"
 references:
     - type: ADVISORY
@@ -67,6 +67,8 @@ references:
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3311.html
     - type: ADVISORY
+      url: https://github.com/MariaDB/server/security/advisories/GHSA-h4vr-wpff-jfx4
+    - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-102523
     - type: ADVISORY
       url: https://scout.docker.com/v/DHI-53p5-cug2-3olj-ejck
@@ -77,21 +79,19 @@ references:
     - type: FIX
       url: https://github.com/MariaDB/server/commit/98437c30ae52ed709f266e5f8095d779261a5879
     - type: FIX
-      url: https://github.com/MariaDB/server/releases/tag/mariadb-10.11.19
-    - type: FIX
-      url: https://github.com/MariaDB/server/releases/tag/mariadb-11.4.13
-    - type: FIX
-      url: https://github.com/MariaDB/server/releases/tag/mariadb-11.8.9
-    - type: FIX
-      url: https://github.com/MariaDB/server/releases/tag/mariadb-12.3.3
-    - type: FIX
-      url: https://github.com/MariaDB/server/releases/tag/mariadb-13.0.2
-    - type: FIX
-      url: https://github.com/MariaDB/server/security/advisories/GHSA-h4vr-wpff-jfx4
-    - type: FIX
       url: https://jira.mariadb.org/browse/MDEV-40413
     - type: FIX
       url: https://www.cve.org/CVERecord?id=CVE-2026-102523
+    - type: WEB
+      url: https://github.com/MariaDB/server/releases/tag/mariadb-10.11.19
+    - type: WEB
+      url: https://github.com/MariaDB/server/releases/tag/mariadb-11.4.13
+    - type: WEB
+      url: https://github.com/MariaDB/server/releases/tag/mariadb-11.8.9
+    - type: WEB
+      url: https://github.com/MariaDB/server/releases/tag/mariadb-12.3.3
+    - type: WEB
+      url: https://github.com/MariaDB/server/releases/tag/mariadb-13.0.2
 schema_version: 1.8.0
 severity:
     - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:H

@@ -70,6 +70,7 @@ affected:
         - 4.80.0-0
         - 4.80.0-1
         - 4.81.0-0
+        - 4.82.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -97,7 +98,7 @@ affected:
         - 2.9.1-0
 details: Hono is a Web application framework that provides support for any JavaScript runtime. Prior to 4.13.5, when parseBody() expands dot-separated form field names into nested objects with dot-notation parsing enabled, it does not limit the nesting depth or the total number of intermediate objects created. Empty segments are preserved, so one deeply dotted field name can encode one nesting level per byte, while a large number of shallowly dotted fields can create the same amplification across a request. A request body within a normal size limit can therefore allocate an object graph far larger than the request after the body has already been accepted. An unauthenticated attacker who can reach an affected endpoint can send concurrent requests that exhaust the JavaScript heap, terminate the server process, and leave the service unavailable until restart. Dot-notation parsing is not enabled by default, and applications using the default behavior are not affected. This issue is fixed in version 4.13.5.
 id: DHI-txrx-txfr-yede-nweo
-modified: "2026-11-17T11:14:24Z"
+modified: "2026-11-18T11:34:52Z"
 published: "2026-11-14T01:12:02Z"
 references:
     - type: ADVISORY

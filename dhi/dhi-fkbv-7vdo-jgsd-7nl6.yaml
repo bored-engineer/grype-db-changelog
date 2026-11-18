@@ -15,6 +15,7 @@ affected:
         - 2.1.4-r2
         - 2.1.4-r3
         - 2.1.4-r4
+        - 2.1.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -40,6 +41,7 @@ affected:
         - 12.6.1-r2
         - 12.6.1-r3
         - 12.6.1-r4
+        - 12.6.1-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -83,6 +85,7 @@ affected:
         - 0.16.0-r6
         - 0.17.0-r0
         - 0.18.0-r0
+        - 0.18.1-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -117,6 +120,8 @@ affected:
         - 0.65.4.3-r0
         - 0.65.4.4-r0
         - 0.65.4.5-r0
+        - 0.65.5-r0
+        - 0.65.5.1-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -358,6 +363,7 @@ affected:
         - 4.80.0-0
         - 4.80.0-1
         - 4.81.0-0
+        - 4.82.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -410,6 +416,7 @@ affected:
         - 4.80.0-0
         - 4.80.0-1
         - 4.81.0-0
+        - 4.82.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -540,9 +547,10 @@ affected:
         - 2026.11.02-2
         - 2026.11.02-3
         - 2026.11.02-4
+        - 2026.11.02-5
 details: The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. From 1.6.0 until 1.32.0 in @modelcontextprotocol/sdk, from 2.0.0 until 2.3.0 in @modelcontextprotocol/server, from 2.0.0 until 2.0.2 in @modelcontextprotocol/express, and from 2.0.0 until 2.3.1 in @modelcontextprotocol/server-legacy, server-side bearer authentication could accept a valid access token issued for a different service because the SDK did not enforce the token audience. The affected surface is server-side HTTP bearer authentication. The trigger is a valid token whose audience names another service. The authorization server must issue tokens for multiple services, and the application's verifyAccessToken() must not independently validate aud. Applications already validating aud inside verifyAccessToken() are not affected. An attacker with a token for another service could authenticate to the MCP server and obtain the confidentiality and integrity capabilities granted to an authenticated caller. Upgrading alone leaves the new audience validation disabled. Operators must enable audience validation and provide the token audience together. Enabling only the expected audience check causes every request to receive HTTP 401. This issue is fixed in @modelcontextprotocol/sdk 1.32.0, @modelcontextprotocol/server 2.3.0, @modelcontextprotocol/express 2.0.2, and @modelcontextprotocol/server-legacy 2.3.1.
 id: DHI-fkbv-7vdo-jgsd-7nl6
-modified: "2026-11-17T15:41:58Z"
+modified: "2026-11-18T11:42:35Z"
 published: "2026-11-13T17:09:32Z"
 references:
     - type: ADVISORY

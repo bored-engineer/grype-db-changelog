@@ -3,6 +3,16 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
       versions:
@@ -67,7 +77,7 @@ affected:
         - 4.4.5-2
 details: Vega is a visualization grammar, a declarative format for creating, saving, and sharing interactive visualization designs. In Vega prior to version 6.2.0, applications meeting 2 conditions are at risk of arbitrary JavaScript code execution, even if "safe mode" expressionInterpreter is used. They are vulnerable if they use `vega` in an application that attaches `vega` library and a `vega.View` instance similar to the Vega Editor to the global `window` and if they allow user-defined Vega `JSON` definitions (vs JSON that was is only provided through source code). Patches are available in the following Vega applications. If using the latest Vega line (6.x), upgrade to `vega` `6.2.0` / `vega-expression` `6.1.0` / `vega-interpreter`  `2.2.1` (if using AST evaluator mode). If using Vega in a non-ESM environment, upgrade to `vega-expression` `5.2.1` / `1.2.1` (if using AST evaluator mode). Some workarounds are available. Do not attach `vega` View instances to global variables, and do not attach `vega` to the global window. These practices of attaching the vega library and View instances may be convenient for debugging, but should not be used in production or in any situation where vega/vega-lite definitions could be provided by untrusted parties.
 id: DHI-skrt-lzym-x7xo-2q4d
-modified: "2026-11-14T23:53:08Z"
+modified: "2026-11-18T06:00:48Z"
 published: "2026-11-11T19:29:18Z"
 references:
     - type: ADVISORY

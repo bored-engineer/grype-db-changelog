@@ -44,6 +44,10 @@ affected:
         - 1.7.0.1-33
         - 1.7.0.1-34
         - 1.7.0.1-35
+        - 1.7.0.1-36
+        - 1.7.0.1-37
+        - 1.7.0.1-38
+        - 1.7.0.1-39
         - 1.7.0.1-4
         - 1.7.0.1-5
         - 1.7.0.1-6
@@ -79,6 +83,7 @@ affected:
         - 1.8.0-7
         - 1.8.0-8
         - 1.9.0-0
+        - 1.9.0-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -108,6 +113,7 @@ affected:
         - 1.8.0-7
         - 1.8.0-8
         - 1.9.0-0
+        - 1.9.0-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -139,6 +145,7 @@ affected:
         - 1.8.0-7
         - 1.9.0-0
         - 1.9.0-1
+        - 1.9.0-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -157,7 +164,11 @@ affected:
         - 4.33.0-16
         - 4.33.0-17
         - 4.33.0-18
+        - 4.33.0-19
         - 4.33.0-2
+        - 4.33.0-20
+        - 4.33.0-21
+        - 4.33.0-22
         - 4.33.0-3
         - 4.33.0-4
         - 4.33.0-5
@@ -201,6 +212,10 @@ affected:
         - 1.35.3-21
         - 1.35.3-22
         - 1.35.3-23
+        - 1.35.3-24
+        - 1.35.3-25
+        - 1.35.3-26
+        - 1.35.3-27
         - 1.35.3-3
         - 1.35.3-4
         - 1.35.3-5
@@ -210,7 +225,7 @@ affected:
         - 1.35.3-9
 details: MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. Prior to 2.7.14, 3.3.5, 3.4.3, and 3.5.9, PAM dialog authentication can be coerced into transmitting the account password over an insecure connection. The mysql_clear_password plugin is gated behind a secure transport, but the sibling PAM handler SendPamAuthPacketFactory, named dialog by the server, does not declare that requirement and inherits the default secure-required value false; older branches implement the same affected behavior in SendPamAuthPacket. A hostile or man-in-the-middle server can send an Authentication Switch Request for dialog over plain TCP, causing the driver to return the user's password in cleartext when sslMode=DISABLE and restrictedAuth=null, which is the default configuration. Properly verified TLS and local Unix sockets are not exposed to this transport vector. This issue is fixed in versions 2.7.14, 3.3.5, 3.4.3, and 3.5.9.
 id: DHI-q3d6-t4ob-nmmm-ve2m
-modified: "2026-11-17T08:21:44Z"
+modified: "2026-11-18T08:06:13Z"
 published: "2026-11-14T01:41:03Z"
 references:
     - type: ADVISORY

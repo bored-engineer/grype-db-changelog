@@ -10,6 +10,7 @@ affected:
         - 1.10.0-r1
         - 1.10.0-r2
         - 1.10.0-r3
+        - 1.10.0-r4
         - 1.6.0-r0
         - 1.6.0-r1
         - 1.6.0-r10
@@ -20,6 +21,7 @@ affected:
         - 1.6.0-r15
         - 1.6.0-r16
         - 1.6.0-r17
+        - 1.6.0-r18
         - 1.6.0-r2
         - 1.6.0-r3
         - 1.6.0-r4
@@ -38,6 +40,7 @@ affected:
         - 1.7.5-r15
         - 1.7.5-r16
         - 1.7.5-r17
+        - 1.7.5-r18
         - 1.7.5-r2
         - 1.7.5-r3
         - 1.7.5-r4
@@ -72,6 +75,7 @@ affected:
         - 1.10.0-r1
         - 1.10.0-r2
         - 1.10.0-r3
+        - 1.10.0-r4
         - 1.6.0-r0
         - 1.6.0-r1
         - 1.6.0-r10
@@ -82,6 +86,7 @@ affected:
         - 1.6.0-r15
         - 1.6.0-r16
         - 1.6.0-r17
+        - 1.6.0-r18
         - 1.6.0-r2
         - 1.6.0-r3
         - 1.6.0-r4
@@ -100,6 +105,7 @@ affected:
         - 1.7.5-r15
         - 1.7.5-r16
         - 1.7.5-r17
+        - 1.7.5-r18
         - 1.7.5-r2
         - 1.7.5-r3
         - 1.7.5-r4
@@ -134,6 +140,7 @@ affected:
         - 1.10.0-r1
         - 1.10.0-r2
         - 1.10.0-r3
+        - 1.10.0-r4
         - 1.6.0-r0
         - 1.6.0-r1
         - 1.6.0-r10
@@ -144,6 +151,7 @@ affected:
         - 1.6.0-r15
         - 1.6.0-r16
         - 1.6.0-r17
+        - 1.6.0-r18
         - 1.6.0-r2
         - 1.6.0-r3
         - 1.6.0-r4
@@ -162,6 +170,7 @@ affected:
         - 1.7.5-r15
         - 1.7.5-r16
         - 1.7.5-r17
+        - 1.7.5-r18
         - 1.7.5-r2
         - 1.7.5-r3
         - 1.7.5-r4
@@ -196,6 +205,7 @@ affected:
         - 1.10.0-r1
         - 1.10.0-r2
         - 1.10.0-r3
+        - 1.10.0-r4
         - 1.6.0-r0
         - 1.6.0-r1
         - 1.6.0-r10
@@ -206,6 +216,7 @@ affected:
         - 1.6.0-r15
         - 1.6.0-r16
         - 1.6.0-r17
+        - 1.6.0-r18
         - 1.6.0-r2
         - 1.6.0-r3
         - 1.6.0-r4
@@ -224,6 +235,7 @@ affected:
         - 1.7.5-r15
         - 1.7.5-r16
         - 1.7.5-r17
+        - 1.7.5-r18
         - 1.7.5-r2
         - 1.7.5-r3
         - 1.7.5-r4
@@ -249,7 +261,7 @@ affected:
         - 1.9.4-r7
 details: 'Flux notification-controller is the event forwarder and notification dispatcher for the GitOps Toolkit controllers. Prior to 1.8.3, the gcr Receiver type in Flux notification-controller does not validate the email claim of Google OIDC tokens used for Pub/Sub push authentication. This allows any valid Google-issued token, to authenticate against the Receiver webhook endpoint, triggering unauthorized Flux reconciliations. Exploitation requires the attacker to know the Receiver''s webhook URL. The webhook path is generated as /hook/sha256sum(token+name+namespace), where the token is a random string stored in a Kubernetes Secret. There is no API or endpoint that enumerates webhook URLs. An attacker cannot discover the path without either having access to the cluster and permissions to read the Receiver''s .status.webhookPath in the target namespace, or obtaining the URL through other means (e.g. leaked secrets or access to Pub/Sub config). Upon successful authentication, the controller triggers a reconciliation for all resources listed in the Receiver''s .spec.resources. However, the practical impact is limited: Flux reconciliation is idempotent, so if the desired state in the configured sources (Git, OCI, Helm) has not changed, the reconciliation results in a no-op with no effect on cluster state. Additionally, Flux controllers deduplicate reconciliation requests, sending many requests in a short period results in only a single reconciliation being processed. This vulnerability is fixed in 1.8.3.'
 id: DHI-2a3v-e3nd-5k2b-wtrx
-modified: "2026-11-13T17:09:20Z"
+modified: "2026-11-18T12:35:01Z"
 published: "2026-11-13T16:59:06Z"
 references:
     - type: ADVISORY

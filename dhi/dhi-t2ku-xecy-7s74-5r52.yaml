@@ -42,6 +42,7 @@ affected:
         - 4.14.0-r11
         - 4.14.0-r12
         - 4.14.0-r13
+        - 4.14.0-r14
         - 4.14.0-r2
         - 4.14.0-r3
         - 4.14.0-r4
@@ -163,6 +164,7 @@ affected:
         - 1.7.0.1-25
         - 1.7.0.1-26
         - 1.7.0.1-27
+        - 1.7.0.1-28
         - 1.7.0.1-3
         - 1.7.0.1-4
         - 1.7.0.1-5
@@ -334,7 +336,7 @@ affected:
         - 0.15.4-9
 details: joserfc is a Python library that provides an implementation of several JSON Object Signing and Encryption (JOSE) standards. Prior to 1.7.6, joserfc compact JWS deserialization calls bytes.split() before enforcing the existing aggregate segment-size limits. When attacker-controlled compact serialization bytes reach deserialize_compact(), the split creates copies of the header, payload, and signature segments before ExceededSizeError rejects them, causing an additional allocation approximately proportional to the supplied token. Requests that exhaust available process memory can therefore cause an availability failure even though signature verification fails. This issue is fixed in version 1.7.6.
 id: DHI-t2ku-xecy-7s74-5r52
-modified: "2026-11-17T08:09:02Z"
+modified: "2026-11-18T12:57:58Z"
 published: "2026-11-11T18:47:00Z"
 references:
     - type: ADVISORY
