@@ -1,0 +1,55 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: 'Fix GHSA-6wqx-rv3q-vcxp: FreeRDP client use-after-free in the rdpgfx dynamic virtual channel on channel closeFix GHSA-q82v-5wjg-6h57: FreeRDP RD Gateway RPC client heap buffer overflow in rpc_client_recv_fragmentFreeRDP before 3.32.2 has a use-after-free in the client''s rdpgfx dynamic virtual channel: a duplicate-name channel with a new ChannelId overwrites the listener''s single callback slot, which rdpgfx_on_close frees without clearing. A malicious RDP server can open and close such a channel, then send a PDU on the original channel to crash the client or potentially execute code. (CVE-2026-121953)FreeRDP before 3.32.2 contains a use-after-free vulnerability in the asynchronous dynamic rdpsnd channel that allows malicious RDP servers to trigger freed callback access by closing the channel with queued audio PDUs. Attackers can send a training PDU then close the channel so the playback thread reads the freed callback in rdpsnd_virtual_channel_write, crashing the client. (CVE-2026-121963)FreeRDP before 3.32.2 contains a heap-based buffer overflow in the RD Gateway RPC client, where rpc_client_recv_fragment writes BIND_ACK and ALTER_CONTEXT_RESP fragments into a persistent PDU stream after checking only total capacity rather than remaining capacity from the current stream position. A malicious or compromised RD Gateway can send crafted RPC fragments with manipulated alloc_hint and frag_length values to overwrite client heap memory with attacker-controlled data, causing a crash or potentially arbitrary code execution. (CVE-2026-121964)'
+    FixedIn:
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: freerdp
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.19
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: freerdp-debuginfo
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.19
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: freerdp-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.19
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: freerdp-libs
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.19
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: libwinpr
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.19
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: libwinpr-devel
+          NamespaceName: amzn:2
+          Version: 2.11.7-1.amzn2.0.19
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4119.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-121953
+            - Name: CVE-2026-121963
+            - Name: CVE-2026-121964
+    Name: ALAS2-2026-4119
+    NamespaceName: amzn:2
+    Severity: High
