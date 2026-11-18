@@ -1,0 +1,41 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: grafana
+        purl: pkg:bitnami/grafana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 13.1.2
+          events:
+            - fixed: 13.1.2
+            - introduced: 13.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-16491
+database_specific:
+    cpes:
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:*:go:*:*
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:go:*:*
+    severity: Medium
+details: |-
+    Grafana’s RBAC service ignored the requested folder when checking whether a user was a folder administrator for deleted dashboard listings. A user with dashboard permission-management rights on any folder could therefore be treated as an administrator of every folder.
+
+    This could expose deleted dashboard items from folders where the user lacked administrative access. The fix requires permission on the specified folder, an ancestor, or a wildcard scope.
+id: BIT-grafana-2026-16491
+modified: "2026-11-17T12:14:43.364Z"
+published: "2026-11-17T11:46:05.213Z"
+references:
+    - type: WEB
+      url: https://grafana.com/security/security-advisories/cve-2026-16491
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-16491
+schema_version: 1.6.2
+summary: CVE-2026-16491 CVE Record

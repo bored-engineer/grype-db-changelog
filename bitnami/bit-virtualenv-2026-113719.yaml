@@ -22,10 +22,11 @@ aliases:
 database_specific:
     cpes:
         - cpe:2.3:a:virtualenv:virtualenv:*:*:*:*:*:*:*:*
+        - cpe:2.3:a:virtualenv:virtualenv:*:*:*:*:*:python:*:*
     severity: Medium
 details: virtualenv is a tool for creating isolated virtual python environments. Prior to 21.14.9, PipInstall._uninstall_previous_version() accepts existing seed-package metadata and _uninstall_dist() joins entries from top_level.txt and RECORD to site-packages without checking containment. When a reused destination contains distribution metadata influenced by another account, relative traversal, absolute entries, or linked parents can cause app-data reseeding to delete files outside the environment or the environment root with the invoking user's permissions, provided that user has deletion rights over the named paths. The deletion occurs during environment creation before any later use of the environment. Fresh environments without existing package metadata and creation with --clear do not enter this cleanup path. This issue is fixed in version 21.14.9.
 id: BIT-virtualenv-2026-113719
-modified: "2026-10-29T09:16:42.832Z"
+modified: "2026-11-17T12:14:43.364Z"
 published: "2026-10-29T09:00:34.670Z"
 references:
     - type: WEB

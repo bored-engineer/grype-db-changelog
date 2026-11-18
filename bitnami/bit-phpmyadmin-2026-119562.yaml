@@ -1,0 +1,38 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: phpmyadmin
+        purl: pkg:bitnami/phpmyadmin
+      ranges:
+        - events:
+            - introduced: "0"
+            - last_affected: 5.2.3
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-119562
+database_specific:
+    cpes:
+        - cpe:2.3:a:phpmyadmin:phpmyadmin:*:*:*:*:*:php:*:*
+    severity: High
+details: phpMyAdmin through 5.2.3 contains an sql injection vulnerability that allows authenticated users to inject SQL by supplying unescaped col_extra and col_attribute values to /database/central-columns. Attackers can inject SQL into pma__central_columns INSERT and UPDATE queries run with controluser privileges, reading or modifying other users' configuration-storage data.
+id: BIT-phpmyadmin-2026-119562
+modified: "2026-11-17T12:14:43.364Z"
+published: "2026-11-17T11:56:22.530Z"
+references:
+    - type: ADVISORY
+      url: https://abraxaslabs.tech/research/phpmyadmin-pmadb-central-sqli
+    - type: ADVISORY
+      url: https://www.vulncheck.com/advisories/phpmyadmin-through-5.2.3-sql-injection-via-central-columns-col-extra-and-col-attribute
+    - type: WEB
+      url: https://github.com/phpmyadmin/phpmyadmin
+    - type: WEB
+      url: https://github.com/phpmyadmin/phpmyadmin/blob/RELEASE_5_2_3/libraries/classes/Database/CentralColumns.php#L268
+    - type: WEB
+      url: https://github.com/phpmyadmin/phpmyadmin/blob/RELEASE_5_2_3/libraries/classes/Database/CentralColumns.php#L637-L638
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-119562
+schema_version: 1.6.2
+summary: phpMyAdmin through 5.2.3 SQL Injection via Central Columns col_extra and col_attribute

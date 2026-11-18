@@ -1,0 +1,40 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: jenkins
+        purl: pkg:bitnami/jenkins
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 2.580.2
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 2.588.0
+          events:
+            - fixed: 2.580.2
+            - fixed: 2.588.0
+            - introduced: "0"
+            - introduced: 2.581.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-117615
+database_specific:
+    cpes:
+        - cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:maven:*:*
+    severity: Medium
+details: Jenkins 2.587 and earlier, LTS 2.580.1 and earlier follows symbolic links when copying the directory of an item being renamed, allowing attackers with Item/Create and Item/Configure permission to read arbitrary files on the Jenkins controller file system.
+id: BIT-jenkins-2026-117615
+modified: "2026-11-17T12:14:43.364Z"
+published: "2026-11-17T11:47:54.437Z"
+references:
+    - type: ADVISORY
+      url: https://www.jenkins.io/security/advisory/2026-10-28/#SECURITY-4187
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-117615
+schema_version: 1.6.2

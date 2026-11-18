@@ -1,0 +1,40 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: jenkins
+        purl: pkg:bitnami/jenkins
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 2.580.2
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 2.588.0
+          events:
+            - fixed: 2.580.2
+            - fixed: 2.588.0
+            - introduced: "0"
+            - introduced: 2.581.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-117626
+database_specific:
+    cpes:
+        - cpe:2.3:a:jenkins:jenkins:*:*:*:*:*:maven:*:*
+    severity: Medium
+details: Jenkins 2.587 and earlier, LTS 2.580.1 and earlier improperly identifies file paths attempting path traversal in the file browser for workspaces and $JENKINS_HOME/userContent/, allowing attackers with Overall/Read permission to obtain the names, sizes, and last modification times of files in the $JENKINS_HOME, and attackers with Item/Workspace permission to obtain the names of jobs that have a workspace on the same agent.
+id: BIT-jenkins-2026-117626
+modified: "2026-11-17T12:14:43.364Z"
+published: "2026-11-17T11:48:09.550Z"
+references:
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-117626
+    - type: WEB
+      url: https://www.jenkins.io/security/advisory/2026-10-28/#SECURITY-4237
+schema_version: 1.6.2

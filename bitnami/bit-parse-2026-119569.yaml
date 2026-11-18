@@ -1,0 +1,43 @@
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: parse
+        purl: pkg:bitnami/parse
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 8.6.108
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 9.10.5
+          events:
+            - fixed: 8.6.108
+            - fixed: 9.10.5
+            - introduced: "0"
+            - introduced: 9.0.0
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-119569
+database_specific:
+    cpes:
+        - cpe:2.3:a:parseplatform:parse-server:*:*:*:*:*:node.js:*:*
+    severity: Medium
+details: Parse Server before 8.6.108 and 9.0.0 before 9.10.5 contains a prototype pollution vulnerability because user-controlled keys are expanded into objects without own-property checks. Clients with class write access can send dot notation field keys or ACL entry names matching built-in object members to corrupt built-in functions, causing all requests to fail until server restart.
+id: BIT-parse-2026-119569
+modified: "2026-11-17T12:14:43.364Z"
+published: "2026-11-17T11:55:50.651Z"
+references:
+    - type: WEB
+      url: https://github.com/parse-community/parse-server/security/advisories/GHSA-rx55-fw4j-pvpx
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-119569
+    - type: WEB
+      url: https://www.vulncheck.com/advisories/parse-server-9.0.0-before-9.10.5-alpha.9-prototype-pollution-denial-of-service
+schema_version: 1.6.2
+summary: Parse Server 9.0.0 before 9.10.5 Prototype Pollution Denial of Service
