@@ -72,6 +72,7 @@ affected:
         - 2.28.0-r1
         - 2.28.0-r2
         - 2.28.0-r3
+        - 2.28.0-r4
         - 2.4.4-r0
         - 2.6.4-r0
         - 2.6.4-r1
@@ -164,6 +165,7 @@ affected:
         - 2.28.0-r1
         - 2.28.0-r2
         - 2.28.0-r3
+        - 2.28.0-r4
         - 2.6.4-r0
         - 2.6.4-r1
         - 2.6.5-r1
@@ -255,6 +257,7 @@ affected:
         - 2.28.0-r1
         - 2.28.0-r2
         - 2.28.0-r3
+        - 2.28.0-r4
         - 2.6.4-r0
         - 2.6.4-r1
         - 2.6.5-r1
@@ -346,6 +349,7 @@ affected:
         - 2.28.0-r1
         - 2.28.0-r2
         - 2.28.0-r3
+        - 2.28.0-r4
         - 2.6.4-r0
         - 2.6.4-r1
         - 2.6.5-r1
@@ -406,6 +410,9 @@ affected:
         - 1.20.0-2
         - 1.20.0-3
         - 1.20.0-4
+        - 1.20.0-6
+        - 1.20.0-7
+        - 1.20.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -418,6 +425,9 @@ affected:
         - 2.1.0-0
         - 2.1.0-1
         - 2.1.0-2
+        - 2.1.0-4
+        - 2.1.0-5
+        - 2.1.0-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -435,6 +445,8 @@ affected:
         - 1.56.0-0
         - 1.56.1-0
         - 1.56.2-0
+        - 1.57.0-0
+        - 1.57.0-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -473,6 +485,7 @@ affected:
         - 2026.11.6-0
         - 2026.11.7-0
         - 2026.11.8-0
+        - 2026.11.9-0
         - 2026.9.10-0
         - 2026.9.18-0
     - database_specific:
@@ -540,6 +553,8 @@ affected:
         - 1.20.0-7
         - 1.20.0-8
         - 1.20.1-0
+        - 1.20.2-0
+        - 1.20.2-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -596,6 +611,8 @@ affected:
         - 0.59.0-0
         - 0.60.0-0
         - 0.61.0-0
+        - 0.62.0-0
+        - 0.62.0-1
 details: |-
     When a MAX_STREAM_DATA frame named a peer-initiated bidirectional stream that was not open yet, `received_max_stream_data` treated the stream, and every lower-numbered stream, as opened without checking the stream ID against the limit advertised to the peer. RFC 9000 section 4.6 requires closing the connection with `STREAM_LIMIT_ERROR` in this case, and the STREAM and RESET_STREAM handlers already did so.
 
@@ -603,7 +620,7 @@ details: |-
 
     The fix validates the stream ID in `received_max_stream_data` and adds a defensive check where streams are opened implicitly. It is in 0.11.19.
 id: DHI-e7aw-r4ht-fvzn-4t64
-modified: "2026-11-16T19:25:42Z"
+modified: "2026-11-17T12:50:18Z"
 published: "2026-11-14T02:01:31Z"
 references:
     - type: ADVISORY

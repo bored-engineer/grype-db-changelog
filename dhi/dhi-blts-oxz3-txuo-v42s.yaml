@@ -88,6 +88,7 @@ affected:
         - 19.5.5-r0
         - 19.5.5-r1
         - 19.5.5-r2
+        - 19.5.6-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -125,6 +126,7 @@ affected:
         - 18.11.14-2
         - 18.11.14-20
         - 18.11.14-21
+        - 18.11.14-22
         - 18.11.14-3
         - 18.11.14-4
         - 18.11.14-5
@@ -169,6 +171,7 @@ affected:
         - 19.5.5-7
         - 19.5.5-8
         - 19.5.5-9
+        - 19.5.6-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -205,6 +208,8 @@ affected:
         - 1.20.0-7
         - 1.20.0-8
         - 1.20.1-0
+        - 1.20.2-0
+        - 1.20.2-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -215,6 +220,7 @@ affected:
         - 1.29.10-0
         - 1.29.10-1
         - 1.29.10-2
+        - 1.29.10-3
         - 1.29.7-0
         - 1.29.7-1
         - 1.29.8-0
@@ -230,6 +236,7 @@ affected:
         - 1.29.10-0
         - 1.29.10-1
         - 1.29.10-2
+        - 1.29.10-3
         - 1.29.7-0
         - 1.29.7-1
         - 1.29.8-0
@@ -251,6 +258,7 @@ affected:
         - 1.30.8-0
         - 1.30.8-1
         - 1.30.8-2
+        - 1.30.8-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -267,6 +275,7 @@ affected:
         - 1.30.8-0
         - 1.30.8-1
         - 1.30.8-2
+        - 1.30.8-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -282,6 +291,7 @@ affected:
         - 1.31.4-0
         - 1.31.4-1
         - 1.31.4-2
+        - 1.31.4-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -297,6 +307,7 @@ affected:
         - 1.31.4-0
         - 1.31.4-1
         - 1.31.4-2
+        - 1.31.4-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -306,6 +317,7 @@ affected:
       versions:
         - 1.32.0-0
         - 1.32.0-1
+        - 1.32.0-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -315,6 +327,7 @@ affected:
       versions:
         - 1.32.0-0
         - 1.32.0-1
+        - 1.32.0-2
 details: |-
     It has been reported (by @lopopolo) that the `rand` library is [unsound](https://rust-lang.github.io/unsafe-code-guidelines/glossary.html#soundness-of-code--of-a-library) (i.e. that safe code using the public API can cause Undefined Behaviour) when all the following conditions are met:
 
@@ -326,7 +339,7 @@ details: |-
 
     `TryRng` (previously `RngCore`) methods for `ThreadRng` use `unsafe` code to cast `*mut BlockRng<ReseedingCore>` to `&mut BlockRng<ReseedingCore>`. When all the above conditions are met this results in an aliased mutable reference, violating the Stacked Borrows rules. Miri is able to detect this violation in sample code. Since construction of [aliased mutable references is Undefined Behaviour](https://doc.rust-lang.org/stable/nomicon/references.html), the behaviour of optimized builds is hard to predict.
 id: DHI-blts-oxz3-txuo-v42s
-modified: "2026-11-16T16:26:43Z"
+modified: "2026-11-17T12:28:49Z"
 published: "2026-11-11T23:08:47Z"
 references:
     - type: ADVISORY

@@ -11,6 +11,7 @@ affected:
         - 2.95.12-10
         - 2.95.12-11
         - 2.95.12-12
+        - 2.95.12-13
         - 2.95.12-2
         - 2.95.12-3
         - 2.95.12-4
@@ -21,7 +22,7 @@ affected:
         - 2.95.12-9
 details: 'Next.js is a React framework for building full-stack web applications. Starting in version 9.5.0 and prior to versions 15.5.13 and 16.1.7, when Next.js rewrites proxy traffic to an external backend, a crafted `DELETE`/`OPTIONS` request using `Transfer-Encoding: chunked` could trigger request boundary disagreement between the proxy and backend. This could allow request smuggling through rewritten routes. An attacker could smuggle a second request to unintended backend routes (for example, internal/admin endpoints), bypassing assumptions that only the configured rewrite destination/path is reachable. This does not impact applications hosted on providers that handle rewrites at the CDN level, such as Vercel.  The vulnerability originated in an upstream library vendored by Next.js. It is fixed in Next.js 15.5.13 and 16.1.7 by updating that dependency’s behavior so `content-length: 0` is added only when both `content-length` and `transfer-encoding` are absent, and `transfer-encoding` is no longer removed in that code path. If upgrading is not immediately possible, block chunked `DELETE`/`OPTIONS` requests on rewritten routes at the edge/proxy, and/or enforce authentication/authorization on backend routes.'
 id: DHI-tvuu-tvow-gkgo-tdri
-modified: "2026-11-13T19:02:48Z"
+modified: "2026-11-17T04:02:57Z"
 published: "2026-11-11T18:58:10Z"
 references:
     - type: ADVISORY

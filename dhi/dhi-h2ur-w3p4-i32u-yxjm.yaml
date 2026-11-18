@@ -91,6 +91,9 @@ affected:
         - 593.0.0-0
         - 593.0.0-1
         - 593.0.0-10
+        - 593.0.0-11
+        - 593.0.0-12
+        - 593.0.0-13
         - 593.0.0-2
         - 593.0.0-3
         - 593.0.0-4
@@ -135,6 +138,7 @@ affected:
         - 1.1.0-13
         - 1.1.0-14
         - 1.1.0-15
+        - 1.1.0-16
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -158,6 +162,7 @@ affected:
         - 1.2.0-5
         - 1.2.0-6
         - 1.2.0-7
+        - 1.2.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -205,7 +210,7 @@ details: |-
     ### Impact
     A remote unauthenticated peer that can speak SPDY to a Netty pipeline containing SpdyFrameCodec can send a small compressed HEADERS block that expands into much larger raw header data after the configured maxHeaderSize limit has already been exceeded. The attack requires a reachable SPDY codec, ordinary transport setup such as TCP and optional TLS, and no independent compressed-frame-size or connection-rate limit ahead of SpdyFrameCodec. The satisfied protocol guards are straightforward: the HEADERS frame uses a nonzero stream id and length >= 4, the decoder factory selects the zlib decoder, the payload uses the SPDY dictionary, and the raw block appends a zero-length value so the already-truncated frame reaches END_HEADER_BLOCK. The user-visible effect is denial of service through compression-amplified CPU and allocation churn.
 id: DHI-h2ur-w3p4-i32u-yxjm
-modified: "2026-11-15T17:01:05Z"
+modified: "2026-11-17T16:35:10Z"
 published: "2026-11-10T07:34:33Z"
 references:
     - type: ADVISORY

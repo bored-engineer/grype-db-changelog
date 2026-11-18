@@ -19,6 +19,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -42,6 +43,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -65,6 +67,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -88,12 +91,13 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
 details: Kyverno is a policy engine designed for cloud native platform engineering teams. In versions 1.14.1 and below, a Denial of Service (DoS) vulnerability exists due to improper handling of JMESPath variable substitutions. Attackers with permissions to create or update Kyverno policies can craft expressions using the {{@}} variable combined with a pipe and an invalid JMESPath function (e.g., {{@ | non_existent_function }}). This leads to a nil value being substituted into the policy structure. Subsequent processing by internal functions, specifically getValueAsStringMap, which expect string values, results in a panic due to a type assertion failure (interface {} is nil, not string). This crashes Kyverno worker threads in the admission controller and causes continuous crashes of the reports controller pod. This is fixed in version 1.14.2.
 id: DHI-6dwq-cko6-tiwh-smbm
-modified: "2026-11-13T22:36:41Z"
+modified: "2026-11-17T16:36:31Z"
 published: "2026-11-11T15:50:08Z"
 references:
     - type: ADVISORY

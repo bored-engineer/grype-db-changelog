@@ -38,7 +38,7 @@ affected:
         - 1.8.2-1+dhi1
 details: jq is a command-line JSON processor. In commits before 2f09060afab23fe9390cce7cb860b10416e1bf5f, the jv_parse_sized() API in libjq accepts a counted buffer with an explicit length parameter, but its error-handling path formats the input buffer using %s in jv_string_fmt(), which reads until a NUL terminator is found rather than respecting the caller-supplied length. This means that when malformed JSON is passed in a non-NUL-terminated buffer, the error construction logic performs an out-of-bounds read past the end of the buffer. The vulnerability is reachable by any libjq consumer calling jv_parse_sized() with untrusted input, and depending on memory layout, can result in memory disclosure or process termination. The issue has been patched in commit 2f09060afab23fe9390cce7cb860b10416e1bf5f.
 id: DHI-enhc-2a7c-rpxf-hg4o
-modified: "2026-11-13T17:53:43Z"
+modified: "2026-11-17T05:45:34Z"
 published: "2026-11-11T19:05:15Z"
 references:
     - type: ADVISORY
@@ -116,6 +116,8 @@ references:
     - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:8579
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:98496
+    - type: ADVISORY
       url: https://access.redhat.com/security/cve/CVE-2026-39979
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2/ALAS-2026-3496.html
@@ -129,6 +131,8 @@ references:
       url: https://errata.almalinux.org/9/ALSA-2026-16693.html
     - type: ADVISORY
       url: https://errata.almalinux.org/9/ALSA-2026-19365.html
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-98496.html
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:16252
     - type: ADVISORY

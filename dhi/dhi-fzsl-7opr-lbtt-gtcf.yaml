@@ -11,6 +11,7 @@ affected:
         - 2.95.12-10
         - 2.95.12-11
         - 2.95.12-12
+        - 2.95.12-13
         - 2.95.12-2
         - 2.95.12-3
         - 2.95.12-4
@@ -21,7 +22,7 @@ affected:
         - 2.95.12-9
 details: Vitest is a testing framework powered by Vite. From 2.1.0 until 4.1.11 and 5.0.0-rc.2, the public mockerPlugin and standalone interceptorPlugin exports in packages/mocker/src/node/interceptorPlugin.ts register the vitest:interceptor:register handler on Vite's unauthenticated HMR WebSocket without validating redirect targets against the file-serving allowlist. The implementation processes event.redirect without enforcing server.fs.allow and server.fs.deny through isFileLoadingAllowed. A remote client that can reach an exposed development server can submit an opaque URL scheme preserving .. segments, causing join(server.config.root, redirectUrl.pathname) to resolve outside the project root. The plugin's load hook then returns readFile(mock.redirect, 'utf-8') as module source, disclosing local files readable by the dev-server process. Vitest browser mode uses a token-authenticated RPC and is not remotely unauthenticated by default, although the same boundary check was missing on that path. This issue is fixed in versions 4.1.11 and 5.0.0-rc.2.
 id: DHI-fzsl-7opr-lbtt-gtcf
-modified: "2026-11-13T20:13:25Z"
+modified: "2026-11-17T05:43:19Z"
 published: "2026-11-11T18:53:03Z"
 references:
     - type: ADVISORY

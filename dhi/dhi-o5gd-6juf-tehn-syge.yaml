@@ -35,7 +35,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: In NLnet Labs Unbound 1.6.0 up to and including 1.25.1, the 'view_local_data' and 'view_local_datas' commands of 'unbound-control' create a bare local zones tree for an already configured named view when the view is configured with no local data to begin with. However, the creation through the control interface omits adding the default-protected zones (e.g., RFC 1918 reverse, AS112 zones, .onion, .localhost). Once the local zone tree exists without the defaults, every query for a default-protected name from a client mapped to that view escapes to the public DNS via the iterator instead of being answered locally, bypassing local policy expectations.
 id: DHI-o5gd-6juf-tehn-syge
-modified: "2026-11-13T21:35:12Z"
+modified: "2026-11-17T08:52:00Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY
@@ -67,7 +67,11 @@ references:
     - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-55708
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:97497
+    - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-2033.html
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-97497.html
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:97121
     - type: ADVISORY

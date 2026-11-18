@@ -87,6 +87,7 @@ affected:
         - 1.1.0-13
         - 1.1.0-14
         - 1.1.0-15
+        - 1.1.0-16
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -110,9 +111,10 @@ affected:
         - 1.2.0-5
         - 1.2.0-6
         - 1.2.0-7
+        - 1.2.0-8
 details: Netty is a network application framework for development of protocol servers and clients. Prior to versions 4.1.135.Final and 4.2.15.Final, the RedisArrayAggregator handler permanently leaks pooled direct-memory buffers when a Redis pipeline connection closes before a RESP array aggregate completes. The handler retains child messages in per-handler state (`depths` field) but defines no `channelInactive`, `handlerRemoved`, or `exceptionCaught` method to release them when the pipeline tears down. Because the leaked buffers are slices of `PooledByteBufAllocator` chunks, they prevent those chunks from being returned to the JVM-wide direct-memory pool. Repeated connection churn by any network peer monotonically drains this shared pool, eventually causing allocation failures on all Netty channels in the process. Versions 4.1.135.Final and 4.2.15.Final patch the issue.
 id: DHI-uhbb-i7pj-qxdy-tb7n
-modified: "2026-11-11T09:48:27Z"
+modified: "2026-11-17T09:57:07Z"
 published: "2026-11-10T08:10:06Z"
 references:
     - type: ADVISORY

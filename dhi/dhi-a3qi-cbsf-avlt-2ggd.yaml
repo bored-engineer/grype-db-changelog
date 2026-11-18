@@ -75,6 +75,7 @@ affected:
         - 1.1.0-13
         - 1.1.0-14
         - 1.1.0-15
+        - 1.1.0-16
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -85,7 +86,7 @@ affected:
         - 1.1.0-9
 details: The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.0, the AMQP connection tuning path records the negotiated AMQP frame_max value, but src/main/java/com/rabbitmq/client/impl/SocketFrameHandler.java and NettyFrameHandlerFactory continue to validate broker-controlled frame payload lengths against maxInboundMessageBodySize because the negotiated limit is not applied consistently through setMaxInboundFramePayloadSize. A malicious or compromised broker can send a method frame larger than the negotiated frame_max during or after connection establishment, causing the client to allocate and decode a protocol-invalid frame instead of rejecting it with MalformedFrameException. The protocol violation can disrupt the affected connection and cause client-side denial of service. This issue is fixed in version 5.33.0.
 id: DHI-a3qi-cbsf-avlt-2ggd
-modified: "2026-11-11T05:56:07Z"
+modified: "2026-11-17T05:54:18Z"
 published: "2026-11-10T02:51:17Z"
 references:
     - type: ADVISORY

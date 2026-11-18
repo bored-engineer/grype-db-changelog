@@ -365,6 +365,7 @@ affected:
         - 0.121.3-r0
         - 0.121.3-r1
         - 0.121.3-r2
+        - 0.122.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -421,6 +422,7 @@ affected:
         - 0.121.3-r0
         - 0.121.3-r1
         - 0.121.3-r2
+        - 0.122.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -477,6 +479,7 @@ affected:
         - 0.121.3-r0
         - 0.121.3-r1
         - 0.121.3-r2
+        - 0.122.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -533,6 +536,7 @@ affected:
         - 0.121.3-r0
         - 0.121.3-r1
         - 0.121.3-r2
+        - 0.122.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1662,6 +1666,7 @@ affected:
         - 1.57.1-r0
         - 1.57.1-r1
         - 1.57.1-r2
+        - 1.57.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1715,6 +1720,7 @@ affected:
         - 1.57.1-r0
         - 1.57.1-r1
         - 1.57.1-r2
+        - 1.57.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1768,6 +1774,7 @@ affected:
         - 1.57.1-r0
         - 1.57.1-r1
         - 1.57.1-r2
+        - 1.57.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1821,6 +1828,7 @@ affected:
         - 1.57.1-r0
         - 1.57.1-r1
         - 1.57.1-r2
+        - 1.57.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1974,6 +1982,7 @@ affected:
         - 3.99.8-r0
         - 3.99.8-r1
         - 3.99.9-r0
+        - 3.99.9-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -2039,6 +2048,7 @@ affected:
         - 3.99.8-r0
         - 3.99.8-r1
         - 3.99.9-r0
+        - 3.99.9-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -2057,12 +2067,13 @@ affected:
         - 0.20251015.172955-r14
         - 0.20251015.172955-r15
         - 0.20251015.172955-r16
+        - 0.20251015.172955-r17
         - 0.20251015.172955-r5
         - 0.20251015.172955-r6
         - 0.20251015.172955-r8
 details: Go JOSE provides an implementation of the Javascript Object Signing and Encryption set of standards in Go, including support for JSON Web Encryption (JWE), JSON Web Signature (JWS), and JSON Web Token (JWT) standards. Prior to 4.1.4 and 3.0.5, decrypting a JSON Web Encryption (JWE) object will panic if the alg field indicates a key wrapping algorithm (one ending in KW, with the exception of A128GCMKW, A192GCMKW, and A256GCMKW) and the encrypted_key field is empty. The panic happens when cipher.KeyUnwrap() in key_wrap.go attempts to allocate a slice with a zero or negative length based on the length of the encrypted_key. This code path is reachable from ParseEncrypted() / ParseEncryptedJSON() / ParseEncryptedCompact() followed by Decrypt() on the resulting object. Note that the parse functions take a list of accepted key algorithms. If the accepted key algorithms do not include any key wrapping algorithms, parsing will fail and the application will be unaffected. This panic is also reachable by calling cipher.KeyUnwrap() directly with any ciphertext parameter less than 16 bytes long, but calling this function directly is less common. Panics can lead to denial of service. This vulnerability is fixed in 4.1.4 and 3.0.5.
 id: DHI-yc7f-gf4j-lyd2-yxse
-modified: "2026-11-15T07:39:39Z"
+modified: "2026-11-17T08:23:07Z"
 published: "2026-11-11T19:08:52Z"
 references:
     - type: ADVISORY

@@ -252,6 +252,7 @@ affected:
         - 0.46.0-r6
         - 0.46.0-r7
         - 0.46.0-r8
+        - 0.46.0-r9
     - database_specific:
         owner_kind: HSP
       package:
@@ -281,6 +282,7 @@ affected:
         - 0.46.0-r6
         - 0.46.0-r7
         - 0.46.0-r8
+        - 0.46.0-r9
     - database_specific:
         owner_kind: HSP
       package:
@@ -355,6 +357,10 @@ affected:
         - 3.12.13-10
         - 3.12.13-11
         - 3.12.13-12
+        - 3.12.13-13
+        - 3.12.13-14
+        - 3.12.13-15
+        - 3.12.13-16
         - 3.12.13-2
         - 3.12.13-3
         - 3.12.13-4
@@ -501,6 +507,7 @@ affected:
         - 2.95.12-10
         - 2.95.12-11
         - 2.95.12-12
+        - 2.95.12-13
         - 2.95.12-2
         - 2.95.12-3
         - 2.95.12-4
@@ -543,6 +550,7 @@ affected:
         - 3.227.0-1
         - 3.227.1-0
         - 3.227.1-1
+        - 3.227.1-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -589,6 +597,8 @@ affected:
         - 4.79.0-0
         - 4.79.0-1
         - 4.80.0-0
+        - 4.80.0-1
+        - 4.81.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -810,7 +820,7 @@ details: |-
 
     An unauthenticated request can make any code path that re-serializes attacker-influenced data with `qs.stringify` (for example, rebuilding a query string from `req.query` for a redirect or an upstream request, or serializing a parsed JSON body) throw synchronously. In a typical Node.js HTTP framework the throw is caught by the framework error boundary and the affected request returns a 500; the process survives and other requests are unaffected. Where the call runs outside an error boundary, such as an `async` Express 4 handler (where the throw becomes an unhandled promise rejection) or a background job, the process exits, so the impact in that case depends on the application error handling rather than on qs.
 id: DHI-6cuw-is5c-j5q5-kdx3
-modified: "2026-11-16T01:17:53Z"
+modified: "2026-11-17T23:48:27Z"
 published: "2026-11-12T00:42:35Z"
 references:
     - type: ADVISORY

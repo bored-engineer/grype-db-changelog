@@ -87,6 +87,7 @@ affected:
         - 1.1.0-13
         - 1.1.0-14
         - 1.1.0-15
+        - 1.1.0-16
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -110,9 +111,10 @@ affected:
         - 1.2.0-5
         - 1.2.0-6
         - 1.2.0-7
+        - 1.2.0-8
 details: Netty is a network application framework for development of protocol servers and clients. Prior to versions 4.1.135.Final and 4.2.15.Final, before reading the first request-line, `HttpObjectDecoder` skips every byte for which `Character.isISOControl(b)` is `true` (0x00–0x1F and 0x7F) as well as all whitespace. RFC 9112 §2.2 only asks servers to ignore empty CRLF lines preceding the request-line — a carefully scoped robustness allowance intended to handle HTTP/1.0 POST workarounds. Silently absorbing NUL bytes, SOH, STX, and other non-CRLF control characters goes significantly beyond this, and can be exploited for request-boundary confusion in pipelined or multiplexed transports where a front-end component treats those bytes differently. Versions 4.1.135.Final and 4.2.15.Final patch the issue.
 id: DHI-gjge-3ksq-kjkg-d7y6
-modified: "2026-11-11T09:25:22Z"
+modified: "2026-11-17T09:47:48Z"
 published: "2026-11-10T07:43:56Z"
 references:
     - type: ADVISORY

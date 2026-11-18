@@ -18,6 +18,7 @@ affected:
         - 3.3.5-r4
         - 3.4.0-r0
         - 3.4.0-r1
+        - 3.4.0-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -37,6 +38,7 @@ affected:
         - 3.3.5-r4
         - 3.4.0-r0
         - 3.4.0-r1
+        - 3.4.0-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -72,6 +74,9 @@ affected:
         - 3.4.0-4
         - 3.4.0-5
         - 3.4.0-6
+        - 3.4.0-7
+        - 3.4.0-8
+        - 3.4.0-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -97,6 +102,9 @@ affected:
         - 3.4.0-4
         - 3.4.0-5
         - 3.4.0-6
+        - 3.4.0-7
+        - 3.4.0-8
+        - 3.4.0-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -121,9 +129,10 @@ affected:
         - 0.59.0-0
         - 0.60.0-0
         - 0.61.0-0
+        - 0.62.0-0
 details: rustls-webpki through 0.103.12 (and 0.104.0-alpha releases before 0.104.0-alpha.7) contains a reachable panic in bit_string_flags() in src/der.rs. The input guard fails to reject a named-bit BIT STRING whose content is exactly [0x00] (zero padding bits and no data bytes), so raw_bits.len() - 1 underflows on the empty slice and the subsequent index operation panics (subtract-with-overflow in debug, index-out-of-bounds in release). The condition is reachable through the public API BorrowedCertRevocationList::from_der() when a CRL contains an issuingDistributionPoint extension with such an onlySomeReasons value. Exploitation requires an application that explicitly opts in to CRL revocation checking by passing RevocationOptions to verify_for_usage() and that parses CRL bytes obtained from a source the attacker can influence; the default rustls configuration, which does not use RevocationOptions, is unaffected. A crafted CRL causes a denial of service via the panic. Fixed in 0.103.13 and 0.104.0-alpha.7.
 id: DHI-im3l-y6db-gwad-yqo3
-modified: "2026-11-15T14:44:35Z"
+modified: "2026-11-17T05:42:11Z"
 published: "2026-11-10T04:52:32Z"
 references:
     - type: ADVISORY

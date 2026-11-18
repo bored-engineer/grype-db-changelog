@@ -54,6 +54,7 @@ affected:
         - 19.5.5-r0
         - 19.5.5-r1
         - 19.5.5-r2
+        - 19.5.6-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -76,7 +77,13 @@ affected:
         - 18.11.14-14
         - 18.11.14-15
         - 18.11.14-16
+        - 18.11.14-17
+        - 18.11.14-18
+        - 18.11.14-19
         - 18.11.14-2
+        - 18.11.14-20
+        - 18.11.14-21
+        - 18.11.14-22
         - 18.11.14-3
         - 18.11.14-4
         - 18.11.14-5
@@ -111,14 +118,20 @@ affected:
         - 19.5.4-1
         - 19.5.5-0
         - 19.5.5-1
+        - 19.5.5-10
+        - 19.5.5-11
         - 19.5.5-2
         - 19.5.5-3
         - 19.5.5-4
         - 19.5.5-5
         - 19.5.5-6
+        - 19.5.5-7
+        - 19.5.5-8
+        - 19.5.5-9
+        - 19.5.6-0
 details: 'Loofah is a general library for manipulating and transforming HTML/XML documents and fragments, built on top of Nokogiri. From 2.25.0 until 2.25.3, Loofah::HTML5::Scrub.allowed_uri? strips whitespace and control characters before decoding a semicolon-less numeric character reference, changing where the reference ends and hiding a javascript: or vbscript: scheme that a browser reconstructs. The bypass applies to encoded colons and encoded scheme letters when a stripped character terminates the numeric reference. An application that renders the approved value in href or another browser-interpreted URI attribute can allow cross-site scripting, and Rails::HTML::Sanitizer.allowed_uri? re-exports the affected helper. Loofah''s default sanitize() path is not affected because Nokogiri decodes entities before URI evaluation. This issue is fixed in version 2.25.3.'
 id: DHI-jjfn-ymzc-m2il-k6hi
-modified: "2026-11-14T19:54:02Z"
+modified: "2026-11-17T11:59:04Z"
 published: "2026-11-14T00:10:27Z"
 references:
     - type: ADVISORY
@@ -131,6 +144,8 @@ references:
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-126209
     - type: ADVISORY
       url: https://scout.docker.com/v/DHI-jjfn-ymzc-m2il-k6hi
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-126209
     - type: ADVISORY
       url: https://ubuntu.com/security/CVE-2026-126209
     - type: FIX

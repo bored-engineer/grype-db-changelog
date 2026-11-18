@@ -19,6 +19,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -42,6 +43,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -65,6 +67,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -88,12 +91,13 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
 details: Kyverno is a policy engine designed for cloud native platform engineering teams. Versions prior to 1.16.3 and 1.15.3 have a critical authorization boundary bypass in namespaced Kyverno Policy apiCall. The resolved `urlPath` is executed using the Kyverno admission controller ServiceAccount, with no enforcement that the request is limited to the policy’s namespace. As a result, any authenticated user with permission to create a namespaced Policy can cause Kyverno to perform Kubernetes API requests using Kyverno’s admission controller identity, targeting any API path allowed by that ServiceAccount’s RBAC. This breaks namespace isolation by enabling cross-namespace reads (for example, ConfigMaps and, where permitted, Secrets) and allows cluster-scoped or cross-namespace writes (for example, creating ClusterPolicies) by controlling the urlPath through context variable substitution. Versions 1.16.3 and 1.15.3 contain a patch for the vulnerability.
 id: DHI-xxq5-ochf-d5vc-6vzk
-modified: "2026-11-13T22:36:41Z"
+modified: "2026-11-17T16:36:31Z"
 published: "2026-11-11T15:50:08Z"
 references:
     - type: ADVISORY

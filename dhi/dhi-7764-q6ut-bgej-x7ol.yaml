@@ -23,6 +23,7 @@ affected:
         - 12.6.1-r1
         - 12.6.1-r2
         - 12.6.1-r3
+        - 12.6.1-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -175,6 +176,9 @@ affected:
         - 1.94.2-r0
         - 1.95.0-r0
         - 1.95.0-r1
+        - 1.96.0-r0
+        - 1.96.1-r0
+        - 1.96.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -204,6 +208,7 @@ affected:
         - 12.6.1-2
         - 12.6.1-3
         - 12.6.1-4
+        - 12.6.1-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -232,6 +237,7 @@ affected:
         - 3.36.1-0
         - 3.36.1-1
         - 3.36.1-2
+        - 3.36.1-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -305,6 +311,7 @@ affected:
         - 9.4.8-9
         - 9.4.9-0
         - 9.4.9-1
+        - 9.4.9-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -326,6 +333,7 @@ affected:
         - 9.5.5-9
         - 9.5.6-0
         - 9.5.6-1
+        - 9.5.6-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -453,6 +461,7 @@ affected:
         - 4.79.0-0
         - 4.80.0-0
         - 4.80.0-1
+        - 4.81.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -489,6 +498,8 @@ affected:
         - 1.20.0-7
         - 1.20.0-8
         - 1.20.1-0
+        - 1.20.2-0
+        - 1.20.2-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -521,6 +532,10 @@ affected:
         - 1.94.2-0
         - 1.94.2-1
         - 1.95.0-0
+        - 1.95.0-1
+        - 1.96.0-0
+        - 1.96.1-0
+        - 1.96.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -536,6 +551,7 @@ affected:
         - 18.11.1-15
         - 18.11.1-16
         - 18.11.1-17
+        - 18.11.1-18
         - 18.11.1-2
         - 18.11.1-3
         - 18.11.1-4
@@ -559,6 +575,7 @@ affected:
         - 18.11.1-15
         - 18.11.1-16
         - 18.11.1-17
+        - 18.11.1-18
         - 18.11.1-2
         - 18.11.1-3
         - 18.11.1-4
@@ -582,6 +599,7 @@ affected:
         - 18.11.1-15
         - 18.11.1-16
         - 18.11.1-17
+        - 18.11.1-18
         - 18.11.1-2
         - 18.11.1-3
         - 18.11.1-4
@@ -605,6 +623,7 @@ affected:
         - 18.11.1-15
         - 18.11.1-16
         - 18.11.1-17
+        - 18.11.1-18
         - 18.11.1-2
         - 18.11.1-3
         - 18.11.1-4
@@ -640,7 +659,7 @@ affected:
         - 2.5.9-1
 details: undici is an HTTP client library for Node.js. In versions 7.15.0 through 7.30.0 and 8.0.0 through 8.12.1, its fetch() implementation verifies Subresource Integrity metadata by matching the algorithm token against a lowercase-only set, even though the SRI specification defines the token by its ASCII-lowercase form, so a valid but non-lowercase token such as an uppercase or mixed-case SHA256 is treated as unknown and skipped. When no recognized algorithm remains, undici treats the integrity list as empty and accepts the response, so a server returning a body that does not match the pinned digest passes the check. An attacker who controls only the response body can therefore deliver attacker-controlled bytes to an application that pinned a valid uppercase or mixed-case SRI token, with no integrity error, affecting response integrity only. The issue is fixed in undici 7.30.1 and 8.12.2, which normalize the algorithm token to ASCII lowercase before validation, and users should upgrade to one of those versions or later. As a workaround, use lowercase algorithm tokens such as sha256, sha384, or sha512 in integrity metadata.
 id: DHI-7764-q6ut-bgej-x7ol
-modified: "2026-11-15T13:41:24Z"
+modified: "2026-11-17T07:51:47Z"
 published: "2026-11-13T16:59:06Z"
 references:
     - type: ADVISORY
