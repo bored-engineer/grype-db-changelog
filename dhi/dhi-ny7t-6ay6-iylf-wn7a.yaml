@@ -473,6 +473,7 @@ affected:
         - 2.9.17-r12
         - 2.9.17-r13
         - 2.9.17-r14
+        - 2.9.17-r15
         - 2.9.17-r2
         - 2.9.17-r3
         - 2.9.17-r4
@@ -493,6 +494,7 @@ affected:
         - 2.9.17-r12
         - 2.9.17-r13
         - 2.9.17-r14
+        - 2.9.17-r15
         - 2.9.17-r2
         - 2.9.17-r3
         - 2.9.17-r4
@@ -513,6 +515,7 @@ affected:
         - 2.9.17-r12
         - 2.9.17-r13
         - 2.9.17-r14
+        - 2.9.17-r15
         - 2.9.17-r2
         - 2.9.17-r3
         - 2.9.17-r4
@@ -533,6 +536,7 @@ affected:
         - 2.9.17-r12
         - 2.9.17-r13
         - 2.9.17-r14
+        - 2.9.17-r15
         - 2.9.17-r2
         - 2.9.17-r3
         - 2.9.17-r4
@@ -558,6 +562,8 @@ affected:
         - 0.20251015.172955-r14
         - 0.20251015.172955-r15
         - 0.20251015.172955-r16
+        - 0.20251015.172955-r17
+        - 0.20251015.172955-r18
         - 0.20251015.172955-r5
         - 0.20251015.172955-r6
         - 0.20251015.172955-r8
@@ -755,6 +761,8 @@ affected:
         - 2.12.3-11
         - 2.12.3-12
         - 2.12.3-13
+        - 2.12.3-14
+        - 2.12.3-15
         - 2.12.3-2
         - 2.12.3-3
         - 2.12.3-4
@@ -765,7 +773,7 @@ affected:
         - 2.12.3-9
 details: "### Impact\r\n\r\nThe remote read endpoint (`/api/v1/read`) does not validate the declared decoded length in a snappy-compressed request body before allocating memory.\r\nAn unauthenticated attacker can send a small payload that causes a huge heap allocation per request. Under concurrent load this can exhaust available memory and crash the Prometheus process.\r\n\r\n### Patches\r\n_Has the problem been patched? What versions should users upgrade to?_\r\n\r\nFixed in 3.11.3 and 3.5.3 LTS. Users should upgrade to these versions or later.\r\n\r\n### Workarounds\r\nUser who can not upgrade can place Prometheus behind a reverse proxy or firewall that requires authentication before requests reach /api/v1/read.\r\n\r\n"
 id: DHI-ny7t-6ay6-iylf-wn7a
-modified: "2026-11-16T06:08:31Z"
+modified: "2026-11-17T21:35:07Z"
 published: "2026-11-11T17:20:22Z"
 references:
     - type: ADVISORY

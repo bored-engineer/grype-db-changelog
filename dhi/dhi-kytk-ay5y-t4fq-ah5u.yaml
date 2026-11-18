@@ -55,6 +55,7 @@ affected:
         - 19.5.5-r0
         - 19.5.5-r1
         - 19.5.5-r2
+        - 19.5.6-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -77,7 +78,13 @@ affected:
         - 18.11.14-14
         - 18.11.14-15
         - 18.11.14-16
+        - 18.11.14-17
+        - 18.11.14-18
+        - 18.11.14-19
         - 18.11.14-2
+        - 18.11.14-20
+        - 18.11.14-21
+        - 18.11.14-22
         - 18.11.14-3
         - 18.11.14-4
         - 18.11.14-5
@@ -112,14 +119,20 @@ affected:
         - 19.5.4-1
         - 19.5.5-0
         - 19.5.5-1
+        - 19.5.5-10
+        - 19.5.5-11
         - 19.5.5-2
         - 19.5.5-3
         - 19.5.5-4
         - 19.5.5-5
         - 19.5.5-6
+        - 19.5.5-7
+        - 19.5.5-8
+        - 19.5.5-9
+        - 19.5.6-0
 details: Loofah is a general library for manipulating and transforming HTML/XML documents and fragments, built on top of Nokogiri. In 2.25.2, Loofah::HTML5::Scrub.allowed_uri? treats a data URI mediatype containing the HTML5 named solidus reference &sol; as malformed and falls back to the allowed text/plain, while a browser decodes the reference and interprets the same value as text/html. An application that validates a user-controlled URL with this helper and renders the approved value in href or another browser-interpreted URI attribute can allow cross-site scripting. Rails::HTML::Sanitizer.allowed_uri? re-exports the affected helper. Loofah's default sanitize() path is not affected because Nokogiri decodes the entity before URI validation. This issue is fixed in version 2.25.3.
 id: DHI-kytk-ay5y-t4fq-ah5u
-modified: "2026-11-14T19:54:02Z"
+modified: "2026-11-17T11:59:04Z"
 published: "2026-11-14T00:10:27Z"
 references:
     - type: ADVISORY
@@ -134,6 +147,8 @@ references:
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-126206
     - type: ADVISORY
       url: https://scout.docker.com/v/DHI-kytk-ay5y-t4fq-ah5u
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-126206
     - type: ADVISORY
       url: https://ubuntu.com/security/CVE-2026-126206
     - type: FIX

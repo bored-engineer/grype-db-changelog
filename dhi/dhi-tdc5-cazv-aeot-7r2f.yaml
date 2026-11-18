@@ -49,7 +49,13 @@ affected:
         - 18.11.14-14
         - 18.11.14-15
         - 18.11.14-16
+        - 18.11.14-17
+        - 18.11.14-18
+        - 18.11.14-19
         - 18.11.14-2
+        - 18.11.14-20
+        - 18.11.14-21
+        - 18.11.14-22
         - 18.11.14-3
         - 18.11.14-4
         - 18.11.14-5
@@ -59,7 +65,7 @@ affected:
         - 18.11.14-9
 details: iCalendar is a Ruby library for dealing with iCalendar files in the iCalendar format defined by RFC-5545. Starting in version 2.0.0 and prior to version 2.12.2, .ics serialization does not properly sanitize URI property values, enabling ICS injection through attacker-controlled input, adding arbitrary calendar lines to the output. `Icalendar::Values::Uri` falls back to the raw input string when `URI.parse` fails and later serializes it with `value.to_s` without removing or escaping `\r` or `\n` characters. That value is embedded directly into the final ICS line by the normal serializer, so a payload containing CRLF can terminate the original property and create a new ICS property or component. (It looks like you can inject via url, source, image, organizer, attach, attendee, conference, tzurl because of this). Applications that generate `.ics` files from partially untrusted metadata are impacted. As a result, downstream calendar clients or importers may process attacker-supplied content as if it were legitimate event data, such as added attendees, modified URLs, alarms, or other calendar fields. Version 2.12.2 contains a patch for the issue.
 id: DHI-tdc5-cazv-aeot-7r2f
-modified: "2026-11-14T19:32:05Z"
+modified: "2026-11-17T11:57:56Z"
 published: "2026-11-11T15:31:45Z"
 references:
     - type: ADVISORY

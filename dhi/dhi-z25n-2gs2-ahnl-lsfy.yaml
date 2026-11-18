@@ -55,6 +55,7 @@ affected:
         - 19.5.5-r0
         - 19.5.5-r1
         - 19.5.5-r2
+        - 19.5.6-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -77,7 +78,13 @@ affected:
         - 18.11.14-14
         - 18.11.14-15
         - 18.11.14-16
+        - 18.11.14-17
+        - 18.11.14-18
+        - 18.11.14-19
         - 18.11.14-2
+        - 18.11.14-20
+        - 18.11.14-21
+        - 18.11.14-22
         - 18.11.14-3
         - 18.11.14-4
         - 18.11.14-5
@@ -112,14 +119,20 @@ affected:
         - 19.5.4-1
         - 19.5.5-0
         - 19.5.5-1
+        - 19.5.5-10
+        - 19.5.5-11
         - 19.5.5-2
         - 19.5.5-3
         - 19.5.5-4
         - 19.5.5-5
         - 19.5.5-6
+        - 19.5.5-7
+        - 19.5.5-8
+        - 19.5.5-9
+        - 19.5.6-0
 details: Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, ActionController::Parameters#each_key delegates to the internal ActiveSupport::HashWithIndifferentAccess that holds the request parameters, so when called with a block it returns that hash instead of the Parameters instance. The hash does not respond to permitted?, so Active Model mass assignment (new, assign_attributes, update) accepts it without raising ActiveModel::ForbiddenAttributesError. An application that passes the return value of each_key to mass assignment could allow a remote, unauthenticated attacker to set attributes that the application does not permit, such as an authorization flag. This is an incomplete fix of CVE-2020-8164, which made each, each_pair and each_value return the Parameters instance but left each_key delegated. An application is affected if it passes the return value of ActionController::Parameters#each_key, called with a block, to mass assignment. Rails itself makes no such call. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.
 id: DHI-z25n-2gs2-ahnl-lsfy
-modified: "2026-11-14T19:38:40Z"
+modified: "2026-11-17T11:55:25Z"
 published: "2026-11-13T20:18:06Z"
 references:
     - type: ADVISORY

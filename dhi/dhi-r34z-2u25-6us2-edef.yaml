@@ -88,6 +88,7 @@ affected:
         - 1.1.0-13
         - 1.1.0-14
         - 1.1.0-15
+        - 1.1.0-16
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -111,9 +112,10 @@ affected:
         - 1.2.0-5
         - 1.2.0-6
         - 1.2.0-7
+        - 1.2.0-8
 details: Jetty is a java based web server and servlet engine. In affected versions servlets with multipart support (e.g. annotated with `@MultipartConfig`) that call `HttpServletRequest.getParameter()` or `HttpServletRequest.getParts()` may cause `OutOfMemoryError` when the client sends a multipart request with a part that has a name but no filename and very large content. This happens even with the default settings of `fileSizeThreshold=0` which should stream the whole part content to disk. An attacker client may send a large multipart request and cause the server to throw `OutOfMemoryError`. However, the server may be able to recover after the `OutOfMemoryError` and continue its service -- although it may take some time. This issue has been patched in versions 9.4.51, 10.0.14, and 11.0.14. Users are advised to upgrade. Users unable to upgrade may set the multipart parameter `maxRequestSize` which must be set to a non-negative value, so the whole multipart content is limited (although still read into memory).
 id: DHI-r34z-2u25-6us2-edef
-modified: "2026-11-10T13:36:32Z"
+modified: "2026-11-17T05:14:21Z"
 published: "2026-11-10T11:13:16Z"
 references:
     - type: ADVISORY

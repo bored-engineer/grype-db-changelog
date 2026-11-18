@@ -36,11 +36,15 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: 'In NLnet Labs Unbound 1.18.0 up to and including 1.25.1, when Unbound listens on a ''proxy-protocol-port'' interface with ''answer-cookie: yes'', the RFC 9018 server-cookie SipHash is computed over the proxy''s wire address instead of the PROXYv2-declared client. One server cookie obtained through a given proxy node therefore validates for every PROXYv2-declared source behind that node. On a UDP+proxy-protocol front, an off-path attacker can harvest one cookie with a single legitimate query, then replay it under any spoofed source and pass DNS Cookie checks that were deployed to defeat this in the first place.'
 id: DHI-24s6-mnwq-ming-ntkt
-modified: "2026-11-13T21:35:12Z"
+modified: "2026-11-17T08:52:00Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-54478
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:97497
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-97497.html
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:97121
     - type: ADVISORY

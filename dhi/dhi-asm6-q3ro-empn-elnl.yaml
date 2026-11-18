@@ -20,6 +20,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -43,6 +44,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -66,6 +68,7 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
@@ -89,12 +92,13 @@ affected:
         - 0.1.7-r18
         - 0.1.7-r19
         - 0.1.7-r2
+        - 0.1.7-r20
         - 0.1.7-r3
         - 0.1.7-r4
         - 0.1.7-r8
 details: sigstore framework is a common go library shared across sigstore services and clients. In versions 1.10.3 and below, the legacy TUF client (pkg/tuf/client.go) supports caching target files to disk. It constructs a filesystem path by joining a cache base directory with a target name sourced from signed target metadata; however, it does not validate that the resulting path stays within the cache base directory. A malicious TUF repository can trigger arbitrary file overwriting, limited to the permissions that the calling process has. Note that this should only affect clients that are directly using the TUF client in sigstore/sigstore or are using an older version of Cosign. Public Sigstore deployment users are unaffected, as TUF metadata is validated by a quorum of trusted collaborators. This issue has been fixed in version 1.10.4. As a workaround, users can disable disk caching for the legacy client by setting SIGSTORE_NO_CACHE=true in the environment, migrate to https://github.com/sigstore/sigstore-go/tree/main/pkg/tuf, or upgrade to the latest sigstore/sigstore release.
 id: DHI-asm6-q3ro-empn-elnl
-modified: "2026-11-15T16:40:39Z"
+modified: "2026-11-17T15:46:30Z"
 published: "2026-11-12T02:06:28Z"
 references:
     - type: ADVISORY

@@ -12,6 +12,7 @@ affected:
         - 2.95.12-10
         - 2.95.12-11
         - 2.95.12-12
+        - 2.95.12-13
         - 2.95.12-2
         - 2.95.12-3
         - 2.95.12-4
@@ -22,7 +23,7 @@ affected:
         - 2.95.12-9
 details: Kysely is a type-safe TypeScript SQL query builder. From 0.26.0 to 0.28.16, DefaultQueryCompiler.visitJSONPathLeg does not escape JSON-path metacharacters (., [, ], *, **, ?). When attacker-controlled input flows into eb.ref(col, '->$').key(input) or .at(input) — including type-safe code where the JSON column is shaped like Record<string, T> so K extends string is the inferred type — every dot becomes a path-leg separator, letting an attacker traverse from the intended key into sibling and child fields the developer never meant to expose. The result is read access (and, in update statements, write access) to JSON sub-fields outside the intended scope across MySQL, PostgreSQL ->$/->>$, and SQLite. This vulnerability is fixed in 0.28.17.
 id: DHI-2bkg-l3cz-lljx-3taw
-modified: "2026-11-13T19:02:48Z"
+modified: "2026-11-17T04:02:57Z"
 published: "2026-11-11T18:58:10Z"
 references:
     - type: ADVISORY

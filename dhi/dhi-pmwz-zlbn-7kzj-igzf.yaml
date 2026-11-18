@@ -72,6 +72,7 @@ affected:
         - 36.0.0-30
         - 36.0.0-31
         - 36.0.0-32
+        - 36.0.0-33
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -109,6 +110,7 @@ affected:
         - 36.0.0-30
         - 36.0.0-31
         - 36.0.0-32
+        - 36.0.0-33
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -147,6 +149,7 @@ affected:
         - 37.0.0-30
         - 37.0.0-31
         - 37.0.0-32
+        - 37.0.0-33
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -184,6 +187,7 @@ affected:
         - 37.0.0-30
         - 37.0.0-31
         - 37.0.0-32
+        - 37.0.0-33
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -205,6 +209,7 @@ affected:
         - 38.0.0-13
         - 38.0.0-14
         - 38.0.0-15
+        - 38.0.0-16
         - 38.0.0-2
         - 38.0.0-3
         - 38.0.0-4
@@ -228,6 +233,7 @@ affected:
         - 38.0.0-13
         - 38.0.0-14
         - 38.0.0-15
+        - 38.0.0-16
         - 38.0.0-2
         - 38.0.0-3
         - 38.0.0-4
@@ -272,6 +278,7 @@ affected:
         - 1.1.0-13
         - 1.1.0-14
         - 1.1.0-15
+        - 1.1.0-16
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -282,7 +289,7 @@ affected:
         - 1.1.0-9
 details: The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.34.0, AMQConnection.start() applies Math.min(maxInboundMessageBodySize, frameMax) after Connection.Tune negotiation even though AMQP defines frameMax value zero as unlimited and ConnectionFactory.DEFAULT_FRAME_MAX is zero. When the client default and server-negotiated value are both zero, the result is passed to Utils.framePayloadLimit(int), which interprets zero as Integer.MAX_VALUE and disables the configured maxInboundMessageBodySize cap. A malicious AMQP server, or a man-in-the-middle attacker able to modify Connection.Tune and inject frames into the connection, can then send an oversized frame of any frame type, causing Frame.readFrom() to allocate a large byte array before content-level validation and potentially terminate the client process through memory exhaustion. This issue is fixed in version 5.34.0.
 id: DHI-pmwz-zlbn-7kzj-igzf
-modified: "2026-11-14T09:21:43Z"
+modified: "2026-11-17T05:54:18Z"
 published: "2026-11-10T04:07:59Z"
 references:
     - type: ADVISORY

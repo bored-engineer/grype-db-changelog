@@ -88,6 +88,7 @@ affected:
         - 1.1.0-13
         - 1.1.0-14
         - 1.1.0-15
+        - 1.1.0-16
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -111,9 +112,10 @@ affected:
         - 1.2.0-5
         - 1.2.0-6
         - 1.2.0-7
+        - 1.2.0-8
 details: Netty is a network application framework for development of protocol servers and clients. Prior to versions 4.1.135.Final and 4.2.15.Final, DefaultHttp2Connection.DefaultEndpoint initialises maxActiveStreams/maxStreams to Integer.MAX_VALUE, and Http2Settings never inserts SETTINGS_MAX_CONCURRENT_STREAMS by default (Http2Settings.java:305-307 only clamps a user-supplied value). Unless the application explicitly calls initialSettings().maxConcurrentStreams(n), a Netty HTTP/2 server advertises no limit and enforces none locally. Each open stream allocates a DefaultStream object, PropertyMap slots, flow-controller state and IntObjectHashMap entry; with ~2^30 permissible odd stream IDs a single TCP connection can create hundreds of thousands of long-lived stream objects. This is also the precondition for CVE-2023-44487-style Rapid-Reset amplification, where the absence of a low concurrent cap multiplies backend work. Versions 4.1.135.Final and 4.2.15.Final patch the issue.
 id: DHI-xtfx-ny3r-hjql-opbt
-modified: "2026-11-11T08:03:11Z"
+modified: "2026-11-17T07:09:30Z"
 published: "2026-11-10T05:49:01Z"
 references:
     - type: ADVISORY

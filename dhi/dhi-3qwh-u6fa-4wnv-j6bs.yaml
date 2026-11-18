@@ -55,6 +55,7 @@ affected:
         - 19.5.5-r0
         - 19.5.5-r1
         - 19.5.5-r2
+        - 19.5.6-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -77,7 +78,13 @@ affected:
         - 18.11.14-14
         - 18.11.14-15
         - 18.11.14-16
+        - 18.11.14-17
+        - 18.11.14-18
+        - 18.11.14-19
         - 18.11.14-2
+        - 18.11.14-20
+        - 18.11.14-21
+        - 18.11.14-22
         - 18.11.14-3
         - 18.11.14-4
         - 18.11.14-5
@@ -112,14 +119,20 @@ affected:
         - 19.5.4-1
         - 19.5.5-0
         - 19.5.5-1
+        - 19.5.5-10
+        - 19.5.5-11
         - 19.5.5-2
         - 19.5.5-3
         - 19.5.5-4
         - 19.5.5-5
         - 19.5.5-6
+        - 19.5.5-7
+        - 19.5.5-8
+        - 19.5.5-9
+        - 19.5.6-0
 details: Action View is a framework for handling view template lookup and rendering and provides view helpers for building HTML. Prior to 8.1.4.1 and 8.0.5.2, the fix for CVE-2026-33168 skips blank HTML attribute names in Action View tag helpers, but it tests the name before converting it to a string. A Symbol name made only of whitespace, such as :" ", is not blank, because Symbol#blank? is Symbol#empty?, so it reaches the attribute escaping, which emits an attribute with no name and produces malformed HTML. The asset tag helpers, such as image_tag, video_tag and audio_tag, symbolize their options, so a whitespace String name passed to them takes the same path. A carefully crafted attribute value could then be misinterpreted by the browser as a separate attribute name, possibly leading to XSS. Applications that allow users to specify custom HTML attribute names are affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.
 id: DHI-3qwh-u6fa-4wnv-j6bs
-modified: "2026-11-14T19:38:40Z"
+modified: "2026-11-17T11:55:25Z"
 published: "2026-11-13T17:32:44Z"
 references:
     - type: ADVISORY

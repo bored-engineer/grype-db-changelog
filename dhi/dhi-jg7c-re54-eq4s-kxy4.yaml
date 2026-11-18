@@ -84,6 +84,7 @@ affected:
         - 36.0.0-30
         - 36.0.0-31
         - 36.0.0-32
+        - 36.0.0-33
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -121,6 +122,7 @@ affected:
         - 36.0.0-30
         - 36.0.0-31
         - 36.0.0-32
+        - 36.0.0-33
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -159,6 +161,7 @@ affected:
         - 37.0.0-30
         - 37.0.0-31
         - 37.0.0-32
+        - 37.0.0-33
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -196,6 +199,7 @@ affected:
         - 37.0.0-30
         - 37.0.0-31
         - 37.0.0-32
+        - 37.0.0-33
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -238,6 +242,7 @@ affected:
         - 1.1.0-13
         - 1.1.0-14
         - 1.1.0-15
+        - 1.1.0-16
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -261,9 +266,10 @@ affected:
         - 1.2.0-5
         - 1.2.0-6
         - 1.2.0-7
+        - 1.2.0-8
 details: 'Jackson-core contains core low-level incremental ("streaming") parser and generator abstractions used by Jackson Data Processor. Starting in version 2.0.0 and prior to version 2.13.0, a flaw in jackson-core''s `JsonLocation._appendSourceDesc` method allows up to 500 bytes of unintended memory content to be included in exception messages. When parsing JSON from a byte array with an offset and length, the exception message incorrectly reads from the beginning of the array instead of the logical payload start. This results in possible information disclosure in systems using pooled or reused buffers, like Netty or Vert.x. This issue was silently fixed in jackson-core version 2.13.0, released on September 30, 2021, via PR #652. All users should upgrade to version 2.13.0 or later. If upgrading is not immediately possible, applications can mitigate the issue by disabling exception message exposure to clients to avoid returning parsing exception messages in HTTP responses and/or disabling source inclusion in exceptions to prevent Jackson from embedding any source content in exception messages, avoiding leakage.'
 id: DHI-jg7c-re54-eq4s-kxy4
-modified: "2026-11-14T16:24:45Z"
+modified: "2026-11-17T02:11:04Z"
 published: "2026-11-09T21:46:32Z"
 references:
     - type: ADVISORY

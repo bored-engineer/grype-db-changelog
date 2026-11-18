@@ -55,6 +55,7 @@ affected:
         - 19.5.5-r0
         - 19.5.5-r1
         - 19.5.5-r2
+        - 19.5.6-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -76,7 +77,14 @@ affected:
         - 18.11.14-13
         - 18.11.14-14
         - 18.11.14-15
+        - 18.11.14-16
+        - 18.11.14-17
+        - 18.11.14-18
+        - 18.11.14-19
         - 18.11.14-2
+        - 18.11.14-20
+        - 18.11.14-21
+        - 18.11.14-22
         - 18.11.14-3
         - 18.11.14-4
         - 18.11.14-5
@@ -111,13 +119,20 @@ affected:
         - 19.5.4-1
         - 19.5.5-0
         - 19.5.5-1
+        - 19.5.5-10
+        - 19.5.5-11
         - 19.5.5-2
         - 19.5.5-3
         - 19.5.5-4
         - 19.5.5-5
+        - 19.5.5-6
+        - 19.5.5-7
+        - 19.5.5-8
+        - 19.5.5-9
+        - 19.5.6-0
 details: Action Mailbox routes incoming emails to controller-like mailboxes for processing in Rails. Prior to 8.1.4.1 and 8.0.5.2, the Action Mailbox Mailgun ingress authenticates a request with an HMAC of the timestamp and token parameters concatenated without a separator, and ActionMailbox::Ingresses::Mailgun::InboundEmailsController::Authenticator#recent? rejects only timestamps more than 2 minutes in the past. Because the signature does not fix the boundary between the two values, a captured signed request can be presented with a timestamp far in the future, which the ingress then accepts indefinitely. An attacker who obtains one signed Mailgun webhook request, but not the signing key, could submit arbitrary inbound email that Action Mailbox processes as genuine, possibly leading to forged messages attributed to the sender of the attacker's choosing. Applications that receive inbound email through the Action Mailbox Mailgun ingress are affected. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.
 id: DHI-hxfg-wwiq-tnlz-yxzx
-modified: "2026-11-14T15:33:17Z"
+modified: "2026-11-17T11:50:14Z"
 published: "2026-11-11T18:14:17Z"
 references:
     - type: ADVISORY
