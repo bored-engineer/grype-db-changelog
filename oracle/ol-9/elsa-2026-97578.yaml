@@ -1,0 +1,49 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [1.43.2-3.0.1]
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117178]
+
+        [2:1.43.2-3]
+        - Rebuild for golang-1.26.6 CVE fixes (CVE-2026-33811 CVE-2026-33818
+          CVE-2026-56860 CVE-2026-56853 CVE-2026-56858 CVE-2026-56862) - Resolves:
+          RHEL-241182 RHEL-241409 RHEL-241591 RHEL-241734 RHEL-242149
+
+        [2:1.43.2-2]
+        - bump golang.org/x/crypto to v0.53.0 to fix CVE-2026-46597
+        - Switch Source0 to consume tarball from the internal GitLab sustaining-engineering repo instead of GitHub.
+        - Resolves: RHEL-219427
+
+        [2:1.43.2-1]
+        - update to https://github.com/containers/buildah/releases/tag/v1.43.2
+        - Resolves: RHEL-185739
+    FixedIn:
+        - Available:
+            Date: "2026-11-13"
+            Kind: advisory
+          Module: null
+          Name: buildah
+          NamespaceName: ol:9
+          Version: 2:1.43.2-3.0.1.el9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-13"
+            Kind: advisory
+          Module: null
+          Name: buildah-tests
+          NamespaceName: ol:9
+          Version: 2:1.43.2-3.0.1.el9
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-97578.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-33811.html
+              Name: CVE-2026-33811
+            - Link: https://linux.oracle.com/cve/CVE-2026-46597.html
+              Name: CVE-2026-46597
+        Issued: "2026-11-13"
+        RefId: ELSA-2026-97578
+    Name: ELSA-2026-97578
+    NamespaceName: ol:9
+    Severity: High
