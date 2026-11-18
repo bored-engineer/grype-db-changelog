@@ -1,0 +1,17 @@
+Vulnerability:
+    Description: Objenesis before 3.6 contains a type confusion vulnerability that allows code in one class loader to substitute objects into another by exploiting instantiator caching keyed on class name. When a shared ObjenesisStd instance caches instantiators by clazz.getName() in ObjenesisBase.getInstantiatorOf(), same-named classes collide, causing newInstance() to return wrong-class objects and ClassCastException failures. (CVE-2026-116486)
+    FixedIn:
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: objenesis
+          NamespaceName: amzn:2023
+          Version: 3.6-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3466.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-116486
+    Name: ALAS2023-2026-3466
+    NamespaceName: amzn:2023
+    Severity: Medium

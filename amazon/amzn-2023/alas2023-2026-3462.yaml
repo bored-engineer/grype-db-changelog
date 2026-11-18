@@ -1,0 +1,38 @@
+Vulnerability:
+    Description: rsync through 3.5.1 contains a denial of service vulnerability in the delta-transfer sender's hash_search() in match.c that allows malicious receivers to trigger unbounded strong-checksum work at consecutive offsets. Unauthenticated attackers pulling from a public daemon module can supply weak checksums colliding with consecutive rolling windows plus non-matching strong checksums, exhausting sender CPU across concurrent connections. (CVE-2026-119741)
+    FixedIn:
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: rsync
+          NamespaceName: amzn:2023
+          Version: 3.5.2-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: rsync-daemon
+          NamespaceName: amzn:2023
+          Version: 3.5.2-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: rsync-debuginfo
+          NamespaceName: amzn:2023
+          Version: 3.5.2-1.amzn2023.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: rsync-debugsource
+          NamespaceName: amzn:2023
+          Version: 3.5.2-1.amzn2023.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3462.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-119741
+    Name: ALAS2023-2026-3462
+    NamespaceName: amzn:2023
+    Severity: High

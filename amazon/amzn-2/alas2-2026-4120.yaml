@@ -1,0 +1,49 @@
+Vulnerability:
+    Description: Netpbm before 10.86.51, 11.x before 11.02.29, and 11.03 before 11.15.07 contains a heap-based buffer overflow in sgitopnm's readChannels() function when processing RLE-compressed SGI images. Attackers can supply crafted SGI files with oversized offset table lengths to write controlled data past the heap buffer, causing crashes or potential code execution. (CVE-2026-120431)Netpbm before 10.86.51, 11.02.30, and 11.15.08 contains an integer overflow vulnerability in winicontopam that allows attackers to corrupt heap memory via oversized ICO/CUR dimensions. Attackers can supply a crafted icon file with width or height above 32767, wrapping int16_t loop counters into negative row buffer indices to cause crashes or potential code execution. (CVE-2026-120432)Netpbm before 10.86.51, 11.x before 11.02.30, and 11.03 before 11.15.08 contains a heap buffer overflow in xpmtoppm caused by an unvalidated characters-per-pixel value in the XPM header. Attackers can supply a crafted XPM file with characters-per-pixel greater than 3 to overrun fixed 3-byte colorName hash entries, causing crashes or potentially code execution. (CVE-2026-120435)Netpbm before 10.86.51, 11.x before 11.02.30, and 11.03 before 11.15.08 contains an integer overflow in jbigtopnm that causes heap buffer overflow when computing output buffer size. Attackers can supply a crafted multi-plane JBIG file with large header dimensions so jbg_dec_merge_planes() overflows the undersized buffer, causing crashes or potentially code execution. (CVE-2026-120436)Netpbm before 10.86.51, 11.x before 11.02.30, and 11.03 before 11.15.08 contains an out-of-bounds read vulnerability in the tgatoppm converter's get_pixel() function that uses unchecked pixel values as color map indexes. Attackers can supply a crafted color-mapped Targa file whose pixel values exceed the declared color map bounds to crash the converter or leak adjacent memory into the output image. (CVE-2026-120437)
+    FixedIn:
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: netpbm
+          NamespaceName: amzn:2
+          Version: 10.79.00-7.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: netpbm-debuginfo
+          NamespaceName: amzn:2
+          Version: 10.79.00-7.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: netpbm-devel
+          NamespaceName: amzn:2
+          Version: 10.79.00-7.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: netpbm-doc
+          NamespaceName: amzn:2
+          Version: 10.79.00-7.amzn2.0.1
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-17"
+            Kind: advisory
+          Name: netpbm-progs
+          NamespaceName: amzn:2
+          Version: 10.79.00-7.amzn2.0.1
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4120.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-120431
+            - Name: CVE-2026-120432
+            - Name: CVE-2026-120435
+            - Name: CVE-2026-120436
+            - Name: CVE-2026-120437
+    Name: ALAS2-2026-4120
+    NamespaceName: amzn:2
+    Severity: High
