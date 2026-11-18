@@ -1,0 +1,39 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: kyverno
+        purl: pkg:bitnami/kyverno
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 1.19.2
+          events:
+            - introduced: "0"
+            - fixed: 1.19.2
+          type: SEMVER
+      severity:
+        - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
+          type: CVSS_V4
+aliases:
+    - CVE-2026-122305
+database_specific:
+    cpes:
+        - cpe:2.3:a:kyverno:kyverno:*:*:*:*:*:go:*:*
+    severity: High
+details: Kyverno before 1.19.2 contains a denial of service vulnerability in substituteVariablesIfAny that allows low-privileged users to hang the admission webhook via self-referential variable templates. Attackers can create resources whose annotations re-introduce the embedded policy variable, causing unbounded substitution loops that exhaust CPU and memory and block cluster-wide admission.
+id: BIT-kyverno-2026-122305
+modified: "2026-11-17T12:14:43.364Z"
+published: "2026-11-17T11:49:07.200Z"
+references:
+    - type: ADVISORY
+      url: https://github.com/kyverno/kyverno/security/advisories/GHSA-338x-hgrv-626h
+    - type: ADVISORY
+      url: https://www.vulncheck.com/advisories/kyverno-before-1.19.2-denial-of-service-via-nested-variable-substitution-loop
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-122305
+schema_version: 1.6.2
+summary: Kyverno before 1.19.2 Denial of Service via Nested Variable Substitution Loop

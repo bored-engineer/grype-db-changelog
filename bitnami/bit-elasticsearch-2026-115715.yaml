@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: elasticsearch
+        purl: pkg:bitnami/elasticsearch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 8.19.24
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 9.4.9
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 9.5.6
+          events:
+            - introduced: 8.0.0
+            - fixed: 8.19.24
+            - introduced: 9.0.0
+            - fixed: 9.4.9
+            - introduced: 9.5.0
+            - fixed: 9.5.6
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-115715
+database_specific:
+    cpes:
+        - cpe:2.3:a:elastic:elasticsearch:*:*:*:*:*:maven:*:*
+    severity: Medium
+details: Allocation of Resources Without Limits or Throttling (CWE-770) in Elasticsearch can lead to denial of service via a specially crafted input value that is processed by an affected phonetic encoder of the analysis-phonetic plugin. An authenticated user with permission to write documents to or run searches against an index that uses an affected encoder can cause an Elasticsearch node to exhaust its heap memory. The node can become unresponsive or terminate.
+id: BIT-elasticsearch-2026-115715
+modified: "2026-11-17T12:14:43.364Z"
+published: "2026-11-17T11:42:09.124Z"
+references:
+    - type: WEB
+      url: https://discuss.elastic.co/t/elasticsearch-8-19-24-9-4-9-9-5-6-security-update-esa-2026-235/391372
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-115715
+schema_version: 1.6.2
+summary: Allocation of Resources Without Limits or Throttling in Elasticsearch Leading to Denial of Service
