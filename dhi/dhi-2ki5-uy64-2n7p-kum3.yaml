@@ -12,6 +12,7 @@ affected:
         - 0.60.0-0
         - 0.61.0-0
         - 0.62.0-0
+        - 0.62.0-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -112,7 +113,7 @@ affected:
         - 1.31.4-3
 details: Hickory DNS hickory-resolver 0.26.0-beta.1 before 0.26.2 contains an unbounded retry loop in NameServerPool::try_send, which re-queues truncated (TC) responses without checking the answering transport or counting iterations. A malicious authoritative server returning TC=1 on every transport keeps the resolver spinning on a persistent TCP connection until the 5-second request deadline expires, causing resource exhaustion.
 id: DHI-2ki5-uy64-2n7p-kum3
-modified: "2026-11-17T07:04:47Z"
+modified: "2026-11-18T11:54:13Z"
 published: "2026-11-13T20:09:22Z"
 references:
     - type: ADVISORY

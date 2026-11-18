@@ -16,6 +16,7 @@ affected:
         - 2.1.4-r2
         - 2.1.4-r3
         - 2.1.4-r4
+        - 2.1.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -41,6 +42,16 @@ affected:
         - 12.6.1-r2
         - 12.6.1-r3
         - 12.6.1-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -94,6 +105,7 @@ affected:
         - 0.16.0-r6
         - 0.17.0-r0
         - 0.18.0-r0
+        - 0.18.1-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -596,6 +608,7 @@ affected:
         - 4.80.0-0
         - 4.80.0-1
         - 4.81.0-0
+        - 4.82.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -635,6 +648,7 @@ affected:
         - 0.16.0-3
         - 0.17.0-0
         - 0.18.0-0
+        - 0.18.1-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -845,7 +859,7 @@ affected:
         - 2.5.9-1
 details: body-parser is body parsing middleware for Node.js and Express. In versions before 1.20.9 and in versions from 2.0.0 before 2.4.0, a single request can crash any application using body-parser with default options. When a request carries a Content-Encoding such as gzip, body-parser pipes it into a decompression stream and, after reading the body, leaves that stream with no error listener. A payload of one valid compressed frame followed by trailing bytes decodes and the application responds normally, but the trailing bytes then reach the already-finished decoder, which emits an error that is re-thrown as an uncaught exception and terminates the process. No matching route is required because body parsing runs before routing, so any endpoint that parses a body is affected. The issue is fixed in body-parser 2.4.0 and 1.20.9, and users should upgrade to one of those versions or later. As a workaround, disable request-body inflation (set the body-parser inflate option to false) so encoded requests are rejected before any decompression stream is created.
 id: DHI-nh3y-ods4-wwbx-hgkw
-modified: "2026-11-17T03:36:40Z"
+modified: "2026-11-18T04:36:26Z"
 published: "2026-11-11T15:59:03Z"
 references:
     - type: ADVISORY

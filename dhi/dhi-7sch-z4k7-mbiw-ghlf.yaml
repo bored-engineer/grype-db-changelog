@@ -19,6 +19,7 @@ affected:
         - 0.20251015.172955-r15
         - 0.20251015.172955-r16
         - 0.20251015.172955-r17
+        - 0.20251015.172955-r18
         - 0.20251015.172955-r5
         - 0.20251015.172955-r6
         - 0.20251015.172955-r8
@@ -28,7 +29,7 @@ details: |-
 
     The issue arises because the length of the data passed in was converted from an int64/int32 (depending upon CPU) to an int16 without checks for overflows. The int16 length was then written, followed by the data (e.g. topic). This meant that when the data (e.g. topic) was over 65535 bytes then the amount of data written exceeds what the length field indicates. This could lead to a corrupt packet, or mean that the excess data leaks into another field (e.g. topic leaks into message body).
 id: DHI-7sch-z4k7-mbiw-ghlf
-modified: "2026-11-17T05:15:29Z"
+modified: "2026-11-18T09:42:59Z"
 published: "2026-11-14T03:09:58Z"
 references:
     - type: ADVISORY

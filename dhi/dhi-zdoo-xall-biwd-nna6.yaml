@@ -121,6 +121,7 @@ affected:
         - 3.1.4-r2
         - 3.1.4-r3
         - 3.1.4-r4
+        - 3.1.4-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -164,6 +165,7 @@ affected:
         - 3.1.4-r2
         - 3.1.4-r3
         - 3.1.4-r4
+        - 3.1.4-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -1398,7 +1400,7 @@ affected:
         - 1.20.14-r4
 details: Sigstore Timestamp Authority is a service for issuing RFC 3161 timestamps. Versions 2.0.5 and below contain an authorization bypass vulnerability in the VerifyTimestampResponse function. VerifyTimestampResponse correctly verifies the certificate chain signature, but the TSA-specific constraint checks in VerifyLeafCert uses the first non-CA certificate from the PKCS#7 certificate bag instead of the leaf certificate from the verified chain. An attacker can exploit this by prepending a forged certificate to the certificate bag while the message is signed with an authorized key, causing the library to validate the signature against one certificate but perform authorization checks against another. This vulnerability only affects users of the timestamp-authority/v2/pkg/verification package and does not affect the timestamp-authority service itself or sigstore-go. The issue has been fixed in version 2.0.6.
 id: DHI-zdoo-xall-biwd-nna6
-modified: "2026-11-15T16:50:49Z"
+modified: "2026-11-18T05:52:25Z"
 published: "2026-11-12T02:19:11Z"
 references:
     - type: ADVISORY

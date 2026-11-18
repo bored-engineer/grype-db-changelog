@@ -16,6 +16,7 @@ affected:
         - 2.1.4-r2
         - 2.1.4-r3
         - 2.1.4-r4
+        - 2.1.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -41,6 +42,7 @@ affected:
         - 12.6.1-r2
         - 12.6.1-r3
         - 12.6.1-r4
+        - 12.6.1-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -84,6 +86,7 @@ affected:
         - 0.16.0-r6
         - 0.17.0-r0
         - 0.18.0-r0
+        - 0.18.1-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -118,6 +121,8 @@ affected:
         - 0.65.4.3-r0
         - 0.65.4.4-r0
         - 0.65.4.5-r0
+        - 0.65.5-r0
+        - 0.65.5.1-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -359,6 +364,7 @@ affected:
         - 4.80.0-0
         - 4.80.0-1
         - 4.81.0-0
+        - 4.82.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -411,6 +417,7 @@ affected:
         - 4.80.0-0
         - 4.80.0-1
         - 4.81.0-0
+        - 4.82.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -541,9 +548,10 @@ affected:
         - 2026.11.02-2
         - 2026.11.02-3
         - 2026.11.02-4
+        - 2026.11.02-5
 details: The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. Prior to 1.32.0 in @modelcontextprotocol/sdk and from 2.0.0 until 2.3.0 in @modelcontextprotocol/client, the HTTP client transports and OAuth client requests followed redirects to a different origin while retaining custom request headers and, for HTTP 307 or 308 responses, request bodies. The affected surfaces are StreamableHTTPClientTransport, SSEClientTransport, and OAuth client functions such as auth(). The trigger is an HTTP redirect to another origin. Custom headers and mcp-session-id can be re-sent to the redirected origin. HTTP 307 and 308 redirects can also re-send the request body. OAuth request bodies can contain refresh_token and client_secret values. Current runtimes already strip the Authorization header across origins. stdio clients do not use the affected HTTP path. A malicious or compromised MCP or authorization server could therefore receive API keys, session identifiers, OAuth refresh tokens, or OAuth client secrets. Restoring unrestricted redirect following after upgrading restores the exposure. This issue is fixed in @modelcontextprotocol/sdk 1.32.0 and @modelcontextprotocol/client 2.3.0.
 id: DHI-lwms-ju27-ibn3-btpi
-modified: "2026-11-17T15:41:58Z"
+modified: "2026-11-18T11:42:35Z"
 published: "2026-11-12T05:03:11Z"
 references:
     - type: ADVISORY
