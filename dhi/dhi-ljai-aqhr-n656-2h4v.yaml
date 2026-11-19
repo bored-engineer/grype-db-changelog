@@ -45,6 +45,7 @@ affected:
         - 0.13.7-2
         - 0.13.7-3
         - 0.13.8-0
+        - 0.13.8-1
 details: |-
     cap-primitives resolves a path inside a sandboxed directory one component at a time and opens the last component with `O_NOFOLLOW`, so that a symlink there cannot lead out of the directory. When the path ended in `/`, the resolver added the slash back to the last component before opening it. With a trailing slash the operating system no longer treats that component as the last one, so `O_NOFOLLOW` does not apply, the symlink is followed, and the resulting file descriptor was returned without further checks.
 
@@ -54,7 +55,7 @@ details: |-
 
     The fix stops re-adding the trailing slash and is in 3.4.6 and 4.0.3.
 id: DHI-ljai-aqhr-n656-2h4v
-modified: "2026-11-13T23:37:21Z"
+modified: "2026-11-18T19:48:12Z"
 published: "2026-11-13T23:37:21Z"
 references:
     - type: ADVISORY

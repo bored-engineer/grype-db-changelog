@@ -3,6 +3,14 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: xfsprogs
+        purl: pkg:apk/dhi/xfsprogs
+      versions:
+        - 7.0.1-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: xfsprogs
         purl: pkg:deb/dhi/xfsprogs
@@ -12,7 +20,7 @@ affected:
         - 6.13.0-2+dhi0
 details: A flaw was found in the xfs_admin utility in xfsprogs. The tool does not properly validate user-supplied parameters, allowing operating system command injection. A local attacker can exploit this issue by providing crafted input arguments, which may result in arbitrary command execution and local privilege escalation depending on how xfs_admin is executed.
 id: DHI-27xp-qk3j-7xfc-kpxy
-modified: "2026-11-17T02:19:25Z"
+modified: "2026-11-18T20:11:52Z"
 published: "2026-11-13T11:28:18Z"
 references:
     - type: ADVISORY
@@ -45,6 +53,8 @@ references:
       url: https://scout.docker.com/v/DHI-27xp-qk3j-7xfc-kpxy
     - type: ADVISORY
       url: https://security-tracker.debian.org/tracker/CVE-2026-108472
+    - type: ADVISORY
+      url: https://security.alpinelinux.org/vuln/CVE-2026-108472
     - type: ADVISORY
       url: https://ubuntu.com/security/CVE-2026-108472
 schema_version: 1.8.0

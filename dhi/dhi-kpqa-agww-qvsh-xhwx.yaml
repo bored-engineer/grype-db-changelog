@@ -25,6 +25,7 @@ affected:
         - 12.6.1-r2
         - 12.6.1-r3
         - 12.6.1-r4
+        - 12.6.1-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -180,6 +181,8 @@ affected:
         - 1.96.0-r0
         - 1.96.1-r0
         - 1.96.2-r0
+        - 1.96.4-r0
+        - 1.97.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -256,6 +259,7 @@ affected:
         - 1.13.2-15
         - 1.13.2-16
         - 1.13.2-17
+        - 1.13.2-18
         - 1.13.2-2
         - 1.13.2-3
         - 1.13.2-4
@@ -287,6 +291,7 @@ affected:
         - 2.7.0-6
         - 2.8.0-0
         - 2.8.0-1
+        - 2.8.0-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -463,6 +468,7 @@ affected:
         - 4.80.0-0
         - 4.80.0-1
         - 4.81.0-0
+        - 4.82.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -501,6 +507,7 @@ affected:
         - 1.20.1-0
         - 1.20.2-0
         - 1.20.2-1
+        - 1.20.2-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -537,6 +544,8 @@ affected:
         - 1.96.0-0
         - 1.96.1-0
         - 1.96.2-0
+        - 1.96.4-0
+        - 1.97.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -660,7 +669,7 @@ affected:
         - 2.5.9-1
 details: undici is an HTTP client library for Node.js. In versions 7.0.0 through 7.30.0 and 8.0.0 through 8.12.1, when an originless Agent composes the redirect and cache interceptors in that order with a shared cache store, the cache builds its key from the original request URL before the redirect handler changes the origin, so a response produced after a cross-origin redirect is stored under the original key. An attacker who controls the target of a redirect from a trusted URL can have their response cached under that trusted URL and served to later callers, allowing persistent cache poisoning, and the same key confusion lets a private, non-stored redirect response to a user-specific resource be stored under the original URL and served to a later unauthenticated caller, disclosing private data. Applications are affected only when an originless Agent, a shared cache store, and the redirect-then-cache composition are all used. The issue is fixed in undici 7.30.1 and 8.12.2, which verify the producing origin still matches the cache key and preserve each redirect hop's cache-control policy before storing, and users should upgrade to one of those versions or later. As a workaround, compose the cache interceptor before the redirect interceptor, use per-origin dispatchers and cache stores, or disable shared caching on redirect-capable requests.
 id: DHI-kpqa-agww-qvsh-xhwx
-modified: "2026-11-17T07:51:47Z"
+modified: "2026-11-18T17:46:45Z"
 published: "2026-11-13T17:02:28Z"
 references:
     - type: ADVISORY
@@ -719,6 +728,8 @@ references:
       url: https://errata.rockylinux.org/RLSA-2026:98113
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:98522
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:98619
     - type: ADVISORY
       url: https://github.com/advisories/GHSA-4w7w-5xrc-9h26
     - type: ADVISORY

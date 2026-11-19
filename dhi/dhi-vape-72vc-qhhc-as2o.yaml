@@ -19,6 +19,10 @@ affected:
         - 3.0.5-2
         - 3.0.6-0
         - 3.0.6-1
+        - 3.0.6-10
+        - 3.0.6-11
+        - 3.0.6-12
+        - 3.0.6-13
         - 3.0.6-2
         - 3.0.6-3
         - 3.0.6-4
@@ -26,6 +30,7 @@ affected:
         - 3.0.6-6
         - 3.0.6-7
         - 3.0.6-8
+        - 3.0.6-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -45,6 +50,10 @@ affected:
         - 3.0.5-2
         - 3.0.6-0
         - 3.0.6-1
+        - 3.0.6-10
+        - 3.0.6-11
+        - 3.0.6-12
+        - 3.0.6-13
         - 3.0.6-2
         - 3.0.6-3
         - 3.0.6-4
@@ -52,6 +61,7 @@ affected:
         - 3.0.6-6
         - 3.0.6-7
         - 3.0.6-8
+        - 3.0.6-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -71,6 +81,10 @@ affected:
         - 3.0.5-2
         - 3.0.6-0
         - 3.0.6-1
+        - 3.0.6-10
+        - 3.0.6-11
+        - 3.0.6-12
+        - 3.0.6-13
         - 3.0.6-2
         - 3.0.6-3
         - 3.0.6-4
@@ -78,6 +92,7 @@ affected:
         - 3.0.6-6
         - 3.0.6-7
         - 3.0.6-8
+        - 3.0.6-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -97,6 +112,10 @@ affected:
         - 3.0.5-2
         - 3.0.6-0
         - 3.0.6-1
+        - 3.0.6-10
+        - 3.0.6-11
+        - 3.0.6-12
+        - 3.0.6-13
         - 3.0.6-2
         - 3.0.6-3
         - 3.0.6-4
@@ -104,9 +123,10 @@ affected:
         - 3.0.6-6
         - 3.0.6-7
         - 3.0.6-8
+        - 3.0.6-9
 details: 'jsonwebtoken is a JWT lib in rust. Prior to version 10.3.0, there is a Type Confusion vulnerability in jsonwebtoken, specifically, in its claim validation logic. When a standard claim (such as nbf or exp) is provided with an incorrect JSON type (Like a String instead of a Number), the library’s internal parsing mechanism marks the claim as “FailedToParse”. Crucially, the validation logic treats this “FailedToParse” state identically to “NotPresent”. This means that if a check is enabled (like: validate_nbf = true), but the claim is not explicitly marked as required in required_spec_claims, the library will skip the validation check entirely for the malformed claim, treating it as if it were not there. This allows attackers to bypass critical time-based security restrictions (like “Not Before” checks) and commit potential authentication and authorization bypasses. This issue has been patched in version 10.3.0.'
 id: DHI-vape-72vc-qhhc-as2o
-modified: "2026-11-17T00:28:57Z"
+modified: "2026-11-18T19:50:55Z"
 published: "2026-11-13T17:03:58Z"
 references:
     - type: ADVISORY

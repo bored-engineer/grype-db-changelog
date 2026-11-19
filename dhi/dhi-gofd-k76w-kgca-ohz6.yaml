@@ -4,12 +4,26 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
         - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -79,6 +93,7 @@ affected:
         - 4.4.5-0
         - 4.4.5-1
         - 4.4.5-2
+        - 4.4.5-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -89,6 +104,7 @@ affected:
         - 4.4.5-0
         - 4.4.5-1
         - 4.4.5-2
+        - 4.4.5-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -163,7 +179,7 @@ affected:
         - 6.1.0-9
 details: Handlebars provides the power necessary to let users build semantic templates. From 4.0.0 until 4.7.10, Handlebars.compile() and Handlebars.precompile() accept pre-parsed AST objects while validating only selected PathExpression, NumberLiteral, and BooleanLiteral values. This issue bypasses the AST validation introduced in version 4.7.9 for CVE-2026-33937. An attacker who can supply an object instead of a template string can place JavaScript expressions in unchecked values such as Program.blockParams.length, a non-PathExpression parameter depth, a non-string StringLiteral.value, or a non-string PathExpression.original. The compiler emits those values into generated JavaScript, causing code execution in the server process when compile output renders or wherever precompile output is loaded. Applications that pass only template strings are not affected. This issue is fixed in version 4.7.10.
 id: DHI-gofd-k76w-kgca-ohz6
-modified: "2026-11-17T11:56:41Z"
+modified: "2026-11-18T23:44:33Z"
 published: "2026-11-12T03:28:18Z"
 references:
     - type: ADVISORY

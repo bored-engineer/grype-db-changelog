@@ -35,9 +35,9 @@ affected:
         - 3.18.0-3
         - 3.18.0-4
         - 3.18.0-5
-details: MLflow 3.17.1 and earlier contains a path traversal vulnerability in the FileStore tracking backend that allows unauthenticated attackers to control filesystem paths by submitting a crafted trace ID containing traversal sequences to the POST /api/3.0/mlflow/traces endpoint. Attackers can exploit FileStore.start_trace() to write trace_info.yaml, request_metadata, and tag files with attacker-controlled metadata outside the intended experiment trace directory, subject to the server process's filesystem permissions. FileStore is the default tracking backend before MLflow 3.7.0 and opt-in thereafter (the default changed to a SQLite database), so deployments in the earlier part of the affected range are vulnerable without special configuration while later ones are affected only when FileStore is explicitly selected.
+details: MLflow before 3.18.0 contains a path traversal vulnerability in the FileStore tracking backend that allows unauthenticated attackers to control filesystem paths by submitting a crafted trace ID containing traversal sequences to the POST /api/3.0/mlflow/traces endpoint. Attackers can exploit FileStore.start_trace() to write trace_info.yaml, request_metadata, and tag files with attacker-controlled metadata outside the intended experiment trace directory, subject to the server process's filesystem permissions. FileStore is the default tracking backend before MLflow 3.7.0 and opt-in thereafter (the default changed to a SQLite database), so deployments in the earlier part of the affected range are vulnerable without special configuration while later ones are affected only when FileStore is explicitly selected.
 id: DHI-qy4j-d6rv-l327-sm5e
-modified: "2026-11-13T20:14:39Z"
+modified: "2026-11-18T18:03:22Z"
 published: "2026-11-13T02:59:15Z"
 references:
     - type: ADVISORY
@@ -53,6 +53,8 @@ references:
     - type: FIX
       url: https://github.com/mlflow/mlflow/commit/31ff9e56f5038d61ec75344518912945f60dffec
     - type: FIX
+      url: https://github.com/mlflow/mlflow/commit/d64cc8b673f71d29d93a7845fc179946ad56a881
+    - type: FIX
       url: https://github.com/mlflow/mlflow/pull/26842
     - type: FIX
       url: https://www.cve.org/CVERecord?id=CVE-2026-53995
@@ -62,12 +64,14 @@ references:
       url: https://github.com/mlflow/mlflow/issues/26979
     - type: WEB
       url: https://github.com/mlflow/mlflow/releases/tag/v3.17.2
+    - type: WEB
+      url: https://github.com/mlflow/mlflow/releases/tag/v3.18.0
 schema_version: 1.8.0
 severity:
     - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:L
       type: CVSS_V3
     - score: CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:L/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
       type: CVSS_V4
-summary: MLflow 3.17.1 and earlier contains a path traversal vulnerability in the FileStore tracking backend that allows…
+summary: MLflow before 3.18.0 contains a path traversal vulnerability in the FileStore tracking backend that allows…
 upstream:
     - CVE-2026-53995

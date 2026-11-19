@@ -25,6 +25,7 @@ affected:
         - 12.6.1-r2
         - 12.6.1-r3
         - 12.6.1-r4
+        - 12.6.1-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -180,6 +181,8 @@ affected:
         - 1.96.0-r0
         - 1.96.1-r0
         - 1.96.2-r0
+        - 1.96.4-r0
+        - 1.97.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -256,6 +259,7 @@ affected:
         - 1.13.2-15
         - 1.13.2-16
         - 1.13.2-17
+        - 1.13.2-18
         - 1.13.2-2
         - 1.13.2-3
         - 1.13.2-4
@@ -287,6 +291,7 @@ affected:
         - 2.7.0-6
         - 2.8.0-0
         - 2.8.0-1
+        - 2.8.0-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -463,6 +468,7 @@ affected:
         - 4.80.0-0
         - 4.80.0-1
         - 4.81.0-0
+        - 4.82.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -501,6 +507,7 @@ affected:
         - 1.20.1-0
         - 1.20.2-0
         - 1.20.2-1
+        - 1.20.2-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -537,6 +544,8 @@ affected:
         - 1.96.0-0
         - 1.96.1-0
         - 1.96.2-0
+        - 1.96.4-0
+        - 1.97.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -660,7 +669,7 @@ affected:
         - 2.5.9-1
 details: undici is an HTTP client library for Node.js. In versions 7.15.0 through 7.30.0 and 8.0.0 through 8.12.1, its fetch() implementation verifies Subresource Integrity metadata by matching the algorithm token against a lowercase-only set, even though the SRI specification defines the token by its ASCII-lowercase form, so a valid but non-lowercase token such as an uppercase or mixed-case SHA256 is treated as unknown and skipped. When no recognized algorithm remains, undici treats the integrity list as empty and accepts the response, so a server returning a body that does not match the pinned digest passes the check. An attacker who controls only the response body can therefore deliver attacker-controlled bytes to an application that pinned a valid uppercase or mixed-case SRI token, with no integrity error, affecting response integrity only. The issue is fixed in undici 7.30.1 and 8.12.2, which normalize the algorithm token to ASCII lowercase before validation, and users should upgrade to one of those versions or later. As a workaround, use lowercase algorithm tokens such as sha256, sha384, or sha512 in integrity metadata.
 id: DHI-7764-q6ut-bgej-x7ol
-modified: "2026-11-17T07:51:47Z"
+modified: "2026-11-18T17:46:45Z"
 published: "2026-11-13T16:59:06Z"
 references:
     - type: ADVISORY

@@ -133,6 +133,7 @@ affected:
         - 1.33.13-r11
         - 1.33.13-r12
         - 1.33.13-r13
+        - 1.33.13-r14
         - 1.33.13-r2
         - 1.33.13-r3
         - 1.33.13-r4
@@ -194,6 +195,7 @@ affected:
         - 1.33.13-r11
         - 1.33.13-r12
         - 1.33.13-r13
+        - 1.33.13-r14
         - 1.33.13-r2
         - 1.33.13-r3
         - 1.33.13-r4
@@ -320,7 +322,7 @@ affected:
         - 0.74.0-r9
 details: 'spdystream is a Go library for multiplexing streams over SPDY connections. In versions 0.5.0 and below, the SPDY/3 frame parser does not validate attacker-controlled counts and lengths before allocating memory. Three allocation paths are affected: the SETTINGS frame entry count, the header count in parseHeaderValueBlock, and individual header field sizes — all read as 32-bit integers and used directly as allocation sizes with no bounds checking. Because SPDY header blocks are zlib-compressed, a small on-the-wire payload can decompress into large attacker-controlled values. A remote peer that can send SPDY frames to a service using spdystream can exhaust process memory and cause an out-of-memory crash with a single crafted control frame. This issue has been fixed in version 0.5.1.'
 id: DHI-ltsc-qlcv-rp3r-5fr5
-modified: "2026-11-13T17:09:32Z"
+modified: "2026-11-18T19:49:19Z"
 published: "2026-11-11T17:05:16Z"
 references:
     - type: ADVISORY

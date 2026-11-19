@@ -4,12 +4,26 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
         - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -56,6 +70,7 @@ affected:
         - 4.4.5-0
         - 4.4.5-1
         - 4.4.5-2
+        - 4.4.5-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -66,9 +81,10 @@ affected:
         - 4.4.5-0
         - 4.4.5-1
         - 4.4.5-2
+        - 4.4.5-3
 details: 'Rsdoctor is a build analyzer tailored for projects built with Rspack. Prior to version 1.5.16, the default Rsdoctor report HTTP server started by `@rsdoctor/rspack-plugin` binds to all network interfaces (`0.0.0.0`) and serves a `POST /api/data/key` endpoint with no authentication and wildcard CORS (`Access-Control-Allow-Origin: *`). Any network-adjacent or remote attacker can send a single unauthenticated request to retrieve the full source code of all compiled JavaScript modules (`moduleCodeMap`), serialized build configuration (`configs`), error details, and other sensitive build metadata. This server is enabled by default in non-CI environments, requiring no special configuration from the victim developer. Version 1.5.16 patches the issue.'
 id: DHI-zcn3-s7hx-zvyu-uqbs
-modified: "2026-11-14T23:57:41Z"
+modified: "2026-11-18T23:44:33Z"
 published: "2026-11-12T19:20:34Z"
 references:
     - type: ADVISORY

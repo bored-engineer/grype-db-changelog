@@ -101,6 +101,9 @@ affected:
       versions:
         - 1.28.4-0
         - 1.28.4-1
+        - 1.28.4-10
+        - 1.28.4-11
+        - 1.28.4-12
         - 1.28.4-2
         - 1.28.4-3
         - 1.28.4-4
@@ -108,6 +111,7 @@ affected:
         - 1.28.4-6
         - 1.28.4-7
         - 1.28.4-8
+        - 1.28.4-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -117,6 +121,9 @@ affected:
       versions:
         - 1.28.4-0
         - 1.28.4-1
+        - 1.28.4-10
+        - 1.28.4-11
+        - 1.28.4-12
         - 1.28.4-2
         - 1.28.4-3
         - 1.28.4-4
@@ -124,6 +131,7 @@ affected:
         - 1.28.4-6
         - 1.28.4-7
         - 1.28.4-8
+        - 1.28.4-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -133,6 +141,9 @@ affected:
       versions:
         - 1.28.4-0
         - 1.28.4-1
+        - 1.28.4-10
+        - 1.28.4-11
+        - 1.28.4-12
         - 1.28.4-2
         - 1.28.4-3
         - 1.28.4-4
@@ -140,6 +151,7 @@ affected:
         - 1.28.4-6
         - 1.28.4-7
         - 1.28.4-8
+        - 1.28.4-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -149,6 +161,9 @@ affected:
       versions:
         - 1.28.4-0
         - 1.28.4-1
+        - 1.28.4-10
+        - 1.28.4-11
+        - 1.28.4-12
         - 1.28.4-2
         - 1.28.4-3
         - 1.28.4-4
@@ -156,6 +171,7 @@ affected:
         - 1.28.4-6
         - 1.28.4-7
         - 1.28.4-8
+        - 1.28.4-9
 details: |-
     A writer role user in an attacker-controlled namespace could signal, delete, and reset workflows or activities in a victim namespace on the same cluster. Exploitation requires the attacker to know or guess specific victim workflow ID(s) and, for signal operations, signal names. This was due to a bug introduced in Temporal Server v1.29.0 which inadvertently allowed an attacker to control the namespace name value instead of using the server's own trusted name value within the batch activity code. The batch activity validated the namespace ID but did not cross-check the namespace name against the worker's bound namespace, allowing the per-namespace worker's privileged credentials to operate on an arbitrary namespace. Exploitation requires a server configuration where internal components have cross-namespace authorization, such as deployment of the internal-frontend service or equivalent TLS-based authorization for internal identities.
 
@@ -164,7 +180,7 @@ details: |-
 
     This vulnerability also impacted Temporal Cloud when the attacker and victim namespaces were on the same cell, with the same preconditions as self-hosted clusters.
 id: DHI-xuwb-hek5-eoob-uahh
-modified: "2026-11-17T08:09:02Z"
+modified: "2026-11-18T19:45:51Z"
 published: "2026-11-11T07:46:44Z"
 references:
     - type: ADVISORY

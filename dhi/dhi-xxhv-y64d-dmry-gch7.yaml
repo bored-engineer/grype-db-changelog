@@ -36,7 +36,7 @@ affected:
         - 1.11.1-1+dhi+deb13u2+dhi0
 details: libssh2 through 1.11.1, fixed in commit 5e47761, contains a double-free vulnerability in the sftp_open() function in src/sftp.c that allows a malicious SSH server to corrupt the heap of any authenticated client opening an SFTP session. When a server responds to SSH_FXP_OPEN with SSH_FXP_STATUS containing FX_OK, the response data buffer is freed, and if a subsequent sftp_packet_require() call returns a specific error such as LIBSSH2_ERROR_CHANNEL_PACKET_EXCEEDED, the same pointer is freed a second time, enabling tcache dup conditions on glibc systems that allow overlapping allocations and function pointer overwrites.
 id: DHI-xxhv-y64d-dmry-gch7
-modified: "2026-11-13T18:59:26Z"
+modified: "2026-11-18T19:46:09Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY
@@ -61,6 +61,10 @@ references:
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-2056.html
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-2064.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-61752-0.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-61752-0.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-66032
     - type: ADVISORY

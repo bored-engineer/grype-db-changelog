@@ -3,6 +3,23 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: gst-plugins-base
+        purl: pkg:apk/dhi/gst-plugins-base
+      versions:
+        - 1.28.3-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: gstreamer
+        purl: pkg:apk/dhi/gstreamer
+      versions:
+        - 1.28.3-r0
+        - 1.28.5-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: gst-plugins-base1.0
         purl: pkg:deb/dhi/gst-plugins-base1.0
@@ -13,7 +30,7 @@ affected:
         - 1.26.2-1+deb13u2+dhi0
 details: A flaw was found in gst-plugins-base. A heap buffer overflow can be triggered when processing video buffers whose attached GstVideoMeta metadata declares plane strides and offsets that exceed the actual backing memory allocation. The metadata is not range-checked during deserialization, and the video frame mapping code does not verify that the declared plane geometry fits within the buffer before allowing consumers to read or write video data. A local attacker who controls the sending side of a GStreamer inter-process IPC pipeline can deliver a crafted buffer carrying fabricated strides, causing the receiving process to read or write beyond heap boundaries. Successful exploitation can cause a denial of service or potentially allow code execution within the affected process.
 id: DHI-o4c3-ku4p-km4b-ya7c
-modified: "2026-11-11T16:05:39Z"
+modified: "2026-11-18T19:45:51Z"
 published: "2026-11-11T16:05:39Z"
 references:
     - type: ADVISORY
@@ -25,11 +42,15 @@ references:
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3397.html
     - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:98600
+    - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-86476
     - type: ADVISORY
       url: https://scout.docker.com/v/DHI-o4c3-ku4p-km4b-ya7c
     - type: ADVISORY
       url: https://security-tracker.debian.org/tracker/CVE-2026-86476
+    - type: ADVISORY
+      url: https://security.alpinelinux.org/vuln/CVE-2026-86476
     - type: ADVISORY
       url: https://ubuntu.com/security/CVE-2026-86476
 schema_version: 1.8.0
