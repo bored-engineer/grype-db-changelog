@@ -1,0 +1,69 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in the GStreamer gst-plugins-bad MXF plugin. Insufficient bounds checks when parsing crafted VANC data can cause an out-of-bounds read in the demuxer, while an incorrect buffer size calculation when muxing multiple ancillary packets can cause an out-of-bounds write. Processing affected content may crash the application, resulting in a denial of service. (CVE-2026-125703)A flaw was found in GStreamer's gst-plugins-bad MPEG Program Stream demuxer and resindvd DVD-playback plugin. The PES header parsers do not adequately check remaining data before reading timestamps and optional header fields. Opening a specially crafted MPEG Program Stream file can cause an out-of-bounds read and potentially crash the application, resulting in a denial of service. (CVE-2026-125706)A flaw was found in GStreamer's MXF demuxer. When an application processes a crafted MXF file, an off-by-one bounds check can allow a one-byte write past the logical end of a temporal offset array. This may corrupt memory and cause the application to crash. The extent of the impact has not been demonstrated by a runtime test. (CVE-2026-125707)
+    FixedIn:
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugin-openh264
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugin-openh264-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-debugsource
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-devel
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-libs
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-libs-debuginfo
+          NamespaceName: amzn:2023
+          Version: 1.24.10-1.amzn2023.0.12
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2023/ALAS2023-2026-3493.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-125703
+            - Name: CVE-2026-125706
+            - Name: CVE-2026-125707
+    Name: ALAS2023-2026-3493
+    NamespaceName: amzn:2023
+    Severity: Medium
