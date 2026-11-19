@@ -35,7 +35,7 @@ affected:
         - 1.11.1-1+dhi+deb13u2+dhi0
 details: libssh2 through 1.11.1 reads an attacker-controlled 32-bit attribute count from a publickey-subsystem response and uses it in the allocation num_attrs * sizeof(libssh2_publickey_attribute) without bounds checking, so on 32-bit platforms the multiplication overflows to an undersized buffer. A malicious SSH server can then drive the attribute-parsing loop to write past the allocation, causing a heap buffer overflow in a connecting libssh2 client.
 id: DHI-zcku-d33u-ktqs-ucf6
-modified: "2026-11-13T18:59:26Z"
+modified: "2026-11-18T19:46:09Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY
@@ -50,6 +50,10 @@ references:
       url: https://alas.aws.amazon.com/AL2/ALAS-2026-3813.html
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-1966.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-61752-0.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-61752-0.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-58050
     - type: ADVISORY

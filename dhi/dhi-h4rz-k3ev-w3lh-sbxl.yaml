@@ -61,6 +61,7 @@ affected:
         - 0.9.0-r0
         - 0.9.0-r1
         - 0.9.0-r2
+        - 0.9.0-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -438,6 +439,7 @@ affected:
         - 0.9.0-0
         - 0.9.0-1
         - 0.9.0-2
+        - 0.9.0-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -550,7 +552,7 @@ affected:
         - 2026.11.02-5
 details: The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. From 1.3.0 until 1.32.0 in @modelcontextprotocol/sdk and from 2.0.0 until 2.3.0 in @modelcontextprotocol/server, HTTP servers did not enforce a limit on the number of array elements and object keys validated in one request. The affected surface is validation of HTTP requests containing arrays or object keys. The trigger is an array-element or object-key validation workload large enough to exhaust memory while remaining within the request size limit. A single request within the default 4 MiB limit can terminate the process with JavaScript heap exhaustion. No credentials are required unless the application authenticates before SDK processing. Tools accepting arrays or records carry the greatest risk. stdio-only servers do not expose the HTTP request path. Upgrading alone does not enable the new validation bound. Operators must configure both a tool-input element bound and an appropriate request body size limit. This issue is fixed in @modelcontextprotocol/sdk 1.32.0 and @modelcontextprotocol/server 2.3.0.
 id: DHI-h4rz-k3ev-w3lh-sbxl
-modified: "2026-11-18T11:42:35Z"
+modified: "2026-11-18T19:52:05Z"
 published: "2026-11-13T20:31:48Z"
 references:
     - type: ADVISORY

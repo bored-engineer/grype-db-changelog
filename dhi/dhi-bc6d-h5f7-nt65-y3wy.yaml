@@ -181,6 +181,7 @@ affected:
         - 0.7.2-16
         - 0.7.2-17
         - 0.7.2-18
+        - 0.7.2-19
         - 0.7.2-2
         - 0.7.2-3
         - 0.7.2-4
@@ -214,7 +215,7 @@ details: |-
     ### Impact
      remote unauthenticated network peer that can speak SPDY/3.1 to a Netty pipeline containing `SpdyFrameCodec` can trigger resource-exhaustion denial of service. The required guards are satisfied by a complete valid SETTINGS frame using the expected SPDY version, a length of `4 + numSettings * 8`, and IDs within the accepted 24-bit range; the verified PoC uses `numSettings=262144` and `wire_bytes=2097164`. On that input, Netty materializes 262144 attacker-controlled entries in a TreeMap-backed `DefaultSpdySettingsFrame`, with local runs observing about 17-18 MiB of heap growth per decoded frame plus CPU work for ordered-map insertion.
 id: DHI-bc6d-h5f7-nt65-y3wy
-modified: "2026-11-17T16:35:10Z"
+modified: "2026-11-18T18:12:05Z"
 published: "2026-11-10T07:01:15Z"
 references:
     - type: ADVISORY

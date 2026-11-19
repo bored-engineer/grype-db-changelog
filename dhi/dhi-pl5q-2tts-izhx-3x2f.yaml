@@ -3286,6 +3286,7 @@ affected:
         - 1.26.0-r2
         - 1.26.0-r3
         - 1.26.0-r4
+        - 1.29.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3315,6 +3316,7 @@ affected:
         - 1.26.0-r2
         - 1.26.0-r3
         - 1.26.0-r4
+        - 1.29.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3344,6 +3346,7 @@ affected:
         - 1.26.0-r2
         - 1.26.0-r3
         - 1.26.0-r4
+        - 1.29.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3373,6 +3376,7 @@ affected:
         - 1.26.0-r2
         - 1.26.0-r3
         - 1.26.0-r4
+        - 1.29.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3404,6 +3408,7 @@ affected:
         - 1.26.0-r4
         - 1.29.0-r0
         - 1.29.0-r1
+        - 1.30.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3435,6 +3440,7 @@ affected:
         - 1.26.0-r4
         - 1.29.0-r0
         - 1.29.0-r1
+        - 1.30.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3466,6 +3472,7 @@ affected:
         - 1.26.0-r4
         - 1.29.0-r0
         - 1.29.0-r1
+        - 1.30.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3497,6 +3504,7 @@ affected:
         - 1.26.0-r4
         - 1.29.0-r0
         - 1.29.0-r1
+        - 1.30.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3528,6 +3536,7 @@ affected:
         - 1.26.0-r4
         - 1.29.0-r0
         - 1.29.0-r1
+        - 1.30.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3559,6 +3568,7 @@ affected:
         - 1.26.0-r4
         - 1.29.0-r0
         - 1.29.0-r1
+        - 1.30.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3928,6 +3938,7 @@ affected:
       versions:
         - 1.25.0-r0
         - 1.25.0-r1
+        - 1.29.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -4446,7 +4457,7 @@ affected:
         - 2.1.23-r2
 details: "## Description\r\n\r\n`cosign verify-blob-attestation` may erroneously report a \"Verified OK\" result for attestations with malformed payloads or mismatched predicate types. For old-format bundles and detached signatures, this was due to a logic flaw in the error handling of the predicate type validation. For new-format bundles, the predicate type validation was bypassed completely.\r\n\r\n## Impact\r\n\r\nWhen `cosign verify-blob-attestation` is used without `--check-claims` set to `true`, an attestation that has a valid signature but a malformed or unparsable payload would be incorrectly validated. Additionally, systems relying on `--type <predicate type>` to reject attestations with mismatched types would be lead to trust the unexpected attestation type.\r\n\r\n## Patches\r\n\r\nv3.0.6, v2.6.3\r\n\r\n## Workarounds\r\n\r\nAlways set `--check-claims=true` for attestation verification."
 id: DHI-pl5q-2tts-izhx-3x2f
-modified: "2026-11-18T05:51:18Z"
+modified: "2026-11-18T21:50:54Z"
 published: "2026-11-11T15:44:14Z"
 references:
     - type: ADVISORY

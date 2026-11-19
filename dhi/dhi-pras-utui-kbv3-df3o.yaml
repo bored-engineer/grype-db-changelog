@@ -3,12 +3,26 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
         - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -55,6 +69,7 @@ affected:
         - 4.4.5-0
         - 4.4.5-1
         - 4.4.5-2
+        - 4.4.5-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -65,6 +80,7 @@ affected:
         - 4.4.5-0
         - 4.4.5-1
         - 4.4.5-2
+        - 4.4.5-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -115,7 +131,7 @@ affected:
         - 6.1.0-9
 details: 'Handlebars provides the power necessary to let users build semantic templates. In versions 4.0.0 through 4.7.8, `resolvePartial()` in the Handlebars runtime resolves partial names via a plain property lookup on `options.partials` without guarding against prototype-chain traversal. When `Object.prototype` has been polluted with a string value whose key matches a partial reference in a template, the polluted string is used as the partial body and rendered without HTML escaping, resulting in reflected or stored XSS. Version 4.7.9 fixes the issue. Some workarounds are available. Apply `Object.freeze(Object.prototype)` early in application startup to prevent prototype  pollution. Note: this may break other libraries, and/or use the Handlebars runtime-only build (`handlebars/runtime`), which does not compile templates  and reduces the attack surface.'
 id: DHI-pras-utui-kbv3-df3o
-modified: "2026-11-17T11:56:41Z"
+modified: "2026-11-18T23:44:33Z"
 published: "2026-11-12T03:28:18Z"
 references:
     - type: ADVISORY

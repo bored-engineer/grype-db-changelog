@@ -89,6 +89,8 @@ affected:
         - 18.11.14-23
         - 18.11.14-24
         - 18.11.14-25
+        - 18.11.14-26
+        - 18.11.14-27
         - 18.11.14-3
         - 18.11.14-4
         - 18.11.14-5
@@ -137,9 +139,11 @@ affected:
         - 19.5.6-1
         - 19.5.6-2
         - 19.5.6-3
+        - 19.5.6-4
+        - 19.5.6-5
 details: Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, ActionController::Parameters#each_key delegates to the internal ActiveSupport::HashWithIndifferentAccess that holds the request parameters, so when called with a block it returns that hash instead of the Parameters instance. The hash does not respond to permitted?, so Active Model mass assignment (new, assign_attributes, update) accepts it without raising ActiveModel::ForbiddenAttributesError. An application that passes the return value of each_key to mass assignment could allow a remote, unauthenticated attacker to set attributes that the application does not permit, such as an authorization flag. This is an incomplete fix of CVE-2020-8164, which made each, each_pair and each_value return the Parameters instance but left each_key delegated. An application is affected if it passes the return value of ActionController::Parameters#each_key, called with a block, to mass assignment. Rails itself makes no such call. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.
 id: DHI-z25n-2gs2-ahnl-lsfy
-modified: "2026-11-18T09:53:38Z"
+modified: "2026-11-18T20:52:50Z"
 published: "2026-11-13T20:18:06Z"
 references:
     - type: ADVISORY
