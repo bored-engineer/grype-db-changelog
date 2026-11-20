@@ -1,0 +1,34 @@
+# schema: vulnerability/os/schema-1.1.0.json
+Vulnerability:
+    Description: A flaw was found in GStreamer's gst-plugins-bad package. A use of uninitialized memory vulnerability exists in the H.265 (HEVC) bitstream parser when processing Video Parameter Sets that declare more than one HRD (Hypothetical Reference Decoder) parameter set. A remote attacker could exploit this by providing a crafted H.265 media file or stream that, when processed by an application using GStreamer, causes unpredictable parser behavior and may crash the application. This can lead to a denial of service for any application using GStreamer to play back H.265 content. (CVE-2026-121611)A flaw was found in the GStreamer gst-plugins-bad MXF plugin. Insufficient bounds checks when parsing crafted VANC data can cause an out-of-bounds read in the demuxer, while an incorrect buffer size calculation when muxing multiple ancillary packets can cause an out-of-bounds write. Processing affected content may crash the application, resulting in a denial of service. (CVE-2026-125703)A flaw was found in GStreamer's gst-plugins-bad MPEG Program Stream demuxer and resindvd DVD-playback plugin. The PES header parsers do not adequately check remaining data before reading timestamps and optional header fields. Opening a specially crafted MPEG Program Stream file can cause an out-of-bounds read and potentially crash the application, resulting in a denial of service. (CVE-2026-125706)
+    FixedIn:
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-debuginfo
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.12
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: gstreamer1-plugins-bad-free-devel
+          NamespaceName: amzn:2
+          Version: 1.18.4-5.amzn2.0.12
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4132.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-121611
+            - Name: CVE-2026-125703
+            - Name: CVE-2026-125706
+    Name: ALAS2-2026-4132
+    NamespaceName: amzn:2
+    Severity: Medium
