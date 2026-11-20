@@ -1,0 +1,31 @@
+Vulnerability:
+    Description: Tornado is a Python web framework and asynchronous networking library. Prior to 6.6.0, Tornado decodes HTTP/1.1 chunked transfer encoding by processing body data that has already arrived without yielding to the event loop. A remote unauthenticated peer can send millions of one-byte chunks to monopolize the process event loop and stall every other connection served by that process, while lowering max_body_size only limits the duration of each request. For handlers that do not use @stream_request_body, retaining each chunk as a separate object can consume roughly twenty times the received body size, and SimpleAsyncHTTPClient has the same event-loop behavior when reading a response from a malicious server. This issue is fixed in version 6.6.0. (CVE-2026-115927)
+    FixedIn:
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: python-tornado
+          NamespaceName: amzn:2
+          Version: 4.2.1-3.amzn2.0.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: python-tornado-debuginfo
+          NamespaceName: amzn:2
+          Version: 4.2.1-3.amzn2.0.10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Name: python-tornado-doc
+          NamespaceName: amzn:2
+          Version: 4.2.1-3.amzn2.0.10
+          VersionFormat: rpm
+    Link: https://alas.aws.amazon.com/AL2/ALAS2-2026-4135.html
+    Metadata:
+        CVE:
+            - Name: CVE-2026-115927
+    Name: ALAS2-2026-4135
+    NamespaceName: amzn:2
+    Severity: High
