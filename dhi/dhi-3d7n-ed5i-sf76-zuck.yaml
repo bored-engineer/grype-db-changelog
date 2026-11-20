@@ -32,6 +32,7 @@ affected:
         - 1.1.0-r11
         - 1.1.0-r12
         - 1.1.0-r13
+        - 1.1.0-r17
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -52,6 +53,7 @@ affected:
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
+        - 1.2.0-r9
     - database_specific:
         owner_kind: HSP
       package:
@@ -103,6 +105,9 @@ affected:
         - 593.0.0-7
         - 593.0.0-8
         - 593.0.0-9
+        - 594.0.0-1
+        - 594.0.0-2
+        - 594.0.0-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -140,6 +145,7 @@ affected:
         - 1.1.0-14
         - 1.1.0-15
         - 1.1.0-16
+        - 1.1.0-17
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -164,6 +170,7 @@ affected:
         - 1.2.0-6
         - 1.2.0-7
         - 1.2.0-8
+        - 1.2.0-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -184,6 +191,7 @@ affected:
         - 0.7.2-18
         - 0.7.2-19
         - 0.7.2-2
+        - 0.7.2-20
         - 0.7.2-3
         - 0.7.2-4
         - 0.7.2-5
@@ -193,7 +201,7 @@ affected:
         - 0.7.2-9
 details: The `SpdyHttpDecoder` handler in Netty's SPDY-to-HTTP codec allocates a pooled `ByteBuf` when processing a client-initiated `SYN_STREAM` frame with `FLAG_FIN=0`, storing the partially-constructed `FullHttpRequest` in an internal map (`messageMap`) to accumulate subsequent `DATA` frames. When the remote peer sends an `RST_STREAM` for that stream, or when the accumulated content exceeds `maxContentLength`, the decoder removes the entry from the map but **never releases the pooled ByteBuf**, permanently leaking the allocated memory.
 id: DHI-3d7n-ed5i-sf76-zuck
-modified: "2026-11-18T18:12:05Z"
+modified: "2026-11-19T22:27:14Z"
 published: "2026-11-10T06:33:25Z"
 references:
     - type: ADVISORY

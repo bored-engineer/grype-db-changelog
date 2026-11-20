@@ -257,6 +257,8 @@ affected:
         - 2.13.6-2
         - 2.13.6-20
         - 2.13.6-21
+        - 2.13.6-22
+        - 2.13.6-23
         - 2.13.6-3
         - 2.13.6-4
         - 2.13.6-5
@@ -293,6 +295,8 @@ affected:
         - 2.13.6-2
         - 2.13.6-20
         - 2.13.6-21
+        - 2.13.6-22
+        - 2.13.6-23
         - 2.13.6-3
         - 2.13.6-4
         - 2.13.6-5
@@ -329,6 +333,8 @@ affected:
         - 2.13.6-2
         - 2.13.6-20
         - 2.13.6-21
+        - 2.13.6-22
+        - 2.13.6-23
         - 2.13.6-3
         - 2.13.6-4
         - 2.13.6-5
@@ -365,6 +371,8 @@ affected:
         - 2.13.6-2
         - 2.13.6-20
         - 2.13.6-21
+        - 2.13.6-22
+        - 2.13.6-23
         - 2.13.6-3
         - 2.13.6-4
         - 2.13.6-5
@@ -401,7 +409,9 @@ affected:
         - 2.14.6-16
         - 2.14.6-17
         - 2.14.6-18
+        - 2.14.6-19
         - 2.14.6-2
+        - 2.14.6-20
         - 2.14.6-3
         - 2.14.6-4
         - 2.14.6-5
@@ -438,7 +448,9 @@ affected:
         - 2.14.6-16
         - 2.14.6-17
         - 2.14.6-18
+        - 2.14.6-19
         - 2.14.6-2
+        - 2.14.6-20
         - 2.14.6-3
         - 2.14.6-4
         - 2.14.6-5
@@ -475,7 +487,9 @@ affected:
         - 2.14.6-16
         - 2.14.6-17
         - 2.14.6-18
+        - 2.14.6-19
         - 2.14.6-2
+        - 2.14.6-20
         - 2.14.6-3
         - 2.14.6-4
         - 2.14.6-5
@@ -512,7 +526,9 @@ affected:
         - 2.14.6-16
         - 2.14.6-17
         - 2.14.6-18
+        - 2.14.6-19
         - 2.14.6-2
+        - 2.14.6-20
         - 2.14.6-3
         - 2.14.6-4
         - 2.14.6-5
@@ -547,6 +563,8 @@ affected:
         - 2.15.5-12
         - 2.15.5-13
         - 2.15.5-14
+        - 2.15.5-15
+        - 2.15.5-16
         - 2.15.5-2
         - 2.15.5-3
         - 2.15.5-4
@@ -582,6 +600,8 @@ affected:
         - 2.15.5-12
         - 2.15.5-13
         - 2.15.5-14
+        - 2.15.5-15
+        - 2.15.5-16
         - 2.15.5-2
         - 2.15.5-3
         - 2.15.5-4
@@ -617,6 +637,8 @@ affected:
         - 2.15.5-12
         - 2.15.5-13
         - 2.15.5-14
+        - 2.15.5-15
+        - 2.15.5-16
         - 2.15.5-2
         - 2.15.5-3
         - 2.15.5-4
@@ -652,6 +674,8 @@ affected:
         - 2.15.5-12
         - 2.15.5-13
         - 2.15.5-14
+        - 2.15.5-15
+        - 2.15.5-16
         - 2.15.5-2
         - 2.15.5-3
         - 2.15.5-4
@@ -662,7 +686,7 @@ affected:
         - 2.15.5-9
 details: Hosts listed in TrustedOrigins implicitly allow requests from the corresponding HTTP origins, allowing network MitMs to perform CSRF attacks. After the CVE-2025-24358 fix, a network attacker that places a form at http://example.com can't get it to submit to https://example.com because the Origin header is checked with sameOrigin against a synthetic URL. However, if a host is added to TrustedOrigins, both its HTTP and HTTPS origins will be allowed, because the schema of the synthetic URL is ignored and only the host is checked. For example, if an application is hosted on https://example.com and adds example.net to TrustedOrigins, a network attacker can serve a form at http://example.net to perform the attack. Applications should migrate to net/http.CrossOriginProtection, introduced in Go 1.25. If that is not an option, a backport is available as a module at filippo.io/csrf, and a drop-in replacement for the github.com/gorilla/csrf API is available at filippo.io/csrf/gorilla.
 id: DHI-5jol-ches-mfix-th2x
-modified: "2026-11-18T23:45:53Z"
+modified: "2026-11-19T18:45:30Z"
 published: "2026-11-11T16:07:25Z"
 references:
     - type: ADVISORY

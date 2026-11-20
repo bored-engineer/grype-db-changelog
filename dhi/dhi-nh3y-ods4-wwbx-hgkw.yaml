@@ -88,6 +88,7 @@ affected:
         - 0.9.0-r1
         - 0.9.0-r2
         - 0.9.0-r3
+        - 0.9.0-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -644,6 +645,7 @@ affected:
         - 0.9.0-1
         - 0.9.0-2
         - 0.9.0-3
+        - 0.9.0-4
     - database_specific:
         owner_kind: HSP
       package:
@@ -678,6 +680,7 @@ affected:
         - 2026.8.31-3
         - 2026.8.31-4
         - 2026.8.31-5
+        - 2026.8.31-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -766,6 +769,7 @@ affected:
         - 1.121.3-6
         - 1.121.3-7
         - 1.121.4-0
+        - 1.121.4-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -875,7 +879,7 @@ affected:
         - 2.5.9-1
 details: body-parser is body parsing middleware for Node.js and Express. In versions before 1.20.9 and in versions from 2.0.0 before 2.4.0, a single request can crash any application using body-parser with default options. When a request carries a Content-Encoding such as gzip, body-parser pipes it into a decompression stream and, after reading the body, leaves that stream with no error listener. A payload of one valid compressed frame followed by trailing bytes decodes and the application responds normally, but the trailing bytes then reach the already-finished decoder, which emits an error that is re-thrown as an uncaught exception and terminates the process. No matching route is required because body parsing runs before routing, so any endpoint that parses a body is affected. The issue is fixed in body-parser 2.4.0 and 1.20.9, and users should upgrade to one of those versions or later. As a workaround, disable request-body inflation (set the body-parser inflate option to false) so encoded requests are rejected before any decompression stream is created.
 id: DHI-nh3y-ods4-wwbx-hgkw
-modified: "2026-11-18T23:44:33Z"
+modified: "2026-11-19T08:39:25Z"
 published: "2026-11-11T15:59:03Z"
 references:
     - type: ADVISORY

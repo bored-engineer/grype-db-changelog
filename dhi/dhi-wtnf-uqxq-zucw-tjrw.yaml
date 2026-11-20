@@ -1,0 +1,123 @@
+# schema: vulnerability/osv/schema-1.8.0.json
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: openssl
+        purl: pkg:apk/dhi/openssl
+      versions:
+        - 3.5.6-r1
+        - 3.5.7-r0
+        - 3.5.7-r1
+        - 3.5.8-r1
+        - 3.5.9-r0
+        - 3.5.9-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: openssl-provider-fips
+        purl: pkg:apk/dhi/openssl-provider-fips
+      versions:
+        - 3.1.2-r3
+        - 3.1.2-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: openssl
+        purl: pkg:deb/dhi/openssl
+      versions:
+        - 3.5.5-1~deb13u2dhi0
+        - 3.5.6-1~deb13u1+dhi0
+        - 3.5.6-1~deb13u1+dhi1
+        - 3.5.6-1~deb13u1+dhi2
+        - 3.5.6-1~deb13u1+fips+dhi0
+        - 3.5.6-1~deb13u1+fips+dhi1
+        - 3.5.6-1~deb13u1+fips+dhi2
+        - 3.5.6-1~deb13u1dhi0
+        - 3.5.6-1~deb13u2+dhi0
+        - 3.5.6-1~deb13u2+dhi1
+        - 3.5.6-1~deb13u2+dhi2
+        - 3.5.6-1~deb13u2+dhi3
+        - 3.5.6-1~deb13u2+fips+dhi0
+        - 3.5.6-1~deb13u2+fips+dhi1
+        - 3.5.7-1~deb13u2+dhi0
+        - 3.5.7-1~deb13u2+dhi1
+        - 3.5.7-1~deb13u2+fips+dhi0
+        - 3.5.7-1~deb13u3+dhi0
+        - 3.5.7-1~deb13u3+dhi1
+        - 3.5.7-1~deb13u3+fips+dhi0
+database_specific:
+    coverage: partial
+    coverage_exclusions:
+        - legacy_package_image_owner
+details: |-
+    Issue summary: Encrypting a CMS message to an EC certificate whose group order
+    is 1 may cause CMS_encrypt() or CMS_encrypt_ex() to loop indefinitely.
+
+    Impact summary: An attacker able to supply the recipient certificate to an
+    application performing CMS encryption can cause that application to loop
+    indefinitely, consuming CPU and resulting in Denial of Service.
+
+    CWE: CWE-835: Loop with Unreachable Exit Condition ('Infinite Loop')
+
+    Description: CMS_encrypt() and CMS_encrypt_ex() encrypt a message to one or
+    more recipient certificates and, for an EC recipient, generate an ephemeral
+    key in the recipient's group. If the certificate declares a group order of 1,
+    random scalar generation can only produce zero. The key generation routine
+    then retries without limit while waiting for a nonzero private scalar, so the
+    call never returns.
+
+    The OpenSSL TLS and QUIC implementations do not use this path. An application
+    is exposed only if it calls CMS_encrypt() or CMS_encrypt_ex() with a recipient
+    certificate whose EC parameters are attacker-controlled. Certificates with
+    normal EC group orders do not trigger the loop.
+
+    OpenSSL 4.0 and later reject unknown explicit EC groups in default builds.
+    These versions are affected only when configured with the
+    enable-ec_explicit_curves option.
+
+    The result is a hang that consumes a CPU core until the process is
+    interrupted, a Denial of Service. The severity is Low because the attacker
+    must supply the recipient certificate and the application must choose to
+    encrypt to it; ordinary CMS encryption to trusted recipients is unaffected.
+
+    The fix makes EC key generation fail when the group has no valid nonzero
+    private scalar, instead of retrying indefinitely.
+
+    FIPS impact: no
+    The FIPS modules in 4.1, 4.0, 3.5 and 3.0 are not affected. The FIPS provider
+    does not support arbitrary explicit EC domain parameters, so an order-1 group
+    is rejected during key import before the vulnerable key generation path is
+    reached.
+id: DHI-wtnf-uqxq-zucw-tjrw
+modified: "2026-11-19T20:54:10Z"
+published: "2026-11-19T20:54:10Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-107496
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-107496
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-wtnf-uqxq-zucw-tjrw
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-107496
+    - type: ADVISORY
+      url: https://security.alpinelinux.org/vuln/CVE-2026-107496
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2026-107496
+    - type: FIX
+      url: https://github.com/openssl/openssl/commit/36e15b618decdff1b116eead6747718e6e729ad2
+    - type: FIX
+      url: https://github.com/openssl/openssl/commit/a0051cfe699bf5a047bc1c4faef65f80f7987366
+    - type: FIX
+      url: https://github.com/openssl/openssl/commit/a8531368ddb1f86d2a2782a8b693926bb67b59e7
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+      type: CVSS_V3
+summary: 'Issue summary: Encrypting a CMS message to an EC certificate whose group order'
+upstream:
+    - CVE-2026-107496
