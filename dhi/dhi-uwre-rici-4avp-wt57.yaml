@@ -31,6 +31,7 @@ affected:
         - 1.1.0-r11
         - 1.1.0-r12
         - 1.1.0-r13
+        - 1.1.0-r17
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -51,6 +52,7 @@ affected:
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
+        - 1.2.0-r9
     - database_specific:
         owner_kind: HSP
       package:
@@ -242,6 +244,7 @@ affected:
         - 1.1.0-14
         - 1.1.0-15
         - 1.1.0-16
+        - 1.1.0-17
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -266,9 +269,10 @@ affected:
         - 1.2.0-6
         - 1.2.0-7
         - 1.2.0-8
+        - 1.2.0-9
 details: 'Jetty is a java based web server and servlet engine. Nonstandard cookie parsing in Jetty may allow an attacker to smuggle cookies within other cookies, or otherwise perform unintended behavior by tampering with the cookie parsing mechanism. If Jetty sees a cookie VALUE that starts with `"` (double quote), it will continue to read the cookie string until it sees a closing quote -- even if a semicolon is encountered. So, a cookie header such as: `DISPLAY_LANGUAGE="b; JSESSIONID=1337; c=d"` will be parsed as one cookie, with the name DISPLAY_LANGUAGE and a value of b; JSESSIONID=1337; c=d instead of 3 separate cookies. This has security implications because if, say, JSESSIONID is an HttpOnly cookie, and the DISPLAY_LANGUAGE cookie value is rendered on the page, an attacker can smuggle the JSESSIONID cookie into the DISPLAY_LANGUAGE cookie and thereby exfiltrate it. This is significant when an intermediary is enacting some policy based on cookies, so a smuggled cookie can bypass that policy yet still be seen by the Jetty server or its logging system. This issue has been addressed in versions 9.4.51, 10.0.14, 11.0.14, and 12.0.0.beta0 and users are advised to upgrade. There are no known workarounds for this issue.'
 id: DHI-uwre-rici-4avp-wt57
-modified: "2026-11-17T02:11:44Z"
+modified: "2026-11-19T04:15:16Z"
 published: "2026-11-10T10:46:06Z"
 references:
     - type: ADVISORY

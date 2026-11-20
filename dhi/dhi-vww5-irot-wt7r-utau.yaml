@@ -31,6 +31,7 @@ affected:
         - 1.1.0-r11
         - 1.1.0-r12
         - 1.1.0-r13
+        - 1.1.0-r17
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -51,6 +52,7 @@ affected:
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
+        - 1.2.0-r9
     - database_specific:
         owner_kind: HSP
       package:
@@ -88,6 +90,7 @@ affected:
         - 1.1.0-14
         - 1.1.0-15
         - 1.1.0-16
+        - 1.1.0-17
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -112,9 +115,10 @@ affected:
         - 1.2.0-6
         - 1.2.0-7
         - 1.2.0-8
+        - 1.2.0-9
 details: Netty is a network application framework for development of protocol servers and clients. In versions of netty-transport-sctp prior to 4.1.135.Final and 4.2.15.Final, for each non-complete SctpMessage fragment the handler does `fragments.put(streamId, Unpooled.wrappedBuffer(frag, byteBuf))`, wrapping the previous accumulator and the new slice into a *new* CompositeByteBuf every time. After N fragments the accumulator is an N-deep chain of composites, each holding references and component arrays; readableBytes()/getBytes() on the final buffer recurse N levels. There is no limit on N, on total bytes, or on the number of streamIdentifiers an attacker can open (each gets its own map entry). A peer that never sets the `complete` flag can grow this structure indefinitely from tiny 1-byte DATA chunks. Versions 4.1.135.Final and 4.2.15.Final patch the issue.
 id: DHI-vww5-irot-wt7r-utau
-modified: "2026-11-17T09:53:33Z"
+modified: "2026-11-19T04:15:03Z"
 published: "2026-11-10T09:35:54Z"
 references:
     - type: ADVISORY

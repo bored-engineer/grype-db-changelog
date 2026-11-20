@@ -571,6 +571,7 @@ affected:
         - 0.20251015.172955-r16
         - 0.20251015.172955-r17
         - 0.20251015.172955-r18
+        - 0.20251015.172955-r19
         - 0.20251015.172955-r5
         - 0.20251015.172955-r6
         - 0.20251015.172955-r8
@@ -776,6 +777,7 @@ affected:
         - 2.12.3-19
         - 2.12.3-2
         - 2.12.3-20
+        - 2.12.3-21
         - 2.12.3-3
         - 2.12.3-4
         - 2.12.3-5
@@ -785,7 +787,7 @@ affected:
         - 2.12.3-9
 details: "### Impact\r\n\r\nThe remote read endpoint (`/api/v1/read`) does not validate the declared decoded length in a snappy-compressed request body before allocating memory.\r\nAn unauthenticated attacker can send a small payload that causes a huge heap allocation per request. Under concurrent load this can exhaust available memory and crash the Prometheus process.\r\n\r\n### Patches\r\n_Has the problem been patched? What versions should users upgrade to?_\r\n\r\nFixed in 3.11.3 and 3.5.3 LTS. Users should upgrade to these versions or later.\r\n\r\n### Workarounds\r\nUser who can not upgrade can place Prometheus behind a reverse proxy or firewall that requires authentication before requests reach /api/v1/read.\r\n\r\n"
 id: DHI-ny7t-6ay6-iylf-wn7a
-modified: "2026-11-18T21:01:02Z"
+modified: "2026-11-19T18:58:34Z"
 published: "2026-11-11T17:20:22Z"
 references:
     - type: ADVISORY

@@ -18,9 +18,13 @@ affected:
       versions:
         - 3.53.2-r0
         - 3.53.4-r0
+database_specific:
+    coverage: partial
+    coverage_exclusions:
+        - legacy_package_image_owner
 details: SQLite command-line shell through 3.54.1 contains a command injection vulnerability in the .recover command that emits attacker-planted dot-commands stored in sqlite_schema.sql values verbatim. Attackers can craft a database whose schema holds a valid CREATE statement followed by a .shell or .system line, executing OS commands when victims pipe .recover output into sqlite3.
 id: DHI-monx-b6gw-mocj-yro5
-modified: "2026-11-18T23:54:07Z"
+modified: "2026-11-19T21:10:41Z"
 published: "2026-11-18T23:54:07Z"
 references:
     - type: ADVISORY

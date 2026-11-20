@@ -31,6 +31,7 @@ affected:
         - 1.1.0-r11
         - 1.1.0-r12
         - 1.1.0-r13
+        - 1.1.0-r17
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -51,6 +52,7 @@ affected:
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
+        - 1.2.0-r9
     - database_specific:
         owner_kind: HSP
       package:
@@ -88,6 +90,7 @@ affected:
         - 1.1.0-14
         - 1.1.0-15
         - 1.1.0-16
+        - 1.1.0-17
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -112,9 +115,10 @@ affected:
         - 1.2.0-6
         - 1.2.0-7
         - 1.2.0-8
+        - 1.2.0-9
 details: The `HAProxyMessageDecoder` in netty's `codec-haproxy` module performs protocol version detection by reading the 13th byte of the inbound stream as a signed Java `byte` and widening it to `int` without masking. When an attacker sends a PROXY protocol v2 binary prefix (`0D 0A 0D 0A 00 0D 0A 51 55 49 54 0A`) followed by version byte `0xFF`, the sign extension produces `-1`, which collides with the decoder's "need more data" sentinel value. This collision traps the decoder in a version-detection loop where it perpetually requests more data without consuming any bytes, never instantiates the `HeaderExtractor` that enforces header size limits, and causes `ByteToMessageDecoder` to accumulate all subsequent inbound bytes into an unbounded `cumulation` buffer until the JVM exhausts its direct memory allocation.
 id: DHI-d7kh-yn3u-4hvu-m6p7
-modified: "2026-11-17T09:57:07Z"
+modified: "2026-11-19T04:14:52Z"
 published: "2026-11-10T05:28:17Z"
 references:
     - type: ADVISORY

@@ -5,11 +5,21 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: apt
         purl: pkg:deb/dhi/apt
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-12"
+                      kind: advisory
+                      version: 3.0.4+dhi0
+          events:
+            - fixed: 3.0.4+dhi0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.0.3+dhi0
         - 3.0.3+dhi1
         - 3.0.3+dhi2
-        - 3.0.4+dhi0
 details: |-
     On Debian, Ubuntu, and derivative Linux distributions, an on-path attacker who can manipulate the HTTP traffic (including a malicious mirror or proxy) between an APT client and an archive server triggered by a package install can trick the client into installing an attacker-controlled unverified package and achieve remote code execution with root privileges.
 
@@ -17,7 +27,7 @@ details: |-
 
     The vulnerability is caused by the reuse of hard links and requires the client to follow redirects and retry the download of package files. It requires the client to have a non-zero Acquire::Retries configuration setting; the value 3 is the default starting with Debian 12 (bookworm) and Ubuntu 22.04 LTS (Jammy Jellyfish), so older releases are unaffected in a default configuration
 id: DHI-nnqm-bm5y-to33-poup
-modified: "2026-11-12T00:09:55Z"
+modified: "2026-11-19T22:57:25Z"
 published: "2026-11-12T00:09:55Z"
 references:
     - type: ADVISORY
