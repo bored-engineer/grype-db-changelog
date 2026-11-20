@@ -1,0 +1,51 @@
+affected:
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libpcap
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-12"
+                      kind: advisory
+                      version: 14:1.10.0-4.el9_9.2
+          events:
+            - fixed: 14:1.10.0-4.el9_9.2
+            - introduced: "0"
+          type: ECOSYSTEM
+    - package:
+        ecosystem: AlmaLinux:9
+        name: libpcap-devel
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-12"
+                      kind: advisory
+                      version: 14:1.10.0-4.el9_9.2
+          events:
+            - fixed: 14:1.10.0-4.el9_9.2
+            - introduced: "0"
+          type: ECOSYSTEM
+database_specific:
+    anchore:
+        record_type: advisory
+details: "The libpcap packages provide a portable framework for low-level network monitoring. The libpcap library provides network statistics collection, security monitoring, and network debugging.  \n\nSecurity Fix(es):  \n\n  * libpcap: libpcap: Denial of Service via infinite loop in BPF interpreter (CVE-2026-6554)\n\n\nFor more details about the security issue(s), including the impact, a CVSS score, acknowledgments, and other related information, refer to the CVE page(s) listed in the References section.\n"
+id: ALSA-2026:99707
+modified: "2026-11-19T09:14:12Z"
+published: "2026-11-12T00:00:00Z"
+references:
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:99707
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-99707.html
+    - type: REPORT
+      url: https://access.redhat.com/security/cve/CVE-2026-6554
+    - type: REPORT
+      url: https://bugzilla.redhat.com/2529091
+related:
+    - CVE-2026-6554
+schema_version: 1.7.0
+summary: 'Important: libpcap security update'
+upstream:
+    - CVE-2026-6554
