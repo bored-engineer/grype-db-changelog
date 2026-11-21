@@ -1,0 +1,110 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [20241117-9.0.1.el9_9.2]
+        - Replace upstream references [Orabug:36569119]
+
+        [20241117-9.el9_9.2]
+        - edk2-Bumped-to-OpenSSL-3.0.7-29.3.patch [RHEL-165886]
+        - Resolves: RHEL-165886
+          (CVE-2026-28390 edk2: OpenSSL: Denial of Service due to NULL pointer dereference in CMS EnvelopedData processing [rhel-9.9])
+
+        [20241117-9.el9_9.1]
+        - edk2-NetworkPkg-UefiPxeBcDxe-Fix-ICMP-buffer-overflow-in-.patch [RHEL-291271]
+        - Resolves: RHEL-291271
+          (CVE-2026-97631 edk2: Pre-boot RCE in EDK II PXE driver [rhel-9.9.z])
+
+        [20241117-8]
+        - edk2-openssl-flatten-contents-of-openssl-tarball.patch [RHEL-115922]
+        - edk2-Bumped-openssl-submodule-to-version-3.0.7-29.1.patch [RHEL-115922]
+        - Resolves: RHEL-115922
+          (CVE-2025-9230 edk2: Out-of-bounds read & write in RFC 3211 KEK Unwrap [rhel-9.8])
+
+        [20241117-7]
+        - edk2-make-dbxupdate.sh-get-version-tag-add-to-commit-mess.patch [RHEL-126100]
+        - edk2-update-dbx-to-20251016-v1.6.1.patch [RHEL-126100]
+        - Resolves: RHEL-126100
+          ([edk2,rhel-9] dbx update to 20251016 / v1.6.1)
+
+        [20241117-6]
+        - edk2-OvmfPkg-MemEncryptSevLib-Evict-cache-lines-during-SN.patch [RHEL-121983]
+        - edk2-MdePkg-Add-the-COHERENCY_SFW_NO-CPUID-bit-field.patch [RHEL-121983]
+        - edk2-OvmfPkg-ResetVector-Make-ReceivedVc-a-flag-in-SEV-ES.patch [RHEL-121983]
+        - edk2-OvmfPkg-MemEncryptSevLib-Check-if-SEV-SNP-coherency-.patch [RHEL-121983]
+        - Resolves: RHEL-121983
+          ([edk2] VM panic on booting SNP guest with large memory on Genoa)
+
+        [20241117-5]
+        - edk2-MdePkg-Acpi66.h-Add-ACPI-6.6-header.patch [RHEL-109010]
+        - edk2-OvmfPkg-WorkArea.h-Add-MAILBOX_GDT.patch [RHEL-109010]
+        - edk2-OvmfPkg-Add-the-Test-command-in-TDX-MailBox.patch [RHEL-109010]
+        - edk2-OvmfPkg-Add-the-ResetVector-in-TDX-MailBox.patch [RHEL-109010]
+        - edk2-OvmfPkg-TdxDxe-Support-5-level-paging-for-ResetVecto.patch [RHEL-109010]
+        - edk2-OvmfPkg-IoMmuDxe-Fix-1M-and-2M-buffer-handling.patch [RHEL-69780]
+        - Resolves: RHEL-109010
+          (TD guest dmesg reports ACPI BIOS Warning (bug): Incorrect checksum in table [APIC] - 0x29)
+        - Resolves: RHEL-69780
+          (Fail to create AMD SEV SLES 15 SP4 guest via virt-install --cdrom [rhel-9.8])
+
+        [20241117-4]
+        - edk2-update-dbx-to-20250610.patch [RHEL-96869]
+        - Resolves: RHEL-96869
+          ([edk2,rhel-9] dbx update 20250610)
+
+        [20241117-3]
+        - edk2-OvmfPkg-Use-the-OvmfPkg-version-of-CcProbeLib.patch [RHEL-70865]
+        - edk2-Update-dbx-revocation-list-to-2025-02-24-version.patch [RHEL-83019]
+        - Resolves: RHEL-70865
+          (SNP guest failed to boot with SVSM using OVMF.amdsev.fd [rhel-9.7])
+        - Resolves: RHEL-83019
+          (The newer revocation file and Server 2025 required to update it [rhel-9])
+
+        [20241117-2]
+        - edk2-Fix-amd-sev-firmware-file-for-amd-snp.patch [RHEL-72447]
+        - Resolves: RHEL-72447
+          ( QEMU should creating new json file that will correctly describe firmware for amd-sev-snp [rhel-9])
+    FixedIn:
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Module: null
+          Name: edk2-aarch64
+          NamespaceName: ol:9
+          Version: 0:20241117-9.0.1.el9_9.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Module: null
+          Name: edk2-ovmf
+          NamespaceName: ol:9
+          Version: 0:20241117-9.0.1.el9_9.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Module: null
+          Name: edk2-tools
+          NamespaceName: ol:9
+          Version: 0:20241117-9.0.1.el9_9.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-19"
+            Kind: advisory
+          Module: null
+          Name: edk2-tools-doc
+          NamespaceName: ol:9
+          Version: 0:20241117-9.0.1.el9_9.2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-100717.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-28390.html
+              Name: CVE-2026-28390
+            - Link: https://linux.oracle.com/cve/CVE-2026-97631.html
+              Name: CVE-2026-97631
+        Issued: "2026-11-19"
+        RefId: ELSA-2026-100717
+    Name: ELSA-2026-100717
+    NamespaceName: ol:9
+    Severity: Low
