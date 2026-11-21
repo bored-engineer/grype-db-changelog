@@ -4,6 +4,22 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
+        name: kubevirt-velero-plugin-0.8
+        purl: pkg:apk/dhi/kubevirt-velero-plugin-0.8
+      versions:
+        - 0.8.1-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: kubevirt-velero-plugin-0.8-fips
+        purl: pkg:apk/dhi/kubevirt-velero-plugin-0.8-fips
+      versions:
+        - 0.8.1-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
         name: velero-plugin-for-aws
         purl: pkg:apk/dhi/velero-plugin-for-aws
       versions:
@@ -69,6 +85,8 @@ affected:
         - 1.14.4-r5
         - 1.14.4-r6
         - 1.14.4-r7
+        - 1.14.4-r8
+        - 1.14.4-r9
     - database_specific:
         owner_kind: HSP
       package:
@@ -94,9 +112,11 @@ affected:
         - 1.14.4-r5
         - 1.14.4-r6
         - 1.14.4-r7
+        - 1.14.4-r8
+        - 1.14.4-r9
 details: Velero is an open source tool for backing up, restoring, and migrating Kubernetes cluster resources and persistent volumes. Prior to 1.18.1, an attacker who compromises the backup object-storage backend can upload a malicious backup tarball containing parent-directory paths that escape the extraction directory during restore and overwrite sensitive files in the Velero pod filesystem. This issue is fixed in version 1.18.1.
 id: DHI-llrj-ys5k-f22y-trko
-modified: "2026-11-13T17:07:20Z"
+modified: "2026-11-20T18:47:27Z"
 published: "2026-11-13T05:54:07Z"
 references:
     - type: ADVISORY

@@ -26,6 +26,7 @@ affected:
         purl: pkg:deb/dhi/coreutils
       versions:
         - 9.7-3+deb13u0+dhi5
+        - 9.7-3+deb13u0+dhi6
         - 9.7-3+dhi1
         - 9.7-3+dhi2
         - 9.7-3+dhi3
@@ -39,7 +40,7 @@ database_specific:
         - legacy_package_image_owner
 details: "GNU coreutils uniq is vulnerable to an out‑of‑bounds read due to incorrect handling of multibyte input when the -w (--check-chars) option is used. The find_field() function miscalculates the byte length of characters by repeatedly processing a fixed pointer instead of advancing through the input, resulting in an inflated length value. \nThis incorrect length is later used in a memcmp operation, causing reads beyond the allocated buffer when processing crafted multibyte input.\n\nWhen running GNU coreutils uniq with attacker-provided arguments, this behavior leads to a crash and potential adjacent heap memory exposure.\n\n\nThis issue has been fixed in the commit d64e35a8a4c0e4608321433e0d84d917e4e36371."
 id: DHI-e5dk-p6xm-mj7u-f3ii
-modified: "2026-11-19T20:54:10Z"
+modified: "2026-11-20T16:42:41Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY

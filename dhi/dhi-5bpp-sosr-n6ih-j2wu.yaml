@@ -47,6 +47,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -94,6 +95,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -140,6 +142,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -186,9 +189,10 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
 details: Envoy Gateway is an open source project for managing Envoy Proxy as a standalone or Kubernetes-based application gateway. Prior to 1.7.4 and 1.8.1, internal/wasm/imagefetcher.go follows tenant-controlled EnvoyExtensionPolicy spec.wasm[].code.image.url values to Docker or OCI Wasm layers, and extractWasmPluginBinary uses the untrusted tar-header h.Size value to allocate memory before validating the entry name or declared size. A small PAX or GNU tar header can therefore claim a multi-terabyte entry even though the surrounding LimitReader restricts only the bytes read from the stream, and no registry allowlist prevents a permitted tenant from selecting an attacker-controlled registry that the controller can reach. The allocation is attempted for every tar entry and can cause an unrecoverable Go runtime out-of-memory failure; because the custom resource persists, reconciliation repeatedly crash-loops the shared controller and causes a single-request, non-volumetric, cluster-wide control-plane denial of service. This issue is fixed in versions 1.7.4 and 1.8.1.
 id: DHI-5bpp-sosr-n6ih-j2wu
-modified: "2026-11-18T19:46:23Z"
+modified: "2026-11-20T16:48:58Z"
 published: "2026-11-14T06:25:19Z"
 references:
     - type: ADVISORY

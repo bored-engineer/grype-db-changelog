@@ -6,40 +6,70 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - introduced: "0"
+            - fixed: 1.8.2_git20260622-r1
+          type: ECOSYSTEM
       versions:
         - 1.8.1-r0
         - 1.8.1_git20260429-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - introduced: "0"
+            - fixed: 1.8.2_git20260622-r1
+          type: ECOSYSTEM
       versions:
         - 1.8.1_git20260609-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: jq
         purl: pkg:deb/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.7.1-6+deb13u2+dhi0
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2-1+deb13u0+dhi1
+          events:
+            - introduced: "0"
+            - fixed: 1.7.1-6+deb13u2+dhi0
+            - introduced: 1.8.1-5
+            - fixed: 1.8.2-1+deb13u0+dhi1
+          type: ECOSYSTEM
       versions:
         - 1.7.1-6+deb13u1dhi0
-        - 1.7.1-6+deb13u2+dhi0
-        - 1.7.1-6+deb13u2+dhi1
         - 1.7.1-6+deb13u2dhi0
         - 1.8.1-5
-        - 1.8.2-1+deb13u0+dhi1
-        - 1.8.2-1+dhi1
 details: jq is a command-line JSON processor. Commits before 6374ae0bcdfe33a18eb0ae6db28493b1f34a0a5b contain a vulnerability where CLI input parsing allows validation bypass via embedded NUL bytes. When reading JSON from files or stdin, jq uses strlen() to determine buffer length instead of the actual byte count from fgets(), causing it to truncate input at the first NUL byte and parse only the preceding prefix. This enables an attacker to craft input with a benign JSON prefix before a NUL byte followed by malicious trailing data, where jq validates only the prefix as valid JSON while silently discarding the suffix. Workflows relying on jq to validate untrusted JSON before forwarding it to downstream consumers are susceptible to parser differential attacks, as those consumers may process the full input including the malicious trailing bytes. This issue has been patched by commit 6374ae0bcdfe33a18eb0ae6db28493b1f34a0a5b.
 id: DHI-5khm-ywmr-2tqh-npmy
-modified: "2026-11-11T19:05:15Z"
+modified: "2026-11-20T21:36:55Z"
 published: "2026-11-11T19:05:15Z"
 references:
     - type: ADVISORY

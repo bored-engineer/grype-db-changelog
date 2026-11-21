@@ -183,7 +183,7 @@ affected:
         - 2.95.12-9
 details: The fix for CVE-2021-23337 added validation for the variable option in _.template but did not apply the same validation to options.imports key names, and both paths flow into the same Function() constructor sink. When an application passes untrusted input as options.imports key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time. Additionally, _.template uses assignInWith to merge imports, which enumerates inherited properties via for..in, so if Object.prototype has been polluted by another vector the polluted keys are copied into the imports object and passed to Function(). The issue is fixed in 4.18.1 for lodash, lodash-es, lodash-amd, and lodash.template. As a workaround, do not pass untrusted input as key names in options.imports; use only developer-controlled, static key names.
 id: DHI-qcen-6btb-6nm2-qcre
-modified: "2026-11-19T14:27:55Z"
+modified: "2026-11-20T18:58:32Z"
 published: "2026-11-11T18:58:10Z"
 references:
     - type: ADVISORY
@@ -251,6 +251,8 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-24331.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-97193.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-97537.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-10710.html
@@ -262,6 +264,8 @@ references:
       url: https://linux.oracle.com/errata/ELSA-2026-19167.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-24331.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-97193.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-97537.html
     - type: ADVISORY

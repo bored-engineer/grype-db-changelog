@@ -54,6 +54,8 @@ affected:
         - 18.11.14-r10
         - 18.11.14-r11
         - 18.11.14-r12
+        - 18.11.14-r13
+        - 18.11.14-r14
         - 18.11.14-r2
         - 18.11.14-r3
         - 18.11.14-r4
@@ -93,6 +95,8 @@ affected:
         - 19.5.6-r0
         - 19.5.6-r1
         - 19.6.0-r0
+        - 19.6.0-r1
+        - 19.6.1-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -139,6 +143,7 @@ affected:
         - 18.11.14-28
         - 18.11.14-29
         - 18.11.14-3
+        - 18.11.14-30
         - 18.11.14-4
         - 18.11.14-5
         - 18.11.14-6
@@ -190,6 +195,8 @@ affected:
         - 19.5.6-5
         - 19.6.0-0
         - 19.6.0-1
+        - 19.6.0-2
+        - 19.6.1-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -358,7 +365,7 @@ details: |-
 
     `TryRng` (previously `RngCore`) methods for `ThreadRng` use `unsafe` code to cast `*mut BlockRng<ReseedingCore>` to `&mut BlockRng<ReseedingCore>`. When all the above conditions are met this results in an aliased mutable reference, violating the Stacked Borrows rules. Miri is able to detect this violation in sample code. Since construction of [aliased mutable references is Undefined Behaviour](https://doc.rust-lang.org/stable/nomicon/references.html), the behaviour of optimized builds is hard to predict.
 id: DHI-blts-oxz3-txuo-v42s
-modified: "2026-11-19T23:26:52Z"
+modified: "2026-11-20T16:50:03Z"
 published: "2026-11-11T23:08:47Z"
 references:
     - type: ADVISORY

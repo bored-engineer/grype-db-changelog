@@ -6,11 +6,20 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 16.15-r0
+          events:
+            - introduced: "0"
+            - fixed: 16.15-r0
+          type: ECOSYSTEM
       versions:
         - 16.13-r0
         - 16.14-r0
-        - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -43,10 +52,19 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 16.15-r0
+          events:
+            - introduced: "0"
+            - fixed: 16.15-r0
+          type: ECOSYSTEM
       versions:
         - 16.14-r0
-        - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -82,7 +100,7 @@ affected:
         - 17.12-0+deb13u1+dhi0
 details: Incomplete tracking in PostgreSQL of changes to role membership, role attributes, and database ownership allows a query to continue using cached row-level security policies after those changes require a different policy, via plan reuse.  Stale policies continue until some other event invalidates the cache or connection termination ends the session.  This permits a user to complete reads and modifications that were recently permitted but now forbidden.  An attacker must tailor an attack to a particular application's pattern of privilege removal and role-specific row security policies.  Versions before PostgreSQL 18.6, 17.11, 16.15, 15.19, and 14.24 are affected.
 id: DHI-naua-ajir-6vuu-3qoi
-modified: "2026-11-14T10:34:36Z"
+modified: "2026-11-20T06:41:27Z"
 published: "2026-11-11T18:53:03Z"
 references:
     - type: ADVISORY

@@ -50,6 +50,7 @@ affected:
       versions:
         - 1.2.0-r0
         - 1.2.0-r1
+        - 1.2.0-r10
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
@@ -109,6 +110,7 @@ affected:
       versions:
         - 1.2.0-0
         - 1.2.0-1
+        - 1.2.0-10
         - 1.2.0-2
         - 1.2.0-3
         - 1.2.0-4
@@ -119,7 +121,7 @@ affected:
         - 1.2.0-9
 details: Netty is a network application framework for development of protocol servers and clients. Prior to versions 4.1.135.Final and 4.2.15.Final, SslClientHelloHandler.decode() reads the 24-bit TLS handshake length and, when the ClientHello does not fit in the first record, eagerly allocates `ctx.alloc().buffer(handshakeLength)` (line 161). The guard at line 140 is `handshakeLength > maxClientHelloLength && maxClientHelloLength != 0`, and the commonly-used SniHandler/AbstractSniHandler constructors (SniHandler(Mapping), SniHandler(AsyncMapping), AbstractSniHandler()) pass maxClientHelloLength=0 and handshakeTimeoutMillis=0, so the length guard is disabled and no timeout is scheduled. A 16 MiB request exceeds the default pooled chunk size and becomes a huge/unpooled allocation performed immediately. The buffer is retained in the handler until the channel closes. Versions 4.1.135.Final and 4.2.15.Final patch the issue.
 id: DHI-ljy6-ir5u-bsbs-36wr
-modified: "2026-11-19T04:15:03Z"
+modified: "2026-11-20T16:50:57Z"
 published: "2026-11-10T09:16:20Z"
 references:
     - type: ADVISORY

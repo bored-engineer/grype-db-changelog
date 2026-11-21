@@ -28,6 +28,7 @@ affected:
         - 1.40.3-r0
         - 1.40.3-r1
         - 1.40.3-r2
+        - 1.40.3-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -56,6 +57,7 @@ affected:
         - 1.40.3-r0
         - 1.40.3-r1
         - 1.40.3-r2
+        - 1.40.3-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -84,6 +86,7 @@ affected:
         - 1.40.3-r0
         - 1.40.3-r1
         - 1.40.3-r2
+        - 1.40.3-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -112,6 +115,7 @@ affected:
         - 1.40.3-r0
         - 1.40.3-r1
         - 1.40.3-r2
+        - 1.40.3-r3
 details: |-
     ### Summary
     When writing an object with metadata, the local backend applies the source-supplied `mode`, `uid`, and `gid` verbatim: it parses `mode` as an octal integer and passes it straight into `os.Chmod(o.path, os.FileMode(umode))`, and passes `uid`/`gid` straight into `os.Chown`. The value is never masked to permission bits, so any value with Go's `ModeSetuid` (1<<23) or `ModeSetgid` (1<<22) bit set causes the setuid/setgid bit to be applied. Because both the file content and its metadata come from the (attacker-controlled) source remote, an attacker stores a binary of their choosing with `mode = 40000755` (and `uid = 0`); when the victim runs `rclone copy -M <remote>: /dest`, rclone writes the attacker's binary and makes it setuid. If the victim runs rclone as root (typical for system backup/restore), the `uid=0` chown plus setuid produces a root-owned setuid binary with attacker content — any local user then escalates to root. When rclone runs as a non-root service user, the planted setuid binary is owned by that user, giving any local user that user's privileges (lateral escalation / persistent backdoor).
@@ -160,7 +164,7 @@ details: |-
     ### Remediation
     Mask special bits before applying mode from metadata — `os.Chmod(o.path, os.FileMode(umode).Perm())` (or `umode & 0o777`) — and do not honor setuid/setgid/sticky from source metadata; gate `uid`/`gid`/setuid application behind an explicit opt-in (e.g. `--local-metadata-set-ownership`) that is off by default, and document that `-M` from untrusted remotes must not restore privileged bits. Regression test: copying an object with `mode=40000755`/`uid=0` must produce a non-setuid, caller-owned file unless the opt-in is set.
 id: DHI-tysr-ucwv-5xou-64oh
-modified: "2026-11-13T19:15:46Z"
+modified: "2026-11-20T17:36:13Z"
 published: "2026-11-13T19:15:46Z"
 references:
     - type: ADVISORY

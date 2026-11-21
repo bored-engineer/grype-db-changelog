@@ -6,30 +6,48 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: cups
         purl: pkg:apk/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.18-r1
+          events:
+            - introduced: "0"
+            - fixed: 2.4.18-r1
+          type: ECOSYSTEM
       versions:
         - 2.4.13-r0
         - 2.4.16-r0
         - 2.4.18-r0
-        - 2.4.18-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: cups
         purl: pkg:deb/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.10-3+deb13u2+dhi6
+          events:
+            - introduced: "0"
+            - fixed: 2.4.10-3+deb13u2+dhi6
+          type: ECOSYSTEM
       versions:
         - 2.4.10-3+deb13u2+dhi1
         - 2.4.10-3+deb13u2+dhi2
         - 2.4.10-3+deb13u2+dhi3
         - 2.4.10-3+deb13u2+dhi4
         - 2.4.10-3+deb13u2+dhi5
-        - 2.4.10-3+deb13u2+dhi6
-        - 2.4.10-3+deb13u2+dhi7
-        - 2.4.10-3+deb13u2+dhi8
         - 2.4.10-3+deb13u2dhi0
 details: OpenPrinting CUPS before 2.4.20 contains a double-free in printer-class management. When CUPS-Add-Modify-Class replaces an existing class member list, add_class() frees pclass->printers without clearing the pointer. If subsequent validation fails, the class retains the dangling pointer; CUPS-Delete-Class subsequently frees the same allocation in cupsdDeletePrinter(). A client authorized to modify and delete classes can cause scheduler-wide denial of service. The default policy requires @SYSTEM privileges.
 id: DHI-oewf-jtz3-vxgd-6aej
-modified: "2026-11-11T16:04:58Z"
+modified: "2026-11-20T04:17:52Z"
 published: "2026-11-11T16:04:58Z"
 references:
     - type: ADVISORY

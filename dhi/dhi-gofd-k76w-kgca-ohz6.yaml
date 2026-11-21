@@ -46,6 +46,7 @@ affected:
         - 2.14.0-r0
         - 2.15.0-r0
         - 2.15.0-r1
+        - 2.15.0-r2
         - 2.9.1-r0
     - database_specific:
         owner_kind: HSP
@@ -128,6 +129,7 @@ affected:
         - 2.14.0-0
         - 2.15.0-0
         - 2.15.0-1
+        - 2.15.0-2
         - 2.9.1-0
     - database_specific:
         owner_kind: HSP
@@ -172,6 +174,7 @@ affected:
         - 6.1.0-39
         - 6.1.0-4
         - 6.1.0-40
+        - 6.1.0-41
         - 6.1.0-5
         - 6.1.0-6
         - 6.1.0-7
@@ -179,7 +182,7 @@ affected:
         - 6.1.0-9
 details: Handlebars provides the power necessary to let users build semantic templates. From 4.0.0 until 4.7.10, Handlebars.compile() and Handlebars.precompile() accept pre-parsed AST objects while validating only selected PathExpression, NumberLiteral, and BooleanLiteral values. This issue bypasses the AST validation introduced in version 4.7.9 for CVE-2026-33937. An attacker who can supply an object instead of a template string can place JavaScript expressions in unchecked values such as Program.blockParams.length, a non-PathExpression parameter depth, a non-string StringLiteral.value, or a non-string PathExpression.original. The compiler emits those values into generated JavaScript, causing code execution in the server process when compile output renders or wherever precompile output is loaded. Applications that pass only template strings are not affected. This issue is fixed in version 4.7.10.
 id: DHI-gofd-k76w-kgca-ohz6
-modified: "2026-11-18T23:44:33Z"
+modified: "2026-11-20T16:52:32Z"
 published: "2026-11-12T03:28:18Z"
 references:
     - type: ADVISORY

@@ -6,40 +6,67 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - introduced: "0"
+            - fixed: 1.8.2_git20260622-r1
+          type: ECOSYSTEM
       versions:
         - 1.8.1-r0
         - 1.8.1_git20260429-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - introduced: "0"
+            - fixed: 1.8.2_git20260622-r1
+          type: ECOSYSTEM
       versions:
         - 1.8.1_git20260609-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: jq
         purl: pkg:deb/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2-1+deb13u0+dhi1
+          events:
+            - introduced: "0"
+            - fixed: 1.8.2-1+deb13u0+dhi1
+          type: ECOSYSTEM
       versions:
         - 1.7.1-6+deb13u1dhi0
         - 1.7.1-6+deb13u2+dhi0
         - 1.7.1-6+deb13u2+dhi1
         - 1.7.1-6+deb13u2dhi0
         - 1.8.1-5
-        - 1.8.2-1+deb13u0+dhi1
-        - 1.8.2-1+dhi1
 details: jq is a command-line JSON processor. In 1.8.1 and earlier, when decNumberFromString is given a number literal of INT_MAX-1 (2147483646) digits, the D2U() macro overflows during signed-int arithmetic. The wrapped negative value bypasses the heap-allocation size check, causes the function to use a 30-byte stack buffer, and then writes ≈715 million 16-bit units (≈1.4 GiB) at an offset 1.43 GiB below the stack frame. The written content is fully attacker-controlled (the parsed decimal digits, packed 3-per-unit).
 id: DHI-etmt-r4ew-b2hd-ykid
-modified: "2026-11-11T19:05:15Z"
+modified: "2026-11-20T22:27:18Z"
 published: "2026-11-11T19:05:15Z"
 references:
     - type: ADVISORY

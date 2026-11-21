@@ -14,6 +14,8 @@ affected:
         - 0.8.8-r4
         - 0.8.8-r5
         - 0.8.8-r6
+        - 0.8.9-r0
+        - 0.8.9-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -27,9 +29,10 @@ affected:
         - 0.8.8-3
         - 0.8.8-4
         - 0.8.8-5
+        - 0.8.9-0
 details: Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. From 6.0.0 until 6.13.12, 7.8.13, 8.24.7, and 9.11.4, Mongoose stores the connection-level sanitizeFilter option in Connection.config, but Query.prototype._castConditions() and query casting check other option locations and do not read that configuration. An application that enables sanitizeFilter through mongoose.connect() or createConnection() and passes an attacker-controlled object into a query filter therefore receives a connection that reports the defense as enabled while query selector objects remain unsanitized. A crafted password value using a query operator can match an account record without the expected literal password, while global configuration through mongoose.set('sanitizeFilter') and per-query Model.find().sanitizeFilter() remain unaffected. This issue is fixed in versions 6.13.12, 7.8.13, 8.24.7, and 9.11.4.
 id: DHI-ecw3-xuek-6gik-dxgf
-modified: "2026-11-13T20:07:03Z"
+modified: "2026-11-20T14:21:44Z"
 published: "2026-11-12T10:02:59Z"
 references:
     - type: ADVISORY

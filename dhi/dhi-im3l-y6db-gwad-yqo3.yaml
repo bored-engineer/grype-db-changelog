@@ -22,6 +22,8 @@ affected:
         - 3.4.0-r2
         - 3.4.0-r3
         - 3.4.0-r4
+        - 3.4.0-r5
+        - 3.4.0-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -44,6 +46,8 @@ affected:
         - 3.4.0-r2
         - 3.4.0-r3
         - 3.4.0-r4
+        - 3.4.0-r5
+        - 3.4.0-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -79,6 +83,9 @@ affected:
         - 3.4.0-12
         - 3.4.0-13
         - 3.4.0-14
+        - 3.4.0-15
+        - 3.4.0-16
+        - 3.4.0-17
         - 3.4.0-2
         - 3.4.0-3
         - 3.4.0-4
@@ -112,6 +119,9 @@ affected:
         - 3.4.0-12
         - 3.4.0-13
         - 3.4.0-14
+        - 3.4.0-15
+        - 3.4.0-16
+        - 3.4.0-17
         - 3.4.0-2
         - 3.4.0-3
         - 3.4.0-4
@@ -120,6 +130,22 @@ affected:
         - 3.4.0-7
         - 3.4.0-8
         - 3.4.0-9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: influxdb3-3.10
+        purl: pkg:deb/dhi/influxdb3-3.10
+      versions:
+        - 3.10.6-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: influxdb3-3.11
+        purl: pkg:deb/dhi/influxdb3-3.11
+      versions:
+        - 3.11.8-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -149,7 +175,7 @@ affected:
         - 0.62.0-1
 details: rustls-webpki through 0.103.12 (and 0.104.0-alpha releases before 0.104.0-alpha.7) contains a reachable panic in bit_string_flags() in src/der.rs. The input guard fails to reject a named-bit BIT STRING whose content is exactly [0x00] (zero padding bits and no data bytes), so raw_bits.len() - 1 underflows on the empty slice and the subsequent index operation panics (subtract-with-overflow in debug, index-out-of-bounds in release). The condition is reachable through the public API BorrowedCertRevocationList::from_der() when a CRL contains an issuingDistributionPoint extension with such an onlySomeReasons value. Exploitation requires an application that explicitly opts in to CRL revocation checking by passing RevocationOptions to verify_for_usage() and that parses CRL bytes obtained from a source the attacker can influence; the default rustls configuration, which does not use RevocationOptions, is unaffected. A crafted CRL causes a denial of service via the panic. Fixed in 0.103.13 and 0.104.0-alpha.7.
 id: DHI-im3l-y6db-gwad-yqo3
-modified: "2026-11-18T22:53:33Z"
+modified: "2026-11-20T18:23:07Z"
 published: "2026-11-10T04:52:32Z"
 references:
     - type: ADVISORY
@@ -163,6 +189,8 @@ references:
     - type: ADVISORY
       url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-93601
     - type: ADVISORY
+      url: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-93657
+    - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-93599
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2/ALAS-2026-4069.html
@@ -170,6 +198,8 @@ references:
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3375.html
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3378.html
+    - type: ADVISORY
+      url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3496.html
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:85848
     - type: ADVISORY

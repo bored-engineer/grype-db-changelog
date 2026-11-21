@@ -817,6 +817,7 @@ affected:
         - 2026.07.28-19
         - 2026.07.28-2
         - 2026.07.28-20
+        - 2026.07.28-21
         - 2026.07.28-3
         - 2026.07.28-4
         - 2026.07.28-5
@@ -981,6 +982,7 @@ affected:
         - 5.5.5-2
         - 5.5.5-3
         - 5.5.5-4
+        - 5.5.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -1161,6 +1163,7 @@ affected:
         - 1.110.0-0
         - 1.110.0-1
         - 1.110.1-0
+        - 1.110.2-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -1600,6 +1603,7 @@ affected:
         - 2.11.0-5
         - 2.11.0-6
         - 2.11.0-7
+        - 2.11.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -1630,6 +1634,7 @@ affected:
         - 2.11.0-5
         - 2.11.0-6
         - 2.11.0-7
+        - 2.11.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -1660,6 +1665,7 @@ affected:
         - 2.13.0-5
         - 2.13.0-6
         - 2.13.0-7
+        - 2.13.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -1690,6 +1696,7 @@ affected:
         - 2.9.1-5
         - 2.9.1-6
         - 2.9.1-7
+        - 2.9.1-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -1872,7 +1879,7 @@ database_specific:
         - legacy_package_image_owner
 details: urllib3 is an HTTP client library for Python. From 1.26.0 until 2.8.0, the proxy_ssl_context, proxy_assert_hostname, proxy_assert_fingerprint, ssl_context, cert_reqs, verify_mode, use_forwarding_for_https=True, and CERT_NONE configuration paths fail to remain separated because target-server TLS settings are incorrectly applied to the HTTPS proxy connection. The trigger is that an application uses an HTTPS proxy and configures target-server TLS settings that must remain separate from the proxy TLS handshake, including HTTPS forwarding with target-specific identity or credentials. Applying cert_reqs=CERT_NONE can overwrite proxy_ssl_context.verify_mode in place, and the mutation persists so later connections reusing the same context may connect to the HTTPS proxy without certificate verification. The attack mechanism is that an attacker intercepts and impersonates the HTTPS proxy after the effective proxy policy accepts the attacker's certificate. The impact is that the attacker can observe or modify forwarded traffic or receive a target TLS client certificate, while CONNECT tunneling still preserves the separate end-to-end target TLS connection. This issue is fixed in version 2.8.0.
 id: DHI-c3gj-ovvi-bpta-obtf
-modified: "2026-11-19T21:18:15Z"
+modified: "2026-11-20T20:51:19Z"
 published: "2026-11-19T21:18:15Z"
 references:
     - type: ADVISORY

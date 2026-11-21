@@ -30,6 +30,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -60,6 +61,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -90,6 +92,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -120,6 +123,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -139,7 +143,7 @@ affected:
         - 7.6.5-9
 details: Svelte devalue is a JavaScript library that serializes values into strings when JSON.stringify isn't sufficient for the job. In versions 5.1.0 through 5.9.2, stringify and uneval functions serialize a typed array by emitting its entire backing ArrayBuffer rather than only the view, so serializing a Node Buffer, whose backing store is a process-wide shared pool, discloses up to 64 KB of unrelated process memory, including bytes from other in-flight requests. In a server-side-rendered framework such as SvelteKit or Nuxt, a public page whose load() returns a small Buffer, or that reads a small file, can therefore ship another user's request body or Authorization header in its HTML without authentication. Because this occurs during serialization, it fires on every such render and is not mitigated by the parse/unflatten prototype-pollution and denial-of-service guards, which only apply when parsing untrusted input. As a workaround, convert Node Buffer objects to Uint8Array before serialization. This issue has been fixed in version 5.9.3.
 id: DHI-7cqf-jqck-co5g-nsrw
-modified: "2026-11-13T23:01:13Z"
+modified: "2026-11-20T19:50:21Z"
 published: "2026-11-13T23:01:13Z"
 references:
     - type: ADVISORY

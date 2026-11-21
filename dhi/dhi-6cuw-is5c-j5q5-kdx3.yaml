@@ -99,6 +99,7 @@ affected:
         - 3.4.13-r5
         - 3.4.13-r6
         - 3.4.13-r7
+        - 3.4.14-r0
         - 3.4.7-r1
         - 3.4.7-r2
         - 3.4.8-r0
@@ -137,6 +138,7 @@ affected:
         - 3.4.13-r5
         - 3.4.13-r6
         - 3.4.13-r7
+        - 3.4.14-r0
         - 3.4.7-r1
         - 3.4.7-r2
         - 3.4.8-r0
@@ -186,6 +188,7 @@ affected:
         - 3.5.7-r6
         - 3.5.7-r7
         - 3.5.7-r8
+        - 3.5.8-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -224,6 +227,7 @@ affected:
         - 3.5.7-r6
         - 3.5.7-r7
         - 3.5.7-r8
+        - 3.5.8-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -330,6 +334,7 @@ affected:
         - 2.14.0-r0
         - 2.15.0-r0
         - 2.15.0-r1
+        - 2.15.0-r2
         - 2.9.1-r0
     - database_specific:
         owner_kind: HSP
@@ -380,6 +385,8 @@ affected:
         - 3.12.13-18
         - 3.12.13-19
         - 3.12.13-2
+        - 3.12.13-20
+        - 3.12.13-21
         - 3.12.13-3
         - 3.12.13-4
         - 3.12.13-5
@@ -620,6 +627,7 @@ affected:
         - 4.80.0-1
         - 4.81.0-0
         - 4.82.0-0
+        - 4.83.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -641,6 +649,7 @@ affected:
         - 1.121.3-6
         - 1.121.3-7
         - 1.121.4-0
+        - 1.121.4-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -664,6 +673,7 @@ affected:
         - 2.14.0-0
         - 2.15.0-0
         - 2.15.0-1
+        - 2.15.0-2
         - 2.9.1-0
     - database_specific:
         owner_kind: HSP
@@ -708,6 +718,7 @@ affected:
         - 6.1.0-39
         - 6.1.0-4
         - 6.1.0-40
+        - 6.1.0-41
         - 6.1.0-5
         - 6.1.0-6
         - 6.1.0-7
@@ -842,7 +853,7 @@ details: |-
 
     An unauthenticated request can make any code path that re-serializes attacker-influenced data with `qs.stringify` (for example, rebuilding a query string from `req.query` for a redirect or an upstream request, or serializing a parsed JSON body) throw synchronously. In a typical Node.js HTTP framework the throw is caught by the framework error boundary and the affected request returns a 500; the process survives and other requests are unaffected. Where the call runs outside an error boundary, such as an `async` Express 4 handler (where the throw becomes an unhandled promise rejection) or a background job, the process exits, so the impact in that case depends on the application error handling rather than on qs.
 id: DHI-6cuw-is5c-j5q5-kdx3
-modified: "2026-11-18T23:44:33Z"
+modified: "2026-11-20T16:51:39Z"
 published: "2026-11-12T00:42:35Z"
 references:
     - type: ADVISORY

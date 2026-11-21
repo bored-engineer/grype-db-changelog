@@ -30,6 +30,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -60,6 +61,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -90,6 +92,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -120,6 +123,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -197,6 +201,10 @@ affected:
         - 1.96.2-0
         - 1.96.4-0
         - 1.97.0-0
+        - 1.97.1-0
+        - 1.97.2-0
+        - 1.97.2-1
+        - 1.98.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -212,6 +220,7 @@ affected:
         - 2.5.11-1
         - 2.5.11-2
         - 2.5.11-3
+        - 2.5.12-0
         - 2.5.3-0
         - 2.5.3-1
         - 2.5.4-0
@@ -224,7 +233,7 @@ affected:
         - 2.5.9-1
 details: undici's dump interceptor reads and discards a response body up to a configurable maximum size. When a response declares a Content-Length that exceeds the maximum, the interceptor aborts cleanly, but when a response has no Content-Length and is chunked, the interceptor instead signals completion early once the accumulated size reaches the maximum, without pausing or aborting the request. Because the underlying parser keeps delivering body bytes, a second completion signal fires and trips an internal assertion, which aborts the request and tears down the connection. The application is left observing a misleading successful status with an empty or truncated body while the connection has actually been disconnected. This affects undici versions from 7.1.0 up to 7.29.1 and from 8.0.0 up to 8.10.2. Users should upgrade to undici 7.29.1 or 8.10.2.
 id: DHI-r5r4-zf5f-estv-2sip
-modified: "2026-11-18T17:46:45Z"
+modified: "2026-11-20T18:23:33Z"
 published: "2026-11-13T17:03:58Z"
 references:
     - type: ADVISORY

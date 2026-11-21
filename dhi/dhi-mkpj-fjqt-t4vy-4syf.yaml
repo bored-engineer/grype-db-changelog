@@ -26,14 +26,49 @@ affected:
         - 3.5.7-1~deb13u2+fips+dhi0
         - 3.5.7-1~deb13u3+dhi0
         - 3.5.7-1~deb13u3+dhi1
+        - 3.5.7-1~deb13u3+dhi2
+        - 3.5.7-1~deb13u3+dhi3
         - 3.5.7-1~deb13u3+fips+dhi0
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
-details: Receiving crafted out-of-sequence DTLS handshake fragments may cause OpenSSL to allocate a full message-length reassembly buffer for each buffered message, so a small amount of wire data consumes a large amount of memory.
+details: |-
+    Issue summary: Receiving crafted out-of-sequence DTLS handshake fragments may
+    cause OpenSSL to allocate a full message-length reassembly buffer for each
+    buffered message, so a small amount of wire data consumes a large amount of
+    memory.
+
+    Impact summary: A remote attacker can send a few small crafted DTLS handshake
+    fragments to make a DTLS server or client allocate well over a megabyte of
+    memory per connection, which may lead to memory exhaustion and Denial of
+    Service if many connections are made.
+
+    CWE: CWE-770: Allocation of Resources Without Limits or Throttling
+
+    Description: DTLS handshake messages can arrive out of order and fragmented,
+    so OpenSSL buffers fragments of up to ten out-of-sequence messages until
+    reassembly is possible. When the first fragment of a new message arrives,
+    OpenSSL allocates a buffer sized to the full message length declared in the
+    fragment header, plus a reassembly bitmap, instead of storing only the bytes
+    actually received. The declared length is capped by the maximum certificate
+    list size, 128KB by default, and that cap applies to every handshake message
+    type rather than only to Certificate messages.
+
+    Only DTLS endpoints reach this code. TLS, QUIC and applications that do not
+    use DTLS are unaffected. An attacker sends fragments that declare a large
+    message length but carry almost no data, using up to ten distinct message
+    sequence numbers.
+
+    A single connection can then hold roughly 1.4MB of buffers from about 156
+    bytes on the wire. Because the number of buffered messages is capped, memory
+    exhaustion requires many connections or many peers, which is why the severity
+    is Low.
+
+    FIPS impact: no
+    The affected code is outside the FIPS module boundary.
 id: DHI-mkpj-fjqt-t4vy-4syf
-modified: "2026-11-19T20:54:32Z"
+modified: "2026-11-21T00:17:09Z"
 published: "2026-11-19T00:29:06Z"
 references:
     - type: ADVISORY
@@ -54,6 +89,6 @@ schema_version: 1.8.0
 severity:
     - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L
       type: CVSS_V3
-summary: Receiving crafted out-of-sequence DTLS handshake fragments may cause OpenSSL to allocate a full message-length…
+summary: 'Issue summary: Receiving crafted out-of-sequence DTLS handshake fragments may'
 upstream:
     - CVE-2026-95690

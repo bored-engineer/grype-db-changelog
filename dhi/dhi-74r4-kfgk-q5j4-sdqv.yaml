@@ -351,6 +351,7 @@ affected:
         - 6.1.0-39
         - 6.1.0-4
         - 6.1.0-40
+        - 6.1.0-41
         - 6.1.0-5
         - 6.1.0-6
         - 6.1.0-7
@@ -358,7 +359,7 @@ affected:
         - 6.1.0-9
 details: fflate through 0.8.2 is vulnerable to denial of service via an infinite loop in unzipSync(). A crafted ZIP archive with a central directory entry declaring compressed_size=0xFFFFFFFF (ZIP64 sentinel) but missing the required ZIP64 extra field tag 0x0001 causes z64e() to loop indefinitely due to out-of-bounds reads returning undefined, which coerces to 0, keeping the loop condition permanently true.
 id: DHI-74r4-kfgk-q5j4-sdqv
-modified: "2026-11-17T07:09:30Z"
+modified: "2026-11-20T19:20:30Z"
 published: "2026-11-14T01:16:53Z"
 references:
     - type: ADVISORY

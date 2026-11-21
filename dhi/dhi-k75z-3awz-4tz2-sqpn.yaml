@@ -26,14 +26,45 @@ affected:
         - 3.5.7-1~deb13u2+fips+dhi0
         - 3.5.7-1~deb13u3+dhi0
         - 3.5.7-1~deb13u3+dhi1
+        - 3.5.7-1~deb13u3+dhi2
+        - 3.5.7-1~deb13u3+dhi3
         - 3.5.7-1~deb13u3+fips+dhi0
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
-details: A DANE-enabled TLS client may crash by dereferencing a NULL pointer when processing an unusual combination of certificate and TLSA records.
+details: |-
+    Issue summary: A DANE-enabled TLS client may crash by dereferencing a NULL
+    pointer when processing an unusual combination of certificate and TLSA
+    records.
+
+    Impact summary: The impact is limited to a client crash (potential Denial
+    of Service).
+
+    CWE: CWE-476: NULL Pointer Dereference
+
+    Description: A DANE-enabled TLS client that supports TLSA records with at
+    least one of the PKIX-TA(0) or PKIX-EE(1) usages alongside the DANE-TA(2)
+    usage may crash by dereferencing a NULL pointer if the server claims a trusted
+    CA's certificate to be its end-entity certificate and has an unusual mix of
+    associated TLSA records.
+
+    DANE SMTP clients should not be affected since only the
+    DANE-TA(2) and DANE-EE(3) TLSA record usages are specified applicable
+    in SMTP.  For example, the Postfix MTA is not affected, while the Exim
+    MTA does not at present use OpenSSL's DANE implementation.
+
+    Use of DANE in validation of RFC7250 raw public keys (RPKs) is also
+    unaffected, as these only use DANE-EE(3) TLSA records.
+
+    Only applications that support combining the DANE PKI with a traditional PKI
+    are potentially affected.  A DANE-enabled browser or similar, that uses
+    OpenSSL's DANE API could be affected.
+
+    FIPS impact: no
+    The DANE API is outside the FIPS module boundary.
 id: DHI-k75z-3awz-4tz2-sqpn
-modified: "2026-11-19T20:54:10Z"
+modified: "2026-11-21T00:17:09Z"
 published: "2026-11-19T11:13:53Z"
 references:
     - type: ADVISORY
@@ -49,6 +80,9 @@ references:
     - type: FIX
       url: https://github.com/openssl/openssl/pull/33634
 schema_version: 1.8.0
-summary: A DANE-enabled TLS client may crash by dereferencing a NULL pointer when processing an unusual combination of…
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+      type: CVSS_V3
+summary: 'Issue summary: A DANE-enabled TLS client may crash by dereferencing a NULL'
 upstream:
     - CVE-2026-84786
