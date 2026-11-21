@@ -30,6 +30,16 @@ affected:
         - 1.94.0-r1
         - 1.94.2-r0
         - 1.95.0-r0
+        - 1.95.0-r1
+        - 1.96.0-r0
+        - 1.96.1-r0
+        - 1.96.2-r0
+        - 1.96.4-r0
+        - 1.97.0-r0
+        - 1.97.1-r0
+        - 1.97.2-r0
+        - 1.97.2-r1
+        - 1.98.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -62,9 +72,19 @@ affected:
         - 1.94.2-0
         - 1.94.2-1
         - 1.95.0-0
+        - 1.95.0-1
+        - 1.96.0-0
+        - 1.96.1-0
+        - 1.96.2-0
+        - 1.96.4-0
+        - 1.97.0-0
+        - 1.97.1-0
+        - 1.97.2-0
+        - 1.97.2-1
+        - 1.98.2-0
 details: 'fastify versions before 5.12.2 implement the case-insensitive nature of HTTP header names by lowercasing names in a route''s header schema before compiling it, but the transformation is incomplete: it lowercases the properties keys and the root-level required array, and does not lowercase the trigger and dependent names inside the JSON Schema Draft 7 dependencies keyword. Because Node stores request header names in lowercase, a canonical-case dependency such as requiring an authentication header whenever a privileged-mode header is present never matches, and the presence assertion is silently skipped. An unauthenticated remote client can therefore send the header that activates a privileged branch while omitting the header the dependency was meant to require, bypassing the conditional check. Users should upgrade to fastify 5.12.2 or later.'
 id: DHI-7swr-x2xg-v3tt-sual
-modified: "2026-11-14T08:26:18Z"
+modified: "2026-11-20T18:47:27Z"
 published: "2026-11-13T17:09:46Z"
 references:
     - type: ADVISORY

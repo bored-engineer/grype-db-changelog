@@ -29,6 +29,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -59,6 +60,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -89,6 +91,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -119,6 +122,7 @@ affected:
         - 2.9.1-r3
         - 2.9.1-r4
         - 2.9.1-r5
+        - 2.9.1-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -196,6 +200,10 @@ affected:
         - 1.96.2-0
         - 1.96.4-0
         - 1.97.0-0
+        - 1.97.1-0
+        - 1.97.2-0
+        - 1.97.2-1
+        - 1.98.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -211,6 +219,7 @@ affected:
         - 2.5.11-1
         - 2.5.11-2
         - 2.5.11-3
+        - 2.5.12-0
         - 2.5.3-0
         - 2.5.3-1
         - 2.5.4-0
@@ -223,7 +232,7 @@ affected:
         - 2.5.9-1
 details: undici's BalancedPool constructor passes its entire options object through an internal deep-clone that serializes and reparses the value as JSON. Because JSON cannot represent functions, any function-valued TLS option, such as a caller-supplied checkServerIdentity callback or a custom connector inside the connect option, is silently discarded before it reaches the TLS layer. As a result a peer whose certificate the application's custom checkServerIdentity was written to reject, but which still passes Node's default hostname and chain checks, is accepted when reached through BalancedPool. The Client, Pool, and Agent dispatchers are not affected because they extract the connect and tls options before cloning. This affects undici versions from 7.24.1 up to 7.29.1 and from 8.0.0 up to 8.10.2, and only when the application supplies a function-valued connect or tls option to BalancedPool. Users should upgrade to undici 7.29.1 or 8.10.2.
 id: DHI-yq3e-nicb-6i5r-5nci
-modified: "2026-11-18T17:46:45Z"
+modified: "2026-11-20T18:23:50Z"
 published: "2026-11-13T17:05:28Z"
 references:
     - type: ADVISORY
@@ -283,6 +292,8 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-97855.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98060.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-73428.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-73838.html
@@ -290,6 +301,8 @@ references:
       url: https://linux.oracle.com/errata/ELSA-2026-74085.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-97855.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98060.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-84961
     - type: ADVISORY

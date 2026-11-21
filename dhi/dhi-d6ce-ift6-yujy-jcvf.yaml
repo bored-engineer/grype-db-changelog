@@ -370,6 +370,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -393,6 +394,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -416,6 +418,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -463,6 +466,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -509,6 +513,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -555,6 +560,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -572,6 +578,7 @@ affected:
         - 7.85.4-2
         - 7.85.4-3
         - 7.85.4-4
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -585,6 +592,7 @@ affected:
         - 0.52.0-3
         - 0.52.0-4
         - 0.52.0-5
+        - 0.52.0-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -608,6 +616,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -631,6 +640,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -654,6 +664,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -677,6 +688,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -700,6 +712,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -723,6 +736,7 @@ affected:
         - 7.85.4-7
         - 7.85.4-8
         - 7.85.4-9
+        - 7.85.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -883,6 +897,7 @@ affected:
         - 1.110.0-0
         - 1.110.0-1
         - 1.110.1-0
+        - 1.110.2-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -1037,6 +1052,7 @@ affected:
         - 1.106.10-2
         - 1.106.10-3
         - 1.106.11-0
+        - 1.106.12-0
         - 1.106.2-0
         - 1.106.3-0
         - 1.106.4-0
@@ -1062,6 +1078,7 @@ affected:
         - 1.108.11-0
         - 1.108.11-1
         - 1.108.12-0
+        - 1.108.13-0
         - 1.108.3-0
         - 1.108.4-0
         - 1.108.5-0
@@ -1085,6 +1102,7 @@ affected:
         - 1.109.1-3
         - 1.109.1-4
         - 1.109.2-0
+        - 1.109.3-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1257,6 +1275,22 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
+        name: prefect-3
+        purl: pkg:deb/dhi/prefect-3
+      versions:
+        - 3.9.1-0
+        - 3.9.2-0
+        - 3.9.2-1
+        - 3.9.2-2
+        - 3.9.2-3
+        - 3.9.3-0
+        - 3.9.3-1
+        - 3.9.3-2
+        - 3.9.4-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
         name: scrapegraph-mcp
         purl: pkg:deb/dhi/scrapegraph-mcp
       versions:
@@ -1388,7 +1422,7 @@ database_specific:
         - legacy_package_image_owner
 details: OpenTelemetry Python provides the Python API and SDK for OpenTelemetry. Prior to 1.45.2, TraceContextTextMapPropagator.extract() in opentelemetry-api can perform quadratic-time regular-expression backtracking on a malformed traceparent value containing a trace-context prefix, a long whitespace sequence, and an embedded newline. Exploitation requires an attacker-controlled carrier that preserves embedded newlines and permits a sufficiently large value, because conforming HTTP header values cannot contain embedded newlines. JSON-based carriers, including applicable MCP request metadata integrations, can preserve the required newline depending on the SDK, instrumentation, and message-size limits. Parsing on an asynchronous server's event-loop thread can consume excessive CPU and delay unrelated requests, while the advisory does not establish disclosure, modification, or code execution. This issue is fixed in version 1.45.2.
 id: DHI-d6ce-ift6-yujy-jcvf
-modified: "2026-11-19T21:17:05Z"
+modified: "2026-11-20T16:48:58Z"
 published: "2026-11-19T21:18:15Z"
 references:
     - type: ADVISORY

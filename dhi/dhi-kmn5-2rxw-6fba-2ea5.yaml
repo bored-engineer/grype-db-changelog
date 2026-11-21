@@ -27,6 +27,7 @@ affected:
         - 1.40.3-r0
         - 1.40.3-r1
         - 1.40.3-r2
+        - 1.40.3-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -55,6 +56,7 @@ affected:
         - 1.40.3-r0
         - 1.40.3-r1
         - 1.40.3-r2
+        - 1.40.3-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -83,6 +85,7 @@ affected:
         - 1.40.3-r0
         - 1.40.3-r1
         - 1.40.3-r2
+        - 1.40.3-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -111,6 +114,7 @@ affected:
         - 1.40.3-r0
         - 1.40.3-r1
         - 1.40.3-r2
+        - 1.40.3-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -136,15 +140,29 @@ affected:
         - 3.12.12-5
         - 3.12.13-0
         - 3.12.13-1
+        - 3.12.13-10
+        - 3.12.13-11
+        - 3.12.13-12
+        - 3.12.13-13
+        - 3.12.13-14
+        - 3.12.13-15
+        - 3.12.13-16
+        - 3.12.13-17
+        - 3.12.13-18
+        - 3.12.13-19
         - 3.12.13-2
+        - 3.12.13-20
+        - 3.12.13-21
         - 3.12.13-3
         - 3.12.13-4
         - 3.12.13-5
         - 3.12.13-6
         - 3.12.13-7
+        - 3.12.13-8
+        - 3.12.13-9
 details: rclone is a command-line program to sync files and directories to and from different cloud storage providers. Prior to 1.75.1, rclone core does not reject parent-directory segments in source Object.Remote() values before fs/list, fs/walk, fs/sync, and fs/operations pass those values to destination backends. A flat-keyspace source object store populated with native non-rclone tooling can contain a raw .. key segment, and affected b2, swift, qingstor, oracleobjectstorage, internetarchive, smb, storj, sftp, webdav, ftp, filelu, shade, and sia destinations use path.Join(root, remote) before EncodeDot can neutralize the segment. A copy or upload can therefore escape the configured root into another bucket, share, or path reachable by the victim credential, with sftp and smb potentially reaching other filesystem or share locations under the same login authority. This issue is fixed in version 1.75.1.
 id: DHI-kmn5-2rxw-6fba-2ea5
-modified: "2026-11-14T20:39:29Z"
+modified: "2026-11-20T17:36:13Z"
 published: "2026-11-12T04:38:49Z"
 references:
     - type: ADVISORY

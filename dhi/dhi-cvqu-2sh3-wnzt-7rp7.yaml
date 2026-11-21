@@ -1,0 +1,224 @@
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: rust
+        purl: pkg:apk/dhi/rust
+      versions:
+        - 1.91.1-r0
+        - 1.91.1-r2
+        - 1.91.1-r3
+        - 1.91.1-r4
+        - 1.93.1-r0
+        - 1.93.1-r1
+        - 1.94.0-r0
+        - 1.94.0-r1
+        - 1.94.1-r0
+        - 1.94.1-r1
+        - 1.95.0-r0
+        - 1.96.0-r0
+        - 1.96.1-r0
+        - 1.97.0-r0
+        - 1.97.0-r1
+        - 1.98.1-r0
+        - 1.99.0-r2
+        - 1.99.1-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: teleport-18
+        purl: pkg:deb/dhi/teleport-18
+      versions:
+        - 18.11.1-10
+        - 18.11.1-11
+        - 18.11.1-12
+        - 18.11.1-13
+        - 18.11.1-14
+        - 18.11.1-15
+        - 18.11.1-16
+        - 18.11.1-17
+        - 18.11.1-18
+        - 18.11.1-2
+        - 18.11.1-3
+        - 18.11.1-4
+        - 18.11.1-5
+        - 18.11.1-6
+        - 18.11.1-7
+        - 18.11.1-8
+        - 18.11.1-9
+        - 18.11.10-0
+        - 18.11.10-1
+        - 18.11.10-2
+        - 18.11.10-3
+        - 18.11.10-4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: teleport-18-dev
+        purl: pkg:deb/dhi/teleport-18-dev
+      versions:
+        - 18.11.1-10
+        - 18.11.1-11
+        - 18.11.1-12
+        - 18.11.1-13
+        - 18.11.1-14
+        - 18.11.1-15
+        - 18.11.1-16
+        - 18.11.1-17
+        - 18.11.1-18
+        - 18.11.1-2
+        - 18.11.1-3
+        - 18.11.1-4
+        - 18.11.1-5
+        - 18.11.1-6
+        - 18.11.1-7
+        - 18.11.1-8
+        - 18.11.1-9
+        - 18.11.10-0
+        - 18.11.10-1
+        - 18.11.10-2
+        - 18.11.10-3
+        - 18.11.10-4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: teleport-18-fips
+        purl: pkg:deb/dhi/teleport-18-fips
+      versions:
+        - 18.11.1-10
+        - 18.11.1-11
+        - 18.11.1-12
+        - 18.11.1-13
+        - 18.11.1-14
+        - 18.11.1-15
+        - 18.11.1-16
+        - 18.11.1-17
+        - 18.11.1-18
+        - 18.11.1-2
+        - 18.11.1-3
+        - 18.11.1-4
+        - 18.11.1-5
+        - 18.11.1-6
+        - 18.11.1-7
+        - 18.11.1-8
+        - 18.11.1-9
+        - 18.11.10-0
+        - 18.11.10-1
+        - 18.11.10-2
+        - 18.11.10-3
+        - 18.11.10-4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: teleport-18-fips-dev
+        purl: pkg:deb/dhi/teleport-18-fips-dev
+      versions:
+        - 18.11.1-10
+        - 18.11.1-11
+        - 18.11.1-12
+        - 18.11.1-13
+        - 18.11.1-14
+        - 18.11.1-15
+        - 18.11.1-16
+        - 18.11.1-17
+        - 18.11.1-18
+        - 18.11.1-2
+        - 18.11.1-3
+        - 18.11.1-4
+        - 18.11.1-5
+        - 18.11.1-6
+        - 18.11.1-7
+        - 18.11.1-8
+        - 18.11.1-9
+        - 18.11.10-0
+        - 18.11.10-1
+        - 18.11.10-2
+        - 18.11.10-3
+        - 18.11.10-4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: vector
+        purl: pkg:deb/dhi/vector
+      versions:
+        - 0.58.0-0
+        - 0.59.0-0
+        - 0.60.0-0
+        - 0.61.0-0
+        - 0.62.0-0
+        - 0.62.0-1
+database_specific:
+    coverage: partial
+    coverage_exclusions:
+        - legacy_package_image_owner
+details: |-
+    The build script of `libz-sys` version <= 1.1.30 prints the full environment
+    of the build, including any secrets it contains, to its stdout when compiled
+    with `cc@1.6.0` or later on a Unix host. This affects any build that depends on
+    `libz-sys`. Cargo saves build script stdout under `target/`, so the values end
+    up in anything that stores or shares the `target/` directory, such as CI caches.
+
+    This is similar to the [Miri issue](https://blog.rust-lang.org/2026/09/21/github-actions-leaking-secrets-when-miri-output-is-cached/).
+
+    ## Details
+
+    To decide whether to link against a system zlib, the `libz-sys` build script
+    compiles a small test program with a compiler command from `cc` and logs it
+    with:
+
+    ```rust
+    println!("running {:?}", cmd);
+    ```
+
+    On Unix, `Debug` impl for `std::process::Command` prints every environment
+    variable explicitly set on the command. Before `cc@1.6.0`, its
+    `Tool::to_command()` set only a few compiler-specific variables. Starting with
+    `cc@1.6.0` (released 2026-10-03), `Tool::to_command()` clears the environment
+    and sets every variable explicitly.
+
+    Cargo parses build script stdout for `cargo:` directives, and stores the full
+    output in the build directory. It also prints it with `-vv`.
+
+    The probe runs for a default `libz-sys` build, including when pkg-config finds
+    zlib, unless one of these applies:
+
+    * the target is Windows, Android, Haiku or OpenHarmony
+    * static linking is requested via the `static` feature or `LIBZ_SYS_STATIC=1`
+    * the `zlib-ng` features are enabled without `stock-zlib`
+
+    ## Mitigations
+
+    Fixed in `libz-sys@1.1.31`, which no longer logs the probe command.
+
+    If you cannot upgrade, here are some workarounds:
+
+    * Build with `LIBZ_SYS_STATIC=1` or the `static` feature, which skips the probe.
+    * Pin `cc` to a release before 1.6.0 (`cargo update cc --precise <version>`).
+
+    Note that upgrading `libz-sys` does not remove values already written. If an
+    affected build already ran with secrets in its environment, clear CI caches and
+    stored artifacts containing its
+    [target/build directory](https://doc.rust-lang.org/nightly/cargo/reference/build-cache.html#build-cache),
+    and consider rotating those secrets.
+id: DHI-cvqu-2sh3-wnzt-7rp7
+modified: "2026-11-20T17:17:13Z"
+published: "2026-11-20T01:49:34Z"
+references:
+    - type: ADVISORY
+      url: https://rustsec.org/advisories/RUSTSEC-2026-0418
+    - type: ADVISORY
+      url: https://rustsec.org/advisories/RUSTSEC-2026-0418.html
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-cvqu-2sh3-wnzt-7rp7
+    - type: FIX
+      url: https://github.com/rust-lang/libz-sys/pull/280
+schema_version: 1.8.0
+summary: The build script of `libz-sys` version <= 1.1.30 prints the full environment
+upstream:
+    - GHSA-8p3x-q3q3-q3v5

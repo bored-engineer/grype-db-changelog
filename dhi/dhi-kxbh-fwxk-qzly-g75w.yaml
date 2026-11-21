@@ -2,6 +2,17 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: gnutls
+        purl: pkg:apk/dhi/gnutls
+      versions:
+        - 3.8.11-r0
+        - 3.8.12-r0
+        - 3.8.13-r0
+        - 3.8.14-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: gnutls
         purl: pkg:apk/dhi/gnutls
@@ -18,7 +29,7 @@ affected:
         - 3.8.9-3+deb13u4+dhi2
 details: A double free in the X.509 name constraints enforcement of GnuTLS 3.8.13 on all platforms allows a remote attacker to cause a denial of service (application crash) via a certificate chain containing a NameConstraints extension processed while the application is under memory pressure. When an already populated name constraints object is reinitialized, previously freed list pointers are not cleared, so a memory allocation failure precisely at reinitialization leaves a dangling pointer that is freed again during a later cleanup.
 id: DHI-kxbh-fwxk-qzly-g75w
-modified: "2026-11-19T18:05:32Z"
+modified: "2026-11-21T00:05:01Z"
 published: "2026-11-19T06:15:58Z"
 references:
     - type: ADVISORY

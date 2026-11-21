@@ -5,29 +5,59 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: cups
         purl: pkg:apk/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.18-r1
+          events:
+            - fixed: 2.4.18-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.4.13-r0
         - 2.4.16-r0
         - 2.4.18-r0
-        - 2.4.18-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: cups
         purl: pkg:apk/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.20-r1
+          events:
+            - fixed: 2.4.20-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.4.18-r0
         - 2.4.19-r0
         - 2.4.20-r0
-        - 2.4.20-r1
-        - 2.4.20-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: cups
         purl: pkg:deb/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.10-3+deb13u2+dhi8
+          events:
+            - fixed: 2.4.10-3+deb13u2+dhi8
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.4.10-3+deb13u2+dhi1
         - 2.4.10-3+deb13u2+dhi2
@@ -36,11 +66,10 @@ affected:
         - 2.4.10-3+deb13u2+dhi5
         - 2.4.10-3+deb13u2+dhi6
         - 2.4.10-3+deb13u2+dhi7
-        - 2.4.10-3+deb13u2+dhi8
         - 2.4.10-3+deb13u2dhi0
 details: OpenPrinting CUPS through 2.4.20 contains a resource-exhaustion vulnerability in the submission-timeout handling of cupsdCheckJobs(). The scheduler suppresses timeout processing for all pending jobs whenever any client connection has an in-flight Send-Document operation, without matching that connection to the job being examined. A client allowed to reach the IPP service can hold an incomplete HTTP request containing parsed Send-Document headers before operation authorization, preventing unrelated incomplete jobs from expiring. Where Create-Job submission is allowed, incomplete jobs can accumulate until MaxJobs is exhausted and further legitimate print submissions are rejected. The suppression ends when the held connection closes.
 id: DHI-cfta-ccqv-xgyh-prbs
-modified: "2026-11-11T16:04:58Z"
+modified: "2026-11-20T04:17:48Z"
 published: "2026-11-11T16:04:58Z"
 references:
     - type: ADVISORY

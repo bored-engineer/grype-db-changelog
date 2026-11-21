@@ -21,6 +21,7 @@ affected:
         - 8.14.6-r1
         - 8.14.6-r2
         - 8.14.7-r0
+        - 8.14.8-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -49,6 +50,7 @@ affected:
         - 9.8.2-r1
         - 9.9.0-r0
         - 9.9.1-r0
+        - 9.9.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -106,6 +108,7 @@ affected:
         - 8.14.6-r0
         - 8.14.6-r1
         - 8.14.7-r0
+        - 8.14.8-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -128,6 +131,7 @@ affected:
         - 9.8.2-r1
         - 9.9.0-r0
         - 9.9.1-r0
+        - 9.9.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -178,6 +182,7 @@ affected:
       versions:
         - 1.2.0-r0
         - 1.2.0-r1
+        - 1.2.0-r10
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
@@ -219,6 +224,8 @@ affected:
         - 0.65.5-r0
         - 0.65.5.1-r0
         - 0.65.6.1-r0
+        - 0.65.6.1-r1
+        - 0.65.6.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1324,6 +1331,7 @@ affected:
         - 13.12.1-2
         - 13.12.2-0
         - 13.12.2-1
+        - 13.13.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1399,6 +1407,7 @@ affected:
       versions:
         - 1.2.0-0
         - 1.2.0-1
+        - 1.2.0-10
         - 1.2.0-2
         - 1.2.0-3
         - 1.2.0-4
@@ -1867,6 +1876,7 @@ affected:
         - 2.0.7-5
         - 2.0.7-6
         - 2.0.8-0
+        - 2.0.9-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1969,6 +1979,7 @@ affected:
         - 1.35.3-3
         - 1.35.3-30
         - 1.35.3-31
+        - 1.35.3-32
         - 1.35.3-4
         - 1.35.3-5
         - 1.35.3-6
@@ -2053,6 +2064,7 @@ affected:
         - 4.0.5-3
         - 4.0.5-4
         - 4.0.5-5
+        - 4.0.5-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -2076,6 +2088,7 @@ affected:
         - 4.1.4-3
         - 4.1.4-4
         - 4.1.4-5
+        - 4.1.4-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -2099,6 +2112,7 @@ affected:
         - 4.2.1-3
         - 4.2.1-4
         - 4.2.1-5
+        - 4.2.1-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -2232,6 +2246,7 @@ affected:
         - 4.0.5-3
         - 4.0.5-4
         - 4.0.5-5
+        - 4.0.5-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -2255,6 +2270,7 @@ affected:
         - 4.1.4-3
         - 4.1.4-4
         - 4.1.4-5
+        - 4.1.4-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -2278,6 +2294,7 @@ affected:
         - 4.2.1-3
         - 4.2.1-4
         - 4.2.1-5
+        - 4.2.1-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -2301,6 +2318,7 @@ affected:
         - 1.3.0-5
         - 1.3.1-0
         - 1.3.1-1
+        - 1.3.1-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -2337,6 +2355,7 @@ affected:
         - 484-20
         - 484-21
         - 484-22
+        - 484-23
         - 484-3
         - 484-4
         - 484-5
@@ -2404,6 +2423,7 @@ affected:
         - 484-20
         - 484-21
         - 484-22
+        - 484-23
         - 484-3
         - 484-4
         - 484-5
@@ -2464,7 +2484,7 @@ database_specific:
         - legacy_package_image_owner
 details: 'UTF8DataInputJsonParser._reportInvalidToken() in FasterXML jackson-core builds the offending-token text for its error message by appending Java identifier characters to a StringBuilder in a loop that has no upper bound. Unlike the three sibling parser implementations, including UTF8StreamJsonParser, it never consults ErrorReportConfiguration.getMaxErrorTokenLength() (default 256). A malformed token supplied to a parser created through JsonFactory.createParser(DataInput) is therefore accumulated in full. No StreamReadConstraints setting mitigates this: maxDocumentLength cannot be applied to DataInput sources at all, and maxStringLength does not cover this path because the accumulation bypasses ReadConstrainedTextBuffer. The reporter measured a 20,000,109-character exception message from a 20-million-character malformed token on the DataInput path, against 367 characters for identical input on the InputStream path. Scaling the payload drives the StringBuilder, which also incurs byte-to-char expansion and internal array doubling, to many times the raw payload size and can trigger OutOfMemoryError for the whole JVM. UTF8DataInputJsonParser was introduced in 2.8.0 together with createParser(DataInput); releases before 2.8.0 do not contain the affected class.'
 id: DHI-ubzy-vmgh-3252-rdb4
-modified: "2026-11-19T20:59:10Z"
+modified: "2026-11-20T16:50:29Z"
 published: "2026-11-19T20:59:10Z"
 references:
     - type: ADVISORY
@@ -2478,6 +2498,8 @@ references:
     - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:90909
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:98493
+    - type: ADVISORY
       url: https://access.redhat.com/security/cve/CVE-2026-89425
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3188.html
@@ -2485,6 +2507,8 @@ references:
       url: https://errata.almalinux.org/8/ALSA-2026-90909.html
     - type: ADVISORY
       url: https://errata.almalinux.org/9/ALSA-2026-86706.html
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-98493.html
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:86706
     - type: ADVISORY
@@ -2502,9 +2526,13 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-90909.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98493.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-86706.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-90909.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98493.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-89425
     - type: ADVISORY

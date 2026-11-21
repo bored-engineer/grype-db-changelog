@@ -92,6 +92,7 @@ affected:
         - 4.4.5-r1
         - 4.4.5-r2
         - 4.4.5-r3
+        - 4.4.5-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -266,6 +267,7 @@ affected:
         - 2.91.0-3
         - 2.92.0-0
         - 2.93.0-0
+        - 2.93.0-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -317,6 +319,7 @@ affected:
         - 2026.07.28-19
         - 2026.07.28-2
         - 2026.07.28-20
+        - 2026.07.28-21
         - 2026.07.28-3
         - 2026.07.28-4
         - 2026.07.28-5
@@ -354,6 +357,7 @@ affected:
         - 5.5.5-2
         - 5.5.5-3
         - 5.5.5-4
+        - 5.5.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -380,6 +384,7 @@ affected:
         - 4.4.5-0
         - 4.4.5-1
         - 4.4.5-2
+        - 4.4.5-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -483,6 +488,9 @@ affected:
         - 1.109.1-0
         - 1.109.1-1
         - 1.110.0-0
+        - 1.110.0-1
+        - 1.110.1-0
+        - 1.110.2-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -788,7 +796,7 @@ affected:
         - 9.4.2-1
 details: OAuthLib is an implementation of the OAuth request-signing logic for Python 3.6+. From 3.0.0 until 4.0.0, OAuthLib's PKCE checks in oauthlib/oauth2/rfc6749/grant_types/authorization_code.py compare attacker-supplied code_verifier values with stored challenges using ordinary string equality in code_challenge_method_plain and code_challenge_method_s256. Because the comparison can return after a length difference or the first mismatching character, repeated token endpoint measurements can reveal common-prefix timing information that could potentially allow recovery of the code_verifier, unauthorized access-token acquisition, and account takeover. Practical exploitation requires an intercepted, single-use authorization code and enough measurements to overcome real-world network noise; the local timing benchmark does not establish practical remote account takeover, so the weakness remains a defense-in-depth concern. This issue is fixed in version 4.0.0.
 id: DHI-ywaw-3rwc-7wjr-ywhp
-modified: "2026-11-18T08:32:05Z"
+modified: "2026-11-20T16:50:03Z"
 published: "2026-11-11T22:23:29Z"
 references:
     - type: ADVISORY

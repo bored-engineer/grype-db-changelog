@@ -5,13 +5,19 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: postgresql17
         purl: pkg:apk/dhi/postgresql17
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 17.8-r0
+          events:
+            - fixed: 17.8-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 17.10-r0
-        - 17.11-r0
-        - 17.12-r0
         - 17.7-r0
-        - 17.8-r0
-        - 17.9-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -27,7 +33,7 @@ affected:
         - 18.7-r0
 details: Heap buffer overflow in PostgreSQL pgcrypto allows a ciphertext provider to execute arbitrary code as the operating system user running the database.  Versions before PostgreSQL 18.2, 17.8, 16.12, 15.16, and 14.21 are affected.
 id: DHI-skna-dwqe-nbcq-gcr6
-modified: "2026-11-14T10:34:55Z"
+modified: "2026-11-20T15:56:07Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

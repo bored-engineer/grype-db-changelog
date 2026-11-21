@@ -816,6 +816,7 @@ affected:
         - 2026.07.28-19
         - 2026.07.28-2
         - 2026.07.28-20
+        - 2026.07.28-21
         - 2026.07.28-3
         - 2026.07.28-4
         - 2026.07.28-5
@@ -980,6 +981,7 @@ affected:
         - 5.5.5-2
         - 5.5.5-3
         - 5.5.5-4
+        - 5.5.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -1160,6 +1162,7 @@ affected:
         - 1.110.0-0
         - 1.110.0-1
         - 1.110.1-0
+        - 1.110.2-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -1599,6 +1602,7 @@ affected:
         - 2.11.0-5
         - 2.11.0-6
         - 2.11.0-7
+        - 2.11.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -1629,6 +1633,7 @@ affected:
         - 2.11.0-5
         - 2.11.0-6
         - 2.11.0-7
+        - 2.11.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -1659,6 +1664,7 @@ affected:
         - 2.13.0-5
         - 2.13.0-6
         - 2.13.0-7
+        - 2.13.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -1689,6 +1695,7 @@ affected:
         - 2.9.1-5
         - 2.9.1-6
         - 2.9.1-7
+        - 2.9.1-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -1871,7 +1878,7 @@ database_specific:
         - legacy_package_image_owner
 details: 'urllib3 is an HTTP client library for Python. From 2.6.2 until 2.8.0, HTTPResponse.stream and HTTPResponse.read_chunked can enter an infinite loop because the Deflate decoder retains trailing bytes as unconsumed input after reaching end-of-stream and repeatedly decodes them without progress. The issue occurs when an untrusted server sends a chunked Deflate response whose decoded body exceeds a positive finite chunk size and whose encoded body has trailing bytes, specifically a response with Transfer-Encoding: chunked and Content-Encoding: deflate, content decoding enabled, and the positive finite amt=N streaming chunk size. The attack mechanism is that a malicious server returns a compressed chunked response with trailing bytes after the Deflate stream. The impact is excessive CPU usage and a request that does not complete, and network read timeouts do not interrupt the loop because no further socket read occurs. This issue is fixed in version 2.8.0.'
 id: DHI-sio7-nl6f-2hkg-xz72
-modified: "2026-11-19T21:18:15Z"
+modified: "2026-11-20T20:51:19Z"
 published: "2026-11-19T21:18:15Z"
 references:
     - type: ADVISORY

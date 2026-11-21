@@ -22,6 +22,7 @@ affected:
         - 34.0.5-2
         - 34.0.5-3
         - 34.0.6-0
+        - 34.0.6-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -36,9 +37,10 @@ affected:
         - 35.0.2-3
         - 35.0.2-5
         - 35.0.3-0
+        - 35.0.3-1
 details: phpseclib is a PHP secure communications library. Prior to 3.0.57 and 4.0.1, pure-PHP X25519 scalar multiplication in phpseclib/Math/PrimeField/Integer.php performs data-dependent conditional modular reductions in add() and subtract(). During the Montgomery ladder in phpseclib/Crypt/EC/BaseCurves/Montgomery.php, the reduction behavior of each step depends on the secret scalar prefix, creating per-step timing and libgmp call-count observations that can reveal a reused 251-bit clamped private scalar. The phpseclib/Crypt/EC/Formats/Keys/MontgomeryPrivate.php derivation path invokes the pure-PHP multiplication without a native-engine check, while phpseclib/Crypt/EC/Formats/Keys/PKCS8.php reaches it when ext-sodium is unavailable. Exploitation requires a reused or long-lived X25519 private key, knowledge of the corresponding public key, execution of the pure-PHP path, and a local observer capable of resolving individual ladder steps or libgmp entry-point calls. Ephemeral X25519 keys, including phpseclib's normal SSH exchange path, are not affected. Recovery of the scalar permanently compromises operations that reuse that key. This issue is fixed in versions 3.0.57 and 4.0.1.
 id: DHI-mno2-6wtc-5p5b-jig6
-modified: "2026-11-14T01:43:23Z"
+modified: "2026-11-20T16:52:06Z"
 published: "2026-11-11T15:40:18Z"
 references:
     - type: ADVISORY

@@ -8,6 +8,8 @@ affected:
       versions:
         - 1.18.10-r0
         - 1.18.10-r1
+        - 1.18.10-r2
+        - 1.18.10-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -17,9 +19,10 @@ affected:
       versions:
         - 1.18.10-0
         - 1.18.10-1
+        - 1.18.10-2
 details: Quarkus is a Java framework for building cloud-native applications. In versions prior to 3.20.6.1, 3.27.3.1, 3.33.1.1, 3.35.1.1, 3.34.7, and 3.35.2, a path normalization inconsistency between the security layer and the routing layer allows unauthenticated or lower-privileged users to bypass HTTP path-based authorization policies. Quarkus's security layer performs authorization checks on the raw URL path which preserves matrix parameters (semicolons), while RESTEasy Reactive's routing layer strips matrix parameters before matching endpoints. An attacker can append a semicolon and arbitrary text to a request URL (e.g., /api/admin;anything) to bypass policies protecting /api/admin while still routing to the protected endpoint. This issue has been fixed in versions 3.20.6.1, 3.27.3.1, 3.33.1.1, 3.35.1.1, 3.34.7, and 3.35.2.
 id: DHI-d5ko-2uqd-mxzt-sf44
-modified: "2026-11-18T19:50:55Z"
+modified: "2026-11-20T18:47:27Z"
 published: "2026-11-18T19:50:55Z"
 references:
     - type: ADVISORY

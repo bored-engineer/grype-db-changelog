@@ -5,17 +5,26 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: jq
         purl: pkg:deb/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2-1+deb13u0+dhi1
+          events:
+            - fixed: 1.8.2-1+deb13u0+dhi1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.7.1-6+deb13u1dhi0
         - 1.7.1-6+deb13u2+dhi0
         - 1.7.1-6+deb13u2+dhi1
         - 1.7.1-6+deb13u2dhi0
         - 1.8.1-5
-        - 1.8.2-1+deb13u0+dhi1
-        - 1.8.2-1+dhi1
 details: decNumberCopy in decNumber.c in jq through 1.7.1 does not properly consider that NaN is interpreted as numeric, which has a resultant stack-based buffer overflow and out-of-bounds write, as demonstrated by use of --slurp with subtraction, such as a filter of .-. when the input has a certain form of digit string with NaN (e.g., "1 NaN123" immediately followed by many more digits).
 id: DHI-k5t3-izmo-aauc-crdw
-modified: "2026-11-11T19:05:15Z"
+modified: "2026-11-20T15:56:40Z"
 published: "2026-11-11T19:05:15Z"
 references:
     - type: ADVISORY

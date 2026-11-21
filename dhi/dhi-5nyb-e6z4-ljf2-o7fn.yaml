@@ -18,16 +18,22 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: postgresql18
         purl: pkg:apk/dhi/postgresql18
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 18.2-r0
+          events:
+            - fixed: 18.2-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 18.1-r0
-        - 18.2-r0
-        - 18.3-r0
-        - 18.4-r0
-        - 18.6-r0
-        - 18.7-r0
 details: Missing validation of multibyte character length in PostgreSQL text manipulation allows a database user to issue crafted queries that achieve a buffer overrun.  That suffices to execute arbitrary code as the operating system user running the database.  Versions before PostgreSQL 18.2, 17.8, 16.12, 15.16, and 14.21 are affected.
 id: DHI-5nyb-e6z4-ljf2-o7fn
-modified: "2026-11-14T10:34:55Z"
+modified: "2026-11-20T20:33:11Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

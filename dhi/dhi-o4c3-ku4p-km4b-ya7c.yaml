@@ -7,6 +7,7 @@ affected:
         purl: pkg:apk/dhi/gst-plugins-base
       versions:
         - 1.28.3-r0
+        - 1.28.3-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -29,7 +30,7 @@ affected:
         - 1.26.2-1+deb13u2+dhi0
 details: A flaw was found in gst-plugins-base. A heap buffer overflow can be triggered when processing video buffers whose attached GstVideoMeta metadata declares plane strides and offsets that exceed the actual backing memory allocation. The metadata is not range-checked during deserialization, and the video frame mapping code does not verify that the declared plane geometry fits within the buffer before allowing consumers to read or write video data. A local attacker who controls the sending side of a GStreamer inter-process IPC pipeline can deliver a crafted buffer carrying fabricated strides, causing the receiving process to read or write beyond heap boundaries. Successful exploitation can cause a denial of service or potentially allow code execution within the affected process.
 id: DHI-o4c3-ku4p-km4b-ya7c
-modified: "2026-11-18T19:45:51Z"
+modified: "2026-11-20T18:47:27Z"
 published: "2026-11-11T16:05:39Z"
 references:
     - type: ADVISORY

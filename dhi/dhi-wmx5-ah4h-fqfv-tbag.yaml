@@ -18,6 +18,7 @@ affected:
         - 1.9.11-r18
         - 1.9.11-r19
         - 1.9.11-r20
+        - 1.9.11-r21
         - 1.9.11-r3
         - 1.9.11-r4
         - 1.9.11-r5
@@ -44,6 +45,7 @@ affected:
         - 1.9.11-r18
         - 1.9.11-r19
         - 1.9.11-r20
+        - 1.9.11-r21
         - 1.9.11-r3
         - 1.9.11-r4
         - 1.9.11-r5
@@ -70,6 +72,7 @@ affected:
         - 1.9.11-r18
         - 1.9.11-r19
         - 1.9.11-r20
+        - 1.9.11-r21
         - 1.9.11-r3
         - 1.9.11-r4
         - 1.9.11-r5
@@ -96,6 +99,7 @@ affected:
         - 1.9.11-r18
         - 1.9.11-r19
         - 1.9.11-r20
+        - 1.9.11-r21
         - 1.9.11-r3
         - 1.9.11-r4
         - 1.9.11-r5
@@ -337,7 +341,7 @@ affected:
         - 0.165.0-r2
 details: 'iskorotkov/avro is a fast Go Avro codec. Prior to 2.33.0, several Avro decoder paths read attacker-controlled 64-bit values from the wire format and either narrowed them to platform-sized int before bounds-checking, or summed them with overflow-prone signed-int arithmetic. On 32-bit targets (GOARCH=386, arm, mips, wasm, etc.), the truncation paths can silently bypass byte-slice limits, select the wrong union branch, or hit the OCF negative-make panic via wrap. Three sub-issues are not 32-bit-specific: cumulative-size arithmetic overflow in arrayDecoder.Decode / mapDecoder.Decode / mapDecoderUnmarshaler.Decode (wraps at math.MaxInt64 on amd64 / arm64 and bypasses MaxSliceAllocSize / MaxMapAllocSize), math.MinInt negation in block-header handling, and make([]byte, size) with a negative size in OCF block reads — all three panic or bypass caps on any platform, giving an attacker a denial-of-service primitive there. This vulnerability is fixed in 2.33.0.'
 id: DHI-wmx5-ah4h-fqfv-tbag
-modified: "2026-11-14T02:41:23Z"
+modified: "2026-11-20T18:59:37Z"
 published: "2026-11-13T17:03:58Z"
 references:
     - type: ADVISORY

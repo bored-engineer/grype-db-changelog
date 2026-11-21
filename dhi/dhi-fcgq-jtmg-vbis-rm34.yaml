@@ -12,6 +12,7 @@ affected:
         - 3.4.10-r3
         - 3.4.12-r0
         - 3.4.12-r1
+        - 3.4.13-r1
         - 3.4.8-r0
         - 3.4.9-r0
         - 4.0.6-r3
@@ -37,7 +38,7 @@ affected:
         - 4.0.7-r4
 details: An issue was discovered in the resolv gem before 0.7.2 for Ruby. Resolv::DNS::Resource.get_class, Resolv::DNS::Resource::Generic.create, and Resolv::DNS::SvcParam::Generic.create generate a new class for each unknown DNS resource record (type, class) pair, or each unknown SvcParamKey, encountered while decoding a response. Each generated class was permanently registered both as a constant on Resource (or SvcParam::Generic) and as an entry in a class-lookup hash (ClassHash), and thus the class remained reachable through that constant after the response was discarded. Type and class are each 16-bit values, and thus an attacker controlling DNS responses (a spoofed response, or a malicious or hijacked upstream DNS server) has roughly 2^32 distinct (type, class) pairs to choose from. A single response of a few hundred kilobytes carrying tens of thousands of distinct unknown types permanently grows process memory by tens of megabytes; repeated responses accumulate without bound and are never reclaimed by garbage collection, because the constant keeps each class alive. Any code path that calls Resolv::DNS::Message.decode on attacker-influenced DNS responses is affected. resolv is a default gem, and thus this is reachable from a plain Ruby installation without any additional dependency.
 id: DHI-fcgq-jtmg-vbis-rm34
-modified: "2026-11-20T00:09:29Z"
+modified: "2026-11-20T04:19:19Z"
 published: "2026-11-11T16:59:50Z"
 references:
     - type: ADVISORY

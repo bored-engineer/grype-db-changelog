@@ -10,9 +10,10 @@ affected:
         - 3.1.13-2+dhi3
         - 3.1.13-2+dhi4
         - 3.2.12-1~deb13u1+dhi0
+        - 3.2.12-1~deb13u2+dhi0
 details: OpenEXR is the reference implementation and specification for the EXR image format, widely used in the motion picture industry. Versions prior to 3.2.10, 3.3.12 and 3.4.13 contain a heap out-of-bounds write in Imf_4_0::SampleCountChannel::set(int r, unsigned int newNumSamples[]). The row-based sample-count setter computes the target Y coordinate with dataWindow.min.x instead of dataWindow.min.y. For a valid deep image data window where min.x != min.y, a valid row index can be translated into an invalid Y coordinate, causing writes before the allocated _numSamples buffer. The vulnerability is reachable through the public OpenEXRUtil DeepImage API and can lead to heap corruption and process crashes. This issue has been fixed in versions 3.2.10, 3.3.12 and 3.4.13.
 id: DHI-s34q-lidr-4hcb-ih5n
-modified: "2026-11-12T20:24:42Z"
+modified: "2026-11-20T15:20:15Z"
 published: "2026-11-11T16:00:28Z"
 references:
     - type: ADVISORY

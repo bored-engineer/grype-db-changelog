@@ -5,30 +5,48 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: cups
         purl: pkg:apk/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.18-r1
+          events:
+            - fixed: 2.4.18-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.4.13-r0
         - 2.4.16-r0
         - 2.4.18-r0
-        - 2.4.18-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: cups
         purl: pkg:deb/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.10-3+deb13u2+dhi6
+          events:
+            - fixed: 2.4.10-3+deb13u2+dhi6
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.4.10-3+deb13u2+dhi1
         - 2.4.10-3+deb13u2+dhi2
         - 2.4.10-3+deb13u2+dhi3
         - 2.4.10-3+deb13u2+dhi4
         - 2.4.10-3+deb13u2+dhi5
-        - 2.4.10-3+deb13u2+dhi6
-        - 2.4.10-3+deb13u2+dhi7
-        - 2.4.10-3+deb13u2+dhi8
         - 2.4.10-3+deb13u2dhi0
 details: OpenPrinting CUPS before 2.4.20 contains a NULL pointer dereference caused by repeated IPP group tags in job-creation requests. IPP parsing creates unnamed separator attributes with IPP_TAG_ZERO, but add_job() converts these separators to IPP_TAG_JOB. During job startup, get_options()/ipp_length() subsequently calls strlen() on a NULL attribute name, terminating cupsd and disrupting all queues. A single crafted Print-Job request can trigger the crash when the client can reach the scheduler and submit jobs to an accepting, enabled queue supporting the submitted document format. Anonymous submission is possible when permitted by listener and access-control configuration.
 id: DHI-fy4l-kbap-flil-e32h
-modified: "2026-11-11T16:04:58Z"
+modified: "2026-11-20T04:17:57Z"
 published: "2026-11-11T16:04:58Z"
 references:
     - type: ADVISORY

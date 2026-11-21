@@ -23,6 +23,7 @@ affected:
         - 4.4.5-r1
         - 4.4.5-r2
         - 4.4.5-r3
+        - 4.4.5-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -143,6 +144,7 @@ affected:
         - 2026.07.28-19
         - 2026.07.28-2
         - 2026.07.28-20
+        - 2026.07.28-21
         - 2026.07.28-3
         - 2026.07.28-4
         - 2026.07.28-5
@@ -180,6 +182,7 @@ affected:
         - 5.5.5-2
         - 5.5.5-3
         - 5.5.5-4
+        - 5.5.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -206,6 +209,7 @@ affected:
         - 4.4.5-0
         - 4.4.5-1
         - 4.4.5-2
+        - 4.4.5-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -374,7 +378,7 @@ affected:
         - 1.99.4-7
 details: "### Summary\nStaticFileHandler allows an unauthenticated attacker to read arbitrary files from the server's filesystem by requesting a path that resolves to a symbolic link placed inside the static root directory. Any application that serves user-uploadable content, or whose static directory is populated by a build/deploy pipeline that creates symlinks (e.g. npm link, webpack, Docker volume mounts, CDN sync tools), is affected. An attacker who can trigger the creation of a symlink pointing outside the static root—or exploit one that already exists—can retrieve sensitive files such as /etc/passwd, private keys, configuration files, or application secrets.\n\n\n\n### Details\nThe vulnerability is in tornado.web.StaticFileHandler, specifically in the interaction between two methods in [tornado/web.py](vscode-webview://1grdaaa6v64itrol06qu70pq3d1b9h9im5c3npvvc9snaprc1q9f/tornado/web.py):\n- [get_absolute_path](https://github.com/tornadoweb/tornado/blob/0ca3c5f8279d402b245718d16522bc18a8f5d958/tornado/web.py#L2932) uses `os.path.abspath()` to resolve the requested path:\n- [validate_absolute_path](https://github.com/tornadoweb/tornado/blob/0ca3c5f8279d402b245718d16522bc18a8f5d958/tornado/web.py#L2935) uses the same `os.path.abspath()` on the root, then performs a string prefix check:\n\n`os.path.abspath()` normalises . and .. segments but does not resolve symbolic links. As a result, a path like `/var/www/static/link` passes the `startswith(\"/var/www/static/\")` check regardless of where `link` actually points.\n\nImmediately after, `os.path.exists()` and `os.path.isfile()`  **do follow symlinks**, so the file they ultimately open is the symlink's target. The fix would be to replace os.path.abspath() with os.path.realpath() in both methods, so the resolved real path of the symlink target is validated against the root, not just its string representation inside the static directory.\n\n### PoC\n_Complete instructions, including specific configuration details, to reproduce the vulnerability._\nPrerequisites: Python 3.x, Tornado installed.\n1. Create the environment\n```\nmkdir -p /tmp/static\necho \"DB_PASSWORD=s3cr3t\" > /tmp/secret.conf   \nln -s /tmp/secret.conf /tmp/static/config.conf \n```\n2. Minimal vulnerable server (server.py):\n```\nimport tornado.web, tornado.ioloop\n\napp = tornado.web.Application([\n    (r\"/static/(.*)\", tornado.web.StaticFileHandler, {\"path\": \"/tmp/static\"}),\n])\napp.listen(8888)\ntornado.ioloop.IOLoop.current().start()\n```\n3. Exploit:\n`curl http://localhost:8888/static/config.conf`\n\n### Impact\nAny application using StaticFileHandler is potentially affected if:\n- the static directory contains symlinks pointing outside it (common with build tooling), or\n- the application allows file uploads into the static directory without stripping symlinks.\n\nAn unauthenticated remote attacker can read any file readable by the process user: application secrets, private TLS keys, database credentials, /etc/shadow, SSH keys, or source code (depending on the process's filesystem permissions)."
 id: DHI-jzbv-7pws-pk2v-maag
-modified: "2026-11-18T19:53:52Z"
+modified: "2026-11-20T16:49:34Z"
 published: "2026-11-13T22:30:30Z"
 references:
     - type: ADVISORY
