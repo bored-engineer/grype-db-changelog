@@ -73,16 +73,22 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: postgresql-17
         purl: pkg:deb/dhi/postgresql-17
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 17.11-0+deb13u1+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 17.11-0+deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
         - 17.10-0+deb13u1+dhi0
-        - 17.11-0+deb13u1+dhi0
-        - 17.11-0+deb13u1+dhi1
-        - 17.11-1
-        - 17.12-0
-        - 17.12-0+deb13u1+dhi0
 details: Incorrect ownership assignment in PostgreSQL ALTER TABLE ALTER TYPE command reassigns ownership of dependent statistics objects to the current user.  This wrongly allows the table owner to run DROP STATISTICS and ALTER STATISTICS via this improper ownership.  It wrongly denies those commands to the prior statistics object owner.  DROP TABLE remains able to remove statistics objects, so this exploit achieves nothing in many ownership arrangements.  Versions before PostgreSQL 18.6, 17.11, 16.15, 15.19, and 14.24 are affected.
 id: DHI-7qb2-zqoh-fao3-3jdi
-modified: "2026-11-14T10:34:55Z"
+modified: "2026-11-21T19:59:15Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

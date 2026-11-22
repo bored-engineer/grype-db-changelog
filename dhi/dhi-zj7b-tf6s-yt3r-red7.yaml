@@ -6,14 +6,24 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: tiff
         purl: pkg:deb/dhi/tiff
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 4.7.0-3+deb13u3+dhi3
+          events:
+            - introduced: "0"
+            - fixed: 4.7.0-3+deb13u3+dhi3
+          type: ECOSYSTEM
       versions:
         - 4.7.0-3+deb13u3+dhi0
         - 4.7.0-3+deb13u3+dhi1
         - 4.7.0-3+deb13u3+dhi2
-        - 4.7.0-3+deb13u3+dhi3
 details: A vulnerability was found in LibTIFF up to 4.7.0. It has been declared as critical. This vulnerability affects the function get_histogram of the file tools/tiffmedian.c. The manipulation leads to use after free. The attack needs to be approached locally. The exploit has been disclosed to the public and may be used. The patch is identified as fe10872e53efba9cc36c66ac4ab3b41a839d5172. It is recommended to apply a patch to fix this issue.
 id: DHI-zj7b-tf6s-yt3r-red7
-modified: "2026-11-10T10:27:48Z"
+modified: "2026-11-21T00:59:12Z"
 published: "2026-11-10T10:27:48Z"
 references:
     - type: ADVISORY

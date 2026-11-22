@@ -41,6 +41,8 @@ affected:
         - 1.97.2-r0
         - 1.97.2-r1
         - 1.98.2-r0
+        - 1.98.4-r0
+        - 1.98.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -83,9 +85,11 @@ affected:
         - 1.97.2-0
         - 1.97.2-1
         - 1.98.2-0
+        - 1.98.4-0
+        - 1.98.5-0
 details: 'fastify is a fast and low-overhead web framework for Node.js. In versions before 5.12.5, when a route registers a response trailer via reply.trailer() and is served over HTTP/2, fastify unconditionally sets the Transfer-Encoding: chunked header, which is forbidden on HTTP/2, so Node.js throws while serializing the response headers. The exception is not caught and becomes an uncaughtException, so a single unauthenticated HTTP/2 request to any route that uses trailers crashes the server process and drops all in-flight requests, and it can be repeated on every restart. The issue is fixed in fastify 5.12.5, and users should upgrade to 5.12.5 or later. As a workaround, avoid registering response trailers with reply.trailer() on routes served over HTTP/2 until upgrading.'
 id: DHI-pw77-t6kj-h22l-k344
-modified: "2026-11-20T18:47:45Z"
+modified: "2026-11-21T07:16:49Z"
 published: "2026-11-13T17:09:46Z"
 references:
     - type: ADVISORY

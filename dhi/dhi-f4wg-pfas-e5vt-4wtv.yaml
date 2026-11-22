@@ -17,15 +17,23 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libgcrypt20
         purl: pkg:deb/dhi/libgcrypt20
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.11.0-7+deb13u1+dhi1
+          events:
+            - introduced: "0"
+            - fixed: 1.11.0-7+deb13u1+dhi1
+          type: ECOSYSTEM
       versions:
         - 1.11.0-7+deb13u1+dhi0
-        - 1.11.0-7+deb13u1+dhi1
-        - 1.11.0-7+dhi1
-        - 1.11.0-7+dhi2
         - 1.11.0-7dhi0
 details: Libgcrypt before 1.12.2 sometimes allows a heap-based buffer overflow and denial of service via crafted ECDH ciphertext to gcry_pk_decrypt.
 id: DHI-f4wg-pfas-e5vt-4wtv
-modified: "2026-11-11T18:51:16Z"
+modified: "2026-11-21T17:26:59Z"
 published: "2026-11-11T18:51:16Z"
 references:
     - type: ADVISORY

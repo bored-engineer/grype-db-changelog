@@ -65,6 +65,8 @@ affected:
         - 1.97.2-r0
         - 1.97.2-r1
         - 1.98.2-r0
+        - 1.98.4-r0
+        - 1.98.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -155,6 +157,7 @@ affected:
         - 1.110.0-1
         - 1.110.1-0
         - 1.110.2-0
+        - 1.110.2-1
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -174,6 +177,7 @@ affected:
         purl: pkg:deb/dhi/opensearch-dashboards
       versions:
         - 3.10.0-0
+        - 3.10.0-1
         - 3.8.0-0
         - 3.8.0-1
         - 3.8.0-2
@@ -252,13 +256,15 @@ affected:
         - 1.97.2-0
         - 1.97.2-1
         - 1.98.2-0
+        - 1.98.4-0
+        - 1.98.5-0
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.7.1, the Address6 constructor, Address6.isValid, and parse code in src/ipv6.ts accept unbounded strings and expand invalid characters through RE_BAD_CHARACTERS into large diagnostics. Material impact occurs only when an application accepts a very large attacker-controlled field and passes it to Address6 parsing without an earlier length bound. Common URL and header limits, and common body-parser defaults, generally constrain the effect; common defaults typically exclude 32 MiB fields. Megabyte-scale fields can cause a synchronous stall and high transient memory use, approximately 16 MiB can trigger an invalid string length exception, and process termination occurs at approximately 32 MiB. The affected entry points include Address6.isValid and construction paths that reach parse. This issue is fixed in version 10.7.1.
 id: DHI-kjx2-bfhf-mbes-6ywa
-modified: "2026-11-20T18:47:27Z"
+modified: "2026-11-21T14:18:51Z"
 published: "2026-11-20T01:49:54Z"
 references:
     - type: ADVISORY

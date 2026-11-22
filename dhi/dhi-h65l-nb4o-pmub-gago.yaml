@@ -39,6 +39,7 @@ affected:
         purl: pkg:deb/dhi/codecov-api
       versions:
         - 26.11.16-0
+        - 26.11.16-1
         - 26.9.10-0
         - 26.9.10-1
         - 26.9.10-10
@@ -104,13 +105,14 @@ affected:
         - 4.7.4-6
         - 4.7.5-0
         - 4.7.5-1
+        - 4.7.5-2
 details: |-
     An issue was discovered in Django 5.2 before 5.2.17 and 6.0 before 6.0.8.
     GeoDjango spatial lookups optimistically parse the right-hand-side value as a raster by passing it to the `django.contrib.gis.gdal.GDALRaster` constructor. Any value used in a spatial lookup against a `GeometryField` or `RasterField` reaches this constructor, including untrusted input, for example a spatial-field filter submitted through the Django admin changelist query string by a staff user with view permission. A `dict`, or a `str` holding its JSON representation, is opened in write mode regardless of the constructor's `write=False` default, allowing a file with an attacker-chosen name and contents to be written through a file-backed GDAL driver. Any other `str` is treated as a datasource, allowing an outbound network request through a GDAL virtual filesystem handler. Writing a file to a location later imported by the application can result in remote code execution.
     Earlier, unsupported Django series (such as 5.1.x, 5.0.x, and 4.2.x) were not evaluated and may also be affected.
     Django would like to thank Bence Nagy, localhost-detect, and kimchunbok_ for reporting this issue.
 id: DHI-h65l-nb4o-pmub-gago
-modified: "2026-11-20T18:39:07Z"
+modified: "2026-11-21T14:18:51Z"
 published: "2026-11-11T18:24:29Z"
 references:
     - type: ADVISORY

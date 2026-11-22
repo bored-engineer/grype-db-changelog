@@ -6,6 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gradle-8
         purl: pkg:apk/dhi/gradle-8
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 8.14.5-r8
+          events:
+            - introduced: "0"
+            - fixed: 8.14.5-r8
+          type: ECOSYSTEM
       versions:
         - 8.14.4-r0
         - 8.14.4-r1
@@ -16,13 +27,6 @@ affected:
         - 8.14.5-r5
         - 8.14.5-r6
         - 8.14.5-r7
-        - 8.14.5-r8
-        - 8.14.5-r9
-        - 8.14.6-r0
-        - 8.14.6-r1
-        - 8.14.6-r2
-        - 8.14.7-r0
-        - 8.14.8-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -58,17 +62,22 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: gradle-8
         purl: pkg:apk/dhi/gradle-8
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 8.14.5-r7
+          events:
+            - introduced: "0"
+            - fixed: 8.14.5-r7
+          type: ECOSYSTEM
       versions:
         - 8.14.5-r3
         - 8.14.5-r4
         - 8.14.5-r5
         - 8.14.5-r6
-        - 8.14.5-r7
-        - 8.14.5-r8
-        - 8.14.6-r0
-        - 8.14.6-r1
-        - 8.14.7-r0
-        - 8.14.8-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -178,7 +187,7 @@ database_specific:
         - legacy_package_image_owner
 details: jsoup is a Java library for working with real-world HTML. From 1.14.3 until 1.23.1, jsoup's HTML parser could incorrectly handle a malformed tag name ending in a control character, causing the tag to acquire the parsing behavior of a different element. When a custom Safelist permits certain raw-text elements, this misparsing can cause content that should remain inert text to be emitted as active markup after serialization, potentially resulting in cross-site scripting. jsoup's built-in Safelists are not affected. This issue is fixed in version 1.23.1.
 id: DHI-lz4z-xfig-oikv-c44r
-modified: "2026-11-20T04:19:04Z"
+modified: "2026-11-21T06:47:09Z"
 published: "2026-11-20T04:19:04Z"
 references:
     - type: ADVISORY

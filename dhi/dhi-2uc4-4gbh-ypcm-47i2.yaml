@@ -6,28 +6,46 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: util-linux
         purl: pkg:apk/dhi/util-linux
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-18"
+                      kind: advisory
+                      version: 2.41.6-r0
+          events:
+            - introduced: "0"
+            - fixed: 2.41.6-r0
+          type: ECOSYSTEM
       versions:
         - 2.41.2-r0
         - 2.41.4-r0
-        - 2.41.6-r0
-        - 2.41.6-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: util-linux
         purl: pkg:deb/dhi/util-linux
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-18"
+                      kind: advisory
+                      version: 2.41.5-0+deb13u1+dhi2
+          events:
+            - introduced: "0"
+            - fixed: 2.41.5-0+deb13u1+dhi2
+          type: ECOSYSTEM
       versions:
         - 2.41-5+dhi0
         - 2.41-5+dhi1
         - 2.41-5+dhi2
         - 2.41-5+dhi3
         - 2.41-5dhi0
-        - 2.41.5-0+deb13u1+dhi2
-        - 2.41.5-0+deb13u1+dhi3
 details: util-linux is a random collection of Linux utilities. In util-linux 2.39 through 2.41.4 and 2.42 through 2.42.1, the SUID `mount` utility's `hook_owner.c` post-mount hook performs path-based `chmod()` and `lchown()` operations on a previously validated mount target. A local low-privileged user authorized by an `/etc/fstab` entry with `user` or `users` and an `X-mount.mode`, `X-mount.owner`, or `X-mount.group` option can use `renameat2(RENAME_EXCHANGE)` to race a writable ancestor of the target and redirect the privileged ownership or mode change to a root-owned path, potentially gaining root privileges. This issue is fixed in 2.41.5 and 2.42.2.
 id: DHI-2uc4-4gbh-ypcm-47i2
-modified: "2026-11-18T11:59:23Z"
+modified: "2026-11-21T07:03:14Z"
 published: "2026-11-18T11:59:23Z"
 references:
     - type: ADVISORY

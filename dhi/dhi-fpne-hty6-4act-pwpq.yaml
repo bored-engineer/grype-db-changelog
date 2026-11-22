@@ -1,37 +1,11 @@
 # schema: vulnerability/osv/schema-1.8.0.json
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Alpine:3.23
-        name: util-linux
-        purl: pkg:apk/dhi/util-linux
-      versions:
-        - 2.41.2-r0
-        - 2.41.4-r0
-        - 2.41.6-r0
-        - 2.41.6-r1
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: util-linux
-        purl: pkg:deb/dhi/util-linux
-      versions:
-        - 2.41-5+dhi0
-        - 2.41-5+dhi1
-        - 2.41-5+dhi2
-        - 2.41-5+dhi3
-        - 2.41-5dhi0
-        - 2.41.5-0+deb13u1+dhi2
-        - 2.41.5-0+deb13u1+dhi3
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: A flaw was found in util-linux. This vulnerability allows a heap buffer overread when processing 256-byte usernames, specifically within the `setpwnam()` function, affecting SUID (Set User ID) login-utils utilities writing to the password database.
 id: DHI-fpne-hty6-4act-pwpq
-modified: "2026-11-19T22:32:30Z"
+modified: "2026-11-21T07:03:20Z"
 published: "2026-11-19T22:32:30Z"
 references:
     - type: ADVISORY
@@ -85,3 +59,4 @@ severity:
 summary: A flaw was found in util-linux. This vulnerability allows a heap buffer overread when processing 256-byte usernames…
 upstream:
     - CVE-2025-14104
+withdrawn: "2026-11-21T07:03:20Z"

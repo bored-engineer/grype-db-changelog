@@ -73,16 +73,25 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: postgresql-17
         purl: pkg:deb/dhi/postgresql-17
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 17.12-0
+          events:
+            - introduced: "0"
+            - fixed: 17.12-0
+          type: ECOSYSTEM
       versions:
         - 17.10-0+deb13u1+dhi0
         - 17.11-0+deb13u1+dhi0
         - 17.11-0+deb13u1+dhi1
         - 17.11-1
-        - 17.12-0
-        - 17.12-0+deb13u1+dhi0
 details: Type confusion in PostgreSQL min/max aggregate optimization allows an object creator to execute arbitrary code as the operating system user running the database, via a user-defined aggregate whose SORTOP option causes the planner to treat the aggregate's input and result as the same type when they differ.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.
 id: DHI-7qds-kpkh-47qg-nztg
-modified: "2026-11-19T18:18:44Z"
+modified: "2026-11-21T02:20:30Z"
 published: "2026-11-13T02:59:15Z"
 references:
     - type: ADVISORY

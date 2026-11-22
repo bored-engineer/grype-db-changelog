@@ -6,40 +6,70 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - introduced: "0"
+            - fixed: 1.8.2_git20260622-r1
+          type: ECOSYSTEM
       versions:
         - 1.8.1-r0
         - 1.8.1_git20260429-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - introduced: "0"
+            - fixed: 1.8.2_git20260622-r1
+          type: ECOSYSTEM
       versions:
         - 1.8.1_git20260609-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: jq
         purl: pkg:deb/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.7.1-6+deb13u2+dhi0
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2-1+deb13u0+dhi1
+          events:
+            - introduced: "0"
+            - fixed: 1.7.1-6+deb13u2+dhi0
+            - introduced: 1.8.1-5
+            - fixed: 1.8.2-1+deb13u0+dhi1
+          type: ECOSYSTEM
       versions:
         - 1.7.1-6+deb13u1dhi0
-        - 1.7.1-6+deb13u2+dhi0
-        - 1.7.1-6+deb13u2+dhi1
         - 1.7.1-6+deb13u2dhi0
         - 1.8.1-5
-        - 1.8.2-1+deb13u0+dhi1
-        - 1.8.2-1+dhi1
 details: jq is a command-line JSON processor. Before commit 0c7d133c3c7e37c00b6d46b658a02244fdd3c784, jq used MurmurHash3 with a hardcoded, publicly visible seed (0x432A9843) for all JSON object hash table operations, which allowed an attacker to precompute key collisions offline. By supplying a crafted JSON object (~100 KB) where all keys hashed to the same bucket, hash table lookups degraded from O(1) to O(n), turning any jq expression into an O(n²) operation and causing significant CPU exhaustion. This affected common jq use cases such as CI/CD pipelines, web services, and data processing scripts, and was far more practical to exploit than existing heap overflow issues since it required only a small payload. This issue has been patched in commit 0c7d133c3c7e37c00b6d46b658a02244fdd3c784.
 id: DHI-2hdf-j62j-rzxo-fl37
-modified: "2026-11-17T05:45:34Z"
+modified: "2026-11-21T03:47:18Z"
 published: "2026-11-11T19:05:15Z"
 references:
     - type: ADVISORY
@@ -109,6 +139,8 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-19365.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98496.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-16252.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-16692.html
@@ -118,6 +150,8 @@ references:
       url: https://linux.oracle.com/errata/ELSA-2026-19151.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-19365.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98496.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-40164
     - type: ADVISORY

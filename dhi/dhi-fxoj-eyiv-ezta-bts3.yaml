@@ -6,21 +6,41 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: krb5
         purl: pkg:apk/dhi/krb5
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.22.3-r0
+          events:
+            - introduced: "0"
+            - fixed: 1.22.3-r0
+          type: ECOSYSTEM
       versions:
         - 1.22.1-r0
-        - 1.22.3-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: krb5
         purl: pkg:apk/dhi/krb5
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.22.3-r0
+          events:
+            - introduced: "0"
+            - fixed: 1.22.3-r0
+          type: ECOSYSTEM
       versions:
         - 1.22.2-r1
-        - 1.22.3-r0
 details: MIT Kerberos 5 (krb5) through 1.22.2 contains a NULL pointer dereference in make_cred_list() in rd_cred.c that allows authenticated Kerberos clients to crash services by sending mismatched KRB-CRED arrays. Attackers can send forwarded credentials with more tickets than ticket_info entries through gss_accept_sec_context() to crash GSS-API acceptor services, causing denial of service.
 id: DHI-fxoj-eyiv-ezta-bts3
-modified: "2026-11-20T22:57:17Z"
+modified: "2026-11-21T16:14:41Z"
 published: "2026-11-11T16:06:05Z"
 references:
     - type: ADVISORY

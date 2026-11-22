@@ -6,6 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: expat
         purl: pkg:deb/dhi/expat
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 2.9.0-1~deb13u1+dhi3
+          events:
+            - introduced: "0"
+            - fixed: 2.9.0-1~deb13u1+dhi3
+          type: ECOSYSTEM
       versions:
         - 2.7.1-2+dhi1
         - 2.7.1-2+dhi2
@@ -24,14 +35,13 @@ affected:
         - 2.9.0-1~deb13u1+dhi0
         - 2.9.0-1~deb13u1+dhi1
         - 2.9.0-1~deb13u1+dhi2
-        - 2.9.0-1~deb13u1+dhi3
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: The xmlwf tool in libexpat through 2.10.0 contains a symlink following vulnerability because -d output mode opens files with fopen("wb"), which follows symbolic links. Local attackers with write access to the output directory can plant a symlink at the expected output name to truncate or overwrite files writable by the xmlwf user.
 id: DHI-pmyf-tkab-gacx-6bj4
-modified: "2026-11-19T20:54:10Z"
+modified: "2026-11-21T17:11:29Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY

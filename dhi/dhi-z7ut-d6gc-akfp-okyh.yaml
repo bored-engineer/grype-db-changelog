@@ -45,6 +45,7 @@ affected:
         - 12.6.1-r4
         - 12.6.1-r5
         - 12.6.1-r6
+        - 12.7.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -160,6 +161,8 @@ affected:
         - 12.6.1-3
         - 12.6.1-4
         - 12.6.1-5
+        - 12.7.0-0
+        - 12.7.0-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -313,6 +316,7 @@ affected:
         - 0.9.0-2
         - 0.9.0-3
         - 0.9.0-4
+        - 0.9.0-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -428,7 +432,7 @@ affected:
         - 2.9.1-0
 details: Hono is a Web application framework that provides support for any JavaScript runtime. From 4.12.4 until 4.13.11, serveStatic can interpret a malformed percent-encoded path differently from upstream routing middleware and bypass protection for a static prefix. The root cause is serveStatic decodes a routed request path a second time before filesystem lookup. The attack mechanism is malformed percent encoding survives the first routing interpretation and becomes a protected path only during the later static-file decode. The affected component is serveStatic. The trigger conditions are an application protects a static prefix with upstream middleware and serveStatic receives an attacker-controlled malformed percent-encoded path. The impact is unauthorized disclosure of a static file that upstream middleware was intended to protect. The issue does not permit traversal outside the configured static root. This issue is fixed in version 4.13.11.
 id: DHI-z7ut-d6gc-akfp-okyh
-modified: "2026-11-20T16:51:39Z"
+modified: "2026-11-21T12:21:13Z"
 published: "2026-11-14T01:12:02Z"
 references:
     - type: ADVISORY

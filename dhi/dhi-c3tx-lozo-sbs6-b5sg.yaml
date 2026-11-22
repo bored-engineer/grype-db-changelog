@@ -6,6 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.22.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.22.0-r0
+          type: ECOSYSTEM
       versions:
         - 8.17.0-r1
         - 8.18.0-r0
@@ -13,21 +24,26 @@ affected:
         - 8.20.0-r0
         - 8.20.0-r1
         - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.23.0-r0
-        - 8.23.0-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.22.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.22.0-r0
+          type: ECOSYSTEM
       versions:
         - 8.20.0-r1
         - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.22.0-r1
-        - 8.23.0-r0
 details: |-
     When performing transfers via libcurl’s multi interface, pooled TLS
     connections can outlive their originating easy handles. In OpenSSL 3 provider
@@ -37,7 +53,7 @@ details: |-
     active connection retains a dangling pointer, leading to a heap-use-after-free
     upon subsequent I/O or post-handshake operations.
 id: DHI-c3tx-lozo-sbs6-b5sg
-modified: "2026-11-11T15:41:32Z"
+modified: "2026-11-21T19:58:36Z"
 published: "2026-11-11T15:41:32Z"
 references:
     - type: ADVISORY

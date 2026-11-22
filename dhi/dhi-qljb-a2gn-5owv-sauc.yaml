@@ -6,28 +6,42 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.21.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.21.0-r0
+          type: ECOSYSTEM
       versions:
         - 8.17.0-r1
         - 8.18.0-r0
         - 8.19.0-r0
         - 8.20.0-r0
         - 8.20.0-r1
-        - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.23.0-r0
-        - 8.23.0-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.21.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.21.0-r0
+          type: ECOSYSTEM
       versions:
         - 8.20.0-r1
-        - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.22.0-r1
-        - 8.23.0-r0
 details: |-
     libcurl would reuse a previously created connection even when some mTLS config
     related option had been changed that should have prohibited reuse.
@@ -38,7 +52,7 @@ details: |-
     match checks, making them match too easily. In particular options related to
     the private key.
 id: DHI-qljb-a2gn-5owv-sauc
-modified: "2026-11-20T22:35:52Z"
+modified: "2026-11-21T19:11:23Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY
@@ -87,6 +101,10 @@ references:
       url: https://errata.almalinux.org/8/ALSA-2026-92368.html
     - type: ADVISORY
       url: https://errata.almalinux.org/9/ALSA-2026-92907.html
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:100685
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:100686
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:69125
     - type: ADVISORY

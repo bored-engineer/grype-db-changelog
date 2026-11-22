@@ -11,6 +11,7 @@ affected:
         - 1.25.2-r0
         - 1.25.2-r1
         - 1.25.2-r2
+        - 1.25.2-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -23,6 +24,7 @@ affected:
         - 1.25.2-r1
         - 1.25.2-r2
         - 1.25.2-r3
+        - 1.25.2-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -36,7 +38,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: With NLnet Labs Unbound up to and including version 1.25.1, applications using libunbound and configured with 'unwanted-reply-threshold', could eventually be abruptly terminated if the threshold is reached and libunbound needs to call 'libworker_alloc_cleanup' since the function is absent from the function call allow list. When an application using libunbound sets 'unwanted-reply-threshold' to any non-zero value and the iterator queries an authoritative that replies with enough wrong-transaction-ID UDP datagrams to cross the threshold, the 'libworker_alloc_cleanup' will eventually be called. Since the function is absent from the function call allow list, this leads to a fatal exit of libunbound and eventual termination of the embedding application.Unbound itself is not affected since its relevant function 'worker_alloc_cleanup' is registed in the allow list and proceeds to perform the documented cache flush.
 id: DHI-326s-72tx-bkg7-ssyg
-modified: "2026-11-13T21:35:26Z"
+modified: "2026-11-21T17:20:07Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

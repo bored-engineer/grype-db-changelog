@@ -6,6 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libxml2
         purl: pkg:deb/dhi/libxml2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi3
+          events:
+            - introduced: "0"
+            - fixed: 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi3
+          type: ECOSYSTEM
       versions:
         - 2.12.7+dfsg+really2.9.14-2.1+deb13u2+dhi1
         - 2.12.7+dfsg+really2.9.14-2.1+deb13u2+dhi2
@@ -13,10 +24,9 @@ affected:
         - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi0
         - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi1
         - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi2
-        - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi3
 details: A flaw was found in libxml2 with Python bindings enabled. A remote attacker could exploit this vulnerability by providing a specially crafted XML document containing a Document Type Definition (DTD) with enumerated attribute values. This triggers a double-free error in the SAX attributeDecl callback handler, where a string is freed twice. This flaw can lead to a denial of service (DoS) due to a reproducible crash in Python applications using the libxml2 SAX bindings.
 id: DHI-djhn-iwp6-fm32-7prm
-modified: "2026-11-20T21:06:01Z"
+modified: "2026-11-21T19:12:14Z"
 published: "2026-11-10T01:50:38Z"
 references:
     - type: ADVISORY

@@ -6,25 +6,43 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: util-linux
         purl: pkg:apk/dhi/util-linux
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.41.6-r0
+          events:
+            - introduced: "0"
+            - fixed: 2.41.6-r0
+          type: ECOSYSTEM
       versions:
         - 2.41.2-r0
         - 2.41.4-r0
-        - 2.41.6-r0
-        - 2.41.6-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: util-linux
         purl: pkg:apk/dhi/util-linux
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.42.3-r0
+          events:
+            - introduced: "0"
+            - fixed: 2.42.3-r0
+          type: ECOSYSTEM
       versions:
         - 2.42-r0
         - 2.42.1-r0
-        - 2.42.3-r0
-        - 2.42.3-r1
 details: util-linux versions through 2.41.5 and 2.42.2 fail to check mount helper exit status before running post-mount hooks, allowing unprivileged users to execute privileged operations on pre-existing filesystems. Attackers can exploit X-mount.idmap or X-mount.owner hooks to clone filesystems with inherited suid bits or modify target inode permissions after a helper fails, achieving privilege escalation.
 id: DHI-yxhe-pmei-yusk-43no
-modified: "2026-11-11T15:36:30Z"
+modified: "2026-11-21T03:09:49Z"
 published: "2026-11-11T15:36:30Z"
 references:
     - type: ADVISORY

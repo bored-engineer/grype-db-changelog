@@ -6,12 +6,43 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: sudo
         purl: pkg:apk/dhi/sudo
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.9.17_p2-r2
+          events:
+            - introduced: "0"
+            - fixed: 1.9.17_p2-r2
+          type: ECOSYSTEM
       versions:
         - 1.9.17_p2-r1
-        - 1.9.17_p2-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: sudo
+        purl: pkg:deb/dhi/sudo
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.9.16p2-3+deb13u2+dhi3
+          events:
+            - introduced: "0"
+            - fixed: 1.9.16p2-3+deb13u2+dhi3
+          type: ECOSYSTEM
+      versions:
+        - 1.9.16p2-3+deb13u2+dhi1
+        - 1.9.16p2-3+deb13u2+dhi2
+        - 1.9.16p2-3+deb13u2dhi0
 details: A flaw was found in sudo. When sudoers rules use NOTBEFORE or NOTAFTER time-based access restrictions with timestamps that omit the trailing 'Z' timezone indicator, the time evaluation relies on the TZ environment variable inherited from the calling user. Because sudo is a setuid-root program, an unprivileged local user can set TZ to an extreme timezone offset to shift the authorization window by up to approximately 25 hours, causing expired rules to be treated as valid. This allows the user to execute commands outside the intended time window. Authentication is not bypassed; only the time-based authorization check is affected.
 id: DHI-i37m-wgvl-rkex-uus3
-modified: "2026-11-11T15:57:36Z"
+modified: "2026-11-22T00:14:02Z"
 published: "2026-11-11T15:57:36Z"
 references:
     - type: ADVISORY

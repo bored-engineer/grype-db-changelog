@@ -25,6 +25,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: dotnet8-runtime
         purl: pkg:apk/dhi/dotnet8-runtime
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.0.34-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.0.34-r0
+          type: ECOSYSTEM
       versions:
         - 8.0.23-r0
         - 8.0.24-r0
@@ -35,7 +46,6 @@ affected:
         - 8.0.31-r0
         - 8.0.32-r0
         - 8.0.33-r0
-        - 8.0.34-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -71,21 +81,6 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
-        ecosystem: Docker Hardened Images:Alpine:3.24
-        name: dotnet9-runtime
-        purl: pkg:apk/dhi/dotnet9-runtime
-      versions:
-        - 9.0.16-r0
-        - 9.0.17-r0
-        - 9.0.18-r0
-        - 9.0.20-r0
-        - 9.0.20-r1
-        - 9.0.21-r0
-        - 9.0.22-r0
-        - 9.0.23-r0
-    - database_specific:
-        owner_kind: HSP
-      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: azure-functions-base-4
         purl: pkg:deb/dhi/azure-functions-base-4
@@ -114,6 +109,7 @@ affected:
         - 4.1056.100-20
         - 4.1056.200-20
         - 4.1056.200-21
+        - 4.1056.200-22
     - database_specific:
         owner_kind: HSP
       package:
@@ -343,7 +339,7 @@ details: |
     V1.0 (10/13/2026): Advisory published.
     V1.1 (11/10/2026): Updated SDK template and Identity UI affected versions and guidance for repairing previously generated application code.
 id: DHI-fils-xt4j-tqsd-3ia6
-modified: "2026-11-20T16:48:17Z"
+modified: "2026-11-21T22:40:48Z"
 published: "2026-11-11T17:01:51Z"
 references:
     - type: ADVISORY

@@ -33,6 +33,7 @@ affected:
         - 1.1.0-r12
         - 1.1.0-r13
         - 1.1.0-r17
+        - 1.1.0-r18
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -93,6 +94,7 @@ affected:
         - 1.1.0-15
         - 1.1.0-16
         - 1.1.0-17
+        - 1.1.0-18
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -121,7 +123,7 @@ affected:
         - 1.2.0-9
 details: Netty is a network application framework for development of protocol servers and clients. Prior to versions 4.1.135.Final and 4.2.15.Final, the HAProxy PROXY protocol v2 codec in netty leaks native or heap memory on every connection when a client sends a syntactically valid header containing nested `PP2_TYPE_SSL` TLVs (type-length-value records) at depth two or greater. The leak occurs on the successful parse path — no exception is thrown, the message fires downstream, the decoder removes itself, and the application releases the `HAProxyMessage` normally. Yet the underlying cumulation buffer (a pooled, potentially direct `ByteBuf` allocated by the channel) remains permanently pinned. Versions 4.1.135.Final and 4.2.15.Final patch the issue.
 id: DHI-rahd-27zh-mylj-gnla
-modified: "2026-11-20T16:51:09Z"
+modified: "2026-11-21T14:15:56Z"
 published: "2026-11-10T05:22:59Z"
 references:
     - type: ADVISORY

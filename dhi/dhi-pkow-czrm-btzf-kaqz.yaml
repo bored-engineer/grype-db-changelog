@@ -6,10 +6,19 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libxml2
         purl: pkg:apk/dhi/libxml2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.13.9-r1
+          events:
+            - introduced: "0"
+            - fixed: 2.13.9-r1
+          type: ECOSYSTEM
       versions:
         - 2.13.9-r0
-        - 2.13.9-r1
-        - 2.13.9-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -60,7 +69,7 @@ affected:
         - 25.0.5.1_p2-r0
 details: A flaw was found in libxml2. This vulnerability occurs when the library processes a specially crafted XML Schema Definition (XSD) validated document that includes an internal entity reference. An attacker could exploit this by providing a malicious document, leading to a type confusion error that causes the application to crash. This results in a denial of service (DoS), making the affected system or application unavailable.
 id: DHI-pkow-czrm-btzf-kaqz
-modified: "2026-11-18T19:48:12Z"
+modified: "2026-11-21T19:58:52Z"
 published: "2026-11-11T17:10:04Z"
 references:
     - type: ADVISORY

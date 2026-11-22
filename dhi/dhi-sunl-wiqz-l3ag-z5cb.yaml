@@ -15,13 +15,15 @@ affected:
         - 2.20.27-5
         - 2.20.27-6
         - 2.20.27-7
+        - 2.20.27-8
+        - 2.20.27-9
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: A vulnerability in the `GitHubRepository` block of the `prefect-github` integration in Prefect version 3.6.18 allows an attacker to inject arbitrary git command-line options via the `reference` field. The `reference` field is concatenated directly into a `git clone` command string without proper sanitization, and then parsed by `shlex.split()`. This enables injection of options such as `-c`, leading to potential Server-Side Request Forgery (SSRF), credential theft, or remote code execution (RCE). The vulnerability affects both the `aget_directory()` and `get_directory()` methods in `src/integrations/prefect-github/prefect_github/repository.py`. This issue does not affect the GitLab and BitBucket integrations, which use a safer list-based command construction approach.
 id: DHI-sunl-wiqz-l3ag-z5cb
-modified: "2026-11-20T00:17:04Z"
+modified: "2026-11-21T15:48:37Z"
 published: "2026-11-20T00:17:04Z"
 references:
     - type: ADVISORY

@@ -3,11 +3,21 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: perl-convert-asn1
+        purl: pkg:apk/dhi/perl-convert-asn1
+      versions:
+        - 0.34-r0
+        - 0.37-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: perl-convert-asn1
         purl: pkg:apk/dhi/perl-convert-asn1
       versions:
         - 0.34-r0
+        - 0.37-r0
 details: |-
     Convert::ASN1 versions before 0.37 for Perl allow memory exhaustion via a declared element length passed unchecked to sysread in asn_read and asn_get.
 
@@ -15,7 +25,7 @@ details: |-
 
     A single header makes the reading process allocate the declared size. Where the allocation fails, perl exits with "Out of memory", which eval cannot catch.
 id: DHI-dpfg-sr5g-wesw-xjt7
-modified: "2026-11-20T14:18:52Z"
+modified: "2026-11-21T16:17:22Z"
 published: "2026-11-20T14:18:52Z"
 references:
     - type: ADVISORY
@@ -33,6 +43,9 @@ references:
     - type: FIX
       url: https://github.com/cpan-authors/perl-Convert-ASN1/commit/88bd86b5a3ce3430ebb8b78fe5307f234198bf16.patch
 schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+      type: CVSS_V3
 summary: Convert::ASN1 versions before 0.37 for Perl allow memory exhaustion via a declared element length passed unchecked to…
 upstream:
     - CVE-2026-131868

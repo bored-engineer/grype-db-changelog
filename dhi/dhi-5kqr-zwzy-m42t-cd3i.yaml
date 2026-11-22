@@ -11,6 +11,7 @@ affected:
         - 1.25.2-r0
         - 1.25.2-r1
         - 1.25.2-r2
+        - 1.25.2-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -23,6 +24,7 @@ affected:
         - 1.25.2-r1
         - 1.25.2-r2
         - 1.25.2-r3
+        - 1.25.2-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -36,7 +38,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: In NLnet Labs Unbound up to and including version 1.25.1, when the validator builds the canonical RDATA form for an RRSIG-covered PX/RP/MINFO/SOA RRset, it computes the address of the second embedded domain name as 'datstart + dname_valid(datstart, ...)' and passes it straight to 'query_dname_tolower()' without checking that a second name is actually present in the RDATA. The wire-format parser accepts multi-dname RRs whose RDATA ends after the first name, so an attacker who runs a DNSSEC-signed authoritative server can deliver a record with an absent second domain name (e.g. SOA record) and cause 'query_dname_tolower()' to walk label-by-label through stale bytes in the per-worker 'env->scratch_buffer', past the end of that heap allocation if 'msg-buffer-size' has been lowered from the default. This leads to heap buffer overflow and on a release build the outcome relies heavily on the contents of the buffer tail and the adjacent heap chunk.
 id: DHI-5kqr-zwzy-m42t-cd3i
-modified: "2026-11-17T08:52:00Z"
+modified: "2026-11-21T17:20:07Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

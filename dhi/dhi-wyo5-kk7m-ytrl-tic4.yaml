@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: tar
         purl: pkg:apk/dhi/tar
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.35-r5
     - database_specific:
@@ -14,6 +18,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: tar
         purl: pkg:deb/dhi/tar
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.35+dfsg-3.1+deb13u0+dhi1
         - 1.35+dfsg-3.1+deb13u0+dhi2
@@ -27,7 +35,7 @@ database_specific:
         - legacy_package_image_owner
 details: 'GNU Tar through 1.35 allows file overwrite via directory traversal in crafted TAR archives, with a certain two-step process. First, the victim must extract an archive that contains a ../ symlink to a critical directory. Second, the victim must extract an archive that contains a critical file, specified via a relative pathname that begins with the symlink name and ends with that critical file''s name. Here, the extraction follows the symlink and overwrites the critical file. This bypasses the protection mechanism of "Member name contains ''..''" that would occur for a single TAR archive that attempted to specify the critical file via a ../ approach. For example, the first archive can contain "x -> ../../../../../home/victim/.ssh" and the second archive can contain x/authorized_keys. This can affect server applications that automatically extract any number of user-supplied TAR archives, and were relying on the blocking of traversal. This can also affect software installation processes in which "tar xf" is run more than once (e.g., when installing a package can automatically install two dependencies that are set up as untrusted tarballs instead of official packages). NOTE: the official GNU Tar manual has an otherwise-empty directory for each "tar xf" in its Security Rules of Thumb; however, third-party advice leads users to run "tar xf" more than once into the same directory.'
 id: DHI-wyo5-kk7m-ytrl-tic4
-modified: "2026-11-19T20:54:10Z"
+modified: "2026-11-21T15:46:10Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY
