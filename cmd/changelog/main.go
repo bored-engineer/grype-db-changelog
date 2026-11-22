@@ -11,7 +11,6 @@ package main
 
 import (
 	"bytes"
-	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -19,19 +18,9 @@ import (
 	"sort"
 	"strings"
 	"time"
-
-	"github.com/bored-engineer/grype-db-changelog/internal/providers"
 )
 
 const changelogRef = "refs/heads/changelog"
-
-// staleWarnDays is how long a carried-forward provider can go without a
-// fresh ref before we flag it. It's a prompt for a human to go check
-// whether upstream actually dropped it (and if so, record an "end" date
-// in providers.json), not an automatic removal - that stays a deliberate,
-// explicit decision. 14 days is comfortably past the single-day gaps
-// observed so far without letting a real removal go unnoticed for months.
-const staleWarnDays = 14
 
 func git(env []string, args ...string) (string, error) {
 	cmd := exec.Command("git", args...)
@@ -113,7 +102,7 @@ func existingProviders(commit string) (map[string]string, error) {
 	return providers, nil
 }
 
-func buildDay(date string, manifest map[string]providers.Provider) error {
+func buildDay(date string) error {
 	prevCommit, err := git(nil, "rev-parse", "--verify", changelogRef)
 	if err != nil {
 		prevCommit = "" // first run: no previous changelog commit yet
@@ -137,7 +126,6 @@ func buildDay(date string, manifest map[string]providers.Provider) error {
 	if prevCommit != "" {
 		parents = append(parents, prevCommit)
 	}
-	refreshed := map[string]bool{}
 	for _, ref := range refs {
 		subtree, err := git(nil, "rev-parse", "--verify", ref.commit+":providers/"+ref.provider)
 		if err != nil {
@@ -146,43 +134,7 @@ func buildDay(date string, manifest map[string]providers.Provider) error {
 		tree[ref.provider] = subtree
 		parents = append(parents, ref.commit)
 		advanced = append(advanced, ref.provider)
-		refreshed[ref.provider] = true
 	}
-
-	// Drop anything carried forward from a provider that's been
-	// deliberately confirmed removed as of this date (providers.json's
-	// "end"), rather than freezing its last known data forever. A fresh
-	// ref today always wins over this, in case the removal was recorded
-	// in error - checked above via `refreshed`.
-	buildTime, err := time.Parse(providers.DateLayout, date)
-	if err != nil {
-		return fmt.Errorf("time.Parse failed: %w", err)
-	}
-	var removed []string
-	for name := range tree {
-		if refreshed[name] {
-			continue
-		}
-		entry, ok := manifest[name]
-		if ok && entry.End != nil {
-			if buildTime.After(*entry.End) {
-				delete(tree, name)
-				removed = append(removed, name)
-			}
-			continue
-		}
-		// Not (yet) marked as removed: warn if it's gone stale, as a
-		// prompt to go check rather than an automatic decision.
-		last, found, err := latestRefDate(name, buildTime)
-		if err != nil {
-			return fmt.Errorf("latestRefDate failed for %s: %w", name, err)
-		}
-		if found && int(buildTime.Sub(last).Hours()/24) >= staleWarnDays {
-			fmt.Fprintf(os.Stderr, "warning: %s hasn't published since %s (%d+ days); confirm whether it's been dropped and set providers.json's \"end\" if so\n",
-				name, last.Format(providers.DateLayout), staleWarnDays)
-		}
-	}
-
 	if len(parents) == 0 {
 		return fmt.Errorf("no parents resolved for %s (nothing to commit)", date)
 	}
@@ -210,20 +162,18 @@ func buildDay(date string, manifest map[string]providers.Provider) error {
 	}
 
 	sort.Strings(advanced)
-	sort.Strings(removed)
-	var parts []string
-	if len(advanced) > 0 {
-		parts = append(parts, strings.Join(advanced, ", "))
-	}
-	if len(removed) > 0 {
-		parts = append(parts, fmt.Sprintf("removed: %s", strings.Join(removed, ", ")))
-	}
-	message := fmt.Sprintf("%s: %s", date, strings.Join(parts, "; "))
-	if len(parts) == 0 {
+	message := fmt.Sprintf("%s: %s", date, strings.Join(advanced, ", "))
+	if len(advanced) == 0 {
 		message = fmt.Sprintf("%s: (no provider updates; carried forward)", date)
 	}
 
-	commitTime := buildTime
+	// date is the same "YY-MM-DD" form used by the ghcr.io tags (and so the
+	// refs/raw/grype/<provider>/<date> ref names); "06-01-02" is Go's
+	// reference layout for that two-digit-year form.
+	commitTime, err := time.Parse("06-01-02", date)
+	if err != nil {
+		return fmt.Errorf("time.Parse failed: %w", err)
+	}
 	env := []string{
 		fmt.Sprintf("GIT_AUTHOR_NAME=grype-db-changelog"),
 		fmt.Sprintf("GIT_AUTHOR_EMAIL=41898282+github-actions[bot]@users.noreply.github.com"),
@@ -255,39 +205,6 @@ func buildDay(date string, manifest map[string]providers.Provider) error {
 	return nil
 }
 
-// latestRefDate finds the most recent refs/raw/grype/<provider>/<date> ref
-// at or before onOrBefore. found is false if the provider has no ref that
-// old (which shouldn't happen for anything already in the changelog tree,
-// but is handled rather than assumed away).
-func latestRefDate(provider string, onOrBefore time.Time) (latest time.Time, found bool, err error) {
-	out, err := git(nil, "for-each-ref", "--format=%(refname)", "refs/raw/grype/"+provider+"/*")
-	if err != nil {
-		return time.Time{}, false, fmt.Errorf("for-each-ref failed: %w", err)
-	}
-	if out == "" {
-		return time.Time{}, false, nil
-	}
-	for _, line := range strings.Split(out, "\n") {
-		// refs/raw/grype/<provider>/<date>
-		idx := strings.LastIndexByte(line, '/')
-		if idx < 0 {
-			continue
-		}
-		t, err := time.Parse(providers.DateLayout, line[idx+1:])
-		if err != nil {
-			return time.Time{}, false, fmt.Errorf("time.Parse failed for ref %q: %w", line, err)
-		}
-		if t.After(onOrBefore) {
-			continue
-		}
-		if !found || t.After(latest) {
-			latest = t
-			found = true
-		}
-	}
-	return latest, found, nil
-}
-
 func mktree(input string) (string, error) {
 	cmd := exec.Command("git", "mktree")
 	cmd.Stdin = strings.NewReader(input)
@@ -301,20 +218,11 @@ func mktree(input string) (string, error) {
 }
 
 func main() {
-	providersFlag := flag.String("providers", "providers.json", "path to the provider start/end-date manifest")
-	flag.Parse()
-
-	if flag.NArg() != 1 {
-		fmt.Fprintf(os.Stderr, "Usage: %s [-providers path] <YY-MM-DD>\n", os.Args[0])
+	if len(os.Args) != 2 {
+		fmt.Fprintf(os.Stderr, "Usage: %s <YY-MM-DD>\n", os.Args[0])
 		os.Exit(1)
 	}
-
-	manifest, err := providers.Load(*providersFlag)
-	if err != nil {
-		log.Fatalf("providers.Load failed: %v", err)
-	}
-
-	if err := buildDay(flag.Arg(0), manifest); err != nil {
+	if err := buildDay(os.Args[1]); err != nil {
 		log.Fatal(err)
 	}
 }

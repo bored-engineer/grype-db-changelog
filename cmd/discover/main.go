@@ -119,13 +119,7 @@ func main() {
 	for d := start; !d.After(end); d = d.AddDate(0, 0, 1) {
 		date := d.Format(dateLayout)
 		for _, p := range names {
-			entry := manifest[p]
-			if d.Before(entry.Start) {
-				continue
-			}
-			if entry.End != nil && d.After(*entry.End) {
-				// Confirmed-removed as of this date: don't go looking for
-				// data we don't expect to find.
+			if d.Before(manifest[p]) {
 				continue
 			}
 			if existing[p+"/"+date] {
