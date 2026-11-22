@@ -2,11 +2,21 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: perl-convert-asn1
+        purl: pkg:apk/dhi/perl-convert-asn1
+      versions:
+        - 0.34-r0
+        - 0.37-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: perl-convert-asn1
         purl: pkg:apk/dhi/perl-convert-asn1
       versions:
         - 0.34-r0
+        - 0.37-r0
 details: |-
     Convert::ASN1 versions before 0.37 for Perl allow memory exhaustion via unbounded MSG_PEEK buffer doubling in asn_recv.
 
@@ -14,7 +24,7 @@ details: |-
 
     A single truncated BER header sent to a process calling asn_recv doubles the peek buffer until memory is exhausted. Perl's realloc failure is fatal and not catchable with eval.
 id: DHI-icyy-xvjg-35tw-uocu
-modified: "2026-11-20T14:18:52Z"
+modified: "2026-11-21T16:17:22Z"
 published: "2026-11-20T14:18:52Z"
 references:
     - type: ADVISORY
@@ -32,6 +42,9 @@ references:
     - type: FIX
       url: https://github.com/cpan-authors/perl-Convert-ASN1/commit/a30eae1dc6a977716b76f79f228fa0432e28bc5a.patch
 schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+      type: CVSS_V3
 summary: Convert::ASN1 versions before 0.37 for Perl allow memory exhaustion via unbounded MSG_PEEK buffer doubling in asn_recv.
 upstream:
     - CVE-2026-126568

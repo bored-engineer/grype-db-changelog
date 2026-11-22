@@ -1,25 +1,10 @@
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: util-linux
-        purl: pkg:deb/dhi/util-linux
-      versions:
-        - 2.41-5+dhi0
-        - 2.41-5+dhi1
-        - 2.41-5+dhi2
-        - 2.41-5+dhi3
-        - 2.41-5dhi0
-        - 2.41.5-0+deb13u1+dhi2
-        - 2.41.5-0+deb13u1+dhi3
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: A flaw was found in the util-linux chfn and chsh utilities when compiled with Readline support. The Readline library uses an "INPUTRC" environment variable to get a path to the library config file. When the library cannot parse the specified file, it prints an error message containing data from the file. This flaw allows an unprivileged user to read root-owned files, potentially leading to privilege escalation. This flaw affects util-linux versions prior to 2.37.4.
 id: DHI-v27a-b7hv-ohlk-733l
-modified: "2026-11-19T20:54:10Z"
+modified: "2026-11-21T05:29:39Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY
@@ -61,3 +46,4 @@ severity:
 summary: A flaw was found in the util-linux chfn and chsh utilities when compiled with Readline support. The Readline library…
 upstream:
     - CVE-2022-0563
+withdrawn: "2026-11-21T05:29:39Z"

@@ -5,30 +5,46 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: cups
         purl: pkg:apk/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.18-r0
+          events:
+            - fixed: 2.4.18-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.4.13-r0
         - 2.4.16-r0
-        - 2.4.18-r0
-        - 2.4.18-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: cups
         purl: pkg:deb/dhi/cups
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.10-3+deb13u2+dhi5
+          events:
+            - fixed: 2.4.10-3+deb13u2+dhi5
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.4.10-3+deb13u2+dhi1
         - 2.4.10-3+deb13u2+dhi2
         - 2.4.10-3+deb13u2+dhi3
         - 2.4.10-3+deb13u2+dhi4
-        - 2.4.10-3+deb13u2+dhi5
-        - 2.4.10-3+deb13u2+dhi6
-        - 2.4.10-3+deb13u2+dhi7
-        - 2.4.10-3+deb13u2+dhi8
         - 2.4.10-3+deb13u2dhi0
 details: OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. In versions 2.4.16 and prior, there is a heap-based buffer overflow in the CUPS scheduler when building filter option strings from job attribute. At time of publication, there are no publicly available patches.
 id: DHI-4xd4-jihf-cra4-iqex
-modified: "2026-11-11T16:04:58Z"
+modified: "2026-11-21T02:03:27Z"
 published: "2026-11-11T16:04:58Z"
 references:
     - type: ADVISORY

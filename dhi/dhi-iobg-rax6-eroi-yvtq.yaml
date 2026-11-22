@@ -5,40 +5,67 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - fixed: 1.8.2_git20260622-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.8.1-r0
         - 1.8.1_git20260429-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - fixed: 1.8.2_git20260622-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.8.1_git20260609-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: jq
         purl: pkg:deb/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2-1+deb13u0+dhi1
+          events:
+            - fixed: 1.8.2-1+deb13u0+dhi1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.7.1-6+deb13u1dhi0
         - 1.7.1-6+deb13u2+dhi0
         - 1.7.1-6+deb13u2+dhi1
         - 1.7.1-6+deb13u2dhi0
         - 1.8.1-5
-        - 1.8.2-1+deb13u0+dhi1
-        - 1.8.2-1+dhi1
 details: jq is a command-line JSON processor. In 1.8.1 and earlier, Top-level jq programs loaded from a file with -f are truncated at the first embedded NUL byte on current upstream HEAD. A crafted filter file such as . followed by \x00 and arbitrary suffix compiles and executes as only the prefix before the NUL. This leaves jq with a post-CVE-2026-33948 prefix/full-buffer mismatch on the compilation path even though the JSON parser path has already been fixed.
 id: DHI-iobg-rax6-eroi-yvtq
-modified: "2026-11-11T19:05:15Z"
+modified: "2026-11-21T02:36:01Z"
 published: "2026-11-11T19:05:15Z"
 references:
     - type: ADVISORY

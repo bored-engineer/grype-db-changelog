@@ -25,20 +25,21 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: glibc
         purl: pkg:deb/dhi/glibc
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 2.41-12+deb13u4+dhi1
+          events:
+            - fixed: 2.41-12+deb13u4+dhi1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.41-12+deb13u3+dhi1
         - 2.41-12+deb13u3+dhi2
         - 2.41-12+deb13u4+dhi0
-        - 2.41-12+deb13u4+dhi1
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: ncurses
-        purl: pkg:deb/dhi/ncurses
-      versions:
-        - 6.5+20250216-2+deb13u0+dhi5
-        - 6.5+20250216-2+dhi4
     - database_specific:
         owner_kind: HSP
       package:
@@ -72,7 +73,7 @@ database_specific:
         - legacy_package_image_owner
 details: Calling gethostbyaddr or gethostbyaddr_r with a configured nsswitch.conf that specifies the library's DNS backend in the GNU C Library version 2.34 to version 2.43 could, with a crafted response from the configured DNS server, result in a violation of the DNS specification that causes the application to treat a non-answer section of the DNS response as a valid answer.
 id: DHI-cayw-gsin-tud6-temg
-modified: "2026-11-20T18:11:45Z"
+modified: "2026-11-21T17:12:00Z"
 published: "2026-11-20T18:11:45Z"
 references:
     - type: ADVISORY

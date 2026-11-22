@@ -6,6 +6,7 @@ affected:
         name: debezium-3.4-connector-jdbc
         purl: pkg:apk/dhi/debezium-3.4-connector-jdbc
       versions:
+        - 3.4.3-r10
         - 3.4.3-r5
         - 3.4.3-r6
         - 3.4.3-r7
@@ -18,6 +19,7 @@ affected:
         name: debezium-3.4-connector-mariadb
         purl: pkg:apk/dhi/debezium-3.4-connector-mariadb
       versions:
+        - 3.4.3-r10
         - 3.4.3-r5
         - 3.4.3-r6
         - 3.4.3-r7
@@ -30,6 +32,7 @@ affected:
         name: debezium-3.4-connector-mongodb
         purl: pkg:apk/dhi/debezium-3.4-connector-mongodb
       versions:
+        - 3.4.3-r10
         - 3.4.3-r5
         - 3.4.3-r6
         - 3.4.3-r7
@@ -42,6 +45,7 @@ affected:
         name: debezium-3.4-connector-mysql
         purl: pkg:apk/dhi/debezium-3.4-connector-mysql
       versions:
+        - 3.4.3-r10
         - 3.4.3-r5
         - 3.4.3-r6
         - 3.4.3-r7
@@ -54,6 +58,7 @@ affected:
         name: debezium-3.4-connector-oracle
         purl: pkg:apk/dhi/debezium-3.4-connector-oracle
       versions:
+        - 3.4.3-r10
         - 3.4.3-r5
         - 3.4.3-r6
         - 3.4.3-r7
@@ -66,6 +71,7 @@ affected:
         name: debezium-3.4-connector-postgres
         purl: pkg:apk/dhi/debezium-3.4-connector-postgres
       versions:
+        - 3.4.3-r10
         - 3.4.3-r5
         - 3.4.3-r6
         - 3.4.3-r7
@@ -78,6 +84,7 @@ affected:
         name: debezium-3.4-connector-sqlserver
         purl: pkg:apk/dhi/debezium-3.4-connector-sqlserver
       versions:
+        - 3.4.3-r10
         - 3.4.3-r5
         - 3.4.3-r6
         - 3.4.3-r7
@@ -90,6 +97,7 @@ affected:
         name: debezium-3.4-scripting
         purl: pkg:apk/dhi/debezium-3.4-scripting
       versions:
+        - 3.4.3-r10
         - 3.4.3-r5
         - 3.4.3-r6
         - 3.4.3-r7
@@ -107,6 +115,7 @@ affected:
         - 3.7.1-r0
         - 3.7.1-r1
         - 3.7.1-r2
+        - 3.7.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -119,6 +128,7 @@ affected:
         - 3.7.1-r0
         - 3.7.1-r1
         - 3.7.1-r2
+        - 3.7.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -131,6 +141,7 @@ affected:
         - 3.7.1-r0
         - 3.7.1-r1
         - 3.7.1-r2
+        - 3.7.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -143,6 +154,7 @@ affected:
         - 3.7.1-r0
         - 3.7.1-r1
         - 3.7.1-r2
+        - 3.7.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -155,6 +167,7 @@ affected:
         - 3.7.1-r0
         - 3.7.1-r1
         - 3.7.1-r2
+        - 3.7.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -167,6 +180,7 @@ affected:
         - 3.7.1-r0
         - 3.7.1-r1
         - 3.7.1-r2
+        - 3.7.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -179,6 +193,7 @@ affected:
         - 3.7.1-r0
         - 3.7.1-r1
         - 3.7.1-r2
+        - 3.7.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -191,6 +206,7 @@ affected:
         - 3.7.1-r0
         - 3.7.1-r1
         - 3.7.1-r2
+        - 3.7.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -925,6 +941,7 @@ affected:
         - 1.35.3-30
         - 1.35.3-31
         - 1.35.3-32
+        - 1.35.3-33
         - 1.35.3-4
         - 1.35.3-5
         - 1.35.3-6
@@ -968,6 +985,7 @@ affected:
         - 484-21
         - 484-22
         - 484-23
+        - 484-24
         - 484-3
         - 484-4
         - 484-5
@@ -1036,6 +1054,7 @@ affected:
         - 484-21
         - 484-22
         - 484-23
+        - 484-24
         - 484-3
         - 484-4
         - 484-5
@@ -1045,7 +1064,7 @@ affected:
         - 484-9
 details: MariaDB Connector/J is used to connect applications developed in Java to MariaDB and MySQL databases. From 3.0.0 until 3.3.7, 3.4.5, and 3.5.10, the ReadableByteBuf.readLength() and ReadableByteBuf.readIntLengthEncodedNotNull() methods narrowed the protocol's unsigned 8-byte length-encoded integer to a Java int without checking that the value fit a non-negative integer. Values above Integer.MAX_VALUE could wrap to a negative or unrelated length that downstream allocation and read paths used. A malicious or compromised server, or a machine-in-the-middle attacker, could trigger NegativeArraySizeException, out-of-bounds failures, or oversized allocation behavior in client connection handling. This issue is fixed in versions 3.3.7, 3.4.5, and 3.5.10.
 id: DHI-xfou-4fsu-qeav-5tqe
-modified: "2026-11-20T16:52:19Z"
+modified: "2026-11-21T14:20:16Z"
 published: "2026-11-11T15:39:09Z"
 references:
     - type: ADVISORY

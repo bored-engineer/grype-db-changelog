@@ -5807,6 +5807,7 @@ affected:
         - 0.74.0-r1
         - 0.74.0-r10
         - 0.74.0-r11
+        - 0.74.0-r12
         - 0.74.0-r2
         - 0.74.0-r3
         - 0.74.0-r4
@@ -5851,6 +5852,7 @@ affected:
         - 0.74.0-r1
         - 0.74.0-r10
         - 0.74.0-r11
+        - 0.74.0-r12
         - 0.74.0-r2
         - 0.74.0-r3
         - 0.74.0-r4
@@ -5895,6 +5897,7 @@ affected:
         - 0.74.0-r1
         - 0.74.0-r10
         - 0.74.0-r11
+        - 0.74.0-r12
         - 0.74.0-r2
         - 0.74.0-r3
         - 0.74.0-r4
@@ -5939,6 +5942,7 @@ affected:
         - 0.74.0-r1
         - 0.74.0-r10
         - 0.74.0-r11
+        - 0.74.0-r12
         - 0.74.0-r2
         - 0.74.0-r3
         - 0.74.0-r4
@@ -5986,6 +5990,7 @@ affected:
         - 0.89.0-r1
         - 0.89.0-r2
         - 0.89.0-r3
+        - 0.89.0-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -6025,6 +6030,7 @@ affected:
         - 0.89.0-r1
         - 0.89.0-r2
         - 0.89.0-r3
+        - 0.89.0-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -6064,6 +6070,7 @@ affected:
         - 0.89.0-r1
         - 0.89.0-r2
         - 0.89.0-r3
+        - 0.89.0-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -6103,6 +6110,7 @@ affected:
         - 0.89.0-r1
         - 0.89.0-r2
         - 0.89.0-r3
+        - 0.89.0-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -6429,6 +6437,7 @@ affected:
         - 0.31.1-r9
         - 0.36.1-r1
         - 0.36.1-r2
+        - 0.36.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -6451,6 +6460,7 @@ affected:
         - 0.31.1-r9
         - 0.36.1-r1
         - 0.36.1-r2
+        - 0.36.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -6473,6 +6483,7 @@ affected:
         - 0.31.1-r9
         - 0.36.1-r1
         - 0.36.1-r2
+        - 0.36.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -6495,6 +6506,7 @@ affected:
         - 0.31.1-r9
         - 0.36.1-r1
         - 0.36.1-r2
+        - 0.36.1-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -6585,7 +6597,7 @@ database_specific:
         - legacy_package_image_owner
 details: oras-go is a Go library for managing OCI artifacts. Prior to 2.6.2, content/file.Store extraction of OCI layers marked with io.deis.oras.content.unpack=true can write outside the store working directory. The pushDir path through extractTarDirectory and ensureLinkPath validates symlink targets lexically, resolveRelToBase skips its parent-symlink walk for root-level entries, and writeFile follows a terminal symlink when opening a regular file. A malicious archive can therefore create a symlink chain whose lexical target remains inside the extraction root but whose resolved target is an attacker-selected absolute path, then overwrite that target with a same-named regular-file entry even when AllowPathTraversalOnWrite is false. Pulling an attacker-controlled artifact can create or overwrite any file writable by the process and may lead to code execution. This issue is fixed in version 2.6.2.
 id: DHI-43m4-3a5b-kwmj-4stm
-modified: "2026-11-20T19:20:11Z"
+modified: "2026-11-21T08:50:09Z"
 published: "2026-11-20T18:46:52Z"
 references:
     - type: ADVISORY

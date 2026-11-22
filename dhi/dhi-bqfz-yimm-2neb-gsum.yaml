@@ -5,28 +5,41 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.21.0-r0
+          events:
+            - fixed: 8.21.0-r0
+            - introduced: 8.18.0-r0
+          type: ECOSYSTEM
       versions:
-        - 8.17.0-r1
         - 8.18.0-r0
         - 8.19.0-r0
         - 8.20.0-r0
         - 8.20.0-r1
-        - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.23.0-r0
-        - 8.23.0-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.21.0-r0
+          events:
+            - fixed: 8.21.0-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 8.20.0-r1
-        - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.22.0-r1
-        - 8.23.0-r0
 details: |-
     A vulnerability in libcurl caused the HTTP `Referer:` header to persist even
     when explicitly cleared. While the documentation states that passing NULL to
@@ -35,7 +48,7 @@ details: |-
     reused and sent in subsequent requests, potentially leaking sensitive
     information to unintended servers.
 id: DHI-bqfz-yimm-2neb-gsum
-modified: "2026-11-11T15:41:44Z"
+modified: "2026-11-21T20:28:53Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY

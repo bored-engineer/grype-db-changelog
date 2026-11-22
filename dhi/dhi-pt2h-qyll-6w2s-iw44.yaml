@@ -54,9 +54,10 @@ affected:
         - 3.4.0-5
         - 3.4.0-6
         - 3.4.0-7
+        - 3.4.0-8
 details: Apache Airflow's `/assets/events` API returned asset events for every Dag in the deployment, with no filter restricting them to the Dags the caller is authorized to read. Any authenticated user holding asset-read access could therefore enumerate asset events — including the source Dag ID, task ID, run ID and event timestamps — for Dags they have no permission to see. Because the filter was also absent from the count query, `total_entries` and pagination disclosed the existence of hidden Dags even without inspecting individual rows. Deployments are affected whenever per-Dag access control is used to separate teams or tenants; no special configuration is required. Upgrade to apache-airflow 3.3.2 or later.
 id: DHI-pt2h-qyll-6w2s-iw44
-modified: "2026-11-13T20:18:06Z"
+modified: "2026-11-21T10:48:34Z"
 published: "2026-11-13T00:27:04Z"
 references:
     - type: ADVISORY

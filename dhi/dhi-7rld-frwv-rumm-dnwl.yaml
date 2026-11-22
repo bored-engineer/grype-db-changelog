@@ -2,37 +2,22 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
-        ecosystem: Docker Hardened Images:Alpine:3.23
-        name: coreutils
-        purl: pkg:apk/dhi/coreutils
-      versions:
-        - 9.8-r1
-        - 9.8-r2
-    - database_specific:
-        owner_kind: HSP
-      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: coreutils
         purl: pkg:apk/dhi/coreutils
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 9.11-r1
+          events:
+            - fixed: 9.11-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 9.11-r0
-        - 9.11-r1
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: coreutils
-        purl: pkg:deb/dhi/coreutils
-      versions:
-        - 9.7-3+deb13u0+dhi5
-        - 9.7-3+deb13u0+dhi6
-        - 9.7-3+dhi1
-        - 9.7-3+dhi2
-        - 9.7-3+dhi3
-        - 9.7-3+dhi4
-        - 9.7-3+dhi5
-        - 9.7-3dhi0
-        - 9.7-3dhi1
 database_specific:
     coverage: partial
     coverage_exclusions:
@@ -54,7 +39,7 @@ details: |-
 
     This issue has been fixed in the commit b60a159fdc5bfcf9988d3a4cb6f53abe8ad5d35d
 id: DHI-7rld-frwv-rumm-dnwl
-modified: "2026-11-20T16:42:41Z"
+modified: "2026-11-21T17:26:55Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY

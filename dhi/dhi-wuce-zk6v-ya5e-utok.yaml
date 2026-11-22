@@ -247,6 +247,7 @@ affected:
         - 1.2.4-15
         - 1.2.4-16
         - 1.2.4-17
+        - 1.2.4-18
         - 1.2.4-2
         - 1.2.4-3
         - 1.2.4-4
@@ -257,7 +258,7 @@ affected:
         - 1.2.4-9
 details: 'cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. From 44.0.0 until 50.0.0, pkcs7_decrypt_der, pkcs7_decrypt_pem, and pkcs7_decrypt_smime reported the outcome of decrypting a RecipientInfo''s encryptedKey in several distinguishable ways, one of which disclosed the exact length recovered from the RSA operation. The same distinction was also observable by timing. An application that decrypts attacker-supplied EnvelopedData and reflects the outcome gives the attacker a Bleichenbacher oracle against the content-encryption key. Decryption ran as RSA PKCS#1 v1.5 decrypt of encryptedKey, build an AES cipher from the result, then AES-CBC decrypt and PKCS#7 unpad. Invalid RSA padding, a valid padding with a bad key length, a correct length with a wrong key, and the real key each failed or succeeded differently. Case 1 is reachable only where the linked library lacks implicit rejection: OpenSSL 3.0 and 3.1, LibreSSL, and BoringSSL. Exploitation requires a service that auto-decrypts untrusted EnvelopedData matching the victim certificate and answers adaptively at high volume, such as an S/MIME gateway or mail filter. This issue is fixed in 50.0.0.'
 id: DHI-wuce-zk6v-ya5e-utok
-modified: "2026-11-20T20:04:03Z"
+modified: "2026-11-21T14:20:16Z"
 published: "2026-11-10T15:28:37Z"
 references:
     - type: ADVISORY

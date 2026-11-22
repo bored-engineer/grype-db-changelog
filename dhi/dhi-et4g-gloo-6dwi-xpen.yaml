@@ -5,6 +5,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.22.0-r0
+          events:
+            - fixed: 8.22.0-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 8.17.0-r1
         - 8.18.0-r0
@@ -12,21 +23,26 @@ affected:
         - 8.20.0-r0
         - 8.20.0-r1
         - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.23.0-r0
-        - 8.23.0-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.22.0-r0
+          events:
+            - fixed: 8.22.0-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 8.20.0-r1
         - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.22.0-r1
-        - 8.23.0-r0
 details: |-
     When `CURLOPT_PINNEDPUBLICKEY` is configured alongside options that disable
     standard peer verification (`CURLOPT_SSL_VERIFYPEER = 0` and
@@ -35,7 +51,7 @@ details: |-
     pinning check under these disabled-verification conditions allows
     unauthenticated connections to succeed when they should be rejected.
 id: DHI-et4g-gloo-6dwi-xpen
-modified: "2026-11-11T15:41:32Z"
+modified: "2026-11-21T20:13:47Z"
 published: "2026-11-11T15:41:32Z"
 references:
     - type: ADVISORY

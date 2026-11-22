@@ -169,6 +169,7 @@ affected:
         - 1.110.0-1
         - 1.110.1-0
         - 1.110.2-0
+        - 1.110.2-1
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -219,6 +220,7 @@ affected:
         - 1.20.2-0
         - 1.20.2-1
         - 1.20.2-2
+        - 1.20.2-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -261,6 +263,8 @@ affected:
         - 1.97.2-0
         - 1.97.2-1
         - 1.98.2-0
+        - 1.98.4-0
+        - 1.98.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -293,7 +297,7 @@ database_specific:
         - legacy_package_image_owner
 details: undici's retry interceptor can append the body of a ranged retry response to bytes already delivered from an earlier partial response while still presenting the original response's status and headers. This happens when an upstream server delivers part of a body without a trustworthy resume checkpoint, for example a non-success response whose headers were already sent or a partial-content response with an unusable content range, then closes the connection and answers the resumed range request with more bytes. As a result the response body can be longer than the Content-Length that the application observes. An application that relays such a response to a downstream HTTP/1.1 peer without normalizing the framing can emit a body that exceeds the forwarded Content-Length, and the excess bytes can be interpreted as the start of a following response, which enables downstream response splitting or desynchronization. Exploitation requires an attacker-controlled upstream server and an application that forwards the response through a framing-sensitive path. This affects undici versions before 6.28.1, from 7.0.0 up to 7.29.1, and from 8.0.0 up to 8.10.2. Users should upgrade to undici 6.28.1, 7.29.1, or 8.10.2.
 id: DHI-wpfg-6m77-neau-tjwm
-modified: "2026-11-20T18:23:33Z"
+modified: "2026-11-21T14:19:33Z"
 published: "2026-11-20T09:27:42Z"
 references:
     - type: ADVISORY

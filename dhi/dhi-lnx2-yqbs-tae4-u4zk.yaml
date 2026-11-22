@@ -2,11 +2,21 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: perl-convert-asn1
+        purl: pkg:apk/dhi/perl-convert-asn1
+      versions:
+        - 0.34-r0
+        - 0.37-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: perl-convert-asn1
         purl: pkg:apk/dhi/perl-convert-asn1
       versions:
         - 0.34-r0
+        - 0.37-r0
 details: |-
     Convert::ASN1 versions before 0.37 for Perl allow CPU exhaustion via unbounded arc length in OBJECT IDENTIFIER decoding and encoding.
 
@@ -14,7 +24,7 @@ details: |-
 
     An attacker who controls the decoded data, or an OID string passed to encode, can exhaust CPU with a single oversized arc.
 id: DHI-lnx2-yqbs-tae4-u4zk
-modified: "2026-11-20T14:18:52Z"
+modified: "2026-11-21T16:17:22Z"
 published: "2026-11-20T14:18:52Z"
 references:
     - type: ADVISORY
@@ -32,6 +42,9 @@ references:
     - type: FIX
       url: https://github.com/cpan-authors/perl-Convert-ASN1/commit/805a7ee7d6c01a7dd6e0479fabcaadd7f9116e70.patch
 schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+      type: CVSS_V3
 summary: Convert::ASN1 versions before 0.37 for Perl allow CPU exhaustion via unbounded arc length in OBJECT IDENTIFIER decoding…
 upstream:
     - CVE-2026-131877

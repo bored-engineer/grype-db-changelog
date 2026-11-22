@@ -5,34 +5,48 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.21.0-r0
+          events:
+            - fixed: 8.21.0-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 8.17.0-r1
         - 8.18.0-r0
         - 8.19.0-r0
         - 8.20.0-r0
         - 8.20.0-r1
-        - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.23.0-r0
-        - 8.23.0-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.21.0-r0
+          events:
+            - fixed: 8.21.0-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 8.20.0-r1
-        - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.22.0-r1
-        - 8.23.0-r0
 details: |-
     libcurl had a flaw that when instructed to clear proxy authentication
     credentials which made it not do so, leaving the old credentials around to get
     used for subsequent transfers that should not know nor use them.
 id: DHI-bycy-fanz-bdna-kalg
-modified: "2026-11-11T15:41:44Z"
+modified: "2026-11-21T19:11:25Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY
@@ -73,6 +87,8 @@ references:
       url: https://curl.se/docs/CVE-2026-9079.html
     - type: ADVISORY
       url: https://curl.se/docs/CVE-2026-9079.json
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:100685
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:69125
     - type: ADVISORY

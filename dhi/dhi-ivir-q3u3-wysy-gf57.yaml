@@ -5,18 +5,38 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: krb5
         purl: pkg:apk/dhi/krb5
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 1.22.3-r0
+          events:
+            - fixed: 1.22.3-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.22.1-r0
-        - 1.22.3-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: krb5
         purl: pkg:apk/dhi/krb5
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 1.22.3-r0
+          events:
+            - fixed: 1.22.3-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.22.2-r1
-        - 1.22.3-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -32,7 +52,7 @@ database_specific:
         - legacy_package_image_owner
 details: clnttcp_call() in lib/rpc/clnt_tcp.c in MIT Kerberos 5 (aka krb5) does not free the RPC reply verifier between retries, which allows remote attackers to cause a denial of service (memory leak in GSS-RPC client programs) by injecting RPC replies with mismatched XIDs or by triggering authentication retries.
 id: DHI-ivir-q3u3-wysy-gf57
-modified: "2026-11-19T20:54:10Z"
+modified: "2026-11-21T01:14:36Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY

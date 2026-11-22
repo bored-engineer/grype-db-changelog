@@ -37,6 +37,7 @@ affected:
         - 1.7.22-10
         - 1.7.22-11
         - 1.7.22-12
+        - 1.7.22-13
         - 1.7.22-2
         - 1.7.22-3
         - 1.7.22-4
@@ -47,7 +48,7 @@ affected:
         - 1.7.22-9
 details: DOMPurify before 3.4.7 passes direct references to the module-level DEFAULT_ALLOWED_TAGS and DEFAULT_ALLOWED_ATTR sets to the uponSanitizeElement and uponSanitizeAttribute hooks via data.allowedTags / data.allowedAttributes when sanitize is called without an explicit cfg.ALLOWED_TAGS / cfg.ALLOWED_ATTR array. A hook that mutates these fields permanently widens the default allow-lists for the lifetime of the DOMPurify instance, so all subsequent default-config sanitize calls inherit the widened defaults and attacker payloads using the poisoned tag/attribute name survive sanitization. removeAllHooks(), clearConfig(), and passing a fresh cfg do not recover the state; only constructing a new DOMPurify instance does.
 id: DHI-jegv-gqwr-qyzg-kehf
-modified: "2026-11-14T07:57:20Z"
+modified: "2026-11-21T12:21:53Z"
 published: "2026-11-11T16:37:46Z"
 references:
     - type: ADVISORY

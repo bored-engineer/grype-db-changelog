@@ -463,6 +463,7 @@ affected:
         - 1.7.0.19-6
         - 1.7.0.20-6
         - 1.7.0.20-7
+        - 1.7.0.20-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -474,6 +475,7 @@ affected:
         - 4.4.5-1
         - 4.4.5-2
         - 4.4.5-3
+        - 4.4.5-4
     - database_specific:
         owner_kind: HSP
       package:
@@ -485,6 +487,7 @@ affected:
         - 4.4.5-1
         - 4.4.5-2
         - 4.4.5-3
+        - 4.4.5-4
     - database_specific:
         owner_kind: HSP
       package:
@@ -499,6 +502,7 @@ affected:
         - 0.8.8-4
         - 0.8.8-5
         - 0.8.9-0
+        - 0.8.9-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -545,6 +549,7 @@ affected:
         - 1.110.0-1
         - 1.110.1-0
         - 1.110.2-0
+        - 1.110.2-1
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -588,7 +593,7 @@ database_specific:
         - legacy_package_image_owner
 details: PostCSS Selector Parser is a CSS selector parser that integrates with PostCSS but does not require it. Prior to 7.1.6, src/parser.js splitWord() can receive a flat selector as one word token carrying many class or ID indexes because period and hash characters are not tokenizer word delimiters. The uniqs() deduplication and per-index class and ID membership checks repeatedly scan the class and ID index arrays, while a separate Sass-interpolation filtering pass also performs repeated linear scanning. Together, these passes make parsing quadratic in the number of indexes and allow a crafted selector to occupy a synchronous parser thread. The maxNestingDepth guard does not mitigate the issue because the hostile selector can have zero nesting depth. Only consumers that synchronously parse untrusted selectors in an exposed request path are affected; ordinary build-time parsing of trusted sources is not affected. This issue is fixed in version 7.1.6.
 id: DHI-maxg-6icd-lt2z-hsgn
-modified: "2026-11-20T16:52:06Z"
+modified: "2026-11-21T14:19:05Z"
 published: "2026-11-20T14:21:44Z"
 references:
     - type: ADVISORY

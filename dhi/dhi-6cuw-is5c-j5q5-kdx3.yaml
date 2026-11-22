@@ -429,6 +429,7 @@ affected:
         - 1.7.0.19-6
         - 1.7.0.20-6
         - 1.7.0.20-7
+        - 1.7.0.20-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -467,6 +468,7 @@ affected:
         - 1.7.22-10
         - 1.7.22-11
         - 1.7.22-12
+        - 1.7.22-13
         - 1.7.22-2
         - 1.7.22-3
         - 1.7.22-4
@@ -486,6 +488,7 @@ affected:
         - 4.4.5-1
         - 4.4.5-2
         - 4.4.5-3
+        - 4.4.5-4
     - database_specific:
         owner_kind: HSP
       package:
@@ -497,6 +500,7 @@ affected:
         - 4.4.5-1
         - 4.4.5-2
         - 4.4.5-3
+        - 4.4.5-4
     - database_specific:
         owner_kind: HSP
       package:
@@ -718,6 +722,7 @@ affected:
         - 6.1.0-4
         - 6.1.0-40
         - 6.1.0-41
+        - 6.1.0-42
         - 6.1.0-5
         - 6.1.0-6
         - 6.1.0-7
@@ -852,7 +857,7 @@ details: |-
 
     An unauthenticated request can make any code path that re-serializes attacker-influenced data with `qs.stringify` (for example, rebuilding a query string from `req.query` for a redirect or an upstream request, or serializing a parsed JSON body) throw synchronously. In a typical Node.js HTTP framework the throw is caught by the framework error boundary and the affected request returns a 500; the process survives and other requests are unaffected. Where the call runs outside an error boundary, such as an `async` Express 4 handler (where the throw becomes an unhandled promise rejection) or a background job, the process exits, so the impact in that case depends on the application error handling rather than on qs.
 id: DHI-6cuw-is5c-j5q5-kdx3
-modified: "2026-11-20T16:51:39Z"
+modified: "2026-11-21T14:19:33Z"
 published: "2026-11-12T00:42:35Z"
 references:
     - type: ADVISORY

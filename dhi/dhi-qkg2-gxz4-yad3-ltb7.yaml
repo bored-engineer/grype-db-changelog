@@ -126,6 +126,22 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: eclipse-temurin-21-jre
         purl: pkg:apk/dhi/eclipse-temurin-21-jre
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 21.0.12.1.1-r1
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 21.0.12.8.1.1-r2
+          events:
+            - fixed: 21.0.12.1.1-r1
+            - fixed: 21.0.12.8.1.1-r2
+            - introduced: "0"
+            - introduced: 21.0.12.8-r0
+          type: ECOSYSTEM
       versions:
         - 21.0.10.7-r0
         - 21.0.10.7-r1
@@ -137,14 +153,7 @@ affected:
         - 21.0.11.10-r6
         - 21.0.11.10-r7
         - 21.0.12.1.1-r0
-        - 21.0.12.1.1-r1
         - 21.0.12.8-r0
-        - 21.0.12.8.1.1-r2
-        - 21.0.13.1.2-r0
-        - 21.0.13.9-r0
-        - 21.0.13.9-r2
-        - 21.0.13.9-r3
-        - 21.0.13.9.1.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -363,18 +372,27 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: eclipse-temurin-21-jre
         purl: pkg:apk/dhi/eclipse-temurin-21-jre
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 21.0.12.1.1-r1
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 21.0.12.8.1.1-r2
+          events:
+            - fixed: 21.0.12.1.1-r1
+            - fixed: 21.0.12.8.1.1-r2
+            - introduced: "0"
+            - introduced: 21.0.12.8-r0
+          type: ECOSYSTEM
       versions:
         - 21.0.11.10-r6
         - 21.0.11.10-r7
         - 21.0.12.1.1-r0
-        - 21.0.12.1.1-r1
         - 21.0.12.8-r0
-        - 21.0.12.8.1.1-r2
-        - 21.0.13.1.2-r0
-        - 21.0.13.9-r0
-        - 21.0.13.9-r2
-        - 21.0.13.9-r3
-        - 21.0.13.9.1.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -531,6 +549,7 @@ affected:
         - 1:17.0.21+9-1
         - 1:17.0.21+9-2
         - 1:17.0.21+9-3
+        - 1:17.0.21.1+2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -551,6 +570,7 @@ affected:
         - 1:17.0.21+9-1
         - 1:17.0.21+9-2
         - 1:17.0.21+9-3
+        - 1:17.0.21.1+2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -565,6 +585,7 @@ affected:
         - 1:21.0.13+9-1
         - 1:21.0.13+9-2
         - 1:21.0.13+9-3
+        - 1:21.0.13.1+2-0
         - 21.0.11.10-0
         - 21.0.11.10-1
         - 21.0.12.1.1-0
@@ -576,18 +597,26 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: eclipse-temurin-21-jre
         purl: pkg:deb/dhi/eclipse-temurin-21-jre
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 1:21.0.12.1+1-2
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 21.0.12.1.1-1
+          events:
+            - fixed: 1:21.0.12.1+1-2
+            - fixed: 21.0.12.1.1-1
+            - introduced: "0"
+            - introduced: 21.0.12.8-0
+          type: ECOSYSTEM
       versions:
-        - 1:21.0.12.1+1-2
-        - 1:21.0.12.1+1-3
-        - 1:21.0.12.1+1-4
-        - 1:21.0.13+9-0
-        - 1:21.0.13+9-1
-        - 1:21.0.13+9-2
-        - 1:21.0.13+9-3
         - 21.0.11.10-0
         - 21.0.11.10-1
         - 21.0.12.1.1-0
-        - 21.0.12.1.1-1
         - 21.0.12.8-0
     - database_specific:
         owner_kind: HSP
@@ -744,6 +773,7 @@ affected:
         - 484-21
         - 484-22
         - 484-23
+        - 484-24
         - 484-3
         - 484-4
         - 484-5
@@ -812,6 +842,7 @@ affected:
         - 484-21
         - 484-22
         - 484-23
+        - 484-24
         - 484-3
         - 484-4
         - 484-5
@@ -821,7 +852,7 @@ affected:
         - 484-9
 details: 'In Bouncy Castle for Java FIPS (BC-FJA) before bc-fips 1.0.2.7 (1.0.X series), 2.0.2 (2.0.X series) and 2.1.3 (2.1.X series), sensitive key material held by the AES and DESede engines, the SP 800-90A DRBGs, SymmetricSecretKey and the PBKD and scrypt parameter classes was zeroised on garbage collection by overriding Object.finalize. Finalization runs at an unspecified time and in an unspecified order and is serviced by a single finalizer thread, so where objects carrying a finalizer are allocated faster than that thread retires them the pending-finalization queue grows without bound: disposal falls arbitrarily far behind, which can contribute to an OutOfMemoryError under load, and the key material those objects hold stays resident in the heap for as long as they are queued, defeating the purpose of the zeroisation. The behaviour was not a problem on Java 8 or Java 11; it is later JVMs, on which finalization has been deprecated and progressively de-emphasised, where it becomes one. Disposal of these classes now runs from a java.lang.ref.Cleaner registered in the multi-release jdk1.9 overlay, so on Java 9 and later it no longer depends on the finalizer being scheduled. Bouncy Castle for Java (bcprov) and Bouncy Castle for Java LTS are not affected, as neither implements the finalizer-based zeroisation scheme.'
 id: DHI-qkg2-gxz4-yad3-ltb7
-modified: "2026-11-20T16:49:49Z"
+modified: "2026-11-21T18:52:49Z"
 published: "2026-11-13T20:11:11Z"
 references:
     - type: ADVISORY

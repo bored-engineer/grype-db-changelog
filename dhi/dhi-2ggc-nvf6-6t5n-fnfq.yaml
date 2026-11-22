@@ -50,12 +50,22 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: dotnet10-runtime
         purl: pkg:apk/dhi/dotnet10-runtime
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 10.0.15-r0
+          events:
+            - fixed: 10.0.15-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 10.0.10-r0
         - 10.0.12-r0
         - 10.0.13-r0
         - 10.0.14-r0
-        - 10.0.15-r0
         - 10.0.8-r0
         - 10.0.9-r0
     - database_specific:
@@ -85,7 +95,7 @@ affected:
         - 9.0.22-r0
 details: Improper access control in .NET VSTest CLI allows an authorized attacker to elevate privileges locally.
 id: DHI-2ggc-nvf6-6t5n-fnfq
-modified: "2026-11-20T20:04:58Z"
+modified: "2026-11-21T21:10:03Z"
 published: "2026-11-13T20:14:39Z"
 references:
     - type: ADVISORY

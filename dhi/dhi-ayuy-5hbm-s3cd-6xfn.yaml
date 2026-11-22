@@ -10,9 +10,10 @@ affected:
         - 3.27.3-r0
         - 3.27.3-r1
         - 3.27.3-r2
+        - 3.27.3-r3
 details: gpsd before commit dc966aa contains a heap-based out-of-bounds write vulnerability in the drivers/driver_nmea2000.c file. The hnd_129540 function, which handles NMEA2000 PGN 129540 (GNSS Satellites in View) packets, fails to validate the user-supplied satellite count against the size of the skyview array (184 elements). This allows an attacker to write beyond the bounds of the array by providing a satellite count up to 255, leading to memory corruption, Denial of Service (DoS), and potentially arbitrary code execution.
 id: DHI-ayuy-5hbm-s3cd-6xfn
-modified: "2026-11-11T18:47:00Z"
+modified: "2026-11-21T16:17:22Z"
 published: "2026-11-11T18:47:00Z"
 references:
     - type: ADVISORY

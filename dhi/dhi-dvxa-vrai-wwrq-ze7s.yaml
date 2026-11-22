@@ -1,15 +1,6 @@
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: openldap
-        purl: pkg:deb/dhi/openldap
-      versions:
-        - 2.6.10+dfsg-1+dhi1
 details: OpenLDAP Lightning Memory-Mapped Database (LMDB) versions 0.9.14 before 0.9.34, prior to commit 8e1fda8, contain a heap buffer underflow in the readline() function of mdb_load. When processing malformed input containing an embedded NUL byte, an unsigned offset calculation can underflow and cause an out-of-bounds read of one byte before the allocated heap buffer. This can cause mdb_load to crash, leading to a limited denial-of-service condition.
 id: DHI-dvxa-vrai-wwrq-ze7s
-modified: "2026-11-09T23:21:05Z"
+modified: "2026-11-21T01:46:27Z"
 published: "2026-11-09T23:21:05Z"
 references:
     - type: ADVISORY
@@ -35,3 +26,4 @@ severity:
 summary: OpenLDAP Lightning Memory-Mapped Database (LMDB) versions 0.9.14 before 0.9.34, prior to commit 8e1fda8, contain a heap…
 upstream:
     - CVE-2026-22185
+withdrawn: "2026-11-21T01:46:27Z"

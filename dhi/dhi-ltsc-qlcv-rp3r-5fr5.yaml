@@ -20,6 +20,7 @@ affected:
         - 6.3.21-r2
         - 6.3.21-r20
         - 6.3.21-r21
+        - 6.3.21-r22
         - 6.3.21-r3
         - 6.3.21-r5
         - 6.3.21-r6
@@ -47,6 +48,7 @@ affected:
         - 6.3.21-r2
         - 6.3.21-r20
         - 6.3.21-r21
+        - 6.3.21-r22
         - 6.3.21-r3
         - 6.3.21-r5
         - 6.3.21-r6
@@ -74,6 +76,7 @@ affected:
         - 6.3.21-r2
         - 6.3.21-r20
         - 6.3.21-r21
+        - 6.3.21-r22
         - 6.3.21-r3
         - 6.3.21-r5
         - 6.3.21-r6
@@ -101,6 +104,7 @@ affected:
         - 6.3.21-r2
         - 6.3.21-r20
         - 6.3.21-r21
+        - 6.3.21-r22
         - 6.3.21-r3
         - 6.3.21-r5
         - 6.3.21-r6
@@ -267,6 +271,7 @@ affected:
         - 0.74.0-r1
         - 0.74.0-r10
         - 0.74.0-r11
+        - 0.74.0-r12
         - 0.74.0-r2
         - 0.74.0-r3
         - 0.74.0-r4
@@ -311,6 +316,7 @@ affected:
         - 0.74.0-r1
         - 0.74.0-r10
         - 0.74.0-r11
+        - 0.74.0-r12
         - 0.74.0-r2
         - 0.74.0-r3
         - 0.74.0-r4
@@ -321,7 +327,7 @@ affected:
         - 0.74.0-r9
 details: 'spdystream is a Go library for multiplexing streams over SPDY connections. In versions 0.5.0 and below, the SPDY/3 frame parser does not validate attacker-controlled counts and lengths before allocating memory. Three allocation paths are affected: the SETTINGS frame entry count, the header count in parseHeaderValueBlock, and individual header field sizes — all read as 32-bit integers and used directly as allocation sizes with no bounds checking. Because SPDY header blocks are zlib-compressed, a small on-the-wire payload can decompress into large attacker-controlled values. A remote peer that can send SPDY frames to a service using spdystream can exhaust process memory and cause an out-of-memory crash with a single crafted control frame. This issue has been fixed in version 0.5.1.'
 id: DHI-ltsc-qlcv-rp3r-5fr5
-modified: "2026-11-18T19:49:19Z"
+modified: "2026-11-21T08:50:25Z"
 published: "2026-11-11T17:05:16Z"
 references:
     - type: ADVISORY

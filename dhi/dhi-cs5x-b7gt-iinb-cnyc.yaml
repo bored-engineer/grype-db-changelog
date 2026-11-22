@@ -40,6 +40,8 @@ affected:
         - 1.97.2-r0
         - 1.97.2-r1
         - 1.98.2-r0
+        - 1.98.4-r0
+        - 1.98.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -182,9 +184,11 @@ affected:
         - 1.97.2-0
         - 1.97.2-1
         - 1.98.2-0
+        - 1.98.4-0
+        - 1.98.5-0
 details: systeminformation is a System and OS information library for node.js. Prior to 5.33.16, services() in lib/processes.js inserts a caller-supplied service name into a PowerShell Get-CimInstance filter after processing it with sanitizeShellString() in lib/util.js. On Windows, the sanitizer removes ASCII quotes but permits Unicode quotation marks that PowerShell accepts as string delimiters, allowing crafted input to terminate the filter and place a PowerShell expression in the command executed by util.powerShell(). The expression runs with the Node.js process account's permissions and may read or change accessible files, alter application data, or disrupt the service. The package does not expose a network service itself, so remote reachability depends on a consuming application forwarding attacker-controlled input to services() or getDynamicData(). This issue is fixed in version 5.33.16.
 id: DHI-cs5x-b7gt-iinb-cnyc
-modified: "2026-11-20T18:47:27Z"
+modified: "2026-11-21T07:16:39Z"
 published: "2026-11-12T10:29:06Z"
 references:
     - type: ADVISORY

@@ -69,6 +69,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.12
         purl: pkg:apk/dhi/python-3.12
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.12.12-r0
         - 3.12.13-r0
@@ -133,33 +137,20 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.14
         purl: pkg:apk/dhi/python-3.14
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 3.14.4-r1
+          events:
+            - fixed: 3.14.4-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 3.14.10-r0
-        - 3.14.10-r1
-        - 3.14.10-r2
-        - 3.14.10-r3
-        - 3.14.10-r4
         - 3.14.3-r0
         - 3.14.3-r1
-        - 3.14.4-r1
-        - 3.14.4-r2
-        - 3.14.4-r3
-        - 3.14.4-r4
-        - 3.14.4-r5
-        - 3.14.4-r6
-        - 3.14.4-r7
-        - 3.14.5-r7
-        - 3.14.5-r8
-        - 3.14.5-r9
-        - 3.14.6-r10
-        - 3.14.6-r11
-        - 3.14.6-r12
-        - 3.14.6-r9
-        - 3.14.7-r0
-        - 3.14.7-r1
-        - 3.14.7-r2
-        - 3.14.8-r0
-        - 3.14.8-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -212,6 +203,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: python-3.12
         purl: pkg:apk/dhi/python-3.12
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.12.13-r0
         - 3.12.13-r1
@@ -259,6 +254,7 @@ affected:
         - 3.10.22-5
         - 3.10.22-6
         - 3.10.22-7
+        - 3.10.22-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -291,12 +287,17 @@ affected:
         - 3.11.18-5
         - 3.11.18-6
         - 3.11.18-7
+        - 3.11.18-8
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: python-3.12
         purl: pkg:deb/dhi/python-3.12
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.12.13-0
         - 3.12.13-1
@@ -323,13 +324,14 @@ affected:
         - 3.12.16-5
         - 3.12.16-6
         - 3.12.16-7
+        - 3.12.16-8
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: When calling base64.b64decode() or related functions the decoding process would stop after encountering the first padded quad regardless of whether there was more information to be processed. This can lead to data being accepted which may be processed differently by other implementations. Use "validate=True" to enable stricter processing of base64 data.
 id: DHI-5y3u-5wsl-hvr7-misr
-modified: "2026-11-19T21:07:59Z"
+modified: "2026-11-21T05:43:22Z"
 published: "2026-11-19T21:07:59Z"
 references:
     - type: ADVISORY

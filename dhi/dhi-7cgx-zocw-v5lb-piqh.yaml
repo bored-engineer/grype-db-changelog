@@ -51,6 +51,7 @@ affected:
         - 2026.11.1-0
         - 2026.11.10-0
         - 2026.11.11-0
+        - 2026.11.12-0
         - 2026.11.2-0
         - 2026.11.3-0
         - 2026.11.4-0
@@ -63,7 +64,7 @@ affected:
         - 2026.9.18-0
 details: zip is a zip library for Rust that supports reading and writing simple ZIP files. From 7.2.0 until 9.0.0, ZipArchive::extract and ZipArchive::extract_unwrapped_root_dir use safe_prepare_path in src/read/zipfile.rs and simplified_components in src/path.rs to validate symbolic link targets with a lexical prefix comparison rather than resolving each intermediate link. An attacker who knows or can guess the absolute extraction destination can create a chain whose apparent target remains under the destination while an intermediate symlink resolves outside it, allowing attacker-controlled files to be created or overwritten with the extracting process's privileges. On Windows, discarded drive and UNC prefixes can permit a single-link escape when the process has SeCreateSymbolicLinkPrivilege, such as through administrator rights or Developer Mode. This regression is distinct from CVE-2025-29787. This issue is fixed in version 9.0.0.
 id: DHI-7cgx-zocw-v5lb-piqh
-modified: "2026-11-20T18:23:19Z"
+modified: "2026-11-21T22:46:16Z"
 published: "2026-11-10T07:36:38Z"
 references:
     - type: ADVISORY

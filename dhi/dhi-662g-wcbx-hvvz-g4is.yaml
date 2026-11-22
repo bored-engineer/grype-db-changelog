@@ -69,6 +69,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.12
         purl: pkg:apk/dhi/python-3.12
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.12.12-r0
         - 3.12.13-r0
@@ -212,6 +216,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: python-3.12
         purl: pkg:apk/dhi/python-3.12
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.12.13-r0
         - 3.12.13-r1
@@ -283,6 +291,7 @@ affected:
         - 3.10.22-5
         - 3.10.22-6
         - 3.10.22-7
+        - 3.10.22-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -315,12 +324,24 @@ affected:
         - 3.11.18-5
         - 3.11.18-6
         - 3.11.18-7
+        - 3.11.18-8
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: python-3.12
         purl: pkg:deb/dhi/python-3.12
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 3.12.16-5
+          events:
+            - fixed: 3.12.16-5
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.12.13-0
         - 3.12.13-1
@@ -344,9 +365,6 @@ affected:
         - 3.12.16-2
         - 3.12.16-3
         - 3.12.16-4
-        - 3.12.16-5
-        - 3.12.16-6
-        - 3.12.16-7
     - database_specific:
         owner_kind: HSP
       package:
@@ -380,13 +398,14 @@ affected:
         - 3.13.18-5
         - 3.13.18-6
         - 3.13.18-7
+        - 3.13.18-8
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: http.cookies.Morsel.js_output() returns an inline <script> snippet and only escapes " for JavaScript string context. It does not neutralize the HTML parser-sensitive sequence </script> inside the generated script element. Mitigation base64-encodes the cookie value to disallow escaping using cookie value.
 id: DHI-662g-wcbx-hvvz-g4is
-modified: "2026-11-19T21:07:59Z"
+modified: "2026-11-21T05:43:22Z"
 published: "2026-11-19T21:07:59Z"
 references:
     - type: ADVISORY

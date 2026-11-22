@@ -531,6 +531,7 @@ affected:
         - 1:17.0.21+9-1
         - 1:17.0.21+9-2
         - 1:17.0.21+9-3
+        - 1:17.0.21.1+2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -551,6 +552,7 @@ affected:
         - 1:17.0.21+9-1
         - 1:17.0.21+9-2
         - 1:17.0.21+9-3
+        - 1:17.0.21.1+2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -565,6 +567,7 @@ affected:
         - 1:21.0.13+9-1
         - 1:21.0.13+9-2
         - 1:21.0.13+9-3
+        - 1:21.0.13.1+2-0
         - 21.0.11.10-0
         - 21.0.11.10-1
         - 21.0.12.1.1-0
@@ -584,6 +587,7 @@ affected:
         - 1:21.0.13+9-1
         - 1:21.0.13+9-2
         - 1:21.0.13+9-3
+        - 1:21.0.13.1+2-0
         - 21.0.11.10-0
         - 21.0.11.10-1
         - 21.0.12.1.1-0
@@ -744,6 +748,7 @@ affected:
         - 484-21
         - 484-22
         - 484-23
+        - 484-24
         - 484-3
         - 484-4
         - 484-5
@@ -812,6 +817,7 @@ affected:
         - 484-21
         - 484-22
         - 484-23
+        - 484-24
         - 484-3
         - 484-4
         - 484-5
@@ -821,7 +827,7 @@ affected:
         - 484-9
 details: In Bouncy Castle for Java FIPS (BC-FJA) before bc-fips 2.1.3, the native entropy source used on Intel platforms retried the CPU entropy instructions without any bound. RDSEED and RDRAND report failure through their carry flag, and the JNI seeding routine spun re-issuing the instruction for as long as that flag stayed clear, so a persistent failure of the on-chip entropy source - whether from a hardware fault, from the underlying DRBG being exhausted by contention across many cores, or from a hypervisor that does not provide the instruction - left the calling thread looping indefinitely inside the JNI call, where it could be neither interrupted nor timed out. Any operation drawing from the native entropy source could therefore hang, denying service to the application. The retry loops are now bounded (200 attempts for RDSEED and 20 for RDRAND, twice the baselines given in Intel's Digital Random Number Generator software implementation guide), pausing between attempts and, on exhaustion, clearing any partially written buffer and throwing rather than continuing to spin. The clear is performed by an un-elidable memzero, which uses a volatile pointer and an assembly memory barrier so that a compiler cannot optimise the erase away as a dead store. Bouncy Castle for Java (bcprov) is not affected, as it has no native entropy source; the 1.0.X and 2.0.X FIPS series are not affected.
 id: DHI-mv7k-airt-spe3-p2ra
-modified: "2026-11-20T16:49:34Z"
+modified: "2026-11-21T18:52:49Z"
 published: "2026-11-13T20:11:11Z"
 references:
     - type: ADVISORY

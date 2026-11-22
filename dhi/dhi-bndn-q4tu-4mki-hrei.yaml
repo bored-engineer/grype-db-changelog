@@ -59,6 +59,7 @@ affected:
         - 1.7.0.19-6
         - 1.7.0.20-6
         - 1.7.0.20-7
+        - 1.7.0.20-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -70,6 +71,7 @@ affected:
         - 4.4.5-1
         - 4.4.5-2
         - 4.4.5-3
+        - 4.4.5-4
     - database_specific:
         owner_kind: HSP
       package:
@@ -81,6 +83,7 @@ affected:
         - 4.4.5-1
         - 4.4.5-2
         - 4.4.5-3
+        - 4.4.5-4
     - database_specific:
         owner_kind: HSP
       package:
@@ -124,6 +127,8 @@ affected:
         - 6.1.0-39
         - 6.1.0-4
         - 6.1.0-40
+        - 6.1.0-41
+        - 6.1.0-42
         - 6.1.0-5
         - 6.1.0-6
         - 6.1.0-7
@@ -131,7 +136,7 @@ affected:
         - 6.1.0-9
 details: 'Handlebars provides the power necessary to let users build semantic templates. In versions 4.0.0 through 4.7.8, when a Handlebars template contains decorator syntax referencing an unregistered decorator (e.g. `{{*n}}`), the compiled template calls `lookupProperty(decorators, "n")`, which returns `undefined`. The runtime then immediately invokes the result as a function, causing an unhandled `TypeError: ... is not a function` that crashes the Node.js process. Any application that compiles user-supplied templates without wrapping the call in a `try/catch` is vulnerable to a single-request Denial of Service. Version 4.7.9 fixes the issue. Some workarounds are available. Wrap compilation and rendering in `try/catch`. Validate template input before passing it to `compile()`; reject templates containing  decorator syntax (`{{*...}}`) if decorators are not used in your application. Use the pre-compilation workflow; compile templates at build time and serve only pre-compiled  templates; do not call `compile()` at request time.'
 id: DHI-bndn-q4tu-4mki-hrei
-modified: "2026-11-18T23:44:33Z"
+modified: "2026-11-21T14:18:35Z"
 published: "2026-11-12T03:28:18Z"
 references:
     - type: ADVISORY

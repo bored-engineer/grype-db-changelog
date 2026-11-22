@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libtirpc
         purl: pkg:deb/dhi/libtirpc
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.3.6+ds-1+dhi1
 database_specific:
@@ -13,7 +17,7 @@ database_specific:
         - legacy_package_image_owner
 details: A flaw was found in libtirpc. The SunRPC UDP/datagram server transport reuses a single receive buffer across requests and resets the XDR decode position without rebinding the decode length to the size of the datagram actually received. As a result, when a short UDP RPC request is received after a longer one, the XDR decoder can read stale bytes left in the reused buffer and interpret them as part of the current request, including credential, verifier, or procedure-argument fields. The highest threat from this vulnerability is to data confidentiality and integrity for services that use a UDP-based SunRPC server.
 id: DHI-e4xy-27di-k7es-lm5l
-modified: "2026-11-20T12:26:21Z"
+modified: "2026-11-21T07:32:37Z"
 published: "2026-11-20T12:25:15Z"
 references:
     - type: ADVISORY

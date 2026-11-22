@@ -5,6 +5,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.23.0-r0
+          events:
+            - fixed: 8.23.0-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 8.17.0-r1
         - 8.18.0-r0
@@ -13,27 +24,34 @@ affected:
         - 8.20.0-r1
         - 8.21.0-r0
         - 8.22.0-r0
-        - 8.23.0-r0
-        - 8.23.0-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.22.0-r1
+          events:
+            - fixed: 8.22.0-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 8.20.0-r1
         - 8.21.0-r0
         - 8.22.0-r0
-        - 8.22.0-r1
-        - 8.23.0-r0
 details: |-
     By permanently omitting the final control-response line, a malicious FTP,
     IMAP, POP3, or SMTP server can exploit libcurl and completely bypass its
     configured transfer timeout mechanism, indefinitely blocking all concurrent
     transfers bound to the same multi-handle.
 id: DHI-pmdf-vnh6-m5j4-7mr7
-modified: "2026-11-11T15:41:44Z"
+modified: "2026-11-21T18:41:29Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY

@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: rust
         purl: pkg:apk/dhi/rust
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.91.1-r0
         - 1.91.1-r2
@@ -26,7 +30,7 @@ affected:
         - 1.99.1-r0
 details: tracing is a framework for instrumenting Rust programs to collect structured, event-based diagnostic information. Prior to version 0.3.20, tracing-subscriber was vulnerable to ANSI escape sequence injection attacks. Untrusted user input containing ANSI escape sequences could be injected into terminal output when logged, potentially allowing attackers to manipulate terminal title bars, clear screens or modify terminal display, and potentially mislead users through terminal manipulation. tracing-subscriber version 0.3.20 fixes this vulnerability by escaping ANSI control characters when writing events to destinations that may be printed to the terminal. A workaround involves avoiding printing logs to terminal emulators without escaping ANSI control sequences.
 id: DHI-uqzq-mqtk-4po3-dj6l
-modified: "2026-11-11T19:00:00Z"
+modified: "2026-11-21T00:58:41Z"
 published: "2026-11-11T19:00:00Z"
 references:
     - type: ADVISORY

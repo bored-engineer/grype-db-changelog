@@ -1877,6 +1877,7 @@ affected:
         - 0.74.0-r1
         - 0.74.0-r10
         - 0.74.0-r11
+        - 0.74.0-r12
         - 0.74.0-r2
         - 0.74.0-r3
         - 0.74.0-r4
@@ -1921,6 +1922,7 @@ affected:
         - 0.74.0-r1
         - 0.74.0-r10
         - 0.74.0-r11
+        - 0.74.0-r12
         - 0.74.0-r2
         - 0.74.0-r3
         - 0.74.0-r4
@@ -2089,7 +2091,7 @@ affected:
         - 0.20251015.172955-r8
 details: Go JOSE provides an implementation of the Javascript Object Signing and Encryption set of standards in Go, including support for JSON Web Encryption (JWE), JSON Web Signature (JWS), and JSON Web Token (JWT) standards. Prior to 4.1.4 and 3.0.5, decrypting a JSON Web Encryption (JWE) object will panic if the alg field indicates a key wrapping algorithm (one ending in KW, with the exception of A128GCMKW, A192GCMKW, and A256GCMKW) and the encrypted_key field is empty. The panic happens when cipher.KeyUnwrap() in key_wrap.go attempts to allocate a slice with a zero or negative length based on the length of the encrypted_key. This code path is reachable from ParseEncrypted() / ParseEncryptedJSON() / ParseEncryptedCompact() followed by Decrypt() on the resulting object. Note that the parse functions take a list of accepted key algorithms. If the accepted key algorithms do not include any key wrapping algorithms, parsing will fail and the application will be unaffected. This panic is also reachable by calling cipher.KeyUnwrap() directly with any ciphertext parameter less than 16 bytes long, but calling this function directly is less common. Panics can lead to denial of service. This vulnerability is fixed in 4.1.4 and 3.0.5.
 id: DHI-yc7f-gf4j-lyd2-yxse
-modified: "2026-11-20T14:21:12Z"
+modified: "2026-11-21T05:48:46Z"
 published: "2026-11-11T19:08:52Z"
 references:
     - type: ADVISORY
