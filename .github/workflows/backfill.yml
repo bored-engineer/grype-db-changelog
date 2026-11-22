@@ -30,13 +30,26 @@ jobs:
       - name: List upstream provider versions, oldest first
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Hardcoded, not auto-discovered: listing ALL of an org's packages
+          # (what auto-discovery needs) 400'd in CI with the default
+          # GITHUB_TOKEN even though it worked fine locally with a personal
+          # token - that endpoint evidently needs broader cross-org scope
+          # than a repo-scoped Actions token gets. Reading one *already
+          # named* public package's version history (below) is a narrower,
+          # proven-working ask - it's exactly what trivy-db-changelog's own
+          # cron.yml does successfully with the same default token, against
+          # a different org. These are every provider grype-db-changelog
+          # has ever seen as of 2026-11-22 (confirmed via the org listing
+          # locally, just not usable from CI to re-derive it automatically).
+          PROVIDERS: >-
+            alma alpine amazon arch bitnami chainguard chainguard-libraries
+            debian dhi echo eol epss fedora github govulndb hummingbird kev
+            mariner minimos nvd oracle photon rhel secureos sles ubuntu wolfi
         run: |
-          # The org-level package listing gives us the provider list for
-          # free (same 27 names as the old hand-maintained providers.json,
-          # confirmed) - no manifest to keep in sync as providers are added.
-          providers=$(gh api --paginate 'orgs/anchore/packages?package_type=container&per_page=100' --jq '.[].name' \
-            | sed -n 's#^grype-db/data/##p')
-          echo "$(printf '%s\n' "$providers" | grep -c .) provider(s) discovered"
+          # done <<< "$providers" below reads line-by-line, so the
+          # space-separated env var needs converting to one-per-line first.
+          providers=$(tr -s ' ' '\n' <<< "$PROVIDERS")
+          echo "$(printf '%s\n' "$providers" | grep -c .) provider(s) configured"
 
           # Every version of every provider's package, not just the current
           # date tag: ghcr.io/anchore/grype-db/data/<provider> gets rebuilt
@@ -103,7 +116,7 @@ jobs:
 
   export:
     needs: discover
-    if: needs.discover.outputs.candidates != '[]'
+    if: needs.discover.result == 'success' && needs.discover.outputs.candidates != '[]'
     strategy:
       fail-fast: false
       matrix:
@@ -118,8 +131,12 @@ jobs:
     # always(): still advance the changelog branch as far as whichever
     # exports succeeded even if some matrix legs of `export` failed
     # (fail-fast is off), rather than letting one bad version block
-    # everything else in the batch.
-    if: always() && needs.discover.outputs.candidates != '[]'
+    # everything else in the batch. needs.discover.result == 'success':
+    # NOT just outputs.candidates != '[]' - a failed discover job leaves
+    # outputs.candidates as an empty string, which also != '[]', and this
+    # job would otherwise run anyway with nothing to chain (confirmed:
+    # exactly what happened on the first real run of this workflow).
+    if: always() && needs.discover.result == 'success' && needs.discover.outputs.candidates != '[]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
