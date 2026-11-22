@@ -1,0 +1,66 @@
+name: Export
+
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: 'grype-db data provider name (e.g. alpine)'
+        required: true
+        type: string
+      date:
+        description: 'YY-MM-DD tag of ghcr.io/anchore/grype-db/data/<provider> to export'
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      provider:
+        required: true
+        type: string
+      date:
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  packages: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Pinned regardless of the repo's default branch (which may be
+          # "changelog", a branch of pure grype-db snapshots with no Go code).
+          ref: generator
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+
+      - name: Log in to ghcr.io
+        uses: docker/login-action@abd2ef45e78c5afb21d64d4ca52ee8550d9572c7 # v4.5.1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Export provider/date
+        run: |
+          go run ./cmd/export "${{ inputs.provider }}" \
+            "ghcr.io/anchore/grype-db/data/${{ inputs.provider }}:${{ inputs.date }}" \
+            | git fast-import
+
+      - name: Push ref
+        run: |
+          ref="refs/raw/grype/${{ inputs.provider }}/${{ inputs.date }}"
+          if ! git rev-parse --verify "$ref" >/dev/null 2>&1; then
+            echo "no $ref ref was created by the export" >&2
+            exit 1
+          fi
+          # Force-push: cmd/export always resets this ref to a fresh orphan
+          # commit, so re-running against an already-exported tag is never
+          # a fast-forward.
+          git push --force origin "$ref:$ref"
