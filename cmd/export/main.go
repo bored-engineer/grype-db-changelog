@@ -35,7 +35,13 @@ func sanitize(id string) string {
 // re-encoding its JSON as YAML for better diffs. Unlike trivy-db, vunnel's
 // records are already plain, self-describing JSON (each carries its own
 // "schema" URL) so no decoding/enum-resolving step is needed here.
-func emit(provider string, id string, record []byte) error {
+//
+// seen tracks every path this export run has already written, case-folded,
+// so two distinct ids that only differ by case (or that collide after
+// sanitize()'s ":"->"-" substitution) are caught here as a hard error
+// instead of silently overwriting each other on a case-insensitive
+// filesystem at checkout time — the failure mode trivy-db-changelog hit.
+func emit(seen map[string]string, provider string, id string, record []byte) error {
 	var parsed any
 	if err := json.Unmarshal(record, &parsed); err != nil {
 		return fmt.Errorf("json.Unmarshal failed for %s: %w", id, err)
@@ -45,6 +51,11 @@ func emit(provider string, id string, record []byte) error {
 		return fmt.Errorf("yaml.Marshal failed for %s: %w", id, err)
 	}
 	name := path.Join("providers", provider, sanitize(id)) + ".yaml"
+	key := strings.ToLower(name)
+	if other, ok := seen[key]; ok && other != id {
+		return fmt.Errorf("case-insensitive path collision: %q and %q both map to %q", other, id, name)
+	}
+	seen[key] = id
 	fmt.Printf("M 100644 inline %s\n", name)
 	fmt.Printf("data %d\n%s\n", len(pretty), string(pretty))
 	return nil
@@ -174,6 +185,7 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 
 	fmt.Printf("deleteall\n")
 
+	seen := map[string]string{}
 	for rows.Next() {
 		var id string
 		var record []byte
@@ -183,7 +195,7 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 		if len(record) == 0 {
 			continue
 		}
-		if err := emit(provider, id, record); err != nil {
+		if err := emit(seen, provider, id, record); err != nil {
 			return fmt.Errorf("emit failed: %w", err)
 		}
 	}
