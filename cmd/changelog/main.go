@@ -8,8 +8,8 @@
 // own earlier design, and is rejected here for the same reason
 // trivy-db-changelog moved off an equivalent design: a merge parent whose
 // tree is reused unchanged for every "carried forward" provider is
-// TREESAME to the whole prior tree, which makes `git log --
-// providers/<x>` (even with --diff-filter=A) collapse to the wrong commit
+// TREESAME to the whole prior tree, which makes `git log -- <provider>`
+// (even with --diff-filter=A) collapse to the wrong commit
 // under git's default history simplification - confirmed to be exactly
 // what that repo hit for real. A plain chain has no such ambiguity. The
 // raw commit a given change came from is still discoverable via an
@@ -60,20 +60,18 @@ func mktree(input string) (string, error) {
 	return strings.TrimRight(out.String(), "\n"), nil
 }
 
-// existingProviders returns the provider->tree-sha map already present
-// under providers/ in the given changelog commit's tree ("" if there is no
-// previous commit, i.e. nothing has been built yet).
+// existingProviders returns the provider->tree-sha map already present at
+// the root of the given changelog commit's tree ("" if there is no
+// previous commit, i.e. nothing has been built yet). The provider name is
+// itself the top-level category here (no "providers/" wrapper directory -
+// there's nothing above it to group), so this is just that commit's root
+// tree.
 func existingProviders(commit string) (map[string]string, error) {
 	providers := map[string]string{}
 	if commit == "" {
 		return providers, nil
 	}
-	treeSHA, err := git(nil, "rev-parse", "--verify", commit+":providers")
-	if err != nil {
-		// No providers/ directory yet at all.
-		return providers, nil
-	}
-	out, err := git(nil, "ls-tree", treeSHA)
+	out, err := git(nil, "ls-tree", commit)
 	if err != nil {
 		return nil, fmt.Errorf("ls-tree failed: %w", err)
 	}
@@ -104,10 +102,11 @@ type candidate struct {
 
 // buildOne advances tree (provider -> subtree SHA, mutated in place) onto
 // a new commit chaining onto parent (which may be ""), reusing the
-// candidate's refs/raw/<provider>/<digest> providers/<provider> subtree
-// and that ref's own committer date. ok is false if the ref doesn't exist
-// locally - the matrix leg meant to export it may have failed (fail-fast
-// is off) - in which case the caller should move on without advancing.
+// candidate's refs/raw/<provider>/<digest> ref's own (single top-level
+// <provider>/ directory) tree and its committer date. ok is false if the
+// ref doesn't exist locally - the matrix leg meant to export it may have
+// failed (fail-fast is off) - in which case the caller should move on
+// without advancing.
 func buildOne(tree map[string]string, parent, provider, digest string) (newCommit string, ok bool, err error) {
 	ref := "refs/raw/" + provider + "/" + strings.ReplaceAll(digest, ":", "-")
 	refSHA, err := git(nil, "rev-parse", "--verify", "--quiet", ref)
@@ -116,29 +115,26 @@ func buildOne(tree map[string]string, parent, provider, digest string) (newCommi
 		return "", false, nil
 	}
 
-	subtree, err := git(nil, "rev-parse", "--verify", ref+":providers/"+provider)
+	subtree, err := git(nil, "rev-parse", "--verify", ref+":"+provider)
 	if err != nil {
-		return "", false, fmt.Errorf("resolving providers/%s in %s failed: %w", provider, ref, err)
+		return "", false, fmt.Errorf("resolving %s in %s failed: %w", provider, ref, err)
 	}
 	tree[provider] = subtree
 
-	// Build providers/ itself, then the root tree wrapping it, reusing
-	// every subtree by SHA (git mktree never re-reads blob content).
+	// The root tree itself - no "providers/" wrapper, since the provider
+	// name is already the top-level category. Reuses every subtree by
+	// SHA (git mktree never re-reads blob content).
 	names := make([]string, 0, len(tree))
 	for name := range tree {
 		names = append(names, name)
 	}
 	sort.Strings(names)
 
-	var providersTreeInput bytes.Buffer
+	var rootTreeInput bytes.Buffer
 	for _, name := range names {
-		fmt.Fprintf(&providersTreeInput, "040000 tree %s\t%s\n", tree[name], name)
+		fmt.Fprintf(&rootTreeInput, "040000 tree %s\t%s\n", tree[name], name)
 	}
-	providersTree, err := mktree(providersTreeInput.String())
-	if err != nil {
-		return "", false, fmt.Errorf("mktree for providers/ failed: %w", err)
-	}
-	rootTree, err := mktree(fmt.Sprintf("040000 tree %s\tproviders\n", providersTree))
+	rootTree, err := mktree(rootTreeInput.String())
 	if err != nil {
 		return "", false, fmt.Errorf("mktree for root failed: %w", err)
 	}

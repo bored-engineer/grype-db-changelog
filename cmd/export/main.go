@@ -118,7 +118,11 @@ func emit(seen map[string]string, provider string, id string, record []byte) err
 	if err != nil {
 		return fmt.Errorf("yaml.Marshal failed for %s: %w", id, err)
 	}
-	name := path.Join("providers", provider, sanitize(provider, id)) + ".yaml"
+	// No "providers/" wrapper directory: the provider name is already the
+	// top-level category here, the same role trivy-db-changelog's
+	// os/packages/vulnerability/data-source directories play - there's no
+	// further grouping above it to justify an extra wrapping directory.
+	name := path.Join(provider, sanitize(provider, id)) + ".yaml"
 	key := strings.ToLower(name)
 	if other, ok := seen[key]; ok && other != id {
 		return fmt.Errorf("case-insensitive path collision: %q and %q both map to %q", other, id, name)
