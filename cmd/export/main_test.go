@@ -1,6 +1,51 @@
 package main
 
-import "testing"
+import (
+	"encoding/json"
+	"reflect"
+	"testing"
+)
+
+func mustUnmarshal(t *testing.T, s string) any {
+	t.Helper()
+	var v any
+	if err := json.Unmarshal([]byte(s), &v); err != nil {
+		t.Fatalf("json.Unmarshal failed: %v", err)
+	}
+	return v
+}
+
+func TestCanonicalizeSortsObjectArrays(t *testing.T) {
+	// Same FixedIn-shaped entries, two different upstream orderings - the
+	// real case from
+	// https://github.com/bored-engineer/grype-db-changelog/commit/6b981675ad5d04e338cbc1d3d953f46d04efb086
+	a := mustUnmarshal(t, `{"FixedIn":[{"Name":"ntp"},{"Name":"sntp"},{"Name":"ntpdate"}]}`)
+	b := mustUnmarshal(t, `{"FixedIn":[{"Name":"sntp"},{"Name":"ntpdate"},{"Name":"ntp"}]}`)
+	ca, cb := canonicalize(a), canonicalize(b)
+	if !reflect.DeepEqual(ca, cb) {
+		t.Fatalf("canonicalize did not converge: %#v vs %#v", ca, cb)
+	}
+}
+
+func TestCanonicalizeLeavesScalarArraysInPlace(t *testing.T) {
+	// Order may be meaningful for plain scalar arrays (e.g. NVD's ordered
+	// reference/description lists) - only arrays of objects get sorted.
+	v := mustUnmarshal(t, `{"urls":["b","a","c"]}`)
+	got := canonicalize(v)
+	want := mustUnmarshal(t, `{"urls":["b","a","c"]}`)
+	if !reflect.DeepEqual(got, want) {
+		t.Fatalf("canonicalize reordered a scalar array: got %#v, want %#v", got, want)
+	}
+}
+
+func TestCanonicalizeRecursesIntoNestedArrays(t *testing.T) {
+	a := mustUnmarshal(t, `{"outer":[{"inner":[{"x":2},{"x":1}]},{"id":1}]}`)
+	b := mustUnmarshal(t, `{"outer":[{"id":1},{"inner":[{"x":1},{"x":2}]}]}`)
+	ca, cb := canonicalize(a), canonicalize(b)
+	if !reflect.DeepEqual(ca, cb) {
+		t.Fatalf("canonicalize did not converge on nested arrays: %#v vs %#v", ca, cb)
+	}
+}
 
 func TestEmitCaseCollision(t *testing.T) {
 	seen := map[string]string{}

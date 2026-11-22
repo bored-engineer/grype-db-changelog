@@ -12,6 +12,7 @@ import (
 	"os/signal"
 	"path"
 	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 
@@ -35,6 +36,57 @@ func sanitize(provider, id string) string {
 		id = rest
 	}
 	return strings.ReplaceAll(id, ":", "-")
+}
+
+// canonicalize recursively sorts every array of objects by their own
+// canonical (key-sorted) JSON encoding, so that semantically-identical but
+// differently-ordered upstream data serializes identically across export
+// runs. Confirmed necessary empirically: an Amazon Linux ALAS record's
+// FixedIn list came back with the same six packages in a different order
+// between two otherwise-unrelated days
+// (https://github.com/bored-engineer/grype-db-changelog/commit/6b981675ad5d04e338cbc1d3d953f46d04efb086),
+// most likely from vunnel/grype-db building that list from an unordered
+// Python set/dict internally. Plain scalar arrays (strings, numbers) are
+// left untouched: no reordering was observed there, and their order may be
+// meaningful (e.g. NVD's reference/description lists, independently
+// verified as already stable across runs).
+func canonicalize(v any) any {
+	switch v := v.(type) {
+	case map[string]any:
+		out := make(map[string]any, len(v))
+		for k, val := range v {
+			out[k] = canonicalize(val)
+		}
+		return out
+	case []any:
+		type keyed struct {
+			val any
+			key string
+		}
+		out := make([]keyed, len(v))
+		allObjects := len(v) > 0
+		for i, val := range v {
+			c := canonicalize(val)
+			_, isObject := c.(map[string]any)
+			allObjects = allObjects && isObject
+			b, err := json.Marshal(c)
+			if err != nil {
+				// Unreachable: c was just decoded from JSON.
+				panic(err)
+			}
+			out[i] = keyed{val: c, key: string(b)}
+		}
+		if allObjects {
+			sort.Slice(out, func(i, j int) bool { return out[i].key < out[j].key })
+		}
+		result := make([]any, len(out))
+		for i, k := range out {
+			result[i] = k.val
+		}
+		return result
+	default:
+		return v
+	}
 }
 
 // envelope mirrors vunnel's Envelope type (schema/identifier/item). Only
@@ -62,7 +114,7 @@ func emit(seen map[string]string, provider string, id string, record []byte) err
 	if err := json.Unmarshal(record, &env); err != nil {
 		return fmt.Errorf("json.Unmarshal failed for %s: %w", id, err)
 	}
-	pretty, err := yaml.Marshal(env.Item)
+	pretty, err := yaml.Marshal(canonicalize(env.Item))
 	if err != nil {
 		return fmt.Errorf("yaml.Marshal failed for %s: %w", id, err)
 	}
