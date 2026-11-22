@@ -3,18 +3,8 @@ name: Backfill
 on:
   workflow_dispatch:
     inputs:
-      start_date:
-        description: 'Earliest date to consider, YY-MM-DD (default: the project start, 23-02-16)'
-        required: false
-        type: string
-        default: '23-02-16'
-      end_date:
-        description: 'Latest date to consider, YY-MM-DD (default: today)'
-        required: false
-        type: string
-        default: ''
       max_items:
-        description: 'Max provider/date pairs to export this run (do not exceed 256, the GitHub Actions per-matrix job limit)'
+        description: 'Max provider/version pairs to export this run (do not exceed 256, the GitHub Actions per-matrix job limit)'
         required: false
         type: number
         default: 256
@@ -27,25 +17,67 @@ jobs:
   discover:
     runs-on: ubuntu-latest
     outputs:
-      candidates: ${{ steps.discover.outputs.candidates }}
+      candidates: ${{ steps.diff.outputs.candidates }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: generator
-
-      - name: Set up Go
-        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version-file: go.mod
-
-      - name: Find missing provider/date pairs
-        id: discover
+      # No checkout needed: git ls-remote works directly against the
+      # repository URL, and gh/jq are already on the runner image.
+      - name: List already-exported refs
         run: |
-          candidates=$(go run ./cmd/discover \
-            -start "${{ inputs.start_date }}" \
-            -end "${{ inputs.end_date }}" \
-            -max "${{ inputs.max_items }}")
+          git ls-remote "https://github.com/${{ github.repository }}" 'refs/raw/*/*' \
+            | awk '{print $2}' > existing-refs.txt
+          echo "$(wc -l < existing-refs.txt) ref(s) already exported"
+
+      - name: List upstream provider versions, oldest first
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # The org-level package listing gives us the provider list for
+          # free (same 27 names as the old hand-maintained providers.json,
+          # confirmed) - no manifest to keep in sync as providers are added.
+          providers=$(gh api --paginate 'orgs/anchore/packages?package_type=container&per_page=100' --jq '.[].name' \
+            | sed -n 's#^grype-db/data/##p')
+          echo "$(printf '%s\n' "$providers" | grep -c .) provider(s) discovered"
+
+          # Every version of every provider's package, not just the current
+          # date tag: ghcr.io/anchore/grype-db/data/<provider> gets rebuilt
+          # more than once a day for some providers (amazon, fedora, github,
+          # nvd, rhel), and each rebuild overwrites that day's tag - the
+          # package version history is the only place every intermediate
+          # build is still reachable (confirmed: nothing has been
+          # garbage-collected, full history back to day one).
+          : > upstream.tsv
+          while read -r provider; do
+            gh api --paginate "orgs/anchore/packages/container/grype-db%2Fdata%2F${provider}/versions?per_page=100" --jq '.[]' \
+              | jq -r --arg provider "$provider" '"\(.created_at)\t\(.name)\t\($provider)"' \
+              >> upstream.tsv
+          done <<< "$providers"
+          sort -o upstream.tsv upstream.tsv
+          echo "$(wc -l < upstream.tsv) version(s) upstream total"
+
+      - name: Compute missing candidates
+        id: diff
+        env:
+          MAX_ITEMS: ${{ inputs.max_items || 256 }}
+        run: |
+          # upstream.tsv is already sorted oldest-first; awk preserves that
+          # order, so no re-sort is needed after filtering.
+          # FILENAME==ARGV[1], not the usual NR==FNR idiom: NR==FNR
+          # misidentifies the *first line of upstream.tsv* as still being
+          # part of existing-refs.txt whenever existing-refs.txt has zero
+          # lines (true today, since this ref scheme starts from nothing) -
+          # confirmed by reproducing it. FILENAME-based matching has no
+          # such edge case.
+          candidates=$(awk -F'\t' '
+            FILENAME == ARGV[1] { existing[$1]; next }
+            {
+              refdigest = $2; gsub(":", "-", refdigest)
+              refname = "refs/raw/" $3 "/" refdigest
+              if (!(refname in existing)) print
+            }
+          ' existing-refs.txt upstream.tsv \
+            | head -n "$MAX_ITEMS" \
+            | jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | {provider: .[2], digest: .[1]})')
+          echo "$(echo "$candidates" | jq 'length') candidate(s) this run (capped at $MAX_ITEMS)"
           echo "candidates=$candidates" >> "$GITHUB_OUTPUT"
 
   export:
@@ -58,13 +90,14 @@ jobs:
     uses: ./.github/workflows/export.yml
     with:
       provider: ${{ matrix.provider }}
-      date: ${{ matrix.date }}
+      digest: ${{ matrix.digest }}
 
   changelog:
     needs: [discover, export]
     # always(): still advance the changelog branch as far as whichever
     # exports succeeded even if some matrix legs of `export` failed
-    # (fail-fast is off), rather than letting one bad day block everything.
+    # (fail-fast is off), rather than letting one bad version block
+    # everything else in the batch.
     if: always() && needs.discover.outputs.candidates != '[]'
     runs-on: ubuntu-latest
     permissions:
@@ -73,6 +106,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # Pinned regardless of the repo's default branch (which may be
+          # "changelog", a branch of pure grype-db snapshots with no Go code).
           ref: generator
 
       - name: Set up Go
@@ -80,5 +115,32 @@ jobs:
         with:
           go-version-file: go.mod
 
+      - name: Fetch the current changelog tip and this batch's raw refs
+        env:
+          CANDIDATES: ${{ needs.discover.outputs.candidates }}
+        run: |
+          # --filter=blob:none: cmd/changelog only ever touches tree/commit
+          # objects (ls-tree/mktree/commit-tree), never blob content, so
+          # there's no need to pull every provider snapshot's actual YAML
+          # bytes over the network just to splice trees together.
+          git fetch -q --filter=blob:none origin \
+            refs/heads/changelog:refs/heads/changelog 2>&1 | grep -v '^$' || true
+
+          echo "$CANDIDATES" | jq -r '.[] | "\(.provider) \(.digest)"' | while read -r provider digest; do
+            refdigest=$(echo "$digest" | tr ':' '-')
+            ref="refs/raw/$provider/$refdigest"
+            # A matrix leg exporting this one may have failed (fail-fast is
+            # off): tolerate it here rather than aborting the whole job -
+            # cmd/changelog skips any candidate it can't resolve locally,
+            # and it'll just get picked up again by a future run.
+            git fetch -q --filter=blob:none origin "$ref:$ref" \
+              || echo "note: $ref not found (export may have failed)" >&2
+          done
+
       - name: Advance the changelog branch
-        run: .github/scripts/advance-changelog.sh
+        env:
+          CANDIDATES: ${{ needs.discover.outputs.candidates }}
+        run: |
+          echo "$CANDIDATES" > candidates.json
+          go run ./cmd/changelog candidates.json
+          git push origin refs/heads/changelog:refs/heads/changelog

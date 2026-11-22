@@ -237,8 +237,16 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 	}
 	defer rows.Close()
 
-	// Replace refs/raw/grype/<provider>/<tag> with the exported contents
-	refName := "refs/raw/grype/" + provider + "/" + ref.Identifier()
+	// Replace refs/raw/<provider>/<digest> with the exported contents
+	// (":" is invalid in ref names) - same scheme as trivy-db-changelog's
+	// refs/raw/<digest>, with a <provider>/ prefix added since grype has
+	// many independent provider streams instead of trivy's single one.
+	// Keyed by digest rather than by the tag we were pulled via, so the
+	// same ref name results regardless of which tag (if any) a given
+	// build happens to carry - untagged intermediate builds (e.g. an
+	// incremental provider's intra-day rebuilds) get their own permanent
+	// ref too, not just whichever build a date tag currently points at.
+	refName := "refs/raw/" + provider + "/" + strings.ReplaceAll(dgstRef.DigestStr(), ":", "-")
 	fmt.Printf("reset %s\n", refName)
 	fmt.Printf("commit %s\n", refName)
 
@@ -248,7 +256,7 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 	}
 	fmt.Printf("committer grype-db-changelog <41898282+github-actions[bot]@users.noreply.github.com> %d +0000\n", committerTime.Unix())
 
-	message := fmt.Sprintf("%s %s: %s", provider, ref.Identifier(), dgstRef.String())
+	message := fmt.Sprintf("%s %s: %s", provider, committerTime.Format(time.RFC3339), dgstRef.String())
 	fmt.Printf("data %d\n%s\n", len(message), message)
 
 	fmt.Printf("deleteall\n")
