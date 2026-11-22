@@ -25,38 +25,16 @@ import (
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/name"
 	"github.com/google/go-containerregistry/pkg/v1/remote"
-)
 
-type manifest struct {
-	Providers map[string]string `json:"providers"`
-}
+	"github.com/bored-engineer/grype-db-changelog/internal/providers"
+)
 
 type candidate struct {
 	Provider string `json:"provider"`
 	Date     string `json:"date"`
 }
 
-const dateLayout = "06-01-02" // Go reference layout for "YY-MM-DD"
-
-func loadProviders(path string) (map[string]time.Time, error) {
-	b, err := os.ReadFile(path)
-	if err != nil {
-		return nil, fmt.Errorf("os.ReadFile failed: %w", err)
-	}
-	var m manifest
-	if err := json.Unmarshal(b, &m); err != nil {
-		return nil, fmt.Errorf("json.Unmarshal failed: %w", err)
-	}
-	out := make(map[string]time.Time, len(m.Providers))
-	for name, start := range m.Providers {
-		t, err := time.Parse(dateLayout, start)
-		if err != nil {
-			return nil, fmt.Errorf("time.Parse failed for provider %s: %w", name, err)
-		}
-		out[name] = t
-	}
-	return out, nil
-}
+const dateLayout = providers.DateLayout
 
 // existingPairs lists every refs/raw/grype/<provider>/<date> ref already on
 // origin, as a "<provider>/<date>" set.
@@ -119,12 +97,12 @@ func main() {
 		}
 	}
 
-	providers, err := loadProviders(*providersFlag)
+	manifest, err := providers.Load(*providersFlag)
 	if err != nil {
-		log.Fatalf("loadProviders failed: %v", err)
+		log.Fatalf("providers.Load failed: %v", err)
 	}
-	names := make([]string, 0, len(providers))
-	for p := range providers {
+	names := make([]string, 0, len(manifest))
+	for p := range manifest {
 		names = append(names, p)
 	}
 	sort.Strings(names)
@@ -141,7 +119,13 @@ func main() {
 	for d := start; !d.After(end); d = d.AddDate(0, 0, 1) {
 		date := d.Format(dateLayout)
 		for _, p := range names {
-			if d.Before(providers[p]) {
+			entry := manifest[p]
+			if d.Before(entry.Start) {
+				continue
+			}
+			if entry.End != nil && d.After(*entry.End) {
+				// Confirmed-removed as of this date: don't go looking for
+				// data we don't expect to find.
 				continue
 			}
 			if existing[p+"/"+date] {
