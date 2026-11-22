@@ -25,32 +25,48 @@ import (
 // sanitize turns a vunnel record identifier into a safe relative file path.
 // Identifiers already use "/" to group related records (Alpine's
 // "edge/CVE-...", NVD's "2026/CVE-..."), which makes a fine directory
-// structure as-is; only ":" (seen in KEV's "kev:CVE-...") needs replacing,
-// since it's awkward on some filesystems.
-func sanitize(id string) string {
+// structure as-is. Some providers (KEV's "kev:CVE-...", Debian's
+// "debian:10/CVE-...") prefix the identifier with the provider's own name
+// followed by ":" — strip that exact prefix rather than blindly replacing
+// ":" with "-", since the provider name is already the parent directory and
+// an exact-prefix strip can't collide the way a generic substitution could.
+func sanitize(provider, id string) string {
+	if rest, ok := strings.CutPrefix(id, provider+":"); ok {
+		id = rest
+	}
 	return strings.ReplaceAll(id, ":", "-")
 }
 
-// emit writes the fast-import filemodify command for one vunnel record,
-// re-encoding its JSON as YAML for better diffs. Unlike trivy-db, vunnel's
-// records are already plain, self-describing JSON (each carries its own
-// "schema" URL) so no decoding/enum-resolving step is needed here.
+// envelope mirrors vunnel's Envelope type (schema/identifier/item). Only
+// Item is kept: identifier is redundant with the file path (modulo
+// sanitize(), which is why it strips exactly the provider-name prefix
+// rather than guessing), and schema is uniform across every record in a
+// given provider's daily snapshot (confirmed empirically), so repeating it
+// in every single file is pure waste.
+type envelope struct {
+	Item any `json:"item"`
+}
+
+// emit writes the fast-import filemodify command for one vunnel record's
+// item, re-encoding its JSON as YAML for better diffs. Unlike trivy-db,
+// vunnel's records are already plain JSON, so no decoding/enum-resolving
+// step is needed here.
 //
 // seen tracks every path this export run has already written, case-folded,
 // so two distinct ids that only differ by case (or that collide after
-// sanitize()'s ":"->"-" substitution) are caught here as a hard error
-// instead of silently overwriting each other on a case-insensitive
-// filesystem at checkout time — the failure mode trivy-db-changelog hit.
+// sanitize()'s substitutions) are caught here as a hard error instead of
+// silently overwriting each other on a case-insensitive filesystem at
+// checkout time — the failure mode trivy-db-changelog hit.
 func emit(seen map[string]string, provider string, id string, record []byte) error {
-	var parsed any
-	if err := json.Unmarshal(record, &parsed); err != nil {
+	var env envelope
+	if err := json.Unmarshal(record, &env); err != nil {
 		return fmt.Errorf("json.Unmarshal failed for %s: %w", id, err)
 	}
-	pretty, err := yaml.Marshal(parsed)
+	pretty, err := yaml.Marshal(env.Item)
 	if err != nil {
 		return fmt.Errorf("yaml.Marshal failed for %s: %w", id, err)
 	}
-	name := path.Join("providers", provider, sanitize(id)) + ".yaml"
+	name := path.Join("providers", provider, sanitize(provider, id)) + ".yaml"
 	key := strings.ToLower(name)
 	if other, ok := seen[key]; ok && other != id {
 		return fmt.Errorf("case-insensitive path collision: %q and %q both map to %q", other, id, name)
