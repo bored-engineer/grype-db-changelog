@@ -63,4 +63,19 @@ jobs:
           # Force-push: cmd/export always resets this ref to a fresh orphan
           # commit, so re-running against an already-exported tag is never
           # a fast-forward.
-          git push --force origin "$ref:$ref"
+          #
+          # Retried: at backfill scale (hundreds of these jobs pushing to
+          # the same repo concurrently) GitHub occasionally returns a
+          # transient "Internal Server Error" on the push itself - seen for
+          # real during the first large backfill batch, unrelated to
+          # anything about the ref being pushed (retrying the exact same
+          # push succeeds).
+          for attempt in 1 2 3 4 5; do
+            if git push --force origin "$ref:$ref"; then
+              exit 0
+            fi
+            echo "push attempt $attempt failed, retrying after a pause" >&2
+            sleep $((attempt * 10))
+          done
+          echo "push failed after 5 attempts" >&2
+          exit 1
