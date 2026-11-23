@@ -251,6 +251,14 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 	// incremental provider's intra-day rebuilds) get their own permanent
 	// ref too, not just whichever build a date tag currently points at.
 	refName := "refs/raw/" + provider + "/" + strings.ReplaceAll(dgstRef.DigestStr(), ":", "-")
+	// "feature done": fast-import refuses to update any ref unless the
+	// stream ends with an explicit "done" (written by main only after
+	// export returns successfully). Without it, an export that dies
+	// mid-stream - a registry hiccup, say - leaves fast-import to commit
+	// the truncated snapshot as if it were complete, and the pipe hides
+	// the failure unless the shell runs with pipefail (GitHub Actions'
+	// default bash doesn't).
+	fmt.Printf("feature done\n")
 	fmt.Printf("reset %s\n", refName)
 	fmt.Printf("commit %s\n", refName)
 
@@ -303,4 +311,5 @@ func main() {
 	if err := export(ctx, provider, ref); err != nil {
 		log.Fatal(err)
 	}
+	fmt.Printf("done\n")
 }
