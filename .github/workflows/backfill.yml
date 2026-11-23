@@ -301,9 +301,18 @@ jobs:
           go-version-file: go.mod
 
       - name: Fetch the current changelog tip and this batch's raw refs
-        env:
-          CANDIDATES: ${{ needs.discover.outputs.candidates }}
         run: |
+          # Written to a file by expression substitution into the script,
+          # NOT passed via env: a full batch (1000 candidates with publish
+          # times, ~150KB) exceeds Linux's 128KB limit on a single
+          # environment string, and the step can't even start ("Argument
+          # list too long"). Safe to inline: every field is a hardcoded
+          # provider name, a hex digest or a timestamp, and the quoted
+          # heredoc delimiter disables all shell expansion.
+          cat > candidates.json <<'CANDIDATES_JSON'
+          ${{ needs.discover.outputs.candidates }}
+          CANDIDATES_JSON
+
           # --filter=blob:none: cmd/changelog only ever touches tree/commit
           # objects (ls-tree/mktree/commit-tree), never blob content.
           # --depth=1: only the tip's tree is needed to chain onto it, and
@@ -319,7 +328,7 @@ jobs:
           # missing if its export leg failed (fail-fast is off) -
           # cmd/changelog stops at the first one it can't resolve and the
           # rest are retried next run.
-          echo "$CANDIDATES" | jq -r '.[] | "refs/raw/\(.provider)/\(.digest | sub(":"; "-"))"' | sort > wanted.txt
+          jq -r '.[] | "refs/raw/\(.provider)/\(.digest | sub(":"; "-"))"' candidates.json | sort > wanted.txt
           git ls-remote origin 'refs/raw/*/*' | awk '{print $2}' | sort > available.txt
           comm -12 wanted.txt available.txt | sed 's#.*#&:&#' > refspecs.txt
           echo "$(wc -l < refspecs.txt) of $(wc -l < wanted.txt) candidate ref(s) staged"
@@ -329,10 +338,9 @@ jobs:
 
       - name: Advance the changelog branch
         env:
-          CANDIDATES: ${{ needs.discover.outputs.candidates }}
           STALE: ${{ needs.discover.outputs.stale }}
         run: |
-          echo "$CANDIDATES" > candidates.json
+          # candidates.json: written by the previous step.
           # stdout: the raw refs it chained, one per line (logs go to stderr).
           go run ./cmd/changelog candidates.json > chained-refs.txt
           echo "$STALE" | jq -r '.[]' >> chained-refs.txt
