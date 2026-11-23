@@ -143,7 +143,36 @@ type metadata struct {
 	Timestamp  time.Time `json:"timestamp,omitempty"`
 }
 
-func export(ctx context.Context, provider string, ref name.Reference) error {
+// EmptyBuildTrailer marks a staged commit for an upstream build whose
+// tarball has no entries at all - anchore has published at least one
+// (debian, 2023-03-14: a 32-byte layer). cmd/changelog carries the
+// provider's previous snapshot forward for it instead of chaining the
+// empty tree as "every record deleted" (and then "re-added" by the next
+// build). Must match cmd/changelog's copy.
+const EmptyBuildTrailer = "Empty-Build: true"
+
+// header writes the fast-import preamble for refName's (orphan) commit.
+func header(refName string, committerTime time.Time, message string) {
+	// "feature done": fast-import refuses to update any ref unless the
+	// stream ends with an explicit "done" (written by main only after
+	// export returns successfully). Without it, an export that dies
+	// mid-stream - a registry hiccup, say - leaves fast-import to commit
+	// the truncated snapshot as if it were complete, and the pipe hides
+	// the failure unless the shell runs with pipefail (GitHub Actions'
+	// default bash doesn't).
+	fmt.Printf("feature done\n")
+	fmt.Printf("reset %s\n", refName)
+	fmt.Printf("commit %s\n", refName)
+	fmt.Printf("committer grype-db-changelog <41898282+github-actions[bot]@users.noreply.github.com> %d +0000\n", committerTime.Unix())
+	fmt.Printf("data %d\n%s\n", len(message), message)
+	fmt.Printf("deleteall\n")
+}
+
+// export writes refName's commit for the image to stdout as a fast-import
+// stream. fallbackTime (may be zero) dates the commit when the snapshot
+// carries no capture time of its own - the GHCR publish time, from the
+// caller.
+func export(ctx context.Context, provider string, ref name.Reference, fallbackTime time.Time) error {
 	img, err := remote.Image(ref, remote.WithContext(ctx), remote.WithAuthFromKeychain(authn.DefaultKeychain))
 	if err != nil {
 		return fmt.Errorf("remote.Image failed: %w", err)
@@ -153,6 +182,13 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 		return fmt.Errorf("(v1.Image).Digest failed: %w", err)
 	}
 	dgstRef := ref.Context().Digest(dgst.String())
+
+	// refs/raw/<provider>/<digest> (":" is invalid in ref names), keyed by
+	// digest rather than by the tag we were pulled via, so the same ref
+	// name results regardless of which tag (if any) a given build happens
+	// to carry - untagged intermediate builds (e.g. an incremental
+	// provider's intra-day rebuilds) get their own ref too.
+	refName := "refs/raw/" + provider + "/" + strings.ReplaceAll(dgstRef.DigestStr(), ":", "-")
 
 	layers, err := img.Layers()
 	if err != nil {
@@ -186,6 +222,7 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 
 	var meta metadata
 	var sawResults bool
+	entries := 0
 
 	resultsPath := path.Join(provider, "results", "results.db")
 	metadataPath := path.Join(provider, "metadata.json")
@@ -199,6 +236,7 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 		if err != nil {
 			return fmt.Errorf("(tar.Reader).Next failed: %w", err)
 		}
+		entries++
 		switch hdr.Name {
 		case resultsPath:
 			if _, err := io.Copy(dbFile, tr); err != nil {
@@ -218,8 +256,26 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 			// can be multi-GB), provider/checksums, provider/results/observed-fix-dates.db.
 		}
 	}
+	committerTime := meta.Timestamp
+	if committerTime.IsZero() {
+		committerTime = fallbackTime
+	}
+	if committerTime.IsZero() {
+		committerTime = time.Now().UTC()
+	}
+	message := fmt.Sprintf("%s %s: %s", provider, committerTime.Format(time.RFC3339), dgstRef.String())
+
 	if !sawResults {
-		return fmt.Errorf("tarball did not contain %s", resultsPath)
+		// Only a tarball with no entries at all counts as an empty build.
+		// One with content but no results.db fails loudly instead: that
+		// would more likely mean the layout changed upstream, which must
+		// not silently turn every later build into a no-op.
+		if entries == 0 {
+			log.Printf("%s is an empty upstream build; staging it as a carry-forward", dgstRef)
+			header(refName, committerTime, message+"\n\nUpstream published this build as an empty tarball (no\nresults.db), so the previous snapshot is carried forward.\n\n"+EmptyBuildTrailer)
+			return nil
+		}
+		return fmt.Errorf("tarball has %d entries but no %s", entries, resultsPath)
 	}
 	if err := dbFile.Close(); err != nil {
 		return fmt.Errorf("(*os.File).Close failed: %w", err)
@@ -241,37 +297,7 @@ func export(ctx context.Context, provider string, ref name.Reference) error {
 	}
 	defer rows.Close()
 
-	// Replace refs/raw/<provider>/<digest> with the exported contents
-	// (":" is invalid in ref names) - same scheme as trivy-db-changelog's
-	// refs/raw/<digest>, with a <provider>/ prefix added since grype has
-	// many independent provider streams instead of trivy's single one.
-	// Keyed by digest rather than by the tag we were pulled via, so the
-	// same ref name results regardless of which tag (if any) a given
-	// build happens to carry - untagged intermediate builds (e.g. an
-	// incremental provider's intra-day rebuilds) get their own permanent
-	// ref too, not just whichever build a date tag currently points at.
-	refName := "refs/raw/" + provider + "/" + strings.ReplaceAll(dgstRef.DigestStr(), ":", "-")
-	// "feature done": fast-import refuses to update any ref unless the
-	// stream ends with an explicit "done" (written by main only after
-	// export returns successfully). Without it, an export that dies
-	// mid-stream - a registry hiccup, say - leaves fast-import to commit
-	// the truncated snapshot as if it were complete, and the pipe hides
-	// the failure unless the shell runs with pipefail (GitHub Actions'
-	// default bash doesn't).
-	fmt.Printf("feature done\n")
-	fmt.Printf("reset %s\n", refName)
-	fmt.Printf("commit %s\n", refName)
-
-	committerTime := meta.Timestamp
-	if committerTime.IsZero() {
-		committerTime = time.Now().UTC()
-	}
-	fmt.Printf("committer grype-db-changelog <41898282+github-actions[bot]@users.noreply.github.com> %d +0000\n", committerTime.Unix())
-
-	message := fmt.Sprintf("%s %s: %s", provider, committerTime.Format(time.RFC3339), dgstRef.String())
-	fmt.Printf("data %d\n%s\n", len(message), message)
-
-	fmt.Printf("deleteall\n")
+	header(refName, committerTime, message)
 
 	seen := map[string]string{}
 	for rows.Next() {
@@ -298,9 +324,17 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
 
-	if len(os.Args) != 3 {
-		fmt.Fprintf(os.Stderr, "Usage: %s <provider> <image>\n", filepath.Base(os.Args[0]))
+	if len(os.Args) != 3 && len(os.Args) != 4 {
+		fmt.Fprintf(os.Stderr, "Usage: %s <provider> <image> [fallback-time (RFC 3339)]\n", filepath.Base(os.Args[0]))
 		os.Exit(1)
+	}
+	var fallbackTime time.Time
+	if len(os.Args) == 4 && os.Args[3] != "" {
+		t, err := time.Parse(time.RFC3339, os.Args[3])
+		if err != nil {
+			log.Fatalf("parsing fallback time %q failed: %v", os.Args[3], err)
+		}
+		fallbackTime = t.UTC()
 	}
 	provider := os.Args[1]
 	ref, err := name.ParseReference(os.Args[2])
@@ -308,7 +342,7 @@ func main() {
 		log.Fatalf("name.ParseReference failed: %v", err)
 	}
 
-	if err := export(ctx, provider, ref); err != nil {
+	if err := export(ctx, provider, ref, fallbackTime); err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("done\n")

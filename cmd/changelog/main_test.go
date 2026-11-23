@@ -31,9 +31,17 @@ func newRepo(t *testing.T) {
 // an empty snapshot), committed at the given unix time.
 func stage(t *testing.T, provider, digest string, unix int64, files map[string]string) {
 	t.Helper()
+	stageMsg(t, provider, digest, unix, files, "")
+}
+
+func stageMsg(t *testing.T, provider, digest string, unix int64, files map[string]string, body string) {
+	t.Helper()
 	var in strings.Builder
 	ref := rawRef(provider, digest)
 	msg := fmt.Sprintf("%s %d: ghcr.io/anchore/grype-db/data/%s@%s", provider, unix, provider, digest)
+	if body != "" {
+		msg += "\n\n" + body
+	}
 	fmt.Fprintf(&in, "reset %s\ncommit %s\ncommitter t <t@t> %d +0000\ndata %d\n%s\ndeleteall\n", ref, ref, unix, len(msg), msg)
 	for name, body := range files {
 		fmt.Fprintf(&in, "M 100644 inline %s/%s\ndata %d\n%s\n", provider, name, len(body), body)
@@ -140,3 +148,32 @@ func TestRunEmptySnapshotRemovesProvider(t *testing.T) {
 }
 
 func gitCmd(args ...string) *exec.Cmd { return exec.Command("git", args...) }
+
+func TestRunEmptyBuildCarriesForward(t *testing.T) {
+	newRepo(t)
+	stage(t, "debian", "sha256:d1", 100, map[string]string{"a.yaml": "1"})
+	// What cmd/export stages for a zero-entry upstream tarball.
+	stageMsg(t, "debian", "sha256:d2", 200, nil, "Upstream published this build as an empty tarball.\n\n"+emptyBuildTrailer)
+	stage(t, "debian", "sha256:d3", 300, map[string]string{"a.yaml": "3"})
+
+	chained, err := run([]candidate{{"debian", "sha256:d1"}, {"debian", "sha256:d2"}, {"debian", "sha256:d3"}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(chained) != 3 {
+		t.Fatalf("chained = %v, want all 3 (the empty build must not block)", chained)
+	}
+	// d2's commit is empty: same tree as d1's, so debian never "vanishes".
+	t1, _ := git(nil, "rev-parse", changelogRef+"~2^{tree}")
+	t2, _ := git(nil, "rev-parse", changelogRef+"~1^{tree}")
+	if t1 != t2 {
+		t.Fatalf("empty build changed the tree: %s -> %s", t1, t2)
+	}
+	if got, _ := git(nil, "show", changelogRef+":debian/a.yaml"); got != "3" {
+		t.Fatalf("debian/a.yaml = %q, want 3", got)
+	}
+	// Its subject still ends in provider@digest, so discover sees it as chained.
+	if got := subjects(t); got[1] != "debian@sha256:d2" {
+		t.Fatalf("chain = %v", got)
+	}
+}

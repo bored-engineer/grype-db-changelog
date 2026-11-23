@@ -40,6 +40,10 @@ import (
 
 const changelogRef = "refs/heads/changelog"
 
+// emptyBuildTrailer marks a staged snapshot of an upstream build that was
+// published as an empty tarball. Must match cmd/export's copy.
+const emptyBuildTrailer = "Empty-Build: true"
+
 func git(env []string, args ...string) (string, error) {
 	cmd := exec.Command("git", args...)
 	cmd.Env = append(os.Environ(), env...)
@@ -113,6 +117,10 @@ type snapshot struct {
 	// had zero records (fast-import then commits an empty tree, so there
 	// is no <provider>/ directory to resolve).
 	subtree string
+	// carry is set for an empty upstream build: the provider's previous
+	// subtree is kept as-is (an empty commit), rather than mirroring a
+	// build that never had any data as every record being deleted.
+	carry bool
 	// date is the raw commit's committer timestamp (vunnel's capture
 	// time), both as unix seconds for ordering and ISO 8601 for reuse.
 	unix    int64
@@ -129,20 +137,6 @@ func resolve(c candidate, index int) (s snapshot, ok bool, err error) {
 		return snapshot{}, false, nil
 	}
 
-	subtree, err := git(nil, "rev-parse", "--verify", "--quiet", ref+":"+c.Provider)
-	if err != nil {
-		// Only acceptable if the snapshot is genuinely empty - anything
-		// else at the root means the export wrote something unexpected.
-		entries, lsErr := git(nil, "ls-tree", ref)
-		if lsErr != nil {
-			return snapshot{}, false, fmt.Errorf("ls-tree %s failed: %w", ref, lsErr)
-		}
-		if entries != "" {
-			return snapshot{}, false, fmt.Errorf("%s has no %s/ directory but is not empty:\n%s", ref, c.Provider, entries)
-		}
-		subtree = ""
-	}
-
 	// One call for both: "<unix>\x00<iso>\x00<full message>".
 	out, err := git(nil, "log", "-1", "--format=%ct%x00%cI%x00%B", ref)
 	if err != nil {
@@ -156,16 +150,36 @@ func resolve(c candidate, index int) (s snapshot, ok bool, err error) {
 	if err != nil {
 		return snapshot{}, false, fmt.Errorf("parsing %s's committer time %q failed: %w", ref, parts[0], err)
 	}
-
-	return snapshot{
+	s = snapshot{
 		provider: c.Provider,
 		ref:      ref,
-		subtree:  subtree,
 		unix:     unix,
 		date:     parts[1],
 		message:  strings.TrimRight(parts[2], "\n"),
 		index:    index,
-	}, true, nil
+	}
+	for _, line := range strings.Split(s.message, "\n") {
+		if line == emptyBuildTrailer {
+			s.carry = true
+			return s, true, nil
+		}
+	}
+
+	subtree, err := git(nil, "rev-parse", "--verify", "--quiet", ref+":"+c.Provider)
+	if err != nil {
+		// Only acceptable if the snapshot is genuinely empty - anything
+		// else at the root means the export wrote something unexpected.
+		entries, lsErr := git(nil, "ls-tree", ref)
+		if lsErr != nil {
+			return snapshot{}, false, fmt.Errorf("ls-tree %s failed: %w", ref, lsErr)
+		}
+		if entries != "" {
+			return snapshot{}, false, fmt.Errorf("%s has no %s/ directory but is not empty:\n%s", ref, c.Provider, entries)
+		}
+		subtree = ""
+	}
+	s.subtree = subtree
+	return s, true, nil
 }
 
 // order interleaves the snapshots by capture time while preserving each
@@ -211,11 +225,15 @@ func order(snaps []snapshot) []snapshot {
 // buildOne advances tree (provider -> subtree SHA, mutated in place) onto
 // a new commit chaining onto parent (which may be "").
 func buildOne(tree map[string]string, parent string, s snapshot) (string, error) {
-	if s.subtree == "" {
-		// An empty snapshot is mirrored faithfully: git can't represent
-		// an empty directory, so the provider's directory goes away.
+	switch {
+	case s.carry:
+		// Tree unchanged: the commit records the build without
+		// pretending its (nonexistent) data replaced the last snapshot.
+	case s.subtree == "":
+		// A zero-record snapshot is mirrored faithfully: git can't
+		// represent an empty directory, so the provider's directory goes.
 		delete(tree, s.provider)
-	} else {
+	default:
 		tree[s.provider] = s.subtree
 	}
 

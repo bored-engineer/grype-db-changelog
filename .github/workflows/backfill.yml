@@ -199,20 +199,22 @@ jobs:
             FILENAME == ARGV[1] { chained[$1 FS $2]; next }
             FILENAME == ARGV[2] { staged[$1 FS $2]; next }
             n < max && !(($3 FS $2) in chained) {
-              print $3 "\t" $2 "\t" ((($3 FS $2) in staged) ? "true" : "false"); n++
+              print $3 "\t" $2 "\t" ((($3 FS $2) in staged) ? "true" : "false") "\t" $1; n++
             }
           ' chained.tsv staged.tsv upstream.tsv > todo.tsv
 
           # Everything this run will chain, in order (drives cmd/changelog).
           candidates=$(jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | {provider: .[0], digest: .[1]})' < todo.tsv)
-          # The subset that still needs exporting, dealt round-robin into
+          # The subset that still needs exporting - each with its GHCR
+          # publish time, which dates the commit when the build itself
+          # carries no capture time - dealt round-robin into
           # at most $SHARDS export jobs (the matrix). Dealt per provider -
           # grouped by provider first, then 0,1,2,... across shards - so
           # every shard gets an even share of each provider: nvd exports
           # take ~7x as long as most others, and dealing the time-ordered
           # list directly would line nvd up in the same few shards whenever
           # the providers' interleaving period divides the shard count.
-          exports=$(jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | select(.[2] == "false") | {provider: .[0], digest: .[1]})' < todo.tsv)
+          exports=$(jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | select(.[2] == "false") | {provider: .[0], digest: .[1], created: .[3]})' < todo.tsv)
           shards=$(echo "$exports" | jq -c --argjson n "$SHARDS" '
             group_by(.provider) | flatten | to_entries
             | group_by(.key % $n) | map(map(.value))
