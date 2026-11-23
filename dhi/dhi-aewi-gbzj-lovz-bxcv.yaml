@@ -6,8 +6,18 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: expat
         purl: pkg:apk/dhi/expat
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-21"
+                      kind: advisory
+                      version: 2.10.0-r1
+          events:
+            - introduced: "0"
+            - fixed: 2.10.0-r1
+          type: ECOSYSTEM
       versions:
-        - 2.10.0-r1
         - 2.7.3-r0
         - 2.7.4-r0
         - 2.7.5-r0
@@ -26,8 +36,18 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: expat
         purl: pkg:apk/dhi/expat
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-21"
+                      kind: advisory
+                      version: 2.10.0-r1
+          events:
+            - introduced: "0"
+            - fixed: 2.10.0-r1
+          type: ECOSYSTEM
       versions:
-        - 2.10.0-r1
         - 2.8.1-r0
         - 2.8.2-r0
         - 2.8.3-r0
@@ -43,17 +63,27 @@ database_specific:
         - legacy_package_image_owner
 details: libexpat 2.7.2 through 2.9.0 contains a denial of service vulnerability because XML_ParserReset zeroes the direct byte count but never offsets tracked heap allocations. Attackers can submit a large XML document so later documents on the same reset parser fail with XML_ERROR_NO_MEMORY until it is recreated.
 id: DHI-aewi-gbzj-lovz-bxcv
-modified: "2026-11-21T07:03:45Z"
+modified: "2026-11-22T19:25:25Z"
 published: "2026-11-21T07:03:45Z"
 references:
     - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-113351
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:100671
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:100679
+    - type: ADVISORY
       url: https://access.redhat.com/security/cve/CVE-2026-113351
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2026-100671.html
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-100679.html
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:100671
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:100679
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:100681
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-100671.html
     - type: ADVISORY

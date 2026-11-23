@@ -34,6 +34,7 @@ affected:
         - 1.1.0-r13
         - 1.1.0-r17
         - 1.1.0-r18
+        - 1.1.0-r19
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -81,6 +82,7 @@ affected:
         - 1.1.0-16
         - 1.1.0-17
         - 1.1.0-18
+        - 1.1.0-19
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -91,7 +93,7 @@ affected:
         - 1.1.0-9
 details: The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.31.0, inbound AMQP command assembly in src/main/java/com/rabbitmq/client/impl/CommandAssembler.java processes a content-bearing method and header whose remainingBodyBytes value is smaller than a following AMQP.FRAME_BODY payload. CommandAssembler.consumeBodyFrame subtracts the peer-controlled payload length before validating that it fits, drives remainingBodyBytes negative, and throws a raw UnsupportedOperationException instead of MalformedFrameException. A malicious or compromised broker peer can send this malformed sequence on an open nonzero channel to terminate frame processing and close the client connection, causing denial of service for work using that connection. This issue is fixed in version 5.31.0.
 id: DHI-7vb2-xjr2-eebv-jgwk
-modified: "2026-11-21T14:19:33Z"
+modified: "2026-11-22T23:20:43Z"
 published: "2026-11-10T03:48:09Z"
 references:
     - type: ADVISORY

@@ -29,6 +29,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gradle-9
         purl: pkg:apk/dhi/gradle-9
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 9.8.0-r1
+          events:
+            - introduced: "0"
+            - fixed: 9.8.0-r1
+          type: ECOSYSTEM
       versions:
         - 9.4.0-r0
         - 9.4.0-r1
@@ -45,13 +56,6 @@ affected:
         - 9.7.0-r1
         - 9.7.1-r0
         - 9.7.1-r1
-        - 9.8.0-r1
-        - 9.8.1-r0
-        - 9.8.2-r0
-        - 9.8.2-r1
-        - 9.9.0-r0
-        - 9.9.1-r0
-        - 9.9.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -75,6 +79,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: gradle-9
         purl: pkg:apk/dhi/gradle-9
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 9.8.0-r1
+          events:
+            - introduced: "0"
+            - fixed: 9.8.0-r1
+          type: ECOSYSTEM
       versions:
         - 9.5.1-r3
         - 9.6.0-r3
@@ -85,13 +100,6 @@ affected:
         - 9.7.0-r1
         - 9.7.1-r0
         - 9.7.1-r1
-        - 9.8.0-r1
-        - 9.8.1-r0
-        - 9.8.2-r0
-        - 9.8.2-r1
-        - 9.9.0-r0
-        - 9.9.1-r0
-        - 9.9.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -145,6 +153,7 @@ affected:
         - 8.19.25-1
         - 8.19.25-3
         - 8.19.25-4
+        - 8.19.25-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -171,6 +180,7 @@ affected:
         - 9.5.6-1
         - 9.5.6-3
         - 9.5.6-4
+        - 9.5.6-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -189,6 +199,7 @@ affected:
         - 25.10.9-3
         - 25.10.9-4
         - 25.10.9-5
+        - 25.10.9-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -210,6 +221,7 @@ affected:
         - 26.10.5-1
         - 26.10.6-0
         - 26.10.7-0
+        - 26.10.7-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -246,6 +258,8 @@ affected:
         - 1.12.14-30
         - 1.12.14-31
         - 1.12.14-32
+        - 1.12.14-33
+        - 1.12.14-34
         - 1.12.14-4
         - 1.12.14-5
         - 1.12.14-6
@@ -282,6 +296,7 @@ affected:
         - 1.13.6-10
         - 1.13.6-11
         - 1.13.6-12
+        - 1.13.6-13
         - 1.13.6-2
         - 1.13.6-3
         - 1.13.6-4
@@ -327,6 +342,7 @@ affected:
         - 2.0.7-6
         - 2.0.8-0
         - 2.0.9-0
+        - 2.0.9-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -362,7 +378,7 @@ database_specific:
         - legacy_package_image_owner
 details: jsoup through 1.23.2, fixed in commit 862ba2f, contains an uncontrolled resource consumption vulnerability in XmlTreeBuilder that allows remote attackers to exhaust JVM heap memory by supplying a deeply nested XML document with uniquely-namespaced elements. The builder copies the entire inherited namespace map on every start element, causing quadratic time and memory complexity, which attackers can exploit to trigger an OutOfMemoryError and terminate the application.
 id: DHI-mdto-z4zx-benw-52ly
-modified: "2026-11-21T12:20:13Z"
+modified: "2026-11-22T23:21:07Z"
 published: "2026-11-20T04:19:04Z"
 references:
     - type: ADVISORY

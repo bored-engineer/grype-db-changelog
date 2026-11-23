@@ -6,21 +6,30 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: util-linux
         purl: pkg:deb/dhi/util-linux
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 2.41.5-0+deb13u1+dhi2
+          events:
+            - introduced: "0"
+            - fixed: 2.41.5-0+deb13u1+dhi2
+          type: ECOSYSTEM
       versions:
         - 2.41-5+dhi0
         - 2.41-5+dhi1
         - 2.41-5+dhi2
         - 2.41-5+dhi3
         - 2.41-5dhi0
-        - 2.41.5-0+deb13u1+dhi2
-        - 2.41.5-0+deb13u1+dhi3
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: A flaw was found in the libblkid library of util-linux. During nested partition probing, the BSD, Minix, Solaris x86, and UnixWare partition probers cache a raw pointer to a parent partition entry in a dynamically allocated array. When subsequent partition additions cause the array to be reallocated, this pointer becomes stale, leading to a heap use-after-free read. An attacker who can present a crafted block device image (for example, via USB insertion or a loop-mounted disk image) can trigger this flaw without user interaction, as libblkid is invoked automatically by udev/udisks as root on block-device hot-plug events. This could lead to limited information disclosure or denial of service.
 id: DHI-tjzm-tynb-73xv-3sbl
-modified: "2026-11-19T22:32:30Z"
+modified: "2026-11-22T22:57:19Z"
 published: "2026-11-19T22:32:30Z"
 references:
     - type: ADVISORY

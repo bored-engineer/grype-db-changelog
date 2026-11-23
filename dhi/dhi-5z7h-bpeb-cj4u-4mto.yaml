@@ -34,6 +34,7 @@ affected:
         - 1.1.0-r13
         - 1.1.0-r17
         - 1.1.0-r18
+        - 1.1.0-r19
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -52,6 +53,8 @@ affected:
         - 1.2.0-r0
         - 1.2.0-r1
         - 1.2.0-r10
+        - 1.2.0-r11
+        - 1.2.0-r12
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
@@ -62,19 +65,19 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: activemq-artemis
         purl: pkg:deb/dhi/activemq-artemis
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 2.55.0-1
+          events:
+            - introduced: "0"
+            - fixed: 2.55.0-1
+          type: ECOSYSTEM
       versions:
         - 2.55.0-0
-        - 2.55.0-1
-        - 2.56.0-0
-        - 2.57.0-0
-        - 2.57.0-1
-        - 2.57.0-2
-        - 2.57.0-3
-        - 2.57.0-4
-        - 2.57.0-5
-        - 2.57.0-6
-        - 2.57.0-7
-        - 2.57.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -321,6 +324,7 @@ affected:
         - 594.0.0-1
         - 594.0.0-2
         - 594.0.0-3
+        - 594.0.1-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -349,6 +353,7 @@ affected:
         - 8.19.25-1
         - 8.19.25-3
         - 8.19.25-4
+        - 8.19.25-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -375,6 +380,7 @@ affected:
         - 9.5.6-1
         - 9.5.6-3
         - 9.5.6-4
+        - 9.5.6-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -414,6 +420,7 @@ affected:
         - 1.1.0-16
         - 1.1.0-17
         - 1.1.0-18
+        - 1.1.0-19
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -432,6 +439,8 @@ affected:
         - 1.2.0-0
         - 1.2.0-1
         - 1.2.0-10
+        - 1.2.0-11
+        - 1.2.0-12
         - 1.2.0-2
         - 1.2.0-3
         - 1.2.0-4
@@ -461,6 +470,7 @@ affected:
         - 0.7.2-19
         - 0.7.2-2
         - 0.7.2-20
+        - 0.7.2-21
         - 0.7.2-3
         - 0.7.2-4
         - 0.7.2-5
@@ -504,6 +514,8 @@ affected:
         - 1.12.14-30
         - 1.12.14-31
         - 1.12.14-32
+        - 1.12.14-33
+        - 1.12.14-34
         - 1.12.14-4
         - 1.12.14-5
         - 1.12.14-6
@@ -540,6 +552,7 @@ affected:
         - 1.13.6-10
         - 1.13.6-11
         - 1.13.6-12
+        - 1.13.6-13
         - 1.13.6-2
         - 1.13.6-3
         - 1.13.6-4
@@ -583,7 +596,7 @@ affected:
         - 4.2.0-0
 details: Netty is an asynchronous, event-driven network application framework. Prior to 4.1.137.Final and 4.2.17.Final, io.netty.handler.codec.http.cors.CorsHandler setVaryHeader replaces application Vary headers such as Authorization or Cookie with Origin, allowing a caching proxy or CDN to reuse authenticated responses across users and disclose sensitive information. This issue is fixed in versions 4.1.137.Final and 4.2.17.Final.
 id: DHI-5z7h-bpeb-cj4u-4mto
-modified: "2026-11-21T14:16:09Z"
+modified: "2026-11-22T23:20:43Z"
 published: "2026-11-10T07:26:08Z"
 references:
     - type: ADVISORY

@@ -73,16 +73,25 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: postgresql-17
         purl: pkg:deb/dhi/postgresql-17
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 17.12-0
+          events:
+            - introduced: "0"
+            - fixed: 17.12-0
+          type: ECOSYSTEM
       versions:
         - 17.10-0+deb13u1+dhi0
         - 17.11-0+deb13u1+dhi0
         - 17.11-0+deb13u1+dhi1
         - 17.11-1
-        - 17.12-0
-        - 17.12-0+deb13u1+dhi0
 details: Missing authorization in PostgreSQL logical replication allows a compromised publisher to execute arbitrary code as the operating system user running the superuser-owned subscription, via naming a system catalog as a replication target.  Only subscriptions owned by a superuser are vulnerable.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.
 id: DHI-2som-dtr2-w6ed-kxxj
-modified: "2026-11-19T18:18:44Z"
+modified: "2026-11-22T02:34:19Z"
 published: "2026-11-13T02:59:15Z"
 references:
     - type: ADVISORY

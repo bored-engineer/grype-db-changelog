@@ -56,9 +56,10 @@ affected:
         - 3.4.0-6
         - 3.4.0-7
         - 3.4.0-8
+        - 3.4.0-9
 details: Apache Airflow's Task SDK did not mask the contents of a Variable whose JSON value is a list, so secrets stored in that shape appeared in cleartext in task logs and in the Rendered Templates UI. Masking was applied only when the deserialized value was a string or a dict; a list at the top level matched neither and was returned unmasked. Any authenticated user able to read the logs or rendered templates of a task that references such a Variable could recover the values, with no special configuration required. This is the list-shaped counterpart of CVE-2026-59244, whose fix covered the dict case only, so deployments that upgraded in response to that advisory remain affected and must upgrade again. Users are advised to upgrade to apache-airflow 3.3.1 or later.
 id: DHI-vmda-l3q7-lkf2-pspt
-modified: "2026-11-21T10:48:34Z"
+modified: "2026-11-22T06:21:46Z"
 published: "2026-11-13T00:27:04Z"
 references:
     - type: ADVISORY

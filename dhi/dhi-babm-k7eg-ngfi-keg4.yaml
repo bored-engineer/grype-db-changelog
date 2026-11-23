@@ -56,9 +56,10 @@ affected:
         - 3.4.0-6
         - 3.4.0-7
         - 3.4.0-8
+        - 3.4.0-9
 details: 'Apache Airflow wrote Variable values and Connection `extra` contents to the audit log in cleartext when they were submitted through the bulk endpoints (`PATCH /api/v2/variables` and `PATCH /api/v2/connections`). The audit-log masking recognised only top-level request fields, and a bulk request nests its entities two levels below, so no masking was applied to them. Any authenticated user with audit-log read access -- who need not hold Variables or Connections read at all -- could recover those secrets verbatim, and the Connection `extra` copy is stored unencrypted in the log while the connection table encrypts it. The Airflow UI''s *Import Variables* action posts to this endpoint, so an ordinary operator import wrote every secret in the file to the log. This is a different code path from CVE-2026-50204: that fix shipped in 3.3.0 and covers the single-entity endpoints only, so deployments that upgraded in response to that advisory remain affected and must upgrade again. Users are advised to upgrade to apache-airflow 3.3.1 or later.'
 id: DHI-babm-k7eg-ngfi-keg4
-modified: "2026-11-21T10:48:20Z"
+modified: "2026-11-22T06:20:54Z"
 published: "2026-11-13T00:25:32Z"
 references:
     - type: ADVISORY

@@ -689,6 +689,7 @@ affected:
         - 3.4.0-6
         - 3.4.0-7
         - 3.4.0-8
+        - 3.4.0-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -2315,7 +2316,7 @@ database_specific:
         - legacy_package_image_owner
 details: "Certifi versions before 2026.10.18 include the `emSign ECC Root CA - G3` root certificate in their bundled CA store. Eight eMudhra intermediate CA certificates that chain to this root have compromised private keys and the CA has revoked them. \n\nAn attacker with one of the compromised keys can issue valid-looking certificates for any hostname. If the attacker is also on-path, they can intercept or modify TLS traffic from clients that trust the certifi bundle. Examples include `requests`, `urllib3` and `pip`, and the Python.org macOS installer.\n\nCertifi 2026.10.18 removed all emSign roots from the bundle. Certifi 2026.10.19 restored the emSign roots that are not affected. Upgrade to 2026.10.19 or later, and rebuild container images that vendor certifi."
 id: DHI-kmw6-twjr-vypb-7a4v
-modified: "2026-11-21T18:53:05Z"
+modified: "2026-11-22T06:21:06Z"
 published: "2026-11-20T10:01:11Z"
 references:
     - type: ADVISORY

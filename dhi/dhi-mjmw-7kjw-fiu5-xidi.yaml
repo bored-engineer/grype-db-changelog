@@ -56,9 +56,10 @@ affected:
         - 3.4.0-6
         - 3.4.0-7
         - 3.4.0-8
+        - 3.4.0-9
 details: 'Apache Airflow 3.3.0 moved human-in-the-loop tasks from the triggerer to a new `awaiting_input` task state swept by the scheduler. That sweep deserializes the task instance''s `next_kwargs` without an allow-list, so a Dag author — who controls that value through the task execution API — can cause an arbitrary module import and object instantiation inside the scheduler process, or terminate the scheduler job. No non-default configuration is required: the sweep runs unconditionally every 15 seconds, and the default `allowed_deserialization_classes` setting does not cover this code path. Versions before 3.3.0 are not affected, because human-in-the-loop tasks deferred onto the triggerer instead. This is a different code path from CVE-2026-58076, which covers the same unguarded exception-node deserialization reached elsewhere — deployments that applied that fix must upgrade for this issue as well. Users are advised to upgrade to apache-airflow 3.3.1 or later.'
 id: DHI-mjmw-7kjw-fiu5-xidi
-modified: "2026-11-21T10:48:34Z"
+modified: "2026-11-22T06:21:19Z"
 published: "2026-11-13T00:27:04Z"
 references:
     - type: ADVISORY
