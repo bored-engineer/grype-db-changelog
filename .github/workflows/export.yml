@@ -23,10 +23,14 @@ on:
       items:
         required: true
         type: string
+      # A string, not a number: the caller passes an expression
+      # (`inputs.parallelism || 3`), which always evaluates to a string,
+      # and GitHub rejects a string for a number-typed reusable workflow
+      # input ("Unexpected value '3'"). It's only ever used as text.
       parallelism:
         required: false
-        type: number
-        default: 3
+        type: string
+        default: '3'
 
 permissions:
   contents: write
