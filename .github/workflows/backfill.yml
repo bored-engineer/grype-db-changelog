@@ -4,10 +4,26 @@ on:
   workflow_dispatch:
     inputs:
       max_items:
-        description: 'Max provider/version pairs to export this run (do not exceed 256, the GitHub Actions per-matrix job limit)'
+        description: 'Max provider/version pairs to chain this run'
         required: false
         type: number
-        default: 256
+        default: 1000
+      shards:
+        description: 'Export jobs to spread them across (~ the concurrent job limit)'
+        required: false
+        type: number
+        default: 20
+      parallelism:
+        description: 'Exports each shard runs at once'
+        required: false
+        type: number
+        default: 3
+
+# Never two at once: both would chain onto the same changelog tip, and the
+# loser's whole batch would fail to push.
+concurrency:
+  group: backfill
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -18,14 +34,35 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       candidates: ${{ steps.diff.outputs.candidates }}
+      shards: ${{ steps.diff.outputs.shards }}
+      stale: ${{ steps.diff.outputs.stale }}
     steps:
-      # No checkout needed: git ls-remote works directly against the
-      # repository URL, and gh/jq are already on the runner image.
-      - name: List already-exported refs
+      # No checkout needed: a bare commit-only fetch and git ls-remote work
+      # directly against the repository URL, and gh/jq are already on the
+      # runner image.
+      #
+      # The changelog branch is the source of truth for what's done: every
+      # commit's subject ends in "<provider>@sha256:...". refs/raw/* is only
+      # a staging area (exported but not chained yet), so a version whose
+      # export succeeded but whose changelog push didn't is retried rather
+      # than lost. --filter=tree:0 fetches commits only - a few MB even
+      # with the full history.
+      - name: List already-chained and already-staged versions
         run: |
+          git init -q --bare state.git
+          if git -C state.git fetch -q --no-tags --filter=tree:0 \
+              "https://github.com/${{ github.repository }}" refs/heads/changelog; then
+            git -C state.git log --format=%s FETCH_HEAD \
+              | sed -nE 's#^([^ ]+) .*@(sha256:[0-9a-f]+)$#\1\t\2#p' > chained.tsv
+          else
+            echo "no changelog branch yet" >&2
+            : > chained.tsv
+          fi
+          echo "$(wc -l < chained.tsv) version(s) already chained"
+
           git ls-remote "https://github.com/${{ github.repository }}" 'refs/raw/*/*' \
-            | awk '{print $2}' > existing-refs.txt
-          echo "$(wc -l < existing-refs.txt) ref(s) already exported"
+            | awk '{n = split($2, a, "/"); d = a[n]; sub("-", ":", d); print a[3] "\t" d}' > staged.tsv
+          echo "$(wc -l < staged.tsv) version(s) staged (exported, not yet chained)"
 
       - name: List upstream provider versions, oldest first
         env:
@@ -65,16 +102,58 @@ jobs:
           # done serially that's several minutes just listing versions,
           # every single batch, before any exporting even starts. 12-way
           # parallel brings all 27 providers' full history (~26K versions
-          # total) down to ~17s wall-clock (confirmed the same way). Well
-          # within rate limits either way: ~260 total paginated requests
-          # for the whole run, against a 1000/hr (Actions token) or
-          # 5000/hr budget.
+          # total) down to ~17s wall-clock (confirmed the same way).
+          #
+          # Paged newest-first and stopped at the first page containing an
+          # already-chained version: each provider's chained versions are
+          # always exactly its oldest ones (cmd/changelog only ever extends
+          # the chain in order, stopping at the first gap - confirmed to
+          # hold for the existing history too), so everything older than
+          # that page is chained already. The full listing is ~260
+          # requests, and the Actions token gets 1000/hr per repository -
+          # the 10-minute schedule would blow through that with full
+          # listings every run. Stopping early, a caught-up run is ~27
+          # requests (one page per provider), and backfill runs shrink
+          # toward that as the frontier advances.
           mkdir -p upstream.d
           while read -r provider; do
+            # All or nothing per provider: the API pages newest-first, so a
+            # listing that dies partway (a 502 - seen for real) would keep
+            # only the NEWEST versions, which could then be chained ahead
+            # of older ones that reappear next run - that provider's tree
+            # going back in time. A provider missing entirely just waits a
+            # run. Written to a temp file and only renamed into place on
+            # success; pipefail so a gh failure isn't masked by jq.
             (
-              gh api --paginate "orgs/anchore/packages/container/grype-db%2Fdata%2F${provider}/versions?per_page=100" --jq '.[]' \
-                | jq -r --arg provider "$provider" '"\(.created_at)\t\(.name)\t\($provider)"' \
-                > "upstream.d/${provider}.tsv"
+              base="upstream.d/${provider}"
+              awk -F'\t' -v p="$provider" '$1 == p { print $2 }' chained.tsv > "$base.chained"
+              : > "$base.tmp"
+              ok=true
+              for ((page = 1; ; page++)); do
+                if ! gh api "orgs/anchore/packages/container/grype-db%2Fdata%2F${provider}/versions?per_page=100&page=${page}" \
+                    --jq '.[] | "\(.created_at)\t\(.name)"' > "$base.page"; then
+                  ok=false
+                  break
+                fi
+                [ -s "$base.page" ] || break # past the last page
+                awk -v p="$provider" '{ print $0 "\t" p }' "$base.page" >> "$base.tmp"
+                # One awk, no pipe (a `| grep -q` could SIGPIPE under
+                # pipefail); FILENAME, not NR==FNR, since $base.chained is
+                # empty for a provider with nothing chained yet - which is
+                # then listed in full.
+                if awk -F'\t' 'FILENAME == ARGV[1] { c[$1]; next } ($2 in c) { f = 1; exit } END { exit !f }' \
+                    "$base.chained" "$base.page"; then
+                  break # reached the chained frontier
+                fi
+                [ "$(wc -l < "$base.page")" -lt 100 ] && break # short page: the last one
+              done
+              if $ok; then
+                mv "$base.tmp" "$base.tsv"
+                echo "$provider: $((page)) page(s), $(wc -l < "$base.tsv") version(s)"
+              else
+                echo "::warning::listing $provider failed; skipping it this run"
+                rm -f "$base.tmp"
+              fi
             ) &
             # `|| true`: GitHub Actions runs with `set -e`, and `wait -n`'s
             # exit status is whatever the reaped background job returned -
@@ -86,45 +165,73 @@ jobs:
           done <<< "$providers"
           wait || true
           sort -o upstream.tsv upstream.d/*.tsv
-          echo "$(wc -l < upstream.tsv) version(s) upstream total"
+          echo "$(wc -l < upstream.tsv) version(s) listed (newest down to each provider's chained frontier)"
 
       - name: Compute missing candidates
         id: diff
         env:
-          MAX_ITEMS: ${{ inputs.max_items || 256 }}
+          MAX_ITEMS: ${{ inputs.max_items || 1000 }}
+          SHARDS: ${{ inputs.shards || 20 }}
         run: |
           # upstream.tsv is already sorted oldest-first; awk preserves that
-          # order, so no re-sort is needed after filtering.
-          # FILENAME==ARGV[1], not the usual NR==FNR idiom: NR==FNR
-          # misidentifies the *first line of upstream.tsv* as still being
-          # part of existing-refs.txt whenever existing-refs.txt has zero
-          # lines (true today, since this ref scheme starts from nothing) -
-          # confirmed by reproducing it. FILENAME-based matching has no
-          # such edge case.
-          candidates=$(awk -F'\t' '
-            FILENAME == ARGV[1] { existing[$1]; next }
-            {
-              refdigest = $2; gsub(":", "-", refdigest)
-              refname = "refs/raw/" $3 "/" refdigest
-              if (!(refname in existing)) print
+          # order, so no re-sort is needed after filtering. Keyed on
+          # "<provider>\t<digest>" in every file.
+          #
+          # FILENAME==ARGV[n], not the usual NR==FNR idiom: NR==FNR
+          # misidentifies the first line of the next file as still being
+          # part of the previous one whenever that one has zero lines.
+          # The cap is applied inside awk rather than with `| head`, which
+          # would SIGPIPE awk and fail the step under `set -o pipefail`.
+          awk -F'\t' -v max="$MAX_ITEMS" '
+            FILENAME == ARGV[1] { chained[$1 FS $2]; next }
+            FILENAME == ARGV[2] { staged[$1 FS $2]; next }
+            n < max && !(($3 FS $2) in chained) {
+              print $3 "\t" $2 "\t" ((($3 FS $2) in staged) ? "true" : "false"); n++
             }
-          ' existing-refs.txt upstream.tsv \
-            | head -n "$MAX_ITEMS" \
-            | jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | {provider: .[2], digest: .[1]})')
-          echo "$(echo "$candidates" | jq 'length') candidate(s) this run (capped at $MAX_ITEMS)"
-          echo "candidates=$candidates" >> "$GITHUB_OUTPUT"
+          ' chained.tsv staged.tsv upstream.tsv > todo.tsv
+
+          # Everything this run will chain, in order (drives cmd/changelog).
+          candidates=$(jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | {provider: .[0], digest: .[1]})' < todo.tsv)
+          # The subset that still needs exporting, dealt round-robin into
+          # at most $SHARDS export jobs (the matrix). Dealt per provider -
+          # grouped by provider first, then 0,1,2,... across shards - so
+          # every shard gets an even share of each provider: nvd exports
+          # take ~7x as long as most others, and dealing the time-ordered
+          # list directly would line nvd up in the same few shards whenever
+          # the providers' interleaving period divides the shard count.
+          exports=$(jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | select(.[2] == "false") | {provider: .[0], digest: .[1]})' < todo.tsv)
+          shards=$(echo "$exports" | jq -c --argjson n "$SHARDS" '
+            group_by(.provider) | flatten | to_entries
+            | group_by(.key % $n) | map(map(.value))
+            | to_entries | map({shard: (.key + 1), items: .value})')
+          # Staged refs whose version is already chained - leftovers from
+          # before refs/raw was a staging area, or from a manual run.
+          # Deleted alongside the next changelog push; capped to keep that
+          # push's refspec list reasonable.
+          stale=$(awk -F'\t' '
+            FILENAME == ARGV[1] { chained[$1 FS $2]; next }
+            n < 1000 && ($1 FS $2) in chained { d = $2; sub(":", "-", d); print "refs/raw/" $1 "/" d; n++ }
+          ' chained.tsv staged.tsv | jq -R -c -s 'split("\n") | map(select(length > 0))')
+
+          echo "$(echo "$candidates" | jq 'length') candidate(s) this run (capped at $MAX_ITEMS), $(echo "$exports" | jq 'length') to export in $(echo "$shards" | jq 'length') shard(s), $(echo "$stale" | jq 'length') stale staged ref(s)"
+          {
+            echo "candidates=$candidates"
+            echo "shards=$shards"
+            echo "stale=$stale"
+          } >> "$GITHUB_OUTPUT"
 
   export:
     needs: discover
-    if: needs.discover.result == 'success' && needs.discover.outputs.candidates != '[]'
+    name: export ${{ matrix.shard }}
+    if: needs.discover.result == 'success' && needs.discover.outputs.shards != '[]'
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJson(needs.discover.outputs.candidates) }}
+        include: ${{ fromJson(needs.discover.outputs.shards) }}
     uses: ./.github/workflows/export.yml
     with:
-      provider: ${{ matrix.provider }}
-      digest: ${{ matrix.digest }}
+      items: ${{ toJson(matrix.items) }}
+      parallelism: ${{ inputs.parallelism || 3 }}
 
   changelog:
     needs: [discover, export]
@@ -136,7 +243,11 @@ jobs:
     # outputs.candidates as an empty string, which also != '[]', and this
     # job would otherwise run anyway with nothing to chain (confirmed:
     # exactly what happened on the first real run of this workflow).
-    if: always() && needs.discover.result == 'success' && needs.discover.outputs.candidates != '[]'
+    # exports may be '[]' (everything already staged), which skips
+    # `export` - also fine here. stale-only runs still clean up.
+    if: >-
+      always() && needs.discover.result == 'success'
+      && (needs.discover.outputs.candidates != '[]' || needs.discover.outputs.stale != '[]')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -158,27 +269,61 @@ jobs:
           CANDIDATES: ${{ needs.discover.outputs.candidates }}
         run: |
           # --filter=blob:none: cmd/changelog only ever touches tree/commit
-          # objects (ls-tree/mktree/commit-tree), never blob content, so
-          # there's no need to pull every provider snapshot's actual YAML
-          # bytes over the network just to splice trees together.
-          git fetch -q --filter=blob:none origin \
-            refs/heads/changelog:refs/heads/changelog 2>&1 | grep -v '^$' || true
+          # objects (ls-tree/mktree/commit-tree), never blob content.
+          # --depth=1: only the tip's tree is needed to chain onto it, and
+          # pushing a child of a commit the remote already has is fine from
+          # a shallow clone.
+          if ! git fetch -q --depth=1 --filter=blob:none origin \
+              refs/heads/changelog:refs/heads/changelog; then
+            echo "no changelog branch yet" >&2
+          fi
 
-          echo "$CANDIDATES" | jq -r '.[] | "\(.provider) \(.digest)"' | while read -r provider digest; do
-            refdigest=$(echo "$digest" | tr ':' '-')
-            ref="refs/raw/$provider/$refdigest"
-            # A matrix leg exporting this one may have failed (fail-fast is
-            # off): tolerate it here rather than aborting the whole job -
-            # cmd/changelog skips any candidate it can't resolve locally,
-            # and it'll just get picked up again by a future run.
-            git fetch -q --filter=blob:none origin "$ref:$ref" \
-              || echo "note: $ref not found (export may have failed)" >&2
-          done
+          # One fetch for the whole batch, of only the refs that exist: a
+          # single missing ref would fail the whole fetch, and one can be
+          # missing if its export leg failed (fail-fast is off) -
+          # cmd/changelog stops at the first one it can't resolve and the
+          # rest are retried next run.
+          echo "$CANDIDATES" | jq -r '.[] | "refs/raw/\(.provider)/\(.digest | sub(":"; "-"))"' | sort > wanted.txt
+          git ls-remote origin 'refs/raw/*/*' | awk '{print $2}' | sort > available.txt
+          comm -12 wanted.txt available.txt | sed 's#.*#&:&#' > refspecs.txt
+          echo "$(wc -l < refspecs.txt) of $(wc -l < wanted.txt) candidate ref(s) staged"
+          if [ -s refspecs.txt ]; then
+            xargs git fetch -q --filter=blob:none origin < refspecs.txt
+          fi
 
       - name: Advance the changelog branch
         env:
           CANDIDATES: ${{ needs.discover.outputs.candidates }}
+          STALE: ${{ needs.discover.outputs.stale }}
         run: |
           echo "$CANDIDATES" > candidates.json
-          go run ./cmd/changelog candidates.json
-          git push origin refs/heads/changelog:refs/heads/changelog
+          # stdout: the raw refs it chained, one per line (logs go to stderr).
+          go run ./cmd/changelog candidates.json > chained-refs.txt
+          echo "$STALE" | jq -r '.[]' >> chained-refs.txt
+
+          refspecs=()
+          # Pushing it unchanged (nothing new chained) is a harmless no-op.
+          if git rev-parse --verify --quiet refs/heads/changelog >/dev/null; then
+            refspecs+=(refs/heads/changelog:refs/heads/changelog)
+          fi
+          while read -r ref; do
+            [ -n "$ref" ] && refspecs+=(":$ref")
+          done < chained-refs.txt
+          if [ "${#refspecs[@]}" -eq 0 ]; then
+            echo "nothing to push"
+            exit 0
+          fi
+
+          # --atomic: the branch advance and the staging-ref deletions land
+          # together or not at all, so a version is never both unchained
+          # and unstaged (lost) or chained and still staged (re-chained).
+          # Retried for the same transient GitHub 500s the export push sees.
+          for attempt in 1 2 3 4 5; do
+            if git push --atomic origin "${refspecs[@]}"; then
+              exit 0
+            fi
+            echo "push attempt $attempt failed, retrying after a pause" >&2
+            sleep $((attempt * 10))
+          done
+          echo "push failed after 5 attempts" >&2
+          exit 1

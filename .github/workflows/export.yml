@@ -1,24 +1,32 @@
 name: Export
 
+# Exports a batch of provider snapshots on one runner, several at a time,
+# and stages each as refs/raw/<provider>/<digest> in a single push. The
+# backfill fans out one of these per shard: setup (checkout, Go, build,
+# login, the changelog tip fetch) is paid once per shard rather than once
+# per snapshot - it was ~40% of all runner time at one job per snapshot.
+
 on:
   workflow_dispatch:
     inputs:
-      provider:
-        description: 'grype-db data provider name (e.g. alpine)'
+      items:
+        description: 'JSON array of {"provider": "alpine", "digest": "sha256:..."} to export'
         required: true
         type: string
-      digest:
-        description: 'sha256:... digest of ghcr.io/anchore/grype-db/data/<provider> to export'
-        required: true
-        type: string
+      parallelism:
+        description: 'Exports to run at once on the runner'
+        required: false
+        type: number
+        default: 3
   workflow_call:
     inputs:
-      provider:
+      items:
         required: true
         type: string
-      digest:
-        required: true
-        type: string
+      parallelism:
+        required: false
+        type: number
+        default: 3
 
 permissions:
   contents: write
@@ -27,6 +35,7 @@ permissions:
 jobs:
   export:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -40,6 +49,9 @@ jobs:
         with:
           go-version-file: go.mod
 
+      - name: Build
+        run: go build -o "$RUNNER_TEMP/export" ./cmd/export
+
       - name: Log in to ghcr.io
         uses: docker/login-action@abd2ef45e78c5afb21d64d4ca52ee8550d9572c7 # v4.5.1
         with:
@@ -47,31 +59,82 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Export provider/digest
+      # Makes the push below thin. This checkout has none of the snapshot
+      # data, so without it every push re-uploads each provider's ENTIRE
+      # snapshot (~200K files for nvd) even though only a handful of files
+      # change between builds - and GitHub keeps every duplicate pack until
+      # it repacks. With the changelog tip's trees present locally (no
+      # blobs, depth 1: a few MB), git knows the remote already has every
+      # unchanged blob by SHA and sends only the changed ones. Confirmed
+      # locally: 4 objects pushed instead of 3003 for a one-file change.
+      # Best-effort: if it fails, the push is just fat again.
+      - name: Fetch the changelog tip's trees
         run: |
-          go run ./cmd/export "${{ inputs.provider }}" \
-            "ghcr.io/anchore/grype-db/data/${{ inputs.provider }}@${{ inputs.digest }}" \
-            | git fast-import
+          git fetch -q --depth=1 --filter=blob:none origin \
+            refs/heads/changelog:refs/remotes/origin/changelog \
+            || echo "note: couldn't fetch the changelog tip; push will include every blob" >&2
 
-      - name: Push ref
+      - name: Export
+        env:
+          ITEMS: ${{ inputs.items }}
+          PARALLELISM: ${{ inputs.parallelism || 3 }}
         run: |
-          ref="refs/raw/${{ inputs.provider }}/$(echo "${{ inputs.digest }}" | tr ':' '-')"
-          if ! git rev-parse --verify "$ref" >/dev/null 2>&1; then
-            echo "no $ref ref was created by the export" >&2
-            exit 1
+          # Concurrent fast-imports into one repository are safe: each
+          # writes its own pack and updates only its own ref (confirmed
+          # locally with 12 at once, fsck clean). Auto-gc is off so none of
+          # them decides to repack underneath the others.
+          git config gc.auto 0
+          mkdir -p logs
+          : > failed.txt
+
+          export_one() {
+            local provider=$1 digest=$2
+            local ref="refs/raw/$provider/${digest/:/-}"
+            local log="logs/$provider-${digest/:/-}.log"
+            local start=$SECONDS
+            # cmd/export ends its stream with fast-import's "done" only on
+            # success, so a failed export never leaves a (truncated) ref
+            # behind, pipefail or not. The rev-parse double-checks it.
+            if "$RUNNER_TEMP/export" "$provider" "ghcr.io/anchore/grype-db/data/$provider@$digest" 2> "$log" \
+                | git fast-import --quiet 2>> "$log" \
+                && git rev-parse --verify --quiet "$ref" >/dev/null; then
+              echo "ok      $provider $digest ($((SECONDS - start))s)"
+            else
+              echo "FAILED  $provider $digest ($((SECONDS - start))s)"
+              sed 's/^/        /' "$log"
+              echo "$provider $digest" >> failed.txt
+            fi
+          }
+          export -f export_one
+
+          # One failure doesn't stop the rest: everything that did export
+          # still gets staged below, and the failed ones are retried by a
+          # later run (cmd/changelog chains only up to the first gap).
+          echo "$ITEMS" | jq -r '.[] | "\(.provider) \(.digest)"' \
+            | xargs -P "$PARALLELISM" -L 1 bash -c 'export_one "$@"' _
+
+          echo "$(git for-each-ref refs/raw | wc -l) exported, $(wc -l < failed.txt) failed"
+
+      - name: Push refs
+        run: |
+          mapfile -t refspecs < <(git for-each-ref --format='%(refname):%(refname)' refs/raw)
+          if [ "${#refspecs[@]}" -eq 0 ]; then
+            echo "nothing exported" >&2
+            exit 0
           fi
-          # Force-push: cmd/export always resets this ref to a fresh orphan
-          # commit, so re-running against an already-exported tag is never
-          # a fast-forward.
+          # These are staging refs: the backfill's changelog job deletes
+          # them once the snapshots are chained.
           #
-          # Retried: at backfill scale (hundreds of these jobs pushing to
-          # the same repo concurrently) GitHub occasionally returns a
-          # transient "Internal Server Error" on the push itself - seen for
-          # real during the first large backfill batch, unrelated to
-          # anything about the ref being pushed (retrying the exact same
-          # push succeeds).
+          # Force-push: cmd/export always resets each ref to a fresh orphan
+          # commit, so re-exporting one already staged is never a
+          # fast-forward.
+          #
+          # Retried: with many export jobs pushing to the same repo at
+          # once, GitHub occasionally returns a transient "Internal Server
+          # Error" on the push itself - seen for real during the first
+          # large backfill batch (retrying the exact same push succeeds).
           for attempt in 1 2 3 4 5; do
-            if git push --force origin "$ref:$ref"; then
+            if git push --force origin "${refspecs[@]}"; then
               exit 0
             fi
             echo "push attempt $attempt failed, retrying after a pause" >&2
@@ -79,3 +142,13 @@ jobs:
           done
           echo "push failed after 5 attempts" >&2
           exit 1
+
+      # Last, so failures are visible on the run without holding back the
+      # push of everything that succeeded.
+      - name: Report failures
+        run: |
+          if [ -s failed.txt ]; then
+            echo "::error::$(wc -l < failed.txt) export(s) failed:"
+            cat failed.txt
+            exit 1
+          fi
