@@ -18,6 +18,19 @@ on:
         required: false
         type: number
         default: 3
+  # Self-pacing: each run picks up the oldest ~1000 not-yet-chained
+  # versions, so the backfill drains unattended (~26 runs) and then keeps
+  # the changelog current. Overlap is prevented by the concurrency group.
+  #
+  # Every 10 minutes, deliberately more often than a full run takes
+  # (~12-15 min): the concurrency group holds at most one run pending
+  # behind the running one, so the next batch starts as soon as the
+  # previous finishes instead of waiting for the next slot - at a 30-minute
+  # cadence the schedule, not the exports, was the backfill's bottleneck.
+  # A pending run superseded by a newer one shows as cancelled (harmless).
+  # Once caught up, each run is just a ~30s discover with nothing to do.
+  schedule:
+    - cron: '*/10 * * * *'
 
 # Never two at once: both would chain onto the same changelog tip, and the
 # loser's whole batch would fail to push.
