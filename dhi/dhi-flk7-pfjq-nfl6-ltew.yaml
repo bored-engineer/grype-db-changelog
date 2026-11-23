@@ -5,8 +5,18 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: expat
         purl: pkg:apk/dhi/expat
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-21"
+                      kind: advisory
+                      version: 2.10.0-r1
+          events:
+            - fixed: 2.10.0-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 2.10.0-r1
         - 2.7.3-r0
         - 2.7.4-r0
         - 2.7.5-r0
@@ -25,8 +35,18 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: expat
         purl: pkg:apk/dhi/expat
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-21"
+                      kind: advisory
+                      version: 2.10.0-r1
+          events:
+            - fixed: 2.10.0-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 2.10.0-r1
         - 2.8.1-r0
         - 2.8.2-r0
         - 2.8.3-r0
@@ -42,7 +62,7 @@ database_specific:
         - legacy_package_image_owner
 details: libexpat through 2.9.0 contains a denial of service vulnerability because billion laughs protection in accountingDiffTolerated() in xmlparse.c detects entity amplification too late. Attackers can supply a moderately sized XML document with a large DTD and nested entity expansions to consume tens of seconds of CPU per parse.
 id: DHI-flk7-pfjq-nfl6-ltew
-modified: "2026-11-21T07:03:45Z"
+modified: "2026-11-22T19:25:31Z"
 published: "2026-11-21T07:03:45Z"
 references:
     - type: ADVISORY
@@ -226,13 +246,23 @@ references:
     - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-115506
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:100671
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:100679
+    - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2/ALAS-2026-4147.html
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3508.html
     - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2026-100671.html
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-100679.html
+    - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:100671
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:100679
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:100681
     - type: ADVISORY
       url: https://github.com/libexpat/libexpat/issues/1160
     - type: ADVISORY

@@ -5,37 +5,62 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.11.1-r4
+          events:
+            - fixed: 1.11.1-r4
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r1
         - 1.11.1-r2
         - 1.11.1-r3
-        - 1.11.1-r4
-        - 1.11.1-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.11.1-r4
+          events:
+            - fixed: 1.11.1-r4
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r3
-        - 1.11.1-r4
-        - 1.11.1-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: libssh2
         purl: pkg:deb/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.11.1-1+deb13u1+dhi2
+          events:
+            - fixed: 1.11.1-1+deb13u1+dhi2
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.11.1-1+deb13u1+dhi1
-        - 1.11.1-1+deb13u1+dhi2
-        - 1.11.1-1+deb13u2+dhi0
-        - 1.11.1-1+dhi+deb13u1+dhi2
-        - 1.11.1-1+dhi+deb13u2+dhi0
 details: libssh2 through 1.11.1, fixed in commit 42e33d8, contains a pre-authentication heap buffer overflow vulnerability that allows a malicious SSH server to corrupt heap metadata in any connecting client by sending a packet with a packet_length smaller than the cipher's block size during Encrypt-then-MAC cipher negotiation. In the fullpacket() function in src/transport.c, the ETM path allocates a buffer of packet_length bytes but copies blocksize minus one bytes via memcpy, causing an overflow that on 32-bit glibc writes attacker-controlled bytes into an adjacent chunk's SIZE field, enabling tcache bin confusion, overlapping live objects, and function pointer overwrite during the session handshake before authentication.
 id: DHI-kiao-grth-pn7h-2zpu
-modified: "2026-11-13T18:59:26Z"
+modified: "2026-11-22T20:14:49Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY

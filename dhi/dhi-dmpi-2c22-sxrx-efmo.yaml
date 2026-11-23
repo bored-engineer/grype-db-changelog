@@ -5,6 +5,18 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openssl
         purl: pkg:deb/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-21"
+                      kind: advisory
+                      version: 3.5.9-1~deb13u1+dhi1
+          events:
+            - fixed: 3.5.9-1~deb13u1+dhi1
+            - introduced: "0"
+            - introduced: 3.5.9-1~deb13u1+fips+dhi0
+          type: ECOSYSTEM
       versions:
         - 3.5.5-1~deb13u2dhi0
         - 3.5.6-1~deb13u1+dhi0
@@ -36,7 +48,7 @@ database_specific:
         - legacy_package_image_owner
 details: Verifying a maliciously crafted CMS or PKCS#7 SignedData message with CRL checking enabled may consume excessive CPU time, growing with the square of the message size.
 id: DHI-dmpi-2c22-sxrx-efmo
-modified: "2026-11-21T17:44:03Z"
+modified: "2026-11-22T20:34:28Z"
 published: "2026-11-21T16:31:30Z"
 references:
     - type: ADVISORY

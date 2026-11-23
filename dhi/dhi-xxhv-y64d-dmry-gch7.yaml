@@ -5,37 +5,62 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.11.1-r4
+          events:
+            - fixed: 1.11.1-r4
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r1
         - 1.11.1-r2
         - 1.11.1-r3
-        - 1.11.1-r4
-        - 1.11.1-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.11.1-r4
+          events:
+            - fixed: 1.11.1-r4
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r3
-        - 1.11.1-r4
-        - 1.11.1-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: libssh2
         purl: pkg:deb/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.11.1-1+deb13u1+dhi2
+          events:
+            - fixed: 1.11.1-1+deb13u1+dhi2
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.11.1-1+deb13u1+dhi1
-        - 1.11.1-1+deb13u1+dhi2
-        - 1.11.1-1+deb13u2+dhi0
-        - 1.11.1-1+dhi+deb13u1+dhi2
-        - 1.11.1-1+dhi+deb13u2+dhi0
 details: libssh2 through 1.11.1, fixed in commit 5e47761, contains a double-free vulnerability in the sftp_open() function in src/sftp.c that allows a malicious SSH server to corrupt the heap of any authenticated client opening an SFTP session. When a server responds to SSH_FXP_OPEN with SSH_FXP_STATUS containing FX_OK, the response data buffer is freed, and if a subsequent sftp_packet_require() call returns a specific error such as LIBSSH2_ERROR_CHANNEL_PACKET_EXCEEDED, the same pointer is freed a second time, enabling tcache dup conditions on glibc systems that allow overlapping allocations and function pointer overwrites.
 id: DHI-xxhv-y64d-dmry-gch7
-modified: "2026-11-18T19:46:09Z"
+modified: "2026-11-22T20:05:29Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY

@@ -33,6 +33,7 @@ affected:
         - 1.1.0-r13
         - 1.1.0-r17
         - 1.1.0-r18
+        - 1.1.0-r19
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -51,6 +52,8 @@ affected:
         - 1.2.0-r0
         - 1.2.0-r1
         - 1.2.0-r10
+        - 1.2.0-r11
+        - 1.2.0-r12
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
@@ -109,6 +112,7 @@ affected:
         - 594.0.0-1
         - 594.0.0-2
         - 594.0.0-3
+        - 594.0.1-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -148,6 +152,7 @@ affected:
         - 1.1.0-16
         - 1.1.0-17
         - 1.1.0-18
+        - 1.1.0-19
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -166,6 +171,8 @@ affected:
         - 1.2.0-0
         - 1.2.0-1
         - 1.2.0-10
+        - 1.2.0-11
+        - 1.2.0-12
         - 1.2.0-2
         - 1.2.0-3
         - 1.2.0-4
@@ -195,6 +202,7 @@ affected:
         - 0.7.2-19
         - 0.7.2-2
         - 0.7.2-20
+        - 0.7.2-21
         - 0.7.2-3
         - 0.7.2-4
         - 0.7.2-5
@@ -223,7 +231,7 @@ details: |-
     ### Impact
     A remote unauthenticated peer that can speak SPDY to a Netty pipeline containing SpdyFrameCodec can send a small compressed HEADERS block that expands into much larger raw header data after the configured maxHeaderSize limit has already been exceeded. The attack requires a reachable SPDY codec, ordinary transport setup such as TCP and optional TLS, and no independent compressed-frame-size or connection-rate limit ahead of SpdyFrameCodec. The satisfied protocol guards are straightforward: the HEADERS frame uses a nonzero stream id and length >= 4, the decoder factory selects the zlib decoder, the payload uses the SPDY dictionary, and the raw block appends a zero-length value so the already-truncated frame reaches END_HEADER_BLOCK. The user-visible effect is denial of service through compression-amplified CPU and allocation churn.
 id: DHI-h2ur-w3p4-i32u-yxjm
-modified: "2026-11-21T14:16:09Z"
+modified: "2026-11-22T23:21:07Z"
 published: "2026-11-10T07:34:33Z"
 references:
     - type: ADVISORY

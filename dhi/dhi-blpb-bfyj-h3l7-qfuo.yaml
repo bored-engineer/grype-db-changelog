@@ -5,11 +5,20 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: xz
         purl: pkg:apk/dhi/xz
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-21"
+                      kind: advisory
+                      version: 5.8.3-r0
+          events:
+            - fixed: 5.8.3-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 5.8.1-r0
         - 5.8.2-r0
-        - 5.8.3-r0
-        - 5.8.4-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -36,7 +45,7 @@ database_specific:
         - legacy_package_image_owner
 details: XZ Utils provide a general-purpose data-compression library plus command-line tools. Prior to version 5.8.3, if lzma_index_decoder() was used to decode an Index that contained no Records, the resulting lzma_index was left in a state where where a subsequent lzma_index_append() would allocate too little memory, and a buffer overflow would occur. This issue has been patched in version 5.8.3.
 id: DHI-blpb-bfyj-h3l7-qfuo
-modified: "2026-11-21T17:26:51Z"
+modified: "2026-11-22T23:09:13Z"
 published: "2026-11-21T06:32:58Z"
 references:
     - type: ADVISORY

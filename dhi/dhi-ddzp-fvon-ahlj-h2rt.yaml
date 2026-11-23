@@ -33,6 +33,7 @@ affected:
         - 1.1.0-r13
         - 1.1.0-r17
         - 1.1.0-r18
+        - 1.1.0-r19
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -51,6 +52,8 @@ affected:
         - 1.2.0-r0
         - 1.2.0-r1
         - 1.2.0-r10
+        - 1.2.0-r11
+        - 1.2.0-r12
         - 1.2.0-r2
         - 1.2.0-r3
         - 1.2.0-r4
@@ -94,6 +97,7 @@ affected:
         - 1.1.0-16
         - 1.1.0-17
         - 1.1.0-18
+        - 1.1.0-19
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -112,6 +116,8 @@ affected:
         - 1.2.0-0
         - 1.2.0-1
         - 1.2.0-10
+        - 1.2.0-11
+        - 1.2.0-12
         - 1.2.0-2
         - 1.2.0-3
         - 1.2.0-4
@@ -122,7 +128,7 @@ affected:
         - 1.2.0-9
 details: Netty is an asynchronous, event-driven network application framework. Prior to 4.2.13.Final and 4.1.133.Final, the MQTT 5 header Properties section is parsed and buffered before any message size limit is applied. Specifically, in MqttDecoder, the decodeVariableHeader() method is called before the bytesRemainingBeforeVariableHeader > maxBytesInMessage check. The decodeVariableHeader() can call other methods which will call decodeProperties(). Effectively, Netty does not apply any limits to the size of the properties being decoded. Additionally, because MqttDecoder extends ReplayingDecoder, Netty will repeatedly re-parse the enormous Properties sections and buffer the bytes in memory, until the entire thing parses to completion. This can cause high resource usage in both CPU and memory. This vulnerability is fixed in 4.2.13.Final and 4.1.133.Final.
 id: DHI-ddzp-fvon-ahlj-h2rt
-modified: "2026-11-21T14:16:09Z"
+modified: "2026-11-22T23:20:56Z"
 published: "2026-11-10T07:56:20Z"
 references:
     - type: ADVISORY

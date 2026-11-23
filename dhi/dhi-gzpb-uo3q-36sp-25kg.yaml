@@ -55,6 +55,7 @@ affected:
         - 3.4.0-6
         - 3.4.0-7
         - 3.4.0-8
+        - 3.4.0-9
 details: |-
     Apache Airflow: the Core API logout endpoint revokes only a session token presented as the _token cookie. When a client logs out presenting its credential as an Authorization bearer header instead, the endpoint returns its normal logout response but revokes nothing, so the token remains valid until it expires. An attacker who already holds a copy of that token keeps the victim's access after the victim has logged out and believes the session ended; the default token lifetime is 24 hours and is configurable.
 
@@ -62,7 +63,7 @@ details: |-
 
     Users of apache-airflow are recommended to upgrade to apache-airflow version 3.3.2 or later, which fixes the issue.
 id: DHI-gzpb-uo3q-36sp-25kg
-modified: "2026-11-21T10:48:20Z"
+modified: "2026-11-22T06:21:06Z"
 published: "2026-11-13T00:25:32Z"
 references:
     - type: ADVISORY

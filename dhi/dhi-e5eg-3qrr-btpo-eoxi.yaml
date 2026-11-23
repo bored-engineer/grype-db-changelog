@@ -5,34 +5,64 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: krb5
         purl: pkg:apk/dhi/krb5
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 1.22.3-r0
+          events:
+            - fixed: 1.22.3-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.22.1-r0
-        - 1.22.3-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: krb5
         purl: pkg:apk/dhi/krb5
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 1.22.3-r0
+          events:
+            - fixed: 1.22.3-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.22.2-r1
-        - 1.22.3-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: krb5
         purl: pkg:deb/dhi/krb5
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 1.21.3-5+deb13u1+dhi3
+          events:
+            - fixed: 1.21.3-5+deb13u1+dhi3
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.21.3-5+deb13u1+dhi1
-        - 1.21.3-5+deb13u1+dhi3
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: The AUTH_GSSAPI handler in lib/rpc/svc_auth_gssapi.c in MIT Kerberos 5 (aka krb5) 1.5.2 and later allows remote attackers to cause a denial of service (memory exhaustion in kadmind) by sending repeated failed AUTH_GSSAPI_INIT requests. Each failed request allocates client state that is only freed after a 15-minute expiration timeout, allowing an attacker to accumulate memory faster than it is reclaimed.
 id: DHI-e5eg-3qrr-btpo-eoxi
-modified: "2026-11-19T20:54:10Z"
+modified: "2026-11-22T22:31:54Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY

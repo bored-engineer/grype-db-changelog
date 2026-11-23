@@ -33,6 +33,7 @@ affected:
         - 1.1.0-r13
         - 1.1.0-r17
         - 1.1.0-r18
+        - 1.1.0-r19
         - 1.1.0-r2
         - 1.1.0-r3
         - 1.1.0-r4
@@ -74,6 +75,8 @@ affected:
         - 36.0.0-31
         - 36.0.0-32
         - 36.0.0-33
+        - 36.0.0-35
+        - 36.0.0-36
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -112,6 +115,8 @@ affected:
         - 36.0.0-31
         - 36.0.0-32
         - 36.0.0-33
+        - 36.0.0-35
+        - 36.0.0-36
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -151,6 +156,7 @@ affected:
         - 37.0.0-31
         - 37.0.0-32
         - 37.0.0-33
+        - 37.0.0-35
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -189,6 +195,7 @@ affected:
         - 37.0.0-31
         - 37.0.0-32
         - 37.0.0-33
+        - 37.0.0-35
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -234,6 +241,7 @@ affected:
         - 1.1.0-16
         - 1.1.0-17
         - 1.1.0-18
+        - 1.1.0-19
         - 1.1.0-2
         - 1.1.0-3
         - 1.1.0-4
@@ -244,7 +252,7 @@ affected:
         - 1.1.0-9
 details: "### From the reporter\n\n> `XmlParser` is vulnerable to XML external entity (XXE) vulnerability.\n>  XmlParser is being used when parsing Jetty’s xml configuration files. An attacker might exploit\n> this vulnerability in order to achieve SSRF or cause a denial of service.\n> One possible scenario is importing a (remote) malicious WAR into a Jetty’s server, while the\n> WAR includes a malicious web.xml.\n\n### Impact\nThere are no circumstances in a normally deployed Jetty server where potentially hostile XML is given to the XmlParser class without the attacker already having arbitrary access to the server. I.e. in order to exploit `XmlParser` the attacker would already have the ability to deploy and execute hostile code.  Specifically, Jetty has no protection against malicious web application and potentially hostile web applications should only be run on an isolated virtualisation.  \n\nThus this is not considered a vulnerability of the Jetty server itself, as any such usage of the jetty XmlParser is equally vulnerable as a direct usage of the JVM supplied SAX parser.  No CVE will be allocated to this advisory.\n\nHowever, any direct usage of the `XmlParser` class by an application may be vulnerable.  The impact would greatly depend on how the application uses `XmlParser`, but it could be a denial of service due to large entity expansion, or possibly the revealing local files if the XML results are accessible remotely.\n\n### Patches\nAbility to configure the SAXParserFactory to fit the needs of your particular XML parser implementation have been merged as part of PR #10067\n\n### Workarounds\nDon't use Jetty's `XmlParser` to parse data from users."
 id: DHI-zjs3-zm7u-bydv-md7w
-modified: "2026-11-21T14:16:21Z"
+modified: "2026-11-22T23:21:29Z"
 published: "2026-11-10T11:22:46Z"
 references:
     - type: ADVISORY
