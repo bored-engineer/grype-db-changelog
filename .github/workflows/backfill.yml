@@ -99,6 +99,11 @@ jobs:
           # done <<< "$providers" below reads line-by-line, so the
           # space-separated env var needs converting to one-per-line first.
           providers=$(tr -s ' ' '\n' <<< "$PROVIDERS")
+
+          # Taken before listing anything: every version published before
+          # this instant is in the listings below (see the settle window
+          # in the next step).
+          date -u -d '-5 minutes' +%Y-%m-%dT%H:%M:%SZ > settled-before.txt
           echo "$(printf '%s\n' "$providers" | grep -c .) provider(s) configured"
 
           # Every version of every provider's package, not just the current
@@ -130,13 +135,15 @@ jobs:
           # toward that as the frontier advances.
           mkdir -p upstream.d
           while read -r provider; do
-            # All or nothing per provider: the API pages newest-first, so a
-            # listing that dies partway (a 502 - seen for real) would keep
-            # only the NEWEST versions, which could then be chained ahead
-            # of older ones that reappear next run - that provider's tree
-            # going back in time. A provider missing entirely just waits a
-            # run. Written to a temp file and only renamed into place on
-            # success; pipefail so a gh failure isn't masked by jq.
+            # All or nothing, for every provider: the changelog is chained
+            # in GHCR publish order across ALL providers, so a provider
+            # left out of this run (or cut short - the API pages
+            # newest-first, and a listing that dies partway, a 502 - seen
+            # for real, keeps only the NEWEST versions) would have its
+            # versions chained later, after ones published after them, and
+            # the changelog's dates would go backwards. Any failure fails
+            # the whole run instead; the next run retries. Written to a
+            # temp file and only renamed into place on success.
             (
               base="upstream.d/${provider}"
               awk -F'\t' -v p="$provider" '$1 == p { print $2 }' chained.tsv > "$base.chained"
@@ -164,20 +171,26 @@ jobs:
                 mv "$base.tmp" "$base.tsv"
                 echo "$provider: $((page)) page(s), $(wc -l < "$base.tsv") version(s)"
               else
-                echo "::warning::listing $provider failed; skipping it this run"
+                echo "::error::listing $provider failed"
                 rm -f "$base.tmp"
+                touch "$base.failed"
               fi
             ) &
             # `|| true`: GitHub Actions runs with `set -e`, and `wait -n`'s
-            # exit status is whatever the reaped background job returned -
-            # without this, one provider's transient API failure would
-            # abort the whole step instead of just leaving that provider
-            # out of this run (it's picked up again next run regardless,
-            # same as a failed export matrix leg).
+            # exit status is whatever the reaped background job returned;
+            # failures are collected via the .failed markers instead, so
+            # every provider's listing gets to finish (and log) first.
             while [ "$(jobs -r -p | wc -l)" -ge 12 ]; do wait -n || true; done
           done <<< "$providers"
           wait || true
-          sort -o upstream.tsv upstream.d/*.tsv
+          if compgen -G 'upstream.d/*.failed' > /dev/null; then
+            echo "listing failed for: $(basename -s .failed upstream.d/*.failed | tr '\n' ' ')- not chaining anything this run" >&2
+            exit 1
+          fi
+          # Publish time, then digest for ties (several providers often
+          # publish in the same second): byte order (LC_ALL=C), so the
+          # order never depends on the runner's locale.
+          LC_ALL=C sort -o upstream.tsv upstream.d/*.tsv
           echo "$(wc -l < upstream.tsv) version(s) listed (newest down to each provider's chained frontier)"
 
       - name: Compute missing candidates
@@ -195,16 +208,24 @@ jobs:
           # part of the previous one whenever that one has zero lines.
           # The cap is applied inside awk rather than with `| head`, which
           # would SIGPIPE awk and fail the step under `set -o pipefail`.
-          awk -F'\t' -v max="$MAX_ITEMS" '
+          #
+          # Settle window: only versions published 5+ minutes before the
+          # listing began. A version can take a moment to show up in the
+          # API after it's published; without the window, a run could
+          # chain one published just after it and miss it, which would
+          # then be chained out of order next run. (RFC 3339 UTC strings
+          # compare correctly as text.)
+          awk -F'\t' -v max="$MAX_ITEMS" -v settled="$(cat settled-before.txt)" '
             FILENAME == ARGV[1] { chained[$1 FS $2]; next }
             FILENAME == ARGV[2] { staged[$1 FS $2]; next }
-            n < max && !(($3 FS $2) in chained) {
+            n < max && $1 < settled && !(($3 FS $2) in chained) {
               print $3 "\t" $2 "\t" ((($3 FS $2) in staged) ? "true" : "false") "\t" $1; n++
             }
           ' chained.tsv staged.tsv upstream.tsv > todo.tsv
 
-          # Everything this run will chain, in order (drives cmd/changelog).
-          candidates=$(jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | {provider: .[0], digest: .[1]})' < todo.tsv)
+          # Everything this run will chain, in order (drives cmd/changelog),
+          # with the publish time that dates each commit.
+          candidates=$(jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | {provider: .[0], digest: .[1], created: .[3]})' < todo.tsv)
           # The subset that still needs exporting - each with its GHCR
           # publish time, which dates the commit when the build itself
           # carries no capture time - dealt round-robin into

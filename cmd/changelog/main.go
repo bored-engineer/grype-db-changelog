@@ -34,8 +34,8 @@ import (
 	"os"
 	"os/exec"
 	"sort"
-	"strconv"
 	"strings"
+	"time"
 )
 
 const changelogRef = "refs/heads/changelog"
@@ -99,10 +99,13 @@ func existingProviders(commit string) (map[string]string, error) {
 	return providers, nil
 }
 
-// candidate mirrors one entry of the discover job's output.
+// candidate mirrors one entry of the discover job's output, which lists
+// them in the order they are to be chained: GHCR publish order.
 type candidate struct {
 	Provider string `json:"provider"`
 	Digest   string `json:"digest"`
+	// Created is the GHCR publish time (RFC 3339). It dates the commit.
+	Created string `json:"created"`
 }
 
 func rawRef(provider, digest string) string {
@@ -121,42 +124,45 @@ type snapshot struct {
 	// subtree is kept as-is (an empty commit), rather than mirroring a
 	// build that never had any data as every record being deleted.
 	carry bool
-	// date is the raw commit's committer timestamp (vunnel's capture
-	// time), both as unix seconds for ordering and ISO 8601 for reuse.
-	unix    int64
-	date    string
-	message string
-	index   int
+	// published is the GHCR publish time, which dates the changelog
+	// commit; captured is the raw commit's committer time (the build's
+	// own capture time), recorded in a trailer.
+	published string
+	captured  string
+	message   string
 }
+
+// capturedTrailer records a snapshot's capture time on its changelog
+// commit, whose dates are the publish time.
+const capturedTrailer = "Captured: "
 
 // resolve looks up the candidate's staged refs/raw ref. ok is false if it
 // doesn't exist locally (the export leg for it may have failed).
-func resolve(c candidate, index int) (s snapshot, ok bool, err error) {
+func resolve(c candidate) (s snapshot, ok bool, err error) {
 	ref := rawRef(c.Provider, c.Digest)
+	published, err := time.Parse(time.RFC3339, c.Created)
+	if err != nil {
+		return snapshot{}, false, fmt.Errorf("%s %s has no valid publish time %q: %w", c.Provider, c.Digest, c.Created, err)
+	}
 	if _, err := git(nil, "rev-parse", "--verify", "--quiet", ref+"^{commit}"); err != nil {
 		return snapshot{}, false, nil
 	}
 
-	// One call for both: "<unix>\x00<iso>\x00<full message>".
-	out, err := git(nil, "log", "-1", "--format=%ct%x00%cI%x00%B", ref)
+	// One call for both: "<iso>\x00<full message>".
+	out, err := git(nil, "log", "-1", "--format=%cI%x00%B", ref)
 	if err != nil {
 		return snapshot{}, false, fmt.Errorf("reading %s's commit failed: %w", ref, err)
 	}
-	parts := strings.SplitN(out, "\x00", 3)
-	if len(parts) != 3 {
+	parts := strings.SplitN(out, "\x00", 2)
+	if len(parts) != 2 {
 		return snapshot{}, false, fmt.Errorf("unexpected log output for %s: %q", ref, out)
 	}
-	unix, err := strconv.ParseInt(parts[0], 10, 64)
-	if err != nil {
-		return snapshot{}, false, fmt.Errorf("parsing %s's committer time %q failed: %w", ref, parts[0], err)
-	}
 	s = snapshot{
-		provider: c.Provider,
-		ref:      ref,
-		unix:     unix,
-		date:     parts[1],
-		message:  strings.TrimRight(parts[2], "\n"),
-		index:    index,
+		provider:  c.Provider,
+		ref:       ref,
+		published: published.UTC().Format(time.RFC3339),
+		captured:  parts[0],
+		message:   strings.TrimRight(parts[1], "\n"),
 	}
 	for _, line := range strings.Split(s.message, "\n") {
 		if line == emptyBuildTrailer {
@@ -180,46 +186,6 @@ func resolve(c candidate, index int) (s snapshot, ok bool, err error) {
 	}
 	s.subtree = subtree
 	return s, true, nil
-}
-
-// order interleaves the snapshots by capture time while preserving each
-// provider's own relative order exactly: a k-way merge of the
-// per-provider queues, always taking the queue whose head was captured
-// earliest. The input order (GHCR publish time) can disagree with capture
-// time across providers - nvd captured before github but published after
-// it, say - and a plain sort by capture time could also reorder a single
-// provider's snapshots if its capture times are ever non-monotonic, which
-// would make that provider's tree go back in time. Merging can't.
-func order(snaps []snapshot) []snapshot {
-	queues := map[string][]snapshot{}
-	var providers []string
-	for _, s := range snaps {
-		if _, ok := queues[s.provider]; !ok {
-			providers = append(providers, s.provider)
-		}
-		queues[s.provider] = append(queues[s.provider], s)
-	}
-	out := make([]snapshot, 0, len(snaps))
-	for len(out) < len(snaps) {
-		best := ""
-		for _, p := range providers {
-			q := queues[p]
-			if len(q) == 0 {
-				continue
-			}
-			if best == "" {
-				best = p
-				continue
-			}
-			b := queues[best][0]
-			if q[0].unix < b.unix || (q[0].unix == b.unix && q[0].index < b.index) {
-				best = p
-			}
-		}
-		out = append(out, queues[best][0])
-		queues[best] = queues[best][1:]
-	}
-	return out
 }
 
 // buildOne advances tree (provider -> subtree SHA, mutated in place) onto
@@ -255,16 +221,16 @@ func buildOne(tree map[string]string, parent string, s snapshot) (string, error)
 	env := []string{
 		"GIT_AUTHOR_NAME=grype-db-changelog",
 		"GIT_AUTHOR_EMAIL=41898282+github-actions[bot]@users.noreply.github.com",
-		"GIT_AUTHOR_DATE=" + s.date,
+		"GIT_AUTHOR_DATE=" + s.published,
 		"GIT_COMMITTER_NAME=grype-db-changelog",
 		"GIT_COMMITTER_EMAIL=41898282+github-actions[bot]@users.noreply.github.com",
-		"GIT_COMMITTER_DATE=" + s.date,
+		"GIT_COMMITTER_DATE=" + s.published,
 	}
 	commitArgs := []string{"commit-tree", rootTree}
 	if parent != "" {
 		commitArgs = append(commitArgs, "-p", parent)
 	}
-	commitArgs = append(commitArgs, "-m", s.message)
+	commitArgs = append(commitArgs, "-m", withTrailer(s.message, capturedTrailer+s.captured))
 	newCommit, err := git(env, commitArgs...)
 	if err != nil {
 		return "", fmt.Errorf("commit-tree failed: %w", err)
@@ -272,16 +238,41 @@ func buildOne(tree map[string]string, parent string, s snapshot) (string, error)
 	return newCommit, nil
 }
 
-// run chains the longest prefix of candidates (oldest first) whose raw
-// refs all exist, and returns the raw refs it chained. It stops at the
-// first missing one instead of skipping it: a skipped snapshot would be
-// chained by some later run on top of NEWER snapshots of the same
-// provider, making that provider's tree jump back in time and forward
-// again.
+// withTrailer appends a trailer line to message, joining its existing
+// trailer block if its last paragraph is one (e.g. "Empty-Build: true").
+func withTrailer(message, trailer string) string {
+	paras := strings.Split(message, "\n\n")
+	if len(paras) > 1 {
+		last := paras[len(paras)-1]
+		isTrailers := true
+		for _, line := range strings.Split(last, "\n") {
+			if k, _, ok := strings.Cut(line, ": "); !ok || k == "" || strings.ContainsAny(k, " \t") {
+				isTrailers = false
+				break
+			}
+		}
+		if isTrailers {
+			return message + "\n" + trailer
+		}
+	}
+	return message + "\n\n" + trailer
+}
+
+// run chains the longest prefix of candidates whose raw refs all exist,
+// in the order given (GHCR publish order, oldest first), and returns the
+// raw refs it chained. It stops at the first missing one instead of
+// skipping it: a skipped snapshot would have to be chained later on top of
+// snapshots published after it, and the changelog's dates would go
+// backwards.
+//
+// Publish order, not capture order: the chain is append-only, and a build
+// can be published days after its capture time (seen: 5.6 days for nvd),
+// so ordering by capture time would mean inserting into the past. Within
+// each provider the two orders agree.
 func run(candidates []candidate) ([]string, error) {
 	var snaps []snapshot
 	for i, c := range candidates {
-		s, ok, err := resolve(c, i)
+		s, ok, err := resolve(c)
 		if err != nil {
 			return nil, fmt.Errorf("resolve(%s, %s) failed: %w", c.Provider, c.Digest, err)
 		}
@@ -309,7 +300,7 @@ func run(candidates []candidate) ([]string, error) {
 
 	parent := prevCommit
 	chained := make([]string, 0, len(snaps))
-	for _, s := range order(snaps) {
+	for _, s := range snaps {
 		newCommit, err := buildOne(tree, parent, s)
 		if err != nil {
 			return nil, fmt.Errorf("buildOne(%s) failed: %w", s.ref, err)
