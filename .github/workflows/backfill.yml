@@ -18,19 +18,24 @@ on:
         required: false
         type: number
         default: 3
-  # Self-pacing: each run picks up the oldest ~1000 not-yet-chained
-  # versions, so the backfill drains unattended (~26 runs) and then keeps
-  # the changelog current. Overlap is prevented by the concurrency group.
+  # Each run chains the oldest ~1000 not-yet-chained versions, so a
+  # backlog drains over successive runs (or manual dispatches) and the
+  # changelog then stays current. Overlap is prevented by the concurrency
+  # group.
   #
-  # Every 10 minutes, deliberately more often than a full run takes
-  # (~12-15 min): the concurrency group holds at most one run pending
-  # behind the running one, so the next batch starts as soon as the
-  # previous finishes instead of waiting for the next slot - at a 30-minute
-  # cadence the schedule, not the exports, was the backfill's bottleneck.
-  # A pending run superseded by a newer one shows as cancelled (harmless).
-  # Once caught up, each run is just a ~30s discover with nothing to do.
+  # Timed to upstream, which publishes three times a day: every provider
+  # around 00:20 UTC, and amazon/fedora/github/nvd/rhel again around
+  # 08:15 and 16:15. ~90% of builds are out within an hour of 00/08/16:00;
+  # rhel, sles and hummingbird can trail by up to ~4-5h. So: one run an
+  # hour after each window, one sweep three hours later for stragglers,
+  # and anything later still is caught by the next window's run.
+  #
+  # Not more often: GitHub throttles frequent schedules hard (a */10 cron
+  # fired only ~3 times a day), and a caught-up run is a ~30s discover.
+  # Off the top of the hour, when scheduled runs are most often delayed.
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '7 1,9,17 * * *'
+    - cron: '7 4,12,20 * * *'
 
 # Never two at once: both would chain onto the same changelog tip, and the
 # loser's whole batch would fail to push.
@@ -129,7 +134,7 @@ jobs:
           # hold for the existing history too), so everything older than
           # that page is chained already. The full listing is ~260
           # requests, and the Actions token gets 1000/hr per repository -
-          # the 10-minute schedule would blow through that with full
+          # back-to-back backfill runs would blow through that with full
           # listings every run. Stopping early, a caught-up run is ~27
           # requests (one page per provider), and backfill runs shrink
           # toward that as the frontier advances.
