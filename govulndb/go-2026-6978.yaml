@@ -1,0 +1,41 @@
+# schema: vulnerability/osv/schema-1.3.1.json
+affected:
+    - ecosystem_specific:
+        imports:
+            - path: github.com/mikehelmick/go-bananas/middleware
+              symbols:
+                - MutateMethod
+      package:
+        ecosystem: Go
+        name: github.com/mikehelmick/go-bananas
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-15"
+                      kind: release
+                      version: 1.0.2
+          events:
+            - introduced: "0"
+            - fixed: 1.0.2
+          type: SEMVER
+aliases:
+    - GHSA-g2rq-85pp-c2j9
+database_specific:
+    review_status: REVIEWED
+    url: https://pkg.go.dev/vuln/GO-2026-6978
+details: middleware.MutateMethod accepts a _method override from the query string or request body and allows overriding the HTTP method to safe methods such as GET. When installed as router middleware ahead of middleware.HandleCSRF, a cross-site POST request with _method=GET is routed to the POST handler while HandleCSRF observes a GET request and skips CSRF token validation.
+id: GO-2026-6978
+modified: "2026-11-23T20:04:43Z"
+published: "2026-11-23T20:04:43Z"
+references:
+    - type: ADVISORY
+      url: https://github.com/mikehelmick/go-bananas/security/advisories/GHSA-g2rq-85pp-c2j9
+    - type: FIX
+      url: https://github.com/mikehelmick/go-bananas/commit/5b7640b0a46a4be3b02a3b90f511c5a0da6b219b
+    - type: FIX
+      url: https://github.com/mikehelmick/go-bananas/commit/f2b0abd115b3fea1ac75bbe4eda4fb9b3d24f78f
+    - type: WEB
+      url: https://github.com/mikehelmick/go-bananas/releases/tag/v1.0.2
+schema_version: 1.3.1
+summary: CSRF protection bypass via _method override in github.com/mikehelmick/go-bananas
