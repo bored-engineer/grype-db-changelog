@@ -1,0 +1,54 @@
+affected:
+    - ecosystem_specific:
+        imports:
+            - path: github.com/StacklokLabs/sqlite-mcp/internal/database
+              symbols:
+                - DB.Execute
+                - DB.GetTableSchema
+                - DB.GetTables
+                - DB.Query
+                - New
+            - path: github.com/StacklokLabs/sqlite-mcp/internal/tools
+              symbols:
+                - QueryTools.HandleTool
+                - QueryTools.handleExecuteQuery
+                - QueryTools.handleExecuteStatement
+      package:
+        ecosystem: Go
+        name: github.com/StacklokLabs/sqlite-mcp
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-10-19"
+                      kind: release
+                      version: 0.1.2
+          events:
+            - fixed: 0.1.2
+            - introduced: "0"
+          type: SEMVER
+aliases:
+    - CVE-2026-130008
+    - GHSA-q433-mp6c-8v4f
+database_specific:
+    review_status: UNREVIEWED
+    url: https://pkg.go.dev/vuln/GO-2026-7006
+details: 'sqlite-mcp: Read-only mode bypass via statement chaining and SQL injection in describe_table in github.com/StacklokLabs/sqlite-mcp'
+id: GO-2026-7006
+modified: "2026-11-23T20:04:59Z"
+published: "2026-11-23T20:04:59Z"
+references:
+    - type: ADVISORY
+      url: https://github.com/StacklokLabs/sqlite-mcp/security/advisories/GHSA-q433-mp6c-8v4f
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-130008
+    - type: FIX
+      url: https://github.com/StacklokLabs/sqlite-mcp/commit/1da5a6582a4f9d90c778db5687ddcd0c39d2c1ec
+    - type: FIX
+      url: https://github.com/StacklokLabs/sqlite-mcp/commit/3c244d61cc0a9c0cc5e4d74719c1dc83edcfa339
+    - type: FIX
+      url: https://github.com/StacklokLabs/sqlite-mcp/pull/112
+    - type: WEB
+      url: https://github.com/StacklokLabs/sqlite-mcp/releases/tag/v0.1.2
+schema_version: 1.3.1
+summary: 'sqlite-mcp: Read-only mode bypass via statement chaining and SQL injection in describe_table in github.com/StacklokLabs/sqlite-mcp'

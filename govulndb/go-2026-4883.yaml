@@ -1,5 +1,7 @@
 affected:
-    - ecosystem_specific: {}
+    - ecosystem_specific:
+        imports:
+            - path: github.com/docker/docker/plugin
       package:
         ecosystem: Go
         name: github.com/docker/docker
@@ -7,7 +9,9 @@ affected:
         - events:
             - introduced: "0"
           type: SEMVER
-    - ecosystem_specific: {}
+    - ecosystem_specific:
+        imports:
+            - path: github.com/moby/moby/plugin
       package:
         ecosystem: Go
         name: github.com/moby/moby
@@ -15,7 +19,9 @@ affected:
         - events:
             - introduced: "0"
           type: SEMVER
-    - ecosystem_specific: {}
+    - ecosystem_specific:
+        imports:
+            - path: github.com/moby/moby/v2/daemon/pkg/plugin
       package:
         ecosystem: Go
         name: github.com/moby/moby/v2
@@ -34,11 +40,11 @@ aliases:
     - CVE-2026-33997
     - GHSA-pxq6-2prw-chj9
 database_specific:
-    review_status: UNREVIEWED
+    review_status: REVIEWED
     url: https://pkg.go.dev/vuln/GO-2026-4883
 details: Moby has an Off-by-one error in its plugin privilege validation in github.com/docker/docker
 id: GO-2026-4883
-modified: "2026-04-02T18:42:30Z"
+modified: "2026-11-23T20:03:11Z"
 published: "2026-04-02T18:42:30Z"
 references:
     - type: ADVISORY

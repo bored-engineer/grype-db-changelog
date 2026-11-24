@@ -1,0 +1,41 @@
+affected:
+    - ecosystem_specific:
+        imports:
+            - path: github.com/authzed/spicedb/internal/graph
+              symbols:
+                - ConcurrentChecker.Check
+                - ConcurrentChecker.checkDirect
+      package:
+        ecosystem: Go
+        name: github.com/authzed/spicedb
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: release
+                      version: 1.57.1
+          events:
+            - fixed: 1.57.1
+            - introduced: 1.40.0
+          type: SEMVER
+aliases:
+    - GHSA-w278-32qg-48q5
+credits:
+    - name: Sathwik Yadlapati
+database_specific:
+    review_status: REVIEWED
+    url: https://pkg.go.dev/vuln/GO-2026-6992
+details: ConcurrentChecker.checkDirect miscounts direct subjects without expiration when a relation unions a subject type using expiration with a non-terminal relation on the same subject type. Permission checks over that relation skip datastore expiration filtering and can include expired relationships until they are garbage collected.
+id: GO-2026-6992
+modified: "2026-11-23T20:04:53Z"
+published: "2026-11-23T20:04:53Z"
+references:
+    - type: ADVISORY
+      url: https://github.com/authzed/spicedb/security/advisories/GHSA-w278-32qg-48q5
+    - type: FIX
+      url: https://github.com/authzed/spicedb/commit/7074da7242e5aedfeb4586d93a403eca45388ada
+    - type: WEB
+      url: https://github.com/authzed/spicedb/releases/tag/v1.57.1
+schema_version: 1.3.1
+summary: Expired relationships included in permission checks in github.com/authzed/spicedb

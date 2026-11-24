@@ -1,0 +1,55 @@
+affected:
+    - ecosystem_specific:
+        imports:
+            - path: github.com/daptin/daptin/server/resource
+              symbols:
+                - ActionExchangeHandler.ExecuteTarget
+                - ActiveTaskInstance.Run
+                - DaptinImapMailBox.SearchMessages
+                - DbResource.FindAll
+                - DbResource.HandleActionRequest
+                - DbResource.PaginatedFindAll
+                - DbResource.PaginatedFindAllWithTransaction
+                - DbResource.PaginatedFindAllWithoutFilters
+                - ExchangeExecution.Execute
+                - MeteringMiddleware.InterceptAfter
+                - MeteringService.Record
+                - NewTaskScheduler
+                - StreamProcessor.PaginatedFindAll
+                - exchangeMiddleware.InterceptAfter
+                - exchangeMiddleware.InterceptBefore
+      package:
+        ecosystem: Go
+        name: github.com/daptin/daptin
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-07-28"
+                      kind: release
+                      version: 0.12.30
+          events:
+            - fixed: 0.12.30
+            - introduced: "0"
+          type: SEMVER
+aliases:
+    - CVE-2026-77367
+    - GHSA-hq2p-f2vj-v3cm
+database_specific:
+    review_status: UNREVIEWED
+    url: https://pkg.go.dev/vuln/GO-2026-7012
+details: 'Daptin: Unauthenticated SQL Injection via the `sort` query parameter on every entity list endpoint in github.com/daptin/daptin'
+id: GO-2026-7012
+modified: "2026-11-23T20:04:59Z"
+published: "2026-11-23T20:04:59Z"
+references:
+    - type: ADVISORY
+      url: https://github.com/daptin/daptin/security/advisories/GHSA-hq2p-f2vj-v3cm
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-77367
+    - type: FIX
+      url: https://github.com/daptin/daptin/commit/b0bcc1318832b9055781f032853ef9d2264652cf
+    - type: WEB
+      url: https://github.com/daptin/daptin/releases/tag/v0.12.30
+schema_version: 1.3.1
+summary: 'Daptin: Unauthenticated SQL Injection via the `sort` query parameter on every entity list endpoint in github.com/daptin/daptin'

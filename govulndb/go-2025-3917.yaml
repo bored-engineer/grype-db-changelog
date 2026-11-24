@@ -1,15 +1,23 @@
 affected:
     - ecosystem_specific:
-        custom_ranges:
-            - events:
-                - fixed: 5.4.6
-                - introduced: 5.0.0
-              type: ECOSYSTEM
+        imports:
+            - path: github.com/neuvector/neuvector/controller
+            - path: github.com/neuvector/neuvector/controller/cache
+            - path: github.com/neuvector/neuvector/controller/kv
+            - path: github.com/neuvector/neuvector/controller/resource
+            - path: github.com/neuvector/neuvector/controller/rest
       package:
         ecosystem: Go
         name: github.com/neuvector/neuvector
       ranges:
-        - events:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2025-08-25"
+                      kind: release
+                      version: 0.0.0-20250825191744-da1a462074c3
+          events:
+            - fixed: 0.0.0-20250825191744-da1a462074c3
             - introduced: "0"
           type: SEMVER
 aliases:
@@ -18,19 +26,24 @@ aliases:
 database_specific:
     review_status: UNREVIEWED
     url: https://pkg.go.dev/vuln/GO-2025-3917
-details: |-
-    NeuVector has an insecure password storage vulnerable to rainbow attack in github.com/neuvector/neuvector.
-
-    NOTE: The source advisory for this report contains additional versions that could not be automatically mapped to standard Go module versions.
-
-    (If this is causing false-positive reports from vulnerability scanners, please suggest an edit to the report.)
-
-    The additional affected modules and versions are: github.com/neuvector/neuvector from v5.0.0 before v5.4.6.
+details: NeuVector has an insecure password storage and is vulnerable to rainbow attack in github.com/neuvector/neuvector
 id: GO-2025-3917
-modified: "2025-09-08T14:13:10Z"
+modified: "2026-11-23T20:02:54Z"
 published: "2025-09-08T14:13:10Z"
 references:
     - type: ADVISORY
       url: https://github.com/neuvector/neuvector/security/advisories/GHSA-8ff6-pc43-jwv3
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-53884
+    - type: FIX
+      url: https://github.com/neuvector/neuvector/commit/addc9308b3a6359c9789a62ac6e73594c9a544d0
+    - type: FIX
+      url: https://github.com/neuvector/neuvector/commit/da1a462074c3d7d426dba0901840fd0e2146f63a
+    - type: FIX
+      url: https://github.com/neuvector/neuvector/pull/2084
+    - type: FIX
+      url: https://github.com/neuvector/neuvector/pull/2085
+    - type: WEB
+      url: https://bugzilla.suse.com/show_bug.cgi?id=CVE-2025-53884
 schema_version: 1.3.1
-summary: NeuVector has an insecure password storage vulnerable to rainbow attack in github.com/neuvector/neuvector
+summary: NeuVector has an insecure password storage and is vulnerable to rainbow attack in github.com/neuvector/neuvector

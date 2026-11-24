@@ -1,5 +1,11 @@
 affected:
-    - ecosystem_specific: {}
+    - ecosystem_specific:
+        imports:
+            - path: github.com/sigstore/timestamp-authority/pkg/api
+              symbols:
+                - ParseJSONRequest
+                - TimestampResponseHandler
+                - getContentType
       package:
         ecosystem: Go
         name: github.com/sigstore/timestamp-authority
@@ -7,7 +13,13 @@ affected:
         - events:
             - introduced: "0"
           type: SEMVER
-    - ecosystem_specific: {}
+    - ecosystem_specific:
+        imports:
+            - path: github.com/sigstore/timestamp-authority/v2/pkg/api
+              symbols:
+                - ParseJSONRequest
+                - TimestampResponseHandler
+                - getContentType
       package:
         ecosystem: Go
         name: github.com/sigstore/timestamp-authority/v2
@@ -26,17 +38,15 @@ aliases:
     - CVE-2025-66564
     - GHSA-4qg8-fj49-pxjh
 database_specific:
-    review_status: UNREVIEWED
+    review_status: REVIEWED
     url: https://pkg.go.dev/vuln/GO-2025-4192
 details: Sigstore Timestamp Authority allocates excessive memory during request parsing in github.com/sigstore/timestamp-authority
 id: GO-2025-4192
-modified: "2025-12-08T21:31:36Z"
+modified: "2026-11-23T20:02:36Z"
 published: "2025-12-08T21:31:36Z"
 references:
     - type: ADVISORY
       url: https://github.com/sigstore/timestamp-authority/security/advisories/GHSA-4qg8-fj49-pxjh
-    - type: ADVISORY
-      url: https://nvd.nist.gov/vuln/detail/CVE-2025-66564
     - type: FIX
       url: https://github.com/sigstore/timestamp-authority/commit/0cae34e197d685a14904e0bad135b89d13b69421
 schema_version: 1.3.1
