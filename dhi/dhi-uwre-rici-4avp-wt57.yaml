@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-r0
         - 1.0.1-r1
@@ -25,6 +29,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.1
         purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-r0
         - 1.1.0-r1
@@ -49,6 +57,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.2
         purl: pkg:apk/dhi/janusgraph-1.2
+      ranges:
+        - events:
+            - introduced: 1.2.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.2.0-r0
         - 1.2.0-r1
@@ -65,6 +77,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-36
         purl: pkg:deb/dhi/druid-36
+      ranges:
+        - events:
+            - introduced: 36.0.0-0
+          type: ECOSYSTEM
       versions:
         - 36.0.0-0
         - 36.0.0-1
@@ -106,6 +122,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-36-fips
         purl: pkg:deb/dhi/druid-36-fips
+      ranges:
+        - events:
+            - introduced: 36.0.0-1
+          type: ECOSYSTEM
       versions:
         - 36.0.0-1
         - 36.0.0-10
@@ -146,6 +166,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-37
         purl: pkg:deb/dhi/druid-37
+      ranges:
+        - events:
+            - introduced: 37.0.0-0
+          type: ECOSYSTEM
       versions:
         - 37.0.0-0
         - 37.0.0-1
@@ -186,6 +210,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-37-fips
         purl: pkg:deb/dhi/druid-37-fips
+      ranges:
+        - events:
+            - introduced: 37.0.0-1
+          type: ECOSYSTEM
       versions:
         - 37.0.0-1
         - 37.0.0-10
@@ -225,6 +253,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.0
         purl: pkg:deb/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-0
         - 1.0.1-1
@@ -246,6 +278,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.1
         purl: pkg:deb/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-0
         - 1.1.0-1
@@ -273,6 +309,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.2
         purl: pkg:deb/dhi/janusgraph-1.2
+      ranges:
+        - events:
+            - introduced: 1.2.0-0
+          type: ECOSYSTEM
       versions:
         - 1.2.0-0
         - 1.2.0-1
@@ -289,7 +329,7 @@ affected:
         - 1.2.0-9
 details: 'Jetty is a java based web server and servlet engine. Nonstandard cookie parsing in Jetty may allow an attacker to smuggle cookies within other cookies, or otherwise perform unintended behavior by tampering with the cookie parsing mechanism. If Jetty sees a cookie VALUE that starts with `"` (double quote), it will continue to read the cookie string until it sees a closing quote -- even if a semicolon is encountered. So, a cookie header such as: `DISPLAY_LANGUAGE="b; JSESSIONID=1337; c=d"` will be parsed as one cookie, with the name DISPLAY_LANGUAGE and a value of b; JSESSIONID=1337; c=d instead of 3 separate cookies. This has security implications because if, say, JSESSIONID is an HttpOnly cookie, and the DISPLAY_LANGUAGE cookie value is rendered on the page, an attacker can smuggle the JSESSIONID cookie into the DISPLAY_LANGUAGE cookie and thereby exfiltrate it. This is significant when an intermediary is enacting some policy based on cookies, so a smuggled cookie can bypass that policy yet still be seen by the Jetty server or its logging system. This issue has been addressed in versions 9.4.51, 10.0.14, 11.0.14, and 12.0.0.beta0 and users are advised to upgrade. There are no known workarounds for this issue.'
 id: DHI-uwre-rici-4avp-wt57
-modified: "2026-11-22T23:21:18Z"
+modified: "2026-11-23T18:10:08Z"
 published: "2026-11-10T10:46:06Z"
 references:
     - type: ADVISORY

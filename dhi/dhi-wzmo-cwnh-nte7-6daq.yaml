@@ -6,11 +6,20 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gnupg
         purl: pkg:apk/dhi/gnupg
-      versions:
-        - 2.4.9-r0
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.9-r0
+          events:
+            - introduced: "0"
+            - fixed: 2.4.9-r0
+          type: ECOSYSTEM
 details: In GnuPG before 2.5.5, if a user chooses to import a certificate with certain crafted subkey data that lacks a valid backsig or that has incorrect usage flags, the user loses the ability to verify signatures made from certain other signing keys, aka a "verification DoS."
 id: DHI-wzmo-cwnh-nte7-6daq
-modified: "2026-11-11T16:11:16Z"
+modified: "2026-11-21T00:58:30Z"
 published: "2026-11-11T16:11:16Z"
 references:
     - type: ADVISORY

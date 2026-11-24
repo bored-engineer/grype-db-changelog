@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: directus-12
         purl: pkg:apk/dhi/directus-12
+      ranges:
+        - events:
+            - introduced: 12.4.1-r0
+          type: ECOSYSTEM
       versions:
         - 12.4.1-r0
         - 12.4.1-r1
@@ -34,6 +38,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kiali-server
         purl: pkg:apk/dhi/kiali-server
+      ranges:
+        - events:
+            - introduced: 2.30.0-r1
+          type: ECOSYSTEM
       versions:
         - 2.30.0-r1
         - 2.31.0-r0
@@ -66,6 +74,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kiali-server-dev
         purl: pkg:apk/dhi/kiali-server-dev
+      ranges:
+        - events:
+            - introduced: 2.30.0-r1
+          type: ECOSYSTEM
       versions:
         - 2.30.0-r1
         - 2.31.0-r0
@@ -98,6 +110,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kiali-server-fips
         purl: pkg:apk/dhi/kiali-server-fips
+      ranges:
+        - events:
+            - introduced: 2.30.0-r1
+          type: ECOSYSTEM
       versions:
         - 2.30.0-r1
         - 2.31.0-r0
@@ -130,6 +146,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kiali-server-fips-dev
         purl: pkg:apk/dhi/kiali-server-fips-dev
+      ranges:
+        - events:
+            - introduced: 2.30.0-r1
+          type: ECOSYSTEM
       versions:
         - 2.30.0-r1
         - 2.31.0-r0
@@ -162,6 +182,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: redisinsight-3
         purl: pkg:apk/dhi/redisinsight-3
+      ranges:
+        - events:
+            - introduced: 3.8.0-r0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-r0
         - 3.8.0-r0
@@ -180,6 +204,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: directus-12
         purl: pkg:deb/dhi/directus-12
+      ranges:
+        - events:
+            - introduced: 12.4.1-0
+          type: ECOSYSTEM
       versions:
         - 12.4.1-0
         - 12.4.1-1
@@ -212,6 +240,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-2
         purl: pkg:deb/dhi/langfuse-2
+      ranges:
+        - events:
+            - introduced: 2.95.12-0
+          type: ECOSYSTEM
       versions:
         - 2.95.12-0
         - 2.95.12-1
@@ -233,6 +265,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-4
         purl: pkg:deb/dhi/langfuse-4
+      ranges:
+        - events:
+            - introduced: 4.3.1-0
+          type: ECOSYSTEM
       versions:
         - 4.10.0-0
         - 4.11.0-0
@@ -277,6 +313,7 @@ affected:
         - 4.81.0-0
         - 4.82.0-0
         - 4.83.0-0
+        - 4.84.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -284,6 +321,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: linstor-gui-1
         purl: pkg:deb/dhi/linstor-gui-1
+      ranges:
+        - events:
+            - introduced: 1.9.10-1
+          type: ECOSYSTEM
       versions:
         - 1.9.10-1
         - 1.9.10-2
@@ -295,6 +336,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: linstor-gui-2
         purl: pkg:deb/dhi/linstor-gui-2
+      ranges:
+        - events:
+            - introduced: 2.5.0-1
+          type: ECOSYSTEM
       versions:
         - 2.5.0-1
         - 2.5.0-2
@@ -309,6 +354,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: opencost-ui
         purl: pkg:deb/dhi/opencost-ui
+      ranges:
+        - events:
+            - introduced: 1.121.0-0
+          type: ECOSYSTEM
       versions:
         - 1.121.0-0
         - 1.121.1-0
@@ -330,6 +379,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: qdrant
         purl: pkg:deb/dhi/qdrant
+      ranges:
+        - events:
+            - introduced: 1.18.3-0
+          type: ECOSYSTEM
       versions:
         - 1.18.3-0
         - 1.18.3-1
@@ -364,12 +417,18 @@ affected:
         - 1.20.2-1
         - 1.20.2-2
         - 1.20.2-3
+        - 1.20.2-4
+        - 1.20.2-5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: redisinsight-3
         purl: pkg:deb/dhi/redisinsight-3
+      ranges:
+        - events:
+            - introduced: 3.8.0-0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-0
         - 3.8.0-0
@@ -383,7 +442,7 @@ affected:
         - 3.8.0-9
 details: Axios is a promise-based HTTP client for the browser and Node.js. From 1.12.0 until 1.20.0, ResolveConfig reads inherited Symbol.toStringTag, append, and getHeaders properties while resolving FormData headers. A separate same-process prototype-pollution flaw supplies an array or non-plain class instance whose inherited properties make it appear FormData-like; plain objects are blocked. The inherited getHeaders function can return attacker-controlled headers that resolveConfig merges into a fetch adapter request. Attacker-controlled headers can alter authorization, cache, metadata-service, or application-specific request behavior. This issue is fixed in version 1.20.0.
 id: DHI-er6l-luca-eghd-f3rk
-modified: "2026-11-21T12:19:39Z"
+modified: "2026-11-23T23:21:33Z"
 published: "2026-11-11T19:32:50Z"
 references:
     - type: ADVISORY

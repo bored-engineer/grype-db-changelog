@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -37,6 +41,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-dev
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-dev
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -68,6 +76,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-fips
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-fips
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -99,6 +111,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-fips-dev
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-fips-dev
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -130,6 +146,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18
         purl: pkg:deb/dhi/teleport-18
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -154,12 +174,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-dev
         purl: pkg:deb/dhi/teleport-18-dev
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -184,12 +210,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-fips
         purl: pkg:deb/dhi/teleport-18-fips
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -214,12 +246,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-fips-dev
         purl: pkg:deb/dhi/teleport-18-fips-dev
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -244,9 +282,11 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
 details: Vite is a frontend tooling framework for JavaScript. From 8.2.0 until 8.2.4 and 8.3.3, the first 4 bytes of files outside of server.fs setting can be returned to the browser by a request containing ?vite-wasm-instance. Requests containing the ?vite-wasm-instance query are handled by the internal Wasm plugin's load hook. The hook removes the query and reads the resulting path directly from disk, but the server.fs checks were not applied. After reading the file, Vite attempts to parse it as WebAssembly. When that parse fails, Node and deno throws an error that contains the first 4 bytes of the file. This vulnerability is fixed in 8.2.4 and 8.3.3.
 id: DHI-mzzz-zizc-4uli-4rux
-modified: "2026-11-21T00:25:17Z"
+modified: "2026-11-23T21:58:18Z"
 published: "2026-11-14T00:12:42Z"
 references:
     - type: ADVISORY

@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: codecov-api
         purl: pkg:apk/dhi/codecov-api
+      ranges:
+        - events:
+            - introduced: 26.9.10-r0
+          type: ECOSYSTEM
       versions:
         - 26.11.16-r0
         - 26.11.16-r1
@@ -37,6 +41,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: localstack
         purl: pkg:apk/dhi/localstack
+      ranges:
+        - events:
+            - introduced: 4.14.0-r0
+          type: ECOSYSTEM
       versions:
         - 4.14.0-r0
         - 4.14.0-r1
@@ -59,9 +67,14 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: codecov-api
         purl: pkg:deb/dhi/codecov-api
+      ranges:
+        - events:
+            - introduced: 26.9.10-0
+          type: ECOSYSTEM
       versions:
         - 26.11.16-0
         - 26.11.16-1
+        - 26.11.16-2
         - 26.9.10-0
         - 26.9.10-1
         - 26.9.10-10
@@ -90,6 +103,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-actions
         purl: pkg:deb/dhi/datahub-actions
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -133,6 +150,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion
         purl: pkg:deb/dhi/datahub-ingestion
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -164,12 +185,17 @@ affected:
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
+        - 1.7.0.20-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: localstack
         purl: pkg:deb/dhi/localstack
+      ranges:
+        - events:
+            - introduced: 4.14.0-0
+          type: ECOSYSTEM
       versions:
         - 4.14.0-0
         - 4.14.0-1
@@ -196,6 +222,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: mlflow
         purl: pkg:deb/dhi/mlflow
+      ranges:
+        - events:
+            - introduced: 3.15.1-0
+          type: ECOSYSTEM
       versions:
         - 3.15.1-0
         - 3.15.2-0
@@ -225,12 +255,17 @@ affected:
         - 3.18.0-3
         - 3.18.0-4
         - 3.18.0-5
+        - 3.18.0-6
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: netbox
         purl: pkg:deb/dhi/netbox
+      ranges:
+        - events:
+            - introduced: 4.6.7-0
+          type: ECOSYSTEM
       versions:
         - 4.6.10-0
         - 4.6.10-1
@@ -271,7 +306,7 @@ affected:
         - 4.7.5-2
 details: GraphQL-core is a Python port of the GraphQL.js reference implementation. From 3.0.0 until 3.2.12 and 3.3.0rc1, the OverlappingFieldsCanBeMerged rule in specified_rules repeatedly compares fields that share response names and recursively re-compares flattened inline fragments during the validation phase. The prior named-fragment memoization does not cover this path, so nested repeated inline fragments can drive quadratic and worst-case O(n²·m²) CPU work before any resolver or AST-based depth or complexity control runs. An unauthenticated remote attacker can submit a shallow, highly compressible GraphQL query that pins a worker process and can saturate a multi-worker service. This issue is fixed in versions 3.2.12 and 3.3.0rc1.
 id: DHI-2gxt-l5tk-kgjh-dg3z
-modified: "2026-11-21T14:19:33Z"
+modified: "2026-11-23T19:48:54Z"
 published: "2026-11-10T14:53:18Z"
 references:
     - type: ADVISORY

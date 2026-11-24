@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: binutils
         purl: pkg:deb/dhi/binutils
+      ranges:
+        - events:
+            - introduced: 2.44-3dhi1
+          type: ECOSYSTEM
       versions:
         - 2.44-3+deb13u0+dhi10
         - 2.44-3+deb13u0+dhi9
@@ -25,7 +29,7 @@ database_specific:
         - legacy_package_image_owner
 details: A flaw was found in the `readelf` utility of the binutils package. A local attacker could exploit two Denial of Service (DoS) vulnerabilities by providing a specially crafted Executable and Linkable Format (ELF) file. One vulnerability, a resource exhaustion (CWE-400), can lead to an out-of-memory condition. The other, a null pointer dereference (CWE-476), can cause a segmentation fault. Both issues can result in the `readelf` utility becoming unresponsive or crashing, leading to a denial of service.
 id: DHI-inev-oetw-tcrj-j7ye
-modified: "2026-11-19T21:04:50Z"
+modified: "2026-11-23T14:54:33Z"
 published: "2026-11-19T21:04:50Z"
 references:
     - type: ADVISORY

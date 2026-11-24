@@ -6,12 +6,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: radvd
         purl: pkg:apk/dhi/radvd
+      ranges:
+        - events:
+            - introduced: 2.20-r0
+          type: ECOSYSTEM
       versions:
         - 2.20-r0
         - 2.20-r1
 details: radvd is a router advertisement daemon for IPv6. Prior to version 2.21, the `radvdump` utility shipped with radvd contains a stack buffer overflow in the Route Information option parser. When processing a crafted ICMPv6 Router Advertisement, `print_ff()` copies up to 2032 bytes from attacker-controlled packet data into a 16-byte `struct in6_addr` on the stack, overflowing by up to 2016 bytes. Note that the main `radvd` daemon is not affected by the vulnerability. Version 2.21 patches the issue.
 id: DHI-l4pe-ouyu-lwa3-454y
-modified: "2026-11-11T17:52:56Z"
+modified: "2026-11-23T18:19:31Z"
 published: "2026-11-11T17:52:56Z"
 references:
     - type: ADVISORY

@@ -6,14 +6,22 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: systemd
         purl: pkg:deb/dhi/systemd
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-17"
+                      kind: advisory
+                      version: 257.13-1~deb13u1+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 257.13-1~deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
-        - 257.13-1~deb13u1+dhi0
-        - 257.13-1~deb13u1+dhi1
-        - 257.13-1~deb13u1+dhi2
         - 257.13-1~deb13u1dhi0
 details: 'An issue was discovered in systemd 253. An attacker can modify the contents of past events in a sealed log file and then adjust the file such that checking the integrity shows no error, despite modifications. NOTE: the vendor reportedly sent "a reply denying that any of the finding was a security vulnerability."'
 id: DHI-wrry-fipi-h2vz-t3ah
-modified: "2026-11-17T17:52:21Z"
+modified: "2026-11-23T22:55:10Z"
 published: "2026-11-17T17:52:21Z"
 references:
     - type: ADVISORY

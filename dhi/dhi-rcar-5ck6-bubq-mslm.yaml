@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
@@ -18,6 +22,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
@@ -30,6 +38,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion
         purl: pkg:deb/dhi/datahub-ingestion
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -61,12 +73,17 @@ affected:
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
+        - 1.7.0.20-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:deb/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-0
         - 4.4.5-1
@@ -79,6 +96,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:deb/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-0
         - 4.4.5-1
@@ -91,6 +112,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: opencost-ui
         purl: pkg:deb/dhi/opencost-ui
+      ranges:
+        - events:
+            - introduced: 1.121.0-0
+          type: ECOSYSTEM
       versions:
         - 1.121.0-0
         - 1.121.1-0
@@ -108,7 +133,7 @@ affected:
         - 1.121.4-1
 details: compression is a Node.js and Express compression middleware. In versions before 1.8.2, when a client aborts the connection while a compressed response is still being sent, the zlib stream created to compress that response is never destroyed, so each aborted compressed response leaks its native zlib memory. A remote unauthenticated attacker can repeatedly open requests and disconnect early, exhausting the available memory and crashing the server. All applications using compression are affected. The issue is fixed in compression 1.8.2, and users should upgrade to 1.8.2 or later.
 id: DHI-rcar-5ck6-bubq-mslm
-modified: "2026-11-21T12:21:40Z"
+modified: "2026-11-23T19:50:36Z"
 published: "2026-11-11T21:18:34Z"
 references:
     - type: ADVISORY

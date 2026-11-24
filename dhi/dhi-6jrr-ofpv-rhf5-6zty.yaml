@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: dovecot
         purl: pkg:apk/dhi/dovecot
+      ranges:
+        - events:
+            - introduced: 2.4.2-r1
+          type: ECOSYSTEM
       versions:
         - 2.4.2-r1
         - 2.4.3-r0
@@ -18,6 +22,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: dovecot
         purl: pkg:apk/dhi/dovecot
+      ranges:
+        - events:
+            - introduced: 2.4.3-r1
+          type: ECOSYSTEM
       versions:
         - 2.4.3-r1
         - 2.4.3-r2
@@ -28,7 +36,7 @@ affected:
         - 2.4.5-r0
 details: When dovecot has been configured to use per-domain passwd files, and they are placed one path component above /etc, or slash has been added to allowed characters, path traversal can happen if the domain component is directory partial. This allows inadvertently reading /etc/passwd (or some other path which ends with passwd). If this file contains passwords, it can be used to authenticate wrongly, or if this is userdb, it can unexpectly make system users appear valid users.  Upgrade to fixed version, or use different authentication scheme that does not rely on paths. Alternatively you can also ensure that the per-domain passwd files are in some other location, such as /etc/dovecot/auth/%d. No publicly available exploits are known.
 id: DHI-6jrr-ofpv-rhf5-6zty
-modified: "2026-11-11T18:53:03Z"
+modified: "2026-11-23T19:12:18Z"
 published: "2026-11-11T18:53:03Z"
 references:
     - type: ADVISORY

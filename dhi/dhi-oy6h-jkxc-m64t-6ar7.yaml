@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: karma
         purl: pkg:apk/dhi/karma
+      ranges:
+        - events:
+            - introduced: 0.131-r0
+          type: ECOSYSTEM
       versions:
         - 0.131-r0
         - 0.131-r1
@@ -27,6 +31,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: karma-dev
         purl: pkg:apk/dhi/karma-dev
+      ranges:
+        - events:
+            - introduced: 0.131-r0
+          type: ECOSYSTEM
       versions:
         - 0.131-r0
         - 0.131-r1
@@ -48,6 +56,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: karma-fips
         purl: pkg:apk/dhi/karma-fips
+      ranges:
+        - events:
+            - introduced: 0.131-r0
+          type: ECOSYSTEM
       versions:
         - 0.131-r0
         - 0.131-r1
@@ -69,6 +81,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: karma-fips-dev
         purl: pkg:apk/dhi/karma-fips-dev
+      ranges:
+        - events:
+            - introduced: 0.131-r0
+          type: ECOSYSTEM
       versions:
         - 0.131-r0
         - 0.131-r1
@@ -90,6 +106,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: supabase-storage
         purl: pkg:apk/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-r0
         - 1.74.1-r1
@@ -127,12 +147,18 @@ affected:
         - 1.98.2-r0
         - 1.98.4-r0
         - 1.98.5-r0
+        - 1.98.6-r0
+        - 1.98.7-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion
         purl: pkg:deb/dhi/datahub-ingestion
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -164,12 +190,17 @@ affected:
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
+        - 1.7.0.20-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-2
         purl: pkg:deb/dhi/langfuse-2
+      ranges:
+        - events:
+            - introduced: 2.95.12-0
+          type: ECOSYSTEM
       versions:
         - 2.95.12-0
         - 2.95.12-1
@@ -187,7 +218,7 @@ affected:
         - 2.95.12-9
 details: fast-uri before 4.1.2, 3.1.5, and 2.4.4 requires a literal double forward slash to recognize a URI authority, so a reference that uses a backslash based introducer in place of it (backslash backslash, forward slash backslash, or backslash forward slash) is parsed with no authority and folds into the path. Node's native WHATWG URL parser instead treats a backslash as interchangeable with a forward slash for special schemes, so the two parsers extract different hosts from the same input. Applications that use fast-uri to enforce host based policy such as allowlists, SSRF filtering, or redirect validation before passing the same URL into Node's URL or fetch consumers can be steered to an unintended host. Upgrade to fast-uri 4.1.2, 3.1.5, or 2.4.4.
 id: DHI-oy6h-jkxc-m64t-6ar7
-modified: "2026-11-21T12:20:30Z"
+modified: "2026-11-23T23:20:35Z"
 published: "2026-11-12T01:41:48Z"
 references:
     - type: ADVISORY

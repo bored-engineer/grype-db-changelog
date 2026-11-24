@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -37,6 +41,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-dev
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-dev
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -68,6 +76,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-fips
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-fips
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -99,6 +111,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-fips-dev
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-fips-dev
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -130,6 +146,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: qdrant
         purl: pkg:deb/dhi/qdrant
+      ranges:
+        - events:
+            - introduced: 1.18.3-0
+          type: ECOSYSTEM
       versions:
         - 1.18.3-0
         - 1.18.3-1
@@ -164,12 +184,18 @@ affected:
         - 1.20.2-1
         - 1.20.2-2
         - 1.20.2-3
+        - 1.20.2-4
+        - 1.20.2-5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: supabase-storage
         purl: pkg:deb/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-0
         - 1.79.30-0
@@ -208,12 +234,18 @@ affected:
         - 1.98.2-0
         - 1.98.4-0
         - 1.98.5-0
+        - 1.98.6-0
+        - 1.98.7-0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: uptime-kuma-2
         purl: pkg:deb/dhi/uptime-kuma-2
+      ranges:
+        - events:
+            - introduced: 2.5.0-0
+          type: ECOSYSTEM
       versions:
         - 2.5.0-0
         - 2.5.0-1
@@ -236,7 +268,7 @@ affected:
         - 2.5.9-1
 details: undici's cache interceptor does not handle the Set-Cookie response header anywhere in its cache path, so it neither refuses to store nor strips that header. In shared cache mode, which is the default, an otherwise cacheable response that carries a Set-Cookie header, for example one marked with a public and max-age directive, is stored and then re-served to a later caller that matches the same cache key. As a result one caller's cookie is disclosed to a different caller, and an untrusted server can inject cookies into cached responses served to all subsequent callers. This violates the requirement that a shared cache must not store cookies. This affects undici versions from 7.0.0 up to 7.29.1 and from 8.0.0 up to 8.10.2. Users should upgrade to undici 7.29.1 or 8.10.2.
 id: DHI-oobx-ss3c-fzf6-jeyn
-modified: "2026-11-21T07:16:49Z"
+modified: "2026-11-23T23:21:53Z"
 published: "2026-11-13T17:02:28Z"
 references:
     - type: ADVISORY

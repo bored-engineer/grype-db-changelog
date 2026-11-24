@@ -6,6 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openssl
         purl: pkg:deb/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 3.5.7-1~deb13u3+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 3.5.7-1~deb13u3+dhi0
+          type: ECOSYSTEM
       versions:
         - 3.5.5-1~deb13u2dhi0
         - 3.5.6-1~deb13u1+dhi0
@@ -24,14 +35,6 @@ affected:
         - 3.5.7-1~deb13u2+dhi0
         - 3.5.7-1~deb13u2+dhi1
         - 3.5.7-1~deb13u2+fips+dhi0
-        - 3.5.7-1~deb13u3+dhi0
-        - 3.5.7-1~deb13u3+dhi1
-        - 3.5.7-1~deb13u3+dhi2
-        - 3.5.7-1~deb13u3+dhi3
-        - 3.5.7-1~deb13u3+fips+dhi0
-        - 3.5.9-1~deb13u1+dhi0
-        - 3.5.9-1~deb13u1+dhi1
-        - 3.5.9-1~deb13u1+fips+dhi0
 database_specific:
     coverage: partial
     coverage_exclusions:
@@ -70,7 +73,7 @@ details: |-
     FIPS impact: no
     The affected code is outside the FIPS module boundary.
 id: DHI-nmvs-hzko-2mzt-zm6b
-modified: "2026-11-22T07:45:41Z"
+modified: "2026-11-23T19:05:52Z"
 published: "2026-11-20T16:52:19Z"
 references:
     - type: ADVISORY

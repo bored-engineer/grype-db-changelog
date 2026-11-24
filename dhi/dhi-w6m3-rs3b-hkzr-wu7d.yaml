@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: dovecot
         purl: pkg:apk/dhi/dovecot
+      ranges:
+        - events:
+            - introduced: 2.4.2-r1
+          type: ECOSYSTEM
       versions:
         - 2.4.2-r1
         - 2.4.3-r0
@@ -14,7 +18,7 @@ affected:
         - 2.4.5-r0
 details: Dovecot OTP authentication is vulnerable to replay attack under specific conditions. If auth cache is enabled, and username is altered in passdb, then OTP credentials can be cached so that same OTP reply is valid. An attacker able to observe an OTP exchange is able to log in as the user. If authentication happens over unsecure connection, switch to SCRAM protocol. Alternatively ensure the communcations are secured, and if possible switch to OAUTH2 or SCRAM. No publicly available exploits are known.
 id: DHI-w6m3-rs3b-hkzr-wu7d
-modified: "2026-11-11T18:53:03Z"
+modified: "2026-11-23T19:12:18Z"
 published: "2026-11-11T18:53:03Z"
 references:
     - type: ADVISORY

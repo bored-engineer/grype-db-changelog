@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: meilisearch
         purl: pkg:deb/dhi/meilisearch
+      ranges:
+        - events:
+            - introduced: 1.53.1-0
+          type: ECOSYSTEM
       versions:
         - 1.53.1-0
         - 1.53.2-0
@@ -19,6 +23,8 @@ affected:
         - 1.56.2-0
         - 1.57.0-0
         - 1.57.0-1
+        - 1.58.0-0
+        - 1.58.0-1
 details: |-
     Affected versions of `i_tree` exposed safe public `Tree::node` and `Tree::mut_node` methods in the public `tree` module. These methods accepted an arbitrary `u32` index and passed it directly to `Vec::get_unchecked` / `get_unchecked_mut` on the internal node buffer, without validating that the index was in bounds.
 
@@ -26,7 +32,7 @@ details: |-
 
     Starting with `0.10.0` the crate was restructured and these accessors are no longer reachable from outside the crate.
 id: DHI-go5d-2lgw-s4t4-2out
-modified: "2026-11-17T04:56:17Z"
+modified: "2026-11-23T21:57:47Z"
 published: "2026-11-10T05:06:08Z"
 references:
     - type: ADVISORY

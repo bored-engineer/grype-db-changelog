@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-r0
         - 1.0.1-r1
@@ -25,6 +29,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.1
         purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-r0
         - 1.1.0-r1
@@ -49,6 +57,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.0
         purl: pkg:deb/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-0
         - 1.0.1-1
@@ -70,6 +82,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.1
         purl: pkg:deb/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-0
         - 1.1.0-1
@@ -93,7 +109,7 @@ affected:
         - 1.1.0-9
 details: Netty is an asynchronous, event-driven network application framework. In versions prior to 4.1.128.Final and 4.2.7.Final, the SMTP codec in Netty contains an SMTP command injection vulnerability due to insufficient input validation for Carriage Return (\r) and Line Feed (\n) characters in user-supplied parameters. The vulnerability exists in io.netty.handler.codec.smtp.DefaultSmtpRequest, where parameters are directly concatenated into the SMTP command string without sanitization. When methods such as SmtpRequests.rcpt(recipient) are called with a malicious string containing CRLF sequences, attackers can inject arbitrary SMTP commands. Because the injected commands are sent from the server's trusted IP address, resulting emails will likely pass SPF and DKIM authentication checks, making them appear legitimate. This allows remote attackers who can control SMTP command parameters (such as email recipients) to forge arbitrary emails from the trusted server, potentially impersonating executives and forging high-stakes corporate communications. This issue has been patched in versions 4.1.129.Final and 4.2.8.Final. No known workarounds exist.
 id: DHI-l7ak-riu4-lxpb-pwxi
-modified: "2026-11-22T23:21:07Z"
+modified: "2026-11-23T18:09:55Z"
 published: "2026-11-10T08:18:38Z"
 references:
     - type: ADVISORY

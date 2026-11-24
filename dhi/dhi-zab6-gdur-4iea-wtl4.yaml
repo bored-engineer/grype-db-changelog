@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: contour-1.31
         purl: pkg:apk/dhi/contour-1.31
+      ranges:
+        - events:
+            - introduced: 1.31.6-r2
+          type: ECOSYSTEM
       versions:
         - 1.31.6-r10
         - 1.31.6-r11
@@ -31,6 +35,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: contour-1.31-dev
         purl: pkg:apk/dhi/contour-1.31-dev
+      ranges:
+        - events:
+            - introduced: 1.31.6-r2
+          type: ECOSYSTEM
       versions:
         - 1.31.6-r10
         - 1.31.6-r11
@@ -56,6 +64,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: contour-1.31-fips
         purl: pkg:apk/dhi/contour-1.31-fips
+      ranges:
+        - events:
+            - introduced: 1.31.6-r2
+          type: ECOSYSTEM
       versions:
         - 1.31.6-r10
         - 1.31.6-r11
@@ -81,6 +93,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: contour-1.31-fips-dev
         purl: pkg:apk/dhi/contour-1.31-fips-dev
+      ranges:
+        - events:
+            - introduced: 1.31.6-r2
+          type: ECOSYSTEM
       versions:
         - 1.31.6-r10
         - 1.31.6-r11
@@ -106,6 +122,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: contour-1.32
         purl: pkg:apk/dhi/contour-1.32
+      ranges:
+        - events:
+            - introduced: 1.32.5-r2
+          type: ECOSYSTEM
       versions:
         - 1.32.5-r10
         - 1.32.5-r11
@@ -131,6 +151,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: contour-1.32-dev
         purl: pkg:apk/dhi/contour-1.32-dev
+      ranges:
+        - events:
+            - introduced: 1.32.5-r2
+          type: ECOSYSTEM
       versions:
         - 1.32.5-r10
         - 1.32.5-r11
@@ -156,6 +180,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: contour-1.32-fips
         purl: pkg:apk/dhi/contour-1.32-fips
+      ranges:
+        - events:
+            - introduced: 1.32.5-r2
+          type: ECOSYSTEM
       versions:
         - 1.32.5-r10
         - 1.32.5-r11
@@ -181,6 +209,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: contour-1.32-fips-dev
         purl: pkg:apk/dhi/contour-1.32-fips-dev
+      ranges:
+        - events:
+            - introduced: 1.32.5-r2
+          type: ECOSYSTEM
       versions:
         - 1.32.5-r10
         - 1.32.5-r11
@@ -206,6 +238,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: external-dns
         purl: pkg:apk/dhi/external-dns
+      ranges:
+        - events:
+            - introduced: 0.20.0-r0
+          type: ECOSYSTEM
       versions:
         - 0.20.0-r0
         - 0.20.0-r1
@@ -246,6 +282,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: external-dns-dev
         purl: pkg:apk/dhi/external-dns-dev
+      ranges:
+        - events:
+            - introduced: 0.20.0-r0
+          type: ECOSYSTEM
       versions:
         - 0.20.0-r0
         - 0.20.0-r1
@@ -286,6 +326,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: external-dns-fips
         purl: pkg:apk/dhi/external-dns-fips
+      ranges:
+        - events:
+            - introduced: 0.20.0-r0
+          type: ECOSYSTEM
       versions:
         - 0.20.0-r0
         - 0.20.0-r1
@@ -326,6 +370,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: external-dns-fips-dev
         purl: pkg:apk/dhi/external-dns-fips-dev
+      ranges:
+        - events:
+            - introduced: 0.20.0-r0
+          type: ECOSYSTEM
       versions:
         - 0.20.0-r0
         - 0.20.0-r1
@@ -362,7 +410,7 @@ affected:
         - 0.24.0-r5
 details: "### Impact\r\n\r\nWhen an `HTTPProxy` is configured with incompatible combination of both `.spec.virtualhost.tls.enableFallbackCertificate: true` and `.spec.virtualhost.jwtProviders`, Contour does not reject the configuration. Consequently, requests from clients that do not send TLS SNI or send an unrecognized SNI (one that does not match any `HTTPProxy` FQDN) bypass configured JWT verification and are proxied to upstream services without a valid token.\r\n\r\nTo list all `HTTPProxies` with this invalid configuration, run\r\n\r\n```bash\r\nkubectl get httpproxies -A -o json | jq -r '\r\n  .items[]\r\n  | select(.spec.virtualhost | .tls.enableFallbackCertificate and .jwtProviders)\r\n  | \"Invalid HTTPProxy found: \\(.metadata.namespace)/\\(.metadata.name)\"\r\n'\r\n```\r\n\r\n### Patches\r\n\r\nThis issue is fixed in Contour v1.33.5. Contour now rejects and marks invalid any `HTTPProxy` resources that combine `.spec.virtualhost.tls.enableFallbackCertificate: true` with `.spec.virtualhost.jwtProviders`. Affected resources will receive a status  condition with the error reason `TLSIncompatibleFeatures`.\r\n\r\n### Workarounds\r\n\r\nDo not enable `.spec.virtualhost.tls.enableFallbackCertificate` on `HTTPProxy` resources that also define `.spec.virtualhost.jwtProviders`. Remove one of the two settings to avoid the invalid configuration.\r\n\r\n### References\r\n\r\n- Contour fallback certificate documentation: https://projectcontour.io/docs/main/config/tls-termination/#fallback-certificate\r\n- Contour JWT verification documentation: https://projectcontour.io/docs/main/config/jwt-verification/\r\n"
 id: DHI-zab6-gdur-4iea-wtl4
-modified: "2026-11-17T11:38:54Z"
+modified: "2026-11-23T21:48:47Z"
 published: "2026-11-11T18:45:34Z"
 references:
     - type: ADVISORY

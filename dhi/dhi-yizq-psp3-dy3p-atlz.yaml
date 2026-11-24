@@ -6,20 +6,12 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: unbound
         purl: pkg:apk/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.24.2-r0
+          type: ECOSYSTEM
       versions:
         - 1.24.2-r0
-        - 1.25.2-r0
-        - 1.25.2-r1
-        - 1.25.2-r2
-        - 1.25.2-r3
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Alpine:3.24
-        name: unbound
-        purl: pkg:apk/dhi/unbound
-      versions:
-        - 1.25.1-r0
         - 1.25.2-r0
         - 1.25.2-r1
         - 1.25.2-r2
@@ -28,9 +20,31 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: unbound
+        purl: pkg:apk/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.25.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.25.1-r0
+        - 1.25.2-r0
+        - 1.25.2-r1
+        - 1.25.2-r2
+        - 1.25.2-r3
+        - 1.25.2-r4
+        - 1.25.2-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: unbound
         purl: pkg:deb/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.22.0-2+deb13u3+dhi0
+          type: ECOSYSTEM
       versions:
         - 1.22.0-2+deb13u3+dhi0
         - 1.22.0-2+deb13u3+dhi1
@@ -38,7 +52,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: In NLnetLabs Unbound up to and including 1.26.0, a degradation of service vulnerability is present in the TCP/DoT reading procedure where there is no limit on consecutive reads. A malicious actor that can stream and sustain a rate of distinct uncached names over the TCP/DoT connection, monopolizes a single worker's entire event loop for as long as its writes stay ahead of the drain.
 id: DHI-yizq-psp3-dy3p-atlz
-modified: "2026-11-21T17:20:07Z"
+modified: "2026-11-23T15:49:01Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

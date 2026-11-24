@@ -6,13 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: open-iscsi
         purl: pkg:apk/dhi/open-iscsi
+      ranges:
+        - events:
+            - introduced: 2.1.10-r4
+          type: ECOSYSTEM
       versions:
         - 2.1.10-r4
         - 2.1.12-r0
         - 2.1.12-r1
 details: A flaw was found in open-iscsi. An integer underflow vulnerability in the `iscsiuio` component, specifically during IPv4 Dynamic Host Configuration Protocol (DHCP) parsing, allows a remote attacker on the same local network segment to cause a denial of service. By sending a specially crafted IPv4/UDP DHCP reply, the attacker can trigger an out-of-bounds read, leading to the `iscsiuio` process crashing. This issue affects systems where `iscsiuio` is actively handling IPv4 DHCP traffic.
 id: DHI-sya2-jtlo-n6uv-pmpi
-modified: "2026-11-11T18:18:24Z"
+modified: "2026-11-23T18:29:06Z"
 published: "2026-11-11T18:18:24Z"
 references:
     - type: ADVISORY

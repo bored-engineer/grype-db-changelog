@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: adminer
         purl: pkg:deb/dhi/adminer
+      ranges:
+        - events:
+            - introduced: 6.0.1-0
+          type: ECOSYSTEM
       versions:
         - 6.0.1-0
         - 6.1.0-0
@@ -22,13 +26,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: dhi-adminer-php-ext
         purl: pkg:deb/dhi/dhi-adminer-php-ext
+      ranges:
+        - events:
+            - introduced: 6.3.0-1
+          type: ECOSYSTEM
       versions:
         - 6.3.0-1
         - 6.3.0-2
         - 6.3.1-0
 details: Adminer 4.6.0 through 5.5.0 (fixed in 5.5.1) contains an incomplete fix for a prior X-Forwarded-Prefix vulnerability (GHSA-8478-xrj3-h9c2). The validation guard (bootstrap.inc.php) only rejects prefixes matching ^/[^/], blocking //evil.com but allowing values such as /\evil.com whose second character is a backslash. Because browsers normalize backslash to forward slash, a network-path reference survives into REQUEST_URI and reaches cookie_path(), affecting the Set-Cookie Path attribute. Exploitation requires that clients can set the X-Forwarded-Prefix header (a misconfigured or absent reverse proxy). Impact is limited to anomalous cookie-path scoping.
 id: DHI-4wob-vm5u-sqrl-kwug
-modified: "2026-11-21T16:24:15Z"
+modified: "2026-11-23T23:12:31Z"
 published: "2026-11-11T16:07:25Z"
 references:
     - type: ADVISORY

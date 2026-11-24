@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: vaultwarden-1
         purl: pkg:apk/dhi/vaultwarden-1
+      ranges:
+        - events:
+            - introduced: 1.37.3-r0
+          type: ECOSYSTEM
       versions:
         - 1.37.3-r0
         - 1.37.4-r0
@@ -16,6 +20,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: vaultwarden-1
         purl: pkg:deb/dhi/vaultwarden-1
+      ranges:
+        - events:
+            - introduced: 1.37.3-0
+          type: ECOSYSTEM
       versions:
         - 1.37.3-0
         - 1.37.4-0
@@ -25,12 +33,13 @@ affected:
         - 1.37.5-2
         - 1.37.5-3
         - 1.37.5-4
+        - 1.37.5-5
 details: |-
     Affected versions of lettre allowed SMTP command injection through an attacker's controlled message body. The module for escaping lines starting with a period wouldn't catch a period that was placed after a double CRLF sequence, allowing the attacker to end the current message and write arbitrary SMTP commands after it.
 
     The flaw is fixed by correctly handling consecutive CRLF sequences.
 id: DHI-mlru-yr44-ytqn-sb2m
-modified: "2026-11-21T02:29:23Z"
+modified: "2026-11-23T16:56:08Z"
 published: "2026-11-19T02:42:58Z"
 references:
     - type: ADVISORY

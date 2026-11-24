@@ -6,11 +6,22 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libsodium
         purl: pkg:apk/dhi/libsodium
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.0.20-r1
+          events:
+            - introduced: "0"
+            - fixed: 1.0.20-r1
+          type: ECOSYSTEM
       versions:
-        - 1.0.20-r1
+        - 1.0.20
 details: libsodium before ad3004e, in atypical use cases involving certain custom cryptography or untrusted data to crypto_core_ed25519_is_valid_point, mishandles checks for whether an elliptic curve point is valid because it sometimes allows points that aren't in the main cryptographic group.
 id: DHI-muew-ij2d-z6vo-xrra
-modified: "2026-11-11T19:32:50Z"
+modified: "2026-11-21T00:58:56Z"
 published: "2026-11-11T19:32:50Z"
 references:
     - type: ADVISORY

@@ -35,9 +35,10 @@ affected:
         - 3.18.0-3
         - 3.18.0-4
         - 3.18.0-5
+        - 3.18.0-6
 details: MLflow is an open source AI engineering platform for agents, large language models, and machine learning models. From 3.12.0rc0 until 3.17.0, third-party scorer deserialization in mlflow/genai/scorers/base.py accepts request-selected descendants of THIRD_PARTY_SCORER_ALLOWED_MODULES rather than requiring an exact allowed module. A caller can use MLflow artifact endpoints to place a Python module beneath a writable allowed package and submit its module and class through /ajax-api/3.0/mlflow/scorer/invoke. Scorer.model_validate_json() imports the module and constructs the class before trace processing. Authentication-disabled deployments permit this code execution without credentials, while basic-auth deployments require a principal capable of creating an experiment and run and uploading artifacts. In either configuration, the allowed scorer package must be writable by the server process. This issue is fixed in version 3.17.0.
 id: DHI-74oc-2ypv-i4ke-z425
-modified: "2026-11-18T18:03:22Z"
+modified: "2026-11-23T06:22:37Z"
 published: "2026-11-13T02:59:15Z"
 references:
     - type: ADVISORY

@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: grist
         purl: pkg:deb/dhi/grist
+      ranges:
+        - events:
+            - introduced: 1.7.17-0
+          type: ECOSYSTEM
       versions:
         - 1.7.17-0
         - 1.7.17-1
@@ -53,6 +57,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: kubeflow-pipelines-frontend
         purl: pkg:deb/dhi/kubeflow-pipelines-frontend
+      ranges:
+        - events:
+            - introduced: 2.17.0-0
+          type: ECOSYSTEM
       versions:
         - 2.17.0-0
         - 2.17.0-1
@@ -71,9 +79,10 @@ affected:
         - 2.18.0-0
         - 2.18.0-1
         - 2.18.0-2
+        - 2.18.1-0
 details: 'stream-json is a micro-library of stream components for processing JSON and JSONC with a minimal memory footprint. Prior to 3.5.0, the path filters pick, ignore, filter, and replace in src/core/filters/filter-base.js recompute the full path string from the nesting stack for every checkable token. Because the stack length equals the current nesting depth and a checkable token is emitted at every level, a depth D document costs O(D²) rather than O(D) to process. The issue is triggered by nesting depth rather than byte volume, including the documented pick({filter: ''data''}) traversal-until-match path, so an application that sends untrusted JSON through a string or RegExp filter can block the Node.js event loop and cause denial of service with a small deeply nested document. The streamArray, streamObject, and streamValues streamers are not affected because they use the constant-time asm.depth getter. This issue is fixed in version 3.5.0.'
 id: DHI-csu7-2c32-5fpc-hi4n
-modified: "2026-11-21T12:21:53Z"
+modified: "2026-11-23T15:48:10Z"
 published: "2026-11-13T19:31:02Z"
 references:
     - type: ADVISORY

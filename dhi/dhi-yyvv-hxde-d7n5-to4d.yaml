@@ -6,18 +6,27 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: unbound
         purl: pkg:apk/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.24.2-r0
+          type: ECOSYSTEM
       versions:
         - 1.24.2-r0
         - 1.25.2-r0
         - 1.25.2-r1
         - 1.25.2-r2
         - 1.25.2-r3
+        - 1.25.2-r4
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: unbound
         purl: pkg:deb/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.22.0-2+deb13u3+dhi0
+          type: ECOSYSTEM
       versions:
         - 1.22.0-2+deb13u3+dhi0
         - 1.22.0-2+deb13u3+dhi1
@@ -25,7 +34,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: NLnet Labs Unbound 1.22.0 up to and including 1.26.1, has a use-after-free vulnerability when compiled for DNS-over-QUIC support with '--with-libngtcp2'. Each DoQ stream owns an output buffer that holds the DNS response. ngtcp2's retransmission buffer keeps a shallow pointer into the output buffer for as long as a STREAM frame may be resent. On a client RESET_STREAM, the output buffer is freed but ngtcp2 still holds the matching retransmission entries. The next PTO timeout makes ngtcp2 re-encode the STREAM frame and copy from the freed buffer. A malicious actor that can query Unbound over DoQ and that withholds ACKs, sends RESET_STREAM, and waits for PTO, reaches this use-after-free with no privilege. This leads to retransmissions against freed memory and eventually an abnormal server exit under a 20-query spray.
 id: DHI-yyvv-hxde-d7n5-to4d
-modified: "2026-11-21T16:17:44Z"
+modified: "2026-11-23T15:49:01Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datascience-notebook
         purl: pkg:deb/dhi/datascience-notebook
+      ranges:
+        - events:
+            - introduced: 2026.07.28-0
+          type: ECOSYSTEM
       versions:
         - 2026.07.28-0
         - 2026.07.28-1
@@ -36,6 +40,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: litellm
         purl: pkg:deb/dhi/litellm
+      ranges:
+        - events:
+            - introduced: 1.95.0-0
+          type: ECOSYSTEM
       versions:
         - 1.100.0-0
         - 1.100.1-0
@@ -77,6 +85,7 @@ affected:
         - 1.110.1-0
         - 1.110.2-0
         - 1.110.2-1
+        - 1.110.2-2
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -94,6 +103,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: mlflow
         purl: pkg:deb/dhi/mlflow
+      ranges:
+        - events:
+            - introduced: 3.15.1-0
+          type: ECOSYSTEM
       versions:
         - 3.15.1-0
         - 3.15.2-0
@@ -123,12 +136,17 @@ affected:
         - 3.18.0-3
         - 3.18.0-4
         - 3.18.0-5
+        - 3.18.0-6
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: netbox
         purl: pkg:deb/dhi/netbox
+      ranges:
+        - events:
+            - introduced: 4.6.7-0
+          type: ECOSYSTEM
       versions:
         - 4.6.10-0
         - 4.6.10-1
@@ -173,6 +191,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: pytorch-2.11-cuda12.8-python3.11
         purl: pkg:deb/dhi/pytorch-2.11-cuda12.8-python3.11
+      ranges:
+        - events:
+            - introduced: 2.11.0-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.0-1
@@ -189,6 +211,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: pytorch-2.11-cuda12.9-python3.12
         purl: pkg:deb/dhi/pytorch-2.11-cuda12.9-python3.12
+      ranges:
+        - events:
+            - introduced: 2.11.0-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.0-1
@@ -205,6 +231,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: pytorch-2.11-cuda13.0-python3.11
         purl: pkg:deb/dhi/pytorch-2.11-cuda13.0-python3.11
+      ranges:
+        - events:
+            - introduced: 2.11.0-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.0-1
@@ -221,6 +251,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: pytorch-2.13-cuda12.6-python3.11
         purl: pkg:deb/dhi/pytorch-2.13-cuda12.6-python3.11
+      ranges:
+        - events:
+            - introduced: 2.13.0-0
+          type: ECOSYSTEM
       versions:
         - 2.13.0-0
         - 2.13.0-1
@@ -237,6 +271,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: pytorch-2.13-cuda13.0-python3.12
         purl: pkg:deb/dhi/pytorch-2.13-cuda13.0-python3.12
+      ranges:
+        - events:
+            - introduced: 2.13.0-0
+          type: ECOSYSTEM
       versions:
         - 2.13.0-0
         - 2.13.0-1
@@ -253,6 +291,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: pytorch-2.7-cuda12.8-python3.12
         purl: pkg:deb/dhi/pytorch-2.7-cuda12.8-python3.12
+      ranges:
+        - events:
+            - introduced: 2.7.0-0
+          type: ECOSYSTEM
       versions:
         - 2.7.0-0
         - 2.7.0-1
@@ -269,6 +311,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: pytorch-2.9-cuda12.9-python3.12
         purl: pkg:deb/dhi/pytorch-2.9-cuda12.9-python3.12
+      ranges:
+        - events:
+            - introduced: 2.9.1-0
+          type: ECOSYSTEM
       versions:
         - 2.9.1-0
         - 2.9.1-1
@@ -285,6 +331,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: superset
         purl: pkg:deb/dhi/superset
+      ranges:
+        - events:
+            - introduced: 6.1.0-0
+          type: ECOSYSTEM
       versions:
         - 6.1.0-0
         - 6.1.0-1
@@ -329,13 +379,9 @@ affected:
         - 6.1.0-7
         - 6.1.0-8
         - 6.1.0-9
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
 details: Pillow is a Python imaging library. From 9.1.0 until 13.0.0, BmpRleDecoder.decode() in src/PIL/BmpImagePlugin.py permits crafted RLE BMP delta escapes and absolute-mode runs to append beyond the remaining dest_length without a per-branch cap. A delta can add roughly 255 image rows in one iteration, so a kilobyte-sized file with a large but permitted width can expand the data bytearray to hundreds of megabytes or more, causing memory-exhaustion denial of service. This issue is fixed in version 13.0.0.
 id: DHI-enlw-4xr6-zspa-5d4h
-modified: "2026-11-21T14:19:46Z"
+modified: "2026-11-23T21:50:07Z"
 published: "2026-11-20T16:49:34Z"
 references:
     - type: ADVISORY

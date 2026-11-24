@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: unbound
         purl: pkg:apk/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.25.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.25.1-r0
         - 1.25.2-r0
@@ -13,12 +17,17 @@ affected:
         - 1.25.2-r2
         - 1.25.2-r3
         - 1.25.2-r4
+        - 1.25.2-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: unbound
         purl: pkg:deb/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.22.0-2+deb13u3+dhi0
+          type: ECOSYSTEM
       versions:
         - 1.22.0-2+deb13u3+dhi0
         - 1.22.0-2+deb13u3+dhi1
@@ -26,7 +35,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: In NLnet Labs Unbound up to and including version 1.26.1, an observable  cache-level side-channel can be exposed with 'unwanted-reply-threshold > 0' configurations (not a default configuration). If a response-like UDP datagram reaches the upstream source port currently used by a recursive query, but its TXID does not match any pending query, Unbound counts the packet as an unwanted reply. When the accumulated count reaches the configured threshold, Unbound clears the worker's RRset cache and message cache. This cache clear action does not destroy the current upstream UDP pending query. Therefore, an external observer can distinguish whether a candidate port matches the current upstream source port by checking whether an existing cached item has been cleared. This is a cache side-channel vulnerability that can be used to probe the upstream source port. Although the attack is not feasible on default configurations and the suggested value (10 million) makes it an ureliable attack on a public resolver, in scenarios where the attacker can keep a concurrent query window alive, the attacker can first filter the source port and then perform birthday-style guessing against the TXID, making cache poisoning a feasible attack path.
 id: DHI-ywio-zfrn-lj2b-ye76
-modified: "2026-11-21T17:20:07Z"
+modified: "2026-11-23T15:49:01Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

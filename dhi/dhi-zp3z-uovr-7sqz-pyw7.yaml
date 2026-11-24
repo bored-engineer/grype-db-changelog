@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gnutls
         purl: pkg:apk/dhi/gnutls
+      ranges:
+        - events:
+            - introduced: 3.8.11-r0
+          type: ECOSYSTEM
       versions:
         - 3.8.11-r0
         - 3.8.12-r0
@@ -17,11 +21,25 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: gnutls28
         purl: pkg:deb/dhi/gnutls28
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.8.9-3+deb13u4+dhi2
+          events:
+            - introduced: "0"
+            - fixed: 3.8.9-3+deb13u4+dhi2
+          type: ECOSYSTEM
       versions:
-        - 3.8.9-3+deb13u4+dhi2
+        - 3.8.9-3+deb13u2dhi0
+        - 3.8.9-3+deb13u3dhi0
+        - 3.8.9-3+deb13u4+dhi0
+        - 3.8.9-3+deb13u4+dhi1
 details: A flaw was found in gnutls. Servers configured with RSA-PSK (Rivest–Shamir–Adleman – Pre-Shared Key) wrongfully matched usernames containing a NUL character with truncated usernames. A remote attacker could exploit this by sending a specially crafted username, leading to an authentication bypass. This vulnerability allows an attacker to gain unauthorized access by circumventing the authentication process.
 id: DHI-zp3z-uovr-7sqz-pyw7
-modified: "2026-11-21T00:24:04Z"
+modified: "2026-11-21T17:41:50Z"
 published: "2026-11-11T19:53:46Z"
 references:
     - type: ADVISORY

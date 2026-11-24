@@ -33,9 +33,10 @@ affected:
         - 3.4.1+ds1-5+deb13u4+dhi0
         - 3.5.0+ds1-0+deb13u1+dhi0
         - 3.5.0+ds1-0+deb13u1+dhi1
+        - 3.5.0+ds1-0+deb13u2+dhi0
 details: rsync 3.1.0 before 3.5.0 contains an authorization bypass in auth users directive parsing. The auth users parser uses comma-only tokenization when splitting the user list, which fails to correctly handle entries of the form @Group Name where the group name contains a space. The space within the group name causes the parser to split the entry at the space boundary, discarding the deny rule associated with the group. An authenticated user whose username or group membership would be denied by an @Group Name auth users entry can connect to a restricted module because the deny rule is silently discarded during parsing.
 id: DHI-xdux-nbco-n57a-4o7i
-modified: "2026-11-11T18:24:53Z"
+modified: "2026-11-23T06:22:20Z"
 published: "2026-11-11T18:24:53Z"
 references:
     - type: ADVISORY

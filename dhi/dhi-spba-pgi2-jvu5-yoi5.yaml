@@ -6,12 +6,20 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openjpeg2
         purl: pkg:deb/dhi/openjpeg2
-      versions:
-        - 2.5.3-2.1~deb13u2+dhi2
-        - 2.5.3-2.1~deb13u2+dhi3
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 2.5.3-2.1~deb13u2+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 2.5.3-2.1~deb13u2+dhi0
+          type: ECOSYSTEM
 details: Heap Buffer Over-read in function imagetotga of convert.c(jp2):942 in OpenJPEG 2.1.2. Impact is Denial of Service. Someone must open a crafted j2k file.
 id: DHI-spba-pgi2-jvu5-yoi5
-modified: "2026-11-12T21:12:35Z"
+modified: "2026-11-23T23:06:31Z"
 published: "2026-11-10T15:42:02Z"
 references:
     - type: ADVISORY

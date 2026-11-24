@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: binutils
         purl: pkg:deb/dhi/binutils
+      ranges:
+        - events:
+            - introduced: 2.44-3dhi1
+          type: ECOSYSTEM
       versions:
         - 2.44-3+deb13u0+dhi10
         - 2.44-3+deb13u0+dhi9
@@ -25,7 +29,7 @@ database_specific:
         - legacy_package_image_owner
 details: 'GNU Binutils thru 2.46 readelf contains a double free vulnerability when processing a crafted ELF binary with malformed relocation data. During GOT relocation handling, dump_relocations may return early without initializing the all_relocations array. As a result, process_got_section_contents() may pass an uninitialized r_symbol pointer to free(), leading to a double free and terminating the program with SIGABRT. No evidence of exploitable memory corruption or code execution was observed; the impact is limited to denial of service. NOTE: this is disputed by third parties because the observed behavior occurred only in pre-release code and did not affect any tagged version.'
 id: DHI-3dpr-meds-xjf3-ldr2
-modified: "2026-11-19T21:02:33Z"
+modified: "2026-11-23T14:53:28Z"
 published: "2026-11-19T21:02:33Z"
 references:
     - type: ADVISORY

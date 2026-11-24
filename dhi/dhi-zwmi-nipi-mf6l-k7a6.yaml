@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: golang-1.24
         purl: pkg:apk/dhi/golang-1.24
+      ranges:
+        - events:
+            - introduced: 1.24.12-r0
+          type: ECOSYSTEM
       versions:
         - 1.24.12-r0
         - 1.24.13-r0
@@ -17,12 +21,17 @@ affected:
         - 1.24.13-r6
         - 1.24.13-r7
         - 1.24.13-r8
+        - 1.24.13-r9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: golang-1.24-dev
         purl: pkg:apk/dhi/golang-1.24-dev
+      ranges:
+        - events:
+            - introduced: 1.24.13-r2
+          type: ECOSYSTEM
       versions:
         - 1.24.13-r2
         - 1.24.13-r3
@@ -31,9 +40,10 @@ affected:
         - 1.24.13-r6
         - 1.24.13-r7
         - 1.24.13-r8
+        - 1.24.13-r9
 details: Applications and libraries which misuse connection.serverAuthenticate (via callback field ServerConfig.PublicKeyCallback) may be susceptible to an authorization bypass. The documentation for ServerConfig.PublicKeyCallback says that "A call to this function does not guarantee that the key offered is in fact used to authenticate." Specifically, the SSH protocol allows clients to inquire about whether a public key is acceptable before proving control of the corresponding private key. PublicKeyCallback may be called with multiple keys, and the order in which the keys were provided cannot be used to infer which key the client successfully authenticated with, if any. Some applications, which store the key(s) passed to PublicKeyCallback (or derived information) and make security relevant determinations based on it once the connection is established, may make incorrect assumptions. For example, an attacker may send public keys A and B, and then authenticate with A. PublicKeyCallback would be called only twice, first with A and then with B. A vulnerable application may then make authorization decisions based on key B for which the attacker does not actually control the private key. Since this API is widely misused, as a partial mitigation golang.org/x/cry...@v0.31.0 enforces the property that, when successfully authenticating via public key, the last key passed to ServerConfig.PublicKeyCallback will be the key used to authenticate the connection. PublicKeyCallback will now be called multiple times with the same key, if necessary. Note that the client may still not control the last key passed to PublicKeyCallback if the connection is then authenticated with a different method, such as PasswordCallback, KeyboardInteractiveCallback, or NoClientAuth. Users should be using the Extensions field of the Permissions return value from the various authentication callbacks to record data associated with the authentication attempt instead of referencing external state. Once the connection is established the state corresponding to the successful authentication attempt can be retrieved via the ServerConn.Permissions field. Note that some third-party libraries misuse the Permissions type by sharing it across authentication attempts; users of third-party libraries should refer to the relevant projects for guidance.
 id: DHI-zwmi-nipi-mf6l-k7a6
-modified: "2026-11-20T05:13:43Z"
+modified: "2026-11-23T18:18:28Z"
 published: "2026-11-11T19:50:47Z"
 references:
     - type: ADVISORY

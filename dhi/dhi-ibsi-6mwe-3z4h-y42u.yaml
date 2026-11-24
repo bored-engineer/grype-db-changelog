@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gnutls
         purl: pkg:apk/dhi/gnutls
+      ranges:
+        - events:
+            - introduced: 3.8.11-r0
+          type: ECOSYSTEM
       versions:
         - 3.8.11-r0
         - 3.8.12-r0
@@ -17,11 +21,25 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: gnutls28
         purl: pkg:deb/dhi/gnutls28
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.8.9-3+deb13u4+dhi2
+          events:
+            - introduced: "0"
+            - fixed: 3.8.9-3+deb13u4+dhi2
+          type: ECOSYSTEM
       versions:
-        - 3.8.9-3+deb13u4+dhi2
+        - 3.8.9-3+deb13u2dhi0
+        - 3.8.9-3+deb13u3dhi0
+        - 3.8.9-3+deb13u4+dhi0
+        - 3.8.9-3+deb13u4+dhi1
 details: A flaw was found in gnutls. An off-by-one error exists in the PKCS#12 bag element bounds check. This vulnerability allows an remote attacker to write past the internal array of a PKCS#12 bag when appending to a bag that already contains 32 elements. This memory corruption could lead to a denial of service (DoS) or potentially other unspecified impacts.
 id: DHI-ibsi-6mwe-3z4h-y42u
-modified: "2026-11-21T00:23:28Z"
+modified: "2026-11-21T17:57:08Z"
 published: "2026-11-11T19:53:46Z"
 references:
     - type: ADVISORY

@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: unbound
         purl: pkg:apk/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.25.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.25.1-r0
         - 1.25.2-r0
@@ -13,12 +17,17 @@ affected:
         - 1.25.2-r2
         - 1.25.2-r3
         - 1.25.2-r4
+        - 1.25.2-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: unbound
         purl: pkg:deb/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.22.0-2+deb13u3+dhi0
+          type: ECOSYSTEM
       versions:
         - 1.22.0-2+deb13u3+dhi0
         - 1.22.0-2+deb13u3+dhi1
@@ -26,7 +35,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: NLnet Labs Unbound up to and including version 1.26.1 limits compression-pointer traversal for each individual domain-name operation but has no aggregate inbound decompression-work budget. Many chained compression pointers in a message results in a lot of CPU usage following them. A malicious actor with recursive-query access and control of an ordinarily delegated authority that serves specially crafted replies can exploit the vulnerability and degrade Unbound's general performance.
 id: DHI-6cua-xwpx-5bwz-gkk3
-modified: "2026-11-21T17:20:07Z"
+modified: "2026-11-23T15:48:10Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

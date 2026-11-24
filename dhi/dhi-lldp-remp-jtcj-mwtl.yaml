@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gradle-8
         purl: pkg:apk/dhi/gradle-8
+      ranges:
+        - events:
+            - introduced: 8.14.4-r0
+          type: ECOSYSTEM
       versions:
         - 8.14.4-r0
         - 8.14.4-r1
@@ -29,6 +33,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gradle-9
         purl: pkg:apk/dhi/gradle-9
+      ranges:
+        - events:
+            - introduced: 9.4.0-r0
+          type: ECOSYSTEM
       versions:
         - 9.4.0-r0
         - 9.4.0-r1
@@ -58,6 +66,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: wiremock
         purl: pkg:deb/dhi/wiremock
+      ranges:
+        - events:
+            - introduced: 3.13.2-0
+          type: ECOSYSTEM
       versions:
         - 3.13.2-0
         - 3.13.2-1
@@ -106,6 +118,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: wiremock-gui
         purl: pkg:deb/dhi/wiremock-gui
+      ranges:
+        - events:
+            - introduced: 3.13.191-0
+          type: ECOSYSTEM
       versions:
         - 3.13.191-0
         - 3.13.192-0
@@ -155,7 +171,7 @@ database_specific:
         - legacy_package_image_owner
 details: "### Impact\r\n\r\nGradle can resolve dependencies from, and publish to, Maven and Ivy repositories accessed over **SFTP** (`sftp://` URLs), authenticating with a username and password. SSH authenticates the server to the client with the server's host key, which the client checks against the keys it already knows, usually in `~/.ssh/known_hosts`. This advisory is about a vulnerability in how Gradle connects to SFTP repositories.\r\n\r\nGradle accepts any host key presented by the server. It does not read `known_hosts`, and no setting enables verification. An attacker who can make the build connect to them instead of the real server, through an on-path network position, DNS or ARP spoofing, or by taking over the address of a decommissioned server, can impersonate the repository without any warning to the user. The attacker can then:\r\n\r\n* obtain the repository password, which Gradle sends as its only authentication method. Credentials of a publishing repository give write access to that repository, and to everything that consumes it;\r\n* serve arbitrary module metadata, plugins and jars, which run in the build with the privileges of the user running it;\r\n* alter or swallow artifacts being published.\r\n\r\nChecksum files fetched from the repository offer no protection, since the attacker serves them too. Builds using [dependency verification](https://docs.gradle.org/current/userguide/securing_dependencies.html) detect substituted artifacts that are already listed in their verification metadata, but not the theft of the repository password, nor tampering with publications.\r\n\r\nOnly builds that declare an `sftp://` repository are affected. A demonstration against Gradle's test SFTP server shows a build succeeding, and sending the password, after the server's host key was replaced.\r\n\r\n### Patches\r\n\r\nGradle now verifies the host key of SFTP repository servers against the OpenSSH known hosts files: `~/.ssh/known_hosts` and `/etc/ssh/ssh_known_hosts`, or `%ProgramData%\\ssh\\ssh_known_hosts` on Windows. A connection to a server whose host is not listed, or whose key does not match the one listed, fails before the repository credentials are sent. The error names the server, the type and SHA-256 fingerprint of the key it presented, and how to add it.\r\n\r\nThis changes the behavior of builds that use SFTP repositories. Gradle does not record the key of a server it connects to for the first time, so the host key of every SFTP repository server must be listed before the build runs. Check the fingerprint with the server's administrator, then add the key, for example with `ssh-keyscan -p <port> <host> >> ~/.ssh/known_hosts`. Host certificates (`@cert-authority` entries) and wildcard host patterns are not supported.\r\n\r\nTo keep connecting to a server without verifying its host key, set [`allowInsecureProtocol = true`](https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.repositories.UrlArtifactRepository.html#org.gradle.api.artifacts.repositories.UrlArtifactRepository:allowInsecureProtocol) on the repository. That repository then remains exposed to this vulnerability.\r\n\r\n| Fix version | Availability |\r\n| ---------- | ----------- |\r\n| 9.9.2 | OSS |\r\n| 9.8.4 | [Gradle Security Subscription](https://gradle.org/security-subscription/) |\r\n| 9.7.4 | [Gradle Security Subscription](https://gradle.org/security-subscription/) |\r\n| 9.6.4 | [Gradle Security Subscription](https://gradle.org/security-subscription/) |\r\n| 9.5.4 | [Gradle Security Subscription](https://gradle.org/security-subscription/) |\r\n| 9.4.4 | [Gradle Security Subscription](https://gradle.org/security-subscription/) |\r\n| 9.3.4 | [Gradle Security Subscription](https://gradle.org/security-subscription/) |\r\n| 9.2.4 | [Gradle Security Subscription](https://gradle.org/security-subscription/) |\r\n| 8.14.8 | OSS |\r\n| 7.6.9 | [Gradle Security Subscription](https://gradle.org/security-subscription/) |\r\n\r\n### Workarounds\r\n\r\nUpgrading Gradle is our recommended fix.\r\n\r\nIf you cannot upgrade immediately:\r\n\r\n* **Move to an HTTPS repository.** Gradle validates the server certificate of HTTPS repositories against the JVM trust store.\r\n* **Enable dependency verification, ideally with signature verification.** It detects substituted artifacts for dependencies whose checksums or signing keys were recorded before the attack. It does not protect repository credentials or publications.\r\n* **Use separate, least-privilege credentials** for resolving and for publishing, and only provide publishing credentials to the builds that publish.\r\n\r\n### Forensics\r\n\r\nGradle does not log the host key of SFTP servers above debug level. With `--debug`, the SSH library logs the host and the key type it accepted, but not the key fingerprint, and only when the first SFTP connection of the Gradle daemon was made at debug level.\r\n\r\nTo check whether resolved artifacts were substituted, compare the files in the Gradle dependency cache with the repository over a trusted channel. The cache stores each file under `<Gradle user home>/caches/modules-2/files-2.1/<group>/<module>/<version>/<sha1>/`, where `<sha1>` is the SHA-1 checksum of the file as it was downloaded.\r\n\r\nTo check publications, compare the artifacts on the repository server with the build outputs, and check the server's authentication logs for the publishing account: a publication that reported success but left no login on the server reached another host.\r\n\r\nA fixed version reports a server it cannot authenticate instead of connecting to it. `Could not verify the identity of SFTP server at sftp://<host>:<port>: its key does not match the one listed for this host in the SSH known hosts files.` means that the key of a known server changed, through a legitimate key rotation or an impersonation attempt. The message includes the fingerprint of the presented key, to compare with the one of the real server.\r\n\r\nIf an SFTP repository was used over a network you do not fully trust, rotate its credentials.\r\n\r\n> [!IMPORTANT]\r\n> The lack of such traces cannot be used to conclude no such attack was performed. Their presence is not a confirmation that an attack happened, but an indication that more investigations are needed.\r\n\r\n### References\r\n\r\n* [Supported repository protocols](https://docs.gradle.org/current/userguide/supported_repository_protocols.html)\r\n* [Verifying dependencies](https://docs.gradle.org/current/userguide/securing_dependencies.html)\r\n\r\nMore about this type of vulnerabilities:\r\n\r\n* https://cwe.mitre.org/data/definitions/322.html\r\n* https://cwe.mitre.org/data/definitions/494.html"
 id: DHI-lldp-remp-jtcj-mwtl
-modified: "2026-11-21T14:20:16Z"
+modified: "2026-11-23T16:56:08Z"
 published: "2026-11-20T13:17:39Z"
 references:
     - type: ADVISORY

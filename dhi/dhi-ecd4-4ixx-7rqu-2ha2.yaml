@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion
         purl: pkg:deb/dhi/datahub-ingestion
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -37,20 +41,26 @@ affected:
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
+        - 1.7.0.20-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion-locked
         purl: pkg:deb/dhi/datahub-ingestion-locked
+      ranges:
+        - events:
+            - introduced: 1.7.0.19-0
+          type: ECOSYSTEM
       versions:
         - 1.7.0.19-0
         - 1.7.0.20-0
         - 1.7.0.20-1
         - 1.7.0.20-2
+        - 1.7.0.20-3
 details: wcmatch is a Python library for wildcard file-name matching. Prior to 11.2, under the default flags, matching a non-matching attacker-controlled name against an application-supplied pattern containing several star wildcards separated by literals makes the lazy .? and [^/]? segments, including _STAR and _PATH_STAR emitted by _handle_star() in wcmatch/_wcparse.py, backtrack across possible splits, so a single comparison can consume prolonged CPU time. The pattern remains a developer-controlled constant and only the name is attacker-controlled; affected paths include fnmatch.fnmatch(), glob.globmatch(), and filesystem glob scans where another user can create names, without enabling extglob or any non-default flag. This issue is fixed in 11.2.
 id: DHI-ecd4-4ixx-7rqu-2ha2
-modified: "2026-11-21T12:19:39Z"
+modified: "2026-11-23T19:49:26Z"
 published: "2026-11-21T00:49:15Z"
 references:
     - type: ADVISORY

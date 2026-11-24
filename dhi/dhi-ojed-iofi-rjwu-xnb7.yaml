@@ -6,7 +6,12 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: py3-wheel
         purl: pkg:apk/dhi/py3-wheel
+      ranges:
+        - events:
+            - introduced: 0.46.1
+          type: ECOSYSTEM
       versions:
+        - 0.46.1
         - 0.46.1-r0
         - 0.46.3-r0
     - database_specific:
@@ -15,6 +20,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ros-jazzy
         purl: pkg:apk/dhi/ros-jazzy
+      ranges:
+        - events:
+            - introduced: 20260618-r0
+          type: ECOSYSTEM
       versions:
         - 20260618-r0
         - 20260618-r1
@@ -24,6 +33,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ros-jazzy-dev
         purl: pkg:apk/dhi/ros-jazzy-dev
+      ranges:
+        - events:
+            - introduced: 20260618-r0
+          type: ECOSYSTEM
       versions:
         - 20260618-r0
         - 20260618-r1
@@ -33,6 +46,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ros-lyrical
         purl: pkg:apk/dhi/ros-lyrical
+      ranges:
+        - events:
+            - introduced: 20260807-r0
+          type: ECOSYSTEM
       versions:
         - 20260807-r0
         - 20260807-r1
@@ -42,6 +59,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ros-lyrical-dev
         purl: pkg:apk/dhi/ros-lyrical-dev
+      ranges:
+        - events:
+            - introduced: 20260807-r0
+          type: ECOSYSTEM
       versions:
         - 20260807-r0
         - 20260807-r1
@@ -51,6 +72,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ros-jazzy
         purl: pkg:deb/dhi/ros-jazzy
+      ranges:
+        - events:
+            - introduced: 20260618-0
+          type: ECOSYSTEM
       versions:
         - 20260618-0
         - 20260618-1
@@ -61,6 +86,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ros-jazzy-dev
         purl: pkg:deb/dhi/ros-jazzy-dev
+      ranges:
+        - events:
+            - introduced: 20260618-0
+          type: ECOSYSTEM
       versions:
         - 20260618-0
         - 20260618-1
@@ -71,6 +100,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ros-lyrical
         purl: pkg:deb/dhi/ros-lyrical
+      ranges:
+        - events:
+            - introduced: 20260807-0
+          type: ECOSYSTEM
       versions:
         - 20260807-0
         - 20260807-1
@@ -81,6 +114,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ros-lyrical-dev
         purl: pkg:deb/dhi/ros-lyrical-dev
+      ranges:
+        - events:
+            - introduced: 20260807-0
+          type: ECOSYSTEM
       versions:
         - 20260807-0
         - 20260807-1
@@ -91,7 +128,7 @@ database_specific:
         - legacy_package_image_owner
 details: wheel is a command line tool for manipulating Python wheel files, as defined in PEP 427. In versions 0.40.0 through 0.46.1, the unpack function is vulnerable to file permission modification through mishandling of file permissions after extraction. The logic blindly trusts the filename from the archive header for the chmod operation, even though the extraction process itself might have sanitized the path. Attackers can craft a malicious wheel file that, when unpacked, changes the permissions of critical system files (e.g., /etc/passwd, SSH keys, config files), allowing for Privilege Escalation or arbitrary code execution by modifying now-writable scripts. This issue has been fixed in version 0.46.2.
 id: DHI-ojed-iofi-rjwu-xnb7
-modified: "2026-11-21T14:19:05Z"
+modified: "2026-11-24T00:11:00Z"
 published: "2026-11-19T22:11:01Z"
 references:
     - type: ADVISORY

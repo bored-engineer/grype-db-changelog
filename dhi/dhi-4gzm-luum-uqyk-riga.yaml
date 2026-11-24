@@ -6,37 +6,62 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 1.11.1-r4
+          events:
+            - introduced: "0"
+            - fixed: 1.11.1-r4
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r1
         - 1.11.1-r2
         - 1.11.1-r3
-        - 1.11.1-r4
-        - 1.11.1-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 1.11.1-r4
+          events:
+            - introduced: "0"
+            - fixed: 1.11.1-r4
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r3
-        - 1.11.1-r4
-        - 1.11.1-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: libssh2
         purl: pkg:deb/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 1.11.1-1+deb13u1+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 1.11.1-1+deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
-        - 1.11.1-1+deb13u1+dhi1
-        - 1.11.1-1+deb13u1+dhi2
-        - 1.11.1-1+deb13u2+dhi0
-        - 1.11.1-1+dhi+deb13u1+dhi2
-        - 1.11.1-1+dhi+deb13u2+dhi0
+        - 1.11.1-1dhi0
 details: libssh2 through 1.11.1, fixed in commit 2dae302, contains an out-of-bounds heap read vulnerability in the sftp_symlink() function in src/sftp.c that allows a malicious SSH server or man-in-the-middle attacker to disclose heap memory contents or cause a crash by sending a crafted SSH_FXP_NAME response. Attackers can supply a link_len value larger than the actual packet data in SSH_FXP_NAME responses for SFTP READLINK and REALPATH operations, triggering a heap buffer over-read of up to target_len minus one bytes due to the missing validation of available packet buffer size before the memcpy operation.
 id: DHI-4gzm-luum-uqyk-riga
-modified: "2026-11-21T00:58:02Z"
+modified: "2026-11-23T23:06:16Z"
 published: "2026-11-13T16:59:06Z"
 references:
     - type: ADVISORY

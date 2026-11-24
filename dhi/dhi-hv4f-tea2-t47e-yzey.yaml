@@ -6,13 +6,21 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libarchive
         purl: pkg:deb/dhi/libarchive
+      ranges:
+        - events:
+            - introduced: 3.7.4-4dhi0
+          type: ECOSYSTEM
       versions:
+        - 3.7.4-4+deb13u1+dhi0
+        - 3.7.4-4+deb13u1+dhi1
         - 3.7.4-4+deb13u1+dhi2
         - 3.7.4-4+deb13u1+dhi3
         - 3.7.4-4+deb13u1+dhi4
+        - 3.7.4-4+deb13u1dhi0
+        - 3.7.4-4dhi0
 details: Libarchive through 3.6.2 can cause directories to have world-writable permissions. The umask() call inside archive_write_disk_posix.c changes the umask of the whole process for a very short period of time; a race condition with another thread can lead to a permanent umask 0 setting. Such a race condition could lead to implicit directory creation with permissions 0777 (without the sticky bit), which means that any low-privileged local user can delete and rename files inside those directories.
 id: DHI-hv4f-tea2-t47e-yzey
-modified: "2026-11-13T01:23:10Z"
+modified: "2026-11-23T21:02:52Z"
 published: "2026-11-10T03:42:57Z"
 references:
     - type: ADVISORY

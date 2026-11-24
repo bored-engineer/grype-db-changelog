@@ -6,18 +6,30 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 1.11.1-r3
+          events:
+            - introduced: "0"
+            - fixed: 1.11.1-r3
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r1
         - 1.11.1-r2
-        - 1.11.1-r3
-        - 1.11.1-r4
-        - 1.11.1-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: rust
         purl: pkg:apk/dhi/rust
+      ranges:
+        - events:
+            - introduced: 1.96.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.96.0-r0
         - 1.96.1-r0
@@ -28,12 +40,19 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libssh2
         purl: pkg:deb/dhi/libssh2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 1.11.1-1+deb13u1+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 1.11.1-1+deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
-        - 1.11.1-1+deb13u1+dhi1
-        - 1.11.1-1+deb13u1+dhi2
-        - 1.11.1-1+deb13u2+dhi0
-        - 1.11.1-1+dhi+deb13u1+dhi2
-        - 1.11.1-1+dhi+deb13u2+dhi0
+        - 1.11.1-1dhi0
 details: |-
     libssh2 through 1.11.1, fixed in commit 1762685, contains a pre-authentication denial of service vulnerability in the SSH_MSG_EXT_INFO handler in src/packet.c that allows a malicious SSH server to cause a client CPU exhaustion loop by sending a crafted extension count value. A malicious server can set nr_extensions to 0xFFFFFFFF during key exchange, causing the client to spin in a tight CPU loop for over 60 seconds because return values from _libssh2_get_string() are unchecked and the session timeout does not apply to CPU-bound loops.
 
@@ -44,7 +63,7 @@ details: |-
     https://github.com/libssh2/libssh2/pull/1864
     Fixed by: https://github.com/libssh2/libssh2/commit/17626857d20b3c9a1addfa45979dadcee1cd84a4
 id: DHI-w56f-oetg-igny-7wxj
-modified: "2026-11-13T17:03:58Z"
+modified: "2026-11-22T19:55:12Z"
 published: "2026-11-13T17:03:58Z"
 references:
     - type: ADVISORY

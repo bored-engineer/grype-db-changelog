@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: expat
         purl: pkg:apk/dhi/expat
+      ranges:
+        - events:
+            - introduced: 2.7.3-r0
+          type: ECOSYSTEM
       versions:
         - 2.10.0-r1
         - 2.7.3-r0
@@ -26,6 +30,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: expat
         purl: pkg:apk/dhi/expat
+      ranges:
+        - events:
+            - introduced: 2.8.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.10.0-r1
         - 2.8.1-r0
@@ -43,6 +51,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: expat
         purl: pkg:deb/dhi/expat
+      ranges:
+        - events:
+            - introduced: 2.7.1-2dhi0
+          type: ECOSYSTEM
       versions:
         - 2.7.1-2+dhi1
         - 2.7.1-2+dhi2
@@ -68,7 +80,7 @@ database_specific:
         - legacy_package_image_owner
 details: Expat before 2.8.5 fails to validate that a high surrogate in UTF-16 input is followed by a low surrogate, allowing malformed UTF-16 sequences to be accepted. Attackers can supply UTF-16 encoded XML containing lone high surrogates that consume the following code unit, causing Expat to pass unpaired surrogates to applications built with XML_UNICODE and to silently replace input characters in other builds.
 id: DHI-dpbx-4tjf-gye4-7m5m
-modified: "2026-11-21T07:03:45Z"
+modified: "2026-11-23T15:31:29Z"
 published: "2026-11-21T07:03:45Z"
 references:
     - type: ADVISORY
@@ -454,6 +466,8 @@ references:
     - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-93990
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:102193
+    - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:72448
     - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:72663
@@ -463,6 +477,8 @@ references:
       url: https://alas.aws.amazon.com/AL2/ALAS-2026-4057.html
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3214.html
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2026-102193.html
     - type: ADVISORY
       url: https://errata.almalinux.org/8/ALSA-2026-72448.html
     - type: ADVISORY
@@ -496,6 +512,8 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-98478.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98517.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-100539.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-100540.html
@@ -511,6 +529,8 @@ references:
       url: https://linux.oracle.com/errata/ELSA-2026-96081.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-98478.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98517.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-93990
     - type: ADVISORY

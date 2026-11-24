@@ -3,6 +3,27 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: expat
+        purl: pkg:apk/dhi/expat
+      ranges:
+        - events:
+            - introduced: 2.8.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.10.0-r1
+        - 2.8.1-r0
+        - 2.8.2-r0
+        - 2.8.3-r0
+        - 2.8.3-r1
+        - 2.8.4-r0
+        - 2.8.5-r0
+        - 2.8.5-r1
+        - 2.9.0-r0
+        - 2.9.0-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: expat
         purl: pkg:deb/dhi/expat
@@ -41,7 +62,7 @@ database_specific:
         - legacy_package_image_owner
 details: The xmlwf tool in libexpat through 2.10.0 contains a symlink following vulnerability because -d output mode opens files with fopen("wb"), which follows symbolic links. Local attackers with write access to the output directory can plant a symlink at the expected output name to truncate or overwrite files writable by the xmlwf user.
 id: DHI-pmyf-tkab-gacx-6bj4
-modified: "2026-11-21T17:11:29Z"
+modified: "2026-11-23T20:59:16Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY
@@ -52,6 +73,8 @@ references:
       url: https://scout.docker.com/v/DHI-pmyf-tkab-gacx-6bj4
     - type: ADVISORY
       url: https://security-tracker.debian.org/tracker/CVE-2026-128241
+    - type: ADVISORY
+      url: https://security.alpinelinux.org/vuln/CVE-2026-128241
     - type: ADVISORY
       url: https://ubuntu.com/security/CVE-2026-128241
     - type: FIX

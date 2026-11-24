@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: postman-mcp
         purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-r0
         - 2.11.1-r0
@@ -30,6 +34,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-4
         purl: pkg:deb/dhi/langfuse-4
+      ranges:
+        - events:
+            - introduced: 4.3.1-0
+          type: ECOSYSTEM
       versions:
         - 4.10.0-0
         - 4.11.0-0
@@ -74,6 +82,7 @@ affected:
         - 4.81.0-0
         - 4.82.0-0
         - 4.83.0-0
+        - 4.84.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -81,6 +90,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: postman-mcp
         purl: pkg:deb/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.1-0
@@ -102,7 +115,7 @@ affected:
         - 2.9.1-0
 details: Hono is a Web application framework that provides support for any JavaScript runtime. Prior to 4.13.5, when parseBody() expands dot-separated form field names into nested objects with dot-notation parsing enabled, it does not limit the nesting depth or the total number of intermediate objects created. Empty segments are preserved, so one deeply dotted field name can encode one nesting level per byte, while a large number of shallowly dotted fields can create the same amplification across a request. A request body within a normal size limit can therefore allocate an object graph far larger than the request after the body has already been accepted. An unauthenticated attacker who can reach an affected endpoint can send concurrent requests that exhaust the JavaScript heap, terminate the server process, and leave the service unavailable until restart. Dot-notation parsing is not enabled by default, and applications using the default behavior are not affected. This issue is fixed in version 4.13.5.
 id: DHI-txrx-txfr-yede-nweo
-modified: "2026-11-20T16:51:53Z"
+modified: "2026-11-23T16:56:25Z"
 published: "2026-11-14T01:12:02Z"
 references:
     - type: ADVISORY

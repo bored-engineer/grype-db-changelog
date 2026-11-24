@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -37,6 +41,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-dev
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-dev
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -68,6 +76,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-fips
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-fips
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -99,6 +111,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-fips-dev
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-fips-dev
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -130,6 +146,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: litellm
         purl: pkg:deb/dhi/litellm
+      ranges:
+        - events:
+            - introduced: 1.95.0-0
+          type: ECOSYSTEM
       versions:
         - 1.100.0-0
         - 1.100.1-0
@@ -171,6 +191,7 @@ affected:
         - 1.110.1-0
         - 1.110.2-0
         - 1.110.2-1
+        - 1.110.2-2
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -188,6 +209,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: qdrant
         purl: pkg:deb/dhi/qdrant
+      ranges:
+        - events:
+            - introduced: 1.18.3-0
+          type: ECOSYSTEM
       versions:
         - 1.18.3-0
         - 1.18.3-1
@@ -222,12 +247,18 @@ affected:
         - 1.20.2-1
         - 1.20.2-2
         - 1.20.2-3
+        - 1.20.2-4
+        - 1.20.2-5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: supabase-storage
         purl: pkg:deb/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-0
         - 1.79.30-0
@@ -266,12 +297,18 @@ affected:
         - 1.98.2-0
         - 1.98.4-0
         - 1.98.5-0
+        - 1.98.6-0
+        - 1.98.7-0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: uptime-kuma-2
         purl: pkg:deb/dhi/uptime-kuma-2
+      ranges:
+        - events:
+            - introduced: 2.5.0-0
+          type: ECOSYSTEM
       versions:
         - 2.5.0-0
         - 2.5.0-1
@@ -298,7 +335,7 @@ database_specific:
         - legacy_package_image_owner
 details: undici bundles a WebSocket client whose permessage-deflate size-limit cleanup removes all listeners from the internal zlib inflate stream, including its error listener, while that stream can still emit. When a remote peer sends a compressed payload that crosses the built-in 128 MiB decompressed-payload limit and then contains a malformed DEFLATE byte, the inflate stream emits a data error with no listener attached, which Node.js treats as a fatal unhandled error and terminates the entire process. Exploitation is remote and unauthenticated, requires no application mistake, and is asymmetric, since roughly 130 KB on the wire expands past the limit and crashes the process, and reconnecting can repeat the crash. This affects undici versions from 6.25.0 up to 6.28.1, from 7.28.0 up to 7.29.1, and from 8.1.0 up to 8.10.2. Users should upgrade to undici 6.28.1, 7.29.1, or 8.10.2.
 id: DHI-c5cq-ch4l-o7oz-joee
-modified: "2026-11-21T14:19:46Z"
+modified: "2026-11-23T23:21:33Z"
 published: "2026-11-20T09:27:42Z"
 references:
     - type: ADVISORY

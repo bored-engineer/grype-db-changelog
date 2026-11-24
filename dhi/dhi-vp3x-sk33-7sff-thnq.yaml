@@ -26,11 +26,25 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: gnutls28
         purl: pkg:deb/dhi/gnutls28
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.8.9-3+deb13u4+dhi2
+          events:
+            - introduced: "0"
+            - fixed: 3.8.9-3+deb13u4+dhi2
+          type: ECOSYSTEM
       versions:
-        - 3.8.9-3+deb13u4+dhi2
+        - 3.8.9-3+deb13u2dhi0
+        - 3.8.9-3+deb13u3dhi0
+        - 3.8.9-3+deb13u4+dhi0
+        - 3.8.9-3+deb13u4+dhi1
 details: A flaw was found in gnutls. A remote attacker could exploit this vulnerability by presenting a specially crafted Online Certificate Status Protocol (OCSP) response during a TLS handshake. Due to a logic error in how gnutls processes multi-record OCSP responses, a client with OCSP verification enabled may incorrectly accept a revoked server certificate, potentially leading to a compromise of trust.
 id: DHI-vp3x-sk33-7sff-thnq
-modified: "2026-11-20T05:06:09Z"
+modified: "2026-11-22T22:57:24Z"
 published: "2026-11-11T19:53:46Z"
 references:
     - type: ADVISORY

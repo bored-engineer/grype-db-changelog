@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libxfont
         purl: pkg:deb/dhi/libxfont
+      ranges:
+        - events:
+            - introduced: 1:2.0.6-1+deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
         - 1:2.0.6-1+deb13u1+dhi0
         - 1:2.0.6-1+deb13u1+dhi1
@@ -13,7 +17,7 @@ details: |-
     fs_read_glyphs() in the libXfont2 font-server client (src/fc/fserve.c) indexes the per-character encoding[] array using num_chars from the FS_QueryXBitmaps16 reply, but that array was allocated with a size derived from num_extents in the separate FS_QueryXExtents16 reply. The two CARD32 fields are never cross-checked.
     A malicious or compromised font server can send a small num_extents (e.g. 1) in the extents reply, then a large num_chars (e.g. 100000) in the bitmaps reply. This causes attacker-controlled out-of-bounds heap read and writes.
 id: DHI-nwzu-46pw-wpvg-lh7y
-modified: "2026-11-18T19:46:23Z"
+modified: "2026-11-23T14:52:50Z"
 published: "2026-11-11T16:08:47Z"
 references:
     - type: ADVISORY

@@ -6,12 +6,24 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openjpeg2
         purl: pkg:deb/dhi/openjpeg2
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 2.5.3-2.1~deb13u2+dhi3
+          events:
+            - introduced: "0"
+            - fixed: 2.5.3-2.1~deb13u2+dhi3
+          type: ECOSYSTEM
       versions:
+        - 2.5.3-2.1~deb13u2+dhi0
+        - 2.5.3-2.1~deb13u2+dhi1
         - 2.5.3-2.1~deb13u2+dhi2
-        - 2.5.3-2.1~deb13u2+dhi3
 details: OpenJPEG 2.4.0 through 2.5.4, and git master through commit 8314119b, contains an out-of-bounds read and write in opj_dwt_encode_and_deinterleave_v() in src/lib/openjp2/dwt.c. This allows an attacker to cause a denial of service.
 id: DHI-hqdj-nltr-m2k6-akts
-modified: "2026-11-12T21:12:35Z"
+modified: "2026-11-23T21:20:26Z"
 published: "2026-11-10T15:48:39Z"
 references:
     - type: ADVISORY

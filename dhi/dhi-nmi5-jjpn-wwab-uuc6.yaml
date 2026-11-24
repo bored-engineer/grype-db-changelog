@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: binutils
         purl: pkg:deb/dhi/binutils
+      ranges:
+        - events:
+            - introduced: 2.44-3dhi1
+          type: ECOSYSTEM
       versions:
         - 2.44-3+deb13u0+dhi10
         - 2.44-3+deb13u0+dhi9
@@ -25,7 +29,7 @@ database_specific:
         - legacy_package_image_owner
 details: GNU Binutils thru 2.45.1 readelf contains a denial-of-service vulnerability when processing a crafted binary with malformed DWARF .debug_rnglists data. A logic flaw in the DWARF parsing path causes readelf to repeatedly print the same warning message without making forward progress, resulting in a non-terminating output loop that requires manual interruption. No evidence of memory corruption or code execution was observed.
 id: DHI-nmi5-jjpn-wwab-uuc6
-modified: "2026-11-19T21:04:50Z"
+modified: "2026-11-23T14:54:03Z"
 published: "2026-11-19T21:04:50Z"
 references:
     - type: ADVISORY

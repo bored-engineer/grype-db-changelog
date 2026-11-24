@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: redisinsight-3
         purl: pkg:apk/dhi/redisinsight-3
+      ranges:
+        - events:
+            - introduced: 3.8.0-r0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-r0
         - 3.8.0-r0
@@ -24,6 +28,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: redisinsight-3
         purl: pkg:deb/dhi/redisinsight-3
+      ranges:
+        - events:
+            - introduced: 3.8.0-0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-0
         - 3.8.0-0
@@ -37,7 +45,7 @@ affected:
         - 3.8.0-9
 details: 'Babel is a compiler for writing next generation JavaScript. When using versions of Babel prior to 7.26.10 and 8.0.0-alpha.17 to compile regular expression named capturing groups, Babel will generate a polyfill for the `.replace` method that has quadratic complexity on some specific replacement pattern strings (i.e. the second argument passed to `.replace`). Generated code is vulnerable if all the following conditions are true: Using Babel to compile regular expression named capturing groups, using the `.replace` method on a regular expression that contains named capturing groups, and the code using untrusted strings as the second argument of `.replace`. This problem has been fixed in `@babel/helpers` and `@babel/runtime` 7.26.10 and 8.0.0-alpha.17. It''s likely that individual users do not directly depend on `@babel/helpers`, and instead depend on `@babel/core` (which itself depends on `@babel/helpers`). Upgrading to `@babel/core` 7.26.10 is not required, but it guarantees use of a new enough `@babel/helpers` version. Note that just updating Babel dependencies is not enough; one will also need to re-compile the code. No known workarounds are available.'
 id: DHI-2dsr-guak-inyr-imng
-modified: "2026-11-19T00:07:23Z"
+modified: "2026-11-23T18:56:04Z"
 published: "2026-11-18T23:53:01Z"
 references:
     - type: ADVISORY

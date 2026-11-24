@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-3.3
         purl: pkg:apk/dhi/ruby-3.3
+      ranges:
+        - events:
+            - introduced: 3.3.10-r0
+          type: ECOSYSTEM
       versions:
         - 3.3.10-r0
         - 3.3.10-r1
@@ -22,6 +26,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ruby-3.3
         purl: pkg:apk/dhi/ruby-3.3
+      ranges:
+        - events:
+            - introduced: 3.3.11-r3
+          type: ECOSYSTEM
       versions:
         - 3.3.11-r3
         - 3.3.12-r3
@@ -34,6 +42,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ruby-3.3
         purl: pkg:deb/dhi/ruby-3.3
+      ranges:
+        - events:
+            - introduced: 3.3.11-0
+          type: ECOSYSTEM
       versions:
         - 3.3.11-0
         - 3.3.11-1
@@ -117,7 +129,7 @@ affected:
         - 3.3.14-0
 details: 'Addressable is an alternative implementation to the URI implementation that is part of Ruby''s standard library. From 2.3.0 to before 2.9.0, within the URI template implementation in Addressable, two classes of URI template generate regular expressions vulnerable to catastrophic backtracking. Templates using the * (explode) modifier with any expansion operator (e.g., {foo*}, {+var*}, {#var*}, {/var*}, {.var*}, {;var*}, {?var*}, {&var*}) generate patterns with nested unbounded quantifiers that are O(2^n) when matched against a maliciously crafted URI. Templates using multiple variables with the + or # operators (e.g., {+v1,v2,v3}) generate patterns with O(n^k) complexity due to the comma separator being within the matched character class, causing ambiguous backtracking across k variables. When matched against a maliciously crafted URI, this can result in catastrophic backtracking and uncontrolled resource consumption, leading to denial of service. This vulnerability is fixed in 2.9.0.'
 id: DHI-64g4-ltbh-trhy-yasj
-modified: "2026-11-20T14:20:27Z"
+modified: "2026-11-23T15:48:10Z"
 published: "2026-11-10T03:05:57Z"
 references:
     - type: ADVISORY

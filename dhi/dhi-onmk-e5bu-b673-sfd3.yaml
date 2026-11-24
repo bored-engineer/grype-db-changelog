@@ -37,6 +37,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: nginx-mainline
         purl: pkg:apk/dhi/nginx-mainline
+      ranges:
+        - events:
+            - introduced: 1.28.2-r0
+          type: ECOSYSTEM
       versions:
         - 1.28.2-r0
         - 1.29.4-r0
@@ -53,18 +57,24 @@ affected:
         - 1.29.8-r5
         - 1.29.8-r6
         - 1.29.8-r7
+        - 1.29.8-r9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: nginx-stable
         purl: pkg:apk/dhi/nginx-stable
+      ranges:
+        - events:
+            - introduced: 1.28.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.28.1-r0
         - 1.28.2-r0
         - 1.28.2-r1
         - 1.28.3-r0
         - 1.28.3-r1
+        - 1.28.3-r11
         - 1.28.3-r2
         - 1.28.3-r3
         - 1.28.3-r4
@@ -74,7 +84,7 @@ affected:
         - 1.28.3-r9
 details: "NGINX Plus and NGINX Open Source have a vulnerability in the ngx_stream_ssl_module module due to the improper handling of revoked certificates when configured with the ssl_verify_client on and ssl_ocsp on directives, allowing the TLS handshake to succeed even after an OCSP check identifies the certificate as revoked.   \n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated."
 id: DHI-onmk-e5bu-b673-sfd3
-modified: "2026-11-20T01:46:54Z"
+modified: "2026-11-23T21:20:26Z"
 published: "2026-11-11T16:35:44Z"
 references:
     - type: ADVISORY

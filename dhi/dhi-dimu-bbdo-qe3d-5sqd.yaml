@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: istio-csr
         purl: pkg:apk/dhi/istio-csr
+      ranges:
+        - events:
+            - introduced: 0.16.0-r1
+          type: ECOSYSTEM
       versions:
         - 0.16.0-r1
         - 0.16.0-r2
@@ -30,6 +34,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: istio-csr-dev
         purl: pkg:apk/dhi/istio-csr-dev
+      ranges:
+        - events:
+            - introduced: 0.16.0-r1
+          type: ECOSYSTEM
       versions:
         - 0.16.0-r1
         - 0.16.0-r2
@@ -54,6 +62,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: istio-csr-fips
         purl: pkg:apk/dhi/istio-csr-fips
+      ranges:
+        - events:
+            - introduced: 0.16.0-r1
+          type: ECOSYSTEM
       versions:
         - 0.16.0-r1
         - 0.16.0-r2
@@ -78,6 +90,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: istio-csr-fips-dev
         purl: pkg:apk/dhi/istio-csr-fips-dev
+      ranges:
+        - events:
+            - introduced: 0.16.0-r1
+          type: ECOSYSTEM
       versions:
         - 0.16.0-r1
         - 0.16.0-r2
@@ -96,13 +112,9 @@ affected:
         - 0.19.1-r2
         - 0.19.1-r3
         - 0.19.1-r4
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
 details: Istio is an open source platform for providing a uniform way to integrate microservices, manage traffic flow across microservices, enforce policies and aggregate telemetry data. According to [RFC 4343](https://datatracker.ietf.org/doc/html/rfc4343), Istio authorization policy should compare the hostname in the HTTP Host header in a case insensitive way, but currently the comparison is case sensitive. The proxy will route the request hostname in a case-insensitive way which means the authorization policy could be bypassed. As an example, the user may have an authorization policy that rejects request with hostname "httpbin.foo" for some source IPs, but the attacker can bypass this by sending the request with hostname "Httpbin.Foo". Patches are available in Istio 1.11.1, Istio 1.10.4 and Istio 1.9.8. As a work around a Lua filter may be written to normalize Host header before the authorization check. This is similar to the Path normalization presented in the [Security Best Practices](https://istio.io/latest/docs/ops/best-practices/security/#case-normalization) guide.
 id: DHI-dimu-bbdo-qe3d-5sqd
-modified: "2026-11-20T08:22:43Z"
+modified: "2026-11-23T17:33:03Z"
 published: "2026-11-20T08:22:43Z"
 references:
     - type: ADVISORY

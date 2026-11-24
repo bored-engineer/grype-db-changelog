@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: directus-12
         purl: pkg:apk/dhi/directus-12
+      ranges:
+        - events:
+            - introduced: 12.4.1-r0
+          type: ECOSYSTEM
       versions:
         - 12.4.1-r0
         - 12.4.1-r1
@@ -34,6 +38,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: directus-12
         purl: pkg:deb/dhi/directus-12
+      ranges:
+        - events:
+            - introduced: 12.4.1-0
+          type: ECOSYSTEM
       versions:
         - 12.4.1-0
         - 12.4.1-1
@@ -60,13 +68,31 @@ affected:
         - 12.6.1-5
         - 12.7.0-0
         - 12.7.0-1
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: logto-1
+        purl: pkg:deb/dhi/logto-1
+      ranges:
+        - events:
+            - introduced: 1.45.0-0
+          type: ECOSYSTEM
+      versions:
+        - 1.45.0-0
+        - 1.45.0-1
+        - 1.45.0-2
+        - 1.45.0-3
+        - 1.45.0-4
+        - 1.46.0-0
+        - 1.46.0-1
+        - 1.46.0-2
+        - 1.46.0-3
+        - 1.46.0-4
+        - 1.46.0-5
 details: basic-ftp is an FTP client for Node.js. Prior to 6.2.1, Client.list() can be forced by a malicious or compromised FTP server to spend quadratic CPU time parsing a directory listing because the RE_LINE expression in src/parseListUnix.ts backtracks across adjacent variable-length owner and group fields when a long Unix-style line has a valid prefix but cannot satisfy the later size and date fields. parseList() selects a parser from the last nonblank line and then applies it to every line, so a normal final line can select the Unix parser while an earlier crafted line blocks the Node.js event loop and freezes the process. This issue is fixed in version 6.2.1.
 id: DHI-fbnd-hqiz-ahaw-m746
-modified: "2026-11-21T12:19:39Z"
+modified: "2026-11-23T16:07:58Z"
 published: "2026-11-20T19:12:41Z"
 references:
     - type: ADVISORY

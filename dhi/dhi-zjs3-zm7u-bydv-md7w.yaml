@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-r0
         - 1.0.1-r1
@@ -25,6 +29,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.1
         purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-r0
         - 1.1.0-r1
@@ -49,6 +57,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-36
         purl: pkg:deb/dhi/druid-36
+      ranges:
+        - events:
+            - introduced: 36.0.0-0
+          type: ECOSYSTEM
       versions:
         - 36.0.0-0
         - 36.0.0-1
@@ -90,6 +102,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-36-fips
         purl: pkg:deb/dhi/druid-36-fips
+      ranges:
+        - events:
+            - introduced: 36.0.0-1
+          type: ECOSYSTEM
       versions:
         - 36.0.0-1
         - 36.0.0-10
@@ -130,6 +146,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-37
         purl: pkg:deb/dhi/druid-37
+      ranges:
+        - events:
+            - introduced: 37.0.0-0
+          type: ECOSYSTEM
       versions:
         - 37.0.0-0
         - 37.0.0-1
@@ -170,6 +190,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-37-fips
         purl: pkg:deb/dhi/druid-37-fips
+      ranges:
+        - events:
+            - introduced: 37.0.0-1
+          type: ECOSYSTEM
       versions:
         - 37.0.0-1
         - 37.0.0-10
@@ -209,6 +233,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.0
         purl: pkg:deb/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-0
         - 1.0.1-1
@@ -230,6 +258,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.1
         purl: pkg:deb/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-0
         - 1.1.0-1
@@ -253,7 +285,7 @@ affected:
         - 1.1.0-9
 details: "### From the reporter\n\n> `XmlParser` is vulnerable to XML external entity (XXE) vulnerability.\n>  XmlParser is being used when parsing Jetty’s xml configuration files. An attacker might exploit\n> this vulnerability in order to achieve SSRF or cause a denial of service.\n> One possible scenario is importing a (remote) malicious WAR into a Jetty’s server, while the\n> WAR includes a malicious web.xml.\n\n### Impact\nThere are no circumstances in a normally deployed Jetty server where potentially hostile XML is given to the XmlParser class without the attacker already having arbitrary access to the server. I.e. in order to exploit `XmlParser` the attacker would already have the ability to deploy and execute hostile code.  Specifically, Jetty has no protection against malicious web application and potentially hostile web applications should only be run on an isolated virtualisation.  \n\nThus this is not considered a vulnerability of the Jetty server itself, as any such usage of the jetty XmlParser is equally vulnerable as a direct usage of the JVM supplied SAX parser.  No CVE will be allocated to this advisory.\n\nHowever, any direct usage of the `XmlParser` class by an application may be vulnerable.  The impact would greatly depend on how the application uses `XmlParser`, but it could be a denial of service due to large entity expansion, or possibly the revealing local files if the XML results are accessible remotely.\n\n### Patches\nAbility to configure the SAXParserFactory to fit the needs of your particular XML parser implementation have been merged as part of PR #10067\n\n### Workarounds\nDon't use Jetty's `XmlParser` to parse data from users."
 id: DHI-zjs3-zm7u-bydv-md7w
-modified: "2026-11-22T23:21:29Z"
+modified: "2026-11-23T18:10:08Z"
 published: "2026-11-10T11:22:46Z"
 references:
     - type: ADVISORY

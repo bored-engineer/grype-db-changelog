@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-2
         purl: pkg:deb/dhi/langfuse-2
+      ranges:
+        - events:
+            - introduced: 2.95.12-0
+          type: ECOSYSTEM
       versions:
         - 2.95.12-0
         - 2.95.12-1
@@ -27,6 +31,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-3
         purl: pkg:deb/dhi/langfuse-3
+      ranges:
+        - events:
+            - introduced: 3.225.0-0
+          type: ECOSYSTEM
       versions:
         - 3.225.0-0
         - 3.225.0-1
@@ -58,7 +66,7 @@ affected:
         - 3.227.1-2
 details: Webpack is a module bundler. From version 5.49.0 to before 5.104.1, when experiments.buildHttp is enabled, webpack’s HTTP(S) resolver (HttpUriPlugin) can be bypassed to fetch resources from hosts outside allowedUris by using crafted URLs that include userinfo (username:password@host). If allowedUris enforcement relies on a raw string prefix check (e.g., uri.startsWith(allowed)), a URL that looks allow-listed can pass validation while the actual network request is sent to a different authority/host after URL parsing. This is a policy/allow-list bypass that enables build-time SSRF behavior (outbound requests from the build machine to internal-only endpoints, depending on network access) and untrusted content inclusion (the fetched response is treated as module source and bundled). This issue has been patched in version 5.104.1.
 id: DHI-l6g2-3h6j-fh4i-hnvl
-modified: "2026-11-16T17:29:49Z"
+modified: "2026-11-23T21:30:17Z"
 published: "2026-11-11T16:09:05Z"
 references:
     - type: ADVISORY

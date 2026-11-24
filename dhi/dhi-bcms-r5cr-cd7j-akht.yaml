@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: kubectl
         purl: pkg:apk/dhi/kubectl
+      ranges:
+        - events:
+            - introduced: 1.33.7-r0
+          type: ECOSYSTEM
       versions:
         - 1.33.10-r0
         - 1.33.10-r1
@@ -68,6 +72,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: kubectl-1.33
         purl: pkg:apk/dhi/kubectl-1.33
+      ranges:
+        - events:
+            - introduced: 1.33.13-r1
+          type: ECOSYSTEM
       versions:
         - 1.33.13-r1
         - 1.33.13-r10
@@ -89,6 +97,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: kubectl-1.33-dev
         purl: pkg:apk/dhi/kubectl-1.33-dev
+      ranges:
+        - events:
+            - introduced: 1.33.13-r1
+          type: ECOSYSTEM
       versions:
         - 1.33.13-r1
         - 1.33.13-r10
@@ -110,6 +122,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: kubectl-1.33-fips
         purl: pkg:apk/dhi/kubectl-1.33-fips
+      ranges:
+        - events:
+            - introduced: 1.33.13-r1
+          type: ECOSYSTEM
       versions:
         - 1.33.13-r1
         - 1.33.13-r10
@@ -131,6 +147,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: kubectl-1.33-fips-dev
         purl: pkg:apk/dhi/kubectl-1.33-fips-dev
+      ranges:
+        - events:
+            - introduced: 1.33.13-r1
+          type: ECOSYSTEM
       versions:
         - 1.33.13-r1
         - 1.33.13-r10
@@ -152,6 +172,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: kubectl-dev
         purl: pkg:apk/dhi/kubectl-dev
+      ranges:
+        - events:
+            - introduced: 1.33.12-r0
+          type: ECOSYSTEM
       versions:
         - 1.33.12-r0
         - 1.33.12-r1
@@ -191,6 +215,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: kubectl-fips
         purl: pkg:apk/dhi/kubectl-fips
+      ranges:
+        - events:
+            - introduced: 1.33.7-r0
+          type: ECOSYSTEM
       versions:
         - 1.33.10-r0
         - 1.33.10-r1
@@ -253,6 +281,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: kubectl-fips-dev
         purl: pkg:apk/dhi/kubectl-fips-dev
+      ranges:
+        - events:
+            - introduced: 1.33.12-r0
+          type: ECOSYSTEM
       versions:
         - 1.33.12-r0
         - 1.33.12-r1
@@ -288,7 +320,7 @@ affected:
         - 1.36.2-r0
 details: runc is a CLI tool for spawning and running containers according to the OCI specification. In versions 1.2.7, 1.3.2 and 1.4.0-rc.2, an attacker can trick runc into misdirecting writes to /proc to other procfs files through the use of a racing container with shared mounts (we have also verified this attack is possible to exploit using a standard Dockerfile with docker buildx build as that also permits triggering parallel execution of containers with custom shared mounts configured). This redirect could be through symbolic links in a tmpfs or theoretically other methods such as regular bind-mounts. While similar, the mitigation applied for the related CVE, CVE-2019-19921, was fairly limited and effectively only caused runc to verify that when LSM labels are written they are actually procfs files. This issue is fixed in versions 1.2.8, 1.3.3, and 1.4.0-rc.3.
 id: DHI-bcms-r5cr-cd7j-akht
-modified: "2026-11-17T17:48:06Z"
+modified: "2026-11-23T20:40:10Z"
 published: "2026-11-13T16:59:06Z"
 references:
     - type: ADVISORY

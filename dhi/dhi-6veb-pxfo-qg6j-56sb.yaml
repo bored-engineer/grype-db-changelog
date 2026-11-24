@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ros-jazzy
         purl: pkg:apk/dhi/ros-jazzy
+      ranges:
+        - events:
+            - introduced: 20260618-r0
+          type: ECOSYSTEM
       versions:
         - 20260618-r0
         - 20260618-r1
@@ -15,6 +19,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ros-jazzy-dev
         purl: pkg:apk/dhi/ros-jazzy-dev
+      ranges:
+        - events:
+            - introduced: 20260618-r0
+          type: ECOSYSTEM
       versions:
         - 20260618-r0
         - 20260618-r1
@@ -24,6 +32,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ros-lyrical
         purl: pkg:apk/dhi/ros-lyrical
+      ranges:
+        - events:
+            - introduced: 20260807-r0
+          type: ECOSYSTEM
       versions:
         - 20260807-r0
         - 20260807-r1
@@ -33,6 +45,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ros-lyrical-dev
         purl: pkg:apk/dhi/ros-lyrical-dev
+      ranges:
+        - events:
+            - introduced: 20260807-r0
+          type: ECOSYSTEM
       versions:
         - 20260807-r0
         - 20260807-r1
@@ -42,6 +58,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ros-jazzy
         purl: pkg:deb/dhi/ros-jazzy
+      ranges:
+        - events:
+            - introduced: 20260618-0
+          type: ECOSYSTEM
       versions:
         - 20260618-0
         - 20260618-1
@@ -52,6 +72,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ros-jazzy-dev
         purl: pkg:deb/dhi/ros-jazzy-dev
+      ranges:
+        - events:
+            - introduced: 20260618-0
+          type: ECOSYSTEM
       versions:
         - 20260618-0
         - 20260618-1
@@ -62,6 +86,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ros-lyrical
         purl: pkg:deb/dhi/ros-lyrical
+      ranges:
+        - events:
+            - introduced: 20260807-0
+          type: ECOSYSTEM
       versions:
         - 20260807-0
         - 20260807-1
@@ -72,6 +100,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ros-lyrical-dev
         purl: pkg:deb/dhi/ros-lyrical-dev
+      ranges:
+        - events:
+            - introduced: 20260807-0
+          type: ECOSYSTEM
       versions:
         - 20260807-0
         - 20260807-1
@@ -82,7 +114,7 @@ database_specific:
         - legacy_package_image_owner
 details: jaraco.context, an open-source software package that provides some useful decorators and context managers, has a Zip Slip path traversal vulnerability in the `jaraco.context.tarball()` function starting in version 5.2.0 and prior to version 6.1.0. The vulnerability may allow attackers to extract files outside the intended extraction directory when malicious tar archives are processed. The strip_first_component filter splits the path on the first `/` and extracts the second component, while allowing `../` sequences. Paths like `dummy_dir/../../etc/passwd` become `../../etc/passwd`. Note that this suffers from a nested tarball attack as well with multi-level tar files such as `dummy_dir/inner.tar.gz`, where the inner.tar.gz includes a traversal `dummy_dir/../../config/.env` that also gets translated to `../../config/.env`. Version 6.1.0 contains a patch for the issue.
 id: DHI-6veb-pxfo-qg6j-56sb
-modified: "2026-11-21T14:18:22Z"
+modified: "2026-11-23T14:54:33Z"
 published: "2026-11-19T22:11:01Z"
 references:
     - type: ADVISORY
