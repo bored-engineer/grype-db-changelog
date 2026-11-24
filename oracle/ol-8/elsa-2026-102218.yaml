@@ -1,0 +1,264 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [4.18.0-553.189.1]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.3
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34750652]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985772]
+
+        [4.18.0-553.189.1]
+        - mm/swapfile: really fix integer overflow in swap_show() and swapon() (Oleksandr Natalenko) [RHEL-302561]
+        - mm/gup: check for overflow when converting nr_pages to bytes in GUP-fast (CKI Backport Bot) [RHEL-312402] {CVE-2026-99661}
+        - lockd: fix vfs_test_lock() calls (Olga Kornievskaia) [RHEL-304667]
+        - uio: Fix stale info pointer in failed registration path (CKI Backport Bot) [RHEL-292797] {CVE-2026-93054}
+        - ALSA: caiaq: fix out-of-bounds read in the Traktor Kontrol S4 input parser (CKI Backport Bot) [RHEL-284690] {CVE-2026-64487}
+
+        [4.18.0-553.188.1]
+        - scsi: target: Verify the iSCSI ISID is null-terminated (Maurizio Lombardi) [RHEL-272155] {CVE-2026-72084}
+        - scsi: target: Bound PR-OUT TransportID parsing to the received buffer (Maurizio Lombardi) [RHEL-272155] {CVE-2026-72084}
+        - scsi: target: core: Generate correct identifiers for PR OUT transport IDs (Maurizio Lombardi) [RHEL-272155]
+        - tcp: prevent collapsing skbs across boundary in rtx queue (Prasenjit Mukherjee) [RHEL-301498] {CVE-2026-98549}
+        - inet: reject unhashed sockets during established lookups (Prasenjit Mukherjee) [RHEL-304788] {CVE-2026-99288}
+        - tracing: Save the event file instead of the compatible histogram (Jerome Marchand) [RHEL-299208] {CVE-2026-99235}
+        - RDMA/mad: Fix receive buffer leak when PKey enforcement fails (Kamal Heib) [RHEL-296076] {CVE-2026-98354}
+        - IB/mad: Drop unmatched RMPP responses before reassembly (Kamal Heib) [RHEL-296076] {CVE-2026-68425}
+        - RDMA/cma: Fix kmemleak in rdma_core observed during blktests nvme/rdma use siw (Kamal Heib) [RHEL-296076] {CVE-2024-38539}
+        - RDMA/restrack: Fix potential invalid address access (Kamal Heib) [RHEL-296076] {CVE-2024-42080}
+        - IB/core: Implement a limit on UMAD receive List (Kamal Heib) [RHEL-296076] {CVE-2024-42145}
+        - IB/core: Fix ib_cache_setup_one error flow cleanup (Kamal Heib) [RHEL-296076] {CVE-2024-47693}
+        - RDMA/mad: Improve handling of timed out WRs of mad agent (Kamal Heib) [RHEL-296076] {CVE-2024-50095}
+        - RDMA/uverbs: Prevent integer overflow issue (Kamal Heib) [RHEL-296076] {CVE-2024-57890}
+        - RDMA/core: Don't expose hw_counters outside of init net namespace (Kamal Heib) [RHEL-296076] {CVE-2025-22089}
+        - RDMA/cma: Fix hang when cma_netevent_callback fails to queue_work (Kamal Heib) [RHEL-296076]
+        - RDMA/cma: Fix workqueue crash in cma_netevent_work_handler (Kamal Heib) [RHEL-296076] {CVE-2025-37772}
+        - RDMA/core: Check for the presence of LS_NLA_TYPE_DGID correctly (Kamal Heib) [RHEL-296076] {CVE-2025-71096}
+        - RDMA/cm: Fix leaking the multicast GID table reference (Kamal Heib) [RHEL-296076] {CVE-2025-71084}
+        - RDMA/core: Prefer NLA_NUL_STRING (Kamal Heib) [RHEL-296076] {CVE-2026-63860}
+        - RDMA/ucma: Lock the handler in ucma_set_ib_path() (Kamal Heib) [RHEL-296076] {CVE-2026-89508}
+        - RDMA/core: Wait for RCU callbacks before unloading ib_core (Kamal Heib) [RHEL-296076] {CVE-2026-93110}
+        - RDMA/nldev: validate dynamic counter attribute length (Kamal Heib) [RHEL-296076] {CVE-2026-92523}
+        - RDMA/core: Fix use after free in ib_query_qp() (Kamal Heib) [RHEL-296076] {CVE-2026-92512}
+        - RDMA/core: Fix potential use after free in ib_destroy_cq_user() (Kamal Heib) [RHEL-292811 RHEL-296076] {CVE-2026-92511}
+        - RDMA/core: Fix potential use after free in ib_destroy_srq_user() (Kamal Heib) [RHEL-296076] {CVE-2026-92510}
+        - RDMA/core: Fix potential use after free in ib_free_cq() (Kamal Heib) [RHEL-292846 RHEL-296076] {CVE-2026-92508}
+        - RDMA/core: Add rdma_restrack_begin/abort/commit_del() operations (Kamal Heib) [RHEL-296076]
+        - RDMA/nldev: Fix locking when accessing mr->pd (Kamal Heib) [RHEL-296076] {CVE-2026-74334}
+        - RDMA/restrack: Fix typos in the comments (Kamal Heib) [RHEL-296076]
+        - RDMA/core: Fix potential use after free in ib_dealloc_pd_user() (Kamal Heib) [RHEL-296076] {CVE-2026-92507}
+        - RDMA/cma: Fix WARNING in res_to_rt (Kamal Heib) [RHEL-296076] {CVE-2026-90218}
+        - RDMA/counter: Fix num_counters leak on bind_qp failure in alloc_and_bind() (Kamal Heib) [RHEL-296076] {CVE-2026-97477}
+        - RDMA/core: Fix potential use after free in counter_release() (Kamal Heib) [RHEL-296076] {CVE-2026-98359}
+        - RDMA/ucma: Serialize join and leave on copy_to_user failure (Kamal Heib) [RHEL-296076] {CVE-2026-98253}
+        - RDMA/core: fix refcount bug in iwpm_get_nlmsg_request() (Kamal Heib) [RHEL-296076] {CVE-2026-98252}
+        - IB/isert: post the full-feature receive buffers after session registration (Kamal Heib) [RHEL-289994] {CVE-2026-90293}
+        - RDMA/srp: bound SRP_RSP sense copy by the received length (Kamal Heib) [RHEL-289994] {CVE-2026-53186}
+        - RDMA/srpt: fix integer overflow in immediate data length check (Kamal Heib) [RHEL-283415 RHEL-289994] {CVE-2026-74394}
+        - RDMA/ipoib: Drain RCU callbacks during module teardown (Kamal Heib) [RHEL-289994] {CVE-2026-93108}
+        - RDMA/core: Wait for RCU callbacks before unloading ib_core (Kamal Heib) [RHEL-289994]
+        - IB/isert: reject PDUs declaring more data than was received (Kamal Heib) [RHEL-285577 RHEL-289994] {CVE-2026-90414}
+        - IB/isert: reject login PDUs declaring more data than was received (Kamal Heib) [RHEL-289994 RHEL-292916] {CVE-2026-90413}
+        - RDMA/srp: fix heap information leak on a truncated SRP_CRED_REQ (Kamal Heib) [RHEL-289994] {CVE-2026-90307}
+        - IB/isert: delay the final Login Response until the session is registered (Kamal Heib) [RHEL-282881 RHEL-289994] {CVE-2026-90294}
+        - RDMA/srpt: Fix srpt_alloc_rw_ctxs() unwind counters (Kamal Heib) [RHEL-289994] {CVE-2026-100075}
+        - IB/iser: reject a remote invalidation of an unregistered direction (Kamal Heib) [RHEL-289994] {CVE-2026-98358}
+        - IB/isert: wait for deferred control PDU completions before releasing the connection (Kamal Heib) [RHEL-289994] {CVE-2026-98357}
+        - IB/IPoIB: Avoid restoring OPER_UP after multicast flush (Kamal Heib) [RHEL-289994] {CVE-2026-98347}
+    FixedIn:
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: bpftool
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:8
+          Version: 0:4.18.0-553.189.1.el8_10
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-102218.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-64487.html
+              Name: CVE-2026-64487
+            - Link: https://linux.oracle.com/cve/CVE-2026-72084.html
+              Name: CVE-2026-72084
+            - Link: https://linux.oracle.com/cve/CVE-2026-74394.html
+              Name: CVE-2026-74394
+            - Link: https://linux.oracle.com/cve/CVE-2026-90294.html
+              Name: CVE-2026-90294
+            - Link: https://linux.oracle.com/cve/CVE-2026-90413.html
+              Name: CVE-2026-90413
+            - Link: https://linux.oracle.com/cve/CVE-2026-90414.html
+              Name: CVE-2026-90414
+            - Link: https://linux.oracle.com/cve/CVE-2026-92508.html
+              Name: CVE-2026-92508
+            - Link: https://linux.oracle.com/cve/CVE-2026-92511.html
+              Name: CVE-2026-92511
+            - Link: https://linux.oracle.com/cve/CVE-2026-93054.html
+              Name: CVE-2026-93054
+            - Link: https://linux.oracle.com/cve/CVE-2026-98549.html
+              Name: CVE-2026-98549
+            - Link: https://linux.oracle.com/cve/CVE-2026-99235.html
+              Name: CVE-2026-99235
+            - Link: https://linux.oracle.com/cve/CVE-2026-99288.html
+              Name: CVE-2026-99288
+            - Link: https://linux.oracle.com/cve/CVE-2026-99661.html
+              Name: CVE-2026-99661
+        Issued: "2026-11-23"
+        RefId: ELSA-2026-102218
+    Name: ELSA-2026-102218
+    NamespaceName: ol:8
+    Severity: High
