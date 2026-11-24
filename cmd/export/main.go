@@ -197,13 +197,13 @@ func export(ctx context.Context, provider string, ref name.Reference, fallbackTi
 		return fmt.Errorf("(v1.Image).Layers unexpected length: %d", len(layers))
 	}
 
-	rc, err := layers[0].Uncompressed()
+	rc, closer, err := layerReader(ctx, ref.Context(), layers[0])
 	if err != nil {
-		return fmt.Errorf("(v1.Layer).Uncompressed failed: %w", err)
+		return fmt.Errorf("opening the layer failed: %w", err)
 	}
 	defer func() {
-		if err := rc.Close(); err != nil {
-			log.Printf("(io.ReadCloser).Close failed: %v", err)
+		if err := closer.Close(); err != nil {
+			log.Printf("(io.Closer).Close failed: %v", err)
 		}
 	}()
 
@@ -255,6 +255,11 @@ func export(ctx context.Context, provider string, ref name.Reference, fallbackTi
 			// Deliberately ignored: provider/input/* (raw upstream mirror,
 			// can be multi-GB), provider/checksums, provider/results/observed-fix-dates.db.
 		}
+	}
+	// Read to the very end - past the tar trailer and any padding - so
+	// the blob's digest gets verified before anything is committed.
+	if _, err := io.Copy(io.Discard, rc); err != nil {
+		return fmt.Errorf("reading the rest of the layer failed: %w", err)
 	}
 	committerTime := meta.Timestamp
 	if committerTime.IsZero() {
