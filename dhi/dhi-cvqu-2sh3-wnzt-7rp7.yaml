@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: rust
         purl: pkg:apk/dhi/rust
+      ranges:
+        - events:
+            - introduced: 1.91.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.91.1-r0
         - 1.91.1-r2
@@ -27,9 +31,43 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: static-web-server-2
+        purl: pkg:apk/dhi/static-web-server-2
+      ranges:
+        - events:
+            - introduced: 2.44.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.44.1-r0
+        - 2.44.2-r0
+        - 2.44.3-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: static-web-server-2
+        purl: pkg:deb/dhi/static-web-server-2
+      ranges:
+        - events:
+            - introduced: 2.44.1-0
+          type: ECOSYSTEM
+      versions:
+        - 2.44.1-0
+        - 2.44.2-0
+        - 2.44.3-0
+        - 2.44.3-1
+        - 2.44.3-2
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18
         purl: pkg:deb/dhi/teleport-18
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -54,12 +92,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-dev
         purl: pkg:deb/dhi/teleport-18-dev
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -84,12 +128,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-fips
         purl: pkg:deb/dhi/teleport-18-fips
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -114,12 +164,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-fips-dev
         purl: pkg:deb/dhi/teleport-18-fips-dev
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -144,12 +200,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: vector
         purl: pkg:deb/dhi/vector
+      ranges:
+        - events:
+            - introduced: 0.58.0-0
+          type: ECOSYSTEM
       versions:
         - 0.58.0-0
         - 0.59.0-0
@@ -157,10 +219,7 @@ affected:
         - 0.61.0-0
         - 0.62.0-0
         - 0.62.0-1
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
+        - 0.62.0-2
 details: |-
     The build script of `libz-sys` version <= 1.1.30 prints the full environment
     of the build, including any secrets it contains, to its stdout when compiled
@@ -211,7 +270,7 @@ details: |-
     [target/build directory](https://doc.rust-lang.org/nightly/cargo/reference/build-cache.html#build-cache),
     and consider rotating those secrets.
 id: DHI-cvqu-2sh3-wnzt-7rp7
-modified: "2026-11-21T00:25:17Z"
+modified: "2026-11-23T23:21:33Z"
 published: "2026-11-20T01:49:34Z"
 references:
     - type: ADVISORY

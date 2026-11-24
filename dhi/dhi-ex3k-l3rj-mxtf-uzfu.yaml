@@ -5,12 +5,20 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openjpeg2
         purl: pkg:deb/dhi/openjpeg2
-      versions:
-        - 2.5.3-2.1~deb13u2+dhi2
-        - 2.5.3-2.1~deb13u2+dhi3
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 2.5.3-2.1~deb13u2+dhi0
+          events:
+            - fixed: 2.5.3-2.1~deb13u2+dhi0
+            - introduced: "0"
+          type: ECOSYSTEM
 details: An integer overflow vulnerability was found in tiftoimage function in openjpeg 2.1.2, resulting in heap buffer overflow.
 id: DHI-ex3k-l3rj-mxtf-uzfu
-modified: "2026-11-12T21:12:35Z"
+modified: "2026-11-23T23:05:57Z"
 published: "2026-11-10T15:43:07Z"
 references:
     - type: ADVISORY

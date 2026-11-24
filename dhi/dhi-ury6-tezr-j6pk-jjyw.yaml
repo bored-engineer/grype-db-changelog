@@ -5,11 +5,15 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libpcap
         purl: pkg:deb/dhi/libpcap
+      ranges:
+        - events:
+            - introduced: 1.10.5-2+dhi2
+          type: ECOSYSTEM
       versions:
         - 1.10.5-2+dhi2
 details: The rpcap client code that processes a RPCAP_MSG_PACKET message received from the server incorrectly validates its headers.  A malicious server can send a crafted message and cause the client to treat up to 20 bytes of the client process memory beyond the end of the buffer as if it was a part of the captured packet.
 id: DHI-ury6-tezr-j6pk-jjyw
-modified: "2026-11-10T13:36:32Z"
+modified: "2026-11-23T15:20:36Z"
 published: "2026-11-10T13:36:32Z"
 references:
     - type: ADVISORY

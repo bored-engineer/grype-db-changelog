@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: postman-mcp
         purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-r0
         - 2.11.1-r0
@@ -29,6 +33,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: supabase-storage
         purl: pkg:apk/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-r0
         - 1.74.1-r1
@@ -66,12 +74,18 @@ affected:
         - 1.98.2-r0
         - 1.98.4-r0
         - 1.98.5-r0
+        - 1.98.6-r0
+        - 1.98.7-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-2
         purl: pkg:deb/dhi/langfuse-2
+      ranges:
+        - events:
+            - introduced: 2.95.12-0
+          type: ECOSYSTEM
       versions:
         - 2.95.12-0
         - 2.95.12-1
@@ -93,6 +107,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: litellm
         purl: pkg:deb/dhi/litellm
+      ranges:
+        - events:
+            - introduced: 1.95.0-0
+          type: ECOSYSTEM
       versions:
         - 1.100.0-0
         - 1.100.1-0
@@ -134,6 +152,7 @@ affected:
         - 1.110.1-0
         - 1.110.2-0
         - 1.110.2-1
+        - 1.110.2-2
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -151,6 +170,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: opensearch-dashboards
         purl: pkg:deb/dhi/opensearch-dashboards
+      ranges:
+        - events:
+            - introduced: 3.8.0-0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-0
         - 3.10.0-1
@@ -171,6 +194,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: postman-mcp
         purl: pkg:deb/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.1-0
@@ -196,6 +223,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: supabase-storage
         purl: pkg:deb/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-0
         - 1.79.30-0
@@ -234,13 +265,15 @@ affected:
         - 1.98.2-0
         - 1.98.4-0
         - 1.98.5-0
+        - 1.98.6-0
+        - 1.98.7-0
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.5.1, the Address6 isLinkLocal method in src/ipv6.ts recognizes only fe80::/64 instead of the complete fe80::/10 IPv6 link-local range. An attacker-controlled address elsewhere in fe80::/10 can therefore pass a trust-boundary check that relies on isLinkLocal. The same address is identified as link-local by getType and getScope, exposing the inconsistent classification. A successful bypass can reach an on-link host outside the intended trust boundary. This issue is fixed in version 10.5.1.
 id: DHI-a3yi-4bir-byef-zz2t
-modified: "2026-11-21T14:18:35Z"
+modified: "2026-11-23T23:20:35Z"
 published: "2026-11-20T01:49:34Z"
 references:
     - type: ADVISORY

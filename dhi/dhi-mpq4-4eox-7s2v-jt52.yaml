@@ -5,17 +5,23 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: sqlite
         purl: pkg:apk/dhi/sqlite
+      ranges:
+        - events:
+            - introduced: 3.51.1-r0
+          type: ECOSYSTEM
       versions:
         - 3.51.1-r0
+        - 3.51.2
         - 3.51.2-r0
         - 3.53.4-r0
+        - 3.53.4-r1
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: SQLite before 3.54.0 built with FTS5 contains a heap buffer overflow in fts5DoSecureDelete() that allows attackers to write past the leaf page buffer via crafted footer key offsets. Attackers can supply a database file with a corrupted FTS5 index that, when deleted from with secure-delete enabled, corrupts heap memory and crashes the application.
 id: DHI-mpq4-4eox-7s2v-jt52
-modified: "2026-11-20T05:30:27Z"
+modified: "2026-11-23T20:49:00Z"
 published: "2026-11-19T22:00:30Z"
 references:
     - type: ADVISORY

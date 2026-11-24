@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: nsd
         purl: pkg:apk/dhi/nsd
+      ranges:
+        - events:
+            - introduced: 4.14.2-r0
+          type: ECOSYSTEM
       versions:
         - 4.14.2-r0
         - 4.14.3-r0
@@ -12,7 +16,7 @@ affected:
         - 4.15.1-r3
 details: If NSD is configured as secondary for a zone, the primary of that zone can crash NSD with an AXFR containing a DNS message with a special crafted SVCB RR with an rdata size of 65512, that let's an (uint16_t) variable that is used to allocate space needed for the RR wrap (because total size > 65535), causing a heap overflow. The attacker can perform a controlled (RCE class) head write of up to 65509 bytes
 id: DHI-qn3x-z3a5-xmef-gow3
-modified: "2026-11-11T19:29:18Z"
+modified: "2026-11-23T22:05:59Z"
 published: "2026-11-11T19:29:18Z"
 references:
     - type: ADVISORY

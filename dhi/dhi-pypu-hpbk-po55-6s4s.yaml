@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: postman-mcp
         purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-r0
         - 2.11.1-r0
@@ -29,6 +33,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: supabase-storage
         purl: pkg:apk/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-r0
         - 1.74.1-r1
@@ -66,12 +74,18 @@ affected:
         - 1.98.2-r0
         - 1.98.4-r0
         - 1.98.5-r0
+        - 1.98.6-r0
+        - 1.98.7-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: litellm
         purl: pkg:deb/dhi/litellm
+      ranges:
+        - events:
+            - introduced: 1.95.0-0
+          type: ECOSYSTEM
       versions:
         - 1.100.0-0
         - 1.100.1-0
@@ -113,6 +127,7 @@ affected:
         - 1.110.1-0
         - 1.110.2-0
         - 1.110.2-1
+        - 1.110.2-2
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -130,6 +145,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: opensearch-dashboards
         purl: pkg:deb/dhi/opensearch-dashboards
+      ranges:
+        - events:
+            - introduced: 3.8.0-0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-0
         - 3.10.0-1
@@ -150,6 +169,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: postman-mcp
         purl: pkg:deb/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.1-0
@@ -175,6 +198,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: supabase-storage
         purl: pkg:deb/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-0
         - 1.79.30-0
@@ -213,13 +240,15 @@ affected:
         - 1.98.2-0
         - 1.98.4-0
         - 1.98.5-0
+        - 1.98.6-0
+        - 1.98.7-0
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. From 10.2.0 until 10.5.1, the Address6 isPrivate classifier in src/ipv6.ts does not recognize the NAT64 local-use range 64:ff9b:1::/48. Applications that combine isPrivate, isLoopback, and isLinkLocal for a trust-boundary decision can treat an internal IPv4 destination encoded through that range as external. Exploitation depends on a server network using an operator-selected NAT64 prefix within the local-use range. A successful bypass can cross the intended network trust boundary. This issue is fixed in version 10.5.1.
 id: DHI-pypu-hpbk-po55-6s4s
-modified: "2026-11-21T14:19:05Z"
+modified: "2026-11-23T23:20:52Z"
 published: "2026-11-20T01:49:54Z"
 references:
     - type: ADVISORY

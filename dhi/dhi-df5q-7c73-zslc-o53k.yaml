@@ -1,22 +1,10 @@
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: zlib
-        purl: pkg:deb/dhi/zlib
-      versions:
-        - 1:1.3.dfsg+really1.3.1-1+deb13u1+dhi0
-        - 1:1.3.dfsg+really1.3.1-1+dhi2
-        - 1:1.3.dfsg+really1.3.1-1+dhi3
-        - 1:1.3.dfsg+really1.3.1-1+dhi4
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: 'webpack-dev-middleware 5.3.4, 6.1.2 through 6.1.3, 7.1.0 before 7.4.6, and 8.0.0 before 8.3.0 contains a path traversal vulnerability in getFilenameFromUrl that bypasses the fix for CVE-2024-29180: a publicPath without a trailing slash is matched by string prefix, and the ''..'' guard runs before that prefix is stripped. Unauthenticated attackers can request a path such as /assets../secret to read files one directory above the output directory when the middleware serves from the physical filesystem through writeToDisk or a custom outputFileSystem.'
 id: DHI-df5q-7c73-zslc-o53k
-modified: "2026-11-19T22:32:30Z"
+modified: "2026-11-23T19:07:09Z"
 published: "2026-11-19T22:32:30Z"
 references:
     - type: ADVISORY
@@ -52,3 +40,4 @@ severity:
 summary: webpack-dev-middleware 5.3.4, 6.1.2 through 6.1.3, 7.1.0 before 7.4.6, and 8.0.0 before 8.3.0 contains a path traversal…
 upstream:
     - CVE-2026-76844
+withdrawn: "2026-11-23T19:07:09Z"

@@ -43,16 +43,26 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: krb5
         purl: pkg:deb/dhi/krb5
+      ranges:
+        - events:
+            - introduced: 1.21.3-5dhi0
+          type: ECOSYSTEM
       versions:
+        - 1.21.3-5+deb13u1+dhi0
         - 1.21.3-5+deb13u1+dhi1
+        - 1.21.3-5+deb13u1+dhi2
         - 1.21.3-5+deb13u1+dhi3
+        - 1.21.3-5+dhi1
+        - 1.21.3-5+dhi2
+        - 1.21.3-5dhi0
+        - 1.21.3-5dhi1
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: clean_client() in lib/rpc/svc_auth_gssapi.c in MIT Kerberos 5 (aka krb5) restarts its scan from the head of the client list after each removal, resulting in quadratic CPU cost. Remote attackers can cause a denial of service (CPU consumption in kadmind) by accumulating a large number of AUTH_GSSAPI client entries.
 id: DHI-whw4-xkco-rsnm-z46t
-modified: "2026-11-21T01:15:07Z"
+modified: "2026-11-23T20:51:49Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY

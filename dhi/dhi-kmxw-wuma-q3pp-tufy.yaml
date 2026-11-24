@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: supabase-storage
         purl: pkg:apk/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-r0
         - 1.74.1-r1
@@ -42,12 +46,18 @@ affected:
         - 1.98.2-r0
         - 1.98.4-r0
         - 1.98.5-r0
+        - 1.98.6-r0
+        - 1.98.7-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: supabase-storage
         purl: pkg:deb/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-0
         - 1.79.30-0
@@ -86,9 +96,11 @@ affected:
         - 1.98.2-0
         - 1.98.4-0
         - 1.98.5-0
+        - 1.98.6-0
+        - 1.98.7-0
 details: '@fastify/busboy is a multipart form-data parser. In versions 3.1.0 through 3.2.0, a remote unauthenticated attacker can stall the Node.js event loop by sending a multipart request whose boundary is crafted to a specific length. The vendored streaming search stores its skip table in a fixed 256 entry byte array, and a boundary of exactly 252 bytes makes the search needle 256 bytes, which truncates the default skip distance to zero and turns the search into a CPU bound loop on a small body. A single small request can keep one core busy and deny service to other requests handled by the same process. The issue is fixed in @fastify/busboy 3.2.1, which widens the skip table so the skip distance is preserved. Users should upgrade to 3.2.1.'
 id: DHI-kmxw-wuma-q3pp-tufy
-modified: "2026-11-21T07:16:39Z"
+modified: "2026-11-23T23:20:35Z"
 published: "2026-11-13T17:09:32Z"
 references:
     - type: ADVISORY

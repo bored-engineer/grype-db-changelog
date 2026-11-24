@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: zscaler-mcp
         purl: pkg:apk/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.13.1-r0
         - 0.13.3-r0
@@ -42,6 +46,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: litellm
         purl: pkg:deb/dhi/litellm
+      ranges:
+        - events:
+            - introduced: 1.95.0-0
+          type: ECOSYSTEM
       versions:
         - 1.100.0-0
         - 1.100.1-0
@@ -83,6 +91,7 @@ affected:
         - 1.110.1-0
         - 1.110.2-0
         - 1.110.2-1
+        - 1.110.2-2
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -100,6 +109,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: mcp-obsidian
         purl: pkg:deb/dhi/mcp-obsidian
+      ranges:
+        - events:
+            - introduced: 0.2.2-0
+          type: ECOSYSTEM
       versions:
         - 0.2.2-0
         - 0.2.2-1
@@ -140,6 +153,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: stackhawk-mcp
         purl: pkg:deb/dhi/stackhawk-mcp
+      ranges:
+        - events:
+            - introduced: 1.2.4-0
+          type: ECOSYSTEM
       versions:
         - 1.2.4-0
         - 1.2.4-1
@@ -166,6 +183,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: zscaler-mcp
         purl: pkg:deb/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-0
+          type: ECOSYSTEM
       versions:
         - 0.13.1-0
         - 0.13.3-0
@@ -200,7 +221,7 @@ affected:
         - 0.15.4-9
 details: HTTPX2 is a next generation HTTP client for Python. Prior to 2.11.0, Request._prepare() in src/httpx2/httpx2/_models.py can add a body-derived Content-Length header to a request that already contains a caller-supplied Transfer-Encoding header because its setdefault() processing checks each default header independently rather than treating the two framing headers as mutually exclusive. Fixed-size byte, JSON, form, and known-length multipart bodies can therefore be serialized over HTTP/1.1 with both headers, allowing request smuggling or connection desynchronization when downstream intermediaries disagree about which framing header takes precedence. This issue is fixed in version 2.11.0.
 id: DHI-ch66-gn6r-5kfv-2rkr
-modified: "2026-11-21T14:19:46Z"
+modified: "2026-11-23T21:57:47Z"
 published: "2026-11-11T19:00:00Z"
 references:
     - type: ADVISORY

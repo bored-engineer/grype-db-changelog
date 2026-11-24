@@ -2,33 +2,29 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
-        ecosystem: Docker Hardened Images:Alpine:3.23
-        name: protobuf
-        purl: pkg:apk/dhi/protobuf
-      versions:
-        - 31.1-r1
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Alpine:3.24
-        name: protobuf
-        purl: pkg:apk/dhi/protobuf
-      versions:
-        - 31.1-r1
-    - database_specific:
-        owner_kind: HSP
-      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: protobuf
         purl: pkg:deb/dhi/protobuf
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.21.12-11+deb13u1+dhi0
+          events:
+            - fixed: 3.21.12-11+deb13u1+dhi0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 3.21.12-11+deb13u1+dhi0
+        - 3.21.12-11dhi0
+        - 3.21.12-11dhi1
 details: |-
     A denial-of-service (DoS) vulnerability exists in google.protobuf.json_format.ParseDict() in Python, where the max_recursion_depth limit can be bypassed when parsing nested google.protobuf.Any messages.
 
     Due to missing recursion depth accounting inside the internal Any-handling logic, an attacker can supply deeply nested Any structures that bypass the intended recursion limit, eventually exhausting Python’s recursion stack and causing a RecursionError.
 id: DHI-cw2y-k6vi-wh76-kxvg
-modified: "2026-11-11T23:57:22Z"
+modified: "2026-11-22T21:08:26Z"
 published: "2026-11-11T23:57:22Z"
 references:
     - type: ADVISORY

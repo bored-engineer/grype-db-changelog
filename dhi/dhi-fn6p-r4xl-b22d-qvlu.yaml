@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: couchbase-mcp
         purl: pkg:apk/dhi/couchbase-mcp
+      ranges:
+        - events:
+            - introduced: 1.0.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.0-r0
         - 1.0.0-r1
@@ -35,6 +39,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: localstack
         purl: pkg:apk/dhi/localstack
+      ranges:
+        - events:
+            - introduced: 4.14.0-r0
+          type: ECOSYSTEM
       versions:
         - 4.14.0-r0
         - 4.14.0-r1
@@ -57,6 +65,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: zscaler-mcp
         purl: pkg:apk/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.13.1-r0
         - 0.13.3-r0
@@ -94,6 +106,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: couchbase-mcp
         purl: pkg:deb/dhi/couchbase-mcp
+      ranges:
+        - events:
+            - introduced: 1.0.0-0
+          type: ECOSYSTEM
       versions:
         - 1.0.0-0
         - 1.0.0-1
@@ -136,6 +152,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-actions
         purl: pkg:deb/dhi/datahub-actions
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -179,6 +199,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion
         purl: pkg:deb/dhi/datahub-ingestion
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -210,12 +234,17 @@ affected:
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
+        - 1.7.0.20-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: localstack
         purl: pkg:deb/dhi/localstack
+      ranges:
+        - events:
+            - introduced: 4.14.0-0
+          type: ECOSYSTEM
       versions:
         - 4.14.0-0
         - 4.14.0-1
@@ -242,6 +271,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: scrapegraph-mcp
         purl: pkg:deb/dhi/scrapegraph-mcp
+      ranges:
+        - events:
+            - introduced: 3.0.0-0
+          type: ECOSYSTEM
       versions:
         - 3.0.0-0
         - 3.0.0-1
@@ -269,6 +302,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: wikipedia-mcp
         purl: pkg:deb/dhi/wikipedia-mcp
+      ranges:
+        - events:
+            - introduced: 2.0.1-0
+          type: ECOSYSTEM
       versions:
         - 2.0.1-0
         - 2.0.1-1
@@ -310,6 +347,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: zscaler-mcp
         purl: pkg:deb/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-0
+          type: ECOSYSTEM
       versions:
         - 0.13.1-0
         - 0.13.3-0
@@ -344,7 +385,7 @@ affected:
         - 0.15.4-9
 details: joserfc is a Python library that provides an implementation of several JSON Object Signing and Encryption (JOSE) standards. Prior to 1.7.5, joserfc.jwe.decrypt_json() accepts a JWE General JSON Serialization recipients array without a count limit and calls decrypt_cek() for every entry. An unauthenticated attacker who can submit a JWE to an endpoint using an RSA key-management algorithm can choose the number of private-key decryption operations performed by one request. The verify_all_recipients option does not reduce this work because the affected loop processes every recipient before consulting that setting, allowing repeated requests to exhaust service CPU without affecting confidentiality or integrity. This issue is fixed in version 1.7.5.
 id: DHI-fn6p-r4xl-b22d-qvlu
-modified: "2026-11-21T14:18:35Z"
+modified: "2026-11-23T19:49:43Z"
 published: "2026-11-11T18:47:00Z"
 references:
     - type: ADVISORY

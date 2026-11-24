@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: gitlab-rails-18
         purl: pkg:apk/dhi/gitlab-rails-18
+      ranges:
+        - events:
+            - introduced: 18.11.11-r0
+          type: ECOSYSTEM
       versions:
         - 18.11.11-r0
         - 18.11.11-r1
@@ -36,6 +40,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: gitlab-rails-19
         purl: pkg:apk/dhi/gitlab-rails-19
+      ranges:
+        - events:
+            - introduced: 19.1.8-r0
+          type: ECOSYSTEM
       versions:
         - 19.1.8-r0
         - 19.1.8-r1
@@ -70,6 +78,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: gitlab-rails-18
         purl: pkg:deb/dhi/gitlab-rails-18
+      ranges:
+        - events:
+            - introduced: 18.11.11-0
+          type: ECOSYSTEM
       versions:
         - 18.11.11-0
         - 18.11.11-1
@@ -116,6 +128,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: gitlab-rails-19
         purl: pkg:deb/dhi/gitlab-rails-19
+      ranges:
+        - events:
+            - introduced: 19.1.8-0
+          type: ECOSYSTEM
       versions:
         - 19.1.8-0
         - 19.1.8-1
@@ -161,7 +177,7 @@ affected:
         - 19.6.1-2
 details: Action Pack is a framework for handling and responding to web requests. Prior to 8.1.4.1 and 8.0.5.2, ActionController::Parameters#each_key delegates to the internal ActiveSupport::HashWithIndifferentAccess that holds the request parameters, so when called with a block it returns that hash instead of the Parameters instance. The hash does not respond to permitted?, so Active Model mass assignment (new, assign_attributes, update) accepts it without raising ActiveModel::ForbiddenAttributesError. An application that passes the return value of each_key to mass assignment could allow a remote, unauthenticated attacker to set attributes that the application does not permit, such as an authorization flag. This is an incomplete fix of CVE-2020-8164, which made each, each_pair and each_value return the Parameters instance but left each_key delegated. An application is affected if it passes the return value of ActionController::Parameters#each_key, called with a block, to mass assignment. Rails itself makes no such call. This issue is fixed in versions 8.1.4.1 and 8.0.5.2.
 id: DHI-z25n-2gs2-ahnl-lsfy
-modified: "2026-11-21T14:16:36Z"
+modified: "2026-11-23T14:53:16Z"
 published: "2026-11-13T20:18:06Z"
 references:
     - type: ADVISORY

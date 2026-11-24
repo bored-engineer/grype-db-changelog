@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gnutls
         purl: pkg:apk/dhi/gnutls
+      ranges:
+        - events:
+            - introduced: 3.8.11-r0
+          type: ECOSYSTEM
       versions:
         - 3.8.11-r0
         - 3.8.12-r0
@@ -16,11 +20,25 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: gnutls28
         purl: pkg:deb/dhi/gnutls28
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.8.9-3+deb13u4+dhi2
+          events:
+            - fixed: 3.8.9-3+deb13u4+dhi2
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 3.8.9-3+deb13u4+dhi2
+        - 3.8.9-3+deb13u2dhi0
+        - 3.8.9-3+deb13u3dhi0
+        - 3.8.9-3+deb13u4+dhi0
+        - 3.8.9-3+deb13u4+dhi1
 details: A flaw was found in GnuTLS. The `gnutls_pkcs11_token_set_pin` function, used for changing the Security Officer PIN, can lead to a use-after-free vulnerability. This occurs when an attacker attempts to change the PIN with a NULL old PIN for a token that lacks a protected authentication path.
 id: DHI-fdww-kvck-uqzv-bkgf
-modified: "2026-11-21T00:23:28Z"
+modified: "2026-11-22T21:41:07Z"
 published: "2026-11-11T19:53:46Z"
 references:
     - type: ADVISORY

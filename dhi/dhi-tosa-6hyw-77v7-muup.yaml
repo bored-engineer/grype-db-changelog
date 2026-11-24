@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: redis
         purl: pkg:deb/dhi/redis
+      ranges:
+        - events:
+            - introduced: 5:8.0.2-3+deb13u2+dhi0
+          type: ECOSYSTEM
       versions:
         - 5:8.0.2-3+deb13u2+dhi0
         - 5:8.0.2-3+deb13u2+dhi1
@@ -13,7 +17,7 @@ affected:
         - 5:8.0.2-3+deb13u3+dhi1
 details: 'Redis through 8.0.3 allows memory consumption via a multi-bulk command composed of many bulks, sent by an authenticated user. This occurs because the server allocates memory for the command arguments of every bulk, even when the command is skipped because of insufficient permissions. NOTE: this is disputed by the Supplier because abuse of the commands network protocol is not a violation of the Redis Security Model.'
 id: DHI-tosa-6hyw-77v7-muup
-modified: "2026-11-10T13:53:40Z"
+modified: "2026-11-23T20:00:30Z"
 published: "2026-11-10T13:53:40Z"
 references:
     - type: ADVISORY

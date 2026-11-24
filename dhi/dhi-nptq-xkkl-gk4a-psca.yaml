@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: vector
         purl: pkg:deb/dhi/vector
+      ranges:
+        - events:
+            - introduced: 0.58.0-0
+          type: ECOSYSTEM
       versions:
         - 0.58.0-0
         - 0.59.0-0
@@ -12,17 +16,24 @@ affected:
         - 0.61.0-0
         - 0.62.0-0
         - 0.62.0-1
+        - 0.62.0-2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: ztunnel-1.29
         purl: pkg:deb/dhi/ztunnel-1.29
+      ranges:
+        - events:
+            - introduced: 1.29.7-0
+          type: ECOSYSTEM
       versions:
         - 1.29.10-0
         - 1.29.10-1
         - 1.29.10-2
         - 1.29.10-3
+        - 1.29.10-4
+        - 1.29.10-5
         - 1.29.7-0
         - 1.29.7-1
         - 1.29.8-0
@@ -34,11 +45,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ztunnel-1.29-fips
         purl: pkg:deb/dhi/ztunnel-1.29-fips
+      ranges:
+        - events:
+            - introduced: 1.29.7-0
+          type: ECOSYSTEM
       versions:
         - 1.29.10-0
         - 1.29.10-1
         - 1.29.10-2
         - 1.29.10-3
+        - 1.29.10-4
+        - 1.29.10-5
         - 1.29.7-0
         - 1.29.7-1
         - 1.29.8-0
@@ -50,6 +67,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ztunnel-1.30
         purl: pkg:deb/dhi/ztunnel-1.30
+      ranges:
+        - events:
+            - introduced: 1.30.4-0
+          type: ECOSYSTEM
       versions:
         - 1.30.4-0
         - 1.30.4-1
@@ -61,12 +82,18 @@ affected:
         - 1.30.8-1
         - 1.30.8-2
         - 1.30.8-3
+        - 1.30.8-4
+        - 1.30.8-5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: ztunnel-1.30-fips
         purl: pkg:deb/dhi/ztunnel-1.30-fips
+      ranges:
+        - events:
+            - introduced: 1.30.4-0
+          type: ECOSYSTEM
       versions:
         - 1.30.4-0
         - 1.30.4-1
@@ -78,12 +105,18 @@ affected:
         - 1.30.8-1
         - 1.30.8-2
         - 1.30.8-3
+        - 1.30.8-4
+        - 1.30.8-5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: ztunnel-1.31
         purl: pkg:deb/dhi/ztunnel-1.31
+      ranges:
+        - events:
+            - introduced: 1.31.0-0
+          type: ECOSYSTEM
       versions:
         - 1.31.0-0
         - 1.31.1-0
@@ -94,12 +127,17 @@ affected:
         - 1.31.4-1
         - 1.31.4-2
         - 1.31.4-3
+        - 1.31.4-4
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: ztunnel-1.31-fips
         purl: pkg:deb/dhi/ztunnel-1.31-fips
+      ranges:
+        - events:
+            - introduced: 1.31.0-0
+          type: ECOSYSTEM
       versions:
         - 1.31.0-0
         - 1.31.1-0
@@ -110,9 +148,10 @@ affected:
         - 1.31.4-1
         - 1.31.4-2
         - 1.31.4-3
+        - 1.31.4-4
 details: Hickory DNS hickory-proto through 0.26.0-alpha.1 and hickory-net 0.26.0-beta.1 before 0.26.2 contain an NSEC validation flaw that returns a secure proof for NXDOMAIN responses when the covering NSEC's Next Domain Name is a strict descendant of the query name, which actually proves the name exists as an empty non-terminal. On-path attackers can flip the unsigned rcode of a genuine signed NODATA response from NOERROR to NXDOMAIN, causing validators to accept forged nonexistence of the name.
 id: DHI-nptq-xkkl-gk4a-psca
-modified: "2026-11-18T09:50:14Z"
+modified: "2026-11-23T23:22:08Z"
 published: "2026-11-13T20:09:14Z"
 references:
     - type: ADVISORY

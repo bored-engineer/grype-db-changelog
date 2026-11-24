@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libkcapi
         purl: pkg:apk/dhi/libkcapi
+      ranges:
+        - events:
+            - introduced: 1.5.0-r1
+          type: ECOSYSTEM
       versions:
         - 1.5.0-r1
         - 1.5.1-r0
@@ -14,12 +18,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libkcapi
         purl: pkg:apk/dhi/libkcapi
+      ranges:
+        - events:
+            - introduced: 1.5.0-r1
+          type: ECOSYSTEM
       versions:
         - 1.5.0-r1
         - 1.5.1-r0
 details: A flaw was found in libkcapi. When performing one-shot symmetric cipher operations on large inputs (over 64 KiB) in stateful modes such as Counter (CTR) or Cipher Block Chaining (CBC), the library improperly reuses the Initialization Vector (IV) for each internal data chunk. A remote attacker could potentially exploit this by making an application that uses libkcapi process specially crafted large inputs. This can lead to a significant weakening of data confidentiality, as the repeated IV use can expose relationships in encrypted plaintext, and may also affect data integrity by causing incorrect cryptographic processing.
 id: DHI-dlnh-74q3-2jvx-hrto
-modified: "2026-11-11T19:02:16Z"
+modified: "2026-11-23T19:52:50Z"
 published: "2026-11-11T19:02:16Z"
 references:
     - type: ADVISORY

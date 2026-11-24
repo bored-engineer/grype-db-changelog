@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
@@ -17,6 +21,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
@@ -29,6 +37,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: socket-cli-2
         purl: pkg:apk/dhi/socket-cli-2
+      ranges:
+        - events:
+            - introduced: 2.1.0-r0
+          type: ECOSYSTEM
       versions:
         - 2.1.0-r0
         - 2.1.0-r1
@@ -42,6 +54,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion
         purl: pkg:deb/dhi/datahub-ingestion
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -73,12 +89,17 @@ affected:
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
+        - 1.7.0.20-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: grist
         purl: pkg:deb/dhi/grist
+      ranges:
+        - events:
+            - introduced: 1.7.17-0
+          type: ECOSYSTEM
       versions:
         - 1.7.17-0
         - 1.7.17-1
@@ -126,6 +147,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:deb/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-0
         - 4.4.5-1
@@ -138,6 +163,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:deb/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-0
         - 4.4.5-1
@@ -145,20 +174,36 @@ affected:
         - 4.4.5-3
         - 4.4.5-4
 details: |-
-    Improper Input Validation vulnerability in qs (parse modules) allows HTTP DoS.This issue affects qs: < 6.14.1.
+    Improper Input Validation vulnerability in qs (parse modules) allows HTTP DoS.
+
+    This issue affects qs: < 6.14.1.
 
 
     Summary
 
+
+
+
+
     The arrayLimit option in qs did not enforce limits for bracket notation (a[]=1&a[]=2), only for indexed notation (a[0]=1). This is a consistency bug; arrayLimit should apply uniformly across all array notations.
+
+
 
     Note: The default parameterLimit of 1000 effectively mitigates the DoS scenario originally described. With default options, bracket notation cannot produce arrays larger than parameterLimit regardless of arrayLimit, because each a[]=valueconsumes one parameter slot. The severity has been reduced accordingly.
 
     Details
 
+
+
+
+
     The arrayLimit option only checked limits for indexed notation (a[0]=1&a[1]=2) but did not enforce it for bracket notation (a[]=1&a[]=2).
 
+
+
     Vulnerable code (lib/parse.js:159-162):
+
+
 
     if (root === '[]' && options.parseArrays) {
         obj = utils.combine([], leaf);  // No arrayLimit check
@@ -168,7 +213,11 @@ details: |-
 
 
 
+
+
     Working code (lib/parse.js:175):
+
+
 
     else if (index <= options.arrayLimit) {  // Limit checked here
         obj = [];
@@ -179,11 +228,19 @@ details: |-
 
 
 
+
+
     The bracket notation handler at line 159 uses utils.combine([], leaf) without validating against options.arrayLimit, while indexed notation at line 175 checks index <= options.arrayLimit before creating arrays.
 
 
 
+
+
     PoC
+
+
+
+
 
     const qs = require('qs');
     const result = qs.parse('a[]=1&a[]=2&a[]=3&a[]=4&a[]=5&a[]=6', { arrayLimit: 5 });
@@ -193,13 +250,17 @@ details: |-
 
 
 
+
+
     Note on parameterLimit interaction: The original advisory's "DoS demonstration" claimed a length of 10,000, but parameterLimit (default: 1000) caps parsing to 1,000 parameters. With default options, the actual output is 1,000, not 10,000.
 
     Impact
 
+
+
     Consistency bug in arrayLimit enforcement. With default parameterLimit, the practical DoS risk is negligible since parameterLimit already caps the total number of parsed parameters (and thus array elements from bracket notation). The risk increases only when parameterLimit is explicitly set to a very high value.
 id: DHI-htnt-vtyy-os7d-tvfb
-modified: "2026-11-21T12:19:56Z"
+modified: "2026-11-23T19:49:43Z"
 published: "2026-11-12T00:42:35Z"
 references:
     - type: ADVISORY
@@ -244,6 +305,6 @@ severity:
       type: CVSS_V3
     - score: CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:L/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
       type: CVSS_V4
-summary: 'Improper Input Validation vulnerability in qs (parse modules) allows HTTP DoS.This issue affects qs: < 6.14.1.'
+summary: Improper Input Validation vulnerability in qs (parse modules) allows HTTP DoS.
 upstream:
     - CVE-2025-15284

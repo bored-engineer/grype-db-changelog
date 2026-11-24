@@ -5,11 +5,15 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: nmap
         purl: pkg:deb/dhi/nmap
+      ranges:
+        - events:
+            - introduced: 7.95+dfsg-3+deb13u0+dhi0
+          type: ECOSYSTEM
       versions:
         - 7.95+dfsg-3+deb13u0+dhi0
 details: Nmap versions up to and including 7.99 contains a denial of service vulnerability that allows remote attackers to crash the application by sending a crafted packet containing a zero-length TCP option. The malformed packet forces the Packet:parse_options() function in nselib/packet.lua to allocate objects in an infinite loop, causing an out-of-memory condition that results in application crash.
 id: DHI-zwo5-mk24-7nqo-2nwy
-modified: "2026-11-18T19:50:55Z"
+modified: "2026-11-23T15:20:36Z"
 published: "2026-11-18T19:50:55Z"
 references:
     - type: ADVISORY

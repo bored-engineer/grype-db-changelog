@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: squid
         purl: pkg:apk/dhi/squid
+      ranges:
+        - events:
+            - introduced: 7.3-r0
+          type: ECOSYSTEM
       versions:
         - 7.3-r0
         - 7.5-r0
@@ -15,12 +19,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: squid
         purl: pkg:apk/dhi/squid
+      ranges:
+        - events:
+            - introduced: 7.5-r0
+          type: ECOSYSTEM
       versions:
         - 7.5-r0
         - 7.6-r0
 details: 'Squid is a caching proxy for the Web. Prior to 7.6, due to an improper input validation bug in cache digest reply handling (peerDigestSwapInMask in src/peer_digest.cc), Squid is vulnerable to a heap-based buffer overflow: a cache digest''s on-the-wire size may be larger than the mask_size declared within the digest, so a trusted peer sending a maliciously crafted reply to a cache_digest request message can trigger the overflow. This attack is limited to Squid instances compiled with the --enable-cache-digests option and configured with cache_peer entries. This issue is fixed in version 7.6.'
 id: DHI-h3gy-x4jo-bloe-ashp
-modified: "2026-11-11T17:14:52Z"
+modified: "2026-11-23T17:54:26Z"
 published: "2026-11-11T17:14:52Z"
 references:
     - type: ADVISORY

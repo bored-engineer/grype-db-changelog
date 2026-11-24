@@ -5,17 +5,23 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: sqlite
         purl: pkg:apk/dhi/sqlite
+      ranges:
+        - events:
+            - introduced: 3.51.1-r0
+          type: ECOSYSTEM
       versions:
         - 3.51.1-r0
+        - 3.51.2
         - 3.51.2-r0
         - 3.53.4-r0
+        - 3.53.4-r1
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: SQLite before 3.54.0 contains a stack exhaustion vulnerability that allows attackers to bypass the SQLITE_LIMIT_EXPR_DEPTH limit by chaining COLLATE postfix operators. Attackers can supply roughly 175,000 chained COLLATE operators in SQL or an untrusted database view to trigger unbounded recursion in sqlite3WalkExprNN() and crash the process.
 id: DHI-7qnp-b4o4-k37j-umx5
-modified: "2026-11-20T21:33:24Z"
+modified: "2026-11-23T20:49:00Z"
 published: "2026-11-19T22:00:30Z"
 references:
     - type: ADVISORY

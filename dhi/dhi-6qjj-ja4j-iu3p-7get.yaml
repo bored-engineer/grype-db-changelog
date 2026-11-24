@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: binutils
         purl: pkg:deb/dhi/binutils
+      ranges:
+        - events:
+            - introduced: 2.44-3dhi1
+          type: ECOSYSTEM
       versions:
         - 2.44-3+deb13u0+dhi10
         - 2.44-3+deb13u0+dhi9
@@ -24,7 +28,7 @@ database_specific:
         - legacy_package_image_owner
 details: An issue was discovered in Binutils before 2.46. The objdump contains a denial-of-service vulnerability when processing a crafted binary with malformed debug information. A logic flaw in the handling of DWARF location list headers can cause objdump to enter an unbounded loop and produce endless output until manually interrupted. This issue affects versions prior to the upstream fix and allows a local attacker to cause excessive resource consumption by supplying a malicious input file.
 id: DHI-6qjj-ja4j-iu3p-7get
-modified: "2026-11-19T21:04:50Z"
+modified: "2026-11-23T14:53:28Z"
 published: "2026-11-19T21:04:50Z"
 references:
     - type: ADVISORY

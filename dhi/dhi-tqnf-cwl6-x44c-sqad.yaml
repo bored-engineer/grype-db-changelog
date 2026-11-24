@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: unbound
         purl: pkg:apk/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.25.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.25.1-r0
         - 1.25.2-r0
@@ -12,12 +16,17 @@ affected:
         - 1.25.2-r2
         - 1.25.2-r3
         - 1.25.2-r4
+        - 1.25.2-r5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: unbound
         purl: pkg:deb/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.22.0-2+deb13u3+dhi0
+          type: ECOSYSTEM
       versions:
         - 1.22.0-2+deb13u3+dhi0
         - 1.22.0-2+deb13u3+dhi1
@@ -25,7 +34,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: When NLnet Labs Unbound up to and including version 1.26.1 is configured with both a root trust anchor and an additional 'trust-anchor:' for an island-of-security zone whose parent is provably insecure under the root chain, a malicious actor who can deliver one forged NXDOMAIN response for a name inside the island, with the NSEC/SOA RRSIG 'SignerName' set to the insecure parent, tricks Unbound's validator to use the root trust anchor instead, and consecutively the insecure parent, thus causing that record to be treated as insecure and denying existence for records in the trust island.
 id: DHI-tqnf-cwl6-x44c-sqad
-modified: "2026-11-21T17:20:07Z"
+modified: "2026-11-23T15:49:01Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

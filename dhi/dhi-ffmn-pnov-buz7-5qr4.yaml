@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.10
         purl: pkg:apk/dhi/python-3.10
+      ranges:
+        - events:
+            - introduced: 3.10.19-r0
+          type: ECOSYSTEM
       versions:
         - 3.10.19-r0
         - 3.10.20-r0
@@ -38,6 +42,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.11
         purl: pkg:apk/dhi/python-3.11
+      ranges:
+        - events:
+            - introduced: 3.11.14-r0
+          type: ECOSYSTEM
       versions:
         - 3.11.14-r0
         - 3.11.15-r0
@@ -69,6 +77,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.12
         purl: pkg:apk/dhi/python-3.12
+      ranges:
+        - events:
+            - introduced: 3.12.12-r0
+          type: ECOSYSTEM
       versions:
         - 3.12.12-r0
         - 3.12.13-r0
@@ -100,6 +112,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.13
         purl: pkg:apk/dhi/python-3.13
+      ranges:
+        - events:
+            - introduced: 3.13.12-r0
+          type: ECOSYSTEM
       versions:
         - 3.13.12-r0
         - 3.13.12-r1
@@ -133,39 +149,27 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.14
         purl: pkg:apk/dhi/python-3.14
-      versions:
-        - 3.14.10-r0
-        - 3.14.10-r1
-        - 3.14.10-r2
-        - 3.14.10-r3
-        - 3.14.10-r4
-        - 3.14.3-r0
-        - 3.14.3-r1
-        - 3.14.4-r1
-        - 3.14.4-r2
-        - 3.14.4-r3
-        - 3.14.4-r4
-        - 3.14.4-r5
-        - 3.14.4-r6
-        - 3.14.4-r7
-        - 3.14.5-r7
-        - 3.14.5-r8
-        - 3.14.5-r9
-        - 3.14.6-r10
-        - 3.14.6-r11
-        - 3.14.6-r12
-        - 3.14.6-r9
-        - 3.14.7-r0
-        - 3.14.7-r1
-        - 3.14.7-r2
-        - 3.14.8-r0
-        - 3.14.8-r1
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 3.14.3-r0
+          events:
+            - fixed: 3.14.3-r0
+            - introduced: "0"
+          type: ECOSYSTEM
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: python-3.15
         purl: pkg:apk/dhi/python-3.15
+      ranges:
+        - events:
+            - introduced: 3.15.0-r0
+          type: ECOSYSTEM
       versions:
         - 3.15.0-r0
         - 3.15.2-r0
@@ -197,7 +201,7 @@ details: |
     `glibc bug 24111: Deprecate inet_addr, inet_aton
     <https://sourceware.org/bugzilla/show_bug.cgi?id=24111>`_.
 id: DHI-ffmn-pnov-buz7-5qr4
-modified: "2026-11-18T11:54:00Z"
+modified: "2026-11-21T04:35:45Z"
 published: "2026-11-10T01:38:28Z"
 references:
     - type: ADVISORY

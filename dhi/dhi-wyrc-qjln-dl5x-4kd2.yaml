@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: argocd-image-updater
         purl: pkg:apk/dhi/argocd-image-updater
+      ranges:
+        - events:
+            - introduced: 1.2.2-r0
+          type: ECOSYSTEM
       versions:
         - 1.2.2-r0
         - 1.2.2-r1
@@ -34,6 +38,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: argocd-image-updater-dev
         purl: pkg:apk/dhi/argocd-image-updater-dev
+      ranges:
+        - events:
+            - introduced: 1.2.2-r0
+          type: ECOSYSTEM
       versions:
         - 1.2.2-r0
         - 1.2.2-r1
@@ -63,6 +71,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: argocd-image-updater-fips
         purl: pkg:apk/dhi/argocd-image-updater-fips
+      ranges:
+        - events:
+            - introduced: 1.2.2-r0
+          type: ECOSYSTEM
       versions:
         - 1.2.2-r0
         - 1.2.2-r1
@@ -92,6 +104,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: argocd-image-updater-fips-dev
         purl: pkg:apk/dhi/argocd-image-updater-fips-dev
+      ranges:
+        - events:
+            - introduced: 1.2.2-r0
+          type: ECOSYSTEM
       versions:
         - 1.2.2-r0
         - 1.2.2-r1
@@ -121,6 +137,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: argocd-3.3
         purl: pkg:apk/dhi/argocd-3.3
+      ranges:
+        - events:
+            - introduced: 3.3.14-r1
+          type: ECOSYSTEM
       versions:
         - 3.3.14-r1
         - 3.3.14-r2
@@ -151,12 +171,17 @@ affected:
         - 3.3.19-r5
         - 3.3.19-r6
         - 3.3.19-r7
+        - 3.3.19-r8
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: argocd-3.3-dev
         purl: pkg:apk/dhi/argocd-3.3-dev
+      ranges:
+        - events:
+            - introduced: 3.3.14-r1
+          type: ECOSYSTEM
       versions:
         - 3.3.14-r1
         - 3.3.14-r2
@@ -187,12 +212,17 @@ affected:
         - 3.3.19-r5
         - 3.3.19-r6
         - 3.3.19-r7
+        - 3.3.19-r8
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: argocd-3.4
         purl: pkg:apk/dhi/argocd-3.4
+      ranges:
+        - events:
+            - introduced: 3.4.7-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.10-r0
         - 3.4.10-r1
@@ -215,6 +245,7 @@ affected:
         - 3.4.13-r6
         - 3.4.13-r7
         - 3.4.14-r0
+        - 3.4.14-r1
         - 3.4.7-r1
         - 3.4.7-r2
         - 3.4.8-r0
@@ -232,6 +263,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: argocd-3.4-dev
         purl: pkg:apk/dhi/argocd-3.4-dev
+      ranges:
+        - events:
+            - introduced: 3.4.7-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.10-r0
         - 3.4.10-r1
@@ -254,6 +289,7 @@ affected:
         - 3.4.13-r6
         - 3.4.13-r7
         - 3.4.14-r0
+        - 3.4.14-r1
         - 3.4.7-r1
         - 3.4.7-r2
         - 3.4.8-r0
@@ -271,6 +307,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: argocd-3.5
         purl: pkg:apk/dhi/argocd-3.5
+      ranges:
+        - events:
+            - introduced: 3.5.1-r1
+          type: ECOSYSTEM
       versions:
         - 3.5.1-r1
         - 3.5.1-r2
@@ -304,12 +344,17 @@ affected:
         - 3.5.7-r7
         - 3.5.7-r8
         - 3.5.8-r0
+        - 3.5.8-r1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: argocd-3.5-dev
         purl: pkg:apk/dhi/argocd-3.5-dev
+      ranges:
+        - events:
+            - introduced: 3.5.1-r1
+          type: ECOSYSTEM
       versions:
         - 3.5.1-r1
         - 3.5.1-r2
@@ -343,9 +388,10 @@ affected:
         - 3.5.7-r7
         - 3.5.7-r8
         - 3.5.8-r0
+        - 3.5.8-r1
 details: Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. From 2.10.0 until 3.3.15, 3.4.10, 3.5.4, and 3.6.0-rc2, Argo CD creates PostDelete resource hooks without applying the AppProject destination and resource authorization checks used during ordinary synchronization. The omitted checks include cluster-scoped and namespaced resource allow/deny lists. A user who can write to an Application's Git repository can commit a delete hook targeting a forbidden namespace, server, group, kind, or resource name, and deletion of the Application causes the application-controller to create that resource with its destination-cluster credentials. The reachable impact is bounded by the controller's cluster access but can include cluster-scoped resources, disallowed namespaces, persistent hook objects, and secondary objects created by a hook Job. PreSync, Sync, PostSync, and SyncFail hooks continue to use the normal project checks. This issue is fixed in versions 3.3.15, 3.4.10, 3.5.4, and 3.6.0-rc2.
 id: DHI-wyrc-qjln-dl5x-4kd2
-modified: "2026-11-21T07:24:17Z"
+modified: "2026-11-23T16:54:33Z"
 published: "2026-11-11T22:48:53Z"
 references:
     - type: ADVISORY

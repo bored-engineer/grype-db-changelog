@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
@@ -17,6 +21,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
@@ -29,6 +37,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion
         purl: pkg:deb/dhi/datahub-ingestion
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -60,12 +72,17 @@ affected:
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
+        - 1.7.0.20-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:deb/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-0
         - 4.4.5-1
@@ -78,6 +95,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:deb/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-0
         - 4.4.5-1
@@ -90,6 +111,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-2
         purl: pkg:deb/dhi/langfuse-2
+      ranges:
+        - events:
+            - introduced: 2.95.12-0
+          type: ECOSYSTEM
       versions:
         - 2.95.12-0
         - 2.95.12-1
@@ -105,13 +130,31 @@ affected:
         - 2.95.12-7
         - 2.95.12-8
         - 2.95.12-9
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: logto-1
+        purl: pkg:deb/dhi/logto-1
+      ranges:
+        - events:
+            - introduced: 1.45.0-0
+          type: ECOSYSTEM
+      versions:
+        - 1.45.0-0
+        - 1.45.0-1
+        - 1.45.0-2
+        - 1.45.0-3
+        - 1.45.0-4
+        - 1.46.0-0
+        - 1.46.0-1
+        - 1.46.0-2
+        - 1.46.0-3
+        - 1.46.0-4
+        - 1.46.0-5
 details: 'The _.unset and _.omit functions in Lodash are vulnerable to prototype pollution. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. The issue permits deletion of properties but does not allow overwriting their original behavior. The issue is patched from 4.17.23 to 4.18.0 depending on the package: lodash, lodash-es, and lodash-amd in 4.17.23, and the standalone lodash.unset and lodash.omit packages in 4.18.0.'
 id: DHI-ccnf-qugp-uwqr-fmyt
-modified: "2026-11-21T12:19:39Z"
+modified: "2026-11-23T19:49:26Z"
 published: "2026-11-19T21:02:33Z"
 references:
     - type: ADVISORY

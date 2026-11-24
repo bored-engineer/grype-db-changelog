@@ -55,14 +55,18 @@ affected:
             - introduced: "0"
           type: ECOSYSTEM
       versions:
+        - 1.21.3-5+deb13u1+dhi0
         - 1.21.3-5+deb13u1+dhi1
+        - 1.21.3-5+deb13u1+dhi2
+        - 1.21.3-5dhi0
+        - 1.21.3-5dhi1
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: The AUTH_GSSAPI handler in lib/rpc/svc_auth_gssapi.c in MIT Kerberos 5 (aka krb5) 1.5.2 and later allows remote attackers to cause a denial of service (memory exhaustion in kadmind) by sending repeated failed AUTH_GSSAPI_INIT requests. Each failed request allocates client state that is only freed after a 15-minute expiration timeout, allowing an attacker to accumulate memory faster than it is reclaimed.
 id: DHI-e5eg-3qrr-btpo-eoxi
-modified: "2026-11-22T22:31:54Z"
+modified: "2026-11-23T20:51:49Z"
 published: "2026-11-19T20:54:10Z"
 references:
     - type: ADVISORY

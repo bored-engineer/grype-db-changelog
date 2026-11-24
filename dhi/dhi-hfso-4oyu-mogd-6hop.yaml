@@ -5,40 +5,67 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - fixed: 1.8.2_git20260622-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.8.1-r0
         - 1.8.1_git20260429-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jq
         purl: pkg:apk/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2_git20260622-r1
+          events:
+            - fixed: 1.8.2_git20260622-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.8.1_git20260609-r1
         - 1.8.2-r1
-        - 1.8.2_git20260622-r1
-        - 1.8.2_git20261021-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: jq
         purl: pkg:deb/dhi/jq
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 1.8.2-1+deb13u0+dhi1
+          events:
+            - fixed: 1.8.2-1+deb13u0+dhi1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 1.7.1-6+deb13u1dhi0
         - 1.7.1-6+deb13u2+dhi0
         - 1.7.1-6+deb13u2+dhi1
         - 1.7.1-6+deb13u2dhi0
         - 1.8.1-5
-        - 1.8.2-1+deb13u0+dhi1
-        - 1.8.2-1+dhi1
 details: jq is a command-line JSON processor. Prior to 1.8.2,` jq --rawfile` can turn a handled oversized-string error into invalid-state reuse and a real heap out-of-bounds write in assertion-disabled builds. When jv_load_file(raw=1) reads an attacker-controlled file, it repeatedly appends file chunks to the same jv string accumulator. Once jv_string_append_buf() returns jv_invalid_with_msg("String too long"), the raw-file loop does not stop. If the file contains at least one more byte, the next loop iteration appends a new chunk to an object that is already invalid. With assertions enabled this aborts in jvp_string_ptr(). With assertions disabled, the invalid object is interpreted as a string object and ASan reports heap-buffer-overflow. This vulnerability is fixed in 1.8.2.
 id: DHI-hfso-4oyu-mogd-6hop
-modified: "2026-11-11T19:05:15Z"
+modified: "2026-11-23T09:48:36Z"
 published: "2026-11-11T19:05:15Z"
 references:
     - type: ADVISORY

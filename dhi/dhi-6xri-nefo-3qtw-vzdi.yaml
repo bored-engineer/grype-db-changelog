@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: cloudnative-pg-1.27
         purl: pkg:apk/dhi/cloudnative-pg-1.27
+      ranges:
+        - events:
+            - introduced: 1.27.4-r1
+          type: ECOSYSTEM
       versions:
         - 1.27.4-r1
         - 1.27.4-r10
@@ -27,6 +31,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: cloudnative-pg-1.27-dev
         purl: pkg:apk/dhi/cloudnative-pg-1.27-dev
+      ranges:
+        - events:
+            - introduced: 1.27.4-r1
+          type: ECOSYSTEM
       versions:
         - 1.27.4-r1
         - 1.27.4-r10
@@ -49,6 +57,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: cloudnative-pg-1.27-fips
         purl: pkg:apk/dhi/cloudnative-pg-1.27-fips
+      ranges:
+        - events:
+            - introduced: 1.27.4-r1
+          type: ECOSYSTEM
       versions:
         - 1.27.4-r1
         - 1.27.4-r10
@@ -71,6 +83,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: cloudnative-pg-1.27-fips-dev
         purl: pkg:apk/dhi/cloudnative-pg-1.27-fips-dev
+      ranges:
+        - events:
+            - introduced: 1.27.4-r1
+          type: ECOSYSTEM
       versions:
         - 1.27.4-r1
         - 1.27.4-r10
@@ -87,13 +103,9 @@ affected:
         - 1.27.4-r7
         - 1.27.4-r8
         - 1.27.4-r9
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
 details: CloudNativePG is a platform designed to manage PostgreSQL databases within Kubernetes environments. Prior to 1.29.1 and 1.28.3, the CloudNativePG metrics exporter opens its PostgreSQL connection as the postgres superuser via the pod-local Unix socket, then demotes the session with SET ROLE pg_monitor. SET ROLE changes only current_user; session_user remains postgres. Any SQL expression evaluated inside the scrape session can invoke RESET ROLE to recover real superuser privileges, then use COPY ... TO PROGRAM to spawn an OS-level subprocess as the postgres user inside the primary pod. The READ ONLY transaction flag does not block this; it gates writes to database state, not external processes. This vulnerability is fixed in 1.29.1 and 1.28.3.
 id: DHI-6xri-nefo-3qtw-vzdi
-modified: "2026-11-20T00:49:11Z"
+modified: "2026-11-23T17:33:03Z"
 published: "2026-11-20T00:49:11Z"
 references:
     - type: ADVISORY

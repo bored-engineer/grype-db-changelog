@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: binutils
         purl: pkg:deb/dhi/binutils
+      ranges:
+        - events:
+            - introduced: 2.44-3dhi1
+          type: ECOSYSTEM
       versions:
         - 2.44-3+deb13u0+dhi10
         - 2.44-3+deb13u0+dhi9
@@ -24,7 +28,7 @@ database_specific:
         - legacy_package_image_owner
 details: GNU Binutils thru 2.46 readelf contains a vulnerability that leads to an abort (SIGABRT) when processing a crafted ELF binary with malformed DWARF abbrev or debug information. Due to incomplete state cleanup in process_debug_info(), an invalid debug_info_p state may propagate into DWARF attribute parsing routines. When certain malformed attributes result in an unexpected data length of zero, byte_get_little_endian() triggers a fatal abort. No evidence of memory corruption or code execution was observed; the impact is limited to denial of service.
 id: DHI-xqmd-zncf-z2u7-kfkf
-modified: "2026-11-19T20:58:00Z"
+modified: "2026-11-23T14:54:03Z"
 published: "2026-11-19T20:58:00Z"
 references:
     - type: ADVISORY

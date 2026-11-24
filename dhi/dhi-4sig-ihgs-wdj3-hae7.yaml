@@ -5,13 +5,22 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: alsa-lib
         purl: pkg:deb/dhi/alsa-lib
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-09"
+                      kind: advisory
+                      version: 1.2.14-1+deb13u1+dhi0
+          events:
+            - fixed: 1.2.14-1+deb13u1+dhi0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 1.2.14-1+deb13u1+dhi0
-        - 1.2.14-1+dhi2
-        - 1.2.14-1+dhi3
+        - 1.2.14-1dhi0
 details: The Advanced Linux Sound Architecture (ALSA) library before 1.2.16.1 contains a double-free vulnerability in parse_def() in src/conf.c that allows attackers to corrupt memory by supplying maliciously crafted ALSA configuration text. When parsing nested compound or array configuration blocks, parse_def() fails to check return values before continuing, causing snd_config_delete() to be called twice on the same already-freed node, resulting in a NULL-pointer write or invalid memory read.
 id: DHI-4sig-ihgs-wdj3-hae7
-modified: "2026-11-09T20:59:56Z"
+modified: "2026-11-22T21:30:58Z"
 published: "2026-11-09T20:59:56Z"
 references:
     - type: ADVISORY

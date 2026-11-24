@@ -5,10 +5,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: sqlite
         purl: pkg:apk/dhi/sqlite
+      ranges:
+        - events:
+            - introduced: 3.51.1-r0
+          type: ECOSYSTEM
       versions:
         - 3.51.1-r0
+        - 3.51.2
         - 3.51.2-r0
         - 3.53.4-r0
+        - 3.53.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -38,7 +44,7 @@ database_specific:
         - legacy_package_image_owner
 details: SQLite before 3.53.2 contains an out-of-bounds read vulnerability in the FTS5 full-text search extension that allows attackers to crash the process by supplying a crafted database with a malformed FTS5 leaf page. Attackers can set an oversized term length in the leaf page so that fts5LeafSeek() reads past the end of the page buffer while comparing terms during an FTS5 MATCH query, in applications compiled with SQLITE_ENABLE_FTS5.
 id: DHI-d5fm-35xv-v7e5-r2uj
-modified: "2026-11-20T04:33:24Z"
+modified: "2026-11-23T20:49:00Z"
 published: "2026-11-19T02:14:14Z"
 references:
     - type: ADVISORY

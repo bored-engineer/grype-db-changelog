@@ -5,13 +5,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: dnsmasq
         purl: pkg:deb/dhi/dnsmasq
+      ranges:
+        - events:
+            - introduced: 2.91-1+deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
         - 2.91-1+deb13u1+dhi0
         - 2.91-1+deb13u2+dhi0
         - 2.91-1+deb13u2+dhi1
 details: A flaw was found in dnsmasq. The TCP DNS service uses a small fixed pool of child processes and does not set a receive timeout on client connections. A remote attacker can open idle TCP connections to port 53 and occupy the entire pool, preventing new TCP DNS connections and DNSSEC validation that requires TCP fallback. UDP DNS resolution continues, and occupied slots are released after a fixed lifetime.
 id: DHI-sxmv-l4xb-e5cg-jsxk
-modified: "2026-11-10T10:33:08Z"
+modified: "2026-11-23T15:20:36Z"
 published: "2026-11-10T10:33:08Z"
 references:
     - type: ADVISORY

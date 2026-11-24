@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -36,6 +40,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-dev
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-dev
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -67,6 +75,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-fips
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-fips
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -98,6 +110,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kyverno-policy-reporter-ui-fips-dev
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui-fips-dev
+      ranges:
+        - events:
+            - introduced: 2.6.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.1-r0
         - 2.7.0-r0
@@ -129,6 +145,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: postman-mcp
         purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-r0
         - 2.11.1-r0
@@ -153,6 +173,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: sorry-cypress-director-2
         purl: pkg:apk/dhi/sorry-cypress-director-2
+      ranges:
+        - events:
+            - introduced: 2.6.0-r0
+          type: ECOSYSTEM
       versions:
         - 2.6.0-r0
         - 2.6.0-r2
@@ -169,6 +193,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: kibana-9.4
         purl: pkg:deb/dhi/kibana-9.4
+      ranges:
+        - events:
+            - introduced: 9.4.5-1
+          type: ECOSYSTEM
       versions:
         - 9.4.5-1
         - 9.4.7-0
@@ -196,6 +224,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: kibana-9.5
         purl: pkg:deb/dhi/kibana-9.5
+      ranges:
+        - events:
+            - introduced: 9.5.5-0
+          type: ECOSYSTEM
       versions:
         - 9.5.5-0
         - 9.5.5-1
@@ -219,6 +251,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: kubeflow-pipelines-frontend
         purl: pkg:deb/dhi/kubeflow-pipelines-frontend
+      ranges:
+        - events:
+            - introduced: 2.17.0-0
+          type: ECOSYSTEM
       versions:
         - 2.17.0-0
         - 2.17.0-1
@@ -237,12 +273,39 @@ affected:
         - 2.18.0-0
         - 2.18.0-1
         - 2.18.0-2
+        - 2.18.1-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: logto-1
+        purl: pkg:deb/dhi/logto-1
+      ranges:
+        - events:
+            - introduced: 1.45.0-0
+          type: ECOSYSTEM
+      versions:
+        - 1.45.0-0
+        - 1.45.0-1
+        - 1.45.0-2
+        - 1.45.0-3
+        - 1.45.0-4
+        - 1.46.0-0
+        - 1.46.0-1
+        - 1.46.0-2
+        - 1.46.0-3
+        - 1.46.0-4
+        - 1.46.0-5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: postman-mcp
         purl: pkg:deb/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.1-0
@@ -262,13 +325,9 @@ affected:
         - 2.15.0-1
         - 2.15.0-2
         - 2.9.1-0
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
 details: Forge (also called node-forge) is a native implementation of Transport Layer Security in JavaScript. Prior to 1.4.1, node-forge did not validate the AES-GCM tagLength option passed to start() during decryption through forge.cipher.createDecipher(). When an application derived tagLength from received data or used an unset or zero-like configuration value, a value that converted to zero together with an empty or missing authentication tag caused the calculated and supplied tags to compare as empty, so decipher.finish() accepted unauthenticated ciphertext. Applications that omit tagLength to use the 128-bit default or pass a fixed valid tag length are unaffected. This issue is fixed in version 1.4.1.
 id: DHI-ahdu-awgp-lacj-fr5y
-modified: "2026-11-20T16:50:43Z"
+modified: "2026-11-23T16:13:16Z"
 published: "2026-11-20T04:20:49Z"
 references:
     - type: ADVISORY

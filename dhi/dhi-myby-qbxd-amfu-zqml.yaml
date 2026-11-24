@@ -3,20 +3,39 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
+        name: gst-plugins-bad1.0
+        purl: pkg:deb/dhi/gst-plugins-bad1.0
+      ranges:
+        - events:
+            - introduced: 1.26.2-3+deb13u3+dhi0
+          type: ECOSYSTEM
+      versions:
+        - 1.26.2-3+deb13u3+dhi0
+        - 1.26.2-3+deb13u3+dhi1
+        - 1.26.2-3+deb13u3+dhi2
+        - 1.26.2-3+deb13u3+dhi3
+        - 1.26.2-3+deb13u3+dhi4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
         name: gst-plugins-base1.0
         purl: pkg:deb/dhi/gst-plugins-base1.0
+      ranges:
+        - events:
+            - introduced: 1.26.2-1+deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
         - 1.26.2-1+deb13u1+dhi0
         - 1.26.2-1+deb13u1+dhi1
         - 1.26.2-1+deb13u1+dhi2
         - 1.26.2-1+deb13u2+dhi0
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
+        - 1.26.2-1+deb13u2+dhi1
+        - 1.26.2-1+deb13u2+dhi2
+        - 1.26.2-1+deb13u2+dhi3
 details: A flaw was found in GStreamer. An integer overflow vulnerability in the AV1 LEB128 variable-length integer parser allows a remote attacker to cause a crash in applications that process AV1 media content. By crafting a malformed AV1 bitstream containing an invalid LEB128-encoded value, an attacker can cause integer overflow in the parser, resulting in incorrect length values being used during stream processing, which can lead to a denial of service.
 id: DHI-myby-qbxd-amfu-zqml
-modified: "2026-11-19T21:24:32Z"
+modified: "2026-11-23T22:07:32Z"
 published: "2026-11-19T21:24:32Z"
 references:
     - type: ADVISORY

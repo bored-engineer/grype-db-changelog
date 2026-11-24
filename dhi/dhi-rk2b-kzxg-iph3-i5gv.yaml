@@ -5,21 +5,38 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: harfbuzz
         purl: pkg:apk/dhi/harfbuzz
+      ranges:
+        - events:
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 12.2.0-r0
         - 12.2.0-r1
+        - 12.2.0-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: harfbuzz
         purl: pkg:deb/dhi/harfbuzz
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 10.2.0-1+deb13u1+dhi1
+          events:
+            - fixed: 10.2.0-1+deb13u1+dhi1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 10.2.0-1+deb13u1+dhi1
-        - 10.2.0-1+deb13u1+dhi2
+        - 10.2.0-1+deb13u1+dhi0
+        - 10.2.0-1+deb13u1dhi0
+        - 10.2.0-1dhi0
 details: HarfBuzz is a text shaping engine. Prior to version 12.3.0, a null pointer dereference vulnerability exists in the SubtableUnicodesCache::create function located in src/hb-ot-cmap-table.hh. The function fails to check if hb_malloc returns NULL before using placement new to construct an object at the returned pointer address. When hb_malloc fails to allocate memory (which can occur in low-memory conditions or when using custom allocators that simulate allocation failures), it returns NULL. The code then attempts to call the constructor on this null pointer using placement new syntax, resulting in undefined behavior and a Segmentation Fault. This issue has been patched in version 12.3.0.
 id: DHI-rk2b-kzxg-iph3-i5gv
-modified: "2026-11-13T02:43:13Z"
+modified: "2026-11-21T01:46:21Z"
 published: "2026-11-11T17:08:43Z"
 references:
     - type: ADVISORY

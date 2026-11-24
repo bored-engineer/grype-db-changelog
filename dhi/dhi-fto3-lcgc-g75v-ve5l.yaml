@@ -5,13 +5,21 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: qtbase-opensource-src
         purl: pkg:deb/dhi/qtbase-opensource-src
+      ranges:
+        - events:
+            - introduced: 5.15.15+dfsg-6+deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
         - 5.15.15+dfsg-6+deb13u1+dhi0
         - 5.15.15+dfsg-6+deb13u1+dhi1
         - 5.15.15+dfsg-6+deb13u1+dhi2
+        - 5.15.15+dfsg-6+deb13u1+dhi3
+        - 5.15.15+dfsg-6+deb13u1+dhi4
+        - 5.15.15+dfsg-6+deb13u1+dhi5
+        - 5.15.15+dfsg-6+deb13u1+dhi6
 details: Uncontrolled recursion (CWE-674) in the QDomDocument/QDomNode serialization path of the Qt XML module (QtXml, qtbase). QDomElementPrivate::save() and QDomNodePrivate::save() recurse mutually, consuming one stack frame per level of element nesting with no depth limit, no configurable bound and no error return. A document with deeply nested elements parses successfully but exhausts the call stack and terminates the process when serialized. Reachable via QDomDocument::toByteArray() (Qt 4.0 and later), QDomDocument::toString(), QDomDocument::toCString(), QDomNode::save(), and operator<<(QTextStream&, const QDomNode&). Denial of service only — no code execution and no memory disclosure.
 id: DHI-fto3-lcgc-g75v-ve5l
-modified: "2026-11-10T11:41:46Z"
+modified: "2026-11-23T22:32:59Z"
 published: "2026-11-10T11:41:46Z"
 references:
     - type: ADVISORY
@@ -37,9 +45,13 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-93924.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98507.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-87082.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-93924.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98507.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-11573
     - type: ADVISORY

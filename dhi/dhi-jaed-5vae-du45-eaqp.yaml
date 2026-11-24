@@ -1,0 +1,58 @@
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: busybox
+        purl: pkg:apk/dhi/busybox
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-23"
+                      kind: advisory
+                      version: 1.37.0-r30
+          events:
+            - fixed: 1.37.0-r30
+            - introduced: "0"
+          type: ECOSYSTEM
+      versions:
+        - 1.37.0
+database_specific:
+    coverage: partial
+    coverage_exclusions:
+        - legacy_package_image_owner
+details: In tar in BusyBox through 1.37.0, a TAR archive can have filenames hidden from a listing through the use of terminal escape sequences.
+id: DHI-jaed-5vae-du45-eaqp
+modified: "2026-11-20T04:50:24Z"
+published: "2026-11-23T22:07:32Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2025-46394
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2025-46394
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-jaed-5vae-du45-eaqp
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2025-46394
+    - type: ADVISORY
+      url: https://security.alpinelinux.org/vuln/CVE-2025-46394
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2025-46394
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2025/04/23/5
+    - type: WEB
+      url: http://www.openwall.com/lists/oss-security/2025/04/24/3
+    - type: WEB
+      url: https://bugs.busybox.net/show_bug.cgi?id=16018
+    - type: WEB
+      url: https://www.busybox.net
+    - type: WEB
+      url: https://www.busybox.net/downloads/
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:C/C:N/I:L/A:N
+      type: CVSS_V3
+summary: In tar in BusyBox through 1.37.0, a TAR archive can have filenames hidden from a listing through the use of terminal…
+upstream:
+    - CVE-2025-46394

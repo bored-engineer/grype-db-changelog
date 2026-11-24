@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: directus-12
         purl: pkg:apk/dhi/directus-12
+      ranges:
+        - events:
+            - introduced: 12.4.1-r0
+          type: ECOSYSTEM
       versions:
         - 12.4.1-r0
         - 12.4.1-r1
@@ -33,6 +37,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: directus-12
         purl: pkg:deb/dhi/directus-12
+      ranges:
+        - events:
+            - introduced: 12.4.1-0
+          type: ECOSYSTEM
       versions:
         - 12.4.1-0
         - 12.4.1-1
@@ -65,6 +73,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: grist
         purl: pkg:deb/dhi/grist
+      ranges:
+        - events:
+            - introduced: 1.7.17-0
+          type: ECOSYSTEM
       versions:
         - 1.7.17-0
         - 1.7.17-1
@@ -112,6 +124,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: kibana-9.4
         purl: pkg:deb/dhi/kibana-9.4
+      ranges:
+        - events:
+            - introduced: 9.4.5-1
+          type: ECOSYSTEM
       versions:
         - 9.4.5-1
         - 9.4.7-0
@@ -139,6 +155,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: kibana-9.5
         purl: pkg:deb/dhi/kibana-9.5
+      ranges:
+        - events:
+            - introduced: 9.5.5-0
+          type: ECOSYSTEM
       versions:
         - 9.5.5-0
         - 9.5.5-1
@@ -160,8 +180,34 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
+        name: logto-1
+        purl: pkg:deb/dhi/logto-1
+      ranges:
+        - events:
+            - introduced: 1.45.0-0
+          type: ECOSYSTEM
+      versions:
+        - 1.45.0-0
+        - 1.45.0-1
+        - 1.45.0-2
+        - 1.45.0-3
+        - 1.45.0-4
+        - 1.46.0-0
+        - 1.46.0-1
+        - 1.46.0-2
+        - 1.46.0-3
+        - 1.46.0-4
+        - 1.46.0-5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
         name: mongodb-mcp
         purl: pkg:deb/dhi/mongodb-mcp
+      ranges:
+        - events:
+            - introduced: 1.14.0-0
+          type: ECOSYSTEM
       versions:
         - 1.14.0-0
         - 1.14.0-1
@@ -212,6 +258,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: opensearch-dashboards
         purl: pkg:deb/dhi/opensearch-dashboards
+      ranges:
+        - events:
+            - introduced: 3.8.0-0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-0
         - 3.10.0-1
@@ -226,13 +276,9 @@ affected:
         - 3.9.0-4
         - 3.9.0-5
         - 3.9.0-6
-database_specific:
-    coverage: partial
-    coverage_exclusions:
-        - legacy_package_image_owner
 details: basic-ftp is an FTP client for Node.js. Prior to 6.2.4, the MLSD directory-listing parser in src/parseListMLSD.ts uses untrusted fact names from the FTP server as keys in the plain-object factHandlersByName dictionary without checking that the resolved property is an own handler. A fact named __proto__ therefore resolves to Object.prototype, bypasses the missing-handler guard, and is called as though it were a function, producing a TypeError. The error propagates through Client.list() and APIs that depend on it because it is not an FTPError. A malicious or compromised FTP server, or an on-path attacker on a plaintext FTP session, can make the affected operation reject, and the Node.js process terminates under the default behavior in Node.js 15 and later only if the application leaves that rejection unhandled. This issue is fixed in version 6.2.4.
 id: DHI-v6p7-4jo7-nioq-dgce
-modified: "2026-11-21T14:19:20Z"
+modified: "2026-11-23T16:13:16Z"
 published: "2026-11-20T01:06:36Z"
 references:
     - type: ADVISORY

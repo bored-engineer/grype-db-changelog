@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: 7zip
         purl: pkg:apk/dhi/7zip
+      ranges:
+        - events:
+            - introduced: 26.00-r0
+          type: ECOSYSTEM
       versions:
         - 26.00-r0
         - 26.01-r0
@@ -16,7 +20,7 @@ affected:
         - 26.06-r0
 details: 7-Zip is a file archiver with a high compression ratio. Versions 9.18 through 26.00 contain a heap out-of-bounds read in 7-Zip Ar handler BSD SYMDEF parser. A 4-byte heap out-of-bounds read exists in the Unix ar archive parser in 7-Zip. When parsing a BSD-style __.SYMDEF symbol table, the ParseLibSymbols function reads a 32-bit namesSize field via Get32 at a position that can equal the buffer size, reading 4 bytes past the end of the heap allocation. This reads uninitialized heap data under the default allocator. Version 26.01 patches the issue.
 id: DHI-tckb-hibj-qguw-uqts
-modified: "2026-11-20T03:03:15Z"
+modified: "2026-11-23T20:44:44Z"
 published: "2026-11-11T19:12:35Z"
 references:
     - type: ADVISORY

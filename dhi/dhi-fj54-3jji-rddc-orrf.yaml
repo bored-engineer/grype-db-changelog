@@ -5,9 +5,16 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: thrift
         purl: pkg:deb/dhi/thrift
+      ranges:
+        - events:
+            - introduced: 0.19.0-4+deb13u0+dhi3
+          type: ECOSYSTEM
       versions:
+        - 0.19.0-4+deb13u0+dhi3
         - 0.19.0-4+dhi0
         - 0.19.0-4+dhi1
+        - 0.19.0-4+dhi2
+        - 0.19.0-4+dhi3
         - 0.25.0-0
 details: |-
     The protocol skip routine in several Apache Thrift bindings did not apply the binding's recursion limit, so a message that nests unknown fields deeply enough can exhaust the stack. Affected: the Python C++ accelerator (the pure-Python protocols are not affected), the PHP library and its thrift_protocol extension, and the Perl, Lua, Smalltalk and OCaml libraries.
@@ -20,7 +27,7 @@ details: |-
 
     Users are recommended to upgrade to version 0.25.0, which fixes the issue.
 id: DHI-fj54-3jji-rddc-orrf
-modified: "2026-11-10T13:42:56Z"
+modified: "2026-11-23T22:32:59Z"
 published: "2026-11-10T13:42:56Z"
 references:
     - type: ADVISORY

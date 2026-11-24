@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: arangodb
         purl: pkg:deb/dhi/arangodb
+      ranges:
+        - events:
+            - introduced: 3.12.10-0
+          type: ECOSYSTEM
       versions:
         - 3.12.10-0
         - 3.12.10-1
@@ -44,12 +48,17 @@ affected:
         - 3.12.13-7
         - 3.12.13-8
         - 3.12.13-9
+        - 3.12.14-0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: opensearch-dashboards
         purl: pkg:deb/dhi/opensearch-dashboards
+      ranges:
+        - events:
+            - introduced: 3.8.0-0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-0
         - 3.10.0-1
@@ -66,7 +75,7 @@ affected:
         - 3.9.0-6
 details: joi before versions 17.13.8 and 18.2.9 contains a prototype pollution vulnerability in the messages compilation function that accepts __proto__ as an error code. Attackers can supply __proto__ keys in custom messages to replace the returned object's prototype, breaking downstream code relying on Object.prototype methods.
 id: DHI-fskh-vgy3-t6cl-buap
-modified: "2026-11-21T14:19:46Z"
+modified: "2026-11-23T15:48:10Z"
 published: "2026-11-14T01:50:56Z"
 references:
     - type: ADVISORY

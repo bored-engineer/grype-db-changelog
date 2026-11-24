@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-17
         purl: pkg:deb/dhi/teleport-17
+      ranges:
+        - events:
+            - introduced: 17.7.29-2
+          type: ECOSYSTEM
       versions:
         - 17.7.29-10
         - 17.7.29-11
@@ -35,12 +39,18 @@ affected:
         - 17.7.34-2
         - 17.7.34-3
         - 17.7.34-4
+        - 17.7.34-5
+        - 17.7.34-6
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-17-dev
         purl: pkg:deb/dhi/teleport-17-dev
+      ranges:
+        - events:
+            - introduced: 17.7.29-2
+          type: ECOSYSTEM
       versions:
         - 17.7.29-10
         - 17.7.29-11
@@ -71,12 +81,18 @@ affected:
         - 17.7.34-2
         - 17.7.34-3
         - 17.7.34-4
+        - 17.7.34-5
+        - 17.7.34-6
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-17-fips
         purl: pkg:deb/dhi/teleport-17-fips
+      ranges:
+        - events:
+            - introduced: 17.7.29-2
+          type: ECOSYSTEM
       versions:
         - 17.7.29-10
         - 17.7.29-11
@@ -107,12 +123,18 @@ affected:
         - 17.7.34-2
         - 17.7.34-3
         - 17.7.34-4
+        - 17.7.34-5
+        - 17.7.34-6
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-17-fips-dev
         purl: pkg:deb/dhi/teleport-17-fips-dev
+      ranges:
+        - events:
+            - introduced: 17.7.29-2
+          type: ECOSYSTEM
       versions:
         - 17.7.29-10
         - 17.7.29-11
@@ -143,12 +165,18 @@ affected:
         - 17.7.34-2
         - 17.7.34-3
         - 17.7.34-4
+        - 17.7.34-5
+        - 17.7.34-6
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18
         purl: pkg:deb/dhi/teleport-18
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -173,12 +201,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-dev
         purl: pkg:deb/dhi/teleport-18-dev
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -203,12 +237,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-fips
         purl: pkg:deb/dhi/teleport-18-fips
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -233,12 +273,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-fips-dev
         purl: pkg:deb/dhi/teleport-18-fips-dev
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -263,9 +309,11 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
 details: gosaml2 is a Pure Go implementation of SAML 2.0. Prior to 0.12.0, ValidateEncodedResponse() calls decryptAssertions() on an EncryptedAssertion before signature or content validation completes, and EncryptedAssertion.DecryptBytes() in types/encrypted_assertion.go slices decoded ciphertext without first validating the required nonce or initialization-vector length. A CipherValue shorter than the 12-byte AES-GCM nonce causes a slice-bounds panic, and an empty AES-CBC CipherValue passes the modulo block-size check before causing a slice-bounds panic at the 16-byte initialization-vector split. An attacker needs only the service provider's public certificate to wrap a symmetric key, and no valid identity-provider signature or relationship is required. The unrecovered panic can terminate the request goroutine or the service process. This issue is fixed in version 0.12.0.
 id: DHI-cku3-r4fa-5alk-rsz2
-modified: "2026-11-21T00:25:17Z"
+modified: "2026-11-23T21:56:24Z"
 published: "2026-11-20T00:26:33Z"
 references:
     - type: ADVISORY

@@ -5,12 +5,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: haveged
         purl: pkg:apk/dhi/haveged
+      ranges:
+        - events:
+            - introduced: 1.9.19-r0
+          type: ECOSYSTEM
       versions:
         - 1.9.19-r0
         - 1.9.21-r0
 details: In `src/havegecmd.c`, the `socket_handler` function performs a credential check on the abstract UNIX socket (`\0/sys/entropy/haveged`). However, while it detects if the connecting user is not root (`cred.uid != 0`) and prepares a negative acknowledgement (`ASCII_NAK`), it **fails to stop execution**. The code proceeds to the `switch` statement, allowing any local unprivileged user to execute privileged commands such as `MAGIC_CHROOT`.
 id: DHI-4zan-vqfx-2qft-efp2
-modified: "2026-11-11T16:52:37Z"
+modified: "2026-11-23T17:44:07Z"
 published: "2026-11-11T16:52:37Z"
 references:
     - type: ADVISORY

@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: postman-mcp
         purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-r0
         - 2.11.1-r0
@@ -29,6 +33,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: supabase-storage
         purl: pkg:apk/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-r0
         - 1.74.1-r1
@@ -66,12 +74,18 @@ affected:
         - 1.98.2-r0
         - 1.98.4-r0
         - 1.98.5-r0
+        - 1.98.6-r0
+        - 1.98.7-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: kibana-9.5
         purl: pkg:deb/dhi/kibana-9.5
+      ranges:
+        - events:
+            - introduced: 9.5.5-0
+          type: ECOSYSTEM
       versions:
         - 9.5.5-0
         - 9.5.5-1
@@ -95,6 +109,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-2
         purl: pkg:deb/dhi/langfuse-2
+      ranges:
+        - events:
+            - introduced: 2.95.12-0
+          type: ECOSYSTEM
       versions:
         - 2.95.12-0
         - 2.95.12-1
@@ -116,6 +134,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: litellm
         purl: pkg:deb/dhi/litellm
+      ranges:
+        - events:
+            - introduced: 1.95.0-0
+          type: ECOSYSTEM
       versions:
         - 1.100.0-0
         - 1.100.1-0
@@ -157,6 +179,7 @@ affected:
         - 1.110.1-0
         - 1.110.2-0
         - 1.110.2-1
+        - 1.110.2-2
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -174,6 +197,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: opensearch-dashboards
         purl: pkg:deb/dhi/opensearch-dashboards
+      ranges:
+        - events:
+            - introduced: 3.8.0-0
+          type: ECOSYSTEM
       versions:
         - 3.10.0-0
         - 3.10.0-1
@@ -194,6 +221,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: postman-mcp
         purl: pkg:deb/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.1-0
@@ -219,6 +250,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: supabase-storage
         purl: pkg:deb/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-0
         - 1.79.30-0
@@ -257,13 +292,15 @@ affected:
         - 1.98.2-0
         - 1.98.4-0
         - 1.98.5-0
+        - 1.98.6-0
+        - 1.98.7-0
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.7.1, the Address6 constructor, Address6.isValid, and parse code in src/ipv6.ts accept unbounded strings and expand invalid characters through RE_BAD_CHARACTERS into large diagnostics. Material impact occurs only when an application accepts a very large attacker-controlled field and passes it to Address6 parsing without an earlier length bound. Common URL and header limits, and common body-parser defaults, generally constrain the effect; common defaults typically exclude 32 MiB fields. Megabyte-scale fields can cause a synchronous stall and high transient memory use, approximately 16 MiB can trigger an invalid string length exception, and process termination occurs at approximately 32 MiB. The affected entry points include Address6.isValid and construction paths that reach parse. This issue is fixed in version 10.7.1.
 id: DHI-kjx2-bfhf-mbes-6ywa
-modified: "2026-11-21T14:18:51Z"
+modified: "2026-11-23T23:20:35Z"
 published: "2026-11-20T01:49:54Z"
 references:
     - type: ADVISORY

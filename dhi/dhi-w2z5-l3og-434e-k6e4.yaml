@@ -5,6 +5,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: openssl
         purl: pkg:apk/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 3.5.8-r0
+          events:
+            - fixed: 3.5.8-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.5.4-r0
         - 3.5.5-r0
@@ -13,11 +24,6 @@ affected:
         - 3.5.6-r1
         - 3.5.7-r0
         - 3.5.7-r1
-        - 3.5.8-r0
-        - 3.5.8-r1
-        - 3.5.9-r0
-        - 3.5.9-r1
-        - 3.5.9-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -36,13 +42,21 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: openssl
         purl: pkg:apk/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 3.5.8-r1
+          events:
+            - fixed: 3.5.8-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.5.6-r1
         - 3.5.7-r0
         - 3.5.7-r1
-        - 3.5.8-r1
-        - 3.5.9-r0
-        - 3.5.9-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -58,6 +72,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openssl
         purl: pkg:deb/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 3.5.7-1~deb13u2+dhi0
+          events:
+            - fixed: 3.5.7-1~deb13u2+dhi0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.5.5-1~deb13u2dhi0
         - 3.5.6-1~deb13u1+dhi0
@@ -73,24 +98,13 @@ affected:
         - 3.5.6-1~deb13u2+dhi3
         - 3.5.6-1~deb13u2+fips+dhi0
         - 3.5.6-1~deb13u2+fips+dhi1
-        - 3.5.7-1~deb13u2+dhi0
-        - 3.5.7-1~deb13u2+dhi1
-        - 3.5.7-1~deb13u2+fips+dhi0
-        - 3.5.7-1~deb13u3+dhi0
-        - 3.5.7-1~deb13u3+dhi1
-        - 3.5.7-1~deb13u3+dhi2
-        - 3.5.7-1~deb13u3+dhi3
-        - 3.5.7-1~deb13u3+fips+dhi0
-        - 3.5.9-1~deb13u1+dhi0
-        - 3.5.9-1~deb13u1+dhi1
-        - 3.5.9-1~deb13u1+fips+dhi0
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: "Issue summary: When OpenSSL processes QUIC traffic from a peer that repeatedly\nsends ack-eliciting packets while not acknowledging ACK-only responses, the\nQUIC stack can retain ACK-only packet metadata for the lifetime of the\nconnection.\n\nImpact summary: A remote peer that can complete a QUIC handshake can\ncause connection-scoped memory growth which may lead to Denial of Service\nthrough memory exhaustion, especially with sustained traffic or many concurrent\nQUIC connections.\n\nCWE: CWE-770: Allocation of Resources Without Limits or Throttling\n\nDescription: When the OpenSSL QUIC stack sends an ACK-only packet,\nthere is no requirement by the QUIC protocol that the peer will acknowledge\nthat ACK-only packet (i.e. it is itself not ack-eliciting). However, the OpenSSL\nimplementation stores the metadata about the ACK frames regardless.\nIn and of itself that's ok, but if a malicious peer establishes a connection, and\nthen drives the connection such that ACK-only packets are forced from the \nOpenSSL implementation peer (i.e., by sending numerous PING frames),\nand then withholding any subsequent acks for ack-eliciting data, like\nlegitimate data, said malicious peer can force inappropriate memory growth\non the OpenSSL peer, potentially leading to a Denial of Service.\n\nThe fix is to ensure that we account for the transmission of the ACK-only\npacket in the packet histories high and low watermark without actually storing\nthe ACK-only packet metadata itself.\n\nFIPS impact: no\nThe OpenSSL FIPS module is not affected as the QUIC code is\noutside the FIPS module boundary."
 id: DHI-w2z5-l3og-434e-k6e4
-modified: "2026-11-22T07:45:41Z"
+modified: "2026-11-23T12:19:01Z"
 published: "2026-11-20T16:52:32Z"
 references:
     - type: ADVISORY

@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: adminer
         purl: pkg:deb/dhi/adminer
+      ranges:
+        - events:
+            - introduced: 6.0.1-0
+          type: ECOSYSTEM
       versions:
         - 6.0.1-0
         - 6.1.0-0
@@ -21,13 +25,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: dhi-adminer-php-ext
         purl: pkg:deb/dhi/dhi-adminer-php-ext
+      ranges:
+        - events:
+            - introduced: 6.3.0-1
+          type: ECOSYSTEM
       versions:
         - 6.3.0-1
         - 6.3.0-2
         - 6.3.1-0
 details: Adminer before 5.4.3 uses a CSRF token scheme that transmits both the XOR mask and the masked value in every token (format (rand XOR secret):rand), allowing anyone who observes a single CSRF token (e.g., via network sniffing, log files, Referrer header, or XSS) to recover the session secret with a single XOR operation and forge unlimited valid tokens. The implementation is further weakened by a low-entropy session token (rand(1,1e6), ~20 bits) that permits blind brute-force, and by use of loose comparison (==) in token verification, enabling PHP type juggling. Exploitation enables cross-site request forgery against authenticated sessions, including execution of arbitrary SQL queries.
 id: DHI-rgnj-csue-2ehi-jah6
-modified: "2026-11-21T16:24:15Z"
+modified: "2026-11-23T23:13:53Z"
 published: "2026-11-11T16:07:25Z"
 references:
     - type: ADVISORY

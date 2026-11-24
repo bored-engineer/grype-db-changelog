@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: apollo-mcp-server
         purl: pkg:deb/dhi/apollo-mcp-server
+      ranges:
+        - events:
+            - introduced: 1.17.0-0
+          type: ECOSYSTEM
       versions:
         - 1.17.0-0
         - 1.18.0-0
@@ -16,20 +20,30 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: apollo-mcp-server-1
         purl: pkg:deb/dhi/apollo-mcp-server-1
+      ranges:
+        - events:
+            - introduced: 1.20.0-1
+          type: ECOSYSTEM
       versions:
         - 1.20.0-1
+        - 1.20.0-10
         - 1.20.0-2
         - 1.20.0-3
         - 1.20.0-4
         - 1.20.0-6
         - 1.20.0-7
         - 1.20.0-8
+        - 1.20.0-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: apollo-mcp-server-2
         purl: pkg:deb/dhi/apollo-mcp-server-2
+      ranges:
+        - events:
+            - introduced: 2.0.0-0
+          type: ECOSYSTEM
       versions:
         - 2.0.0-0
         - 2.0.0-1
@@ -40,12 +54,18 @@ affected:
         - 2.1.0-5
         - 2.1.0-6
         - 2.2.1-0
+        - 2.2.1-1
+        - 2.2.1-2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: meilisearch
         purl: pkg:deb/dhi/meilisearch
+      ranges:
+        - events:
+            - introduced: 1.53.1-0
+          type: ECOSYSTEM
       versions:
         - 1.53.1-0
         - 1.53.2-0
@@ -59,12 +79,18 @@ affected:
         - 1.56.2-0
         - 1.57.0-0
         - 1.57.0-1
+        - 1.58.0-0
+        - 1.58.0-1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: qdrant
         purl: pkg:deb/dhi/qdrant
+      ranges:
+        - events:
+            - introduced: 1.18.3-0
+          type: ECOSYSTEM
       versions:
         - 1.18.3-0
         - 1.18.3-1
@@ -99,12 +125,18 @@ affected:
         - 1.20.2-1
         - 1.20.2-2
         - 1.20.2-3
+        - 1.20.2-4
+        - 1.20.2-5
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: uv
         purl: pkg:deb/dhi/uv
+      ranges:
+        - events:
+            - introduced: 0.11.22-0
+          type: ECOSYSTEM
       versions:
         - 0.11.22-0
         - 0.11.26-0
@@ -154,6 +186,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: vector
         purl: pkg:deb/dhi/vector
+      ranges:
+        - events:
+            - introduced: 0.58.0-0
+          type: ECOSYSTEM
       versions:
         - 0.58.0-0
         - 0.59.0-0
@@ -161,6 +197,7 @@ affected:
         - 0.61.0-0
         - 0.62.0-0
         - 0.62.0-1
+        - 0.62.0-2
 details: |-
     The fix for RUSTSEC-2026-0185 in 0.11.15 added a cap on the number of chunks buffered by the
     `Assembler` that reassembles out-of-order stream data. However, the cap was only checked inside
@@ -184,7 +221,7 @@ details: |-
     Thanks to Otto Hermann ([@ojhermann](https://github.com/ojhermann)) for reporting and fixing
     this issue.
 id: DHI-bjos-c6uk-vgnd-qnqs
-modified: "2026-11-21T18:52:49Z"
+modified: "2026-11-23T23:20:52Z"
 published: "2026-11-10T05:55:16Z"
 references:
     - type: ADVISORY

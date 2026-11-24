@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18
         purl: pkg:deb/dhi/teleport-18
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -29,12 +33,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-dev
         purl: pkg:deb/dhi/teleport-18-dev
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -59,12 +69,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-fips
         purl: pkg:deb/dhi/teleport-18-fips
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -89,12 +105,18 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: teleport-18-fips-dev
         purl: pkg:deb/dhi/teleport-18-fips-dev
+      ranges:
+        - events:
+            - introduced: 18.11.1-2
+          type: ECOSYSTEM
       versions:
         - 18.11.1-10
         - 18.11.1-11
@@ -119,9 +141,11 @@ affected:
         - 18.11.10-3
         - 18.11.10-4
         - 18.11.10-5
+        - 18.11.10-6
+        - 18.11.10-7
 details: Happy DOM is a JavaScript implementation of a web browser without its graphical user interface. From 17.0.0 until 21.0.4, packages/happy-dom/src/module/ECMAScriptModuleCompiler.ts accepts a named ESM import alias without validating that it is a JavaScript binding identifier before inserting it into a generated destructuring binding. With enableJavaScriptEvaluation enabled, attacker-controlled HTML or module source can use an invalid alias that becomes a valid default initializer after compilation, causing the generated JavaScript to execute in the Node.js host process. The demonstrated reachable path uses a JSON module import attribute, which prevents the malicious alias from being emitted again in a later ESM circular-import assignment and keeps the generated function syntactically valid. This incomplete fix for CVE-2026-33943 is a distinct residual path because the earlier remediation validated the local export importName path but not the named-import alias. This issue is fixed in version 21.0.4.
 id: DHI-gldg-g7yy-ifsr-haw5
-modified: "2026-11-21T00:25:17Z"
+modified: "2026-11-23T21:58:18Z"
 published: "2026-11-11T19:27:42Z"
 references:
     - type: ADVISORY

@@ -5,19 +5,37 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: unzip
         purl: pkg:apk/dhi/unzip
-      versions:
-        - 6.0-r16
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 6.0-r16
+          events:
+            - fixed: 6.0-r16
+            - introduced: "0"
+          type: ECOSYSTEM
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: unzip
         purl: pkg:apk/dhi/unzip
-      versions:
-        - 6.0-r16
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 6.0-r16
+          events:
+            - fixed: 6.0-r16
+            - introduced: "0"
+          type: ECOSYSTEM
 details: The NEEDBITS macro in the inflate_dynamic function in inflate.c for unzip can be invoked using invalid buffers, which allows remote attackers to cause a denial of service (crash) and possibly execute arbitrary code via unknown vectors that trigger a free of uninitialized or previously-freed data.
 id: DHI-avyc-jk4l-m77c-o5dd
-modified: "2026-11-10T03:20:48Z"
+modified: "2026-11-19T10:24:01Z"
 published: "2026-11-10T03:20:48Z"
 references:
     - type: ADVISORY

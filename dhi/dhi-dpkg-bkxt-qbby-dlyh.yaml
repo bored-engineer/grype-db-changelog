@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: datahub-ingestion
         purl: pkg:deb/dhi/datahub-ingestion
+      ranges:
+        - events:
+            - introduced: 1.5.0.7-0
+          type: ECOSYSTEM
       versions:
         - 1.5.0.7-0
         - 1.6.0.1-0
@@ -36,12 +40,17 @@ affected:
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
+        - 1.7.0.20-9
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: datascience-notebook
         purl: pkg:deb/dhi/datascience-notebook
+      ranges:
+        - events:
+            - introduced: 2026.07.28-0
+          type: ECOSYSTEM
       versions:
         - 2026.07.28-0
         - 2026.07.28-1
@@ -68,7 +77,7 @@ affected:
         - 2026.07.28-9
 details: The nbconvert tool, jupyter nbconvert, converts Jupyter notebooks to various other formats via Jinja templates. From 5.4.0 until 7.17.2, ExtractOutputPreprocessor in nbconvert/preprocessors/extractoutput.py joins the attacker-controlled cell output metadata filename to output_files_dir without limiting the result to the intended directory. When a victim converts a malicious notebook with the markdown, LaTeX, reStructuredText, or AsciiDoc exporter, path traversal in the output filename can write attacker-controlled output data to arbitrary locations accessible to the victim. Running the notebook cell again replaces the malicious output metadata, but merely converting the supplied notebook does not. This issue is fixed in version 7.17.2.
 id: DHI-dpkg-bkxt-qbby-dlyh
-modified: "2026-11-21T12:19:39Z"
+modified: "2026-11-23T19:49:26Z"
 published: "2026-11-10T04:15:18Z"
 references:
     - type: ADVISORY

@@ -5,25 +5,33 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: openssl
         purl: pkg:apk/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 3.5.7-r0
+          events:
+            - fixed: 3.5.7-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.5.4-r0
         - 3.5.5-r0
         - 3.5.5_git20260330-r1
         - 3.5.6-r0
         - 3.5.6-r1
-        - 3.5.7-r0
-        - 3.5.7-r1
-        - 3.5.8-r0
-        - 3.5.8-r1
-        - 3.5.9-r0
-        - 3.5.9-r1
-        - 3.5.9-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: openssl-provider-fips
         purl: pkg:apk/dhi/openssl-provider-fips
+      ranges:
+        - events:
+            - introduced: 3.1.2-r0
+          type: ECOSYSTEM
       versions:
         - 3.1.2-r0
         - 3.1.2-r1
@@ -36,19 +44,29 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: openssl
         purl: pkg:apk/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 3.5.7-r0
+          events:
+            - fixed: 3.5.7-r0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.5.6-r1
-        - 3.5.7-r0
-        - 3.5.7-r1
-        - 3.5.8-r1
-        - 3.5.9-r0
-        - 3.5.9-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: openssl-provider-fips
         purl: pkg:apk/dhi/openssl-provider-fips
+      ranges:
+        - events:
+            - introduced: 3.1.2-r3
+          type: ECOSYSTEM
       versions:
         - 3.1.2-r3
         - 3.1.2-r4
@@ -58,6 +76,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openssl
         purl: pkg:deb/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 3.5.6-1~deb13u2+dhi0
+          events:
+            - fixed: 3.5.6-1~deb13u2+dhi0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 3.5.5-1~deb13u2dhi0
         - 3.5.6-1~deb13u1+dhi0
@@ -67,23 +96,6 @@ affected:
         - 3.5.6-1~deb13u1+fips+dhi1
         - 3.5.6-1~deb13u1+fips+dhi2
         - 3.5.6-1~deb13u1dhi0
-        - 3.5.6-1~deb13u2+dhi0
-        - 3.5.6-1~deb13u2+dhi1
-        - 3.5.6-1~deb13u2+dhi2
-        - 3.5.6-1~deb13u2+dhi3
-        - 3.5.6-1~deb13u2+fips+dhi0
-        - 3.5.6-1~deb13u2+fips+dhi1
-        - 3.5.7-1~deb13u2+dhi0
-        - 3.5.7-1~deb13u2+dhi1
-        - 3.5.7-1~deb13u2+fips+dhi0
-        - 3.5.7-1~deb13u3+dhi0
-        - 3.5.7-1~deb13u3+dhi1
-        - 3.5.7-1~deb13u3+dhi2
-        - 3.5.7-1~deb13u3+dhi3
-        - 3.5.7-1~deb13u3+fips+dhi0
-        - 3.5.9-1~deb13u1+dhi0
-        - 3.5.9-1~deb13u1+dhi1
-        - 3.5.9-1~deb13u1+fips+dhi0
 database_specific:
     coverage: partial
     coverage_exclusions:
@@ -122,7 +134,7 @@ details: |-
 
     The FIPS modules are not affected by this issue.
 id: DHI-bktj-6rsx-nt6y-gybq
-modified: "2026-11-22T07:45:15Z"
+modified: "2026-11-23T20:38:54Z"
 published: "2026-11-20T16:52:19Z"
 references:
     - type: ADVISORY

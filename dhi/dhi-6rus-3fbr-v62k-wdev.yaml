@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: dovecot
         purl: pkg:apk/dhi/dovecot
+      ranges:
+        - events:
+            - introduced: 2.4.2-r1
+          type: ECOSYSTEM
       versions:
         - 2.4.2-r1
         - 2.4.3-r0
@@ -17,6 +21,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: dovecot
         purl: pkg:apk/dhi/dovecot
+      ranges:
+        - events:
+            - introduced: 2.4.3-r1
+          type: ECOSYSTEM
       versions:
         - 2.4.3-r1
         - 2.4.3-r2
@@ -27,7 +35,7 @@ affected:
         - 2.4.5-r0
 details: An attacker that can get Dovecot to relay a message, for example through Sieve redirect or submission relay, can use a crafted line ending in the message body to bypass the outbound protection that prevents message content from being interpreted as SMTP commands. A downstream mail server that hasn't yet fixed the SMTP smuggling vulnerability can be tricked into treating part of the message body as new SMTP commands, allowing injection of spoofed email. This is the same vulnerability class as CVE-2023-51764 and CVE-2023-51766. Where you control the receiving mail servers, ensure they reject bare carriage returns in message data. Update to non-vulnerable version. No publicly available exploits are known.
 id: DHI-6rus-3fbr-v62k-wdev
-modified: "2026-11-11T19:23:32Z"
+modified: "2026-11-23T21:33:35Z"
 published: "2026-11-11T19:23:32Z"
 references:
     - type: ADVISORY

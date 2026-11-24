@@ -5,12 +5,20 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openjpeg2
         purl: pkg:deb/dhi/openjpeg2
-      versions:
-        - 2.5.3-2.1~deb13u2+dhi2
-        - 2.5.3-2.1~deb13u2+dhi3
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 2.5.3-2.1~deb13u2+dhi0
+          events:
+            - fixed: 2.5.3-2.1~deb13u2+dhi0
+            - introduced: "0"
+          type: ECOSYSTEM
 details: An infinite loop vulnerability in tiftoimage that results in heap buffer overflow in convert_32s_C1P1 was found in openjpeg 2.1.2.
 id: DHI-niyz-4zi5-h2bf-gjas
-modified: "2026-11-12T21:12:35Z"
+modified: "2026-11-23T23:05:59Z"
 published: "2026-11-10T16:02:17Z"
 references:
     - type: ADVISORY

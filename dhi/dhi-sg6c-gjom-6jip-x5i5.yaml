@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: airflow
         purl: pkg:deb/dhi/airflow
+      ranges:
+        - events:
+            - introduced: 3.3.0-0
+          type: ECOSYSTEM
       versions:
         - 3.3.0-0
         - 3.3.0-1
@@ -48,6 +52,7 @@ affected:
         - 3.3.2-9
         - 3.4.0-0
         - 3.4.0-1
+        - 3.4.0-10
         - 3.4.0-2
         - 3.4.0-3
         - 3.4.0-4
@@ -58,7 +63,7 @@ affected:
         - 3.4.0-9
 details: 'Apache Airflow''s Task SDK rebuilt a `Callback` object from serialized data by re-running its constructor, which imports the module named by the stored callback path. Because `SyncCallback` is itself an Airflow class it passes the default `allowed_deserialization_classes` allow-list, so tightening that setting does not help. A Dag author — who controls a task instance''s `next_kwargs` through the task execution API — can therefore cause an arbitrary module to be imported inside the scheduler process, when the scheduler''s `awaiting_input` timeout sweep deserializes that value. No non-default configuration is required; the sweep runs unconditionally. Versions before 3.3.0 are not affected: the class existed, but the scheduler sweep that reaches it did not. This is a separate code path from CVE-2026-58076 and CVE-2026-67260, which cover different gadgets reaching deserialization — applying either of those fixes does not address this one. Users are advised to upgrade to apache-airflow 3.3.1 or later.'
 id: DHI-sg6c-gjom-6jip-x5i5
-modified: "2026-11-22T06:21:32Z"
+modified: "2026-11-23T19:50:36Z"
 published: "2026-11-13T00:27:04Z"
 references:
     - type: ADVISORY

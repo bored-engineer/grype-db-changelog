@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-r0
         - 1.0.1-r1
@@ -24,6 +28,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.1
         purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-r0
         - 1.1.0-r1
@@ -48,6 +56,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.2
         purl: pkg:apk/dhi/janusgraph-1.2
+      ranges:
+        - events:
+            - introduced: 1.2.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.2.0-r0
         - 1.2.0-r1
@@ -64,6 +76,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.0
         purl: pkg:deb/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-0
         - 1.0.1-1
@@ -85,6 +101,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.1
         purl: pkg:deb/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-0
         - 1.1.0-1
@@ -112,6 +132,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.2
         purl: pkg:deb/dhi/janusgraph-1.2
+      ranges:
+        - events:
+            - introduced: 1.2.0-0
+          type: ECOSYSTEM
       versions:
         - 1.2.0-0
         - 1.2.0-1
@@ -128,7 +152,7 @@ affected:
         - 1.2.0-9
 details: Jetty is a java based web server and servlet engine. In affected versions servlets with multipart support (e.g. annotated with `@MultipartConfig`) that call `HttpServletRequest.getParameter()` or `HttpServletRequest.getParts()` may cause `OutOfMemoryError` when the client sends a multipart request with a part that has a name but no filename and very large content. This happens even with the default settings of `fileSizeThreshold=0` which should stream the whole part content to disk. An attacker client may send a large multipart request and cause the server to throw `OutOfMemoryError`. However, the server may be able to recover after the `OutOfMemoryError` and continue its service -- although it may take some time. This issue has been patched in versions 9.4.51, 10.0.14, and 11.0.14. Users are advised to upgrade. Users unable to upgrade may set the multipart parameter `maxRequestSize` which must be set to a non-negative value, so the whole multipart content is limited (although still read into memory).
 id: DHI-r34z-2u25-6us2-edef
-modified: "2026-11-22T23:21:18Z"
+modified: "2026-11-23T18:09:55Z"
 published: "2026-11-10T11:13:16Z"
 references:
     - type: ADVISORY

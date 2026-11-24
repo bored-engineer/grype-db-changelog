@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: perl-net-dns
         purl: pkg:apk/dhi/perl-net-dns
+      ranges:
+        - events:
+            - introduced: 1.53-r0
+          type: ECOSYSTEM
       versions:
         - 1.53-r0
         - 1.54-r0
@@ -14,7 +18,7 @@ details: |-
 
     Net::DNS::RR::OPT::EXTENDED_ERROR::_decompose parses the EXTRA-TEXT field of an EDNS EXTENDED-ERROR option (RFC 8914) by tokenising the raw bytes and passing the result to Perl's eval. There is some escaping done for $ and @, but not for backticks. This can be exploited for command execution if $pkt->edns->option('EXTENDED-ERROR') is called in array context, for example with a payload of {0:`"<command>"`} in EXTRA-TEXT.
 id: DHI-kcvm-qdiz-aw6z-3bh5
-modified: "2026-11-11T19:56:08Z"
+modified: "2026-11-23T23:11:21Z"
 published: "2026-11-11T19:56:08Z"
 references:
     - type: ADVISORY

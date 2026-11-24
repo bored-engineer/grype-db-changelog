@@ -5,13 +5,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: open-iscsi
         purl: pkg:apk/dhi/open-iscsi
+      ranges:
+        - events:
+            - introduced: 2.1.10-r4
+          type: ECOSYSTEM
       versions:
         - 2.1.10-r4
         - 2.1.12-r0
         - 2.1.12-r1
 details: A flaw was found in open-iscsi. This vulnerability allows a remote attacker on the same local network segment to cause a Denial of Service (DoS) in the iscsiuio daemon. By sending a specially crafted Internet Control Message Protocol version 6 (ICMPv6) Router Advertisement with a zero-length option, the attacker can trigger an infinite loop. This leads to sustained CPU usage, rendering the daemon unresponsive and impacting system availability. A secondary risk of out-of-bounds reads exists with a short IPv6 payload, though no memory corruption or data exposure has been confirmed.
 id: DHI-z2vv-wkcn-qdbd-h7z6
-modified: "2026-11-11T18:18:24Z"
+modified: "2026-11-23T18:29:06Z"
 published: "2026-11-11T18:18:24Z"
 references:
     - type: ADVISORY

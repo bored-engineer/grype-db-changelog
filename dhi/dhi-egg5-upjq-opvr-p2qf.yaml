@@ -5,17 +5,23 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: sqlite
         purl: pkg:apk/dhi/sqlite
+      ranges:
+        - events:
+            - introduced: 3.51.1-r0
+          type: ECOSYSTEM
       versions:
         - 3.51.1-r0
+        - 3.51.2
         - 3.51.2-r0
         - 3.53.4-r0
+        - 3.53.4-r1
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: SQLite before 3.54.0 built with FTS3/FTS4 and SQLITE_ENABLE_FTS3_PARENTHESIS contains a use-after-free vulnerability in fts3BestSnippet() caused by dangling cached position-list pointers. Attackers can run a full-text MATCH query combining OR and NEAR operators with snippet() to read freed heap memory and crash the process.
 id: DHI-egg5-upjq-opvr-p2qf
-modified: "2026-11-19T22:00:30Z"
+modified: "2026-11-23T20:49:00Z"
 published: "2026-11-19T22:00:30Z"
 references:
     - type: ADVISORY

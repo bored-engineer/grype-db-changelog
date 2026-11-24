@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: openssh
         purl: pkg:apk/dhi/openssh
+      ranges:
+        - events:
+            - introduced: 10.2_p1-r0
+          type: ECOSYSTEM
       versions:
         - 10.2_p1-r0
         - 10.2_p1-r1
@@ -16,6 +20,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: openssh
         purl: pkg:apk/dhi/openssh
+      ranges:
+        - events:
+            - introduced: 10.2_p1-r0
+          type: ECOSYSTEM
       versions:
         - 10.2_p1-r0
         - 10.3_p1-r0
@@ -27,12 +35,20 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: openssh
         purl: pkg:deb/dhi/openssh
+      ranges:
+        - events:
+            - introduced: 1:10.0p1-7+deb13u2dhi0
+          type: ECOSYSTEM
       versions:
+        - 1:10.0p1-7+deb13u2dhi0
+        - 1:10.0p1-7+deb13u4+dhi0
         - 1:10.0p1-7+deb13u4+dhi1
+        - 1:10.0p1-7+deb13u4+dhi2
         - 1:10.0p1-7+deb13u4+dhi3
+        - 1:10.0p1-7+deb13u4dhi0
 details: sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.
 id: DHI-wsh6-a5qs-c5ts-bzma
-modified: "2026-11-12T21:12:35Z"
+modified: "2026-11-23T20:42:17Z"
 published: "2026-11-10T06:34:29Z"
 references:
     - type: ADVISORY

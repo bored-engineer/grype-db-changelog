@@ -5,22 +5,38 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: patch
         purl: pkg:apk/dhi/patch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 2.8.1-r1
+          events:
+            - fixed: 2.8.1-r1
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 2.8-r0
         - 2.8-r1
-        - 2.8.1-r1
-        - 2.8.1-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: patch
         purl: pkg:deb/dhi/patch
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 2.8-2+deb13u0+dhi3
+          events:
+            - fixed: 2.8-2+deb13u0+dhi3
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
-        - 2.8-2+deb13u0+dhi3
-        - 2.8-2+dhi1
-        - 2.8-2+dhi2
-        - 2.8-2+dhi3
         - 2.8-2dhi0
 details: |-
     GNU patch is vulnerable to a denial of service (DoS) due to improper validation of hunk (single block of changes in diff) line offsets in unified-diff input. A specially crafted patch can specify an extremely large line number, causing the application to enter an effectively infinite processing loop while attempting to locate the requested position.
@@ -31,7 +47,7 @@ details: |-
 
     This issue has been fixed in the commit faba04ef4f2b410257f76c1b9dc85e350929c4b9
 id: DHI-djty-47m6-bxqk-3rox
-modified: "2026-11-20T18:47:27Z"
+modified: "2026-11-23T08:17:30Z"
 published: "2026-11-10T13:42:56Z"
 references:
     - type: ADVISORY

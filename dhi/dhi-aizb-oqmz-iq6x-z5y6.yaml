@@ -5,20 +5,12 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: unbound
         purl: pkg:apk/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.24.2-r0
+          type: ECOSYSTEM
       versions:
         - 1.24.2-r0
-        - 1.25.2-r0
-        - 1.25.2-r1
-        - 1.25.2-r2
-        - 1.25.2-r3
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Alpine:3.24
-        name: unbound
-        purl: pkg:apk/dhi/unbound
-      versions:
-        - 1.25.1-r0
         - 1.25.2-r0
         - 1.25.2-r1
         - 1.25.2-r2
@@ -27,9 +19,31 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: unbound
+        purl: pkg:apk/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.25.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.25.1-r0
+        - 1.25.2-r0
+        - 1.25.2-r1
+        - 1.25.2-r2
+        - 1.25.2-r3
+        - 1.25.2-r4
+        - 1.25.2-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: unbound
         purl: pkg:deb/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.22.0-2+deb13u3+dhi0
+          type: ECOSYSTEM
       versions:
         - 1.22.0-2+deb13u3+dhi0
         - 1.22.0-2+deb13u3+dhi1
@@ -37,7 +51,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: In NLnet Labs Unbound 1.13.2 up to and including 1.25.1, stub or forward zones where the name is below an intermediate labed below a DNSSEC signed zone could be shadowed by the intermediate label's secure NXDOMAIN answer from the parent. This is caused by an off-by-one error in 'harden-below-nxdomain' logic; enabled by default. It effectively bypasses the configuration and the configured stub/forward zone is never contacted. 'harden-below-nxdomain' does an upward DNS cache walk together with a delegation point guard that does not allow NXDOMAIN synthesis above stub/forward zones. The guard tests the domain name but before stripping a label. This results in an iteration where the domain name equals the configured stub/forward zone apex that passes the guard, strips one more label, and probes the cache at the apex's immediate public parent. If that parent has a cached DNSSEC-secure NXDOMAIN, which it will for any private namespace nested two or more labels under a signed public name, the walk returns it and the configured stub/forward upstream is never contacted. This can only be triggered by the query for the intermediate label (between the stub/forward apex and the DNSSEC parent zone).
 id: DHI-aizb-oqmz-iq6x-z5y6
-modified: "2026-11-21T17:20:07Z"
+modified: "2026-11-23T15:48:10Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

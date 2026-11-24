@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ascender-25
         purl: pkg:apk/dhi/ascender-25
+      ranges:
+        - events:
+            - introduced: 25.6.3-r0
+          type: ECOSYSTEM
       versions:
         - 25.6.3-r0
         - 25.6.3-r1
@@ -14,16 +18,25 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: ascender-25
         purl: pkg:deb/dhi/ascender-25
+      ranges:
+        - events:
+            - introduced: 25.6.3-0
+          type: ECOSYSTEM
       versions:
         - 25.6.3-0
         - 25.6.3-1
         - 25.6.3-2
+        - 25.6.3-3
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: netbox
         purl: pkg:deb/dhi/netbox
+      ranges:
+        - events:
+            - introduced: 4.6.7-0
+          type: ECOSYSTEM
       versions:
         - 4.6.10-0
         - 4.6.10-1
@@ -64,7 +77,7 @@ affected:
         - 4.7.5-2
 details: Python Social Auth is a social authentication and registration mechanism. Prior to 6.2.0, OpenIdConnectAuth in social_core/backends/open_id_connect.py uses get_and_store_nonce to place the OpenID Connect nonce in a shared OpenIdConnectAssociation table, and get_nonce and validate_claims verify only that the nonce exists and has not expired rather than binding it to the browser session and OAuth state that initiated the login. An attacker who obtains a victim's unused authorization code can start a separate login to obtain valid state for the attacker's browser, submit the victim's code with that state, and pass nonce validation because the victim nonce is globally available. With DEFAULT_USE_PKCE disabled in the default OpenIdConnectAuth configuration, the attacker can be logged in as the victim. This issue is fixed in version 6.2.0.
 id: DHI-gmxx-3bdy-kla2-dbbg
-modified: "2026-11-21T14:18:51Z"
+modified: "2026-11-23T19:49:43Z"
 published: "2026-11-10T08:04:49Z"
 references:
     - type: ADVISORY

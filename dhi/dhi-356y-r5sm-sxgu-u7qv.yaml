@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: supabase-storage
         purl: pkg:apk/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-r0
         - 1.74.1-r1
@@ -42,12 +46,18 @@ affected:
         - 1.98.2-r0
         - 1.98.4-r0
         - 1.98.5-r0
+        - 1.98.6-r0
+        - 1.98.7-r0
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: homepage
         purl: pkg:deb/dhi/homepage
+      ranges:
+        - events:
+            - introduced: 1.13.2-0
+          type: ECOSYSTEM
       versions:
         - 1.13.2-0
         - 1.13.2-1
@@ -98,6 +108,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: kibana-9.4
         purl: pkg:deb/dhi/kibana-9.4
+      ranges:
+        - events:
+            - introduced: 9.4.5-1
+          type: ECOSYSTEM
       versions:
         - 9.4.5-1
         - 9.4.7-0
@@ -125,6 +139,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: kibana-9.5
         purl: pkg:deb/dhi/kibana-9.5
+      ranges:
+        - events:
+            - introduced: 9.5.5-0
+          type: ECOSYSTEM
       versions:
         - 9.5.5-0
         - 9.5.5-1
@@ -148,6 +166,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: supabase-storage
         purl: pkg:deb/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-0
+          type: ECOSYSTEM
       versions:
         - 1.74.1-0
         - 1.79.30-0
@@ -186,9 +208,11 @@ affected:
         - 1.98.2-0
         - 1.98.4-0
         - 1.98.5-0
+        - 1.98.6-0
+        - 1.98.7-0
 details: systeminformation is a System and OS information library for node.js. Prior to 5.33.14, the Linux networkStats(iface) implementation uses the caller-supplied interface value in an fs.existsSync() check and to build /sys/class/net/<iface> paths, including the operstate path, without verifying that it is a single interface-name segment or that the resolved path remains under /sys/class/net. An attacker who can control iface and create a directory containing symlinked statistics files can use parent-directory components and symlink traversal to make the API return the first line of a file readable by the Node.js process. The package does not expose a network endpoint, and the demonstrated scenario requires local filesystem setup. This issue is fixed in version 5.33.14.
 id: DHI-356y-r5sm-sxgu-u7qv
-modified: "2026-11-21T07:16:39Z"
+modified: "2026-11-23T23:20:13Z"
 published: "2026-11-12T10:29:06Z"
 references:
     - type: ADVISORY
