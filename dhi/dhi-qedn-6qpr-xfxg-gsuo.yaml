@@ -2,6 +2,58 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample-fips
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: postman-mcp
+        purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.11.2-r5
+          type: ECOSYSTEM
+      versions:
+        - 2.11.2-r5
+        - 2.12.0-r0
+        - 2.12.2-r0
+        - 2.12.3-r0
+        - 2.13.0-r0
+        - 2.14.0-r0
+        - 2.15.0-r0
+        - 2.15.0-r1
+        - 2.15.0-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
@@ -218,7 +270,7 @@ affected:
         - 6.1.0-9
 details: Handlebars provides the power necessary to let users build semantic templates. From 3.0.0 until 4.7.10, Handlebars lookupProperty returns Function.prototype.constructor before applying the prototype-access deny list because constructor is an own property of Function.prototype. When an attacker can render a controlled template with allowProtoMethodsByDefault enabled and an accessible function in the template context, the template can traverse from that function through its prototype to Function.prototype and then obtain the Function constructor through the own-property bypass. This permits attacker-controlled JavaScript to execute with the server application's privileges. This issue is fixed in version 4.7.10.
 id: DHI-qedn-6qpr-xfxg-gsuo
-modified: "2026-11-23T19:50:36Z"
+modified: "2026-11-25T00:00:51Z"
 published: "2026-11-12T03:28:18Z"
 references:
     - type: ADVISORY

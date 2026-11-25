@@ -5,12 +5,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libusb
         purl: pkg:apk/dhi/libusb
+      ranges:
+        - events:
+            - introduced: 1.0.29-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.29-r0
         - 1.0.29-r1
 details: libusb before version 1.0.30 contains a NULL pointer dereference vulnerability that allows attackers to crash applications by supplying a malformed USB configuration descriptor where an interface claims bNumEndpoints greater than zero but is followed by a class-specific descriptor whose bLength exceeds the remaining buffer size, causing parse_interface() to return early without allocating the endpoint array. Attackers can exploit this flaw through libusb_get_active_config_descriptor or libusb_get_config_descriptor by providing crafted descriptors via virtualized USB passthrough, file-based descriptor parsing, or network sources, causing any application iterating over endpoints to dereference a NULL endpoint pointer and crash.
 id: DHI-4aq6-jf4j-khue-6x74
-modified: "2026-11-11T18:26:52Z"
+modified: "2026-11-24T13:12:51Z"
 published: "2026-11-11T18:26:52Z"
 references:
     - type: ADVISORY

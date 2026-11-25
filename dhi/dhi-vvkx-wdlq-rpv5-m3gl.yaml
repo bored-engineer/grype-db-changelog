@@ -2,6 +2,23 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: prefect-2
+        purl: pkg:apk/dhi/prefect-2
+      ranges:
+        - events:
+            - introduced: 2.20.27-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.20.27-r0
+        - 2.20.27-r1
+        - 2.20.27-r2
+        - 2.20.27-r3
+        - 2.20.27-r4
+        - 2.20.27-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: prefect-2
         purl: pkg:apk/dhi/prefect-2
@@ -41,7 +58,7 @@ affected:
         - 2.20.27-9
 details: In version 3.6.19 of prefecthq/prefect, an authentication bypass vulnerability exists due to the improper handling of URL path exemptions for health check probes. Specifically, the authentication middleware exempts any URL path ending with 'health' or 'ready' from authentication checks. This allows an attacker to create resources with names ending in 'health' or 'ready' and access them without authentication. Affected endpoints include those for variables, flows, work pools, work queues, and deployments. This vulnerability can lead to unauthorized access to sensitive information, such as API keys and database credentials, stored in Prefect Variables.
 id: DHI-vvkx-wdlq-rpv5-m3gl
-modified: "2026-11-23T19:51:27Z"
+modified: "2026-11-24T21:14:58Z"
 published: "2026-11-20T00:17:04Z"
 references:
     - type: ADVISORY

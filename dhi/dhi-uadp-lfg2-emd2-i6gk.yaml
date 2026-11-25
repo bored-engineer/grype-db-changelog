@@ -7,7 +7,7 @@ affected:
         purl: pkg:apk/dhi/openssh
       ranges:
         - events:
-            - introduced: 10.2_p1-r0
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 10.2_p1-r0
@@ -21,19 +21,24 @@ affected:
         name: openssh
         purl: pkg:deb/dhi/openssh
       ranges:
-        - events:
-            - introduced: 1:10.0p1-7+deb13u2dhi0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-10"
+                      kind: advisory
+                      version: 1:10.0p1-7+deb13u4+dhi2
+          events:
+            - fixed: 1:10.0p1-7+deb13u4+dhi2
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 1:10.0p1-7+deb13u2dhi0
         - 1:10.0p1-7+deb13u4+dhi0
         - 1:10.0p1-7+deb13u4+dhi1
-        - 1:10.0p1-7+deb13u4+dhi2
-        - 1:10.0p1-7+deb13u4+dhi3
         - 1:10.0p1-7+deb13u4dhi0
 details: In ssh-keygen in OpenSSH before 10.6, certificates could have incorrect expiration times because of Daylight Saving mishandling. There can be a slightly more severe effect on users in certain Antarctic locations.
 id: DHI-uadp-lfg2-emd2-i6gk
-modified: "2026-11-23T20:50:39Z"
+modified: "2026-11-24T00:43:39Z"
 published: "2026-11-10T05:50:05Z"
 references:
     - type: ADVISORY

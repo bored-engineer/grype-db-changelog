@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: unleash-7
         purl: pkg:deb/dhi/unleash-7
+      ranges:
+        - events:
+            - introduced: 7.6.5-0
+          type: ECOSYSTEM
       versions:
         - 7.6.5-0
         - 7.6.5-1
@@ -18,7 +22,7 @@ affected:
         - 7.6.5-9
 details: Unleash is an open-source feature management platform. Prior to 8.0.3, POST /api/admin/projects/:projectId/features/:featureName/environments/:environment/strategies/set-sort-order passes attacker-controlled strategy IDs to unprotectedUpdateStrategiesSortOrder and updateSortOrder without verifying that the IDs belong to the project, feature, and environment authorized by the URL. In a multi-project Pro or Enterprise deployment, an authenticated user with UPDATE_FEATURE_STRATEGY in one project who knows another project's strategy IDs can reorder those strategies, changing feature evaluation precedence while the operation is attributed to the attacker's URL context rather than the affected project. The single-project OSS edition lacks the cross-project dimension, although the missing context binding still permits unauthorized reordering across features or environments in the default project. The endpoint changes only sort_order and does not modify strategy parameters, constraints, or segments. This issue is fixed in version 8.0.3.
 id: DHI-rvnc-tr5i-tgzw-laaq
-modified: "2026-11-11T19:26:06Z"
+modified: "2026-11-24T12:01:51Z"
 published: "2026-11-11T19:26:06Z"
 references:
     - type: ADVISORY

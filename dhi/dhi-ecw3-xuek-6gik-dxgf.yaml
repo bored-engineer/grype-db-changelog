@@ -2,9 +2,33 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: librechat-0
+        purl: pkg:apk/dhi/librechat-0
+      ranges:
+        - events:
+            - introduced: 0.8.8-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.8.8-r0
+        - 0.8.8-r1
+        - 0.8.8-r2
+        - 0.8.8-r3
+        - 0.8.8-r4
+        - 0.8.8-r5
+        - 0.8.8-r6
+        - 0.8.9-r0
+        - 0.8.9-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: librechat-0
         purl: pkg:apk/dhi/librechat-0
+      ranges:
+        - events:
+            - introduced: 0.8.8-r0
+          type: ECOSYSTEM
       versions:
         - 0.8.8-r0
         - 0.8.8-r1
@@ -21,6 +45,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: librechat-0
         purl: pkg:deb/dhi/librechat-0
+      ranges:
+        - events:
+            - introduced: 0.8.8-0
+          type: ECOSYSTEM
       versions:
         - 0.8.8-0
         - 0.8.8-1
@@ -32,7 +60,7 @@ affected:
         - 0.8.9-1
 details: Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. From 6.0.0 until 6.13.12, 7.8.13, 8.24.7, and 9.11.4, Mongoose stores the connection-level sanitizeFilter option in Connection.config, but Query.prototype._castConditions() and query casting check other option locations and do not read that configuration. An application that enables sanitizeFilter through mongoose.connect() or createConnection() and passes an attacker-controlled object into a query filter therefore receives a connection that reports the defense as enabled while query selector objects remain unsanitized. A crafted password value using a query operator can match an account record without the expected literal password, while global configuration through mongoose.set('sanitizeFilter') and per-query Model.find().sanitizeFilter() remain unaffected. This issue is fixed in versions 6.13.12, 7.8.13, 8.24.7, and 9.11.4.
 id: DHI-ecw3-xuek-6gik-dxgf
-modified: "2026-11-21T00:25:04Z"
+modified: "2026-11-24T22:05:29Z"
 published: "2026-11-12T10:02:59Z"
 references:
     - type: ADVISORY

@@ -5,12 +5,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ngtcp2
         purl: pkg:apk/dhi/ngtcp2
+      ranges:
+        - events:
+            - introduced: 1.17.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.17.0-r0
         - 1.22.1-r0
 details: ngtcp2 is a C implementation of the IETF QUIC protocol. In versions prior to 1.22.1, ngtcp2_qlog_parameters_set_transport_params() serializes peer transport parameters into a fixed 1024-byte stack buffer without bounds checking. When qlog is enabled, a remote peer can send sufficiently large transport parameters during the QUIC handshake to cause writes beyond the buffer boundary, resulting in a stack buffer overflow. This affects deployments that enable the qlog callback and process untrusted peer transport parameters. This issue has been fixed in version 1.22.1. If developers are unable to immediately upgrade, they can disable the qlog on client.
 id: DHI-vhod-5lvb-idnu-du63
-modified: "2026-11-11T16:55:48Z"
+modified: "2026-11-24T13:12:51Z"
 published: "2026-11-11T16:55:48Z"
 references:
     - type: ADVISORY

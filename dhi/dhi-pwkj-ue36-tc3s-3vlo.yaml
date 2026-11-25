@@ -6,14 +6,20 @@ affected:
         name: cups
         purl: pkg:apk/dhi/cups
       ranges:
-        - events:
-            - introduced: 2.4.13-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.18-r1
+          events:
+            - fixed: 2.4.18-r1
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 2.4.13-r0
         - 2.4.16-r0
         - 2.4.18-r0
-        - 2.4.18-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -21,15 +27,19 @@ affected:
         name: cups
         purl: pkg:apk/dhi/cups
       ranges:
-        - events:
-            - introduced: 2.4.18-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.20-r0
+          events:
+            - fixed: 2.4.20-r0
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 2.4.18-r0
         - 2.4.19-r0
-        - 2.4.20-r0
-        - 2.4.20-r1
-        - 2.4.20-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -37,22 +47,25 @@ affected:
         name: cups
         purl: pkg:deb/dhi/cups
       ranges:
-        - events:
-            - introduced: 2.4.10-3+deb13u2dhi0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.10-3+deb13u2+dhi5
+          events:
+            - fixed: 2.4.10-3+deb13u2+dhi5
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 2.4.10-3+deb13u2+dhi1
         - 2.4.10-3+deb13u2+dhi2
         - 2.4.10-3+deb13u2+dhi3
         - 2.4.10-3+deb13u2+dhi4
-        - 2.4.10-3+deb13u2+dhi5
-        - 2.4.10-3+deb13u2+dhi6
-        - 2.4.10-3+deb13u2+dhi7
-        - 2.4.10-3+deb13u2+dhi8
         - 2.4.10-3+deb13u2dhi0
 details: 'OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. Prior to 2.4.20, the backend/ipp.c quote_string() function preserves carriage-return and line-feed characters in a remote printer-controlled marker-message before report_attr() writes the value to the scheduler status stream. The scheduler can parse an injected newline as a separate PPD: control line and persist an attacker-selected PPD keyword. The reporter demonstrated that a later print job on a Foomatic-backed queue could consume an injected FoomaticRIPCommandLine value and execute in the filter context as lp. This issue is fixed in version 2.4.20.'
 id: DHI-pwkj-ue36-tc3s-3vlo
-modified: "2026-11-23T14:53:42Z"
+modified: "2026-11-24T16:46:53Z"
 published: "2026-11-11T16:04:58Z"
 references:
     - type: ADVISORY

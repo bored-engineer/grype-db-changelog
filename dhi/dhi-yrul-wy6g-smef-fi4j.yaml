@@ -2,9 +2,64 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.0
+        purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.0.1-r0
+        - 1.0.1-r1
+        - 1.0.1-r10
+        - 1.0.1-r11
+        - 1.0.1-r2
+        - 1.0.1-r3
+        - 1.0.1-r4
+        - 1.0.1-r5
+        - 1.0.1-r6
+        - 1.0.1-r7
+        - 1.0.1-r8
+        - 1.0.1-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.1
+        purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.1.0-r0
+        - 1.1.0-r1
+        - 1.1.0-r10
+        - 1.1.0-r11
+        - 1.1.0-r12
+        - 1.1.0-r13
+        - 1.1.0-r17
+        - 1.1.0-r18
+        - 1.1.0-r19
+        - 1.1.0-r2
+        - 1.1.0-r3
+        - 1.1.0-r4
+        - 1.1.0-r5
+        - 1.1.0-r6
+        - 1.1.0-r7
+        - 1.1.0-r8
+        - 1.1.0-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-r0
         - 1.0.1-r1
@@ -24,6 +79,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.1
         purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-r0
         - 1.1.0-r1
@@ -48,6 +107,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.0
         purl: pkg:deb/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-0
+          type: ECOSYSTEM
       versions:
         - 1.0.1-0
         - 1.0.1-1
@@ -69,6 +132,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: janusgraph-1.1
         purl: pkg:deb/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-0
+          type: ECOSYSTEM
       versions:
         - 1.1.0-0
         - 1.1.0-1
@@ -92,7 +159,7 @@ affected:
         - 1.1.0-9
 details: The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.33.0, com.rabbitmq.tools.jsonrpc.ProcedureDescription receives a javaReturnType value in an untrusted system.describe response and passes it through JSONUtil.tryFill, setJavaReturnType, and computeReturnTypeAsJavaClass to Class.forName(javaReturnType) with initialization enabled. An attacker able to answer the JsonRpcClient request through a shared broker or network interception can select a class already present in the victim JVM and trigger its static initializer, while JsonRpcClient.java later passes getReturnType output to mapper.parse and may also create type confusion. Successful exploitation can affect confidentiality, integrity, and availability in the client process. This issue is fixed in version 5.33.0.
 id: DHI-yrul-wy6g-smef-fi4j
-modified: "2026-11-22T23:21:29Z"
+modified: "2026-11-24T21:16:04Z"
 published: "2026-11-10T03:39:48Z"
 references:
     - type: ADVISORY

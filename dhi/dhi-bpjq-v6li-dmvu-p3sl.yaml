@@ -31,6 +31,20 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: static-web-server-2
+        purl: pkg:apk/dhi/static-web-server-2
+      ranges:
+        - events:
+            - introduced: 2.44.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.44.1-r0
+        - 2.44.2-r0
+        - 2.44.3-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: static-web-server-2
         purl: pkg:apk/dhi/static-web-server-2
@@ -60,7 +74,7 @@ affected:
         - 2.44.3-2
 details: When calling `Remote::list()` for a remote of a git repository, when that remote does not advertise any references, git2 passes a null pointer to the unsafe function `slice::from_raw_parts()`. Based on the safety section documentation of function, data must be non-null even for slices of length zero. Thus, the use of a null pointer leads to undefined behavior.
 id: DHI-bpjq-v6li-dmvu-p3sl
-modified: "2026-11-23T23:21:33Z"
+modified: "2026-11-24T22:24:02Z"
 published: "2026-11-20T14:34:36Z"
 references:
     - type: ADVISORY

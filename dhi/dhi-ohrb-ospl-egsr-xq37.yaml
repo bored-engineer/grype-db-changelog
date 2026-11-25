@@ -2,6 +2,38 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample-fips
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
@@ -107,7 +139,7 @@ affected:
         - 4.4.5-4
 details: 'Impact: In body-parser versions prior to 1.20.6 (1.x line) and 2.3.0 (2.x line), when the parser is configured with an invalid limit option value such as an unparseable string or NaN, bytes.parse returns null and the request body size check is silently skipped. Applications that rely on limit as their primary safeguard against oversized request bodies will accept arbitrarily large payloads, leading to excessive memory and CPU usage and denial of service. Patches: This issue is fixed in body-parser 1.20.6 and 2.3.0. After the fix, invalid limit values throw a clear error at parser construction time instead of silently disabling enforcement, while null and undefined continue to fall back to the default limit of 100kb. Workarounds: Validate the limit value before passing it to body-parser. For example, parse the value at startup and reject any configuration where the result is null or a non-finite number.'
 id: DHI-ohrb-ospl-egsr-xq37
-modified: "2026-11-23T19:50:20Z"
+modified: "2026-11-24T23:18:28Z"
 published: "2026-11-11T20:04:11Z"
 references:
     - type: ADVISORY

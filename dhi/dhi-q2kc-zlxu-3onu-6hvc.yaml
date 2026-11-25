@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: rsync
         purl: pkg:apk/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.1-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.1-r1
         - 3.4.1-r2
@@ -14,7 +18,7 @@ affected:
         - 3.5.2-r1
 details: Rsync version 3.4.2 and prior contain an integer overflow vulnerability in the compressed-token decoder where a 32-bit signed counter is not checked for overflow, allowing a malicious sender to trigger an overflow that causes the receiver process to read and return data from outside the intended buffer bounds. Attackers can exploit this vulnerability to disclose process memory contents including environment variables, passwords, heap and stack data, and library memory pointers, significantly reducing ASLR effectiveness and facilitating further exploitation.
 id: DHI-q2kc-zlxu-3onu-6hvc
-modified: "2026-11-11T18:24:29Z"
+modified: "2026-11-24T10:58:25Z"
 published: "2026-11-11T18:24:29Z"
 references:
     - type: ADVISORY

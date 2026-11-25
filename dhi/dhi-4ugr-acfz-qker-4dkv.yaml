@@ -105,6 +105,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: azure-functions-base-4
         purl: pkg:deb/dhi/azure-functions-base-4
+      ranges:
+        - events:
+            - introduced: 4.1055.100-0
+          type: ECOSYSTEM
       versions:
         - 4.1055.100-0
         - 4.1055.100-1
@@ -137,6 +141,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: dotnet-sdk-10
         purl: pkg:deb/dhi/dotnet-sdk-10
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 10.0.402-0
+          events:
+            - fixed: 10.0.402-0
+            - introduced: "0"
+          type: ECOSYSTEM
       versions:
         - 10.0.301-0
         - 10.0.302-0
@@ -144,16 +159,16 @@ affected:
         - 10.0.400-1
         - 10.0.401-0
         - 10.0.401-1
-        - 10.0.402-0
-        - 10.0.403-0
-        - 10.0.404-0
-        - 10.0.404-1
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Debian:13
         name: dotnet-sdk-8
         purl: pkg:deb/dhi/dotnet-sdk-8
+      ranges:
+        - events:
+            - introduced: 8.0.422-0
+          type: ECOSYSTEM
       versions:
         - 8.0.422-0
         - 8.0.423-0
@@ -171,6 +186,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: dotnet-sdk-9
         purl: pkg:deb/dhi/dotnet-sdk-9
+      ranges:
+        - events:
+            - introduced: 9.0.315-0
+          type: ECOSYSTEM
       versions:
         - 9.0.315-0
         - 9.0.316-0
@@ -292,7 +311,7 @@ details: |
 
     V1.0 (10/13/2026): Advisory published.
 id: DHI-4ugr-acfz-qker-4dkv
-modified: "2026-11-23T09:38:43Z"
+modified: "2026-11-24T17:31:49Z"
 published: "2026-11-11T17:00:58Z"
 references:
     - type: ADVISORY

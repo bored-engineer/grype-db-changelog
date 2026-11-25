@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-3.2
         purl: pkg:apk/dhi/ruby-3.2
+      ranges:
+        - events:
+            - introduced: 3.2.10-r0
+          type: ECOSYSTEM
       versions:
         - 3.2.10-r0
         - 3.2.10-r1
@@ -17,6 +21,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-3.3
         purl: pkg:apk/dhi/ruby-3.3
+      ranges:
+        - events:
+            - introduced: 3.3.10-r0
+          type: ECOSYSTEM
       versions:
         - 3.3.10-r0
         - 3.3.10-r1
@@ -33,6 +41,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-3.4
         purl: pkg:apk/dhi/ruby-3.4
+      ranges:
+        - events:
+            - introduced: 3.4.8-r0
+          type: ECOSYSTEM
       versions:
         - 3.4.10-r2
         - 3.4.10-r3
@@ -50,6 +62,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-4.0
         purl: pkg:apk/dhi/ruby-4.0
+      ranges:
+        - events:
+            - introduced: 4.0.1-r0
+          type: ECOSYSTEM
       versions:
         - 4.0.1-r0
         - 4.0.1-r1
@@ -71,13 +87,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ruby-3.2
         purl: pkg:apk/dhi/ruby-3.2
+      ranges:
+        - events:
+            - introduced: 3.2.11-r1
+          type: ECOSYSTEM
       versions:
         - 3.2.11-r1
         - 3.2.11-r2
         - 3.2.11-r3
 details: 'ERB is a templating system for Ruby. Ruby 2.7.0 (before ERB 2.2.0 was published on rubygems.org) introduced an `@_init` instance variable guard in `ERB#result` and `ERB#run` to prevent code execution when an ERB object is reconstructed via `Marshal.load` (deserialization). However, three other public methods that also evaluate `@src` via `eval()` were not given the same guard: `ERB#def_method`, `ERB#def_module`, and `ERB#def_class`. An attacker who can trigger `Marshal.load` on untrusted data in a Ruby application that has `erb` loaded can use `ERB#def_module` (zero-arg, default parameters) as a code execution sink, bypassing the `@_init` protection entirely. ERB 4.0.3.1, 4.0.4.1, 6.0.1.1, and 6.0.4 patch the issue.'
 id: DHI-pwnh-u2v3-tpfm-s4dr
-modified: "2026-11-20T14:20:51Z"
+modified: "2026-11-24T07:56:48Z"
 published: "2026-11-11T16:59:50Z"
 references:
     - type: ADVISORY

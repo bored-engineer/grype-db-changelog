@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-36
         purl: pkg:deb/dhi/druid-36
+      ranges:
+        - events:
+            - introduced: 36.0.0-0
+          type: ECOSYSTEM
       versions:
         - 36.0.0-0
         - 36.0.0-1
@@ -34,6 +38,7 @@ affected:
         - 36.0.0-33
         - 36.0.0-35
         - 36.0.0-36
+        - 36.0.0-37
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -46,6 +51,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-36-fips
         purl: pkg:deb/dhi/druid-36-fips
+      ranges:
+        - events:
+            - introduced: 36.0.0-1
+          type: ECOSYSTEM
       versions:
         - 36.0.0-1
         - 36.0.0-10
@@ -74,6 +83,7 @@ affected:
         - 36.0.0-33
         - 36.0.0-35
         - 36.0.0-36
+        - 36.0.0-37
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -86,6 +96,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-37
         purl: pkg:deb/dhi/druid-37
+      ranges:
+        - events:
+            - introduced: 37.0.0-0
+          type: ECOSYSTEM
       versions:
         - 37.0.0-0
         - 37.0.0-1
@@ -114,6 +128,7 @@ affected:
         - 37.0.0-32
         - 37.0.0-33
         - 37.0.0-35
+        - 37.0.0-37
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -126,6 +141,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-37-fips
         purl: pkg:deb/dhi/druid-37-fips
+      ranges:
+        - events:
+            - introduced: 37.0.0-1
+          type: ECOSYSTEM
       versions:
         - 37.0.0-1
         - 37.0.0-10
@@ -153,6 +172,7 @@ affected:
         - 37.0.0-32
         - 37.0.0-33
         - 37.0.0-35
+        - 37.0.0-37
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -161,7 +181,7 @@ affected:
         - 37.0.0-9
 details: The AsyncHttpClient (AHC) library allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses. From 2.0.0 until 2.16.1 and 3.0.12, automatic response decompression on the HTTP/1.1 path uses ChannelManager.newHttpContentDecompressor() to install Http1ContentDecompressor without a cumulative output-size limit. A hostile or compromised server, or an attacker who can alter a response in transit, can send a small gzip, deflate, or snappy response that expands across chunks until the client exhausts its heap and raises OutOfMemoryError; brotli and zstd are also affected when their optional codecs are present. In versions 3.0.8 through 3.0.10, the HTTP/2 decompressor is also unbounded, so switching protocols does not mitigate the issue on those releases. A limit applied to each decode call is insufficient because the response can be delivered as many small chunks, so the fixed implementation tracks total decompressed bytes for the whole response. This issue is fixed in versions 2.16.1 and 3.0.12.
 id: DHI-qzcw-w5sj-bouk-rof7
-modified: "2026-11-22T23:21:41Z"
+modified: "2026-11-24T14:55:37Z"
 published: "2026-11-12T11:41:09Z"
 references:
     - type: ADVISORY

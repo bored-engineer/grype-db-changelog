@@ -5,12 +5,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libde265
         purl: pkg:apk/dhi/libde265
+      ranges:
+        - events:
+            - introduced: 1.0.18-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.18-r0
         - 1.1.1-r0
 details: libde265 is an open source implementation of the h.265 video codec. Prior to version 1.0.19, `decoder_context::decode_slice_unit_tiles` (libde265/decctx.cc:920) reads `pps.CtbAddrRStoTS[ctbAddrRS]` at line 966 where `ctbAddrRS = ctbY * ctbsWidth + ctbX` is computed from PPS-supplied `colBd[]`/`rowBd[]` arrays without validating the result against `CtbAddrRStoTS.size() == sps->PicSizeInCtbsY`. A malformed PPS that passes `set_derived_values` but encodes geometry inconsistent with the SPS produces a `ctbAddrRS` past the allocation, causing a 4-byte heap-buffer-overflow READ. Version 1.0.19 fixes the issue.
 id: DHI-czoi-joif-rkfo-d5hc
-modified: "2026-11-11T18:56:38Z"
+modified: "2026-11-24T15:58:01Z"
 published: "2026-11-11T18:56:38Z"
 references:
     - type: ADVISORY

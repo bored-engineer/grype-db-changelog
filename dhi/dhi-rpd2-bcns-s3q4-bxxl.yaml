@@ -2,6 +2,23 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: socket-cli-2
+        purl: pkg:apk/dhi/socket-cli-2
+      ranges:
+        - events:
+            - introduced: 2.1.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.1.0-r0
+        - 2.1.0-r1
+        - 2.1.0-r2
+        - 2.1.0-r3
+        - 2.1.0-r4
+        - 2.1.0-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: socket-cli-2
         purl: pkg:apk/dhi/socket-cli-2
@@ -16,9 +33,26 @@ affected:
         - 2.1.0-r3
         - 2.1.0-r4
         - 2.1.0-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: socket-cli-2
+        purl: pkg:deb/dhi/socket-cli-2
+      ranges:
+        - events:
+            - introduced: 2.1.0-0
+          type: ECOSYSTEM
+      versions:
+        - 2.1.0-0
+        - 2.1.0-1
+        - 2.1.0-2
+        - 2.1.0-3
+        - 2.1.0-4
+        - 2.1.0-5
 details: nanotar through 0.2.0 has a path traversal vulnerability in parseTar() and parseTarGzip() that allows remote attackers to write arbitrary files outside the intended extraction directory via a crafted tar archive containing path traversal sequence.
 id: DHI-rpd2-bcns-s3q4-bxxl
-modified: "2026-11-23T14:52:25Z"
+modified: "2026-11-24T21:54:05Z"
 published: "2026-11-11T16:05:21Z"
 references:
     - type: ADVISORY

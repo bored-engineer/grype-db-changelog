@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libwebsockets
         purl: pkg:apk/dhi/libwebsockets
+      ranges:
+        - events:
+            - introduced: 4.3.5-r2
+          type: ECOSYSTEM
       versions:
         - 4.3.5-r2
         - 4.3.5-r3
@@ -14,12 +18,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libwebsockets
         purl: pkg:apk/dhi/libwebsockets
+      ranges:
+        - events:
+            - introduced: 4.3.5-r2
+          type: ECOSYSTEM
       versions:
         - 4.3.5-r2
         - 4.3.5-r3
 details: Out-of-bounds Write in unfilter_scanline in warmcat libwebsockets allows, when the LWS_WITH_UPNG flag is enabled during compilation and the HTML display stack is used, to write past a heap allocated buffer possibly causing a crash, when the user visits an attacker controlled website that contains a crafted PNG file with a big width value that causes an integer overflow which value is used for determining the size of a heap allocation.
 id: DHI-eduz-xzgc-d2u6-2v5u
-modified: "2026-11-11T15:40:18Z"
+modified: "2026-11-24T12:58:25Z"
 published: "2026-11-11T15:40:18Z"
 references:
     - type: ADVISORY

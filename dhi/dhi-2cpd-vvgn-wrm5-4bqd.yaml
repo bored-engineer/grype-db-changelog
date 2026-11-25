@@ -5,11 +5,15 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: minio
         purl: pkg:apk/dhi/minio
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
       versions:
         - 0.20251015.172955-r5
 details: Minio is a Multi-Cloud Object Storage framework. All users on Windows prior to version RELEASE.2023-03-20T20-16-18Z are impacted. MinIO fails to filter the `\` character, which allows for arbitrary object placement across buckets. As a result, a user with low privileges, such as an access key, service account, or STS credential, which only has permission to `PutObject` in a specific bucket, can create an admin user. This issue is patched in RELEASE.2023-03-20T20-16-18Z. There are no known workarounds.
 id: DHI-2cpd-vvgn-wrm5-4bqd
-modified: "2026-11-11T17:35:52Z"
+modified: "2026-11-24T10:59:34Z"
 published: "2026-11-11T17:35:52Z"
 references:
     - type: ADVISORY

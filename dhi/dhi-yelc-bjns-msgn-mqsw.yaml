@@ -2,6 +2,35 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-hub
+        purl: pkg:apk/dhi/jupyterhub-k8s-hub
+      ranges:
+        - events:
+            - introduced: 4.4.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.1-r0
+        - 4.4.2-r0
+        - 4.4.2-r1
+        - 4.4.2-r2
+        - 4.4.2-r3
+        - 4.4.2-r4
+        - 4.4.2-r5
+        - 4.4.2-r6
+        - 4.4.3-r0
+        - 4.4.4-r0
+        - 4.4.4-r1
+        - 4.4.4-r2
+        - 4.4.4-r3
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-hub
         purl: pkg:apk/dhi/jupyterhub-k8s-hub
@@ -269,7 +298,7 @@ affected:
         - 6.1.0-9
 details: Mako is a template library written in Python. Prior to 1.4.2, on Windows, TemplateLookup.get_template() in mako/lookup.py resolves template URIs with posixpath, while Template.__init__() in mako/template.py validates them with os.path, which uses ntpath. A URI beginning with a drive designator causes ntpath to absorb the traversal segments before the leading dot-dot check, while posixpath resolution can escape the configured template directory. An application that passes attacker-controlled template names or include paths can disclose process-readable files on the same volume, and a targeted file containing Mako template syntax may also be parsed and executed as a template. Raw URL paths are generally normalized before reaching this form, but query strings, form or JSON bodies, route parameters, and dynamic include expressions can preserve it. This issue is fixed in version 1.4.2.
 id: DHI-yelc-bjns-msgn-mqsw
-modified: "2026-11-23T19:51:10Z"
+modified: "2026-11-24T21:31:58Z"
 published: "2026-11-11T19:06:50Z"
 references:
     - type: ADVISORY

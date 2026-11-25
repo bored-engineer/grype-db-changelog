@@ -5,13 +5,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: zfs-linux
         purl: pkg:deb/dhi/zfs-linux
+      ranges:
+        - events:
+            - introduced: 2.3.2-2+dhi0
+          type: ECOSYSTEM
       versions:
         - 2.3.2-2+dhi0
         - 2.3.9-0+deb13u1+dhi0
         - 2.3.9-0+deb13u1+dhi1
 details: On Linux, several OpenZFS ioctl authorization checks accept a capability held only within a user-created, unprivileged namespace as equivalent to real host privilege, allowing an unprivileged local user to perform operations that should require root. Affected operations include pool-administrative operations (eg create, import, destroy), pool event log access (zpool events) and fault injection (zinject). Exploiting the problem requires only that the local user is permitted to open /dev/zfs (governed by local device permissions) and that the kernel permits unprivileged user namespace creation. No prior access to the target pool or its underlying devices is needed.
 id: DHI-iorw-xa36-q2ze-knyt
-modified: "2026-11-12T06:26:34Z"
+modified: "2026-11-24T11:03:53Z"
 published: "2026-11-12T06:26:34Z"
 references:
     - type: ADVISORY

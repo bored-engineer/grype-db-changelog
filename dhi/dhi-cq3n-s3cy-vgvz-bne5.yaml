@@ -6,14 +6,20 @@ affected:
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
       ranges:
-        - events:
-            - introduced: 16.13-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 16.16-r0
+          events:
+            - fixed: 16.16-r0
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 16.13-r0
         - 16.14-r0
         - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -55,13 +61,19 @@ affected:
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
       ranges:
-        - events:
-            - introduced: 16.14-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 16.16-r0
+          events:
+            - fixed: 16.16-r0
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 16.14-r0
         - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -114,7 +126,7 @@ affected:
         - 17.11-1
 details: 'Improper input validation in PostgreSQL pg_restore allows a non-plain archive provider to execute arbitrary code as the operating system user running pg_restore, via a crafted archive.  Note a contrast: crafted archive data may legitimately cause arbitrary SQL to execute at the restore destination, but it does not legitimately confer arbitrary code execution in the pg_restore OS process.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.'
 id: DHI-cq3n-s3cy-vgvz-bne5
-modified: "2026-11-23T15:14:18Z"
+modified: "2026-11-24T01:25:59Z"
 published: "2026-11-13T02:59:15Z"
 references:
     - type: ADVISORY

@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: qemu
         purl: pkg:deb/dhi/qemu
+      ranges:
+        - events:
+            - introduced: 1:10.0.8+ds-0+deb13u1dhi0
+          type: ECOSYSTEM
       versions:
         - 1:10.0.11+ds-0+deb13u1+dhi0
         - 1:10.0.11+ds-0+deb13u1+dhi1
@@ -12,9 +16,15 @@ affected:
         - 1:10.0.13+ds-0+deb13u1+dhi2
         - 1:10.0.13+ds-0+deb13u1+dhi3
         - 1:10.0.13+ds-0+deb13u1+dhi4
+        - 1:10.0.13+ds-0+deb13u1+dhi5
+        - 1:10.0.13+ds-0+deb13u1+dhi6
+        - 1:10.0.8+ds-0+deb13u1+dhi0
+        - 1:10.0.8+ds-0+deb13u1+dhi1
+        - 1:10.0.8+ds-0+deb13u1+dhi3
+        - 1:10.0.8+ds-0+deb13u1dhi0
 details: A flaw was found in QEMU's virtio-blk device. The issue arises because the device does not properly validate the size of input descriptors before writing data. A malicious guest with high privileges could exploit this vulnerability by submitting a malformed virtio-blk SCSI request, leading to an out-of-bounds write in the host heap memory and a potential denial of service (DoS) for the QEMU process.
 id: DHI-jg7p-i2cc-yri5-vfcx
-modified: "2026-11-12T02:28:09Z"
+modified: "2026-11-24T15:32:16Z"
 published: "2026-11-12T02:28:09Z"
 references:
     - type: ADVISORY

@@ -6,14 +6,20 @@ affected:
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
       ranges:
-        - events:
-            - introduced: 16.13-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 16.16-r0
+          events:
+            - fixed: 16.16-r0
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 16.13-r0
         - 16.14-r0
         - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -55,13 +61,19 @@ affected:
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
       ranges:
-        - events:
-            - introduced: 16.14-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 16.16-r0
+          events:
+            - fixed: 16.16-r0
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 16.14-r0
         - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -114,7 +126,7 @@ affected:
         - 17.11-1
 details: Missing authorization in PostgreSQL type conversion allows a database user to invoke a cast function despite lacking EXECUTE privilege on that function, via foreign keys, to_json(), and others.  A successful attack requires the attacker to search each database for access-restricted cast functions and identify confidentiality impact specific to each function implementation found.  There are few or no practical examples of an access-restricted cast function or of a cast function having confidentiality impact.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.
 id: DHI-j4go-mqhm-dsvy-tc2u
-modified: "2026-11-23T15:14:18Z"
+modified: "2026-11-24T01:12:05Z"
 published: "2026-11-13T02:59:15Z"
 references:
     - type: ADVISORY

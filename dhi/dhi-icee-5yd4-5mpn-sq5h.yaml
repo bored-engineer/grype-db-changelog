@@ -5,7 +5,12 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: glib
         purl: pkg:apk/dhi/glib
+      ranges:
+        - events:
+            - introduced: 2.86.3
+          type: ECOSYSTEM
       versions:
+        - 2.86.3
         - 2.86.3-r0
         - 2.86.3-r1
         - 2.86.5-r1
@@ -27,10 +32,12 @@ affected:
             - introduced: "0"
           type: ECOSYSTEM
       versions:
+        - 2.84.4-3~deb13u3+dhi0
+        - 2.84.4-3~deb13u3+dhi1
         - 2.84.4-3~deb13u3+dhi2
 details: A flaw was found in GLib. An off-by-one error can occur in the gvs_tuple_is_normal function in the glib/gvariant-serialiser.c file when doing an alignment padding check because the bounds check uses > instead of >=, causing an out-of-bounds read of only 1 byte. This issue can cause a minor information disclosure of 1 byte and a denial of service when the out-of-bounds read crosses a page boundary.
 id: DHI-icee-5yd4-5mpn-sq5h
-modified: "2026-11-21T03:27:47Z"
+modified: "2026-11-24T20:47:37Z"
 published: "2026-11-11T18:48:41Z"
 references:
     - type: ADVISORY

@@ -3,8 +3,85 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
+        name: gitlab-rails-18
+        purl: pkg:apk/dhi/gitlab-rails-18
+      ranges:
+        - events:
+            - introduced: 18.11.11-r0
+          type: ECOSYSTEM
+      versions:
+        - 18.11.11-r0
+        - 18.11.11-r1
+        - 18.11.11-r2
+        - 18.11.12-r0
+        - 18.11.12-r1
+        - 18.11.12-r2
+        - 18.11.12-r3
+        - 18.11.12-r4
+        - 18.11.14-r0
+        - 18.11.14-r1
+        - 18.11.14-r10
+        - 18.11.14-r11
+        - 18.11.14-r12
+        - 18.11.14-r13
+        - 18.11.14-r14
+        - 18.11.14-r15
+        - 18.11.14-r2
+        - 18.11.14-r3
+        - 18.11.14-r4
+        - 18.11.14-r5
+        - 18.11.14-r6
+        - 18.11.14-r7
+        - 18.11.14-r8
+        - 18.11.14-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: gitlab-rails-19
+        purl: pkg:apk/dhi/gitlab-rails-19
+      ranges:
+        - events:
+            - introduced: 19.1.8-r0
+          type: ECOSYSTEM
+      versions:
+        - 19.1.8-r0
+        - 19.1.8-r1
+        - 19.4.1-r0
+        - 19.4.1-r1
+        - 19.4.1-r2
+        - 19.4.1-r3
+        - 19.4.2-r0
+        - 19.5.3-r0
+        - 19.5.3-r1
+        - 19.5.3-r2
+        - 19.5.3-r3
+        - 19.5.3-r4
+        - 19.5.3-r5
+        - 19.5.3-r6
+        - 19.5.3-r7
+        - 19.5.3-r8
+        - 19.5.4-r0
+        - 19.5.4-r1
+        - 19.5.5-r0
+        - 19.5.5-r1
+        - 19.5.5-r2
+        - 19.5.6-r0
+        - 19.5.6-r1
+        - 19.6.0-r0
+        - 19.6.0-r1
+        - 19.6.1-r0
+        - 19.6.1-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
         name: rust
         purl: pkg:apk/dhi/rust
+      ranges:
+        - events:
+            - introduced: 1.91.1-r0
+          type: ECOSYSTEM
       versions:
         - 1.91.1-r0
         - 1.91.1-r2
@@ -30,6 +107,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: gitlab-rails-18
         purl: pkg:apk/dhi/gitlab-rails-18
+      ranges:
+        - events:
+            - introduced: 18.11.11-r0
+          type: ECOSYSTEM
       versions:
         - 18.11.11-r0
         - 18.11.11-r1
@@ -61,6 +142,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: gitlab-rails-19
         purl: pkg:apk/dhi/gitlab-rails-19
+      ranges:
+        - events:
+            - introduced: 19.1.8-r0
+          type: ECOSYSTEM
       versions:
         - 19.1.8-r0
         - 19.1.8-r1
@@ -95,6 +180,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: gitlab-rails-18
         purl: pkg:deb/dhi/gitlab-rails-18
+      ranges:
+        - events:
+            - introduced: 18.11.11-0
+          type: ECOSYSTEM
       versions:
         - 18.11.11-0
         - 18.11.11-1
@@ -141,6 +230,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: gitlab-rails-19
         purl: pkg:deb/dhi/gitlab-rails-19
+      ranges:
+        - events:
+            - introduced: 19.1.8-0
+          type: ECOSYSTEM
       versions:
         - 19.1.8-0
         - 19.1.8-1
@@ -186,7 +279,7 @@ affected:
         - 19.6.1-2
 details: Bytes is a utility library for working with bytes. From version 1.2.1 to before 1.11.1, Bytes is vulnerable to integer overflow in BytesMut::reserve. In the unique reclaim path of BytesMut::reserve, if the condition "v_capacity >= new_cap + offset" uses an unchecked addition. When new_cap + offset overflows usize in release builds, this condition may incorrectly pass, causing self.cap to be set to a value that exceeds the actual allocated capacity. Subsequent APIs such as spare_capacity_mut() then trust this corrupted cap value and may create out-of-bounds slices, leading to UB. This behavior is observable in release builds (integer overflow wraps), whereas debug builds panic due to overflow checks. This issue has been patched in version 1.11.1.
 id: DHI-4hh4-yyqw-bjbn-f2da
-modified: "2026-11-21T14:16:21Z"
+modified: "2026-11-24T21:14:12Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY

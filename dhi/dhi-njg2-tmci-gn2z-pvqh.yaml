@@ -2,6 +2,34 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: grafana-tempo-datasource-13
+        purl: pkg:apk/dhi/grafana-tempo-datasource-13
+      ranges:
+        - events:
+            - introduced: 13.4.2-r0
+          type: ECOSYSTEM
+      versions:
+        - 13.4.2-r0
+        - 13.4.2-r1
+        - 13.5.0-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: grafana-tempo-datasource-13-fips
+        purl: pkg:apk/dhi/grafana-tempo-datasource-13-fips
+      ranges:
+        - events:
+            - introduced: 13.4.2-r0
+          type: ECOSYSTEM
+      versions:
+        - 13.4.2-r0
+        - 13.4.2-r1
+        - 13.5.0-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: grafana-tempo-datasource-13
         purl: pkg:apk/dhi/grafana-tempo-datasource-13
@@ -699,12 +727,40 @@ affected:
         - 13.1.9-7
         - 13.1.9-8
         - 13.1.9-9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: grafana-tempo-datasource-13
+        purl: pkg:deb/dhi/grafana-tempo-datasource-13
+      ranges:
+        - events:
+            - introduced: 13.4.2-0
+          type: ECOSYSTEM
+      versions:
+        - 13.4.2-0
+        - 13.4.2-1
+        - 13.5.0-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: grafana-tempo-datasource-13-fips
+        purl: pkg:deb/dhi/grafana-tempo-datasource-13-fips
+      ranges:
+        - events:
+            - introduced: 13.4.2-0
+          type: ECOSYSTEM
+      versions:
+        - 13.4.2-0
+        - 13.4.2-1
+        - 13.5.0-0
 details: |-
     A vulnerability in Grafana Tempo exposes the S3 SSE-C encryption key in plaintext through the /status/config endpoint, potentially allowing unauthorized users to obtain the key used to encrypt trace data stored in S3.
 
     Thanks to william_goodfellow for reporting this vulnerability.
 id: DHI-njg2-tmci-gn2z-pvqh
-modified: "2026-11-23T23:11:21Z"
+modified: "2026-11-24T21:41:52Z"
 published: "2026-11-11T15:57:18Z"
 references:
     - type: ADVISORY

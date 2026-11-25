@@ -2,6 +2,81 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: couchbase-mcp
+        purl: pkg:apk/dhi/couchbase-mcp
+      ranges:
+        - events:
+            - introduced: 1.0.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.0.0-r0
+        - 1.0.0-r1
+        - 1.0.0-r2
+        - 1.0.0-r3
+        - 1.0.0-r4
+        - 1.0.1-r0
+        - 1.0.1-r1
+        - 1.0.1-r10
+        - 1.0.1-r11
+        - 1.0.1-r12
+        - 1.0.1-r14
+        - 1.0.1-r15
+        - 1.0.1-r16
+        - 1.0.1-r2
+        - 1.0.1-r3
+        - 1.0.1-r4
+        - 1.0.1-r5
+        - 1.0.1-r6
+        - 1.0.1-r7
+        - 1.0.1-r8
+        - 1.0.1-r9
+        - 1.1.0-r0
+        - 1.1.0-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: zscaler-mcp
+        purl: pkg:apk/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.13.1-r0
+        - 0.13.3-r0
+        - 0.13.4-r0
+        - 0.14.0-r0
+        - 0.14.0-r1
+        - 0.14.0-r2
+        - 0.15.0-r0
+        - 0.15.0-r1
+        - 0.15.2-r0
+        - 0.15.2-r1
+        - 0.15.3-r0
+        - 0.15.4-r0
+        - 0.15.4-r1
+        - 0.15.4-r10
+        - 0.15.4-r11
+        - 0.15.4-r12
+        - 0.15.4-r13
+        - 0.15.4-r14
+        - 0.15.4-r15
+        - 0.15.4-r16
+        - 0.15.4-r17
+        - 0.15.4-r18
+        - 0.15.4-r2
+        - 0.15.4-r3
+        - 0.15.4-r4
+        - 0.15.4-r5
+        - 0.15.4-r6
+        - 0.15.4-r7
+        - 0.15.4-r8
+        - 0.15.4-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: couchbase-mcp
         purl: pkg:apk/dhi/couchbase-mcp
@@ -329,7 +404,7 @@ affected:
         - 0.15.4-9
 details: Authlib is a Python library which builds OAuth and OpenID Connect servers. Prior to 1.9.0, Authlib's RFC 9101 JWTAuthenticationRequest passes the unauthenticated, client-controlled request_uri parameter to the abstract get_request_object() hook before applying a destination or registration policy; the hook itself performs no network request, while the documentation demonstrates an unrestricted HTTP fetch. In deployments whose integrator implements that hook as an unrestricted outbound fetch, a remote attacker who knows a valid public client identifier can make the authorization server request internal, link-local, or otherwise unintended URLs and can distinguish fetch outcomes through different error responses and timing. Deployments whose custom hook already applies a secure allowlist, destination controls, and retrieval limits are not affected. The JWTAuthenticationRequest implementation in authlib/oauth2/rfc9101/authorization_server.py forwards request_uri to get_request_object() before an application-approved retrieval policy accepts the destination. This issue is fixed in version 1.9.0.
 id: DHI-27zs-vurb-q3oc-eog4
-modified: "2026-11-23T19:48:54Z"
+modified: "2026-11-24T21:10:23Z"
 published: "2026-11-11T17:07:03Z"
 references:
     - type: ADVISORY

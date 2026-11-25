@@ -5,7 +5,12 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: glib
         purl: pkg:apk/dhi/glib
+      ranges:
+        - events:
+            - introduced: 2.86.3
+          type: ECOSYSTEM
       versions:
+        - 2.86.3
         - 2.86.3-r0
         - 2.86.3-r1
         - 2.86.5-r1
@@ -27,10 +32,12 @@ affected:
             - introduced: "0"
           type: ECOSYSTEM
       versions:
+        - 2.84.4-3~deb13u3+dhi0
+        - 2.84.4-3~deb13u3+dhi1
         - 2.84.4-3~deb13u3+dhi2
 details: A flaw was found in GLib. A state confusion issue exists in g_dbus_node_info_new_for_xml() in the gio/gdbusintrospection.c file when processing malformed D-Bus introspection XML, specifically with a `node` element nested within other elements like `method`, `signal`, `property` or `arg`. This issue can cause an unsigned integer overflow and lead to an out-of-bounds read, resulting in a denial of service.
 id: DHI-ppcl-7l4m-jc76-msg7
-modified: "2026-11-21T03:27:52Z"
+modified: "2026-11-24T20:47:37Z"
 published: "2026-11-11T18:48:41Z"
 references:
     - type: ADVISORY

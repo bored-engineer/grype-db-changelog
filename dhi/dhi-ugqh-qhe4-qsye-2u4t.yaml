@@ -22,6 +22,26 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: httpbin
+        purl: pkg:apk/dhi/httpbin
+      ranges:
+        - events:
+            - introduced: 0.2.3-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.2.3-r0
+        - 0.2.3-r1
+        - 0.2.3-r2
+        - 0.2.3-r3
+        - 0.2.3-r4
+        - 0.2.3-r5
+        - 0.2.3-r6
+        - 0.2.3-r7
+        - 0.2.3-r8
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: httpbin
         purl: pkg:deb/dhi/httpbin
@@ -41,7 +61,7 @@ affected:
         - 0.2.3-8
 details: Mistune is a Python Markdown parser with renderers and plugins. Prior to 3.3.4, inline image parsing sends nested ![ openers through precedence_scan because the no_link_before and _label_contains_link linearization guards are gated by not is_image. In src/mistune/inline_parser.py, each outer image opener can therefore search the remaining image body, while max_image_depth does not apply because the failed scans do not produce image tokens. Rendering untrusted Markdown with the default HTML renderer and no plugins can perform quadratic CPU work and keep a worker at 100 percent utilization. This issue is fixed in version 3.3.4.
 id: DHI-ugqh-qhe4-qsye-2u4t
-modified: "2026-11-23T19:59:21Z"
+modified: "2026-11-24T21:42:15Z"
 published: "2026-11-20T01:07:42Z"
 references:
     - type: ADVISORY

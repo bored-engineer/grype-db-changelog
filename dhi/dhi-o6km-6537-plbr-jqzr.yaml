@@ -2,9 +2,48 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: litellm-database
+        purl: pkg:apk/dhi/litellm-database
+      ranges:
+        - events:
+            - introduced: 1.94.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.94.0-r0
+        - 1.94.0-r1
+        - 1.94.1-r0
+        - 1.94.2-r0
+        - 1.94.2-r1
+        - 1.94.2-r2
+        - 1.94.3-r0
+        - 1.95.1-r0
+        - 1.96.2-r0
+        - 1.97.0-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: litellm-database-1.94
+        purl: pkg:apk/dhi/litellm-database-1.94
+      ranges:
+        - events:
+            - introduced: 1.94.3-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.94.3-r0
+        - 1.94.3-r1
+        - 1.94.3-r3
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: litellm-database
         purl: pkg:apk/dhi/litellm-database
+      ranges:
+        - events:
+            - introduced: 1.94.0-r0
+          type: ECOSYSTEM
       versions:
         - 1.94.0-r0
         - 1.94.0-r1
@@ -22,6 +61,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: litellm-database-1.94
         purl: pkg:apk/dhi/litellm-database-1.94
+      ranges:
+        - events:
+            - introduced: 1.94.3-r0
+          type: ECOSYSTEM
       versions:
         - 1.94.3-r0
         - 1.94.3-r1
@@ -32,6 +75,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: litellm-database
         purl: pkg:deb/dhi/litellm-database
+      ranges:
+        - events:
+            - introduced: 1.94.0-0
+          type: ECOSYSTEM
       versions:
         - 1.94.0-0
         - 1.94.0-1
@@ -48,6 +95,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: litellm-database-1.94
         purl: pkg:deb/dhi/litellm-database-1.94
+      ranges:
+        - events:
+            - introduced: 1.94.3-0
+          type: ECOSYSTEM
       versions:
         - 1.94.3-0
         - 1.94.3-1
@@ -69,7 +120,7 @@ details: |-
 
     Upgrade to `1.95.0` or later. The fix adds the missing alias to the request-body blocklist, so no configuration change is needed once you upgrade. There is no reliable configuration workaround on affected versions.
 id: DHI-o6km-6537-plbr-jqzr
-modified: "2026-11-13T12:36:17Z"
+modified: "2026-11-24T22:24:02Z"
 published: "2026-11-13T12:36:17Z"
 references:
     - type: ADVISORY

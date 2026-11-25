@@ -5,17 +5,24 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libwebsockets
         purl: pkg:deb/dhi/libwebsockets
+      ranges:
+        - events:
+            - introduced: 4.3.5-1+deb13u1+dhi0
+          type: ECOSYSTEM
       versions:
         - 4.3.5-1+deb13u1+dhi0
         - 4.3.5-1+deb13u1+dhi1
         - 4.3.5-1+deb13u2+dhi0
         - 4.3.5-1+deb13u2+dhi1
+        - 4.3.5-1+deb13u3+dhi0
+        - 4.3.5-1+deb13u3+dhi1
+        - 4.3.5-1+deb13u3+dhi2
 details: |-
     libwebsockets HTTP/2 HPACK Path Header Parsing Out-Of-Bounds Write Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of libwebsockets. Authentication is not required to exploit this vulnerability.
 
     The specific flaw exists within the parsing of HTTP/2 HPACK path header. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated buffer. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-31036.
 id: DHI-j4va-b5mt-dadh-buaq
-modified: "2026-11-11T20:44:24Z"
+modified: "2026-11-24T12:58:25Z"
 published: "2026-11-11T20:44:24Z"
 references:
     - type: ADVISORY

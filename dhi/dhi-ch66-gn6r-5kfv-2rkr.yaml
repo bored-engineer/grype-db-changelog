@@ -2,6 +2,47 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: zscaler-mcp
+        purl: pkg:apk/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.13.1-r0
+        - 0.13.3-r0
+        - 0.13.4-r0
+        - 0.14.0-r0
+        - 0.14.0-r1
+        - 0.14.0-r2
+        - 0.15.0-r0
+        - 0.15.0-r1
+        - 0.15.2-r0
+        - 0.15.2-r1
+        - 0.15.3-r0
+        - 0.15.4-r0
+        - 0.15.4-r1
+        - 0.15.4-r10
+        - 0.15.4-r11
+        - 0.15.4-r12
+        - 0.15.4-r13
+        - 0.15.4-r14
+        - 0.15.4-r15
+        - 0.15.4-r16
+        - 0.15.4-r17
+        - 0.15.4-r18
+        - 0.15.4-r2
+        - 0.15.4-r3
+        - 0.15.4-r4
+        - 0.15.4-r5
+        - 0.15.4-r6
+        - 0.15.4-r7
+        - 0.15.4-r8
+        - 0.15.4-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: zscaler-mcp
         purl: pkg:apk/dhi/zscaler-mcp
@@ -92,6 +133,7 @@ affected:
         - 1.110.2-0
         - 1.110.2-1
         - 1.110.2-2
+        - 1.110.3-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -221,7 +263,7 @@ affected:
         - 0.15.4-9
 details: HTTPX2 is a next generation HTTP client for Python. Prior to 2.11.0, Request._prepare() in src/httpx2/httpx2/_models.py can add a body-derived Content-Length header to a request that already contains a caller-supplied Transfer-Encoding header because its setdefault() processing checks each default header independently rather than treating the two framing headers as mutually exclusive. Fixed-size byte, JSON, form, and known-length multipart bodies can therefore be serialized over HTTP/1.1 with both headers, allowing request smuggling or connection desynchronization when downstream intermediaries disagree about which framing header takes precedence. This issue is fixed in version 2.11.0.
 id: DHI-ch66-gn6r-5kfv-2rkr
-modified: "2026-11-23T21:57:47Z"
+modified: "2026-11-24T21:13:38Z"
 published: "2026-11-11T19:00:00Z"
 references:
     - type: ADVISORY

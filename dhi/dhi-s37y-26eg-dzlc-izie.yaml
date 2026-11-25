@@ -2,9 +2,45 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample-fips
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
@@ -17,6 +53,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-r0
         - 4.4.5-r1
@@ -29,6 +69,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:deb/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-0
         - 4.4.5-1
@@ -41,6 +85,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: jupyterhub-k8s-singleuser-sample-fips
         purl: pkg:deb/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-0
+          type: ECOSYSTEM
       versions:
         - 4.4.5-0
         - 4.4.5-1
@@ -53,7 +101,7 @@ database_specific:
         - legacy_package_image_owner
 details: 'Glob matches files using patterns the shell uses. Starting in version 10.2.0 and prior to versions 10.5.0 and 11.1.0, the glob CLI contains a command injection vulnerability in its -c/--cmd option that allows arbitrary command execution when processing files with malicious names. When glob -c <command> <patterns> are used, matched filenames are passed to a shell with shell: true, enabling shell metacharacters in filenames to trigger command injection and achieve arbitrary code execution under the user or CI account privileges. This issue has been patched in versions 10.5.0 and 11.1.0.'
 id: DHI-s37y-26eg-dzlc-izie
-modified: "2026-11-21T12:21:53Z"
+modified: "2026-11-24T23:18:28Z"
 published: "2026-11-21T08:54:17Z"
 references:
     - type: ADVISORY

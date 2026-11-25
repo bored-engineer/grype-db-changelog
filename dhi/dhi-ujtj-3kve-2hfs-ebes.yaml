@@ -2,6 +2,38 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample-fips
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
@@ -107,7 +139,7 @@ affected:
         - 4.4.5-4
 details: 'ApostropheCMS is an open-source Node.js content management system, and sanitize-html provides a simple HTML sanitizer with a clear API. Versions of sanitize-html prior to 2.17.5 use `allowedSchemesAppliedToAttributes` (default: `[''href'', ''src'', ''cite'']`) to gate the `naughtyHref()` function that blocks dangerous URI schemes like `javascript:` and `vbscript:`. The HTML specification defines 10+ attributes that accept URIs (`action`, `formaction`, `data`, `poster`, `background`, `ping`, `xlink:href`, `dynsrc`, `lowsrc`), but none of these are included in the default gate list. When a developer allows any of these attributes in their configuration, `javascript:` URIs pass through completely unmodified, enabling XSS. Version 2.17.5 patches the issue.'
 id: DHI-ujtj-3kve-2hfs-ebes
-modified: "2026-11-23T19:50:51Z"
+modified: "2026-11-24T23:23:22Z"
 published: "2026-11-11T19:16:44Z"
 references:
     - type: ADVISORY

@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: k8ssandra-medusa
         purl: pkg:deb/dhi/k8ssandra-medusa
+      ranges:
+        - events:
+            - introduced: 0.29.1-1
+          type: ECOSYSTEM
       versions:
         - 0.29.1-1
         - 0.30.0-0
@@ -54,7 +58,7 @@ database_specific:
         - legacy_package_image_owner
 details: pip prior to version 26.1 would run self-update check functionality after installing wheel files which required importing well-known Python modules names. These module imports were intentionally deferred to increase startup time of the pip CLI. The patch changes self-update functionality to run before wheels are installed to prevent newly-installed modules from being imported shortly after the installation of a wheel package. Users should still review package contents prior to installation.
 id: DHI-g7cn-s57k-rn5k-iyrf
-modified: "2026-11-21T12:21:53Z"
+modified: "2026-11-24T02:25:08Z"
 published: "2026-11-19T22:11:01Z"
 references:
     - type: ADVISORY

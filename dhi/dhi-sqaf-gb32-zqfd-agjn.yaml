@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: github-mcp-server
         purl: pkg:apk/dhi/github-mcp-server
+      ranges:
+        - events:
+            - introduced: 0.33.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.33.1-r0
         - 0.33.1-r1
@@ -42,6 +46,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: github-mcp-server-dev
         purl: pkg:apk/dhi/github-mcp-server-dev
+      ranges:
+        - events:
+            - introduced: 0.33.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.33.1-r0
         - 0.33.1-r1
@@ -79,6 +87,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: github-mcp-server-fips
         purl: pkg:apk/dhi/github-mcp-server-fips
+      ranges:
+        - events:
+            - introduced: 0.33.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.33.1-r0
         - 0.33.1-r1
@@ -116,6 +128,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: github-mcp-server-fips-dev
         purl: pkg:apk/dhi/github-mcp-server-fips-dev
+      ranges:
+        - events:
+            - introduced: 0.33.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.33.1-r0
         - 0.33.1-r1
@@ -149,7 +165,7 @@ affected:
         - 2.2.0-r0
 details: GitHub MCP Server is GitHub's official MCP Server. Prior to 1.1.0, the CompletionsHandler function in pkg/github/server.go accesses params.Ref without first checking whether it is nil, so a completion/complete request with a missing or empty ref field triggers a nil pointer dereference and a Go runtime panic; because the crash occurs before any authentication or token validation, any unauthenticated client able to send JSON-RPC messages can crash the server, resulting in a complete denial of service. This issue is fixed in version 1.1.0.
 id: DHI-sqaf-gb32-zqfd-agjn
-modified: "2026-11-18T06:28:44Z"
+modified: "2026-11-24T12:26:58Z"
 published: "2026-11-12T21:33:02Z"
 references:
     - type: ADVISORY

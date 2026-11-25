@@ -85,6 +85,7 @@ affected:
         - 1.110.2-0
         - 1.110.2-1
         - 1.110.2-2
+        - 1.110.3-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -380,7 +381,7 @@ affected:
         - 6.1.0-9
 details: Pillow is a Python imaging library. From 2.0.0 until 13.0.0, Pillow has a heap buffer overflow and stale-heap disclosure in _tiffWriteProc when saving compressed TIFF data through libtiff to a target without a usable fileno(), such as BytesIO. The callback sizes its allocation from the prior buffer size instead of the current write position, allowing an attacker-controlled out-of-line TIFF tag or retained ICC profile to be copied beyond the allocation after libtiff seeks forward. This overflow can crash the process and may allow code execution. Independently, unwritten alignment gaps in compressed TIFF output larger than 64 KiB can disclose stale heap bytes without a crafted tag. File paths and targets with real file descriptors are unaffected. This issue is fixed in version 13.0.0.
 id: DHI-ordy-uhw4-4fdt-qy76
-modified: "2026-11-23T21:49:52Z"
+modified: "2026-11-24T11:27:40Z"
 published: "2026-11-20T16:49:49Z"
 references:
     - type: ADVISORY

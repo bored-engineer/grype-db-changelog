@@ -5,13 +5,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libevent
         purl: pkg:deb/dhi/libevent
+      ranges:
+        - events:
+            - introduced: 2.1.12-stable-10+dhi0
+          type: ECOSYSTEM
       versions:
         - 2.1.12-stable-10+dhi0
         - 2.1.12-stable-10+dhi1
         - 2.1.13-stable-1~deb13u1+dhi0
 details: Libevent is an event notification library. Prior to 2.1.13 and 2.2.2-alpha, libevent has two HTTP parsing weaknesses in http.c. evhttp_decode_uri_internal decodes percent-encoded %00 bytes into literal NUL characters, which can cause downstream C string operations to truncate a path and bypass validation performed on a different representation. evhttp_header_is_valid_value also accepts obsolete line folding in header values containing carriage return or line feed characters, allowing a proxy and libevent to interpret headers differently and enabling header injection or access control bypass. The CRLF header acceptance is fixed in versions 2.1.13 and 2.2.2-alpha, but the reviewed patches do not clearly remediate the URI NUL-truncation condition.
 id: DHI-7giw-xjdd-ylmn-lqjc
-modified: "2026-11-12T02:25:58Z"
+modified: "2026-11-24T12:35:01Z"
 published: "2026-11-12T02:25:58Z"
 references:
     - type: ADVISORY

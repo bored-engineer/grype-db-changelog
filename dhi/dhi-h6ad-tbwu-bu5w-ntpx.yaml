@@ -5,13 +5,21 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libarchive
         purl: pkg:deb/dhi/libarchive
+      ranges:
+        - events:
+            - introduced: 3.7.4-4dhi0
+          type: ECOSYSTEM
       versions:
+        - 3.7.4-4+deb13u1+dhi0
+        - 3.7.4-4+deb13u1+dhi1
         - 3.7.4-4+deb13u1+dhi2
         - 3.7.4-4+deb13u1+dhi3
         - 3.7.4-4+deb13u1+dhi4
+        - 3.7.4-4+deb13u1dhi0
+        - 3.7.4-4dhi0
 details: A flaw was identified in the RAR5 archive decompression logic of the libarchive library, specifically within the archive_read_data() processing path. When a specially crafted RAR5 archive is processed, the decompression routine may enter a state where internal logic prevents forward progress. This condition results in an infinite loop that continuously consumes CPU resources. Because the archive passes checksum validation and appears structurally valid, affected applications cannot detect the issue before processing. This can allow attackers to cause persistent denial-of-service conditions in services that automatically process archives.
 id: DHI-h6ad-tbwu-bu5w-ntpx
-modified: "2026-11-13T01:23:10Z"
+modified: "2026-11-24T10:44:21Z"
 published: "2026-11-11T19:27:42Z"
 references:
     - type: ADVISORY

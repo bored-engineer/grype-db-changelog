@@ -2,6 +2,20 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: vaultwarden-1
+        purl: pkg:apk/dhi/vaultwarden-1
+      ranges:
+        - events:
+            - introduced: 1.37.3-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.37.3-r0
+        - 1.37.4-r0
+        - 1.37.5-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: vaultwarden-1
         purl: pkg:apk/dhi/vaultwarden-1
@@ -33,9 +47,10 @@ affected:
         - 1.37.5-3
         - 1.37.5-4
         - 1.37.5-5
+        - 1.37.5-6
 details: Vaultwarden is an unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs. Prior to version 1.35.4, an authenticated regular user can specify another user’s cipher_id and call "PUT /api/ciphers/{id}/partial" Even though the standard retrieval API correctly denies access to that cipher, the partial update endpoint returns 200 OK and exposes cipherDetails (including name, notes, data, secureNote, etc.). This issue has been patched in version 1.35.4.
 id: DHI-z7nc-w6ky-kr2u-3kkr
-modified: "2026-11-23T16:56:44Z"
+modified: "2026-11-24T21:34:39Z"
 published: "2026-11-11T22:42:55Z"
 references:
     - type: ADVISORY

@@ -2,9 +2,46 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: minio
+        purl: pkg:apk/dhi/minio
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: minio-els
+        purl: pkg:apk/dhi/minio-els
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-r14
+        - 0.20251015.172955-r15
+        - 0.20251015.172955-r16
+        - 0.20251015.172955-r17
+        - 0.20251015.172955-r18
+        - 0.20251015.172955-r19
+        - 0.20251015.172955-r20
+        - 0.20251015.172955-r5
+        - 0.20251015.172955-r6
+        - 0.20251015.172955-r8
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: minio
         purl: pkg:apk/dhi/minio
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
       versions:
         - 0.20251015.172955-r5
     - database_specific:
@@ -13,6 +50,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: minio-els
         purl: pkg:apk/dhi/minio-els
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
       versions:
         - 0.20251015.172955-r14
         - 0.20251015.172955-r15
@@ -20,16 +61,50 @@ affected:
         - 0.20251015.172955-r17
         - 0.20251015.172955-r18
         - 0.20251015.172955-r19
+        - 0.20251015.172955-r20
         - 0.20251015.172955-r5
         - 0.20251015.172955-r6
         - 0.20251015.172955-r8
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: minio
+        purl: pkg:deb/dhi/minio
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: minio-els
+        purl: pkg:deb/dhi/minio-els
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-14
+        - 0.20251015.172955-15
+        - 0.20251015.172955-16
+        - 0.20251015.172955-17
+        - 0.20251015.172955-18
+        - 0.20251015.172955-19
+        - 0.20251015.172955-20
+        - 0.20251015.172955-5
+        - 0.20251015.172955-6
+        - 0.20251015.172955-8
 details: |-
     In Eclipse Paho Go MQTT v3.1 library (paho.mqtt.golang) versions <=1.5.0 UTF-8 encoded strings, passed into the library, may be incorrectly encoded if their length exceeds 65535 bytes. This may lead to unexpected content in packets sent to the server (for example, part of an MQTT topic may leak into the message body in a PUBLISH packet).
 
 
     The issue arises because the length of the data passed in was converted from an int64/int32 (depending upon CPU) to an int16 without checks for overflows. The int16 length was then written, followed by the data (e.g. topic). This meant that when the data (e.g. topic) was over 65535 bytes then the amount of data written exceeds what the length field indicates. This could lead to a corrupt packet, or mean that the excess data leaks into another field (e.g. topic leaks into message body).
 id: DHI-7sch-z4k7-mbiw-ghlf
-modified: "2026-11-20T19:00:44Z"
+modified: "2026-11-25T00:02:45Z"
 published: "2026-11-14T03:09:58Z"
 references:
     - type: ADVISORY

@@ -41,6 +41,7 @@ affected:
         - 17.7.34-4
         - 17.7.34-5
         - 17.7.34-6
+        - 17.7.34-7
     - database_specific:
         owner_kind: HSP
       package:
@@ -83,6 +84,7 @@ affected:
         - 17.7.34-4
         - 17.7.34-5
         - 17.7.34-6
+        - 17.7.34-7
     - database_specific:
         owner_kind: HSP
       package:
@@ -125,6 +127,7 @@ affected:
         - 17.7.34-4
         - 17.7.34-5
         - 17.7.34-6
+        - 17.7.34-7
     - database_specific:
         owner_kind: HSP
       package:
@@ -167,6 +170,7 @@ affected:
         - 17.7.34-4
         - 17.7.34-5
         - 17.7.34-6
+        - 17.7.34-7
     - database_specific:
         owner_kind: HSP
       package:
@@ -203,6 +207,7 @@ affected:
         - 18.11.10-5
         - 18.11.10-6
         - 18.11.10-7
+        - 18.11.10-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -239,6 +244,7 @@ affected:
         - 18.11.10-5
         - 18.11.10-6
         - 18.11.10-7
+        - 18.11.10-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -275,6 +281,7 @@ affected:
         - 18.11.10-5
         - 18.11.10-6
         - 18.11.10-7
+        - 18.11.10-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -311,9 +318,10 @@ affected:
         - 18.11.10-5
         - 18.11.10-6
         - 18.11.10-7
+        - 18.11.10-8
 details: gosaml2 is a Pure Go implementation of SAML 2.0. Prior to 0.12.0, ValidateEncodedResponse() calls decryptAssertions() on an EncryptedAssertion before signature or content validation completes, and EncryptedAssertion.DecryptBytes() in types/encrypted_assertion.go slices decoded ciphertext without first validating the required nonce or initialization-vector length. A CipherValue shorter than the 12-byte AES-GCM nonce causes a slice-bounds panic, and an empty AES-CBC CipherValue passes the modulo block-size check before causing a slice-bounds panic at the 16-byte initialization-vector split. An attacker needs only the service provider's public certificate to wrap a symmetric key, and no valid identity-provider signature or relationship is required. The unrecovered panic can terminate the request goroutine or the service process. This issue is fixed in version 0.12.0.
 id: DHI-cku3-r4fa-5alk-rsz2
-modified: "2026-11-23T21:56:24Z"
+modified: "2026-11-24T11:26:46Z"
 published: "2026-11-20T00:26:33Z"
 references:
     - type: ADVISORY

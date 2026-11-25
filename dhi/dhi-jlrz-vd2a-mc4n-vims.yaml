@@ -1,0 +1,46 @@
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: qemu
+        purl: pkg:deb/dhi/qemu
+      ranges:
+        - events:
+            - introduced: 1:10.0.8+ds-0+deb13u1dhi0
+          type: ECOSYSTEM
+      versions:
+        - 1:10.0.11+ds-0+deb13u1+dhi0
+        - 1:10.0.11+ds-0+deb13u1+dhi1
+        - 1:10.0.11+ds-0+deb13u1+dhi2
+        - 1:10.0.13+ds-0+deb13u1+dhi2
+        - 1:10.0.13+ds-0+deb13u1+dhi3
+        - 1:10.0.13+ds-0+deb13u1+dhi4
+        - 1:10.0.13+ds-0+deb13u1+dhi5
+        - 1:10.0.13+ds-0+deb13u1+dhi6
+        - 1:10.0.8+ds-0+deb13u1+dhi0
+        - 1:10.0.8+ds-0+deb13u1+dhi1
+        - 1:10.0.8+ds-0+deb13u1+dhi3
+        - 1:10.0.8+ds-0+deb13u1dhi0
+details: A flaw was found in QEMU's NBD block driver. A malicious NBD server can send an incomplete structured read reply marked as done, causing QEMU to return uninitialized host heap memory to the guest VM, resulting in host memory disclosure.
+id: DHI-jlrz-vd2a-mc4n-vims
+modified: "2026-11-24T17:14:41Z"
+published: "2026-11-24T11:43:32Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-126657
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-126657
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-jlrz-vd2a-mc4n-vims
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-126657
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2026-126657
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N
+      type: CVSS_V3
+summary: A flaw was found in QEMU's NBD block driver. A malicious NBD server can send an incomplete structured read reply marked…
+upstream:
+    - CVE-2026-126657

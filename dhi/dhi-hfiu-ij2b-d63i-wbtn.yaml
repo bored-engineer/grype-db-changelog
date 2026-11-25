@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: opencost-ui
         purl: pkg:deb/dhi/opencost-ui
+      ranges:
+        - events:
+            - introduced: 1.121.0-0
+          type: ECOSYSTEM
       versions:
         - 1.121.0-0
         - 1.121.1-0
@@ -22,7 +26,7 @@ affected:
         - 1.121.4-1
 details: morgan is an HTTP request logger middleware for Node.js. In versions before 1.12.1, its escapeLogField() function does not escape the double quote character, which delimits the quoted fields of the Apache combined log format that morgan emits. An unauthenticated remote attacker who controls a value written to a quoted field, such as the User-Agent or Referer header, can include a double quote to close that field early, so a log consumer that parses the log by field position reads attacker-supplied text as the following field. In the built-in formats this makes the recorded value differ from the value that was sent, and in custom formats that quote an attacker-controlled token before a server-controlled one it can forge values such as the response status. No newline is injected, so record separation stays intact. The issue is fixed in morgan 1.12.1, which escapes the double quote. Users should upgrade to morgan 1.12.1 or later.
 id: DHI-hfiu-ij2b-d63i-wbtn
-modified: "2026-11-20T19:27:55Z"
+modified: "2026-11-24T12:58:25Z"
 published: "2026-11-11T16:42:03Z"
 references:
     - type: ADVISORY

@@ -5,8 +5,13 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: perl-cpanel-json-xs
         purl: pkg:apk/dhi/perl-cpanel-json-xs
+      ranges:
+        - events:
+            - introduced: 4.41-r0
+          type: ECOSYSTEM
       versions:
         - 4.41-r0
+        - 4.41-r1
 details: |-
     Cpanel::JSON::XS versions before 4.80 for Perl allow stack exhaustion via nested tagged values under allow_tags in decode_tag.
 
@@ -14,7 +19,7 @@ details: |-
 
     A run of "(" bytes exhausts the C stack and triggers an uncatchable segmentation fault regardless of max_depth.
 id: DHI-a4p3-nvqw-obym-eeh6
-modified: "2026-11-21T08:05:52Z"
+modified: "2026-11-24T22:11:32Z"
 published: "2026-11-21T08:05:52Z"
 references:
     - type: ADVISORY

@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: rsync
         purl: pkg:apk/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.1-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.1-r1
         - 3.4.1-r2
@@ -14,7 +18,7 @@ affected:
         - 3.5.2-r1
 details: Rsync versions before 3.4.3 contain an off-by-one out-of-bounds stack write vulnerability in the establish_proxy_connection() function in socket.c that allows network attackers to corrupt stack memory by sending a malformed HTTP proxy response. Attackers can exploit this by positioning themselves between the client and proxy or controlling the proxy server to send a response line of 1023 or more bytes without a newline terminator, causing a null byte to be written to an out-of-bounds stack address when the RSYNC_PROXY environment variable is set.
 id: DHI-k6jz-lqzv-3m7q-fjho
-modified: "2026-11-11T18:24:29Z"
+modified: "2026-11-24T10:58:25Z"
 published: "2026-11-11T18:24:29Z"
 references:
     - type: ADVISORY

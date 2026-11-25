@@ -6,23 +6,25 @@ affected:
         name: busybox
         purl: pkg:deb/dhi/busybox
       ranges:
-        - events:
-            - introduced: 1:1.37.0-6dhi0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-18"
+                      kind: advisory
+                      version: 1:1.37.0-6+deb13u0+dhi6
+          events:
+            - fixed: 1:1.37.0-6+deb13u0+dhi6
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 1:1.37.0-6+b7dhi0
         - 1:1.37.0-6+deb13u0+dhi3
         - 1:1.37.0-6+deb13u0+dhi4
         - 1:1.37.0-6+deb13u0+dhi5
-        - 1:1.37.0-6+deb13u0+dhi6
-        - 1:1.37.0-6+dhi0
-        - 1:1.37.0-6+dhi1
-        - 1:1.37.0-6+dhi2
-        - 1:1.37.0-6+dhi3
         - 1:1.37.0-6dhi0
 details: A flaw was found in BusyBox. The volume identification component fails to properly validate cluster parameters when analyzing specially formatted FAT filesystems. An attacker able to present a crafted storage device or disk image can trigger a divide-by-zero condition when partition scanning utilities inspect the volume. This issue causes the probing utilities to crash unexpectedly, resulting in a Denial of Service (DoS) that can disrupt device discovery and system boot operations.
 id: DHI-rurb-cbud-etib-n2gt
-modified: "2026-11-23T23:25:27Z"
+modified: "2026-11-24T21:04:38Z"
 published: "2026-11-18T22:06:25Z"
 references:
     - type: ADVISORY

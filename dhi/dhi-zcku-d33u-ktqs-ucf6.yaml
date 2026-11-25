@@ -5,6 +5,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - events:
+            - introduced: 1.11.1-r1
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r1
         - 1.11.1-r2
@@ -17,6 +21,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - events:
+            - introduced: 1.11.1-r3
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r3
         - 1.11.1-r4
@@ -27,15 +35,24 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libssh2
         purl: pkg:deb/dhi/libssh2
+      ranges:
+        - events:
+            - introduced: 1.11.1-1dhi0
+          type: ECOSYSTEM
       versions:
+        - 1.11.1-1+deb13u1+dhi0
         - 1.11.1-1+deb13u1+dhi1
         - 1.11.1-1+deb13u1+dhi2
         - 1.11.1-1+deb13u2+dhi0
         - 1.11.1-1+dhi+deb13u1+dhi2
         - 1.11.1-1+dhi+deb13u2+dhi0
+        - 1.11.1-1+dhi1
+        - 1.11.1-1+dhi2
+        - 1.11.1-1+dhi3
+        - 1.11.1-1dhi0
 details: libssh2 through 1.11.1 reads an attacker-controlled 32-bit attribute count from a publickey-subsystem response and uses it in the allocation num_attrs * sizeof(libssh2_publickey_attribute) without bounds checking, so on 32-bit platforms the multiplication overflows to an undersized buffer. A malicious SSH server can then drive the attribute-parsing loop to write past the allocation, causing a heap buffer overflow in a connecting libssh2 client.
 id: DHI-zcku-d33u-ktqs-ucf6
-modified: "2026-11-18T19:46:09Z"
+modified: "2026-11-24T23:54:34Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY

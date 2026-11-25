@@ -5,13 +5,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: iperf3
         purl: pkg:apk/dhi/iperf3
+      ranges:
+        - events:
+            - introduced: 3.20-r0
+          type: ECOSYSTEM
       versions:
         - 3.20-r0
         - 3.20-r1
         - 3.21-r0
 details: 'iperf3 3.21 (esnet/iperf) contains a remote, unauthenticated heap use-after-free: the server''s per-test watchdog server_timer_proc() frees streams without cancelling/joining their worker threads, so a blocked worker dereferences a freed iperf_stream; fixed in 3.22.'
 id: DHI-fw3x-ag55-ris4-7f5x
-modified: "2026-11-11T21:58:56Z"
+modified: "2026-11-24T09:13:57Z"
 published: "2026-11-11T21:58:56Z"
 references:
     - type: ADVISORY

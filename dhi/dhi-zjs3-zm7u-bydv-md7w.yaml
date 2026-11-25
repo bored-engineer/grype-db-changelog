@@ -2,6 +2,57 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.0
+        purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.0.1-r0
+        - 1.0.1-r1
+        - 1.0.1-r10
+        - 1.0.1-r11
+        - 1.0.1-r2
+        - 1.0.1-r3
+        - 1.0.1-r4
+        - 1.0.1-r5
+        - 1.0.1-r6
+        - 1.0.1-r7
+        - 1.0.1-r8
+        - 1.0.1-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.1
+        purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.1.0-r0
+        - 1.1.0-r1
+        - 1.1.0-r10
+        - 1.1.0-r11
+        - 1.1.0-r12
+        - 1.1.0-r13
+        - 1.1.0-r17
+        - 1.1.0-r18
+        - 1.1.0-r19
+        - 1.1.0-r2
+        - 1.1.0-r3
+        - 1.1.0-r4
+        - 1.1.0-r5
+        - 1.1.0-r6
+        - 1.1.0-r7
+        - 1.1.0-r8
+        - 1.1.0-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
@@ -89,6 +140,7 @@ affected:
         - 36.0.0-33
         - 36.0.0-35
         - 36.0.0-36
+        - 36.0.0-37
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -133,6 +185,7 @@ affected:
         - 36.0.0-33
         - 36.0.0-35
         - 36.0.0-36
+        - 36.0.0-37
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -177,6 +230,7 @@ affected:
         - 37.0.0-32
         - 37.0.0-33
         - 37.0.0-35
+        - 37.0.0-37
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -220,6 +274,7 @@ affected:
         - 37.0.0-32
         - 37.0.0-33
         - 37.0.0-35
+        - 37.0.0-37
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -284,7 +339,7 @@ affected:
         - 1.1.0-9
 details: "### From the reporter\n\n> `XmlParser` is vulnerable to XML external entity (XXE) vulnerability.\n>  XmlParser is being used when parsing Jetty’s xml configuration files. An attacker might exploit\n> this vulnerability in order to achieve SSRF or cause a denial of service.\n> One possible scenario is importing a (remote) malicious WAR into a Jetty’s server, while the\n> WAR includes a malicious web.xml.\n\n### Impact\nThere are no circumstances in a normally deployed Jetty server where potentially hostile XML is given to the XmlParser class without the attacker already having arbitrary access to the server. I.e. in order to exploit `XmlParser` the attacker would already have the ability to deploy and execute hostile code.  Specifically, Jetty has no protection against malicious web application and potentially hostile web applications should only be run on an isolated virtualisation.  \n\nThus this is not considered a vulnerability of the Jetty server itself, as any such usage of the jetty XmlParser is equally vulnerable as a direct usage of the JVM supplied SAX parser.  No CVE will be allocated to this advisory.\n\nHowever, any direct usage of the `XmlParser` class by an application may be vulnerable.  The impact would greatly depend on how the application uses `XmlParser`, but it could be a denial of service due to large entity expansion, or possibly the revealing local files if the XML results are accessible remotely.\n\n### Patches\nAbility to configure the SAXParserFactory to fit the needs of your particular XML parser implementation have been merged as part of PR #10067\n\n### Workarounds\nDon't use Jetty's `XmlParser` to parse data from users."
 id: DHI-zjs3-zm7u-bydv-md7w
-modified: "2026-11-23T18:10:08Z"
+modified: "2026-11-24T21:17:11Z"
 published: "2026-11-10T11:22:46Z"
 references:
     - type: ADVISORY

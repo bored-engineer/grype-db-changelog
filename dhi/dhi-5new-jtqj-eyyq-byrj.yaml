@@ -11,6 +11,7 @@ affected:
           type: ECOSYSTEM
       versions:
         - 2.10.0-r1
+        - 2.10.0-r2
         - 2.7.3-r0
         - 2.7.4-r0
         - 2.7.5-r0
@@ -35,6 +36,7 @@ affected:
           type: ECOSYSTEM
       versions:
         - 2.10.0-r1
+        - 2.10.0-r2
         - 2.8.1-r0
         - 2.8.2-r0
         - 2.8.3-r0
@@ -79,7 +81,7 @@ database_specific:
         - legacy_package_image_owner
 details: libexpat before commit 13c5f63 contains a heap buffer over-read vulnerability in xmlparse.c. XML_ParseBuffer advances the parse buffer end with parser->m_bufferEnd += len using a caller-supplied length that is not validated against the allocated buffer size, so repeated XML_ParseBuffer calls move m_bufferEnd past the end of the heap allocation and subsequent parsing reads out of bounds. Reaching this path requires a parse buffer to already be present; otherwise XML_ParseBuffer returns XML_ERROR_NO_BUFFER. A buffer is present after a prior call to XML_GetBuffer, either directly (the common case) or indirectly through a prior XML_Parse call that allocates the buffer internally. The over-read discloses adjacent heap memory to the calling application, recovering heap pointers, libc function pointers, and code pointers sufficient to defeat ASLR and build further exploitation primitives.
 id: DHI-5new-jtqj-eyyq-byrj
-modified: "2026-11-23T15:31:29Z"
+modified: "2026-11-24T19:48:50Z"
 published: "2026-11-21T07:03:45Z"
 references:
     - type: ADVISORY
@@ -103,6 +105,8 @@ references:
     - type: ADVISORY
       url: https://errata.almalinux.org/9/ALSA-2026-98478.html
     - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:102193
+    - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:88247
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:88248
@@ -115,6 +119,8 @@ references:
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:98582
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-102193.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-88247.html
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-88248.html
@@ -124,6 +130,8 @@ references:
       url: https://linux.oracle.com/cve/ELSA-2026-92323.html
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-98478.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-102193.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-88247.html
     - type: ADVISORY
