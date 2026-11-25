@@ -15,9 +15,10 @@ func testOverlay(t *testing.T, readme string) *overlay {
 	t.Helper()
 	dir := t.TempDir()
 	ov := &overlay{
-		readme:    filepath.Join(dir, "README.md"),
-		workflow:  filepath.Join(dir, "dispatcher.yml"),
-		generator: "0123456789abcdef0123456789abcdef01234567",
+		readme:         filepath.Join(dir, "README.md"),
+		workflow:       filepath.Join(dir, "dispatcher.yml"),
+		generator:      "0123456789abcdef0123456789abcdef01234567",
+		updateWorkflow: true,
 	}
 	if err := os.WriteFile(ov.readme, []byte(readme), 0o644); err != nil {
 		t.Fatal(err)
@@ -85,6 +86,43 @@ func TestOverlayAppliedOnTopOnlyWhenChanged(t *testing.T) {
 	}
 	if out, _ := git(nil, "log", "-1", "--format=%s %ct", changelogRef); out != overlaySubject+" 250" {
 		t.Fatalf("tip = %q", out)
+	}
+}
+
+// From an Actions token only the README may change: the workflow is left
+// as the tip has it (absent, here), since GitHub would reject the push.
+func TestOverlayLeavesWorkflowAloneByDefault(t *testing.T) {
+	newRepo(t)
+	stage(t, "nvd", "sha256:n1", 100, map[string]string{"a.yaml": "1"})
+	ov := testOverlay(t, "v1")
+	ov.updateWorkflow = false
+	if _, err := run([]candidate{cand("nvd", "sha256:n1", 150)}, ov); err != nil {
+		t.Fatal(err)
+	}
+	if out, _ := git(nil, "ls-tree", "--name-only", changelogRef); out != "README.md\nnvd" {
+		t.Fatalf("root = %q, want README.md and nvd only", out)
+	}
+
+	// Pushed by hand once, it's then carried forward untouched even
+	// though the local dispatcher has since changed.
+	ov.updateWorkflow = true
+	if _, err := run(nil, ov); err != nil {
+		t.Fatal(err)
+	}
+	pushed, _ := git(nil, "rev-parse", changelogRef+":.github")
+	if err := os.WriteFile(ov.workflow, []byte("name: Changed\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	ov.updateWorkflow = false
+	stage(t, "nvd", "sha256:n2", 200, map[string]string{"a.yaml": "2"})
+	if _, err := run([]candidate{cand("nvd", "sha256:n2", 250)}, ov); err != nil {
+		t.Fatal(err)
+	}
+	if got, _ := git(nil, "rev-parse", changelogRef+":.github"); got != pushed {
+		t.Fatal(".github changed without -update-workflow")
+	}
+	if got := subjects(t); got[len(got)-1] != "nvd@sha256:n2" {
+		t.Fatalf("tip = %v, want the snapshot (no overlay commit)", got[len(got)-1])
 	}
 }
 

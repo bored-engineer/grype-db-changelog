@@ -10,6 +10,11 @@ name: Backfill
 # never the job logic. Keep them in sync with backfill.yml's (a test in
 # cmd/changelog checks).
 #
+# The backfill job can't update this copy: GitHub rejects workflow changes
+# pushed with an Actions token. After changing this file, push it onto the
+# changelog branch by hand (cmd/changelog -update-workflow; the job's log
+# warns with the exact command while the two differ).
+#
 # No concurrency group here: backfill.yml's own ("backfill") applies to the
 # called workflow, and repeating it on the caller would deadlock the two.
 on:

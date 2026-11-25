@@ -368,9 +368,9 @@ jobs:
         run: |
           # candidates.json: written by the previous step.
           # stdout: the raw refs it chained, one per line (logs go to stderr).
-          # The overlay: this README and the dispatcher workflow, onto the
-          # branch's tip whenever they change on generator (see
-          # applyOverlay). HEAD, not $GITHUB_SHA: run from the changelog
+          # The overlay: this README onto the branch's tip whenever it
+          # changes on generator (see applyOverlay). The dispatcher is only
+          # compared, not pushed: an Actions token can't change workflows. HEAD, not $GITHUB_SHA: run from the changelog
           # branch's dispatcher, that is the changelog commit.
           go run ./cmd/changelog -readme README.md \
             -workflow .github/changelog-dispatcher.yml \

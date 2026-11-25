@@ -262,6 +262,14 @@ type overlay struct {
 	workflow string // local path of the dispatcher, committed as overlayWorkflow
 	// generator is the generator commit both were read from.
 	generator string
+	// updateWorkflow lets the workflow be created or changed. GitHub
+	// refuses any push that does that from an Actions token ("refusing to
+	// allow a GitHub App to create or update workflow ... without
+	// `workflows` permission"), so the backfill job leaves it off and a
+	// change to the dispatcher is pushed by hand, once, with this set.
+	// Snapshot and README commits carry the file forward unchanged, which
+	// GitHub allows.
+	updateWorkflow bool
 }
 
 const (
@@ -277,6 +285,9 @@ const (
 // what's already there, which data commits carry forward unchanged, so
 // it's a commit per generator change, not per run. The whole .github/
 // directory is replaced: nothing else on the branch lives there.
+//
+// Without ov.updateWorkflow, .github/ is left exactly as the tip has it,
+// and a mismatch with the dispatcher is only warned about (see overlay).
 //
 // The commit is dated like its parent, not "now": a build published
 // between this run's listing and its commit would otherwise be chained
@@ -299,7 +310,15 @@ func applyOverlay(tree map[string]entry, parent string, ov overlay) (string, err
 		return "", err
 	}
 	tree["README.md"] = entry{"100644", "blob", readme}
-	tree[path.Dir(path.Dir(overlayWorkflow))] = entry{"040000", "tree", github}
+	dotGithub := path.Dir(path.Dir(overlayWorkflow))
+	if ov.updateWorkflow {
+		tree[dotGithub] = entry{"040000", "tree", github}
+	} else if tree[dotGithub].sha != github {
+		log.Printf("::warning::%s on the changelog branch differs from generator's dispatcher; "+
+			"an Actions token can't push workflow changes, so push it by hand: "+
+			"go run ./cmd/changelog -update-workflow -readme README.md -workflow .github/changelog-dispatcher.yml -generator $(git rev-parse HEAD) - <<< '[]'",
+			overlayWorkflow)
+	}
 
 	root, err := writeTree(tree)
 	if err != nil {
@@ -422,6 +441,7 @@ func main() {
 	flag.StringVar(&ov.readme, "readme", "", "README.md to copy onto the branch")
 	flag.StringVar(&ov.workflow, "workflow", "", "dispatcher workflow to copy onto the branch as "+overlayWorkflow)
 	flag.StringVar(&ov.generator, "generator", "", "generator commit both files come from")
+	flag.BoolVar(&ov.updateWorkflow, "update-workflow", false, "also create or update the workflow (needs a token with the workflows scope to push)")
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: %s [-readme FILE -workflow FILE -generator SHA] <candidates.json|->\n", os.Args[0])
 		flag.PrintDefaults()

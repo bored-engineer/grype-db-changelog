@@ -150,8 +150,10 @@ Captured: 2026-11-20T00:21:26Z
   schedule on the default branch. That workflow
   ([`changelog-dispatcher.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/changelog-dispatcher.yml))
   only forwards to the real one on `generator` with a ref-pinned reusable
-  workflow call, so it never needs to track the job logic. `cmd/changelog`
-  re-copies both whenever they change on `generator`.
+  workflow call, so it never needs to track the job logic. The backfill
+  job re-copies the README whenever it changes on `generator`. GitHub
+  doesn't let an Actions token change workflow files, so a change to the
+  dispatcher is pushed by hand, with `cmd/changelog -update-workflow`.
 - **`generator`**: the code, the real workflows and the source of this
   README. Everything under [How it works](#how-it-works) lives here.
 - **`refs/raw/<provider>/<digest>`**: a short-lived staging area between
