@@ -89,7 +89,8 @@ for a couple of weeks).
 Each provider is a top-level directory, with one YAML file per vunnel record
 under it, named after the record's ID (`debian/12/cve-2026-114938.yaml`,
 `nvd/2026/cve-2026-114938.yaml`, `wolfi/rolling/CVE-2026-114938.yaml`). Each
-commit advances exactly one provider and leaves the others untouched:
+snapshot commit advances exactly one provider and leaves the others
+untouched:
 
 ```text
 debian 2026-11-20T00:21:26Z: ghcr.io/anchore/grype-db/data/debian@sha256:08cfd720…
@@ -105,13 +106,17 @@ Captured: 2026-11-20T00:21:26Z
   both work as you'd expect. Builds can be published hours or occasionally
   days after they were captured; the **`Captured:`** trailer keeps the
   capture time.
+- **`docs: update README and workflows from generator`** commits are the
+  only other kind. They copy this README and a small workflow onto the
+  branch whenever those change (see [Branches](#branches)), and touch no
+  provider data.
 - **`Empty-Build: true`** marks a build upstream published as an empty
   tarball. It carries the previous snapshot forward unchanged rather than
   deleting the provider.
 
 ## How it works
 
-- **[`cmd/export`](cmd/export)** downloads one provider image by digest,
+- **[`cmd/export`](https://github.com/bored-engineer/grype-db-changelog/tree/generator/cmd/export)** downloads one provider image by digest,
   pulls `results.db` and `metadata.json` out of its layer, and writes one
   YAML file per record. Arrays of objects are sorted canonically, because
   upstream reorders them between builds for no semantic reason and that
@@ -120,28 +125,35 @@ Captured: 2026-11-20T00:21:26Z
   stages the snapshot as `refs/raw/<provider>/<digest>`. It streams the
   layer itself, resuming with HTTP Range requests when GHCR drops a
   connection, since ubuntu's layers are ~5.5GB.
-- **[`cmd/changelog`](cmd/changelog)** chains staged snapshots onto the
+- **[`cmd/changelog`](https://github.com/bored-engineer/grype-db-changelog/tree/generator/cmd/changelog)** chains staged snapshots onto the
   `changelog` branch. Each new commit reuses the snapshot's provider tree by
   SHA and carries every other provider's subtree forward, so it never
   re-reads file contents and runs in a blob-less clone. The branch is a
   plain single-parent chain, not merges, so `git log -- <path>` simplifies
   history correctly.
-- **[`backfill.yml`](.github/workflows/backfill.yml)** runs six times a day,
+- **[`backfill.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/backfill.yml)** runs six times a day,
   an hour after each of upstream's publish windows (00:00, 08:00 and 16:00
   UTC) plus a sweep three hours later for stragglers. It lists every
   provider's GHCR version history, works out which versions aren't chained
   yet, oldest first, and fans those out across parallel
-  **[`export.yml`](.github/workflows/export.yml)** jobs. A final job then
+  **[`export.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/export.yml)** jobs. A final job then
   chains them in publish order and deletes their staging refs, in one
   atomic push. Each run takes at most 1,000 versions, which is how the
   initial backfill of upstream's history was done, one batch at a time.
 
 ## Branches
 
-- **`generator`**: this code, the workflows and this README. The
-  repository's default branch.
 - **`changelog`**: the data, one commit per upstream build, as described
-  above. It contains only provider directories, no code.
+  above, and the repository's default branch. Its tip also carries a copy
+  of this README, so the branch explains itself, and a thin
+  `.github/workflows/backfill.yml`, so GitHub still finds a workflow to
+  schedule on the default branch. That workflow
+  ([`changelog-dispatcher.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/changelog-dispatcher.yml))
+  only forwards to the real one on `generator` with a ref-pinned reusable
+  workflow call, so it never needs to track the job logic. `cmd/changelog`
+  re-copies both whenever they change on `generator`.
+- **`generator`**: the code, the real workflows and the source of this
+  README. Everything under [How it works](#how-it-works) lives here.
 - **`refs/raw/<provider>/<digest>`**: a short-lived staging area between
   the export jobs and the changelog job. Refs exist only while a batch is in
   flight; the `changelog` branch is the source of truth for what has been

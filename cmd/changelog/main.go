@@ -19,6 +19,10 @@
 // stdout (one per line) so the caller can delete it in the same atomic
 // push that advances the branch.
 //
+// With -readme/-workflow/-generator it also copies generator's README.md
+// and a thin dispatcher workflow onto the branch (see applyOverlay), so
+// "changelog" can be the repository's default branch.
+//
 // Run from inside the target git repository (it shells out to plumbing
 // commands rather than using a git library: it only ever references
 // existing tree objects by SHA, so it never re-reads blob content and
@@ -28,11 +32,13 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"log"
 	"os"
 	"os/exec"
+	"path"
 	"sort"
 	"strings"
 	"time"
@@ -68,20 +74,25 @@ func mktree(input string) (string, error) {
 	return strings.TrimRight(out.String(), "\n"), nil
 }
 
-// existingProviders returns the provider->tree-sha map already present at
-// the root of the given changelog commit's tree (empty if there is no
-// previous commit, i.e. nothing has been built yet).
-func existingProviders(commit string) (map[string]string, error) {
-	providers := map[string]string{}
+// entry is one root tree entry of a changelog commit: a provider's
+// directory, or one of the overlay files (README.md, .github/).
+type entry struct{ mode, typ, sha string }
+
+// rootEntries returns the entries at the root of the given changelog
+// commit's tree (empty if there is no previous commit, i.e. nothing has
+// been built yet). Data commits carry every entry they don't change
+// forward, so the overlay stays in place under newer snapshots.
+func rootEntries(commit string) (map[string]entry, error) {
+	entries := map[string]entry{}
 	if commit == "" {
-		return providers, nil
+		return entries, nil
 	}
 	out, err := git(nil, "ls-tree", commit)
 	if err != nil {
 		return nil, fmt.Errorf("ls-tree failed: %w", err)
 	}
 	if out == "" {
-		return providers, nil
+		return entries, nil
 	}
 	for _, line := range strings.Split(out, "\n") {
 		// "<mode> <type> <sha>\t<name>"
@@ -89,14 +100,28 @@ func existingProviders(commit string) (map[string]string, error) {
 		if tab < 0 {
 			return nil, fmt.Errorf("unexpected ls-tree line: %q", line)
 		}
-		name := line[tab+1:]
 		fields := strings.Fields(line[:tab])
 		if len(fields) != 3 {
 			return nil, fmt.Errorf("unexpected ls-tree entry: %q", line)
 		}
-		providers[name] = fields[2]
+		entries[line[tab+1:]] = entry{fields[0], fields[1], fields[2]}
 	}
-	return providers, nil
+	return entries, nil
+}
+
+// writeTree writes the root tree for the given entries.
+func writeTree(tree map[string]entry) (string, error) {
+	names := make([]string, 0, len(tree))
+	for name := range tree {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	var in bytes.Buffer
+	for _, name := range names {
+		e := tree[name]
+		fmt.Fprintf(&in, "%s %s %s\t%s\n", e.mode, e.typ, e.sha, name)
+	}
+	return mktree(in.String())
 }
 
 // candidate mirrors one entry of the discover job's output, which lists
@@ -188,9 +213,9 @@ func resolve(c candidate) (s snapshot, ok bool, err error) {
 	return s, true, nil
 }
 
-// buildOne advances tree (provider -> subtree SHA, mutated in place) onto
+// buildOne advances tree (root name -> entry, mutated in place) onto
 // a new commit chaining onto parent (which may be "").
-func buildOne(tree map[string]string, parent string, s snapshot) (string, error) {
+func buildOne(tree map[string]entry, parent string, s snapshot) (string, error) {
 	switch {
 	case s.carry:
 		// Tree unchanged: the commit records the build without
@@ -200,42 +225,100 @@ func buildOne(tree map[string]string, parent string, s snapshot) (string, error)
 		// represent an empty directory, so the provider's directory goes.
 		delete(tree, s.provider)
 	default:
-		tree[s.provider] = s.subtree
+		tree[s.provider] = entry{"040000", "tree", s.subtree}
 	}
 
-	names := make([]string, 0, len(tree))
-	for name := range tree {
-		names = append(names, name)
-	}
-	sort.Strings(names)
-
-	var rootTreeInput bytes.Buffer
-	for _, name := range names {
-		fmt.Fprintf(&rootTreeInput, "040000 tree %s\t%s\n", tree[name], name)
-	}
-	rootTree, err := mktree(rootTreeInput.String())
+	rootTree, err := writeTree(tree)
 	if err != nil {
 		return "", fmt.Errorf("mktree for root failed: %w", err)
 	}
 
-	env := []string{
-		"GIT_AUTHOR_NAME=grype-db-changelog",
-		"GIT_AUTHOR_EMAIL=41898282+github-actions[bot]@users.noreply.github.com",
-		"GIT_AUTHOR_DATE=" + s.published,
-		"GIT_COMMITTER_NAME=grype-db-changelog",
-		"GIT_COMMITTER_EMAIL=41898282+github-actions[bot]@users.noreply.github.com",
-		"GIT_COMMITTER_DATE=" + s.published,
-	}
 	commitArgs := []string{"commit-tree", rootTree}
 	if parent != "" {
 		commitArgs = append(commitArgs, "-p", parent)
 	}
 	commitArgs = append(commitArgs, "-m", withTrailer(s.message, capturedTrailer+s.captured))
-	newCommit, err := git(env, commitArgs...)
+	newCommit, err := git(botEnv(s.published), commitArgs...)
 	if err != nil {
 		return "", fmt.Errorf("commit-tree failed: %w", err)
 	}
 	return newCommit, nil
+}
+
+func botEnv(date string) []string {
+	return []string{
+		"GIT_AUTHOR_NAME=grype-db-changelog",
+		"GIT_AUTHOR_EMAIL=41898282+github-actions[bot]@users.noreply.github.com",
+		"GIT_AUTHOR_DATE=" + date,
+		"GIT_COMMITTER_NAME=grype-db-changelog",
+		"GIT_COMMITTER_EMAIL=41898282+github-actions[bot]@users.noreply.github.com",
+		"GIT_COMMITTER_DATE=" + date,
+	}
+}
+
+// overlay is what applyOverlay copies onto the changelog branch.
+type overlay struct {
+	readme   string // local path of generator's README.md
+	workflow string // local path of the dispatcher, committed as overlayWorkflow
+	// generator is the generator commit both were read from.
+	generator string
+}
+
+const (
+	overlayWorkflow  = ".github/workflows/backfill.yml"
+	overlaySubject   = "docs: update README and workflows from generator"
+	generatorTrailer = "Generator-Commit: "
+)
+
+// applyOverlay puts generator's README.md and the dispatcher workflow at
+// the root of the changelog branch, so the branch is browsable on its own
+// and, as the repository's default branch, still has a workflow GitHub
+// will schedule. It commits on top of parent only when they differ from
+// what's already there, which data commits carry forward unchanged, so
+// it's a commit per generator change, not per run. The whole .github/
+// directory is replaced: nothing else on the branch lives there.
+//
+// The commit is dated like its parent, not "now": a build published
+// between this run's listing and its commit would otherwise be chained
+// next run with a date earlier than this commit's.
+func applyOverlay(tree map[string]entry, parent string, ov overlay) (string, error) {
+	readme, err := git(nil, "hash-object", "-w", "--", ov.readme)
+	if err != nil {
+		return "", err
+	}
+	workflow, err := git(nil, "hash-object", "-w", "--", ov.workflow)
+	if err != nil {
+		return "", err
+	}
+	workflows, err := mktree(fmt.Sprintf("100644 blob %s\t%s\n", workflow, path.Base(overlayWorkflow)))
+	if err != nil {
+		return "", err
+	}
+	github, err := mktree(fmt.Sprintf("040000 tree %s\t%s\n", workflows, path.Base(path.Dir(overlayWorkflow))))
+	if err != nil {
+		return "", err
+	}
+	tree["README.md"] = entry{"100644", "blob", readme}
+	tree[path.Dir(path.Dir(overlayWorkflow))] = entry{"040000", "tree", github}
+
+	root, err := writeTree(tree)
+	if err != nil {
+		return "", fmt.Errorf("mktree for root failed: %w", err)
+	}
+	if parentTree, err := git(nil, "rev-parse", parent+"^{tree}"); err != nil {
+		return "", err
+	} else if root == parentTree {
+		return parent, nil
+	}
+	date, err := git(nil, "log", "-1", "--format=%cI", parent)
+	if err != nil {
+		return "", err
+	}
+	commit, err := git(botEnv(date), "commit-tree", root, "-p", parent, "-m", overlaySubject, "-m", generatorTrailer+ov.generator)
+	if err != nil {
+		return "", fmt.Errorf("commit-tree failed: %w", err)
+	}
+	return commit, nil
 }
 
 // withTrailer appends a trailer line to message, joining its existing
@@ -269,7 +352,10 @@ func withTrailer(message, trailer string) string {
 // can be published days after its capture time (seen: 5.6 days for nvd),
 // so ordering by capture time would mean inserting into the past. Within
 // each provider the two orders agree.
-func run(candidates []candidate) ([]string, error) {
+//
+// With ov set, the overlay is applied on top afterwards (see applyOverlay),
+// even if nothing new was chained.
+func run(candidates []candidate, ov *overlay) ([]string, error) {
 	var snaps []snapshot
 	for i, c := range candidates {
 		s, ok, err := resolve(c)
@@ -286,16 +372,18 @@ func run(candidates []candidate) ([]string, error) {
 
 	if len(snaps) == 0 {
 		log.Print("nothing new to build")
-		return nil, nil
+		if ov == nil {
+			return nil, nil
+		}
 	}
 
 	prevCommit, err := git(nil, "rev-parse", "--verify", "--quiet", changelogRef)
 	if err != nil {
 		prevCommit = "" // first run: no previous changelog commit yet
 	}
-	tree, err := existingProviders(prevCommit)
+	tree, err := rootEntries(prevCommit)
 	if err != nil {
-		return nil, fmt.Errorf("existingProviders failed: %w", err)
+		return nil, fmt.Errorf("rootEntries failed: %w", err)
 	}
 
 	parent := prevCommit
@@ -308,6 +396,14 @@ func run(candidates []candidate) ([]string, error) {
 		parent = newCommit
 		chained = append(chained, s.ref)
 	}
+	if ov != nil && parent != "" {
+		if parent, err = applyOverlay(tree, parent, *ov); err != nil {
+			return nil, fmt.Errorf("applyOverlay failed: %w", err)
+		}
+	}
+	if parent == prevCommit {
+		return chained, nil
+	}
 
 	updateArgs := []string{"update-ref", changelogRef, parent}
 	if prevCommit != "" {
@@ -317,22 +413,38 @@ func run(candidates []candidate) ([]string, error) {
 		return nil, fmt.Errorf("update-ref failed: %w", err)
 	}
 
-	log.Printf("built %d commit(s), new tip %s", len(chained), parent)
+	log.Printf("chained %d snapshot(s), new tip %s", len(chained), parent)
 	return chained, nil
 }
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Fprintf(os.Stderr, "Usage: %s <candidates.json|->\n", os.Args[0])
+	var ov overlay
+	flag.StringVar(&ov.readme, "readme", "", "README.md to copy onto the branch")
+	flag.StringVar(&ov.workflow, "workflow", "", "dispatcher workflow to copy onto the branch as "+overlayWorkflow)
+	flag.StringVar(&ov.generator, "generator", "", "generator commit both files come from")
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Usage: %s [-readme FILE -workflow FILE -generator SHA] <candidates.json|->\n", os.Args[0])
+		flag.PrintDefaults()
+	}
+	flag.Parse()
+	if flag.NArg() != 1 {
+		flag.Usage()
 		os.Exit(1)
+	}
+	var ovp *overlay
+	switch set := ov.readme != "" || ov.workflow != "" || ov.generator != ""; {
+	case set && (ov.readme == "" || ov.workflow == "" || ov.generator == ""):
+		log.Fatal("-readme, -workflow and -generator go together")
+	case set:
+		ovp = &ov
 	}
 
 	var b []byte
 	var err error
-	if os.Args[1] == "-" {
+	if flag.Arg(0) == "-" {
 		b, err = io.ReadAll(os.Stdin)
 	} else {
-		b, err = os.ReadFile(os.Args[1])
+		b, err = os.ReadFile(flag.Arg(0))
 	}
 	if err != nil {
 		log.Fatalf("reading candidates failed: %v", err)
@@ -343,7 +455,7 @@ func main() {
 		log.Fatalf("json.Unmarshal failed: %v", err)
 	}
 
-	chained, err := run(candidates)
+	chained, err := run(candidates, ovp)
 	if err != nil {
 		log.Fatal(err)
 	}

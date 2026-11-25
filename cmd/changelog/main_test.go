@@ -87,7 +87,7 @@ func TestRunChainsInPublishOrderAndStopsAtMissing(t *testing.T) {
 		cand("nvd", "sha256:n2", 1200),
 		cand("github", "sha256:g2", 1300),
 		cand("nvd", "sha256:n3", 1400),
-	})
+	}, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -114,7 +114,7 @@ func TestRunChainsInPublishOrderAndStopsAtMissing(t *testing.T) {
 	// Next run: g2 is now exported; continues from the existing tip and
 	// carries github/ forward through nvd's commit.
 	stage(t, "github", "sha256:g2", 250, map[string]string{"b.yaml": "2"})
-	if _, err := run([]candidate{cand("github", "sha256:g2", 1300), cand("nvd", "sha256:n3", 1400)}); err != nil {
+	if _, err := run([]candidate{cand("github", "sha256:g2", 1300), cand("nvd", "sha256:n3", 1400)}, nil); err != nil {
 		t.Fatal(err)
 	}
 	want = append(want, "github@sha256:g2", "nvd@sha256:n3")
@@ -129,7 +129,7 @@ func TestRunChainsInPublishOrderAndStopsAtMissing(t *testing.T) {
 func TestRunRejectsMissingPublishTime(t *testing.T) {
 	newRepo(t)
 	stage(t, "nvd", "sha256:n1", 100, map[string]string{"a.yaml": "1"})
-	if _, err := run([]candidate{{Provider: "nvd", Digest: "sha256:n1"}}); err == nil {
+	if _, err := run([]candidate{{Provider: "nvd", Digest: "sha256:n1"}}, nil); err == nil {
 		t.Fatal("want an error for a candidate without a publish time")
 	}
 }
@@ -152,7 +152,7 @@ func TestRunEmptySnapshotRemovesProvider(t *testing.T) {
 	stage(t, "kev", "sha256:k1", 150, map[string]string{"a.yaml": "1"})
 	stage(t, "echo", "sha256:e2", 200, nil)
 
-	if _, err := run([]candidate{cand("echo", "sha256:e1", 100), cand("kev", "sha256:k1", 150), cand("echo", "sha256:e2", 200)}); err != nil {
+	if _, err := run([]candidate{cand("echo", "sha256:e1", 100), cand("kev", "sha256:k1", 150), cand("echo", "sha256:e2", 200)}, nil); err != nil {
 		t.Fatal(err)
 	}
 	out, err := git(nil, "ls-tree", "--name-only", changelogRef)
@@ -173,7 +173,7 @@ func TestRunEmptyBuildCarriesForward(t *testing.T) {
 	stageMsg(t, "debian", "sha256:d2", 200, nil, "Upstream published this build as an empty tarball.\n\n"+emptyBuildTrailer)
 	stage(t, "debian", "sha256:d3", 300, map[string]string{"a.yaml": "3"})
 
-	chained, err := run([]candidate{cand("debian", "sha256:d1", 100), cand("debian", "sha256:d2", 200), cand("debian", "sha256:d3", 300)})
+	chained, err := run([]candidate{cand("debian", "sha256:d1", 100), cand("debian", "sha256:d2", 200), cand("debian", "sha256:d3", 300)}, nil)
 	if err != nil {
 		t.Fatal(err)
 	}

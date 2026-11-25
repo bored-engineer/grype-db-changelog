@@ -18,6 +18,23 @@ on:
         required: false
         type: number
         default: 3
+  # How the dispatcher overlaid onto the "changelog" branch runs this
+  # workflow (see .github/changelog-dispatcher.yml), so the schedule still
+  # fires once "changelog" is the default branch. Strings, not numbers:
+  # GitHub rejects an expression's string result for a number-typed
+  # reusable workflow input (see export.yml), and these are only ever used
+  # as text below.
+  workflow_call:
+    inputs:
+      max_items:
+        required: false
+        type: string
+      shards:
+        required: false
+        type: string
+      parallelism:
+        required: false
+        type: string
   # Each run chains the oldest ~1000 not-yet-chained versions, so a
   # backlog drains over successive runs (or manual dispatches) and the
   # changelog then stays current. Overlap is prevented by the concurrency
@@ -33,6 +50,10 @@ on:
   # Not more often: GitHub throttles frequent schedules hard (a */10 cron
   # fired only ~3 times a day), and a caught-up run is a ~30s discover.
   # Off the top of the hour, when scheduled runs are most often delayed.
+  #
+  # Only the default branch's schedule fires. Keep this in sync with
+  # .github/changelog-dispatcher.yml's (a test checks): that copy is the
+  # one that runs once "changelog" is the default branch.
   schedule:
     - cron: '7 1,9,17 * * *'
     - cron: '7 4,12,20 * * *'
@@ -347,7 +368,14 @@ jobs:
         run: |
           # candidates.json: written by the previous step.
           # stdout: the raw refs it chained, one per line (logs go to stderr).
-          go run ./cmd/changelog candidates.json > chained-refs.txt
+          # The overlay: this README and the dispatcher workflow, onto the
+          # branch's tip whenever they change on generator (see
+          # applyOverlay). HEAD, not $GITHUB_SHA: run from the changelog
+          # branch's dispatcher, that is the changelog commit.
+          go run ./cmd/changelog -readme README.md \
+            -workflow .github/changelog-dispatcher.yml \
+            -generator "$(git rev-parse HEAD)" \
+            candidates.json > chained-refs.txt
           echo "$STALE" | jq -r '.[]' >> chained-refs.txt
 
           refspecs=()
