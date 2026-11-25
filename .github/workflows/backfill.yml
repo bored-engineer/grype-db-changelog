@@ -369,9 +369,11 @@ jobs:
           # candidates.json: written by the previous step.
           # stdout: the raw refs it chained, one per line (logs go to stderr).
           # The overlay: this README onto the branch's tip whenever it
-          # changes on generator (see applyOverlay). The dispatcher is only
-          # compared, not pushed: an Actions token can't change workflows. HEAD, not $GITHUB_SHA: run from the changelog
-          # branch's dispatcher, that is the changelog commit.
+          # changes on generator (see applyOverlay). The dispatcher is
+          # carried forward, not copied: the Actions token can't push
+          # workflow changes (see the next step). HEAD, not $GITHUB_SHA: run
+          # from the changelog branch's dispatcher, that is the changelog
+          # commit.
           go run ./cmd/changelog -readme README.md \
             -workflow .github/changelog-dispatcher.yml \
             -generator "$(git rev-parse HEAD)" \
@@ -404,3 +406,21 @@ jobs:
           done
           echo "push failed after 5 attempts" >&2
           exit 1
+
+      # The changelog branch's .github/workflows/backfill.yml is what GitHub
+      # schedules once "changelog" is the default branch, and the job above
+      # can't update it: GitHub rejects any workflow change pushed with the
+      # Actions token ("refusing to allow a GitHub App to create or update
+      # workflow ... without `workflows` permission"). It only changes with
+      # the schedule or inputs, so instead of a stored token with that
+      # permission, a change is pushed by hand once - and this fails the
+      # run, after the data has landed, until it is.
+      - name: Check the changelog branch's dispatcher is current
+        run: |
+          git rev-parse --verify --quiet refs/heads/changelog >/dev/null || exit 0
+          want=$(git hash-object .github/changelog-dispatcher.yml)
+          have=$(git rev-parse --verify --quiet refs/heads/changelog:.github/workflows/backfill.yml || echo none)
+          if [ "$want" != "$have" ]; then
+            echo "::error::The changelog branch's .github/workflows/backfill.yml doesn't match generator's .github/changelog-dispatcher.yml. Push it with a token that can change workflows, from a generator checkout: go run ./cmd/changelog -update-workflow -readme README.md -workflow .github/changelog-dispatcher.yml -generator \$(git rev-parse HEAD) - <<< '[]' && git push origin changelog"
+            exit 1
+          fi

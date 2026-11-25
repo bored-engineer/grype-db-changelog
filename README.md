@@ -153,7 +153,9 @@ Captured: 2026-11-20T00:21:26Z
   workflow call, so it never needs to track the job logic. The backfill
   job re-copies the README whenever it changes on `generator`. GitHub
   doesn't let an Actions token change workflow files, so a change to the
-  dispatcher is pushed by hand, with `cmd/changelog -update-workflow`.
+  dispatcher (which only happens when the schedule or inputs change) is
+  pushed by hand with `cmd/changelog -update-workflow`; until it is,
+  backfill runs still chain the data but fail, saying so.
 - **`generator`**: the code, the real workflows and the source of this
   README. Everything under [How it works](#how-it-works) lives here.
 - **`refs/raw/<provider>/<digest>`**: a short-lived staging area between

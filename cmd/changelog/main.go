@@ -287,7 +287,7 @@ const (
 // directory is replaced: nothing else on the branch lives there.
 //
 // Without ov.updateWorkflow, .github/ is left exactly as the tip has it,
-// and a mismatch with the dispatcher is only warned about (see overlay).
+// and the backfill job fails the run on a mismatch with the dispatcher.
 //
 // The commit is dated like its parent, not "now": a build published
 // between this run's listing and its commit would otherwise be chained
@@ -313,11 +313,6 @@ func applyOverlay(tree map[string]entry, parent string, ov overlay) (string, err
 	dotGithub := path.Dir(path.Dir(overlayWorkflow))
 	if ov.updateWorkflow {
 		tree[dotGithub] = entry{"040000", "tree", github}
-	} else if tree[dotGithub].sha != github {
-		log.Printf("::warning::%s on the changelog branch differs from generator's dispatcher; "+
-			"an Actions token can't push workflow changes, so push it by hand: "+
-			"go run ./cmd/changelog -update-workflow -readme README.md -workflow .github/changelog-dispatcher.yml -generator $(git rev-parse HEAD) - <<< '[]'",
-			overlayWorkflow)
 	}
 
 	root, err := writeTree(tree)
