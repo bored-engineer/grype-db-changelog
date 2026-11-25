@@ -1,0 +1,202 @@
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [1.21.3-11.0.1.el10_3.2]
+        - Fixed race condition in krb5_set_password() [Orabug: 33609767]
+
+        [1.21.3-11.2]
+        - KDC unauthenticated memory leak DoS in KDB keytab key decryption error path (CVE-2026-112317)
+          Resolves: RHEL-292715
+        - KDC unauthenticated CPU DoS via quadratic ASN.1 SEQUENCE OF decoding (CVE-2026-119079)
+          Resolves: RHEL-297098
+        - kadmind authenticated DoS exploiting dereference of null policy name pointers (CVE-2026-112318)
+          Resolves: RHEL-292692
+        - process_chpw_request leak
+          Resolves: RHEL-296056
+        - xdr_krb5_principal decode leak
+          Resolves: RHEL-296045
+        - RPCSEC_GSS context lifecycle leaks
+          Resolves: RHEL-296034
+        - xdr_bytes() does not free its allocation on partial decode failure
+          Resolves: RHEL-296023
+        - auth_gssapi_wrap_data xdr_bytes failure leak
+          Resolves: RHEL-296012
+        - GSS-RPC client memory leak on XID mismatch retries (CVE-2026-112314)
+          Resolves: RHEL-292757
+        - kadmind unauthenticated memory leak DoS in RPCSEC_GSS buffer decode failure (CVE-2026-112315)
+          Resolves: RHEL-292760
+        - kadmind authenticated memory leak DoS in xdr_krb5_tl_data() decode failure (CVE-2026-112316)
+          Resolves: RHEL-292750
+        - kadmind authenticated memory exhaustion DoS via unbounded RPC XDR allocation (CVE-2026-112319)
+          Resolves: RHEL-292686
+        - kadmind unauthenticated memory leak DoS via GSS-RPC auth flavor switching (CVE-2026-112320)
+          Resolves: RHEL-292667
+        - kadmind unauthenticated memory leak DoS via AUTH_GSSAPI_INIT error paths (CVE-2026-112321)
+          Resolves: RHEL-292650
+        - kadmind unauthenticated CPU DoS via AUTH_GSSAPI client states cleanup (CVE-2026-112322)
+          Resolves: RHEL-292634
+        - kadmind unauthenticated memory exhaustion via failed AUTH_GSSAPI_INIT requests (CVE-2026-112323)
+          Resolves: RHEL-292613
+        - kadmind: request alteration and protected information disclosure (CVE-2026-118380)
+          Resolves: RHEL-297067
+        - Memory leak on krb5 gss_accept_sec_context() failure
+          Resolves: RHEL-296112
+        - Improper authorization via flawed PAC checksum verification (CVE-2026-111423)
+          Resolves: RHEL-297170
+        - Unauthorized key reset of protected principal via kpasswd (CVE-2026-107884)
+          Resolves: RHEL-296175
+        - Unauthenticated KDC DoS based on ASN.1 decoder read overrun (CVE-2026-107364)
+          Resolves: RHEL-303617
+        - KDC DoS based on otherName value in PKINIT SAN code
+          Resolves: RHEL-296095
+        - Null dereference in KDC dispatch corner case
+          Resolves: RHEL-296081
+        - Read overruns in GSSRPC svcauth_unix
+          Resolves: RHEL-296067
+        - KDC authdata filter does not catch KDC-issued types nested inside AD-IF-RELEVANT containers
+          Resolves: RHEL-296127
+        - Alteration of authentication indicators in CAMMAC container (CVE-2026-71199)
+          Resolves: RHEL-297148
+        - Unauthenticated KDC NULL pointer dereference KDC DoS via crafted PKINIT pre-auth request (CVE-2026-71200)
+          Resolves: RHEL-296768
+        - Prevent unsigned int overflow in iakerb_save_token()
+          Resolves: RHEL-299152
+        - Fix ksu memory leak in fcmd_resolve()
+          Resolves: RHEL-299153
+        - Fix hex key input handling in ktutil addent
+          Resolves: RHEL-299148
+        - Check reply length before V4 reply check
+          Resolves: RHEL-299149
+        - Fix memory leak in mpool_get() error paths
+          Resolves: RHEL-299150
+        - json: Correctly abort parse on invalid array
+          Resolves: RHEL-299151
+        - Fix validation issues for trusted inputs
+          Resolves: RHEL-299144
+        - Skip expired keys when iterating over KEYRING ccache
+          Resolves: RHEL-299145
+        - Pass through null deleg_cred from SPNEGO to mech
+          Resolves: RHEL-299146
+        - Fix leaks on error in PKINIT signed-data creation
+          Resolves: RHEL-299147
+        - Denial of Service via malformed PAC in S4U2Proxy requests (CVE-2026-107708)
+          Resolves: RHEL-295896
+        - Dereference of empty first credential list element in GSS mechanism
+          Resolves: RHEL-296997
+        - Null dereference of principal names in krb5_rd_cred()
+          Resolves: RHEL-297000
+        - Denial of Service via crafted forwarded credentials (CVE-2026-107778)
+          Resolves: RHEL-296124
+        - Set PKINIT CMS signatureAlgorithm based on certificate public key type
+          Resolves: RHEL-278063
+    FixedIn:
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: krb5-devel
+          NamespaceName: ol:10
+          Version: 0:1.21.3-11.0.1.el10_3.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: krb5-libs
+          NamespaceName: ol:10
+          Version: 0:1.21.3-11.0.1.el10_3.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: krb5-pkinit
+          NamespaceName: ol:10
+          Version: 0:1.21.3-11.0.1.el10_3.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: krb5-server
+          NamespaceName: ol:10
+          Version: 0:1.21.3-11.0.1.el10_3.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: krb5-server-ldap
+          NamespaceName: ol:10
+          Version: 0:1.21.3-11.0.1.el10_3.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: krb5-workstation
+          NamespaceName: ol:10
+          Version: 0:1.21.3-11.0.1.el10_3.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: krb5-xrealmauthz
+          NamespaceName: ol:10
+          Version: 0:1.21.3-11.0.1.el10_3.2
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: libkadm5
+          NamespaceName: ol:10
+          Version: 0:1.21.3-11.0.1.el10_3.2
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-99624.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-107364.html
+              Name: CVE-2026-107364
+            - Link: https://linux.oracle.com/cve/CVE-2026-107708.html
+              Name: CVE-2026-107708
+            - Link: https://linux.oracle.com/cve/CVE-2026-107778.html
+              Name: CVE-2026-107778
+            - Link: https://linux.oracle.com/cve/CVE-2026-107884.html
+              Name: CVE-2026-107884
+            - Link: https://linux.oracle.com/cve/CVE-2026-111423.html
+              Name: CVE-2026-111423
+            - Link: https://linux.oracle.com/cve/CVE-2026-112314.html
+              Name: CVE-2026-112314
+            - Link: https://linux.oracle.com/cve/CVE-2026-112315.html
+              Name: CVE-2026-112315
+            - Link: https://linux.oracle.com/cve/CVE-2026-112316.html
+              Name: CVE-2026-112316
+            - Link: https://linux.oracle.com/cve/CVE-2026-112317.html
+              Name: CVE-2026-112317
+            - Link: https://linux.oracle.com/cve/CVE-2026-112318.html
+              Name: CVE-2026-112318
+            - Link: https://linux.oracle.com/cve/CVE-2026-112319.html
+              Name: CVE-2026-112319
+            - Link: https://linux.oracle.com/cve/CVE-2026-112320.html
+              Name: CVE-2026-112320
+            - Link: https://linux.oracle.com/cve/CVE-2026-112321.html
+              Name: CVE-2026-112321
+            - Link: https://linux.oracle.com/cve/CVE-2026-112322.html
+              Name: CVE-2026-112322
+            - Link: https://linux.oracle.com/cve/CVE-2026-112323.html
+              Name: CVE-2026-112323
+            - Link: https://linux.oracle.com/cve/CVE-2026-118380.html
+              Name: CVE-2026-118380
+            - Link: https://linux.oracle.com/cve/CVE-2026-119079.html
+              Name: CVE-2026-119079
+            - Link: https://linux.oracle.com/cve/CVE-2026-71199.html
+              Name: CVE-2026-71199
+            - Link: https://linux.oracle.com/cve/CVE-2026-71200.html
+              Name: CVE-2026-71200
+        Issued: "2026-11-23"
+        RefId: ELSA-2026-99624
+    Name: ELSA-2026-99624
+    NamespaceName: ol:10
+    Severity: High
