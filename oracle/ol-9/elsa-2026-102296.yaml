@@ -1,0 +1,82 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [5.8.5-5.0.1]
+        - Rework CNI/Netavark detection logic [JIRA: EVG-3769]
+        - Rebuild on new golang to support experimental GODEBUG fipsnoenforceems
+        - Drop nmap-ncat requirement and skip ignore-socket test case [Orabug: 34117404]
+
+        [6:5.8.5-5]
+        - update to the latest content of https://gitlab.cee.redhat.com/containers/podman-staging/tree/v5.8-rhel
+          (https://gitlab.cee.redhat.com/containers/podman-staging/-/commit/829bce12)
+        - fixes CVE-2026-19730 CVE-2026-17106 CVE-2026-94603
+        - Resolves: RHEL-240088 RHEL-252467 RHEL-272010
+
+        [6:5.8.5-4]
+        - Rebuild for CVE fixes in Go standard library (CVE-2026-56853 CVE-2026-78667
+          CVE-2026-97031 CVE-2026-111943)
+        - Resolves: RHEL-278804 RHEL-286789 RHEL-285433 RHEL-287590 RHEL-286284
+    FixedIn:
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: podman
+          NamespaceName: ol:9
+          Version: 6:5.8.5-5.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: podman-docker
+          NamespaceName: ol:9
+          Version: 6:5.8.5-5.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: podman-plugins
+          NamespaceName: ol:9
+          Version: 6:5.8.5-5.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: podman-remote
+          NamespaceName: ol:9
+          Version: 6:5.8.5-5.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: podman-tests
+          NamespaceName: ol:9
+          Version: 6:5.8.5-5.0.1.el9_9
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-102296.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-111943.html
+              Name: CVE-2026-111943
+            - Link: https://linux.oracle.com/cve/CVE-2026-17106.html
+              Name: CVE-2026-17106
+            - Link: https://linux.oracle.com/cve/CVE-2026-19730.html
+              Name: CVE-2026-19730
+            - Link: https://linux.oracle.com/cve/CVE-2026-56853.html
+              Name: CVE-2026-56853
+            - Link: https://linux.oracle.com/cve/CVE-2026-78667.html
+              Name: CVE-2026-78667
+            - Link: https://linux.oracle.com/cve/CVE-2026-94603.html
+              Name: CVE-2026-94603
+            - Link: https://linux.oracle.com/cve/CVE-2026-97031.html
+              Name: CVE-2026-97031
+        Issued: "2026-11-24"
+        RefId: ELSA-2026-102296
+    Name: ELSA-2026-102296
+    NamespaceName: ol:9
+    Severity: High

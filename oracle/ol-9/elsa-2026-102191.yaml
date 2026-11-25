@@ -1,0 +1,95 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [9.9p1-17.0.1]
+        - Restore pam_ssh_agent_rel values that were used for initial release
+        - Fix PerSourcePenalties grace-exceeded using the crash penalty value [Orabug: 39825354]
+        - Replace unsupported ML-KEM hybrid algorithm skip logic with v9.9p1-23.el10_2 ML-KEM/NIST backport [Orabug: 39423076]
+        - Upstream references found with /usr/bin/ssh [Orabug: 37814929]
+
+        [9.9p1-17]
+        - CVE-2026-106552: Fix arbitrary file write via directory traversal
+          during sftp recursive copy
+          Resolves: RHEL-286928
+        - CVE-2026-106585: Fix DoS via oversized decompressed packets
+          Resolves: RHEL-286938
+        - CVE-2026-106583: Fix command injection via unvalidated command-line username
+          Resolves: RHEL-286961
+        - CVE-2026-106582: Fix compression side-channel by disabling L77 dictionary coder
+          Resolves: RHEL-286931
+        - CVE-2026-106553: Fix credentials persisting after GSSAPI authentication attempt failure
+          Resolves: RHEL-286887
+        - Fix resource leaks in krb5 and GSSAPI authentication
+          Related: RHEL-286887
+        - Fix and enable the PKCS#11 URI tests
+          Related: RHEL-288511
+        - Restores functionality of IdentitiesOnly=yes with PKCS#11 URI in IdentityFile
+          Resolves: RHEL-288511
+    FixedIn:
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: openssh
+          NamespaceName: ol:9
+          Version: 0:9.9p1-17.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: openssh-askpass
+          NamespaceName: ol:9
+          Version: 0:9.9p1-17.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: openssh-clients
+          NamespaceName: ol:9
+          Version: 0:9.9p1-17.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: openssh-keycat
+          NamespaceName: ol:9
+          Version: 0:9.9p1-17.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: openssh-server
+          NamespaceName: ol:9
+          Version: 0:9.9p1-17.0.1.el9_9
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-24"
+            Kind: advisory
+          Module: null
+          Name: pam_ssh_agent_auth
+          NamespaceName: ol:9
+          Version: 0:0.10.4-10.17.0.3.el9_9
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-102191.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-106552.html
+              Name: CVE-2026-106552
+            - Link: https://linux.oracle.com/cve/CVE-2026-106553.html
+              Name: CVE-2026-106553
+            - Link: https://linux.oracle.com/cve/CVE-2026-106582.html
+              Name: CVE-2026-106582
+            - Link: https://linux.oracle.com/cve/CVE-2026-106583.html
+              Name: CVE-2026-106583
+            - Link: https://linux.oracle.com/cve/CVE-2026-106585.html
+              Name: CVE-2026-106585
+        Issued: "2026-11-24"
+        RefId: ELSA-2026-102191
+    Name: ELSA-2026-102191
+    NamespaceName: ol:9
+    Severity: Medium
