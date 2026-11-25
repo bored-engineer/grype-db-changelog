@@ -36,8 +36,13 @@ affected:
                     - date: "2026-06-04"
                       kind: release
                       version: 3.7.3
+                    - date: "2026-08-11"
+                      kind: advisory
+                      version: 3.6.18
           events:
             - introduced: "0"
+            - fixed: 3.6.18
+            - introduced: 3.7.0
             - fixed: 3.7.3
           type: SEMVER
     - ecosystem_specific: {}
@@ -59,7 +64,7 @@ details: |-
 
     The HTTP/3 (QUIC) path performed a direct, case-sensitive lookup on the SNI value to select the applicable TLS configuration. This lookup failed to match wildcard host patterns (e.g., "*.example.com") or case variants of configured hostnames. In these cases, Traefik would fall back to the default TLS configuration, which might not enforce mutual TLS (mTLS), allowing unauthenticated clients to access protected backends.
 id: GO-2026-5287
-modified: "2026-08-11T20:19:48Z"
+modified: "2026-11-24T15:56:00Z"
 published: "2026-08-11T20:19:48Z"
 references:
     - type: ADVISORY

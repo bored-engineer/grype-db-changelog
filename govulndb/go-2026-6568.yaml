@@ -1,21 +1,8 @@
 # schema: vulnerability/osv/schema-1.3.1.json
 affected:
     - ecosystem_specific:
-        custom_ranges:
-            - events:
-                - introduced: 1.143.0
-                - fixed: 1.143.3
-                - introduced: 1.144.0
-                - fixed: 1.144.2
-              type: ECOSYSTEM
-      package:
-        ecosystem: Go
-        name: github.com/gardener/gardener
-      ranges:
-        - events:
-            - introduced: "0"
-          type: SEMVER
-    - ecosystem_specific: {}
+        imports:
+            - path: github.com/gardener/gardener/plugin/pkg/global/customverbauthorizer
       package:
         ecosystem: Go
         name: github.com/gardener/gardener
@@ -26,26 +13,29 @@ affected:
                     - date: "2026-06-18"
                       kind: release
                       version: 1.142.6
+                    - date: "2026-06-18"
+                      kind: release
+                      version: 1.143.3
+                    - date: "2026-06-18"
+                      kind: release
+                      version: 1.144.2
           events:
             - introduced: "0"
             - fixed: 1.142.6
+            - introduced: 1.143.0
+            - fixed: 1.143.3
+            - introduced: 1.144.0
+            - fixed: 1.144.2
           type: SEMVER
 aliases:
     - CVE-2026-79767
     - GHSA-gfjv-gqf2-c888
 database_specific:
-    review_status: UNREVIEWED
+    review_status: REVIEWED
     url: https://pkg.go.dev/vuln/GO-2026-6568
-details: |-
-    Gardener: Authorization Bypass via Group Subject Injection in gardener/gardener.
-
-    NOTE: The source advisory for this report contains additional versions that could not be automatically mapped to standard Go module versions.
-
-    (If this is causing false-positive reports from vulnerability scanners, please suggest an edit to the report.)
-
-    The additional affected modules and versions are: github.com/gardener/gardener from v1.143.0 before v1.143.3, from v1.144.0 before v1.144.2.
+details: 'Gardener: Authorization Bypass via Group Subject Injection in github.com/gardener/gardener'
 id: GO-2026-6568
-modified: "2026-10-01T20:23:38Z"
+modified: "2026-11-24T15:56:00Z"
 published: "2026-10-01T20:23:38Z"
 references:
     - type: ADVISORY
@@ -57,4 +47,4 @@ references:
     - type: WEB
       url: https://github.com/gardener/gardener/releases/tag/v1.144.2
 schema_version: 1.3.1
-summary: 'Gardener: Authorization Bypass via Group Subject Injection in gardener/gardener'
+summary: 'Gardener: Authorization Bypass via Group Subject Injection in github.com/gardener/gardener'
