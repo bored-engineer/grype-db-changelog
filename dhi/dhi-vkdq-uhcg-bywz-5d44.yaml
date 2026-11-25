@@ -6,12 +6,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: nano
         purl: pkg:apk/dhi/nano
+      ranges:
+        - events:
+            - introduced: 8.7-r0
+          type: ECOSYSTEM
       versions:
         - 8.7-r0
         - 8.7-r1
 details: A flaw was found in nano. A local user could exploit a format string vulnerability in the `statusline()` function. By creating a directory with a name containing `printf` specifiers, the application attempts to display this name, leading to a segmentation fault (SEGV). This results in a Denial of Service (DoS) for the `nano` application.
 id: DHI-vkdq-uhcg-bywz-5d44
-modified: "2026-11-11T20:26:16Z"
+modified: "2026-11-24T12:28:06Z"
 published: "2026-11-11T20:26:16Z"
 references:
     - type: ADVISORY

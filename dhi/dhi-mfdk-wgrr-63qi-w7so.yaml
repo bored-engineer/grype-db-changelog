@@ -129,6 +129,7 @@ affected:
         - 1.31.4-2
         - 1.31.4-3
         - 1.31.4-4
+        - 1.31.4-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -150,6 +151,7 @@ affected:
         - 1.31.4-2
         - 1.31.4-3
         - 1.31.4-4
+        - 1.31.4-5
 details: |-
     When the `hickory-resolver` name server pool implementation receives an upstream response with the TC (truncated) header bit set, it re-queues the request to the same nameserver to retry with UDP transport disabled. However, the retry arm never inspects the transport that just answered and carries no iteration counter. An authoritative server that sets `TC=1` on **every** available transport  keeps the resolver spinning on one persistent TCP connection until the 5s per-request wall-clock deadline expires.
 
@@ -157,7 +159,7 @@ details: |-
 
     Qifan Zhang, Palo Alto Networks
 id: DHI-mfdk-wgrr-63qi-w7so
-modified: "2026-11-23T23:22:08Z"
+modified: "2026-11-24T00:48:36Z"
 published: "2026-11-13T20:09:14Z"
 references:
     - type: ADVISORY

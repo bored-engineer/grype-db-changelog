@@ -6,7 +6,12 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: glib
         purl: pkg:apk/dhi/glib
+      ranges:
+        - events:
+            - introduced: 2.86.3
+          type: ECOSYSTEM
       versions:
+        - 2.86.3
         - 2.86.3-r0
         - 2.86.3-r1
         - 2.86.5-r1
@@ -28,10 +33,12 @@ affected:
             - fixed: 2.84.4-3~deb13u5+dhi0
           type: ECOSYSTEM
       versions:
+        - 2.84.4-3~deb13u3+dhi0
+        - 2.84.4-3~deb13u3+dhi1
         - 2.84.4-3~deb13u3+dhi2
 details: A flaw was found in GLib. A buffer over-read can occur in the g_regex_replace function when used with the `G_REGEX_RAW` compile flag and case-change replacement escapes because the string_append function processes matched substrings using UTF-8 functions that assume valid UTF-8 input, even when the string is treated as raw bytes. This vulnerability can cause a minor information disclosure of 1-5 bytes and a denial of service when the buffer over-read crosses a page boundary.
 id: DHI-tjqc-z5p5-wb6e-cf4y
-modified: "2026-11-21T02:38:14Z"
+modified: "2026-11-24T19:54:41Z"
 published: "2026-11-11T18:48:41Z"
 references:
     - type: ADVISORY

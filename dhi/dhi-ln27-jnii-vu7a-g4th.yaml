@@ -6,8 +6,13 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: perl-cpanel-json-xs
         purl: pkg:apk/dhi/perl-cpanel-json-xs
+      ranges:
+        - events:
+            - introduced: 4.41-r0
+          type: ECOSYSTEM
       versions:
         - 4.41-r0
+        - 4.41-r1
 details: |-
     Cpanel::JSON::XS versions from 3.0202 before 4.80 for Perl leak memory and retain overloaded objects when encoding values as strings in encode_stringify.
 
@@ -15,7 +20,7 @@ details: |-
 
     Repeatedly encoding data that contains such values grows process memory without bound.
 id: DHI-ln27-jnii-vu7a-g4th
-modified: "2026-11-21T08:05:52Z"
+modified: "2026-11-24T22:11:59Z"
 published: "2026-11-21T08:05:52Z"
 references:
     - type: ADVISORY

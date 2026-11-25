@@ -3,6 +3,47 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: zscaler-mcp
+        purl: pkg:apk/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.13.1-r0
+        - 0.13.3-r0
+        - 0.13.4-r0
+        - 0.14.0-r0
+        - 0.14.0-r1
+        - 0.14.0-r2
+        - 0.15.0-r0
+        - 0.15.0-r1
+        - 0.15.2-r0
+        - 0.15.2-r1
+        - 0.15.3-r0
+        - 0.15.4-r0
+        - 0.15.4-r1
+        - 0.15.4-r10
+        - 0.15.4-r11
+        - 0.15.4-r12
+        - 0.15.4-r13
+        - 0.15.4-r14
+        - 0.15.4-r15
+        - 0.15.4-r16
+        - 0.15.4-r17
+        - 0.15.4-r18
+        - 0.15.4-r2
+        - 0.15.4-r3
+        - 0.15.4-r4
+        - 0.15.4-r5
+        - 0.15.4-r6
+        - 0.15.4-r7
+        - 0.15.4-r8
+        - 0.15.4-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: zscaler-mcp
         purl: pkg:apk/dhi/zscaler-mcp
@@ -235,6 +276,7 @@ affected:
         - 1.110.2-0
         - 1.110.2-1
         - 1.110.2-2
+        - 1.110.3-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -380,7 +422,7 @@ affected:
         - 0.15.4-9
 details: filelock is a platform-independent file lock for Python. From 3.30.0 until 4.2.1, On POSIX platforms, StrictSoftFileLock and AsyncStrictSoftFileLock validate the coordination directory in _ensure_protocol_directory but later reach the claims directory through _open_directory by pathname, allowing a local account that can rename the coordination name to swap in a symbolic link between check and use during acquisition. That race can create and leave claim files in another writable directory or strand claims in a different strict lock so the second lock times out. Separately, the claims property and force_break follow a resting symbolic link without a race when the lock user inspects or recovers the lock. Claims inspection discloses a file name to the other account only if the resulting exception text or claim_name reaches that account through a shared log, CI output, or error report. A blind force_break recovery that removes live claims from another strict lock can allow two processes into that lock's critical section; this path reaches other strict locks, not arbitrary files. This issue is fixed in version 4.2.1.
 id: DHI-ry3m-yirx-4amf-ht6q
-modified: "2026-11-23T21:50:07Z"
+modified: "2026-11-24T21:13:20Z"
 published: "2026-11-20T16:52:06Z"
 references:
     - type: ADVISORY

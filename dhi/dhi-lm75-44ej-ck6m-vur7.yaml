@@ -3,6 +3,90 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-hub
+        purl: pkg:apk/dhi/jupyterhub-k8s-hub
+      ranges:
+        - events:
+            - introduced: 4.4.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.1-r0
+        - 4.4.2-r0
+        - 4.4.2-r1
+        - 4.4.2-r2
+        - 4.4.2-r3
+        - 4.4.2-r4
+        - 4.4.2-r5
+        - 4.4.2-r6
+        - 4.4.3-r0
+        - 4.4.4-r0
+        - 4.4.4-r1
+        - 4.4.4-r2
+        - 4.4.4-r3
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: k8s-sidecar
+        purl: pkg:apk/dhi/k8s-sidecar
+      ranges:
+        - events:
+            - introduced: 2.10.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.10.1-r0
+        - 2.10.1-r1
+        - 2.10.3-r0
+        - 2.11.2-r0
+        - 2.11.2-r1
+        - 2.11.2-r2
+        - 2.11.2-r3
+        - 2.13.3-r0
+        - 2.14.1-r0
+        - 2.14.1-r1
+        - 2.14.1-r2
+        - 2.14.1-r3
+        - 2.14.1-r4
+        - 2.14.2-r0
+        - 2.14.3-r0
+        - 2.14.3-r1
+        - 2.14.3-r2
+        - 2.14.3-r3
+        - 2.14.3-r4
+        - 2.14.3-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: nvflare
+        purl: pkg:apk/dhi/nvflare
+      ranges:
+        - events:
+            - introduced: 2.8.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.8.0-r0
+        - 2.8.1-r0
+        - 2.8.1-r1
+        - 2.8.1-r2
+        - 2.8.2-r0
+        - 2.9.0-r0
+        - 2.9.0-r1
+        - 2.9.0-r2
+        - 2.9.0-r3
+        - 2.9.0-r4
+        - 2.9.0-r5
+        - 2.9.0-r6
+        - 2.9.1-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: azure-cli
         purl: pkg:apk/dhi/azure-cli
@@ -475,6 +559,7 @@ affected:
         - 1.110.2-0
         - 1.110.2-1
         - 1.110.2-2
+        - 1.110.3-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -648,7 +733,7 @@ database_specific:
         - legacy_package_image_owner
 details: setuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue.
 id: DHI-lm75-44ej-ck6m-vur7
-modified: "2026-11-23T21:49:45Z"
+modified: "2026-11-24T21:45:19Z"
 published: "2026-11-19T20:55:48Z"
 references:
     - type: ADVISORY

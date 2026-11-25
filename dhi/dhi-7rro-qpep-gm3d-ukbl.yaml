@@ -3,6 +3,38 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample-fips
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
@@ -162,7 +194,7 @@ affected:
         - 6.1.0-9
 details: Handlebars provides the power necessary to let users build semantic templates. In versions 4.0.0 through 4.7.8, `Handlebars.compile()` accepts a pre-parsed AST object in addition to a template string. The `value` field of a `NumberLiteral` AST node is emitted directly into the generated JavaScript without quoting or sanitization. An attacker who can supply a crafted AST to `compile()` can therefore inject and execute arbitrary JavaScript, leading to Remote Code Execution on the server. Version 4.7.9 fixes the issue. Some workarounds are available. Validate input type before calling `Handlebars.compile()`; ensure the argument is always a  `string`, never a plain object or JSON-deserialized value. Use the Handlebars runtime-only build (`handlebars/runtime`) on the server if templates are pre-compiled at build time; `compile()` will be unavailable.
 id: DHI-7rro-qpep-gm3d-ukbl
-modified: "2026-11-23T19:49:11Z"
+modified: "2026-11-24T23:20:08Z"
 published: "2026-11-12T03:28:18Z"
 references:
     - type: ADVISORY

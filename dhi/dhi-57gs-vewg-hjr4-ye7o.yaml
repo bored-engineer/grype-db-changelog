@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: falco
         purl: pkg:deb/dhi/falco
+      ranges:
+        - events:
+            - introduced: 0.44.1-0
+          type: ECOSYSTEM
       versions:
         - 0.44.1-0
         - 0.44.1-1
@@ -54,17 +58,21 @@ details: |-
 
     The vulnerable code paths are in pkg/domain/infra/abi/quadlet.go (lines 338-360, O_CREATE|O_WRONLY without O_TRUNC) and vendor/go.podman.io/storage/pkg/fileutils/reflink_linux.go (lines 12-19, non-truncating io.Copy fallback).
 id: DHI-57gs-vewg-hjr4-ye7o
-modified: "2026-11-21T05:49:07Z"
+modified: "2026-11-24T23:13:27Z"
 published: "2026-11-11T15:48:51Z"
 references:
     - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-19730
+    - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:102296
     - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:69961
     - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:70201
     - type: ADVISORY
       url: https://access.redhat.com/security/cve/CVE-2026-19730
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-102296.html
     - type: ADVISORY
       url: https://errata.almalinux.org/9/ALSA-2026-69961.html
     - type: ADVISORY
@@ -76,9 +84,13 @@ references:
     - type: ADVISORY
       url: https://github.com/podman-container-tools/podman/security/advisories/GHSA-fx76-2j3w-2mx6
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-102296.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-69961.html
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-70201.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-102296.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-69961.html
     - type: ADVISORY

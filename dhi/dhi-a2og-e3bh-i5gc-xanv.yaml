@@ -6,13 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libevent
         purl: pkg:deb/dhi/libevent
+      ranges:
+        - events:
+            - introduced: 2.1.12-stable-10+dhi0
+          type: ECOSYSTEM
       versions:
         - 2.1.12-stable-10+dhi0
         - 2.1.12-stable-10+dhi1
         - 2.1.13-stable-1~deb13u1+dhi0
 details: Libevent is an event notification library. Prior to 2.1.13 and 2.2.2-alpha, libevent has an off-by-one stack buffer overflow in evdns.c when dnsname_to_labels formats a name-bearing DNS record at the end of the 64 KB stack buffer allocated by evdns_server_request_format_response. The final-label check permits j plus label_len plus one to equal buf_len, after which the terminating null byte is written to buf[buf_len]. A crafted DNS server response containing PTR, CNAME, MX, NS, or SOA data can trigger the one-byte out-of-bounds write and crash or corrupt the process. This issue is fixed in versions 2.1.13 and 2.2.2-alpha.
 id: DHI-a2og-e3bh-i5gc-xanv
-modified: "2026-11-12T02:25:58Z"
+modified: "2026-11-24T12:35:01Z"
 published: "2026-11-12T02:25:58Z"
 references:
     - type: ADVISORY

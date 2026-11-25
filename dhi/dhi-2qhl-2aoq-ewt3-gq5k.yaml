@@ -6,13 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libevent
         purl: pkg:deb/dhi/libevent
+      ranges:
+        - events:
+            - introduced: 2.1.12-stable-10+dhi0
+          type: ECOSYSTEM
       versions:
         - 2.1.12-stable-10+dhi0
         - 2.1.12-stable-10+dhi1
         - 2.1.13-stable-1~deb13u1+dhi0
 details: Libevent is an event notification library. Prior to 2.1.13 and 2.2.2-alpha, libevent has a use-after-free in buffer.c when evbuffer_add_buffer_reference processes an output buffer whose out_total_len is zero. evbuffer_free_all_chains frees the initial empty chain without resetting outbuf->first, outbuf->last, or outbuf->last_with_datap, and APPEND_CHAIN_MULTICAST subsequently dereferences the dangling chain pointer. A caller that can drive this buffer state can cause memory corruption or a process crash. This issue is fixed in versions 2.1.13 and 2.2.2-alpha.
 id: DHI-2qhl-2aoq-ewt3-gq5k
-modified: "2026-11-12T02:25:58Z"
+modified: "2026-11-24T12:35:01Z"
 published: "2026-11-12T02:25:58Z"
 references:
     - type: ADVISORY

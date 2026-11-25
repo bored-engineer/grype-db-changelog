@@ -6,11 +6,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gstreamer
         purl: pkg:apk/dhi/gstreamer
+      ranges:
+        - events:
+            - introduced: 1.26.9-r0
+          type: ECOSYSTEM
       versions:
         - 1.26.9-r0
+        - 1.26.9-r1
 details: An incomplete fix for CVE-2024-47778 allows an out-of-bounds read in gst_wavparse_adtl_chunk() function. The patch added a size validation check lsize + 8 > size, but it does not account for the GST_ROUND_UP_2(lsize) used in the actual offset calculation. When lsize is an odd number, the parser advances more bytes than validated, causing OOB read.
 id: DHI-yzub-i3wg-hw5z-mvxu
-modified: "2026-11-11T19:29:18Z"
+modified: "2026-11-24T05:51:31Z"
 published: "2026-11-11T19:29:18Z"
 references:
     - type: ADVISORY

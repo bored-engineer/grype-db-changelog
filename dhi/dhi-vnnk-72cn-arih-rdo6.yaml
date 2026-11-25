@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-36
         purl: pkg:deb/dhi/druid-36
+      ranges:
+        - events:
+            - introduced: 36.0.0-0
+          type: ECOSYSTEM
       versions:
         - 36.0.0-0
         - 36.0.0-1
@@ -35,6 +39,7 @@ affected:
         - 36.0.0-33
         - 36.0.0-35
         - 36.0.0-36
+        - 36.0.0-37
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -47,6 +52,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-36-fips
         purl: pkg:deb/dhi/druid-36-fips
+      ranges:
+        - events:
+            - introduced: 36.0.0-1
+          type: ECOSYSTEM
       versions:
         - 36.0.0-1
         - 36.0.0-10
@@ -75,6 +84,7 @@ affected:
         - 36.0.0-33
         - 36.0.0-35
         - 36.0.0-36
+        - 36.0.0-37
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -87,6 +97,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-37
         purl: pkg:deb/dhi/druid-37
+      ranges:
+        - events:
+            - introduced: 37.0.0-0
+          type: ECOSYSTEM
       versions:
         - 37.0.0-0
         - 37.0.0-1
@@ -115,6 +129,7 @@ affected:
         - 37.0.0-32
         - 37.0.0-33
         - 37.0.0-35
+        - 37.0.0-37
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -127,6 +142,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-37-fips
         purl: pkg:deb/dhi/druid-37-fips
+      ranges:
+        - events:
+            - introduced: 37.0.0-1
+          type: ECOSYSTEM
       versions:
         - 37.0.0-1
         - 37.0.0-10
@@ -154,6 +173,7 @@ affected:
         - 37.0.0-32
         - 37.0.0-33
         - 37.0.0-35
+        - 37.0.0-37
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -166,6 +186,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-38
         purl: pkg:deb/dhi/druid-38
+      ranges:
+        - events:
+            - introduced: 38.0.0-0
+          type: ECOSYSTEM
       versions:
         - 38.0.0-0
         - 38.0.0-1
@@ -179,6 +203,7 @@ affected:
         - 38.0.0-18
         - 38.0.0-19
         - 38.0.0-2
+        - 38.0.0-20
         - 38.0.0-3
         - 38.0.0-4
         - 38.0.0-5
@@ -192,6 +217,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: druid-38-fips
         purl: pkg:deb/dhi/druid-38-fips
+      ranges:
+        - events:
+            - introduced: 38.0.0-0
+          type: ECOSYSTEM
       versions:
         - 38.0.0-0
         - 38.0.0-1
@@ -205,6 +234,7 @@ affected:
         - 38.0.0-18
         - 38.0.0-19
         - 38.0.0-2
+        - 38.0.0-20
         - 38.0.0-3
         - 38.0.0-4
         - 38.0.0-5
@@ -214,7 +244,7 @@ affected:
         - 38.0.0-9
 details: 'Netty is an open-source, asynchronous event-driven network application framework for rapid development of maintainable high performance protocol servers & clients. In Netty (io.netty:netty-codec-http2) before version 4.1.60.Final there is a vulnerability that enables request smuggling. If a Content-Length header is present in the original HTTP/2 request, the field is not validated by `Http2MultiplexHandler` as it is propagated up. This is fine as long as the request is not proxied through as HTTP/1.1. If the request comes in as an HTTP/2 stream, gets converted into the HTTP/1.1 domain objects (`HttpRequest`, `HttpContent`, etc.) via `Http2StreamFrameToHttpObjectCodec `and then sent up to the child channel''s pipeline and proxied through a remote peer as HTTP/1.1 this may result in request smuggling. In a proxy case, users may assume the content-length is validated somehow, which is not the case. If the request is forwarded to a backend channel that is a HTTP/1.1 connection, the Content-Length now has meaning and needs to be checked. An attacker can smuggle requests inside the body as it gets downgraded from HTTP/2 to HTTP/1.1. For an example attack refer to the linked GitHub Advisory. Users are only affected if all of this is true: `HTTP2MultiplexCodec` or `Http2FrameCodec` is used, `Http2StreamFrameToHttpObjectCodec` is used to convert to HTTP/1.1 objects, and these HTTP/1.1 objects are forwarded to another remote peer. This has been patched in 4.1.60.Final As a workaround, the user can do the validation by themselves by implementing a custom `ChannelInboundHandler` that is put in the `ChannelPipeline` behind `Http2StreamFrameToHttpObjectCodec`.'
 id: DHI-vnnk-72cn-arih-rdo6
-modified: "2026-11-22T23:21:41Z"
+modified: "2026-11-24T14:55:37Z"
 published: "2026-11-10T08:49:06Z"
 references:
     - type: ADVISORY

@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - events:
+            - introduced: 1.11.1-r1
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r1
         - 1.11.1-r2
@@ -18,6 +22,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libssh2
         purl: pkg:apk/dhi/libssh2
+      ranges:
+        - events:
+            - introduced: 1.11.1-r3
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r3
         - 1.11.1-r4
@@ -28,15 +36,24 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libssh2
         purl: pkg:deb/dhi/libssh2
+      ranges:
+        - events:
+            - introduced: 1.11.1-1dhi0
+          type: ECOSYSTEM
       versions:
+        - 1.11.1-1+deb13u1+dhi0
         - 1.11.1-1+deb13u1+dhi1
         - 1.11.1-1+deb13u1+dhi2
         - 1.11.1-1+deb13u2+dhi0
         - 1.11.1-1+dhi+deb13u1+dhi2
         - 1.11.1-1+dhi+deb13u2+dhi0
+        - 1.11.1-1+dhi1
+        - 1.11.1-1+dhi2
+        - 1.11.1-1+dhi3
+        - 1.11.1-1dhi0
 details: libssh2 through 1.11.1 grows its publickey list with SSH2_REALLOC but does not zero-initialize new entries before parsing populates them, so a parse failure reaching the cleanup path leaves libssh2_publickey_list_free operating on an uninitialized entry. A malicious SSH server offering the publickey subsystem can use a malformed response to make cleanup free an uninitialized, attacker-influenceable attrs pointer in a connecting libssh2 client.
 id: DHI-vs3y-ckx5-yfiz-zbor
-modified: "2026-11-13T18:59:26Z"
+modified: "2026-11-24T23:54:34Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY

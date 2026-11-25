@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-2
         purl: pkg:deb/dhi/langfuse-2
+      ranges:
+        - events:
+            - introduced: 2.95.12-0
+          type: ECOSYSTEM
       versions:
         - 2.95.12-0
         - 2.95.12-1
@@ -23,7 +27,7 @@ affected:
         - 2.95.12-9
 details: 'Next.js is a React framework for building full-stack web applications. Starting in version 10.0.0 and prior to version 16.1.7, the default Next.js image optimization disk cache (`/_next/image`) did not have a configurable upper bound, allowing unbounded cache growth. An attacker could generate many unique image-optimization variants and exhaust disk space, causing denial of service. This is fixed in version 16.1.7 by adding an LRU-backed disk cache with `images.maximumDiskCacheSize`, including eviction of least-recently-used entries when the limit is exceeded. Setting `maximumDiskCacheSize: 0` disables disk caching. If upgrading is not immediately possible, periodically clean `.next/cache/images` and/or reduce variant cardinality (e.g., tighten values for `images.localPatterns`, `images.remotePatterns`, and `images.qualities`).'
 id: DHI-4lt6-fjnn-w7x3-uvo5
-modified: "2026-11-17T04:02:57Z"
+modified: "2026-11-24T07:09:10Z"
 published: "2026-11-11T18:58:10Z"
 references:
     - type: ADVISORY

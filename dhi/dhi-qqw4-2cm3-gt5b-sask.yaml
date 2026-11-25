@@ -6,11 +6,15 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: minio
         purl: pkg:apk/dhi/minio
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
       versions:
         - 0.20251015.172955-r5
 details: 'MinIO is a Kubernetes native application for cloud storage. Prior to version `RELEASE.2021-12-27T07-23-18Z`, a malicious client can hand-craft an HTTP API call that allows for updating policy for a user and gaining higher privileges. The patch in version `RELEASE.2021-12-27T07-23-18Z` changes the accepted request body type and removes the ability to apply policy changes through this API. There is a workaround for this vulnerability: Changing passwords can be disabled by adding an explicit `Deny` rule to disable the API for users.'
 id: DHI-qqw4-2cm3-gt5b-sask
-modified: "2026-11-11T17:35:52Z"
+modified: "2026-11-24T10:59:34Z"
 published: "2026-11-11T17:35:52Z"
 references:
     - type: ADVISORY

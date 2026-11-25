@@ -7,8 +7,20 @@ affected:
         name: nginx
         purl: pkg:apk/dhi/nginx
       ranges:
-        - events:
-            - introduced: 1.28.0-r8
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-18"
+                      kind: advisory
+                      version: 1.28.3-r11
+                    - date: "2026-11-18"
+                      kind: advisory
+                      version: 1.29.8-r9
+          events:
+            - introduced: "0"
+            - fixed: 1.28.3-r11
+            - introduced: 1.29.4-r0
+            - fixed: 1.29.8-r9
           type: ECOSYSTEM
       versions:
         - 1.28.0-r8
@@ -17,7 +29,6 @@ affected:
         - 1.28.2-r1
         - 1.28.3-r0
         - 1.28.3-r1
-        - 1.28.3-r11
         - 1.28.3-r2
         - 1.28.3-r3
         - 1.28.3-r4
@@ -39,7 +50,6 @@ affected:
         - 1.29.8-r5
         - 1.29.8-r6
         - 1.29.8-r7
-        - 1.29.8-r9
     - database_specific:
         owner_kind: HSP
       package:
@@ -99,7 +109,7 @@ affected:
         purl: pkg:apk/dhi/nginx
       ranges:
         - events:
-            - introduced: 1.28.3-r0
+            - introduced: "0"
           type: ECOSYSTEM
       versions:
         - 1.28.3-r0
@@ -126,8 +136,15 @@ affected:
         name: nginx-mainline
         purl: pkg:apk/dhi/nginx-mainline
       ranges:
-        - events:
-            - introduced: 1.29.8-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-18"
+                      kind: advisory
+                      version: 1.31.9-r5
+          events:
+            - introduced: "0"
+            - fixed: 1.31.9-r5
           type: ECOSYSTEM
       versions:
         - 1.29.8-r0
@@ -143,8 +160,6 @@ affected:
         - 1.31.7-r4
         - 1.31.8-r4
         - 1.31.8-r5
-        - 1.31.9-r5
-        - 1.31.9-r6
     - database_specific:
         owner_kind: HSP
       package:
@@ -176,12 +191,18 @@ affected:
         name: nginx
         purl: pkg:deb/dhi/nginx
       ranges:
-        - events:
-            - introduced: 1.26.3-3+deb13u2dhi0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-18"
+                      kind: advisory
+                      version: 1.26.3-3+deb13u11+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 1.26.3-3+deb13u11+dhi0
           type: ECOSYSTEM
       versions:
         - 1.26.3-3+deb13u10+dhi0
-        - 1.26.3-3+deb13u11+dhi0
         - 1.26.3-3+deb13u2dhi0
         - 1.26.3-3+deb13u5+dhi0
         - 1.26.3-3+deb13u5+dhi1
@@ -203,7 +224,7 @@ details: |-
 
     Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.
 id: DHI-7tld-lwyf-txnr-62cl
-modified: "2026-11-23T21:20:26Z"
+modified: "2026-11-24T01:58:27Z"
 published: "2026-11-18T20:32:32Z"
 references:
     - type: ADVISORY

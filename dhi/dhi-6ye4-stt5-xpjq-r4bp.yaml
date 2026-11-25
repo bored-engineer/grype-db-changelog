@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.8.0.json
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: qemu
+        purl: pkg:deb/dhi/qemu
+      ranges:
+        - events:
+            - introduced: 1:10.0.8+ds-0+deb13u1dhi0
+          type: ECOSYSTEM
+      versions:
+        - 1:10.0.11+ds-0+deb13u1+dhi0
+        - 1:10.0.11+ds-0+deb13u1+dhi1
+        - 1:10.0.11+ds-0+deb13u1+dhi2
+        - 1:10.0.13+ds-0+deb13u1+dhi2
+        - 1:10.0.13+ds-0+deb13u1+dhi3
+        - 1:10.0.13+ds-0+deb13u1+dhi4
+        - 1:10.0.13+ds-0+deb13u1+dhi5
+        - 1:10.0.13+ds-0+deb13u1+dhi6
+        - 1:10.0.8+ds-0+deb13u1+dhi0
+        - 1:10.0.8+ds-0+deb13u1+dhi1
+        - 1:10.0.8+ds-0+deb13u1+dhi3
+        - 1:10.0.8+ds-0+deb13u1dhi0
+details: A flaw was found in QEMU's NBD server. A remote attacker can crash a multi-export NBD server process by exploiting stale metadata export state during an extended BLOCK_STATUS request, resulting in an assertion failure and denial of service.
+id: DHI-6ye4-stt5-xpjq-r4bp
+modified: "2026-11-24T17:14:41Z"
+published: "2026-11-24T11:45:53Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-124559
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-124559
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-6ye4-stt5-xpjq-r4bp
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-124559
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2026-124559
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+      type: CVSS_V3
+summary: A flaw was found in QEMU's NBD server. A remote attacker can crash a multi-export NBD server process by exploiting…
+upstream:
+    - CVE-2026-124559

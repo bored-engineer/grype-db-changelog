@@ -3,6 +3,30 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: open-liberty
+        purl: pkg:apk/dhi/open-liberty
+      ranges:
+        - events:
+            - introduced: 26.0.0.11-r0
+          type: ECOSYSTEM
+      versions:
+        - 26.0.0.11-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: open-liberty
+        purl: pkg:apk/dhi/open-liberty
+      ranges:
+        - events:
+            - introduced: 26.0.0.11-r0
+          type: ECOSYSTEM
+      versions:
+        - 26.0.0.11-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: open-liberty
         purl: pkg:deb/dhi/open-liberty
@@ -14,7 +38,7 @@ affected:
         - 26.0.0.11-0
 details: Apache CXF has the ability to integrate with JMX by registering an InstrumentationManager extension with the CXF bus. If the ‘createMBServerConnectorFactory‘ property of the default InstrumentationManagerImpl is not disabled, then it is vulnerable to a man-in-the-middle (MITM) style attack. An attacker on the same host can connect to the registry and rebind the entry to another server, thus acting as a proxy to the original. They are then able to gain access to all of the information that is sent and received over JMX.
 id: DHI-4pxj-mg7w-d6xs-n2nc
-modified: "2026-11-23T16:47:38Z"
+modified: "2026-11-24T23:45:50Z"
 published: "2026-11-23T16:47:38Z"
 references:
     - type: ADVISORY

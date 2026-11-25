@@ -6,16 +6,22 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: onnx
         purl: pkg:deb/dhi/onnx
+      ranges:
+        - events:
+            - introduced: 1.17.0-3+deb13u0+dhi6
+          type: ECOSYSTEM
       versions:
+        - 1.17.0-3+deb13u0+dhi6
         - 1.17.0-3+dhi0
         - 1.17.0-3+dhi1
         - 1.17.0-3+dhi2
         - 1.17.0-3+dhi3
         - 1.17.0-3+dhi4
         - 1.17.0-3+dhi5
+        - 1.17.0-3+dhi6
 details: Open Neural Network Exchange (ONNX) is an open standard for machine learning interoperability. From 1.2.1 until 1.22.0, ConvTranspose shape inference processes a weight tensor with fewer than three dimensions without a kernel_shape attribute by deriving an empty effective_kernel_shape and indexing it for the input's spatial dimensions. The flaw affects convTransposeShapeInference_opset11() and the current inference path, and an untrusted model that can pass onnx.checker.check_model() can crash onnx.shape_inference.infer_shapes(), causing denial of service without demonstrated confidentiality or integrity impact. This issue is fixed in version 1.22.0.
 id: DHI-fe2a-fkvk-vbfg-gfqi
-modified: "2026-11-11T18:54:50Z"
+modified: "2026-11-24T08:02:06Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

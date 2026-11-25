@@ -86,6 +86,7 @@ affected:
         - 1.110.2-0
         - 1.110.2-1
         - 1.110.2-2
+        - 1.110.3-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -381,7 +382,7 @@ affected:
         - 6.1.0-9
 details: Pillow is a Python imaging library. From 9.4.0 until 13.0.0, ImagingJpegEncode() in src/libImaging/JpegEncode.c can call jpeg_write_marker() for a JPEG COM comment when an ICC profile has exactly filled the 65536-byte encoder buffer. libjpeg writes one byte before checking the exhausted free_in_buffer counter, which then wraps and permits the attacker-controlled comment and subsequent compressed image data to overwrite adjacent heap memory. Re-saving an untrusted image as JPEG while preserving its ICC profile and forwarded comment can crash the process and may enable code execution in suitable runtime and heap layouts. This issue is fixed in version 13.0.0.
 id: DHI-tmyv-zitv-73ov-36fw
-modified: "2026-11-23T21:50:07Z"
+modified: "2026-11-24T11:27:57Z"
 published: "2026-11-20T16:49:49Z"
 references:
     - type: ADVISORY

@@ -32,6 +32,20 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: static-web-server-2
+        purl: pkg:apk/dhi/static-web-server-2
+      ranges:
+        - events:
+            - introduced: 2.44.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.44.1-r0
+        - 2.44.2-r0
+        - 2.44.3-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: static-web-server-2
         purl: pkg:apk/dhi/static-web-server-2
@@ -61,7 +75,7 @@ affected:
         - 2.44.3-2
 details: When a `Blame` is created via `Blame::blame_buffer()`, and a `BlameHunk` is retrieved, the pointers to the original author, original committer, final author, and final committer may be null if unavailable. The corresponding `BlameHunk` methods then create `Signature`s based on null pointers; attempting to access the data of the `Signature`s leads to dereferencing null pointers.
 id: DHI-k7fx-plhx-4l32-ysyu
-modified: "2026-11-23T23:21:53Z"
+modified: "2026-11-24T22:24:02Z"
 published: "2026-11-20T14:34:36Z"
 references:
     - type: ADVISORY

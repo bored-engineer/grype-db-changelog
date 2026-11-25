@@ -6,8 +6,14 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libpng
         purl: pkg:apk/dhi/libpng
+      ranges:
+        - events:
+            - introduced: 1.6.53
+          type: ECOSYSTEM
       versions:
+        - 1.6.53
         - 1.6.53-r0
+        - 1.6.54
         - 1.6.54-r0
         - 1.6.55-r0
         - 1.6.56-r0
@@ -16,7 +22,7 @@ affected:
         - 1.6.59-r0
 details: LIBPNG is a reference library for use in applications that read, create, and manipulate PNG (Portable Network Graphics) raster image files. Prior to 1.6.52, an out-of-bounds read vulnerability in libpng's simplified API allows reading up to 1012 bytes beyond the png_sRGB_base[512] array when processing valid palette PNG images with partial transparency and gamma correction. The PNG files that trigger this vulnerability are valid per the PNG specification; the bug is in libpng's internal state management. Upgrade to libpng 1.6.52 or later.
 id: DHI-sic4-2kqy-xkd5-izgf
-modified: "2026-11-11T17:33:07Z"
+modified: "2026-11-24T15:52:09Z"
 published: "2026-11-11T17:33:07Z"
 references:
     - type: ADVISORY

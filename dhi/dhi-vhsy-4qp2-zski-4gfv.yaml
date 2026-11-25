@@ -6,16 +6,22 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: onnx
         purl: pkg:deb/dhi/onnx
+      ranges:
+        - events:
+            - introduced: 1.17.0-3+deb13u0+dhi6
+          type: ECOSYSTEM
       versions:
+        - 1.17.0-3+deb13u0+dhi6
         - 1.17.0-3+dhi0
         - 1.17.0-3+dhi1
         - 1.17.0-3+dhi2
         - 1.17.0-3+dhi3
         - 1.17.0-3+dhi4
         - 1.17.0-3+dhi5
+        - 1.17.0-3+dhi6
 details: Open Neural Network Exchange (ONNX) is an open standard for machine learning interoperability. Prior to 1.22.0, RNNShapeInference_opset1_to_6() processes malformed RNN and LSTM nodes from opsets 1 through 6 and GRU nodes from opsets 3 through 6 without verifying that the first input has rank three. The function accesses dim(0) and dim(1) on an undersized protobuf shape, which can read outside the intended repeated field and terminate an application when onnx.shape_inference.infer_shapes() processes an untrusted model that can pass onnx.checker.check_model(). This issue is fixed in version 1.22.0.
 id: DHI-vhsy-4qp2-zski-4gfv
-modified: "2026-11-11T18:54:50Z"
+modified: "2026-11-24T08:02:06Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

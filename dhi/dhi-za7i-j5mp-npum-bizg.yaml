@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: trivy
         purl: pkg:apk/dhi/trivy
+      ranges:
+        - events:
+            - introduced: 0.69.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.69.1-r0
         - 0.69.2-r0
@@ -51,6 +55,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: trivy-dev
         purl: pkg:apk/dhi/trivy-dev
+      ranges:
+        - events:
+            - introduced: 0.69.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.69.1-r0
         - 0.69.2-r0
@@ -96,6 +104,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: trivy-fips
         purl: pkg:apk/dhi/trivy-fips
+      ranges:
+        - events:
+            - introduced: 0.69.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.69.1-r0
         - 0.69.2-r0
@@ -141,6 +153,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: trivy-fips-dev
         purl: pkg:apk/dhi/trivy-fips-dev
+      ranges:
+        - events:
+            - introduced: 0.69.1-r0
+          type: ECOSYSTEM
       versions:
         - 0.69.1-r0
         - 0.69.2-r0
@@ -182,7 +198,7 @@ affected:
         - 0.74.0-r9
 details: "## Summary\r\n\r\nWhen Trivy scans a Helm chart archive (`.tgz`), its custom tar unpacker reads each entry with `io.ReadAll(tr)` and no size limit. An attacker who can place a malicious `.tgz` file in the scanned path can craft a small compressed archive that decompresses to gigabytes, causing the Trivy process to be killed by the OS OOM killer.\r\n\r\n## Affected configurations\r\n\r\nExploitation requires the attacker to place a crafted `.tgz` file in a location that Trivy will scan as a Helm chart. This applies to the following scan targets:\r\n\r\n| Command | Condition |\r\n| --- | --- |\r\n| `trivy config <dir>` | Directory contains a crafted `.tgz` Helm chart (misconfiguration scanning is always enabled) |\r\n| `trivy filesystem --scanners misconf <dir>` | Directory contains a crafted `.tgz` Helm chart **and** `--scanners misconf` is explicitly enabled |\r\n| `trivy image --scanners misconf <image>` | Image contains a crafted `.tgz` Helm chart **and** `--scanners misconf` is explicitly enabled |\r\n\r\nRealistic scenarios include:\r\n- A CI pipeline that runs `trivy config .` on a repository where a contributor can submit a pull request containing a crafted chart archive.\r\n- A pipeline that scans a container image with `--scanners misconf`, whose build context includes untrusted `.tgz` files.\r\n\r\n## Impact\r\n\r\nAn attacker who satisfies the conditions above can exhaust all available memory on the host running Trivy. The OS OOM killer will terminate the Trivy process and may affect other processes sharing the same host or CI runner.\r\n\r\nThe practical impact in CI environments is denial of service: the scan fails, the pipeline is blocked, and repeated submissions re-trigger the same condition. Cloud CI runners may also incur additional costs for consumed resources.\r\n\r\nThere is no impact on confidentiality or integrity of the scanned system.\r\n\r\n## Patches\r\n\r\nFixed in Trivy `v0.71.0` (#10718). The custom tar unpacker was replaced with `archive.LoadArchiveFiles` from the official `helm.sh/helm/v4` SDK, which enforces per-entry and total size limits and validates archive structure. Users should upgrade to `v0.71.0` or later.\r\n\r\n## Workarounds\r\n\r\nIf upgrading is not immediately possible:\r\n- Set a memory limit (cgroup/container) on the Trivy process to bound the blast radius.\r\n- Use `--skip-dirs` to exclude directories containing untrusted Helm chart archives from the scan.\r\n- Avoid scanning repositories or images with untrusted `.tgz` files.\r\n\r\n## Credits\r\n\r\nReported by @jamesgol."
 id: DHI-za7i-j5mp-npum-bizg
-modified: "2026-11-21T05:48:46Z"
+modified: "2026-11-24T23:13:27Z"
 published: "2026-11-12T06:10:31Z"
 references:
     - type: ADVISORY

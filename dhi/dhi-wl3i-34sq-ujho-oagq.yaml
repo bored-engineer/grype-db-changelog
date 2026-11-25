@@ -8,13 +8,16 @@ affected:
         purl: pkg:deb/dhi/libpcap
       ranges:
         - events:
-            - introduced: 1.10.5-2+dhi2
+            - introduced: 1.10.5-2dhi0
           type: ECOSYSTEM
       versions:
+        - 1.10.5-2+dhi0
+        - 1.10.5-2+dhi1
         - 1.10.5-2+dhi2
+        - 1.10.5-2dhi0
 details: rpcapd can allocate up to 65536 bytes per each RPCAP_MSG_UPDATEFILTER_REQ or RPCAP_MSG_STARTCAP_REQ message received from the client, but it never frees the memory, so it leaks memory even under normal use.  A malicious client can cause the server to leak memory substantially faster.
 id: DHI-wl3i-34sq-ujho-oagq
-modified: "2026-11-23T15:20:36Z"
+modified: "2026-11-24T00:50:07Z"
 published: "2026-11-10T13:38:36Z"
 references:
     - type: ADVISORY

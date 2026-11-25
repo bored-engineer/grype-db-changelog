@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: valkey
         purl: pkg:apk/dhi/valkey
+      ranges:
+        - events:
+            - introduced: 9.0.0-r1
+          type: ECOSYSTEM
       versions:
         - 9.0.0-r1
         - 9.0.3-r0
@@ -13,7 +17,7 @@ affected:
         - 9.0.7-r0
 details: "### Impact\r\nA malicious actor with access to the Valkey clusterbus port can send an invalid packet that may cause an out bound read, which might result in the Valkey process being terminated.\r\n\r\n### Details\r\nThe Valkey clusterbus packet processing code does not validate that a clusterbus ping extension packet is located within the buffer of the clusterbus packet before attempting to read it. Attempting to read memory outside of allocated memory for the process can crash the server.\r\n\r\n### Mitigation\r\nWe recommend the cluster bus port not be exposed directly to end users and be protected by its own network ACLs.\r\n\r\n### Credits\r\nDiscovered by 0x Kato <0xkkato@gmail.com>"
 id: DHI-wiyt-breo-53hs-mii6
-modified: "2026-11-11T19:16:44Z"
+modified: "2026-11-24T09:46:19Z"
 published: "2026-11-11T19:16:44Z"
 references:
     - type: ADVISORY

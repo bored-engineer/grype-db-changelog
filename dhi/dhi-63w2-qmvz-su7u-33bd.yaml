@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: falco
         purl: pkg:deb/dhi/falco
+      ranges:
+        - events:
+            - introduced: 0.44.1-0
+          type: ECOSYSTEM
       versions:
         - 0.44.1-0
         - 0.44.1-1
@@ -49,7 +53,7 @@ affected:
         - 0.45.2-9
 details: Podman is a tool for managing OCI containers and pods. From 1.8.1 until 5.8.4, a container image that contains a environment variable with just a key and no value can trick podman into passing that variable from the host into the container. This is made worse by the fact that using an asterisk (*) will cause podman to pass all host variables into the container. So essentially a malicious image can exfiltrate all podman environment variables that are set in the session from where the container is launched. This vulnerability is fixed in 5.8.4 and 6.0.0.
 id: DHI-63w2-qmvz-su7u-33bd
-modified: "2026-11-21T05:49:07Z"
+modified: "2026-11-24T23:13:27Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY

@@ -3,6 +3,107 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: couchbase-mcp
+        purl: pkg:apk/dhi/couchbase-mcp
+      ranges:
+        - events:
+            - introduced: 1.0.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.0.0-r0
+        - 1.0.0-r1
+        - 1.0.0-r2
+        - 1.0.0-r3
+        - 1.0.0-r4
+        - 1.0.1-r0
+        - 1.0.1-r1
+        - 1.0.1-r10
+        - 1.0.1-r11
+        - 1.0.1-r12
+        - 1.0.1-r14
+        - 1.0.1-r15
+        - 1.0.1-r16
+        - 1.0.1-r2
+        - 1.0.1-r3
+        - 1.0.1-r4
+        - 1.0.1-r5
+        - 1.0.1-r6
+        - 1.0.1-r7
+        - 1.0.1-r8
+        - 1.0.1-r9
+        - 1.1.0-r0
+        - 1.1.0-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: localstack
+        purl: pkg:apk/dhi/localstack
+      ranges:
+        - events:
+            - introduced: 4.14.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.14.0-r0
+        - 4.14.0-r1
+        - 4.14.0-r10
+        - 4.14.0-r11
+        - 4.14.0-r12
+        - 4.14.0-r13
+        - 4.14.0-r14
+        - 4.14.0-r2
+        - 4.14.0-r3
+        - 4.14.0-r4
+        - 4.14.0-r5
+        - 4.14.0-r6
+        - 4.14.0-r7
+        - 4.14.0-r8
+        - 4.14.0-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: zscaler-mcp
+        purl: pkg:apk/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.13.1-r0
+        - 0.13.3-r0
+        - 0.13.4-r0
+        - 0.14.0-r0
+        - 0.14.0-r1
+        - 0.14.0-r2
+        - 0.15.0-r0
+        - 0.15.0-r1
+        - 0.15.2-r0
+        - 0.15.2-r1
+        - 0.15.3-r0
+        - 0.15.4-r0
+        - 0.15.4-r1
+        - 0.15.4-r10
+        - 0.15.4-r11
+        - 0.15.4-r12
+        - 0.15.4-r13
+        - 0.15.4-r14
+        - 0.15.4-r15
+        - 0.15.4-r16
+        - 0.15.4-r17
+        - 0.15.4-r18
+        - 0.15.4-r2
+        - 0.15.4-r3
+        - 0.15.4-r4
+        - 0.15.4-r5
+        - 0.15.4-r6
+        - 0.15.4-r7
+        - 0.15.4-r8
+        - 0.15.4-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: couchbase-mcp
         purl: pkg:apk/dhi/couchbase-mcp
@@ -386,7 +487,7 @@ affected:
         - 0.15.4-9
 details: joserfc is a Python library that provides an implementation of several JSON Object Signing and Encryption (JOSE) standards. Prior to 1.7.6, joserfc compact JWS deserialization calls bytes.split() before enforcing the existing aggregate segment-size limits. When attacker-controlled compact serialization bytes reach deserialize_compact(), the split creates copies of the header, payload, and signature segments before ExceededSizeError rejects them, causing an additional allocation approximately proportional to the supplied token. Requests that exhaust available process memory can therefore cause an availability failure even though signature verification fails. This issue is fixed in version 1.7.6.
 id: DHI-t2ku-xecy-7s74-5r52
-modified: "2026-11-23T19:50:51Z"
+modified: "2026-11-25T00:16:58Z"
 published: "2026-11-11T18:47:00Z"
 references:
     - type: ADVISORY

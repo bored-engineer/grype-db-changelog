@@ -3,6 +3,38 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample-fips
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
@@ -112,7 +144,7 @@ database_specific:
         - legacy_package_image_owner
 details: node-tar is a Tar for Node.js. The node-tar library (<= 7.5.2) fails to sanitize the linkpath of Link (hardlink) and SymbolicLink entries when preservePaths is false (the default secure behavior). This allows malicious archives to bypass the extraction root restriction, leading to Arbitrary File Overwrite via hardlinks and Symlink Poisoning via absolute symlink targets. This vulnerability is fixed in 7.5.3.
 id: DHI-4wly-kgz6-ck3v-jdfd
-modified: "2026-11-23T19:49:11Z"
+modified: "2026-11-24T23:18:28Z"
 published: "2026-11-20T00:55:26Z"
 references:
     - type: ADVISORY

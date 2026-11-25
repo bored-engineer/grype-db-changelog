@@ -12,6 +12,7 @@ affected:
           type: ECOSYSTEM
       versions:
         - 1.26.9-r0
+        - 1.26.9-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -31,7 +32,7 @@ affected:
         - 1.26.2-1+deb13u2+dhi5
 details: A flaw was found in GStreamer gst-plugins-good (avidemux). In gst_avi_demux_riff_parse_vprp(), the number of available gst_riff_vprp_video_field_desc entries is calculated by dividing the remaining buffer size by the attacker-controlled vprp->fields value, rather than by sizeof(gst_riff_vprp_video_field_desc). This can cause the parser to treat more field descriptors as available than fit in the input buffer, resulting in out-of-bounds reads. Processing a crafted AVI via playbin/decodebin can crash the application (denial of service). Fixed upstream in gst-plugins-good 1.28.6 (GStreamer-SA-2026-0072).
 id: DHI-7hf2-l53i-qjav-jua6
-modified: "2026-11-23T22:07:18Z"
+modified: "2026-11-24T05:50:27Z"
 published: "2026-11-19T21:09:05Z"
 references:
     - type: ADVISORY

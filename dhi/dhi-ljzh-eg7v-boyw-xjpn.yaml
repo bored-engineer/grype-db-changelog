@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: samba
         purl: pkg:apk/dhi/samba
+      ranges:
+        - events:
+            - introduced: 4.22.6-r0
+          type: ECOSYSTEM
       versions:
         - 4.22.10-r0
         - 4.22.10-r1
@@ -13,7 +17,7 @@ affected:
         - 4.22.8-r0
 details: A flaw was found in Samba. A remote attacker can exploit a misconfiguration in Samba file servers and classic domain controllers that use the "check password script" feature. If this script is configured with the %u substitution character, the client-controlled username is passed without proper escaping of shell meta-characters. This vulnerability allows an attacker to achieve remote command execution on the affected system. This issue primarily affects non-standard configurations where the "check password script" is used with %u and the samba-dcerpcd service is started as a system service.
 id: DHI-ljzh-eg7v-boyw-xjpn
-modified: "2026-11-11T18:51:34Z"
+modified: "2026-11-24T15:11:47Z"
 published: "2026-11-11T18:51:34Z"
 references:
     - type: ADVISORY

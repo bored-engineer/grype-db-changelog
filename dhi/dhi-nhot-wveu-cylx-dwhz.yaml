@@ -3,9 +3,33 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: postman-mcp
+        purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.11.2-r5
+          type: ECOSYSTEM
+      versions:
+        - 2.11.2-r5
+        - 2.12.0-r0
+        - 2.12.2-r0
+        - 2.12.3-r0
+        - 2.13.0-r0
+        - 2.14.0-r0
+        - 2.15.0-r0
+        - 2.15.0-r1
+        - 2.15.0-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: postman-mcp
         purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-r0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-r0
         - 2.11.1-r0
@@ -30,6 +54,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: postman-mcp
         purl: pkg:deb/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.9.1-0
+          type: ECOSYSTEM
       versions:
         - 2.11.0-0
         - 2.11.1-0
@@ -51,7 +79,7 @@ affected:
         - 2.9.1-0
 details: Faker generates massive amounts of fake data in the browser and Node.js. Prior to 10.5.0, the faker.helpers.fake method in src/modules/helpers/eval.ts allows attacker-controlled fake templates to access the Function constructor through fakeEval.resolveProperty when a function returns another function, enabling arbitrary JavaScript code execution. This issue is fixed in version 10.5.0.
 id: DHI-nhot-wveu-cylx-dwhz
-modified: "2026-11-20T16:52:32Z"
+modified: "2026-11-24T21:54:05Z"
 published: "2026-11-12T05:03:11Z"
 references:
     - type: ADVISORY

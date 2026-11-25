@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: avahi
         purl: pkg:apk/dhi/avahi
+      ranges:
+        - events:
+            - introduced: 0.8-r23
+          type: ECOSYSTEM
       versions:
         - 0.8-r23
         - 0.8-r24
@@ -15,6 +19,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: avahi
         purl: pkg:apk/dhi/avahi
+      ranges:
+        - events:
+            - introduced: 0.9_rc4-r0
+          type: ECOSYSTEM
       versions:
         - 0.9_rc4-r0
         - 0.9_rc4-r1
@@ -22,7 +30,7 @@ affected:
         - 0.9_rc5-r1
 details: Avahi is a system which facilitates service discovery on a local network via the mDNS/DNS-SD protocol suite. In versions up to and including 0.9-rc5, the simple protocol server ignores the documented client limit and accepts unlimited connections, allowing for easy local DoS. Although `CLIENTS_MAX` is defined, `server_work()` unconditionally `accept()`s and `client_new()` always appends the new client and increments `n_clients`. There is no check against the limit. When client cannot be accepted as a result of maximal socket number of avahi-daemon, it logs unconditionally error per each connection. Unprivileged local users can exhaust daemon memory and file descriptors, causing a denial of service system-wide for mDNS/DNS-SD. Exhausting local file descriptors causes increased system load caused by logging errors of each of request. Overloading prevents glibc calls using nss-mdns plugins to resolve `*.local.` names and link-local addresses. As of time of publication, no known patched versions are available, but a candidate fix is available in pull request 808, and some workarounds are available. Simple clients are offered for nss-mdns package functionality. It is not possible to disable the unix socket `/run/avahi-daemon/socket`, but resolution requests received via DBus are not affected directly. Tools avahi-resolve, avahi-resolve-address and avahi-resolve-host-name are not affected, they use DBus interface. It is possible to change permissions of unix socket after avahi-daemon is started. But avahi-daemon does not provide any configuration for it. Additional access restrictions like SELinux can also prevent unwanted tools to access the socket and keep resolution working for trusted users.
 id: DHI-xd47-4zqx-tdsv-b5ae
-modified: "2026-11-11T20:48:54Z"
+modified: "2026-11-24T13:27:35Z"
 published: "2026-11-11T20:48:54Z"
 references:
     - type: ADVISORY

@@ -1,0 +1,47 @@
+# schema: vulnerability/osv/schema-1.8.0.json
+affected:
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: qemu
+        purl: pkg:deb/dhi/qemu
+      ranges:
+        - events:
+            - introduced: 1:10.0.8+ds-0+deb13u1dhi0
+          type: ECOSYSTEM
+      versions:
+        - 1:10.0.11+ds-0+deb13u1+dhi0
+        - 1:10.0.11+ds-0+deb13u1+dhi1
+        - 1:10.0.11+ds-0+deb13u1+dhi2
+        - 1:10.0.13+ds-0+deb13u1+dhi2
+        - 1:10.0.13+ds-0+deb13u1+dhi3
+        - 1:10.0.13+ds-0+deb13u1+dhi4
+        - 1:10.0.13+ds-0+deb13u1+dhi5
+        - 1:10.0.13+ds-0+deb13u1+dhi6
+        - 1:10.0.8+ds-0+deb13u1+dhi0
+        - 1:10.0.8+ds-0+deb13u1+dhi1
+        - 1:10.0.8+ds-0+deb13u1+dhi3
+        - 1:10.0.8+ds-0+deb13u1dhi0
+details: A flaw was found in QEMU's NBD server. A remote attacker can crash qemu-nbd, qemu-storage-daemon, or qemu-system by sending NBD_OPT_SET_META_CONTEXT or NBD_OPT_LIST_META_CONTEXT with a declared option length exceeding the actual payload, triggering an assertion failure and denial of service.
+id: DHI-kjla-6ib5-s6vq-ouun
+modified: "2026-11-24T17:14:41Z"
+published: "2026-11-24T11:45:53Z"
+references:
+    - type: ADVISORY
+      url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-125683
+    - type: ADVISORY
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-125683
+    - type: ADVISORY
+      url: https://scout.docker.com/v/DHI-kjla-6ib5-s6vq-ouun
+    - type: ADVISORY
+      url: https://security-tracker.debian.org/tracker/CVE-2026-125683
+    - type: ADVISORY
+      url: https://ubuntu.com/security/CVE-2026-125683
+schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H
+      type: CVSS_V3
+summary: A flaw was found in QEMU's NBD server. A remote attacker can crash qemu-nbd, qemu-storage-daemon, or qemu-system by…
+upstream:
+    - CVE-2026-125683

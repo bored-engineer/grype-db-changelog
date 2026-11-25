@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: langfuse-2
         purl: pkg:deb/dhi/langfuse-2
+      ranges:
+        - events:
+            - introduced: 2.95.12-0
+          type: ECOSYSTEM
       versions:
         - 2.95.12-0
         - 2.95.12-1
@@ -27,6 +31,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: superset
         purl: pkg:deb/dhi/superset
+      ranges:
+        - events:
+            - introduced: 6.1.0-0
+          type: ECOSYSTEM
       versions:
         - 6.1.0-0
         - 6.1.0-1
@@ -77,7 +85,7 @@ database_specific:
         - legacy_package_image_owner
 details: Picomatch is a glob matcher written JavaScript. Versions prior to 4.0.4, 3.0.2, and 2.3.2 are vulnerable to a method injection vulnerability affecting the `POSIX_REGEX_SOURCE` object. Because the object inherits from `Object.prototype`, specially crafted POSIX bracket expressions (e.g., `[[:constructor:]]`) can reference inherited method names. These methods are implicitly converted to strings and injected into the generated regular expression. This leads to incorrect glob matching behavior (integrity impact), where patterns may match unintended filenames. The issue does not enable remote code execution, but it can cause security-relevant logic errors in applications that rely on glob matching for filtering, validation, or access control. All users of affected `picomatch` versions that process untrusted or user-controlled glob patterns are potentially impacted. This issue is fixed in picomatch 4.0.4, 3.0.2 and 2.3.2. Users should upgrade to one of these versions or later, depending on their supported release line. If upgrading is not immediately possible, avoid passing untrusted glob patterns to picomatch. Possible mitigations include sanitizing or rejecting untrusted glob patterns, especially those containing POSIX character classes like `[[:...:]]`; avoiding the use of POSIX bracket expressions if user input is involved; and manually patching the library by modifying `POSIX_REGEX_SOURCE` to use a null prototype.
 id: DHI-y3si-cj7m-qxe6-usgs
-modified: "2026-11-21T14:19:33Z"
+modified: "2026-11-24T07:09:10Z"
 published: "2026-11-19T21:02:33Z"
 references:
     - type: ADVISORY

@@ -6,13 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: xorg-server
         purl: pkg:apk/dhi/xorg-server
+      ranges:
+        - events:
+            - introduced: 21.1.21-r0
+          type: ECOSYSTEM
       versions:
         - 21.1.21-r0
         - 21.1.22-r0
         - 21.1.23-r0
 details: A flaw was found in the X.Org X server. This use-after-free vulnerability occurs in the XSYNC fence triggering logic, specifically within the miSyncTriggerFence() function. An attacker with access to the X11 server can exploit this without user interaction, leading to a server crash and potentially enabling memory corruption. This could result in a denial of service or further compromise of the system.
 id: DHI-wm5c-wn7b-q7fq-clc7
-modified: "2026-11-11T16:45:28Z"
+modified: "2026-11-24T11:11:37Z"
 published: "2026-11-11T16:45:28Z"
 references:
     - type: ADVISORY

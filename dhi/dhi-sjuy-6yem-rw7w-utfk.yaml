@@ -3,6 +3,77 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.0
+        purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.0.1-r0
+        - 1.0.1-r1
+        - 1.0.1-r10
+        - 1.0.1-r11
+        - 1.0.1-r2
+        - 1.0.1-r3
+        - 1.0.1-r4
+        - 1.0.1-r5
+        - 1.0.1-r6
+        - 1.0.1-r7
+        - 1.0.1-r8
+        - 1.0.1-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.1
+        purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.1.0-r0
+        - 1.1.0-r1
+        - 1.1.0-r10
+        - 1.1.0-r11
+        - 1.1.0-r12
+        - 1.1.0-r13
+        - 1.1.0-r17
+        - 1.1.0-r18
+        - 1.1.0-r19
+        - 1.1.0-r2
+        - 1.1.0-r3
+        - 1.1.0-r4
+        - 1.1.0-r5
+        - 1.1.0-r6
+        - 1.1.0-r7
+        - 1.1.0-r8
+        - 1.1.0-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.2
+        purl: pkg:apk/dhi/janusgraph-1.2
+      ranges:
+        - events:
+            - introduced: 1.2.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.2.0-r0
+        - 1.2.0-r1
+        - 1.2.0-r10
+        - 1.2.0-r11
+        - 1.2.0-r12
+        - 1.2.0-r2
+        - 1.2.0-r3
+        - 1.2.0-r4
+        - 1.2.0-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
@@ -153,7 +224,7 @@ affected:
         - 1.2.0-9
 details: Netty is an asynchronous, event-driven network application framework. Prior to versions 4.1.136.Final and 4.2.16.Final, the OcspServerCertificateValidator forwards the SslHandshakeCompletionEvent before the asynchronous OCSP validation completes. This allows the client's downstream handlers to send sensitive application data (e.g., HTTP requests) to a revoked server before the channel is closed by the OCSP check. n io.netty.handler.ssl.ocsp.OcspServerCertificateValidator#userEventTriggered, when an SslHandshakeCompletionEvent is received, the validator immediately calls ctx.fireUserEventTriggered(evt). It then initiates an asynchronous OCSP query using OcspClient.query. Because the handshake completion event is forwarded immediately, downstream handlers in the client's pipeline are notified that the TLS handshake is successful. They may then begin reading and processing incoming application data or sending outgoing data. If the OCSP response later indicates the server's certificate is REVOKED, the validator closes the channel, but by this time, the client may have already leaked sensitive data to a revoked server or processed malicious responses from it. This issue has been fixed in versions 4.1.136.Final and 4.2.16.Final.
 id: DHI-sjuy-6yem-rw7w-utfk
-modified: "2026-11-23T18:09:55Z"
+modified: "2026-11-25T00:19:18Z"
 published: "2026-11-10T08:59:33Z"
 references:
     - type: ADVISORY

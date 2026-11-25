@@ -14,6 +14,7 @@ affected:
         - 3.10.6-0
         - 3.10.6-1
         - 3.10.6-2
+        - 3.10.6-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -28,10 +29,11 @@ affected:
         - 3.11.10-0
         - 3.11.10-1
         - 3.11.10-2
+        - 3.11.10-3
         - 3.11.8-0
 details: Wasmtime is a runtime for WebAssembly. From 30.0.0 to 36.0.8, 43.0.2, and 44.0.1, Wasmtime's allocation logic for a WebAssembly table contained checked arithmetic which panicked on overflow. This overflow is possible to trigger, and thus panic, when a table with an extremely large size is allocated. This is possible with the WebAssembly memory64 proposal where tables can have sizes in the 64-bit range as opposed to the previous 32-bit range which would not overflow. The panic happens when attempting to create a very large table, such as when instantiating a WebAssembly module or component. This vulnerability is fixed in 36.0.8, 43.0.2, and 44.0.1.
 id: DHI-2kkq-awpl-odzk-67e6
-modified: "2026-11-23T19:48:54Z"
+modified: "2026-11-24T10:00:24Z"
 published: "2026-11-20T18:22:35Z"
 references:
     - type: ADVISORY

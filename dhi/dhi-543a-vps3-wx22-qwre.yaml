@@ -7,22 +7,25 @@ affected:
         name: cups
         purl: pkg:deb/dhi/cups
       ranges:
-        - events:
-            - introduced: 2.4.10-3+deb13u2dhi0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 2.4.10-3+deb13u2+dhi5
+          events:
+            - introduced: "0"
+            - fixed: 2.4.10-3+deb13u2+dhi5
           type: ECOSYSTEM
       versions:
         - 2.4.10-3+deb13u2+dhi1
         - 2.4.10-3+deb13u2+dhi2
         - 2.4.10-3+deb13u2+dhi3
         - 2.4.10-3+deb13u2+dhi4
-        - 2.4.10-3+deb13u2+dhi5
-        - 2.4.10-3+deb13u2+dhi6
-        - 2.4.10-3+deb13u2+dhi7
-        - 2.4.10-3+deb13u2+dhi8
         - 2.4.10-3+deb13u2dhi0
 details: OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. Prior to 2.4.17, a network-adjacent attacker can send a crafted SNMP response to the CUPS SNMP backend that causes an out-of-bounds read of up to 176 bytes past a stack buffer. The leaked memory is converted from UTF-16 to UTF-8 and stored as printer supply description strings, which are subsequently visible to authenticated users via IPP Get-Printer-Attributes responses and the CUPS web interface. This vulnerability is fixed in 2.4.17.
 id: DHI-543a-vps3-wx22-qwre
-modified: "2026-11-23T14:53:28Z"
+modified: "2026-11-24T16:46:48Z"
 published: "2026-11-11T16:04:58Z"
 references:
     - type: ADVISORY

@@ -3,6 +3,38 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: jupyterhub-k8s-singleuser-sample-fips
+        purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample-fips
+      ranges:
+        - events:
+            - introduced: 4.4.5-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.4.5-r0
+        - 4.4.5-r1
+        - 4.4.5-r2
+        - 4.4.5-r3
+        - 4.4.5-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: jupyterhub-k8s-singleuser-sample
         purl: pkg:apk/dhi/jupyterhub-k8s-singleuser-sample
@@ -112,7 +144,7 @@ database_specific:
         - legacy_package_image_owner
 details: minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Versions 10.2.0 and below are vulnerable to Regular Expression Denial of Service (ReDoS) when a glob pattern contains many consecutive * wildcards followed by a literal character that doesn't appear in the test string. Each * compiles to a separate [^/]*? regex group, and when the match fails, V8's regex engine backtracks exponentially across all possible splits. The time complexity is O(4^N) where N is the number of * characters. With N=15, a single minimatch() call takes ~2 seconds. With N=34, it hangs effectively forever. Any application that passes user-controlled strings to minimatch() as the pattern argument is vulnerable to DoS. This issue has been fixed in version 10.2.1.
 id: DHI-qlgz-j44b-e63a-m6mu
-modified: "2026-11-23T19:50:36Z"
+modified: "2026-11-24T23:20:08Z"
 published: "2026-11-21T08:53:11Z"
 references:
     - type: ADVISORY

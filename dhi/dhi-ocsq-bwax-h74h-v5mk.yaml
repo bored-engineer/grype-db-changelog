@@ -6,7 +6,12 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: glib
         purl: pkg:apk/dhi/glib
+      ranges:
+        - events:
+            - introduced: 2.86.3
+          type: ECOSYSTEM
       versions:
+        - 2.86.3
         - 2.86.3-r0
         - 2.86.3-r1
         - 2.86.5-r1
@@ -28,10 +33,12 @@ affected:
             - fixed: 2.84.4-3~deb13u5+dhi0
           type: ECOSYSTEM
       versions:
+        - 2.84.4-3~deb13u3+dhi0
+        - 2.84.4-3~deb13u3+dhi1
         - 2.84.4-3~deb13u3+dhi2
 details: A flaw was found in GLib. An out-of-bounds read of only 2 bytes can occur in the g_date_time_get_ymd function in the glib/gdatetime.c file when an invalid GDateTime object produced by the g_date_time_add_full function is processed. This flaw can corrupt the date output and potentially cause logic errors that may lead to a denial of service.
 id: DHI-ocsq-bwax-h74h-v5mk
-modified: "2026-11-21T02:38:10Z"
+modified: "2026-11-24T19:54:41Z"
 published: "2026-11-11T18:48:41Z"
 references:
     - type: ADVISORY

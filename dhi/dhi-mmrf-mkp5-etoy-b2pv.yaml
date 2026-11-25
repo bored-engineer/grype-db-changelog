@@ -265,6 +265,7 @@ affected:
         - 3.11.18-r2
         - 3.11.18-r3
         - 3.11.18-r4
+        - 3.11.18-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -359,6 +360,7 @@ affected:
         - 3.15.2-r2
         - 3.15.2-r3
         - 3.15.2-r4
+        - 3.15.2-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -371,6 +373,7 @@ affected:
           type: ECOSYSTEM
       versions:
         - 3.14.10-r0
+        - 3.14.10-r1
         - 3.14.3-r0
         - 3.14.5-r0
         - 3.14.5-r2
@@ -571,7 +574,7 @@ database_specific:
         - legacy_package_image_owner
 details: "The tarfile module's tar and data\n extraction filters created directories outside the destination for \nmembers whose name leaves the destination and returns to it, such as ../evil/../dest/sub/file. The containment check used the resolved path, but intermediate directories were created from the name as given.\n\nOnly\n empty directories are created outside the destination. Member contents \nare still extracted inside it. To return to the destination the member's\n name must contain the destination directory's own final component, so \nextraction into a secure randomised directory is not affected.\n\nThis affects POSIX platforms only. On Windows, .. components are collapsed before the path reaches the filesystem, so the directories outside the destination are never created."
 id: DHI-mmrf-mkp5-etoy-b2pv
-modified: "2026-11-23T20:40:37Z"
+modified: "2026-11-24T18:40:17Z"
 published: "2026-11-19T20:55:48Z"
 references:
     - type: ADVISORY

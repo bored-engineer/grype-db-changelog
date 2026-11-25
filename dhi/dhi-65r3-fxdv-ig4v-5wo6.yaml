@@ -3,9 +3,46 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: minio
+        purl: pkg:apk/dhi/minio
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: minio-els
+        purl: pkg:apk/dhi/minio-els
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-r14
+        - 0.20251015.172955-r15
+        - 0.20251015.172955-r16
+        - 0.20251015.172955-r17
+        - 0.20251015.172955-r18
+        - 0.20251015.172955-r19
+        - 0.20251015.172955-r20
+        - 0.20251015.172955-r5
+        - 0.20251015.172955-r6
+        - 0.20251015.172955-r8
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: minio
         purl: pkg:apk/dhi/minio
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
       versions:
         - 0.20251015.172955-r5
     - database_specific:
@@ -14,6 +51,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: minio-els
         purl: pkg:apk/dhi/minio-els
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
       versions:
         - 0.20251015.172955-r14
         - 0.20251015.172955-r15
@@ -21,12 +62,46 @@ affected:
         - 0.20251015.172955-r17
         - 0.20251015.172955-r18
         - 0.20251015.172955-r19
+        - 0.20251015.172955-r20
         - 0.20251015.172955-r5
         - 0.20251015.172955-r6
         - 0.20251015.172955-r8
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: minio
+        purl: pkg:deb/dhi/minio
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: minio-els
+        purl: pkg:deb/dhi/minio-els
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-14
+        - 0.20251015.172955-15
+        - 0.20251015.172955-16
+        - 0.20251015.172955-17
+        - 0.20251015.172955-18
+        - 0.20251015.172955-19
+        - 0.20251015.172955-20
+        - 0.20251015.172955-5
+        - 0.20251015.172955-6
+        - 0.20251015.172955-8
 details: Minio Inc. Minio S3 server version prior to RELEASE.2018-05-16T23-35-33Z contains a Allocation of Memory Without Limits or Throttling (similar to CWE-774) vulnerability in write-to-RAM that can result in Denial of Service. This attack appear to be exploitable via Sending V4-(pre)signed requests with large bodies . This vulnerability appears to have been fixed in after commit 9c8b7306f55f2c8c0a5c7cea9a8db9d34be8faa7.
 id: DHI-65r3-fxdv-ig4v-5wo6
-modified: "2026-11-20T17:20:51Z"
+modified: "2026-11-24T22:37:09Z"
 published: "2026-11-11T17:35:52Z"
 references:
     - type: ADVISORY

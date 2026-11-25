@@ -275,6 +275,7 @@ affected:
         - 3.11.18-r2
         - 3.11.18-r3
         - 3.11.18-r4
+        - 3.11.18-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -374,6 +375,7 @@ affected:
           type: ECOSYSTEM
       versions:
         - 3.14.10-r0
+        - 3.14.10-r1
         - 3.14.3-r0
         - 3.14.5-r0
         - 3.14.5-r2
@@ -564,7 +566,7 @@ database_specific:
         - legacy_package_image_owner
 details: The cleanup of tempfile.TemporaryDirectory is vulnerable to a race condition. An attacker who can modify the tree during cleanup can replace a directory with a symbolic link, causing files outside of the temporary directory to be deleted or have their permissions and file flags reset, with the privileges of the process performing the cleanup. Note that platforms where shutil.rmtree.avoids_symlink_attacks is false, remain affected, and file flags may still be reset outside of the tree on all platforms.
 id: DHI-itr5-nyfq-tybe-u3q4
-modified: "2026-11-23T21:22:38Z"
+modified: "2026-11-24T22:56:33Z"
 published: "2026-11-19T21:07:59Z"
 references:
     - type: ADVISORY
@@ -606,11 +608,15 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-98511.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98615.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-85239.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-89742.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-98511.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98615.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-12345
     - type: ADVISORY

@@ -6,16 +6,22 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: onnx
         purl: pkg:deb/dhi/onnx
+      ranges:
+        - events:
+            - introduced: 1.17.0-3+deb13u0+dhi6
+          type: ECOSYSTEM
       versions:
+        - 1.17.0-3+deb13u0+dhi6
         - 1.17.0-3+dhi0
         - 1.17.0-3+dhi1
         - 1.17.0-3+dhi2
         - 1.17.0-3+dhi3
         - 1.17.0-3+dhi4
         - 1.17.0-3+dhi5
+        - 1.17.0-3+dhi6
 details: A vulnerability in the `download_model_with_test_data` function of the onnx/onnx framework, version 1.16.0, allows for arbitrary file overwrite due to inadequate prevention of path traversal attacks in malicious tar files. This vulnerability enables attackers to overwrite any file on the system, potentially leading to remote code execution, deletion of system, personal, or application files, thus impacting the integrity and availability of the system. The issue arises from the function's handling of tar file extraction without performing security checks on the paths within the tar file, as demonstrated by the ability to overwrite the `/home/kali/.ssh/authorized_keys` file by specifying an absolute path in the malicious tar file.
 id: DHI-f4vd-iuo3-zxtf-ejhq
-modified: "2026-11-11T18:54:50Z"
+modified: "2026-11-24T08:02:06Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

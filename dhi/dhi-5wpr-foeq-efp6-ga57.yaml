@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libde265
         purl: pkg:apk/dhi/libde265
+      ranges:
+        - events:
+            - introduced: 1.0.18-r0
+          type: ECOSYSTEM
       versions:
         - 1.0.18-r0
         - 1.1.1-r0
@@ -13,7 +17,7 @@ details: |-
     libde265 is an open source implementation of the h.265 video codec. Prior to version 1.0.20, a crafted sequence of H.265 NAL units causes `decoder_context::read_slice_NAL()` (`libde265/decctx.cc:481`) to attach slice headers to a finished picture object
     that has no active image unit, resulting in attacker-controlled unbounded heap growth. The retained headers are never freed until the picture is released, which may not happen during continuous streaming. Version 1.0.20 patches the issue.
 id: DHI-5wpr-foeq-efp6-ga57
-modified: "2026-11-11T18:56:38Z"
+modified: "2026-11-24T15:58:01Z"
 published: "2026-11-11T18:56:38Z"
 references:
     - type: ADVISORY

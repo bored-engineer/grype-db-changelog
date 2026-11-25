@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: rsync
         purl: pkg:apk/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.1-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.1-r1
         - 3.4.1-r2
@@ -15,7 +19,7 @@ affected:
         - 3.5.2-r1
 details: In rsync 3.0.1 through 3.4.1, receive_xattr relies on an untrusted length value during a qsort call, leading to a receiver use-after-free. The victim must run rsync with -X (aka --xattrs). On Linux, many (but not all) common configurations are vulnerable. Non-Linux platforms are more widely vulnerable.
 id: DHI-qzx5-4wmx-h23x-aaff
-modified: "2026-11-11T18:24:29Z"
+modified: "2026-11-24T10:58:25Z"
 published: "2026-11-11T18:24:29Z"
 references:
     - type: ADVISORY

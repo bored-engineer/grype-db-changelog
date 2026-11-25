@@ -6,8 +6,13 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: perl-cpanel-json-xs
         purl: pkg:apk/dhi/perl-cpanel-json-xs
+      ranges:
+        - events:
+            - introduced: 4.41-r0
+          type: ECOSYSTEM
       versions:
         - 4.41-r0
+        - 4.41-r1
 details: |-
     Cpanel::JSON::XS versions from 4.28 before 4.80 for Perl leak the array collecting duplicate key values under dupkeys_as_arrayref in decode_hv.
 
@@ -15,7 +20,7 @@ details: |-
 
     Repeatedly decoding untrusted JSON with a duplicate key holding a large value exhausts process memory.
 id: DHI-htiq-qqac-lkbf-raqz
-modified: "2026-11-21T08:05:52Z"
+modified: "2026-11-24T22:11:59Z"
 published: "2026-11-21T08:05:52Z"
 references:
     - type: ADVISORY

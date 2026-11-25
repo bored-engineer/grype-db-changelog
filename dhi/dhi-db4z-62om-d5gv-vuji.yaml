@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: uptime-kuma-1
         purl: pkg:deb/dhi/uptime-kuma-1
+      ranges:
+        - events:
+            - introduced: 1.23.17-0
+          type: ECOSYSTEM
       versions:
         - 1.23.17-0
         - 1.23.17-1
@@ -197,7 +201,7 @@ details: |-
 
     Enforce `disableFileAccess` and `disableUrlAccess` inside `shared.resolveContent()` or pass an explicit policy object into every pre-resolution call and reject protected `path` / `href` values before opening files or fetching URLs. Apply the same fix to `jsonTransport` normalization and the `attachDataUrls` pre-plugin path. Add regression tests showing `jsonTransport` returns `EFILEACCESS` / `EURLACCESS` for file and URL content when those flags are set, and that `attachDataUrls` cannot resolve object-form `html.path` / `html.href` when the corresponding access flag is disabled.
 id: DHI-db4z-62om-d5gv-vuji
-modified: "2026-11-14T16:46:12Z"
+modified: "2026-11-24T12:37:21Z"
 published: "2026-11-14T01:06:37Z"
 references:
     - type: ADVISORY

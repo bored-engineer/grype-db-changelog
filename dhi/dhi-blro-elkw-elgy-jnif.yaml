@@ -3,6 +3,34 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.1
+        purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.1.0-r0
+        - 1.1.0-r1
+        - 1.1.0-r10
+        - 1.1.0-r11
+        - 1.1.0-r12
+        - 1.1.0-r13
+        - 1.1.0-r17
+        - 1.1.0-r18
+        - 1.1.0-r19
+        - 1.1.0-r2
+        - 1.1.0-r3
+        - 1.1.0-r4
+        - 1.1.0-r5
+        - 1.1.0-r6
+        - 1.1.0-r7
+        - 1.1.0-r8
+        - 1.1.0-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
@@ -153,7 +181,7 @@ affected:
         - 1.2.0-9
 details: 'Netty is a network application framework for development of protocol servers and clients. Prior to versions 4.1.135.Final and 4.2.15.Final, Netty HTTP/2 max header size handling produces an attack similar to HTTP/2 Rapid Reset. There is a setting in the http2 specification called `SETTINGS_MAX_HEADER_LIST_SIZE`. When a client sends that setting to Netty, it appears that Netty will behave as follows: read the request; proxy the request to the origin; attempt to produce a response; and create an exception while writing the headers for the response. Functionally, this should be similar to the http2 reset attack, but with a different on-the-wire signature. Versions 4.1.135.Final and 4.2.15.Final patch the issue.'
 id: DHI-blro-elkw-elgy-jnif
-modified: "2026-11-23T18:09:40Z"
+modified: "2026-11-24T21:11:02Z"
 published: "2026-11-10T05:42:50Z"
 references:
     - type: ADVISORY

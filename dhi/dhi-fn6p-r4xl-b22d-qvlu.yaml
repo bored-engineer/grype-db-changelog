@@ -3,6 +3,107 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: couchbase-mcp
+        purl: pkg:apk/dhi/couchbase-mcp
+      ranges:
+        - events:
+            - introduced: 1.0.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.0.0-r0
+        - 1.0.0-r1
+        - 1.0.0-r2
+        - 1.0.0-r3
+        - 1.0.0-r4
+        - 1.0.1-r0
+        - 1.0.1-r1
+        - 1.0.1-r10
+        - 1.0.1-r11
+        - 1.0.1-r12
+        - 1.0.1-r14
+        - 1.0.1-r15
+        - 1.0.1-r16
+        - 1.0.1-r2
+        - 1.0.1-r3
+        - 1.0.1-r4
+        - 1.0.1-r5
+        - 1.0.1-r6
+        - 1.0.1-r7
+        - 1.0.1-r8
+        - 1.0.1-r9
+        - 1.1.0-r0
+        - 1.1.0-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: localstack
+        purl: pkg:apk/dhi/localstack
+      ranges:
+        - events:
+            - introduced: 4.14.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 4.14.0-r0
+        - 4.14.0-r1
+        - 4.14.0-r10
+        - 4.14.0-r11
+        - 4.14.0-r12
+        - 4.14.0-r13
+        - 4.14.0-r14
+        - 4.14.0-r2
+        - 4.14.0-r3
+        - 4.14.0-r4
+        - 4.14.0-r5
+        - 4.14.0-r6
+        - 4.14.0-r7
+        - 4.14.0-r8
+        - 4.14.0-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: zscaler-mcp
+        purl: pkg:apk/dhi/zscaler-mcp
+      ranges:
+        - events:
+            - introduced: 0.13.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.13.1-r0
+        - 0.13.3-r0
+        - 0.13.4-r0
+        - 0.14.0-r0
+        - 0.14.0-r1
+        - 0.14.0-r2
+        - 0.15.0-r0
+        - 0.15.0-r1
+        - 0.15.2-r0
+        - 0.15.2-r1
+        - 0.15.3-r0
+        - 0.15.4-r0
+        - 0.15.4-r1
+        - 0.15.4-r10
+        - 0.15.4-r11
+        - 0.15.4-r12
+        - 0.15.4-r13
+        - 0.15.4-r14
+        - 0.15.4-r15
+        - 0.15.4-r16
+        - 0.15.4-r17
+        - 0.15.4-r18
+        - 0.15.4-r2
+        - 0.15.4-r3
+        - 0.15.4-r4
+        - 0.15.4-r5
+        - 0.15.4-r6
+        - 0.15.4-r7
+        - 0.15.4-r8
+        - 0.15.4-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: couchbase-mcp
         purl: pkg:apk/dhi/couchbase-mcp
@@ -386,7 +487,7 @@ affected:
         - 0.15.4-9
 details: joserfc is a Python library that provides an implementation of several JSON Object Signing and Encryption (JOSE) standards. Prior to 1.7.5, joserfc.jwe.decrypt_json() accepts a JWE General JSON Serialization recipients array without a count limit and calls decrypt_cek() for every entry. An unauthenticated attacker who can submit a JWE to an endpoint using an RSA key-management algorithm can choose the number of private-key decryption operations performed by one request. The verify_all_recipients option does not reduce this work because the affected loop processes every recipient before consulting that setting, allowing repeated requests to exhaust service CPU without affecting confidentiality or integrity. This issue is fixed in version 1.7.5.
 id: DHI-fn6p-r4xl-b22d-qvlu
-modified: "2026-11-23T19:49:43Z"
+modified: "2026-11-24T23:58:52Z"
 published: "2026-11-11T18:47:00Z"
 references:
     - type: ADVISORY

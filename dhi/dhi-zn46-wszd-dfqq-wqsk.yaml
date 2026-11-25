@@ -3,6 +3,57 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.0
+        purl: pkg:apk/dhi/janusgraph-1.0
+      ranges:
+        - events:
+            - introduced: 1.0.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.0.1-r0
+        - 1.0.1-r1
+        - 1.0.1-r10
+        - 1.0.1-r11
+        - 1.0.1-r2
+        - 1.0.1-r3
+        - 1.0.1-r4
+        - 1.0.1-r5
+        - 1.0.1-r6
+        - 1.0.1-r7
+        - 1.0.1-r8
+        - 1.0.1-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: janusgraph-1.1
+        purl: pkg:apk/dhi/janusgraph-1.1
+      ranges:
+        - events:
+            - introduced: 1.1.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.1.0-r0
+        - 1.1.0-r1
+        - 1.1.0-r10
+        - 1.1.0-r11
+        - 1.1.0-r12
+        - 1.1.0-r13
+        - 1.1.0-r17
+        - 1.1.0-r18
+        - 1.1.0-r19
+        - 1.1.0-r2
+        - 1.1.0-r3
+        - 1.1.0-r4
+        - 1.1.0-r5
+        - 1.1.0-r6
+        - 1.1.0-r7
+        - 1.1.0-r8
+        - 1.1.0-r9
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: janusgraph-1.0
         purl: pkg:apk/dhi/janusgraph-1.0
@@ -237,6 +288,7 @@ affected:
         - 0.7.2-2
         - 0.7.2-20
         - 0.7.2-21
+        - 0.7.2-22
         - 0.7.2-3
         - 0.7.2-4
         - 0.7.2-5
@@ -246,7 +298,7 @@ affected:
         - 0.7.2-9
 details: Netty is an asynchronous, event-driven network application framework. Prior to versions 4.1.136.Final and 4.2.16.Final, HttpPostRequestEncoder constructs multipart HTTP request bodies by directly concatenating user-supplied filenames and field names into Content-Disposition MIME headers without validating or sanitizing CRLF characters (\r\n). Since MIME headers are delimited by CRLF, an attacker who controls the filename can inject arbitrary MIME headers into the multipart body part. The root cause is that neither the encoder nor the FileUpload implementations' setFilename() methods, which only check for null, neutralize CRLF characters before the filename is embedded into the header. This issue has been fixed in versions 4.1.136.Final and 4.2.16.Final.
 id: DHI-zn46-wszd-dfqq-wqsk
-modified: "2026-11-23T18:09:55Z"
+modified: "2026-11-24T21:17:11Z"
 published: "2026-11-10T07:49:03Z"
 references:
     - type: ADVISORY

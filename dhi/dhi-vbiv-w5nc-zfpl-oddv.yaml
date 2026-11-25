@@ -3,12 +3,64 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: openssl
+        purl: pkg:apk/dhi/openssl
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 3.5.9-r2
+          events:
+            - introduced: "0"
+            - fixed: 3.5.9-r2
+          type: ECOSYSTEM
+      versions:
+        - 3.5.4-r0
+        - 3.5.5-r0
+        - 3.5.5_git20260330-r1
+        - 3.5.6-r0
+        - 3.5.6-r1
+        - 3.5.7-r0
+        - 3.5.7-r1
+        - 3.5.8-r0
+        - 3.5.8-r1
+        - 3.5.9-r0
+        - 3.5.9-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: openssl-provider-fips
+        purl: pkg:apk/dhi/openssl-provider-fips
+      ranges:
+        - events:
+            - introduced: 3.1.2-r0
+          type: ECOSYSTEM
+      versions:
+        - 3.1.2-r0
+        - 3.1.2-r1
+        - 3.1.2-r2
+        - 3.1.2-r3
+        - 3.1.2-r4
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: openssl
         purl: pkg:apk/dhi/openssl
       ranges:
-        - events:
-            - introduced: 3.5.6-r1
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 3.5.9-r2
+          events:
+            - introduced: "0"
+            - fixed: 3.5.9-r2
           type: ECOSYSTEM
       versions:
         - 3.5.6-r1
@@ -16,8 +68,6 @@ affected:
         - 3.5.7-r1
         - 3.5.8-r1
         - 3.5.9-r0
-        - 3.5.9-r2
-        - 3.5.9-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -38,8 +88,21 @@ affected:
         name: openssl
         purl: pkg:deb/dhi/openssl
       ranges:
-        - events:
-            - introduced: 3.5.5-1~deb13u2dhi0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 3.5.7-1~deb13u3+dhi1
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 3.5.9-1~deb13u1+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 3.5.7-1~deb13u3+dhi1
+            - introduced: 3.5.7-1~deb13u3+fips+dhi0
+            - fixed: 3.5.9-1~deb13u1+dhi0
+            - introduced: 3.5.9-1~deb13u1+fips+dhi0
           type: ECOSYSTEM
       versions:
         - 3.5.5-1~deb13u2dhi0
@@ -60,13 +123,12 @@ affected:
         - 3.5.7-1~deb13u2+dhi1
         - 3.5.7-1~deb13u2+fips+dhi0
         - 3.5.7-1~deb13u3+dhi0
-        - 3.5.7-1~deb13u3+dhi1
-        - 3.5.7-1~deb13u3+dhi2
-        - 3.5.7-1~deb13u3+dhi3
         - 3.5.7-1~deb13u3+fips+dhi0
-        - 3.5.9-1~deb13u1+dhi0
-        - 3.5.9-1~deb13u1+dhi1
         - 3.5.9-1~deb13u1+fips+dhi0
+database_specific:
+    coverage: partial
+    coverage_exclusions:
+        - legacy_package_image_owner
 details: |-
     Issue summary: A retransmitted QUIC CRYPTO frame can release packet storage
     while the TLS record layer retains a direct pointer into that storage causing
@@ -94,7 +156,7 @@ details: |-
     The FIPS module is not affected as the QUIC implementation is outside of
     the OpenSSL FIPS module boundary.
 id: DHI-vbiv-w5nc-zfpl-oddv
-modified: "2026-11-23T14:54:33Z"
+modified: "2026-11-24T15:36:11Z"
 published: "2026-11-19T15:34:09Z"
 references:
     - type: ADVISORY

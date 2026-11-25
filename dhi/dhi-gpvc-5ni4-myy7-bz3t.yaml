@@ -6,13 +6,17 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: libvirt
         purl: pkg:deb/dhi/libvirt
+      ranges:
+        - events:
+            - introduced: 11.3.0-3+deb13u2+dhi1
+          type: ECOSYSTEM
       versions:
         - 11.3.0-3+deb13u2+dhi1
         - 11.3.0-3+deb13u2+dhi2
         - 11.3.0-3+deb13u3+dhi0
 details: A flaw was found in libvirt. An unprivileged local user could exploit an integer overflow vulnerability in the NodeGetFreePages RPC handler. This flaw allows crafted values to bypass a size check, leading to an undersized memory buffer. Subsequently, real NUMA node data can overwrite this buffer. This heap buffer overflow can corrupt the root libvirt daemon's memory, potentially leading to a denial of service or local privilege escalation.
 id: DHI-gpvc-5ni4-myy7-bz3t
-modified: "2026-11-11T19:27:42Z"
+modified: "2026-11-24T15:46:31Z"
 published: "2026-11-11T19:27:42Z"
 references:
     - type: ADVISORY
@@ -32,9 +36,17 @@ references:
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:75583
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-500638.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-500647.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-74424.html
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-75583.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-500638.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-500647.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-74424.html
     - type: ADVISORY

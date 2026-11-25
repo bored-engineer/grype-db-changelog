@@ -3,6 +3,30 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: open-liberty
+        purl: pkg:apk/dhi/open-liberty
+      ranges:
+        - events:
+            - introduced: 26.0.0.11-r0
+          type: ECOSYSTEM
+      versions:
+        - 26.0.0.11-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: open-liberty
+        purl: pkg:apk/dhi/open-liberty
+      ranges:
+        - events:
+            - introduced: 26.0.0.11-r0
+          type: ECOSYSTEM
+      versions:
+        - 26.0.0.11-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: open-liberty
         purl: pkg:deb/dhi/open-liberty
@@ -14,7 +38,7 @@ affected:
         - 26.0.0.11-0
 details: Apache CXF before 3.3.4 and 3.2.11 does not restrict the number of message attachments present in a given message. This leaves open the possibility of a denial of service type attack, where a malicious user crafts a message containing a very large number of message attachments. From the 3.3.4 and 3.2.11 releases, a default limit of 50 message attachments is enforced. This is configurable via the message property "attachment-max-count".
 id: DHI-kita-y4eh-rndd-724r
-modified: "2026-11-23T16:47:38Z"
+modified: "2026-11-24T23:43:52Z"
 published: "2026-11-23T16:47:38Z"
 references:
     - type: ADVISORY

@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: rsync
         purl: pkg:apk/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.1-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.1-r1
         - 3.4.1-r2
@@ -15,7 +19,7 @@ affected:
         - 3.5.2-r1
 details: Rsync versions before 3.4.3 contain a time-of-check to time-of-use (TOCTOU) race condition in daemon file handling that allows attackers to redirect file writes outside intended directories by replacing parent directory components with symbolic links. Attackers with write access to a module path can exploit this race condition to create or overwrite arbitrary files, potentially modifying sensitive system files and achieving privilege escalation when the daemon runs with elevated privileges. This vulnerability can only be triggered if the chroot setting is false.
 id: DHI-hmbi-g2zf-xpts-ju6g
-modified: "2026-11-11T18:24:29Z"
+modified: "2026-11-24T10:58:25Z"
 published: "2026-11-11T18:24:29Z"
 references:
     - type: ADVISORY

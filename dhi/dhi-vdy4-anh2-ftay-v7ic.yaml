@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libsndfile
         purl: pkg:apk/dhi/libsndfile
+      ranges:
+        - events:
+            - introduced: 1.2.2-r2
+          type: ECOSYSTEM
       versions:
         - 1.2.2-r2
         - 1.2.2-r3
@@ -15,6 +19,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libsndfile
         purl: pkg:apk/dhi/libsndfile
+      ranges:
+        - events:
+            - introduced: 1.2.2-r2
+          type: ECOSYSTEM
       versions:
         - 1.2.2-r2
         - 1.2.2-r3
@@ -23,7 +31,7 @@ affected:
         - 1.2.2-r6
 details: An issue was discovered in libsndfile 1.2.2 IMA ADPCM codec. The AIFF code path (line 241) was fixed with (sf_count_t) cast, but the WAV code path (line 235) and close path (line 167) were not. When samplesperblock (int) * blocks (int) exceeds INT_MAX, the 32-bit multiplication overflows before being assigned to sf.frames (sf_count_t/int64). With samplesperblock=50000 and blocks=50000, the product 2500000000 overflows to -1794967296. This causes incorrect frame count leading to heap buffer overflow or denial of service. Both values come from the WAV file header and are attacker-controlled. This issue was discovered after an incomplete fix for CVE-2022-33065.
 id: DHI-vdy4-anh2-ftay-v7ic
-modified: "2026-11-11T18:47:00Z"
+modified: "2026-11-24T13:26:28Z"
 published: "2026-11-11T18:47:00Z"
 references:
     - type: ADVISORY

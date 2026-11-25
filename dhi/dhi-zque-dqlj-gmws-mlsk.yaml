@@ -86,6 +86,7 @@ affected:
         - 1.110.2-0
         - 1.110.2-1
         - 1.110.2-2
+        - 1.110.3-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -381,7 +382,7 @@ affected:
         - 6.1.0-9
 details: Pillow is a Python imaging library. From 11.3.0 until 13.0.0, Pillow has a heap use-after-free when libtiff rejects a tag while encoding TIFF data to an in-memory buffer. When an application saves attacker-influenced TIFF tags to BytesIO, libtiff can reject a tag during encoding in ImagingLibTiffEncode; the error path then frees the output buffer without closing or clearing the TIFF handle, and later cleanup flushes through the write callback into freed memory, which can crash the process and may enable code execution. This issue is fixed in version 13.0.0.
 id: DHI-zque-dqlj-gmws-mlsk
-modified: "2026-11-23T21:50:07Z"
+modified: "2026-11-24T11:28:29Z"
 published: "2026-11-20T16:49:49Z"
 references:
     - type: ADVISORY

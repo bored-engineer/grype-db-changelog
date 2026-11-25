@@ -3,6 +3,76 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: postman-mcp
+        purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.11.2-r5
+          type: ECOSYSTEM
+      versions:
+        - 2.11.2-r5
+        - 2.12.0-r0
+        - 2.12.2-r0
+        - 2.12.3-r0
+        - 2.13.0-r0
+        - 2.14.0-r0
+        - 2.15.0-r0
+        - 2.15.0-r1
+        - 2.15.0-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: supabase-storage
+        purl: pkg:apk/dhi/supabase-storage
+      ranges:
+        - events:
+            - introduced: 1.74.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.74.1-r0
+        - 1.74.1-r1
+        - 1.74.1-r2
+        - 1.74.1-r3
+        - 1.84.25-r0
+        - 1.84.28-r0
+        - 1.84.32-r0
+        - 1.84.33-r0
+        - 1.84.36-r0
+        - 1.85.0-r0
+        - 1.89.12-r0
+        - 1.89.12-r1
+        - 1.89.12-r2
+        - 1.89.13-r0
+        - 1.89.13-r1
+        - 1.90.0-r0
+        - 1.90.1-r0
+        - 1.90.2-r0
+        - 1.91.0-r0
+        - 1.92.0-r0
+        - 1.94.0-r0
+        - 1.94.0-r1
+        - 1.94.2-r0
+        - 1.95.0-r0
+        - 1.95.0-r1
+        - 1.96.0-r0
+        - 1.96.1-r0
+        - 1.96.2-r0
+        - 1.96.4-r0
+        - 1.97.0-r0
+        - 1.97.1-r0
+        - 1.97.2-r0
+        - 1.97.2-r1
+        - 1.98.2-r0
+        - 1.98.4-r0
+        - 1.98.5-r0
+        - 1.98.6-r0
+        - 1.98.7-r0
+        - 1.98.8-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: postman-mcp
         purl: pkg:apk/dhi/postman-mcp
@@ -77,6 +147,7 @@ affected:
         - 1.98.5-r0
         - 1.98.6-r0
         - 1.98.7-r0
+        - 1.98.8-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -104,6 +175,7 @@ affected:
         - 9.5.6-1
         - 9.5.6-2
         - 9.5.6-3
+        - 9.5.7-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -181,6 +253,7 @@ affected:
         - 1.110.2-0
         - 1.110.2-1
         - 1.110.2-2
+        - 1.110.3-0
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -295,13 +368,14 @@ affected:
         - 1.98.5-0
         - 1.98.6-0
         - 1.98.7-0
+        - 1.98.8-0
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.7.1, the Address6 constructor, Address6.isValid, and parse code in src/ipv6.ts accept unbounded strings and expand invalid characters through RE_BAD_CHARACTERS into large diagnostics. Material impact occurs only when an application accepts a very large attacker-controlled field and passes it to Address6 parsing without an earlier length bound. Common URL and header limits, and common body-parser defaults, generally constrain the effect; common defaults typically exclude 32 MiB fields. Megabyte-scale fields can cause a synchronous stall and high transient memory use, approximately 16 MiB can trigger an invalid string length exception, and process termination occurs at approximately 32 MiB. The affected entry points include Address6.isValid and construction paths that reach parse. This issue is fixed in version 10.7.1.
 id: DHI-kjx2-bfhf-mbes-6ywa
-modified: "2026-11-23T23:20:35Z"
+modified: "2026-11-24T23:58:52Z"
 published: "2026-11-20T01:49:54Z"
 references:
     - type: ADVISORY

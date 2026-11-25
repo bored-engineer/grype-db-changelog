@@ -3,6 +3,20 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: vaultwarden-1
+        purl: pkg:apk/dhi/vaultwarden-1
+      ranges:
+        - events:
+            - introduced: 1.37.3-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.37.3-r0
+        - 1.37.4-r0
+        - 1.37.5-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: vaultwarden-1
         purl: pkg:apk/dhi/vaultwarden-1
@@ -34,6 +48,7 @@ affected:
         - 1.37.5-3
         - 1.37.5-4
         - 1.37.5-5
+        - 1.37.5-6
 details: |-
     A malicious or compromised server can reply to `EHLO` with a line holding
     nothing but white space, causing the client to panic.
@@ -42,7 +57,7 @@ details: |-
     exposed; the risk applies to clients that may connect to untrusted servers, or
     that use `STARTTLS` or no TLS, where a man-in-the-middle can forge the reply.
 id: DHI-xqmt-tztq-qdl7-jvxr
-modified: "2026-11-23T16:56:44Z"
+modified: "2026-11-24T21:34:39Z"
 published: "2026-11-19T02:42:58Z"
 references:
     - type: ADVISORY
