@@ -25,6 +25,34 @@ const maxResumes = 20
 // resumeBackoff is the base delay before reopening (scaled by attempt).
 var resumeBackoff = 2 * time.Second
 
+// setupAttempts bounds how many times withRetry tries a registry request.
+const setupAttempts = 5
+
+// setupBackoff is the base delay between withRetry's attempts (scaled by
+// attempt).
+var setupBackoff = 5 * time.Second
+
+// withRetry retries the registry requests made before any data is read
+// (the manifest, and the token handshake for the blob): a transient
+// failure there, like a dial timeout to ghcr.io, would otherwise fail the
+// whole export. Nothing has been written to stdout yet at that point, so a
+// retry is always safe. The blob download itself resumes instead (see
+// resumableBlob).
+func withRetry[T any](ctx context.Context, what string, fn func() (T, error)) (T, error) {
+	for attempt := 1; ; attempt++ {
+		v, err := fn()
+		if err == nil || attempt >= setupAttempts || ctx.Err() != nil {
+			return v, err
+		}
+		log.Printf("%s failed (%v); retrying (%d/%d)", what, err, attempt, setupAttempts-1)
+		select {
+		case <-time.After(time.Duration(attempt) * setupBackoff):
+		case <-ctx.Done():
+			return v, err
+		}
+	}
+}
+
 // resumableBlob streams a registry blob, reopening the download at the
 // current offset (an HTTP Range request) whenever the connection fails
 // mid-stream, and verifies the blob's sha256 once fully read.
@@ -165,7 +193,9 @@ func layerReader(ctx context.Context, repo name.Repository, layer v1.Layer) (io.
 	if err != nil {
 		return nil, nil, fmt.Errorf("(v1.Layer).Size failed: %w", err)
 	}
-	blob, err := openBlob(ctx, repo, digest, size)
+	blob, err := withRetry(ctx, "connecting to the registry", func() (*resumableBlob, error) {
+		return openBlob(ctx, repo, digest, size)
+	})
 	if err != nil {
 		return nil, nil, err
 	}

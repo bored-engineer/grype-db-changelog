@@ -120,7 +120,9 @@ Captured: 2026-11-20T00:21:26Z
   pulls `results.db` and `metadata.json` out of its layer, and writes one
   YAML file per record. Arrays of objects are sorted canonically, because
   upstream reorders them between builds for no semantic reason and that
-  would otherwise show up as noise in the diffs. It prints a
+  would otherwise show up as noise in the diffs. The exception is OSV's
+  `events`, whose order is part of what each version range means. Numbers
+  are written exactly as upstream's JSON has them. It prints a
   [`git fast-import`](https://git-scm.com/docs/git-fast-import) stream that
   stages the snapshot as `refs/raw/<provider>/<digest>`. It streams the
   layer itself, resuming with HTTP Range requests when GHCR drops a

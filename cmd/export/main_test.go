@@ -1,9 +1,14 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
+	"errors"
 	"reflect"
 	"testing"
+	"time"
+
+	"gopkg.in/yaml.v3"
 )
 
 func mustUnmarshal(t *testing.T, s string) any {
@@ -44,6 +49,118 @@ func TestCanonicalizeRecursesIntoNestedArrays(t *testing.T) {
 	ca, cb := canonicalize(a), canonicalize(b)
 	if !reflect.DeepEqual(ca, cb) {
 		t.Fatalf("canonicalize did not converge on nested arrays: %#v vs %#v", ca, cb)
+	}
+}
+
+func TestCanonicalizeKeepsOSVEventOrder(t *testing.T) {
+	// govulndb's GO-2022-0969: two ranges in one events list. Sorted,
+	// they'd read [fixed, fixed, introduced, introduced] and the pairing
+	// would be lost. The ranges array itself is still sorted.
+	in := `{"affected":[{"ranges":[{"type":"SEMVER","events":[{"introduced":"0"},{"fixed":"1.18.6"},{"introduced":"1.19.0-0"},{"fixed":"1.19.1"}]}]}]}`
+	got := canonicalize(mustUnmarshal(t, in))
+	want := mustUnmarshal(t, in)
+	if !reflect.DeepEqual(got, want) {
+		t.Fatalf("canonicalize reordered OSV events: got %#v, want %#v", got, want)
+	}
+}
+
+func TestCanonicalizeSortsArraysNestedInEvents(t *testing.T) {
+	// Only the events array itself is ordered, not object arrays inside it.
+	a := mustUnmarshal(t, `{"events":[{"x":[{"b":1},{"a":1}]},{"y":1}]}`)
+	b := mustUnmarshal(t, `{"events":[{"x":[{"a":1},{"b":1}]},{"y":1}]}`)
+	if ca, cb := canonicalize(a), canonicalize(b); !reflect.DeepEqual(ca, cb) {
+		t.Fatalf("canonicalize did not sort inside events: %#v vs %#v", ca, cb)
+	}
+}
+
+func TestNumbersKeepTheirText(t *testing.T) {
+	var v any
+	if err := decodeJSON([]byte(`{"baseScore":10.0,"impactScore":6.0,"epss":1e-05,"count":3,"big":12345678901234567891,"neg":-2.50,"str":"10.0"}`), &v); err != nil {
+		t.Fatalf("decodeJSON failed: %v", err)
+	}
+	out, err := yaml.Marshal(canonicalize(v))
+	if err != nil {
+		t.Fatalf("yaml.Marshal failed: %v", err)
+	}
+	want := `baseScore: 10.0
+big: 12345678901234567891
+count: 3
+epss: 1e-05
+impactScore: 6.0
+neg: -2.50
+str: "10.0"
+`
+	if string(out) != want {
+		t.Fatalf("got:\n%s\nwant:\n%s", out, want)
+	}
+	// And they decode back as numbers, not strings.
+	var back map[string]any
+	if err := yaml.Unmarshal(out, &back); err != nil {
+		t.Fatalf("yaml.Unmarshal failed: %v", err)
+	}
+	if _, ok := back["baseScore"].(float64); !ok {
+		t.Errorf("baseScore decoded as %T, want float64", back["baseScore"])
+	}
+	if _, ok := back["count"].(int); !ok {
+		t.Errorf("count decoded as %T, want int", back["count"])
+	}
+}
+
+func TestNumbersSortLikeTheirText(t *testing.T) {
+	// The sort key is the number's own text, so differently-ordered
+	// upstream arrays still converge.
+	var a, b any
+	if err := decodeJSON([]byte(`[{"s":7.0},{"s":10.0}]`), &a); err != nil {
+		t.Fatal(err)
+	}
+	if err := decodeJSON([]byte(`[{"s":10.0},{"s":7.0}]`), &b); err != nil {
+		t.Fatal(err)
+	}
+	if ca, cb := canonicalize(a), canonicalize(b); !reflect.DeepEqual(ca, cb) {
+		t.Fatalf("canonicalize did not converge: %#v vs %#v", ca, cb)
+	}
+}
+
+func TestDecodeJSONRejectsTrailingData(t *testing.T) {
+	var v any
+	if err := decodeJSON([]byte(`{"a":1}{"b":2}`), &v); err == nil {
+		t.Fatal("expected an error for trailing data")
+	}
+}
+
+func TestWithRetry(t *testing.T) {
+	old := setupBackoff
+	setupBackoff = time.Millisecond
+	t.Cleanup(func() { setupBackoff = old })
+
+	calls := 0
+	got, err := withRetry(context.Background(), "test", func() (string, error) {
+		calls++
+		if calls < 3 {
+			return "", errors.New("dial tcp: i/o timeout")
+		}
+		return "ok", nil
+	})
+	if err != nil || got != "ok" || calls != 3 {
+		t.Fatalf("got (%q, %v) after %d calls, want (\"ok\", nil) after 3", got, err, calls)
+	}
+
+	calls = 0
+	if _, err := withRetry(context.Background(), "test", func() (string, error) {
+		calls++
+		return "", errors.New("down")
+	}); err == nil || calls != setupAttempts {
+		t.Fatalf("got %v after %d calls, want an error after %d", err, calls, setupAttempts)
+	}
+
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	calls = 0
+	if _, err := withRetry(ctx, "test", func() (string, error) {
+		calls++
+		return "", errors.New("down")
+	}); err == nil || calls != 1 {
+		t.Fatalf("got %v after %d calls, want an error after 1 (context canceled)", err, calls)
 	}
 }
 

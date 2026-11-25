@@ -2,6 +2,7 @@ package main
 
 import (
 	"archive/tar"
+	"bytes"
 	"context"
 	"database/sql"
 	"encoding/json"
@@ -18,9 +19,10 @@ import (
 
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/name"
+	v1 "github.com/google/go-containerregistry/pkg/v1"
 	"github.com/google/go-containerregistry/pkg/v1/remote"
-	_ "modernc.org/sqlite"
 	"gopkg.in/yaml.v3"
+	_ "modernc.org/sqlite"
 )
 
 // sanitize turns a vunnel record identifier into a safe relative file path.
@@ -50,12 +52,32 @@ func sanitize(provider, id string) string {
 // left untouched: no reordering was observed there, and their order may be
 // meaningful (e.g. NVD's reference/description lists, independently
 // verified as already stable across runs).
+//
+// Object arrays under an orderedKeys key are left in upstream order too:
+// their order is part of their meaning.
+//
+// json.Number values (see decodeJSON) become number, which keeps the
+// upstream text of each number through to the YAML.
 func canonicalize(v any) any {
+	return canonicalizeIn("", v)
+}
+
+// orderedKeys name object arrays whose order is meaningful. OSV's
+// affected[].ranges[].events is a sequence: each "introduced" pairs with
+// the "fixed" (or "last_affected"/"limit") that follows it, so sorting
+// [introduced 0, fixed 1.18.6, introduced 1.19.0-0, fixed 1.19.1] into
+// [fixed, fixed, introduced, introduced] loses which range is which
+// (govulndb's GO-2022-0969, for one).
+var orderedKeys = map[string]bool{
+	"events": true,
+}
+
+func canonicalizeIn(key string, v any) any {
 	switch v := v.(type) {
 	case map[string]any:
 		out := make(map[string]any, len(v))
 		for k, val := range v {
-			out[k] = canonicalize(val)
+			out[k] = canonicalizeIn(k, val)
 		}
 		return out
 	case []any:
@@ -66,7 +88,9 @@ func canonicalize(v any) any {
 		out := make([]keyed, len(v))
 		allObjects := len(v) > 0
 		for i, val := range v {
-			c := canonicalize(val)
+			// Elements inherit no key: an array nested directly in an
+			// ordered one isn't itself known to be ordered.
+			c := canonicalizeIn("", val)
 			_, isObject := c.(map[string]any)
 			allObjects = allObjects && isObject
 			b, err := json.Marshal(c)
@@ -76,7 +100,7 @@ func canonicalize(v any) any {
 			}
 			out[i] = keyed{val: c, key: string(b)}
 		}
-		if allObjects {
+		if allObjects && !orderedKeys[key] {
 			sort.Slice(out, func(i, j int) bool { return out[i].key < out[j].key })
 		}
 		result := make([]any, len(out))
@@ -84,9 +108,43 @@ func canonicalize(v any) any {
 			result[i] = k.val
 		}
 		return result
+	case json.Number:
+		return number(v)
 	default:
 		return v
 	}
+}
+
+// number is a JSON number kept as its original text. Decoded as float64
+// instead, 10.0 would be written as 10, and integers past 2^53 would lose
+// precision.
+type number string
+
+// MarshalJSON writes the number as-is (canonicalize's sort key).
+func (n number) MarshalJSON() ([]byte, error) { return []byte(n), nil }
+
+// MarshalYAML writes the number as a plain YAML int or float, not as the
+// quoted string yaml.v3 would make of a string type. The encoder drops the
+// tag whenever the text already resolves to it.
+func (n number) MarshalYAML() (any, error) {
+	tag := "!!int"
+	if strings.ContainsAny(string(n), ".eE") {
+		tag = "!!float"
+	}
+	return &yaml.Node{Kind: yaml.ScalarNode, Tag: tag, Value: string(n)}, nil
+}
+
+// decodeJSON is json.Unmarshal, but with numbers as json.Number.
+func decodeJSON(b []byte, v any) error {
+	d := json.NewDecoder(bytes.NewReader(b))
+	d.UseNumber()
+	if err := d.Decode(v); err != nil {
+		return err
+	}
+	if d.More() {
+		return fmt.Errorf("unexpected data after the JSON value")
+	}
+	return nil
 }
 
 // envelope mirrors vunnel's Envelope type (schema/identifier/item). Only
@@ -111,7 +169,7 @@ type envelope struct {
 // checkout time — the failure mode trivy-db-changelog hit.
 func emit(seen map[string]string, provider string, id string, record []byte) error {
 	var env envelope
-	if err := json.Unmarshal(record, &env); err != nil {
+	if err := decodeJSON(record, &env); err != nil {
 		return fmt.Errorf("json.Unmarshal failed for %s: %w", id, err)
 	}
 	pretty, err := yaml.Marshal(canonicalize(env.Item))
@@ -173,7 +231,9 @@ func header(refName string, committerTime time.Time, message string) {
 // carries no capture time of its own - the GHCR publish time, from the
 // caller.
 func export(ctx context.Context, provider string, ref name.Reference, fallbackTime time.Time) error {
-	img, err := remote.Image(ref, remote.WithContext(ctx), remote.WithAuthFromKeychain(authn.DefaultKeychain))
+	img, err := withRetry(ctx, "fetching the manifest", func() (v1.Image, error) {
+		return remote.Image(ref, remote.WithContext(ctx), remote.WithAuthFromKeychain(authn.DefaultKeychain))
+	})
 	if err != nil {
 		return fmt.Errorf("remote.Image failed: %w", err)
 	}
