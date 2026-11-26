@@ -62,8 +62,12 @@ func git(env []string, args ...string) (string, error) {
 	return strings.TrimRight(out.String(), "\n"), nil
 }
 
+// mktree writes a tree from ls-tree-style input. --missing: the backfill
+// job runs in a blob-less clone, so the tip's root blobs (README.md) aren't
+// there to verify. Every entry is a SHA read from an existing tree or
+// just written, so skipping the check loses nothing.
 func mktree(input string) (string, error) {
-	cmd := exec.Command("git", "mktree")
+	cmd := exec.Command("git", "mktree", "--missing")
 	cmd.Stdin = strings.NewReader(input)
 	var out, errb bytes.Buffer
 	cmd.Stdout = &out

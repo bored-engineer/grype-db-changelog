@@ -127,6 +127,31 @@ func TestRunChainsInPublishOrderAndStopsAtMissing(t *testing.T) {
 	}
 }
 
+func TestRunChainsOntoTipWithMissingBlobs(t *testing.T) {
+	// The backfill job's clone is blob-less: the tip's root README.md
+	// blob isn't there. Chaining must not need it.
+	newRepo(t)
+	missing := "1234567890123456789012345678901234567890"
+	root, err := mktree(fmt.Sprintf("100644 blob %s\tREADME.md\n", missing))
+	if err != nil {
+		t.Fatal(err)
+	}
+	tip, err := git(botEnv("2026-11-01T00:00:00Z"), "commit-tree", root, "-m", "seed")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := git(nil, "update-ref", changelogRef, tip); err != nil {
+		t.Fatal(err)
+	}
+	stage(t, "nvd", "sha256:n1", 100, map[string]string{"a.yaml": "1"})
+	if _, err := run([]candidate{cand("nvd", "sha256:n1", 1000)}, nil); err != nil {
+		t.Fatalf("run failed: %v", err)
+	}
+	if got, _ := git(nil, "rev-parse", changelogRef+":README.md"); got != missing {
+		t.Fatalf("README.md = %q, want it carried forward as %s", got, missing)
+	}
+}
+
 func TestRunRejectsMissingPublishTime(t *testing.T) {
 	newRepo(t)
 	stage(t, "nvd", "sha256:n1", 100, map[string]string{"a.yaml": "1"})
