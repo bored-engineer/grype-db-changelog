@@ -106,34 +106,49 @@ jobs:
       - name: List upstream provider versions, oldest first
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Hardcoded, not auto-discovered: listing ALL of an org's packages
-          # (what auto-discovery needs) 400'd in CI with the default
-          # GITHUB_TOKEN even though it worked fine locally with a personal
-          # token - that endpoint evidently needs broader cross-org scope
-          # than a repo-scoped Actions token gets. Reading one *already
-          # named* public package's version history (below) is a narrower,
-          # proven-working ask - it's exactly what trivy-db-changelog's own
-          # cron.yml does successfully with the same default token, against
-          # a different org. These are every provider grype-db-changelog
-          # has ever seen as of 2026-11-22 (confirmed via the org listing
-          # locally, just not usable from CI to re-derive it automatically),
-          # except epss: FIRST publishes EPSS's full daily history itself,
-          # and its ~400K scores, nearly all of which shift a little every
-          # day, were ~92% of everything this branch stored.
-          PROVIDERS: >-
-            alma alpine amazon arch bitnami chainguard chainguard-libraries
-            debian dhi echo eol fedora github govulndb hummingbird kev
-            mariner minimos nvd oracle photon rhel secureos sles ubuntu wolfi
+          # Providers are read from grype-db's own nightly publish config,
+          # which names every provider it builds, so one anchore adds is
+          # picked up on the next run - and, caught that early, its builds
+          # are newer than everything chained, keeping commit dates in
+          # order. Not from the org's package listing: that 400s for the
+          # Actions token (it works with a personal token), while a file in
+          # a public repo and each named package's versions (below) don't.
+          PROVIDERS_CONFIG: repos/anchore/grype-db/contents/config/grype-db/publish-nightly-r2.yaml
+          # Never exported. epss: FIRST publishes EPSS's full daily history
+          # itself, and its ~400K scores, nearly all of which shift a little
+          # every day, were ~92% of everything this branch stored.
+          EXCLUDE: epss
         run: |
-          # done <<< "$providers" below reads line-by-line, so the
-          # space-separated env var needs converting to one-per-line first.
-          providers=$(tr -s ' ' '\n' <<< "$PROVIDERS")
+          # All or nothing, like the listings below: if the config can't be
+          # fetched or no longer has the list (it moved, or upstream turned
+          # on generate-configs), fail rather than run on a guess.
+          if ! gh api -H 'Accept: application/vnd.github.raw' "$PROVIDERS_CONFIG" > providers-config.yaml; then
+            echo "::error::couldn't fetch the provider list from $PROVIDERS_CONFIG"
+            exit 1
+          fi
+          # The "- name: <provider>" entries of provider.configs. awk, not a
+          # YAML parser, since the runner has no guaranteed one: the checks
+          # below fail the run if the file's shape ever stops matching.
+          awk '
+            /^provider:/ { p = 1; next }
+            p && /^  configs:/ { c = 1; next }
+            c && /^    - name: / { print $3; next }
+            c && /^ {0,3}[^ #]/ { exit }
+          ' providers-config.yaml | sort -u > configured.txt
+          if [ ! -s configured.txt ] || grep -vqE '^[a-z0-9][a-z0-9-]*$' configured.txt; then
+            echo "::error::$PROVIDERS_CONFIG has no provider.configs[].name list, or an unexpected name in it:"
+            cat configured.txt
+            exit 1
+          fi
+          tr -s ' ' '\n' <<< "$EXCLUDE" | grep . | sort -u > excluded.txt
+          providers=$(comm -23 configured.txt excluded.txt)
+          echo "providers: $(tr '\n' ' ' <<< "$providers")(excluded: $(tr '\n' ' ' < excluded.txt))"
 
           # Taken before listing anything: every version published before
           # this instant is in the listings below (see the settle window
           # in the next step).
           date -u -d '-5 minutes' +%Y-%m-%dT%H:%M:%SZ > settled-before.txt
-          echo "$(printf '%s\n' "$providers" | grep -c .) provider(s) configured"
+          echo "$(printf '%s\n' "$providers" | grep -c .) provider(s) to list"
 
           # Every version of every provider's package, not just the current
           # date tag: ghcr.io/anchore/grype-db/data/<provider> gets rebuilt

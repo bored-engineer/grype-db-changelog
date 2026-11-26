@@ -156,7 +156,10 @@ Captured: 2026-11-20T00:21:26Z
   history correctly.
 - **[`backfill.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/backfill.yml)** runs six times a day,
   an hour after each of upstream's publish windows (00:00, 08:00 and 16:00
-  UTC) plus a sweep three hours later for stragglers. It lists every
+  UTC) plus a sweep three hours later for stragglers. It reads the
+  provider list from grype-db's own
+  [nightly publish config](https://github.com/anchore/grype-db/blob/main/config/grype-db/publish-nightly-r2.yaml),
+  so a provider anchore adds is picked up on the next run, lists every
   provider's GHCR version history, works out which versions aren't chained
   yet, oldest first, and fans those out across parallel
   **[`export.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/export.yml)** jobs. A final job then
