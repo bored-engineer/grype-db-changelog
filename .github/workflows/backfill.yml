@@ -193,8 +193,20 @@ jobs:
               : > "$base.tmp"
               ok=true
               for ((page = 1; ; page++)); do
-                if ! gh api "orgs/anchore/packages/container/grype-db%2Fdata%2F${provider}/versions?per_page=100&page=${page}" \
-                    --jq '.[] | "\(.created_at)\t\(.name)"' > "$base.page"; then
+                # Retried: a full listing (after a reset) is ~260 requests,
+                # enough that a transient 502 is likely somewhere in it.
+                # Each attempt rewrites the page file from scratch.
+                fetched=false
+                for attempt in 1 2 3 4 5; do
+                  if gh api "orgs/anchore/packages/container/grype-db%2Fdata%2F${provider}/versions?per_page=100&page=${page}" \
+                      --jq '.[] | "\(.created_at)\t\(.name)"' > "$base.page"; then
+                    fetched=true
+                    break
+                  fi
+                  echo "$provider: page $page attempt $attempt failed, retrying" >&2
+                  sleep $((attempt * 10))
+                done
+                if ! $fetched; then
                   ok=false
                   break
                 fi
