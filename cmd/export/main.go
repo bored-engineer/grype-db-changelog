@@ -20,6 +20,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/name"
@@ -118,9 +120,27 @@ func canonicalizeIn(key string, v any) any {
 		return result
 	case json.Number:
 		return number(v)
+	case string:
+		if r, _ := utf8.DecodeRuneInString(v); unicode.IsSpace(r) && strings.ContainsRune(v, '\n') {
+			return quoted(v)
+		}
+		return v
 	default:
 		return v
 	}
+}
+
+// quoted is a string yaml.v3 can't write as a block scalar: a multi-line
+// string starting with whitespace. yaml.v3 gives those a block scalar
+// that's either unparseable (a leading space inside a list: the |4
+// indentation indicator is off by the list's indent) or reads back as a
+// different string (a leading newline is dropped). Written double-quoted
+// instead, which always round-trips. It marshals to JSON as a plain
+// string, so canonicalize's sort keys are unchanged.
+type quoted string
+
+func (q quoted) MarshalYAML() (any, error) {
+	return &yaml.Node{Kind: yaml.ScalarNode, Tag: "!!str", Value: string(q), Style: yaml.DoubleQuotedStyle}, nil
 }
 
 // number is a JSON number kept as its original text. Decoded as float64

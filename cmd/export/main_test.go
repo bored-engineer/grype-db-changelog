@@ -426,3 +426,44 @@ func TestSanitizeStripsProviderPrefix(t *testing.T) {
 		}
 	}
 }
+
+// Multi-line strings starting with whitespace, in every position yaml.v3
+// handles differently: yaml.v3's own block scalars for these either fail
+// to parse or read back changed.
+func TestLeadingWhitespaceStringsRoundTrip(t *testing.T) {
+	for _, s := range []string{
+		" leading space\n\nsecond paragraph\n",
+		"  two spaces\nb",
+		"\nleading newline\nb",
+		"\tleading tab\nb",
+		" line separator\nb",
+		" nbsp\nb",
+		" single line keeps plain quoting",
+		"plain\nmulti-line\n",
+	} {
+		for name, v := range map[string]any{
+			"top":      map[string]any{"k": s},
+			"map":      map[string]any{"k": map[string]any{"v": s}},
+			"list":     map[string]any{"k": []any{s, "y"}},
+			"list-map": map[string]any{"k": []any{map[string]any{"lang": "en", "value": s}, map[string]any{"lang": "es"}}},
+		} {
+			out, err := yaml.Marshal(canonicalize(v))
+			if err != nil {
+				t.Fatalf("%s %q: yaml.Marshal failed: %v", name, s, err)
+			}
+			var back any
+			if err := yaml.Unmarshal(out, &back); err != nil {
+				t.Errorf("%s %q: doesn't parse: %v\n%s", name, s, err, out)
+				continue
+			}
+			if !reflect.DeepEqual(back, v) {
+				t.Errorf("%s %q: reads back as %#v\n%s", name, s, back, out)
+			}
+		}
+	}
+	// Ordinary multi-line text keeps its block scalar.
+	out, _ := yaml.Marshal(canonicalize(map[string]any{"k": "a\nb\n"}))
+	if want := "k: |\n    a\n    b\n"; string(out) != want {
+		t.Errorf("got %q, want %q", out, want)
+	}
+}
