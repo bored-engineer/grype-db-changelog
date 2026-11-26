@@ -116,10 +116,13 @@ jobs:
           # cron.yml does successfully with the same default token, against
           # a different org. These are every provider grype-db-changelog
           # has ever seen as of 2026-11-22 (confirmed via the org listing
-          # locally, just not usable from CI to re-derive it automatically).
+          # locally, just not usable from CI to re-derive it automatically),
+          # except epss: FIRST publishes EPSS's full daily history itself,
+          # and its ~400K scores, nearly all of which shift a little every
+          # day, were ~92% of everything this branch stored.
           PROVIDERS: >-
             alma alpine amazon arch bitnami chainguard chainguard-libraries
-            debian dhi echo eol epss fedora github govulndb hummingbird kev
+            debian dhi echo eol fedora github govulndb hummingbird kev
             mariner minimos nvd oracle photon rhel secureos sles ubuntu wolfi
         run: |
           # done <<< "$providers" below reads line-by-line, so the
@@ -253,8 +256,8 @@ jobs:
           # with the publish time that dates each commit.
           candidates=$(jq -R -c -s 'split("\n") | map(select(length > 0) | split("\t") | {provider: .[0], digest: .[1], created: .[3]})' < todo.tsv)
           # The subset that still needs exporting - each with its GHCR
-          # publish time, which dates the commit when the build itself
-          # carries no capture time - dealt round-robin into
+          # publish time, which cmd/export puts in the commit's subject -
+          # dealt round-robin into
           # at most $SHARDS export jobs (the matrix). Dealt per provider -
           # grouped by provider first, then 0,1,2,... across shards - so
           # every shard gets an even share of each provider: nvd exports

@@ -24,8 +24,11 @@ quality, and they're invisible once the next build lands.
 This repo re-exports every build of every provider as git history. Each
 record becomes one human-readable YAML file, and each upstream build
 becomes one commit, so you can `git log`, `git diff` and `git blame` it like
-any other codebase. The **`changelog`** branch holds 26,000+ snapshots
-across 27 providers, going back to February 2023.
+any other codebase. The **`changelog`** branch holds 25,000+ snapshots
+across 26 providers, going back to February 2023. The one provider left out
+is epss: [FIRST](https://www.first.org/epss/) publishes EPSS's full daily
+history itself, and its ~400K scores, nearly all of which shift a little
+every day, would be over 90% of everything stored here.
 
 ## Example: tracing Java4Shell (CVE-2026-114938)
 
@@ -39,7 +42,6 @@ $ git log --reverse --diff-filter=A --format='%cI %s' changelog -- ':(icase)*/cv
 2026-11-18T00:23:53Z debian
 2026-11-18T00:28:30Z nvd
 2026-11-18T13:44:37Z secureos
-2026-11-18T13:44:42Z epss
 2026-11-18T13:44:59Z echo
 2026-11-18T13:48:38Z alpine
 2026-11-18T18:12:23Z rhel
@@ -88,24 +90,38 @@ for a couple of weeks).
 
 Each provider is a top-level directory, with one YAML file per vunnel record
 under it, named after the record's ID (`debian/12/cve-2026-114938.yaml`,
-`nvd/2026/cve-2026-114938.yaml`, `wolfi/rolling/CVE-2026-114938.yaml`). Each
-snapshot commit advances exactly one provider and leaves the others
-untouched:
+`nvd/2026/cve-2026-114938.yaml`, `wolfi/rolling/CVE-2026-114938.yaml`). Its
+first line is a comment naming the vunnel schema the record was written
+with, e.g. `# schema: vulnerability/osv/schema-1.6.2.json` (relative to
+[vunnel's `schema/`](https://github.com/anchore/vunnel/tree/main/schema)).
+One build can mix schema versions, for records vunnel hasn't rewritten
+since a schema bump, so `git grep '^# schema:' changelog -- bitnami` shows
+which records are on which. Each snapshot commit advances exactly one
+provider and leaves the others untouched:
 
 ```text
-debian 2026-11-20T00:21:26Z: ghcr.io/anchore/grype-db/data/debian@sha256:08cfd720…
+debian 2026-11-20T00:24:55Z: ghcr.io/anchore/grype-db/data/debian@sha256:08cfd720…
 
+Processor: vunnel@0.67.0-post.3+45d8771
 Captured: 2026-11-20T00:21:26Z
 ```
 
-- The **subject** names the provider, the build's own capture time (from
-  its `metadata.json`) and the exact image it was exported from.
-- The **commit date** is when GHCR published that build, which is when
-  Grype users could first have seen it. Commits are in publish order, so
+- The **subject** names the provider, when GHCR published the build, and
+  the exact image it was exported from.
+- The **commit date** is that same publish time, which is when Grype users
+  could first have seen the build. Commits are in publish order, so
   `git log --since/--until` and "what did provider X look like at time T"
-  both work as you'd expect. Builds can be published hours or occasionally
-  days after they were captured; the **`Captured:`** trailer keeps the
-  capture time.
+  both work as you'd expect.
+- **`Captured:`** is the timestamp from the build's `metadata.json`: when
+  vunnel last recorded new results for the provider. A run that finds
+  nothing new leaves it unchanged, so it can trail the publish time by
+  hours or days, and even read older than the build before it.
+- **`Processor:`** is the vunnel version that built the snapshot (older
+  builds don't record it). When a provider's files change en masse, a new
+  `Processor:` usually means vunnel's output changed, not the source data.
+- **`Stale: true`** marks a build whose results vunnel imported from an
+  earlier archive instead of building them from the source feed, so it
+  says nothing new about the source.
 - **`docs: update README and workflows from generator`** commits are the
   only other kind. They copy this README and a small workflow onto the
   branch whenever those change (see [Branches](#branches)), and touch no
@@ -121,8 +137,13 @@ Captured: 2026-11-20T00:21:26Z
   YAML file per record. Arrays of objects are sorted canonically, because
   upstream reorders them between builds for no semantic reason and that
   would otherwise show up as noise in the diffs. The exception is OSV's
-  `events`, whose order is part of what each version range means. Numbers
-  are written exactly as upstream's JSON has them. It prints a
+  `events`, kept in upstream order so each range reads introduced, then
+  fixed. Numbers are written exactly as upstream's JSON has them.
+  hummingbird's CSAF documents leave out three timestamps in
+  `document.tracking` (`current_release_date`, `generator.date` and each
+  `revision_history` entry's `date`): Red Hat regenerates the documents
+  daily, so they were the only change in ~98% of hummingbird's modified
+  files. It prints a
   [`git fast-import`](https://git-scm.com/docs/git-fast-import) stream that
   stages the snapshot as `refs/raw/<provider>/<digest>`. It streams the
   layer itself, resuming with HTTP Range requests when GHCR drops a

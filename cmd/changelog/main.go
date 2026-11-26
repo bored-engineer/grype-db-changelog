@@ -150,16 +150,11 @@ type snapshot struct {
 	// build that never had any data as every record being deleted.
 	carry bool
 	// published is the GHCR publish time, which dates the changelog
-	// commit; captured is the raw commit's committer time (the build's
-	// own capture time), recorded in a trailer.
+	// commit. message is the staged commit's, used as-is: cmd/export
+	// writes the subject and every trailer (Captured, Processor, ...).
 	published string
-	captured  string
 	message   string
 }
-
-// capturedTrailer records a snapshot's capture time on its changelog
-// commit, whose dates are the publish time.
-const capturedTrailer = "Captured: "
 
 // resolve looks up the candidate's staged refs/raw ref. ok is false if it
 // doesn't exist locally (the export leg for it may have failed).
@@ -173,21 +168,15 @@ func resolve(c candidate) (s snapshot, ok bool, err error) {
 		return snapshot{}, false, nil
 	}
 
-	// One call for both: "<iso>\x00<full message>".
-	out, err := git(nil, "log", "-1", "--format=%cI%x00%B", ref)
+	out, err := git(nil, "log", "-1", "--format=%B", ref)
 	if err != nil {
 		return snapshot{}, false, fmt.Errorf("reading %s's commit failed: %w", ref, err)
-	}
-	parts := strings.SplitN(out, "\x00", 2)
-	if len(parts) != 2 {
-		return snapshot{}, false, fmt.Errorf("unexpected log output for %s: %q", ref, out)
 	}
 	s = snapshot{
 		provider:  c.Provider,
 		ref:       ref,
 		published: published.UTC().Format(time.RFC3339),
-		captured:  parts[0],
-		message:   strings.TrimRight(parts[1], "\n"),
+		message:   strings.TrimRight(out, "\n"),
 	}
 	for _, line := range strings.Split(s.message, "\n") {
 		if line == emptyBuildTrailer {
@@ -237,7 +226,7 @@ func buildOne(tree map[string]entry, parent string, s snapshot) (string, error) 
 	if parent != "" {
 		commitArgs = append(commitArgs, "-p", parent)
 	}
-	commitArgs = append(commitArgs, "-m", withTrailer(s.message, capturedTrailer+s.captured))
+	commitArgs = append(commitArgs, "-m", s.message)
 	newCommit, err := git(botEnv(s.published), commitArgs...)
 	if err != nil {
 		return "", fmt.Errorf("commit-tree failed: %w", err)
@@ -333,26 +322,6 @@ func applyOverlay(tree map[string]entry, parent string, ov overlay) (string, err
 		return "", fmt.Errorf("commit-tree failed: %w", err)
 	}
 	return commit, nil
-}
-
-// withTrailer appends a trailer line to message, joining its existing
-// trailer block if its last paragraph is one (e.g. "Empty-Build: true").
-func withTrailer(message, trailer string) string {
-	paras := strings.Split(message, "\n\n")
-	if len(paras) > 1 {
-		last := paras[len(paras)-1]
-		isTrailers := true
-		for _, line := range strings.Split(last, "\n") {
-			if k, _, ok := strings.Cut(line, ": "); !ok || k == "" || strings.ContainsAny(k, " \t") {
-				isTrailers = false
-				break
-			}
-		}
-		if isTrailers {
-			return message + "\n" + trailer
-		}
-	}
-	return message + "\n\n" + trailer
 }
 
 // run chains the longest prefix of candidates whose raw refs all exist,

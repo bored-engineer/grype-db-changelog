@@ -99,8 +99,9 @@ jobs:
             # cmd/export ends its stream with fast-import's "done" only on
             # success, so a failed export never leaves a (truncated) ref
             # behind, pipefail or not. The rev-parse double-checks it.
-            # $created (GHCR publish time) only dates the commit if the
-            # build has no metadata.json timestamp of its own.
+            # $created (GHCR publish time) dates the staged commit and its
+            # subject; metadata.json's own timestamp becomes its Captured
+            # trailer.
             if "$RUNNER_TEMP/export" "$provider" "ghcr.io/anchore/grype-db/data/$provider@$digest" "$created" 2> "$log" \
                 | git fast-import --quiet 2>> "$log" \
                 && git rev-parse --verify --quiet "$ref" >/dev/null; then

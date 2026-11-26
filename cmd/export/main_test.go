@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"reflect"
 	"testing"
 	"time"
@@ -75,7 +77,7 @@ func TestCanonicalizeSortsArraysNestedInEvents(t *testing.T) {
 
 func TestNumbersKeepTheirText(t *testing.T) {
 	var v any
-	if err := decodeJSON([]byte(`{"baseScore":10.0,"impactScore":6.0,"epss":1e-05,"count":3,"big":12345678901234567891,"neg":-2.50,"str":"10.0"}`), &v); err != nil {
+	if err := decodeJSON([]byte(`{"baseScore":10.0,"impactScore":6.0,"score":1e-05,"count":3,"big":12345678901234567891,"neg":-2.50,"str":"10.0"}`), &v); err != nil {
 		t.Fatalf("decodeJSON failed: %v", err)
 	}
 	out, err := yaml.Marshal(canonicalize(v))
@@ -85,9 +87,9 @@ func TestNumbersKeepTheirText(t *testing.T) {
 	want := `baseScore: 10.0
 big: 12345678901234567891
 count: 3
-epss: 1e-05
 impactScore: 6.0
 neg: -2.50
+score: 1e-05
 str: "10.0"
 `
 	if string(out) != want {
@@ -161,6 +163,100 @@ func TestWithRetry(t *testing.T) {
 		return "", errors.New("down")
 	}); err == nil || calls != 1 {
 		t.Fatalf("got %v after %d calls, want an error after 1 (context canceled)", err, calls)
+	}
+}
+
+func TestSchemaComment(t *testing.T) {
+	for _, tc := range []struct {
+		in   any
+		want string
+	}{
+		{"https://raw.githubusercontent.com/anchore/vunnel/main/schema/vulnerability/osv/schema-1.6.2.json", "# schema: vulnerability/osv/schema-1.6.2.json\n"},
+		{"https://example.com/other/schema.json", "# schema: https://example.com/other/schema.json\n"},
+		{nil, ""},
+		{"", ""},
+		{"a\nb", "# schema: \"a\\nb\"\n"},
+		{map[string]any{"v": "1"}, "# schema: {\"v\":\"1\"}\n"},
+	} {
+		if got := schemaComment(tc.in); got != tc.want {
+			t.Errorf("schemaComment(%#v) = %q, want %q", tc.in, got, tc.want)
+		}
+	}
+}
+
+func TestEmitWritesSchemaComment(t *testing.T) {
+	var buf bytes.Buffer
+	old := stdout
+	stdout = &buf
+	t.Cleanup(func() { stdout = old })
+	rec := `{"schema":"https://raw.githubusercontent.com/anchore/vunnel/main/schema/vulnerability/known-exploited/schema-1.0.0.json","identifier":"kev:cve-2026-1","item":{"a":1.0}}`
+	if err := emit(map[string]string{}, "kev", "kev:cve-2026-1", []byte(rec)); err != nil {
+		t.Fatalf("emit failed: %v", err)
+	}
+	body := "# schema: vulnerability/known-exploited/schema-1.0.0.json\na: 1.0\n"
+	want := fmt.Sprintf("M 100644 inline kev/cve-2026-1.yaml\ndata %d\n%s\n", len(body), body)
+	if buf.String() != want {
+		t.Fatalf("got:\n%q\nwant:\n%q", buf.String(), want)
+	}
+	// Still one YAML document, with the item at its root.
+	var back map[string]any
+	if err := yaml.Unmarshal([]byte(body), &back); err != nil || back["a"] != 1.0 {
+		t.Fatalf("yaml.Unmarshal = %#v, %v", back, err)
+	}
+}
+
+func TestCommitMessage(t *testing.T) {
+	subj := "kev 2026-11-25T00:22:13Z: ghcr.io/anchore/grype-db/data/kev@sha256:00"
+	for _, tc := range []struct {
+		meta metadata
+		want string
+	}{
+		{metadata{}, subj},
+		{metadata{Processor: "vunnel@0.67.0-post.3+45d8771"}, subj + "\n\nProcessor: vunnel@0.67.0-post.3+45d8771"},
+		{metadata{Processor: "vunnel@1", Stale: true}, subj + "\n\nProcessor: vunnel@1\nStale: true"},
+		{metadata{Stale: true}, subj + "\n\nStale: true"},
+		{metadata{Processor: "multi\nline  value"}, subj + "\n\nProcessor: multi line value"},
+		{metadata{Processor: "vunnel@1", Timestamp: time.Date(2026, 5, 1, 9, 18, 0, 123456000, time.FixedZone("", 3600))}, subj + "\n\nProcessor: vunnel@1\nCaptured: 2026-05-01T08:18:00Z"},
+	} {
+		if got := commitMessage(subj, tc.meta); got != tc.want {
+			t.Errorf("commitMessage(%+v) = %q, want %q", tc.meta, got, tc.want)
+		}
+	}
+}
+
+func TestMetadataDecodesProvenance(t *testing.T) {
+	var m metadata
+	in := `{"provider":"kev","timestamp":"2026-11-25T00:22:13.021942+00:00","processor":"vunnel@0.67.0","stale":true,"listing":{"digest":"x"},"schema":{"version":"1.0.3"}}`
+	if err := json.Unmarshal([]byte(in), &m); err != nil {
+		t.Fatal(err)
+	}
+	if m.Processor != "vunnel@0.67.0" || !m.Stale {
+		t.Fatalf("got %+v", m)
+	}
+	// Older builds: null or absent.
+	m = metadata{}
+	if err := json.Unmarshal([]byte(`{"provider":"mariner","timestamp":"2024-01-11T01:29:08.659711+00:00","processor":null,"stale":null}`), &m); err != nil {
+		t.Fatal(err)
+	}
+	if m.Processor != "" || m.Stale {
+		t.Fatalf("got %+v", m)
+	}
+}
+
+func TestDropGeneratedDates(t *testing.T) {
+	item := mustUnmarshal(t, `{"document":{"tracking":{"current_release_date":"2026-11-20T18:26:59+00:00","generator":{"date":"2026-11-20T18:26:59+00:00","engine":{"name":"CSAF Generator"}},"id":"CVE-2008-1891","initial_release_date":"2008-04-15T00:00:00+00:00","revision_history":[{"date":"2026-11-20T18:26:59+00:00","number":"1","summary":"Last generated version"}],"version":"1"}}}`)
+	dropGeneratedDates(item)
+	want := mustUnmarshal(t, `{"document":{"tracking":{"generator":{"engine":{"name":"CSAF Generator"}},"id":"CVE-2008-1891","initial_release_date":"2008-04-15T00:00:00+00:00","revision_history":[{"number":"1","summary":"Last generated version"}],"version":"1"}}}`)
+	if !reflect.DeepEqual(item, want) {
+		t.Fatalf("got %#v", item)
+	}
+	// Records without a tracking block are left alone.
+	for _, in := range []string{`{}`, `{"document":{}}`, `{"document":"x"}`, `[]`} {
+		v := mustUnmarshal(t, in)
+		dropGeneratedDates(v)
+		if !reflect.DeepEqual(v, mustUnmarshal(t, in)) {
+			t.Errorf("changed %s", in)
+		}
 	}
 }
 

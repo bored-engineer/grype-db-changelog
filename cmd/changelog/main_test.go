@@ -76,7 +76,7 @@ func TestRunChainsInPublishOrderAndStopsAtMissing(t *testing.T) {
 	newRepo(t)
 	stage(t, "nvd", "sha256:n1", 100, map[string]string{"a.yaml": "1"})
 	// Captured before n1 but published after it: publish order wins.
-	stage(t, "github", "sha256:g1", 50, map[string]string{"b.yaml": "1"})
+	stageMsg(t, "github", "sha256:g1", 50, map[string]string{"b.yaml": "1"}, "Processor: vunnel@1\nCaptured: 1970-01-01T00:00:50Z")
 	stage(t, "nvd", "sha256:n2", 200, map[string]string{"a.yaml": "2"})
 	// sha256:g2 deliberately not staged (its export "failed").
 	stage(t, "nvd", "sha256:n3", 300, map[string]string{"a.yaml": "3"})
@@ -103,7 +103,8 @@ func TestRunChainsInPublishOrderAndStopsAtMissing(t *testing.T) {
 	if got, _ := git(nil, "show", changelogRef+":nvd/a.yaml"); got != "2" {
 		t.Fatalf("nvd/a.yaml = %q, want 2", got)
 	}
-	// Both dates are the publish time; the capture time is a trailer.
+	// Both dates are the publish time; cmd/export's trailers (the capture
+	// time among them) are kept as-is.
 	if got, _ := git(nil, "log", "-1", "--format=%at %ct", changelogRef+"~1"); got != "1100 1100" {
 		t.Fatalf("g1 dates = %q, want publish time 1100", got)
 	}
@@ -131,18 +132,6 @@ func TestRunRejectsMissingPublishTime(t *testing.T) {
 	stage(t, "nvd", "sha256:n1", 100, map[string]string{"a.yaml": "1"})
 	if _, err := run([]candidate{{Provider: "nvd", Digest: "sha256:n1"}}, nil); err == nil {
 		t.Fatal("want an error for a candidate without a publish time")
-	}
-}
-
-func TestWithTrailer(t *testing.T) {
-	for _, tc := range []struct{ in, want string }{
-		{"subj", "subj\n\nCaptured: x"},
-		{"subj\n\nSome body text.", "subj\n\nSome body text.\n\nCaptured: x"},
-		{"subj\n\nbody\n\nEmpty-Build: true", "subj\n\nbody\n\nEmpty-Build: true\nCaptured: x"},
-	} {
-		if got := withTrailer(tc.in, "Captured: x"); got != tc.want {
-			t.Errorf("withTrailer(%q) = %q, want %q", tc.in, got, tc.want)
-		}
 	}
 }
 

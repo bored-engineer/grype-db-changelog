@@ -14,6 +14,7 @@ import (
 	"path"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -24,6 +25,9 @@ import (
 	"gopkg.in/yaml.v3"
 	_ "modernc.org/sqlite"
 )
+
+// stdout receives the fast-import stream (a variable for tests).
+var stdout io.Writer = os.Stdout
 
 // sanitize turns a vunnel record identifier into a safe relative file path.
 // Identifiers already use "/" to group related records (Alpine's
@@ -147,14 +151,50 @@ func decodeJSON(b []byte, v any) error {
 	return nil
 }
 
-// envelope mirrors vunnel's Envelope type (schema/identifier/item). Only
-// Item is kept: identifier is redundant with the file path (modulo
+// envelope mirrors vunnel's Envelope type (schema/identifier/item).
+// identifier is dropped: it's redundant with the file path (modulo
 // sanitize(), which is why it strips exactly the provider-name prefix
-// rather than guessing), and schema is uniform across every record in a
-// given provider's daily snapshot (confirmed empirically), so repeating it
-// in every single file is pure waste.
+// rather than guessing). schema is kept, as a comment on the file's first
+// line (see schemaComment): it isn't uniform within a build - bitnami's
+// mixes OSV 1.5.0 and 1.6.2, for records vunnel hasn't rewritten since a
+// schema bump - and it's what grype-db parses each record by.
 type envelope struct {
-	Item any `json:"item"`
+	Schema any `json:"schema"`
+	Item   any `json:"item"`
+}
+
+// vunnelSchemaBase is stripped from schema URLs in the comment: every
+// schema vunnel has published lives under it, and the rest of the URL
+// (e.g. "vulnerability/osv/schema-1.6.2.json") is what tells them apart.
+// Any other URL is written in full.
+const vunnelSchemaBase = "https://raw.githubusercontent.com/anchore/vunnel/main/schema/"
+
+// schemaComment returns the "# schema: ..." line for an envelope's
+// schema, or "" if it has none.
+func schemaComment(schema any) string {
+	var s string
+	switch v := schema.(type) {
+	case nil:
+		return ""
+	case string:
+		s = strings.TrimPrefix(v, vunnelSchemaBase)
+	default:
+		// Not a URL string (no vunnel version writes one); keep whatever
+		// it is, as JSON.
+		b, err := json.Marshal(v)
+		if err != nil {
+			// Unreachable: v was just decoded from JSON.
+			panic(err)
+		}
+		s = string(b)
+	}
+	if s == "" {
+		return ""
+	}
+	if strings.ContainsAny(s, "\r\n") {
+		s = strconv.Quote(s) // a newline would end the comment
+	}
+	return "# schema: " + s + "\n"
 }
 
 // emit writes the fast-import filemodify command for one vunnel record's
@@ -172,10 +212,14 @@ func emit(seen map[string]string, provider string, id string, record []byte) err
 	if err := decodeJSON(record, &env); err != nil {
 		return fmt.Errorf("json.Unmarshal failed for %s: %w", id, err)
 	}
+	if provider == "hummingbird" {
+		dropGeneratedDates(env.Item)
+	}
 	pretty, err := yaml.Marshal(canonicalize(env.Item))
 	if err != nil {
 		return fmt.Errorf("yaml.Marshal failed for %s: %w", id, err)
 	}
+	pretty = append([]byte(schemaComment(env.Schema)), pretty...)
 	// No "providers/" wrapper directory: the provider name is already the
 	// top-level category here, the same role trivy-db-changelog's
 	// os/packages/vulnerability/data-source directories play - there's no
@@ -186,19 +230,91 @@ func emit(seen map[string]string, provider string, id string, record []byte) err
 		return fmt.Errorf("case-insensitive path collision: %q and %q both map to %q", other, id, name)
 	}
 	seen[key] = id
-	fmt.Printf("M 100644 inline %s\n", name)
-	fmt.Printf("data %d\n%s\n", len(pretty), string(pretty))
+	fmt.Fprintf(stdout, "M 100644 inline %s\n", name)
+	fmt.Fprintf(stdout, "data %d\n%s\n", len(pretty), string(pretty))
 	return nil
 }
 
+// dropGeneratedDates removes the three timestamps in a hummingbird CSAF
+// document's tracking block that only record when Red Hat's generator last
+// ran: current_release_date, generator.date and each revision_history
+// entry's date. They're regenerated daily while version stays "1" and the
+// history holds a single "Last generated version" entry, so they were the
+// only change in ~98% of hummingbird's modified files.
+func dropGeneratedDates(item any) {
+	root, _ := item.(map[string]any)
+	doc, _ := root["document"].(map[string]any)
+	tracking, _ := doc["tracking"].(map[string]any)
+	if tracking == nil {
+		return
+	}
+	delete(tracking, "current_release_date")
+	if gen, ok := tracking["generator"].(map[string]any); ok {
+		delete(gen, "date")
+	}
+	if revs, ok := tracking["revision_history"].([]any); ok {
+		for _, r := range revs {
+			if rev, ok := r.(map[string]any); ok {
+				delete(rev, "date")
+			}
+		}
+	}
+}
+
 // metadata mirrors the subset of vunnel's per-provider metadata.json this
-// tool cares about: when the cache was captured, for the commit timestamp.
+// tool cares about: when the cache was captured, for the commit timestamp,
+// and the build's provenance, for trailers (see trailers).
 type metadata struct {
 	Provider   string    `json:"provider"`
 	DataSource string    `json:"dataSource,omitempty"`
 	URLs       []string  `json:"urls,omitempty"`
 	Listing    *struct{} `json:"listing,omitempty"`
 	Timestamp  time.Time `json:"timestamp,omitempty"`
+	// Processor is the vunnel version that built the results (e.g.
+	// "vunnel@0.67.0-post.3+45d8771"). Older builds don't record it.
+	Processor string `json:"processor,omitempty"`
+	// Stale is set when the results were imported from an earlier
+	// archive rather than built from the upstream source this run, so the
+	// build carries no news from the source.
+	Stale bool `json:"stale,omitempty"`
+}
+
+// Trailers recording metadata.json's provenance on the staged commit;
+// cmd/changelog keeps them (its Captured trailer joins this block).
+const (
+	processorTrailer = "Processor: "
+	staleTrailer     = "Stale: true"
+	capturedTrailer  = "Captured: "
+)
+
+// trailers returns the trailer lines for a build's metadata, or nil.
+// Stale is written only when true: older builds don't record it, so its
+// absence can't be read as "fresh" anyway.
+func trailers(meta metadata) []string {
+	var t []string
+	// One line only: a newline in it would end the trailer block.
+	if p := strings.Join(strings.Fields(meta.Processor), " "); p != "" {
+		t = append(t, processorTrailer+p)
+	}
+	if meta.Stale {
+		t = append(t, staleTrailer)
+	}
+	// Only when metadata.json has one: a stand-in would claim a capture
+	// time the build never recorded.
+	if !meta.Timestamp.IsZero() {
+		t = append(t, capturedTrailer+meta.Timestamp.UTC().Format(time.RFC3339))
+	}
+	return t
+}
+
+// commitMessage is the staged commit's message: the subject, then the
+// metadata trailers, if any.
+func commitMessage(subject string, meta metadata) string {
+	t := trailers(meta)
+	if len(t) == 0 {
+		return subject
+	}
+	return subject + "\n\n" + strings.Join(t, "\n")
 }
 
 // EmptyBuildTrailer marks a staged commit for an upstream build whose
@@ -218,19 +334,18 @@ func header(refName string, committerTime time.Time, message string) {
 	// the truncated snapshot as if it were complete, and the pipe hides
 	// the failure unless the shell runs with pipefail (GitHub Actions'
 	// default bash doesn't).
-	fmt.Printf("feature done\n")
-	fmt.Printf("reset %s\n", refName)
-	fmt.Printf("commit %s\n", refName)
-	fmt.Printf("committer grype-db-changelog <41898282+github-actions[bot]@users.noreply.github.com> %d +0000\n", committerTime.Unix())
-	fmt.Printf("data %d\n%s\n", len(message), message)
-	fmt.Printf("deleteall\n")
+	fmt.Fprintf(stdout, "feature done\n")
+	fmt.Fprintf(stdout, "reset %s\n", refName)
+	fmt.Fprintf(stdout, "commit %s\n", refName)
+	fmt.Fprintf(stdout, "committer grype-db-changelog <41898282+github-actions[bot]@users.noreply.github.com> %d +0000\n", committerTime.Unix())
+	fmt.Fprintf(stdout, "data %d\n%s\n", len(message), message)
+	fmt.Fprintf(stdout, "deleteall\n")
 }
 
 // export writes refName's commit for the image to stdout as a fast-import
-// stream. fallbackTime (may be zero) dates the commit when the snapshot
-// carries no capture time of its own - the GHCR publish time, from the
-// caller.
-func export(ctx context.Context, provider string, ref name.Reference, fallbackTime time.Time) error {
+// stream. publishTime (may be zero) is the build's GHCR publish time, from
+// the caller: it dates the commit and its subject.
+func export(ctx context.Context, provider string, ref name.Reference, publishTime time.Time) error {
 	img, err := withRetry(ctx, "fetching the manifest", func() (v1.Image, error) {
 		return remote.Image(ref, remote.WithContext(ctx), remote.WithAuthFromKeychain(authn.DefaultKeychain))
 	})
@@ -321,9 +436,14 @@ func export(ctx context.Context, provider string, ref name.Reference, fallbackTi
 	if _, err := io.Copy(io.Discard, rc); err != nil {
 		return fmt.Errorf("reading the rest of the layer failed: %w", err)
 	}
-	committerTime := meta.Timestamp
+	// The subject (and the staged commit's date) is the GHCR publish time:
+	// when Grype users could first see this build, and never out of order.
+	// metadata.json's timestamp goes in the Captured trailer instead (see
+	// trailers): it's when vunnel last recorded new results, which a run
+	// that finds nothing new leaves unchanged, so it can lag by days.
+	committerTime := publishTime
 	if committerTime.IsZero() {
-		committerTime = fallbackTime
+		committerTime = meta.Timestamp.UTC()
 	}
 	if committerTime.IsZero() {
 		committerTime = time.Now().UTC()
@@ -362,7 +482,7 @@ func export(ctx context.Context, provider string, ref name.Reference, fallbackTi
 	}
 	defer rows.Close()
 
-	header(refName, committerTime, message)
+	header(refName, committerTime, commitMessage(message, meta))
 
 	seen := map[string]string{}
 	for rows.Next() {
@@ -390,16 +510,16 @@ func main() {
 	defer cancel()
 
 	if len(os.Args) != 3 && len(os.Args) != 4 {
-		fmt.Fprintf(os.Stderr, "Usage: %s <provider> <image> [fallback-time (RFC 3339)]\n", filepath.Base(os.Args[0]))
+		fmt.Fprintf(os.Stderr, "Usage: %s <provider> <image> [publish-time (RFC 3339)]\n", filepath.Base(os.Args[0]))
 		os.Exit(1)
 	}
-	var fallbackTime time.Time
+	var publishTime time.Time
 	if len(os.Args) == 4 && os.Args[3] != "" {
 		t, err := time.Parse(time.RFC3339, os.Args[3])
 		if err != nil {
-			log.Fatalf("parsing fallback time %q failed: %v", os.Args[3], err)
+			log.Fatalf("parsing publish time %q failed: %v", os.Args[3], err)
 		}
-		fallbackTime = t.UTC()
+		publishTime = t.UTC()
 	}
 	provider := os.Args[1]
 	ref, err := name.ParseReference(os.Args[2])
@@ -407,8 +527,8 @@ func main() {
 		log.Fatalf("name.ParseReference failed: %v", err)
 	}
 
-	if err := export(ctx, provider, ref, fallbackTime); err != nil {
+	if err := export(ctx, provider, ref, publishTime); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("done\n")
+	fmt.Fprintf(stdout, "done\n")
 }
