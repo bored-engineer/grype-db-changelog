@@ -3,10 +3,13 @@ package main
 import (
 	"bytes"
 	"context"
+	"database/sql"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
 	"time"
 
@@ -257,6 +260,124 @@ func TestDropGeneratedDates(t *testing.T) {
 		if !reflect.DeepEqual(v, mustUnmarshal(t, in)) {
 			t.Errorf("changed %s", in)
 		}
+	}
+}
+
+// resultsDB writes a vunnel-style results.db with the given records.
+func resultsDB(t *testing.T, records map[string]string) *sql.DB {
+	t.Helper()
+	db, err := sql.Open("sqlite", filepath.Join(t.TempDir(), "results.db"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { db.Close() })
+	if _, err := db.Exec("CREATE TABLE results (id VARCHAR NOT NULL PRIMARY KEY, record BLOB)"); err != nil {
+		t.Fatal(err)
+	}
+	for id, rec := range records {
+		if _, err := db.Exec("INSERT INTO results VALUES (?, ?)", id, []byte(rec)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	return db
+}
+
+// parseStream splits fast-import filemodify commands into path -> data.
+func parseStream(t *testing.T, s string) map[string]string {
+	t.Helper()
+	files := map[string]string{}
+	for s != "" {
+		var name string
+		var n int
+		line, rest, _ := strings.Cut(s, "\n")
+		if _, err := fmt.Sscanf(line, "M 100644 inline %s", &name); err != nil {
+			t.Fatalf("bad command %q", line)
+		}
+		line, rest, _ = strings.Cut(rest, "\n")
+		if _, err := fmt.Sscanf(line, "data %d", &n); err != nil {
+			t.Fatalf("bad data line %q", line)
+		}
+		files[name] = rest[:n]
+		s = rest[n+1:]
+	}
+	return files
+}
+
+func TestEmitAllMatchesEmit(t *testing.T) {
+	records := map[string]string{"": `{"item":{}}`}
+	delete(records, "")
+	for i := range 2000 {
+		id := fmt.Sprintf("kev:cve-2026-%d", i)
+		records[id] = fmt.Sprintf(`{"schema":"https://raw.githubusercontent.com/anchore/vunnel/main/schema/vulnerability/known-exploited/schema-1.0.0.json","identifier":%q,"item":{"n":%d.0,"l":[{"b":%d},{"a":1}]}}`, id, i, i)
+	}
+	records["kev:cve-empty"] = ""
+	db := resultsDB(t, records)
+
+	var want bytes.Buffer
+	old := stdout
+	t.Cleanup(func() { stdout = old })
+	stdout = &want
+	seen := map[string]string{}
+	for id, rec := range records {
+		if rec == "" {
+			continue
+		}
+		if err := emit(seen, "kev", id, []byte(rec)); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	var got bytes.Buffer
+	stdout = &got
+	rows, err := db.Query("SELECT id, record FROM results")
+	if err != nil {
+		t.Fatal(err)
+	}
+	n, err := emitAll(context.Background(), "kev", rows)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if n != 2000 {
+		t.Fatalf("emitAll wrote %d files, want 2000 (the empty record skipped)", n)
+	}
+	if g, w := parseStream(t, got.String()), parseStream(t, want.String()); !reflect.DeepEqual(g, w) {
+		t.Fatalf("emitAll's files differ from emit's (%d vs %d files)", len(g), len(w))
+	}
+}
+
+func TestEmitAllReportsCollision(t *testing.T) {
+	var buf bytes.Buffer
+	old := stdout
+	stdout = &buf
+	t.Cleanup(func() { stdout = old })
+	db := resultsDB(t, map[string]string{
+		"kev:CVE-2026-1": `{"item":{"a":1}}`,
+		"kev:cve-2026-1": `{"item":{"a":2}}`,
+	})
+	rows, err := db.Query("SELECT id, record FROM results")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := emitAll(context.Background(), "kev", rows); err == nil || !strings.Contains(err.Error(), "collision") {
+		t.Fatalf("got %v, want a collision error", err)
+	}
+}
+
+func TestEmitAllReportsBadRecord(t *testing.T) {
+	var buf bytes.Buffer
+	old := stdout
+	stdout = &buf
+	t.Cleanup(func() { stdout = old })
+	records := map[string]string{"kev:bad": `{not json`}
+	for i := range 500 {
+		records[fmt.Sprintf("kev:cve-%d", i)] = `{"item":{"a":1}}`
+	}
+	rows, err := resultsDB(t, records).Query("SELECT id, record FROM results")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := emitAll(context.Background(), "kev", rows); err == nil || !strings.Contains(err.Error(), "kev:bad") {
+		t.Fatalf("got %v, want the bad record's error", err)
 	}
 }
 

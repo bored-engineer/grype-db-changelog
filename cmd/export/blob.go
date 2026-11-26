@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"compress/gzip"
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
@@ -17,6 +16,7 @@ import (
 	"github.com/google/go-containerregistry/pkg/name"
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 	"github.com/google/go-containerregistry/pkg/v1/remote/transport"
+	"github.com/klauspost/compress/gzip"
 )
 
 // maxResumes bounds how many times one blob download may be reopened.
@@ -201,6 +201,8 @@ func layerReader(ctx context.Context, repo name.Repository, layer v1.Layer) (io.
 	}
 	br := bufio.NewReader(blob)
 	if magic, err := br.Peek(2); err == nil && magic[0] == 0x1f && magic[1] == 0x8b {
+		// klauspost's gzip: a drop-in for compress/gzip that decompresses
+		// about twice as fast, and sles's layers are 12GB uncompressed.
 		zr, err := gzip.NewReader(br)
 		if err != nil {
 			blob.Close()

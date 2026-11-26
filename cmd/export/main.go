@@ -2,6 +2,7 @@ package main
 
 import (
 	"archive/tar"
+	"bufio"
 	"bytes"
 	"context"
 	"database/sql"
@@ -13,15 +14,18 @@ import (
 	"os/signal"
 	"path"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/name"
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 	"github.com/google/go-containerregistry/pkg/v1/remote"
+	"golang.org/x/sync/errgroup"
 	"gopkg.in/yaml.v3"
 	_ "modernc.org/sqlite"
 )
@@ -198,41 +202,136 @@ func schemaComment(schema any) string {
 }
 
 // emit writes the fast-import filemodify command for one vunnel record's
-// item, re-encoding its JSON as YAML for better diffs. Unlike trivy-db,
-// vunnel's records are already plain JSON, so no decoding/enum-resolving
-// step is needed here.
-//
-// seen tracks every path this export run has already written, case-folded,
-// so two distinct ids that only differ by case (or that collide after
-// sanitize()'s substitutions) are caught here as a hard error instead of
-// silently overwriting each other on a case-insensitive filesystem at
-// checkout time — the failure mode trivy-db-changelog hit.
+// item, re-encoding its JSON as YAML for better diffs (see render and
+// write; export runs them in parallel via emitAll).
 func emit(seen map[string]string, provider string, id string, record []byte) error {
+	name, data, err := render(provider, id, record)
+	if err != nil {
+		return err
+	}
+	return write(seen, id, name, data)
+}
+
+// render returns one record's path and file contents. Unlike trivy-db,
+// vunnel's records are already plain JSON, so no decoding/enum-resolving
+// step is needed here. Safe to call concurrently.
+func render(provider string, id string, record []byte) (string, []byte, error) {
 	var env envelope
 	if err := decodeJSON(record, &env); err != nil {
-		return fmt.Errorf("json.Unmarshal failed for %s: %w", id, err)
+		return "", nil, fmt.Errorf("json.Unmarshal failed for %s: %w", id, err)
 	}
 	if provider == "hummingbird" {
 		dropGeneratedDates(env.Item)
 	}
 	pretty, err := yaml.Marshal(canonicalize(env.Item))
 	if err != nil {
-		return fmt.Errorf("yaml.Marshal failed for %s: %w", id, err)
+		return "", nil, fmt.Errorf("yaml.Marshal failed for %s: %w", id, err)
 	}
 	pretty = append([]byte(schemaComment(env.Schema)), pretty...)
 	// No "providers/" wrapper directory: the provider name is already the
 	// top-level category here, the same role trivy-db-changelog's
 	// os/packages/vulnerability/data-source directories play - there's no
 	// further grouping above it to justify an extra wrapping directory.
-	name := path.Join(provider, sanitize(provider, id)) + ".yaml"
+	return path.Join(provider, sanitize(provider, id)) + ".yaml", pretty, nil
+}
+
+// write emits one rendered file to the fast-import stream.
+//
+// seen tracks every path this export run has already written, case-folded,
+// so two distinct ids that only differ by case (or that collide after
+// sanitize()'s substitutions) are caught here as a hard error instead of
+// silently overwriting each other on a case-insensitive filesystem at
+// checkout time — the failure mode trivy-db-changelog hit.
+func write(seen map[string]string, id, name string, data []byte) error {
 	key := strings.ToLower(name)
 	if other, ok := seen[key]; ok && other != id {
 		return fmt.Errorf("case-insensitive path collision: %q and %q both map to %q", other, id, name)
 	}
 	seen[key] = id
-	fmt.Fprintf(stdout, "M 100644 inline %s\n", name)
-	fmt.Fprintf(stdout, "data %d\n%s\n", len(pretty), string(pretty))
+	fmt.Fprintf(stdout, "M 100644 inline %s\ndata %d\n", name, len(data))
+	stdout.Write(data)
+	io.WriteString(stdout, "\n")
 	return nil
+}
+
+// emitAll renders rows' records on every CPU and writes them from one
+// goroutine, which keeps seen single-threaded. Order doesn't matter:
+// fast-import builds the same tree whatever order files arrive in.
+// Rendering was ~3/4 of a big export's time (sles: 770K records, 8GB of
+// JSON), and ran on one core.
+func emitAll(ctx context.Context, provider string, rows *sql.Rows) (int, error) {
+	type rec struct {
+		id     string
+		record []byte
+	}
+	type file struct {
+		id, name string
+		data     []byte
+	}
+	g, ctx := errgroup.WithContext(ctx)
+	recs := make(chan rec, 256)
+	files := make(chan file, 256)
+
+	g.Go(func() error {
+		defer close(recs)
+		for rows.Next() {
+			var r rec
+			// Scan into *[]byte copies the value, so it outlives the row.
+			if err := rows.Scan(&r.id, &r.record); err != nil {
+				return fmt.Errorf("(*sql.Rows).Scan failed: %w", err)
+			}
+			if len(r.record) == 0 {
+				continue
+			}
+			select {
+			case recs <- r:
+			case <-ctx.Done():
+				return ctx.Err()
+			}
+		}
+		if err := rows.Err(); err != nil {
+			return fmt.Errorf("(*sql.Rows).Err failed: %w", err)
+		}
+		return nil
+	})
+
+	var workers sync.WaitGroup
+	for range runtime.GOMAXPROCS(0) {
+		workers.Add(1)
+		g.Go(func() error {
+			defer workers.Done()
+			for r := range recs {
+				name, data, err := render(provider, r.id, r.record)
+				if err != nil {
+					return fmt.Errorf("emit failed: %w", err)
+				}
+				select {
+				case files <- file{r.id, name, data}:
+				case <-ctx.Done():
+					return ctx.Err()
+				}
+			}
+			return nil
+		})
+	}
+	go func() {
+		workers.Wait()
+		close(files)
+	}()
+
+	n := 0
+	g.Go(func() error {
+		seen := map[string]string{}
+		for f := range files {
+			if err := write(seen, f.id, f.name, f.data); err != nil {
+				return fmt.Errorf("emit failed: %w", err)
+			}
+			n++
+		}
+		return nil
+	})
+	err := g.Wait()
+	return n, err
 }
 
 // dropGeneratedDates removes the three timestamps in a hummingbird CSAF
@@ -372,6 +471,8 @@ func export(ctx context.Context, provider string, ref name.Reference, publishTim
 		return fmt.Errorf("(v1.Image).Layers unexpected length: %d", len(layers))
 	}
 
+	layerStart := time.Now()
+	layerBytes, _ := layers[0].Size()
 	rc, closer, err := layerReader(ctx, ref.Context(), layers[0])
 	if err != nil {
 		return fmt.Errorf("opening the layer failed: %w", err)
@@ -436,6 +537,7 @@ func export(ctx context.Context, provider string, ref name.Reference, publishTim
 	if _, err := io.Copy(io.Discard, rc); err != nil {
 		return fmt.Errorf("reading the rest of the layer failed: %w", err)
 	}
+	layerTime := time.Since(layerStart)
 	// The subject (and the staged commit's date) is the GHCR publish time:
 	// when Grype users could first see this build, and never out of order.
 	// metadata.json's timestamp goes in the Captured trailer instead (see
@@ -476,7 +578,10 @@ func export(ctx context.Context, provider string, ref name.Reference, publishTim
 		}
 	}()
 
-	rows, err := db.QueryContext(ctx, "SELECT id, record FROM results ORDER BY id")
+	// Storage order, not ORDER BY id: that walks the id index and reads
+	// each row from a random spot in what can be a 9GB file. The order
+	// doesn't matter (see emitAll).
+	rows, err := db.QueryContext(ctx, "SELECT id, record FROM results")
 	if err != nil {
 		return fmt.Errorf("(*sql.DB).QueryContext failed: %w", err)
 	}
@@ -484,25 +589,25 @@ func export(ctx context.Context, provider string, ref name.Reference, publishTim
 
 	header(refName, committerTime, commitMessage(message, meta))
 
-	seen := map[string]string{}
-	for rows.Next() {
-		var id string
-		var record []byte
-		if err := rows.Scan(&id, &record); err != nil {
-			return fmt.Errorf("(*sql.Rows).Scan failed: %w", err)
-		}
-		if len(record) == 0 {
-			continue
-		}
-		if err := emit(seen, provider, id, record); err != nil {
-			return fmt.Errorf("emit failed: %w", err)
-		}
+	encodeStart := time.Now()
+	n, err := emitAll(ctx, provider, rows)
+	if err != nil {
+		return err
 	}
-	if err := rows.Err(); err != nil {
-		return fmt.Errorf("(*sql.Rows).Err failed: %w", err)
-	}
-
+	// One line, which export.yml shows next to each export's total time.
+	log.Printf("stages: layer %s (%s), %d records %s", layerTime.Round(time.Second), humanBytes(layerBytes), n, time.Since(encodeStart).Round(time.Second))
 	return nil
+}
+
+func humanBytes(n int64) string {
+	switch {
+	case n >= 1<<30:
+		return fmt.Sprintf("%.1f GiB", float64(n)/(1<<30))
+	case n >= 1<<20:
+		return fmt.Sprintf("%.0f MiB", float64(n)/(1<<20))
+	default:
+		return fmt.Sprintf("%d B", n)
+	}
 }
 
 func main() {
@@ -527,8 +632,16 @@ func main() {
 		log.Fatalf("name.ParseReference failed: %v", err)
 	}
 
+	// Buffered: unbuffered, every record cost three write syscalls, ~3/4
+	// of the CPU time encoding sles's 770K records. Nothing is flushed on
+	// failure, and fast-import commits nothing without the final "done".
+	bw := bufio.NewWriterSize(os.Stdout, 1<<20)
+	stdout = bw
 	if err := export(ctx, provider, ref, publishTime); err != nil {
 		log.Fatal(err)
 	}
 	fmt.Fprintf(stdout, "done\n")
+	if err := bw.Flush(); err != nil {
+		log.Fatalf("writing the fast-import stream failed: %v", err)
+	}
 }

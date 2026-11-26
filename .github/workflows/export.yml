@@ -105,7 +105,8 @@ jobs:
             if "$RUNNER_TEMP/export" "$provider" "ghcr.io/anchore/grype-db/data/$provider@$digest" "$created" 2> "$log" \
                 | git fast-import --quiet 2>> "$log" \
                 && git rev-parse --verify --quiet "$ref" >/dev/null; then
-              echo "ok      $provider $digest ($((SECONDS - start))s)"
+              # With cmd/export's per-stage timing line, if it wrote one.
+              echo "ok      $provider $digest ($((SECONDS - start))s) $(grep -o 'stages: .*' "$log" | tail -1)"
             else
               echo "FAILED  $provider $digest ($((SECONDS - start))s)"
               sed 's/^/        /' "$log"
