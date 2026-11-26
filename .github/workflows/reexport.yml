@@ -7,8 +7,14 @@ name: Re-export
 # other provider's trees reused as-is), instead of rebuilding everything.
 # Builds already staged under refs/reexport are skipped, so a rerun only
 # retries the ones that failed.
+#
+# Started by pushing a branch named reexport/<provider> (delete it after):
+# workflow_dispatch only finds workflows on the default branch, and this
+# one lives only on generator.
 
 on:
+  push:
+    branches: ['reexport/*']
   workflow_dispatch:
     inputs:
       provider:
@@ -39,10 +45,11 @@ jobs:
       - name: List the provider's chained builds
         id: list
         env:
-          PROVIDER: ${{ inputs.provider }}
-          SHARDS: ${{ inputs.shards }}
+          PROVIDER: ${{ inputs.provider || github.ref_name }}
+          SHARDS: ${{ inputs.shards || 80 }}
           REPO: ${{ github.server_url }}/${{ github.repository }}
         run: |
+          PROVIDER=${PROVIDER#reexport/}
           if ! [[ "$PROVIDER" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
             echo "::error::bad provider name: $PROVIDER"
             exit 1
@@ -62,6 +69,7 @@ jobs:
             | to_entries | group_by(.key % $n) | map(map(.value))
             | to_entries | map({shard: (.key + 1), items: .value})' < todo.tsv)
           echo "shards=$shards" >> "$GITHUB_OUTPUT"
+          echo "provider=$PROVIDER" >> "$GITHUB_OUTPUT"
 
   export:
     needs: list
