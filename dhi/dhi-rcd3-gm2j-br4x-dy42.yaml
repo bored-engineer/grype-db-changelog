@@ -37,7 +37,7 @@ affected:
         - 3.5.7-1~deb13u2+fips+dhi0
 details: "Issue summary: The OpenSSL QUIC server, when configured to not preform address\nvalidation, can be forced to count incoming packets multiple times in its\nunvalidated credit computation, leading to a violation of the RFC 9000\nunvalidated connection amplification limit of 3 times the amount of data\nreceived.\n\nImpact summary: A remote attacker able to spoof packets to a server using the\nOpenSSL QUIC implementation might use the server for an amplification of\na DDoS attack.\n\nCWE: CWE-440: Expected Behavior Violation \n\nDescription: OpenSSL's QUIC stack, when operating as a server, enforces client\naddress validation (RFC 9000, Section 8), to confirm the peer address is not\nused for a traffic amplification attack.  If this feature is disabled on the\nserver, the QUIC stack limits the amount of server data that can be sent to 3\ntimes the amount of data received from the peer address, until such time as the\nTLS handshake is completed.\n\nThe OpenSSL QUIC server, when operating in non-validation mode, adds the\nlength of the whole datagram received to the unvalidated credit limit when\nprocessing each QUIC packet in the datagram. A remote peer may,\nafter establishing a connection with an initial client hello frame, send a\nsubsequent datagram containing multiple QUIC packets, leading the server to\naccount the entire datagram length for each packet in the datagram, resulting\nin the server believing that the peer has sent more data than it actually has,\nthereby violating the 3x amplification limit mandated by the RFC.\n\nFIPS impact: no\nAs the QUIC stack lives outside the FIPS module boundary, no FIPS modules\nare affected by this CVE."
 id: DHI-rcd3-gm2j-br4x-dy42
-modified: "2026-11-23T19:49:47Z"
+modified: "2026-11-25T03:00:01Z"
 published: "2026-11-20T16:52:19Z"
 references:
     - type: ADVISORY
@@ -77,9 +77,17 @@ references:
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:98588
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-500659.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-98484.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98588.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-500659.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-98484.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98588.html
     - type: ADVISORY
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-35191
     - type: ADVISORY

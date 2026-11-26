@@ -58,10 +58,12 @@ affected:
             - fixed: 1.11.1-1+deb13u1+dhi2
           type: ECOSYSTEM
       versions:
+        - 1.11.1-1+deb13u1+dhi0
         - 1.11.1-1+deb13u1+dhi1
+        - 1.11.1-1dhi0
 details: libssh2 through 1.11.1, fixed in commit a13bb6c, contains a missing bounds check vulnerability that allows a malicious SSH server to trigger an arbitrary-length heap out-of-bounds read and a free of an uninitialized pointer via the publickey subsystem. In libssh2_publickey_list_fetch(), the version 1 response parser reads a server-controlled comment_len value and advances the parse pointer without verifying sufficient bytes remain in the buffer, causing the out-of-bounds read to leak heap pointers from adjacent allocations defeating ASLR, followed by heap allocator state corruption when the error cleanup path frees an uninitialized pointer from a non-zeroed realloc() region.
 id: DHI-r4qo-topd-xzam-ioaa
-modified: "2026-11-22T20:05:39Z"
+modified: "2026-11-25T02:58:05Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY

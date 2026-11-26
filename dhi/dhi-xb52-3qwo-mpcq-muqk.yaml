@@ -272,6 +272,7 @@ affected:
         - 36.0.0-35
         - 36.0.0-36
         - 36.0.0-37
+        - 36.0.0-38
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -317,6 +318,7 @@ affected:
         - 36.0.0-35
         - 36.0.0-36
         - 36.0.0-37
+        - 36.0.0-38
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -362,6 +364,7 @@ affected:
         - 37.0.0-33
         - 37.0.0-35
         - 37.0.0-37
+        - 37.0.0-38
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -406,6 +409,7 @@ affected:
         - 37.0.0-33
         - 37.0.0-35
         - 37.0.0-37
+        - 37.0.0-38
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -436,6 +440,7 @@ affected:
         - 38.0.0-19
         - 38.0.0-2
         - 38.0.0-20
+        - 38.0.0-21
         - 38.0.0-3
         - 38.0.0-4
         - 38.0.0-5
@@ -467,6 +472,7 @@ affected:
         - 38.0.0-19
         - 38.0.0-2
         - 38.0.0-20
+        - 38.0.0-21
         - 38.0.0-3
         - 38.0.0-4
         - 38.0.0-5
@@ -474,6 +480,32 @@ affected:
         - 38.0.0-7
         - 38.0.0-8
         - 38.0.0-9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: druid-39
+        purl: pkg:deb/dhi/druid-39
+      ranges:
+        - events:
+            - introduced: 39.0.0-0
+          type: ECOSYSTEM
+      versions:
+        - 39.0.0-0
+        - 39.0.0-1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: druid-39-fips
+        purl: pkg:deb/dhi/druid-39-fips
+      ranges:
+        - events:
+            - introduced: 39.0.0-0
+          type: ECOSYSTEM
+      versions:
+        - 39.0.0-0
+        - 39.0.0-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -602,7 +634,7 @@ database_specific:
         - legacy_package_image_owner
 details: jackson-databind contains the general-purpose data-binding functionality and tree-model for Jackson Data Processor. From 2.0.0 until 2.18.8, 2.21.4, and 3.1.4, JDKFromStringDeserializer constructed InetSocketAddress with new InetSocketAddress(host, port), which performs eager DNS name resolution for hostname inputs at deserialization time. An application that binds untrusted JSON into a type containing an InetSocketAddress field issues an attacker-chosen DNS query during readValue, before any application-level validation or connect logic. The fix uses InetSocketAddress.createUnresolved(host, port), deferring DNS to an explicit connect. This vulnerability is fixed in 2.18.8, 2.21.4, and 3.1.4.
 id: DHI-xb52-3qwo-mpcq-muqk
-modified: "2026-11-24T22:31:41Z"
+modified: "2026-11-25T02:15:41Z"
 published: "2026-11-19T20:59:10Z"
 references:
     - type: ADVISORY

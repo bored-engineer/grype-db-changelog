@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: k8ssandra-medusa
         purl: pkg:deb/dhi/k8ssandra-medusa
+      ranges:
+        - events:
+            - introduced: 0.29.1-1
+          type: ECOSYSTEM
       versions:
         - 0.29.1-1
         - 0.30.0-0
@@ -51,7 +55,7 @@ affected:
         - 0.31.1-9
 details: virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.12, BatchActivator.quote() returns prompt text unchanged before activate.bat inserts it into a cmd.exe set "VAR=value" statement. An attacker who influences --prompt, VIRTUALENV_PROMPT, or the corresponding configuration value can include a double quote that closes the assignment and leaves following cmd.exe operators as executable syntax. When a user activates the generated Windows environment, the injected commands run with that user's privileges. This issue is fixed in version 21.7.12.
 id: DHI-ylj6-jvjj-uyxv-piao
-modified: "2026-11-21T12:22:06Z"
+modified: "2026-11-25T02:32:55Z"
 published: "2026-11-11T19:05:15Z"
 references:
     - type: ADVISORY
@@ -76,6 +80,8 @@ references:
       url: https://github.com/pypa/virtualenv/releases/tag/21.7.12
 schema_version: 1.8.0
 severity:
+    - score: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+      type: CVSS_V3
     - score: CVSS:4.0/AV:L/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X
       type: CVSS_V4
 summary: virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.12, BatchActivator.quote()…

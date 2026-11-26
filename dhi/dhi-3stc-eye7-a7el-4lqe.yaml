@@ -909,6 +909,7 @@ affected:
       versions:
         - 3.10.0-0
         - 3.10.0-1
+        - 3.10.0-2
         - 3.8.0-0
         - 3.8.0-1
         - 3.8.0-2
@@ -1208,7 +1209,7 @@ affected:
         - 3.13.217-4
 details: decode-uri-component provides a more robust alternative to decodeURIComponent. Prior to 0.5.1, decodeUriComponent in index.js falls back to customDecodeURIComponent after native decoding throws, and the fallback collects every distinct percent-encoded run before performing a full-string regular-expression replacement for each entry. Malformed input containing many distinct runs can therefore make both the number of replacements and the scanned input length grow together, causing quadratic CPU consumption and blocking the Node.js event loop; request-body inputs can reach the demonstrated size, while ordinary URL header limits reduce the practical delay. This issue is fixed in version 0.5.1.
 id: DHI-3stc-eye7-a7el-4lqe
-modified: "2026-11-24T23:45:50Z"
+modified: "2026-11-25T11:08:42Z"
 published: "2026-11-20T01:49:34Z"
 references:
     - type: ADVISORY

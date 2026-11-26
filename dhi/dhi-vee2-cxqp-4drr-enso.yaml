@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: vim
         purl: pkg:apk/dhi/vim
+      ranges:
+        - events:
+            - introduced: 9.1.1942-r0
+          type: ECOSYSTEM
       versions:
         - 9.1.1942-r0
         - 9.1.2132-r0
@@ -35,7 +39,7 @@ affected:
         - 9.2.1352-r0
 details: Vim is an open source, command line text editor. Prior to version 9.1.2132, a heap buffer overflow vulnerability exists in Vim's tag file resolution logic when processing the 'helpfile' option. The vulnerability is located in the get_tagfname() function in src/tag.c. When processing help file tags, Vim copies the user-controlled 'helpfile' option value into a fixed-size heap buffer of MAXPATHL + 1 bytes (typically 4097 bytes) using an unsafe STRCPY() operation without any bounds checking. This issue has been patched in version 9.1.2132.
 id: DHI-vee2-cxqp-4drr-enso
-modified: "2026-11-17T09:54:49Z"
+modified: "2026-11-25T01:26:19Z"
 published: "2026-11-11T19:08:52Z"
 references:
     - type: ADVISORY

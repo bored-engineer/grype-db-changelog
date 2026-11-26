@@ -7,15 +7,21 @@ affected:
         name: perl
         purl: pkg:apk/dhi/perl
       ranges:
-        - events:
-            - introduced: 5.42.0-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-20"
+                      kind: advisory
+                      version: 5.42.2-r2
+          events:
+            - introduced: "0"
+            - fixed: 5.42.2-r2
           type: ECOSYSTEM
       versions:
         - 5.42.0-r0
         - 5.42.1-r0
         - 5.42.2-r0
         - 5.42.2-r1
-        - 5.42.2-r2
 database_specific:
     coverage: partial
     coverage_exclusions:
@@ -27,7 +33,7 @@ details: |-
 
     A pattern of this shape produces false positive matches (matching strings it should not) and false negative matches (failing to match strings it should). When such a pattern gates an access or filtering decision, the result is wrong.
 id: DHI-wyyk-yudm-6heu-edsh
-modified: "2026-11-24T00:02:52Z"
+modified: "2026-11-25T17:32:36Z"
 published: "2026-11-20T00:55:26Z"
 references:
     - type: ADVISORY

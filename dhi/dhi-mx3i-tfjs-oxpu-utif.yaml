@@ -13,6 +13,7 @@ affected:
       versions:
         - 26.11.16-r0
         - 26.11.16-r1
+        - 26.11.16-r2
         - 26.9.10-r0
         - 26.9.10-r1
         - 26.9.10-r10
@@ -48,6 +49,7 @@ affected:
       versions:
         - 26.11.16-r0
         - 26.11.16-r1
+        - 26.11.16-r2
         - 26.9.10-r0
         - 26.9.10-r1
         - 26.9.10-r10
@@ -84,6 +86,7 @@ affected:
         - 26.11.16-0
         - 26.11.16-1
         - 26.11.16-2
+        - 26.11.16-3
         - 26.9.10-0
         - 26.9.10-1
         - 26.9.10-10
@@ -154,9 +157,10 @@ affected:
         - 4.7.5-0
         - 4.7.5-1
         - 4.7.5-2
+        - 4.7.6-0
 details: Django REST framework is a toolkit for building Web APIs. Prior to 3.18.2, DefaultContentNegotiation.get_accept_list in rest_framework/negotiation.py accepts an unbounded number and aggregate size of Accept tokens, while select_renderer in that file repeatedly invokes _MediaType parsing from rest_framework/utils/mediatypes.py for each attacker-controlled token, every renderer, and forced 406 renegotiation. A remote unauthenticated client can send many distinct media types containing large quoted parameter values with numerous semicolons, causing Django's parameter parser and DRF's repeated parsing structure to consume disproportionate CPU. Requests to any reachable endpoint can pin synchronous workers for prolonged periods, and concurrent requests can make the service unavailable until the requests stop. This issue is fixed in version 3.18.2.
 id: DHI-mx3i-tfjs-oxpu-utif
-modified: "2026-11-24T21:35:33Z"
+modified: "2026-11-25T09:33:06Z"
 published: "2026-11-12T02:06:28Z"
 references:
     - type: ADVISORY

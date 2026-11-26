@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: valkey
         purl: pkg:apk/dhi/valkey
+      ranges:
+        - events:
+            - introduced: 9.0.0-r1
+          type: ECOSYSTEM
       versions:
         - 9.0.0-r1
         - 9.0.3-r0
@@ -17,6 +21,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: redis
         purl: pkg:deb/dhi/redis
+      ranges:
+        - events:
+            - introduced: 5:8.0.2-3+deb13u2+dhi0
+          type: ECOSYSTEM
       versions:
         - 5:8.0.2-3+deb13u2+dhi0
         - 5:8.0.2-3+deb13u2+dhi1
@@ -25,7 +33,7 @@ affected:
         - 5:8.0.2-3+deb13u3+dhi1
 details: "### Impact\r\nWhen a blocked client is evicted while re-executing a blocked command, an authenticated user may trigger a use-after-free and potentially lead to remote code execution.\r\n\r\nThe problem exists in Redis `7.2` or newer.\r\n\r\n### Details\r\nThe code doesn't handle the case where processing the command (`processCommandAndResetClient`) returns an error value.\r\n\r\n### Credits\r\nThe issue was reported by independent researcher Xint Code during the Wiz Zeroday Cloud event.\r\n"
 id: DHI-hqqv-a6ye-oind-qx52
-modified: "2026-11-11T19:16:44Z"
+modified: "2026-11-25T02:57:18Z"
 published: "2026-11-11T19:16:44Z"
 references:
     - type: ADVISORY

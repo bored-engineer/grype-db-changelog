@@ -15,6 +15,7 @@ affected:
         - 3.10.6-1
         - 3.10.6-2
         - 3.10.6-3
+        - 3.10.6-4
     - database_specific:
         owner_kind: HSP
       package:
@@ -30,10 +31,11 @@ affected:
         - 3.11.10-1
         - 3.11.10-2
         - 3.11.10-3
+        - 3.11.10-4
         - 3.11.8-0
 details: Wasmtime is a runtime for WebAssembly. All versions prior to 24.0.10; versions 25.0.0 through those before  36.0.11; versions 37.0.0 through those before 44.0.3; and versions 45.0.0 and 45.0.1 contain a native implementation of WASIp1 which suffers from a leak in the fd_renumber function where the file descriptor being renumbered to is not properly closed. Wasmtime's implementation erroneously only updated the table of descriptors for WASIp1 and didn't update the underlying table of descriptors used by the host. This behavior means that while fd_renumber works correctly from a guest's perspective it ends up leaking resources in the host that aren't cleaned up until the corresponding Store is destroyed. In a loop, guests can use fd_renumber to cause hosts to exhaust both resources and file descriptors. This bug only affects the native implementation of WASIp1, meaning that only runtimes which load core wasm modules and expose fd_renumber are affected. Runtimes are additionally only affected if they expose the ability to acquire a file descriptor, such as opening a file. For runtimes that deny access to files they are unaffected. This issue has been fixed in versions 24.0.10, 36.0.11, 44.0.3, and 45.0.2.
 id: DHI-q3ky-ppkc-af2n-u57f
-modified: "2026-11-24T10:00:45Z"
+modified: "2026-11-25T02:14:40Z"
 published: "2026-11-20T18:23:07Z"
 references:
     - type: ADVISORY

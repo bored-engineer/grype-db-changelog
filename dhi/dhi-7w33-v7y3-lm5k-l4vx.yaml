@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: gpsd
         purl: pkg:apk/dhi/gpsd
+      ranges:
+        - events:
+            - introduced: 3.26.1-r0
+          type: ECOSYSTEM
       versions:
         - 3.26.1-r0
         - 3.27.3-r0
@@ -14,7 +18,7 @@ affected:
         - 3.27.3-r3
 details: An integer underflow vulnerability exists in the `nextstate()` function in `gpsd/packet.c` of gpsd versions prior to commit `ffa1d6f40bca0b035fc7f5e563160ebb67199da7`. When parsing a NAVCOM packet, the payload length is calculated using `lexer->length = (size_t)c - 4` without checking if the input byte `c` is less than 4. This results in an unsigned integer underflow, setting `lexer->length` to a very large value (near `SIZE_MAX`). The parser then enters a loop attempting to consume this massive number of bytes, causing 100% CPU utilization and a Denial of Service (DoS) condition.
 id: DHI-7w33-v7y3-lm5k-l4vx
-modified: "2026-11-21T16:17:22Z"
+modified: "2026-11-25T02:33:30Z"
 published: "2026-11-11T18:47:00Z"
 references:
     - type: ADVISORY

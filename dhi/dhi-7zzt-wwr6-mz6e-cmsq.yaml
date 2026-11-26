@@ -6,8 +6,14 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - events:
+            - introduced: 8.17.0
+          type: ECOSYSTEM
       versions:
+        - 8.17.0
         - 8.17.0-r1
+        - 8.18.0
         - 8.18.0-r0
         - 8.19.0-r0
         - 8.20.0-r0
@@ -22,6 +28,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: curl
         purl: pkg:deb/dhi/curl
+      ranges:
+        - events:
+            - introduced: 8.14.1-2+deb13u2dhi2
+          type: ECOSYSTEM
       versions:
         - 8.14.1-2+deb13u2dhi2
         - 8.14.1-2+deb13u2dhi3
@@ -36,6 +46,7 @@ affected:
         - 8.14.1-2+deb13u5+dhi0
         - 8.14.1-2+deb13u7+dhi0
         - 8.14.1-2+deb13u7+dhi1
+        - 8.19.0-dhi1
 details: |-
     curl might erroneously pass on credentials for a first proxy to a second
     proxy.
@@ -49,7 +60,7 @@ details: |-
        a redirect to a URL using another scheme (say `https://`), accessed using a
        second, different, proxy
 id: DHI-7zzt-wwr6-mz6e-cmsq
-modified: "2026-11-21T17:48:22Z"
+modified: "2026-11-25T21:10:19Z"
 published: "2026-11-11T15:41:32Z"
 references:
     - type: ADVISORY
@@ -57,11 +68,15 @@ references:
     - type: ADVISORY
       url: http://www.openwall.com/lists/oss-security/2026/04/29/11
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:100686
+    - type: ADVISORY
       url: https://access.redhat.com/security/cve/CVE-2026-6253
     - type: ADVISORY
       url: https://curl.se/docs/CVE-2026-6253.html
     - type: ADVISORY
       url: https://curl.se/docs/CVE-2026-6253.json
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-100686.html
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:100685
     - type: ADVISORY
@@ -71,9 +86,13 @@ references:
     - type: ADVISORY
       url: https://hackerone.com/reports/3669637
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-100685.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-100686.html
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-80512.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-100685.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-100686.html
     - type: ADVISORY

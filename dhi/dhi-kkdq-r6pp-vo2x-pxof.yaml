@@ -49,6 +49,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -65,6 +66,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -157,6 +159,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -173,6 +176,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -262,10 +266,12 @@ affected:
         - 1.7.0.19-4
         - 1.7.0.19-5
         - 1.7.0.19-6
+        - 1.7.0.20-10
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
         - 1.7.0.20-9
+        - 1.9.0.1-10
     - database_specific:
         owner_kind: HSP
       package:
@@ -359,6 +365,7 @@ affected:
         - 1.121.3-7
         - 1.121.4-0
         - 1.121.4-1
+        - 1.121.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -412,7 +419,7 @@ affected:
         - 3.8.0-9
 details: proxy-addr is a Node.js module that determines a request's client address behind trusted reverse proxies, and it backs Express req.ip and req.ips. In versions 1.1.0 through 2.0.7, a trust subnet written in IPv4-mapped IPv6 notation with an IPv4-sized prefix, such as ::ffff:10.0.0.0/8 instead of the correct ::ffff:10.0.0.0/104, is accepted without error but trusts every IPv4 address on the internet rather than the block it names. Because the socket peer then becomes trusted at hop 0, any unauthenticated client can supply an arbitrary X-Forwarded-For header and control the address the application reads, which defeats IP-based access control, rate limiting, geolocation, and audit logging. This is a fail-open regression introduced in version 1.1.0. The issue is fixed in proxy-addr 2.0.8, and users should upgrade to 2.0.8 or later. As a workaround, ensure any IPv4-mapped IPv6 trust subnet uses a prefix length of at least 97, or express the range in plain IPv4 notation.
 id: DHI-kkdq-r6pp-vo2x-pxof
-modified: "2026-11-25T00:00:51Z"
+modified: "2026-11-25T23:04:06Z"
 published: "2026-11-12T06:10:31Z"
 references:
     - type: ADVISORY

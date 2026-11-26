@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: libpcap
         purl: pkg:apk/dhi/libpcap
+      ranges:
+        - events:
+            - introduced: 1.10.5-r1
+          type: ECOSYSTEM
       versions:
         - 1.10.5-r1
         - 1.10.5-r2
@@ -17,12 +21,16 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libpcap
         purl: pkg:apk/dhi/libpcap
+      ranges:
+        - events:
+            - introduced: 1.10.6-r1
+          type: ECOSYSTEM
       versions:
         - 1.10.6-r1
         - 1.10.7-r0
 details: libpcap BPF interpreter treats the offset in the 'ja L' BPF instruction as a signed integer to implement looping via backward jumps, but it does not limit the number of loop iterations.  A crafted filter program or the 'protochain' primitive used on a crafted network packet can cause the interpreter to loop infinitely.
 id: DHI-xhyl-utjm-rdcn-vkc3
-modified: "2026-11-21T16:17:22Z"
+modified: "2026-11-25T02:33:30Z"
 published: "2026-11-11T15:37:37Z"
 references:
     - type: ADVISORY
@@ -38,11 +46,15 @@ references:
     - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-6554
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:100511
+    - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:99707
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2/ALAS-2026-3927.html
     - type: ADVISORY
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3100.html
+    - type: ADVISORY
+      url: https://errata.almalinux.org/8/ALSA-2026-100511.html
     - type: ADVISORY
       url: https://errata.almalinux.org/9/ALSA-2026-99707.html
     - type: ADVISORY
@@ -54,9 +66,13 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-100511.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-99690.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-99707.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-100511.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-99690.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-99707.html
     - type: ADVISORY

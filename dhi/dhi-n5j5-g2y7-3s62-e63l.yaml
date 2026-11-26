@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: valkey
         purl: pkg:apk/dhi/valkey
+      ranges:
+        - events:
+            - introduced: 9.0.0-r1
+          type: ECOSYSTEM
       versions:
         - 9.0.0-r1
         - 9.0.3-r0
@@ -17,6 +21,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: redis
         purl: pkg:deb/dhi/redis
+      ranges:
+        - events:
+            - introduced: 5:8.0.2-3+deb13u2+dhi0
+          type: ECOSYSTEM
       versions:
         - 5:8.0.2-3+deb13u2+dhi0
         - 5:8.0.2-3+deb13u2+dhi1
@@ -25,7 +33,7 @@ affected:
         - 5:8.0.2-3+deb13u3+dhi1
 details: "### Impact\r\nA vulnerability in the Redis RESTORE command allows an authenticated user to trigger an invalid memory access via a specially crafted serialized payload, potentially resulting in remote code execution.\r\n\r\nSuccessful exploitation could allow an attacker with authenticated access to execute arbitrary code in the context of the Redis server, potentially leading to full compromise of the affected system, data exfiltration, or service disruption\r\n\r\nThis problem affects all Redis versions.\r\n\r\n### Details\r\nThe vulnerability is caused by insufficient validation of serialized values processed by the RESTORE command, which allows malformed input to trigger unsafe memory accesses.\r\n\r\n### Attack Prerequisites\r\n- The attacker must be authenticated to the Redis instance.\r\n- The attacker must have permission to execute the RESTORE command.\r\n\r\n### Workarounds\r\nAn additional workaround to mitigate the issue without patching the Redis server executable is to prevent users from executing the RESTORE command by applying an appropriate ACL restriction rule.\r\n\r\n### Credit\r\n- Emil Lerner during the Wiz Zeroday Cloud event.\r\n- Joseph Surin\r\n"
 id: DHI-n5j5-g2y7-3s62-e63l
-modified: "2026-11-11T19:16:44Z"
+modified: "2026-11-25T02:57:18Z"
 published: "2026-11-11T19:16:44Z"
 references:
     - type: ADVISORY

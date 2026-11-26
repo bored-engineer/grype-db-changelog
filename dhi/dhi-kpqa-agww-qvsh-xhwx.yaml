@@ -223,6 +223,9 @@ affected:
         - 1.98.6-r0
         - 1.98.7-r0
         - 1.98.8-r0
+        - 1.98.9-r0
+        - 1.99.0-r0
+        - 1.99.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -446,6 +449,9 @@ affected:
         - 1.98.6-r0
         - 1.98.7-r0
         - 1.98.8-r0
+        - 1.98.9-r0
+        - 1.99.0-r0
+        - 1.99.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -853,6 +859,7 @@ affected:
         - 3.227.1-2
         - 3.227.1-3
         - 3.227.1-4
+        - 3.227.1-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -913,6 +920,8 @@ affected:
         - 4.83.0-0
         - 4.84.0-0
         - 4.84.0-1
+        - 4.86.0-0
+        - 4.86.0-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -959,6 +968,7 @@ affected:
         - 1.20.2-3
         - 1.20.2-4
         - 1.20.2-5
+        - 1.20.2-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -1010,6 +1020,9 @@ affected:
         - 1.98.6-0
         - 1.98.7-0
         - 1.98.8-0
+        - 1.98.9-0
+        - 1.99.0-0
+        - 1.99.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1047,6 +1060,7 @@ affected:
         - 18.11.10-6
         - 18.11.10-7
         - 18.11.10-8
+        - 18.11.10-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -1084,6 +1098,7 @@ affected:
         - 18.11.10-6
         - 18.11.10-7
         - 18.11.10-8
+        - 18.11.10-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -1121,6 +1136,7 @@ affected:
         - 18.11.10-6
         - 18.11.10-7
         - 18.11.10-8
+        - 18.11.10-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -1158,6 +1174,7 @@ affected:
         - 18.11.10-6
         - 18.11.10-7
         - 18.11.10-8
+        - 18.11.10-9
     - database_specific:
         owner_kind: HSP
       package:
@@ -1190,7 +1207,7 @@ affected:
         - 2.5.9-1
 details: undici is an HTTP client library for Node.js. In versions 7.0.0 through 7.30.0 and 8.0.0 through 8.12.1, when an originless Agent composes the redirect and cache interceptors in that order with a shared cache store, the cache builds its key from the original request URL before the redirect handler changes the origin, so a response produced after a cross-origin redirect is stored under the original key. An attacker who controls the target of a redirect from a trusted URL can have their response cached under that trusted URL and served to later callers, allowing persistent cache poisoning, and the same key confusion lets a private, non-stored redirect response to a user-specific resource be stored under the original URL and served to a later unauthenticated caller, disclosing private data. Applications are affected only when an originless Agent, a shared cache store, and the redirect-then-cache composition are all used. The issue is fixed in undici 7.30.1 and 8.12.2, which verify the producing origin still matches the cache key and preserve each redirect hop's cache-control policy before storing, and users should upgrade to one of those versions or later. As a workaround, compose the cache interceptor before the redirect interceptor, use per-origin dispatchers and cache stores, or disable shared caching on redirect-capable requests.
 id: DHI-kpqa-agww-qvsh-xhwx
-modified: "2026-11-25T00:05:00Z"
+modified: "2026-11-25T23:11:27Z"
 published: "2026-11-13T17:02:28Z"
 references:
     - type: ADVISORY

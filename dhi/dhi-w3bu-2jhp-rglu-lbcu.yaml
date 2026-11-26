@@ -6,8 +6,14 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - events:
+            - introduced: 8.17.0
+          type: ECOSYSTEM
       versions:
+        - 8.17.0
         - 8.17.0-r1
+        - 8.18.0
         - 8.18.0-r0
         - 8.19.0-r0
         - 8.20.0-r0
@@ -22,6 +28,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - events:
+            - introduced: 8.20.0-r1
+          type: ECOSYSTEM
       versions:
         - 8.20.0-r1
         - 8.21.0-r0
@@ -34,6 +44,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: curl
         purl: pkg:deb/dhi/curl
+      ranges:
+        - events:
+            - introduced: 8.14.1-2+deb13u2dhi2
+          type: ECOSYSTEM
       versions:
         - 8.14.1-2+deb13u2dhi2
         - 8.14.1-2+deb13u2dhi3
@@ -48,12 +62,13 @@ affected:
         - 8.14.1-2+deb13u5+dhi0
         - 8.14.1-2+deb13u7+dhi0
         - 8.14.1-2+deb13u7+dhi1
+        - 8.19.0-dhi1
 details: |-
     During an upload, curl mishandles HTTP/2 `RST_STREAM` received from the server
     (with reason `HTTP_1_1_REQUIRED` or `REFUSED_STREAM`) leading to a use after
     free of a `struct Curl_easy` object.
 id: DHI-w3bu-2jhp-rglu-lbcu
-modified: "2026-11-21T17:48:30Z"
+modified: "2026-11-25T21:18:12Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY
@@ -69,7 +84,11 @@ references:
     - type: ADVISORY
       url: https://errata.rockylinux.org/RLSA-2026:96092
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-100685.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-96092.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-100685.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-96092.html
     - type: ADVISORY

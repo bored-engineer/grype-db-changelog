@@ -58,10 +58,12 @@ affected:
             - fixed: 1.11.1-1+deb13u1+dhi2
           type: ECOSYSTEM
       versions:
+        - 1.11.1-1+deb13u1+dhi0
         - 1.11.1-1+deb13u1+dhi1
+        - 1.11.1-1dhi0
 details: libssh2 through 1.11.1, fixed in commit 5e47761, contains a double-free vulnerability in the sftp_open() function in src/sftp.c that allows a malicious SSH server to corrupt the heap of any authenticated client opening an SFTP session. When a server responds to SSH_FXP_OPEN with SSH_FXP_STATUS containing FX_OK, the response data buffer is freed, and if a subsequent sftp_packet_require() call returns a specific error such as LIBSSH2_ERROR_CHANNEL_PACKET_EXCEEDED, the same pointer is freed a second time, enabling tcache dup conditions on glibc systems that allow overlapping allocations and function pointer overwrites.
 id: DHI-xxhv-y64d-dmry-gch7
-modified: "2026-11-22T20:05:29Z"
+modified: "2026-11-25T02:58:05Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY

@@ -55,6 +55,58 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: kube-api-auth-0.15
+        purl: pkg:apk/dhi/kube-api-auth-0.15
+      ranges:
+        - events:
+            - introduced: 0.15.4-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.15.4-r0
+        - 0.15.5-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: kube-api-auth-0.15-dev
+        purl: pkg:apk/dhi/kube-api-auth-0.15-dev
+      ranges:
+        - events:
+            - introduced: 0.15.4-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.15.4-r0
+        - 0.15.5-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: kube-api-auth-0.15-fips
+        purl: pkg:apk/dhi/kube-api-auth-0.15-fips
+      ranges:
+        - events:
+            - introduced: 0.15.4-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.15.4-r0
+        - 0.15.5-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: kube-api-auth-0.15-fips-dev
+        purl: pkg:apk/dhi/kube-api-auth-0.15-fips-dev
+      ranges:
+        - events:
+            - introduced: 0.15.4-r0
+          type: ECOSYSTEM
+      versions:
+        - 0.15.4-r0
+        - 0.15.5-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: kube-api-auth-0.13
         purl: pkg:apk/dhi/kube-api-auth-0.13
@@ -208,9 +260,61 @@ affected:
       versions:
         - 0.13.4-0
         - 0.13.5-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: kube-api-auth-0.15
+        purl: pkg:deb/dhi/kube-api-auth-0.15
+      ranges:
+        - events:
+            - introduced: 0.15.4-0
+          type: ECOSYSTEM
+      versions:
+        - 0.15.4-0
+        - 0.15.5-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: kube-api-auth-0.15-dev
+        purl: pkg:deb/dhi/kube-api-auth-0.15-dev
+      ranges:
+        - events:
+            - introduced: 0.15.4-0
+          type: ECOSYSTEM
+      versions:
+        - 0.15.4-0
+        - 0.15.5-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: kube-api-auth-0.15-fips
+        purl: pkg:deb/dhi/kube-api-auth-0.15-fips
+      ranges:
+        - events:
+            - introduced: 0.15.4-0
+          type: ECOSYSTEM
+      versions:
+        - 0.15.4-0
+        - 0.15.5-0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: kube-api-auth-0.15-fips-dev
+        purl: pkg:deb/dhi/kube-api-auth-0.15-fips-dev
+      ranges:
+        - events:
+            - introduced: 0.15.4-0
+          type: ECOSYSTEM
+      versions:
+        - 0.15.4-0
+        - 0.15.5-0
 details: In Rancher 1 and 2 through 2.2.3, unprivileged users (if allowed to deploy nodes) can gain admin access to the Rancher management plane because node driver options intentionally allow posting certain data to the cloud. The problem is that a user could choose to post a sensitive file such as /root/.kube/config or /var/lib/rancher/management-state/cred/kubeconfig-system.yaml.
 id: DHI-un5g-5erd-b2qu-a2yw
-modified: "2026-11-24T21:28:45Z"
+modified: "2026-11-25T01:37:51Z"
 published: "2026-11-19T02:46:04Z"
 references:
     - type: ADVISORY

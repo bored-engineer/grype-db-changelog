@@ -13,6 +13,7 @@ affected:
       versions:
         - 26.11.16-r0
         - 26.11.16-r1
+        - 26.11.16-r2
         - 26.9.10-r0
         - 26.9.10-r1
         - 26.9.10-r10
@@ -48,6 +49,7 @@ affected:
       versions:
         - 26.11.16-r0
         - 26.11.16-r1
+        - 26.11.16-r2
         - 26.9.10-r0
         - 26.9.10-r1
         - 26.9.10-r10
@@ -84,6 +86,7 @@ affected:
         - 26.11.16-0
         - 26.11.16-1
         - 26.11.16-2
+        - 26.11.16-3
         - 26.9.10-0
         - 26.9.10-1
         - 26.9.10-10
@@ -154,9 +157,10 @@ affected:
         - 4.7.5-0
         - 4.7.5-1
         - 4.7.5-2
+        - 4.7.6-0
 details: Django REST framework is a toolkit for building Web APIs. From 3.6.4 until 3.18.2, JSONParser.parse in rest_framework/parsers.py uses the client-supplied Content-Type charset value with codecs.getreader, which accepts byte-transform codecs such as bz2_codec rather than only text encodings. A remote unauthenticated client can therefore cause a compressed JSON request body to be expanded after Django has enforced DATA_UPLOAD_MAX_MEMORY_SIZE against only the wire bytes, allowing a very small request to consume substantial per-worker memory. The default parser set is sufficient, and any reachable endpoint that accepts a JSON body is affected. This issue is fixed in version 3.18.2.
 id: DHI-ow4s-dkiw-bz7f-6kik
-modified: "2026-11-24T21:43:41Z"
+modified: "2026-11-25T09:33:06Z"
 published: "2026-11-12T02:06:28Z"
 references:
     - type: ADVISORY

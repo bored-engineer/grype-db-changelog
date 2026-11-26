@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: grist
         purl: pkg:deb/dhi/grist
+      ranges:
+        - events:
+            - introduced: 1.7.17-0
+          type: ECOSYSTEM
       versions:
         - 1.7.17-0
         - 1.7.17-1
@@ -49,7 +53,7 @@ affected:
         - 1.7.22-9
 details: DOMPurify before 3.4.7 passes direct references to the module-level DEFAULT_ALLOWED_TAGS and DEFAULT_ALLOWED_ATTR sets to the uponSanitizeElement and uponSanitizeAttribute hooks via data.allowedTags / data.allowedAttributes when sanitize is called without an explicit cfg.ALLOWED_TAGS / cfg.ALLOWED_ATTR array. A hook that mutates these fields permanently widens the default allow-lists for the lifetime of the DOMPurify instance, so all subsequent default-config sanitize calls inherit the widened defaults and attacker payloads using the poisoned tag/attribute name survive sanitization. removeAllHooks(), clearConfig(), and passing a fresh cfg do not recover the state; only constructing a new DOMPurify instance does.
 id: DHI-jegv-gqwr-qyzg-kehf
-modified: "2026-11-21T12:21:53Z"
+modified: "2026-11-25T02:32:55Z"
 published: "2026-11-11T16:37:46Z"
 references:
     - type: ADVISORY

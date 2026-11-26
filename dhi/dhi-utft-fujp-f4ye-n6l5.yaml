@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: rsync
         purl: pkg:apk/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.1-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.1-r1
         - 3.4.1-r2
@@ -19,6 +23,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: rsync
         purl: pkg:apk/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.3-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.3-r1
         - 3.5.0-r0
@@ -29,6 +37,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: rsync
         purl: pkg:deb/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.1+ds1-5+deb13u4+dhi0
+          type: ECOSYSTEM
       versions:
         - 3.4.1+ds1-5+deb13u4+dhi0
         - 3.5.0+ds1-0+deb13u1+dhi0
@@ -36,7 +48,7 @@ affected:
         - 3.5.0+ds1-0+deb13u2+dhi0
 details: rsync before 3.5.0 contains an out-of-bounds read vulnerability in the sender-side block matching logic that allows a malicious receiver to trigger memory access before the start of an allocated buffer by sending a crafted checksum block with a length of zero. Attackers can send a specially crafted checksum set containing a zero-length block to cause a negative offset calculation during delta computation, resulting in an out-of-bounds read of file data buffer memory on the sender side.
 id: DHI-utft-fujp-f4ye-n6l5
-modified: "2026-11-23T06:22:20Z"
+modified: "2026-11-25T02:58:55Z"
 published: "2026-11-11T18:24:29Z"
 references:
     - type: ADVISORY

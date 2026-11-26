@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: go
         purl: pkg:apk/dhi/go
+      ranges:
+        - events:
+            - introduced: 1.26.4-r0
+          type: ECOSYSTEM
       versions:
         - 1.26.4-r0
         - 1.26.5-r0
@@ -16,7 +20,7 @@ affected:
         - 1.27.4-r0
 details: Previously, a user operating inside of a malicious Go project that defines a bogus golang.org/toolchain go.sum entry and operates a malicious GOMODPROXY the user chooses to use can bypass the intended checksum. We now ensure that golang.org/toolchain always goes to the network for the canonical checksum.
 id: DHI-ib64-2xdv-xzv7-e7ew
-modified: "2026-11-18T19:52:05Z"
+modified: "2026-11-25T00:48:32Z"
 published: "2026-11-11T18:23:03Z"
 references:
     - type: ADVISORY

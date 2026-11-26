@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: cups
         purl: pkg:apk/dhi/cups
+      ranges:
+        - events:
+            - introduced: 2.4.13-r0
+          type: ECOSYSTEM
       versions:
         - 2.4.13-r0
         - 2.4.16-r0
@@ -13,7 +17,7 @@ affected:
         - 2.4.18-r1
 details: 'OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. In versions 2.4.16 and prior, a local unprivileged user can coerce cupsd into authenticating to an attacker-controlled localhost IPP service with a reusable Authorization: Local ... token. That token is enough to drive /admin/ requests on localhost, and the attacker can combine CUPS-Create-Local-Printer with printer-is-shared=true to persist a file:///... queue even though the normal FileDevice policy rejects such URIs. Printing to that queue gives an arbitrary root file overwrite; the PoC below uses that primitive to drop a sudoers fragment and demonstrate root command execution. At time of publication, there are no publicly available patches.'
 id: DHI-5tcz-x523-tyol-cxue
-modified: "2026-11-11T17:14:36Z"
+modified: "2026-11-25T01:27:44Z"
 published: "2026-11-11T17:14:36Z"
 references:
     - type: ADVISORY

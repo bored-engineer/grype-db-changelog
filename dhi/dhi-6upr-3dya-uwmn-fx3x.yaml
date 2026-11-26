@@ -6,7 +6,12 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: musl
         purl: pkg:apk/dhi/musl
+      ranges:
+        - events:
+            - introduced: 1.2.5
+          type: ECOSYSTEM
       versions:
+        - 1.2.5
         - 1.2.5-r10
         - 1.2.5-r21
         - 1.2.5-r22
@@ -18,6 +23,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: openssl-provider-fips
         purl: pkg:apk/dhi/openssl-provider-fips
+      ranges:
+        - events:
+            - introduced: 3.1.2-r0
+          type: ECOSYSTEM
       versions:
         - 3.1.2-r0
         - 3.1.2-r1
@@ -30,7 +39,7 @@ database_specific:
         - legacy_package_image_owner
 details: An issue was discovered in musl libc 0.7.10 through 1.2.6. Stack-based memory corruption can occur during qsort of very large arrays, due to incorrectly implemented double-word primitives. The number of elements must exceed about seven million, i.e., the 32nd Leonardo number on 32-bit platforms (or the 64th Leonardo number on 64-bit platforms, which is not practical).
 id: DHI-6upr-3dya-uwmn-fx3x
-modified: "2026-11-21T07:39:11Z"
+modified: "2026-11-25T01:27:26Z"
 published: "2026-11-21T07:39:11Z"
 references:
     - type: ADVISORY

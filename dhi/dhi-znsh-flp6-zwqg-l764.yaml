@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: rsync
         purl: pkg:apk/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.1-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.1-r1
         - 3.4.1-r2
@@ -19,6 +23,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: rsync
         purl: pkg:apk/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.3-r1
+          type: ECOSYSTEM
       versions:
         - 3.4.3-r1
         - 3.5.0-r0
@@ -29,6 +37,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: rsync
         purl: pkg:deb/dhi/rsync
+      ranges:
+        - events:
+            - introduced: 3.4.1+ds1-5+deb13u4+dhi0
+          type: ECOSYSTEM
       versions:
         - 3.4.1+ds1-5+deb13u4+dhi0
         - 3.5.0+ds1-0+deb13u1+dhi0
@@ -36,7 +48,7 @@ affected:
         - 3.5.0+ds1-0+deb13u2+dhi0
 details: rsync 3.2.5 before 3.5.0 contains a heap out-of-bounds write vulnerability that allows remote unauthenticated attackers to write one attacker-controlled byte past the end of a heap allocation by supplying a crafted files-from entry. Attackers can trigger the vulnerability against a read-only rsync daemon module by providing a files-from entry containing both an interior and trailing backslash, causing the add_implied_include() function to under-count the trailing backslash when sizing the destination buffer.
 id: DHI-znsh-flp6-zwqg-l764
-modified: "2026-11-23T06:22:20Z"
+modified: "2026-11-25T02:58:55Z"
 published: "2026-11-11T18:24:53Z"
 references:
     - type: ADVISORY

@@ -27,6 +27,7 @@ affected:
         - 18.11.14-r13
         - 18.11.14-r14
         - 18.11.14-r15
+        - 18.11.14-r16
         - 18.11.14-r2
         - 18.11.14-r3
         - 18.11.14-r4
@@ -35,6 +36,7 @@ affected:
         - 18.11.14-r7
         - 18.11.14-r8
         - 18.11.14-r9
+        - 18.11.15-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -73,6 +75,8 @@ affected:
         - 19.6.0-r1
         - 19.6.1-r0
         - 19.6.1-r1
+        - 19.6.1-r2
+        - 19.6.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -129,6 +133,7 @@ affected:
         - 18.11.14-r13
         - 18.11.14-r14
         - 18.11.14-r15
+        - 18.11.14-r16
         - 18.11.14-r2
         - 18.11.14-r3
         - 18.11.14-r4
@@ -137,6 +142,7 @@ affected:
         - 18.11.14-r7
         - 18.11.14-r8
         - 18.11.14-r9
+        - 18.11.15-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -175,6 +181,8 @@ affected:
         - 19.6.0-r1
         - 19.6.1-r0
         - 19.6.1-r1
+        - 19.6.1-r2
+        - 19.6.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -225,6 +233,7 @@ affected:
         - 18.11.14-7
         - 18.11.14-8
         - 18.11.14-9
+        - 18.11.15-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -278,9 +287,10 @@ affected:
         - 19.6.1-0
         - 19.6.1-1
         - 19.6.1-2
+        - 19.6.2-0
 details: Bytes is a utility library for working with bytes. From version 1.2.1 to before 1.11.1, Bytes is vulnerable to integer overflow in BytesMut::reserve. In the unique reclaim path of BytesMut::reserve, if the condition "v_capacity >= new_cap + offset" uses an unchecked addition. When new_cap + offset overflows usize in release builds, this condition may incorrectly pass, causing self.cap to be set to a value that exceeds the actual allocated capacity. Subsequent APIs such as spare_capacity_mut() then trust this corrupted cap value and may create out-of-bounds slices, leading to UB. This behavior is observable in release builds (integer overflow wraps), whereas debug builds panic due to overflow checks. This issue has been patched in version 1.11.1.
 id: DHI-4hh4-yyqw-bjbn-f2da
-modified: "2026-11-24T21:14:12Z"
+modified: "2026-11-25T22:24:44Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY

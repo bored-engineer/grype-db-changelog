@@ -366,6 +366,9 @@ affected:
         - 1.98.6-r0
         - 1.98.7-r0
         - 1.98.8-r0
+        - 1.98.9-r0
+        - 1.99.0-r0
+        - 1.99.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -740,6 +743,9 @@ affected:
         - 1.98.6-r0
         - 1.98.7-r0
         - 1.98.8-r0
+        - 1.98.9-r0
+        - 1.99.0-r0
+        - 1.99.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -828,10 +834,12 @@ affected:
         - 1.7.0.19-4
         - 1.7.0.19-5
         - 1.7.0.19-6
+        - 1.7.0.20-10
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
         - 1.7.0.20-9
+        - 1.9.0.1-10
     - database_specific:
         owner_kind: HSP
       package:
@@ -1121,6 +1129,7 @@ affected:
         - 4.83.0-0
         - 4.84.0-0
         - 4.84.0-1
+        - 4.86.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -1330,6 +1339,9 @@ affected:
         - 1.98.6-0
         - 1.98.7-0
         - 1.98.8-0
+        - 1.98.9-0
+        - 1.99.0-0
+        - 1.99.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1434,7 +1446,7 @@ affected:
         - 7.6.5-9
 details: fast-uri serializes the port component of a URI without validating it. When recomposing the authority, the userinfo and host components are escaped but the port is concatenated verbatim, so a port value that is not a sequence of digits can inject authority delimiters, demoting the intended host to userinfo and pointing the authority at an attacker-controlled host. Both fast-uri and Node's URL read the result back as the attacker's host with no error, so re-validating the built URI does not catch it. This affects applications that build URIs from parts and assign untrusted data to the port component through the serialize, normalize, or equal functions in their object forms. The issue affects fast-uri versions before 2.4.6, from 3.0.0 before 3.1.7, and from 4.0.0 before 4.1.4. It is fixed in 2.4.6, 3.1.7, and 4.1.4, where recomposeAuthority rejects any port that is not a digit sequence per RFC 3986.
 id: DHI-zeot-citt-uupp-y4tg
-modified: "2026-11-25T00:05:53Z"
+modified: "2026-11-25T23:10:46Z"
 published: "2026-11-12T01:41:48Z"
 references:
     - type: ADVISORY

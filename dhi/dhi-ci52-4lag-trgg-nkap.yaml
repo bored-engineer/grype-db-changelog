@@ -27,6 +27,7 @@ affected:
         - 18.11.14-r13
         - 18.11.14-r14
         - 18.11.14-r15
+        - 18.11.14-r16
         - 18.11.14-r2
         - 18.11.14-r3
         - 18.11.14-r4
@@ -35,6 +36,7 @@ affected:
         - 18.11.14-r7
         - 18.11.14-r8
         - 18.11.14-r9
+        - 18.11.15-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -73,6 +75,8 @@ affected:
         - 19.6.0-r1
         - 19.6.1-r0
         - 19.6.1-r1
+        - 19.6.1-r2
+        - 19.6.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -100,6 +104,7 @@ affected:
         - 18.11.14-r13
         - 18.11.14-r14
         - 18.11.14-r15
+        - 18.11.14-r16
         - 18.11.14-r2
         - 18.11.14-r3
         - 18.11.14-r4
@@ -108,6 +113,7 @@ affected:
         - 18.11.14-r7
         - 18.11.14-r8
         - 18.11.14-r9
+        - 18.11.15-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -146,6 +152,8 @@ affected:
         - 19.6.0-r1
         - 19.6.1-r0
         - 19.6.1-r1
+        - 19.6.1-r2
+        - 19.6.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -196,6 +204,7 @@ affected:
         - 18.11.14-7
         - 18.11.14-8
         - 18.11.14-9
+        - 18.11.15-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -249,9 +258,10 @@ affected:
         - 19.6.1-0
         - 19.6.1-1
         - 19.6.1-2
+        - 19.6.2-0
 details: Devise is an authentication solution for Rails based on Warden. Prior to version 5.0.3, a race condition in Devise's Confirmable module allows an attacker to confirm an email address they do not own. This affects any Devise application using the `reconfirmable` option (the default when using Confirmable with email changes). By sending two concurrent email change requests, an attacker can desynchronize the `confirmation_token` and `unconfirmed_email` fields. The confirmation token is sent to an email the attacker controls, but the `unconfirmed_email` in the database points to a victim's email address. When the attacker uses the token, the victim's email is confirmed on the attacker's account. This is patched in Devise v5.0.3. Users should upgrade as soon as possible. As a workaround, applications can override a specific method from Devise models to force `unconfirmed_email` to be persisted when unchanged. Note that Mongoid does not seem to respect that `will_change!` should force the attribute to be persisted, even if it did not really change, so the user might have to implement a workaround similar to Devise by setting `changed_attributes["unconfirmed_email"] = nil` as well.
 id: DHI-ci52-4lag-trgg-nkap
-modified: "2026-11-24T21:14:12Z"
+modified: "2026-11-25T22:43:39Z"
 published: "2026-11-10T14:53:12Z"
 references:
     - type: ADVISORY

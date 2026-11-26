@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: tinyproxy
         purl: pkg:apk/dhi/tinyproxy
+      ranges:
+        - events:
+            - introduced: 1.11.1-r2
+          type: ECOSYSTEM
       versions:
         - 1.11.1-r2
         - 1.11.2-r0
@@ -18,13 +22,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: tinyproxy
         purl: pkg:apk/dhi/tinyproxy
+      ranges:
+        - events:
+            - introduced: 1.11.3-r0
+          type: ECOSYSTEM
       versions:
         - 1.11.3-r0
         - 1.11.3-r1
         - 1.11.3-r2
 details: Tinyproxy through 1.11.3 is vulnerable to HTTP request parsing desynchronization due to a case-sensitive comparison of the Transfer-Encoding header in src/reqs.c. The is_chunked_transfer function uses strcmp to compare the header value against "chunked", even though RFC 7230 specifies that transfer-coding names are case-insensitive.
 id: DHI-kqjv-wq62-cnp7-rc5g
-modified: "2026-11-21T16:17:44Z"
+modified: "2026-11-25T02:33:59Z"
 published: "2026-11-11T19:16:44Z"
 references:
     - type: ADVISORY

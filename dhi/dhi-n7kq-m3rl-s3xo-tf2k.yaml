@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: cups
         purl: pkg:apk/dhi/cups
+      ranges:
+        - events:
+            - introduced: 2.4.13-r0
+          type: ECOSYSTEM
       versions:
         - 2.4.13-r0
         - 2.4.16-r0
@@ -13,7 +17,7 @@ affected:
         - 2.4.18-r1
 details: OpenPrinting CUPS is an open source printing system for Linux and other Unix-like operating systems. In versions 2.4.16 and prior, the RSS notifier allows .. path traversal in notify-recipient-uri (e.g., rss:///../job.cache), letting a remote IPP client write RSS XML bytes outside CacheDir/rss (anywhere that is lp-writable). In particular, because CacheDir is group-writable by default (typically root:lp and mode 0770), the notifier (running as lp) can replace root-managed state files via temp-file + rename(). This PoC clobbers CacheDir/job.cache with RSS XML, and after restarting cupsd the scheduler fails to parse the job cache and previously queued jobs disappear. At time of publication, there are no publicly available patches.
 id: DHI-n7kq-m3rl-s3xo-tf2k
-modified: "2026-11-11T17:14:36Z"
+modified: "2026-11-25T01:27:44Z"
 published: "2026-11-11T17:14:36Z"
 references:
     - type: ADVISORY

@@ -4,6 +4,29 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
+        name: azure-cli
+        purl: pkg:apk/dhi/azure-cli
+      ranges:
+        - events:
+            - introduced: 2.88.0-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.88.0-r0
+        - 2.89.1-r0
+        - 2.89.1-r1
+        - 2.90.0-r0
+        - 2.90.0-r1
+        - 2.90.0-r2
+        - 2.91.0-r0
+        - 2.91.0-r1
+        - 2.91.0-r2
+        - 2.91.0-r3
+        - 2.92.0-r0
+        - 2.93.0-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
         name: jupyterhub-k8s-hub
         purl: pkg:apk/dhi/jupyterhub-k8s-hub
       ranges:
@@ -29,6 +52,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -60,6 +84,7 @@ affected:
         - 2.14.3-r3
         - 2.14.3-r4
         - 2.14.3-r5
+        - 2.14.3-r7
     - database_specific:
         owner_kind: HSP
       package:
@@ -84,6 +109,59 @@ affected:
         - 2.9.0-r5
         - 2.9.0-r6
         - 2.9.1-r0
+        - 2.9.1-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: ros-jazzy
+        purl: pkg:apk/dhi/ros-jazzy
+      ranges:
+        - events:
+            - introduced: 20260618-r0
+          type: ECOSYSTEM
+      versions:
+        - 20260618-r0
+        - 20260618-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: ros-jazzy-dev
+        purl: pkg:apk/dhi/ros-jazzy-dev
+      ranges:
+        - events:
+            - introduced: 20260618-r0
+          type: ECOSYSTEM
+      versions:
+        - 20260618-r0
+        - 20260618-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: ros-lyrical
+        purl: pkg:apk/dhi/ros-lyrical
+      ranges:
+        - events:
+            - introduced: 20260807-r0
+          type: ECOSYSTEM
+      versions:
+        - 20260807-r0
+        - 20260807-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: ros-lyrical-dev
+        purl: pkg:apk/dhi/ros-lyrical-dev
+      ranges:
+        - events:
+            - introduced: 20260807-r0
+          type: ECOSYSTEM
+      versions:
+        - 20260807-r0
+        - 20260807-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -136,6 +214,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -167,6 +246,7 @@ affected:
         - 2.14.3-r3
         - 2.14.3-r4
         - 2.14.3-r5
+        - 2.14.3-r7
     - database_specific:
         owner_kind: HSP
       package:
@@ -191,6 +271,7 @@ affected:
         - 2.9.0-r5
         - 2.9.0-r6
         - 2.9.1-r0
+        - 2.9.1-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -411,6 +492,7 @@ affected:
         - 5.10.0-1
         - 5.10.0-2
         - 5.10.0-3
+        - 5.10.0-4
         - 5.7.0-0
         - 5.7.0-1
         - 5.8.0-0
@@ -467,6 +549,7 @@ affected:
         - 1.7.0.1-28
         - 1.7.0.1-29
         - 1.7.0.1-3
+        - 1.7.0.1-30
         - 1.7.0.1-4
         - 1.7.0.1-5
         - 1.7.0.1-6
@@ -511,6 +594,7 @@ affected:
         - 1.7.0.19-4
         - 1.7.0.19-5
         - 1.7.0.19-6
+        - 1.7.0.20-10
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
@@ -757,6 +841,7 @@ affected:
         - 1.110.2-1
         - 1.110.2-2
         - 1.110.3-0
+        - 1.110.3-1
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -843,6 +928,7 @@ affected:
         - 2.9.0-4
         - 2.9.0-5
         - 2.9.1-0
+        - 2.9.1-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -1019,7 +1105,7 @@ database_specific:
         - legacy_package_image_owner
 details: setuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. Prior to 83.0.0, FileList applied MANIFEST.in exclude, global-exclude, recursive-exclude, and prune directives by matching compiled glob patterns against on-disk file names without Unicode normalization, so on macOS APFS or HFS+ an NFD file name could bypass an NFC exclusion rule and be packed into a source distribution. This issue is fixed in version 83.0.0.
 id: DHI-76fg-hutw-yhzl-nbpt
-modified: "2026-11-24T21:45:19Z"
+modified: "2026-11-25T21:18:12Z"
 published: "2026-11-19T20:55:48Z"
 references:
     - type: ADVISORY

@@ -473,6 +473,7 @@ affected:
         - 1.110.2-1
         - 1.110.2-2
         - 1.110.3-0
+        - 1.110.3-1
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -530,6 +531,7 @@ affected:
         - 1.20.2-3
         - 1.20.2-4
         - 1.20.2-5
+        - 1.20.2-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -581,6 +583,9 @@ affected:
         - 1.98.6-0
         - 1.98.7-0
         - 1.98.8-0
+        - 1.98.9-0
+        - 1.99.0-0
+        - 1.99.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -617,7 +622,7 @@ database_specific:
         - legacy_package_image_owner
 details: undici's WebSocket client crashes the whole Node.js process during the opening handshake when a server responds with a subprotocol that the client never requested. A default WebSocket connection sends no subprotocol, but if the server's 101 response includes a Sec-WebSocket-Protocol header, undici dereferences a null value while checking it against the requested list and throws an uncaught TypeError. Because that code runs inside a microtask with no surrounding error handling, the exception propagates and terminates the process under Node's default behavior, instead of gracefully failing the connection as required by the WebSocket protocol. Any application that opens a WebSocket to an attacker-controlled or compromised server, or over a plaintext connection subject to a machine-in-the-middle, can be crashed remotely without authentication in the default configuration. This affects undici versions from 6.7.0 up to 6.28.1, from 7.0.0 up to 7.29.1, and from 8.0.0 up to 8.10.2. Users should upgrade to undici 6.28.1, 7.29.1, or 8.10.2.
 id: DHI-pfmo-w6eg-zg23-xcot
-modified: "2026-11-24T21:13:05Z"
+modified: "2026-11-25T23:11:27Z"
 published: "2026-11-20T09:27:42Z"
 references:
     - type: ADVISORY

@@ -7,22 +7,28 @@ affected:
         name: sqlite
         purl: pkg:apk/dhi/sqlite
       ranges:
-        - events:
-            - introduced: 3.51.1-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-19"
+                      kind: advisory
+                      version: 3.53.4-r1
+          events:
+            - introduced: "0"
+            - fixed: 3.53.4-r1
           type: ECOSYSTEM
       versions:
         - 3.51.1-r0
         - 3.51.2
         - 3.51.2-r0
         - 3.53.4-r0
-        - 3.53.4-r1
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: SQLite before 3.54.0 contains a stack exhaustion vulnerability that allows attackers to bypass the SQLITE_LIMIT_EXPR_DEPTH limit by chaining COLLATE postfix operators. Attackers can supply roughly 175,000 chained COLLATE operators in SQL or an untrusted database view to trigger unbounded recursion in sqlite3WalkExprNN() and crash the process.
 id: DHI-7qnp-b4o4-k37j-umx5
-modified: "2026-11-24T16:50:09Z"
+modified: "2026-11-25T12:08:49Z"
 published: "2026-11-19T22:00:30Z"
 references:
     - type: ADVISORY
@@ -271,6 +277,8 @@ references:
       url: https://alas.aws.amazon.com/AL2023/ALAS-2026-3508.html
     - type: ADVISORY
       url: https://errata.almalinux.org/8/ALSA-2026-102648.html
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:102648
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-102648.html
     - type: ADVISORY

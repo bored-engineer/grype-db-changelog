@@ -58,10 +58,12 @@ affected:
             - fixed: 1.11.1-1+deb13u1+dhi2
           type: ECOSYSTEM
       versions:
+        - 1.11.1-1+deb13u1+dhi0
         - 1.11.1-1+deb13u1+dhi1
+        - 1.11.1-1dhi0
 details: libssh2 through 1.11.1, fixed in commit a2ed82d, contains a pre-authentication integer underflow vulnerability in the ssh2_cipher_crypt() function in src/openssl.c that allows a malicious SSH server to crash any connecting client by negotiating AES-GCM ciphers during handshake. Attackers can exploit the underflow in the expression computing blocksize minus aadlen minus authentication tag length to trigger an out-of-bounds read and a memcpy call with a near-SIZE_MAX length argument, causing immediate process crash before any authentication occurs.
 id: DHI-keit-26om-us3o-t3h5
-modified: "2026-11-22T20:05:34Z"
+modified: "2026-11-25T02:58:05Z"
 published: "2026-11-11T16:35:22Z"
 references:
     - type: ADVISORY

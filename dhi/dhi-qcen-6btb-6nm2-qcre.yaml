@@ -44,6 +44,7 @@ affected:
         - 3.5.7-r8
         - 3.5.8-r0
         - 3.5.8-r1
+        - 3.5.9-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -88,6 +89,7 @@ affected:
         - 3.5.7-r8
         - 3.5.8-r0
         - 3.5.8-r1
+        - 3.5.9-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -104,6 +106,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -120,6 +123,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -164,6 +168,7 @@ affected:
         - 3.5.7-r8
         - 3.5.8-r0
         - 3.5.8-r1
+        - 3.5.9-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -208,6 +213,7 @@ affected:
         - 3.5.7-r8
         - 3.5.8-r0
         - 3.5.8-r1
+        - 3.5.9-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -224,6 +230,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -240,6 +247,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -284,6 +292,7 @@ affected:
         - 3.5.7-8
         - 3.5.8-0
         - 3.5.8-1
+        - 3.5.9-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -328,6 +337,7 @@ affected:
         - 3.5.7-8
         - 3.5.8-0
         - 3.5.8-1
+        - 3.5.9-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -366,10 +376,12 @@ affected:
         - 1.7.0.19-4
         - 1.7.0.19-5
         - 1.7.0.19-6
+        - 1.7.0.20-10
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
         - 1.7.0.20-9
+        - 1.9.0.1-10
     - database_specific:
         owner_kind: HSP
       package:
@@ -429,7 +441,7 @@ affected:
         - 2.95.12-9
 details: The fix for CVE-2021-23337 added validation for the variable option in _.template but did not apply the same validation to options.imports key names, and both paths flow into the same Function() constructor sink. When an application passes untrusted input as options.imports key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time. Additionally, _.template uses assignInWith to merge imports, which enumerates inherited properties via for..in, so if Object.prototype has been polluted by another vector the polluted keys are copied into the imports object and passed to Function(). The issue is fixed in 4.18.1 for lodash, lodash-es, lodash-amd, and lodash.template. As a workaround, do not pass untrusted input as key names in options.imports; use only developer-controlled, static key names.
 id: DHI-qcen-6btb-6nm2-qcre
-modified: "2026-11-24T23:28:58Z"
+modified: "2026-11-25T23:04:47Z"
 published: "2026-11-11T18:58:10Z"
 references:
     - type: ADVISORY

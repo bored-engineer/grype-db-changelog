@@ -212,6 +212,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -228,6 +229,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -722,6 +724,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -738,6 +741,7 @@ affected:
         - 4.4.5-r2
         - 4.4.5-r3
         - 4.4.5-r4
+        - 4.4.5-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -1058,10 +1062,12 @@ affected:
         - 1.7.0.19-4
         - 1.7.0.19-5
         - 1.7.0.19-6
+        - 1.7.0.20-10
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
         - 1.7.0.20-9
+        - 1.9.0.1-10
     - database_specific:
         owner_kind: HSP
       package:
@@ -1602,6 +1608,7 @@ affected:
         - 1.110.2-1
         - 1.110.2-2
         - 1.110.3-0
+        - 1.110.3-1
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -1671,7 +1678,7 @@ database_specific:
         - legacy_package_image_owner
 details: PostCSS Selector Parser is a CSS selector parser that integrates with PostCSS but does not require it. Prior to 7.1.6, src/parser.js splitWord() can receive a flat selector as one word token carrying many class or ID indexes because period and hash characters are not tokenizer word delimiters. The uniqs() deduplication and per-index class and ID membership checks repeatedly scan the class and ID index arrays, while a separate Sass-interpolation filtering pass also performs repeated linear scanning. Together, these passes make parsing quadratic in the number of indexes and allow a crafted selector to occupy a synchronous parser thread. The maxNestingDepth guard does not mitigate the issue because the hostile selector can have zero nesting depth. Only consumers that synchronously parse untrusted selectors in an exposed request path are affected; ordinary build-time parsing of trusted sources is not affected. This issue is fixed in version 7.1.6.
 id: DHI-maxg-6icd-lt2z-hsgn
-modified: "2026-11-25T00:18:48Z"
+modified: "2026-11-25T23:04:06Z"
 published: "2026-11-20T14:21:44Z"
 references:
     - type: ADVISORY

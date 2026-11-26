@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: py3-requests
         purl: pkg:apk/dhi/py3-requests
+      ranges:
+        - events:
+            - introduced: 2.32.5-r0
+          type: ECOSYSTEM
       versions:
         - 2.32.5-r0
         - 2.33.1-r0
@@ -15,6 +19,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: k8ssandra-medusa
         purl: pkg:deb/dhi/k8ssandra-medusa
+      ranges:
+        - events:
+            - introduced: 0.29.1-1
+          type: ECOSYSTEM
       versions:
         - 0.29.1-1
         - 0.30.0-0
@@ -60,7 +68,7 @@ affected:
         - 0.31.1-9
 details: Requests is a HTTP library. Prior to version 2.33.0, the `requests.utils.extract_zipped_paths()` utility function uses a predictable filename when extracting files from zip archives into the system temporary directory. If the target file already exists, it is reused without validation. A local attacker with write access to the temp directory could pre-create a malicious file that would be loaded in place of the legitimate one. Standard usage of the Requests library is not affected by this vulnerability. Only applications that call `extract_zipped_paths()` directly are impacted. Starting in version 2.33.0, the library extracts files to a non-deterministic location. If developers are unable to upgrade, they can set `TMPDIR` in their environment to a directory with restricted write access.
 id: DHI-7xyy-qgse-y2bp-oilr
-modified: "2026-11-21T12:21:40Z"
+modified: "2026-11-25T02:26:03Z"
 published: "2026-11-10T07:57:24Z"
 references:
     - type: ADVISORY

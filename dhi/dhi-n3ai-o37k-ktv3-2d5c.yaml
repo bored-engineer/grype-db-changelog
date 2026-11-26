@@ -3,6 +3,21 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: libxml2
+        purl: pkg:apk/dhi/libxml2
+      ranges:
+        - events:
+            - introduced: 2.13.9-r2
+          type: ECOSYSTEM
+      versions:
+        - 2.13.9-r2
+        - 2.13.9-r3
+        - 2.13.9-r4
+        - 2.13.9-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: libxml2
         purl: pkg:deb/dhi/libxml2
@@ -23,7 +38,7 @@ affected:
         - 2.12.7+dfsg+really2.9.14-2.1+deb13u2dhi0
 details: A flaw was found in the libxml2 library. This uncontrolled resource consumption vulnerability occurs when processing XML catalogs that contain repeated <nextCatalog> elements pointing to the same downstream catalog. A remote attacker can exploit this by supplying crafted catalogs, causing the parser to redundantly traverse catalog chains. This leads to excessive CPU consumption and degrades application availability, resulting in a denial-of-service condition.
 id: DHI-n3ai-o37k-ktv3-2d5c
-modified: "2026-11-21T00:59:37Z"
+modified: "2026-11-25T21:07:41Z"
 published: "2026-11-11T17:11:33Z"
 references:
     - type: ADVISORY
@@ -50,6 +65,8 @@ references:
       url: https://scout.docker.com/v/DHI-n3ai-o37k-ktv3-2d5c
     - type: ADVISORY
       url: https://security-tracker.debian.org/tracker/CVE-2026-0992
+    - type: ADVISORY
+      url: https://security.alpinelinux.org/vuln/CVE-2026-0992
     - type: ADVISORY
       url: https://ubuntu.com/security/CVE-2026-0992
 schema_version: 1.8.0

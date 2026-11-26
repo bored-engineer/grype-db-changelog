@@ -7,12 +7,18 @@ affected:
         name: yaml
         purl: pkg:apk/dhi/yaml
       ranges:
-        - events:
-            - introduced: 0.2.5-r2
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-22"
+                      kind: advisory
+                      version: 0.2.5-r3
+          events:
+            - introduced: "0"
+            - fixed: 0.2.5-r3
           type: ECOSYSTEM
       versions:
         - 0.2.5-r2
-        - 0.2.5-r3
     - database_specific:
         owner_kind: HSP
       package:
@@ -32,7 +38,7 @@ details: |-
     - libyaml 0.2.6-1
     Fixed by: https://github.com/yaml/libyaml/commit/51843fe48257c6b7b6e70cdec1db634f64a40818 (0.2.6-rc.1)
 id: DHI-zrdm-vlo3-v5yz-7xwo
-modified: "2026-11-24T20:49:57Z"
+modified: "2026-11-25T17:18:22Z"
 published: "2026-11-22T16:54:58Z"
 references:
     - type: ADVISORY
@@ -42,6 +48,9 @@ references:
     - type: ADVISORY
       url: https://security.alpinelinux.org/vuln/CVE-2026-44842
 schema_version: 1.8.0
+severity:
+    - score: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H
+      type: CVSS_V3
 summary: '- libyaml 0.2.6-1'
 upstream:
     - CVE-2026-44842

@@ -40,6 +40,7 @@ affected:
         - 36.0.0-35
         - 36.0.0-36
         - 36.0.0-37
+        - 36.0.0-38
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -85,6 +86,7 @@ affected:
         - 36.0.0-35
         - 36.0.0-36
         - 36.0.0-37
+        - 36.0.0-38
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -130,6 +132,7 @@ affected:
         - 37.0.0-33
         - 37.0.0-35
         - 37.0.0-37
+        - 37.0.0-38
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -174,6 +177,7 @@ affected:
         - 37.0.0-33
         - 37.0.0-35
         - 37.0.0-37
+        - 37.0.0-38
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -204,6 +208,7 @@ affected:
         - 38.0.0-19
         - 38.0.0-2
         - 38.0.0-20
+        - 38.0.0-21
         - 38.0.0-3
         - 38.0.0-4
         - 38.0.0-5
@@ -235,6 +240,7 @@ affected:
         - 38.0.0-19
         - 38.0.0-2
         - 38.0.0-20
+        - 38.0.0-21
         - 38.0.0-3
         - 38.0.0-4
         - 38.0.0-5
@@ -242,9 +248,35 @@ affected:
         - 38.0.0-7
         - 38.0.0-8
         - 38.0.0-9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: druid-39
+        purl: pkg:deb/dhi/druid-39
+      ranges:
+        - events:
+            - introduced: 39.0.0-0
+          type: ECOSYSTEM
+      versions:
+        - 39.0.0-0
+        - 39.0.0-1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: druid-39-fips
+        purl: pkg:deb/dhi/druid-39-fips
+      ranges:
+        - events:
+            - introduced: 39.0.0-0
+          type: ECOSYSTEM
+      versions:
+        - 39.0.0-0
+        - 39.0.0-1
 details: Netty is an asynchronous event-driven network application framework for rapid development of maintainable high performance protocol servers & clients. Netty prior to version 4.1.71.Final skips control chars when they are present at the beginning / end of the header name. It should instead fail fast as these are not allowed by the spec and could lead to HTTP request smuggling. Failing to do the validation might cause netty to "sanitize" header names before it forward these to another remote system when used as proxy. This remote system can't see the invalid usage anymore, and therefore does not do the validation itself. Users should upgrade to version 4.1.71.Final.
 id: DHI-prqh-2xpu-jvmc-enju
-modified: "2026-11-24T14:55:37Z"
+modified: "2026-11-25T03:08:51Z"
 published: "2026-11-10T08:55:24Z"
 references:
     - type: ADVISORY

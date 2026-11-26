@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: go
         purl: pkg:apk/dhi/go
+      ranges:
+        - events:
+            - introduced: 1.26.4-r0
+          type: ECOSYSTEM
       versions:
         - 1.26.4-r0
         - 1.26.5-r0
@@ -16,7 +20,7 @@ affected:
         - 1.27.4-r0
 details: Previously, a user operating inside of a malicious Go project that defines a bogus golang.org/fips140 and operates a malicious GOMODPROXY the user chooses to connect to can serve an arbitrary module in its place. We now unpack the trusted ziphash for the bundled golang.org/fips140 module and construct its entry in the GOMODCACHE such that it can be verified by the toolchain.
 id: DHI-je6p-nxsk-lesc-66xc
-modified: "2026-11-18T19:52:05Z"
+modified: "2026-11-25T00:48:32Z"
 published: "2026-11-11T18:23:03Z"
 references:
     - type: ADVISORY

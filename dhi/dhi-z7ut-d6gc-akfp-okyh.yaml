@@ -84,6 +84,35 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
+        name: mapbox-mcp
+        purl: pkg:apk/dhi/mapbox-mcp
+      ranges:
+        - events:
+            - introduced: 0.14.0-r1
+          type: ECOSYSTEM
+      versions:
+        - 0.14.0-r1
+        - 0.14.0-r2
+        - 0.14.0-r3
+        - 0.14.0-r4
+        - 0.15.0-r0
+        - 0.15.1-r0
+        - 0.15.1-r1
+        - 0.15.1-r2
+        - 0.16.0-r0
+        - 0.16.0-r1
+        - 0.16.0-r2
+        - 0.16.0-r3
+        - 0.16.0-r4
+        - 0.16.0-r5
+        - 0.16.0-r6
+        - 0.17.0-r0
+        - 0.18.0-r0
+        - 0.18.1-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
         name: postman-mcp
         purl: pkg:apk/dhi/postman-mcp
       ranges:
@@ -464,6 +493,7 @@ affected:
         - 4.83.0-0
         - 4.84.0-0
         - 4.84.0-1
+        - 4.86.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -547,6 +577,7 @@ affected:
         - 3.3.0-0
         - 3.3.0-1
         - 3.3.0-2
+        - 3.4.0-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -624,7 +655,7 @@ affected:
         - 2.9.1-0
 details: Hono is a Web application framework that provides support for any JavaScript runtime. From 4.12.4 until 4.13.11, serveStatic can interpret a malformed percent-encoded path differently from upstream routing middleware and bypass protection for a static prefix. The root cause is serveStatic decodes a routed request path a second time before filesystem lookup. The attack mechanism is malformed percent encoding survives the first routing interpretation and becomes a protected path only during the later static-file decode. The affected component is serveStatic. The trigger conditions are an application protects a static prefix with upstream middleware and serveStatic receives an attacker-controlled malformed percent-encoded path. The impact is unauthorized disclosure of a static file that upstream middleware was intended to protect. The issue does not permit traversal outside the configured static root. This issue is fixed in version 4.13.11.
 id: DHI-z7ut-d6gc-akfp-okyh
-modified: "2026-11-24T23:54:34Z"
+modified: "2026-11-25T02:15:21Z"
 published: "2026-11-14T01:12:02Z"
 references:
     - type: ADVISORY

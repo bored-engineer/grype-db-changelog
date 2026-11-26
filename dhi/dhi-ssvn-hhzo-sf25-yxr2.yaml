@@ -713,6 +713,7 @@ affected:
         - 3.1.4-r3
         - 3.1.4-r4
         - 3.1.4-r5
+        - 3.1.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -761,6 +762,7 @@ affected:
         - 3.1.4-r3
         - 3.1.4-r4
         - 3.1.4-r5
+        - 3.1.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -2073,6 +2075,27 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
+        name: minio-els
+        purl: pkg:apk/dhi/minio-els
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-r5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-r14
+        - 0.20251015.172955-r15
+        - 0.20251015.172955-r16
+        - 0.20251015.172955-r17
+        - 0.20251015.172955-r18
+        - 0.20251015.172955-r19
+        - 0.20251015.172955-r20
+        - 0.20251015.172955-r5
+        - 0.20251015.172955-r6
+        - 0.20251015.172955-r8
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
         name: node-exporter
         purl: pkg:apk/dhi/node-exporter
       ranges:
@@ -3080,13 +3103,34 @@ affected:
           type: ECOSYSTEM
       versions:
         - 0.20251015.172955-5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: minio-els
+        purl: pkg:deb/dhi/minio-els
+      ranges:
+        - events:
+            - introduced: 0.20251015.172955-5
+          type: ECOSYSTEM
+      versions:
+        - 0.20251015.172955-14
+        - 0.20251015.172955-15
+        - 0.20251015.172955-16
+        - 0.20251015.172955-17
+        - 0.20251015.172955-18
+        - 0.20251015.172955-19
+        - 0.20251015.172955-20
+        - 0.20251015.172955-5
+        - 0.20251015.172955-6
+        - 0.20251015.172955-8
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: On Linux, if the target of Root.Chmod is replaced with a symlink while the chmod operation is in progress, Chmod can operate on the target of the symlink, even when the target lies outside the root. The Linux fchmodat syscall silently ignores the AT_SYMLINK_NOFOLLOW flag, which Root.Chmod uses to avoid symlink traversal. Root.Chmod checks its target before acting and returns an error if the target is a symlink lying outside the root, so the impact is limited to cases where the target is replaced with a symlink between the check and operation.
 id: DHI-ssvn-hhzo-sf25-yxr2
-modified: "2026-11-24T22:37:09Z"
+modified: "2026-11-25T00:13:12Z"
 published: "2026-11-19T21:09:05Z"
 references:
     - type: ADVISORY

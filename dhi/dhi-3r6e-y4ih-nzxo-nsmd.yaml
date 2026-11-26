@@ -6,8 +6,14 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - events:
+            - introduced: 8.17.0
+          type: ECOSYSTEM
       versions:
+        - 8.17.0
         - 8.17.0-r1
+        - 8.18.0
         - 8.18.0-r0
         - 8.19.0-r0
         - 8.20.0-r0
@@ -22,6 +28,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: curl
         purl: pkg:apk/dhi/curl
+      ranges:
+        - events:
+            - introduced: 8.20.0-r1
+          type: ECOSYSTEM
       versions:
         - 8.20.0-r1
         - 8.21.0-r0
@@ -34,6 +44,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: curl
         purl: pkg:deb/dhi/curl
+      ranges:
+        - events:
+            - introduced: 8.14.1-2+deb13u2dhi2
+          type: ECOSYSTEM
       versions:
         - 8.14.1-2+deb13u2dhi2
         - 8.14.1-2+deb13u2dhi3
@@ -48,6 +62,7 @@ affected:
         - 8.14.1-2+deb13u5+dhi0
         - 8.14.1-2+deb13u7+dhi0
         - 8.14.1-2+deb13u7+dhi1
+        - 8.19.0-dhi1
 details: |-
     When reusing a libcurl handle for sequential transfers driven by
     environment-variable proxy configuration, libcurl fails to clear the proxy
@@ -56,7 +71,7 @@ details: |-
     through `proxyB` erroneously leaks the `Proxy-Authorization:` header intended
     solely for `proxyA`.
 id: DHI-3r6e-y4ih-nzxo-nsmd
-modified: "2026-11-21T17:48:22Z"
+modified: "2026-11-25T21:18:12Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY
@@ -92,6 +107,8 @@ references:
     - type: ADVISORY
       url: http://people.ubuntu.com/~ubuntu-security/cve/CVE-2026-8927
     - type: ADVISORY
+      url: https://access.redhat.com/errata/RHSA-2026:100686
+    - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:69126
     - type: ADVISORY
       url: https://access.redhat.com/errata/RHSA-2026:92368
@@ -103,6 +120,8 @@ references:
       url: https://curl.se/docs/CVE-2026-8927.json
     - type: ADVISORY
       url: https://errata.almalinux.org/8/ALSA-2026-92368.html
+    - type: ADVISORY
+      url: https://errata.almalinux.org/9/ALSA-2026-100686.html
     - type: ADVISORY
       url: https://errata.almalinux.org/9/ALSA-2026-69126.html
     - type: ADVISORY
@@ -118,6 +137,8 @@ references:
     - type: ADVISORY
       url: https://hackerone.com/reports/3744543
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-100685.html
+    - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-100686.html
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-55432.html
@@ -125,6 +146,8 @@ references:
       url: https://linux.oracle.com/cve/ELSA-2026-69126.html
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-92368.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-100685.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-100686.html
     - type: ADVISORY

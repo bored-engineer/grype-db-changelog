@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: unbound
         purl: pkg:deb/dhi/unbound
+      ranges:
+        - events:
+            - introduced: 1.22.0-2+deb13u3+dhi0
+          type: ECOSYSTEM
       versions:
         - 1.22.0-2+deb13u3+dhi0
         - 1.22.0-2+deb13u3+dhi1
@@ -13,7 +17,7 @@ affected:
         - 1.26.2-0+deb13u1+dhi0
 details: In NLnet Labs Unbound 1.22.0 up to and including 1.25.1, when downstream DNS-over-QUIC (DoQ) is enabled, the first two bidirectional streams on a new QUIC connection (stream_id 0 and 4) bypass the per-stream 'quic-size' gate entirely, and large input buffers are allocated later, after only the 2-byte length prefix has been received from the initial streams. As a result, a remote client can make Unbound exceed the configured 'quic-size' limit with low-cost input. Using only one connection and two streams, each sending a declared 65535-byte length prefix and then holding the streams open, a client can already trivially make Unbound roughly allocate double that amount. This is a remote availability issue / memory-accounting bypass in the downstream DoQ implementation that leads to denial of service for new DoQ clients. This vulnerability needs Unbound to be compiled with DoQ support ('--with-libngtcp2') and the 'quic-port' to be configured for the listening interfaces.
 id: DHI-wjgr-3q3k-mjih-w2ze
-modified: "2026-11-11T15:55:45Z"
+modified: "2026-11-25T02:57:18Z"
 published: "2026-11-11T15:55:45Z"
 references:
     - type: ADVISORY

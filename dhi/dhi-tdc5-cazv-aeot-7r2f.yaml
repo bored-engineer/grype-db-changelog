@@ -27,6 +27,7 @@ affected:
         - 18.11.14-r13
         - 18.11.14-r14
         - 18.11.14-r15
+        - 18.11.14-r16
         - 18.11.14-r2
         - 18.11.14-r3
         - 18.11.14-r4
@@ -35,6 +36,7 @@ affected:
         - 18.11.14-r7
         - 18.11.14-r8
         - 18.11.14-r9
+        - 18.11.15-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -62,6 +64,7 @@ affected:
         - 18.11.14-r13
         - 18.11.14-r14
         - 18.11.14-r15
+        - 18.11.14-r16
         - 18.11.14-r2
         - 18.11.14-r3
         - 18.11.14-r4
@@ -70,6 +73,7 @@ affected:
         - 18.11.14-r7
         - 18.11.14-r8
         - 18.11.14-r9
+        - 18.11.15-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -120,9 +124,10 @@ affected:
         - 18.11.14-7
         - 18.11.14-8
         - 18.11.14-9
+        - 18.11.15-0
 details: iCalendar is a Ruby library for dealing with iCalendar files in the iCalendar format defined by RFC-5545. Starting in version 2.0.0 and prior to version 2.12.2, .ics serialization does not properly sanitize URI property values, enabling ICS injection through attacker-controlled input, adding arbitrary calendar lines to the output. `Icalendar::Values::Uri` falls back to the raw input string when `URI.parse` fails and later serializes it with `value.to_s` without removing or escaping `\r` or `\n` characters. That value is embedded directly into the final ICS line by the normal serializer, so a payload containing CRLF can terminate the original property and create a new ICS property or component. (It looks like you can inject via url, source, image, organizer, attach, attendee, conference, tzurl because of this). Applications that generate `.ics` files from partially untrusted metadata are impacted. As a result, downstream calendar clients or importers may process attacker-supplied content as if it were legitimate event data, such as added attendees, modified URLs, alarms, or other calendar fields. Version 2.12.2 contains a patch for the issue.
 id: DHI-tdc5-cazv-aeot-7r2f
-modified: "2026-11-24T21:23:30Z"
+modified: "2026-11-25T23:10:05Z"
 published: "2026-11-11T15:31:45Z"
 references:
     - type: ADVISORY

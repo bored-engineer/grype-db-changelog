@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: wget
         purl: pkg:apk/dhi/wget
+      ranges:
+        - events:
+            - introduced: 1.25.0-r2
+          type: ECOSYSTEM
       versions:
         - 1.25.0-r2
         - 1.25.0-r3
@@ -16,13 +20,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: wget
         purl: pkg:apk/dhi/wget
+      ranges:
+        - events:
+            - introduced: 1.25.0-r3
+          type: ECOSYSTEM
       versions:
         - 1.25.0-r3
         - 1.25.0-r4
         - 1.25.0-r5
 details: GNU Wget through 1.25.0, fixed in commit dd692d9, contains a heap buffer overflow vulnerability in the html_quote_string() function in src/convert.c that allows a remote attacker to trigger memory corruption by supplying a crafted HTML attribute with a large number of characters requiring entity encoding. A server-supplied HTML attribute causes a signed integer counter to overflow during output size accumulation, resulting in an undersized heap allocation and subsequent heap buffer overflow during the copy phase.
 id: DHI-wsg3-ytmw-ar2d-b7j5
-modified: "2026-11-21T16:17:44Z"
+modified: "2026-11-25T02:57:18Z"
 published: "2026-11-11T20:28:14Z"
 references:
     - type: ADVISORY

@@ -13,23 +13,11 @@ affected:
       versions:
         - 3.0.2-r0
         - 3.0.3-r0
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Alpine:3.24
-        name: kea
-        purl: pkg:apk/dhi/kea
-      ranges:
-        - events:
-            - introduced: 3.0.3-r0
-          type: ECOSYSTEM
-      versions:
-        - 3.0.3-r0
 details: |-
     To trigger the issue, three configuration parameters must have specific settings: "hostname-char-set" must be left at the default setting, which is "[^A-Za-z0-9.-]"; "hostname-char-replacement" must be empty (the default); and "ddns-qualifying-suffix" must *NOT* be empty (the default is empty). DDNS updates do not need to be enabled for this issue to manifest. A client that sends certain option content would then cause kea-dhcp4 to exit unexpectedly.
     This issue affects Kea versions 3.0.1 through 3.0.1 and 3.1.1 through 3.1.2.
 id: DHI-wnir-3tou-d7l4-3uic
-modified: "2026-11-23T21:00:23Z"
+modified: "2026-11-25T20:04:17Z"
 published: "2026-11-11T19:15:13Z"
 references:
     - type: ADVISORY

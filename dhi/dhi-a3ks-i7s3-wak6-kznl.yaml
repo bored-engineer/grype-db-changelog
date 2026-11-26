@@ -166,6 +166,26 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
+        name: postman-mcp
+        purl: pkg:apk/dhi/postman-mcp
+      ranges:
+        - events:
+            - introduced: 2.11.2-r5
+          type: ECOSYSTEM
+      versions:
+        - 2.11.2-r5
+        - 2.12.0-r0
+        - 2.12.2-r0
+        - 2.12.3-r0
+        - 2.13.0-r0
+        - 2.14.0-r0
+        - 2.15.0-r0
+        - 2.15.0-r1
+        - 2.15.0-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
         name: sorry-cypress-director-2
         purl: pkg:apk/dhi/sorry-cypress-director-2
       ranges:
@@ -696,7 +716,7 @@ affected:
         - 2.6.0-9
 details: Forge, also called node-forge, is a native implementation of Transport Layer Security in JavaScript. Prior to 1.4.1, publicKey.verify() with the default RSASSA-PKCS1-V1_5 scheme in lib/rsa.js parses the recovered DigestInfo with the lenient BER parser asn1.fromDer() and validates its structure with digestInfoValidator without requiring canonical DER bytes. Non-minimal or indefinite lengths, malformed parameter values, and non-canonical object identifier encodings with padded subidentifiers or trailing bytes can leave attacker-controlled data inside an accepted DigestInfo. When the verifying RSA public key uses a low exponent such as e=3, an attacker can use that encoding slack to forge a signature without the private key. The same path is used by X.509 certificate and PKCS#7 signature verification. This issue is fixed in version 1.4.1.
 id: DHI-a3ks-i7s3-wak6-kznl
-modified: "2026-11-24T22:24:02Z"
+modified: "2026-11-25T00:21:01Z"
 published: "2026-11-20T04:20:49Z"
 references:
     - type: ADVISORY

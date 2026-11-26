@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: keycloak-26.7
         purl: pkg:deb/dhi/keycloak-26.7
+      ranges:
+        - events:
+            - introduced: 26.7.2-0
+          type: ECOSYSTEM
       versions:
         - 26.7.2-0
         - 26.7.3-0
@@ -26,6 +30,10 @@ affected:
         ecosystem: Docker Hardened Images:Debian:13
         name: keycloak-26.7-fips
         purl: pkg:deb/dhi/keycloak-26.7-fips
+      ranges:
+        - events:
+            - introduced: 26.7.2-0
+          type: ECOSYSTEM
       versions:
         - 26.7.2-0
         - 26.7.3-0
@@ -42,7 +50,7 @@ affected:
         - 26.7.4-7
 details: "### Impact\r\n\r\nA flaw was found in Keycloak. When deployed in stateless mode with MySQL or MariaDB, a mismatch in row-count semantics between the database driver and Keycloak's application logic allows an attacker to bypass replay protection. This vulnerability enables an attacker who intercepts single-use security artifacts, such as JWT client assertions, DPoP proofs, or one-time password (TOTP) codes, to replay them. Successful exploitation grants unauthorized access to the token endpoint or login flow.\r\n\r\n### Patches\r\n\r\nThis was fixed in Keycloak 26.7.4\r\n\r\n### Workarounds\r\n\r\nDisable the stateless feature of Keycloak\r\n\r\n### References\r\n\r\nhttps://bugzilla.redhat.com/show_bug.cgi?id=CVE-2026-90997\r\nhttps://github.com/keycloak/keycloak/issues/52834\r\n"
 id: DHI-oai5-wrxl-ih5h-siee
-modified: "2026-11-11T21:02:53Z"
+modified: "2026-11-25T00:25:39Z"
 published: "2026-11-11T21:02:53Z"
 references:
     - type: ADVISORY

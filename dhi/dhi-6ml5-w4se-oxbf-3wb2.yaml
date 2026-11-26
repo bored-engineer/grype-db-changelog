@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: wget
         purl: pkg:apk/dhi/wget
+      ranges:
+        - events:
+            - introduced: 1.25.0-r2
+          type: ECOSYSTEM
       versions:
         - 1.25.0-r2
         - 1.25.0-r3
@@ -16,13 +20,17 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: wget
         purl: pkg:apk/dhi/wget
+      ranges:
+        - events:
+            - introduced: 1.25.0-r3
+          type: ECOSYSTEM
       versions:
         - 1.25.0-r3
         - 1.25.0-r4
         - 1.25.0-r5
 details: GNU Wget through 1.25.0, fixed in commit 37a40fc, contains a heap buffer underread vulnerability in the clean_metalink_string() function within src/metalink.c that allows a malicious server to trigger memory corruption by serving a Metalink document containing a whitespace-only URL. Attackers can cause the function to decrement a pointer past the start of the buffer when processing an all-whitespace Metalink URL, potentially leading to abnormal program behavior.
 id: DHI-6ml5-w4se-oxbf-3wb2
-modified: "2026-11-21T16:17:44Z"
+modified: "2026-11-25T02:57:18Z"
 published: "2026-11-11T20:28:14Z"
 references:
     - type: ADVISORY

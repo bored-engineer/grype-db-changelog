@@ -25,6 +25,48 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
+        name: litellm-database-1.94
+        purl: pkg:apk/dhi/litellm-database-1.94
+      ranges:
+        - events:
+            - introduced: 1.94.3-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.94.3-r0
+        - 1.94.3-r1
+        - 1.94.3-r3
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: litellm-database-1.95
+        purl: pkg:apk/dhi/litellm-database-1.95
+      ranges:
+        - events:
+            - introduced: 1.95.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.95.1-r0
+        - 1.95.1-r1
+        - 1.95.1-r3
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: litellm-database-1.96
+        purl: pkg:apk/dhi/litellm-database-1.96
+      ranges:
+        - events:
+            - introduced: 1.96.2-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.96.2-r0
+        - 1.96.2-r1
+        - 1.96.2-r3
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
         name: litellm-database-1.97
         purl: pkg:apk/dhi/litellm-database-1.97
       ranges:
@@ -247,6 +289,7 @@ affected:
         - 1.7.0.1-28
         - 1.7.0.1-29
         - 1.7.0.1-3
+        - 1.7.0.1-30
         - 1.7.0.1-4
         - 1.7.0.1-5
         - 1.7.0.1-6
@@ -291,10 +334,12 @@ affected:
         - 1.7.0.19-4
         - 1.7.0.19-5
         - 1.7.0.19-6
+        - 1.7.0.20-10
         - 1.7.0.20-6
         - 1.7.0.20-7
         - 1.7.0.20-8
         - 1.7.0.20-9
+        - 1.9.0.1-10
     - database_specific:
         owner_kind: HSP
       package:
@@ -401,6 +446,7 @@ affected:
         - 1.110.2-1
         - 1.110.2-2
         - 1.110.3-0
+        - 1.110.3-1
         - 1.95.0-0
         - 1.95.0-1
         - 1.96.0-0
@@ -543,6 +589,7 @@ affected:
         - 1.104.9-5
         - 1.104.9-6
         - 1.104.9-7
+        - 1.104.9-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -564,6 +611,7 @@ affected:
         - 1.105.7-1
         - 1.105.7-10
         - 1.105.7-11
+        - 1.105.7-12
         - 1.105.7-2
         - 1.105.7-3
         - 1.105.7-4
@@ -591,6 +639,7 @@ affected:
         - 1.106.11-0
         - 1.106.12-0
         - 1.106.12-1
+        - 1.106.12-2
         - 1.106.2-0
         - 1.106.3-0
         - 1.106.4-0
@@ -766,7 +815,7 @@ affected:
         - 0.15.4-9
 details: filelock is a platform-independent file lock for Python. From 3.22.0 until 4.2.1, soft lock classes on Windows read an existing marker with _read_lock_file and remove a stale marker through break_lock_file using pathname operations that wait for an oplock break. Another local account with read access to an unheld marker can keep a Level 1 or batch oplock unanswered, causing SoftFileLock.acquire and related async or fallback locks to wait beyond timeout, blocking=False, and cancel_check. A stale marker under the oplock cannot be broken, but mutual exclusion remains intact and no file other than the marker is accessed. This issue is fixed in version 4.2.1.
 id: DHI-gr5o-hnty-foiu-mpki
-modified: "2026-11-24T21:13:20Z"
+modified: "2026-11-25T22:57:32Z"
 published: "2026-11-20T16:51:53Z"
 references:
     - type: ADVISORY

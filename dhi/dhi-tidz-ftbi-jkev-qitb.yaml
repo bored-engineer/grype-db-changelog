@@ -34,6 +34,7 @@ affected:
         - 1.40.3-r2
         - 1.40.3-r3
         - 1.40.4-r0
+        - 1.40.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -68,6 +69,7 @@ affected:
         - 1.40.3-r2
         - 1.40.3-r3
         - 1.40.4-r0
+        - 1.40.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -102,6 +104,7 @@ affected:
         - 1.40.3-r2
         - 1.40.3-r3
         - 1.40.4-r0
+        - 1.40.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -136,6 +139,7 @@ affected:
         - 1.40.3-r2
         - 1.40.3-r3
         - 1.40.4-r0
+        - 1.40.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -170,6 +174,7 @@ affected:
         - 1.40.3-r2
         - 1.40.3-r3
         - 1.40.4-r0
+        - 1.40.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -204,6 +209,7 @@ affected:
         - 1.40.3-r2
         - 1.40.3-r3
         - 1.40.4-r0
+        - 1.40.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -238,6 +244,7 @@ affected:
         - 1.40.3-r2
         - 1.40.3-r3
         - 1.40.4-r0
+        - 1.40.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -272,6 +279,7 @@ affected:
         - 1.40.3-r2
         - 1.40.3-r3
         - 1.40.4-r0
+        - 1.40.4-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -306,6 +314,7 @@ affected:
         - 1.40.3-2
         - 1.40.3-3
         - 1.40.4-0
+        - 1.40.4-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -340,6 +349,7 @@ affected:
         - 1.40.3-2
         - 1.40.3-3
         - 1.40.4-0
+        - 1.40.4-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -374,6 +384,7 @@ affected:
         - 1.40.3-2
         - 1.40.3-3
         - 1.40.4-0
+        - 1.40.4-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -408,6 +419,7 @@ affected:
         - 1.40.3-2
         - 1.40.3-3
         - 1.40.4-0
+        - 1.40.4-1
 details: |-
     ### Summary
     With `-l/--links`, rclone serializes symlinks as `<name>.rclonelink` text objects whose body is the link target. When rclone writes such an object to a local destination, it recreates the symlink with `os.Symlink(<object body>, <dest path>)` and performs NO validation of the target. If the source is attacker-controlled, the attacker sets the body to any absolute or `../` path, so rclone plants a symlink inside the destination that points anywhere on the victim's filesystem. Because a sibling object named `<name>.rclonelink` sorts before `<name>/...`, rclone creates the escaping symlink first and then writes a following object "inside" it; `mkdirAll`/`OpenFile` follow the planted symlink, so the file lands OUTSIDE the destination with attacker-chosen contents. This yields arbitrary file write as the victim user, e.g. overwriting `~/.ssh/authorized_keys`, `~/.bashrc`, or a crontab — i.e. code execution.
@@ -465,7 +477,7 @@ details: |-
     ### Remediation
     In `Object.Update()` reject symlink targets that are absolute or escape the destination root before calling `os.Symlink` (resolve `filepath.Join(dir, target)` and require it to stay within the configured root, or refuse absolute/`..` targets), and write objects with `O_NOFOLLOW` on the final component plus a no-symlink-in-parent check so a planted symlinked directory is never followed. Add a regression test copying a `.rclonelink` with target `/tmp/...` and a sibling file, asserting nothing is written outside the destination.
 id: DHI-tidz-ftbi-jkev-qitb
-modified: "2026-11-24T22:56:33Z"
+modified: "2026-11-25T19:44:56Z"
 published: "2026-11-12T04:38:49Z"
 references:
     - type: ADVISORY

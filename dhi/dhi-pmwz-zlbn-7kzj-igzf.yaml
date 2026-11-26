@@ -142,6 +142,7 @@ affected:
         - 36.0.0-35
         - 36.0.0-36
         - 36.0.0-37
+        - 36.0.0-38
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -187,6 +188,7 @@ affected:
         - 36.0.0-35
         - 36.0.0-36
         - 36.0.0-37
+        - 36.0.0-38
         - 36.0.0-4
         - 36.0.0-5
         - 36.0.0-6
@@ -232,6 +234,7 @@ affected:
         - 37.0.0-33
         - 37.0.0-35
         - 37.0.0-37
+        - 37.0.0-38
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -276,6 +279,7 @@ affected:
         - 37.0.0-33
         - 37.0.0-35
         - 37.0.0-37
+        - 37.0.0-38
         - 37.0.0-4
         - 37.0.0-5
         - 37.0.0-6
@@ -306,6 +310,7 @@ affected:
         - 38.0.0-19
         - 38.0.0-2
         - 38.0.0-20
+        - 38.0.0-21
         - 38.0.0-3
         - 38.0.0-4
         - 38.0.0-5
@@ -337,6 +342,7 @@ affected:
         - 38.0.0-19
         - 38.0.0-2
         - 38.0.0-20
+        - 38.0.0-21
         - 38.0.0-3
         - 38.0.0-4
         - 38.0.0-5
@@ -402,7 +408,7 @@ affected:
         - 1.1.0-9
 details: The RabbitMQ Java client library allows Java and JVM-based applications to connect to and interact with RabbitMQ nodes. Prior to 5.34.0, AMQConnection.start() applies Math.min(maxInboundMessageBodySize, frameMax) after Connection.Tune negotiation even though AMQP defines frameMax value zero as unlimited and ConnectionFactory.DEFAULT_FRAME_MAX is zero. When the client default and server-negotiated value are both zero, the result is passed to Utils.framePayloadLimit(int), which interprets zero as Integer.MAX_VALUE and disables the configured maxInboundMessageBodySize cap. A malicious AMQP server, or a man-in-the-middle attacker able to modify Connection.Tune and inject frames into the connection, can then send an oversized frame of any frame type, causing Frame.readFrom() to allocate a large byte array before content-level validation and potentially terminate the client process through memory exhaustion. This issue is fixed in version 5.34.0.
 id: DHI-pmwz-zlbn-7kzj-igzf
-modified: "2026-11-24T21:17:11Z"
+modified: "2026-11-25T03:00:01Z"
 published: "2026-11-10T04:07:59Z"
 references:
     - type: ADVISORY

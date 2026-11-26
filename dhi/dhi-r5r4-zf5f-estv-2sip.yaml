@@ -466,6 +466,7 @@ affected:
         - 1.20.2-3
         - 1.20.2-4
         - 1.20.2-5
+        - 1.20.2-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -517,6 +518,9 @@ affected:
         - 1.98.6-0
         - 1.98.7-0
         - 1.98.8-0
+        - 1.98.9-0
+        - 1.99.0-0
+        - 1.99.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -549,7 +553,7 @@ affected:
         - 2.5.9-1
 details: undici's dump interceptor reads and discards a response body up to a configurable maximum size. When a response declares a Content-Length that exceeds the maximum, the interceptor aborts cleanly, but when a response has no Content-Length and is chunked, the interceptor instead signals completion early once the accumulated size reaches the maximum, without pausing or aborting the request. Because the underlying parser keeps delivering body bytes, a second completion signal fires and trips an internal assertion, which aborts the request and tears down the connection. The application is left observing a misleading successful status with an empty or truncated body while the connection has actually been disconnected. This affects undici versions from 7.1.0 up to 7.29.1 and from 8.0.0 up to 8.10.2. Users should upgrade to undici 7.29.1 or 8.10.2.
 id: DHI-r5r4-zf5f-estv-2sip
-modified: "2026-11-24T21:13:05Z"
+modified: "2026-11-25T23:11:27Z"
 published: "2026-11-13T17:03:58Z"
 references:
     - type: ADVISORY
