@@ -93,9 +93,14 @@ jobs:
               "https://github.com/${{ github.repository }}" refs/heads/changelog; then
             git -C state.git log --format=%s FETCH_HEAD \
               | sed -nE 's#^([^ ]+) .*@(sha256:[0-9a-f]+)$#\1\t\2#p' > chained.tsv
+            # The tip's commit date (a publish time, in GHCR's format): the
+            # next step never chains anything published before it, which
+            # would put the changelog's dates out of order.
+            TZ=UTC git -C state.git log -1 --date=format-local:%Y-%m-%dT%H:%M:%SZ --format=%cd FETCH_HEAD > tip-date.txt
           else
             echo "no changelog branch yet" >&2
             : > chained.tsv
+            : > tip-date.txt
           fi
           echo "$(wc -l < chained.tsv) version(s) already chained"
 
@@ -126,15 +131,9 @@ jobs:
             echo "::error::couldn't fetch the provider list from $PROVIDERS_CONFIG"
             exit 1
           fi
-          # The "- name: <provider>" entries of provider.configs. awk, not a
-          # YAML parser, since the runner has no guaranteed one: the checks
-          # below fail the run if the file's shape ever stops matching.
-          awk '
-            /^provider:/ { p = 1; next }
-            p && /^  configs:/ { c = 1; next }
-            c && /^    - name: / { print $3; next }
-            c && /^ {0,3}[^ #]/ { exit }
-          ' providers-config.yaml | sort -u > configured.txt
+          # yq: preinstalled on GitHub's runners (mikefarah's v4).
+          yq --version
+          yq -r '.provider.configs[].name' providers-config.yaml | sort -u > configured.txt
           if [ ! -s configured.txt ] || grep -vqE '^[a-z0-9][a-z0-9-]*$' configured.txt; then
             echo "::error::$PROVIDERS_CONFIG has no provider.configs[].name list, or an unexpected name in it:"
             cat configured.txt
@@ -259,12 +258,21 @@ jobs:
           # chain one published just after it and miss it, which would
           # then be chained out of order next run. (RFC 3339 UTC strings
           # compare correctly as text.)
-          awk -F'\t' -v max="$MAX_ITEMS" -v settled="$(cat settled-before.txt)" '
+          #
+          # Floor: never a version published before the changelog's tip,
+          # which would have to be chained after newer ones. Normally none
+          # exist; a changelog reset to a dated seed commit uses this to
+          # start from that date.
+          floor=$(cat tip-date.txt)
+          awk -F'\t' -v max="$MAX_ITEMS" -v settled="$(cat settled-before.txt)" -v floor="$floor" '
             FILENAME == ARGV[1] { chained[$1 FS $2]; next }
             FILENAME == ARGV[2] { staged[$1 FS $2]; next }
-            n < max && $1 < settled && !(($3 FS $2) in chained) {
+            (($3 FS $2) in chained) { next }
+            $1 < floor { early++; next }
+            n < max && $1 < settled {
               print $3 "\t" $2 "\t" ((($3 FS $2) in staged) ? "true" : "false") "\t" $1; n++
             }
+            END { if (early) printf "skipping %d unchained version(s) published before the changelog tip (%s)\n", early, floor > "/dev/stderr" }
           ' chained.tsv staged.tsv upstream.tsv > todo.tsv
 
           # Everything this run will chain, in order (drives cmd/changelog),
