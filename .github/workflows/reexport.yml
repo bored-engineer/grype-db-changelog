@@ -1,0 +1,77 @@
+name: Re-export
+
+# Re-exports every build of one provider that's already on the changelog
+# branch, staging each as refs/reexport/<provider>/<digest>. For when an
+# exporter fix changes one provider's files: the staged trees are then
+# swapped into the existing history locally (commit metadata kept, every
+# other provider's trees reused as-is), instead of rebuilding everything.
+# Builds already staged under refs/reexport are skipped, so a rerun only
+# retries the ones that failed.
+
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: 'Provider to re-export'
+        required: true
+        type: string
+      shards:
+        description: 'Export jobs to split the builds across (max 256)'
+        required: false
+        type: number
+        default: 80
+      parallelism:
+        description: 'Exports to run at once on each runner'
+        required: false
+        type: number
+        default: 3
+
+permissions:
+  contents: write
+  packages: read
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    outputs:
+      shards: ${{ steps.list.outputs.shards }}
+    steps:
+      - name: List the provider's chained builds
+        id: list
+        env:
+          PROVIDER: ${{ inputs.provider }}
+          SHARDS: ${{ inputs.shards }}
+          REPO: ${{ github.server_url }}/${{ github.repository }}
+        run: |
+          if ! [[ "$PROVIDER" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
+            echo "::error::bad provider name: $PROVIDER"
+            exit 1
+          fi
+          git init -q state.git --bare
+          git -C state.git fetch -q --filter=blob:none "$REPO" refs/heads/changelog
+          git ls-remote "$REPO" "refs/reexport/$PROVIDER/*" \
+            | awk '{ sub(".*/", "", $2); sub("-", ":", $2); print $2 }' | sort -u > staged.txt
+          # Subjects look like "<provider> <time>: <image>@<digest>".
+          git -C state.git log --format='%s' FETCH_HEAD \
+            | awk -v p="$PROVIDER" '$1 == p && $NF ~ /@sha256:/ { t = $2; sub(":$", "", t); d = $NF; sub(".*@", "", d); print d "\t" t }' \
+            | sort -u > chained.tsv
+          awk -F'\t' 'FILENAME == ARGV[1] { s[$1]; next } !($1 in s)' staged.txt chained.tsv > todo.tsv
+          echo "$(wc -l < chained.tsv) chained, $(wc -l < staged.txt) already staged, $(wc -l < todo.tsv) to export"
+          shards=$(jq -R -c -s --arg p "$PROVIDER" --argjson n "$SHARDS" '
+            split("\n") | map(select(length > 0) | split("\t") | {provider: $p, digest: .[0], created: .[1]})
+            | to_entries | group_by(.key % $n) | map(map(.value))
+            | to_entries | map({shard: (.key + 1), items: .value})' < todo.tsv)
+          echo "shards=$shards" >> "$GITHUB_OUTPUT"
+
+  export:
+    needs: list
+    if: needs.list.outputs.shards != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.list.outputs.shards) }}
+    uses: ./.github/workflows/export.yml
+    with:
+      items: ${{ toJson(matrix.items) }}
+      parallelism: ${{ inputs.parallelism || 3 }}
+      stage_prefix: refs/reexport
