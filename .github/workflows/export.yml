@@ -18,11 +18,6 @@ on:
         required: false
         type: number
         default: 3
-      stage_prefix:
-        description: 'Ref namespace to stage the exports under'
-        required: false
-        type: string
-        default: refs/raw
   workflow_call:
     inputs:
       items:
@@ -36,13 +31,6 @@ on:
         required: false
         type: string
         default: '3'
-      # Where the exports are pushed. refs/raw is the backfill's staging
-      # area, which it cleans up; reexport.yml stages elsewhere so that
-      # cleanup never deletes its refs before they're used.
-      stage_prefix:
-        required: false
-        type: string
-        default: refs/raw
 
 # bash -eo pipefail for every run step (GitHub's default without an
 # explicit shell is bash -e, no pipefail), so a failure early in a pipeline
@@ -153,12 +141,8 @@ jobs:
       # or hit its time limit, rather than losing the whole shard.
       - name: Push refs
         if: always()
-        env:
-          STAGE_PREFIX: ${{ inputs.stage_prefix || 'refs/raw' }}
         run: |
-          # cmd/export always writes refs/raw/...; pushed under
-          # $STAGE_PREFIX instead when one is given.
-          mapfile -t refspecs < <(git for-each-ref --format='%(refname)' refs/raw | sed "s|^refs/raw/\(.*\)|&:$STAGE_PREFIX/\1|")
+          mapfile -t refspecs < <(git for-each-ref --format='%(refname):%(refname)' refs/raw)
           if [ "${#refspecs[@]}" -eq 0 ]; then
             echo "nothing exported" >&2
             exit 0
