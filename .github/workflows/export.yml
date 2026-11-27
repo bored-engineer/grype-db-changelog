@@ -44,6 +44,13 @@ on:
         type: string
         default: refs/raw
 
+# bash -eo pipefail for every run step (GitHub's default without an
+# explicit shell is bash -e, no pipefail), so a failure early in a pipeline
+# fails the step instead of leaving it with partial or empty output.
+defaults:
+  run:
+    shell: bash
+
 permissions:
   contents: write
   packages: read
@@ -90,7 +97,10 @@ jobs:
             refs/heads/changelog:refs/remotes/origin/changelog \
             || echo "note: couldn't fetch the changelog tip; push will include every blob" >&2
 
+      # Inside the job's 120: if this step runs long, it's stopped with
+      # time left for the push below to stage what finished.
       - name: Export
+        timeout-minutes: 105
         env:
           ITEMS: ${{ inputs.items }}
           PARALLELISM: ${{ inputs.parallelism || 3 }}
@@ -114,7 +124,11 @@ jobs:
             # $created (GHCR publish time) dates the staged commit and its
             # subject; metadata.json's own timestamp becomes its Captured
             # trailer.
-            if "$RUNNER_TEMP/export" "$provider" "ghcr.io/anchore/grype-db/data/$provider@$digest" "$created" 2> "$log" \
+            # timeout: a backstop for a hang the download's own idle
+            # timeout doesn't catch. Far above the slowest export (~15
+            # minutes), and well inside the job's limit, so one hung export
+            # can't stop the rest of this shard from being pushed.
+            if timeout 45m "$RUNNER_TEMP/export" "$provider" "ghcr.io/anchore/grype-db/data/$provider@$digest" "$created" 2> "$log" \
                 | git fast-import --quiet 2>> "$log" \
                 && git rev-parse --verify --quiet "$ref" >/dev/null; then
               # With cmd/export's per-stage timing line, if it wrote one.
@@ -135,7 +149,10 @@ jobs:
 
           echo "$(git for-each-ref refs/raw | wc -l) exported, $(wc -l < failed.txt) failed"
 
+      # always(): push whatever did export even if the step above failed
+      # or hit its time limit, rather than losing the whole shard.
       - name: Push refs
+        if: always()
         env:
           STAGE_PREFIX: ${{ inputs.stage_prefix || 'refs/raw' }}
         run: |
@@ -170,6 +187,7 @@ jobs:
       # Last, so failures are visible on the run without holding back the
       # push of everything that succeeded.
       - name: Report failures
+        if: always()
         run: |
           if [ -s failed.txt ]; then
             echo "::error::$(wc -l < failed.txt) export(s) failed:"

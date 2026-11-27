@@ -352,6 +352,17 @@ func run(candidates []candidate, ov *overlay) ([]string, error) {
 		if !ok {
 			log.Printf("stopping at %s %s: %s not found locally (export may have failed); %d later candidate(s) deferred to the next run",
 				c.Provider, c.Digest, rawRef(c.Provider, c.Digest), len(candidates)-i-1)
+			// An annotation on the run too: a version whose export fails
+			// every time holds back every provider's later versions, and
+			// the age says whether it's a one-off or stuck.
+			if os.Getenv("GITHUB_ACTIONS") == "true" {
+				age := ""
+				if t, err := time.Parse(time.RFC3339, c.Created); err == nil {
+					age = fmt.Sprintf(", published %s ago", time.Since(t).Round(time.Minute))
+				}
+				fmt.Fprintf(os.Stderr, "::warning::chaining stopped at %s@%s (not exported%s); %d later version(s) held back\n",
+					c.Provider, c.Digest, age, len(candidates)-i-1)
+			}
 			break
 		}
 		snaps = append(snaps, s)

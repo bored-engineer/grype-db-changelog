@@ -32,6 +32,13 @@ on:
         type: number
         default: 3
 
+# bash -eo pipefail for every run step (GitHub's default without an
+# explicit shell is bash -e, no pipefail), so a failure early in a pipeline
+# fails the step instead of leaving it with partial or empty output.
+defaults:
+  run:
+    shell: bash
+
 permissions:
   contents: write
   packages: read
@@ -55,7 +62,7 @@ jobs:
             exit 1
           fi
           git init -q state.git --bare
-          git -C state.git fetch -q --filter=blob:none "$REPO" refs/heads/changelog
+          git -C state.git fetch -q --filter=tree:0 "$REPO" refs/heads/changelog
           git ls-remote "$REPO" "refs/reexport/$PROVIDER/*" \
             | awk '{ sub(".*/", "", $2); sub("-", ":", $2); print $2 }' | sort -u > staged.txt
           # Subjects look like "<provider> <time>: <image>@<digest>".

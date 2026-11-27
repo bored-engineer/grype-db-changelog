@@ -64,6 +64,13 @@ concurrency:
   group: backfill
   cancel-in-progress: false
 
+# bash -eo pipefail for every run step (GitHub's default without an
+# explicit shell is bash -e, no pipefail), so a failure early in a pipeline
+# fails the step instead of leaving it with partial or empty output.
+defaults:
+  run:
+    shell: bash
+
 permissions:
   contents: write
   packages: read
@@ -139,7 +146,7 @@ jobs:
             cat configured.txt
             exit 1
           fi
-          tr -s ' ' '\n' <<< "$EXCLUDE" | grep . | sort -u > excluded.txt
+          tr -s ' ' '\n' <<< "$EXCLUDE" | { grep . || true; } | sort -u > excluded.txt
           providers=$(comm -23 configured.txt excluded.txt)
           echo "providers: $(tr '\n' ' ' <<< "$providers")(excluded: $(tr '\n' ' ' < excluded.txt))"
 
@@ -199,7 +206,22 @@ jobs:
                 fetched=false
                 for attempt in 1 2 3 4 5; do
                   if gh api "orgs/anchore/packages/container/grype-db%2Fdata%2F${provider}/versions?per_page=100&page=${page}" \
-                      --jq '.[] | "\(.created_at)\t\(.name)"' > "$base.page"; then
+                      --jq '.[] | "\(.created_at)\t\(.name)"' > "$base.page" 2> "$base.stderr"; then
+                    fetched=true
+                    break
+                  fi
+                  cat "$base.stderr" >&2
+                  # A provider in grype-db's config whose package doesn't
+                  # exist yet (added to the config before its first
+                  # publish) has nothing to chain - rather than failing
+                  # every run until it's published. Only when it has
+                  # nothing chained: a 404 for a provider already in the
+                  # history is an API problem, and skipping it would let
+                  # later versions of other providers chain past its
+                  # unlisted ones.
+                  if [ "$page" -eq 1 ] && [ ! -s "$base.chained" ] && grep -q 'HTTP 404' "$base.stderr"; then
+                    echo "::warning::$provider: no GHCR package yet (404), nothing to chain"
+                    : > "$base.page"
                     fetched=true
                     break
                   fi
@@ -245,7 +267,10 @@ jobs:
           # Publish time, then digest for ties (several providers often
           # publish in the same second): byte order (LC_ALL=C), so the
           # order never depends on the runner's locale.
-          LC_ALL=C sort -o upstream.tsv upstream.d/*.tsv
+          # -u: a version published while a provider is being paged shifts
+          # every later page by one, so the version at a page boundary can
+          # be listed twice - and would otherwise be chained twice.
+          LC_ALL=C sort -u -o upstream.tsv upstream.d/*.tsv
           echo "$(wc -l < upstream.tsv) version(s) listed (newest down to each provider's chained frontier)"
 
       - name: Compute missing candidates
