@@ -185,6 +185,13 @@ Captured: 2026-11-20T00:21:26Z
 - **`generator`**: the code, the real workflows and the source of this
   README. Everything under [How it works](#how-it-works) lives here.
 - **`refs/raw/<provider>/<digest>`**: a short-lived staging area between
-  the export jobs and the changelog job. Refs exist only while a batch is in
-  flight; the `changelog` branch is the source of truth for what has been
-  exported.
+  the export jobs and the changelog job. Refs normally exist only while a
+  batch is in flight (one whose export keeps failing stays, and holds back
+  later builds until it succeeds); the `changelog` branch is the source of
+  truth for what has been chained.
+- **`refs/reexport/<provider>/<digest>`** and **`reexport/<provider>`**:
+  used only when an exporter fix changes one provider's files.
+  [`reexport.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/reexport.yml),
+  started by pushing a `reexport/<provider>` branch, re-exports every
+  chained build of that provider to `refs/reexport`; the new trees are then
+  swapped into the existing history by hand, and both are deleted.

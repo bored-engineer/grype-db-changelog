@@ -19,6 +19,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 	"unicode"
 	"unicode/utf8"
@@ -86,8 +87,13 @@ func canonicalizeIn(key string, v any) any {
 	switch v := v.(type) {
 	case map[string]any:
 		out := make(map[string]any, len(v))
+		quote := false
 		for k, val := range v {
 			out[k] = canonicalizeIn(k, val)
+			quote = quote || needsQuotes(k)
+		}
+		if quote {
+			return quotedKeys(out)
 		}
 		return out
 	case []any:
@@ -121,7 +127,7 @@ func canonicalizeIn(key string, v any) any {
 	case json.Number:
 		return number(v)
 	case string:
-		if r, _ := utf8.DecodeRuneInString(v); unicode.IsSpace(r) && strings.ContainsRune(v, '\n') {
+		if needsQuotes(v) {
 			return quoted(v)
 		}
 		return v
@@ -138,6 +144,41 @@ func canonicalizeIn(key string, v any) any {
 // instead, which always round-trips. It marshals to JSON as a plain
 // string, so canonicalize's sort keys are unchanged.
 type quoted string
+
+// needsQuotes reports whether yaml.v3 would write s as a broken block
+// scalar (see quoted).
+func needsQuotes(s string) bool {
+	r, _ := utf8.DecodeRuneInString(s)
+	return unicode.IsSpace(r) && strings.ContainsRune(s, '\n')
+}
+
+// quotedKeys is a map with a key needsQuotes is true of: yaml.v3 gets
+// those wrong as keys too, so the map is written by hand, with keys sorted
+// and the troublesome ones double-quoted. Only such (vanishingly rare)
+// maps take this path, so every other map keeps yaml.v3's own key order.
+// It marshals to JSON as a plain map, so sort keys are unchanged.
+type quotedKeys map[string]any
+
+func (m quotedKeys) MarshalYAML() (any, error) {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	node := &yaml.Node{Kind: yaml.MappingNode, Tag: "!!map"}
+	for _, k := range keys {
+		key := &yaml.Node{Kind: yaml.ScalarNode, Tag: "!!str", Value: k}
+		if needsQuotes(k) {
+			key.Style = yaml.DoubleQuotedStyle
+		}
+		var val yaml.Node
+		if err := val.Encode(m[k]); err != nil {
+			return nil, err
+		}
+		node.Content = append(node.Content, key, &val)
+	}
+	return node, nil
+}
 
 func (q quoted) MarshalYAML() (any, error) {
 	return &yaml.Node{Kind: yaml.ScalarNode, Tag: "!!str", Value: string(q), Style: yaml.DoubleQuotedStyle}, nil
@@ -252,7 +293,30 @@ func render(provider string, id string, record []byte) (string, []byte, error) {
 	// top-level category here, the same role trivy-db-changelog's
 	// os/packages/vulnerability/data-source directories play - there's no
 	// further grouping above it to justify an extra wrapping directory.
-	return path.Join(provider, sanitize(provider, id)) + ".yaml", pretty, nil
+	name, err := recordPath(provider, id)
+	if err != nil {
+		return "", nil, err
+	}
+	return name, pretty, nil
+}
+
+// recordPath is the file a record is written to. path.Join would quietly
+// resolve "." and ".." segments, so an id like "../x" or "debian:10/../.."
+// would land outside the provider's directory, where cmd/changelog (which
+// only takes the provider's subtree) drops it without a word. Refused
+// instead, along with absolute ids and control characters (a newline would
+// break the fast-import stream).
+func recordPath(provider, id string) (string, error) {
+	rel := sanitize(provider, id)
+	if rel == "" || strings.HasPrefix(rel, "/") || strings.ContainsFunc(rel, unicode.IsControl) {
+		return "", fmt.Errorf("unusable record id %q", id)
+	}
+	for _, seg := range strings.Split(rel, "/") {
+		if seg == "." || seg == ".." {
+			return "", fmt.Errorf("unusable record id %q", id)
+		}
+	}
+	return path.Join(provider, rel) + ".yaml", nil
 }
 
 // write emits one rendered file to the fast-import stream.
@@ -268,9 +332,17 @@ func write(seen map[string]string, id, name string, data []byte) error {
 		return fmt.Errorf("case-insensitive path collision: %q and %q both map to %q", other, id, name)
 	}
 	seen[key] = id
-	fmt.Fprintf(stdout, "M 100644 inline %s\ndata %d\n", name, len(data))
-	stdout.Write(data)
-	io.WriteString(stdout, "\n")
+	// Errors matter: a write that fails (fast-import gone) stops the
+	// export rather than rendering every remaining record into the void.
+	if _, err := fmt.Fprintf(stdout, "M 100644 inline %s\ndata %d\n", name, len(data)); err != nil {
+		return fmt.Errorf("writing the fast-import stream failed: %w", err)
+	}
+	if _, err := stdout.Write(data); err != nil {
+		return fmt.Errorf("writing the fast-import stream failed: %w", err)
+	}
+	if _, err := io.WriteString(stdout, "\n"); err != nil {
+		return fmt.Errorf("writing the fast-import stream failed: %w", err)
+	}
 	return nil
 }
 
@@ -384,11 +456,7 @@ func dropGeneratedDates(item any) {
 // tool cares about: when the cache was captured, for the commit timestamp,
 // and the build's provenance, for trailers (see trailers).
 type metadata struct {
-	Provider   string    `json:"provider"`
-	DataSource string    `json:"dataSource,omitempty"`
-	URLs       []string  `json:"urls,omitempty"`
-	Listing    *struct{} `json:"listing,omitempty"`
-	Timestamp  time.Time `json:"timestamp,omitempty"`
+	Timestamp time.Time `json:"timestamp,omitempty"`
 	// Processor is the vunnel version that built the results (e.g.
 	// "vunnel@0.67.0-post.3+45d8771"). Older builds don't record it.
 	Processor string `json:"processor,omitempty"`
@@ -396,6 +464,30 @@ type metadata struct {
 	// archive rather than built from the upstream source this run, so the
 	// build carries no news from the source.
 	Stale bool `json:"stale,omitempty"`
+}
+
+// parseMetadata decodes metadata.json field by field, leniently: only
+// provenance trailers come from it, so a field of an unexpected type (or a
+// timestamp that won't parse, like "") is logged and left out rather than
+// failing the export - which would hold back every later build of every
+// provider, since the changelog is chained strictly in order. Only a file
+// that isn't a JSON object at all is an error.
+func parseMetadata(b []byte) (metadata, error) {
+	var raw map[string]json.RawMessage
+	if err := json.Unmarshal(b, &raw); err != nil {
+		return metadata{}, fmt.Errorf("json.Unmarshal of metadata.json failed: %w", err)
+	}
+	var m metadata
+	for key, dst := range map[string]any{"timestamp": &m.Timestamp, "processor": &m.Processor, "stale": &m.Stale} {
+		v, ok := raw[key]
+		if !ok {
+			continue
+		}
+		if err := json.Unmarshal(v, dst); err != nil {
+			log.Printf("metadata.json: ignoring %s %s: %v", key, v, err)
+		}
+	}
+	return m, nil
 }
 
 // Trailers recording metadata.json's provenance on the staged commit;
@@ -506,15 +598,21 @@ func export(ctx context.Context, provider string, ref name.Reference, publishTim
 	// Will contain the extracted 'results.db' file. Everything else in the
 	// tarball (notably provider/input/*, which can run into the gigabytes)
 	// is streamed past and discarded without ever touching disk.
-	dbFile, err := os.CreateTemp("", "grype-db-*.db")
+	// In a directory of its own, removed whole: SQLite may leave -wal and
+	// -shm files beside the database.
+	tmpDir, err := os.MkdirTemp("", "grype-db-*")
 	if err != nil {
-		return fmt.Errorf("os.CreateTemp failed: %w", err)
+		return fmt.Errorf("os.MkdirTemp failed: %w", err)
 	}
 	defer func() {
-		if err := os.Remove(dbFile.Name()); err != nil {
-			log.Printf("os.Remove failed: %v", err)
+		if err := os.RemoveAll(tmpDir); err != nil {
+			log.Printf("os.RemoveAll failed: %v", err)
 		}
 	}()
+	dbFile, err := os.Create(filepath.Join(tmpDir, "results.db"))
+	if err != nil {
+		return fmt.Errorf("os.Create failed: %w", err)
+	}
 
 	var meta metadata
 	var sawResults bool
@@ -535,6 +633,9 @@ func export(ctx context.Context, provider string, ref name.Reference, publishTim
 		entries++
 		switch hdr.Name {
 		case resultsPath:
+			if sawResults {
+				return fmt.Errorf("tarball has more than one %s", resultsPath)
+			}
 			if _, err := io.Copy(dbFile, tr); err != nil {
 				return fmt.Errorf("io.Copy failed: %w", err)
 			}
@@ -544,8 +645,8 @@ func export(ctx context.Context, provider string, ref name.Reference, publishTim
 			if err != nil {
 				return fmt.Errorf("io.ReadAll failed: %w", err)
 			}
-			if err := json.Unmarshal(b, &meta); err != nil {
-				return fmt.Errorf("json.Unmarshal of metadata.json failed: %w", err)
+			if meta, err = parseMetadata(b); err != nil {
+				return err
 			}
 		default:
 			// Deliberately ignored: provider/input/* (raw upstream mirror,
@@ -631,7 +732,12 @@ func humanBytes(n int64) string {
 }
 
 func main() {
-	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	// SIGTERM (timeout, runner shutdown) and SIGPIPE (fast-import died, so
+	// stdout's reader is gone) cancel the export like ^C does, instead of
+	// killing the process outright: that skipped every defer, leaving the
+	// multi-GB temp results.db behind. With SIGPIPE caught, writes to the
+	// dead pipe return EPIPE, which write() reports.
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM, syscall.SIGPIPE)
 	defer cancel()
 
 	if len(os.Args) != 3 && len(os.Args) != 4 {

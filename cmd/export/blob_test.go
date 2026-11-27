@@ -122,3 +122,84 @@ func TestLayerReaderGunzips(t *testing.T) {
 		t.Fatalf("got %q, %v", got, err)
 	}
 }
+
+// A connection that stops sending mid-body (no reset, no EOF) is dropped
+// after idleTimeout and resumed, rather than hanging the export.
+func TestResumableBlobResumesAfterStall(t *testing.T) {
+	oldIdle, oldBackoff := idleTimeout, resumeBackoff
+	idleTimeout, resumeBackoff = 200*time.Millisecond, time.Millisecond
+	t.Cleanup(func() { idleTimeout, resumeBackoff = oldIdle, oldBackoff })
+	blob := bytes.Repeat([]byte("0123456789abcdef"), 4096)
+	var requests atomic.Int32
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/v2/" {
+			return
+		}
+		off := 0
+		if rg := r.Header.Get("Range"); rg != "" {
+			off, _ = strconv.Atoi(strings.TrimSuffix(strings.TrimPrefix(rg, "bytes="), "-"))
+			w.Header().Set("Content-Range", fmt.Sprintf("bytes %d-%d/%d", off, len(blob)-1, len(blob)))
+		}
+		w.Header().Set("Content-Length", strconv.Itoa(len(blob)-off))
+		if off > 0 {
+			w.WriteHeader(http.StatusPartialContent)
+		}
+		if requests.Add(1) == 1 {
+			w.Write(blob[:1000])
+			w.(http.Flusher).Flush()
+			<-r.Context().Done() // stall until the client gives up
+			return
+		}
+		w.Write(blob[off:])
+	}))
+	t.Cleanup(srv.Close)
+	reg, err := name.NewRegistry(strings.TrimPrefix(srv.URL, "http://"), name.Insecure)
+	if err != nil {
+		t.Fatal(err)
+	}
+	b, err := openBlob(context.Background(), reg.Repo("test"), digestOf(blob), int64(len(blob)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	done := make(chan struct{})
+	var got []byte
+	go func() { got, err = io.ReadAll(b); close(done) }()
+	select {
+	case <-done:
+	case <-time.After(10 * time.Second):
+		t.Fatal("download hung on the stalled connection")
+	}
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Equal(got, blob) {
+		t.Fatalf("got %d bytes, want the original %d", len(got), len(blob))
+	}
+	if n := requests.Load(); n != 2 {
+		t.Fatalf("%d requests, want 2 (the stalled one, then a resume)", n)
+	}
+}
+
+// The resume budget is per stretch without progress, not per download.
+func TestResumableBlobResumeBudgetResetsWithProgress(t *testing.T) {
+	old := resumeProgress
+	resumeProgress = 1000
+	t.Cleanup(func() { resumeProgress = old })
+	blob := bytes.Repeat([]byte("0123456789abcdef"), 4096) // 64KiB
+	var requests atomic.Int32
+	repo := flakyRegistry(t, blob, 2000, &requests) // 33 resets > maxResumes
+	b, err := openBlob(context.Background(), repo, digestOf(blob), int64(len(blob)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	got, err := io.ReadAll(b)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Equal(got, blob) {
+		t.Fatalf("got %d bytes, want the original %d", len(got), len(blob))
+	}
+	if n := requests.Load(); n <= maxResumes {
+		t.Fatalf("only %d requests; the budget wasn't exercised", n)
+	}
+}

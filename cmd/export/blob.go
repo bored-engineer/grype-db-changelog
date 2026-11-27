@@ -19,8 +19,22 @@ import (
 	"github.com/klauspost/compress/gzip"
 )
 
-// maxResumes bounds how many times one blob download may be reopened.
+// maxResumes bounds how many times one blob download may be reopened in a
+// row without real progress: the count starts over once resumeProgress
+// bytes have been read since the last failure, so a long download through
+// a flaky CDN isn't failed for interruptions spread across its length.
 const maxResumes = 20
+
+// resumeProgress is how much must be read after a failure for the resume
+// count to start over.
+var resumeProgress int64 = 64 << 20
+
+// idleTimeout drops a connection that has sent nothing for this long
+// (including while waiting for the response headers), so a stalled
+// download is resumed instead of hanging until the job's timeout - which
+// would also lose every other export on that runner, since they're
+// pushed together at the end.
+var idleTimeout = 60 * time.Second
 
 // resumeBackoff is the base delay before reopening (scaled by attempt).
 var resumeBackoff = 2 * time.Second
@@ -72,6 +86,12 @@ type resumableBlob struct {
 	body    io.ReadCloser
 	sum     hash.Hash
 	resumes int
+	// failedAt is the offset of the last failure (see resumeProgress).
+	failedAt int64
+	// idle cancels the current request when it fires (see idleTimeout);
+	// reset on every read that returns data.
+	idle   *time.Timer
+	cancel context.CancelFunc
 }
 
 func openBlob(ctx context.Context, repo name.Repository, digest v1.Hash, size int64) (*resumableBlob, error) {
@@ -97,7 +117,10 @@ func openBlob(ctx context.Context, repo name.Repository, digest v1.Hash, size in
 }
 
 func (b *resumableBlob) open() error {
-	req, err := http.NewRequestWithContext(b.ctx, http.MethodGet, b.url, nil)
+	ctx, cancel := context.WithCancel(b.ctx)
+	b.cancel = cancel
+	b.idle = time.AfterFunc(idleTimeout, cancel)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, b.url, nil)
 	if err != nil {
 		return err
 	}
@@ -120,12 +143,29 @@ func (b *resumableBlob) open() error {
 	return nil
 }
 
+// stop releases the current request's context and idle timer.
+func (b *resumableBlob) stop() {
+	if b.idle != nil {
+		b.idle.Stop()
+		b.idle = nil
+	}
+	if b.cancel != nil {
+		b.cancel()
+		b.cancel = nil
+	}
+}
+
 // fail closes the current connection and decides whether to retry.
 func (b *resumableBlob) fail(err error) error {
 	if b.body != nil {
 		b.body.Close()
 		b.body = nil
 	}
+	b.stop()
+	if b.off-b.failedAt >= resumeProgress {
+		b.resumes = 0
+	}
+	b.failedAt = b.off
 	if b.ctx.Err() != nil || b.resumes >= maxResumes {
 		return fmt.Errorf("blob download failed at byte %d of %d (after %d resumes): %w", b.off, b.size, b.resumes, err)
 	}
@@ -155,6 +195,9 @@ func (b *resumableBlob) Read(p []byte) (int, error) {
 			}
 		}
 		n, err := b.body.Read(p)
+		if n > 0 {
+			b.idle.Reset(idleTimeout)
+		}
 		if int64(n) > b.size-b.off {
 			return 0, fmt.Errorf("blob longer than its declared %d bytes", b.size)
 		}
@@ -175,6 +218,7 @@ func (b *resumableBlob) Read(p []byte) (int, error) {
 }
 
 func (b *resumableBlob) Close() error {
+	defer b.stop()
 	if b.body != nil {
 		return b.body.Close()
 	}

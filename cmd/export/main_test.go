@@ -228,21 +228,111 @@ func TestCommitMessage(t *testing.T) {
 }
 
 func TestMetadataDecodesProvenance(t *testing.T) {
-	var m metadata
 	in := `{"provider":"kev","timestamp":"2026-11-25T00:22:13.021942+00:00","processor":"vunnel@0.67.0","stale":true,"listing":{"digest":"x"},"schema":{"version":"1.0.3"}}`
-	if err := json.Unmarshal([]byte(in), &m); err != nil {
+	m, err := parseMetadata([]byte(in))
+	if err != nil {
 		t.Fatal(err)
 	}
-	if m.Processor != "vunnel@0.67.0" || !m.Stale {
+	if m.Processor != "vunnel@0.67.0" || !m.Stale || m.Timestamp.IsZero() {
 		t.Fatalf("got %+v", m)
 	}
 	// Older builds: null or absent.
-	m = metadata{}
-	if err := json.Unmarshal([]byte(`{"provider":"mariner","timestamp":"2024-01-11T01:29:08.659711+00:00","processor":null,"stale":null}`), &m); err != nil {
+	m, err = parseMetadata([]byte(`{"provider":"mariner","timestamp":"2024-01-11T01:29:08.659711+00:00","processor":null,"stale":null}`))
+	if err != nil {
 		t.Fatal(err)
 	}
-	if m.Processor != "" || m.Stale {
+	if m.Processor != "" || m.Stale || m.Timestamp.IsZero() {
 		t.Fatalf("got %+v", m)
+	}
+	// Unexpected types: the bad field is dropped, the rest kept.
+	m, err = parseMetadata([]byte(`{"timestamp":"","processor":"vunnel@1","stale":"yes","urls":"x","listing":[]}`))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if m.Processor != "vunnel@1" || m.Stale || !m.Timestamp.IsZero() {
+		t.Fatalf("got %+v", m)
+	}
+	// Not an object at all is still an error.
+	if _, err := parseMetadata([]byte(`[`)); err == nil {
+		t.Fatal("want an error for invalid JSON")
+	}
+}
+
+func TestRecordPath(t *testing.T) {
+	for id, want := range map[string]string{
+		"CVE-2026-1":          "nvd/CVE-2026-1.yaml",
+		"2026/CVE-2026-1":     "nvd/2026/CVE-2026-1.yaml",
+		"nvd:2026/CVE-2026-1": "nvd/2026/CVE-2026-1.yaml",
+		"a:b":                 "nvd/a-b.yaml",
+		"cve-????-?????":      "nvd/cve-????-?????.yaml",
+		"a//b":                "nvd/a/b.yaml",
+	} {
+		got, err := recordPath("nvd", id)
+		if err != nil || got != want {
+			t.Errorf("recordPath(%q) = %q, %v; want %q", id, got, err, want)
+		}
+	}
+	for _, id := range []string{"", "nvd:", "../x", "a/../../x", "nvd:10/../../etc", ".", "a/./b", "/abs", "a\nb", "a\x00b"} {
+		if got, err := recordPath("nvd", id); err == nil {
+			t.Errorf("recordPath(%q) = %q, want an error", id, got)
+		}
+	}
+}
+
+func TestLeadingWhitespaceKeysRoundTrip(t *testing.T) {
+	for _, v := range []map[string]any{
+		{"\n": 1.0, "b": "x"},
+		{"\na": map[string]any{"z": 1.0, "a": []any{" x\ny"}}},
+		{"\t\nx": "v", " k\nv": "w"},
+	} {
+		out, err := yaml.Marshal(canonicalize(any(v)))
+		if err != nil {
+			t.Fatal(err)
+		}
+		var back map[string]any
+		if err := yaml.Unmarshal(out, &back); err != nil {
+			t.Errorf("%q: doesn't parse: %v\n%s", v, err, out)
+			continue
+		}
+		if !reflect.DeepEqual(any(back), normalizeInts(v)) {
+			t.Errorf("%q: reads back as %#v\n%s", v, back, out)
+		}
+	}
+}
+
+// normalizeInts turns whole float64s into ints, as yaml.v3 decodes them.
+func normalizeInts(v any) any {
+	switch v := v.(type) {
+	case map[string]any:
+		out := map[string]any{}
+		for k, x := range v {
+			out[k] = normalizeInts(x)
+		}
+		return out
+	case []any:
+		out := make([]any, len(v))
+		for i, x := range v {
+			out[i] = normalizeInts(x)
+		}
+		return out
+	case float64:
+		if v == float64(int(v)) {
+			return int(v)
+		}
+	}
+	return v
+}
+
+type failingWriter struct{}
+
+func (failingWriter) Write([]byte) (int, error) { return 0, errors.New("broken pipe") }
+
+func TestWriteReportsStreamErrors(t *testing.T) {
+	old := stdout
+	stdout = failingWriter{}
+	t.Cleanup(func() { stdout = old })
+	if err := write(map[string]string{}, "id", "p/id.yaml", []byte("x")); err == nil {
+		t.Fatal("want an error when the stream can't be written")
 	}
 }
 
