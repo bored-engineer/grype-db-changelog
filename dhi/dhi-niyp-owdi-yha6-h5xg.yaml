@@ -43,16 +43,17 @@ affected:
         name: ruby-3.4
         purl: pkg:apk/dhi/ruby-3.4
       ranges:
-        - events:
-            - introduced: 3.4.8-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.4.10-r2
+          events:
+            - introduced: "0"
+            - fixed: 3.4.10-r2
           type: ECOSYSTEM
       versions:
-        - 3.4.10-r2
-        - 3.4.10-r3
-        - 3.4.11-r3
-        - 3.4.12-r3
-        - 3.4.13-r3
-        - 3.4.13-r4
         - 3.4.8-r0
         - 3.4.8-r1
         - 3.4.9-r1
@@ -132,15 +133,17 @@ affected:
         name: ruby-3.4
         purl: pkg:apk/dhi/ruby-3.4
       ranges:
-        - events:
-            - introduced: 3.4.9-r2
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.4.10-r2
+          events:
+            - introduced: "0"
+            - fixed: 3.4.10-r2
           type: ECOSYSTEM
       versions:
-        - 3.4.10-r2
-        - 3.4.10-r3
-        - 3.4.12-r3
-        - 3.4.13-r3
-        - 3.4.13-r4
         - 3.4.9-r2
     - database_specific:
         owner_kind: HSP
@@ -175,7 +178,7 @@ affected:
         - 0.5.8-r0
 details: 'Net::IMAP implements Internet Message Access Protocol (IMAP) client functionality in Ruby. Prior to 0.6.5 and 0.5.15, several Net::IMAP commands accept a "raw data" argument that is sent verbatim after validation to prevent command injection. However, if a server does not support non-synchronizing literals, it may still be possible to inject arbitrary IMAP commands inside non-synchronizing literals.  A server without support for non-synchronizing literals may interpret the "+}\r\n" as the end of a malformed command line and respond with a tagged BAD. In that case, the contents of the literal will be interpreted as one or more new pipelined commands, allowing a CRLF command injection attack to succeed. This affects criteria for #search and #uid_search; search_keys for #sort, #thread, #uid_sort, and #uid_thread; and attr for #fetch and #uid_fetch. This vulnerability is fixed in 0.6.5 and 0.5.15.'
 id: DHI-niyp-owdi-yha6-h5xg
-modified: "2026-11-23T15:58:37Z"
+modified: "2026-11-26T02:38:11Z"
 published: "2026-11-11T15:54:13Z"
 references:
     - type: ADVISORY

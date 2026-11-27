@@ -6,6 +6,10 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-3.2
         purl: pkg:apk/dhi/ruby-3.2
+      ranges:
+        - events:
+            - introduced: 3.2.10-r0
+          type: ECOSYSTEM
       versions:
         - 3.2.10-r0
         - 3.2.10-r1
@@ -18,67 +22,84 @@ affected:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-3.3
         purl: pkg:apk/dhi/ruby-3.3
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.3.11-r3
+          events:
+            - introduced: "0"
+            - fixed: 3.3.11-r3
+          type: ECOSYSTEM
       versions:
         - 3.3.10-r0
         - 3.3.10-r1
         - 3.3.11-r1
         - 3.3.11-r2
-        - 3.3.11-r3
-        - 3.3.12-r3
-        - 3.3.13-r3
-        - 3.3.14-r3
-        - 3.3.14-r4
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-3.4
         purl: pkg:apk/dhi/ruby-3.4
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.4.9-r2
+          events:
+            - introduced: "0"
+            - fixed: 3.4.9-r2
+          type: ECOSYSTEM
       versions:
-        - 3.4.10-r2
-        - 3.4.10-r3
-        - 3.4.11-r3
-        - 3.4.12-r3
-        - 3.4.13-r3
-        - 3.4.13-r4
         - 3.4.8-r0
         - 3.4.8-r1
         - 3.4.9-r1
-        - 3.4.9-r2
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
         name: ruby-4.0
         purl: pkg:apk/dhi/ruby-4.0
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 4.0.4-r3
+          events:
+            - introduced: "0"
+            - fixed: 4.0.4-r3
+          type: ECOSYSTEM
       versions:
         - 4.0.1-r0
         - 4.0.1-r1
-        - 4.0.10-r4
-        - 4.0.10-r5
         - 4.0.2-r1
         - 4.0.2-r2
         - 4.0.3-r2
         - 4.0.4-r2
-        - 4.0.4-r3
-        - 4.0.5-r3
-        - 4.0.6-r3
-        - 4.0.6-r4
-        - 4.0.7-r4
-        - 4.0.9-r4
     - database_specific:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: ruby-3.2
         purl: pkg:apk/dhi/ruby-3.2
+      ranges:
+        - events:
+            - introduced: 3.2.11-r1
+          type: ECOSYSTEM
       versions:
         - 3.2.11-r1
         - 3.2.11-r2
         - 3.2.11-r3
 details: Net::IMAP implements Internet Message Access Protocol (IMAP) client functionality in Ruby. Prior to versions 0.3.10, 0.4.24, 0.5.14, and 0.6.4, a man-in-the-middle attacker can cause Net::IMAP#starttls to return "successfully", without starting TLS. This issue has been patched in versions 0.3.10, 0.4.24, 0.5.14, and 0.6.4.
 id: DHI-pqvh-7epl-hxah-ajqg
-modified: "2026-11-20T14:20:51Z"
+modified: "2026-11-26T02:52:30Z"
 published: "2026-11-11T16:59:50Z"
 references:
     - type: ADVISORY

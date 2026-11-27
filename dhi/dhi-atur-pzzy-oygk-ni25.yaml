@@ -7,14 +7,20 @@ affected:
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
       ranges:
-        - events:
-            - introduced: 16.13-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 16.16-r0
+          events:
+            - introduced: "0"
+            - fixed: 16.16-r0
           type: ECOSYSTEM
       versions:
         - 16.13-r0
         - 16.14-r0
         - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -68,13 +74,19 @@ affected:
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
       ranges:
-        - events:
-            - introduced: 16.14-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 16.16-r0
+          events:
+            - introduced: "0"
+            - fixed: 16.16-r0
           type: ECOSYSTEM
       versions:
         - 16.14-r0
         - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -139,7 +151,7 @@ affected:
         - 17.11-1
 details: Missing authorization in PostgreSQL REASSIGN OWNED allows a role granted INHERIT but not SET to transfer objects to the granted role.  It also allows reassignment of database ownership without the CREATEDB privilege.  The equivalent ALTER ... OWNER commands block this.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.
 id: DHI-atur-pzzy-oygk-ni25
-modified: "2026-11-25T20:10:11Z"
+modified: "2026-11-26T03:08:17Z"
 published: "2026-11-13T02:52:32Z"
 references:
     - type: ADVISORY

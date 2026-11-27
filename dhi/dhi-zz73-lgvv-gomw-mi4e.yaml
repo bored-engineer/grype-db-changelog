@@ -20,6 +20,7 @@ affected:
         - 0.8.8-r6
         - 0.8.9-r0
         - 0.8.9-r1
+        - 0.8.9-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -40,6 +41,7 @@ affected:
         - 0.8.8-r6
         - 0.8.9-r0
         - 0.8.9-r1
+        - 0.8.9-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -59,9 +61,10 @@ affected:
         - 0.8.8-5
         - 0.8.9-0
         - 0.8.9-1
+        - 0.8.9-2
 details: Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Prior to 6.13.12, 7.8.13, 8.24.7, and 9.11.4, Mongoose uses attacker-controlled discriminator key values, including the default __t field, to index plain-object registries such as Model.discriminators and schema.discriminators without requiring an own property. Values such as constructor, toString, or hasOwnProperty can therefore resolve to inherited built-in functions instead of a registered discriminator, causing type confusion in model construction, document creation, hydration, query and update casting, embedded discriminators, and populate operations. In the bulkWrite() insertOne path with skipValidation enabled, a constructor value can cause a raw input object to be stored without schema casting or strict filtering, and a stored poisoned document can make every query that hydrates it fail until the document is removed. The weakness reads inherited properties but does not modify Object.prototype and is not prototype pollution. This issue is fixed in versions 6.13.12, 7.8.13, 8.24.7, and 9.11.4.
 id: DHI-zz73-lgvv-gomw-mi4e
-modified: "2026-11-24T22:05:29Z"
+modified: "2026-11-26T12:38:35Z"
 published: "2026-11-12T10:02:59Z"
 references:
     - type: ADVISORY

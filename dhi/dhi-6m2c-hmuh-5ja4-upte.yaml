@@ -22,13 +22,19 @@ affected:
         name: postgresql17
         purl: pkg:apk/dhi/postgresql17
       ranges:
-        - events:
-            - introduced: 17.7-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 17.12-r0
+          events:
+            - introduced: "0"
+            - fixed: 17.12-r0
           type: ECOSYSTEM
       versions:
         - 17.10-r0
         - 17.11-r0
-        - 17.12-r0
         - 17.7-r0
         - 17.8-r0
         - 17.9-r0
@@ -76,13 +82,19 @@ affected:
         name: postgresql17
         purl: pkg:apk/dhi/postgresql17
       ranges:
-        - events:
-            - introduced: 17.10-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-13"
+                      kind: advisory
+                      version: 17.12-r0
+          events:
+            - introduced: "0"
+            - fixed: 17.12-r0
           type: ECOSYSTEM
       versions:
         - 17.10-r0
         - 17.11-r0
-        - 17.12-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -127,7 +139,7 @@ affected:
         - 17.11-1
 details: Improper protection in PostgreSQL INSERT ... ON CONFLICT allows an attacker having INSERT, UPDATE, and applicable SELECT privileges on the table to read every row despite row security policies, via iterated INSERT ... ON CONFLICT DO UPDATE.  Unlike CVE-2026-16237, this does not facilitate improper writes.  Versions before PostgreSQL 18.7, 17.12, 16.16, 15.20, and 14.25 are affected.
 id: DHI-6m2c-hmuh-5ja4-upte
-modified: "2026-11-25T21:59:03Z"
+modified: "2026-11-26T03:08:37Z"
 published: "2026-11-13T02:59:15Z"
 references:
     - type: ADVISORY

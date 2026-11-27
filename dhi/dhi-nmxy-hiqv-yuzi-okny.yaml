@@ -112,6 +112,8 @@ affected:
         - 1.7.0.20-8
         - 1.7.0.20-9
         - 1.9.0.1-10
+        - 1.9.0.1-11
+        - 1.9.0.1-12
     - database_specific:
         owner_kind: HSP
       package:
@@ -128,6 +130,7 @@ affected:
         - 4.4.5-2
         - 4.4.5-3
         - 4.4.5-4
+        - 4.4.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -144,13 +147,14 @@ affected:
         - 4.4.5-2
         - 4.4.5-3
         - 4.4.5-4
+        - 4.4.5-5
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: 'node-tar is a full-featured Tar for Node.js. Prior to 7.5.16, tar (node-tar) applies a PAX extended header''s size= record (and other PAX overrides) to the next header entry of any type, including intermediary metadata headers such as a GNU long-name (L) or long-link (K) entry. Per POSIX pax, a PAX extended header (x) describes the next file entry, not the intermediary extension headers that may sit between the x header and the file it annotates. Because node-tar lets the PAX size override the byte length of an intervening L/K/x header, an attacker can desynchronize node-tar''s stream cursor relative to every other mainstream tar implementation (GNU tar, libarchive/bsdtar, Python tarfile, and the now-fixed tar-rs / astral-tokio-tar). The result is a tar parser interpretation differential (CWE-436): a single crafted archive yields a different set of members under node-tar than under the reference tar tools. An attacker can use this to hide a member from one parser while it is visible to another, which defeats security tooling whose scanner and extractor disagree on archive contents (e.g. a malware/secret scanner that lists entries with one library while a downstream step extracts with another) This vulnerability is fixed in 7.5.16.'
 id: DHI-nmxy-hiqv-yuzi-okny
-modified: "2026-11-25T23:04:47Z"
+modified: "2026-11-26T10:37:24Z"
 published: "2026-11-21T08:54:17Z"
 references:
     - type: ADVISORY

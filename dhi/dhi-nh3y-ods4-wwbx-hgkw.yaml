@@ -55,6 +55,7 @@ affected:
         - 12.6.1-r6
         - 12.7.0-r0
         - 12.7.0-r1
+        - 12.7.0-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -114,6 +115,7 @@ affected:
         - 0.9.0-r2
         - 0.9.0-r3
         - 0.9.0-r4
+        - 0.9.0-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -196,6 +198,7 @@ affected:
       versions:
         - 3.10.0-r0
         - 3.10.2-r0
+        - 3.10.2-r1
         - 3.8.0-r0
         - 3.8.0-r1
         - 3.8.0-r10
@@ -281,6 +284,7 @@ affected:
         - 12.6.1-r6
         - 12.7.0-r0
         - 12.7.0-r1
+        - 12.7.0-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -340,6 +344,7 @@ affected:
         - 0.9.0-r2
         - 0.9.0-r3
         - 0.9.0-r4
+        - 0.9.0-r5
     - database_specific:
         owner_kind: HSP
       package:
@@ -430,6 +435,7 @@ affected:
       versions:
         - 3.10.0-r0
         - 3.10.2-r0
+        - 3.10.2-r1
         - 3.8.0-r0
         - 3.8.0-r1
         - 3.8.0-r10
@@ -571,6 +577,8 @@ affected:
         - 1.7.0.20-8
         - 1.7.0.20-9
         - 1.9.0.1-10
+        - 1.9.0.1-11
+        - 1.9.0.1-12
     - database_specific:
         owner_kind: HSP
       package:
@@ -607,6 +615,7 @@ affected:
         - 12.6.1-5
         - 12.7.0-0
         - 12.7.0-1
+        - 12.7.0-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -701,6 +710,8 @@ affected:
         - 1.7.22-11
         - 1.7.22-12
         - 1.7.22-13
+        - 1.7.22-14
+        - 1.7.22-15
         - 1.7.22-2
         - 1.7.22-3
         - 1.7.22-4
@@ -749,6 +760,7 @@ affected:
         - 4.4.5-2
         - 4.4.5-3
         - 4.4.5-4
+        - 4.4.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -765,6 +777,7 @@ affected:
         - 4.4.5-2
         - 4.4.5-3
         - 4.4.5-4
+        - 4.4.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -1030,6 +1043,7 @@ affected:
         - 0.9.0-3
         - 0.9.0-4
         - 0.9.0-5
+        - 0.9.0-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -1262,6 +1276,7 @@ affected:
       versions:
         - 3.10.0-0
         - 3.10.2-0
+        - 3.10.2-1
         - 3.8.0-0
         - 3.8.0-1
         - 3.8.0-2
@@ -1348,7 +1363,7 @@ affected:
         - 2.5.9-1
 details: body-parser is body parsing middleware for Node.js and Express. In versions before 1.20.9 and in versions from 2.0.0 before 2.4.0, a single request can crash any application using body-parser with default options. When a request carries a Content-Encoding such as gzip, body-parser pipes it into a decompression stream and, after reading the body, leaves that stream with no error listener. A payload of one valid compressed frame followed by trailing bytes decodes and the application responds normally, but the trailing bytes then reach the already-finished decoder, which emits an error that is re-thrown as an uncaught exception and terminates the process. No matching route is required because body parsing runs before routing, so any endpoint that parses a body is affected. The issue is fixed in body-parser 2.4.0 and 1.20.9, and users should upgrade to one of those versions or later. As a workaround, disable request-body inflation (set the body-parser inflate option to false) so encoded requests are rejected before any decompression stream is created.
 id: DHI-nh3y-ods4-wwbx-hgkw
-modified: "2026-11-25T22:04:03Z"
+modified: "2026-11-26T15:35:56Z"
 published: "2026-11-11T15:59:03Z"
 references:
     - type: ADVISORY

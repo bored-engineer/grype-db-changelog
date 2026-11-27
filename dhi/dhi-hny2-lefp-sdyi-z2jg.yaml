@@ -11,6 +11,7 @@ affected:
             - introduced: 1.74.1-r0
           type: ECOSYSTEM
       versions:
+        - 1.100.0-r0
         - 1.74.1-r0
         - 1.74.1-r1
         - 1.74.1-r2
@@ -53,6 +54,8 @@ affected:
         - 1.98.9-r0
         - 1.99.0-r0
         - 1.99.2-r0
+        - 1.99.3-r0
+        - 1.99.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -64,6 +67,7 @@ affected:
             - introduced: 1.74.1-r0
           type: ECOSYSTEM
       versions:
+        - 1.100.0-r0
         - 1.74.1-r0
         - 1.74.1-r1
         - 1.74.1-r2
@@ -106,6 +110,8 @@ affected:
         - 1.98.9-r0
         - 1.99.0-r0
         - 1.99.2-r0
+        - 1.99.3-r0
+        - 1.99.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -117,6 +123,7 @@ affected:
             - introduced: 1.74.1-0
           type: ECOSYSTEM
       versions:
+        - 1.100.0-0
         - 1.74.1-0
         - 1.79.30-0
         - 1.79.30-1
@@ -160,9 +167,11 @@ affected:
         - 1.98.9-0
         - 1.99.0-0
         - 1.99.2-0
+        - 1.99.3-0
+        - 1.99.5-0
 details: fastify versions before 5.12.2 decide whether to compile a request schema based on JavaScript truthiness, but JSON Schema Draft 7 defines the boolean false as a valid schema that rejects every instance. When an application assigns false to a route's body, querystring, params, or headers schema to deny all input, fastify treats it as a missing schema, compiles no validator, and runs the route handler on any request. An unauthenticated remote client can therefore reach a handler that a valid deny-all schema was intended to make unreachable, a complete validation bypass that can lead to unauthorized state changes or execution of disabled operations. Users should upgrade to fastify 5.12.2 or later.
 id: DHI-hny2-lefp-sdyi-z2jg
-modified: "2026-11-25T23:11:27Z"
+modified: "2026-11-26T20:38:03Z"
 published: "2026-11-13T17:09:32Z"
 references:
     - type: ADVISORY

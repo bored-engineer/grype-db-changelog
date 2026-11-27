@@ -44,6 +44,8 @@ affected:
         - 1.7.0.20-8
         - 1.7.0.20-9
         - 1.9.0.1-10
+        - 1.9.0.1-11
+        - 1.9.0.1-12
     - database_specific:
         owner_kind: HSP
       package:
@@ -62,9 +64,11 @@ affected:
         - 1.7.0.20-3
         - 1.7.0.20-4
         - 1.9.0.1-4
+        - 1.9.0.1-5
+        - 1.9.0.1-6
 details: wcmatch is a Python library for wildcard file-name matching. Prior to 11.2, under the default flags, matching a non-matching attacker-controlled name against an application-supplied pattern containing several star wildcards separated by literals makes the lazy .? and [^/]? segments, including _STAR and _PATH_STAR emitted by _handle_star() in wcmatch/_wcparse.py, backtrack across possible splits, so a single comparison can consume prolonged CPU time. The pattern remains a developer-controlled constant and only the name is attacker-controlled; affected paths include fnmatch.fnmatch(), glob.globmatch(), and filesystem glob scans where another user can create names, without enabling extglob or any non-default flag. This issue is fixed in 11.2.
 id: DHI-ecd4-4ixx-7rqu-2ha2
-modified: "2026-11-25T22:43:39Z"
+modified: "2026-11-26T10:32:27Z"
 published: "2026-11-21T00:49:15Z"
 references:
     - type: ADVISORY

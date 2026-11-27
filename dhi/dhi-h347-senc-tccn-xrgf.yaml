@@ -471,6 +471,7 @@ affected:
         - 0.65.6.3-r0
         - 0.65.7-r0
         - 0.65.7.1-r0
+        - 0.65.7.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -835,6 +836,7 @@ affected:
         - 3.13.2-r39
         - 3.13.2-r4
         - 3.13.2-r40
+        - 3.13.2-r41
         - 3.13.2-r5
         - 3.13.2-r6
         - 3.13.2-r7
@@ -1353,6 +1355,7 @@ affected:
         - 0.65.6.3-r0
         - 0.65.7-r0
         - 0.65.7.1-r0
+        - 0.65.7.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1717,6 +1720,7 @@ affected:
         - 3.13.2-r39
         - 3.13.2-r4
         - 3.13.2-r40
+        - 3.13.2-r41
         - 3.13.2-r5
         - 3.13.2-r6
         - 3.13.2-r7
@@ -1908,6 +1912,7 @@ affected:
         - 4.1.12-15
         - 4.1.12-16
         - 4.1.12-17
+        - 4.1.12-18
         - 4.1.12-2
         - 4.1.12-3
         - 4.1.12-4
@@ -1936,6 +1941,7 @@ affected:
         - 4.1.12-15
         - 4.1.12-16
         - 4.1.12-17
+        - 4.1.12-18
         - 4.1.12-2
         - 4.1.12-3
         - 4.1.12-4
@@ -1964,6 +1970,7 @@ affected:
         - 4.1.12-15
         - 4.1.12-16
         - 4.1.12-17
+        - 4.1.12-18
         - 4.1.12-2
         - 4.1.12-3
         - 4.1.12-4
@@ -1992,6 +1999,7 @@ affected:
         - 4.1.12-15
         - 4.1.12-16
         - 4.1.12-17
+        - 4.1.12-18
         - 4.1.12-2
         - 4.1.12-3
         - 4.1.12-4
@@ -2206,6 +2214,7 @@ affected:
         - 2.17.0-3
         - 2.17.0-4
         - 2.17.1-0
+        - 2.17.1-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -3476,6 +3485,7 @@ affected:
         - 0.65.6.3-0
         - 0.65.7-0
         - 0.65.7.1-0
+        - 0.65.7.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3769,6 +3779,8 @@ affected:
         - 1.35.3-34
         - 1.35.3-35
         - 1.35.3-36
+        - 1.35.3-37
+        - 1.35.3-38
         - 1.35.3-4
         - 1.35.3-5
         - 1.35.3-6
@@ -4367,6 +4379,7 @@ affected:
         - 3.13.2-39
         - 3.13.2-4
         - 3.13.2-40
+        - 3.13.2-41
         - 3.13.2-5
         - 3.13.2-6
         - 3.13.2-7
@@ -4432,7 +4445,7 @@ database_specific:
         - legacy_package_image_owner
 details: Forward-reference completion for @JsonIdentityInfo object IDs in FasterXML jackson-databind performs a linear scan of the pending-reference accumulator for every resolved ID. The affected paths are CollectionDeserializer.CollectionReferringAccumulator.resolveForwardReference() and the equivalent implementation in MapDeserializer. When a document first creates N unresolved object-ID references in an identity-enabled collection or map and then defines those same IDs in reverse order, completion performs on the order of N * (N + 1) / 2 identity comparisons, so a shallow document whose size grows linearly causes quadratic CPU work during deserialization. The reporter instrumented equals() calls on the ID class and measured exactly 2,003,000 comparisons at N = 2,000, against zero comparisons in the pending-reference lookup path for an equally sized control in which every reference was already resolved. The input requires no deep nesting and no syntactically unusual JSON. Exploitation requires an application that deserializes attacker-influenced JSON into an identity-enabled collection or map. The fix replaces the repeated linear lookup with a keyed pending-reference structure.
 id: DHI-h347-senc-tccn-xrgf
-modified: "2026-11-25T22:59:45Z"
+modified: "2026-11-26T20:35:55Z"
 published: "2026-11-19T20:59:10Z"
 references:
     - type: ADVISORY

@@ -471,6 +471,7 @@ affected:
         - 0.65.6.3-r0
         - 0.65.7-r0
         - 0.65.7.1-r0
+        - 0.65.7.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -835,6 +836,7 @@ affected:
         - 3.13.2-r39
         - 3.13.2-r4
         - 3.13.2-r40
+        - 3.13.2-r41
         - 3.13.2-r5
         - 3.13.2-r6
         - 3.13.2-r7
@@ -1353,6 +1355,7 @@ affected:
         - 0.65.6.3-r0
         - 0.65.7-r0
         - 0.65.7.1-r0
+        - 0.65.7.2-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1717,6 +1720,7 @@ affected:
         - 3.13.2-r39
         - 3.13.2-r4
         - 3.13.2-r40
+        - 3.13.2-r41
         - 3.13.2-r5
         - 3.13.2-r6
         - 3.13.2-r7
@@ -1908,6 +1912,7 @@ affected:
         - 4.1.12-15
         - 4.1.12-16
         - 4.1.12-17
+        - 4.1.12-18
         - 4.1.12-2
         - 4.1.12-3
         - 4.1.12-4
@@ -1936,6 +1941,7 @@ affected:
         - 4.1.12-15
         - 4.1.12-16
         - 4.1.12-17
+        - 4.1.12-18
         - 4.1.12-2
         - 4.1.12-3
         - 4.1.12-4
@@ -1964,6 +1970,7 @@ affected:
         - 4.1.12-15
         - 4.1.12-16
         - 4.1.12-17
+        - 4.1.12-18
         - 4.1.12-2
         - 4.1.12-3
         - 4.1.12-4
@@ -1992,6 +1999,7 @@ affected:
         - 4.1.12-15
         - 4.1.12-16
         - 4.1.12-17
+        - 4.1.12-18
         - 4.1.12-2
         - 4.1.12-3
         - 4.1.12-4
@@ -2206,6 +2214,7 @@ affected:
         - 2.17.0-3
         - 2.17.0-4
         - 2.17.1-0
+        - 2.17.1-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -3476,6 +3485,7 @@ affected:
         - 0.65.6.3-0
         - 0.65.7-0
         - 0.65.7.1-0
+        - 0.65.7.2-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -3769,6 +3779,8 @@ affected:
         - 1.35.3-34
         - 1.35.3-35
         - 1.35.3-36
+        - 1.35.3-37
+        - 1.35.3-38
         - 1.35.3-4
         - 1.35.3-5
         - 1.35.3-6
@@ -4367,6 +4379,7 @@ affected:
         - 3.13.2-39
         - 3.13.2-4
         - 3.13.2-40
+        - 3.13.2-41
         - 3.13.2-5
         - 3.13.2-6
         - 3.13.2-7
@@ -4432,7 +4445,7 @@ database_specific:
         - legacy_package_image_owner
 details: TypeDeserializerBase._findDeserializer() in FasterXML jackson-databind caches the resolved deserializer under the raw, attacker-supplied type ID. When name-based polymorphism is configured with a fallback, for example @JsonTypeInfo(use = Id.NAME, defaultImpl = ...), every distinct unrecognized type ID resolves to the same fallback deserializer but is retained as its own key in the _deserializers map. That map has no configurable bound and lives for the lifetime of the type deserializer, so an attacker who can repeatedly supply fresh unknown type IDs causes monotonic memory retention across requests. The reporter observed 10,000 retained entries from 10,000 distinct unknown IDs, against a single entry for a control that repeated one unknown ID the same number of times, isolating attacker-controlled key cardinality from request volume. Exploitation requires an application that enables name-based polymorphism with a defaultImpl or equivalent fallback, accepts attacker-influenced type IDs, and reuses a long-lived ObjectMapper across requests. The fix stops caching fallback resolutions for unrecognized IDs and bounds both the number of cached entries and the length of a cacheable type ID.
 id: DHI-pi3v-mt4e-2xkn-3lf2
-modified: "2026-11-25T23:04:47Z"
+modified: "2026-11-26T20:40:32Z"
 published: "2026-11-19T20:59:10Z"
 references:
     - type: ADVISORY

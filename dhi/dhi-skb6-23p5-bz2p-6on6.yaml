@@ -392,6 +392,8 @@ affected:
         - 1.7.0.20-8
         - 1.7.0.20-9
         - 1.9.0.1-10
+        - 1.9.0.1-11
+        - 1.9.0.1-12
     - database_specific:
         owner_kind: HSP
       package:
@@ -408,6 +410,7 @@ affected:
         - 4.4.5-2
         - 4.4.5-3
         - 4.4.5-4
+        - 4.4.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -424,6 +427,7 @@ affected:
         - 4.4.5-2
         - 4.4.5-3
         - 4.4.5-4
+        - 4.4.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -570,7 +574,7 @@ database_specific:
         - legacy_package_image_owner
 details: node-tar is a tar archive manipulation library for Node.js. Prior to 7.5.21, node-tar's filesFilter in src/list.ts uses the recursive mapHas helper to walk an archive entry path upward with path.dirname() and no segment cap when tar.t(...) or tar.x(...) receives a non-empty member-selection list. A crafted GNU L or PAX x long-path header with thousands of slash-separated segments reaches this.filter(entry.path, entry) in Parser[CONSUMEHEADER] in src/parse.ts before Unpack[CHECKPATH] applies maxDepth, causing an uncatchable RangeError stack overflow that terminates asynchronous and streaming Node.js consumers. This issue is fixed in version 7.5.21.
 id: DHI-skb6-23p5-bz2p-6on6
-modified: "2026-11-25T23:10:05Z"
+modified: "2026-11-26T10:39:15Z"
 published: "2026-11-21T08:54:17Z"
 references:
     - type: ADVISORY

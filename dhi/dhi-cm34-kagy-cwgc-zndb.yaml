@@ -28,6 +28,7 @@ affected:
         - 3.3.4-r1
         - 3.3.5-r0
         - 3.3.5-r1
+        - 3.3.5-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -56,6 +57,7 @@ affected:
         - 3.3.4-r1
         - 3.3.5-r0
         - 3.3.5-r1
+        - 3.3.5-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -84,9 +86,10 @@ affected:
         - 3.3.4-1
         - 3.3.5-0
         - 3.3.5-1
+        - 3.3.5-2
 details: "A Denial of Service (DoS) vulnerability exists in the `@angular/common` package of the Angular framework. The `formatDate` function, which is also utilized by the standard Angular `DatePipe`, does not properly limit or validate the length of the `format` parameter. \n\nWhen parsing a maliciously crafted, excessively long date format string (e.g., a repeating pattern or very large string), the internal parser splits the string iteratively using a regular expression loop. This results in uncontrolled resource consumption (high CPU utilization and excessive memory allocations), leading to a Denial of Service (DoS).\n\n\n### Impact\n\n#### 1. Server-Side Rendering (SSR)\nIn Angular applications that leverage Server-Side Rendering, an attacker can supply a malicious payload with an excessively long date format string. Processing this on the server causes high CPU usage and triggers a `JavaScript heap out of memory` crash, rendering the application unavailable to all users.\n\n#### 2. Client-Side Rendering (CSR)\nIn standard client-side applications, executing the vulnerable function with an excessively long format string blocks the browser's main thread, causing the browser tab to freeze and become completely unresponsive.\n\n### Patched Versions\n* 22.0.1  \n* 21.2.17  \n* 20.3.25\n\n### Attack Preconditions\nFor this vulnerability to be exploitable, both of the following conditions must be met:\n1. **Vulnerable Component Usage:** The application must format dates using the `formatDate` utility or the `DatePipe`.\n2. **Attacker-Controlled Parameter:** The date format string passed to these utilities must be customizable or directly controlled by untrusted user input (e.g., parsed from query parameters, user preferences, or API responses).\n\n*If the date format is hardcoded (e.g., `'mediumDate'`, `'shortTime'`, or static strings) or properly validated to be within a reasonable length limit, the application is not vulnerable.*"
 id: DHI-cm34-kagy-cwgc-zndb
-modified: "2026-11-25T00:05:20Z"
+modified: "2026-11-26T10:32:27Z"
 published: "2026-11-20T00:19:15Z"
 references:
     - type: ADVISORY

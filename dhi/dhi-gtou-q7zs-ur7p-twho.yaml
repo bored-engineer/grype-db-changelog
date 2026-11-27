@@ -23,8 +23,15 @@ affected:
         name: ruby-3.3
         purl: pkg:apk/dhi/ruby-3.3
       ranges:
-        - events:
-            - introduced: 3.3.10-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.3.12-r3
+          events:
+            - introduced: "0"
+            - fixed: 3.3.12-r3
           type: ECOSYSTEM
       versions:
         - 3.3.10-r0
@@ -32,10 +39,6 @@ affected:
         - 3.3.11-r1
         - 3.3.11-r2
         - 3.3.11-r3
-        - 3.3.12-r3
-        - 3.3.13-r3
-        - 3.3.14-r3
-        - 3.3.14-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -116,15 +119,18 @@ affected:
         name: ruby-3.3
         purl: pkg:apk/dhi/ruby-3.3
       ranges:
-        - events:
-            - introduced: 3.3.11-r3
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 3.3.12-r3
+          events:
+            - introduced: "0"
+            - fixed: 3.3.12-r3
           type: ECOSYSTEM
       versions:
         - 3.3.11-r3
-        - 3.3.12-r3
-        - 3.3.13-r3
-        - 3.3.14-r3
-        - 3.3.14-r4
     - database_specific:
         owner_kind: HSP
       package:
@@ -175,7 +181,7 @@ affected:
         - 0.5.8-r0
 details: Net::IMAP implements Internet Message Access Protocol (IMAP) client functionality in Ruby. Prior to 0.6.5 and 0.5.15, several Net::IMAP commands accept a raw string argument which is only validated to prevent CRLF injection and then sent verbatim. If this string is derived from user-controlled input, an attacker can force the next command to be absorbed as a continuation of the first command. This will cause the first command to eventually fail, but also prevents it from returning until another command is sent (from another thread). That other command will not return until the connection is closed. This vulnerability is fixed in 0.6.5 and 0.5.15.
 id: DHI-gtou-q7zs-ur7p-twho
-modified: "2026-11-23T15:58:37Z"
+modified: "2026-11-26T02:52:36Z"
 published: "2026-11-11T15:54:13Z"
 references:
     - type: ADVISORY

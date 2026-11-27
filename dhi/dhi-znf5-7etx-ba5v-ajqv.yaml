@@ -1063,6 +1063,8 @@ affected:
         - 1.7.22-11
         - 1.7.22-12
         - 1.7.22-13
+        - 1.7.22-14
+        - 1.7.22-15
         - 1.7.22-2
         - 1.7.22-3
         - 1.7.22-4
@@ -1291,6 +1293,7 @@ affected:
         - 4.84.0-0
         - 4.84.0-1
         - 4.86.0-0
+        - 4.87.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -1396,6 +1399,7 @@ affected:
         - 6.1.0-40
         - 6.1.0-41
         - 6.1.0-42
+        - 6.1.0-43
         - 6.1.0-5
         - 6.1.0-6
         - 6.1.0-7
@@ -1510,7 +1514,7 @@ details: |-
 
     An unauthenticated attacker who can reach an application that parses untrusted query strings or urlencoded bodies with both `comma: true` and `throwOnLimitExceeded: true` (both non-default) can bypass the configured limit with a single `a[]=` parameter and force the parser to allocate an array proportional to the request size. The cost is strictly linear in the attacker-supplied bytes (about 0.1 microseconds and 6 to 7 retained bytes per input byte; the same out-of-memory threshold as the documented default `throwOnLimitExceeded: false` path), so a transport-layer request or body size limit bounds it completely (and node's default maximum HTTP header size of 16 KB already bounds the request line, so multi-megabyte payloads need a body parser). The impact is that an opt-in hard limit fails open on one key spelling, not unbounded allocation from a small input.
 id: DHI-znf5-7etx-ba5v-ajqv
-modified: "2026-11-25T23:11:27Z"
+modified: "2026-11-26T20:47:02Z"
 published: "2026-11-12T00:42:35Z"
 references:
     - type: ADVISORY

@@ -14,7 +14,12 @@ affected:
         - 1.100.0-1
         - 1.100.0-2
         - 1.100.0-3
+        - 1.100.0-4
         - 1.97.1-0
+database_specific:
+    coverage: partial
+    coverage_exclusions:
+        - legacy_package_image_owner
 details: |-
     When an application reads an interned value's fields or uses that value as an input to a tracked function, Salsa must ensure that reusable storage has been validated for the current database revision. This prevents the value's fields and associated cached function results from being freed while in use. Affected versions checked this invariant only with `debug_assert!` when reading fields, and did not check it when using an interned value to access a tracked function's cached result.
 
@@ -26,7 +31,7 @@ details: |-
 
     Applications that disable garbage collection for all explicitly declared interned structs using `#[salsa::interned(revisions = usize::MAX)]` and do not use implicitly interned query arguments are not affected by this vulnerability.
 id: DHI-6lxn-nt5a-t565-2nrj
-modified: "2026-11-25T15:33:03Z"
+modified: "2026-11-26T22:37:55Z"
 published: "2026-11-25T15:33:03Z"
 references:
     - type: ADVISORY

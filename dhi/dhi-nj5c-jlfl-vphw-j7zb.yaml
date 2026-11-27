@@ -3,6 +3,21 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: libxml2
+        purl: pkg:apk/dhi/libxml2
+      ranges:
+        - events:
+            - introduced: 2.13.9-r2
+          type: ECOSYSTEM
+      versions:
+        - 2.13.9-r2
+        - 2.13.9-r3
+        - 2.13.9-r4
+        - 2.13.9-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: libxml2
         purl: pkg:deb/dhi/libxml2
@@ -26,7 +41,7 @@ affected:
         - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi2
 details: A flaw was identified in the interactive shell of the xmllint utility, part of the libxml2 project, where memory allocated for user input is not properly released under certain conditions. When a user submits input consisting only of whitespace, the program skips command execution but fails to free the allocated buffer. Repeating this action causes memory to continuously accumulate. Over time, this can exhaust system memory and terminate the xmllint process, creating a denial-of-service condition on the local system.
 id: DHI-nj5c-jlfl-vphw-j7zb
-modified: "2026-11-21T01:47:03Z"
+modified: "2026-11-26T13:52:54Z"
 published: "2026-11-11T17:11:33Z"
 references:
     - type: ADVISORY
@@ -45,6 +60,8 @@ references:
       url: https://scout.docker.com/v/DHI-nj5c-jlfl-vphw-j7zb
     - type: ADVISORY
       url: https://security-tracker.debian.org/tracker/CVE-2026-1757
+    - type: ADVISORY
+      url: https://security.alpinelinux.org/vuln/CVE-2026-1757
     - type: ADVISORY
       url: https://ubuntu.com/security/CVE-2026-1757
 schema_version: 1.8.0

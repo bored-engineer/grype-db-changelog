@@ -15,9 +15,10 @@ affected:
         - 9.0.3-r0
         - 9.0.4-r0
         - 9.0.7-r0
+        - 9.0.8-r0
 details: "### Impact\r\nA malicious actor with network access to Valkey can cause the system to abort by triggering an  assertion. \r\n\r\n### Details\r\nWhen processing incoming requests, the Valkey system does not properly reset the networking state after processing an empty request. A malicious actor can then send a request that the server incorrectly identifies as breaking server side invariants, which results in the server shutting down.\r\n\r\n### Mitigation\r\nWhen possible, we recommend making sure to properly isolate your Valkey deployments so that only trusted users have access.\r\n\r\n### Credits\r\nThe problem was reported by NVIDIA Networking Security researchers:\r\nDaniel Bransky [github.com/dBransky](https://github.com/dBransky)\r\nEliya Cohen [github.com/eliyacohen-hub](https://github.com/eliyacohen-hub)"
 id: DHI-jsu7-aa6u-rfev-3f6g
-modified: "2026-11-23T21:03:00Z"
+modified: "2026-11-26T01:29:09Z"
 published: "2026-11-11T19:16:44Z"
 references:
     - type: ADVISORY

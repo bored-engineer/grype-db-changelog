@@ -20,7 +20,7 @@ affected:
         - 1.27.4-r0
 details: When using GCC, building a malicious package that uses cgo could cause arbitrary command execution at link time via untrusted GCC spec files ("specs" or "*.spec"). When linking with "-fopenmp", "-fopenacc", or "-fsanitize=" in "#cgo LDFLAGS", GCC's built-in link spec evaluates "%:include(libgomp.spec)" or "%:include(libsanitizer.spec)" and searches for spec files in "-L" and sysroot directories (including subdirectories and multilib sibling directories such as "../lib64"), as well as the working directory when "-fopenmp" or "-fopenacc" is used or when "-fsanitize=" is combined with "-static" or "-static-lib*". The go command now rejects "-L", "-isysroot", and "-Wl,-syslibroot" directories (and the working and package directories when applicable) that contain GCC spec files, and disallows "@" and "-" prefixes in "-fsanitize=" compiler flag values.
 id: DHI-txpy-qbqh-pigy-g5u7
-modified: "2026-11-25T02:16:03Z"
+modified: "2026-11-26T17:38:32Z"
 published: "2026-11-18T19:52:05Z"
 references:
     - type: ADVISORY
@@ -59,6 +59,12 @@ references:
       url: https://errata.almalinux.org/8/ALSA-2026-102592.html
     - type: ADVISORY
       url: https://errata.almalinux.org/9/ALSA-2026-102586.html
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:102586
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:102587
+    - type: ADVISORY
+      url: https://errata.rockylinux.org/RLSA-2026:102592
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-102586.html
     - type: ADVISORY

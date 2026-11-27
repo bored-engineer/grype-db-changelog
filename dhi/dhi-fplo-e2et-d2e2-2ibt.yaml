@@ -1430,6 +1430,8 @@ affected:
         - 13.0.13-8
         - 13.0.13-9
         - 13.0.14-0
+        - 13.0.14-1
+        - 13.0.14-2
         - 13.0.8-0
         - 13.0.8-1
         - 13.0.8-2
@@ -1490,6 +1492,8 @@ affected:
         - 13.0.13-8
         - 13.0.13-9
         - 13.0.14-0
+        - 13.0.14-1
+        - 13.0.14-2
         - 13.0.8-0
         - 13.0.8-1
         - 13.0.8-2
@@ -1550,6 +1554,8 @@ affected:
         - 13.0.13-8
         - 13.0.13-9
         - 13.0.14-0
+        - 13.0.14-1
+        - 13.0.14-2
         - 13.0.8-0
         - 13.0.8-1
         - 13.0.8-2
@@ -1610,6 +1616,8 @@ affected:
         - 13.0.13-8
         - 13.0.13-9
         - 13.0.14-0
+        - 13.0.14-1
+        - 13.0.14-2
         - 13.0.8-0
         - 13.0.8-1
         - 13.0.8-2
@@ -1631,6 +1639,7 @@ affected:
       versions:
         - 1.8.9-0
         - 1.8.9-1
+        - 1.8.9-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -1644,6 +1653,7 @@ affected:
       versions:
         - 1.8.9-0
         - 1.8.9-1
+        - 1.8.9-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -1657,6 +1667,7 @@ affected:
       versions:
         - 1.8.9-0
         - 1.8.9-1
+        - 1.8.9-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -1670,6 +1681,7 @@ affected:
       versions:
         - 1.8.9-0
         - 1.8.9-1
+        - 1.8.9-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -1683,6 +1695,7 @@ affected:
       versions:
         - 1.8.9-0
         - 1.8.9-1
+        - 1.8.9-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -1696,6 +1709,7 @@ affected:
       versions:
         - 1.8.9-0
         - 1.8.9-1
+        - 1.8.9-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -2558,7 +2572,7 @@ affected:
         - 0.42.5-4
 details: "### Impact\r\n\r\nUsers who use Azure AD remote write with OAuth authentication are impacted.\r\n\r\nThe `client_secret` field in the Azure AD remote write OAuth configuration (`storage/remote/azuread`) was typed as `string` instead of `Secret`. Prometheus redacts fields of type `Secret` when serving the configuration via the `/-/config` HTTP API endpoint. Because the field was a plain string, the Azure OAuth client secret was exposed in plaintext to any user or process with access to that endpoint.\r\n\r\n### Patches\r\n\r\nThe problem has been patched by changing `ClientSecret` in `OAuthConfig` to `Secret`. Users should upgrade to 3.11.3 or 3.5.3 LTS.\r\n\r\n### Workarounds\r\n\r\nUsers  who can not upgrade can switch to Managed Identity or Workload Identity authentication for Azure AD remote write, which do not involve a client secret."
 id: DHI-fplo-e2et-d2e2-2ibt
-modified: "2026-11-25T12:11:52Z"
+modified: "2026-11-26T12:02:58Z"
 published: "2026-11-11T15:57:18Z"
 references:
     - type: ADVISORY

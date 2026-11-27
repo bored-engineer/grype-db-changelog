@@ -33,6 +33,7 @@ affected:
         - 12.6.1-r6
         - 12.7.0-r0
         - 12.7.0-r1
+        - 12.7.0-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -184,6 +185,7 @@ affected:
             - introduced: 1.74.1-r0
           type: ECOSYSTEM
       versions:
+        - 1.100.0-r0
         - 1.74.1-r0
         - 1.74.1-r1
         - 1.74.1-r2
@@ -226,6 +228,8 @@ affected:
         - 1.98.9-r0
         - 1.99.0-r0
         - 1.99.2-r0
+        - 1.99.3-r0
+        - 1.99.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -259,6 +263,7 @@ affected:
         - 12.6.1-r6
         - 12.7.0-r0
         - 12.7.0-r1
+        - 12.7.0-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -410,6 +415,7 @@ affected:
             - introduced: 1.74.1-r0
           type: ECOSYSTEM
       versions:
+        - 1.100.0-r0
         - 1.74.1-r0
         - 1.74.1-r1
         - 1.74.1-r2
@@ -452,6 +458,8 @@ affected:
         - 1.98.9-r0
         - 1.99.0-r0
         - 1.99.2-r0
+        - 1.99.3-r0
+        - 1.99.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -488,6 +496,7 @@ affected:
         - 12.6.1-5
         - 12.7.0-0
         - 12.7.0-1
+        - 12.7.0-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -969,6 +978,7 @@ affected:
         - 1.20.2-4
         - 1.20.2-5
         - 1.20.2-6
+        - 1.20.2-7
     - database_specific:
         owner_kind: HSP
       package:
@@ -980,6 +990,7 @@ affected:
             - introduced: 1.74.1-0
           type: ECOSYSTEM
       versions:
+        - 1.100.0-0
         - 1.74.1-0
         - 1.79.30-0
         - 1.79.30-1
@@ -1023,6 +1034,8 @@ affected:
         - 1.98.9-0
         - 1.99.0-0
         - 1.99.2-0
+        - 1.99.3-0
+        - 1.99.5-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -1053,6 +1066,7 @@ affected:
         - 18.11.1-9
         - 18.11.10-0
         - 18.11.10-1
+        - 18.11.10-10
         - 18.11.10-2
         - 18.11.10-3
         - 18.11.10-4
@@ -1091,6 +1105,7 @@ affected:
         - 18.11.1-9
         - 18.11.10-0
         - 18.11.10-1
+        - 18.11.10-10
         - 18.11.10-2
         - 18.11.10-3
         - 18.11.10-4
@@ -1129,6 +1144,7 @@ affected:
         - 18.11.1-9
         - 18.11.10-0
         - 18.11.10-1
+        - 18.11.10-10
         - 18.11.10-2
         - 18.11.10-3
         - 18.11.10-4
@@ -1167,6 +1183,7 @@ affected:
         - 18.11.1-9
         - 18.11.10-0
         - 18.11.10-1
+        - 18.11.10-10
         - 18.11.10-2
         - 18.11.10-3
         - 18.11.10-4
@@ -1207,7 +1224,7 @@ affected:
         - 2.5.9-1
 details: undici is an HTTP client library for Node.js. In versions 7.15.0 through 7.30.0 and 8.0.0 through 8.12.1, its fetch() implementation verifies Subresource Integrity metadata by matching the algorithm token against a lowercase-only set, even though the SRI specification defines the token by its ASCII-lowercase form, so a valid but non-lowercase token such as an uppercase or mixed-case SHA256 is treated as unknown and skipped. When no recognized algorithm remains, undici treats the integrity list as empty and accepts the response, so a server returning a body that does not match the pinned digest passes the check. An attacker who controls only the response body can therefore deliver attacker-controlled bytes to an application that pinned a valid uppercase or mixed-case SRI token, with no integrity error, affecting response integrity only. The issue is fixed in undici 7.30.1 and 8.12.2, which normalize the algorithm token to ASCII lowercase before validation, and users should upgrade to one of those versions or later. As a workaround, use lowercase algorithm tokens such as sha256, sha384, or sha512 in integrity metadata.
 id: DHI-7764-q6ut-bgej-x7ol
-modified: "2026-11-25T23:10:46Z"
+modified: "2026-11-26T20:35:00Z"
 published: "2026-11-13T16:59:06Z"
 references:
     - type: ADVISORY

@@ -112,6 +112,8 @@ affected:
         - 1.7.0.20-8
         - 1.7.0.20-9
         - 1.9.0.1-10
+        - 1.9.0.1-11
+        - 1.9.0.1-12
     - database_specific:
         owner_kind: HSP
       package:
@@ -128,6 +130,7 @@ affected:
         - 4.4.5-2
         - 4.4.5-3
         - 4.4.5-4
+        - 4.4.5-5
     - database_specific:
         owner_kind: HSP
       package:
@@ -144,13 +147,14 @@ affected:
         - 4.4.5-2
         - 4.4.5-3
         - 4.4.5-4
+        - 4.4.5-5
 database_specific:
     coverage: partial
     coverage_exclusions:
         - legacy_package_image_owner
 details: minimatch is a minimal matching utility for converting glob expressions into JavaScript RegExp objects. Versions 10.2.0 and below are vulnerable to Regular Expression Denial of Service (ReDoS) when a glob pattern contains many consecutive * wildcards followed by a literal character that doesn't appear in the test string. Each * compiles to a separate [^/]*? regex group, and when the match fails, V8's regex engine backtracks exponentially across all possible splits. The time complexity is O(4^N) where N is the number of * characters. With N=15, a single minimatch() call takes ~2 seconds. With N=34, it hangs effectively forever. Any application that passes user-controlled strings to minimatch() as the pattern argument is vulnerable to DoS. This issue has been fixed in version 10.2.1.
 id: DHI-qlgz-j44b-e63a-m6mu
-modified: "2026-11-25T23:08:42Z"
+modified: "2026-11-26T10:38:25Z"
 published: "2026-11-21T08:53:11Z"
 references:
     - type: ADVISORY
