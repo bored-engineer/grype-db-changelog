@@ -1,0 +1,512 @@
+# schema: vulnerability/os/schema-1.1.1.json
+Vulnerability:
+    CVSS: []
+    Description: |-
+        [6.12.0-264.19.1]
+        - Add new Oracle Linux Driver Signing (key 1) certificate [Orabug: 37985782]
+        - Disable UKI signing [Orabug: 36571828]
+        - Update Oracle Linux certificates (Kevin Lyons)
+        - Disable signing for aarch64 (Ilya Okomin)
+        - Oracle Linux RHCK Module Signing Key was added to the kernel trusted keys list (olkmod_signing_key.pem) [Orabug: 29539237]
+        - Update x509.genkey [Orabug: 24817676]
+        - Conflict with shim-ia32 and shim-x64 <= 15.3-1.0.5]
+        - Remove upstream reference during boot (Kevin Lyons) [Orabug: 34729535]
+        - Add Oracle Linux IMA certificates
+        - Update module name for cryptographic module [Orabug: 37400433]
+        - Clean git history at setup stage
+
+        [6.12.0-264.19.1]
+        - inet: reject unhashed sockets during established lookups (Prasenjit Mukherjee) [RHEL-304720] {CVE-2026-99288}
+        - tcp: prevent collapsing skbs across boundary in rtx queue (Prasenjit Mukherjee) [RHEL-301505] {CVE-2026-98549}
+        - NFSv4/pnfs: key the data server cache on the NFS version (Olga Kornievskaia) [RHEL-282923] {CVE-2026-90102}
+        - nfsd: validate sockaddr length per family in listener_set (Olga Kornievskaia) [RHEL-284313] {CVE-2026-89700}
+        - NFSD: check truncate permission under inode lock (Olga Kornievskaia) [RHEL-298475] {CVE-2026-89713}
+        - nfsd: convert nfsd_net boolean flags to unsigned long flags word (Olga Kornievskaia) [RHEL-292608] {CVE-2026-93221}
+        - nfsd: RCU-protect cl_cb_session to fix use-after-free on session teardown (Olga Kornievskaia) [RHEL-298528] {CVE-2026-89708}
+        - svcrdma: Fix unmatched rn_unregister on failed accept (Olga Kornievskaia) [RHEL-292584] {CVE-2026-93224}
+        - sunrpc: defer rq_argp and rq_resp free until after RCU grace period (Olga Kornievskaia) [RHEL-298602] {CVE-2026-89545}
+        - NFSD: Handle layout stid in nfsd4_drop_revoked_stid() (Olga Kornievskaia) [RHEL-277640] {CVE-2026-74316}
+        - sunrpc: harden rq_procinfo lifecycle to prevent double-free (Olga Kornievskaia) [RHEL-277292] {CVE-2026-72220}
+
+        [6.12.0-264.18.1]
+        - drm/amdgpu: Add a new NPA Address space (Peter Colberg) [RHEL-307271]
+        - redhat: Bump SBAT generation on the UKI (Vitaly Kuznetsov) [RHEL-302670] {CVE-2026-121876}
+        - redhat: Tighten the default image policy in the UKI (Vitaly Kuznetsov) [RHEL-302670] {CVE-2026-121876}
+        - redhat: Disable emergency console by default in the UKI (Vitaly Kuznetsov) [RHEL-302670] {CVE-2026-121876}
+        - redhat: Move UKI cmdline to a separate file (Vitaly Kuznetsov) [RHEL-302670] {CVE-2026-121876}
+        - scsi: target: Verify the iSCSI ISID is null-terminated (Maurizio Lombardi) [RHEL-272168] {CVE-2026-72084}
+        - scsi: target: Bound PR-OUT TransportID parsing to the received buffer (Maurizio Lombardi) [RHEL-272168] {CVE-2026-72084}
+        - perf/core: Fix group leader use-after-free after sibling detach (Trevor Allison) [RHEL-295247] {CVE-2026-74637}
+        - futex: Fix private hash use-after-free on resize (Waiman Long) [RHEL-299375] {CVE-2026-98788}
+        - futex: Also allocate private hash on vfork() (Waiman Long) [RHEL-299375] {CVE-2026-98281}
+        - futex: Provide rt_mutex_.*_schedule() equivalents for futex scheduling (Waiman Long) [RHEL-299375]
+        - futex/pi: Plug private futex exec() race (Waiman Long) [RHEL-299375] {CVE-2026-80777}
+        - futex: Sanitize and document task_struct::futex::state transitions (Waiman Long) [RHEL-299375]
+        - futex/requeue: Prevent NULL pointer dereference in remove_waiter() on self-deadlock (Waiman Long) [RHEL-299375]
+        - arm64: syscall: Pass 'orig_x0' as first argument to native system call (Iker Pedrosa) [RHEL-293131] {CVE-2026-90347}
+        - arm64: ptrace: Keep 'orig_x0' in-sync with x0 on syscall entry (Iker Pedrosa) [RHEL-293131] {CVE-2026-90347}
+        - net: ipip: require CAP_NET_ADMIN in the device netns for changelink (CKI Backport Bot) [RHEL-297784] {CVE-2026-72053}
+        - RDMA/bnxt_re: Free SRQ toggle page after firmware teardown (Kamal Heib) [RHEL-296430 RHEL-300139] {CVE-2026-72500}
+        - RDMA/bnxt_re: Free CQ toggle page after firmware teardown (Kamal Heib) [RHEL-295860 RHEL-300139] {CVE-2026-72499}
+        - RDMA/bnxt_re: Avoid displaying the kernel pointer (Kamal Heib) [RHEL-300139] {CVE-2026-72498}
+        - RDMA/bnxt_re: Add a max slot check for SQ (Kamal Heib) [RHEL-300139] {CVE-2026-72497}
+        - RDMA/bnxt_re: Proper rollback if the ioremap fails (Kamal Heib) [RHEL-300139] {CVE-2026-72496}
+        - RDMA/bnxt_re: zero shared page before exposing to userspace (Kamal Heib) [RHEL-300139] {CVE-2026-74584}
+        - RDMA/bnxt_re: Clear VM_MAYWRITE on DBR/toggle page mmap (Kamal Heib) [RHEL-293666 RHEL-300139] {CVE-2026-92495}
+        - RDMA/bnxt_re: check create_singlethread_workqueue() in DCB setup (Kamal Heib) [RHEL-300139] {CVE-2026-98356}
+        - io_uring/waitid: prevent cancel reference wrap (CKI Backport Bot) [RHEL-300591] {CVE-2026-99227}
+        - crypto: ecc - Fix carry overflow in vli multiplication (CKI Backport Bot) [RHEL-296713] {CVE-2026-64313}
+        - selinux: avoid sk_socket dereference in selinux_sctp_bind_connect() (CKI Backport Bot) [RHEL-297257] {CVE-2026-72242}
+        - scsi: qla2xxx: Unlink NVMe unsol ctx before freeing on LS reject error (CKI Backport Bot) [RHEL-298330] {CVE-2026-97528}
+        - scsi: core: Validate MODE SENSE lengths in scsi_cdl_enable() (CKI Backport Bot) [RHEL-297178] {CVE-2026-98232}
+        - net/sched: fix use-after-free in __tcf_action_put() (CKI Backport Bot) [RHEL-294588] {CVE-2026-99167}
+        - scsi: lpfc: Update correct ndlp refcnt when rejecting an unsolicited PLOGI (Ewan D. Milne) [RHEL-286168]
+        - scsi: lpfc: Refactor calls on fc_disctmo to lpfc_set_disctmo in RSCN handler (Ewan D. Milne) [RHEL-286168]
+        - scsi: lpfc: Rework I/O flush ordering when unloading driver (Ewan D. Milne) [RHEL-286168]
+        - scsi: lpfc: Check fc4_xpt_flags before decrementing ndlp kref on FDISC error (Ewan D. Milne) [RHEL-286168]
+        - scsi: lpfc: Fix kernel oops when unmapping SCSI DMA buffers for an aborted cmd (Ewan D. Milne) [RHEL-286168]
+        - scsi: lpfc: Early return out of lpfc_els_abort() when HBA_SETUP flag is not set (Ewan D. Milne) [RHEL-286168]
+        - scsi: lpfc: Fix use-after-free in lpfc_cmpl_ct_cmd_vmid() (Ewan D. Milne) [RHEL-286168]
+        - vxlan: mdb: Fix use-after-free in vxlan_mdb_flush() (CKI Backport Bot) [RHEL-292574] {CVE-2026-93250}
+        - cipso: adjust cached option offsets when removing CIPSO (CKI Backport Bot) [RHEL-292435] {CVE-2026-99064}
+        - mm/damon/ops-common: handle extreme intervals in damon_hot_score() (CKI Backport Bot) [RHEL-284732] {CVE-2026-64458}
+        - Bluetooth: virtio_bt: avoid OOB read of build info string (CKI Backport Bot) [RHEL-284672] {CVE-2026-64549}
+        - Bluetooth: bpa10x: avoid OOB read of revision string in bpa10x_setup() (CKI Backport Bot) [RHEL-284672] {CVE-2026-64549}
+        - ALSA: usx2y: us144mkii: fix work UAF on disconnect (CKI Backport Bot) [RHEL-284673] {CVE-2026-64491}
+        - fscrypt: Add missing superblock check in find_or_insert_direct_key() (CKI Backport Bot) [RHEL-283282] {CVE-2026-68148}
+        - btrfs: tree-checker: validate INODE_REF's namelen (CKI Backport Bot) [RHEL-278298] {CVE-2026-93813}
+        - btrfs: tree-checker: validate names in ROOT_REF and ROOT_BACKREF (CKI Backport Bot) [RHEL-278286] {CVE-2026-97415}
+        - btrfs: fix use-after-free on reloc root after error in insert_dirty_subvol() (CKI Backport Bot) [RHEL-278187] {CVE-2026-93800}
+        - i3c: master: Fix device_register() error path (CKI Backport Bot) [RHEL-278123] {CVE-2026-93283}
+        - Bluetooth: hci_conn: fix the SCO setup context lifetime (CKI Backport Bot) [RHEL-276325] {CVE-2026-90255}
+        - drivers/hv: remove deposited pages from direct map (Paolo Bonzini) [RHEL-274964]
+        - mm/huge_memory: bypass THP tuneables for huge pfnmap mappings (Cedric Le Goater) [RHEL-253945]
+        - mm/huge_memory: convert 'tva_flags' to 'enum tva_type' (Cedric Le Goater) [RHEL-253945]
+        - virtio-net: fix len check in receive_big() (Laurent Vivier) [RHEL-255941]
+        - virtio-net: fix incorrect flags recording in big mode (Laurent Vivier) [RHEL-255941]
+        - virtio-net: fix received length check in big packets (Laurent Vivier) [RHEL-255941]
+
+        [6.12.0-264.17.1]
+        - netfilter: conntrack: always lower timeout for non-closing RST packets (CKI Backport Bot) [RHEL-303850] {CVE-2026-99283}
+        - netfilter: conntrack: tcp: use UNACK timeout for non-closing RST packets (CKI Backport Bot) [RHEL-303850] {CVE-2026-99283}
+        - net/smc: protect clcsock lifetime in smc_getname (CKI Backport Bot) [RHEL-303996] {CVE-2026-99032}
+        - net/smc: fix socket use-after-free during link group termination (CKI Backport Bot) [RHEL-300328] {CVE-2026-74493}
+        - net/smc: fix UAF in smc_cdc_rx_handler() by pinning the socket (CKI Backport Bot) [RHEL-298269] {CVE-2026-64541}
+        - s390/zcrypt: Validate length for CCA AES cipher key requests (Jan Polensky) [RHEL-297855] {CVE-2026-68452}
+        - s390/zcrypt: Validate length for CCA ECC private key requests (CKI Backport Bot) [RHEL-297862] {CVE-2026-68451}
+        - drm/amdkfd: Check bounds for allocate_sdma_queue restore_sdma_id (CKI Backport Bot) [RHEL-278246] {CVE-2026-97497}
+        - drm/amdkfd: Check bounds on allocate_doorbell (CKI Backport Bot) [RHEL-278287] {CVE-2026-97495}
+        - drm/amdgpu: validate and share PSP fw_pri_buf copies via psp_copy_fw (CKI Backport Bot) [RHEL-278256] {CVE-2026-97494}
+        - drm/amdgpu: Bound GPIO I2C table entry count from VBIOS (CKI Backport Bot) [RHEL-278267] {CVE-2026-97493}
+        - drm/amd/pm: bound pp_dpm_set_pp_table() memcpy (CKI Backport Bot) [RHEL-278196] {CVE-2026-97427}
+        - drm/amdgpu: fix buffer overflow during vBIOS update (CKI Backport Bot) [RHEL-278291] {CVE-2026-97425}
+        - drm/amdkfd: fix SMI event cross-process information leak (CKI Backport Bot) [RHEL-278156] {CVE-2026-97422}
+        - drm/amdkfd: hold event_mutex while checkpointing CRIU events (CKI Backport Bot) [RHEL-273841 RHEL-273866] {CVE-2026-74446}
+        - drm/amdkfd: Fix OOB memory exposure in get_wave_state() (CKI Backport Bot) [RHEL-273385] {CVE-2026-97496}
+        - wifi: mac80211: validate individual TWT params before driver setup (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74554}
+        - wifi: ath12k: fix out-of-bounds clear_bit in ath12k_mac_dp_peer_cleanup() (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74554}
+        - wifi: mac80211: fix tid_tx use-after-free on BA session stop (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74489}
+        - wifi: mwifiex: use the subframe length when parsing A-MSDU TDLS frames (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74488}
+        - wifi: iwlwifi: pcie: null RX pointers after free (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-93796}
+        - wifi: iwlwifi: mvm: fix sched scan IE sizing (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-98889}
+        - wifi: mac80211: tear down new links on vif update error path (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-64574}
+        - wifi: iwlwifi: mvm: validate sta_id in BA window status notif (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-93799}
+        - wifi: iwlwifi: mvm: validate TX_CMD response layout (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-93793}
+        - wifi: iwlwifi: mvm: fix out-of-bounds tid_data access in BA notif (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-93790}
+        - wifi: mwifiex: bound uAP association event IEs to the event buffer (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68326}
+        - wifi: brcmfmac: make release_scratchbuffers idempotent (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68192}
+        - wifi: brcmfmac: drain bus_reset work on device removal (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-64586}
+        - wifi: cfg80211: bound element ID read when checking non-inheritance (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68402}
+        - wifi: cfg80211: cancel sched scan results work on unregister (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68414}
+        - wifi: rt2x00: avoid full teardown before work setup in probe (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-72005}
+        - wifi: cfg80211: use wiphy work for socket owner autodisconnect (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68404}
+        - wifi: cfg80211: convert pmsr_free_wk to wiphy_work to fix deadlock (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68404}
+        - wifi: mac80211: fix fils_discovery double free on alloc failure (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-64570}
+        - wifi: mac80211: fix unsol_bcast_probe_resp double free on alloc failure (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-64568}
+        - wifi: cfg80211: validate EHT MLE before MLD ID read (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68472}
+        - wifi: cfg80211: validate assoc response length before status and IE access (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-93806}
+        - wifi: cfg80211: validate rx/tx MLME callback frame lengths before access (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-93806}
+        - wifi: brcmfmac: cyw: fix heap overflow on a short auth frame (Jose Ignacio Tornos Martinez) [RHEL-283413 RHEL-291553] {CVE-2026-72003}
+        - wifi: ieee80211: validate MLE common info length (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68471}
+        - wifi: mac80211: validate extension-frame layout before RX (Jose Ignacio Tornos Martinez) [RHEL-289967 RHEL-291553] {CVE-2026-68470}
+        - wifi: cfg80211: derive S1G beacon TSF from S1G fields (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-68470}
+        - net: wwan: iosm: bound device offsets in the MUX downlink decoder (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-72029}
+        - wifi: iwlwifi: mld: purge async notifications upon nic error (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-97474}
+        - wifi: iwlwifi: mld: don't flush async_handlers_wk when canceling notifications (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-97474}
+        - wifi: mt76: use kfree_rcu for offchannel link in mt76_put_vif_phy_link (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74325}
+        - wifi: rtw88: fix OOB read from firmware RX descriptor exceeding DMA buffer (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74410}
+        - net: qrtr: fix 32-bit integer overflow in qrtr_endpoint_post() (Jose Ignacio Tornos Martinez) [RHEL-283477 RHEL-291553] {CVE-2026-72298}
+        - wifi: ath11k: fix invalid data access in ath11k_dp_rx_h_undecap_nwifi (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-97442}
+        - wifi: ath11k: add MSDU length validation for TKIP MIC error (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-97442}
+        - wifi: rtw89: fix wrong pci_get_drvdata type in AER handlers (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74413}
+        - wifi: rtw88: fix wrong pci_get_drvdata type in AER handlers (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74412}
+        - wifi: rtw89: Correct data type for scan index to avoid infinite loop (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74411}
+        - wifi: rtw89: add bounds check on firmware mac_id in link lookup (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74409}
+        - wifi: ath9k: fix OOB access from firmware tx status queue ID (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74408}
+        - wifi: ath11k: cancel SSR work items during PCI shutdown (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-74407}
+        - wifi: mt76: add wcid publish check in mt76_sta_add (Jose Ignacio Tornos Martinez) [RHEL-291553] {CVE-2026-63832}
+        - ipv6: fix use-after-free in ip6_finish_output2() (Antoine Tenart) [RHEL-258695] {CVE-2026-80792}
+        - ALSA: ua101: reject mismatched capture/playback packet sizes (CKI Backport Bot) [RHEL-290817] {CVE-2026-98741}
+        - ALSA: pcm: Serialize PCM mmap with buffer reallocation to fix page UAF (CKI Backport Bot) [RHEL-276116] {CVE-2026-98116}
+        - net: bridge: stop fast-leave after deleting a port group (CKI Backport Bot) [RHEL-246925] {CVE-2026-74480}
+
+        [6.12.0-264.16.1]
+        - gitlab-ci: add rhel10_baseline with ccache save (Tales da Aparecida)
+        - powerpc/pseries: papr-phy-attest - validate cmd.length, plug mem leak (Mamatha Inamdar) [RHEL-295116] {CVE-2026-80571}
+        - net/smc: carry oversized SMC-Rv2 LLC messages in the queue entry (Jan Polensky) [RHEL-294748] {CVE-2026-80981}
+        - net/smc: bound the peer rkey counts in SMC-Rv2 LLC messages (Jan Polensky) [RHEL-294748] {CVE-2026-80981}
+        - net/smc: fix use-after-free of the LLC qentry in smc_llc_srv_add_link() (Jan Polensky) [RHEL-294748] {CVE-2026-80981}
+        - s390/qeth: validate user buffer length in SNMP and ARP query ioctls (Jan Polensky) [RHEL-295104] {CVE-2026-80584}
+        - s390/vfio_ccw: Cancel existing workqueues (Jan Polensky) [RHEL-295167] {CVE-2026-80553}
+        - s390/vfio-ap: Fix missing lock required to access list of ap_matrix_mdev objects (Ramesh Chhetri) [RHEL-293891] {CVE-2026-89956}
+        - scsi: libiscsi: Validate the task named by a management response (CKI Backport Bot) [RHEL-298426] {CVE-2026-99152}
+        - scsi: libiscsi: Validate the ITT reflected in a Reject PDU (CKI Backport Bot) [RHEL-298479] {CVE-2026-99153}
+        - sctp: clear new_transport when removing a peer (Jamie Bainbridge) [RHEL-275366] {CVE-2026-74586}
+        - sctp: stop processing a packet once its association is deleted (Jamie Bainbridge) [RHEL-263283] {CVE-2026-89479}
+        - sctp: close UDP tunnel sockets during netns teardown (Jamie Bainbridge) [RHEL-258779]
+        - sctp: avoid auth_enable sysctl UAF during netns teardown (Jamie Bainbridge) [RHEL-258779] {CVE-2026-68162}
+        - sctp: keep chunk->transport in step with the list it is queued on (Jamie Bainbridge) [RHEL-254354] {CVE-2026-74588}
+        - sctp: validate cookie AUTH state before use (Jamie Bainbridge) [RHEL-254287] {CVE-2026-74752}
+        - ALSA: seq: midi: Serialize input teardown with event_input (CKI Backport Bot) [RHEL-282960] {CVE-2026-90207}
+        - ALSA: seq: midi: Optimize event_input locking with RCU (CKI Backport Bot) [RHEL-282960] {CVE-2026-90207}
+        - net: always dissect GSO packets in __virtio_net_hdr_to_skb() (Davide Caratti) [RHEL-280591]
+        - ipv4: validate checksum_start before completing checksum (CKI Backport Bot) [RHEL-280591] {CVE-2026-99999}
+        - smb: client: validate absolute native symlink targets before NT fixups (CKI Backport Bot) [RHEL-280049] {CVE-2026-98318}
+        - s390/cpum_cf: Handle CPU hotplug via prepare/dead callbacks (Jan Polensky) [RHEL-270889]
+        - smb: client: fix OOB read/write from unvalidated DataOffset in coalesce_t2() (CKI Backport Bot) [RHEL-271495] {CVE-2026-89633}
+        - i3c: master: svc: bound IBI payload to the requested max_payload_len (CKI Backport Bot) [RHEL-262890] {CVE-2026-80951}
+        - mpls: Set rt->rt_nhn just before returning from mpls_nh_build_multi(). (Guillaume Nault) [RHEL-222766]
+        - mptcp: options: reset DSS fields in case of unexpected size (CKI Backport Bot) [RHEL-250581] {CVE-2026-80586}
+
+        [6.12.0-264.15.1]
+        - sunrpc: wait for in-flight TLS handshake callback when cancel loses race (Olga Kornievskaia) [RHEL-283651] {CVE-2026-72221}
+        - sunrpc: pin svc_xprt across the asynchronous TLS handshake callback (Olga Kornievskaia) [RHEL-283267] {CVE-2026-72222}
+        - watchdog: fix hrtimer start when pretimeout is zero (David Arcari) [RHEL-255346]
+        - sctp: stream: fully roll back denied add-stream state (CKI Backport Bot) [RHEL-277070] {CVE-2026-52929}
+        - openvswitch: Fix CT limit teardown use-after-free (Timothy Redaelli) [RHEL-263518] {CVE-2026-89488}
+        - PCI/sysfs: Add lockdown checks to legacy I/O and memory handlers (Aristeu Rozanski) [RHEL-267085] {CVE-2026-90315}
+        - smb: client: clear setuid/setgid bit on write with cifsacl/modefromsid/posix extensions (CKI Backport Bot) [RHEL-271261] {CVE-2026-89638}
+        - net/mlx5: Fix MCIA register buffer overflow on 32 dword reads (CKI Backport Bot) [RHEL-236793] {CVE-2026-68293}
+    FixedIn:
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-abi-stablelists
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-cross-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-debug-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-devel-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-doc
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-headers
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-core
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-modules-extra-matched
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-tools-libs-devel
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: kernel-uki-virt-addons
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: libperf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: python3-perf
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: rtla
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+        - Available:
+            Date: "2026-11-23"
+            Kind: advisory
+          Module: null
+          Name: rv
+          NamespaceName: ol:10
+          Version: 0:6.12.0-264.19.1.el10_3
+          VersionFormat: rpm
+    Link: https://linux.oracle.com/errata/ELSA-2026-102168.html
+    Metadata:
+        CVE:
+            - Link: https://linux.oracle.com/cve/CVE-2026-121876.html
+              Name: CVE-2026-121876
+            - Link: https://linux.oracle.com/cve/CVE-2026-64313.html
+              Name: CVE-2026-64313
+            - Link: https://linux.oracle.com/cve/CVE-2026-64458.html
+              Name: CVE-2026-64458
+            - Link: https://linux.oracle.com/cve/CVE-2026-64491.html
+              Name: CVE-2026-64491
+            - Link: https://linux.oracle.com/cve/CVE-2026-64549.html
+              Name: CVE-2026-64549
+            - Link: https://linux.oracle.com/cve/CVE-2026-68148.html
+              Name: CVE-2026-68148
+            - Link: https://linux.oracle.com/cve/CVE-2026-72053.html
+              Name: CVE-2026-72053
+            - Link: https://linux.oracle.com/cve/CVE-2026-72084.html
+              Name: CVE-2026-72084
+            - Link: https://linux.oracle.com/cve/CVE-2026-72220.html
+              Name: CVE-2026-72220
+            - Link: https://linux.oracle.com/cve/CVE-2026-72242.html
+              Name: CVE-2026-72242
+            - Link: https://linux.oracle.com/cve/CVE-2026-72499.html
+              Name: CVE-2026-72499
+            - Link: https://linux.oracle.com/cve/CVE-2026-72500.html
+              Name: CVE-2026-72500
+            - Link: https://linux.oracle.com/cve/CVE-2026-74316.html
+              Name: CVE-2026-74316
+            - Link: https://linux.oracle.com/cve/CVE-2026-74637.html
+              Name: CVE-2026-74637
+            - Link: https://linux.oracle.com/cve/CVE-2026-89545.html
+              Name: CVE-2026-89545
+            - Link: https://linux.oracle.com/cve/CVE-2026-89700.html
+              Name: CVE-2026-89700
+            - Link: https://linux.oracle.com/cve/CVE-2026-89708.html
+              Name: CVE-2026-89708
+            - Link: https://linux.oracle.com/cve/CVE-2026-89713.html
+              Name: CVE-2026-89713
+            - Link: https://linux.oracle.com/cve/CVE-2026-90102.html
+              Name: CVE-2026-90102
+            - Link: https://linux.oracle.com/cve/CVE-2026-90255.html
+              Name: CVE-2026-90255
+            - Link: https://linux.oracle.com/cve/CVE-2026-90347.html
+              Name: CVE-2026-90347
+            - Link: https://linux.oracle.com/cve/CVE-2026-92495.html
+              Name: CVE-2026-92495
+            - Link: https://linux.oracle.com/cve/CVE-2026-93221.html
+              Name: CVE-2026-93221
+            - Link: https://linux.oracle.com/cve/CVE-2026-93224.html
+              Name: CVE-2026-93224
+            - Link: https://linux.oracle.com/cve/CVE-2026-93250.html
+              Name: CVE-2026-93250
+            - Link: https://linux.oracle.com/cve/CVE-2026-93283.html
+              Name: CVE-2026-93283
+            - Link: https://linux.oracle.com/cve/CVE-2026-93800.html
+              Name: CVE-2026-93800
+            - Link: https://linux.oracle.com/cve/CVE-2026-93813.html
+              Name: CVE-2026-93813
+            - Link: https://linux.oracle.com/cve/CVE-2026-97415.html
+              Name: CVE-2026-97415
+            - Link: https://linux.oracle.com/cve/CVE-2026-97528.html
+              Name: CVE-2026-97528
+            - Link: https://linux.oracle.com/cve/CVE-2026-98232.html
+              Name: CVE-2026-98232
+            - Link: https://linux.oracle.com/cve/CVE-2026-98281.html
+              Name: CVE-2026-98281
+            - Link: https://linux.oracle.com/cve/CVE-2026-98549.html
+              Name: CVE-2026-98549
+            - Link: https://linux.oracle.com/cve/CVE-2026-99064.html
+              Name: CVE-2026-99064
+            - Link: https://linux.oracle.com/cve/CVE-2026-99167.html
+              Name: CVE-2026-99167
+            - Link: https://linux.oracle.com/cve/CVE-2026-99227.html
+              Name: CVE-2026-99227
+            - Link: https://linux.oracle.com/cve/CVE-2026-99288.html
+              Name: CVE-2026-99288
+        Issued: "2026-11-23"
+        RefId: ELSA-2026-102168
+    Name: ELSA-2026-102168
+    NamespaceName: ol:10
+    Severity: High
