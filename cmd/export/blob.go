@@ -10,6 +10,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/google/go-containerregistry/pkg/authn"
@@ -138,6 +139,14 @@ func (b *resumableBlob) open() error {
 	if resp.StatusCode != wantStatus {
 		resp.Body.Close()
 		return fmt.Errorf("GET blob at offset %d: status %s, want %d", b.off, resp.Status, wantStatus)
+	}
+	if b.off > 0 {
+		// A 206 for some other range would splice the wrong bytes in; fail
+		// here (and retry) rather than rely on the final digest check.
+		if cr, want := resp.Header.Get("Content-Range"), fmt.Sprintf("bytes %d-", b.off); !strings.HasPrefix(cr, want) {
+			resp.Body.Close()
+			return fmt.Errorf("GET blob at offset %d: Content-Range %q, want %q...", b.off, cr, want)
+		}
 	}
 	b.body = resp.Body
 	return nil

@@ -432,12 +432,6 @@ func emitAll(ctx context.Context, provider string, rows *sql.Rows) (int, error) 
 	return n, err
 }
 
-// dropGeneratedDates removes the three timestamps in a hummingbird CSAF
-// document's tracking block that only record when Red Hat's generator last
-// ran: current_release_date, generator.date and each revision_history
-// entry's date. They're regenerated daily while version stays "1" and the
-// history holds a single "Last generated version" entry, so they were the
-// only change in ~98% of hummingbird's modified files.
 // dedupeArchAdvisories removes repeated ids from an arch record's
 // Vulnerability.Metadata.Advisories, keeping the first of each. Upstream
 // lists some ASA ids twice in one build and once in the next, and that
@@ -502,6 +496,12 @@ func canonicalPhotonAdvisories(item any) {
 	}
 }
 
+// dropGeneratedDates removes the three timestamps in a hummingbird CSAF
+// document's tracking block that only record when Red Hat's generator last
+// ran: current_release_date, generator.date and each revision_history
+// entry's date. They're regenerated daily while version stays "1" and the
+// history holds a single "Last generated version" entry, so they were the
+// only change in ~98% of hummingbird's modified files.
 func dropGeneratedDates(item any) {
 	root, _ := item.(map[string]any)
 	doc, _ := root["document"].(map[string]any)
