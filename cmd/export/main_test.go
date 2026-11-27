@@ -557,3 +557,60 @@ func TestLeadingWhitespaceStringsRoundTrip(t *testing.T) {
 		t.Errorf("got %q, want %q", out, want)
 	}
 }
+
+func TestDedupeArchAdvisories(t *testing.T) {
+	item := mustUnmarshal(t, `{"Vulnerability":{"Metadata":{"Advisories":["ASA-201906-14","ASA-201906-15","ASA-201906-14"],"CVE":[{"Name":"CVE-1"}]}}}`)
+	dedupeArchAdvisories(item)
+	want := mustUnmarshal(t, `{"Vulnerability":{"Metadata":{"Advisories":["ASA-201906-14","ASA-201906-15"],"CVE":[{"Name":"CVE-1"}]}}}`)
+	if !reflect.DeepEqual(item, want) {
+		t.Fatalf("got %#v", item)
+	}
+	// Records without the list are left alone.
+	for _, in := range []string{`{}`, `{"Vulnerability":{}}`, `{"Vulnerability":{"Metadata":{"Advisories":null}}}`, `null`} {
+		item := mustUnmarshal(t, in)
+		dedupeArchAdvisories(item)
+		if !reflect.DeepEqual(item, mustUnmarshal(t, in)) {
+			t.Errorf("%s changed to %#v", in, item)
+		}
+	}
+}
+
+func TestCanonicalPhotonAdvisories(t *testing.T) {
+	rec := func(id, link string) any {
+		return mustUnmarshal(t, `{"Vulnerability":{"FixedIn":[{"Name":"linux","VendorAdvisory":{"AdvisorySummary":[{"ID":"`+id+`","Link":"`+link+`"}],"NoAdvisory":false}}]}}`)
+	}
+	const wiki = "https://github.com/vmware/photon/wiki/"
+	want := rec("PHSA-2019-1.0-0212", wiki+"Security-Updates-1.0-212")
+	// Both pages of a duplicated advisory come out the same.
+	for _, in := range []any{
+		rec("PHSA-2019-0212", wiki+"Security-Update-1.0-212"),
+		rec("PHSA-2019-1.0-0212", wiki+"Security-Updates-1.0-212"),
+	} {
+		canonicalPhotonAdvisories(in)
+		if !reflect.DeepEqual(in, want) {
+			t.Errorf("got %#v", in)
+		}
+	}
+	// Zero-padded plural pages too.
+	padded := rec("PHSA-2019-3.0-0016", wiki+"Security-Updates-3.0-0016")
+	for _, in := range []any{
+		rec("PHSA-2019-0016", wiki+"Security-Update-3.0-16"),
+		rec("PHSA-2019-3.0-0016", wiki+"Security-Updates-3.0-0016"),
+	} {
+		canonicalPhotonAdvisories(in)
+		if !reflect.DeepEqual(in, padded) {
+			t.Errorf("got %#v", in)
+		}
+	}
+	// An advisory with one page is untouched, whichever spelling it uses.
+	for _, link := range []string{wiki + "Security-Update-4.0-899", wiki + "Security-Updates-4.0-899", "https://example.com/x"} {
+		in, orig := rec("PHSA-2025-4.0-0899", link), rec("PHSA-2025-4.0-0899", link)
+		canonicalPhotonAdvisories(in)
+		if !reflect.DeepEqual(in, orig) {
+			t.Errorf("%s changed to %#v", link, in)
+		}
+	}
+	if len(photonDuplicateAdvisories) != 579 {
+		t.Errorf("%d duplicate advisories, want 579", len(photonDuplicateAdvisories))
+	}
+}

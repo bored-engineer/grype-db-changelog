@@ -14,6 +14,7 @@ import (
 	"os/signal"
 	"path"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"sort"
 	"strconv"
@@ -281,8 +282,13 @@ func render(provider string, id string, record []byte) (string, []byte, error) {
 	if err := decodeJSON(record, &env); err != nil {
 		return "", nil, fmt.Errorf("json.Unmarshal failed for %s: %w", id, err)
 	}
-	if provider == "hummingbird" {
+	switch provider {
+	case "hummingbird":
 		dropGeneratedDates(env.Item)
+	case "arch":
+		dedupeArchAdvisories(env.Item)
+	case "photon":
+		canonicalPhotonAdvisories(env.Item)
 	}
 	pretty, err := yaml.Marshal(canonicalize(env.Item))
 	if err != nil {
@@ -432,6 +438,70 @@ func emitAll(ctx context.Context, provider string, rows *sql.Rows) (int, error) 
 // entry's date. They're regenerated daily while version stays "1" and the
 // history holds a single "Last generated version" entry, so they were the
 // only change in ~98% of hummingbird's modified files.
+// dedupeArchAdvisories removes repeated ids from an arch record's
+// Vulnerability.Metadata.Advisories, keeping the first of each. Upstream
+// lists some ASA ids twice in one build and once in the next, and that
+// flip was the only change in essentially every modified arch file (~50 a
+// build, ~70% of them flipping back to a version seen days earlier).
+func dedupeArchAdvisories(item any) {
+	root, _ := item.(map[string]any)
+	vuln, _ := root["Vulnerability"].(map[string]any)
+	meta, _ := vuln["Metadata"].(map[string]any)
+	advisories, ok := meta["Advisories"].([]any)
+	if !ok {
+		return
+	}
+	seen := make(map[string]bool, len(advisories))
+	out := advisories[:0:0]
+	for _, a := range advisories {
+		if s, ok := a.(string); ok {
+			if seen[s] {
+				continue
+			}
+			seen[s] = true
+		}
+		out = append(out, a)
+	}
+	meta["Advisories"] = out
+}
+
+// photonAdvisoryLink matches the photon wiki page vunnel links an advisory
+// to: Security-Update-<ver>-<n> or Security-Updates-<ver>-<n>, where <n>
+// may be zero-padded.
+var photonAdvisoryLink = regexp.MustCompile(`^(https://github\.com/vmware/photon/wiki/)Security-Updates?-(\d+\.\d+)-0*(\d+)$`)
+
+// canonicalPhotonAdvisories rewrites each photon AdvisorySummary entry that
+// cites an advisory with two wiki pages to its Security-Updates page and
+// that page's ID. vunnel maps each CVE to its earliest advisory, and for
+// those 579 old advisories both pages carry the same date, so which one
+// wins depends on the order os.listdir returns them in - and it changes
+// between builds, flipping ~1,000 files at a time. Both pages are real
+// upstream data; this only picks one of them every time.
+func canonicalPhotonAdvisories(item any) {
+	root, _ := item.(map[string]any)
+	vuln, _ := root["Vulnerability"].(map[string]any)
+	fixedIn, _ := vuln["FixedIn"].([]any)
+	for _, f := range fixedIn {
+		fix, _ := f.(map[string]any)
+		va, _ := fix["VendorAdvisory"].(map[string]any)
+		summaries, _ := va["AdvisorySummary"].([]any)
+		for _, a := range summaries {
+			adv, _ := a.(map[string]any)
+			link, _ := adv["Link"].(string)
+			m := photonAdvisoryLink.FindStringSubmatch(link)
+			if m == nil {
+				continue
+			}
+			canon, ok := photonDuplicateAdvisories[m[2]+"-"+m[3]]
+			if !ok {
+				continue
+			}
+			adv["Link"] = m[1] + canon.page
+			adv["ID"] = canon.id
+		}
+	}
+}
+
 func dropGeneratedDates(item any) {
 	root, _ := item.(map[string]any)
 	doc, _ := root["document"].(map[string]any)

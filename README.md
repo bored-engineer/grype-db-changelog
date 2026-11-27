@@ -143,7 +143,17 @@ Captured: 2026-11-20T00:21:26Z
   `document.tracking` (`current_release_date`, `generator.date` and each
   `revision_history` entry's `date`): Red Hat regenerates the documents
   daily, so they were the only change in ~98% of hummingbird's modified
-  files. It prints a
+  files. Two more providers get one fix each, for upstream flips that
+  carried no information:
+  - arch drops repeated ids from `Metadata.Advisories`. Upstream lists some
+    ASA ids twice in one build and once in the next, which was essentially
+    every arch change.
+  - photon always cites the `Security-Updates-…` wiki page, with that
+    page's ID, for the 579 old advisories the photon wiki has two pages
+    for. vunnel picks between the two in directory-listing order, which
+    flipped ~1,000 files at a time.
+
+  It prints a
   [`git fast-import`](https://git-scm.com/docs/git-fast-import) stream that
   stages the snapshot as `refs/raw/<provider>/<digest>`. It streams the
   layer itself, resuming with HTTP Range requests when GHCR drops a
