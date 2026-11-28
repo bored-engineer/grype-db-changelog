@@ -158,6 +158,7 @@ affected:
         - 0.65.7-r0
         - 0.65.7.1-r0
         - 0.65.7.2-r0
+        - 0.65.7.3-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -336,6 +337,7 @@ affected:
         - 0.65.7-r0
         - 0.65.7.1-r0
         - 0.65.7.2-r0
+        - 0.65.7.3-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -434,6 +436,7 @@ affected:
         - 12.7.0-0
         - 12.7.0-1
         - 12.7.0-2
+        - 12.7.0-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -650,6 +653,7 @@ affected:
         - 4.84.0-1
         - 4.86.0-0
         - 4.87.0-0
+        - 4.88.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -789,6 +793,7 @@ affected:
         - 0.65.7-0
         - 0.65.7.1-0
         - 0.65.7.2-0
+        - 0.65.7.3-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -940,7 +945,7 @@ affected:
         - 1.0.0-8
 details: The Model Context Protocol TypeScript SDK provides TypeScript client and server implementations of the Model Context Protocol. Prior to 1.32.0 in @modelcontextprotocol/sdk and from 2.0.0 until 2.3.0 in @modelcontextprotocol/client, the HTTP client transports and OAuth client requests followed redirects to a different origin while retaining custom request headers and, for HTTP 307 or 308 responses, request bodies. The affected surfaces are StreamableHTTPClientTransport, SSEClientTransport, and OAuth client functions such as auth(). The trigger is an HTTP redirect to another origin. Custom headers and mcp-session-id can be re-sent to the redirected origin. HTTP 307 and 308 redirects can also re-send the request body. OAuth request bodies can contain refresh_token and client_secret values. Current runtimes already strip the Authorization header across origins. stdio clients do not use the affected HTTP path. A malicious or compromised MCP or authorization server could therefore receive API keys, session identifiers, OAuth refresh tokens, or OAuth client secrets. Restoring unrestricted redirect following after upgrading restores the exposure. This issue is fixed in @modelcontextprotocol/sdk 1.32.0 and @modelcontextprotocol/client 2.3.0.
 id: DHI-lwms-ju27-ibn3-btpi
-modified: "2026-11-26T20:39:54Z"
+modified: "2026-11-27T03:20:00Z"
 published: "2026-11-12T05:03:11Z"
 references:
     - type: ADVISORY

@@ -39,19 +39,23 @@ affected:
         name: postgresql18
         purl: pkg:apk/dhi/postgresql18
       ranges:
-        - events:
-            - introduced: 18.1-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 18.4-r0
+          events:
+            - introduced: "0"
+            - fixed: 18.4-r0
           type: ECOSYSTEM
       versions:
         - 18.1-r0
         - 18.2-r0
         - 18.3-r0
-        - 18.4-r0
-        - 18.6-r0
-        - 18.7-r0
 details: Use of inherently dangerous function PQfn(..., result_is_int=0, ...) in PostgreSQL libpq lo_export(), lo_read(), lo_lseek64(), and lo_tell64() functions allows the server superuser to overwrite a client stack buffer with an arbitrarily-large response.  Like gets(), PQfn(..., result_is_int=0, ...) stores arbitrary-length, server-determined data into a buffer of unspecified size.  Because both the \lo_export command in psql and pg_dump call lo_read(), the server superuser can overwrite pg_dump or psql stack memory.  Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.
 id: DHI-5zjz-aj5u-pzmk-obbq
-modified: "2026-11-25T00:24:51Z"
+modified: "2026-11-27T17:41:48Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

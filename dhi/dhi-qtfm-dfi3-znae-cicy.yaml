@@ -7,14 +7,18 @@ affected:
         name: postgresql16
         purl: pkg:apk/dhi/postgresql16
       ranges:
-        - events:
-            - introduced: 16.13-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 16.14-r0
+          events:
+            - introduced: "0"
+            - fixed: 16.14-r0
           type: ECOSYSTEM
       versions:
         - 16.13-r0
-        - 16.14-r0
-        - 16.15-r0
-        - 16.16-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -51,7 +55,7 @@ affected:
         - 18.7-r0
 details: Symlink following in PostgreSQL pg_basebackup plain format and in pg_rewind allows an origin superuser to overwrite local files, e.g. /var/lib/postgres/.bashrc, that hijack the operating system account.  It will remain the case that starting the server after these commands implicitly trusts the origin superuser, due to features like shared_preload_libraries.  Hence, the attack has practical implications only if one takes relevant action between these commands and server start, like moving the files to a different VM or snapshotting the VM.  Versions before PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23 are affected.
 id: DHI-qtfm-dfi3-znae-cicy
-modified: "2026-11-25T00:25:39Z"
+modified: "2026-11-27T08:09:39Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

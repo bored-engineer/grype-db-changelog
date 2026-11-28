@@ -34,8 +34,15 @@ affected:
         name: dotnet8-runtime
         purl: pkg:apk/dhi/dotnet8-runtime
       ranges:
-        - events:
-            - introduced: 8.0.23-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.0.32-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.0.32-r0
           type: ECOSYSTEM
       versions:
         - 8.0.23-r0
@@ -45,9 +52,6 @@ affected:
         - 8.0.27-r0
         - 8.0.29-r0
         - 8.0.31-r0
-        - 8.0.32-r0
-        - 8.0.33-r0
-        - 8.0.34-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -260,7 +264,7 @@ affected:
         - 9.0.318-1
 details: Improper link resolution before file access ('link following') in .NET allows an authorized attacker to elevate privileges locally.
 id: DHI-sesz-5jew-bbkg-rolt
-modified: "2026-11-24T18:27:14Z"
+modified: "2026-11-27T16:33:42Z"
 published: "2026-11-11T17:00:58Z"
 references:
     - type: ADVISORY

@@ -570,7 +570,7 @@ database_specific:
         - legacy_package_image_owner
 details: The cleanup of tempfile.TemporaryDirectory is vulnerable to a race condition. An attacker who can modify the tree during cleanup can replace a directory with a symbolic link, causing files outside of the temporary directory to be deleted or have their permissions and file flags reset, with the privileges of the process performing the cleanup. Note that platforms where shutil.rmtree.avoids_symlink_attacks is false, remain affected, and file flags may still be reset outside of the tree on all platforms.
 id: DHI-itr5-nyfq-tybe-u3q4
-modified: "2026-11-26T21:16:34Z"
+modified: "2026-11-27T10:19:17Z"
 published: "2026-11-19T21:07:59Z"
 references:
     - type: ADVISORY
@@ -641,6 +641,8 @@ references:
       url: https://github.com/python/cpython/commit/58ed0259cae509a19138795df302fe60b544dc74
     - type: FIX
       url: https://github.com/python/cpython/commit/5c20517a4fc56683efe63a7751020db9573f538d
+    - type: FIX
+      url: https://github.com/python/cpython/commit/aa17c688d2c160969f2c8963f4454cdd139808e7
     - type: FIX
       url: https://github.com/python/cpython/commit/c39b52d00b42200aaadff679e2fe3f1006d57c58
     - type: FIX

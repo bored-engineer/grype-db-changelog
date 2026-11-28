@@ -1,22 +1,7 @@
 # schema: vulnerability/osv/schema-1.8.0.json
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: dnsmasq
-        purl: pkg:deb/dhi/dnsmasq
-      ranges:
-        - events:
-            - introduced: 2.91-1+deb13u1+dhi0
-          type: ECOSYSTEM
-      versions:
-        - 2.91-1+deb13u1+dhi0
-        - 2.91-1+deb13u2+dhi0
-        - 2.91-1+deb13u2+dhi1
 details: A flaw was found in dnsmasq. The DHCPv6 client hostname parser can read one byte past the end of a crafted FQDN option because it checks the next label length before confirming the pointer is still inside the option. An attacker on the local network can trigger this with a single DHCPv6 packet. The extra byte is not returned to the client or logged, and no crash has been demonstrated.
 id: DHI-2gks-zmmb-dpc3-u3hm
-modified: "2026-11-23T15:20:36Z"
+modified: "2026-11-27T11:06:17Z"
 published: "2026-11-10T10:53:25Z"
 references:
     - type: ADVISORY
@@ -38,3 +23,4 @@ severity:
 summary: A flaw was found in dnsmasq. The DHCPv6 client hostname parser can read one byte past the end of a crafted FQDN option…
 upstream:
     - CVE-2026-93009
+withdrawn: "2026-11-27T11:06:17Z"

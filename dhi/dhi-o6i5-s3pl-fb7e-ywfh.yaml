@@ -13,6 +13,18 @@ affected:
       versions:
         - 4.72-r0
         - 4.72-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: perl-cgi-psgi
+        purl: pkg:apk/dhi/perl-cgi-psgi
+      ranges:
+        - events:
+            - introduced: 0.15-r5
+          type: ECOSYSTEM
+      versions:
+        - 0.15-r5
 details: |-
     CGI versions before 5.00 for Perl allow HTTP header injection via entity decoding after the newline check in header and unchecked values in multipart_start and do_push.
 
@@ -20,7 +32,7 @@ details: |-
 
     An application that passes request data into these header values can be made to add headers or split the response.
 id: DHI-o6i5-s3pl-fb7e-ywfh
-modified: "2026-11-26T15:35:56Z"
+modified: "2026-11-27T17:32:45Z"
 published: "2026-11-11T19:00:25Z"
 references:
     - type: ADVISORY

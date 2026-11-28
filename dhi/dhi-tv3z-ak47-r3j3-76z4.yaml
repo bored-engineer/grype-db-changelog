@@ -3,6 +3,21 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: libxml2
+        purl: pkg:apk/dhi/libxml2
+      ranges:
+        - events:
+            - introduced: 2.13.9-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.13.9-r0
+        - 2.13.9-r1
+        - 2.13.9-r2
+        - 2.13.9-r3
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: libxml2
         purl: pkg:apk/dhi/libxml2
@@ -41,7 +56,7 @@ affected:
         - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi2
 details: A flaw was found in libxml2, an XML parsing library. This uncontrolled recursion vulnerability occurs in the xmlCatalogXMLResolveURI function when an XML catalog contains a delegate URI entry that references itself. A remote attacker could exploit this configuration-dependent issue by providing a specially crafted XML catalog, leading to infinite recursion and call stack exhaustion. This ultimately results in a segmentation fault, causing a Denial of Service (DoS) by crashing affected applications.
 id: DHI-tv3z-ak47-r3j3-76z4
-modified: "2026-11-26T03:08:11Z"
+modified: "2026-11-27T17:35:09Z"
 published: "2026-11-11T17:11:33Z"
 references:
     - type: ADVISORY

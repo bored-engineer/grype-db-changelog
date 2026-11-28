@@ -1786,39 +1786,21 @@ affected:
         name: metrics-server
         purl: pkg:apk/dhi/metrics-server
       ranges:
-        - events:
-            - introduced: 0.8.1-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 0.8.1-r4
+          events:
+            - introduced: "0"
+            - fixed: 0.8.1-r4
           type: ECOSYSTEM
       versions:
         - 0.8.1-r0
         - 0.8.1-r1
-        - 0.8.1-r10
-        - 0.8.1-r11
-        - 0.8.1-r12
         - 0.8.1-r2
         - 0.8.1-r3
-        - 0.8.1-r4
-        - 0.8.1-r5
-        - 0.8.1-r6
-        - 0.8.1-r7
-        - 0.8.1-r8
-        - 0.8.1-r9
-        - 0.9.0-r0
-        - 0.9.0-r1
-        - 0.9.0-r10
-        - 0.9.0-r11
-        - 0.9.0-r12
-        - 0.9.0-r2
-        - 0.9.0-r3
-        - 0.9.0-r4
-        - 0.9.0-r5
-        - 0.9.0-r6
-        - 0.9.0-r7
-        - 0.9.0-r8
-        - 0.9.0-r9
-        - 0.9.1-r0
-        - 0.9.1-r1
-        - 0.9.1-r2
     - database_specific:
         owner_kind: HSP
       package:
@@ -3453,7 +3435,7 @@ affected:
         - 1.6.2-3
 details: "## Summary\r\n\r\nThere is a potential vulnerability in Traefik due to its dependency on an affected version of gRPC-Go (CVE-2026-33186).\r\n\r\nA remote, unauthenticated attacker can send gRPC requests with a malformed HTTP/2 `:path` pseudo-header omitting the mandatory leading slash (e.g., `Service/Method` instead of `/Service/Method`). While the server routes such requests correctly, path-based authorization interceptors evaluate the raw non-canonical path and fail to match \"deny\" rules, allowing the request to bypass the policy entirely if a fallback \"allow\" rule is present.\r\n\r\n## Patches\r\n\r\n- https://github.com/traefik/traefik/releases/tag/v2.11.42\r\n- https://github.com/traefik/traefik/releases/tag/v3.6.12\r\n- https://github.com/traefik/traefik/releases/tag/v3.7.0-ea.3\r\n\r\n## For more information\r\n\r\nIf you have any questions or comments about this advisory, please [open an issue](https://github.com/traefik/traefik/issues).\r\n\r\n<details>\r\n<summary>Original Description</summary>\r\n\r\n### Summary\r\nThis CVE hits traefik until Version 3.6.11 and 2.11.41.\r\ngRPC-Go has an authorization bypass via missing leading slash in :path\r\n### Details\r\nAs described in https://github.com/advisories/GHSA-p77j-4mvh-x3m3\r\n### PoC\r\nUpdate library version in \r\nhttps://github.com/traefik/traefik/blob/67c64ed9b25fbb90f1086977a62827133a7aa01b/go.mod#L108\r\n### Impact\r\nIs described in https://github.com/advisories/GHSA-p77j-4mvh-x3m3\r\n\r\n</details>"
 id: DHI-zu36-j764-pf7l-fo2k
-modified: "2026-11-26T04:55:33Z"
+modified: "2026-11-27T07:03:16Z"
 published: "2026-11-11T16:40:36Z"
 references:
     - type: ADVISORY

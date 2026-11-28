@@ -13,12 +13,24 @@ affected:
       versions:
         - 4.72-r0
         - 4.72-r1
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: perl-cgi-psgi
+        purl: pkg:apk/dhi/perl-cgi-psgi
+      ranges:
+        - events:
+            - introduced: 0.15-r5
+          type: ECOSYSTEM
+      versions:
+        - 0.15-r5
 details: |-
     CGI versions before 5.00 for Perl allow open redirects via HTML entity decoding of the URL after application validation in redirect.
 
     redirect decodes HTML entities in its URL before writing the Location header, so a URL the application has already validated can change meaning. For example, /&#47;evil.example/ becomes //evil.example/ and sends the user to another host.
 id: DHI-tsoc-7jb5-br5b-6bgp
-modified: "2026-11-26T15:37:07Z"
+modified: "2026-11-27T17:32:45Z"
 published: "2026-11-11T19:00:25Z"
 references:
     - type: ADVISORY

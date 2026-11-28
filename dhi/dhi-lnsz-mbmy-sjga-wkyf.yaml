@@ -7,8 +7,15 @@ affected:
         name: curl
         purl: pkg:apk/dhi/curl
       ranges:
-        - events:
-            - introduced: 8.17.0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.21.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.21.0-r0
           type: ECOSYSTEM
       versions:
         - 8.17.0
@@ -18,10 +25,6 @@ affected:
         - 8.19.0-r0
         - 8.20.0-r0
         - 8.20.0-r1
-        - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.23.0-r0
-        - 8.23.0-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -29,15 +32,18 @@ affected:
         name: curl
         purl: pkg:apk/dhi/curl
       ranges:
-        - events:
-            - introduced: 8.20.0-r1
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.21.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.21.0-r0
           type: ECOSYSTEM
       versions:
         - 8.20.0-r1
-        - 8.21.0-r0
-        - 8.22.0-r0
-        - 8.22.0-r1
-        - 8.23.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -45,8 +51,15 @@ affected:
         name: curl
         purl: pkg:deb/dhi/curl
       ranges:
-        - events:
-            - introduced: 8.14.1-2+deb13u2dhi2
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.14.1-2+deb13u7+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 8.14.1-2+deb13u7+dhi0
           type: ECOSYSTEM
       versions:
         - 8.14.1-2+deb13u2dhi2
@@ -60,16 +73,13 @@ affected:
         - 8.14.1-2+deb13u4+dhi0
         - 8.14.1-2+deb13u4+dhi1
         - 8.14.1-2+deb13u5+dhi0
-        - 8.14.1-2+deb13u7+dhi0
-        - 8.14.1-2+deb13u7+dhi1
-        - 8.19.0-dhi1
 details: |-
     A flaw in curl’s cookie parsing logic allows a malicious HTTP server to set
     "super cookies" that bypass the Public Suffix List check. This enables an
     attacker-controlled origin to inject cookies that curl subsequently scopes and
     transmits to unrelated third-party domains.
 id: DHI-lnsz-mbmy-sjga-wkyf
-modified: "2026-11-25T21:10:19Z"
+modified: "2026-11-27T20:26:59Z"
 published: "2026-11-11T15:41:32Z"
 references:
     - type: ADVISORY

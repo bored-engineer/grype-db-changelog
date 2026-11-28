@@ -1,26 +1,7 @@
 # schema: vulnerability/osv/schema-1.8.0.json
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: libxml2
-        purl: pkg:deb/dhi/libxml2
-      ranges:
-        - events:
-            - introduced: 2.12.7+dfsg+really2.9.14-2.1+deb13u2dhi0
-          type: ECOSYSTEM
-      versions:
-        - 2.12.7+dfsg+really2.9.14-2.1+deb13u2+dhi1
-        - 2.12.7+dfsg+really2.9.14-2.1+deb13u2+dhi2
-        - 2.12.7+dfsg+really2.9.14-2.1+deb13u2dhi0
-        - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi0
-        - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi1
-        - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi2
-        - 2.12.7+dfsg+really2.9.14-2.1+deb13u3+dhi3
 details: GNOME libxml2 2.14.0 through 2.15.4 contains a missing NUL termination flaw in xmlBufferAddHead() in buf.c that leaves uninitialized heap bytes as the terminator for storage-less buffers. Attackers supplying data to applications reusing an xmlBuffer can trigger over-reads via xmlBufferCat() and xmlStrlen(), disclosing adjacent heap memory or causing crashes.
 id: DHI-gdra-aikx-lwfy-ypby
-modified: "2026-11-26T15:01:20Z"
+modified: "2026-11-27T22:17:34Z"
 published: "2026-11-26T12:39:30Z"
 references:
     - type: ADVISORY
@@ -40,3 +21,4 @@ severity:
 summary: GNOME libxml2 2.14.0 through 2.15.4 contains a missing NUL termination flaw in xmlBufferAddHead() in buf.c that leaves…
 upstream:
     - CVE-2026-137075
+withdrawn: "2026-11-27T22:17:34Z"

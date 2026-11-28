@@ -37,6 +37,7 @@ affected:
         - 17.7.29-9
         - 17.7.34-0
         - 17.7.34-1
+        - 17.7.34-10
         - 17.7.34-2
         - 17.7.34-3
         - 17.7.34-4
@@ -82,6 +83,7 @@ affected:
         - 17.7.29-9
         - 17.7.34-0
         - 17.7.34-1
+        - 17.7.34-10
         - 17.7.34-2
         - 17.7.34-3
         - 17.7.34-4
@@ -127,6 +129,7 @@ affected:
         - 17.7.29-9
         - 17.7.34-0
         - 17.7.34-1
+        - 17.7.34-10
         - 17.7.34-2
         - 17.7.34-3
         - 17.7.34-4
@@ -172,6 +175,7 @@ affected:
         - 17.7.29-9
         - 17.7.34-0
         - 17.7.34-1
+        - 17.7.34-10
         - 17.7.34-2
         - 17.7.34-3
         - 17.7.34-4
@@ -211,6 +215,7 @@ affected:
         - 18.11.10-0
         - 18.11.10-1
         - 18.11.10-10
+        - 18.11.10-11
         - 18.11.10-2
         - 18.11.10-3
         - 18.11.10-4
@@ -250,6 +255,7 @@ affected:
         - 18.11.10-0
         - 18.11.10-1
         - 18.11.10-10
+        - 18.11.10-11
         - 18.11.10-2
         - 18.11.10-3
         - 18.11.10-4
@@ -289,6 +295,7 @@ affected:
         - 18.11.10-0
         - 18.11.10-1
         - 18.11.10-10
+        - 18.11.10-11
         - 18.11.10-2
         - 18.11.10-3
         - 18.11.10-4
@@ -328,6 +335,7 @@ affected:
         - 18.11.10-0
         - 18.11.10-1
         - 18.11.10-10
+        - 18.11.10-11
         - 18.11.10-2
         - 18.11.10-3
         - 18.11.10-4
@@ -338,7 +346,7 @@ affected:
         - 18.11.10-9
 details: gosaml2 is a Pure Go implementation of SAML 2.0. Prior to 0.12.0, ValidateEncodedResponse() calls decryptAssertions() on an EncryptedAssertion before signature or content validation completes, and EncryptedAssertion.DecryptBytes() in types/encrypted_assertion.go slices decoded ciphertext without first validating the required nonce or initialization-vector length. A CipherValue shorter than the 12-byte AES-GCM nonce causes a slice-bounds panic, and an empty AES-CBC CipherValue passes the modulo block-size check before causing a slice-bounds panic at the 16-byte initialization-vector split. An attacker needs only the service provider's public certificate to wrap a symmetric key, and no valid identity-provider signature or relationship is required. The unrecovered panic can terminate the request goroutine or the service process. This issue is fixed in version 0.12.0.
 id: DHI-cku3-r4fa-5alk-rsz2
-modified: "2026-11-26T13:01:25Z"
+modified: "2026-11-27T11:08:20Z"
 published: "2026-11-20T00:26:33Z"
 references:
     - type: ADVISORY

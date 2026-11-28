@@ -421,6 +421,8 @@ affected:
         - 26.11.16-3
         - 26.11.16-4
         - 26.11.16-5
+        - 26.11.16-6
+        - 26.11.16-7
         - 26.9.10-0
         - 26.9.10-1
         - 26.9.10-10
@@ -525,6 +527,7 @@ affected:
         - 0.7.0-2
         - 0.7.0-20
         - 0.7.0-21
+        - 0.7.0-22
         - 0.7.0-3
         - 0.7.0-4
         - 0.7.0-5
@@ -718,6 +721,7 @@ affected:
         - 3.0.0-19
         - 3.0.0-2
         - 3.0.0-20
+        - 3.0.0-21
         - 3.0.0-3
         - 3.0.0-4
         - 3.0.0-5
@@ -727,7 +731,7 @@ affected:
         - 3.0.0-9
 details: AnyIO is a high level asynchronous concurrency and networking framework that works on top of either Trio or asyncio. Prior to 4.14.2, AnyIO starts process-pool workers with standard error connected to a pipe that the parent never drains, even though the documented behavior redirects all three standard streams. Worker code that writes enough attacker-influenced data to sys.stderr can fill the pipe and block before returning the standard-output protocol response, causing the awaiting process-pool call to remain blocked indefinitely. Applications that run untrusted or faulty worker code capable of producing substantial standard-error output are affected. This issue is fixed in version 4.14.2.
 id: DHI-rf6u-ejje-s66n-b7sr
-modified: "2026-11-26T10:38:25Z"
+modified: "2026-11-27T08:19:37Z"
 published: "2026-11-11T20:58:19Z"
 references:
     - type: ADVISORY

@@ -594,6 +594,9 @@ affected:
         - 1.9.0.1-10
         - 1.9.0.1-11
         - 1.9.0.1-12
+        - 1.9.0.1-13
+        - 1.9.0.1-14
+        - 1.9.0.2-14
     - database_specific:
         owner_kind: HSP
       package:
@@ -611,6 +614,7 @@ affected:
         - 4.4.5-3
         - 4.4.5-4
         - 4.4.5-5
+        - 4.4.5-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -628,6 +632,7 @@ affected:
         - 4.4.5-3
         - 4.4.5-4
         - 4.4.5-5
+        - 4.4.5-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -874,7 +879,7 @@ database_specific:
         - legacy_package_image_owner
 details: brace-expansion through 5.0.7 is vulnerable to denial of service via memory exhaustion. The expand() function limits the number of results with a max option (default 100,000) but does not bound the length of each result string. By chaining multiple brace groups, an attacker keeps the result count under the limit while making each result progressively longer, so total memory scales with both count and string length until the process hits a fatal, uncatchable out-of-memory error. About 7.5 KB of input ('{a,b}'.repeat(1500)) crashes a default Node.js process. Any application that passes attacker-influenced strings to brace-expansion.expand() - directly or transitively via minimatch / glob brace patterns - can be crashed by a small request. Fixed in 5.0.8 by adding a maxLength option (default 4,000,000) that bounds accumulated output and intermediate arrays.
 id: DHI-nas2-kcb3-emc6-dudt
-modified: "2026-11-26T10:37:24Z"
+modified: "2026-11-27T15:12:27Z"
 published: "2026-11-21T08:54:17Z"
 references:
     - type: ADVISORY

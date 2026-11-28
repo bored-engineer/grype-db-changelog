@@ -468,6 +468,7 @@ affected:
         - 1.20.2-5
         - 1.20.2-6
         - 1.20.2-7
+        - 1.20.2-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -480,6 +481,8 @@ affected:
           type: ECOSYSTEM
       versions:
         - 1.100.0-0
+        - 1.100.1-0
+        - 1.101.0-0
         - 1.74.1-0
         - 1.79.30-0
         - 1.79.30-1
@@ -557,7 +560,7 @@ affected:
         - 2.5.9-1
 details: undici's retry handler can leave an already-exposed response body pending forever. When a server returns a successful response that declares a Content-Length, sends only part of the body, and closes the connection, the retry handler retries the request. If the retry returns a non-retryable status such as 400, the handler forwards that new response downstream and replaces its internal response stream, but the original response body that the application still holds is never ended or destroyed. As a result calls that read that body never settle, and the configured body timeout does not fire because its timer is tied to the connection parser rather than the orphaned body. An attacker-controlled server can trigger this with two short responses without keeping a connection open, and repeated requests accumulate pending promises and streams that can exhaust application concurrency or memory. This affects undici versions from 7.11.0 up to 7.29.1 and from 8.0.0 up to 8.10.2. Users should upgrade to undici 7.29.1 or 8.10.2.
 id: DHI-mfct-76sg-cijl-qxae
-modified: "2026-11-26T20:39:54Z"
+modified: "2026-11-27T23:03:05Z"
 published: "2026-11-13T17:02:28Z"
 references:
     - type: ADVISORY

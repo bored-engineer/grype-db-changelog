@@ -412,6 +412,34 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: temporalio-ui-2
+        purl: pkg:apk/dhi/temporalio-ui-2
+      ranges:
+        - events:
+            - introduced: 2.58.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.58.1-r0
+        - 2.58.1-r1
+        - 2.58.1-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
+        name: temporalio-ui-2-fips
+        purl: pkg:apk/dhi/temporalio-ui-2-fips
+      ranges:
+        - events:
+            - introduced: 2.58.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.58.1-r0
+        - 2.58.1-r1
+        - 2.58.1-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Alpine:3.24
         name: snyk
         purl: pkg:apk/dhi/snyk
@@ -821,6 +849,34 @@ affected:
     - database_specific:
         owner_kind: HSP
       package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: temporalio-ui-2
+        purl: pkg:apk/dhi/temporalio-ui-2
+      ranges:
+        - events:
+            - introduced: 2.58.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.58.1-r0
+        - 2.58.1-r1
+        - 2.58.1-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: temporalio-ui-2-fips
+        purl: pkg:apk/dhi/temporalio-ui-2-fips
+      ranges:
+        - events:
+            - introduced: 2.58.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 2.58.1-r0
+        - 2.58.1-r1
+        - 2.58.1-r2
+    - database_specific:
+        owner_kind: HSP
+      package:
         ecosystem: Docker Hardened Images:Debian:13
         name: snyk
         purl: pkg:deb/dhi/snyk
@@ -889,6 +945,7 @@ affected:
         - 1.28.4-15
         - 1.28.4-16
         - 1.28.4-17
+        - 1.28.4-18
         - 1.28.4-2
         - 1.28.4-3
         - 1.28.4-4
@@ -918,6 +975,7 @@ affected:
         - 1.28.4-15
         - 1.28.4-16
         - 1.28.4-17
+        - 1.28.4-18
         - 1.28.4-2
         - 1.28.4-3
         - 1.28.4-4
@@ -947,6 +1005,7 @@ affected:
         - 1.28.4-15
         - 1.28.4-16
         - 1.28.4-17
+        - 1.28.4-18
         - 1.28.4-2
         - 1.28.4-3
         - 1.28.4-4
@@ -976,6 +1035,7 @@ affected:
         - 1.28.4-15
         - 1.28.4-16
         - 1.28.4-17
+        - 1.28.4-18
         - 1.28.4-2
         - 1.28.4-3
         - 1.28.4-4
@@ -1005,6 +1065,7 @@ affected:
         - 1.29.7-15
         - 1.29.7-16
         - 1.29.7-17
+        - 1.29.7-18
         - 1.29.7-2
         - 1.29.7-3
         - 1.29.7-4
@@ -1034,6 +1095,7 @@ affected:
         - 1.29.7-15
         - 1.29.7-16
         - 1.29.7-17
+        - 1.29.7-18
         - 1.29.7-2
         - 1.29.7-3
         - 1.29.7-4
@@ -1063,6 +1125,7 @@ affected:
         - 1.29.7-15
         - 1.29.7-16
         - 1.29.7-17
+        - 1.29.7-18
         - 1.29.7-2
         - 1.29.7-3
         - 1.29.7-4
@@ -1092,6 +1155,7 @@ affected:
         - 1.29.7-15
         - 1.29.7-16
         - 1.29.7-17
+        - 1.29.7-18
         - 1.29.7-2
         - 1.29.7-3
         - 1.29.7-4
@@ -1648,9 +1712,37 @@ affected:
         - 1.29.7-7
         - 1.29.7-8
         - 1.29.7-9
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: temporalio-ui-2
+        purl: pkg:deb/dhi/temporalio-ui-2
+      ranges:
+        - events:
+            - introduced: 2.58.1-0
+          type: ECOSYSTEM
+      versions:
+        - 2.58.1-0
+        - 2.58.1-1
+        - 2.58.1-2
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: temporalio-ui-2-fips
+        purl: pkg:deb/dhi/temporalio-ui-2-fips
+      ranges:
+        - events:
+            - introduced: 2.58.1-0
+          type: ECOSYSTEM
+      versions:
+        - 2.58.1-0
+        - 2.58.1-1
+        - 2.58.1-2
 details: The package `github.com/gomarkdown/markdown` is a Go library for parsing Markdown text and rendering as HTML. Prior to pseudoversion `0.0.0-20230922105210-14b16010c2ee`, which corresponds with commit `14b16010c2ee7ff33a940a541d993bd043a88940`, parsing malformed markdown input with parser that uses parser.Mmark extension could result in out-of-bounds read vulnerability. To exploit the vulnerability, parser needs to have `parser.Mmark` extension set. The panic occurs inside the `citation.go` file on the line 69 when the parser tries to access the element past its length. This can result in a denial of service. Commit `14b16010c2ee7ff33a940a541d993bd043a88940`/pseudoversion `0.0.0-20230922105210-14b16010c2ee` contains a patch for this issue.
 id: DHI-wifg-jr74-epbx-sfzl
-modified: "2026-11-26T05:02:03Z"
+modified: "2026-11-27T03:24:54Z"
 published: "2026-11-10T15:00:54Z"
 references:
     - type: ADVISORY

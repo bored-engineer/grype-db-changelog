@@ -468,6 +468,7 @@ affected:
         - 1.20.2-5
         - 1.20.2-6
         - 1.20.2-7
+        - 1.20.2-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -480,6 +481,8 @@ affected:
           type: ECOSYSTEM
       versions:
         - 1.100.0-0
+        - 1.100.1-0
+        - 1.101.0-0
         - 1.74.1-0
         - 1.79.30-0
         - 1.79.30-1
@@ -557,7 +560,7 @@ affected:
         - 2.5.9-1
 details: undici's experimental WebSocketStream client crashes the whole Node.js process when a remote peer closes the TCP connection without a WebSocket close handshake. On an unclean close the internal socket-close handler calls abort on the writable stream unconditionally and discards the returned promise, but per the WHATWG Streams standard aborting a locked writable returns a promise that rejects with a TypeError. Because the application holds a writer on that writable, which is the only way to write, the rejection is never observed and Node's default unhandled-rejection behavior terminates the process. An untrusted server can therefore crash a client with a single abrupt disconnect, with no authentication and no application mistake. This affects undici versions from 7.0.0 up to 7.29.1 and from 8.0.0 up to 8.10.2. Users should upgrade to undici 7.29.1 or 8.10.2.
 id: DHI-xej7-fwrz-77et-dbpg
-modified: "2026-11-26T20:46:17Z"
+modified: "2026-11-27T23:03:05Z"
 published: "2026-11-13T17:03:58Z"
 references:
     - type: ADVISORY

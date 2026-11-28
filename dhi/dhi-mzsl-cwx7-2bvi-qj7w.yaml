@@ -1,94 +1,7 @@
 # schema: vulnerability/osv/schema-1.8.0.json
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: openscap
-        purl: pkg:deb/dhi/openscap
-      ranges:
-        - events:
-            - introduced: 1.4.4-0
-          type: ECOSYSTEM
-      versions:
-        - 1.4.4-0
-        - 1.4.4-1
-        - 1.4.4-2
-        - 1.4.4-3
-        - 1.4.4-4
-        - 1.4.4-5
-        - 1.4.5-0
-        - 1.4.6-0
-        - 1.4.6-1
-        - 1.4.6-10
-        - 1.4.6-11
-        - 1.4.6-2
-        - 1.4.6-3
-        - 1.4.6-4
-        - 1.4.6-5
-        - 1.4.6-6
-        - 1.4.6-7
-        - 1.4.6-8
-        - 1.4.6-9
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: openscap-container-tools
-        purl: pkg:deb/dhi/openscap-container-tools
-      ranges:
-        - events:
-            - introduced: 1.4.4-2
-          type: ECOSYSTEM
-      versions:
-        - 1.4.4-2
-        - 1.4.4-3
-        - 1.4.4-4
-        - 1.4.4-5
-        - 1.4.5-0
-        - 1.4.6-0
-        - 1.4.6-1
-        - 1.4.6-10
-        - 1.4.6-11
-        - 1.4.6-2
-        - 1.4.6-3
-        - 1.4.6-4
-        - 1.4.6-5
-        - 1.4.6-6
-        - 1.4.6-7
-        - 1.4.6-8
-        - 1.4.6-9
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: openscap-python
-        purl: pkg:deb/dhi/openscap-python
-      ranges:
-        - events:
-            - introduced: 1.4.4-2
-          type: ECOSYSTEM
-      versions:
-        - 1.4.4-2
-        - 1.4.4-3
-        - 1.4.4-4
-        - 1.4.4-5
-        - 1.4.5-0
-        - 1.4.6-0
-        - 1.4.6-1
-        - 1.4.6-10
-        - 1.4.6-11
-        - 1.4.6-2
-        - 1.4.6-3
-        - 1.4.6-4
-        - 1.4.6-5
-        - 1.4.6-6
-        - 1.4.6-7
-        - 1.4.6-8
-        - 1.4.6-9
 details: A flaw was found in OpenSCAP. This vulnerability allows for information disclosure when performing offline scans of untrusted filesystem images, such as container images or virtual machine (VM) disks. Because the scanner does not properly restrict symbolic link (symlink) resolution to the target image's root directory, an attacker can supply a crafted image containing links pointing to files on the host system. When the scan runs, typically with elevated privileges, OpenSCAP follows these links to read sensitive host files and expose their contents in the scan report or manipulate compliance results.
 id: DHI-mzsl-cwx7-2bvi-qj7w
-modified: "2026-11-26T05:05:19Z"
+modified: "2026-11-27T11:21:53Z"
 published: "2026-11-20T16:31:12Z"
 references:
     - type: ADVISORY
@@ -110,3 +23,4 @@ severity:
 summary: A flaw was found in OpenSCAP. This vulnerability allows for information disclosure when performing offline scans of…
 upstream:
     - CVE-2026-126631
+withdrawn: "2026-11-27T11:21:53Z"

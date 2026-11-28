@@ -1,20 +1,7 @@
 # schema: vulnerability/osv/schema-1.8.0.json
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: nmap
-        purl: pkg:deb/dhi/nmap
-      ranges:
-        - events:
-            - introduced: 7.95+dfsg-3+deb13u0+dhi0
-          type: ECOSYSTEM
-      versions:
-        - 7.95+dfsg-3+deb13u0+dhi0
 details: Nmap before 7.992 contains a hardcoded cryptographic key vulnerability in the DHCAST128 login of the NSE afp.lua library, which uses a fixed, publicly known Diffie-Hellman private exponent. A passive observer of the network traffic between Nmap and an Apple Filing Protocol server can compute the shared secret from the hardcoded exponent and the server's public value and decrypt the password supplied to scripts such as afp-showmount.nse and afp-brute.nse through the afp.username and afp.password arguments, without man-in-the-middle access or cryptanalysis.
 id: DHI-d7db-a32u-2g7n-y4uc
-modified: "2026-11-26T20:17:20Z"
+modified: "2026-11-27T11:06:07Z"
 published: "2026-11-26T01:24:41Z"
 references:
     - type: ADVISORY
@@ -38,3 +25,4 @@ severity:
 summary: Nmap before 7.992 contains a hardcoded cryptographic key vulnerability in the DHCAST128 login of the NSE afp.lua…
 upstream:
     - CVE-2026-81407
+withdrawn: "2026-11-27T11:06:07Z"

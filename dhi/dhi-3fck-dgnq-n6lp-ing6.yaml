@@ -58,6 +58,9 @@ affected:
         - 3.4.0-12
         - 3.4.0-13
         - 3.4.0-14
+        - 3.4.0-15
+        - 3.4.0-16
+        - 3.4.0-17
         - 3.4.0-2
         - 3.4.0-3
         - 3.4.0-4
@@ -68,7 +71,7 @@ affected:
         - 3.4.0-9
 details: Apache Airflow's XCom `GET /api/v2/{...}/xcomEntries/{key}?deserialize=true` endpoint passed a string-literal payload through `BaseXCom.deserialize_value` without the `_check_forbidden_xcom_keys` guard, allowing an authenticated API user with XCom write-and-read access to instantiate arbitrary `airflow.*` classes on the API server (CWE-502). An authenticated user who can write an XCom value and then read it back with `deserialize=true` triggers the unsafe instantiation. Users are advised to upgrade to apache-airflow 3.3.1 or later, which rejects reserved XCom serialization keys submitted as JSON string literals.
 id: DHI-3fck-dgnq-n6lp-ing6
-modified: "2026-11-26T10:31:22Z"
+modified: "2026-11-27T15:26:57Z"
 published: "2026-11-13T00:27:04Z"
 references:
     - type: ADVISORY

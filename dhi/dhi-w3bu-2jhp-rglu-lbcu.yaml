@@ -7,8 +7,15 @@ affected:
         name: curl
         purl: pkg:apk/dhi/curl
       ranges:
-        - events:
-            - introduced: 8.17.0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.23.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.23.0-r0
           type: ECOSYSTEM
       versions:
         - 8.17.0
@@ -20,8 +27,6 @@ affected:
         - 8.20.0-r1
         - 8.21.0-r0
         - 8.22.0-r0
-        - 8.23.0-r0
-        - 8.23.0-r1
     - database_specific:
         owner_kind: HSP
       package:
@@ -29,15 +34,20 @@ affected:
         name: curl
         purl: pkg:apk/dhi/curl
       ranges:
-        - events:
-            - introduced: 8.20.0-r1
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.22.0-r1
+          events:
+            - introduced: "0"
+            - fixed: 8.22.0-r1
           type: ECOSYSTEM
       versions:
         - 8.20.0-r1
         - 8.21.0-r0
         - 8.22.0-r0
-        - 8.22.0-r1
-        - 8.23.0-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -45,8 +55,15 @@ affected:
         name: curl
         purl: pkg:deb/dhi/curl
       ranges:
-        - events:
-            - introduced: 8.14.1-2+deb13u2dhi2
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.14.1-2+deb13u7+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 8.14.1-2+deb13u7+dhi0
           type: ECOSYSTEM
       versions:
         - 8.14.1-2+deb13u2dhi2
@@ -60,15 +77,12 @@ affected:
         - 8.14.1-2+deb13u4+dhi0
         - 8.14.1-2+deb13u4+dhi1
         - 8.14.1-2+deb13u5+dhi0
-        - 8.14.1-2+deb13u7+dhi0
-        - 8.14.1-2+deb13u7+dhi1
-        - 8.19.0-dhi1
 details: |-
     During an upload, curl mishandles HTTP/2 `RST_STREAM` received from the server
     (with reason `HTTP_1_1_REQUIRED` or `REFUSED_STREAM`) leading to a use after
     free of a `struct Curl_easy` object.
 id: DHI-w3bu-2jhp-rglu-lbcu
-modified: "2026-11-25T21:18:12Z"
+modified: "2026-11-27T20:27:08Z"
 published: "2026-11-11T15:41:44Z"
 references:
     - type: ADVISORY

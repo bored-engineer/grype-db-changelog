@@ -26,19 +26,21 @@ affected:
         name: postgresql18
         purl: pkg:apk/dhi/postgresql18
       ranges:
-        - events:
-            - introduced: 18.1-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 18.2-r0
+          events:
+            - introduced: "0"
+            - fixed: 18.2-r0
           type: ECOSYSTEM
       versions:
         - 18.1-r0
-        - 18.2-r0
-        - 18.3-r0
-        - 18.4-r0
-        - 18.6-r0
-        - 18.7-r0
 details: Missing validation of type of input in PostgreSQL intarray extension selectivity estimator function allows an object creator to execute arbitrary code as the operating system user running the database.  Versions before PostgreSQL 18.2, 17.8, 16.12, 15.16, and 14.21 are affected.
 id: DHI-j3oa-whhh-t4db-h2lo
-modified: "2026-11-24T09:35:40Z"
+modified: "2026-11-27T17:41:43Z"
 published: "2026-11-11T18:54:50Z"
 references:
     - type: ADVISORY

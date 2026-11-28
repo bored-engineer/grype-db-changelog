@@ -1074,6 +1074,7 @@ affected:
         - 12.7.0-0
         - 12.7.0-1
         - 12.7.0-2
+        - 12.7.0-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -1152,6 +1153,7 @@ affected:
         - 1.7.22-13
         - 1.7.22-14
         - 1.7.22-15
+        - 1.7.22-16
         - 1.7.22-2
         - 1.7.22-3
         - 1.7.22-4
@@ -1532,6 +1534,7 @@ affected:
         - 4.84.0-1
         - 4.86.0-0
         - 4.87.0-0
+        - 4.88.0-0
         - 4.9.0-0
     - database_specific:
         owner_kind: HSP
@@ -2014,6 +2017,7 @@ affected:
         - 1.20.2-5
         - 1.20.2-6
         - 1.20.2-7
+        - 1.20.2-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -2114,7 +2118,7 @@ affected:
         - 2.5.9-1
 details: 'follow-redirects is a Node.js HTTP and HTTPS client wrapper that automatically follows redirects. From version 1.16.0 to before version 1.16.1, follow-redirects removes sensitive credential headers (Authorization, Proxy-Authorization, Cookie, and any caller-declared sensitiveHeaders) before following a redirect that crosses to a different host or downgrades to a less secure protocol. The removal routine iterates the caller''s headers container with for...in and matches header names against a filter. This assumes the headers container is a plain object keyed by header names. Node''s underlying http.request, which follow-redirects is a drop-in replacement for, also accepts headers as an alternating array of names and values. For an array, for...in yields the numeric indices "0", "1", "2" and so on, which never match a header-name filter, so nothing is removed. An application that sends array-form headers and follows an attacker-controlled cross-origin redirect therefore forwards its Authorization, Cookie, and Proxy-Authorization headers verbatim to the attacker-controlled destination, with no error or warning. The sensitiveHeaders option added to fix CVE-2026-40895 / GHSA-r4q5-vmmm-2653 is equally ineffective, because it relies on the same helper. This is an unauthenticated confidentiality vulnerability: any remote server the victim application contacts can harvest the victim''s credential headers by responding with a cross-origin redirect. This issue has been patched in version 1.16.1.'
 id: DHI-2bd5-3vzo-2d4t-4nar
-modified: "2026-11-26T20:33:07Z"
+modified: "2026-11-27T11:18:06Z"
 published: "2026-11-11T15:52:40Z"
 references:
     - type: ADVISORY

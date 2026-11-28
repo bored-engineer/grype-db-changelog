@@ -224,8 +224,15 @@ affected:
         name: dotnet-sdk-8
         purl: pkg:deb/dhi/dotnet-sdk-8
       ranges:
-        - events:
-            - introduced: 8.0.422-0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.0.426-0
+          events:
+            - introduced: "0"
+            - fixed: 8.0.426-0
           type: ECOSYSTEM
       versions:
         - 8.0.422-0
@@ -234,10 +241,6 @@ affected:
         - 8.0.424-1
         - 8.0.425-0
         - 8.0.425-1
-        - 8.0.426-0
-        - 8.0.427-0
-        - 8.0.428-0
-        - 8.0.428-1
     - database_specific:
         owner_kind: HSP
       package:
@@ -261,7 +264,7 @@ affected:
         - 9.0.321-1
 details: Improper link resolution before file access ('link following') in .NET allows an authorized attacker to elevate privileges locally.
 id: DHI-wyzg-nq7j-e4vs-4hon
-modified: "2026-11-24T17:42:48Z"
+modified: "2026-11-27T04:25:44Z"
 published: "2026-11-11T17:02:28Z"
 references:
     - type: ADVISORY

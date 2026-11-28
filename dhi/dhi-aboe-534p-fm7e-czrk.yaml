@@ -18,6 +18,8 @@ affected:
         - 3.10.6-4
         - 3.10.6-5
         - 3.10.6-6
+        - 3.10.6-7
+        - 3.10.6-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -36,10 +38,12 @@ affected:
         - 3.11.10-4
         - 3.11.10-5
         - 3.11.10-6
+        - 3.11.10-7
+        - 3.11.10-8
         - 3.11.8-0
 details: Wasmtime is a runtime for WebAssembly. Prior to 24.0.7, 36.0.7, 42.0.2, and 43.0.1, Wasmtime's implementation of transcoding strings into the Component Model's utf16 or latin1+utf16 encodings improperly verified the alignment of reallocated strings. This meant that unaligned pointers could be passed to the host for transcoding which would trigger a host panic. This panic is possible to trigger from malicious guests which transfer very specific strings across components with specific addresses. Host panics are considered a DoS vector in Wasmtime as the panic conditions are controlled by the guest in this situation. This vulnerability is fixed in 24.0.7, 36.0.7, 42.0.2, and 43.0.1.
 id: DHI-aboe-534p-fm7e-czrk
-modified: "2026-11-26T12:46:27Z"
+modified: "2026-11-27T08:05:48Z"
 published: "2026-11-20T18:22:35Z"
 references:
     - type: ADVISORY

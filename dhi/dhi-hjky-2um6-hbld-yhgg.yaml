@@ -49,8 +49,15 @@ affected:
         name: nodejs-24
         purl: pkg:apk/dhi/nodejs-24
       ranges:
-        - events:
-            - introduced: 24.13.0-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 24.17.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 24.17.0-r0
           type: ECOSYSTEM
       versions:
         - 24.13.0-r0
@@ -60,17 +67,6 @@ affected:
         - 24.15.0-r0
         - 24.15.0-r1
         - 24.16.0-r0
-        - 24.17.0-r0
-        - 24.18.0-r0
-        - 24.18.1-r0
-        - 24.19.0-r0
-        - 24.20.0-r0
-        - 24.21.0-r0
-        - 24.22.0-r0
-        - 24.22.1-r0
-        - 24.22.1-r1
-        - 24.22.2-r0
-        - 24.22.3-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -90,7 +86,7 @@ affected:
         - 24.22.3-r0
 details: Permission Model Bypass via `process.report.writeReport()` Path Misvalidation
 id: DHI-hjky-2um6-hbld-yhgg
-modified: "2026-11-25T00:05:00Z"
+modified: "2026-11-27T17:08:56Z"
 published: "2026-11-11T19:00:00Z"
 references:
     - type: ADVISORY
@@ -172,7 +168,11 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-97855.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98619.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-97855.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98619.html
     - type: ADVISORY
       url: https://nodejs.org/en/blog/vulnerability/june-2026-security-releases
     - type: ADVISORY

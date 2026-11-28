@@ -34,8 +34,15 @@ affected:
         name: dotnet8-runtime
         purl: pkg:apk/dhi/dotnet8-runtime
       ranges:
-        - events:
-            - introduced: 8.0.23-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 8.0.32-r0
+          events:
+            - introduced: "0"
+            - fixed: 8.0.32-r0
           type: ECOSYSTEM
       versions:
         - 8.0.23-r0
@@ -45,9 +52,6 @@ affected:
         - 8.0.27-r0
         - 8.0.29-r0
         - 8.0.31-r0
-        - 8.0.32-r0
-        - 8.0.33-r0
-        - 8.0.34-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -254,7 +258,7 @@ affected:
         - 9.0.321-1
 details: Insertion of sensitive information into sent data in .NET allows an unauthorized attacker to disclose information over a network.
 id: DHI-hf2p-3a7r-irub-747u
-modified: "2026-11-24T08:32:39Z"
+modified: "2026-11-27T11:35:37Z"
 published: "2026-11-11T16:59:50Z"
 references:
     - type: ADVISORY

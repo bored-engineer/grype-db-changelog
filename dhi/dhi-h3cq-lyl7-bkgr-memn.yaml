@@ -25,8 +25,15 @@ affected:
         name: nodejs-22
         purl: pkg:apk/dhi/nodejs-22
       ranges:
-        - events:
-            - introduced: 22.22.0-r0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-11"
+                      kind: advisory
+                      version: 22.23.0-r0
+          events:
+            - introduced: "0"
+            - fixed: 22.23.0-r0
           type: ECOSYSTEM
       versions:
         - 22.22.0-r0
@@ -34,14 +41,6 @@ affected:
         - 22.22.2-r0
         - 22.22.2-r1
         - 22.22.3-r0
-        - 22.23.0-r0
-        - 22.23.1-r0
-        - 22.23.2-r0
-        - 22.23.3-r0
-        - 22.23.4-r0
-        - 22.23.4-r1
-        - 22.23.4-r2
-        - 22.23.5-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -90,7 +89,7 @@ affected:
         - 24.22.3-r0
 details: Node.js unicode dot separator handling can lead to tls wildcard-depth authentication bypass due to resolver and verifier hostname normalization mismat
 id: DHI-h3cq-lyl7-bkgr-memn
-modified: "2026-11-25T00:05:00Z"
+modified: "2026-11-27T16:34:46Z"
 published: "2026-11-11T19:00:00Z"
 references:
     - type: ADVISORY
@@ -214,6 +213,8 @@ references:
     - type: ADVISORY
       url: https://linux.oracle.com/cve/ELSA-2026-97855.html
     - type: ADVISORY
+      url: https://linux.oracle.com/cve/ELSA-2026-98619.html
+    - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-35841.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-35842.html
@@ -227,6 +228,8 @@ references:
       url: https://linux.oracle.com/errata/ELSA-2026-41947.html
     - type: ADVISORY
       url: https://linux.oracle.com/errata/ELSA-2026-97855.html
+    - type: ADVISORY
+      url: https://linux.oracle.com/errata/ELSA-2026-98619.html
     - type: ADVISORY
       url: https://nodejs.org/en/blog/vulnerability/june-2026-security-releases
     - type: ADVISORY

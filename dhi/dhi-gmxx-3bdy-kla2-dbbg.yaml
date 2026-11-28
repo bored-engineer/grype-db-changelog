@@ -34,6 +34,8 @@ affected:
         - 25.6.3-4
         - 25.6.3-5
         - 25.6.3-6
+        - 25.6.3-7
+        - 25.6.3-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -84,9 +86,10 @@ affected:
         - 4.7.5-2
         - 4.7.6-0
         - 4.7.6-1
+        - 4.7.6-2
 details: Python Social Auth is a social authentication and registration mechanism. Prior to 6.2.0, OpenIdConnectAuth in social_core/backends/open_id_connect.py uses get_and_store_nonce to place the OpenID Connect nonce in a shared OpenIdConnectAssociation table, and get_nonce and validate_claims verify only that the nonce exists and has not expired rather than binding it to the browser session and OAuth state that initiated the login. An attacker who obtains a victim's unused authorization code can start a separate login to obtain valid state for the attacker's browser, submit the victim's code with that state, and pass nonce validation because the victim nonce is globally available. With DEFAULT_USE_PKCE disabled in the default OpenIdConnectAuth configuration, the attacker can be logged in as the victim. This issue is fixed in version 6.2.0.
 id: DHI-gmxx-3bdy-kla2-dbbg
-modified: "2026-11-26T10:33:12Z"
+modified: "2026-11-27T07:29:39Z"
 published: "2026-11-10T08:04:49Z"
 references:
     - type: ADVISORY

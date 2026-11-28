@@ -1,22 +1,7 @@
 # schema: vulnerability/osv/schema-1.8.0.json
-affected:
-    - database_specific:
-        owner_kind: HSP
-      package:
-        ecosystem: Docker Hardened Images:Debian:13
-        name: dnsmasq
-        purl: pkg:deb/dhi/dnsmasq
-      ranges:
-        - events:
-            - introduced: 2.91-1+deb13u1+dhi0
-          type: ECOSYSTEM
-      versions:
-        - 2.91-1+deb13u1+dhi0
-        - 2.91-1+deb13u2+dhi0
-        - 2.91-1+deb13u2+dhi1
 details: A flaw was found in dnsmasq. After a reduction of internal domain-name buffer sizes, the DNSSEC validator can write a few bytes past a name buffer when converting names to and from DNS wire format. An attacker who can cause the server to validate a crafted DNSSEC response may overwrite a small amount of adjacent heap metadata. DNSSEC support is not compiled in by default and must also be enabled at runtime.
 id: DHI-73iw-zft2-2obe-vnnj
-modified: "2026-11-23T15:20:36Z"
+modified: "2026-11-27T11:06:17Z"
 published: "2026-11-10T10:41:48Z"
 references:
     - type: ADVISORY
@@ -38,3 +23,4 @@ severity:
 summary: A flaw was found in dnsmasq. After a reduction of internal domain-name buffer sizes, the DNSSEC validator can write a…
 upstream:
     - CVE-2026-93011
+withdrawn: "2026-11-27T11:06:17Z"

@@ -7,16 +7,22 @@ affected:
         name: libevent
         purl: pkg:deb/dhi/libevent
       ranges:
-        - events:
-            - introduced: 2.1.12-stable-10+dhi0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-12"
+                      kind: advisory
+                      version: 2.1.13-stable-1~deb13u1+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 2.1.13-stable-1~deb13u1+dhi0
           type: ECOSYSTEM
       versions:
         - 2.1.12-stable-10+dhi0
         - 2.1.12-stable-10+dhi1
-        - 2.1.13-stable-1~deb13u1+dhi0
 details: Libevent is an event notification library. Prior to 2.1.13 and 2.2.2-alpha, libevent has an incorrect integer conversion in event_tagging.c when evtag_unmarshal_header uses evtag_decode_int to decode an attacker-controlled uint32 payload length and returns it as a signed int. Values above INT_MAX become negative or truncated, and evtag_unmarshal_string can use the converted value in allocation sizing, producing a wrapped large allocation request and denial of service. This issue is fixed in versions 2.1.13 and 2.2.2-alpha.
 id: DHI-6lt6-gisf-yxvb-uut6
-modified: "2026-11-24T12:35:01Z"
+modified: "2026-11-27T23:41:45Z"
 published: "2026-11-12T02:25:58Z"
 references:
     - type: ADVISORY

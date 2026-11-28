@@ -28,6 +28,7 @@ affected:
         - 2026.07.28-21
         - 2026.07.28-22
         - 2026.07.28-23
+        - 2026.07.28-24
         - 2026.07.28-3
         - 2026.07.28-4
         - 2026.07.28-5
@@ -141,6 +142,7 @@ affected:
         - 3.18.0-5
         - 3.18.0-6
         - 3.18.0-7
+        - 3.18.0-8
     - database_specific:
         owner_kind: HSP
       package:
@@ -191,6 +193,7 @@ affected:
         - 4.7.5-2
         - 4.7.6-0
         - 4.7.6-1
+        - 4.7.6-2
     - database_specific:
         owner_kind: HSP
       package:
@@ -395,6 +398,7 @@ affected:
         - 6.1.0-41
         - 6.1.0-42
         - 6.1.0-43
+        - 6.1.0-44
         - 6.1.0-5
         - 6.1.0-6
         - 6.1.0-7
@@ -402,7 +406,7 @@ affected:
         - 6.1.0-9
 details: Pillow is a Python imaging library. From 2.3.0 through 12.3.0, Pillow applications that save compressed TIFF images through libtiff can pass attacker-controlled image geometry tags to the encoder while allocating its row buffer from the actual image dimensions. The affected TiffImagePlugin._save path allows ImageWidth, ImageLength, or SamplesPerPixel from exif=, tiffinfo=, or a source TIFF IFD to make libtiff consume a larger scanline than the buffer supplied by ImagingLibTiffEncode. This can read heap memory into the generated TIFF or crash the process. When TIFF Predictor 2 is enabled, libtiff can rewrite the oversized scanline in place and corrupt memory beyond the buffer. A carried-over PlanarConfiguration value of 2 instead makes libtiff use a shorter scanline and can produce an undecodable output file, but is not established to cause the out-of-bounds access. This issue is fixed in version 13.0.0.
 id: DHI-ahzi-qa4l-4lyk-biy7
-modified: "2026-11-26T14:51:28Z"
+modified: "2026-11-27T03:52:04Z"
 published: "2026-11-20T16:49:19Z"
 references:
     - type: ADVISORY

@@ -151,6 +151,7 @@ affected:
         - 12.7.0-0
         - 12.7.0-1
         - 12.7.0-2
+        - 12.7.0-3
     - database_specific:
         owner_kind: HSP
       package:
@@ -196,6 +197,7 @@ affected:
         - 1.7.22-13
         - 1.7.22-14
         - 1.7.22-15
+        - 1.7.22-16
         - 1.7.22-2
         - 1.7.22-3
         - 1.7.22-4
@@ -359,6 +361,7 @@ affected:
         - 3.10.0-2
         - 3.10.0-3
         - 3.10.0-4
+        - 3.10.0-5
         - 3.8.0-0
         - 3.8.0-1
         - 3.8.0-2
@@ -372,7 +375,7 @@ affected:
         - 3.9.0-6
 details: basic-ftp is an FTP client for Node.js. Prior to 6.2.4, the MLSD directory-listing parser in src/parseListMLSD.ts uses untrusted fact names from the FTP server as keys in the plain-object factHandlersByName dictionary without checking that the resolved property is an own handler. A fact named __proto__ therefore resolves to Object.prototype, bypasses the missing-handler guard, and is called as though it were a function, producing a TypeError. The error propagates through Client.list() and APIs that depend on it because it is not an FTPError. A malicious or compromised FTP server, or an on-path attacker on a plaintext FTP session, can make the affected operation reject, and the Node.js process terminates under the default behavior in Node.js 15 and later only if the application leaves that rejection unhandled. This issue is fixed in version 6.2.4.
 id: DHI-v6p7-4jo7-nioq-dgce
-modified: "2026-11-26T15:37:07Z"
+modified: "2026-11-27T03:05:26Z"
 published: "2026-11-20T01:06:36Z"
 references:
     - type: ADVISORY

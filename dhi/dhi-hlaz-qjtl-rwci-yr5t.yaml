@@ -7,16 +7,22 @@ affected:
         name: libevent
         purl: pkg:deb/dhi/libevent
       ranges:
-        - events:
-            - introduced: 2.1.12-stable-10+dhi0
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-12"
+                      kind: advisory
+                      version: 2.1.13-stable-1~deb13u1+dhi0
+          events:
+            - introduced: "0"
+            - fixed: 2.1.13-stable-1~deb13u1+dhi0
           type: ECOSYSTEM
       versions:
         - 2.1.12-stable-10+dhi0
         - 2.1.12-stable-10+dhi1
-        - 2.1.13-stable-1~deb13u1+dhi0
 details: Libevent is an event notification library. Prior to 2.1.13 and 2.2.2-alpha, libevent can read beyond a contiguous evbuffer region in event_tagging.c when decode_tag_internal requests at most five bytes from evbuffer_pullup but iterates using the full logical buffer length. A fragmented evbuffer containing a six-byte malformed tag can therefore advance past the pullup window and trigger an out-of-bounds read, which can crash a process that decodes attacker-controlled tagged RPC data. This issue is fixed in versions 2.1.13 and 2.2.2-alpha.
 id: DHI-hlaz-qjtl-rwci-yr5t
-modified: "2026-11-24T12:35:01Z"
+modified: "2026-11-27T23:41:43Z"
 published: "2026-11-12T02:25:58Z"
 references:
     - type: ADVISORY

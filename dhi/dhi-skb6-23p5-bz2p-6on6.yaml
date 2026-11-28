@@ -38,6 +38,18 @@ affected:
         owner_kind: HSP
       package:
         ecosystem: Docker Hardened Images:Alpine:3.23
+        name: kubeflow-volumes-web-app-1
+        purl: pkg:apk/dhi/kubeflow-volumes-web-app-1
+      ranges:
+        - events:
+            - introduced: 1.11.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.11.1-r0
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.23
         name: kyverno-policy-reporter-ui
         purl: pkg:apk/dhi/kyverno-policy-reporter-ui
       ranges:
@@ -208,6 +220,18 @@ affected:
         - 4.4.5-r3
         - 4.4.5-r4
         - 4.4.5-r5
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Alpine:3.24
+        name: kubeflow-volumes-web-app-1
+        purl: pkg:apk/dhi/kubeflow-volumes-web-app-1
+      ranges:
+        - events:
+            - introduced: 1.11.1-r0
+          type: ECOSYSTEM
+      versions:
+        - 1.11.1-r0
     - database_specific:
         owner_kind: HSP
       package:
@@ -394,6 +418,9 @@ affected:
         - 1.9.0.1-10
         - 1.9.0.1-11
         - 1.9.0.1-12
+        - 1.9.0.1-13
+        - 1.9.0.1-14
+        - 1.9.0.2-14
     - database_specific:
         owner_kind: HSP
       package:
@@ -411,6 +438,7 @@ affected:
         - 4.4.5-3
         - 4.4.5-4
         - 4.4.5-5
+        - 4.4.5-6
     - database_specific:
         owner_kind: HSP
       package:
@@ -428,6 +456,19 @@ affected:
         - 4.4.5-3
         - 4.4.5-4
         - 4.4.5-5
+        - 4.4.5-6
+    - database_specific:
+        owner_kind: HSP
+      package:
+        ecosystem: Docker Hardened Images:Debian:13
+        name: kubeflow-volumes-web-app-1
+        purl: pkg:deb/dhi/kubeflow-volumes-web-app-1
+      ranges:
+        - events:
+            - introduced: 1.11.1-0
+          type: ECOSYSTEM
+      versions:
+        - 1.11.1-0
     - database_specific:
         owner_kind: HSP
       package:
@@ -574,7 +615,7 @@ database_specific:
         - legacy_package_image_owner
 details: node-tar is a tar archive manipulation library for Node.js. Prior to 7.5.21, node-tar's filesFilter in src/list.ts uses the recursive mapHas helper to walk an archive entry path upward with path.dirname() and no segment cap when tar.t(...) or tar.x(...) receives a non-empty member-selection list. A crafted GNU L or PAX x long-path header with thousands of slash-separated segments reaches this.filter(entry.path, entry) in Parser[CONSUMEHEADER] in src/parse.ts before Unpack[CHECKPATH] applies maxDepth, causing an uncatchable RangeError stack overflow that terminates asynchronous and streaming Node.js consumers. This issue is fixed in version 7.5.21.
 id: DHI-skb6-23p5-bz2p-6on6
-modified: "2026-11-26T10:39:15Z"
+modified: "2026-11-27T22:58:14Z"
 published: "2026-11-21T08:54:17Z"
 references:
     - type: ADVISORY
