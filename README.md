@@ -149,9 +149,11 @@ Captured: 2026-11-20T00:21:26Z
   re-reads file contents and runs in a blob-less clone. The branch is a
   plain single-parent chain, not merges, so `git log -- <path>` simplifies
   history correctly.
-- **[`backfill.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/backfill.yml)** runs six times a day,
+- **[`backfill.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/backfill.yml)** is scheduled six times a day,
   an hour after each of upstream's publish windows (00:00, 08:00 and 16:00
-  UTC) plus a sweep three hours later for stragglers. It reads the
+  UTC) plus a sweep three hours later for stragglers. GitHub delays and
+  sometimes skips scheduled runs, so in practice fewer fire, and the
+  `changelog` branch can trail upstream by several hours. It reads the
   provider list from grype-db's own
   [nightly publish config](https://github.com/anchore/grype-db/blob/main/config/grype-db/publish-nightly-r2.yaml),
   so a provider anchore adds is picked up on the next run, lists every
