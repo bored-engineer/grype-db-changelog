@@ -26,9 +26,7 @@ record becomes one human-readable YAML file, and each upstream build
 becomes one commit, so you can `git log`, `git diff` and `git blame` it like
 any other codebase. The **`changelog`** branch holds 25,000+ snapshots
 across 26 providers, going back to February 2023. The one provider left out
-is epss: [FIRST](https://www.first.org/epss/) publishes EPSS's full daily
-history itself, and its ~400K scores, nearly all of which shift a little
-every day, would be over 90% of everything stored here.
+is epss (see [Per-provider handling](#per-provider-handling)).
 
 ## Example: tracing Java4Shell (CVE-2026-114938)
 
@@ -136,24 +134,11 @@ Captured: 2026-11-20T00:21:26Z
   pulls `results.db` and `metadata.json` out of its layer, and writes one
   YAML file per record. Arrays of objects are sorted canonically, because
   upstream reorders them between builds for no semantic reason and that
-  would otherwise show up as noise in the diffs. The exception is OSV's
-  `events`, kept in upstream order so each range reads introduced, then
-  fixed. Numbers are written exactly as upstream's JSON has them.
-  hummingbird's CSAF documents leave out three timestamps in
-  `document.tracking` (`current_release_date`, `generator.date` and each
-  `revision_history` entry's `date`): Red Hat regenerates the documents
-  daily, so they were the only change in ~98% of hummingbird's modified
-  files. Two more providers get one fix each, for upstream flips that
-  carried no information:
-  - arch drops repeated ids from `Metadata.Advisories`. Upstream lists some
-    ASA ids twice in one build and once in the next, which was essentially
-    every arch change.
-  - photon always cites the `Security-Updates-…` wiki page, with that
-    page's ID, for the 579 old advisories the photon wiki has two pages
-    for. vunnel picks between the two in directory-listing order, which
-    flipped ~1,000 files at a time.
-
-  It prints a
+  would otherwise show up as noise in the diffs. Numbers are written
+  exactly as upstream's JSON has them, and multi-line strings that start
+  with whitespace are double-quoted (yaml.v3 writes those as block scalars
+  that don't read back the same). A few providers get more, listed under
+  [Per-provider handling](#per-provider-handling). It prints a
   [`git fast-import`](https://git-scm.com/docs/git-fast-import) stream that
   stages the snapshot as `refs/raw/<provider>/<digest>`. It streams the
   layer itself, resuming with HTTP Range requests when GHCR drops a
@@ -164,9 +149,11 @@ Captured: 2026-11-20T00:21:26Z
   re-reads file contents and runs in a blob-less clone. The branch is a
   plain single-parent chain, not merges, so `git log -- <path>` simplifies
   history correctly.
-- **[`backfill.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/backfill.yml)** runs six times a day,
+- **[`backfill.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/backfill.yml)** is scheduled six times a day,
   an hour after each of upstream's publish windows (00:00, 08:00 and 16:00
-  UTC) plus a sweep three hours later for stragglers. It reads the
+  UTC) plus a sweep three hours later for stragglers. GitHub delays and
+  sometimes skips scheduled runs, so in practice fewer fire, and the
+  `changelog` branch can trail upstream by several hours. It reads the
   provider list from grype-db's own
   [nightly publish config](https://github.com/anchore/grype-db/blob/main/config/grype-db/publish-nightly-r2.yaml),
   so a provider anchore adds is picked up on the next run, lists every
@@ -176,6 +163,25 @@ Captured: 2026-11-20T00:21:26Z
   chains them in publish order and deletes their staging refs, in one
   atomic push. Each run takes at most 1,000 versions, which is how the
   initial backfill of upstream's history was done, one batch at a time.
+
+## Per-provider handling
+
+Everything not listed here is exported as vunnel wrote it, apart from the
+general rules above. Each exception exists because the field it touches
+changed between builds without carrying any information, and was most of
+that provider's diffs.
+
+| Provider | What's different | Why |
+|----------|------------------|-----|
+| epss | Not exported at all | [FIRST](https://www.first.org/epss/) publishes EPSS's full daily history itself, and its ~400K scores, nearly all of which shift a little every day, would be over 90% of everything stored here. |
+| hummingbird | Three timestamps in `document.tracking` are left out: `current_release_date`, `generator.date` and each `revision_history` entry's `date` | Red Hat regenerates the CSAF documents daily, so those dates were the only change in ~98% of hummingbird's modified files. |
+| arch | Repeated ids are dropped from `Vulnerability.Metadata.Advisories`, keeping the first of each | Upstream lists some ASA ids twice in one build and once in the next; that flip was essentially every arch change. |
+| photon | For the 579 old advisories the [photon wiki](https://github.com/vmware/photon/wiki) has two pages for (`Security-Update-<ver>-<n>` and `Security-Updates-<ver>-<n>`, each spelling the advisory ID its own way), `AdvisorySummary` always cites the `Security-Updates` page and that page's ID | Both pages carry the same date, so vunnel's pick between them depends on directory-listing order, which changes between builds and flipped ~1,000 files at a time. The pages are listed in [`photon_advisories.go`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/cmd/export/photon_advisories.go), generated from the wiki; they're all old advisories, so the list shouldn't change. |
+| alma, bitnami, dhi, govulndb (OSV) | `affected[].ranges[].events` keeps upstream's order; every other array of objects is sorted | So each range reads introduced, then fixed. |
+
+Record ids prefixed with the provider's own name (`kev:CVE-…`,
+`debian:12/CVE-…`) have that prefix stripped from the file name, since the
+provider is already the directory.
 
 ## Branches
 
@@ -199,9 +205,3 @@ Captured: 2026-11-20T00:21:26Z
   batch is in flight (one whose export keeps failing stays, and holds back
   later builds until it succeeds); the `changelog` branch is the source of
   truth for what has been chained.
-- **`refs/reexport/<provider>/<digest>`** and **`reexport/<provider>`**:
-  used only when an exporter fix changes one provider's files.
-  [`reexport.yml`](https://github.com/bored-engineer/grype-db-changelog/blob/generator/.github/workflows/reexport.yml),
-  started by pushing a `reexport/<provider>` branch, re-exports every
-  chained build of that provider to `refs/reexport`; the new trees are then
-  swapped into the existing history by hand, and both are deleted.
