@@ -26,17 +26,17 @@ database_specific:
     severity: Medium
 details: virtualenv is a tool for creating isolated virtual python environments. Prior to 21.14.9, the builtin creator calls ensure_dir() for executable, library, and package directories, and ensure_dir() accepts an existing symlink to a directory because exists() follows it. Interpreter creation, seed installation, and activation generation then write through the linked parent outside the requested destination when another local account prepared the tree and the invoking user can access the target. The --clear option removes the planted tree first, while ordinary creation reaches it; arbitrary attacker-selected output bytes are not established. This issue is fixed in version 21.14.9.
 id: BIT-virtualenv-2026-113716
-modified: "2026-10-29T09:16:42.832Z"
+modified: "2026-11-27T06:05:58.301Z"
 published: "2026-10-29T09:00:30.693Z"
 references:
-    - type: WEB
-      url: https://github.com/pypa/virtualenv/commit/554d9f9d4f7758f5cf53f993031e29787f1f74c5
-    - type: WEB
-      url: https://github.com/pypa/virtualenv/pull/3429
-    - type: WEB
-      url: https://github.com/pypa/virtualenv/releases/tag/21.14.9
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/pypa/virtualenv/security/advisories/GHSA-cw65-gx24-rc82
+    - type: ARTICLE
+      url: https://github.com/pypa/virtualenv/releases/tag/21.14.9
+    - type: FIX
+      url: https://github.com/pypa/virtualenv/commit/554d9f9d4f7758f5cf53f993031e29787f1f74c5
+    - type: FIX
+      url: https://github.com/pypa/virtualenv/pull/3429
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-113716
 schema_version: 1.6.2

@@ -1,0 +1,42 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: apache
+        purl: pkg:bitnami/apache
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 2.4.71
+          events:
+            - introduced: 2.4.69
+            - fixed: 2.4.71
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-109163
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*
+    severity: Medium
+details: |-
+    Stack-based buffer overflow vulnerability in Apache HTTP Server's mod_vhost_alias (after CVE-2026-63292)
+
+
+
+    This issue affects Apache HTTP Server: 2.4.69.
+id: BIT-apache-2026-109163
+modified: "2026-11-27T06:05:58.301Z"
+published: "2026-11-27T05:38:51.819Z"
+references:
+    - type: WEB
+      url: https://httpd.apache.org/security/vulnerabilities_24.html
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-109163
+schema_version: 1.6.2
+summary: 'Apache HTTP Server: mod_vhost_alias 1 byte stack buffer overwrite (after CVE-2026-63292)'

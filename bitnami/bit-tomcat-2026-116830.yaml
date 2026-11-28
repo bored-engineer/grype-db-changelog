@@ -1,0 +1,69 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: tomcat
+        purl: pkg:bitnami/tomcat
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 10.1.62
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 11.0.29
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 9.0.124
+          events:
+            - introduced: 9.0.20
+            - fixed: 9.0.124
+            - introduced: 10.1.0
+            - fixed: 10.1.62
+            - introduced: 11.0.0
+            - fixed: 11.0.29
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H
+          type: CVSS_V3
+aliases:
+    - CVE-2026-116830
+database_specific:
+    cpes:
+        - cpe:2.3:a:apache:tomcat:*:*:*:*:*:maven:*:*
+    severity: High
+details: |-
+    Missing release of resource after effective lifetime vulnerability in Apache Tomcat's HTTP/2 initial connection handling leads to DoS.
+
+
+
+    This issue affects Apache Tomcat: from 11.0.0 through 11.0.27, from 10.1.0 through 10.1.61, from 9.0.20 through 9.0.123.
+
+
+
+    Users are recommended to upgrade to version 11.0.29, 10.1.62 or 9.0.124, which fix the issue.
+    Note: Tomcat 11.0.28 was not released
+id: BIT-tomcat-2026-116830
+modified: "2026-11-27T09:16:50.457Z"
+published: "2026-11-27T09:02:55.755Z"
+references:
+    - type: WEB
+      url: https://github.com/apache/tomcat/commit/664f26c0bccebe7cad91dd8e9a3ff75e706a7b6f
+    - type: WEB
+      url: https://github.com/apache/tomcat/commit/b74fa31d0b8da208aec3abf37f6424df2a607ad1
+    - type: WEB
+      url: https://github.com/apache/tomcat/commit/ebf20995c3c1dd525e96996c06d47d775be6b95d
+    - type: WEB
+      url: https://lists.apache.org/thread.html/dsnks241sjb4fl3v3kl86fg24m1yspk6
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-116830
+    - type: WEB
+      url: https://tomcat.apache.org/security-10.html#Fixed_in_Apache_Tomcat_10.1.62
+    - type: WEB
+      url: https://tomcat.apache.org/security-11.html#Fixed_in_Apache_Tomcat_11.0.29
+    - type: WEB
+      url: https://tomcat.apache.org/security-9.html#Fixed_in_Apache_Tomcat_9.0.124
+schema_version: 1.6.2
+summary: 'Apache Tomcat: HTTP/2 checks frame type before size leads to DoS'

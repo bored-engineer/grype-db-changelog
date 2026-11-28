@@ -26,17 +26,17 @@ database_specific:
     severity: Medium
 details: virtualenv is a tool for creating isolated virtual python environments. Prior to 21.14.9, ViaTemplateActivator._generate() removes an existing output only when Path.exists() is true, allowing a dangling symlink to survive and redirect generated activation content, while PyEnvCfg.write() opens pyvenv.cfg without first replacing an existing symbolic or hard link. Another local account that prepares final entries inside the destination can therefore cause environment creation to create or overwrite files outside the requested tree with constrained virtualenv-generated content and the invoking user's permissions. The destination parent must remain controlled by the environment owner during creation; concurrent parent-directory replacement is a separate concern. This issue is fixed in version 21.14.9.
 id: BIT-virtualenv-2026-113721
-modified: "2026-10-29T09:16:42.832Z"
+modified: "2026-11-27T06:05:58.301Z"
 published: "2026-10-29T09:00:37.279Z"
 references:
-    - type: WEB
-      url: https://github.com/pypa/virtualenv/commit/d25f28699eefb1fc34a251e5adf2b5de844c36cd
-    - type: WEB
-      url: https://github.com/pypa/virtualenv/pull/3431
-    - type: WEB
-      url: https://github.com/pypa/virtualenv/releases/tag/21.14.9
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/pypa/virtualenv/security/advisories/GHSA-558c-9hv2-4prj
+    - type: ARTICLE
+      url: https://github.com/pypa/virtualenv/releases/tag/21.14.9
+    - type: FIX
+      url: https://github.com/pypa/virtualenv/commit/d25f28699eefb1fc34a251e5adf2b5de844c36cd
+    - type: FIX
+      url: https://github.com/pypa/virtualenv/pull/3431
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-113721
 schema_version: 1.6.2

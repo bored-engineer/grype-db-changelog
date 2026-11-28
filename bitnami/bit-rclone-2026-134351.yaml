@@ -1,0 +1,39 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: rclone
+        purl: pkg:bitnami/rclone
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 1.76.0
+          events:
+            - introduced: 1.49.0
+            - fixed: 1.76.0
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:L/I:L/A:N
+          type: CVSS_V3
+aliases:
+    - CVE-2026-134351
+database_specific:
+    cpes:
+        - cpe:2.3:a:rclone:rclone:*:*:*:*:*:*:*:*
+    severity: Medium
+details: Rclone 1.49.0 before 1.76.0 contains an improper authentication vulnerability in Proxy.Call that lets revoked users keep access because cached auth-proxy answers are never revalidated. Revoked users of serve sftp, ftp, http, or webdav can reconnect within five minutes using their original credentials to retain access indefinitely.
+id: BIT-rclone-2026-134351
+modified: "2026-11-27T06:05:58.301Z"
+published: "2026-11-27T05:52:46.431Z"
+references:
+    - type: ADVISORY
+      url: https://github.com/rclone/rclone/security/advisories/GHSA-vmgx-g9c5-669p
+    - type: ADVISORY
+      url: https://www.vulncheck.com/advisories/rclone-1.49.0-before-1.76.0-auth-proxy-revocation-bypass-via-cached-credentials
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-134351
+schema_version: 1.6.2
+summary: Rclone 1.49.0 before 1.76.0 Auth-Proxy Revocation Bypass via Cached Credentials

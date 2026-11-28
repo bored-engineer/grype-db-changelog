@@ -26,15 +26,15 @@ database_specific:
     severity: High
 details: virtualenv is a tool for creating isolated virtual python environments. Prior to 21.14.2, FishActivator inherits ViaTemplateActivator.quote(), which uses POSIX shlex.quote() even though fish interprets backslashes and single quotes differently. An attacker-influenced environment path, --prompt, or VIRTUALENV_PROMPT value containing a backslash before a quote can therefore terminate the generated fish literal and execute command substitution when the user sources activate.fish. This issue is fixed in version 21.14.2.
 id: BIT-virtualenv-2026-113732
-modified: "2026-10-29T09:16:42.832Z"
+modified: "2026-11-27T06:05:58.301Z"
 published: "2026-10-29T09:00:45.098Z"
 references:
-    - type: WEB
-      url: https://github.com/pypa/virtualenv/commit/3bddeaf8d02c3ee7f576503efb082f8f494cfcab
-    - type: WEB
-      url: https://github.com/pypa/virtualenv/releases/tag/21.14.2
-    - type: WEB
+    - type: ADVISORY
       url: https://github.com/pypa/virtualenv/security/advisories/GHSA-c947-3pg5-gm8q
+    - type: ARTICLE
+      url: https://github.com/pypa/virtualenv/releases/tag/21.14.2
+    - type: FIX
+      url: https://github.com/pypa/virtualenv/commit/3bddeaf8d02c3ee7f576503efb082f8f494cfcab
     - type: WEB
       url: https://nvd.nist.gov/vuln/detail/CVE-2026-113732
 schema_version: 1.6.2

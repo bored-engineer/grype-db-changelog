@@ -1,0 +1,59 @@
+# schema: vulnerability/osv/schema-1.6.2.json
+affected:
+    - package:
+        ecosystem: Bitnami
+        name: grafana
+        purl: pkg:bitnami/grafana
+      ranges:
+        - database_specific:
+            anchore:
+                fixes:
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 12.4.15
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 13.0.13
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 13.1.10
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 13.2.6
+                    - date: "2026-11-27"
+                      kind: advisory
+                      version: 13.3.1
+          events:
+            - introduced: 9.5.0
+            - fixed: 12.4.15
+            - introduced: 13.0.0
+            - fixed: 13.0.13
+            - introduced: 13.1.0
+            - fixed: 13.1.10
+            - introduced: 13.2.0
+            - fixed: 13.2.6
+            - introduced: 13.3.0
+            - fixed: 13.3.1
+          type: SEMVER
+      severity:
+        - score: CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:L
+          type: CVSS_V3
+aliases:
+    - CVE-2026-102589
+database_specific:
+    cpes:
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:*:*:*
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:*:go:*:*
+        - cpe:2.3:a:grafana:grafana:*:*:*:*:enterprise:go:*:*
+    severity: High
+details: When independent Grafana instances share the same [rendering] renderer_token, an image renderer key issued by one instance is accepted by the others, so a user on one instance could act as the user with the same ID on another (origin validation error). This affects instances with the renderAuthJWT feature toggle enabled, the default from Grafana 13.0.0.
+id: BIT-grafana-2026-102589
+modified: "2026-11-27T06:05:58.301Z"
+published: "2026-11-27T05:42:00.311Z"
+references:
+    - type: WEB
+      url: https://grafana.com/security/security-advisories/cve-2026-102589
+    - type: WEB
+      url: https://nvd.nist.gov/vuln/detail/CVE-2026-102589
+schema_version: 1.6.2
+summary: Cross-instance user impersonation through image renderer JWTs
